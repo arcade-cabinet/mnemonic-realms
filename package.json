@@ -5,15 +5,15 @@
   "main": "dist/index.js",
   "type": "commonjs",
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
-    "start": "node dist/main.js",
+    "dev": "RPG_TYPE=rpg next dev",
+    "build": "RPG_TYPE=rpg next build",
+    "start": "next start",
+    "export": "RPG_TYPE=rpg next build && next export",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "format": "biome format --write .",
     "test": "echo \"Tests not yet implemented\" && exit 1",
-    "example": "node dist/examples.js",
-    "game": "npm run build && npm start"
+    "example": "tsx lib/examples.ts"
   },
   "repository": {
     "type": "git",
@@ -35,16 +35,12 @@
   "dependencies": {
     "@rpgjs/client": "4.3.0",
     "@rpgjs/common": "4.3.0",
-    "@rpgjs/compiler": "4.3.0",
-    "@rpgjs/server": "4.3.0",
     "@rpgjs/tiled": "4.3.0",
     "ecsy": "^0.4.3",
-    "express": "^4.18.2",
     "next": "^16.1.6",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "seedrandom": "^3.0.5",
-    "socket.io-client": "^4.8.3"
+    "seedrandom": "^3.0.5"
   },
   "devDependencies": {
     "@biomejs/biome": "~2.3.15",
@@ -56,6 +52,7 @@
     "autoprefixer": "^10.4.24",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.18",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   }
 }
