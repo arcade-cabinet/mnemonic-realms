@@ -6,14 +6,19 @@ import {
   CharacterClass,
   Description,
   Dialogue,
+  DialogueArchetype,
   Location,
   Name,
+  NameArchetype,
   Personality,
   Room,
+  RoomArchetype,
   Seed,
   SkillMastery,
   Terrain,
+  TerrainArchetype,
 } from './components';
+import { BIOME_CONFIGS, ROOM_LAYOUT_TYPES } from './dataPools';
 import {
   BackstoryGenerationSystem,
   ClassGenerationSystem,
@@ -48,7 +53,11 @@ export class ProceduralWorld {
       .registerComponent(SkillMastery)
       .registerComponent(Location)
       .registerComponent(Terrain)
-      .registerComponent(Room);
+      .registerComponent(Room)
+      .registerComponent(NameArchetype)
+      .registerComponent(DialogueArchetype)
+      .registerComponent(TerrainArchetype)
+      .registerComponent(RoomArchetype);
   }
 
   private registerSystems(): void {
@@ -92,6 +101,20 @@ export class ProceduralWorld {
       personality.traits = [this.determinePersonality(adjectives)];
     }
 
+    // Set name archetype based on first adjective hash
+    const nameArchetype = entity.getMutableComponent(NameArchetype);
+    if (nameArchetype) {
+      nameArchetype.syllableSet = this.hashString(adjectives[0]) % 4;
+      nameArchetype.titleCategory = this.hashString(adjectives[1]) % 4;
+    }
+
+    // Set dialogue archetype based on noun and adjectives
+    const dialogueArchetype = entity.getMutableComponent(DialogueArchetype);
+    if (dialogueArchetype) {
+      dialogueArchetype.greetingStyle = this.hashString(noun) % 4;
+      dialogueArchetype.questHookType = this.hashString(adjectives.join('')) % 4;
+    }
+
     return entity.id;
   }
 
@@ -112,12 +135,20 @@ export class ProceduralWorld {
       seed.noun = noun;
     }
 
+    // Set terrain archetype based on seed
+    const terrainArchetype = entity.getMutableComponent(TerrainArchetype);
+    if (terrainArchetype) {
+      terrainArchetype.biomeId = this.hashString(noun) % BIOME_CONFIGS.length;
+      terrainArchetype.resourceTier = this.hashString(adjectives[0]) % 3;
+    }
+
     const terrain = entity.getMutableComponent(Terrain);
-    if (terrain) {
-      terrain.type = this.determineTerrainType(noun);
-      terrain.difficulty = adjectives.length + 1;
-      terrain.resources = this.getTerrainResources(terrain.type);
-      terrain.hazards = this.getTerrainHazards(terrain.type);
+    if (terrain && terrainArchetype) {
+      const biome = BIOME_CONFIGS[terrainArchetype.biomeId];
+      terrain.type = biome.type;
+      terrain.difficulty = terrainArchetype.resourceTier + 1;
+      terrain.resources = biome.resources;
+      terrain.hazards = biome.hazards;
     }
 
     const location = entity.getMutableComponent(Location);
@@ -146,12 +177,20 @@ export class ProceduralWorld {
       seed.noun = noun;
     }
 
+    // Set room archetype based on seed
+    const roomArchetype = entity.getMutableComponent(RoomArchetype);
+    if (roomArchetype) {
+      roomArchetype.layoutType = this.hashString(noun) % ROOM_LAYOUT_TYPES.length;
+      roomArchetype.dangerLevel = this.hashString(adjectives[1]) % 3;
+    }
+
     const room = entity.getMutableComponent(Room);
-    if (room) {
-      room.type = this.determineRoomType(noun);
-      room.difficulty = adjectives.length;
-      room.connections = Math.min(4, adjectives.length + 1);
-      room.contents = this.getRoomContents(room.type);
+    if (room && roomArchetype) {
+      const layout = ROOM_LAYOUT_TYPES[roomArchetype.layoutType];
+      room.type = layout.type;
+      room.difficulty = roomArchetype.dangerLevel + 1;
+      room.connections = Math.min(4, roomArchetype.dangerLevel + 2);
+      room.contents = layout.contents;
     }
 
     return entity.id;
@@ -165,11 +204,15 @@ export class ProceduralWorld {
   }
 
   /**
-   * Get an entity by ID
+   * Get an entity by ID using ecsy's entity manager
    */
   getEntity(id: number) {
-    // ECSY stores entities in an array
-    const entities = (this.world as any).entityManager?._entities;
+    const entityManager = (this.world as any).entityManager;
+    if (entityManager && typeof entityManager.getEntityById === 'function') {
+      return entityManager.getEntityById(id);
+    }
+    // Fallback: search through entities array
+    const entities = entityManager?._entities;
     return entities ? entities.find((e: any) => e.id === id) : null;
   }
 
@@ -181,10 +224,10 @@ export class ProceduralWorld {
     if (!entity) return null;
 
     const data: Record<string, unknown> = { id: entity.id };
-    
+
     // Get all component types from the entity
     const componentTypes = entity._ComponentTypes || [];
-    
+
     for (const ComponentType of componentTypes) {
       const component = entity.getComponent(ComponentType);
       if (component) {
@@ -197,6 +240,19 @@ export class ProceduralWorld {
   }
 
   // Helper methods
+  /**
+   * Simple string hash for deterministic archetype selection
+   */
+  private hashString(str: string): number {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      const char = str.charCodeAt(i);
+      hash = (hash << 5) - hash + char;
+      hash = hash & hash; // Convert to 32bit integer
+    }
+    return Math.abs(hash);
+  }
+
   private determineAlignment(adjectives: string[]): 'light' | 'dark' | 'neutral' {
     const lightWords = ['bright', 'holy', 'pure', 'divine', 'radiant', 'blessed'];
     const darkWords = ['dark', 'shadow', 'cursed', 'evil', 'black', 'void'];
@@ -221,71 +277,5 @@ export class ProceduralWorld {
     if (adjectivesLower.some((a) => wiseWords.some((w) => a.includes(w)))) return 'wise';
 
     return 'jovial';
-  }
-
-  private determineTerrainType(noun: string): string {
-    const nounLower = noun.toLowerCase();
-    if (nounLower.includes('forest') || nounLower.includes('wood')) return 'forest';
-    if (nounLower.includes('mountain') || nounLower.includes('peak')) return 'mountain';
-    if (nounLower.includes('desert') || nounLower.includes('sand')) return 'desert';
-    if (nounLower.includes('swamp') || nounLower.includes('marsh')) return 'swamp';
-    if (nounLower.includes('tundra') || nounLower.includes('ice')) return 'tundra';
-    if (nounLower.includes('volcano') || nounLower.includes('lava')) return 'volcano';
-    if (nounLower.includes('ocean') || nounLower.includes('sea')) return 'ocean';
-    return 'plains';
-  }
-
-  private determineRoomType(noun: string): string {
-    const nounLower = noun.toLowerCase();
-    if (nounLower.includes('treasure') || nounLower.includes('vault')) return 'treasure';
-    if (nounLower.includes('battle') || nounLower.includes('arena')) return 'combat';
-    if (nounLower.includes('puzzle') || nounLower.includes('riddle')) return 'puzzle';
-    if (nounLower.includes('trap') || nounLower.includes('danger')) return 'trap';
-    if (nounLower.includes('shop') || nounLower.includes('merchant')) return 'shop';
-    if (nounLower.includes('rest') || nounLower.includes('safe')) return 'rest';
-    if (nounLower.includes('boss') || nounLower.includes('throne')) return 'boss';
-    return 'secret';
-  }
-
-  private getTerrainResources(type: string): string[] {
-    const resources: Record<string, string[]> = {
-      plains: ['Wheat', 'Grass'],
-      forest: ['Timber', 'Berries'],
-      mountain: ['Iron Ore', 'Gems'],
-      desert: ['Cactus Water', 'Sand Glass'],
-      swamp: ['Herbs', 'Bog Iron'],
-      tundra: ['Furs', 'Ice Crystals'],
-      volcano: ['Obsidian', 'Sulfur'],
-      ocean: ['Fish', 'Pearls'],
-    };
-    return resources[type] || [];
-  }
-
-  private getTerrainHazards(type: string): string[] {
-    const hazards: Record<string, string[]> = {
-      plains: ['Bandits'],
-      forest: ['Wolves', 'Bears'],
-      mountain: ['Avalanches'],
-      desert: ['Sandstorms'],
-      swamp: ['Disease'],
-      tundra: ['Blizzards'],
-      volcano: ['Lava Flows'],
-      ocean: ['Storms'],
-    };
-    return hazards[type] || [];
-  }
-
-  private getRoomContents(type: string): string[] {
-    const contents: Record<string, string[]> = {
-      treasure: ['Gold', 'Jewels'],
-      combat: ['Enemies', 'Weapons'],
-      puzzle: ['Runes', 'Mechanisms'],
-      trap: ['Spike Pits', 'Poison Darts'],
-      shop: ['Merchant', 'Goods'],
-      rest: ['Beds', 'Food'],
-      boss: ['Powerful Enemy'],
-      secret: ['Hidden Treasure'],
-    };
-    return contents[type] || [];
   }
 }

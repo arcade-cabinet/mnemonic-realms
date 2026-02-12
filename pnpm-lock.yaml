@@ -23,9 +23,6 @@ importers:
       '@rpgjs/tiled':
         specifier: 5.0.0-alpha.5
         version: 5.0.0-alpha.5
-      '@types/seedrandom':
-        specifier: ^3.0.8
-        version: 3.0.8
       ecsy:
         specifier: ^0.4.3
         version: 0.4.3
@@ -39,6 +36,9 @@ importers:
       '@types/node':
         specifier: ^25.2.3
         version: 25.2.3
+      '@types/seedrandom':
+        specifier: ^3.0.8
+        version: 3.0.8
       typescript:
         specifier: ^5.9.3
         version: 5.9.3

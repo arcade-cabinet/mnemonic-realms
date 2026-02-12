@@ -31,6 +31,9 @@ export class SeededRandom {
    * Pick a random element from an array
    */
   pick<T>(array: T[]): T {
+    if (array.length === 0) {
+      throw new Error('Cannot pick a random element from an empty array');
+    }
     return array[this.randomInt(0, array.length - 1)];
   }
 
@@ -55,14 +58,15 @@ export class SeededRandom {
 }
 
 /**
- * Parse "adjective adjective noun" seed format
+ * Parse seed format requiring exactly three words: "adjective adjective noun"
+ * Three unique word pools provide millions of permutations
  */
 export function parseSeed(seed: string): { adjectives: string[]; noun: string } {
   const parts = seed.trim().split(/\s+/);
-  if (parts.length < 2) {
-    throw new Error('Seed must contain at least two words');
+  if (parts.length !== 3) {
+    throw new Error('Seed must contain exactly three words: "adjective adjective noun"');
   }
-  const noun = parts[parts.length - 1];
-  const adjectives = parts.slice(0, -1);
+  const noun = parts[2];
+  const adjectives = [parts[0], parts[1]];
   return { adjectives, noun };
 }

@@ -9,16 +9,20 @@ import {
   CharacterClass,
   Description,
   Dialogue,
+  DialogueArchetype,
   Item,
   Location,
   Loot,
   Name,
+  NameArchetype,
   Personality,
   Room,
+  RoomArchetype,
   Seed,
   Skill,
   SkillMastery,
   Terrain,
+  TerrainArchetype,
 } from './components';
 
 /**
@@ -35,12 +39,14 @@ export function applyNPCTrait(entity: Entity): Entity {
 }
 
 /**
- * Apply Character trait to an entity (NPC + class/skills)
+ * Apply Character trait to an entity (NPC + class/skills + archetypes)
  */
 export function applyCharacterTrait(entity: Entity): Entity {
   applyNPCTrait(entity);
   entity.addComponent(CharacterClass);
   entity.addComponent(SkillMastery);
+  entity.addComponent(NameArchetype);
+  entity.addComponent(DialogueArchetype);
   return entity;
 }
 
@@ -51,6 +57,7 @@ export function applyTerrainTrait(entity: Entity): Entity {
   entity.addComponent(Terrain);
   entity.addComponent(Location);
   entity.addComponent(Description);
+  entity.addComponent(TerrainArchetype);
   return entity;
 }
 
@@ -62,6 +69,7 @@ export function applyRoomTrait(entity: Entity): Entity {
   entity.addComponent(Name);
   entity.addComponent(Description);
   entity.addComponent(Location);
+  entity.addComponent(RoomArchetype);
   return entity;
 }
 

@@ -3,6 +3,7 @@
  * Registers tilesets and exports procedurally generated Tiled maps
  */
 
+import { Name, Terrain } from '../ecs/components';
 import { ProceduralWorld } from '../ecs/world';
 import { SeededRandom } from '../utils/seededRandom';
 
@@ -82,15 +83,28 @@ export class ProceduralMapGenerator {
    */
   private generateTerrainLayer(width: number, height: number): TiledLayer {
     const data: number[] = [];
+    const terrainEntityIds: number[] = [];
 
+    // First pass: create all terrain entities and record their IDs
     for (let y = 0; y < height; y++) {
       for (let x = 0; x < width; x++) {
         const cellSeed = `${this.rng.seed}-${x}-${y}`;
         const terrainId = this.world.createTerrain(cellSeed, x, y);
-        this.world.update();
+        const index = y * width + x;
+        terrainEntityIds[index] = terrainId;
+      }
+    }
 
+    // Batch update: process all created entities at once
+    this.world.update();
+
+    // Second pass: read terrain components and build tile data
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        const index = y * width + x;
+        const terrainId = terrainEntityIds[index];
         const entity = this.world.getEntity(terrainId);
-        const terrain = entity?.getComponent('Terrain' as any);
+        const terrain = entity?.getComponent(Terrain);
 
         // Map terrain types to tile IDs (these would correspond to your tileset)
         const tileId = this.getTileIdForTerrain(terrain?.type || 'plains');
@@ -116,16 +130,26 @@ export class ProceduralMapGenerator {
     const objects: TiledObject[] = [];
     const objectCount = this.rng.randomInt(5, 15);
 
+    // Create all character entities first
+    const characterIds: number[] = [];
+    for (let i = 0; i < objectCount; i++) {
+      const objSeed = `${this.rng.seed}-obj-${i}`;
+      const characterId = this.world.createCharacter(objSeed);
+      characterIds.push(characterId);
+    }
+
+    // Batch update: process all created entities at once
+    this.world.update();
+
+    // Build object list with positions
     for (let i = 0; i < objectCount; i++) {
       const x = this.rng.randomInt(0, width - 1) * 32;
       const y = this.rng.randomInt(0, height - 1) * 32;
+      const characterId = characterIds[i];
       const objSeed = `${this.rng.seed}-obj-${i}`;
 
-      const characterId = this.world.createCharacter(objSeed);
-      this.world.update();
-
       const entity = this.world.getEntity(characterId);
-      const name = entity?.getComponent('Name' as any);
+      const name = entity?.getComponent(Name);
 
       objects.push({
         id: i + 1,

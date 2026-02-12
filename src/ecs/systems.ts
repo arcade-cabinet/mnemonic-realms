@@ -6,20 +6,30 @@ import {
   CharacterClass,
   Description,
   Dialogue,
+  DialogueArchetype,
   Name,
+  NameArchetype,
   Personality,
   Seed,
   SkillMastery,
 } from './components';
+import {
+  GREETING_STYLES,
+  PERSONALITY_TRAITS,
+  QUEST_HOOK_TYPES,
+  SKILL_POOLS,
+  STORY_TEMPLATES,
+  SYLLABLE_POOLS,
+} from './dataPools';
 
 /**
  * Name Generation System
- * Generates names for entities with Name and Seed components
+ * Generates names using archetype-indexed syllable pools
  */
 export class NameGenerationSystem extends System {
   static queries = {
     unnamedEntities: {
-      components: [Name, Seed],
+      components: [Name, Seed, NameArchetype],
       listen: {
         added: true,
       },
@@ -33,39 +43,39 @@ export class NameGenerationSystem extends System {
     for (const entity of entities) {
       const name = entity.getMutableComponent(Name);
       const seed = entity.getComponent(Seed);
+      const archetype = entity.getComponent(NameArchetype);
 
-      if (name && seed && !name.value) {
+      if (name && seed && archetype && !name.value) {
         const rng = new SeededRandom(seed.value);
-        name.value = this.generateName(rng);
+        const poolIndex = archetype.syllableSet % SYLLABLE_POOLS.length;
+        const pool = SYLLABLE_POOLS[poolIndex];
+
+        name.value = this.generateName(rng, pool);
       }
     }
   }
 
-  private generateName(rng: SeededRandom): string {
-    const syllablesStart = ['ael', 'bra', 'cal', 'dar', 'el', 'far', 'gal', 'hal'];
-    const syllablesMiddle = ['an', 'ben', 'cir', 'den', 'el', 'fin'];
-    const syllablesEnd = ['a', 'as', 'en', 'er', 'ia', 'is', 'on', 'or'];
-
+  private generateName(rng: SeededRandom, pool: (typeof SYLLABLE_POOLS)[0]): string {
     const count = rng.randomInt(2, 3);
-    let name = rng.pick(syllablesStart);
+    let name = rng.pick(pool.start);
 
     for (let i = 1; i < count - 1; i++) {
-      name += rng.pick(syllablesMiddle);
+      name += rng.pick(pool.middle);
     }
 
-    name += rng.pick(syllablesEnd);
+    name += rng.pick(pool.end);
     return name.charAt(0).toUpperCase() + name.slice(1);
   }
 }
 
 /**
  * Dialogue Generation System
- * Generates dialogue for NPCs with Dialogue, Personality, and Seed components
+ * Generates dialogue using archetype-indexed greeting/quest pools
  */
 export class DialogueGenerationSystem extends System {
   static queries = {
     needsDialogue: {
-      components: [Dialogue, Personality, Seed],
+      components: [Dialogue, Personality, Seed, DialogueArchetype],
       listen: {
         added: true,
       },
@@ -80,25 +90,45 @@ export class DialogueGenerationSystem extends System {
       const dialogue = entity.getMutableComponent(Dialogue);
       const personality = entity.getComponent(Personality);
       const seed = entity.getComponent(Seed);
+      const archetype = entity.getComponent(DialogueArchetype);
 
-      if (dialogue && personality && seed && (!dialogue.lines || dialogue.lines.length === 0)) {
+      if (
+        dialogue &&
+        personality &&
+        seed &&
+        archetype &&
+        (!dialogue.lines || dialogue.lines.length === 0)
+      ) {
         const rng = new SeededRandom(seed.value);
-        dialogue.lines = this.generateDialogueLines(rng, personality.traits);
+        const greetingIndex = archetype.greetingStyle % GREETING_STYLES.length;
+        const questIndex = archetype.questHookType % QUEST_HOOK_TYPES.length;
+
+        dialogue.lines = this.generateDialogueLines(
+          rng,
+          greetingIndex,
+          questIndex,
+          personality.traits,
+        );
         dialogue.personality = personality.traits[0] || 'friendly';
       }
     }
   }
 
-  private generateDialogueLines(rng: SeededRandom, traits: string[]): string[] {
-    const greetings = ['Greetings, traveler.', 'Well met, stranger.', 'Ah, a visitor.'];
-    const hooks = [
-      'I have a task that needs doing.',
-      'Perhaps you can help me.',
-      'There is trouble here.',
-    ];
-    const farewells = ['Fare thee well.', 'Safe travels.', 'Until we meet again.'];
+  private generateDialogueLines(
+    rng: SeededRandom,
+    greetingIndex: number,
+    questIndex: number,
+    traits: string[],
+  ): string[] {
+    const greeting = rng.pick(GREETING_STYLES[greetingIndex]);
+    const quest = rng.pick(QUEST_HOOK_TYPES[questIndex]);
 
-    return [rng.pick(greetings), rng.pick(hooks), rng.pick(farewells)];
+    const personalityKey = traits[0] as keyof typeof PERSONALITY_TRAITS;
+    const personalityLine = PERSONALITY_TRAITS[personalityKey]
+      ? rng.pick(PERSONALITY_TRAITS[personalityKey])
+      : 'Greetings.';
+
+    return [greeting, personalityLine, quest];
   }
 }
 
@@ -131,11 +161,12 @@ export class BackstoryGenerationSystem extends System {
     }
   }
 
-  private generateBackstory(rng: SeededRandom, alignment: string): string {
-    const origins = ['born in a distant land', 'orphaned at a young age', 'trained by masters'];
-    const motivations = ['seeks redemption', 'pursues vengeance', 'protects the innocent'];
+  private generateBackstory(rng: SeededRandom, _alignment: string): string {
+    const template = rng.pick(STORY_TEMPLATES);
+    const protagonists = ['a warrior', 'a mage', 'a rogue', 'a knight'];
+    const protagonist = rng.pick(protagonists);
 
-    return `Once ${rng.pick(origins)}, they now ${rng.pick(motivations)}.`;
+    return `${template.beginning} ${protagonist} ${template.action} ${template.ending}`;
   }
 }
 
@@ -175,16 +206,12 @@ export class ClassGenerationSystem extends System {
     alignment: string,
     mastery: SkillMastery,
   ): void {
-    const lightClasses = ['Paladin', 'Cleric', 'Guardian'];
-    const darkClasses = ['Necromancer', 'Shadow Assassin', 'Warlock'];
-    const neutralClasses = ['Ranger', 'Monk', 'Druid'];
+    const classesKey = alignment as keyof typeof SKILL_POOLS;
+    const classes = SKILL_POOLS[classesKey] || SKILL_POOLS.neutral;
 
-    let classes: string[];
-    if (alignment === 'light') classes = lightClasses;
-    else if (alignment === 'dark') classes = darkClasses;
-    else classes = neutralClasses;
-
-    charClass.name = rng.pick(classes);
+    // Pick a random skill from the alignment pool as the class name base
+    const skill = rng.pick(classes);
+    charClass.name = skill.name;
 
     const categories = ['combat', 'magic', 'stealth', 'support', 'crafting'];
     charClass.primarySkills = rng.shuffle(categories).slice(0, rng.randomInt(2, 3));

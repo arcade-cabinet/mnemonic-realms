@@ -45,7 +45,7 @@ jobs:
         run: pnpm build
       
       - name: Run example
-        run: pnpm example || true
+        run: pnpm example
       
       - name: Create docs
         run: |
@@ -56,7 +56,7 @@ jobs:
           echo "" >> docs/index.md
           echo "## Features" >> docs/index.md
           echo "- Deterministic procedural generation using seed strings" >> docs/index.md
-          echo "- ECS architecture with miniecs (ecsy)" >> docs/index.md
+          echo "- ECS architecture with ecsy" >> docs/index.md
           echo "- Name, dialogue, and microstory generators" >> docs/index.md
           echo "- Class system with light/dark alignment" >> docs/index.md
           echo "- Terrain, room, NPC, and loot generators" >> docs/index.md
