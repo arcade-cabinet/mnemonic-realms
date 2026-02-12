@@ -1,13 +1,3 @@
-import type { Config } from 'tailwindcss';
-
-export default {
-  content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-} satisfies Config;
+// Tailwind CSS v4 doesn't use this file the same way
+// Configuration is done via CSS @theme directive
+export default {};

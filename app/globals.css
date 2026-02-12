@@ -1,1 +1,8 @@
-@config "./tailwind.config.ts";
+@import "tailwindcss";
+
+/* Custom utility classes */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
