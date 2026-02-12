@@ -1,25 +1,22 @@
 /**
  * Mnemonic Realms - Main Server Entry
- * RPG-JS Server with Dynamic Procedural Generation
+ * RPG-JS v4 Server with Dynamic Procedural Generation
  */
 
-import { entryPoint } from '@rpgjs/server';
-import mainModule from './modules/main/server';
+import { expressServer } from '@rpgjs/server/express';
+import modules from './modules';
 
-// No pre-defined maps - everything generated on-demand from seeds
-export default entryPoint({
+// Start Express server with RPG-JS
+expressServer(modules, {
   basePath: __dirname,
-  modules: [mainModule],
-  maps: [], // Maps created dynamically when players connect with seeds
   globalConfig: {
     inputs: {
-      up: 'up',
-      down: 'down',
-      left: 'left',
-      right: 'right',
-      action: 'space',
-      back: 'escape',
+      up: { repeat: true, bind: 'up' },
+      down: { repeat: true, bind: 'down' },
+      left: { repeat: true, bind: 'left' },
+      right: { repeat: true, bind: 'right' },
+      action: { bind: 'space' },
+      back: { bind: 'escape' },
     },
-    startMap: 'dynamic', // Dynamic map ID
   },
 });
