@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useGameStore } from '@/lib/stores/gameStore';
 import { useUIStore } from '@/lib/stores/uiStore';
@@ -11,9 +11,17 @@ import { SettingsModal } from '@/components/SettingsModal';
 
 export default function LandingPage() {
   const router = useRouter();
+  const [seed, setSeed] = useState('');
+  const [mounted, setMounted] = useState(false);
+  
+  // Hydrate Zustand stores on mount to prevent SSR issues
+  useEffect(() => {
+    useGameStore.persist.rehydrate();
+    setMounted(true);
+  }, []);
+  
   const { saves, startNewGame, loadGame } = useGameStore();
   const { setShowNewGameModal, setShowLoadGameModal, setShowSettingsModal } = useUIStore();
-  const [seed, setSeed] = useState('');
 
   const handleNewGame = () => {
     if (seed.trim().split(/\s+/).length === 3) {

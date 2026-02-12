@@ -49,7 +49,7 @@ export const useGameStore = create<GameState>()(
         set({
           currentWorld: { seed, playTime: 0 },
           currentPlayer: {
-            id: crypto.randomUUID(),
+            id: typeof crypto !== 'undefined' ? crypto.randomUUID() : Math.random().toString(36),
             name: 'Hero',
             class: 'Warrior',
             alignment: 'neutral',
@@ -67,7 +67,7 @@ export const useGameStore = create<GameState>()(
         if (!currentWorld || !currentPlayer) return;
         
         const save: SaveGame = {
-          id: crypto.randomUUID(),
+          id: typeof crypto !== 'undefined' ? crypto.randomUUID() : Math.random().toString(36),
           name: name || `Save ${new Date().toLocaleString()}`,
           worldSeed: currentWorld.seed,
           savedAt: Date.now(),
@@ -97,6 +97,7 @@ export const useGameStore = create<GameState>()(
     }),
     {
       name: 'mnemonic-realms-game',
+      skipHydration: true,  // Skip hydration to avoid SSR issues
     }
   )
 );
