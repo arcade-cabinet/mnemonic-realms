@@ -1,0 +1,84 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      
+      - name: Install dependencies
+        run: pnpm install
+      
+      - name: Run linter
+        run: pnpm lint
+      
+      - name: Build
+        run: pnpm build
+      
+      - name: Run example
+        run: pnpm example || true
+      
+      - name: Create docs
+        run: |
+          mkdir -p docs
+          echo "# Mnemonic Realms" > docs/index.md
+          echo "" >> docs/index.md
+          echo "RPG-JS Procedural Generator with ECS architecture" >> docs/index.md
+          echo "" >> docs/index.md
+          echo "## Features" >> docs/index.md
+          echo "- Deterministic procedural generation using seed strings" >> docs/index.md
+          echo "- ECS architecture with miniecs (ecsy)" >> docs/index.md
+          echo "- Name, dialogue, and microstory generators" >> docs/index.md
+          echo "- Class system with light/dark alignment" >> docs/index.md
+          echo "- Terrain, room, NPC, and loot generators" >> docs/index.md
+          echo "- Tiled JSON map export" >> docs/index.md
+      
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './docs'
+  
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
