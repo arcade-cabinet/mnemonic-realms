@@ -168,9 +168,9 @@ export class ProceduralWorld {
    * Get an entity by ID
    */
   getEntity(id: number) {
-    // Using direct world entities access
-    const entities = (this.world as any).entities;
-    return entities ? entities.get(id) : null;
+    // ECSY stores entities in an array
+    const entities = (this.world as any).entityManager?._entities;
+    return entities ? entities.find((e: any) => e.id === id) : null;
   }
 
   /**
@@ -181,11 +181,16 @@ export class ProceduralWorld {
     if (!entity) return null;
 
     const data: Record<string, unknown> = { id: entity.id };
-    const components = entity.getComponents();
-
-    for (const component of components) {
-      const name = component.constructor.name;
-      data[name] = { ...component };
+    
+    // Get all component types from the entity
+    const componentTypes = entity._ComponentTypes || [];
+    
+    for (const ComponentType of componentTypes) {
+      const component = entity.getComponent(ComponentType);
+      if (component) {
+        const name = ComponentType.name;
+        data[name] = { ...component };
+      }
     }
 
     return data;

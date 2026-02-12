@@ -81,7 +81,7 @@ export class DialogueGenerationSystem extends System {
       const personality = entity.getComponent(Personality);
       const seed = entity.getComponent(Seed);
 
-      if (dialogue && personality && seed && dialogue.lines.length === 0) {
+      if (dialogue && personality && seed && (!dialogue.lines || dialogue.lines.length === 0)) {
         const rng = new SeededRandom(seed.value);
         dialogue.lines = this.generateDialogueLines(rng, personality.traits);
         dialogue.personality = personality.traits[0] || 'friendly';
