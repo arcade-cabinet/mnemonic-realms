@@ -97,8 +97,8 @@ export async function getOrGenerateWorld(seed: string): Promise<GeneratedWorldDa
   world.update();
   const character = world.exportEntity(charId);
 
-  // Create location
-  const locId = world.createLocation(seed);
+  // Create terrain (location data)
+  const locId = world.createTerrain(seed, 0, 0);
   world.update();
   const location = world.exportEntity(locId);
 
