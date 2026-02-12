@@ -6,6 +6,9 @@ import { useGameStore } from '@/lib/stores/gameStore';
 import { useUIStore } from '@/lib/stores/uiStore';
 import { Sword, Play, Download, Settings as SettingsIcon } from 'lucide-react';
 
+import { LoadGameModal } from '@/components/LoadGameModal';
+import { SettingsModal } from '@/components/SettingsModal';
+
 export default function LandingPage() {
   const router = useRouter();
   const { saves, startNewGame, loadGame } = useGameStore();
@@ -105,6 +108,10 @@ export default function LandingPage() {
           <p className="mt-2 text-[#6b5d4f]">Format: "adjective adjective noun"</p>
         </div>
       </div>
+
+      {/* Modals */}
+      <LoadGameModal />
+      <SettingsModal />
     </div>
   );
 }

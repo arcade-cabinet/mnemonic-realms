@@ -21,9 +21,11 @@ export interface WorldState {
 export interface SaveGame {
   id: string;
   name: string;
+  worldSeed: string;
+  savedAt: number;
+  playTime: number;
   world: WorldState;
   player: PlayerState;
-  timestamp: Date;
 }
 
 interface GameState {
@@ -33,6 +35,7 @@ interface GameState {
   startNewGame: (seed: string) => void;
   saveGame: (name?: string) => void;
   loadGame: (saveId: string) => void;
+  deleteSave: (id: string) => void;
 }
 
 export const useGameStore = create<GameState>()(
@@ -66,12 +69,20 @@ export const useGameStore = create<GameState>()(
         const save: SaveGame = {
           id: crypto.randomUUID(),
           name: name || `Save ${new Date().toLocaleString()}`,
+          worldSeed: currentWorld.seed,
+          savedAt: Date.now(),
+          playTime: currentWorld.playTime,
           world: currentWorld,
           player: currentPlayer,
-          timestamp: new Date(),
         };
         
         set({ saves: [...saves, save] });
+      },
+      
+      deleteSave: (id) => {
+        set((state) => ({
+          saves: state.saves.filter((save) => save.id !== id),
+        }));
       },
       
       loadGame: (saveId) => {
