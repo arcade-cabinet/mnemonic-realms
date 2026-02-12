@@ -8,6 +8,7 @@ import { Sword, Play, Download, Settings as SettingsIcon } from 'lucide-react';
 
 import { LoadGameModal } from '@/components/LoadGameModal';
 import { SettingsModal } from '@/components/SettingsModal';
+import { GeneratedContentPreview } from '@/components/GeneratedContentPreview';
 
 export default function LandingPage() {
   const router = useRouter();
@@ -115,6 +116,9 @@ export default function LandingPage() {
           <p>Speak the three words of power to forge your realm</p>
           <p className="mt-2 text-[#6b5d4f]">Format: "adjective adjective noun"</p>
         </div>
+
+        {/* Generated Content Preview */}
+        {mounted && <GeneratedContentPreview seed={seed} />}
       </div>
 
       {/* Modals */}
