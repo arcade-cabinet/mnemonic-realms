@@ -5,6 +5,7 @@
 
 import { RpgModule, RpgServer, RpgServerEngine, RpgPlayer } from '@rpgjs/server';
 import { ProceduralWorld } from '../../../ecs/world';
+import { StartMap } from '../../../maps/StartMap';
 
 /**
  * Server module configuration
@@ -39,12 +40,17 @@ import { ProceduralWorld } from '../../../ecs/world';
         player.setVariable('class', className);
         player.setVariable('alignment', alignment);
       }
+      
+      // Spawn player in start map
+      player.changeMap('start');
+      player.setHitbox(16, 16);
+      player.speed = 3;
     },
     
     onJoinMap(player: RpgPlayer, map: any) {
       console.log(`🗺️  ${player.name} entered map ${map.id}`);
     },
   },
-  maps: [], // Maps generated dynamically
+  maps: [StartMap],
 })
 export default class MainServerModule {}
