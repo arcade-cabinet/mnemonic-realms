@@ -55,7 +55,13 @@ export class SeededRandom {
 }
 
 /**
- * Parse "adjective adjective noun" seed format
+ * Parse a seed string into adjective parts and a noun.
+ *
+ * Trims whitespace, splits the input on runs of whitespace, and treats the last word as the noun and all preceding words as adjectives. Requires at least two words.
+ *
+ * @param seed - A seed string containing at least two words (e.g., "blue fast fox")
+ * @returns An object with `adjectives` (all words except the last) and `noun` (the last word)
+ * @throws Error if `seed` contains fewer than two words
  */
 export function parseSeed(seed: string): { adjectives: string[]; noun: string } {
   const parts = seed.trim().split(/\s+/);

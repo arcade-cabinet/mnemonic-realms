@@ -22,7 +22,12 @@ import {
 } from './components';
 
 /**
- * Apply NPC trait to an entity
+ * Add NPC-related components to an entity.
+ *
+ * Adds Name, Description, Personality, Dialogue, Backstory, and Alignment components to the provided entity.
+ *
+ * @param entity - The entity to augment; it is mutated in place.
+ * @returns The same entity with NPC components added.
  */
 export function applyNPCTrait(entity: Entity): Entity {
   entity.addComponent(Name);
@@ -35,7 +40,12 @@ export function applyNPCTrait(entity: Entity): Entity {
 }
 
 /**
- * Apply Character trait to an entity (NPC + class/skills)
+ * Apply character-related components to an entity.
+ *
+ * Adds NPC-related components plus class and skill components so the entity represents a playable or non-playable character.
+ *
+ * @param entity - The entity to augment; it is mutated in place.
+ * @returns The same entity with NPC, CharacterClass, and SkillMastery components added.
  */
 export function applyCharacterTrait(entity: Entity): Entity {
   applyNPCTrait(entity);
@@ -45,7 +55,9 @@ export function applyCharacterTrait(entity: Entity): Entity {
 }
 
 /**
- * Apply Terrain trait to an entity
+ * Apply terrain-related components to an entity.
+ *
+ * @returns The same entity with `Terrain`, `Location`, and `Description` components added
  */
 export function applyTerrainTrait(entity: Entity): Entity {
   entity.addComponent(Terrain);
@@ -55,7 +67,10 @@ export function applyTerrainTrait(entity: Entity): Entity {
 }
 
 /**
- * Apply Room trait to an entity
+ * Apply the Room trait to an entity by adding room-related components.
+ *
+ * @param entity - The entity to augment; mutated in place.
+ * @returns The same `entity` with Room, Name, Description, and Location components added.
  */
 export function applyRoomTrait(entity: Entity): Entity {
   entity.addComponent(Room);
@@ -66,7 +81,10 @@ export function applyRoomTrait(entity: Entity): Entity {
 }
 
 /**
- * Apply Item trait to an entity
+ * Add item-related components to an entity.
+ *
+ * @param entity - The ECSY entity to augment.
+ * @returns The same `entity` with `Item`, `Name`, and `Description` components added.
  */
 export function applyItemTrait(entity: Entity): Entity {
   entity.addComponent(Item);
@@ -76,7 +94,9 @@ export function applyItemTrait(entity: Entity): Entity {
 }
 
 /**
- * Apply Loot Container trait to an entity
+ * Apply the Loot Container trait to an entity.
+ *
+ * @returns The same entity with `Loot` and `Location` components added
  */
 export function applyLootTrait(entity: Entity): Entity {
   entity.addComponent(Loot);
@@ -85,7 +105,9 @@ export function applyLootTrait(entity: Entity): Entity {
 }
 
 /**
- * Apply Seeded Entity trait - for any entity generated from a seed
+ * Apply the seeded trait to an entity.
+ *
+ * @returns The same `entity` with the `Seed` component added
  */
 export function applySeededTrait(entity: Entity): Entity {
   entity.addComponent(Seed);
@@ -93,7 +115,10 @@ export function applySeededTrait(entity: Entity): Entity {
 }
 
 /**
- * Skill trait for character abilities
+ * Apply the Skill trait to an entity.
+ *
+ * @param entity - The entity to augment with skill-related components
+ * @returns The same entity with `Skill` and `Description` components added
  */
 export function applySkillTrait(entity: Entity): Entity {
   entity.addComponent(Skill);

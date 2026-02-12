@@ -24,6 +24,11 @@ const exampleSeeds = [
   'cursed forgotten ruins',
 ];
 
+/**
+ * Runs a console demonstration of the procedural generators using predefined example seeds.
+ *
+ * For each seed it instantiates the name, dialogue, microstory, class, terrain, room, NPC, and loot generators and logs representative outputs to the console.
+ */
 function demonstrateGenerators() {
   console.log('=== Mnemonic Realms Procedural Generator Demo ===\n');
 
@@ -85,6 +90,12 @@ function demonstrateGenerators() {
   }
 }
 
+/**
+ * Demonstrates ECS-based character creation and export using a procedural world.
+ *
+ * Creates a new ProceduralWorld, spawns a character with a fixed seed, advances the world simulation,
+ * and logs the exported entity as formatted JSON.
+ */
 function demonstrateECS() {
   console.log('\n\n=== ECS World Demo ===\n');
 
@@ -100,6 +111,12 @@ function demonstrateECS() {
   console.log(JSON.stringify(character, null, 2));
 }
 
+/**
+ * Demonstrates tiled map generation and logs a brief summary of the generated map.
+ *
+ * Generates a sample map using an example seed and prints the map's size, layer count,
+ * tileset count, and object count for any object layer to console.
+ */
 function demonstrateMapGeneration() {
   console.log('\n\n=== Tiled Map Generation Demo ===\n');
 
