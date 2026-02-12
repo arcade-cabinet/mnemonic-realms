@@ -1,76 +1,93 @@
 /**
  * Design Tokens for Mnemonic Realms
  * 
- * 16-bit aesthetic inspired by:
- * - Final Fantasy 7 (dark fantasy, mysterious)
- * - Diablo 1 (gothic, dungeon crawler)
- * - Chrono Trigger (vibrant colors, adventure)
+ * Sword & Sorcery / High Fantasy aesthetic inspired by:
+ * - Conan the Barbarian (raw, gritty, ancient)
+ * - Dungeons & Dragons (classic fantasy, medieval)
+ * - Lord of the Rings (epic fantasy, mystical)
+ * - Baldur's Gate (isometric RPG, dark fantasy)
  */
 
 export const designTokens = {
   // Brand Colors
   colors: {
-    // Primary - Deep mystical purple
+    // Primary - Deep burgundy/blood red for sword & sorcery
     primary: {
-      50: '#f5f3ff',
-      100: '#ede9fe',
-      200: '#ddd6fe',
-      300: '#c4b5fd',
-      400: '#a78bfa',
-      500: '#8b5cf6', // Main brand color
-      600: '#7c3aed',
-      700: '#6d28d9',
-      800: '#5b21b6',
-      900: '#4c1d95',
+      50: '#fef2f2',
+      100: '#fee2e2',
+      200: '#fecaca',
+      300: '#fca5a5',
+      400: '#f87171',
+      500: '#8b1f1f', // Deep blood red
+      600: '#7c1a1a',
+      700: '#6d1717',
+      800: '#5e1414',
+      900: '#4f1212',
     },
-    // Secondary - Ancient gold
+    // Secondary - Aged bronze/copper for ancient metalwork
     secondary: {
       50: '#fefce8',
       100: '#fef9c3',
       200: '#fef08a',
       300: '#fde047',
       400: '#facc15',
-      500: '#eab308',
-      600: '#ca8a04',
-      700: '#a16207',
-      800: '#854d0e',
-      900: '#713f12',
+      500: '#b8860b', // Dark goldenrod/bronze
+      600: '#a67508',
+      700: '#946407',
+      800: '#825407',
+      900: '#704506',
+    },
+    // Tertiary - Deep forest green for nature/wilderness
+    tertiary: {
+      50: '#f0fdf4',
+      100: '#dcfce7',
+      200: '#bbf7d0',
+      300: '#86efac',
+      400: '#4ade80',
+      500: '#1f4d2a', // Deep forest green
+      600: '#1a4023',
+      700: '#16331c',
+      800: '#122716',
+      900: '#0e1a11',
     },
     // Alignment Colors
     alignment: {
-      light: '#fbbf24', // Gold/yellow
-      dark: '#7c3aed',  // Deep purple
-      neutral: '#6b7280', // Gray
+      light: '#d4af37', // Bright gold - heroic, divine
+      dark: '#4a0e0e',  // Dark blood - sinister, evil
+      neutral: '#6b5d4f', // Earth brown - balanced
     },
-    // Terrain Colors (8 biomes)
+    // Terrain Colors (8 biomes) - more earthy/realistic
     terrain: {
-      plains: '#84cc16',    // Green
-      forest: '#22c55e',    // Dark green
-      mountain: '#78716c',  // Gray-brown
-      desert: '#f59e0b',    // Orange
-      swamp: '#065f46',     // Dark teal
-      tundra: '#bfdbfe',    // Light blue
-      volcano: '#dc2626',   // Red
-      ocean: '#3b82f6',     // Blue
+      plains: '#8b9f6a',    // Muted green
+      forest: '#2d5016',    // Dark forest green
+      mountain: '#5a524c',  // Stone gray
+      desert: '#d4a574',    // Sand beige
+      swamp: '#4a5640',     // Murky green-brown
+      tundra: '#d9e4f5',    // Ice blue-white
+      volcano: '#8b2500',   // Dark volcanic red
+      ocean: '#1e3a5f',     // Deep ocean blue
     },
     // UI States
-    success: '#10b981',
-    warning: '#f59e0b',
-    error: '#ef4444',
-    info: '#3b82f6',
-    // Background gradient
+    success: '#2d5016',  // Forest green
+    warning: '#d4a574',  // Bronze/sand
+    error: '#8b1f1f',    // Blood red
+    info: '#4a5260',     // Slate blue
+    // Background gradient - leather and stone tones
     background: {
-      from: '#1e1b4b', // Dark indigo
-      to: '#312e81',   // Indigo
+      from: '#1a1410', // Deep leather brown
+      to: '#2d2520',   // Lighter leather
+      parchment: '#f5f1e8', // Aged parchment
+      stone: '#4a4540',     // Stone gray
     },
   },
 
-  // Typography
+  // Typography - Medieval/Fantasy fonts
   typography: {
     fonts: {
-      display: '"Press Start 2P", monospace', // 16-bit pixel font
-      body: '"Inter", sans-serif',
-      mono: '"Fira Code", monospace',
+      display: '"Cinzel Decorative", "Crimson Text", serif', // Ornate medieval
+      heading: '"Cinzel", "Crimson Text", serif',            // Clean medieval
+      body: '"Merriweather", "Georgia", serif',              // Readable serif
+      mono: '"Courier New", monospace',                      // Stats/code
     },
     sizes: {
       xs: '0.75rem',    // 12px
@@ -88,6 +105,7 @@ export const designTokens = {
       medium: 500,
       semibold: 600,
       bold: 700,
+      black: 900,
     },
   },
 
@@ -108,28 +126,29 @@ export const designTokens = {
     24: '6rem',     // 96px
   },
 
-  // Border Radius
+  // Border Radius - more squared/angular for medieval feel
   radius: {
     none: '0',
     sm: '0.125rem',   // 2px
     base: '0.25rem',  // 4px
     md: '0.375rem',   // 6px
     lg: '0.5rem',     // 8px
-    xl: '0.75rem',    // 12px
-    '2xl': '1rem',    // 16px
+    xl: '0.625rem',   // 10px - less rounded than modern
+    '2xl': '0.75rem', // 12px
     full: '9999px',
   },
 
-  // Shadows
+  // Shadows - deeper, heavier shadows for dramatic effect
   shadows: {
-    sm: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
-    base: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
-    md: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
-    lg: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
-    xl: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
-    '2xl': '0 25px 50px -12px rgb(0 0 0 / 0.25)',
-    inner: 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)',
-    glow: '0 0 20px rgb(139 92 246 / 0.5)', // Purple glow
+    sm: '0 1px 2px 0 rgb(0 0 0 / 0.3)',
+    base: '0 2px 4px 0 rgb(0 0 0 / 0.4)',
+    md: '0 4px 8px -1px rgb(0 0 0 / 0.5)',
+    lg: '0 10px 15px -3px rgb(0 0 0 / 0.6)',
+    xl: '0 20px 25px -5px rgb(0 0 0 / 0.7)',
+    '2xl': '0 25px 50px -12px rgb(0 0 0 / 0.8)',
+    inner: 'inset 0 2px 4px 0 rgb(0 0 0 / 0.4)',
+    glow: '0 0 20px rgb(139 31 31 / 0.6)', // Red glow for magic
+    bronze: '0 0 15px rgb(184 134 11 / 0.5)', // Bronze glow
   },
 
   // Z-Index Layers
@@ -145,11 +164,11 @@ export const designTokens = {
     tooltip: 1600,
   },
 
-  // Transitions
+  // Transitions - slightly slower for epic feel
   transitions: {
-    fast: '150ms cubic-bezier(0.4, 0, 0.2, 1)',
-    base: '300ms cubic-bezier(0.4, 0, 0.2, 1)',
-    slow: '500ms cubic-bezier(0.4, 0, 0.2, 1)',
+    fast: '200ms cubic-bezier(0.4, 0, 0.2, 1)',
+    base: '350ms cubic-bezier(0.4, 0, 0.2, 1)',
+    slow: '600ms cubic-bezier(0.4, 0, 0.2, 1)',
   },
 
   // Breakpoints
@@ -170,24 +189,24 @@ export const designTokens = {
       minimapSize: '200px',
       inventorySlotSize: '48px',
     },
-    // Rarity colors
+    // Rarity colors - more medieval/fantasy themed
     rarity: {
-      common: '#9ca3af',
-      uncommon: '#10b981',
-      rare: '#3b82f6',
-      epic: '#a855f7',
-      legendary: '#f59e0b',
+      common: '#6b5d4f',     // Earth brown
+      uncommon: '#4a7052',   // Forest green
+      rare: '#2b4a7c',       // Royal blue
+      epic: '#6b2d8e',       // Royal purple
+      legendary: '#d4af37',  // Bright gold
     },
-    // Class colors
+    // Class colors - sword & sorcery themed
     classColors: {
-      warrior: '#ef4444',
-      mage: '#3b82f6',
-      rogue: '#10b981',
-      cleric: '#fbbf24',
-      ranger: '#059669',
-      paladin: '#f59e0b',
-      necromancer: '#7c3aed',
-      bard: '#ec4899',
+      warrior: '#8b1f1f',    // Blood red
+      mage: '#2b4a7c',       // Mystic blue
+      rogue: '#2d2520',      // Shadow brown
+      cleric: '#d4af37',     // Holy gold
+      ranger: '#2d5016',     // Forest green
+      paladin: '#c0c0c0',    // Silver/steel
+      necromancer: '#4a0e0e', // Dark blood
+      bard: '#b8860b',       // Bronze
     },
   },
 } as const;
