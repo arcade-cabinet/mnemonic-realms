@@ -1,10 +1,10 @@
 ---
 title: "Game Systems Design"
-version: 1.0.0
+version: 2.0.0
 date: 2026-02-12
 authors: ["jbdevprimary", "copilot"]
 status: "Active"
-tags: ["design", "gameplay", "systems", "mechanics"]
+tags: ["design", "gameplay", "systems", "mechanics", "sword-and-sorcery"]
 ---
 
 # Game Systems Design

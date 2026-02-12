@@ -1,10 +1,10 @@
 ---
 title: "Mnemonic Realms: System Architecture"
-version: 1.0.0
+version: 2.0.0
 date: 2026-02-12
-authors: ["copilot"]
+authors: ["copilot", "jbdevprimary"]
 status: "Active"
-tags: ["architecture", "technical", "ecs", "rpgjs", "nextjs"]
+tags: ["architecture", "technical", "ecs", "rpgjs", "nextjs", "sword-and-sorcery"]
 ---
 
 # System Architecture
@@ -44,10 +44,11 @@ tags: ["architecture", "technical", "ecs", "rpgjs", "nextjs"]
 - Socket.io networking
 - Complex deployment
 
-**Correction**: Single-player 16-bit RPG (Diablo/FF7 style)
+**Correction**: Single-player sword & sorcery RPG (Baldur's Gate/Diablo style)
 - RPG-JS standalone mode (`RPG_TYPE=rpg`)
 - Runs 100% in browser
 - No server process needed
+- Medieval fantasy aesthetic with dark themes
 
 **Benefits**:
 - ✅ Simpler architecture (one codebase)

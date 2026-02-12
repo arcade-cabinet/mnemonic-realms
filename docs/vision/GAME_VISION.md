@@ -1,17 +1,17 @@
 ---
 title: "Mnemonic Realms: Game Vision"
-version: 1.0.0
+version: 2.0.0
 date: 2026-02-12
 authors: ["jbdevprimary", "copilot"]
 status: "Active"
-tags: ["vision", "game-design", "procedural-generation"]
+tags: ["vision", "game-design", "procedural-generation", "sword-and-sorcery", "high-fantasy"]
 ---
 
 # Mnemonic Realms: Game Vision
 
 ## Executive Summary
 
-**Mnemonic Realms** is a single-player, browser-based, 16-bit style procedural RPG inspired by classics like Diablo and Final Fantasy VII. Every world is deterministically generated from a three-word seed phrase, ensuring that identical seeds always produce identical worlds—making every adventure reproducible and shareable.
+**Mnemonic Realms** is a single-player, browser-based, sword & sorcery procedural RPG anchored in high fantasy elements and tropes. Inspired by classics like Conan the Barbarian, Dungeons & Dragons, Lord of the Rings, and Baldur's Gate, the game features a dark medieval aesthetic. Every world is deterministically generated from a three-word seed phrase, ensuring that identical seeds always produce identical worlds—making every adventure reproducible and shareable.
 
 ## Core Concept
 
@@ -42,20 +42,25 @@ This seed becomes the DNA of an entire world:
 
 ## Visual Style
 
-### 16-Bit Aesthetic
+### Sword & Sorcery / High Fantasy Aesthetic
 
-Inspired by SNES-era RPGs:
-- **Pixel art** characters and environments
-- **Isometric or top-down** perspective like Diablo or FF7 overworld
-- **Vibrant color palettes** that evoke nostalgia
-- **Smooth animations** for modern feel with retro look
+Inspired by classic fantasy and medieval themes:
+- **Dark leather and stone** textures for UI elements
+- **Bronze, copper, and gold** metallic accents for legendary feel
+- **Blood red and forest green** for warrior and nature themes
+- **Isometric perspective** like Baldur's Gate and Diablo
+- **Medieval fantasy fonts** (Cinzel, Merriweather) for authentic feel
+- **Dramatic shadows and glows** for magical and epic atmosphere
+- **Earthy, realistic color palette** - browns, greens, stone grays, aged metals
 
-### Reference Games
+### Reference Games & Media
 
-- **Diablo (1996)** - Isometric dungeon crawler feel
-- **Final Fantasy VII (1997)** - Character design and world variety
-- **Chrono Trigger (1995)** - Combat system inspiration
-- **Secret of Mana (1993)** - Art style and environment design
+- **Conan the Barbarian** - Gritty, raw, ancient sword & sorcery
+- **Baldur's Gate (1998)** - Isometric dark fantasy RPG
+- **Diablo (1996)** - Gothic dungeon crawler atmosphere
+- **Dungeons & Dragons** - Classic high fantasy, medieval setting
+- **Lord of the Rings** - Epic fantasy world-building and mysticism
+- **Warhammer Fantasy** - Dark medieval fantasy aesthetic
 
 ## Gameplay Vision
 
