@@ -127,15 +127,18 @@ export function hashFile(data: Buffer): string {
   return createHash('sha256').update(data).digest('hex');
 }
 
+/** Minimum valid file size in bytes. Any generated image (PNG/WebP) will exceed this. */
+const MIN_VALID_FILE_BYTES = 1024;
+
 /**
  * Check if an asset needs regeneration.
- * Returns a reason string if regeneration is needed, or null if up-to-date.
  *
  * Checks in order:
  * 1. Status is pending/failed or no metadata → needs gen
  * 2. Output file missing → needs gen
- * 3. Prompt hash changed → needs gen (content/style changed)
- * 4. Output file hash mismatch → needs gen (file corrupted or replaced)
+ * 3. Output file empty or too small (< 1KB) → needs gen (failed/corrupt write)
+ * 4. Prompt hash changed → needs gen (content/style changed)
+ * 5. Output file hash mismatch → needs gen (file corrupted or replaced)
  */
 export function needsRegeneration(
   status: GenerationStatus,
@@ -146,8 +149,8 @@ export function needsRegeneration(
 ): boolean {
   if (status === 'pending' || status === 'failed' || !metadata) return true;
   if (!fileExists) return true;
+  if (fileData && fileData.length < MIN_VALID_FILE_BYTES) return true;
   if (metadata.promptHash !== currentPromptHash) return true;
-  // Verify file integrity if we have both the file data and a stored hash
   if (fileData && metadata.outputHash) {
     const currentFileHash = hashFile(fileData);
     if (currentFileHash !== metadata.outputHash) return true;

@@ -708,7 +708,7 @@ function buildPortraitManifest(): PortraitManifest {
 
   const assets: PortraitAsset[] = [];
 
-  // Named characters from characters.md and act1-script.md
+  // Named characters — heading is optional (only set when characters.md has a matching section)
   const characters = [
     {
       id: 'protagonist', name: 'Protagonist', heading: 'Player Character',
@@ -726,12 +726,12 @@ function buildPortraitManifest(): PortraitManifest {
       type: 'named' as const,
     },
     {
-      id: 'petra', name: 'Petra', heading: 'Petra',
+      id: 'petra', name: 'Petra', heading: undefined,
       appearance: 'Woman, late 20s. Short-cropped silver hair, strong jaw, weathered armor with dents. Stoic expression with kind eyes. Broad shoulders.',
       type: 'named' as const,
     },
     {
-      id: 'elder-torin', name: 'Elder Torin', heading: 'Elder Torin',
+      id: 'elder-torin', name: 'Elder Torin', heading: undefined,
       appearance: 'Elderly man, tall and thin. Long white beard, warm brown robes, wooden walking stick. Deep-set wise eyes, gentle wrinkles.',
       type: 'named' as const,
     },
@@ -756,7 +756,9 @@ function buildPortraitManifest(): PortraitManifest {
           `128×128 pixels, clean pixel art, limited color palette.`,
         negativePrompt: `${MASTER_NEGATIVE_PROMPT}, full body, action pose`,
         docRefs: [
-          { path: 'docs/story/characters.md', heading: char.heading, purpose: 'content' },
+          ...(char.heading
+            ? [{ path: 'docs/story/characters.md', heading: char.heading, purpose: 'content' as const }]
+            : []),
           { path: 'docs/design/visual-direction.md', heading: 'Sprite Style', purpose: 'style' },
         ],
         filename: `${char.id}-${expr}.png`,

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "description": "Character portrait generation manifest",
-  "updatedAt": "2026-02-13T05:08:44.390Z",
+  "updatedAt": "2026-02-13T05:42:29.281Z",
   "styleGuide": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light. Portraits are 16-bit JRPG style, head and shoulders, for dialogue boxes.",
   "styleDocRefs": [
     {
@@ -45,7 +45,16 @@
       ],
       "filename": "protagonist-neutral.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "ef05f1fec63ba544",
+        "outputHash": "e48d8448abe9660194216da5f8b45b8965f4a137e8903ad30ebb87678e9e6820",
+        "generatedAt": "2026-02-13T05:32:05.491Z",
+        "generationTimeMs": 5929,
+        "fileSizeBytes": 1295352,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "portrait-protagonist-happy",
@@ -117,7 +126,16 @@
       ],
       "filename": "protagonist-sad.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "6b70f018d7685577",
+        "outputHash": "e90eef6de6e56428faf3cc4be9313cb79297d08716205f46ffbbfd4e41992829",
+        "generatedAt": "2026-02-13T05:32:12.941Z",
+        "generationTimeMs": 5447,
+        "fileSizeBytes": 1318350,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "portrait-protagonist-determined",
@@ -148,7 +166,16 @@
       ],
       "filename": "protagonist-determined.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "f09393fba3fa9b5d",
+        "outputHash": "c26766569fc43e4e25580b2b414abe8373ee143707825b287f61f14d48ca8e48",
+        "generatedAt": "2026-02-13T05:32:23.284Z",
+        "generationTimeMs": 8342,
+        "fileSizeBytes": 1346791,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "portrait-lira-neutral",
@@ -179,7 +206,16 @@
       ],
       "filename": "lira-neutral.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "2625815bac93087e",
+        "outputHash": "850980fb5194c0a7c2229dd8ba18efad078c5f88be5b9967dd1adfd2f2696792",
+        "generatedAt": "2026-02-13T05:32:30.329Z",
+        "generationTimeMs": 5043,
+        "fileSizeBytes": 1381175,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "portrait-lira-happy",
@@ -210,7 +246,16 @@
       ],
       "filename": "lira-happy.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "3f4cc76471179a52",
+        "outputHash": "07fb711537da8619ad59e455c09dae9726f007ba1f8a88bffcfa3b85fdc63458",
+        "generatedAt": "2026-02-13T05:32:38.785Z",
+        "generationTimeMs": 6455,
+        "fileSizeBytes": 1359690,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "portrait-lira-sad",
@@ -241,7 +286,16 @@
       ],
       "filename": "lira-sad.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "b7436e8536f41eff",
+        "outputHash": "4d042549d8221b22709504fa57ce348869cefd4414d876553d0e0b0306c4d9f9",
+        "generatedAt": "2026-02-13T05:32:46.206Z",
+        "generationTimeMs": 5418,
+        "fileSizeBytes": 1253375,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "portrait-lira-determined",
@@ -272,7 +326,16 @@
       ],
       "filename": "lira-determined.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "69fdf699902fdb98",
+        "outputHash": "88f8848b064859457b073a996e7b431df2f7e7aac7f9e7124105b6fe65741d7d",
+        "generatedAt": "2026-02-13T05:32:53.727Z",
+        "generationTimeMs": 5520,
+        "fileSizeBytes": 1192281,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "portrait-callum-neutral",
@@ -303,7 +366,16 @@
       ],
       "filename": "callum-neutral.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "3d14a990f3290a06",
+        "outputHash": "d0ccd78b17449a15799046684e2ab527a2adc117aa53654f95dada1bbe0cb67f",
+        "generatedAt": "2026-02-13T05:33:01.769Z",
+        "generationTimeMs": 6041,
+        "fileSizeBytes": 1272018,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "portrait-callum-happy",
@@ -334,7 +406,16 @@
       ],
       "filename": "callum-happy.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "4e2d6c369de9b660",
+        "outputHash": "7aa43caa62d31ca50f807aa5b60c6575cc947dd6e338920c1b18a1301a427b22",
+        "generatedAt": "2026-02-13T05:33:12.129Z",
+        "generationTimeMs": 8357,
+        "fileSizeBytes": 1643789,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "portrait-callum-sad",
@@ -365,7 +446,16 @@
       ],
       "filename": "callum-sad.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "2f791f199380b5ac",
+        "outputHash": "2e33c9b86acfff3a1e5209cdb3502d624f6cd697470971ca213ebe039b03e429",
+        "generatedAt": "2026-02-13T05:33:19.908Z",
+        "generationTimeMs": 5778,
+        "fileSizeBytes": 1084318,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "portrait-callum-determined",
@@ -396,7 +486,16 @@
       ],
       "filename": "callum-determined.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "7cc736bbafbe48e9",
+        "outputHash": "d81df232569dcf7633ecbc2719488e38917ccf3a911a40ac7c0460f7538d9e84",
+        "generatedAt": "2026-02-13T05:33:28.051Z",
+        "generationTimeMs": 6140,
+        "fileSizeBytes": 1397541,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "portrait-petra-neutral",
@@ -415,11 +514,6 @@
       "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
       "docRefs": [
         {
-          "path": "docs/story/characters.md",
-          "heading": "Petra",
-          "purpose": "content"
-        },
-        {
           "path": "docs/design/visual-direction.md",
           "heading": "Sprite Style",
           "purpose": "style"
@@ -427,7 +521,16 @@
       ],
       "filename": "petra-neutral.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "90b9b33a473b94cb",
+        "outputHash": "c31e7e392f19e3544781452371c55cacdb3534a8feceec3bffd0aea3469a508c",
+        "generatedAt": "2026-02-13T05:33:36.645Z",
+        "generationTimeMs": 6591,
+        "fileSizeBytes": 1527777,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "portrait-petra-happy",
@@ -446,11 +549,6 @@
       "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
       "docRefs": [
         {
-          "path": "docs/story/characters.md",
-          "heading": "Petra",
-          "purpose": "content"
-        },
-        {
           "path": "docs/design/visual-direction.md",
           "heading": "Sprite Style",
           "purpose": "style"
@@ -458,7 +556,16 @@
       ],
       "filename": "petra-happy.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "86aec77e288761e6",
+        "outputHash": "043c1fce7606911dc228aacdbbc6f48f77aa89b88b3a44ca264781d084541f12",
+        "generatedAt": "2026-02-13T05:42:41.940Z",
+        "generationTimeMs": 5802,
+        "fileSizeBytes": 1585079,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "portrait-petra-sad",
@@ -477,11 +584,6 @@
       "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
       "docRefs": [
         {
-          "path": "docs/story/characters.md",
-          "heading": "Petra",
-          "purpose": "content"
-        },
-        {
           "path": "docs/design/visual-direction.md",
           "heading": "Sprite Style",
           "purpose": "style"
@@ -489,7 +591,16 @@
       ],
       "filename": "petra-sad.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "c05ece006b0dfc48",
+        "outputHash": "6d67021badf9b009f09c67142c5dfc5b57ce162b7254429478ee668031e7574e",
+        "generatedAt": "2026-02-13T05:33:45.727Z",
+        "generationTimeMs": 6402,
+        "fileSizeBytes": 1447681,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "portrait-petra-determined",
@@ -508,11 +619,6 @@
       "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
       "docRefs": [
         {
-          "path": "docs/story/characters.md",
-          "heading": "Petra",
-          "purpose": "content"
-        },
-        {
           "path": "docs/design/visual-direction.md",
           "heading": "Sprite Style",
           "purpose": "style"
@@ -520,7 +626,16 @@
       ],
       "filename": "petra-determined.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "4fc0f2c69f4ac340",
+        "outputHash": "259fd0fd5cf12e5e9d3faf01c005f51e4c0958dde3cb34c9f22c91d9c3a37f57",
+        "generatedAt": "2026-02-13T05:33:53.153Z",
+        "generationTimeMs": 5424,
+        "fileSizeBytes": 1396210,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "portrait-elder-torin-neutral",
@@ -539,11 +654,6 @@
       "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
       "docRefs": [
         {
-          "path": "docs/story/characters.md",
-          "heading": "Elder Torin",
-          "purpose": "content"
-        },
-        {
           "path": "docs/design/visual-direction.md",
           "heading": "Sprite Style",
           "purpose": "style"
@@ -551,7 +661,16 @@
       ],
       "filename": "elder-torin-neutral.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "c9374e3ced5b6a86",
+        "outputHash": "9e2a2a03e5ba87d402e4816b3202fda7fb01093821a92873bf62dfb2b6e30654",
+        "generatedAt": "2026-02-13T05:34:03.235Z",
+        "generationTimeMs": 8080,
+        "fileSizeBytes": 1174569,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "portrait-elder-torin-happy",
@@ -570,11 +689,6 @@
       "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
       "docRefs": [
         {
-          "path": "docs/story/characters.md",
-          "heading": "Elder Torin",
-          "purpose": "content"
-        },
-        {
           "path": "docs/design/visual-direction.md",
           "heading": "Sprite Style",
           "purpose": "style"
@@ -582,7 +696,16 @@
       ],
       "filename": "elder-torin-happy.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "9ef52d60947a1625",
+        "outputHash": "46b20866c07688fe1a2014280f6a35d9ac354e97a197ba9177a839f4e04330bf",
+        "generatedAt": "2026-02-13T05:42:54.683Z",
+        "generationTimeMs": 5254,
+        "fileSizeBytes": 1094528,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "portrait-elder-torin-sad",
@@ -601,11 +724,6 @@
       "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
       "docRefs": [
         {
-          "path": "docs/story/characters.md",
-          "heading": "Elder Torin",
-          "purpose": "content"
-        },
-        {
           "path": "docs/design/visual-direction.md",
           "heading": "Sprite Style",
           "purpose": "style"
@@ -613,7 +731,16 @@
       ],
       "filename": "elder-torin-sad.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "93e3e0d0f5275178",
+        "outputHash": "406f71e42c1d6469496bbfafa0572eebb11a7f4d44e1a335407cd1af2206bce9",
+        "generatedAt": "2026-02-13T05:43:07.516Z",
+        "generationTimeMs": 5572,
+        "fileSizeBytes": 1485344,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "portrait-elder-torin-determined",
@@ -632,11 +759,6 @@
       "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
       "docRefs": [
         {
-          "path": "docs/story/characters.md",
-          "heading": "Elder Torin",
-          "purpose": "content"
-        },
-        {
           "path": "docs/design/visual-direction.md",
           "heading": "Sprite Style",
           "purpose": "style"
@@ -644,7 +766,16 @@
       ],
       "filename": "elder-torin-determined.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "e2d4c9e301651d5e",
+        "outputHash": "8171f4e08e9e8f8fc864e9282e9a918c85e45017d96b926bb8de33be2ae6763c",
+        "generatedAt": "2026-02-13T05:34:12.450Z",
+        "generationTimeMs": 5931,
+        "fileSizeBytes": 1333785,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "portrait-god-resonance",
@@ -670,7 +801,16 @@
       ],
       "filename": "god-resonance.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "bd0dce5da97aaca6",
+        "outputHash": "ad8bf6e944f48e083a4b2170bdad8157052d318b8a912ffdc6d59048f2c9029d",
+        "generatedAt": "2026-02-13T05:34:19.686Z",
+        "generationTimeMs": 5233,
+        "fileSizeBytes": 1368346,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "portrait-god-verdance",
@@ -696,7 +836,16 @@
       ],
       "filename": "god-verdance.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "097d63e5d3699510",
+        "outputHash": "c2411a88ab2cb8ec1b9c567b6e5c56bcb025b7b4a281b97cd69eb18382412df7",
+        "generatedAt": "2026-02-13T05:34:29.303Z",
+        "generationTimeMs": 7615,
+        "fileSizeBytes": 1890467,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "portrait-god-luminos",
@@ -722,7 +871,16 @@
       ],
       "filename": "god-luminos.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "57e633ee8f9e4d00",
+        "outputHash": "109241f7681dfccf4ebb0ea7467ccc413395417586577dee90048ee8542ec26a",
+        "generatedAt": "2026-02-13T05:34:37.247Z",
+        "generationTimeMs": 5942,
+        "fileSizeBytes": 1566365,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "portrait-god-kinesis",
@@ -748,7 +906,16 @@
       ],
       "filename": "god-kinesis.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "3b02663ab6610ebd",
+        "outputHash": "abf2c255c229d24ba51836fc56acab757e560be4fda34a43d703536e54ea1ee9",
+        "generatedAt": "2026-02-13T05:34:45.033Z",
+        "generationTimeMs": 5784,
+        "fileSizeBytes": 1636848,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "description": "Character and enemy spritesheet generation manifest — v2 spritesheet-spec.md",
-  "updatedAt": "2026-02-13T05:08:44.388Z",
+  "updatedAt": "2026-02-13T05:42:29.280Z",
   "styleGuide": "16-bit JRPG chibi (2-3 head-tall). Distinct silhouette readable at 32x32. Each class has a unique color accent visible even at small size. RPG Maker format: 3 columns (walk cycle) × 4 rows (down, left, right, up).",
   "styleDocRefs": [
     {
@@ -64,7 +64,16 @@
       ],
       "filename": "sprite_player_knight.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "a92e09584b4effe2",
+        "outputHash": "71f597b1878fcc540c0d34b14a57a498243343bac27511dc755653378960c81a",
+        "generatedAt": "2026-02-13T05:23:19.086Z",
+        "generationTimeMs": 8629,
+        "fileSizeBytes": 1351129,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-player-mage",
@@ -109,7 +118,16 @@
       ],
       "filename": "sprite_player_mage.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "a5ac0074e58f960d",
+        "outputHash": "27c85743da4e5a9143028676a96a1f648ead0ae6baffcc6aa94d748a332394b4",
+        "generatedAt": "2026-02-13T05:23:27.864Z",
+        "generationTimeMs": 6776,
+        "fileSizeBytes": 1119164,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-player-rogue",
@@ -154,7 +172,16 @@
       ],
       "filename": "sprite_player_rogue.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "28175920f66e59de",
+        "outputHash": "09e542350ac3b053ad660881c3b3d7c12694bbfd50c4be3464f25c1ef872f8d3",
+        "generatedAt": "2026-02-13T05:23:36.582Z",
+        "generationTimeMs": 6715,
+        "fileSizeBytes": 1514903,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-player-cleric",
@@ -199,7 +226,16 @@
       ],
       "filename": "sprite_player_cleric.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "945408984b916bd1",
+        "outputHash": "f715ddb1518a49afdd8b322a308a778e549b54a5e898cf57a94a9f3cfaeb1897",
+        "generatedAt": "2026-02-13T05:23:45.215Z",
+        "generationTimeMs": 6631,
+        "fileSizeBytes": 1179686,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-npc-lira",
@@ -237,7 +273,16 @@
       ],
       "filename": "sprite_npc_lira.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "80cfac225bb2ba08",
+        "outputHash": "8604cd5668e61a2706ec6fbe329c9ab11c950b5804ffd702d61e28276414c4ed",
+        "generatedAt": "2026-02-13T05:23:53.122Z",
+        "generationTimeMs": 5905,
+        "fileSizeBytes": 1270738,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-npc-callum",
@@ -275,7 +320,16 @@
       ],
       "filename": "sprite_npc_callum.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "c1fbfb7a00f2c84b",
+        "outputHash": "64123e86b2625f4afd3d82b9b52408bfb720fe171b28ded16fa56c2d4834d55b",
+        "generatedAt": "2026-02-13T05:24:01.350Z",
+        "generationTimeMs": 6227,
+        "fileSizeBytes": 1110202,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-npc-curator",
@@ -313,7 +367,16 @@
       ],
       "filename": "sprite_npc_curator.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "98b7e5ec831073fb",
+        "outputHash": "62d90557cec488385a64100f4a9ac4427ec252cdc00a78336849bfb557c1bfb7",
+        "generatedAt": "2026-02-13T05:24:17.036Z",
+        "generationTimeMs": 13684,
+        "fileSizeBytes": 1122719,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-npc-maren",
@@ -351,7 +414,16 @@
       ],
       "filename": "sprite_npc_maren.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "f2b6f1838a6dcdfb",
+        "outputHash": "854427a5be7aa8f71bb028a07a3a6e6f2045b9f8144804751c32e0a8e224352d",
+        "generatedAt": "2026-02-13T05:24:25.872Z",
+        "generationTimeMs": 6834,
+        "fileSizeBytes": 1368661,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-npc-torvan",
@@ -389,7 +461,16 @@
       ],
       "filename": "sprite_npc_torvan.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "9800d0c11c25e35b",
+        "outputHash": "35b74f349113574bbf10de69eaffd7b48cb9867f8b053f08dfac6506289f81cb",
+        "generatedAt": "2026-02-13T05:24:35.456Z",
+        "generationTimeMs": 7581,
+        "fileSizeBytes": 1135230,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-npt-villager",
@@ -427,7 +508,16 @@
       ],
       "filename": "sprite_npc_villager.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "7b5211288ef471a4",
+        "outputHash": "9adde0f9987fabce0b9679c8e593c8c6e364b02232dd64b8f1c2f1501647ecd0",
+        "generatedAt": "2026-02-13T05:24:44.167Z",
+        "generationTimeMs": 6710,
+        "fileSizeBytes": 1042724,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-npt-merchant",
@@ -465,7 +555,16 @@
       ],
       "filename": "sprite_npc_merchant.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "3e10120d16f1b94b",
+        "outputHash": "a0fdfe2700cfe41cce324142b82c935b9cd1857aa74744c41835673406d00ec6",
+        "generatedAt": "2026-02-13T05:24:52.411Z",
+        "generationTimeMs": 6242,
+        "fileSizeBytes": 1225358,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-npt-farmer",
@@ -503,7 +602,16 @@
       ],
       "filename": "sprite_npc_farmer.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "072e32711ac784e6",
+        "outputHash": "27993f1ba2a68361e87911010354b0aeabc397ea1e47a2315fbd1fe784593a4e",
+        "generatedAt": "2026-02-13T05:25:05.092Z",
+        "generationTimeMs": 10679,
+        "fileSizeBytes": 1051836,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-npt-scholar",
@@ -541,7 +649,16 @@
       ],
       "filename": "sprite_npc_scholar.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "d9d04edc404d862f",
+        "outputHash": "e5c3e3f85c4a28f4a22ea3e91dce06132ca056815c5b97798f316798619348d6",
+        "generatedAt": "2026-02-13T05:25:12.810Z",
+        "generationTimeMs": 5715,
+        "fileSizeBytes": 1234994,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-npt-guard",
@@ -579,7 +696,16 @@
       ],
       "filename": "sprite_npc_guard.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "19013d49cb09e22c",
+        "outputHash": "b30760f222061df702cc77185b56752898fc9e6e14cfe7639a82fa1d42c056ef",
+        "generatedAt": "2026-02-13T05:25:21.245Z",
+        "generationTimeMs": 6433,
+        "fileSizeBytes": 1178719,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-npt-child",
@@ -617,7 +743,16 @@
       ],
       "filename": "sprite_npc_child.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "2bd1b06d6d79b788",
+        "outputHash": "65ca9275076fa39ab614b33792a3e4818148a1c8e91ac201f07de9d8b11dcbca",
+        "generatedAt": "2026-02-13T05:25:30.333Z",
+        "generationTimeMs": 7085,
+        "fileSizeBytes": 1119523,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-sl-01",
@@ -660,7 +795,16 @@
       ],
       "filename": "sprite_enemy_e-sl-01.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "16dc56ee0431e4d9",
+        "outputHash": "5e46d74f6fb313f1feb85915770153214cd451ba456e936048941be64d3152d9",
+        "generatedAt": "2026-02-13T05:25:40.313Z",
+        "generationTimeMs": 7977,
+        "fileSizeBytes": 1184233,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-sl-02",
@@ -703,7 +847,16 @@
       ],
       "filename": "sprite_enemy_e-sl-02.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "08fe4f76385e0ae9",
+        "outputHash": "834da4ab45c4bf744426dc55bc2974cdcfb1ea36d779f7574ee7f0549faa7e2e",
+        "generatedAt": "2026-02-13T05:25:50.072Z",
+        "generationTimeMs": 7755,
+        "fileSizeBytes": 1852183,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-sl-03",
@@ -746,7 +899,16 @@
       ],
       "filename": "sprite_enemy_e-sl-03.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "a91195579ef2f671",
+        "outputHash": "0a7885131637b84566f56ded3622b83a1adfa79c0a07cc971851399c7cc0e9ad",
+        "generatedAt": "2026-02-13T05:25:59.653Z",
+        "generationTimeMs": 7578,
+        "fileSizeBytes": 1211798,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-sl-04",
@@ -789,7 +951,16 @@
       ],
       "filename": "sprite_enemy_e-sl-04.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "fbdfa0a4fdb458da",
+        "outputHash": "fdabaf12516dc718b4da769fcefcf72ec30aa1a934c26b3ca783e4b705b11ccf",
+        "generatedAt": "2026-02-13T05:26:10.244Z",
+        "generationTimeMs": 8588,
+        "fileSizeBytes": 1585818,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-sl-05",
@@ -832,7 +1003,16 @@
       ],
       "filename": "sprite_enemy_e-sl-05.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "c71de2e703923760",
+        "outputHash": "781ae391406908628aafb6f97b86328603515cbd37932507d27795ccc4ec8a3e",
+        "generatedAt": "2026-02-13T05:26:19.872Z",
+        "generationTimeMs": 7624,
+        "fileSizeBytes": 1413773,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-sl-06",
@@ -875,7 +1055,16 @@
       ],
       "filename": "sprite_enemy_e-sl-06.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "5c3a945dbf4207f4",
+        "outputHash": "2bd39bc82afb4065b37d7d8e5b49d54b90b2fd78221047d838e7c806ba6bea11",
+        "generatedAt": "2026-02-13T05:26:28.646Z",
+        "generationTimeMs": 6770,
+        "fileSizeBytes": 1249296,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-sl-07",
@@ -918,7 +1107,16 @@
       ],
       "filename": "sprite_enemy_e-sl-07.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "5d29e81d348203bb",
+        "outputHash": "697af3b3c495febb2510e024426d437b381661c0d9182b217eb214686372bc6f",
+        "generatedAt": "2026-02-13T05:26:39.015Z",
+        "generationTimeMs": 8368,
+        "fileSizeBytes": 1376988,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-sl-08",
@@ -961,7 +1159,16 @@
       ],
       "filename": "sprite_enemy_e-sl-08.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "e8433ddb5384e821",
+        "outputHash": "fb87df2192188d9a8c1d4001b3acaf82667ee58fdbc7fd6e275ff6b60ac78d01",
+        "generatedAt": "2026-02-13T05:26:48.425Z",
+        "generationTimeMs": 7408,
+        "fileSizeBytes": 1234985,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-fr-01",
@@ -1004,7 +1211,16 @@
       ],
       "filename": "sprite_enemy_e-fr-01.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "2bb7c7b19aad5714",
+        "outputHash": "6e294d58cfc005ce0831510599542fa496f59153baad80b2502e7c2bfc14966a",
+        "generatedAt": "2026-02-13T05:26:57.383Z",
+        "generationTimeMs": 6956,
+        "fileSizeBytes": 1311563,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-fr-02",
@@ -1047,7 +1263,16 @@
       ],
       "filename": "sprite_enemy_e-fr-02.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "71b219305f4c8477",
+        "outputHash": "d6b6d8eee128c3edaebcb67cca6d50fab6566a927aaf5c35360f9855424ead1e",
+        "generatedAt": "2026-02-13T05:27:06.651Z",
+        "generationTimeMs": 7264,
+        "fileSizeBytes": 1560549,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-fr-03",
@@ -1090,7 +1315,16 @@
       ],
       "filename": "sprite_enemy_e-fr-03.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "4ae59d58b681f5c4",
+        "outputHash": "24e6de06ad620b9124a6ad2e56e5cf8c37904880bb94e69d71d826cf6f87e426",
+        "generatedAt": "2026-02-13T05:27:15.856Z",
+        "generationTimeMs": 7201,
+        "fileSizeBytes": 1189653,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-fr-04",
@@ -1133,7 +1367,16 @@
       ],
       "filename": "sprite_enemy_e-fr-04.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "cab64319eac9cab9",
+        "outputHash": "65a2b6102da747ce1878fca3ed3acd6a03809347e8675a517bf06090c5d35929",
+        "generatedAt": "2026-02-13T05:27:24.194Z",
+        "generationTimeMs": 6334,
+        "fileSizeBytes": 1228836,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-fr-05",
@@ -1176,7 +1419,16 @@
       ],
       "filename": "sprite_enemy_e-fr-05.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "83e77635b772c5b7",
+        "outputHash": "f4651b52a57f93eb77c7a31d82a35e67018c6630bac064f8d31983006b8b1297",
+        "generatedAt": "2026-02-13T05:27:35.377Z",
+        "generationTimeMs": 9179,
+        "fileSizeBytes": 1175663,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-fr-06",
@@ -1219,7 +1471,16 @@
       ],
       "filename": "sprite_enemy_e-fr-06.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "6b32b34cd0af7a12",
+        "outputHash": "d3c47bf57857e788d77ca095f96b4e0524bdbf939ccfecbae8e793c6432c952d",
+        "generatedAt": "2026-02-13T05:27:45.438Z",
+        "generationTimeMs": 8057,
+        "fileSizeBytes": 1303113,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-fr-07",
@@ -1262,7 +1523,16 @@
       ],
       "filename": "sprite_enemy_e-fr-07.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "ad823dea2e422871",
+        "outputHash": "dfd1d9c6168189d0f787130fcf2f45a959853fda4dac2b52be0d124ec3e3e3bf",
+        "generatedAt": "2026-02-13T05:27:55.377Z",
+        "generationTimeMs": 7936,
+        "fileSizeBytes": 1277625,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-fr-08",
@@ -1305,7 +1575,16 @@
       ],
       "filename": "sprite_enemy_e-fr-08.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "7f8ff5e588ca48c2",
+        "outputHash": "32403f47e62275a1785cc43bd8edad46a6546b840b20e79b4f6efe047df29a35",
+        "generatedAt": "2026-02-13T05:28:04.624Z",
+        "generationTimeMs": 7243,
+        "fileSizeBytes": 1363247,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-fr-09",
@@ -1348,7 +1627,16 @@
       ],
       "filename": "sprite_enemy_e-fr-09.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "553b341f1eef7d66",
+        "outputHash": "bc545a8d23045851ba9248a23acedd532ebbb3dd3f8af8cbb1c35561c5951797",
+        "generatedAt": "2026-02-13T05:28:14.117Z",
+        "generationTimeMs": 7489,
+        "fileSizeBytes": 1277753,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-fr-10",
@@ -1391,7 +1679,16 @@
       ],
       "filename": "sprite_enemy_e-fr-10.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "f3d56b7578cc305a",
+        "outputHash": "923f77738cb20c2f0d6fec4fe7de3deb0fe467641eb88c61ae7351bc960168a6",
+        "generatedAt": "2026-02-13T05:28:26.300Z",
+        "generationTimeMs": 10179,
+        "fileSizeBytes": 1432576,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-fr-11",
@@ -1434,7 +1731,16 @@
       ],
       "filename": "sprite_enemy_e-fr-11.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "ec4bb94a45419154",
+        "outputHash": "9555d1d99f4077533a0ecd51f2e7e20205de8f74a5295d6d783e0f8206080789",
+        "generatedAt": "2026-02-13T05:28:36.317Z",
+        "generationTimeMs": 8013,
+        "fileSizeBytes": 1218735,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-sk-01",
@@ -1477,7 +1783,16 @@
       ],
       "filename": "sprite_enemy_e-sk-01.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "a046cd289c2def15",
+        "outputHash": "030660322b7d8673788a2c91e2619ca54dda8d4c961ad608f13b5f33138198d7",
+        "generatedAt": "2026-02-13T05:28:45.654Z",
+        "generationTimeMs": 7334,
+        "fileSizeBytes": 1211653,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-sk-02",
@@ -1520,7 +1835,16 @@
       ],
       "filename": "sprite_enemy_e-sk-02.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "45724d0c1b9c0b00",
+        "outputHash": "4e4b7bb59a1f17aa05b294721803b64fee2bd601825f268d2ee4143a65a74b07",
+        "generatedAt": "2026-02-13T05:28:55.049Z",
+        "generationTimeMs": 7391,
+        "fileSizeBytes": 1185456,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-sk-03",
@@ -1563,7 +1887,16 @@
       ],
       "filename": "sprite_enemy_e-sk-03.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "0307f5f73f469eb5",
+        "outputHash": "729b4d3489ffaf7891c73b179f25daf8331c520a03ac914aa3c8d5085d7110fd",
+        "generatedAt": "2026-02-13T05:29:05.085Z",
+        "generationTimeMs": 8033,
+        "fileSizeBytes": 1327857,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-sk-04",
@@ -1606,7 +1939,16 @@
       ],
       "filename": "sprite_enemy_e-sk-04.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "68514b170fb3cda8",
+        "outputHash": "e46cebee66b85c4aab351a86ababb580ca0e35ec5000efde810c10045badfbbb",
+        "generatedAt": "2026-02-13T05:29:13.713Z",
+        "generationTimeMs": 6624,
+        "fileSizeBytes": 1405642,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-sk-05",
@@ -1649,7 +1991,16 @@
       ],
       "filename": "sprite_enemy_e-sk-05.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "62513e067c56ed26",
+        "outputHash": "cbc285ea501d71e91feeb7ecb5a87f84fee25935f85480aff4cb5e19fd48aa1a",
+        "generatedAt": "2026-02-13T05:29:22.964Z",
+        "generationTimeMs": 7247,
+        "fileSizeBytes": 1422075,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-sk-06",
@@ -1692,7 +2043,16 @@
       ],
       "filename": "sprite_enemy_e-sk-06.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "60726d9578cd77ee",
+        "outputHash": "f5f9f2a7cf07c8e6f7f496c0b6fb62e62a55294d0d7c3c929a32b28673ae625d",
+        "generatedAt": "2026-02-13T05:29:32.141Z",
+        "generationTimeMs": 7174,
+        "fileSizeBytes": 1148755,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-dp-01",
@@ -1735,7 +2095,16 @@
       ],
       "filename": "sprite_enemy_e-dp-01.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "a8c91ac611e12c87",
+        "outputHash": "19feb181cd9dd0f14c070a26590c8e91b8b8cf2edb6fef0fcd2df9bc12b03e0b",
+        "generatedAt": "2026-02-13T05:29:43.088Z",
+        "generationTimeMs": 8944,
+        "fileSizeBytes": 1113883,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-dp-02",
@@ -1778,7 +2147,16 @@
       ],
       "filename": "sprite_enemy_e-dp-02.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "92ca04d90ae923ba",
+        "outputHash": "115873dab54ce8ab251f7c767281061b1c8b98804a237ac72912b9eb50f42770",
+        "generatedAt": "2026-02-13T05:29:54.055Z",
+        "generationTimeMs": 8962,
+        "fileSizeBytes": 1421549,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-dp-03",
@@ -1821,7 +2199,16 @@
       ],
       "filename": "sprite_enemy_e-dp-03.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "377fee682f69bf98",
+        "outputHash": "70e8712ae472381516d16efa9bb7324e7f5e2a27e2ab4968851d817dd5196992",
+        "generatedAt": "2026-02-13T05:30:06.588Z",
+        "generationTimeMs": 10530,
+        "fileSizeBytes": 1153176,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-dp-04",
@@ -1864,7 +2251,16 @@
       ],
       "filename": "sprite_enemy_e-dp-04.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "4504beaedf78d0dd",
+        "outputHash": "a16f181c251cc059b71ea706ca76ee9555501baabc06707db19116877b709ba6",
+        "generatedAt": "2026-02-13T05:30:15.802Z",
+        "generationTimeMs": 7212,
+        "fileSizeBytes": 1289709,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-dp-05",
@@ -1907,7 +2303,16 @@
       ],
       "filename": "sprite_enemy_e-dp-05.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "d486b0c61c62c763",
+        "outputHash": "ea57977a4cdd2a59ec834e517bbce6bb2bc8cfe90ff5c150c9af32b7aded61c5",
+        "generatedAt": "2026-02-13T05:30:26.968Z",
+        "generationTimeMs": 9163,
+        "fileSizeBytes": 1565620,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-pv-01",
@@ -1950,7 +2355,16 @@
       ],
       "filename": "sprite_enemy_e-pv-01.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "b2a9675479428800",
+        "outputHash": "802578a4b2b1b6470cc7c5944fab8f57070a8131fecdc374470b1fe8169f238c",
+        "generatedAt": "2026-02-13T05:30:37.225Z",
+        "generationTimeMs": 8254,
+        "fileSizeBytes": 1306012,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-pv-02",
@@ -1993,7 +2407,16 @@
       ],
       "filename": "sprite_enemy_e-pv-02.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "e6898c81ab5a2a32",
+        "outputHash": "3b27cb38f1d789b416f87f0f51095b0d0de4982cdf95b4672056755abae706eb",
+        "generatedAt": "2026-02-13T05:30:46.983Z",
+        "generationTimeMs": 7755,
+        "fileSizeBytes": 1282845,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-pv-03",
@@ -2036,7 +2459,16 @@
       ],
       "filename": "sprite_enemy_e-pv-03.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "44c1ea2568f7198a",
+        "outputHash": "1eb0592bf75315ce497211e63ac946026dc511602ca65ade0098388f035d8820",
+        "generatedAt": "2026-02-13T05:30:56.770Z",
+        "generationTimeMs": 7785,
+        "fileSizeBytes": 1335200,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-enemy-e-pv-04",
@@ -2079,7 +2511,16 @@
       ],
       "filename": "sprite_enemy_e-pv-04.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "26eab25d624de147",
+        "outputHash": "4ede26b8296efa342df6c564114496864d25fdb44fb561ec3a6c47bcee7952e3",
+        "generatedAt": "2026-02-13T05:31:08.135Z",
+        "generationTimeMs": 9362,
+        "fileSizeBytes": 1243598,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-boss-b-01",
@@ -2122,7 +2563,16 @@
       ],
       "filename": "sprite_boss_b-01.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "c25caf14e4ca663b",
+        "outputHash": "2e13baea6a10b85ea387275efd9ac123b7d10002c19b8e3813e5b27fbb52562b",
+        "generatedAt": "2026-02-13T05:31:20.300Z",
+        "generationTimeMs": 10163,
+        "fileSizeBytes": 1600809,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-boss-b-02",
@@ -2165,7 +2615,16 @@
       ],
       "filename": "sprite_boss_b-02.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "8ed458730d37b72b",
+        "outputHash": "63f5a3433af24810f146b33fcb21984e5639109332d0f33caa7b4c4fa462dba3",
+        "generatedAt": "2026-02-13T05:31:31.977Z",
+        "generationTimeMs": 9674,
+        "fileSizeBytes": 1527247,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-boss-b-03",
@@ -2208,7 +2667,16 @@
       ],
       "filename": "sprite_boss_b-03.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "579c11b6566eb10a",
+        "outputHash": "c861291de8451e7199dc9ca78e477019a0453f1edc39dba7e9d681cf25bf0dcb",
+        "generatedAt": "2026-02-13T05:31:45.626Z",
+        "generationTimeMs": 11647,
+        "fileSizeBytes": 1723821,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-boss-b-04",
@@ -2251,7 +2719,16 @@
       ],
       "filename": "sprite_boss_b-04.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "e21a4d6d0da0af88",
+        "outputHash": "4c4795975aae83cf245960ab695cfffb1064571aceabee94ccf4cb697664e5b4",
+        "generatedAt": "2026-02-13T05:31:56.239Z",
+        "generationTimeMs": 8611,
+        "fileSizeBytes": 1702257,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "sprite-boss-b-05",
@@ -2294,7 +2771,17 @@
       ],
       "filename": "sprite_boss_b-05.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "1c03daded02a9bc7",
+        "outputHash": "d435fd216961a0834fd9cb8ef08ae433edf40883571e7e9babd711af51fcb03a",
+        "generatedAt": "2026-02-13T05:37:31.993Z",
+        "generationTimeMs": 8990,
+        "fileSizeBytes": 1827214,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      },
+      "lastError": "No image data in Gemini response"
     }
   ]
 }

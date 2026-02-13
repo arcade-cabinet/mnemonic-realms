@@ -7,7 +7,7 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "includes": ["main/**/*.ts"]
+    "includes": ["main/**/*.ts", "gen/**/*.ts"]
   },
   "formatter": {
     "enabled": true,

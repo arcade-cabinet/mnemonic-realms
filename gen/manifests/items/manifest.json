@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "description": "Item icon generation manifest",
-  "updatedAt": "2026-02-13T05:08:44.390Z",
+  "updatedAt": "2026-02-13T05:42:29.282Z",
   "styleGuide": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light. Icons are 32×32, SNES-style inventory icons on transparent backgrounds.",
   "styleDocRefs": [
     {
@@ -38,7 +38,16 @@
       ],
       "filename": "w-sw-01.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "4a6afca2d725079b",
+        "outputHash": "897917e23479536e2be682ce620e150a1c6c6a0c93df1c7be3da51867f0c33ef",
+        "generatedAt": "2026-02-13T05:34:52.057Z",
+        "generationTimeMs": 5020,
+        "fileSizeBytes": 854388,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "W-ST-01",
@@ -62,7 +71,16 @@
       ],
       "filename": "w-st-01.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "ec83ed18795108f6",
+        "outputHash": "e73b592d97255b5f1649de3839b1c1620a8feb59f8d30596fa55b1f0bdc60838",
+        "generatedAt": "2026-02-13T05:34:59.329Z",
+        "generationTimeMs": 5270,
+        "fileSizeBytes": 850552,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "W-WD-01",
@@ -86,7 +104,16 @@
       ],
       "filename": "w-wd-01.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "d53777a61c1ad63f",
+        "outputHash": "85f6e2ad92de37c15f6f75a5d24eeec40e2e457aa94b9b4c657967ad8d53ded0",
+        "generatedAt": "2026-02-13T05:35:07.053Z",
+        "generationTimeMs": 5722,
+        "fileSizeBytes": 779843,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "W-DG-01",
@@ -110,7 +137,16 @@
       ],
       "filename": "w-dg-01.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "e80a17f0c5bf78f1",
+        "outputHash": "295067afb0399896b943db00b10a520c19a6164563a9ee6d4c236efc2e12b472",
+        "generatedAt": "2026-02-13T05:35:14.331Z",
+        "generationTimeMs": 5277,
+        "fileSizeBytes": 950159,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "C-01",
@@ -134,7 +170,16 @@
       ],
       "filename": "c-01.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "de75a02aa43bcead",
+        "outputHash": "860df3ebf4e3205d4542be54c6e349ba7e3ed1ae8e455d19fb36bd3715603532",
+        "generatedAt": "2026-02-13T05:35:22.161Z",
+        "generationTimeMs": 5828,
+        "fileSizeBytes": 861903,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "C-02",
@@ -158,7 +203,16 @@
       ],
       "filename": "c-02.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "37479e146faaf780",
+        "outputHash": "def4dda81c85e472b10df8769ec5f4df88f04b75d500183e4245b1503021919b",
+        "generatedAt": "2026-02-13T05:35:29.562Z",
+        "generationTimeMs": 5399,
+        "fileSizeBytes": 906264,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "C-03",
@@ -221,7 +275,16 @@
       ],
       "filename": "mf-generic.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "5e08c787da50b341",
+        "outputHash": "a8aa3d634814e1fb1333d13fa14974f29566c2fb0b946cf5b509e8db4730b130",
+        "generatedAt": "2026-02-13T05:35:37.351Z",
+        "generationTimeMs": 5785,
+        "fileSizeBytes": 919075,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "MF-JOY",
@@ -251,7 +314,16 @@
       ],
       "filename": "mf-joy.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "aecc42fe3302fac5",
+        "outputHash": "238cdcd35a28430077b166177e79a2d45884d42b02dd35f0fbc1b7315e979093",
+        "generatedAt": "2026-02-13T05:35:44.561Z",
+        "generationTimeMs": 5209,
+        "fileSizeBytes": 878178,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "MF-FURY",
@@ -281,7 +353,16 @@
       ],
       "filename": "mf-fury.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "34b9334eed465ce3",
+        "outputHash": "4614f5197f0a5e70d60f81190bf9ec907aa644454cbfb0a8d19a6eccd29c133a",
+        "generatedAt": "2026-02-13T05:35:52.423Z",
+        "generationTimeMs": 5861,
+        "fileSizeBytes": 912999,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "MF-SORROW",
@@ -311,7 +392,16 @@
       ],
       "filename": "mf-sorrow.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "515d23c6f0ad61e5",
+        "outputHash": "a14f1d578c89fc3f7710571525947ca80db19ad1f4a0ac6faf3864c914ebc22a",
+        "generatedAt": "2026-02-13T05:36:00.433Z",
+        "generationTimeMs": 6008,
+        "fileSizeBytes": 921024,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "MF-AWE",
@@ -341,7 +431,16 @@
       ],
       "filename": "mf-awe.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "438743ad44ceb0b1",
+        "outputHash": "77f96568df0f53104e40819236ce8bf145b6d08fdd496e1532e9ee8b9b03d6b2",
+        "generatedAt": "2026-02-13T05:36:06.950Z",
+        "generationTimeMs": 4514,
+        "fileSizeBytes": 965795,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     },
     {
       "id": "MF-CALM",
@@ -371,7 +470,16 @@
       ],
       "filename": "mf-calm.png",
       "format": "png",
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "d02ffbabc546304a",
+        "outputHash": "69478f5918fb4dff18cf57fcb3d3bf3844e513c6d01a67aec6ca0e7e64e3a28a",
+        "generatedAt": "2026-02-13T05:36:14.584Z",
+        "generationTimeMs": 5632,
+        "fileSizeBytes": 947208,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
     }
   ]
 }

@@ -4,73 +4,81 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Is
 
-Mnemonic Realms is a single-player 16-bit style RPG with deterministic procedural generation. Users enter a 3-word seed ("adjective adjective noun") that generates a unique, reproducible world. Built as a pure RPG-JS 4.3.0 standalone game (browser-only via `@rpgjs/standalone`, no Express server).
+Mnemonic Realms is a single-player 16-bit JRPG about memory as creative vitality. The world is young and unfinished, growing more vivid as players discover and recall memory fragments. Built as a pure RPG-JS 4.3.0 standalone game (browser-only via `@rpgjs/standalone`, no Express server).
 
 ## Commands
 
 ```bash
 pnpm install          # Install dependencies
 pnpm dev              # RPG-JS dev server (rpgjs dev)
-pnpm build            # Production build (RPG_TYPE=rpg rpgjs build → dist/)
-pnpm lint             # Biome check (main/**/*.ts)
+pnpm build            # Production build (RPG_TYPE=rpg rpgjs build -> dist/)
+pnpm lint             # Biome check (main/**/*.ts, gen/**/*.ts)
 pnpm lint:fix         # Biome auto-fix
 pnpm test             # Playwright E2E tests (auto-starts dev server)
-pnpm example          # Run procedural generation examples (tsx main/generation/examples.ts)
+pnpm gen:build        # Rebuild manifests from bible docs
+pnpm gen:assets       # Generate assets via Gemini (needs GEMINI_API_KEY)
+pnpm gen:status       # Show generation status
+pnpm gen:integrate    # Post-process gen/output -> main/ (sharp downscale + WebP)
+pnpm gen:full         # Full pipeline: build -> generate -> integrate
 ```
 
 ## Architecture
 
-### Single RPG-JS Module (`main/`)
+### RPG-JS Module (`main/`)
 
-The entire game is one RPG-JS module. No Next.js, no React — RPG-JS uses its own Vite-based compiler (`rpgjs dev`/`rpgjs build`).
+Single RPG-JS module. No Next.js, no React. RPG-JS uses its own Vite-based compiler (`rpgjs dev`/`rpgjs build`).
 
 **`main/index.ts`** — Module entry using RPG-JS `client!`/`server!` import flags for tree-shaking.
 
-**`main/server/`** — Server-side hooks and maps:
-- `player.ts` — `RpgPlayerHooks`: shows title screen GUI on connect, waits for seed, applies procedural stats via `ProceduralWorld` + `ClassGenerator`, handles intro dialogue and level-ups
-- `maps/overworld.ts` — 30x30 map that spawns procedural NPCs + enemies via `createDynamicEvent()`
-- `maps/dungeon.ts` — 20x20 dungeon with procedural chests and boss
+**`main/server/index.ts`** — Server module registration. Maps, player hooks, database, and combat will be generated from bible specs.
 
-**`main/client/`** — Client-side module:
-- `index.ts` — Registers spritesheets and GUI components
-- `characters/` — `@Spritesheet` definitions with `RMSpritesheet()` for RPG Maker-style grids
+**`main/client/index.ts`** — Client module. Registers generated spritesheets.
 
-**`main/gui/`** — Vue components (RPG-JS uses Vue for in-game UI):
-- `title-screen.vue` — Seed input screen, emits `seed-selected` event to server
+**`main/client/characters/generated.ts`** — Auto-generated `@Spritesheet` bindings from the GenAI pipeline. Do not edit manually.
 
-**`main/database/`** — RPG-JS database using decorators (`@Actor`, `@Class`, `@Weapon`, `@Item`, `@Skill`, `@State`):
-- `actors/hero.ts`, `classes/` (Warrior/Mage/Rogue/Cleric), `weapons/`, `items/`, `skills/`, `states/`
+### GenAI Pipeline (`gen/`)
 
-**`main/generation/`** — Procedural generation engine (preserved from original codebase):
-- `seededRandom.ts` — `SeededRandom` class wrapping `seedrandom`, `parseSeed()` enforces 3-word format
-- `ecs/` — ecsy ECS: components, systems, traits, dataPools, `ProceduralWorld` class
-- `generators/` — 7 standalone generators: Name, Dialogue, Microstory, Class, Terrain, NPC/Loot, Room
+Manifest-driven asset generation using Google Gemini 2.5 Flash.
+
+**`gen/schemas/`** — Zod schemas for tilesets, sprites, portraits, item icons.
+
+**`gen/style-context.ts`** — Global art direction constants (master style prompt, color palette, tier styles, dimension presets).
+
+**`gen/scripts/`**:
+- `build-manifests.ts` — Reads bible docs (`docs/design/`) and generates `gen/manifests/*/manifest.json` files with prompts, dimensions, and docRefs.
+- `generate-assets.ts` — Processes manifests, calls Gemini API, writes raw PNGs to `gen/output/`. SHA-256 prompt hashing for idempotent reruns.
+- `integrate-assets.ts` — Post-processes `gen/output/` into RPG-JS module: sharp downscale to pixel-perfect dimensions, lossless WebP output (PNG for tilesets), generates `@Spritesheet` TypeScript bindings.
+- `markdown-loader.ts` — Extracts heading-scoped sections from bible markdown for DocRef resolution.
+
+**`gen/manifests/`** — JSON manifests tracking asset generation status, prompts, and metadata. Committed to git. Merge-safe: rebuilding manifests preserves generation status for unchanged assets.
+
+**`gen/output/`** — Raw generated PNGs. Gitignored. Regenerated from manifests.
+
+### Bible Docs (`docs/`)
+
+Authored game content written by Ralph (autonomous agent). These are the source of truth for all game content and drive both the GenAI pipeline and the code generation.
+
+**`docs/design/`** — tileset-spec, spritesheet-spec, ui-spec, audio-direction, skills-catalog, enemies-catalog, items-catalog, progression, combat, classes, memory-system, visual-direction
+
+**`docs/story/`** — characters, structure, act scripts
+
+**`docs/world/`** — core-theme, setting, factions, geography, vibrancy-system, dormant-gods
 
 ### Key Patterns
 
-- **Seed format**: Always "adjective adjective noun" (exactly 3 words). `parseSeed()` enforces this.
-- **Deterministic generation**: All randomness flows through `SeededRandom`. Same seed = same world, always.
-- **ECS via ecsy**: Entities get components via trait functions (e.g., `applyCharacterTrait`), then systems process them in `world.update()`.
 - **RPG-JS standalone**: `RPG_TYPE=rpg` env var + `@rpgjs/standalone` mocks socket.io in-process for single-player browser deployment.
-- **GUI ↔ Server flow**: Title screen (Vue) emits events via `RpgGui.emit()`, server hooks listen via `player.gui(id).on()`.
+- **Gemini 2.5 Flash for all generation**: Cost-optimized. Flash handles structured pixel art layouts well because it reasons about art direction.
+- **Idempotent pipeline**: SHA-256 prompt hash + output file hash + manifest merge on rebuild = assets only regenerate when prompts change.
+- **DocRef system**: Manifest entries reference bible sections by `{ path, heading, purpose }`. The markdown-loader extracts the relevant section and injects it into the Gemini prompt.
+- **WebP for sprites/portraits/icons, PNG for tilesets**: Tilesets stay PNG for Tiled TMX compatibility. Everything else uses lossless WebP.
 
 ### Config Files
 
-- `rpg.toml` — RPG-JS app config: module list, start map, player hitbox
-- `biome.json` — Biome 2.3: 2-space indent, single quotes, semicolons, 100 char width. Scoped to `main/**/*.ts`.
+- `rpg.toml` — RPG-JS app config: module list
+- `biome.json` — Biome 2.3: 2-space indent, single quotes, semicolons, 100 char width. Scoped to `main/**/*.ts` and `gen/**/*.ts`.
 - `tsconfig.json` — `experimentalDecorators` + `emitDecoratorMetadata` for RPG-JS decorators
 - `index.html` — Minimal HTML shell with `<div id="rpg">` for PixiJS canvas
 
-### Testing
-
-- E2E tests use Playwright (`tests/e2e/`). Playwright auto-starts dev server on port 3000.
-- Reserved test seed: `"brave ancient warrior"`
-
 ### CI
 
-GitHub Actions (`.github/workflows/build-deploy.yml`): pnpm install → lint → build → deploy `dist/` to GitHub Pages.
-
-### Assets
-
-- Placeholder tilesets and spritesheets are in `main/server/maps/tmx/` and `main/client/characters/`
-- Real art assets available at `/Volumes/home/assets/` (2D RPG tilesets)
+GitHub Actions (`.github/workflows/build-deploy.yml`): pnpm install -> lint -> build -> deploy `dist/` to GitHub Pages.
