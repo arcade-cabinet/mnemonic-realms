@@ -30,6 +30,7 @@ function createChestEvent(seed: string, index: number) {
         return;
       }
 
+      player.playSound('sfx-item');
       player.gold += goldAmount;
 
       // Give an actual database item
@@ -80,6 +81,7 @@ function createDungeonEnemy(seed: string, index: number) {
     }
 
     async onAction(player: RpgPlayer) {
+      player.playSound('sfx-attack');
       player.gui('combat-gui').open();
       player.emit('combat-start', {
         enemyName: `Dungeon ${enemyName}`,
@@ -101,11 +103,13 @@ function createDungeonEnemy(seed: string, index: number) {
       player.gui('combat-gui').close();
 
       if (result.victory) {
+        player.playSound('sfx-victory');
         player.exp += xpReward;
         player.gold += goldReward;
         this.remove();
       } else {
         player.hp = 1;
+        player.playSound('sfx-hit');
         player.gui('game-over').open();
         player.emit('show-game-over', {});
       }
@@ -140,6 +144,7 @@ function createBossEvent(seed: string) {
       }
 
       await player.showText(`${bossName} blocks your path! Prepare for battle!`);
+      player.playSound('sfx-attack');
 
       player.gui('combat-gui').open();
       player.emit('combat-start', {
@@ -162,12 +167,14 @@ function createBossEvent(seed: string) {
       player.gui('combat-gui').close();
 
       if (result.victory) {
+        player.playSound('sfx-victory');
         player.exp += result.xp || 200;
         player.gold += result.gold || 300;
         player.setVariable('BOSS_DEFEATED', true);
 
         // Drop unique weapon
         player.addItem(BattleAxe, 1);
+        player.playSound('sfx-item');
         await player.showText(`${bossName} dropped the Battle Axe!`);
 
         await player.showText(`After an epic battle, you defeated ${bossName}!`);
@@ -211,6 +218,7 @@ function createDungeonExit() {
   id: 'dungeon',
   file: require('./tmx/dungeon.tmx'),
   name: 'Dungeon',
+  sounds: ['bgm-dungeon'],
 })
 export class DungeonMap extends RpgMap {
   async onJoin(player: RpgPlayer) {

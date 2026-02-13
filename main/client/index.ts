@@ -4,11 +4,12 @@ import gameOver from '../gui/game-over.vue';
 import hud from '../gui/hud.vue';
 import titleScreen from '../gui/title-screen.vue';
 import victory from '../gui/victory.vue';
+import { BgmSounds, SfxSounds } from '../sounds';
 import { Characters } from './characters';
 
 @RpgModule<RpgClient>({
   spritesheets: [Characters],
-  sounds: [],
+  sounds: [BgmSounds, SfxSounds],
   gui: [titleScreen, hud, combat, gameOver, victory],
 })
 export default class RpgClientModule {}

@@ -249,6 +249,7 @@ function createCombatEnemy(seed: string, index: number) {
     }
 
     async onAction(player: RpgPlayer) {
+      player.playSound('sfx-attack');
       // Open combat GUI
       player.gui('combat-gui').open();
       player.emit('combat-start', {
@@ -263,7 +264,7 @@ function createCombatEnemy(seed: string, index: number) {
         eventId: this.id,
       });
 
-      // Wait for combat to end
+      // biome-ignore lint/suspicious/noExplicitAny: RPG-JS GUI event callback typing
       const result = await new Promise<any>((resolve) => {
         player.gui('combat-gui').on('combat-result', resolve);
       });
@@ -271,6 +272,7 @@ function createCombatEnemy(seed: string, index: number) {
       player.gui('combat-gui').close();
 
       if (result.victory) {
+        player.playSound('sfx-victory');
         player.exp += xpReward;
         player.gold += goldReward;
 
@@ -278,6 +280,7 @@ function createCombatEnemy(seed: string, index: number) {
         const lootRng = new SeededRandom(`${seed}-loot-${index}-${Date.now()}`);
         if (lootRng.random() < 0.4) {
           player.addItem(Potion, 1);
+          player.playSound('sfx-item');
           await player.showText(`${enemyName} dropped a Potion!`);
         }
 
@@ -285,6 +288,7 @@ function createCombatEnemy(seed: string, index: number) {
       } else {
         // Player defeated
         player.hp = 1;
+        player.playSound('sfx-hit');
         player.gui('game-over').open();
         player.emit('show-game-over', {});
       }
@@ -298,6 +302,7 @@ function createCombatEnemy(seed: string, index: number) {
   id: 'overworld',
   file: require('./tmx/overworld.tmx'),
   name: 'Overworld',
+  sounds: ['bgm-overworld'],
 })
 export class OverworldMap extends RpgMap {
   onLoad() {

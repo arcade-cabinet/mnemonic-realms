@@ -27,6 +27,7 @@ export const player: RpgPlayerHooks = {
 
   onInput(player: RpgPlayer, { input }: { input: string }) {
     if (input === Control.Back) {
+      player.playSound('sfx-menu');
       player.callMainMenu();
     }
   },
@@ -68,6 +69,7 @@ export const player: RpgPlayerHooks = {
     player.hp = player.param.maxHp;
     player.sp = player.param.maxSp;
 
+    player.playSound('sfx-levelup');
     player.showText(`Level Up! You are now level ${level}!`);
   },
 };
