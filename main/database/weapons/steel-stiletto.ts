@@ -1,0 +1,11 @@
+import { Weapon } from '@rpgjs/database';
+
+// Tier: 1
+@Weapon({
+  id: 'W-DG-02',
+  name: 'Steel Stiletto',
+  description: 'A sharp, slender blade, favored by rogues for its precision.',
+  price: 75,
+  atk: 8,
+})
+export default class SteelStiletto {}
