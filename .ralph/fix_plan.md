@@ -26,7 +26,7 @@
 
 ## Priority 4 — Act II, Act III, Dialogue (MIXED)
 
-- [ ] **US-005**: Write `docs/story/act2-script.md` — 15-20 scenes, god recalls, moral dilemmas (depends on US-003, US-004)
+- [x] **US-005**: Write `docs/story/act2-script.md` — 15-20 scenes, god recalls, moral dilemmas (depends on US-003, US-004)
 - [ ] **US-006**: Write `docs/story/act3-script.md` — 10-15 scenes, Sketch/Depths/fortress, ending (depends on US-005)
 - [ ] **US-007**: Write `docs/story/dialogue-bank.md` — All NPC dialogue organized by character and trigger
 
