@@ -435,8 +435,8 @@
         "Typecheck passes"
       ],
       "priority": 5,
-      "passes": false,
-      "notes": "PARALLEL with US-050, US-051, US-052. Use royalty-free chiptune tracks. Check /Volumes/home/assets/ or use freesound.org/opengameart.org. RPG-JS supports audio via @Sound decorator."
+      "passes": true,
+      "notes": "DONE. Kenney Audio assets: bgm-overworld (Retro Mystic), bgm-dungeon (Sad Descent), SFX for attack/hit/item/levelup/victory/menu. Registered via @Sound decorator, wired to maps and events."
     },
 
     {
@@ -468,8 +468,8 @@
         "No uncommitted changes remain"
       ],
       "priority": 7,
-      "passes": false,
-      "notes": "Final verification pass before PR."
+      "passes": true,
+      "notes": "DONE. Lint clean, build passes (~4s), 6 E2E tests pass, all committed."
     },
     {
       "id": "US-072",
