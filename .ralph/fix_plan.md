@@ -43,4 +43,4 @@
 
 ## Priority 7 — Integration (SEQUENTIAL)
 
-- [ ] **US-020**: Write `docs/bible/master-index.md` + `docs/bible/consistency-check.md` + `docs/bible/implementation-order.md` — Cross-reference index, verify zero contradictions, order Phase 2 work
+- [x] **US-020**: Write `docs/bible/master-index.md` + `docs/bible/consistency-check.md` + `docs/bible/implementation-order.md` — Cross-reference index, verify zero contradictions, order Phase 2 work
