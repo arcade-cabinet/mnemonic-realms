@@ -1,0 +1,754 @@
+{
+  "schemaVersion": "1.0.0",
+  "description": "Character portrait generation manifest",
+  "updatedAt": "2026-02-13T05:08:44.390Z",
+  "styleGuide": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light. Portraits are 16-bit JRPG style, head and shoulders, for dialogue boxes.",
+  "styleDocRefs": [
+    {
+      "path": "docs/design/visual-direction.md",
+      "heading": "Color Philosophy",
+      "purpose": "style"
+    },
+    {
+      "path": "docs/design/visual-direction.md",
+      "heading": "Sprite Style",
+      "purpose": "style"
+    }
+  ],
+  "assets": [
+    {
+      "id": "portrait-protagonist-neutral",
+      "characterId": "protagonist",
+      "name": "Protagonist",
+      "type": "named",
+      "expression": "neutral",
+      "appearance": "Young adventurer, determined expression. Customizable by class but default has warm brown hair, bright eyes full of wonder.",
+      "dimensions": {
+        "width": 256,
+        "height": 256,
+        "genWidth": 512,
+        "genHeight": 512
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit JRPG character portrait for a dialogue box. Head and shoulders view, neutral expression. Young adventurer, determined expression. Customizable by class but default has warm brown hair, bright eyes full of wonder. Style: SNES-era RPG portrait (like Chrono Trigger dialogue portraits). 128×128 pixels, clean pixel art, limited color palette.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
+      "docRefs": [
+        {
+          "path": "docs/story/characters.md",
+          "heading": "Player Character",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "Sprite Style",
+          "purpose": "style"
+        }
+      ],
+      "filename": "protagonist-neutral.png",
+      "format": "png",
+      "status": "pending"
+    },
+    {
+      "id": "portrait-protagonist-happy",
+      "characterId": "protagonist",
+      "name": "Protagonist",
+      "type": "named",
+      "expression": "happy",
+      "appearance": "Young adventurer, determined expression. Customizable by class but default has warm brown hair, bright eyes full of wonder.",
+      "dimensions": {
+        "width": 256,
+        "height": 256,
+        "genWidth": 512,
+        "genHeight": 512
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit JRPG character portrait for a dialogue box. Head and shoulders view, happy expression. Young adventurer, determined expression. Customizable by class but default has warm brown hair, bright eyes full of wonder. Style: SNES-era RPG portrait (like Chrono Trigger dialogue portraits). 128×128 pixels, clean pixel art, limited color palette.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
+      "docRefs": [
+        {
+          "path": "docs/story/characters.md",
+          "heading": "Player Character",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "Sprite Style",
+          "purpose": "style"
+        }
+      ],
+      "filename": "protagonist-happy.png",
+      "format": "png",
+      "status": "generated",
+      "metadata": {
+        "promptHash": "f08a137dd1326e57",
+        "outputHash": "c549f2c13784d396d110a43e16cb39fdcb46e7715e71d35957e6d6e3be264511",
+        "generatedAt": "2026-02-13T04:52:44.773Z",
+        "generationTimeMs": 17609,
+        "fileSizeBytes": 653297,
+        "model": "gemini-3-pro-image-preview",
+        "postProcessing": []
+      },
+      "lastError": "No image data in response"
+    },
+    {
+      "id": "portrait-protagonist-sad",
+      "characterId": "protagonist",
+      "name": "Protagonist",
+      "type": "named",
+      "expression": "sad",
+      "appearance": "Young adventurer, determined expression. Customizable by class but default has warm brown hair, bright eyes full of wonder.",
+      "dimensions": {
+        "width": 256,
+        "height": 256,
+        "genWidth": 512,
+        "genHeight": 512
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit JRPG character portrait for a dialogue box. Head and shoulders view, sad expression. Young adventurer, determined expression. Customizable by class but default has warm brown hair, bright eyes full of wonder. Style: SNES-era RPG portrait (like Chrono Trigger dialogue portraits). 128×128 pixels, clean pixel art, limited color palette.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
+      "docRefs": [
+        {
+          "path": "docs/story/characters.md",
+          "heading": "Player Character",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "Sprite Style",
+          "purpose": "style"
+        }
+      ],
+      "filename": "protagonist-sad.png",
+      "format": "png",
+      "status": "pending"
+    },
+    {
+      "id": "portrait-protagonist-determined",
+      "characterId": "protagonist",
+      "name": "Protagonist",
+      "type": "named",
+      "expression": "determined",
+      "appearance": "Young adventurer, determined expression. Customizable by class but default has warm brown hair, bright eyes full of wonder.",
+      "dimensions": {
+        "width": 256,
+        "height": 256,
+        "genWidth": 512,
+        "genHeight": 512
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit JRPG character portrait for a dialogue box. Head and shoulders view, determined expression. Young adventurer, determined expression. Customizable by class but default has warm brown hair, bright eyes full of wonder. Style: SNES-era RPG portrait (like Chrono Trigger dialogue portraits). 128×128 pixels, clean pixel art, limited color palette.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
+      "docRefs": [
+        {
+          "path": "docs/story/characters.md",
+          "heading": "Player Character",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "Sprite Style",
+          "purpose": "style"
+        }
+      ],
+      "filename": "protagonist-determined.png",
+      "format": "png",
+      "status": "pending"
+    },
+    {
+      "id": "portrait-lira-neutral",
+      "characterId": "lira",
+      "name": "Lira",
+      "type": "named",
+      "expression": "neutral",
+      "appearance": "Young woman, early 20s. Warm smile, auburn hair in a loose braid, freckles. Amber-accented Cleric vestments. Gentle but resolute eyes.",
+      "dimensions": {
+        "width": 256,
+        "height": 256,
+        "genWidth": 512,
+        "genHeight": 512
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit JRPG character portrait for a dialogue box. Head and shoulders view, neutral expression. Young woman, early 20s. Warm smile, auburn hair in a loose braid, freckles. Amber-accented Cleric vestments. Gentle but resolute eyes. Style: SNES-era RPG portrait (like Chrono Trigger dialogue portraits). 128×128 pixels, clean pixel art, limited color palette.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
+      "docRefs": [
+        {
+          "path": "docs/story/characters.md",
+          "heading": "Lira (Mentor Figure)",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "Sprite Style",
+          "purpose": "style"
+        }
+      ],
+      "filename": "lira-neutral.png",
+      "format": "png",
+      "status": "pending"
+    },
+    {
+      "id": "portrait-lira-happy",
+      "characterId": "lira",
+      "name": "Lira",
+      "type": "named",
+      "expression": "happy",
+      "appearance": "Young woman, early 20s. Warm smile, auburn hair in a loose braid, freckles. Amber-accented Cleric vestments. Gentle but resolute eyes.",
+      "dimensions": {
+        "width": 256,
+        "height": 256,
+        "genWidth": 512,
+        "genHeight": 512
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit JRPG character portrait for a dialogue box. Head and shoulders view, happy expression. Young woman, early 20s. Warm smile, auburn hair in a loose braid, freckles. Amber-accented Cleric vestments. Gentle but resolute eyes. Style: SNES-era RPG portrait (like Chrono Trigger dialogue portraits). 128×128 pixels, clean pixel art, limited color palette.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
+      "docRefs": [
+        {
+          "path": "docs/story/characters.md",
+          "heading": "Lira (Mentor Figure)",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "Sprite Style",
+          "purpose": "style"
+        }
+      ],
+      "filename": "lira-happy.png",
+      "format": "png",
+      "status": "pending"
+    },
+    {
+      "id": "portrait-lira-sad",
+      "characterId": "lira",
+      "name": "Lira",
+      "type": "named",
+      "expression": "sad",
+      "appearance": "Young woman, early 20s. Warm smile, auburn hair in a loose braid, freckles. Amber-accented Cleric vestments. Gentle but resolute eyes.",
+      "dimensions": {
+        "width": 256,
+        "height": 256,
+        "genWidth": 512,
+        "genHeight": 512
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit JRPG character portrait for a dialogue box. Head and shoulders view, sad expression. Young woman, early 20s. Warm smile, auburn hair in a loose braid, freckles. Amber-accented Cleric vestments. Gentle but resolute eyes. Style: SNES-era RPG portrait (like Chrono Trigger dialogue portraits). 128×128 pixels, clean pixel art, limited color palette.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
+      "docRefs": [
+        {
+          "path": "docs/story/characters.md",
+          "heading": "Lira (Mentor Figure)",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "Sprite Style",
+          "purpose": "style"
+        }
+      ],
+      "filename": "lira-sad.png",
+      "format": "png",
+      "status": "pending"
+    },
+    {
+      "id": "portrait-lira-determined",
+      "characterId": "lira",
+      "name": "Lira",
+      "type": "named",
+      "expression": "determined",
+      "appearance": "Young woman, early 20s. Warm smile, auburn hair in a loose braid, freckles. Amber-accented Cleric vestments. Gentle but resolute eyes.",
+      "dimensions": {
+        "width": 256,
+        "height": 256,
+        "genWidth": 512,
+        "genHeight": 512
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit JRPG character portrait for a dialogue box. Head and shoulders view, determined expression. Young woman, early 20s. Warm smile, auburn hair in a loose braid, freckles. Amber-accented Cleric vestments. Gentle but resolute eyes. Style: SNES-era RPG portrait (like Chrono Trigger dialogue portraits). 128×128 pixels, clean pixel art, limited color palette.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
+      "docRefs": [
+        {
+          "path": "docs/story/characters.md",
+          "heading": "Lira (Mentor Figure)",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "Sprite Style",
+          "purpose": "style"
+        }
+      ],
+      "filename": "lira-determined.png",
+      "format": "png",
+      "status": "pending"
+    },
+    {
+      "id": "portrait-callum-neutral",
+      "characterId": "callum",
+      "name": "Callum",
+      "type": "named",
+      "expression": "neutral",
+      "appearance": "Young man, mid 20s. Messy dark hair, round wire spectacles, ink-stained fingers. Deep blue Mage robes. Curious, slightly anxious expression.",
+      "dimensions": {
+        "width": 256,
+        "height": 256,
+        "genWidth": 512,
+        "genHeight": 512
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit JRPG character portrait for a dialogue box. Head and shoulders view, neutral expression. Young man, mid 20s. Messy dark hair, round wire spectacles, ink-stained fingers. Deep blue Mage robes. Curious, slightly anxious expression. Style: SNES-era RPG portrait (like Chrono Trigger dialogue portraits). 128×128 pixels, clean pixel art, limited color palette.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
+      "docRefs": [
+        {
+          "path": "docs/story/characters.md",
+          "heading": "Callum (Village Elder)",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "Sprite Style",
+          "purpose": "style"
+        }
+      ],
+      "filename": "callum-neutral.png",
+      "format": "png",
+      "status": "pending"
+    },
+    {
+      "id": "portrait-callum-happy",
+      "characterId": "callum",
+      "name": "Callum",
+      "type": "named",
+      "expression": "happy",
+      "appearance": "Young man, mid 20s. Messy dark hair, round wire spectacles, ink-stained fingers. Deep blue Mage robes. Curious, slightly anxious expression.",
+      "dimensions": {
+        "width": 256,
+        "height": 256,
+        "genWidth": 512,
+        "genHeight": 512
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit JRPG character portrait for a dialogue box. Head and shoulders view, happy expression. Young man, mid 20s. Messy dark hair, round wire spectacles, ink-stained fingers. Deep blue Mage robes. Curious, slightly anxious expression. Style: SNES-era RPG portrait (like Chrono Trigger dialogue portraits). 128×128 pixels, clean pixel art, limited color palette.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
+      "docRefs": [
+        {
+          "path": "docs/story/characters.md",
+          "heading": "Callum (Village Elder)",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "Sprite Style",
+          "purpose": "style"
+        }
+      ],
+      "filename": "callum-happy.png",
+      "format": "png",
+      "status": "pending"
+    },
+    {
+      "id": "portrait-callum-sad",
+      "characterId": "callum",
+      "name": "Callum",
+      "type": "named",
+      "expression": "sad",
+      "appearance": "Young man, mid 20s. Messy dark hair, round wire spectacles, ink-stained fingers. Deep blue Mage robes. Curious, slightly anxious expression.",
+      "dimensions": {
+        "width": 256,
+        "height": 256,
+        "genWidth": 512,
+        "genHeight": 512
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit JRPG character portrait for a dialogue box. Head and shoulders view, sad expression. Young man, mid 20s. Messy dark hair, round wire spectacles, ink-stained fingers. Deep blue Mage robes. Curious, slightly anxious expression. Style: SNES-era RPG portrait (like Chrono Trigger dialogue portraits). 128×128 pixels, clean pixel art, limited color palette.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
+      "docRefs": [
+        {
+          "path": "docs/story/characters.md",
+          "heading": "Callum (Village Elder)",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "Sprite Style",
+          "purpose": "style"
+        }
+      ],
+      "filename": "callum-sad.png",
+      "format": "png",
+      "status": "pending"
+    },
+    {
+      "id": "portrait-callum-determined",
+      "characterId": "callum",
+      "name": "Callum",
+      "type": "named",
+      "expression": "determined",
+      "appearance": "Young man, mid 20s. Messy dark hair, round wire spectacles, ink-stained fingers. Deep blue Mage robes. Curious, slightly anxious expression.",
+      "dimensions": {
+        "width": 256,
+        "height": 256,
+        "genWidth": 512,
+        "genHeight": 512
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit JRPG character portrait for a dialogue box. Head and shoulders view, determined expression. Young man, mid 20s. Messy dark hair, round wire spectacles, ink-stained fingers. Deep blue Mage robes. Curious, slightly anxious expression. Style: SNES-era RPG portrait (like Chrono Trigger dialogue portraits). 128×128 pixels, clean pixel art, limited color palette.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
+      "docRefs": [
+        {
+          "path": "docs/story/characters.md",
+          "heading": "Callum (Village Elder)",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "Sprite Style",
+          "purpose": "style"
+        }
+      ],
+      "filename": "callum-determined.png",
+      "format": "png",
+      "status": "pending"
+    },
+    {
+      "id": "portrait-petra-neutral",
+      "characterId": "petra",
+      "name": "Petra",
+      "type": "named",
+      "expression": "neutral",
+      "appearance": "Woman, late 20s. Short-cropped silver hair, strong jaw, weathered armor with dents. Stoic expression with kind eyes. Broad shoulders.",
+      "dimensions": {
+        "width": 256,
+        "height": 256,
+        "genWidth": 512,
+        "genHeight": 512
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit JRPG character portrait for a dialogue box. Head and shoulders view, neutral expression. Woman, late 20s. Short-cropped silver hair, strong jaw, weathered armor with dents. Stoic expression with kind eyes. Broad shoulders. Style: SNES-era RPG portrait (like Chrono Trigger dialogue portraits). 128×128 pixels, clean pixel art, limited color palette.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
+      "docRefs": [
+        {
+          "path": "docs/story/characters.md",
+          "heading": "Petra",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "Sprite Style",
+          "purpose": "style"
+        }
+      ],
+      "filename": "petra-neutral.png",
+      "format": "png",
+      "status": "pending"
+    },
+    {
+      "id": "portrait-petra-happy",
+      "characterId": "petra",
+      "name": "Petra",
+      "type": "named",
+      "expression": "happy",
+      "appearance": "Woman, late 20s. Short-cropped silver hair, strong jaw, weathered armor with dents. Stoic expression with kind eyes. Broad shoulders.",
+      "dimensions": {
+        "width": 256,
+        "height": 256,
+        "genWidth": 512,
+        "genHeight": 512
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit JRPG character portrait for a dialogue box. Head and shoulders view, happy expression. Woman, late 20s. Short-cropped silver hair, strong jaw, weathered armor with dents. Stoic expression with kind eyes. Broad shoulders. Style: SNES-era RPG portrait (like Chrono Trigger dialogue portraits). 128×128 pixels, clean pixel art, limited color palette.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
+      "docRefs": [
+        {
+          "path": "docs/story/characters.md",
+          "heading": "Petra",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "Sprite Style",
+          "purpose": "style"
+        }
+      ],
+      "filename": "petra-happy.png",
+      "format": "png",
+      "status": "pending"
+    },
+    {
+      "id": "portrait-petra-sad",
+      "characterId": "petra",
+      "name": "Petra",
+      "type": "named",
+      "expression": "sad",
+      "appearance": "Woman, late 20s. Short-cropped silver hair, strong jaw, weathered armor with dents. Stoic expression with kind eyes. Broad shoulders.",
+      "dimensions": {
+        "width": 256,
+        "height": 256,
+        "genWidth": 512,
+        "genHeight": 512
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit JRPG character portrait for a dialogue box. Head and shoulders view, sad expression. Woman, late 20s. Short-cropped silver hair, strong jaw, weathered armor with dents. Stoic expression with kind eyes. Broad shoulders. Style: SNES-era RPG portrait (like Chrono Trigger dialogue portraits). 128×128 pixels, clean pixel art, limited color palette.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
+      "docRefs": [
+        {
+          "path": "docs/story/characters.md",
+          "heading": "Petra",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "Sprite Style",
+          "purpose": "style"
+        }
+      ],
+      "filename": "petra-sad.png",
+      "format": "png",
+      "status": "pending"
+    },
+    {
+      "id": "portrait-petra-determined",
+      "characterId": "petra",
+      "name": "Petra",
+      "type": "named",
+      "expression": "determined",
+      "appearance": "Woman, late 20s. Short-cropped silver hair, strong jaw, weathered armor with dents. Stoic expression with kind eyes. Broad shoulders.",
+      "dimensions": {
+        "width": 256,
+        "height": 256,
+        "genWidth": 512,
+        "genHeight": 512
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit JRPG character portrait for a dialogue box. Head and shoulders view, determined expression. Woman, late 20s. Short-cropped silver hair, strong jaw, weathered armor with dents. Stoic expression with kind eyes. Broad shoulders. Style: SNES-era RPG portrait (like Chrono Trigger dialogue portraits). 128×128 pixels, clean pixel art, limited color palette.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
+      "docRefs": [
+        {
+          "path": "docs/story/characters.md",
+          "heading": "Petra",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "Sprite Style",
+          "purpose": "style"
+        }
+      ],
+      "filename": "petra-determined.png",
+      "format": "png",
+      "status": "pending"
+    },
+    {
+      "id": "portrait-elder-torin-neutral",
+      "characterId": "elder-torin",
+      "name": "Elder Torin",
+      "type": "named",
+      "expression": "neutral",
+      "appearance": "Elderly man, tall and thin. Long white beard, warm brown robes, wooden walking stick. Deep-set wise eyes, gentle wrinkles.",
+      "dimensions": {
+        "width": 256,
+        "height": 256,
+        "genWidth": 512,
+        "genHeight": 512
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit JRPG character portrait for a dialogue box. Head and shoulders view, neutral expression. Elderly man, tall and thin. Long white beard, warm brown robes, wooden walking stick. Deep-set wise eyes, gentle wrinkles. Style: SNES-era RPG portrait (like Chrono Trigger dialogue portraits). 128×128 pixels, clean pixel art, limited color palette.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
+      "docRefs": [
+        {
+          "path": "docs/story/characters.md",
+          "heading": "Elder Torin",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "Sprite Style",
+          "purpose": "style"
+        }
+      ],
+      "filename": "elder-torin-neutral.png",
+      "format": "png",
+      "status": "pending"
+    },
+    {
+      "id": "portrait-elder-torin-happy",
+      "characterId": "elder-torin",
+      "name": "Elder Torin",
+      "type": "named",
+      "expression": "happy",
+      "appearance": "Elderly man, tall and thin. Long white beard, warm brown robes, wooden walking stick. Deep-set wise eyes, gentle wrinkles.",
+      "dimensions": {
+        "width": 256,
+        "height": 256,
+        "genWidth": 512,
+        "genHeight": 512
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit JRPG character portrait for a dialogue box. Head and shoulders view, happy expression. Elderly man, tall and thin. Long white beard, warm brown robes, wooden walking stick. Deep-set wise eyes, gentle wrinkles. Style: SNES-era RPG portrait (like Chrono Trigger dialogue portraits). 128×128 pixels, clean pixel art, limited color palette.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
+      "docRefs": [
+        {
+          "path": "docs/story/characters.md",
+          "heading": "Elder Torin",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "Sprite Style",
+          "purpose": "style"
+        }
+      ],
+      "filename": "elder-torin-happy.png",
+      "format": "png",
+      "status": "pending"
+    },
+    {
+      "id": "portrait-elder-torin-sad",
+      "characterId": "elder-torin",
+      "name": "Elder Torin",
+      "type": "named",
+      "expression": "sad",
+      "appearance": "Elderly man, tall and thin. Long white beard, warm brown robes, wooden walking stick. Deep-set wise eyes, gentle wrinkles.",
+      "dimensions": {
+        "width": 256,
+        "height": 256,
+        "genWidth": 512,
+        "genHeight": 512
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit JRPG character portrait for a dialogue box. Head and shoulders view, sad expression. Elderly man, tall and thin. Long white beard, warm brown robes, wooden walking stick. Deep-set wise eyes, gentle wrinkles. Style: SNES-era RPG portrait (like Chrono Trigger dialogue portraits). 128×128 pixels, clean pixel art, limited color palette.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
+      "docRefs": [
+        {
+          "path": "docs/story/characters.md",
+          "heading": "Elder Torin",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "Sprite Style",
+          "purpose": "style"
+        }
+      ],
+      "filename": "elder-torin-sad.png",
+      "format": "png",
+      "status": "pending"
+    },
+    {
+      "id": "portrait-elder-torin-determined",
+      "characterId": "elder-torin",
+      "name": "Elder Torin",
+      "type": "named",
+      "expression": "determined",
+      "appearance": "Elderly man, tall and thin. Long white beard, warm brown robes, wooden walking stick. Deep-set wise eyes, gentle wrinkles.",
+      "dimensions": {
+        "width": 256,
+        "height": 256,
+        "genWidth": 512,
+        "genHeight": 512
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit JRPG character portrait for a dialogue box. Head and shoulders view, determined expression. Elderly man, tall and thin. Long white beard, warm brown robes, wooden walking stick. Deep-set wise eyes, gentle wrinkles. Style: SNES-era RPG portrait (like Chrono Trigger dialogue portraits). 128×128 pixels, clean pixel art, limited color palette.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, full body, action pose",
+      "docRefs": [
+        {
+          "path": "docs/story/characters.md",
+          "heading": "Elder Torin",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "Sprite Style",
+          "purpose": "style"
+        }
+      ],
+      "filename": "elder-torin-determined.png",
+      "format": "png",
+      "status": "pending"
+    },
+    {
+      "id": "portrait-god-resonance",
+      "characterId": "resonance",
+      "name": "Resonance",
+      "type": "god",
+      "expression": "neutral",
+      "appearance": "Ancient being of sound and vibration. Ethereal form of shimmering sound waves, no fixed shape.",
+      "dimensions": {
+        "width": 256,
+        "height": 256,
+        "genWidth": 512,
+        "genHeight": 512
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit JRPG dormant god portrait. Ethereal, larger-than-life presence. Ancient being of sound and vibration. Ethereal form of shimmering sound waves, no fixed shape. Style: mythic and awe-inspiring, luminous quality, memory-amber (#DAA520) accents.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, human face, realistic",
+      "docRefs": [
+        {
+          "path": "docs/world/dormant-gods.md",
+          "heading": "Resonance",
+          "purpose": "content"
+        }
+      ],
+      "filename": "god-resonance.png",
+      "format": "png",
+      "status": "pending"
+    },
+    {
+      "id": "portrait-god-verdance",
+      "characterId": "verdance",
+      "name": "Verdance",
+      "type": "god",
+      "expression": "neutral",
+      "appearance": "Ancient being of growth. Living plant matter forming a humanoid shape, flowers and vines.",
+      "dimensions": {
+        "width": 256,
+        "height": 256,
+        "genWidth": 512,
+        "genHeight": 512
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit JRPG dormant god portrait. Ethereal, larger-than-life presence. Ancient being of growth. Living plant matter forming a humanoid shape, flowers and vines. Style: mythic and awe-inspiring, luminous quality, memory-amber (#DAA520) accents.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, human face, realistic",
+      "docRefs": [
+        {
+          "path": "docs/world/dormant-gods.md",
+          "heading": "Verdance",
+          "purpose": "content"
+        }
+      ],
+      "filename": "god-verdance.png",
+      "format": "png",
+      "status": "pending"
+    },
+    {
+      "id": "portrait-god-luminos",
+      "characterId": "luminos",
+      "name": "Luminos",
+      "type": "god",
+      "expression": "neutral",
+      "appearance": "Ancient being of light. Radiant crystalline form, faceted like a prism, warm golden glow.",
+      "dimensions": {
+        "width": 256,
+        "height": 256,
+        "genWidth": 512,
+        "genHeight": 512
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit JRPG dormant god portrait. Ethereal, larger-than-life presence. Ancient being of light. Radiant crystalline form, faceted like a prism, warm golden glow. Style: mythic and awe-inspiring, luminous quality, memory-amber (#DAA520) accents.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, human face, realistic",
+      "docRefs": [
+        {
+          "path": "docs/world/dormant-gods.md",
+          "heading": "Luminos",
+          "purpose": "content"
+        }
+      ],
+      "filename": "god-luminos.png",
+      "format": "png",
+      "status": "pending"
+    },
+    {
+      "id": "portrait-god-kinesis",
+      "characterId": "kinesis",
+      "name": "Kinesis",
+      "type": "god",
+      "expression": "neutral",
+      "appearance": "Ancient being of motion. Blur of perpetual movement, streaks of color suggesting speed.",
+      "dimensions": {
+        "width": 256,
+        "height": 256,
+        "genWidth": 512,
+        "genHeight": 512
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit JRPG dormant god portrait. Ethereal, larger-than-life presence. Ancient being of motion. Blur of perpetual movement, streaks of color suggesting speed. Style: mythic and awe-inspiring, luminous quality, memory-amber (#DAA520) accents.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, human face, realistic",
+      "docRefs": [
+        {
+          "path": "docs/world/dormant-gods.md",
+          "heading": "Kinesis",
+          "purpose": "content"
+        }
+      ],
+      "filename": "god-kinesis.png",
+      "format": "png",
+      "status": "pending"
+    }
+  ]
+}

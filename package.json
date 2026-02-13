@@ -13,7 +13,13 @@
     "example": "tsx main/generation/examples.ts",
     "assets": "tsx scripts/process-assets.ts",
     "maps": "tsx scripts/generate-maps.ts",
-    "generate": "pnpm run assets && pnpm run maps"
+    "generate": "pnpm run assets && pnpm run maps",
+    "gen:build": "tsx gen/scripts/build-manifests.ts",
+    "gen:assets": "tsx gen/scripts/generate-assets.ts",
+    "gen:status": "tsx gen/scripts/generate-assets.ts status",
+    "gen:dry-run": "tsx gen/scripts/generate-assets.ts --dry-run all",
+    "gen:integrate": "tsx gen/scripts/integrate-assets.ts",
+    "gen:full": "pnpm gen:build && pnpm gen:assets all && pnpm gen:integrate"
   },
   "dependencies": {
     "@rpgjs/client": "4.3.0",
@@ -30,13 +36,16 @@
   },
   "devDependencies": {
     "@biomejs/biome": "~2.3.15",
+    "@google/genai": "^1.41.0",
     "@playwright/test": "^1.58.2",
     "@rpgjs/compiler": "4.3.0",
     "@types/seedrandom": "^3.0.8",
     "@types/sharp": "^0.32.0",
+    "dotenv": "^17.3.1",
     "sharp": "^0.34.5",
     "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "zod": "^4.3.6"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

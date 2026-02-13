@@ -7,9 +7,10 @@ import titleScreen from '../gui/title-screen.vue';
 import victory from '../gui/victory.vue';
 import { BgmSounds, SfxSounds } from '../sounds';
 import { Characters } from './characters';
+import { generatedSprites } from './characters/generated';
 
 @RpgModule<RpgClient>({
-  spritesheets: [Characters],
+  spritesheets: [Characters, ...generatedSprites],
   sounds: [BgmSounds, SfxSounds],
   gui: [titleScreen, hud, combat, gameOver, victory, dialogue],
 })
