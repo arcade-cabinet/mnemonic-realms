@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script>
+      var global = global || window;
+      if (typeof require === 'undefined') {
+        window.require = function(m) { return m || ''; };
+      }
+    </script>
     <meta charset="UTF-8">
     <title>Mnemonic Realms</title>
     <style>body { margin: 0; overflow: hidden; }</style>
