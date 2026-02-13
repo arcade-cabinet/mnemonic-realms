@@ -483,8 +483,8 @@
         "PR link returned"
       ],
       "priority": 8,
-      "passes": false,
-      "notes": "Final story. CI in .github/workflows/build-deploy.yml."
+      "passes": true,
+      "notes": "DONE. PR #3: https://github.com/arcade-cabinet/mnemonic-realms/pull/3"
     }
   ]
 }
