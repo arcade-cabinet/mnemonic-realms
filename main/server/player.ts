@@ -1,4 +1,6 @@
 import { Control, type RpgPlayer, type RpgPlayerHooks } from '@rpgjs/server';
+import { Potion } from '../database/items/potion';
+import { IronSword } from '../database/weapons/sword';
 import { Alignment, CharacterClass, Name } from '../generation/ecs/components';
 import { ProceduralWorld } from '../generation/ecs/world';
 import { ClassGenerator } from '../generation/generators/classGenerator';
@@ -17,6 +19,7 @@ export const player: RpgPlayerHooks = {
 
     gui.close();
     applyProceduralStats(player, seed || DEFAULT_SEED);
+    applyStartingEquipment(player);
     player.setHitbox(20, 16);
     player.setGraphic('hero');
     player.changeMap('overworld');
@@ -29,6 +32,9 @@ export const player: RpgPlayerHooks = {
   },
 
   async onJoinMap(player: RpgPlayer) {
+    // Open HUD when entering any map
+    player.gui('game-hud').open();
+
     if (player.getVariable('INTRO_DONE')) return;
 
     const seed = player.getVariable('SEED') || DEFAULT_SEED;
@@ -52,11 +58,17 @@ export const player: RpgPlayerHooks = {
     player.param = {
       ...player.param,
       maxHp: (player.param.maxHp || 100) + 10 + level * 2,
+      maxSp: (player.param.maxSp || 50) + 5 + level,
       str: (player.param.str || 10) + Math.floor(level / 3),
       int: (player.param.int || 10) + Math.floor(level / 3),
       dex: (player.param.dex || 10) + Math.floor(level / 4),
       agi: (player.param.agi || 10) + Math.floor(level / 4),
     };
+
+    player.hp = player.param.maxHp;
+    player.sp = player.param.maxSp;
+
+    player.showText(`Level Up! You are now level ${level}!`);
   },
 };
 
@@ -122,4 +134,14 @@ function applyProceduralStats(player: RpgPlayer, seed: string) {
   player.param = baseStats;
   player.hp = baseStats.maxHp;
   player.sp = baseStats.maxSp;
+}
+
+function applyStartingEquipment(player: RpgPlayer) {
+  try {
+    player.addItem(IronSword, 1);
+    player.addItem(Potion, 3);
+    player.equip(IronSword);
+  } catch {
+    // Equipment system may not be fully available yet
+  }
 }

@@ -1,13 +1,18 @@
-import { EventData, MapData, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { EventData, MapData, Move, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { Antidote } from '../../database/items/antidote';
+import { HiPotion } from '../../database/items/hiPotion';
+import { ManaPotion } from '../../database/items/manaPotion';
+import { Potion } from '../../database/items/potion';
+import { BattleScroll } from '../../database/items/scroll';
+import { BattleAxe } from '../../database/weapons/axe';
 import { NameGenerator } from '../../generation/generators/nameGenerator';
-import { LootGenerator } from '../../generation/generators/npcGenerator';
 import { SeededRandom } from '../../generation/seededRandom';
 
 function createChestEvent(seed: string, index: number) {
-  const lootGen = new LootGenerator(`${seed}-chest-${index}`);
   const rng = new SeededRandom(`${seed}-chest-${index}`);
-  const difficulty = rng.randomInt(1, 5);
-  const loot = lootGen.generateLoot(difficulty);
+  const goldAmount = rng.randomInt(20, 80);
+  const itemDrops = ['Potion', 'Hi-Potion', 'Mana Potion', 'Battle Scroll', 'Antidote'];
+  const droppedItem = rng.pick(itemDrops);
 
   @EventData({
     name: `chest-${index}`,
@@ -19,16 +24,29 @@ function createChestEvent(seed: string, index: number) {
     }
 
     async onAction(player: RpgPlayer) {
-      const varName = `chest-${this.map?.id}-${index}`;
+      const varName = `chest-dungeon-${index}`;
       if (player.getVariable(varName)) {
         await player.showText('The chest is empty.');
         return;
       }
 
-      player.gold += loot.gold;
+      player.gold += goldAmount;
 
-      const itemDesc = loot.items.length > 0 ? loot.items.join(', ') : 'nothing';
-      await player.showText(`You found ${loot.gold} gold and: ${itemDesc}!`);
+      // Give an actual database item
+      // biome-ignore lint/suspicious/noExplicitAny: RPG-JS item class typing
+      const itemMap: Record<string, any> = {
+        Potion,
+        'Hi-Potion': HiPotion,
+        'Mana Potion': ManaPotion,
+        'Battle Scroll': BattleScroll,
+        Antidote,
+      };
+      const itemClass = itemMap[droppedItem];
+      if (itemClass) {
+        player.addItem(itemClass, 1);
+      }
+
+      await player.showText(`You found ${goldAmount} gold and a ${droppedItem}!`);
       player.setVariable(varName, true);
     }
   }
@@ -36,12 +54,75 @@ function createChestEvent(seed: string, index: number) {
   return ChestEvent;
 }
 
+function createDungeonEnemy(seed: string, index: number) {
+  const nameGen = new NameGenerator(`${seed}-dungeon-enemy-${index}`);
+  const enemyName = nameGen.generateCharacterName();
+  const rng = new SeededRandom(`${seed}-dungeon-enemy-${index}`);
+  const difficulty = rng.randomInt(3, 7); // Dungeon enemies are tougher
+
+  const baseHp = 30 + difficulty * 20;
+  const baseAtk = 5 + difficulty * 3;
+  const baseDef = 2 + difficulty;
+  const baseAgi = 3 + difficulty;
+  const xpReward = 20 + difficulty * 10;
+  const goldReward = rng.randomInt(10, 25) * difficulty;
+
+  @EventData({
+    name: `dungeon-enemy-${index}`,
+    hitbox: { width: 32, height: 16 },
+  })
+  class DungeonEnemyEvent extends RpgEvent {
+    onInit() {
+      this.setGraphic('enemy');
+      this.speed = 1;
+      this.frequency = 250;
+      this.infiniteMoveRoute([Move.tileRandom()]);
+    }
+
+    async onAction(player: RpgPlayer) {
+      player.gui('combat-gui').open();
+      player.emit('combat-start', {
+        enemyName: `Dungeon ${enemyName}`,
+        enemyMaxHp: baseHp,
+        enemyAtk: baseAtk,
+        enemyDef: baseDef,
+        enemyAgi: baseAgi,
+        isBoss: false,
+        xpReward,
+        goldReward,
+        eventId: this.id,
+      });
+
+      // biome-ignore lint/suspicious/noExplicitAny: RPG-JS GUI event callback typing
+      const result = await new Promise<any>((resolve) => {
+        player.gui('combat-gui').on('combat-result', resolve);
+      });
+
+      player.gui('combat-gui').close();
+
+      if (result.victory) {
+        player.exp += xpReward;
+        player.gold += goldReward;
+        this.remove();
+      } else {
+        player.hp = 1;
+        player.gui('game-over').open();
+        player.emit('show-game-over', {});
+      }
+    }
+  }
+
+  return DungeonEnemyEvent;
+}
+
 function createBossEvent(seed: string) {
   const nameGen = new NameGenerator(`${seed}-boss`);
   const bossName = nameGen.generateCharacterWithTitle();
   const rng = new SeededRandom(`${seed}-boss`);
-  const bossHp = rng.randomInt(80, 150);
-  const bossAtk = rng.randomInt(10, 20);
+  const bossHp = rng.randomInt(150, 250);
+  const bossAtk = rng.randomInt(15, 25);
+  const bossDef = rng.randomInt(8, 15);
+  const bossAgi = rng.randomInt(5, 10);
 
   @EventData({
     name: 'boss',
@@ -60,31 +141,70 @@ function createBossEvent(seed: string) {
 
       await player.showText(`${bossName} blocks your path! Prepare for battle!`);
 
-      const playerStr = player.param?.str || 10;
-      const playerDex = player.param?.dex || 5;
-      const rounds = Math.ceil(bossHp / Math.max(1, playerStr));
-      const totalDamage = rounds * Math.max(1, bossAtk - playerDex);
+      player.gui('combat-gui').open();
+      player.emit('combat-start', {
+        enemyName: bossName,
+        enemyMaxHp: bossHp,
+        enemyAtk: bossAtk,
+        enemyDef: bossDef,
+        enemyAgi: bossAgi,
+        isBoss: true,
+        xpReward: 100 + bossHp,
+        goldReward: rng.randomInt(200, 500),
+        eventId: this.id,
+      });
 
-      if (player.hp > totalDamage) {
-        player.hp -= totalDamage;
-        const xpReward = 100 + bossHp;
-        const goldReward = rng.randomInt(100, 300);
-        player.exp += xpReward;
-        player.gold += goldReward;
+      // biome-ignore lint/suspicious/noExplicitAny: RPG-JS GUI event callback typing
+      const result = await new Promise<any>((resolve) => {
+        player.gui('combat-gui').on('combat-result', resolve);
+      });
+
+      player.gui('combat-gui').close();
+
+      if (result.victory) {
+        player.exp += result.xp || 200;
+        player.gold += result.gold || 300;
         player.setVariable('BOSS_DEFEATED', true);
 
-        await player.showText(`After an epic ${rounds}-round battle, you defeated ${bossName}!`);
-        await player.showText(`+${xpReward} XP, +${goldReward} gold!`);
+        // Drop unique weapon
+        player.addItem(BattleAxe, 1);
+        await player.showText(`${bossName} dropped the Battle Axe!`);
+
+        await player.showText(`After an epic battle, you defeated ${bossName}!`);
         this.remove();
+
+        // Show victory screen
+        player.gui('victory-screen').open();
+        player.emit('show-victory', {});
       } else {
         player.hp = 1;
-        await player.showText(`${bossName} is too powerful! You barely escape with your life.`);
-        await player.showText('Gain more experience and return when you are stronger.');
+        player.gui('game-over').open();
+        player.emit('show-game-over', {});
       }
     }
   }
 
   return BossEvent;
+}
+
+// Dungeon exit
+function createDungeonExit() {
+  @EventData({
+    name: 'dungeon-exit',
+    hitbox: { width: 32, height: 32 },
+  })
+  class DungeonExitEvent extends RpgEvent {
+    onInit() {
+      this.setGraphic('chest'); // Will replace with stairs graphic later
+    }
+
+    async onPlayerTouch(player: RpgPlayer) {
+      await player.showText('Ascending to the surface...');
+      player.changeMap('overworld');
+    }
+  }
+
+  return DungeonExitEvent;
 }
 
 @MapData({
@@ -98,6 +218,25 @@ export class DungeonMap extends RpgMap {
     const rng = new SeededRandom(`${seed}-dungeon`);
     // biome-ignore lint/suspicious/noExplicitAny: RPG-JS createDynamicEvent expects untyped event class
     const events: Array<{ x: number; y: number; event: any }> = [];
+
+    // Spawn dungeon exit near entrance
+    const Exit = createDungeonExit();
+    events.push({
+      x: 2 * 32,
+      y: 2 * 32,
+      event: Exit,
+    });
+
+    // Spawn dungeon enemies
+    const enemyCount = rng.randomInt(3, 5);
+    for (let i = 0; i < enemyCount; i++) {
+      const Enemy = createDungeonEnemy(seed, i);
+      events.push({
+        x: rng.randomInt(3, 17) * 32,
+        y: rng.randomInt(3, 17) * 32,
+        event: Enemy,
+      });
+    }
 
     // Spawn chests
     const chestCount = rng.randomInt(2, 4);
