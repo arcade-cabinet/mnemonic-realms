@@ -8,7 +8,7 @@
 
 - [x] **US-001**: Write `docs/world/geography.md` — Detailed zone specs (Village Hub, Settled Lands, Frontier, Sketch, Depths) with tile dimensions, biomes, landmarks, connections
 - [x] **US-002**: Write `docs/world/vibrancy-system.md` — Per-zone 0-100 scale, visual tier thresholds, tile swap rules, broadcast formula, decay/reinforcement, audio layers
-- [ ] **US-003**: Write `docs/world/dormant-gods.md` — 4 gods (Resonance/Verdance/Luminos/Kinesis), 4 recall options each (joy/fury/sorrow/awe), 16 outcomes with world effects
+- [x] **US-003**: Write `docs/world/dormant-gods.md` — 4 gods (Resonance/Verdance/Luminos/Kinesis), 4 recall options each (joy/fury/sorrow/awe), 16 outcomes with world effects
 
 ## Priority 2 — Systems + Act I (MIXED)
 
