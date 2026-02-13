@@ -88,67 +88,89 @@ export default {
   z-index: 950;
   font-family: 'Cinzel', 'Georgia', serif;
   color: #d4c4a0;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .victory-container {
   text-align: center;
-  padding: 3rem;
+  padding: 1.5rem;
   background: linear-gradient(180deg, #1a1a0a 0%, #2d2b1b 100%);
   border: 2px solid #b8860b;
   border-radius: 8px;
   box-shadow: 0 0 60px rgba(184, 134, 11, 0.4);
   max-width: 450px;
-  width: 90%;
+  width: 100%;
 }
 
 .victory-title {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #b8860b;
   text-shadow: 0 0 20px rgba(184, 134, 11, 0.5);
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.3rem;
 }
 
 .victory-subtitle {
   color: #999;
   font-family: 'Merriweather', 'Georgia', serif;
-  margin: 0 0 2rem;
+  font-size: 0.85rem;
+  margin: 0 0 1.5rem;
 }
 
 .stats-panel {
   background: rgba(0, 0, 0, 0.4);
   border: 1px solid #555;
   border-radius: 4px;
-  padding: 1rem;
-  margin-bottom: 2rem;
+  padding: 0.75rem;
+  margin-bottom: 1.5rem;
 }
 
 .stat-row {
   display: flex;
   justify-content: space-between;
-  padding: 0.3rem 0;
+  padding: 0.25rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.stat-label { color: #b8860b; font-size: 0.85rem; }
-.stat-value { color: #d4c4a0; font-size: 0.85rem; }
+.stat-label { color: #b8860b; font-size: 0.8rem; }
+.stat-value { color: #d4c4a0; font-size: 0.8rem; }
 .seed { font-style: italic; color: #888; }
 .gold { color: #ffd700; }
 
-.button-group { display: flex; gap: 1rem; justify-content: center; }
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
 
 .btn {
-  padding: 0.75rem 1.5rem;
-  font-size: 0.9rem;
+  padding: 0.85rem 1.5rem;
+  font-size: 0.85rem;
   font-family: 'Cinzel', 'Georgia', serif;
   border: 1px solid;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s;
   text-transform: uppercase;
+  min-height: 44px;
+  -webkit-tap-highlight-color: transparent;
 }
+
+.btn:active:not(:disabled) { filter: brightness(1.3); transform: scale(0.97); }
 
 .btn-primary { background: #b8860b; border-color: #d4a017; color: #1a1a0a; }
 .btn-primary:hover { background: #d4a017; }
 .btn-secondary { background: transparent; border-color: #888; color: #888; }
 .btn-secondary:hover { background: rgba(255, 255, 255, 0.05); }
+
+/* Desktop: larger title, side-by-side buttons */
+@media (min-width: 600px) {
+  .victory-container { padding: 3rem; }
+  .victory-title { font-size: 2rem; }
+  .victory-subtitle { font-size: 1rem; margin-bottom: 2rem; }
+  .stats-panel { padding: 1rem; margin-bottom: 2rem; }
+  .stat-label, .stat-value { font-size: 0.85rem; }
+  .button-group { flex-direction: row; justify-content: center; }
+  .btn { padding: 0.75rem 1.5rem; font-size: 0.9rem; }
+}
 </style>

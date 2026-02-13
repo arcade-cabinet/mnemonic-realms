@@ -11,5 +11,13 @@ modules = [
     graphic = 'hero'
     hitbox = [16, 16]
 
+[inputs.action]
+    name = "action"
+    bind = ["space", "enter", "click"]
+
+[inputs.back]
+    name = "back"
+    bind = ["escape", "backspace"]
+
 [compilerOptions.build]
     pwaEnabled = false

@@ -94,37 +94,38 @@ export default {
 .hud-bar {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 0.5rem 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.35rem 0.5rem;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.6) 100%);
   border-bottom: 1px solid #8b1f1f;
   font-family: 'Cinzel', 'Georgia', serif;
   color: #d4c4a0;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
 }
 
 .hud-item {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.3rem;
 }
 
 .hud-label {
   color: #b8860b;
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 0.65rem;
+  font-size: 0.55rem;
   letter-spacing: 0.05em;
 }
 
 .hud-value {
   color: #d4c4a0;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
 }
 
 .bar-container {
-  width: 80px;
-  height: 10px;
+  width: 50px;
+  height: 8px;
   background: rgba(26, 10, 10, 0.8);
   border: 1px solid #555;
   border-radius: 2px;
@@ -155,13 +156,22 @@ export default {
 }
 
 .seed-display {
-  margin-left: auto;
+  display: none;
 }
 
 .seed {
   color: #888;
   font-family: 'Merriweather', 'Georgia', serif;
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-style: italic;
+}
+
+/* Desktop: wider bars, show seed */
+@media (min-width: 600px) {
+  .hud-bar { gap: 1rem; padding: 0.5rem 1rem; font-size: 0.75rem; flex-wrap: nowrap; }
+  .hud-label { font-size: 0.65rem; }
+  .hud-value { font-size: 0.75rem; }
+  .bar-container { width: 80px; height: 10px; }
+  .seed-display { display: flex; margin-left: auto; }
 }
 </style>

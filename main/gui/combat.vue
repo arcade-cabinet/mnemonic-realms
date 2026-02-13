@@ -309,53 +309,57 @@ export default {
   position: fixed;
   inset: 0;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   background: rgba(0, 0, 0, 0.85);
   z-index: 900;
   font-family: 'Cinzel', 'Georgia', serif;
   color: #d4c4a0;
+  padding: 0.5rem;
+  box-sizing: border-box;
 }
 
 .combat-container {
-  width: 90%;
+  width: 100%;
   max-width: 600px;
+  max-height: 100%;
+  overflow-y: auto;
   background: linear-gradient(180deg, #1a0a0a 0%, #2d1b1b 100%);
   border: 2px solid #8b1f1f;
   border-radius: 8px;
-  padding: 1.5rem;
+  padding: 0.75rem;
   box-shadow: 0 0 40px rgba(139, 31, 31, 0.4);
 }
 
 .enemy-panel, .player-panel {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .enemy-name {
-  font-size: 1.3rem;
+  font-size: 1rem;
   color: #cc3333;
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.3rem;
   text-shadow: 0 0 10px rgba(204, 51, 51, 0.5);
 }
 
 .bar-row {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.3rem;
+  gap: 0.4rem;
+  margin-bottom: 0.2rem;
 }
 
 .bar-label {
   color: #b8860b;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   font-weight: bold;
-  width: 24px;
+  width: 20px;
   text-transform: uppercase;
 }
 
 .bar-container {
   flex: 1;
-  height: 12px;
+  height: 10px;
   background: rgba(0, 0, 0, 0.6);
   border: 1px solid #555;
   border-radius: 2px;
@@ -372,9 +376,9 @@ export default {
 .player-sp { background: linear-gradient(90deg, #1a4d8b, #3388cc); }
 
 .bar-value {
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   color: #999;
-  width: 70px;
+  width: 55px;
   text-align: right;
 }
 
@@ -382,64 +386,83 @@ export default {
   background: rgba(0, 0, 0, 0.5);
   border: 1px solid #444;
   border-radius: 4px;
-  padding: 0.5rem;
-  height: 120px;
+  padding: 0.4rem;
+  height: 80px;
   overflow-y: auto;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   font-family: 'Merriweather', 'Georgia', serif;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
 }
 
 .log-msg {
-  margin: 0.2rem 0;
+  margin: 0.15rem 0;
   color: #aaa;
 }
 
 .action-panel {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
 }
 
 .sub-menu {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-bottom: 0.5rem;
+  gap: 0.3rem;
+  margin-bottom: 0.4rem;
 }
 
 .btn {
-  padding: 0.6rem 1rem;
+  padding: 0.65rem 0.75rem;
   font-family: 'Cinzel', 'Georgia', serif;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   border: 1px solid;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  min-height: 44px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .btn-attack { background: #8b1f1f; border-color: #a33; color: #d4c4a0; }
 .btn-skill { background: #1a4d8b; border-color: #2266aa; color: #d4c4a0; }
 .btn-item { background: #228b22; border-color: #33aa33; color: #d4c4a0; }
 .btn-flee { background: #555; border-color: #777; color: #d4c4a0; }
-.btn-sub { background: rgba(0, 0, 0, 0.4); border-color: #666; color: #d4c4a0; font-size: 0.75rem; padding: 0.4rem 0.8rem; }
+.btn-sub { background: rgba(0, 0, 0, 0.4); border-color: #666; color: #d4c4a0; font-size: 0.65rem; padding: 0.5rem 0.6rem; min-height: 40px; }
 .btn-back { border-color: #b8860b; color: #b8860b; }
-.btn-primary { background: #8b1f1f; border-color: #a33; color: #d4c4a0; width: 100%; margin-top: 0.5rem; }
+.btn-primary { background: #8b1f1f; border-color: #a33; color: #d4c4a0; width: 100%; margin-top: 0.4rem; }
 
 .btn:hover:not(:disabled) { filter: brightness(1.2); }
+.btn:active:not(:disabled) { filter: brightness(1.3); transform: scale(0.97); }
 .btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
 .combat-result {
   text-align: center;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .result-text {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #b8860b;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Desktop: center combat panel, larger elements */
+@media (min-width: 600px) {
+  .combat-screen { align-items: center; padding: 1rem; }
+  .combat-container { padding: 1.5rem; }
+  .enemy-panel, .player-panel { margin-bottom: 1rem; }
+  .enemy-name { font-size: 1.3rem; }
+  .bar-label { font-size: 0.7rem; width: 24px; }
+  .bar-container { height: 12px; }
+  .bar-value { font-size: 0.7rem; width: 70px; }
+  .combat-log { height: 120px; font-size: 0.75rem; padding: 0.5rem; }
+  .btn { padding: 0.6rem 1rem; font-size: 0.85rem; }
+  .btn-sub { font-size: 0.75rem; padding: 0.4rem 0.8rem; }
+  .result-text { font-size: 1.2rem; }
+  .combat-result { padding: 1rem; }
 }
 </style>

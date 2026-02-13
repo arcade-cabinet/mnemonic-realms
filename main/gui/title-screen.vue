@@ -94,42 +94,44 @@ export default {
   font-family: 'Cinzel', 'Georgia', serif;
   color: #d4c4a0;
   z-index: 1000;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .title-container {
   text-align: center;
-  padding: 3rem;
+  padding: 1.5rem;
   background: rgba(0, 0, 0, 0.6);
   border: 2px solid #8b1f1f;
   border-radius: 8px;
   box-shadow: 0 0 40px rgba(139, 31, 31, 0.3);
   max-width: 500px;
-  width: 90%;
+  width: 100%;
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: 1.6rem;
   color: #8b1f1f;
   text-shadow: 0 0 20px rgba(139, 31, 31, 0.5);
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.3rem;
   letter-spacing: 0.1em;
 }
 
 .subtitle {
-  font-size: 1rem;
+  font-size: 0.85rem;
   color: #b8860b;
-  margin: 0 0 2rem;
+  margin: 0 0 1.5rem;
   font-family: 'Merriweather', 'Georgia', serif;
 }
 
 .seed-input-group {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .seed-input {
   width: 100%;
   padding: 0.75rem 1rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-family: 'Merriweather', 'Georgia', serif;
   background: rgba(26, 10, 10, 0.8);
   border: 1px solid #b8860b;
@@ -138,6 +140,7 @@ export default {
   text-align: center;
   outline: none;
   box-sizing: border-box;
+  -webkit-appearance: none;
 }
 
 .seed-input:focus {
@@ -150,7 +153,7 @@ export default {
 }
 
 .seed-hint {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: #888;
   margin: 0.5rem 0 0;
   font-family: 'Merriweather', 'Georgia', serif;
@@ -158,13 +161,13 @@ export default {
 
 .button-group {
   display: flex;
-  gap: 1rem;
-  justify-content: center;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .btn {
-  padding: 0.75rem 2rem;
-  font-size: 1rem;
+  padding: 0.85rem 1.5rem;
+  font-size: 0.95rem;
   font-family: 'Cinzel', 'Georgia', serif;
   border: 1px solid;
   border-radius: 4px;
@@ -172,6 +175,8 @@ export default {
   transition: all 0.2s;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  min-height: 44px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .btn-primary {
@@ -198,5 +203,16 @@ export default {
 
 .btn-secondary:hover {
   background: rgba(184, 134, 11, 0.1);
+}
+
+/* Desktop: larger title, side-by-side buttons */
+@media (min-width: 600px) {
+  .title-container { padding: 3rem; }
+  .title { font-size: 2.5rem; }
+  .subtitle { font-size: 1rem; margin-bottom: 2rem; }
+  .seed-input { font-size: 1.2rem; }
+  .seed-input-group { margin-bottom: 2rem; }
+  .button-group { flex-direction: row; justify-content: center; }
+  .btn { padding: 0.75rem 2rem; font-size: 1rem; }
 }
 </style>

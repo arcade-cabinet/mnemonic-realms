@@ -51,39 +51,44 @@ export default {
   z-index: 950;
   font-family: 'Cinzel', 'Georgia', serif;
   color: #d4c4a0;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .game-over-container {
   text-align: center;
-  padding: 3rem;
+  padding: 1.5rem;
   background: rgba(26, 10, 10, 0.8);
   border: 2px solid #8b1f1f;
   border-radius: 8px;
   box-shadow: 0 0 60px rgba(139, 31, 31, 0.5);
+  width: 100%;
+  max-width: 450px;
 }
 
 .game-over-title {
-  font-size: 2.5rem;
+  font-size: 1.6rem;
   color: #8b1f1f;
   text-shadow: 0 0 30px rgba(139, 31, 31, 0.6);
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.3rem;
 }
 
 .game-over-subtitle {
   color: #888;
   font-family: 'Merriweather', 'Georgia', serif;
-  margin: 0 0 2rem;
+  font-size: 0.85rem;
+  margin: 0 0 1.5rem;
 }
 
 .button-group {
   display: flex;
-  gap: 1rem;
-  justify-content: center;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .btn {
-  padding: 0.75rem 2rem;
-  font-size: 1rem;
+  padding: 0.85rem 1.5rem;
+  font-size: 0.9rem;
   font-family: 'Cinzel', 'Georgia', serif;
   border: 1px solid;
   border-radius: 4px;
@@ -91,7 +96,11 @@ export default {
   transition: all 0.2s;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  min-height: 44px;
+  -webkit-tap-highlight-color: transparent;
 }
+
+.btn:active:not(:disabled) { filter: brightness(1.3); transform: scale(0.97); }
 
 .btn-primary {
   background: #8b1f1f;
@@ -108,4 +117,13 @@ export default {
 }
 
 .btn-secondary:hover { background: rgba(184, 134, 11, 0.1); }
+
+/* Desktop: larger title, side-by-side buttons */
+@media (min-width: 600px) {
+  .game-over-container { padding: 3rem; }
+  .game-over-title { font-size: 2.5rem; }
+  .game-over-subtitle { font-size: 1rem; margin-bottom: 2rem; }
+  .button-group { flex-direction: row; justify-content: center; }
+  .btn { padding: 0.75rem 2rem; font-size: 1rem; }
+}
 </style>
