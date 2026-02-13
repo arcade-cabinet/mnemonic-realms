@@ -39,7 +39,7 @@
       ],
       "filename": "ui-btl-bg.png",
       "format": "png",
-      "status": "generated",
+      "status": "failed",
       "metadata": {
         "promptHash": "98e4e537eb7f35f8",
         "outputHash": "53977241dc2cff62bb171243890189b8211c6195a30f803bd7373c13e8a8c267",
@@ -77,10 +77,10 @@
       "status": "generated",
       "metadata": {
         "promptHash": "956c23b6bfcff06f",
-        "outputHash": "3fd64b86f46337ed389173230e6283cb15f84f110cddfd2bc3b48a7199e5b928",
-        "generatedAt": "2026-02-13T08:27:31.103Z",
-        "generationTimeMs": 7003,
-        "fileSizeBytes": 1127686,
+        "outputHash": "64d99264eaef43405c83c527911edbad927d06984e91d1819e44adc323769a7e",
+        "generatedAt": "2026-02-13T14:19:24.552Z",
+        "generationTimeMs": 6195,
+        "fileSizeBytes": 1101596,
         "model": "gemini-2.5-flash-image",
         "postProcessing": []
       }
@@ -111,10 +111,10 @@
       "status": "generated",
       "metadata": {
         "promptHash": "955c317945cadd3e",
-        "outputHash": "7c2531a17d94352f9fd31adef2f622b36436328a1842e58c529330a61611702e",
-        "generatedAt": "2026-02-13T08:27:42.105Z",
-        "generationTimeMs": 8999,
-        "fileSizeBytes": 1112768,
+        "outputHash": "a01aa82c2060c9ac049e75405dca615a38a5246134f45587c09d1f9e8970369e",
+        "generatedAt": "2026-02-13T14:19:36.123Z",
+        "generationTimeMs": 9559,
+        "fileSizeBytes": 1055616,
         "model": "gemini-2.5-flash-image",
         "postProcessing": []
       },
@@ -146,10 +146,10 @@
       "status": "generated",
       "metadata": {
         "promptHash": "25aad6255bad25f1",
-        "outputHash": "44c16923e7ea19273393183ba3d652aa1ef97ae0fa2b5b6fda19be172e693a86",
-        "generatedAt": "2026-02-13T08:27:52.829Z",
-        "generationTimeMs": 8722,
-        "fileSizeBytes": 1125764,
+        "outputHash": "8afa8985a7c41eb738cdcf1d5743894f41242726fc3bc8f13a19428b6c47ca90",
+        "generatedAt": "2026-02-13T14:19:44.600Z",
+        "generationTimeMs": 6464,
+        "fileSizeBytes": 1077659,
         "model": "gemini-2.5-flash-image",
         "postProcessing": []
       }
@@ -177,7 +177,7 @@
       ],
       "filename": "ui-btn-prs.png",
       "format": "png",
-      "status": "generated",
+      "status": "failed",
       "metadata": {
         "promptHash": "c3b7a8e265e5ded2",
         "outputHash": "341f6efd0f4006abff38d912bc76f4296c5080a9729e3950a15fad7937c9dc9c",
@@ -186,7 +186,8 @@
         "fileSizeBytes": 984874,
         "model": "gemini-2.5-flash-image",
         "postProcessing": []
-      }
+      },
+      "lastError": "No image data in Gemini response"
     },
     {
       "id": "UI-DLG-STD",
@@ -354,10 +355,10 @@
       "status": "generated",
       "metadata": {
         "promptHash": "c23dcdc07fc95d47",
-        "outputHash": "81acd2805c2323c4fa2492717344cf4f42b618d54c0e5dd9560a08ad85618a57",
-        "generatedAt": "2026-02-13T08:28:49.255Z",
-        "generationTimeMs": 5508,
-        "fileSizeBytes": 835987,
+        "outputHash": "f90f2d90b6cfd9062bbfca8fabd9a69ffc283c7522d7c116a419024b2c168ad4",
+        "generatedAt": "2026-02-13T14:19:57.745Z",
+        "generationTimeMs": 6871,
+        "fileSizeBytes": 1139581,
         "model": "gemini-2.5-flash-image",
         "postProcessing": []
       }
@@ -385,13 +386,13 @@
       ],
       "filename": "ui-hud-frag.png",
       "format": "png",
-      "status": "failed",
+      "status": "generated",
       "metadata": {
         "promptHash": "f28e44d3d4ca7bac",
-        "outputHash": "603e0798a62f7e2421ffe3f326d04274705d93b233b52cf55258ff12ab19bcab",
-        "generatedAt": "2026-02-13T07:58:24.100Z",
-        "generationTimeMs": 5757,
-        "fileSizeBytes": 1106798,
+        "outputHash": "c3c8a2920cc2652d222461b342acf60e45c6628bbf05d6dced54e89b6f953d47",
+        "generatedAt": "2026-02-13T14:20:05.671Z",
+        "generationTimeMs": 5923,
+        "fileSizeBytes": 1190760,
         "model": "gemini-2.5-flash-image",
         "postProcessing": []
       },
@@ -423,10 +424,10 @@
       "status": "generated",
       "metadata": {
         "promptHash": "557a17d73001c9a8",
-        "outputHash": "73add77a186f4b745a69e553061dcd8240161f08108d54d21895d5c508d5b35e",
-        "generatedAt": "2026-02-13T08:28:58.468Z",
-        "generationTimeMs": 6677,
-        "fileSizeBytes": 1494079,
+        "outputHash": "f14ff20964a83886787f3c17aabb8558768261c44db4398d5df6dfadf983f5f5",
+        "generatedAt": "2026-02-13T14:20:15.904Z",
+        "generationTimeMs": 8217,
+        "fileSizeBytes": 1212033,
         "model": "gemini-2.5-flash-image",
         "postProcessing": []
       }
@@ -454,7 +455,7 @@
       ],
       "filename": "ui-mnu-inv.png",
       "format": "png",
-      "status": "generated",
+      "status": "failed",
       "metadata": {
         "promptHash": "345a06e5c90ba59f",
         "outputHash": "f7eafa1b7d7ec96562059cb19aa2a51818be41f3223c477cca356e30946465ad",
@@ -463,7 +464,8 @@
         "fileSizeBytes": 1270331,
         "model": "gemini-2.5-flash-image",
         "postProcessing": []
-      }
+      },
+      "lastError": "No image data in Gemini response"
     },
     {
       "id": "UI-MNU-EQP",
@@ -488,13 +490,13 @@
       ],
       "filename": "ui-mnu-eqp.png",
       "format": "png",
-      "status": "failed",
+      "status": "generated",
       "metadata": {
         "promptHash": "b9bace955b18b431",
-        "outputHash": "c52995ae3dee08b8a27e2a6f2aa7883a9b3c9d1cc1ec861a70a2b786b49b4d61",
-        "generatedAt": "2026-02-13T08:01:17.423Z",
-        "generationTimeMs": 6247,
-        "fileSizeBytes": 1341138,
+        "outputHash": "32756434c22cd02b4b393bc745ae4d991944f37d7ec3b3449a81c4a32f274111",
+        "generatedAt": "2026-02-13T14:20:26.233Z",
+        "generationTimeMs": 7384,
+        "fileSizeBytes": 1526936,
         "model": "gemini-2.5-flash-image",
         "postProcessing": []
       },
@@ -526,10 +528,10 @@
       "status": "generated",
       "metadata": {
         "promptHash": "98debe7dd6730c49",
-        "outputHash": "211314d2e0c768731b1e5fb17452a3ed56650eed123982c149a0d61b8e40c544",
-        "generatedAt": "2026-02-13T08:29:14.731Z",
-        "generationTimeMs": 5807,
-        "fileSizeBytes": 1334938,
+        "outputHash": "4c8d0b5c2ffea067f1e3f34929792e54d457042e4fc1988e3ebe9be5740a54d3",
+        "generatedAt": "2026-02-13T14:20:35.628Z",
+        "generationTimeMs": 7375,
+        "fileSizeBytes": 1269635,
         "model": "gemini-2.5-flash-image",
         "postProcessing": []
       }
@@ -557,7 +559,7 @@
       ],
       "filename": "ui-mnu-sav.png",
       "format": "png",
-      "status": "generated",
+      "status": "failed",
       "metadata": {
         "promptHash": "b2791f4cfa0300c7",
         "outputHash": "2c6cb5ed177e9278d0376b12201c0580e265a9d05241b2b8655c36b90ef074bd",
@@ -663,14 +665,14 @@
       ],
       "filename": "ui-win-mem.png",
       "format": "png",
-      "status": "failed",
+      "status": "generated",
       "metadata": {
         "promptHash": "9926373192a2a8e4",
-        "outputHash": "3e035b1a0df41bfe663f81c6db064198267935698adc741112f69b57dfa11f50",
-        "generatedAt": "2026-02-13T08:02:34.370Z",
-        "generationTimeMs": 14211,
-        "fileSizeBytes": 1554130,
-        "model": "imagen-4.0-generate-001",
+        "outputHash": "5ba446463a5c7033e808cbea0c2111002a5aff1f44b4fb3881c6fd46c3611194",
+        "generatedAt": "2026-02-13T14:20:47.281Z",
+        "generationTimeMs": 8464,
+        "fileSizeBytes": 1502467,
+        "model": "gemini-2.5-flash-image",
         "postProcessing": []
       },
       "lastError": "No image data in Gemini response"
