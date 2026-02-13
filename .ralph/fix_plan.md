@@ -12,7 +12,7 @@
 
 ## Priority 2 — Systems + Act I (MIXED)
 
-- [ ] **US-009**: Write `docs/design/progression.md` — XP curves, stat growth tables per level per class, skill unlock schedules, level cap, subclass conditions
+- [x] **US-009**: Write `docs/design/progression.md` — XP curves, stat growth tables per level per class, skill unlock schedules, level cap, subclass conditions
 - [ ] **US-010**: Write `docs/design/items-catalog.md` — All weapons (12+), armor (8+), consumables (8+), key items (5+), named memory fragments
 - [ ] **US-004**: Write `docs/story/act1-script.md` — 10-15 scenes with full dialogue, tutorial integration, emotional arc (depends on US-001)
 
