@@ -22,7 +22,7 @@
 - [x] **US-012**: Write `docs/design/skills-catalog.md` — All skills per class with formulas, SP costs, level learned (depends on US-009)
 - [x] **US-013**: Write `docs/design/tileset-spec.md` — Tile-by-tile per biome per vibrancy level (depends on US-002)
 - [x] **US-014**: Write `docs/design/spritesheet-spec.md` + `docs/design/audio-direction.md` — Sprite dimensions/frames, audio mood per zone
-- [ ] **US-015**: Write `docs/design/ui-spec.md` — Wireframes for every GUI screen, mobile-first
+- [x] **US-015**: Write `docs/design/ui-spec.md` — Wireframes for every GUI screen, mobile-first
 
 ## Priority 4 — Act II, Act III, Dialogue (MIXED)
 
