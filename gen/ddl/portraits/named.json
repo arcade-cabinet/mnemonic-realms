@@ -1,0 +1,35 @@
+[
+  {
+    "id": "protagonist",
+    "name": "Protagonist",
+    "heading": "Player Character",
+    "appearance": "Young adventurer, determined expression. Warm brown hair, bright eyes full of wonder.",
+    "type": "named"
+  },
+  {
+    "id": "lira",
+    "name": "Lira",
+    "heading": "Lira (Mentor Figure)",
+    "appearance": "Young woman, early 20s. Warm smile, auburn hair in a loose braid, freckles. Amber-accented Cleric vestments.",
+    "type": "named"
+  },
+  {
+    "id": "callum",
+    "name": "Callum",
+    "heading": "Callum (Village Elder)",
+    "appearance": "Young man, mid 20s. Messy dark hair, round wire spectacles, ink-stained fingers. Deep blue Mage robes.",
+    "type": "named"
+  },
+  {
+    "id": "petra",
+    "name": "Petra",
+    "appearance": "Woman, late 20s. Short-cropped silver hair, strong jaw, weathered armor. Stoic expression with kind eyes.",
+    "type": "named"
+  },
+  {
+    "id": "elder-torin",
+    "name": "Elder Torin",
+    "appearance": "Elderly man, tall and thin. Long white beard, warm brown robes, wooden walking stick. Wise eyes.",
+    "type": "named"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "villager",
+    "name": "Villager",
+    "heading": "NPT-01: Villager (Generic)",
+    "type": "template",
+    "desc": "Average build, simple tunic and trousers. Earth tones."
+  },
+  {
+    "id": "merchant",
+    "name": "Merchant",
+    "heading": "NPT-02: Merchant",
+    "type": "template",
+    "desc": "Round body, large hat, traveling pack. Rich brown coat, gold trim."
+  },
+  {
+    "id": "farmer",
+    "name": "Farmer",
+    "heading": "NPT-03: Farmer",
+    "type": "template",
+    "desc": "Sturdy build, straw hat, tool over shoulder. Tan overalls, green shirt."
+  },
+  {
+    "id": "scholar",
+    "name": "Scholar",
+    "heading": "NPT-04: Scholar",
+    "type": "template",
+    "desc": "Thin, hunched over book. Glasses. Dark blue robe. Quick, distracted walk."
+  },
+  {
+    "id": "guard",
+    "name": "Guard",
+    "heading": "NPT-05: Guard/Warrior",
+    "type": "template",
+    "desc": "Broad shoulders, simple armor, spear or sword. Chain mail gray, leather brown."
+  },
+  {
+    "id": "child",
+    "name": "Child",
+    "heading": "NPT-06: Child",
+    "type": "template",
+    "desc": "Small (1.5 heads tall). Quick, bouncy walk. Bright tunic, short pants."
+  }
+]

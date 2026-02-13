@@ -1,0 +1,20 @@
+[
+  {
+    "id": "C-01",
+    "name": "Healing Herb",
+    "category": "consumable",
+    "desc": "Small green herb with golden shimmer. Basic HP restoration."
+  },
+  {
+    "id": "C-02",
+    "name": "Memory Tonic",
+    "category": "consumable",
+    "desc": "Small vial of amber liquid, glowing softly. SP restoration."
+  },
+  {
+    "id": "C-03",
+    "name": "Antidote",
+    "category": "consumable",
+    "desc": "Clear glass bottle with green liquid. Cures poison."
+  }
+]

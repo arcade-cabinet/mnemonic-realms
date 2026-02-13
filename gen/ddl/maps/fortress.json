@@ -1,0 +1,116 @@
+[
+  {
+    "id": "fortress-f1",
+    "name": "Fortress Floor 1: Gallery of Moments",
+    "filename": "fortress-f1.tmx",
+    "width": 20,
+    "height": 25,
+    "tileSize": 32,
+    "biome": "dungeon",
+    "tilesetRefs": ["tiles_dungeon_{tier}"],
+    "startVibrancy": 50,
+    "category": "fortress",
+    "act": "III",
+    "connections": [
+      { "fromTile": "10,0", "direction": "up", "toMap": "undrawn-peaks", "toTile": "19,35", "condition": "always" },
+      { "fromTile": "10,19", "direction": "down", "toMap": "fortress-f2", "toTile": "10,0", "condition": "MQ-09" },
+      { "fromTile": "3,11", "direction": "up", "toMap": "undrawn-peaks", "toTile": "19,35", "condition": "Memory lift" }
+    ],
+    "npcSpawns": [],
+    "enemyZones": [
+      { "zone": "Entry patrol", "bounds": "1,1 -> 20,4", "enemies": ["E-PV-02","E-PV-04"], "levelRange": "24-26", "encounterRate": "Standard: 2 Agents; Rare: 1 Agent + 1 Archivist" },
+      { "zone": "Puzzle room", "bounds": "11,5 -> 20,9", "enemies": ["E-PV-04"], "levelRange": "24-26", "encounterRate": "Standard: 1 Archivist; Rare: 1 + 1 Agent" }
+    ],
+    "eventTriggers": [
+      { "id": "EV-F1-001", "position": "10,0", "type": "touch", "linkedQuest": "MQ-09", "repeat": "repeat", "description": "Entry from Undrawn Peaks" },
+      { "id": "EV-F1-004", "position": "2,7", "type": "action", "repeat": "once", "description": "RS behind crystal barrier" },
+      { "id": "EV-F1-006", "position": "7,7", "type": "touch", "repeat": "once", "description": "Forced encounter: 2 Agents" },
+      { "id": "EV-F1-008", "position": "11,7", "type": "action", "linkedQuest": "MQ-09", "repeat": "quest", "description": "Joy receptacle" },
+      { "id": "EV-F1-009", "position": "15,7", "type": "action", "linkedQuest": "MQ-09", "repeat": "quest", "description": "Sorrow receptacle" },
+      { "id": "EV-F1-010", "position": "19,7", "type": "action", "linkedQuest": "MQ-09", "repeat": "quest", "description": "Fury receptacle" },
+      { "id": "EV-F1-012", "position": "3,11", "type": "action", "repeat": "repeat", "description": "Memory lift -> Undrawn Peaks" },
+      { "id": "EV-F1-016", "position": "10,16", "type": "action", "linkedQuest": "MQ-09", "repeat": "once", "description": "Boss: Curator's Right Hand dialogue" },
+      { "id": "EV-F1-017", "position": "10,16", "type": "auto", "repeat": "once", "description": "Boss fight: Right Hand" },
+      { "id": "EV-F1-019", "position": "10,19", "type": "touch", "linkedQuest": "MQ-09", "repeat": "conditional", "description": "Stairway -> F2" }
+    ],
+    "resonanceStones": [
+      { "id": "RS-F1-01", "position": "2,7", "fragments": "sorrow/dark/3", "notes": "Behind crystal barrier" },
+      { "id": "RS-F1-02", "position": "5,11", "fragments": "rest point (HP/SP)" }
+    ],
+    "treasureChests": [
+      { "id": "CH-F1-01", "position": "8,6", "contents": "Stasis Breaker (C-SC-04) x5, High Potion (C-HP-03) x3" },
+      { "id": "CH-F1-02", "position": "17,12", "contents": "Phoenix Feather (C-SP-10)" }
+    ]
+  },
+  {
+    "id": "fortress-f2",
+    "name": "Fortress Floor 2: Archive of Perfection",
+    "filename": "fortress-f2.tmx",
+    "width": 20,
+    "height": 25,
+    "tileSize": 32,
+    "biome": "dungeon",
+    "tilesetRefs": ["tiles_dungeon_{tier}"],
+    "startVibrancy": 55,
+    "category": "fortress",
+    "act": "III",
+    "connections": [
+      { "fromTile": "10,0", "direction": "up", "toMap": "fortress-f1", "toTile": "10,19", "condition": "always" },
+      { "fromTile": "15,19", "direction": "down", "toMap": "fortress-f3", "toTile": "10,0", "condition": "MQ-09" }
+    ],
+    "npcSpawns": [],
+    "enemyZones": [
+      { "zone": "Entry hall", "bounds": "1,1 -> 20,4", "enemies": ["E-PV-04","E-PV-03"], "levelRange": "26-28", "encounterRate": "Standard: 2 Archivists; Rare: 1 Archivist + 1 Captain" },
+      { "zone": "Gallery patrol", "bounds": "6,5 -> 20,9", "enemies": ["E-PV-04","E-PV-03"], "levelRange": "26-28", "encounterRate": "Standard: 1 Captain; Rare: 1 Captain + 1 Archivist" },
+      { "zone": "Archive patrol", "bounds": "1,10 -> 20,14", "enemies": ["E-PV-04"], "levelRange": "26-28", "encounterRate": "Standard: 2 Archivists" }
+    ],
+    "eventTriggers": [
+      { "id": "EV-F2-001", "position": "10,0", "type": "touch", "linkedQuest": "MQ-09", "repeat": "repeat", "description": "Entry from F1" },
+      { "id": "EV-F2-007", "position": "8,7", "type": "action", "repeat": "once", "description": "Dilemma 1: free musician" },
+      { "id": "EV-F2-008", "position": "13,7", "type": "action", "repeat": "once", "description": "Dilemma 2: free lovers" },
+      { "id": "EV-F2-009", "position": "18,7", "type": "action", "repeat": "once", "description": "Dilemma 3: free scholar" },
+      { "id": "EV-F2-010", "position": "10,12", "type": "touch", "linkedQuest": "MQ-09", "repeat": "once", "description": "Forced: Preserver Captain" },
+      { "id": "EV-F2-011", "position": "10,11", "type": "action", "linkedQuest": "MQ-09", "repeat": "once", "description": "Curator's Grief (MF-09)" },
+      { "id": "EV-F2-016", "position": "15,17", "type": "action", "linkedQuest": "MQ-09", "repeat": "once", "description": "Boss: Archive Keeper dialogue" },
+      { "id": "EV-F2-017", "position": "15,17", "type": "auto", "repeat": "once", "description": "Boss fight: Archive Keeper" },
+      { "id": "EV-F2-019", "position": "15,19", "type": "touch", "linkedQuest": "MQ-09", "repeat": "conditional", "description": "Stairway -> F3" }
+    ],
+    "resonanceStones": [
+      { "id": "RS-F2-01", "position": "5,12", "fragments": "calm/dark/4" },
+      { "id": "RS-F2-02", "position": "3,17", "fragments": "rest point (HP/SP)" }
+    ],
+    "treasureChests": [
+      { "id": "CH-F2-01", "position": "15,13", "contents": "Panacea (C-SC-05) x3, 200 gold" },
+      { "id": "CH-F2-02", "position": "12,16", "contents": "Dissolved Essence (C-SP-09) x1, Memory Incense (C-BF-05) x1, 300 gold" }
+    ]
+  },
+  {
+    "id": "fortress-f3",
+    "name": "Fortress Floor 3: First Memory Chamber",
+    "filename": "fortress-f3.tmx",
+    "width": 20,
+    "height": 25,
+    "tileSize": 32,
+    "biome": "dungeon",
+    "tilesetRefs": ["tiles_dungeon_{tier}"],
+    "startVibrancy": 60,
+    "category": "fortress",
+    "act": "III",
+    "connections": [
+      { "fromTile": "10,0", "direction": "up", "toMap": "fortress-f2", "toTile": "15,19", "condition": "always" }
+    ],
+    "npcSpawns": [],
+    "enemyZones": [],
+    "eventTriggers": [
+      { "id": "EV-F3-001", "position": "10,0", "type": "touch", "linkedQuest": "MQ-09", "repeat": "repeat", "description": "Entry from F2" },
+      { "id": "EV-F3-002", "position": "10,5", "type": "auto", "linkedQuest": "MQ-09", "repeat": "once", "description": "Curator dialogue" },
+      { "id": "EV-F3-003", "position": "10,12", "type": "auto", "linkedQuest": "MQ-09", "repeat": "once", "description": "Final boss: The Curator" },
+      { "id": "EV-F3-004", "position": "10,18", "type": "action", "linkedQuest": "MQ-10", "repeat": "once", "description": "First Memory interaction" },
+      { "id": "EV-F3-005", "position": "10,20", "type": "auto", "linkedQuest": "MQ-10", "repeat": "once", "description": "Ending sequence" }
+    ],
+    "resonanceStones": [
+      { "id": "RS-F3-01", "position": "10,18", "fragments": "First Memory (unique)", "notes": "Final story interaction" }
+    ],
+    "treasureChests": []
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "C-HP-01",
+    "name": "Minor Potion",
+    "category": "healing",
+    "effect": "Restore 50 HP",
+    "price": 30,
+    "stackMax": 10,
+    "tier": 1
+  },
+  {
+    "id": "C-HP-02",
+    "name": "Potion",
+    "category": "healing",
+    "effect": "Restore 120 HP",
+    "price": 80,
+    "stackMax": 10,
+    "tier": 2
+  },
+  {
+    "id": "C-HP-03",
+    "name": "High Potion",
+    "category": "healing",
+    "effect": "Restore 250 HP",
+    "price": 180,
+    "stackMax": 10,
+    "tier": 3
+  },
+  {
+    "id": "C-HP-04",
+    "name": "Elixir",
+    "category": "healing",
+    "effect": "Restore 100% HP",
+    "price": 500,
+    "stackMax": 5,
+    "tier": 3
+  },
+  {
+    "id": "C-SP-01",
+    "name": "Mana Drop",
+    "category": "sp-recovery",
+    "effect": "Restore 20 SP",
+    "price": 25,
+    "stackMax": 10,
+    "tier": 1
+  },
+  {
+    "id": "C-SP-02",
+    "name": "Mana Draught",
+    "category": "sp-recovery",
+    "effect": "Restore 50 SP",
+    "price": 70,
+    "stackMax": 10,
+    "tier": 2
+  },
+  {
+    "id": "C-SP-03",
+    "name": "Mana Surge",
+    "category": "sp-recovery",
+    "effect": "Restore 120 SP",
+    "price": 160,
+    "stackMax": 10,
+    "tier": 3
+  },
+  {
+    "id": "C-SP-04",
+    "name": "Ether",
+    "category": "sp-recovery",
+    "effect": "Restore 100% SP",
+    "price": 450,
+    "stackMax": 5,
+    "tier": 3
+  }
+]

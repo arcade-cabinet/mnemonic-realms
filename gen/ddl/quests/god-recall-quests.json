@@ -1,0 +1,82 @@
+[
+  {
+    "id": "GQ-01", "name": "Recall Resonance", "category": "god-recall", "act": "act2",
+    "levelRange": "12-16", "giver": "Audiomancer Vess", "giverLocation": "Resonance Fields — Amphitheater (25, 25)",
+    "triggerCondition": "MQ-05 complete, SQ-09 complete (path harmonized)",
+    "objectives": [
+      { "index": 0, "description": "Enter Resonance's Amphitheater" },
+      { "index": 1, "description": "Watch the Choir recall vision" },
+      { "index": 2, "description": "Choose an emotion pedestal (Joy/Fury/Sorrow/Awe)" },
+      { "index": 3, "description": "Place potency 3+ fragment on pedestal" },
+      { "index": 4, "description": "Witness Resonance transformation" }
+    ],
+    "rewards": [
+      { "type": "vibrancy", "name": "Resonance Fields vibrancy +15" },
+      { "type": "unlock", "name": "Subclass branch (if first recall)" }
+    ],
+    "completionDialogue": "Varies by god form: Cantara (Joy), Tempestus (Fury), Tacet (Sorrow), Harmonia (Awe)",
+    "failureConditions": "None",
+    "unlocks": ["MQ-06"], "dependencies": ["MQ-05", "SQ-09"],
+    "targetPath": "main/server/quests/gq01-recall-resonance.ts"
+  },
+  {
+    "id": "GQ-02", "name": "Recall Verdance", "category": "god-recall", "act": "act2",
+    "levelRange": "12-16", "giver": "Wynn", "giverLocation": "Shimmer Marsh — Verdance's Hollow (25, 35)",
+    "triggerCondition": "MQ-05 complete, Hermit's Path quest complete",
+    "objectives": [
+      { "index": 0, "description": "Follow Wynn to Verdance's Hollow" },
+      { "index": 1, "description": "Solve root puzzle (broadcast earth/water fragment)" },
+      { "index": 2, "description": "Watch the Rootwalker recall vision" },
+      { "index": 3, "description": "Choose emotion and place potency 3+ fragment" },
+      { "index": 4, "description": "Witness Verdance transformation" }
+    ],
+    "rewards": [
+      { "type": "vibrancy", "name": "Shimmer Marsh vibrancy +15" },
+      { "type": "unlock", "name": "Subclass branch (if first recall)" }
+    ],
+    "completionDialogue": "Varies: Floriana (Joy), Thornweald (Fury), Autumnus (Sorrow), Sylvanos (Awe)",
+    "failureConditions": "None",
+    "unlocks": ["MQ-06"], "dependencies": ["MQ-05"],
+    "targetPath": "main/server/quests/gq02-recall-verdance.ts"
+  },
+  {
+    "id": "GQ-03", "name": "Recall Luminos", "category": "god-recall", "act": "act2",
+    "levelRange": "14-18", "giver": "Solen", "giverLocation": "Flickerveil — Luminos Grove (20, 20)",
+    "triggerCondition": "MQ-05 complete, Light Lens (K-04) obtained",
+    "objectives": [
+      { "index": 0, "description": "Enter Luminos Grove with Light Lens" },
+      { "index": 1, "description": "Navigate light corridor to prism" },
+      { "index": 2, "description": "Watch the Radiant Lens recall vision" },
+      { "index": 3, "description": "Choose emotion and place potency 3+ fragment" },
+      { "index": 4, "description": "Witness Luminos transformation" }
+    ],
+    "rewards": [
+      { "type": "vibrancy", "name": "Flickerveil vibrancy +15" },
+      { "type": "unlock", "name": "Subclass branch (if first recall)" }
+    ],
+    "completionDialogue": "Varies: Solara (Joy), Pyralis (Fury), Vesperis (Sorrow), Prisma (Awe)",
+    "failureConditions": "None",
+    "unlocks": ["MQ-06"], "dependencies": ["MQ-05"],
+    "targetPath": "main/server/quests/gq03-recall-luminos.ts"
+  },
+  {
+    "id": "GQ-04", "name": "Recall Kinesis", "category": "god-recall", "act": "act2",
+    "levelRange": "14-18", "giver": "Petra", "giverLocation": "Hollow Ridge — Kinesis Spire (24, 10)",
+    "triggerCondition": "MQ-05 complete, Kinetic Boots (K-05) obtained",
+    "objectives": [
+      { "index": 0, "description": "Climb to Kinesis Spire with Kinetic Boots" },
+      { "index": 1, "description": "Survive vibration gauntlet" },
+      { "index": 2, "description": "Watch the Peregrine Road recall vision" },
+      { "index": 3, "description": "Choose emotion and place potency 3+ fragment" },
+      { "index": 4, "description": "Witness Kinesis transformation" }
+    ],
+    "rewards": [
+      { "type": "vibrancy", "name": "Hollow Ridge vibrancy +15" },
+      { "type": "unlock", "name": "Subclass branch (if first recall)" }
+    ],
+    "completionDialogue": "Varies: Zephira (Joy), Tecton (Fury), Stillara (Sorrow), Orbitas (Awe)",
+    "failureConditions": "None",
+    "unlocks": ["MQ-06"], "dependencies": ["MQ-05"],
+    "targetPath": "main/server/quests/gq04-recall-kinesis.ts"
+  }
+]

@@ -1,0 +1,51 @@
+[
+  {
+    "id": "SFX-ENV-01",
+    "name": "Door open",
+    "category": "environment",
+    "description": "Wooden creak, soft",
+    "durationSec": 0.4,
+    "preset": [3,0.1,0.12,0,0.3,0.18,0.03,0.5,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0.5]
+  },
+  {
+    "id": "SFX-ENV-02",
+    "name": "Chest open",
+    "category": "environment",
+    "description": "Lid creak + slight sparkle",
+    "durationSec": 0.5,
+    "preset": [3,0.1,0.14,0,0.4,0.2,0.04,0.4,0,0,0.2,0,0,0,0,0,0,0,1,0,0,0,0,0.5]
+  },
+  {
+    "id": "SFX-ENV-03",
+    "name": "NPC interact",
+    "category": "environment",
+    "description": "Soft chime, welcoming",
+    "durationSec": 0.2,
+    "preset": [0,0,0.3,0,0.2,0.5,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0.5]
+  },
+  {
+    "id": "SFX-ENV-04",
+    "name": "Resonance Stone hum",
+    "category": "environment",
+    "description": "Deep sustained hum when player approaches. Loops while nearby.",
+    "durationSec": 2.0,
+    "looping": true,
+    "preset": [0,0.5,0.08,0,1.5,0.15,0.02,0.2,0,0,0.1,0,0,0,0,0,0,0,1,0,0,0,0,0.5]
+  },
+  {
+    "id": "SFX-ENV-05",
+    "name": "Zone transition",
+    "category": "environment",
+    "description": "Brief whoosh, fade in new ambient",
+    "durationSec": 0.8,
+    "preset": [3,0.15,0.2,0,0.6,0.05,0.08,0.7,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0.5]
+  },
+  {
+    "id": "SFX-ENV-06",
+    "name": "Save point",
+    "category": "environment",
+    "description": "Warm ascending arpeggio + bell",
+    "durationSec": 0.6,
+    "preset": [0,0,0.25,0.08,0.55,0.6,0.1,0.3,0,0,0.5,0,0,0,0,0,0,0,1,0,0,0,0,0.5]
+  }
+]

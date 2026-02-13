@@ -1,0 +1,715 @@
+{
+  "schemaVersion": "1.0.0",
+  "description": "UI element generation manifest",
+  "updatedAt": "2026-02-13T14:13:51.960Z",
+  "styleGuide": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light. UI elements use parchment/leather aesthetic with warm tones.",
+  "styleDocRefs": [
+    {
+      "path": "docs/design/visual-direction.md",
+      "heading": "Color Philosophy",
+      "purpose": "style"
+    },
+    {
+      "path": "docs/design/visual-direction.md",
+      "heading": "Sprite Style",
+      "purpose": "style"
+    }
+  ],
+  "assets": [
+    {
+      "id": "UI-BTL-BG",
+      "name": "Battle Background Overlay",
+      "type": "battle-frame",
+      "appearance": "Full-screen combat UI backdrop. Dark parchment (#2A1810) with soft vignette, styled as a remembered battle. Warm amber border trim.",
+      "nineSlice": false,
+      "dimensions": {
+        "width": 800,
+        "height": 480,
+        "genWidth": 1600,
+        "genHeight": 960
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\nGame UI element, pixel art style. Full-screen combat UI backdrop. Dark parchment (#2A1810) with soft vignette, styled as a remembered battle. Warm amber border trim. Parchment/leather aesthetic, warm tones. Dark parchment #2A1810, warm text #D4C4A0, amber accents #DAA520.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, modern UI, flat design, gradient mesh",
+      "docRefs": [
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "UI Design",
+          "purpose": "style"
+        }
+      ],
+      "filename": "ui-btl-bg.png",
+      "format": "png",
+      "status": "generated",
+      "metadata": {
+        "promptHash": "98e4e537eb7f35f8",
+        "outputHash": "53977241dc2cff62bb171243890189b8211c6195a30f803bd7373c13e8a8c267",
+        "generatedAt": "2026-02-13T08:27:22.096Z",
+        "generationTimeMs": 6375,
+        "fileSizeBytes": 1539376,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      },
+      "lastError": "No image data in Gemini response"
+    },
+    {
+      "id": "UI-BTL-CMD",
+      "name": "Battle Command Panel",
+      "type": "battle-frame",
+      "appearance": "Bottom command menu panel for combat. Leather-textured background with bronze studs along border. Clear sections for Attack/Magic/Item/Flee.",
+      "nineSlice": false,
+      "dimensions": {
+        "width": 800,
+        "height": 480,
+        "genWidth": 1600,
+        "genHeight": 960
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\nGame UI element, pixel art style. Bottom command menu panel for combat. Leather-textured background with bronze studs along border. Clear sections for Attack/Magic/Item/Flee. Parchment/leather aesthetic, warm tones. Dark parchment #2A1810, warm text #D4C4A0, amber accents #DAA520.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, modern UI, flat design, gradient mesh",
+      "docRefs": [
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "UI Design",
+          "purpose": "style"
+        }
+      ],
+      "filename": "ui-btl-cmd.png",
+      "format": "png",
+      "status": "generated",
+      "metadata": {
+        "promptHash": "956c23b6bfcff06f",
+        "outputHash": "3fd64b86f46337ed389173230e6283cb15f84f110cddfd2bc3b48a7199e5b928",
+        "generatedAt": "2026-02-13T08:27:31.103Z",
+        "generationTimeMs": 7003,
+        "fileSizeBytes": 1127686,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
+    },
+    {
+      "id": "UI-BTN-NRM",
+      "name": "Standard Button Normal",
+      "type": "button",
+      "appearance": "Default button state. Rounded rectangle with warm brown gradient, subtle bevel, gold text area.",
+      "nineSlice": false,
+      "dimensions": {
+        "width": 160,
+        "height": 48,
+        "genWidth": 640,
+        "genHeight": 192
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\nGame UI element, pixel art style. Default button state. Rounded rectangle with warm brown gradient, subtle bevel, gold text area. Parchment/leather aesthetic, warm tones. Dark parchment #2A1810, warm text #D4C4A0, amber accents #DAA520.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, modern UI, flat design, gradient mesh",
+      "docRefs": [
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "UI Design",
+          "purpose": "style"
+        }
+      ],
+      "filename": "ui-btn-nrm.png",
+      "format": "png",
+      "status": "generated",
+      "metadata": {
+        "promptHash": "955c317945cadd3e",
+        "outputHash": "7c2531a17d94352f9fd31adef2f622b36436328a1842e58c529330a61611702e",
+        "generatedAt": "2026-02-13T08:27:42.105Z",
+        "generationTimeMs": 8999,
+        "fileSizeBytes": 1112768,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      },
+      "lastError": "No image data in Gemini response"
+    },
+    {
+      "id": "UI-BTN-HOV",
+      "name": "Standard Button Hover",
+      "type": "button",
+      "appearance": "Hovered button state. Slightly brighter than normal, faint amber glow along edges.",
+      "nineSlice": false,
+      "dimensions": {
+        "width": 160,
+        "height": 48,
+        "genWidth": 640,
+        "genHeight": 192
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\nGame UI element, pixel art style. Hovered button state. Slightly brighter than normal, faint amber glow along edges. Parchment/leather aesthetic, warm tones. Dark parchment #2A1810, warm text #D4C4A0, amber accents #DAA520.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, modern UI, flat design, gradient mesh",
+      "docRefs": [
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "UI Design",
+          "purpose": "style"
+        }
+      ],
+      "filename": "ui-btn-hov.png",
+      "format": "png",
+      "status": "generated",
+      "metadata": {
+        "promptHash": "25aad6255bad25f1",
+        "outputHash": "44c16923e7ea19273393183ba3d652aa1ef97ae0fa2b5b6fda19be172e693a86",
+        "generatedAt": "2026-02-13T08:27:52.829Z",
+        "generationTimeMs": 8722,
+        "fileSizeBytes": 1125764,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
+    },
+    {
+      "id": "UI-BTN-PRS",
+      "name": "Standard Button Pressed",
+      "type": "button",
+      "appearance": "Pressed button state. Slightly darker, inset bevel reversed. Compressed look.",
+      "nineSlice": false,
+      "dimensions": {
+        "width": 160,
+        "height": 48,
+        "genWidth": 640,
+        "genHeight": 192
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\nGame UI element, pixel art style. Pressed button state. Slightly darker, inset bevel reversed. Compressed look. Parchment/leather aesthetic, warm tones. Dark parchment #2A1810, warm text #D4C4A0, amber accents #DAA520.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, modern UI, flat design, gradient mesh",
+      "docRefs": [
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "UI Design",
+          "purpose": "style"
+        }
+      ],
+      "filename": "ui-btn-prs.png",
+      "format": "png",
+      "status": "generated",
+      "metadata": {
+        "promptHash": "c3b7a8e265e5ded2",
+        "outputHash": "341f6efd0f4006abff38d912bc76f4296c5080a9729e3950a15fad7937c9dc9c",
+        "generatedAt": "2026-02-13T08:28:01.228Z",
+        "generationTimeMs": 6396,
+        "fileSizeBytes": 984874,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
+    },
+    {
+      "id": "UI-DLG-STD",
+      "name": "Standard Dialogue Frame",
+      "type": "dialogue-frame",
+      "appearance": "Full-width bottom panel with dark parchment background (#2A1810), warm gold trim, subtle vignette edges. Clean interior for text.",
+      "nineSlice": false,
+      "dimensions": {
+        "width": 800,
+        "height": 200,
+        "genWidth": 1600,
+        "genHeight": 400
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\nGame UI element, pixel art style. Full-width bottom panel with dark parchment background (#2A1810), warm gold trim, subtle vignette edges. Clean interior for text. Parchment/leather aesthetic, warm tones. Dark parchment #2A1810, warm text #D4C4A0, amber accents #DAA520.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, modern UI, flat design, gradient mesh",
+      "docRefs": [
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "UI Design",
+          "purpose": "style"
+        }
+      ],
+      "filename": "ui-dlg-std.png",
+      "format": "png",
+      "status": "failed",
+      "metadata": {
+        "promptHash": "b050e35ed8acf72c",
+        "outputHash": "370badc895c0ce7b8c81f23ebc252fbad05a3bfd7ba26e4ce16304c31ce9a5e1",
+        "generatedAt": "2026-02-13T08:01:59.232Z",
+        "generationTimeMs": 7977,
+        "fileSizeBytes": 713242,
+        "model": "imagen-4.0-generate-001",
+        "postProcessing": []
+      },
+      "lastError": "No image data in Gemini response"
+    },
+    {
+      "id": "UI-DLG-MEM",
+      "name": "Memory Recall Frame",
+      "type": "dialogue-frame",
+      "appearance": "Dialogue frame with amber glow border (#DAA520), soft golden particle motes along edges. Interior slightly warmer than standard.",
+      "nineSlice": false,
+      "dimensions": {
+        "width": 800,
+        "height": 200,
+        "genWidth": 1600,
+        "genHeight": 400
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\nGame UI element, pixel art style. Dialogue frame with amber glow border (#DAA520), soft golden particle motes along edges. Interior slightly warmer than standard. Parchment/leather aesthetic, warm tones. Dark parchment #2A1810, warm text #D4C4A0, amber accents #DAA520.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, modern UI, flat design, gradient mesh",
+      "docRefs": [
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "UI Design",
+          "purpose": "style"
+        }
+      ],
+      "filename": "ui-dlg-mem.png",
+      "format": "png",
+      "status": "failed",
+      "metadata": {
+        "promptHash": "ebe243e1324469cf",
+        "outputHash": "d1254865e939562f8a255c10347bd6182287a9ef3ed709a306ab3663e18bb147",
+        "generatedAt": "2026-02-13T07:58:06.689Z",
+        "generationTimeMs": 7861,
+        "fileSizeBytes": 1206210,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      },
+      "lastError": "No image data in Gemini response"
+    },
+    {
+      "id": "UI-DLG-GOD",
+      "name": "God Voice Frame",
+      "type": "dialogue-frame",
+      "appearance": "Ornate dialogue frame with crystalline border accents, subtle aurora shimmer along top edge. Deeper parchment tone, sacred geometry corner ornaments.",
+      "nineSlice": false,
+      "dimensions": {
+        "width": 800,
+        "height": 200,
+        "genWidth": 1600,
+        "genHeight": 400
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\nGame UI element, pixel art style. Ornate dialogue frame with crystalline border accents, subtle aurora shimmer along top edge. Deeper parchment tone, sacred geometry corner ornaments. Parchment/leather aesthetic, warm tones. Dark parchment #2A1810, warm text #D4C4A0, amber accents #DAA520.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, modern UI, flat design, gradient mesh",
+      "docRefs": [
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "UI Design",
+          "purpose": "style"
+        }
+      ],
+      "filename": "ui-dlg-god.png",
+      "format": "png",
+      "status": "failed",
+      "metadata": {
+        "promptHash": "b3e7c31ee675138f",
+        "outputHash": "2b30682d68548bde3ff43eaba11fbb58902356a1e107439472c2a9a2959ef56a",
+        "generatedAt": "2026-02-13T08:02:17.574Z",
+        "generationTimeMs": 15715,
+        "fileSizeBytes": 1468039,
+        "model": "imagen-4.0-generate-001",
+        "postProcessing": []
+      },
+      "lastError": "No image data in Gemini response"
+    },
+    {
+      "id": "UI-HUD-HP",
+      "name": "HP Bar",
+      "type": "hud-element",
+      "appearance": "Health bar frame with warm red fill gradient. Semi-transparent dark backing. Clean pixel edges.",
+      "nineSlice": false,
+      "dimensions": {
+        "width": 128,
+        "height": 32,
+        "genWidth": 512,
+        "genHeight": 128
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\nGame UI element, pixel art style. Health bar frame with warm red fill gradient. Semi-transparent dark backing. Clean pixel edges. Parchment/leather aesthetic, warm tones. Dark parchment #2A1810, warm text #D4C4A0, amber accents #DAA520.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, modern UI, flat design, gradient mesh",
+      "docRefs": [
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "UI Design",
+          "purpose": "style"
+        }
+      ],
+      "filename": "ui-hud-hp.png",
+      "format": "png",
+      "status": "failed",
+      "metadata": {
+        "promptHash": "3690c9cfd29b4b79",
+        "outputHash": "6be33e33b1f3fed9cb9750d8074d0696e8f680febb7d45ff4272136d5ef4d63b",
+        "generatedAt": "2026-02-13T07:59:32.357Z",
+        "generationTimeMs": 5659,
+        "fileSizeBytes": 1071278,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      },
+      "lastError": "No image data in Gemini response"
+    },
+    {
+      "id": "UI-HUD-SP",
+      "name": "SP Bar",
+      "type": "hud-element",
+      "appearance": "Skill points bar frame with deep blue fill gradient. Matches HP bar style. Semi-transparent backing.",
+      "nineSlice": false,
+      "dimensions": {
+        "width": 128,
+        "height": 32,
+        "genWidth": 512,
+        "genHeight": 128
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\nGame UI element, pixel art style. Skill points bar frame with deep blue fill gradient. Matches HP bar style. Semi-transparent backing. Parchment/leather aesthetic, warm tones. Dark parchment #2A1810, warm text #D4C4A0, amber accents #DAA520.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, modern UI, flat design, gradient mesh",
+      "docRefs": [
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "UI Design",
+          "purpose": "style"
+        }
+      ],
+      "filename": "ui-hud-sp.png",
+      "format": "png",
+      "status": "generated",
+      "metadata": {
+        "promptHash": "c23dcdc07fc95d47",
+        "outputHash": "81acd2805c2323c4fa2492717344cf4f42b618d54c0e5dd9560a08ad85618a57",
+        "generatedAt": "2026-02-13T08:28:49.255Z",
+        "generationTimeMs": 5508,
+        "fileSizeBytes": 835987,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
+    },
+    {
+      "id": "UI-HUD-FRAG",
+      "name": "Fragment Counter",
+      "type": "hud-element",
+      "appearance": "Memory fragment counter icon. Small golden crystal with subtle glow, number display area beside it.",
+      "nineSlice": false,
+      "dimensions": {
+        "width": 128,
+        "height": 32,
+        "genWidth": 512,
+        "genHeight": 128
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\nGame UI element, pixel art style. Memory fragment counter icon. Small golden crystal with subtle glow, number display area beside it. Parchment/leather aesthetic, warm tones. Dark parchment #2A1810, warm text #D4C4A0, amber accents #DAA520.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, modern UI, flat design, gradient mesh",
+      "docRefs": [
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "UI Design",
+          "purpose": "style"
+        }
+      ],
+      "filename": "ui-hud-frag.png",
+      "format": "png",
+      "status": "failed",
+      "metadata": {
+        "promptHash": "f28e44d3d4ca7bac",
+        "outputHash": "603e0798a62f7e2421ffe3f326d04274705d93b233b52cf55258ff12ab19bcab",
+        "generatedAt": "2026-02-13T07:58:24.100Z",
+        "generationTimeMs": 5757,
+        "fileSizeBytes": 1106798,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      },
+      "lastError": "No image data in Gemini response"
+    },
+    {
+      "id": "UI-HUD-VIB",
+      "name": "Vibrancy Indicator",
+      "type": "hud-element",
+      "appearance": "Zone vibrancy gauge. Small arc meter that fills with color from muted to vivid. Amber accent frame.",
+      "nineSlice": false,
+      "dimensions": {
+        "width": 128,
+        "height": 32,
+        "genWidth": 512,
+        "genHeight": 128
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\nGame UI element, pixel art style. Zone vibrancy gauge. Small arc meter that fills with color from muted to vivid. Amber accent frame. Parchment/leather aesthetic, warm tones. Dark parchment #2A1810, warm text #D4C4A0, amber accents #DAA520.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, modern UI, flat design, gradient mesh",
+      "docRefs": [
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "UI Design",
+          "purpose": "style"
+        }
+      ],
+      "filename": "ui-hud-vib.png",
+      "format": "png",
+      "status": "generated",
+      "metadata": {
+        "promptHash": "557a17d73001c9a8",
+        "outputHash": "73add77a186f4b745a69e553061dcd8240161f08108d54d21895d5c508d5b35e",
+        "generatedAt": "2026-02-13T08:28:58.468Z",
+        "generationTimeMs": 6677,
+        "fileSizeBytes": 1494079,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
+    },
+    {
+      "id": "UI-MNU-INV",
+      "name": "Inventory Menu Background",
+      "type": "menu-background",
+      "appearance": "Full-screen inventory panel. Aged parchment texture with leather corner reinforcements. Grid layout area for item slots.",
+      "nineSlice": false,
+      "dimensions": {
+        "width": 800,
+        "height": 600,
+        "genWidth": 1600,
+        "genHeight": 1200
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\nGame UI element, pixel art style. Full-screen inventory panel. Aged parchment texture with leather corner reinforcements. Grid layout area for item slots. Parchment/leather aesthetic, warm tones. Dark parchment #2A1810, warm text #D4C4A0, amber accents #DAA520.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, modern UI, flat design, gradient mesh",
+      "docRefs": [
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "UI Design",
+          "purpose": "style"
+        }
+      ],
+      "filename": "ui-mnu-inv.png",
+      "format": "png",
+      "status": "generated",
+      "metadata": {
+        "promptHash": "345a06e5c90ba59f",
+        "outputHash": "f7eafa1b7d7ec96562059cb19aa2a51818be41f3223c477cca356e30946465ad",
+        "generatedAt": "2026-02-13T08:29:06.381Z",
+        "generationTimeMs": 5911,
+        "fileSizeBytes": 1270331,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
+    },
+    {
+      "id": "UI-MNU-EQP",
+      "name": "Equipment Menu Background",
+      "type": "menu-background",
+      "appearance": "Equipment screen with character silhouette area on left, gear slots on right. Warm parchment with bronze clasps.",
+      "nineSlice": false,
+      "dimensions": {
+        "width": 800,
+        "height": 600,
+        "genWidth": 1600,
+        "genHeight": 1200
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\nGame UI element, pixel art style. Equipment screen with character silhouette area on left, gear slots on right. Warm parchment with bronze clasps. Parchment/leather aesthetic, warm tones. Dark parchment #2A1810, warm text #D4C4A0, amber accents #DAA520.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, modern UI, flat design, gradient mesh",
+      "docRefs": [
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "UI Design",
+          "purpose": "style"
+        }
+      ],
+      "filename": "ui-mnu-eqp.png",
+      "format": "png",
+      "status": "failed",
+      "metadata": {
+        "promptHash": "b9bace955b18b431",
+        "outputHash": "c52995ae3dee08b8a27e2a6f2aa7883a9b3c9d1cc1ec861a70a2b786b49b4d61",
+        "generatedAt": "2026-02-13T08:01:17.423Z",
+        "generationTimeMs": 6247,
+        "fileSizeBytes": 1341138,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      },
+      "lastError": "No image data in Gemini response"
+    },
+    {
+      "id": "UI-MNU-STS",
+      "name": "Status Menu Background",
+      "type": "menu-background",
+      "appearance": "Character status display. Scroll-like parchment with decorative header. Areas for portrait, stats, and memory fragment count.",
+      "nineSlice": false,
+      "dimensions": {
+        "width": 800,
+        "height": 600,
+        "genWidth": 1600,
+        "genHeight": 1200
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\nGame UI element, pixel art style. Character status display. Scroll-like parchment with decorative header. Areas for portrait, stats, and memory fragment count. Parchment/leather aesthetic, warm tones. Dark parchment #2A1810, warm text #D4C4A0, amber accents #DAA520.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, modern UI, flat design, gradient mesh",
+      "docRefs": [
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "UI Design",
+          "purpose": "style"
+        }
+      ],
+      "filename": "ui-mnu-sts.png",
+      "format": "png",
+      "status": "generated",
+      "metadata": {
+        "promptHash": "98debe7dd6730c49",
+        "outputHash": "211314d2e0c768731b1e5fb17452a3ed56650eed123982c149a0d61b8e40c544",
+        "generatedAt": "2026-02-13T08:29:14.731Z",
+        "generationTimeMs": 5807,
+        "fileSizeBytes": 1334938,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
+    },
+    {
+      "id": "UI-MNU-SAV",
+      "name": "Save Menu Background",
+      "type": "menu-background",
+      "appearance": "Save/load screen. Open book aesthetic with two pages. Left page for save slots, right page for preview. Warm candlelight glow.",
+      "nineSlice": false,
+      "dimensions": {
+        "width": 800,
+        "height": 600,
+        "genWidth": 1600,
+        "genHeight": 1200
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\nGame UI element, pixel art style. Save/load screen. Open book aesthetic with two pages. Left page for save slots, right page for preview. Warm candlelight glow. Parchment/leather aesthetic, warm tones. Dark parchment #2A1810, warm text #D4C4A0, amber accents #DAA520.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, modern UI, flat design, gradient mesh",
+      "docRefs": [
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "UI Design",
+          "purpose": "style"
+        }
+      ],
+      "filename": "ui-mnu-sav.png",
+      "format": "png",
+      "status": "generated",
+      "metadata": {
+        "promptHash": "b2791f4cfa0300c7",
+        "outputHash": "2c6cb5ed177e9278d0376b12201c0580e265a9d05241b2b8655c36b90ef074bd",
+        "generatedAt": "2026-02-13T08:29:24.184Z",
+        "generationTimeMs": 7449,
+        "fileSizeBytes": 1469549,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      },
+      "lastError": "No image data in Gemini response"
+    },
+    {
+      "id": "UI-TTL-BG",
+      "name": "Title Screen Background",
+      "type": "title-background",
+      "appearance": "Panoramic landscape at dawn. Soft pastel sky, rolling hills with scattered ruins and a distant crystalline spire. Muted watercolor quality — the world before memory brightens it. Gentle morning mist.",
+      "nineSlice": false,
+      "dimensions": {
+        "width": 800,
+        "height": 600,
+        "genWidth": 1600,
+        "genHeight": 1200
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\nGame UI element, pixel art style. Panoramic landscape at dawn. Soft pastel sky, rolling hills with scattered ruins and a distant crystalline spire. Muted watercolor quality — the world before memory brightens it. Gentle morning mist. Parchment/leather aesthetic, warm tones. Dark parchment #2A1810, warm text #D4C4A0, amber accents #DAA520.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, modern UI, flat design, gradient mesh",
+      "docRefs": [
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "UI Design",
+          "purpose": "style"
+        }
+      ],
+      "filename": "ui-ttl-bg.png",
+      "format": "png",
+      "status": "generated",
+      "metadata": {
+        "promptHash": "49e262d11446f780",
+        "outputHash": "cc81fe422cd0623c4e9bd1a5ce4a0dc29db5bd6523a015725867ebf1f5ee6151",
+        "generatedAt": "2026-02-13T08:29:36.101Z",
+        "generationTimeMs": 9914,
+        "fileSizeBytes": 1253463,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      }
+    },
+    {
+      "id": "UI-WIN-STD",
+      "name": "Standard Window Border",
+      "type": "window-border",
+      "appearance": "9-slice tileable panel border. Dark wood frame with subtle gold inlay. Clean corners, 8px border thickness.",
+      "nineSlice": true,
+      "nineSlicePadding": 8,
+      "dimensions": {
+        "width": 96,
+        "height": 96,
+        "genWidth": 384,
+        "genHeight": 384
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\nGame UI element, pixel art style. 9-slice tileable panel border. Dark wood frame with subtle gold inlay. Clean corners, 8px border thickness. 9-slice tileable border panel. Symmetric edges and corners. Parchment/leather aesthetic, warm tones. Dark parchment #2A1810, warm text #D4C4A0, amber accents #DAA520.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, modern UI, flat design, gradient mesh",
+      "docRefs": [
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "UI Design",
+          "purpose": "style"
+        }
+      ],
+      "filename": "ui-win-std.png",
+      "format": "png",
+      "status": "failed",
+      "metadata": {
+        "promptHash": "6014e5dc7d539d7a",
+        "outputHash": "45774b4ab0c7870df143e5592f2e5e025512a3e2aea4d15d2f4f636fc101bc7e",
+        "generatedAt": "2026-02-13T07:59:53.125Z",
+        "generationTimeMs": 8197,
+        "fileSizeBytes": 1650310,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      },
+      "lastError": "No image data in Gemini response"
+    },
+    {
+      "id": "UI-WIN-MEM",
+      "name": "Memory Window Border",
+      "type": "window-border",
+      "appearance": "9-slice border with amber glow effect. Golden light emanates from frame edges. Used for memory-related panels.",
+      "nineSlice": true,
+      "nineSlicePadding": 8,
+      "dimensions": {
+        "width": 96,
+        "height": 96,
+        "genWidth": 384,
+        "genHeight": 384
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\nGame UI element, pixel art style. 9-slice border with amber glow effect. Golden light emanates from frame edges. Used for memory-related panels. 9-slice tileable border panel. Symmetric edges and corners. Parchment/leather aesthetic, warm tones. Dark parchment #2A1810, warm text #D4C4A0, amber accents #DAA520.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, modern UI, flat design, gradient mesh",
+      "docRefs": [
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "UI Design",
+          "purpose": "style"
+        }
+      ],
+      "filename": "ui-win-mem.png",
+      "format": "png",
+      "status": "failed",
+      "metadata": {
+        "promptHash": "9926373192a2a8e4",
+        "outputHash": "3e035b1a0df41bfe663f81c6db064198267935698adc741112f69b57dfa11f50",
+        "generatedAt": "2026-02-13T08:02:34.370Z",
+        "generationTimeMs": 14211,
+        "fileSizeBytes": 1554130,
+        "model": "imagen-4.0-generate-001",
+        "postProcessing": []
+      },
+      "lastError": "No image data in Gemini response"
+    },
+    {
+      "id": "UI-WIN-STG",
+      "name": "Stagnation Window Border",
+      "type": "window-border",
+      "appearance": "9-slice border with cold crystal blue-white (#B0C4DE) frost pattern. Used for Preserver/stagnation UI contexts.",
+      "nineSlice": true,
+      "nineSlicePadding": 8,
+      "dimensions": {
+        "width": 96,
+        "height": 96,
+        "genWidth": 384,
+        "genHeight": 384
+      },
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\nGame UI element, pixel art style. 9-slice border with cold crystal blue-white (#B0C4DE) frost pattern. Used for Preserver/stagnation UI contexts. 9-slice tileable border panel. Symmetric edges and corners. Parchment/leather aesthetic, warm tones. Dark parchment #2A1810, warm text #D4C4A0, amber accents #DAA520.",
+      "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, modern UI, flat design, gradient mesh",
+      "docRefs": [
+        {
+          "path": "docs/design/visual-direction.md",
+          "heading": "UI Design",
+          "purpose": "style"
+        }
+      ],
+      "filename": "ui-win-stg.png",
+      "format": "png",
+      "status": "failed",
+      "metadata": {
+        "promptHash": "1d220c7701003d99",
+        "outputHash": "320a1e07b0bdd04f0574265b20fc55af7d602522c1f98861a478146241a50423",
+        "generatedAt": "2026-02-13T08:01:28.125Z",
+        "generationTimeMs": 6307,
+        "fileSizeBytes": 1605647,
+        "model": "gemini-2.5-flash-image",
+        "postProcessing": []
+      },
+      "lastError": "No image data in Gemini response"
+    }
+  ]
+}

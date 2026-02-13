@@ -1,0 +1,26 @@
+[
+  {
+    "id": "UI-HUD-HP",
+    "name": "HP Bar",
+    "type": "hud-element",
+    "desc": "Health bar frame with warm red fill gradient. Semi-transparent dark backing. Clean pixel edges."
+  },
+  {
+    "id": "UI-HUD-SP",
+    "name": "SP Bar",
+    "type": "hud-element",
+    "desc": "Skill points bar frame with deep blue fill gradient. Matches HP bar style. Semi-transparent backing."
+  },
+  {
+    "id": "UI-HUD-FRAG",
+    "name": "Fragment Counter",
+    "type": "hud-element",
+    "desc": "Memory fragment counter icon. Small golden crystal with subtle glow, number display area beside it."
+  },
+  {
+    "id": "UI-HUD-VIB",
+    "name": "Vibrancy Indicator",
+    "type": "hud-element",
+    "desc": "Zone vibrancy gauge. Small arc meter that fills with color from muted to vivid. Amber accent frame."
+  }
+]

@@ -1,0 +1,53 @@
+[
+  {
+    "id": "BGM-LW",
+    "name": "Unwritten Song",
+    "type": "zone",
+    "zone": "luminous-wastes",
+    "tempo": 60,
+    "key": "E major",
+    "timeSignature": "4/4",
+    "mood": "stark",
+    "durationSec": 180,
+    "stems": [
+      { "layer": 1, "instruments": "Solo violin (high register)", "description": "Thin, pure, exposed. Single voice in vast space." },
+      { "layer": 2, "instruments": "Piano (sparse, sustain pedal)", "description": "Widely spaced chords, lots of silence." },
+      { "layer": 3, "instruments": "Chamber strings", "description": "Restrained. Cello warmth below violin. Viola fills middle." },
+      { "layer": 4, "instruments": "Solo soprano (wordless)", "description": "One voice answering the violin. Achingly beautiful." }
+    ]
+  },
+  {
+    "id": "BGM-UP",
+    "name": "The Wireframe Cathedral",
+    "type": "zone",
+    "zone": "undrawn-peaks",
+    "tempo": 52,
+    "key": "C minor",
+    "timeSignature": "4/4",
+    "mood": "austere",
+    "durationSec": 165,
+    "stems": [
+      { "layer": 1, "instruments": "Solo cello (low register)", "description": "Dark, resonant, meditative. Long bow strokes." },
+      { "layer": 2, "instruments": "Bassoon + tam-tam", "description": "Bassoon doubles cello octave above. Tam-tam swells." },
+      { "layer": 3, "instruments": "Full orchestra (slow, heavy)", "description": "Full strings, brass, woodwinds in massive chorale." },
+      { "layer": 4, "instruments": "Bass choir (low, rumbling om)", "description": "Deep and grounding. Cathedral resonates." }
+    ]
+  },
+  {
+    "id": "BGM-HDF",
+    "name": "Sketched Lullaby",
+    "type": "zone",
+    "zone": "half-drawn-forest",
+    "tempo": 64,
+    "key": "F major",
+    "timeSignature": "3/4",
+    "mood": "tender",
+    "durationSec": 150,
+    "stems": [
+      { "layer": 1, "instruments": "Music box", "description": "Simple lullaby. Intentionally incomplete phrase endings." },
+      { "layer": 2, "instruments": "Acoustic guitar (nylon)", "description": "Fills harmonic support, completing music box phrases." },
+      { "layer": 3, "instruments": "String quartet (pizzicato to arco)", "description": "Starts playful pizzicato, transitions to filled-in arco." },
+      { "layer": 4, "instruments": "Children's choir (humming)", "description": "Most emotionally vulnerable audio. Growth made audible." }
+    ]
+  }
+]

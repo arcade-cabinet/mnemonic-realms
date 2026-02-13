@@ -1,0 +1,92 @@
+[
+  {
+    "id": "depths-l1",
+    "name": "Depths Level 1: Memory Cellar",
+    "filename": "depths-l1.tmx",
+    "width": 20,
+    "height": 25,
+    "tileSize": 32,
+    "biome": "dungeon",
+    "tilesetRefs": ["tiles_dungeon_{tier}"],
+    "startVibrancy": 25,
+    "category": "depths",
+    "act": "I-II",
+    "connections": [
+      { "fromTile": "10,0", "direction": "up", "toMap": "village-hub", "toTile": "8,17", "condition": "always" },
+      { "fromTile": "15,22", "direction": "down", "toMap": "depths-l2", "toTile": "10,0", "condition": "always" },
+      { "fromTile": "12,20", "direction": "up", "toMap": "village-hub", "toTile": "8,17", "condition": "Memory lift (after Room 3)" }
+    ],
+    "npcSpawns": [],
+    "enemyZones": [
+      { "zone": "Alcove patrol", "bounds": "3,7 -> 7,10", "enemies": ["E-DP-01"], "levelRange": "4-5", "encounterRate": "Common: 1 Shade" },
+      { "zone": "Guardian Chamber", "bounds": "10,7 -> 20,11", "enemies": ["E-DP-01"], "levelRange": "4-6", "encounterRate": "Standard: 2 Shades; Rare: 3 Shades" },
+      { "zone": "Stairway guard", "bounds": "11,18 -> 19,23", "enemies": ["E-DP-01"], "levelRange": "4-6", "encounterRate": "Common: 1 Shade; Standard: 2 Shades" }
+    ],
+    "eventTriggers": [
+      { "id": "EV-D1-001", "position": "10,0", "type": "touch", "repeat": "repeat", "description": "Entry from Village Hub" },
+      { "id": "EV-D1-002", "position": "3,2", "type": "action", "linkedQuest": "SQ-10", "repeat": "once", "description": "Wall inscription lore" },
+      { "id": "EV-D1-003", "position": "17,4", "type": "action", "repeat": "once", "description": "Cracked RS: calm/earth/1" },
+      { "id": "EV-D1-006", "position": "14,9", "type": "touch", "linkedQuest": "SQ-10", "repeat": "once", "description": "Forced encounter: 2+1 Shades" },
+      { "id": "EV-D1-008", "position": "15,14", "type": "action", "repeat": "once", "description": "RS: joy/neutral/2" },
+      { "id": "EV-D1-010", "position": "15,15", "type": "auto", "repeat": "once", "description": "Memory fog vision" },
+      { "id": "EV-D1-011", "position": "12,20", "type": "action", "repeat": "repeat", "description": "Memory lift -> Village Hub" },
+      { "id": "EV-D1-012", "position": "15,22", "type": "touch", "repeat": "repeat", "description": "Stairway -> Depths L2" }
+    ],
+    "resonanceStones": [
+      { "id": "RS-D1-01", "position": "17,4", "fragments": "calm/earth/1", "notes": "Cracked stone" },
+      { "id": "RS-D1-02", "position": "4,9", "fragments": "sorrow/neutral/2" },
+      { "id": "RS-D1-03", "position": "15,14", "fragments": "joy/neutral/2" }
+    ],
+    "treasureChests": [
+      { "id": "CH-D1-01", "position": "2,8", "contents": "Minor Potion (C-HP-01) x3" },
+      { "id": "CH-D1-02", "position": "12,15", "contents": "Mana Drop (C-SP-01) x3, 50 gold" }
+    ]
+  },
+  {
+    "id": "depths-l2",
+    "name": "Depths Level 2: Drowned Archive",
+    "filename": "depths-l2.tmx",
+    "width": 20,
+    "height": 25,
+    "tileSize": 32,
+    "biome": "dungeon",
+    "tilesetRefs": ["tiles_dungeon_{tier}"],
+    "startVibrancy": 35,
+    "category": "depths",
+    "act": "II",
+    "connections": [
+      { "fromTile": "10,0", "direction": "up", "toMap": "depths-l1", "toTile": "15,22", "condition": "always" },
+      { "fromTile": "10,24", "direction": "down", "toMap": "depths-l3", "toTile": "10,0", "condition": "always" },
+      { "fromTile": "15,16", "direction": "up", "toMap": "shimmer-marsh", "toTile": "33,43", "condition": "Memory lift (after puzzle)" }
+    ],
+    "npcSpawns": [],
+    "enemyZones": [
+      { "zone": "Reading Hall", "bounds": "1,5 -> 9,9", "enemies": ["E-DP-02"], "levelRange": "14-15", "encounterRate": "Common: 1 Scholar; Standard: 2 Scholars" },
+      { "zone": "Burdened Chamber", "bounds": "11,5 -> 20,9", "enemies": ["E-DP-02","E-DP-01"], "levelRange": "14-15", "encounterRate": "Standard: 1 Scholar + 1 scaled Shade" },
+      { "zone": "Flood corridor", "bounds": "1,10 -> 20,13", "enemies": ["E-DP-02"], "levelRange": "14-16", "encounterRate": "Common: 1 Scholar; Rare: 2 Scholars + 1 Shade" }
+    ],
+    "eventTriggers": [
+      { "id": "EV-D2-001", "position": "10,0", "type": "touch", "repeat": "repeat", "description": "Entry from Shimmer Marsh" },
+      { "id": "EV-D2-005", "position": "15,7", "type": "action", "linkedQuest": "GQ-02-S1", "repeat": "once", "description": "Burdened RS: compost sorrow" },
+      { "id": "EV-D2-009", "position": "3,15", "type": "action", "repeat": "repeat", "description": "Left valve" },
+      { "id": "EV-D2-010", "position": "7,15", "type": "action", "repeat": "repeat", "description": "Right valve" },
+      { "id": "EV-D2-011", "position": "5,15", "type": "action", "repeat": "repeat", "description": "Center valve" },
+      { "id": "EV-D2-013", "position": "15,16", "type": "action", "repeat": "repeat", "description": "Memory lift -> Shimmer Marsh" },
+      { "id": "EV-D2-015", "position": "10,21", "type": "action", "repeat": "once", "description": "Boss: The Archivist dialogue" },
+      { "id": "EV-D2-016", "position": "10,21", "type": "auto", "repeat": "once", "description": "Boss fight: The Archivist" },
+      { "id": "EV-D2-018", "position": "10,24", "type": "touch", "repeat": "repeat", "description": "Stairway -> Depths L3" }
+    ],
+    "resonanceStones": [
+      { "id": "RS-D2-01", "position": "4,7", "fragments": "sorrow/water/2" },
+      { "id": "RS-D2-02", "position": "15,7", "fragments": "burdened (GQ-02-S1)" },
+      { "id": "RS-D2-03", "position": "17,11", "fragments": "awe/water/3" },
+      { "id": "RS-D2-04", "position": "13,15", "fragments": "rest point (HP/SP)" }
+    ],
+    "treasureChests": [
+      { "id": "CH-D2-01", "position": "2,6", "contents": "Potion (C-HP-02) x2" },
+      { "id": "CH-D2-02", "position": "18,6", "contents": "Dissolved Metal (SQ-11 material)" },
+      { "id": "CH-D2-03", "position": "3,12", "contents": "Mana Draught (C-SP-02) x2" },
+      { "id": "CH-D2-04", "position": "15,20", "contents": "Dissolved Essence (C-SP-09) x1, 120 gold" }
+    ]
+  }
+]

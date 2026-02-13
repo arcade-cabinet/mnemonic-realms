@@ -1,0 +1,65 @@
+[
+  {
+    "biome": "village",
+    "heading": "Biome 1: Village",
+    "zones": ["Village Hub"],
+    "gridCols": 16,
+    "gridRows": 14
+  },
+  {
+    "biome": "grassland",
+    "heading": "Biome 2: Grassland/Farmland",
+    "zones": ["Heartfield", "Sunridge"],
+    "gridCols": 16,
+    "gridRows": 16
+  },
+  {
+    "biome": "forest",
+    "heading": "Biome 3: Forest",
+    "zones": ["Ambergrove", "Flickerveil", "Half-Drawn Forest"],
+    "gridCols": 16,
+    "gridRows": 18
+  },
+  {
+    "biome": "mountain",
+    "heading": "Biome 4: Mountain/Highland",
+    "zones": ["Hollow Ridge", "Undrawn Peaks"],
+    "gridCols": 16,
+    "gridRows": 16
+  },
+  {
+    "biome": "riverside",
+    "heading": "Biome 5: Riverside/Water",
+    "zones": ["Millbrook"],
+    "gridCols": 16,
+    "gridRows": 16
+  },
+  {
+    "biome": "wetland",
+    "heading": "Biome 6: Wetland/Marsh",
+    "zones": ["Shimmer Marsh"],
+    "gridCols": 16,
+    "gridRows": 16
+  },
+  {
+    "biome": "plains",
+    "heading": "Biome 7: Plains",
+    "zones": ["Resonance Fields"],
+    "gridCols": 16,
+    "gridRows": 14
+  },
+  {
+    "biome": "dungeon",
+    "heading": "Biome 8: Dungeon/Underground",
+    "zones": ["Depths L1", "Depths L2", "Depths L3", "Depths L4", "Depths L5"],
+    "gridCols": 16,
+    "gridRows": 16
+  },
+  {
+    "biome": "sketch",
+    "heading": "Biome 9: Sketch",
+    "zones": ["Luminous Wastes", "Undrawn Peaks", "Half-Drawn Forest"],
+    "gridCols": 16,
+    "gridRows": 16
+  }
+]

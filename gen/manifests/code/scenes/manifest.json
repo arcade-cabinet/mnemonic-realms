@@ -1,0 +1,891 @@
+{
+  "schemaVersion": "1.0.0",
+  "description": "Scene event code generation manifest",
+  "updatedAt": "2026-02-13T14:13:51.977Z",
+  "category": "event-scenes",
+  "systemPrompt": "You are an RPG-JS 4.3.0 TypeScript code generator.\nGenerate a single RPG-JS server-side event file for a scene.\nOutput ONLY valid TypeScript code. No markdown fences. No explanatory text.\nThe file must use RpgEvent, RpgPlayer, and RpgMap imports.\nWire trigger conditions, NPC spawns, dialogue calls, effects, and quest state changes.\nUse createDynamicEvent() for NPC placement. Use player.showText() for dialogue.\nUse player.gui() for GUI overlays. Export the event setup function as default.",
+  "assets": [
+    {
+      "id": "act1-scene1-familiar-place",
+      "name": "A Familiar Place",
+      "category": "event-scenes",
+      "filename": "a-familiar-place.ts",
+      "targetPath": "main/server/events/act1/scene1-familiar-place.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"A Familiar Place\" (ID: act1-scene1-familiar-place).\n\nScene: Act 1, Scene 1\nLocation: Village Hub — Elder's House (18, 10)\nLevel Range: 1\nSummary: Player spawns in Elder's House. Callum reveals Mnemonic Architecture talent, gives MF-01.\n\nTrigger: auto, map: village-hub, condition: game-start\n\nNPCs: Callum (npc_callum, dialogue: dlg-callum-scene1)\n\nEffects:\n- item-give: {\"itemId\":\"MF-01\",\"name\":\"Callum's First Lesson\"}\n- quest-update: {\"questId\":\"MQ-01\",\"action\":\"activate\"}\n- system-message: {\"text\":\"You received a Memory Fragment: \\\"Callum's First Lesson\\\" (Joy, Neutral, 2)\"}\n\nQuest Changes: MQ-01 → activate\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act1-script.md",
+          "heading": "A Familiar Place",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act1-scene2-memorial-garden",
+      "name": "The Memorial Garden",
+      "category": "event-scenes",
+      "filename": "the-memorial-garden.ts",
+      "targetPath": "main/server/events/act1/scene2-memorial-garden.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"The Memorial Garden\" (ID: act1-scene2-memorial-garden).\n\nScene: Act 1, Scene 2\nLocation: Village Hub — Memorial Garden (8, 16)\nLevel Range: 1\nSummary: Player collects 3 fragments from Resonance Stones. Teaches memory collection.\n\nTrigger: area-enter, map: village-hub, pos: 8,16\n\nNPCs: None\n\nEffects:\n- item-give: {\"itemId\":\"frag-joy-earth-1\",\"name\":\"Joy/Earth Fragment\"}\n- item-give: {\"itemId\":\"frag-calm-neutral-1\",\"name\":\"Calm/Neutral Fragment\"}\n- item-give: {\"itemId\":\"frag-awe-wind-2\",\"name\":\"Awe/Wind Fragment\"}\n- system-message: {\"text\":\"You now carry 4 memory fragments.\"}\n\nQuest Changes: MQ-01 → advance (obj 2)\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act1-script.md",
+          "heading": "The Memorial Garden",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act1-scene3-lira-workshop",
+      "name": "Lira's Workshop",
+      "category": "event-scenes",
+      "filename": "lira-s-workshop.ts",
+      "targetPath": "main/server/events/act1/scene3-lira-workshop.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"Lira's Workshop\" (ID: act1-scene3-lira-workshop).\n\nScene: Act 1, Scene 3\nLocation: Village Hub — Lira's Workshop (8, 18)\nLevel Range: 1-2\nSummary: Lira joins the party (Cleric). Player receives Architect's Signet (K-01).\n\nTrigger: map-enter, map: lira-workshop\n\nNPCs: Lira (npc_lira, dialogue: dlg-lira-scene3)\n\nEffects:\n- companion-join: {\"companionId\":\"lira\",\"class\":\"cleric\"}\n- item-give: {\"itemId\":\"K-01\",\"name\":\"Architect's Signet\"}\n- quest-update: {\"questId\":\"MQ-01\",\"action\":\"complete\"}\n- quest-update: {\"questId\":\"MQ-02\",\"action\":\"activate\"}\n\nQuest Changes: MQ-01 → complete, MQ-02 → activate\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act1-script.md",
+          "heading": "Lira's Workshop",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act1-scene4-training-ground",
+      "name": "The Training Ground",
+      "category": "event-scenes",
+      "filename": "the-training-ground.ts",
+      "targetPath": "main/server/events/act1/scene4-training-ground.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"The Training Ground\" (ID: act1-scene4-training-ground).\n\nScene: Act 1, Scene 4\nLocation: Village Hub — Training Ground (8, 10)\nLevel Range: 1-2\nSummary: Combat tutorial (dummies + sprite). Remix and broadcast tutorial. Village Hub vibrancy +12.\n\nTrigger: area-enter, map: village-hub, pos: 8,10, condition: lira-in-party\n\nNPCs: Lira (npc_lira, dialogue: dlg-lira-scene4)\n\nEffects:\n- combat-start: {\"encounter\":\"tutorial-dummies\",\"enemies\":\"2x Training Dummy\"}\n- combat-start: {\"encounter\":\"tutorial-sprite\",\"enemies\":\"1x Meadow Sprite\"}\n- gui-show: {\"guiId\":\"remix-tutorial\"}\n- vibrancy-change: {\"zone\":\"village-hub\",\"delta\":12}\n- item-give: {\"itemId\":\"K-03\",\"name\":\"Remix Table Access\"}\n- item-remove: {\"itemId\":\"MF-02\",\"name\":\"Lira's Warmth (broadcast)\"}\n\nQuest Changes: MQ-02 → advance (obj 3), MQ-02 → complete\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act1-script.md",
+          "heading": "The Training Ground",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act1-scene5-heartfield",
+      "name": "Heartfield — The Open World",
+      "category": "event-scenes",
+      "filename": "heartfield-the-open-world.ts",
+      "targetPath": "main/server/events/act1/scene5-heartfield.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"Heartfield — The Open World\" (ID: act1-scene5-heartfield).\n\nScene: Act 1, Scene 5\nLocation: Heartfield (south of Village Hub)\nLevel Range: 2-4\nSummary: First open-world exploration. Heartfield farms, Old Windmill, random encounters.\n\nTrigger: map-enter, map: heartfield, condition: first-visit\n\nNPCs: Lira (npc_lira, dialogue: dlg-lira-scene5)\n\nEffects:\n- system-message: {\"text\":\"You've entered the Settled Lands.\"}\n- quest-update: {\"questId\":\"MQ-03\",\"action\":\"activate\"}\n\nQuest Changes: MQ-03 → activate\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act1-script.md",
+          "heading": "Heartfield — The Open World",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act1-scene6-stagnation-clearing",
+      "name": "The Stagnation Clearing",
+      "category": "event-scenes",
+      "filename": "the-stagnation-clearing.ts",
+      "targetPath": "main/server/events/act1/scene6-stagnation-clearing.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"The Stagnation Clearing\" (ID: act1-scene6-stagnation-clearing).\n\nScene: Act 1, Scene 6\nLocation: Heartfield — Stagnation Clearing (35, 30)\nLevel Range: 3-5\nSummary: First encounter with Preservers' stagnation. Observation only — no interaction yet.\n\nTrigger: area-enter, map: heartfield, pos: 35,30\n\nNPCs: Lira (npc_lira, dialogue: dlg-lira-scene6)\n\nEffects:\n- music-change: {\"track\":\"stagnation-ambient\"}\n- screen-effect: {\"effect\":\"desaturate\",\"intensity\":0.4}\n- system-message: {\"text\":\"You've discovered a Stagnation Zone.\"}\n\nQuest Changes: None\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act1-script.md",
+          "heading": "The Stagnation Clearing",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act1-scene7-ambergrove",
+      "name": "Ambergrove — Forest of Echoes",
+      "category": "event-scenes",
+      "filename": "ambergrove-forest-of-echoes.ts",
+      "targetPath": "main/server/events/act1/scene7-ambergrove.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"Ambergrove — Forest of Echoes\" (ID: act1-scene7-ambergrove).\n\nScene: Act 1, Scene 7\nLocation: Ambergrove (east of Village Hub)\nLevel Range: 4-6\nSummary: Hearthstone Circle (3 fragments), Amber Lake (foreshadowing), Woodcutter's Camp (SQ-03).\n\nTrigger: map-enter, map: ambergrove, condition: first-visit\n\nNPCs: Lira (npc_lira, dialogue: dlg-lira-scene7)\n\nEffects:\n- system-message: {\"text\":\"Ambergrove: dense forest with ancient Hearthstone Circle.\"}\n\nQuest Changes: MQ-03 → advance (obj 1)\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act1-script.md",
+          "heading": "Ambergrove — Forest of Echoes",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act1-scene8-millbrook",
+      "name": "Millbrook — River of Memory",
+      "category": "event-scenes",
+      "filename": "millbrook-river-of-memory.ts",
+      "targetPath": "main/server/events/act1/scene8-millbrook.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"Millbrook — River of Memory\" (ID: act1-scene8-millbrook).\n\nScene: Act 1, Scene 8\nLocation: Millbrook (west of Village Hub)\nLevel Range: 5-7\nSummary: Remix strategy tutorial. Brightwater Bridge, Upstream Falls grotto, fishing minigame.\n\nTrigger: map-enter, map: millbrook, condition: first-visit\n\nNPCs: Lira (npc_lira, dialogue: dlg-lira-scene8)\n\nEffects:\n- system-message: {\"text\":\"Millbrook: riverside town with specialty shops and hidden grotto.\"}\n\nQuest Changes: MQ-03 → advance (obj 2)\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act1-script.md",
+          "heading": "Millbrook — River of Memory",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act1-scene9-sunridge",
+      "name": "Sunridge — The World's Edge",
+      "category": "event-scenes",
+      "filename": "sunridge-the-world-s-edge.ts",
+      "targetPath": "main/server/events/act1/scene9-sunridge.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"Sunridge — The World's Edge\" (ID: act1-scene9-sunridge).\n\nScene: Act 1, Scene 9\nLocation: Sunridge (north of Village Hub)\nLevel Range: 7-9\nSummary: Wind Shrine (dormant god hint), Preserver Outpost confrontation, advanced combat.\n\nTrigger: map-enter, map: sunridge, condition: first-visit\n\nNPCs: Lira (npc_lira, dialogue: dlg-lira-scene9), Preserver Scout (npc_preserver_scout, dialogue: dlg-preserver-scout-scene9)\n\nEffects:\n- quest-update: {\"questId\":\"MQ-03\",\"action\":\"complete\"}\n- quest-update: {\"questId\":\"MQ-04\",\"action\":\"activate\"}\n\nQuest Changes: MQ-03 → complete, MQ-04 → activate\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act1-script.md",
+          "heading": "Sunridge — The World's Edge",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act1-scene10-breaking-stagnation",
+      "name": "Breaking the Stagnation",
+      "category": "event-scenes",
+      "filename": "breaking-the-stagnation.ts",
+      "targetPath": "main/server/events/act1/scene10-breaking-stagnation.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"Breaking the Stagnation\" (ID: act1-scene10-breaking-stagnation).\n\nScene: Act 1, Scene 10\nLocation: Heartfield — Stagnation Clearing (35, 30)\nLevel Range: 8-9\nSummary: First active stagnation breaking. Player broadcasts fragment to shatter crystal zone.\n\nTrigger: quest-state, map: heartfield, pos: 35,30, condition: MQ-04-active\n\nNPCs: Lira (npc_lira, dialogue: dlg-lira-scene10)\n\nEffects:\n- gui-show: {\"guiId\":\"broadcast-target\",\"target\":\"stagnation-stone\"}\n- screen-effect: {\"effect\":\"stagnation-shatter\"}\n- vibrancy-change: {\"zone\":\"heartfield\",\"delta\":10}\n- item-give: {\"itemId\":\"MF-03\",\"name\":\"Echo of the Stagnation\"}\n- system-message: {\"text\":\"Stagnation Zone broken! Heartfield vibrancy +10!\"}\n\nQuest Changes: MQ-04 → advance (obj 5)\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act1-script.md",
+          "heading": "Breaking the Stagnation",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act1-scene11-clearing-grows",
+      "name": "The Clearing Grows",
+      "category": "event-scenes",
+      "filename": "the-clearing-grows.ts",
+      "targetPath": "main/server/events/act1/scene11-clearing-grows.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"The Clearing Grows\" (ID: act1-scene11-clearing-grows).\n\nScene: Act 1, Scene 11\nLocation: Village Hub → Heartfield\nLevel Range: 9-10\nSummary: Act I climax. Stagnation expands, Lira is frozen. Player receives MF-04 (Fury/Light/4).\n\nTrigger: quest-state, map: village-hub, condition: MQ-04-stagnation-broken\n\nNPCs: Callum (npc_callum, dialogue: dlg-callum-scene11), Lira (npc_lira, dialogue: dlg-lira-scene11)\n\nEffects:\n- cutscene-play: {\"cutsceneId\":\"lira-freezing\"}\n- companion-leave: {\"companionId\":\"lira\",\"reason\":\"frozen\"}\n- vibrancy-change: {\"zone\":\"heartfield\",\"delta\":-25}\n- item-give: {\"itemId\":\"MF-04\",\"name\":\"Lira's Scream\"}\n- system-message: {\"text\":\"Lira has been frozen by the Stagnation Zone.\"}\n\nQuest Changes: MQ-04 → advance (obj 6)\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act1-script.md",
+          "heading": "The Clearing Grows",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act1-scene12-new-resolve",
+      "name": "A New Resolve",
+      "category": "event-scenes",
+      "filename": "a-new-resolve.ts",
+      "targetPath": "main/server/events/act1/scene12-new-resolve.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"A New Resolve\" (ID: act1-scene12-new-resolve).\n\nScene: Act 1, Scene 12\nLocation: Village Hub — Elder's House → Lookout Hill (12, 2)\nLevel Range: 9-10\nSummary: Callum gives Letters (K-02) + 3-star fragment. Night vista. Act II unlocked.\n\nTrigger: auto, map: village-hub, condition: lira-frozen\n\nNPCs: Callum (npc_callum, dialogue: dlg-callum-scene12)\n\nEffects:\n- item-give: {\"itemId\":\"K-02\",\"name\":\"Callum's Letters\"}\n- item-give: {\"itemId\":\"frag-awe-neutral-3\",\"name\":\"Callum's Favorite Memory\"}\n- music-change: {\"track\":\"village-night\"}\n- screen-effect: {\"effect\":\"night-transition\"}\n- quest-update: {\"questId\":\"MQ-04\",\"action\":\"complete\"}\n- system-message: {\"text\":\"The mountain pass to the Frontier is now open. Act II begins.\"}\n\nQuest Changes: MQ-04 → complete\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act1-script.md",
+          "heading": "A New Resolve",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act2-scene1-mountain-pass",
+      "name": "The Mountain Pass",
+      "category": "event-scenes",
+      "filename": "the-mountain-pass.ts",
+      "targetPath": "main/server/events/act2/scene1-mountain-pass.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"The Mountain Pass\" (ID: act2-scene1-mountain-pass).\n\nScene: Act 2, Scene 1\nLocation: Sunridge — The Threshold (20, 2) → Hollow Ridge\nLevel Range: 10-11\nSummary: Mountain pass opens. Callum joins as Scholar companion. First Frontier vista.\n\nTrigger: area-enter, map: sunridge, pos: 20,2, condition: act2-unlocked\n\nNPCs: Callum (npc_callum, dialogue: dlg-callum-act2-scene1)\n\nEffects:\n- companion-join: {\"companionId\":\"callum\",\"class\":\"scholar\"}\n- system-message: {\"text\":\"Callum joins the party! (Scholar)\"}\n\nQuest Changes: MQ-05 → activate\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act2-script.md",
+          "heading": "The Mountain Pass",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act2-scene2-ridgewalker-camp",
+      "name": "Ridgewalker Camp",
+      "category": "event-scenes",
+      "filename": "ridgewalker-camp.ts",
+      "targetPath": "main/server/events/act2/scene2-ridgewalker-camp.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"Ridgewalker Camp\" (ID: act2-scene2-ridgewalker-camp).\n\nScene: Act 2, Scene 2\nLocation: Hollow Ridge — Ridgewalker Camp (15, 25)\nLevel Range: 10-12\nSummary: Meet Petra, learn dormant god locations. Frontier hub with merchant and rest.\n\nTrigger: area-enter, map: hollow-ridge, pos: 15,25, condition: first-visit\n\nNPCs: Callum (npc_callum, dialogue: dlg-callum-act2-scene2), Petra (npc_petra, dialogue: dlg-petra-scene2)\n\nEffects:\n- system-message: {\"text\":\"All four dormant god locations revealed.\"}\n\nQuest Changes: MQ-05 → advance (obj 2)\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act2-script.md",
+          "heading": "Ridgewalker Camp",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act2-scene3-frontier-opens",
+      "name": "The Frontier Opens",
+      "category": "event-scenes",
+      "filename": "the-frontier-opens.ts",
+      "targetPath": "main/server/events/act2/scene3-frontier-opens.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"The Frontier Opens\" (ID: act2-scene3-frontier-opens).\n\nScene: Act 2, Scene 3\nLocation: Multiple — Shimmer Marsh, Flickerveil, Resonance Fields\nLevel Range: 10-14\nSummary: Open exploration of all Frontier zones. Callum's Letters, settlements, key items.\n\nTrigger: map-enter, map: frontier-zones, condition: post-ridgewalker\n\nNPCs: Callum (npc_callum, dialogue: dlg-callum-letters), Wynn (npc_wynn, dialogue: dlg-wynn-intro), Solen (npc_solen, dialogue: dlg-solen-intro)\n\nEffects:\n- item-give: {\"itemId\":\"K-04\",\"name\":\"Light Lens\"}\n- quest-update: {\"questId\":\"MQ-05\",\"action\":\"complete\"}\n\nQuest Changes: MQ-05 → complete\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act2-script.md",
+          "heading": "The Frontier Opens",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act2-scene4-resonance-recall",
+      "name": "The First Recall — Resonance's Amphitheater",
+      "category": "event-scenes",
+      "filename": "the-first-recall-resonance-s-amphitheater.ts",
+      "targetPath": "main/server/events/act2/scene4-resonance-recall.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"The First Recall — Resonance's Amphitheater\" (ID: act2-scene4-resonance-recall).\n\nScene: Act 2, Scene 4\nLocation: Resonance Fields — Amphitheater (25, 25)\nLevel Range: 12-16\nSummary: First god recall. 4-emotion choice. Subclass branch determination. Vibrancy +15.\n\nTrigger: quest-state, map: resonance-fields, pos: 25,25, condition: harmonize-path-complete\n\nNPCs: Callum (npc_callum, dialogue: dlg-callum-resonance-recall)\n\nEffects:\n- cutscene-play: {\"cutsceneId\":\"resonance-recall-vision\"}\n- gui-show: {\"guiId\":\"god-recall-pedestal\",\"god\":\"resonance\"}\n- vibrancy-change: {\"zone\":\"resonance-fields\",\"delta\":15}\n- system-message: {\"text\":\"Resonance recalled! Subclass unlocked.\"}\n\nQuest Changes: GQ-01 → complete, MQ-06 → activate\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act2-script.md",
+          "heading": "The First Recall — Resonance's Amphitheater",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act2-scene5-weight-of-choice",
+      "name": "The Weight of Choice",
+      "category": "event-scenes",
+      "filename": "the-weight-of-choice.ts",
+      "targetPath": "main/server/events/act2/scene5-weight-of-choice.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"The Weight of Choice\" (ID: act2-scene5-weight-of-choice).\n\nScene: Act 2, Scene 5\nLocation: Resonance Fields — Amphitheater (post-recall)\nLevel Range: 12-16\nSummary: Callum reflects on permanence of recall choice. Foreshadows remaining gods.\n\nTrigger: auto, map: resonance-fields, condition: first-recall-complete\n\nNPCs: Callum (npc_callum, dialogue: dlg-callum-weight)\n\nEffects:\n- None\n\nQuest Changes: None\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act2-script.md",
+          "heading": "The Weight of Choice",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act2-scene6-moral-dilemma-garden",
+      "name": "Moral Dilemma I — The Rootwalker's Last Garden",
+      "category": "event-scenes",
+      "filename": "moral-dilemma-i-the-rootwalker-s-last-garden.ts",
+      "targetPath": "main/server/events/act2/scene6-moral-dilemma-garden.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"Moral Dilemma I — The Rootwalker's Last Garden\" (ID: act2-scene6-moral-dilemma-garden).\n\nScene: Act 2, Scene 6\nLocation: Shimmer Marsh — east of Verdance's Hollow (28, 32)\nLevel Range: 12-14\nSummary: Crystallized garden — Rootwalker asked for preservation. Player chooses: break or preserve.\n\nTrigger: area-enter, map: shimmer-marsh, pos: 28,32, condition: post-first-recall\n\nNPCs: Callum (npc_callum, dialogue: dlg-callum-garden-dilemma)\n\nEffects:\n- gui-show: {\"guiId\":\"moral-choice\",\"choices\":[\"break-crystal\",\"leave-preserved\"]}\n\nQuest Changes: None\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act2-script.md",
+          "heading": "Moral Dilemma I — The Rootwalker's Last Garden",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act2-scene7-verdance-recall",
+      "name": "Verdance — The Dormant God of Growth",
+      "category": "event-scenes",
+      "filename": "verdance-the-dormant-god-of-growth.ts",
+      "targetPath": "main/server/events/act2/scene7-verdance-recall.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"Verdance — The Dormant God of Growth\" (ID: act2-scene7-verdance-recall).\n\nScene: Act 2, Scene 7\nLocation: Shimmer Marsh — Verdance's Hollow (25, 35)\nLevel Range: 12-16\nSummary: Verdance recall. Root puzzle, vision, 4-emotion choice. Shimmer Marsh vibrancy +15.\n\nTrigger: quest-state, map: shimmer-marsh, pos: 25,35, condition: hermit-path-complete\n\nNPCs: Callum (npc_callum, dialogue: dlg-callum-verdance-recall), Wynn (npc_wynn, dialogue: dlg-wynn-verdance)\n\nEffects:\n- cutscene-play: {\"cutsceneId\":\"verdance-recall-vision\"}\n- gui-show: {\"guiId\":\"god-recall-pedestal\",\"god\":\"verdance\"}\n- vibrancy-change: {\"zone\":\"shimmer-marsh\",\"delta\":15}\n\nQuest Changes: GQ-02 → complete\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act2-script.md",
+          "heading": "Verdance — The Dormant God of Growth",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act2-scene8-drowned-archive",
+      "name": "The Drowned Archive",
+      "category": "event-scenes",
+      "filename": "the-drowned-archive.ts",
+      "targetPath": "main/server/events/act2/scene8-drowned-archive.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"The Drowned Archive\" (ID: act2-scene8-drowned-archive).\n\nScene: Act 2, Scene 8\nLocation: Depths Level 2 (Shimmer Marsh sinkhole)\nLevel Range: 14-16\nSummary: Depths L2 dungeon. Core lore: dissolution is choice, not tragedy. Boss: Drowned Archivist.\n\nTrigger: map-enter, map: depths-l2\n\nNPCs: Callum (npc_callum, dialogue: dlg-callum-drowned-archive)\n\nEffects:\n- item-give: {\"itemId\":\"MF-06\",\"name\":\"Dissolution Is a Choice\"}\n- combat-start: {\"encounter\":\"boss-drowned-archivist\",\"enemies\":\"B-03a\"}\n\nQuest Changes: None\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act2-script.md",
+          "heading": "The Drowned Archive",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act2-scene9-preserver-response",
+      "name": "The Preserver Response",
+      "category": "event-scenes",
+      "filename": "the-preserver-response.ts",
+      "targetPath": "main/server/events/act2/scene9-preserver-response.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"The Preserver Response\" (ID: act2-scene9-preserver-response).\n\nScene: Act 2, Scene 9\nLocation: Hollow Ridge — near Ridgewalker Camp\nLevel Range: 14-16\nSummary: Aric confronts player about recall consequences. Debate, not combat. Moral questioning.\n\nTrigger: auto, map: hollow-ridge, condition: 2-gods-recalled\n\nNPCs: Callum (npc_callum, dialogue: dlg-callum-preserver-response), Preserver Captain Aric (npc_aric, dialogue: dlg-aric-confrontation)\n\nEffects:\n- screen-effect: {\"effect\":\"crystal-wall-appear\"}\n\nQuest Changes: None\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act2-script.md",
+          "heading": "The Preserver Response",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act2-scene10-luminos-recall",
+      "name": "Luminos — The Dormant God of Light",
+      "category": "event-scenes",
+      "filename": "luminos-the-dormant-god-of-light.ts",
+      "targetPath": "main/server/events/act2/scene10-luminos-recall.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"Luminos — The Dormant God of Light\" (ID: act2-scene10-luminos-recall).\n\nScene: Act 2, Scene 10\nLocation: Flickerveil — Luminos Grove (20, 20)\nLevel Range: 14-18\nSummary: Luminos recall. Light Lens puzzle, vision, 4-emotion choice. Flickerveil vibrancy +15.\n\nTrigger: quest-state, map: flickerveil, pos: 20,20, condition: light-lens-equipped\n\nNPCs: Callum (npc_callum, dialogue: dlg-callum-luminos-recall)\n\nEffects:\n- cutscene-play: {\"cutsceneId\":\"luminos-recall-vision\"}\n- gui-show: {\"guiId\":\"god-recall-pedestal\",\"god\":\"luminos\"}\n- vibrancy-change: {\"zone\":\"flickerveil\",\"delta\":15}\n\nQuest Changes: GQ-03 → complete\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act2-script.md",
+          "heading": "Luminos — The Dormant God of Light",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act2-scene11-moral-dilemma-festival",
+      "name": "Moral Dilemma II — The Frozen Festival",
+      "category": "event-scenes",
+      "filename": "moral-dilemma-ii-the-frozen-festival.ts",
+      "targetPath": "main/server/events/act2/scene11-moral-dilemma-festival.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"Moral Dilemma II — The Frozen Festival\" (ID: act2-scene11-moral-dilemma-festival).\n\nScene: Act 2, Scene 11\nLocation: Resonance Fields — Festival Clearing (35, 35)\nLevel Range: 14-16\nSummary: Frozen festival: 8 people crystallized mid-celebration. Break or preserve?\n\nTrigger: area-enter, map: resonance-fields, pos: 35,35, condition: post-second-recall\n\nNPCs: Callum (npc_callum, dialogue: dlg-callum-frozen-festival)\n\nEffects:\n- gui-show: {\"guiId\":\"moral-choice\",\"choices\":[\"break-festival\",\"preserve-festival\"]}\n\nQuest Changes: None\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act2-script.md",
+          "heading": "Moral Dilemma II — The Frozen Festival",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act2-scene12-resonant-caverns",
+      "name": "The Resonant Caverns",
+      "category": "event-scenes",
+      "filename": "the-resonant-caverns.ts",
+      "targetPath": "main/server/events/act2/scene12-resonant-caverns.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"The Resonant Caverns\" (ID: act2-scene12-resonant-caverns).\n\nScene: Act 2, Scene 12\nLocation: Depths Level 3 (Hollow Ridge entrance)\nLevel Range: 16-18\nSummary: Depths L3. Sound puzzles, crystal formations. Boss: The Resonant King.\n\nTrigger: map-enter, map: depths-l3\n\nNPCs: Callum (npc_callum, dialogue: dlg-callum-resonant-caverns)\n\nEffects:\n- combat-start: {\"encounter\":\"boss-resonant-king\",\"enemies\":\"B-03b\"}\n\nQuest Changes: None\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act2-script.md",
+          "heading": "The Resonant Caverns",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act2-scene13-kinesis-recall",
+      "name": "Kinesis — The Dormant God of Motion",
+      "category": "event-scenes",
+      "filename": "kinesis-the-dormant-god-of-motion.ts",
+      "targetPath": "main/server/events/act2/scene13-kinesis-recall.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"Kinesis — The Dormant God of Motion\" (ID: act2-scene13-kinesis-recall).\n\nScene: Act 2, Scene 13\nLocation: Hollow Ridge — Kinesis Spire (24, 10)\nLevel Range: 14-18\nSummary: Kinesis recall. Spire climb, vision, 4-emotion choice. Hollow Ridge vibrancy +15.\n\nTrigger: quest-state, map: hollow-ridge, pos: 24,10, condition: kinetic-boots-equipped\n\nNPCs: Callum (npc_callum, dialogue: dlg-callum-kinesis-recall), Petra (npc_petra, dialogue: dlg-petra-kinesis)\n\nEffects:\n- cutscene-play: {\"cutsceneId\":\"kinesis-recall-vision\"}\n- gui-show: {\"guiId\":\"god-recall-pedestal\",\"god\":\"kinesis\"}\n- vibrancy-change: {\"zone\":\"hollow-ridge\",\"delta\":15}\n\nQuest Changes: GQ-04 → complete\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act2-script.md",
+          "heading": "Kinesis — The Dormant God of Motion",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act2-scene14-moral-dilemma-monument",
+      "name": "Moral Dilemma III — The Monument",
+      "category": "event-scenes",
+      "filename": "moral-dilemma-iii-the-monument.ts",
+      "targetPath": "main/server/events/act2/scene14-moral-dilemma-monument.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"Moral Dilemma III — The Monument\" (ID: act2-scene14-moral-dilemma-monument).\n\nScene: Act 2, Scene 14\nLocation: Hollow Ridge — Crystal Monument (30, 5)\nLevel Range: 16-18\nSummary: Crystallized monument to a fallen Ridgewalker. Break or preserve?\n\nTrigger: area-enter, map: hollow-ridge, pos: 30,5, condition: post-third-recall\n\nNPCs: Callum (npc_callum, dialogue: dlg-callum-monument)\n\nEffects:\n- gui-show: {\"guiId\":\"moral-choice\",\"choices\":[\"break-monument\",\"preserve-monument\"]}\n\nQuest Changes: None\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act2-script.md",
+          "heading": "Moral Dilemma III — The Monument",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act2-scene15-songline",
+      "name": "The Songline",
+      "category": "event-scenes",
+      "filename": "the-songline.ts",
+      "targetPath": "main/server/events/act2/scene15-songline.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"The Songline\" (ID: act2-scene15-songline).\n\nScene: Act 2, Scene 15\nLocation: Depths Level 4 (Resonance Fields entrance)\nLevel Range: 19-21\nSummary: Depths L4. Musical dungeon, performer visions. Boss: The Conductor.\n\nTrigger: map-enter, map: depths-l4\n\nNPCs: Callum (npc_callum, dialogue: dlg-callum-songline)\n\nEffects:\n- combat-start: {\"encounter\":\"boss-conductor\",\"enemies\":\"B-03c\"}\n\nQuest Changes: None\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act2-script.md",
+          "heading": "The Songline",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act2-scene16-lira-freed",
+      "name": "Freeing Lira",
+      "category": "event-scenes",
+      "filename": "freeing-lira.ts",
+      "targetPath": "main/server/events/act2/scene16-lira-freed.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"Freeing Lira\" (ID: act2-scene16-lira-freed).\n\nScene: Act 2, Scene 16\nLocation: Heartfield — Expanded Stagnation Zone (35, 30)\nLevel Range: 18-20\nSummary: Player uses god power to break expanded stagnation. Lira rejoins the party.\n\nTrigger: quest-state, map: heartfield, pos: 35,30, condition: 4-gods-recalled\n\nNPCs: Callum (npc_callum, dialogue: dlg-callum-lira-freed), Lira (npc_lira, dialogue: dlg-lira-freed)\n\nEffects:\n- screen-effect: {\"effect\":\"stagnation-mega-shatter\"}\n- companion-join: {\"companionId\":\"lira\",\"class\":\"cleric\"}\n- vibrancy-change: {\"zone\":\"heartfield\",\"delta\":25}\n\nQuest Changes: SQ-14 → complete\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act2-script.md",
+          "heading": "Freeing Lira",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act2-scene17-curator-endgame",
+      "name": "The Curator's Endgame",
+      "category": "event-scenes",
+      "filename": "the-curator-s-endgame.ts",
+      "targetPath": "main/server/events/act2/scene17-curator-endgame.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"The Curator's Endgame\" (ID: act2-scene17-curator-endgame).\n\nScene: Act 2, Scene 17\nLocation: Village Hub — Elder's House\nLevel Range: 18-20\nSummary: Callum reveals Curator's plan to crystallize the First Memory. Act III setup.\n\nTrigger: quest-state, map: village-hub, condition: lira-freed-and-SQ05-complete\n\nNPCs: Callum (npc_callum, dialogue: dlg-callum-curator-endgame), Lira (npc_lira, dialogue: dlg-lira-curator-endgame)\n\nEffects:\n- system-message: {\"text\":\"The Curator has found the First Memory.\"}\n\nQuest Changes: MQ-07 → activate\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act2-script.md",
+          "heading": "The Curator's Endgame",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act2-scene18-into-sketch",
+      "name": "Into the Sketch",
+      "category": "event-scenes",
+      "filename": "into-the-sketch.ts",
+      "targetPath": "main/server/events/act2/scene18-into-sketch.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"Into the Sketch\" (ID: act2-scene18-into-sketch).\n\nScene: Act 2, Scene 18\nLocation: Frontier zone edge → Sketch boundary\nLevel Range: 20\nSummary: Transition to the Sketch. World desaturates to line-art. Act II ends.\n\nTrigger: quest-state, map: frontier-edge, condition: MQ-07-complete\n\nNPCs: Callum (npc_callum, dialogue: dlg-callum-sketch-entry), Lira (npc_lira, dialogue: dlg-lira-sketch-entry)\n\nEffects:\n- screen-effect: {\"effect\":\"sketch-transition\"}\n- music-change: {\"track\":\"sketch-ambient\"}\n- system-message: {\"text\":\"You've entered the Sketch — the world's unfinished edge.\"}\n\nQuest Changes: MQ-07 → complete, MQ-08 → activate\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act2-script.md",
+          "heading": "Into the Sketch",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act3-scene1-half-drawn-forest",
+      "name": "The Half-Drawn Forest",
+      "category": "event-scenes",
+      "filename": "the-half-drawn-forest.ts",
+      "targetPath": "main/server/events/act3/scene1-half-drawn-forest.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"The Half-Drawn Forest\" (ID: act3-scene1-half-drawn-forest).\n\nScene: Act 3, Scene 1\nLocation: Half-Drawn Forest (Sketch zone, 40x40)\nLevel Range: 20-22\nSummary: First Sketch zone. Solidification mechanic tutorial. Archive of Intentions (3 fragments).\n\nTrigger: map-enter, map: half-drawn-forest\n\nNPCs: Lira (npc_lira, dialogue: dlg-lira-half-drawn), Callum (npc_callum, dialogue: dlg-callum-half-drawn)\n\nEffects:\n- gui-show: {\"guiId\":\"sketch-solidification-tutorial\"}\n- system-message: {\"text\":\"Sketch Solidification: broadcast fragments to create solid terrain.\"}\n\nQuest Changes: MQ-08 → advance (obj 0)\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act3-script.md",
+          "heading": "The Half-Drawn Forest",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act3-scene2-luminous-wastes",
+      "name": "Luminous Wastes — The World's Edge",
+      "category": "event-scenes",
+      "filename": "luminous-wastes-the-world-s-edge.ts",
+      "targetPath": "main/server/events/act3/scene2-luminous-wastes.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"Luminous Wastes — The World's Edge\" (ID: act3-scene2-luminous-wastes).\n\nScene: Act 3, Scene 2\nLocation: Luminous Wastes (Sketch zone, 40x40)\nLevel Range: 22-23\nSummary: Half-Built Village solidification. The Edge narrative moment. Preserver Watchtower combat.\n\nTrigger: map-enter, map: luminous-wastes\n\nNPCs: Lira (npc_lira, dialogue: dlg-lira-luminous-wastes), Callum (npc_callum, dialogue: dlg-callum-luminous-wastes)\n\nEffects:\n- system-message: {\"text\":\"The world's absolute boundary. New lines still drawing themselves.\"}\n\nQuest Changes: MQ-08 → advance (obj 2)\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act3-script.md",
+          "heading": "Luminous Wastes — The World's Edge",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act3-scene3-undrawn-peaks",
+      "name": "The Undrawn Peaks",
+      "category": "event-scenes",
+      "filename": "the-undrawn-peaks.ts",
+      "targetPath": "main/server/events/act3/scene3-undrawn-peaks.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"The Undrawn Peaks\" (ID: act3-scene3-undrawn-peaks).\n\nScene: Act 3, Scene 3\nLocation: Undrawn Peaks (Sketch zone, 40x40)\nLevel Range: 23-24\nSummary: Wireframe mountains. Apex panorama. Aric reveals Fortress layout. Fortress entrance.\n\nTrigger: map-enter, map: undrawn-peaks\n\nNPCs: Lira (npc_lira, dialogue: dlg-lira-undrawn-peaks), Callum (npc_callum, dialogue: dlg-callum-undrawn-peaks), Aric (npc_aric, dialogue: dlg-aric-fortress-gate)\n\nEffects:\n- system-message: {\"text\":\"The Preserver Fortress is visible — crystalline structure in the highest peak.\"}\n\nQuest Changes: MQ-08 → complete, MQ-09 → activate\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act3-script.md",
+          "heading": "The Undrawn Peaks",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act3-scene4-deepest-memory",
+      "name": "The Deepest Memory",
+      "category": "event-scenes",
+      "filename": "the-deepest-memory.ts",
+      "targetPath": "main/server/events/act3/scene4-deepest-memory.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"The Deepest Memory\" (ID: act3-scene4-deepest-memory).\n\nScene: Act 3, Scene 4\nLocation: Depths Level 5 (Half-Drawn Forest entrance)\nLevel Range: 22-26\nSummary: Depths L5. First Memory is a question: 'Why do things change?' Boss: First Dreamer.\n\nTrigger: map-enter, map: depths-l5\n\nNPCs: Lira (npc_lira, dialogue: dlg-lira-deepest), Callum (npc_callum, dialogue: dlg-callum-deepest)\n\nEffects:\n- combat-start: {\"encounter\":\"boss-first-dreamer\",\"enemies\":\"B-03d\"}\n- item-give: {\"itemId\":\"frag-awe-neutral-5\",\"name\":\"World's Oldest Memory\"}\n\nQuest Changes: None\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act3-script.md",
+          "heading": "The Deepest Memory",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act3-scene5-fortress-gate",
+      "name": "The Fortress Gate",
+      "category": "event-scenes",
+      "filename": "the-fortress-gate.ts",
+      "targetPath": "main/server/events/act3/scene5-fortress-gate.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"The Fortress Gate\" (ID: act3-scene5-fortress-gate).\n\nScene: Act 3, Scene 5\nLocation: Undrawn Peaks — Crystalline Fortress Gate (20, 35)\nLevel Range: 24\nSummary: Entering the Preserver Fortress. God recall fractures visible. Broadcasting disabled.\n\nTrigger: area-enter, map: undrawn-peaks, pos: 20,35, condition: MQ-09-active\n\nNPCs: Lira (npc_lira, dialogue: dlg-lira-fortress-entry), Callum (npc_callum, dialogue: dlg-callum-fortress-entry)\n\nEffects:\n- screen-effect: {\"effect\":\"crystal-chill-overlay\"}\n- music-change: {\"track\":\"fortress-glass-harmonica\"}\n\nQuest Changes: MQ-09 → advance (obj 0)\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act3-script.md",
+          "heading": "The Fortress Gate",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act3-scene6-gallery-of-moments",
+      "name": "Floor 1 — The Gallery of Moments",
+      "category": "event-scenes",
+      "filename": "floor-1-the-gallery-of-moments.ts",
+      "targetPath": "main/server/events/act3/scene6-gallery-of-moments.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"Floor 1 — The Gallery of Moments\" (ID: act3-scene6-gallery-of-moments).\n\nScene: Act 3, Scene 6\nLocation: Preserver Fortress — Floor 1 (20x25)\nLevel Range: 24-26\nSummary: Frozen perfect moments museum. Crystal barrier puzzles. Boss: Curator's Right Hand.\n\nTrigger: map-enter, map: fortress-f1\n\nNPCs: Lira (npc_lira, dialogue: dlg-lira-gallery), Callum (npc_callum, dialogue: dlg-callum-gallery)\n\nEffects:\n- combat-start: {\"encounter\":\"boss-curators-right-hand\",\"enemies\":\"B-04a\"}\n\nQuest Changes: MQ-09 → advance (obj 1)\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act3-script.md",
+          "heading": "Floor 1 — The Gallery of Moments",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act3-scene7-archive-of-perfection",
+      "name": "Floor 2 — The Archive of Perfection",
+      "category": "event-scenes",
+      "filename": "floor-2-the-archive-of-perfection.ts",
+      "targetPath": "main/server/events/act3/scene7-archive-of-perfection.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"Floor 2 — The Archive of Perfection\" (ID: act3-scene7-archive-of-perfection).\n\nScene: Act 3, Scene 7\nLocation: Preserver Fortress — Floor 2 (20x25)\nLevel Range: 26-28\nSummary: Moral puzzle: free 2 of 3 frozen scenes. Lira's insight on stasis. Boss: Archive Keeper.\n\nTrigger: map-enter, map: fortress-f2\n\nNPCs: Lira (npc_lira, dialogue: dlg-lira-archive), Callum (npc_callum, dialogue: dlg-callum-archive)\n\nEffects:\n- gui-show: {\"guiId\":\"moral-choice\",\"choices\":[\"free-musicians\",\"free-reunion\",\"free-painter\"]}\n- combat-start: {\"encounter\":\"boss-archive-keeper\",\"enemies\":\"B-04b\"}\n\nQuest Changes: MQ-09 → advance (obj 2)\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act3-script.md",
+          "heading": "Floor 2 — The Archive of Perfection",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act3-scene8-first-memory-chamber",
+      "name": "Floor 3 — The First Memory Chamber",
+      "category": "event-scenes",
+      "filename": "floor-3-the-first-memory-chamber.ts",
+      "targetPath": "main/server/events/act3/scene8-first-memory-chamber.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"Floor 3 — The First Memory Chamber\" (ID: act3-scene8-first-memory-chamber).\n\nScene: Act 3, Scene 8\nLocation: Preserver Fortress — Floor 3 (20x25)\nLevel Range: 28\nSummary: Curator confrontation — dialogue, not combat. God recall responses manifest visually.\n\nTrigger: map-enter, map: fortress-f3\n\nNPCs: Lira (npc_lira, dialogue: dlg-lira-curator-confront), Callum (npc_callum, dialogue: dlg-callum-curator-confront), The Curator (npc_curator, dialogue: dlg-curator-confrontation)\n\nEffects:\n- cutscene-play: {\"cutsceneId\":\"curator-confrontation\"}\n- system-message: {\"text\":\"The Curator awaits. This is not a combat encounter.\"}\n\nQuest Changes: MQ-09 → complete, MQ-10 → activate\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act3-script.md",
+          "heading": "Floor 3 — The First Memory Chamber",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act3-scene9-the-remix",
+      "name": "The Remix",
+      "category": "event-scenes",
+      "filename": "the-remix.ts",
+      "targetPath": "main/server/events/act3/scene9-the-remix.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"The Remix\" (ID: act3-scene9-the-remix).\n\nScene: Act 3, Scene 9\nLocation: Preserver Fortress — First Memory pedestal\nLevel Range: 28-30\nSummary: Game climax. Player remixes First Memory into World's New Dawn. Broadcasts it.\n\nTrigger: quest-state, map: fortress-f3, condition: curator-dialogue-complete\n\nNPCs: Lira (npc_lira, dialogue: dlg-lira-remix), Callum (npc_callum, dialogue: dlg-callum-remix), The Curator (npc_curator, dialogue: dlg-curator-watching)\n\nEffects:\n- gui-show: {\"guiId\":\"first-memory-remix\"}\n- item-give: {\"itemId\":\"MF-11\",\"name\":\"World's New Dawn\"}\n- screen-effect: {\"effect\":\"white-out\"}\n\nQuest Changes: MQ-10 → advance (obj 2)\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act3-script.md",
+          "heading": "The Remix",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act3-scene10-endgame-bloom",
+      "name": "The Endgame Bloom",
+      "category": "event-scenes",
+      "filename": "the-endgame-bloom.ts",
+      "targetPath": "main/server/events/act3/scene10-endgame-bloom.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"The Endgame Bloom\" (ID: act3-scene10-endgame-bloom).\n\nScene: Act 3, Scene 10\nLocation: Everywhere — all zones simultaneously\nLevel Range: 28-30\nSummary: 90-second cinematic. All zones jump to vibrancy 95. World transforms. Gods fully awaken.\n\nTrigger: auto, map: fortress-f3, condition: worlds-new-dawn-broadcast\n\nNPCs: None\n\nEffects:\n- cutscene-play: {\"cutsceneId\":\"endgame-bloom-cinematic\"}\n- vibrancy-change: {\"zone\":\"all\",\"delta\":95}\n- music-change: {\"track\":\"endgame-bloom-orchestral\"}\n- screen-effect: {\"effect\":\"bloom-cascade\"}\n\nQuest Changes: None\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act3-script.md",
+          "heading": "The Endgame Bloom",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act3-scene11-curators-choice",
+      "name": "The Curator's Choice",
+      "category": "event-scenes",
+      "filename": "the-curator-s-choice.ts",
+      "targetPath": "main/server/events/act3/scene11-curators-choice.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"The Curator's Choice\" (ID: act3-scene11-curators-choice).\n\nScene: Act 3, Scene 11\nLocation: Preserver Fortress Gate → Village Hub\nLevel Range: 28-30\nSummary: Curator redeemed. Preservers become archivists. Return to Village Hub. NPC reactions.\n\nTrigger: auto, map: undrawn-peaks, condition: bloom-complete\n\nNPCs: Lira (npc_lira, dialogue: dlg-lira-resolution), Callum (npc_callum, dialogue: dlg-callum-resolution), The Curator (npc_curator, dialogue: dlg-curator-redeemed), Aric (npc_aric, dialogue: dlg-aric-resolution)\n\nEffects:\n- system-message: {\"text\":\"The Preservers become archivists — keepers, not jailers.\"}\n\nQuest Changes: MQ-10 → complete\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act3-script.md",
+          "heading": "The Curator's Choice",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "act3-scene12-new-beginning",
+      "name": "A New Beginning",
+      "category": "event-scenes",
+      "filename": "a-new-beginning.ts",
+      "targetPath": "main/server/events/act3/scene12-new-beginning.ts",
+      "prompt": "Generate an RPG-JS scene event file for \"A New Beginning\" (ID: act3-scene12-new-beginning).\n\nScene: Act 3, Scene 12\nLocation: Luminous Wastes — The Edge (5, 20)\nLevel Range: 28-30\nSummary: Final scene. The Edge: world still growing. Credits roll. New Game+ unlocked.\n\nTrigger: area-enter, map: luminous-wastes, pos: 5,20, condition: bloom-complete\n\nNPCs: Lira (npc_lira, dialogue: dlg-lira-ending), Callum (npc_callum, dialogue: dlg-callum-ending)\n\nEffects:\n- cutscene-play: {\"cutsceneId\":\"credits-sequence\"}\n- music-change: {\"track\":\"credits-theme\"}\n- system-message: {\"text\":\"Not an ending. A beginning.\"}\n\nQuest Changes: None\n\nCreate the event handler that:\n1. Checks trigger conditions\n2. Spawns NPCs at appropriate positions using createDynamicEvent()\n3. Plays dialogue sequences via player.showText()\n4. Fires effects (combat, GUI, screen effects, music)\n5. Updates quest state\nExport the setup function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/act3-script.md",
+          "heading": "A New Beginning",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/maps/event-placement.md",
+          "heading": "Event Placement",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    }
+  ]
+}

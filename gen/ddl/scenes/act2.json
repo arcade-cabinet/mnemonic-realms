@@ -1,0 +1,371 @@
+[
+  {
+    "id": "act2-scene1-mountain-pass",
+    "act": "act2",
+    "sceneNumber": 1,
+    "name": "The Mountain Pass",
+    "location": "Sunridge — The Threshold (20, 2) → Hollow Ridge",
+    "trigger": { "type": "area-enter", "map": "sunridge", "position": "20,2", "condition": "act2-unlocked" },
+    "npcs": [
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-act2-scene1" }
+    ],
+    "effects": [
+      { "type": "companion-join", "params": { "companionId": "callum", "class": "scholar" } },
+      { "type": "system-message", "params": { "text": "Callum joins the party! (Scholar)" } }
+    ],
+    "questChanges": [
+      { "questId": "MQ-05", "action": "activate" }
+    ],
+    "targetPath": "main/server/events/act2/scene1-mountain-pass.ts",
+    "levelRange": "10-11",
+    "summary": "Mountain pass opens. Callum joins as Scholar companion. First Frontier vista."
+  },
+  {
+    "id": "act2-scene2-ridgewalker-camp",
+    "act": "act2",
+    "sceneNumber": 2,
+    "name": "Ridgewalker Camp",
+    "location": "Hollow Ridge — Ridgewalker Camp (15, 25)",
+    "trigger": { "type": "area-enter", "map": "hollow-ridge", "position": "15,25", "condition": "first-visit" },
+    "npcs": [
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-act2-scene2" },
+      { "npcId": "petra", "name": "Petra", "graphic": "npc_petra", "dialogueKey": "dlg-petra-scene2" }
+    ],
+    "effects": [
+      { "type": "system-message", "params": { "text": "All four dormant god locations revealed." } }
+    ],
+    "questChanges": [
+      { "questId": "MQ-05", "action": "advance", "objectiveIndex": 2 }
+    ],
+    "targetPath": "main/server/events/act2/scene2-ridgewalker-camp.ts",
+    "levelRange": "10-12",
+    "summary": "Meet Petra, learn dormant god locations. Frontier hub with merchant and rest."
+  },
+  {
+    "id": "act2-scene3-frontier-opens",
+    "act": "act2",
+    "sceneNumber": 3,
+    "name": "The Frontier Opens",
+    "location": "Multiple — Shimmer Marsh, Flickerveil, Resonance Fields",
+    "trigger": { "type": "map-enter", "map": "frontier-zones", "condition": "post-ridgewalker" },
+    "npcs": [
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-letters" },
+      { "npcId": "wynn", "name": "Wynn", "graphic": "npc_wynn", "dialogueKey": "dlg-wynn-intro" },
+      { "npcId": "solen", "name": "Solen", "graphic": "npc_solen", "dialogueKey": "dlg-solen-intro" }
+    ],
+    "effects": [
+      { "type": "item-give", "params": { "itemId": "K-04", "name": "Light Lens" } },
+      { "type": "quest-update", "params": { "questId": "MQ-05", "action": "complete" } }
+    ],
+    "questChanges": [
+      { "questId": "MQ-05", "action": "complete" }
+    ],
+    "targetPath": "main/server/events/act2/scene3-frontier-opens.ts",
+    "levelRange": "10-14",
+    "summary": "Open exploration of all Frontier zones. Callum's Letters, settlements, key items."
+  },
+  {
+    "id": "act2-scene4-resonance-recall",
+    "act": "act2",
+    "sceneNumber": 4,
+    "name": "The First Recall — Resonance's Amphitheater",
+    "location": "Resonance Fields — Amphitheater (25, 25)",
+    "trigger": { "type": "quest-state", "map": "resonance-fields", "position": "25,25", "condition": "harmonize-path-complete" },
+    "npcs": [
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-resonance-recall" }
+    ],
+    "effects": [
+      { "type": "cutscene-play", "params": { "cutsceneId": "resonance-recall-vision" } },
+      { "type": "gui-show", "params": { "guiId": "god-recall-pedestal", "god": "resonance" } },
+      { "type": "vibrancy-change", "params": { "zone": "resonance-fields", "delta": 15 } },
+      { "type": "system-message", "params": { "text": "Resonance recalled! Subclass unlocked." } }
+    ],
+    "questChanges": [
+      { "questId": "GQ-01", "action": "complete" },
+      { "questId": "MQ-06", "action": "activate" }
+    ],
+    "targetPath": "main/server/events/act2/scene4-resonance-recall.ts",
+    "levelRange": "12-16",
+    "summary": "First god recall. 4-emotion choice. Subclass branch determination. Vibrancy +15."
+  },
+  {
+    "id": "act2-scene5-weight-of-choice",
+    "act": "act2",
+    "sceneNumber": 5,
+    "name": "The Weight of Choice",
+    "location": "Resonance Fields — Amphitheater (post-recall)",
+    "trigger": { "type": "auto", "map": "resonance-fields", "condition": "first-recall-complete" },
+    "npcs": [
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-weight" }
+    ],
+    "effects": [],
+    "questChanges": [],
+    "targetPath": "main/server/events/act2/scene5-weight-of-choice.ts",
+    "levelRange": "12-16",
+    "summary": "Callum reflects on permanence of recall choice. Foreshadows remaining gods."
+  },
+  {
+    "id": "act2-scene6-moral-dilemma-garden",
+    "act": "act2",
+    "sceneNumber": 6,
+    "name": "Moral Dilemma I — The Rootwalker's Last Garden",
+    "location": "Shimmer Marsh — east of Verdance's Hollow (28, 32)",
+    "trigger": { "type": "area-enter", "map": "shimmer-marsh", "position": "28,32", "condition": "post-first-recall" },
+    "npcs": [
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-garden-dilemma" }
+    ],
+    "effects": [
+      { "type": "gui-show", "params": { "guiId": "moral-choice", "choices": ["break-crystal", "leave-preserved"] } }
+    ],
+    "questChanges": [],
+    "targetPath": "main/server/events/act2/scene6-moral-dilemma-garden.ts",
+    "levelRange": "12-14",
+    "summary": "Crystallized garden — Rootwalker asked for preservation. Player chooses: break or preserve."
+  },
+  {
+    "id": "act2-scene7-verdance-recall",
+    "act": "act2",
+    "sceneNumber": 7,
+    "name": "Verdance — The Dormant God of Growth",
+    "location": "Shimmer Marsh — Verdance's Hollow (25, 35)",
+    "trigger": { "type": "quest-state", "map": "shimmer-marsh", "position": "25,35", "condition": "hermit-path-complete" },
+    "npcs": [
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-verdance-recall" },
+      { "npcId": "wynn", "name": "Wynn", "graphic": "npc_wynn", "dialogueKey": "dlg-wynn-verdance" }
+    ],
+    "effects": [
+      { "type": "cutscene-play", "params": { "cutsceneId": "verdance-recall-vision" } },
+      { "type": "gui-show", "params": { "guiId": "god-recall-pedestal", "god": "verdance" } },
+      { "type": "vibrancy-change", "params": { "zone": "shimmer-marsh", "delta": 15 } }
+    ],
+    "questChanges": [
+      { "questId": "GQ-02", "action": "complete" }
+    ],
+    "targetPath": "main/server/events/act2/scene7-verdance-recall.ts",
+    "levelRange": "12-16",
+    "summary": "Verdance recall. Root puzzle, vision, 4-emotion choice. Shimmer Marsh vibrancy +15."
+  },
+  {
+    "id": "act2-scene8-drowned-archive",
+    "act": "act2",
+    "sceneNumber": 8,
+    "name": "The Drowned Archive",
+    "location": "Depths Level 2 (Shimmer Marsh sinkhole)",
+    "trigger": { "type": "map-enter", "map": "depths-l2" },
+    "npcs": [
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-drowned-archive" }
+    ],
+    "effects": [
+      { "type": "item-give", "params": { "itemId": "MF-06", "name": "Dissolution Is a Choice" } },
+      { "type": "combat-start", "params": { "encounter": "boss-drowned-archivist", "enemies": "B-03a" } }
+    ],
+    "questChanges": [],
+    "targetPath": "main/server/events/act2/scene8-drowned-archive.ts",
+    "levelRange": "14-16",
+    "summary": "Depths L2 dungeon. Core lore: dissolution is choice, not tragedy. Boss: Drowned Archivist."
+  },
+  {
+    "id": "act2-scene9-preserver-response",
+    "act": "act2",
+    "sceneNumber": 9,
+    "name": "The Preserver Response",
+    "location": "Hollow Ridge — near Ridgewalker Camp",
+    "trigger": { "type": "auto", "map": "hollow-ridge", "condition": "2-gods-recalled" },
+    "npcs": [
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-preserver-response" },
+      { "npcId": "aric", "name": "Preserver Captain Aric", "graphic": "npc_aric", "dialogueKey": "dlg-aric-confrontation" }
+    ],
+    "effects": [
+      { "type": "screen-effect", "params": { "effect": "crystal-wall-appear" } }
+    ],
+    "questChanges": [],
+    "targetPath": "main/server/events/act2/scene9-preserver-response.ts",
+    "levelRange": "14-16",
+    "summary": "Aric confronts player about recall consequences. Debate, not combat. Moral questioning."
+  },
+  {
+    "id": "act2-scene10-luminos-recall",
+    "act": "act2",
+    "sceneNumber": 10,
+    "name": "Luminos — The Dormant God of Light",
+    "location": "Flickerveil — Luminos Grove (20, 20)",
+    "trigger": { "type": "quest-state", "map": "flickerveil", "position": "20,20", "condition": "light-lens-equipped" },
+    "npcs": [
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-luminos-recall" }
+    ],
+    "effects": [
+      { "type": "cutscene-play", "params": { "cutsceneId": "luminos-recall-vision" } },
+      { "type": "gui-show", "params": { "guiId": "god-recall-pedestal", "god": "luminos" } },
+      { "type": "vibrancy-change", "params": { "zone": "flickerveil", "delta": 15 } }
+    ],
+    "questChanges": [
+      { "questId": "GQ-03", "action": "complete" }
+    ],
+    "targetPath": "main/server/events/act2/scene10-luminos-recall.ts",
+    "levelRange": "14-18",
+    "summary": "Luminos recall. Light Lens puzzle, vision, 4-emotion choice. Flickerveil vibrancy +15."
+  },
+  {
+    "id": "act2-scene11-moral-dilemma-festival",
+    "act": "act2",
+    "sceneNumber": 11,
+    "name": "Moral Dilemma II — The Frozen Festival",
+    "location": "Resonance Fields — Festival Clearing (35, 35)",
+    "trigger": { "type": "area-enter", "map": "resonance-fields", "position": "35,35", "condition": "post-second-recall" },
+    "npcs": [
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-frozen-festival" }
+    ],
+    "effects": [
+      { "type": "gui-show", "params": { "guiId": "moral-choice", "choices": ["break-festival", "preserve-festival"] } }
+    ],
+    "questChanges": [],
+    "targetPath": "main/server/events/act2/scene11-moral-dilemma-festival.ts",
+    "levelRange": "14-16",
+    "summary": "Frozen festival: 8 people crystallized mid-celebration. Break or preserve?"
+  },
+  {
+    "id": "act2-scene12-resonant-caverns",
+    "act": "act2",
+    "sceneNumber": 12,
+    "name": "The Resonant Caverns",
+    "location": "Depths Level 3 (Hollow Ridge entrance)",
+    "trigger": { "type": "map-enter", "map": "depths-l3" },
+    "npcs": [
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-resonant-caverns" }
+    ],
+    "effects": [
+      { "type": "combat-start", "params": { "encounter": "boss-resonant-king", "enemies": "B-03b" } }
+    ],
+    "questChanges": [],
+    "targetPath": "main/server/events/act2/scene12-resonant-caverns.ts",
+    "levelRange": "16-18",
+    "summary": "Depths L3. Sound puzzles, crystal formations. Boss: The Resonant King."
+  },
+  {
+    "id": "act2-scene13-kinesis-recall",
+    "act": "act2",
+    "sceneNumber": 13,
+    "name": "Kinesis — The Dormant God of Motion",
+    "location": "Hollow Ridge — Kinesis Spire (24, 10)",
+    "trigger": { "type": "quest-state", "map": "hollow-ridge", "position": "24,10", "condition": "kinetic-boots-equipped" },
+    "npcs": [
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-kinesis-recall" },
+      { "npcId": "petra", "name": "Petra", "graphic": "npc_petra", "dialogueKey": "dlg-petra-kinesis" }
+    ],
+    "effects": [
+      { "type": "cutscene-play", "params": { "cutsceneId": "kinesis-recall-vision" } },
+      { "type": "gui-show", "params": { "guiId": "god-recall-pedestal", "god": "kinesis" } },
+      { "type": "vibrancy-change", "params": { "zone": "hollow-ridge", "delta": 15 } }
+    ],
+    "questChanges": [
+      { "questId": "GQ-04", "action": "complete" }
+    ],
+    "targetPath": "main/server/events/act2/scene13-kinesis-recall.ts",
+    "levelRange": "14-18",
+    "summary": "Kinesis recall. Spire climb, vision, 4-emotion choice. Hollow Ridge vibrancy +15."
+  },
+  {
+    "id": "act2-scene14-moral-dilemma-monument",
+    "act": "act2",
+    "sceneNumber": 14,
+    "name": "Moral Dilemma III — The Monument",
+    "location": "Hollow Ridge — Crystal Monument (30, 5)",
+    "trigger": { "type": "area-enter", "map": "hollow-ridge", "position": "30,5", "condition": "post-third-recall" },
+    "npcs": [
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-monument" }
+    ],
+    "effects": [
+      { "type": "gui-show", "params": { "guiId": "moral-choice", "choices": ["break-monument", "preserve-monument"] } }
+    ],
+    "questChanges": [],
+    "targetPath": "main/server/events/act2/scene14-moral-dilemma-monument.ts",
+    "levelRange": "16-18",
+    "summary": "Crystallized monument to a fallen Ridgewalker. Break or preserve?"
+  },
+  {
+    "id": "act2-scene15-songline",
+    "act": "act2",
+    "sceneNumber": 15,
+    "name": "The Songline",
+    "location": "Depths Level 4 (Resonance Fields entrance)",
+    "trigger": { "type": "map-enter", "map": "depths-l4" },
+    "npcs": [
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-songline" }
+    ],
+    "effects": [
+      { "type": "combat-start", "params": { "encounter": "boss-conductor", "enemies": "B-03c" } }
+    ],
+    "questChanges": [],
+    "targetPath": "main/server/events/act2/scene15-songline.ts",
+    "levelRange": "19-21",
+    "summary": "Depths L4. Musical dungeon, performer visions. Boss: The Conductor."
+  },
+  {
+    "id": "act2-scene16-lira-freed",
+    "act": "act2",
+    "sceneNumber": 16,
+    "name": "Freeing Lira",
+    "location": "Heartfield — Expanded Stagnation Zone (35, 30)",
+    "trigger": { "type": "quest-state", "map": "heartfield", "position": "35,30", "condition": "4-gods-recalled" },
+    "npcs": [
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-lira-freed" },
+      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-freed" }
+    ],
+    "effects": [
+      { "type": "screen-effect", "params": { "effect": "stagnation-mega-shatter" } },
+      { "type": "companion-join", "params": { "companionId": "lira", "class": "cleric" } },
+      { "type": "vibrancy-change", "params": { "zone": "heartfield", "delta": 25 } }
+    ],
+    "questChanges": [
+      { "questId": "SQ-14", "action": "complete" }
+    ],
+    "targetPath": "main/server/events/act2/scene16-lira-freed.ts",
+    "levelRange": "18-20",
+    "summary": "Player uses god power to break expanded stagnation. Lira rejoins the party."
+  },
+  {
+    "id": "act2-scene17-curator-endgame",
+    "act": "act2",
+    "sceneNumber": 17,
+    "name": "The Curator's Endgame",
+    "location": "Village Hub — Elder's House",
+    "trigger": { "type": "quest-state", "map": "village-hub", "condition": "lira-freed-and-SQ05-complete" },
+    "npcs": [
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-curator-endgame" },
+      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-curator-endgame" }
+    ],
+    "effects": [
+      { "type": "system-message", "params": { "text": "The Curator has found the First Memory." } }
+    ],
+    "questChanges": [
+      { "questId": "MQ-07", "action": "activate" }
+    ],
+    "targetPath": "main/server/events/act2/scene17-curator-endgame.ts",
+    "levelRange": "18-20",
+    "summary": "Callum reveals Curator's plan to crystallize the First Memory. Act III setup."
+  },
+  {
+    "id": "act2-scene18-into-sketch",
+    "act": "act2",
+    "sceneNumber": 18,
+    "name": "Into the Sketch",
+    "location": "Frontier zone edge → Sketch boundary",
+    "trigger": { "type": "quest-state", "map": "frontier-edge", "condition": "MQ-07-complete" },
+    "npcs": [
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-sketch-entry" },
+      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-sketch-entry" }
+    ],
+    "effects": [
+      { "type": "screen-effect", "params": { "effect": "sketch-transition" } },
+      { "type": "music-change", "params": { "track": "sketch-ambient" } },
+      { "type": "system-message", "params": { "text": "You've entered the Sketch — the world's unfinished edge." } }
+    ],
+    "questChanges": [
+      { "questId": "MQ-07", "action": "complete" },
+      { "questId": "MQ-08", "action": "activate" }
+    ],
+    "targetPath": "main/server/events/act2/scene18-into-sketch.ts",
+    "levelRange": "20",
+    "summary": "Transition to the Sketch. World desaturates to line-art. Act II ends."
+  }
+]

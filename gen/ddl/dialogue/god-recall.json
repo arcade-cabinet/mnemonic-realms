@@ -1,0 +1,178 @@
+[
+  {
+    "id": "dlg-resonance-cantara", "npcId": "resonance", "npcName": "Cantara",
+    "trigger": "Resonance recall — Joy",
+    "location": "Resonance Fields — Amphitheater (25, 25)",
+    "condition": "GQ-01, joy emotion chosen",
+    "lines": [
+      { "speaker": "Cantara", "text": "I was a hum. Now I am a song! I am Cantara, and the world will sing with me!" }
+    ],
+    "linkedQuest": "GQ-01",
+    "targetPath": "main/server/dialogue/resonance-cantara.ts"
+  },
+  {
+    "id": "dlg-resonance-tempestus", "npcId": "resonance", "npcName": "Tempestus",
+    "trigger": "Resonance recall — Fury",
+    "location": "Resonance Fields — Amphitheater (25, 25)",
+    "condition": "GQ-01, fury emotion chosen",
+    "lines": [
+      { "speaker": "Tempestus", "text": "ENOUGH SILENCE. I am Tempestus, and the sky will answer when I call." }
+    ],
+    "linkedQuest": "GQ-01",
+    "targetPath": "main/server/dialogue/resonance-tempestus.ts"
+  },
+  {
+    "id": "dlg-resonance-tacet", "npcId": "resonance", "npcName": "Tacet",
+    "trigger": "Resonance recall — Sorrow",
+    "location": "Resonance Fields — Amphitheater (25, 25)",
+    "condition": "GQ-01, sorrow emotion chosen",
+    "lines": [
+      { "speaker": "SYSTEM", "text": "I am Tacet. The Necessary Silence. Listen to what you cannot hear. That is where truth lives." }
+    ],
+    "linkedQuest": "GQ-01",
+    "targetPath": "main/server/dialogue/resonance-tacet.ts"
+  },
+  {
+    "id": "dlg-resonance-harmonia", "npcId": "resonance", "npcName": "Harmonia",
+    "trigger": "Resonance recall — Awe",
+    "location": "Resonance Fields — Amphitheater (25, 25)",
+    "condition": "GQ-01, awe emotion chosen",
+    "lines": [
+      { "speaker": "Harmonia", "text": "I am Harmonia. Every sound the Choir ever made — I hold them all, and they are in balance." }
+    ],
+    "linkedQuest": "GQ-01",
+    "targetPath": "main/server/dialogue/resonance-harmonia.ts"
+  },
+  {
+    "id": "dlg-verdance-floriana", "npcId": "verdance", "npcName": "Floriana",
+    "trigger": "Verdance recall — Joy",
+    "location": "Shimmer Marsh — Verdance's Hollow (25, 35)",
+    "condition": "GQ-02, joy emotion chosen",
+    "lines": [
+      { "speaker": "Floriana", "text": "I was a seed! A seed dreaming of forests and flowers — and now I bloom! I am Floriana." }
+    ],
+    "linkedQuest": "GQ-02",
+    "targetPath": "main/server/dialogue/verdance-floriana.ts"
+  },
+  {
+    "id": "dlg-verdance-thornweald", "npcId": "verdance", "npcName": "Thornweald",
+    "trigger": "Verdance recall — Fury",
+    "location": "Shimmer Marsh — Verdance's Hollow (25, 35)",
+    "condition": "GQ-02, fury emotion chosen",
+    "lines": [
+      { "speaker": "Thornweald", "text": "Life doesn't ask permission — it pushes through stone, through crystal. I am Thornweald. Nothing resists me." }
+    ],
+    "linkedQuest": "GQ-02",
+    "targetPath": "main/server/dialogue/verdance-thornweald.ts"
+  },
+  {
+    "id": "dlg-verdance-autumnus", "npcId": "verdance", "npcName": "Autumnus",
+    "trigger": "Verdance recall — Sorrow",
+    "location": "Shimmer Marsh — Verdance's Hollow (25, 35)",
+    "condition": "GQ-02, sorrow emotion chosen",
+    "lines": [
+      { "speaker": "Autumnus", "text": "Every garden has its autumn. Growth means shedding. I am Autumnus. What falls feeds what rises." }
+    ],
+    "linkedQuest": "GQ-02",
+    "targetPath": "main/server/dialogue/verdance-autumnus.ts"
+  },
+  {
+    "id": "dlg-verdance-sylvanos", "npcId": "verdance", "npcName": "Sylvanos",
+    "trigger": "Verdance recall — Awe",
+    "location": "Shimmer Marsh — Verdance's Hollow (25, 35)",
+    "condition": "GQ-02, awe emotion chosen",
+    "lines": [
+      { "speaker": "Sylvanos", "text": "I grew downward while you looked up. I am Sylvanos. The patient understand what the hurried never will." }
+    ],
+    "linkedQuest": "GQ-02",
+    "targetPath": "main/server/dialogue/verdance-sylvanos.ts"
+  },
+  {
+    "id": "dlg-luminos-solara", "npcId": "luminos", "npcName": "Solara",
+    "trigger": "Luminos recall — Joy",
+    "location": "Flickerveil — Luminos Grove (20, 20)",
+    "condition": "GQ-03, joy emotion chosen",
+    "lines": [
+      { "speaker": "Solara", "text": "Dawn. The first light of a day that has never been lived before. I am Solara." }
+    ],
+    "linkedQuest": "GQ-03",
+    "targetPath": "main/server/dialogue/luminos-solara.ts"
+  },
+  {
+    "id": "dlg-luminos-pyralis", "npcId": "luminos", "npcName": "Pyralis",
+    "trigger": "Luminos recall — Fury",
+    "location": "Flickerveil — Luminos Grove (20, 20)",
+    "condition": "GQ-03, fury emotion chosen",
+    "lines": [
+      { "speaker": "Pyralis", "text": "What hides in shadow rots. I am the burning eye. I am Pyralis." }
+    ],
+    "linkedQuest": "GQ-03",
+    "targetPath": "main/server/dialogue/luminos-pyralis.ts"
+  },
+  {
+    "id": "dlg-luminos-vesperis", "npcId": "luminos", "npcName": "Vesperis",
+    "trigger": "Luminos recall — Sorrow",
+    "location": "Flickerveil — Luminos Grove (20, 20)",
+    "condition": "GQ-03, sorrow emotion chosen",
+    "lines": [
+      { "speaker": "Vesperis", "text": "Not every light needs to blaze. Some lights are kindest when they soften. I am Vesperis." }
+    ],
+    "linkedQuest": "GQ-03",
+    "targetPath": "main/server/dialogue/luminos-vesperis.ts"
+  },
+  {
+    "id": "dlg-luminos-prisma", "npcId": "luminos", "npcName": "Prisma",
+    "trigger": "Luminos recall — Awe",
+    "location": "Flickerveil — Luminos Grove (20, 20)",
+    "condition": "GQ-03, awe emotion chosen",
+    "lines": [
+      { "speaker": "Prisma", "text": "One light enters the prism. Many colors emerge. Both are true. I am Prisma." }
+    ],
+    "linkedQuest": "GQ-03",
+    "targetPath": "main/server/dialogue/luminos-prisma.ts"
+  },
+  {
+    "id": "dlg-kinesis-jubila", "npcId": "kinesis", "npcName": "Jubila",
+    "trigger": "Kinesis recall — Joy",
+    "location": "Hollow Ridge — Kinesis Spire (24, 10)",
+    "condition": "GQ-04, joy emotion chosen",
+    "lines": [
+      { "speaker": "Jubila", "text": "Stillness? Stillness is OVER! I am Jubila. Follow me if you can!" }
+    ],
+    "linkedQuest": "GQ-04",
+    "targetPath": "main/server/dialogue/kinesis-jubila.ts"
+  },
+  {
+    "id": "dlg-kinesis-tecton", "npcId": "kinesis", "npcName": "Tecton",
+    "trigger": "Kinesis recall — Fury",
+    "location": "Hollow Ridge — Kinesis Spire (24, 10)",
+    "condition": "GQ-04, fury emotion chosen",
+    "lines": [
+      { "speaker": "Tecton", "text": "Everything moves. Nothing resists me forever. I am Tecton." }
+    ],
+    "linkedQuest": "GQ-04",
+    "targetPath": "main/server/dialogue/kinesis-tecton.ts"
+  },
+  {
+    "id": "dlg-kinesis-errantis", "npcId": "kinesis", "npcName": "Errantis",
+    "trigger": "Kinesis recall — Sorrow",
+    "location": "Hollow Ridge — Kinesis Spire (24, 10)",
+    "condition": "GQ-04, sorrow emotion chosen",
+    "lines": [
+      { "speaker": "Errantis", "text": "Every road ends. Every step fades. But the walking mattered. I am Errantis." }
+    ],
+    "linkedQuest": "GQ-04",
+    "targetPath": "main/server/dialogue/kinesis-errantis.ts"
+  },
+  {
+    "id": "dlg-kinesis-vortis", "npcId": "kinesis", "npcName": "Vortis",
+    "trigger": "Kinesis recall — Awe",
+    "location": "Hollow Ridge — Kinesis Spire (24, 10)",
+    "condition": "GQ-04, awe emotion chosen",
+    "lines": [
+      { "speaker": "SYSTEM", "text": "EVERYTHING IS IN ORBIT. NOTHING TRULY STOPS. I am Vortis." }
+    ],
+    "linkedQuest": "GQ-04",
+    "targetPath": "main/server/dialogue/kinesis-vortis.ts"
+  }
+]

@@ -1,23 +1,20 @@
-/**
- * GenAI Pipeline Schemas — Barrel Export
- *
- * All Zod schemas for the Mnemonic Realms asset generation pipeline.
- * Each asset type includes DocRef fields linking to specific markdown headings
- * in the game bible, enabling the generation script to auto-load context.
- */
+/** GenAI Pipeline Schemas — Barrel Export. */
 
-// Common types used across all manifests
+export type { AmbientAsset, AmbientBiome, AmbientManifest } from './audio-ambient';
+export { AmbientAssetSchema, AmbientBiomeSchema, AmbientManifestSchema } from './audio-ambient';
+export type { BgmAsset, BgmManifest, BgmMood, BgmStem, BgmType } from './audio-bgm';
 export {
-  AssetCategorySchema,
-  AssetDimensionsSchema,
-  DocRefPurposeSchema,
-  DocRefSchema,
-  GenerationMetadataSchema,
-  GenerationStatusSchema,
-  OutputFormatSchema,
-  hashPrompt,
-  needsRegeneration,
-} from './common';
+  BgmAssetSchema,
+  BgmManifestSchema,
+  BgmMoodSchema,
+  BgmStemSchema,
+  BgmTypeSchema,
+} from './audio-bgm';
+export type { SfxAsset, SfxCategory, SfxManifest } from './audio-sfx';
+export { SfxAssetSchema, SfxCategorySchema, SfxManifestSchema } from './audio-sfx';
+export type { CodeCategory, CodeGenEntry, CodeGenManifest } from './codegen';
+export { CodeCategorySchema, CodeGenEntrySchema, CodeGenManifestSchema } from './codegen';
+export * from './codegen-ddl';
 export type {
   AssetCategory,
   AssetDimensions,
@@ -27,40 +24,20 @@ export type {
   GenerationStatus,
   OutputFormat,
 } from './common';
-
-// Tileset schemas (biome × vibrancy tier matrix)
 export {
-  BiomeTypeSchema,
-  TilesetAssetSchema,
-  TilesetManifestSchema,
-  TileTypeSchema,
-  VibrancyTierSchema,
-} from './tileset';
-export type {
-  BiomeType,
-  TilesetAsset,
-  TilesetManifest,
-  TileType,
-  VibrancyTier,
-} from './tileset';
-
-// Spritesheet schemas (characters, enemies, NPCs)
-export {
-  AnimationSetSchema,
-  SpriteCategorySchema,
-  SpritesheetAssetSchema,
-  SpritesheetManifestSchema,
-  SpriteSizeSchema,
-} from './spritesheet';
-export type {
-  AnimationSet,
-  SpriteCategory,
-  SpriteSize,
-  SpritesheetAsset,
-  SpritesheetManifest,
-} from './spritesheet';
-
-// Portrait schemas (dialogue, menus, story scenes)
+  AssetCategorySchema,
+  AssetDimensionsSchema,
+  DocRefPurposeSchema,
+  DocRefSchema,
+  GenerationMetadataSchema,
+  GenerationStatusSchema,
+  hashPrompt,
+  needsRegeneration,
+  OutputFormatSchema,
+} from './common';
+export type { ItemCategory, ItemIconAsset, ItemIconManifest } from './item-icon';
+export { ItemCategorySchema, ItemIconAssetSchema, ItemIconManifestSchema } from './item-icon';
+export type { Expression, PortraitAsset, PortraitManifest, PortraitType } from './portrait';
 export {
   ExpressionSchema,
   PortraitAssetSchema,
@@ -68,32 +45,26 @@ export {
   PortraitTypeSchema,
 } from './portrait';
 export type {
-  Expression,
-  PortraitAsset,
-  PortraitManifest,
-  PortraitType,
-} from './portrait';
-
-// Item icon schemas (weapons, armor, consumables, fragments)
+  AnimationSet,
+  SpriteCategory,
+  SpriteSize,
+  SpritesheetAsset,
+  SpritesheetManifest,
+} from './spritesheet';
 export {
-  ItemCategorySchema,
-  ItemIconAssetSchema,
-  ItemIconManifestSchema,
-} from './item-icon';
-export type {
-  ItemCategory,
-  ItemIconAsset,
-  ItemIconManifest,
-} from './item-icon';
-
-// UI element schemas (dialogue frames, battle UI, menus)
+  AnimationSetSchema,
+  SpriteCategorySchema,
+  SpriteSizeSchema,
+  SpritesheetAssetSchema,
+  SpritesheetManifestSchema,
+} from './spritesheet';
+export type { BiomeType, TilesetAsset, TilesetManifest, TileType, VibrancyTier } from './tileset';
 export {
-  UIElementAssetSchema,
-  UIElementManifestSchema,
-  UIElementTypeSchema,
-} from './ui-element';
-export type {
-  UIElementAsset,
-  UIElementManifest,
-  UIElementType,
-} from './ui-element';
+  BiomeTypeSchema,
+  TilesetAssetSchema,
+  TilesetManifestSchema,
+  TileTypeSchema,
+  VibrancyTierSchema,
+} from './tileset';
+export type { UIElementAsset, UIElementManifest, UIElementType } from './ui-element';
+export { UIElementAssetSchema, UIElementManifestSchema, UIElementTypeSchema } from './ui-element';

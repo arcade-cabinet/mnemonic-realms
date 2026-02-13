@@ -1,0 +1,322 @@
+[
+  {
+    "id": "act1-scene1-familiar-place",
+    "act": "act1",
+    "sceneNumber": 1,
+    "name": "A Familiar Place",
+    "location": "Village Hub — Elder's House (18, 10)",
+    "trigger": {
+      "type": "auto",
+      "map": "village-hub",
+      "condition": "game-start"
+    },
+    "npcs": [
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-scene1" }
+    ],
+    "effects": [
+      { "type": "item-give", "params": { "itemId": "MF-01", "name": "Callum's First Lesson" } },
+      { "type": "quest-update", "params": { "questId": "MQ-01", "action": "activate" } },
+      { "type": "system-message", "params": { "text": "You received a Memory Fragment: \"Callum's First Lesson\" (Joy, Neutral, 2)" } }
+    ],
+    "questChanges": [
+      { "questId": "MQ-01", "action": "activate" }
+    ],
+    "targetPath": "main/server/events/act1/scene1-familiar-place.ts",
+    "levelRange": "1",
+    "summary": "Player spawns in Elder's House. Callum reveals Mnemonic Architecture talent, gives MF-01."
+  },
+  {
+    "id": "act1-scene2-memorial-garden",
+    "act": "act1",
+    "sceneNumber": 2,
+    "name": "The Memorial Garden",
+    "location": "Village Hub — Memorial Garden (8, 16)",
+    "trigger": {
+      "type": "area-enter",
+      "map": "village-hub",
+      "position": "8,16"
+    },
+    "npcs": [],
+    "effects": [
+      { "type": "item-give", "params": { "itemId": "frag-joy-earth-1", "name": "Joy/Earth Fragment" } },
+      { "type": "item-give", "params": { "itemId": "frag-calm-neutral-1", "name": "Calm/Neutral Fragment" } },
+      { "type": "item-give", "params": { "itemId": "frag-awe-wind-2", "name": "Awe/Wind Fragment" } },
+      { "type": "system-message", "params": { "text": "You now carry 4 memory fragments." } }
+    ],
+    "questChanges": [
+      { "questId": "MQ-01", "action": "advance", "objectiveIndex": 2 }
+    ],
+    "targetPath": "main/server/events/act1/scene2-memorial-garden.ts",
+    "levelRange": "1",
+    "summary": "Player collects 3 fragments from Resonance Stones. Teaches memory collection."
+  },
+  {
+    "id": "act1-scene3-lira-workshop",
+    "act": "act1",
+    "sceneNumber": 3,
+    "name": "Lira's Workshop",
+    "location": "Village Hub — Lira's Workshop (8, 18)",
+    "trigger": {
+      "type": "map-enter",
+      "map": "lira-workshop"
+    },
+    "npcs": [
+      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-scene3" }
+    ],
+    "effects": [
+      { "type": "companion-join", "params": { "companionId": "lira", "class": "cleric" } },
+      { "type": "item-give", "params": { "itemId": "K-01", "name": "Architect's Signet" } },
+      { "type": "quest-update", "params": { "questId": "MQ-01", "action": "complete" } },
+      { "type": "quest-update", "params": { "questId": "MQ-02", "action": "activate" } }
+    ],
+    "questChanges": [
+      { "questId": "MQ-01", "action": "complete" },
+      { "questId": "MQ-02", "action": "activate" }
+    ],
+    "targetPath": "main/server/events/act1/scene3-lira-workshop.ts",
+    "levelRange": "1-2",
+    "summary": "Lira joins the party (Cleric). Player receives Architect's Signet (K-01)."
+  },
+  {
+    "id": "act1-scene4-training-ground",
+    "act": "act1",
+    "sceneNumber": 4,
+    "name": "The Training Ground",
+    "location": "Village Hub — Training Ground (8, 10)",
+    "trigger": {
+      "type": "area-enter",
+      "map": "village-hub",
+      "position": "8,10",
+      "condition": "lira-in-party"
+    },
+    "npcs": [
+      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-scene4" }
+    ],
+    "effects": [
+      { "type": "combat-start", "params": { "encounter": "tutorial-dummies", "enemies": "2x Training Dummy" } },
+      { "type": "combat-start", "params": { "encounter": "tutorial-sprite", "enemies": "1x Meadow Sprite" } },
+      { "type": "gui-show", "params": { "guiId": "remix-tutorial" } },
+      { "type": "vibrancy-change", "params": { "zone": "village-hub", "delta": 12 } },
+      { "type": "item-give", "params": { "itemId": "K-03", "name": "Remix Table Access" } },
+      { "type": "item-remove", "params": { "itemId": "MF-02", "name": "Lira's Warmth (broadcast)" } }
+    ],
+    "questChanges": [
+      { "questId": "MQ-02", "action": "advance", "objectiveIndex": 3 },
+      { "questId": "MQ-02", "action": "complete" }
+    ],
+    "targetPath": "main/server/events/act1/scene4-training-ground.ts",
+    "levelRange": "1-2",
+    "summary": "Combat tutorial (dummies + sprite). Remix and broadcast tutorial. Village Hub vibrancy +12."
+  },
+  {
+    "id": "act1-scene5-heartfield",
+    "act": "act1",
+    "sceneNumber": 5,
+    "name": "Heartfield — The Open World",
+    "location": "Heartfield (south of Village Hub)",
+    "trigger": {
+      "type": "map-enter",
+      "map": "heartfield",
+      "condition": "first-visit"
+    },
+    "npcs": [
+      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-scene5" }
+    ],
+    "effects": [
+      { "type": "system-message", "params": { "text": "You've entered the Settled Lands." } },
+      { "type": "quest-update", "params": { "questId": "MQ-03", "action": "activate" } }
+    ],
+    "questChanges": [
+      { "questId": "MQ-03", "action": "activate" }
+    ],
+    "targetPath": "main/server/events/act1/scene5-heartfield.ts",
+    "levelRange": "2-4",
+    "summary": "First open-world exploration. Heartfield farms, Old Windmill, random encounters."
+  },
+  {
+    "id": "act1-scene6-stagnation-clearing",
+    "act": "act1",
+    "sceneNumber": 6,
+    "name": "The Stagnation Clearing",
+    "location": "Heartfield — Stagnation Clearing (35, 30)",
+    "trigger": {
+      "type": "area-enter",
+      "map": "heartfield",
+      "position": "35,30"
+    },
+    "npcs": [
+      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-scene6" }
+    ],
+    "effects": [
+      { "type": "music-change", "params": { "track": "stagnation-ambient" } },
+      { "type": "screen-effect", "params": { "effect": "desaturate", "intensity": 0.4 } },
+      { "type": "system-message", "params": { "text": "You've discovered a Stagnation Zone." } }
+    ],
+    "questChanges": [],
+    "targetPath": "main/server/events/act1/scene6-stagnation-clearing.ts",
+    "levelRange": "3-5",
+    "summary": "First encounter with Preservers' stagnation. Observation only — no interaction yet."
+  },
+  {
+    "id": "act1-scene7-ambergrove",
+    "act": "act1",
+    "sceneNumber": 7,
+    "name": "Ambergrove — Forest of Echoes",
+    "location": "Ambergrove (east of Village Hub)",
+    "trigger": {
+      "type": "map-enter",
+      "map": "ambergrove",
+      "condition": "first-visit"
+    },
+    "npcs": [
+      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-scene7" }
+    ],
+    "effects": [
+      { "type": "system-message", "params": { "text": "Ambergrove: dense forest with ancient Hearthstone Circle." } }
+    ],
+    "questChanges": [
+      { "questId": "MQ-03", "action": "advance", "objectiveIndex": 1 }
+    ],
+    "targetPath": "main/server/events/act1/scene7-ambergrove.ts",
+    "levelRange": "4-6",
+    "summary": "Hearthstone Circle (3 fragments), Amber Lake (foreshadowing), Woodcutter's Camp (SQ-03)."
+  },
+  {
+    "id": "act1-scene8-millbrook",
+    "act": "act1",
+    "sceneNumber": 8,
+    "name": "Millbrook — River of Memory",
+    "location": "Millbrook (west of Village Hub)",
+    "trigger": {
+      "type": "map-enter",
+      "map": "millbrook",
+      "condition": "first-visit"
+    },
+    "npcs": [
+      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-scene8" }
+    ],
+    "effects": [
+      { "type": "system-message", "params": { "text": "Millbrook: riverside town with specialty shops and hidden grotto." } }
+    ],
+    "questChanges": [
+      { "questId": "MQ-03", "action": "advance", "objectiveIndex": 2 }
+    ],
+    "targetPath": "main/server/events/act1/scene8-millbrook.ts",
+    "levelRange": "5-7",
+    "summary": "Remix strategy tutorial. Brightwater Bridge, Upstream Falls grotto, fishing minigame."
+  },
+  {
+    "id": "act1-scene9-sunridge",
+    "act": "act1",
+    "sceneNumber": 9,
+    "name": "Sunridge — The World's Edge",
+    "location": "Sunridge (north of Village Hub)",
+    "trigger": {
+      "type": "map-enter",
+      "map": "sunridge",
+      "condition": "first-visit"
+    },
+    "npcs": [
+      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-scene9" },
+      { "npcId": "preserver-scout", "name": "Preserver Scout", "graphic": "npc_preserver_scout", "dialogueKey": "dlg-preserver-scout-scene9" }
+    ],
+    "effects": [
+      { "type": "quest-update", "params": { "questId": "MQ-03", "action": "complete" } },
+      { "type": "quest-update", "params": { "questId": "MQ-04", "action": "activate" } }
+    ],
+    "questChanges": [
+      { "questId": "MQ-03", "action": "complete" },
+      { "questId": "MQ-04", "action": "activate" }
+    ],
+    "targetPath": "main/server/events/act1/scene9-sunridge.ts",
+    "levelRange": "7-9",
+    "summary": "Wind Shrine (dormant god hint), Preserver Outpost confrontation, advanced combat."
+  },
+  {
+    "id": "act1-scene10-breaking-stagnation",
+    "act": "act1",
+    "sceneNumber": 10,
+    "name": "Breaking the Stagnation",
+    "location": "Heartfield — Stagnation Clearing (35, 30)",
+    "trigger": {
+      "type": "quest-state",
+      "map": "heartfield",
+      "position": "35,30",
+      "condition": "MQ-04-active"
+    },
+    "npcs": [
+      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-scene10" }
+    ],
+    "effects": [
+      { "type": "gui-show", "params": { "guiId": "broadcast-target", "target": "stagnation-stone" } },
+      { "type": "screen-effect", "params": { "effect": "stagnation-shatter" } },
+      { "type": "vibrancy-change", "params": { "zone": "heartfield", "delta": 10 } },
+      { "type": "item-give", "params": { "itemId": "MF-03", "name": "Echo of the Stagnation" } },
+      { "type": "system-message", "params": { "text": "Stagnation Zone broken! Heartfield vibrancy +10!" } }
+    ],
+    "questChanges": [
+      { "questId": "MQ-04", "action": "advance", "objectiveIndex": 5 }
+    ],
+    "targetPath": "main/server/events/act1/scene10-breaking-stagnation.ts",
+    "levelRange": "8-9",
+    "summary": "First active stagnation breaking. Player broadcasts fragment to shatter crystal zone."
+  },
+  {
+    "id": "act1-scene11-clearing-grows",
+    "act": "act1",
+    "sceneNumber": 11,
+    "name": "The Clearing Grows",
+    "location": "Village Hub → Heartfield",
+    "trigger": {
+      "type": "quest-state",
+      "map": "village-hub",
+      "condition": "MQ-04-stagnation-broken"
+    },
+    "npcs": [
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-scene11" },
+      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-scene11" }
+    ],
+    "effects": [
+      { "type": "cutscene-play", "params": { "cutsceneId": "lira-freezing" } },
+      { "type": "companion-leave", "params": { "companionId": "lira", "reason": "frozen" } },
+      { "type": "vibrancy-change", "params": { "zone": "heartfield", "delta": -25 } },
+      { "type": "item-give", "params": { "itemId": "MF-04", "name": "Lira's Scream" } },
+      { "type": "system-message", "params": { "text": "Lira has been frozen by the Stagnation Zone." } }
+    ],
+    "questChanges": [
+      { "questId": "MQ-04", "action": "advance", "objectiveIndex": 6 }
+    ],
+    "targetPath": "main/server/events/act1/scene11-clearing-grows.ts",
+    "levelRange": "9-10",
+    "summary": "Act I climax. Stagnation expands, Lira is frozen. Player receives MF-04 (Fury/Light/4)."
+  },
+  {
+    "id": "act1-scene12-new-resolve",
+    "act": "act1",
+    "sceneNumber": 12,
+    "name": "A New Resolve",
+    "location": "Village Hub — Elder's House → Lookout Hill (12, 2)",
+    "trigger": {
+      "type": "auto",
+      "map": "village-hub",
+      "condition": "lira-frozen"
+    },
+    "npcs": [
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-scene12" }
+    ],
+    "effects": [
+      { "type": "item-give", "params": { "itemId": "K-02", "name": "Callum's Letters" } },
+      { "type": "item-give", "params": { "itemId": "frag-awe-neutral-3", "name": "Callum's Favorite Memory" } },
+      { "type": "music-change", "params": { "track": "village-night" } },
+      { "type": "screen-effect", "params": { "effect": "night-transition" } },
+      { "type": "quest-update", "params": { "questId": "MQ-04", "action": "complete" } },
+      { "type": "system-message", "params": { "text": "The mountain pass to the Frontier is now open. Act II begins." } }
+    ],
+    "questChanges": [
+      { "questId": "MQ-04", "action": "complete" }
+    ],
+    "targetPath": "main/server/events/act1/scene12-new-resolve.ts",
+    "levelRange": "9-10",
+    "summary": "Callum gives Letters (K-02) + 3-star fragment. Night vista. Act II unlocked."
+  }
+]

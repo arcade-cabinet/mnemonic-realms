@@ -1,0 +1,98 @@
+[
+  {
+    "id": "SFX-CBT-01",
+    "name": "Physical hit (light)",
+    "category": "combat",
+    "description": "Quick blade slash through air",
+    "durationSec": 0.2,
+    "preset": [3,0,0.18,0,0.15,0.1,0.03,0.8,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0.5]
+  },
+  {
+    "id": "SFX-CBT-02",
+    "name": "Physical hit (heavy)",
+    "category": "combat",
+    "description": "Weighty impact, slight echo",
+    "durationSec": 0.3,
+    "preset": [3,0,0.1,0,0.25,0.15,0.05,0.6,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0.5]
+  },
+  {
+    "id": "SFX-CBT-03",
+    "name": "Magic cast",
+    "category": "combat",
+    "description": "Rising crystalline tone, sparkle",
+    "durationSec": 0.5,
+    "preset": [0,0.1,0.4,0,0.5,0.65,0.1,0.5,0,0,0.5,0,0,0,0,0,0,0,1,0,0,0,0,0.5]
+  },
+  {
+    "id": "SFX-CBT-04",
+    "name": "Heal",
+    "category": "combat",
+    "description": "Warm ascending chime, bell harmonics",
+    "durationSec": 0.6,
+    "preset": [0,0,0.35,0,0.6,0.7,0.08,0.4,0,0,0.4,0,0,0,0,0,0,0,1,0,0,0,0,0.5]
+  },
+  {
+    "id": "SFX-CBT-05",
+    "name": "Critical hit",
+    "category": "combat",
+    "description": "Heavy impact + glass shatter accent",
+    "durationSec": 0.4,
+    "preset": [3,0,0.08,0,0.3,0.12,0.06,0.9,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0.5]
+  },
+  {
+    "id": "SFX-CBT-06",
+    "name": "Miss / dodge",
+    "category": "combat",
+    "description": "Quick wind swoosh, no impact",
+    "durationSec": 0.2,
+    "preset": [3,0.05,0.22,0,0.15,0.08,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0.5]
+  },
+  {
+    "id": "SFX-CBT-07",
+    "name": "Stasis inflicted",
+    "category": "combat",
+    "description": "Ice crystallization crackle, frozen chord",
+    "durationSec": 0.5,
+    "preset": [0,0.1,0.5,0,0.5,0.55,0.12,0.3,0,0,0.3,0,0,0,0,0,0,0,1,0,0,0,0,0.5]
+  },
+  {
+    "id": "SFX-CBT-08",
+    "name": "Poison inflicted",
+    "category": "combat",
+    "description": "Wet bubble, slight hiss",
+    "durationSec": 0.3,
+    "preset": [3,0.08,0.15,0,0.25,0.3,0.04,0.5,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0.5]
+  },
+  {
+    "id": "SFX-CBT-09",
+    "name": "Buff applied",
+    "category": "combat",
+    "description": "Ascending warm tone, golden sparkle",
+    "durationSec": 0.4,
+    "preset": [0,0,0.3,0.05,0.4,0.6,0.06,0.3,0,0,0.3,0,0,0,0,0,0,0,1,0,0,0,0,0.5]
+  },
+  {
+    "id": "SFX-CBT-10",
+    "name": "Debuff applied",
+    "category": "combat",
+    "description": "Descending cold tone, slight dissonance",
+    "durationSec": 0.4,
+    "preset": [0,0,0.35,0,-0.3,0.4,0.06,0.3,0,0,-0.3,0,0,0,0,0,0,0,1,0,0,0,0,0.5]
+  },
+  {
+    "id": "SFX-CBT-11",
+    "name": "Enemy death",
+    "category": "combat",
+    "description": "Brief dissolve, amber mote scatter",
+    "durationSec": 0.5,
+    "preset": [3,0.1,0.2,0,0.4,0.1,0.08,0.7,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0.5]
+  },
+  {
+    "id": "SFX-CBT-12",
+    "name": "Party member KO",
+    "category": "combat",
+    "description": "Dull thud + brief reverb, melancholic",
+    "durationSec": 0.4,
+    "preset": [3,0,0.08,0,0.35,0.2,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0.5]
+  }
+]

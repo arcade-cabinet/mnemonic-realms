@@ -1,0 +1,264 @@
+[
+  {
+    "id": "act3-scene1-half-drawn-forest",
+    "act": "act3",
+    "sceneNumber": 1,
+    "name": "The Half-Drawn Forest",
+    "location": "Half-Drawn Forest (Sketch zone, 40x40)",
+    "trigger": { "type": "map-enter", "map": "half-drawn-forest" },
+    "npcs": [
+      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-half-drawn" },
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-half-drawn" }
+    ],
+    "effects": [
+      { "type": "gui-show", "params": { "guiId": "sketch-solidification-tutorial" } },
+      { "type": "system-message", "params": { "text": "Sketch Solidification: broadcast fragments to create solid terrain." } }
+    ],
+    "questChanges": [
+      { "questId": "MQ-08", "action": "advance", "objectiveIndex": 0 }
+    ],
+    "targetPath": "main/server/events/act3/scene1-half-drawn-forest.ts",
+    "levelRange": "20-22",
+    "summary": "First Sketch zone. Solidification mechanic tutorial. Archive of Intentions (3 fragments)."
+  },
+  {
+    "id": "act3-scene2-luminous-wastes",
+    "act": "act3",
+    "sceneNumber": 2,
+    "name": "Luminous Wastes — The World's Edge",
+    "location": "Luminous Wastes (Sketch zone, 40x40)",
+    "trigger": { "type": "map-enter", "map": "luminous-wastes" },
+    "npcs": [
+      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-luminous-wastes" },
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-luminous-wastes" }
+    ],
+    "effects": [
+      { "type": "system-message", "params": { "text": "The world's absolute boundary. New lines still drawing themselves." } }
+    ],
+    "questChanges": [
+      { "questId": "MQ-08", "action": "advance", "objectiveIndex": 2 }
+    ],
+    "targetPath": "main/server/events/act3/scene2-luminous-wastes.ts",
+    "levelRange": "22-23",
+    "summary": "Half-Built Village solidification. The Edge narrative moment. Preserver Watchtower combat."
+  },
+  {
+    "id": "act3-scene3-undrawn-peaks",
+    "act": "act3",
+    "sceneNumber": 3,
+    "name": "The Undrawn Peaks",
+    "location": "Undrawn Peaks (Sketch zone, 40x40)",
+    "trigger": { "type": "map-enter", "map": "undrawn-peaks" },
+    "npcs": [
+      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-undrawn-peaks" },
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-undrawn-peaks" },
+      { "npcId": "aric", "name": "Aric", "graphic": "npc_aric", "dialogueKey": "dlg-aric-fortress-gate" }
+    ],
+    "effects": [
+      { "type": "system-message", "params": { "text": "The Preserver Fortress is visible — crystalline structure in the highest peak." } }
+    ],
+    "questChanges": [
+      { "questId": "MQ-08", "action": "complete" },
+      { "questId": "MQ-09", "action": "activate" }
+    ],
+    "targetPath": "main/server/events/act3/scene3-undrawn-peaks.ts",
+    "levelRange": "23-24",
+    "summary": "Wireframe mountains. Apex panorama. Aric reveals Fortress layout. Fortress entrance."
+  },
+  {
+    "id": "act3-scene4-deepest-memory",
+    "act": "act3",
+    "sceneNumber": 4,
+    "name": "The Deepest Memory",
+    "location": "Depths Level 5 (Half-Drawn Forest entrance)",
+    "trigger": { "type": "map-enter", "map": "depths-l5" },
+    "npcs": [
+      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-deepest" },
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-deepest" }
+    ],
+    "effects": [
+      { "type": "combat-start", "params": { "encounter": "boss-first-dreamer", "enemies": "B-03d" } },
+      { "type": "item-give", "params": { "itemId": "frag-awe-neutral-5", "name": "World's Oldest Memory" } }
+    ],
+    "questChanges": [],
+    "targetPath": "main/server/events/act3/scene4-deepest-memory.ts",
+    "levelRange": "22-26",
+    "summary": "Depths L5. First Memory is a question: 'Why do things change?' Boss: First Dreamer."
+  },
+  {
+    "id": "act3-scene5-fortress-gate",
+    "act": "act3",
+    "sceneNumber": 5,
+    "name": "The Fortress Gate",
+    "location": "Undrawn Peaks — Crystalline Fortress Gate (20, 35)",
+    "trigger": { "type": "area-enter", "map": "undrawn-peaks", "position": "20,35", "condition": "MQ-09-active" },
+    "npcs": [
+      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-fortress-entry" },
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-fortress-entry" }
+    ],
+    "effects": [
+      { "type": "screen-effect", "params": { "effect": "crystal-chill-overlay" } },
+      { "type": "music-change", "params": { "track": "fortress-glass-harmonica" } }
+    ],
+    "questChanges": [
+      { "questId": "MQ-09", "action": "advance", "objectiveIndex": 0 }
+    ],
+    "targetPath": "main/server/events/act3/scene5-fortress-gate.ts",
+    "levelRange": "24",
+    "summary": "Entering the Preserver Fortress. God recall fractures visible. Broadcasting disabled."
+  },
+  {
+    "id": "act3-scene6-gallery-of-moments",
+    "act": "act3",
+    "sceneNumber": 6,
+    "name": "Floor 1 — The Gallery of Moments",
+    "location": "Preserver Fortress — Floor 1 (20x25)",
+    "trigger": { "type": "map-enter", "map": "fortress-f1" },
+    "npcs": [
+      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-gallery" },
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-gallery" }
+    ],
+    "effects": [
+      { "type": "combat-start", "params": { "encounter": "boss-curators-right-hand", "enemies": "B-04a" } }
+    ],
+    "questChanges": [
+      { "questId": "MQ-09", "action": "advance", "objectiveIndex": 1 }
+    ],
+    "targetPath": "main/server/events/act3/scene6-gallery-of-moments.ts",
+    "levelRange": "24-26",
+    "summary": "Frozen perfect moments museum. Crystal barrier puzzles. Boss: Curator's Right Hand."
+  },
+  {
+    "id": "act3-scene7-archive-of-perfection",
+    "act": "act3",
+    "sceneNumber": 7,
+    "name": "Floor 2 — The Archive of Perfection",
+    "location": "Preserver Fortress — Floor 2 (20x25)",
+    "trigger": { "type": "map-enter", "map": "fortress-f2" },
+    "npcs": [
+      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-archive" },
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-archive" }
+    ],
+    "effects": [
+      { "type": "gui-show", "params": { "guiId": "moral-choice", "choices": ["free-musicians", "free-reunion", "free-painter"] } },
+      { "type": "combat-start", "params": { "encounter": "boss-archive-keeper", "enemies": "B-04b" } }
+    ],
+    "questChanges": [
+      { "questId": "MQ-09", "action": "advance", "objectiveIndex": 2 }
+    ],
+    "targetPath": "main/server/events/act3/scene7-archive-of-perfection.ts",
+    "levelRange": "26-28",
+    "summary": "Moral puzzle: free 2 of 3 frozen scenes. Lira's insight on stasis. Boss: Archive Keeper."
+  },
+  {
+    "id": "act3-scene8-first-memory-chamber",
+    "act": "act3",
+    "sceneNumber": 8,
+    "name": "Floor 3 — The First Memory Chamber",
+    "location": "Preserver Fortress — Floor 3 (20x25)",
+    "trigger": { "type": "map-enter", "map": "fortress-f3" },
+    "npcs": [
+      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-curator-confront" },
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-curator-confront" },
+      { "npcId": "curator", "name": "The Curator", "graphic": "npc_curator", "dialogueKey": "dlg-curator-confrontation" }
+    ],
+    "effects": [
+      { "type": "cutscene-play", "params": { "cutsceneId": "curator-confrontation" } },
+      { "type": "system-message", "params": { "text": "The Curator awaits. This is not a combat encounter." } }
+    ],
+    "questChanges": [
+      { "questId": "MQ-09", "action": "complete" },
+      { "questId": "MQ-10", "action": "activate" }
+    ],
+    "targetPath": "main/server/events/act3/scene8-first-memory-chamber.ts",
+    "levelRange": "28",
+    "summary": "Curator confrontation — dialogue, not combat. God recall responses manifest visually."
+  },
+  {
+    "id": "act3-scene9-the-remix",
+    "act": "act3",
+    "sceneNumber": 9,
+    "name": "The Remix",
+    "location": "Preserver Fortress — First Memory pedestal",
+    "trigger": { "type": "quest-state", "map": "fortress-f3", "condition": "curator-dialogue-complete" },
+    "npcs": [
+      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-remix" },
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-remix" },
+      { "npcId": "curator", "name": "The Curator", "graphic": "npc_curator", "dialogueKey": "dlg-curator-watching" }
+    ],
+    "effects": [
+      { "type": "gui-show", "params": { "guiId": "first-memory-remix" } },
+      { "type": "item-give", "params": { "itemId": "MF-11", "name": "World's New Dawn" } },
+      { "type": "screen-effect", "params": { "effect": "white-out" } }
+    ],
+    "questChanges": [
+      { "questId": "MQ-10", "action": "advance", "objectiveIndex": 2 }
+    ],
+    "targetPath": "main/server/events/act3/scene9-the-remix.ts",
+    "levelRange": "28-30",
+    "summary": "Game climax. Player remixes First Memory into World's New Dawn. Broadcasts it."
+  },
+  {
+    "id": "act3-scene10-endgame-bloom",
+    "act": "act3",
+    "sceneNumber": 10,
+    "name": "The Endgame Bloom",
+    "location": "Everywhere — all zones simultaneously",
+    "trigger": { "type": "auto", "map": "fortress-f3", "condition": "worlds-new-dawn-broadcast" },
+    "npcs": [],
+    "effects": [
+      { "type": "cutscene-play", "params": { "cutsceneId": "endgame-bloom-cinematic" } },
+      { "type": "vibrancy-change", "params": { "zone": "all", "delta": 95 } },
+      { "type": "music-change", "params": { "track": "endgame-bloom-orchestral" } },
+      { "type": "screen-effect", "params": { "effect": "bloom-cascade" } }
+    ],
+    "questChanges": [],
+    "targetPath": "main/server/events/act3/scene10-endgame-bloom.ts",
+    "levelRange": "28-30",
+    "summary": "90-second cinematic. All zones jump to vibrancy 95. World transforms. Gods fully awaken."
+  },
+  {
+    "id": "act3-scene11-curators-choice",
+    "act": "act3",
+    "sceneNumber": 11,
+    "name": "The Curator's Choice",
+    "location": "Preserver Fortress Gate → Village Hub",
+    "trigger": { "type": "auto", "map": "undrawn-peaks", "condition": "bloom-complete" },
+    "npcs": [
+      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-resolution" },
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-resolution" },
+      { "npcId": "curator", "name": "The Curator", "graphic": "npc_curator", "dialogueKey": "dlg-curator-redeemed" },
+      { "npcId": "aric", "name": "Aric", "graphic": "npc_aric", "dialogueKey": "dlg-aric-resolution" }
+    ],
+    "effects": [
+      { "type": "system-message", "params": { "text": "The Preservers become archivists — keepers, not jailers." } }
+    ],
+    "questChanges": [
+      { "questId": "MQ-10", "action": "complete" }
+    ],
+    "targetPath": "main/server/events/act3/scene11-curators-choice.ts",
+    "levelRange": "28-30",
+    "summary": "Curator redeemed. Preservers become archivists. Return to Village Hub. NPC reactions."
+  },
+  {
+    "id": "act3-scene12-new-beginning",
+    "act": "act3",
+    "sceneNumber": 12,
+    "name": "A New Beginning",
+    "location": "Luminous Wastes — The Edge (5, 20)",
+    "trigger": { "type": "area-enter", "map": "luminous-wastes", "position": "5,20", "condition": "bloom-complete" },
+    "npcs": [
+      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-ending" },
+      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-ending" }
+    ],
+    "effects": [
+      { "type": "cutscene-play", "params": { "cutsceneId": "credits-sequence" } },
+      { "type": "music-change", "params": { "track": "credits-theme" } },
+      { "type": "system-message", "params": { "text": "Not an ending. A beginning." } }
+    ],
+    "questChanges": [],
+    "targetPath": "main/server/events/act3/scene12-new-beginning.ts",
+    "levelRange": "28-30",
+    "summary": "Final scene. The Edge: world still growing. Credits roll. New Game+ unlocked."
+  }
+]

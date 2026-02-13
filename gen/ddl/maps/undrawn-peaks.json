@@ -1,0 +1,44 @@
+[
+  {
+    "id": "undrawn-peaks",
+    "name": "The Undrawn Peaks",
+    "filename": "undrawn-peaks.tmx",
+    "width": 40,
+    "height": 40,
+    "tileSize": 32,
+    "biome": "sketch",
+    "tilesetRefs": ["tiles_sketch_{tier}"],
+    "startVibrancy": 10,
+    "category": "overworld",
+    "act": "III",
+    "connections": [
+      { "fromTile": "20,39", "direction": "south", "toMap": "hollow-ridge", "toTile": "25,0", "condition": "MQ-07+" },
+      { "fromTile": "39,25", "direction": "east", "toMap": "half-drawn-forest", "toTile": "0,10", "condition": "MQ-08+" },
+      { "fromTile": "19,35", "direction": "down", "toMap": "fortress-f1", "toTile": "10,0", "condition": "MQ-08+" }
+    ],
+    "npcSpawns": [
+      { "npcId": "preserver-captain-up-a", "name": "Preserver Captain A", "position": "17,34", "graphic": "npc_preserver_captain", "movement": "Static" },
+      { "npcId": "preserver-captain-up-b", "name": "Preserver Captain B", "position": "22,34", "graphic": "npc_preserver_captain", "movement": "Static" }
+    ],
+    "enemyZones": [
+      { "zone": "Mountain Paths", "bounds": "5,5 -> 35,30", "enemies": ["Wireframe Drake","Sketch Phantom"], "levelRange": "22-26", "encounterRate": "Standard: 1 Drake + 1 Phantom; Rare: 2 Drakes" },
+      { "zone": "Fortress Approach", "bounds": "12,28 -> 28,38", "enemies": ["Apex Guardian"], "levelRange": "25-28", "encounterRate": "Standard: 2 Guardians" }
+    ],
+    "eventTriggers": [
+      { "id": "EV-UP-001", "position": "19,4", "type": "action", "linkedQuest": "GQ-03-J1", "repeat": "once", "description": "Apex sunrise beacon (Solara)" },
+      { "id": "EV-UP-002", "position": "20,20", "type": "action", "linkedQuest": "MQ-08", "repeat": "once", "description": "Sketch Bridge solidify" },
+      { "id": "EV-UP-003", "position": "19,34", "type": "action", "linkedQuest": "MQ-08", "repeat": "once", "description": "Fortress Gate broadcast" },
+      { "id": "EV-UP-004", "position": "19,35", "type": "touch", "repeat": "conditional", "description": "Fortress Gate -> F1" },
+      { "id": "EV-UP-005", "position": "20,39", "type": "touch", "repeat": "conditional", "description": "South -> Hollow Ridge" },
+      { "id": "EV-UP-006", "position": "39,25", "type": "touch", "repeat": "conditional", "description": "East -> Half-Drawn Forest" }
+    ],
+    "resonanceStones": [
+      { "id": "RS-UP-01", "position": "19,4", "fragments": "awe/wind/4" },
+      { "id": "RS-UP-02", "position": "19,34", "fragments": "broadcast target", "notes": "Fortress Gate solidification" },
+      { "id": "RS-UP-03", "position": "10,15", "fragments": "fury/fire/3" },
+      { "id": "RS-UP-04", "position": "30,25", "fragments": "sorrow/earth/3" },
+      { "id": "RS-UP-05", "position": "20,20", "fragments": "broadcast target", "notes": "Sketch Bridge solidification" }
+    ],
+    "treasureChests": []
+  }
+]

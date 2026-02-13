@@ -1,0 +1,58 @@
+[
+  {
+    "id": "SK-KN-L1",
+    "name": "Beacon of Oaths",
+    "classId": "knight",
+    "level": 1,
+    "spCost": 0,
+    "target": "AA",
+    "element": "none",
+    "formula": "Passive: allies +10% DEF. 3+ oaths: +20% DEF.",
+    "description": "Passive party DEF aura scaling with oath count.",
+    "isPassive": true,
+    "isSubclass": true,
+    "subclassPath": "luminary"
+  },
+  {
+    "id": "SK-KN-L2",
+    "name": "Shared Valor",
+    "classId": "knight",
+    "level": 1,
+    "spCost": 22,
+    "target": "AA",
+    "element": "none",
+    "formula": "All allies ATK +20%, DEF +15% 3 turns. One ally gets oath bonus.",
+    "description": "Upgraded Remembered Valor with DEF buff and oath sharing.",
+    "isPassive": false,
+    "isSubclass": true,
+    "subclassPath": "luminary"
+  },
+  {
+    "id": "SK-KN-C1",
+    "name": "Wrathful Oath",
+    "classId": "knight",
+    "level": 1,
+    "spCost": 0,
+    "target": "S",
+    "element": "none",
+    "formula": "Passive: Each fulfilled oath grants +3% ATK (stacking).",
+    "description": "Converts fulfilled oaths into permanent ATK.",
+    "isPassive": true,
+    "isSubclass": true,
+    "subclassPath": "crucible"
+  },
+  {
+    "id": "SK-KN-C2",
+    "name": "Oathbreaker's Fury",
+    "classId": "knight",
+    "level": 1,
+    "spCost": 35,
+    "target": "AE",
+    "element": "neutral",
+    "formula": "floor((ATK * 2.5 - targetDEF * 0.8) * variance * elementMod) AoE",
+    "description": "AoE Oathbreaker's Gambit. Sacrifices one oath.",
+    "isPassive": false,
+    "isSubclass": true,
+    "subclassPath": "crucible"
+  }
+]

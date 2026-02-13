@@ -1,0 +1,60 @@
+[
+  {
+    "id": "dlg-wynn-first-visit", "npcId": "wynn", "npcName": "Wynn",
+    "trigger": "First visit",
+    "location": "Shimmer Marsh — Marsh Hermit's Hut (12, 15)",
+    "lines": [
+      { "speaker": "Wynn", "text": "Ah. A visitor. Unusual. I'm Wynn — I study the Dissolved from this hut." },
+      { "speaker": "Wynn", "text": "You're an Architect, aren't you? I can tell by the way you look at the water." },
+      { "speaker": "Wynn", "text": "There's a glade south of here. Verdance's Hollow. The tree there has been pulsing stronger this past month." }
+    ],
+    "linkedQuest": "SQ-06",
+    "targetPath": "main/server/dialogue/wynn-first-visit.ts"
+  },
+  {
+    "id": "dlg-petra-first-visit", "npcId": "petra", "npcName": "Petra",
+    "trigger": "First visit",
+    "location": "Hollow Ridge — Ridgewalker Camp (15, 25)",
+    "lines": [
+      { "speaker": "Petra", "text": "Welcome to the edge of the map! I'm Petra — we Ridgewalkers live here because we like watching new land form." },
+      { "speaker": "Petra", "text": "You're the Architect from the village? Callum sent a letter ahead." },
+      { "speaker": "Petra", "text": "Need supplies? Rest? Directions?" }
+    ],
+    "linkedQuest": "SQ-07",
+    "targetPath": "main/server/dialogue/petra-first-visit.ts"
+  },
+  {
+    "id": "dlg-solen-first-visit", "npcId": "solen", "npcName": "Solen",
+    "trigger": "First visit",
+    "location": "Flickerveil — The Flickering Village (35, 30)",
+    "lines": [
+      { "speaker": "Solen", "text": "Hello, dear. I'm Solen. I've been studying the grove since I was a girl." },
+      { "speaker": "Solen", "text": "Take this. A Light Lens — without it, the light is too bright to approach." }
+    ],
+    "linkedQuest": "SQ-08",
+    "targetPath": "main/server/dialogue/solen-first-visit.ts"
+  },
+  {
+    "id": "dlg-preserver-scout", "npcId": "preserver-scout", "npcName": "Preserver Scout",
+    "trigger": "Preserver Scout encounter (Act I)",
+    "location": "Sunridge — Preserver Outpost (32, 15)",
+    "lines": [
+      { "speaker": "Preserver Scout", "text": "Halt. This area is under preservation protocol." },
+      { "speaker": "Preserver Scout", "text": "We've preserved it. This tower was built by a civilization that chose to dissolve. Now it will endure forever." },
+      { "speaker": "Preserver Scout", "text": "That is the point." }
+    ],
+    "linkedScene": "act1-scene9-sunridge-border",
+    "targetPath": "main/server/dialogue/preserver-scout.ts"
+  },
+  {
+    "id": "dlg-preserver-agents", "npcId": "preserver-agent", "npcName": "Preserver Agent",
+    "trigger": "Preserver Agent generic lines (Act II)",
+    "location": "Any Frontier zone",
+    "lines": [
+      { "speaker": "Preserver Agent", "text": "This zone is under Preserver protection. Turn back, Architect.", "emotion": "encounter" },
+      { "speaker": "Preserver Agent", "text": "We don't want to fight. But we will.", "emotion": "pre-combat" },
+      { "speaker": "Preserver Agent", "text": "The Curator's will is crystal. You can shatter us, but you cannot shatter that.", "emotion": "defeated" }
+    ],
+    "targetPath": "main/server/dialogue/preserver-agents.ts"
+  }
+]

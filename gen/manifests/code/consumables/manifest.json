@@ -1,0 +1,585 @@
+{
+  "schemaVersion": "1.0.0",
+  "description": "Consumable item code generation manifest",
+  "updatedAt": "2026-02-13T14:13:51.966Z",
+  "category": "database-consumables",
+  "systemPrompt": "You are an RPG-JS 4.3.0 TypeScript code generator.\nGenerate a single RPG-JS item database file using @rpgjs/database decorators.\nOutput ONLY valid TypeScript code. No markdown fences. No explanatory text.\nThe file must export the item class as the default export.\nImport from '@rpgjs/database'.\n\n=== RPG-JS 4.3.0 @Item API Reference ===\nimport { Item } from '@rpgjs/database';\n\nValid @Item decorator params (ItemOptions):\n  id?: string              — Unique ID. Defaults to lowercased class name.\n  name?: string            — Display name.\n  description?: string     — Flavor text.\n  price?: number           — Shop price. Omit or undefined = cannot buy/sell.\n  hpValue?: number         — HP restored on use.\n  hitRate?: number         — Success rate (0 to 1). Failed use still consumes the item. Default: 1.\n  consumable?: boolean     — Whether the item is consumed on use. Default: true.\n  paramsModifier?: object  — Stat modifiers: { [paramName]: { value?: number, rate?: number } }\n  elements?: array         — Element affinities.\n  addStates?: array        — States to apply: [StateClass] or [{ rate: number, state: StateClass }]\n  removeStates?: array     — States to cure: [StateClass] or [{ rate: number, state: StateClass }]\n\nINVALID properties (do NOT use): spValue, mpValue, stackMax, tier, category, type, target.\nRPG-JS items do not have a native spValue property — SP restoration must use paramsModifier on 'maxsp'.\n\nExample (HP potion):\n@Item({\n  id: 'C-HP-01',\n  name: 'Minor Salve',\n  description: 'Restores a small amount of HP.',\n  price: 25,\n  hpValue: 50,\n  consumable: true,\n})\nexport default class MinorSalve {}\n\nExample (status cure):\nimport { Item } from '@rpgjs/database';\nimport Poison from '../states/poison';\n@Item({\n  id: 'C-SC-01',\n  name: 'Antidote',\n  description: 'Cures poison.',\n  price: 30,\n  consumable: true,\n  removeStates: [Poison],\n})\nexport default class Antidote {}\n=== End API Reference ===",
+  "assets": [
+    {
+      "id": "C-BF-01",
+      "name": "Strength Seed",
+      "category": "database-consumables",
+      "filename": "strength-seed.ts",
+      "targetPath": "main/database/items/strength-seed.ts",
+      "prompt": "Generate an RPG-JS consumable item file for \"Strength Seed\" (ID: C-BF-01).\n\nProperties:\n- Effect: ATK +15% for 3 turns (one character)\n- Price: 100\n- Category: buff (add as comment only — not a decorator property)\n- Max stack: 5 (add as comment only — not a decorator property)\n- Tier: 2 (add as comment only — not a decorator property)\n\nUse the @Item decorator from '@rpgjs/database'.\nSet id, name, description, consumable: true. Set price: 100.\nFor HP restoration: use hpValue.\nFor SP restoration: there is no spValue — use paramsModifier: { maxsp: { value: N } } or add as a comment.\nFor status cures: use removeStates with imported State classes (or leave as TODO comment).\nDo NOT use: spValue, mpValue, stackMax, tier, category, type, target — none of these exist.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Consumables",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "2899e117ee697456",
+        "outputHash": "8e67c065a7bb379d89e96fa8f4d0fc860cb41ac733e3b8d174c6ac6feb764ae6",
+        "generatedAt": "2026-02-13T13:24:10.866Z",
+        "generationTimeMs": 8237,
+        "fileSizeBytes": 599,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "C-BF-02",
+      "name": "Wisdom Seed",
+      "category": "database-consumables",
+      "filename": "wisdom-seed.ts",
+      "targetPath": "main/database/items/wisdom-seed.ts",
+      "prompt": "Generate an RPG-JS consumable item file for \"Wisdom Seed\" (ID: C-BF-02).\n\nProperties:\n- Effect: INT +15% for 3 turns (one character)\n- Price: 100\n- Category: buff (add as comment only — not a decorator property)\n- Max stack: 5 (add as comment only — not a decorator property)\n- Tier: 2 (add as comment only — not a decorator property)\n\nUse the @Item decorator from '@rpgjs/database'.\nSet id, name, description, consumable: true. Set price: 100.\nFor HP restoration: use hpValue.\nFor SP restoration: there is no spValue — use paramsModifier: { maxsp: { value: N } } or add as a comment.\nFor status cures: use removeStates with imported State classes (or leave as TODO comment).\nDo NOT use: spValue, mpValue, stackMax, tier, category, type, target — none of these exist.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Consumables",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "a9eb29f48e4273a9",
+        "outputHash": "ebf3ef3b40d02e13a50afd20135e35608a3fc59e38df92d816a293e24fe8abe4",
+        "generatedAt": "2026-02-13T13:24:20.286Z",
+        "generationTimeMs": 7416,
+        "fileSizeBytes": 513,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "C-BF-03",
+      "name": "Aegis Seed",
+      "category": "database-consumables",
+      "filename": "aegis-seed.ts",
+      "targetPath": "main/database/items/aegis-seed.ts",
+      "prompt": "Generate an RPG-JS consumable item file for \"Aegis Seed\" (ID: C-BF-03).\n\nProperties:\n- Effect: DEF +15% for 3 turns (one character)\n- Price: 100\n- Category: buff (add as comment only — not a decorator property)\n- Max stack: 5 (add as comment only — not a decorator property)\n- Tier: 2 (add as comment only — not a decorator property)\n\nUse the @Item decorator from '@rpgjs/database'.\nSet id, name, description, consumable: true. Set price: 100.\nFor HP restoration: use hpValue.\nFor SP restoration: there is no spValue — use paramsModifier: { maxsp: { value: N } } or add as a comment.\nFor status cures: use removeStates with imported State classes (or leave as TODO comment).\nDo NOT use: spValue, mpValue, stackMax, tier, category, type, target — none of these exist.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Consumables",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "f8633093ca7fff8d",
+        "outputHash": "be8fe753249df6659737d673c03fb70fddd4240f5d89f0aa75b7e887d31f498c",
+        "generatedAt": "2026-02-13T13:24:31.141Z",
+        "generationTimeMs": 8853,
+        "fileSizeBytes": 520,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "C-BF-04",
+      "name": "Haste Seed",
+      "category": "database-consumables",
+      "filename": "haste-seed.ts",
+      "targetPath": "main/database/items/haste-seed.ts",
+      "prompt": "Generate an RPG-JS consumable item file for \"Haste Seed\" (ID: C-BF-04).\n\nProperties:\n- Effect: AGI +15% for 3 turns (one character)\n- Price: 100\n- Category: buff (add as comment only — not a decorator property)\n- Max stack: 5 (add as comment only — not a decorator property)\n- Tier: 2 (add as comment only — not a decorator property)\n\nUse the @Item decorator from '@rpgjs/database'.\nSet id, name, description, consumable: true. Set price: 100.\nFor HP restoration: use hpValue.\nFor SP restoration: there is no spValue — use paramsModifier: { maxsp: { value: N } } or add as a comment.\nFor status cures: use removeStates with imported State classes (or leave as TODO comment).\nDo NOT use: spValue, mpValue, stackMax, tier, category, type, target — none of these exist.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Consumables",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "8a4113cb6eb6202a",
+        "outputHash": "a203f516b1f0adc8aa2dac5fcdf1578c986dad628d3ea3e57050e5fa3d29545f",
+        "generatedAt": "2026-02-13T13:24:46.750Z",
+        "generationTimeMs": 13606,
+        "fileSizeBytes": 475,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "C-BF-05",
+      "name": "Memory Incense",
+      "category": "database-consumables",
+      "filename": "memory-incense.ts",
+      "targetPath": "main/database/items/memory-incense.ts",
+      "prompt": "Generate an RPG-JS consumable item file for \"Memory Incense\" (ID: C-BF-05).\n\nProperties:\n- Effect: Grant Inspired status (+20% all stats, 3 turns) to one character.\n- Price: 350\n- Category: buff (add as comment only — not a decorator property)\n- Max stack: 3 (add as comment only — not a decorator property)\n- Tier: 3 (add as comment only — not a decorator property)\n\nUse the @Item decorator from '@rpgjs/database'.\nSet id, name, description, consumable: true. Set price: 350.\nFor HP restoration: use hpValue.\nFor SP restoration: there is no spValue — use paramsModifier: { maxsp: { value: N } } or add as a comment.\nFor status cures: use removeStates with imported State classes (or leave as TODO comment).\nDo NOT use: spValue, mpValue, stackMax, tier, category, type, target — none of these exist.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Consumables",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "f6faed8f35ce662b",
+        "outputHash": "be45468a93f28a81536791eedb5f7832a544574d02c3f73eb06b66c5d162fbc5",
+        "generatedAt": "2026-02-13T13:24:52.223Z",
+        "generationTimeMs": 3470,
+        "fileSizeBytes": 421,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "C-HP-01",
+      "name": "Minor Potion",
+      "category": "database-consumables",
+      "filename": "minor-potion.ts",
+      "targetPath": "main/database/items/minor-potion.ts",
+      "prompt": "Generate an RPG-JS consumable item file for \"Minor Potion\" (ID: C-HP-01).\n\nProperties:\n- Effect: Restore 50 HP\n- Price: 30\n- Category: healing (add as comment only — not a decorator property)\n- Max stack: 10 (add as comment only — not a decorator property)\n- Tier: 1 (add as comment only — not a decorator property)\n\nUse the @Item decorator from '@rpgjs/database'.\nSet id, name, description, consumable: true. Set price: 30.\nFor HP restoration: use hpValue.\nFor SP restoration: there is no spValue — use paramsModifier: { maxsp: { value: N } } or add as a comment.\nFor status cures: use removeStates with imported State classes (or leave as TODO comment).\nDo NOT use: spValue, mpValue, stackMax, tier, category, type, target — none of these exist.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Consumables",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "760b185ecd348951",
+        "outputHash": "ad7de17ec3b9a3e44f5d7d24b09b948cac2d7c2af1689e8edfbd5b7b2befb25c",
+        "generatedAt": "2026-02-13T13:24:56.638Z",
+        "generationTimeMs": 2412,
+        "fileSizeBytes": 276,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "C-HP-02",
+      "name": "Potion",
+      "category": "database-consumables",
+      "filename": "potion.ts",
+      "targetPath": "main/database/items/potion.ts",
+      "prompt": "Generate an RPG-JS consumable item file for \"Potion\" (ID: C-HP-02).\n\nProperties:\n- Effect: Restore 120 HP\n- Price: 80\n- Category: healing (add as comment only — not a decorator property)\n- Max stack: 10 (add as comment only — not a decorator property)\n- Tier: 2 (add as comment only — not a decorator property)\n\nUse the @Item decorator from '@rpgjs/database'.\nSet id, name, description, consumable: true. Set price: 80.\nFor HP restoration: use hpValue.\nFor SP restoration: there is no spValue — use paramsModifier: { maxsp: { value: N } } or add as a comment.\nFor status cures: use removeStates with imported State classes (or leave as TODO comment).\nDo NOT use: spValue, mpValue, stackMax, tier, category, type, target — none of these exist.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Consumables",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "e4ae9713bf931c5d",
+        "outputHash": "c60460d673953b8fe5178149c5527792d429bf55be9eadef0a4d6de4666fa0c7",
+        "generatedAt": "2026-02-13T13:25:00.377Z",
+        "generationTimeMs": 1736,
+        "fileSizeBytes": 279,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "C-HP-03",
+      "name": "High Potion",
+      "category": "database-consumables",
+      "filename": "high-potion.ts",
+      "targetPath": "main/database/items/high-potion.ts",
+      "prompt": "Generate an RPG-JS consumable item file for \"High Potion\" (ID: C-HP-03).\n\nProperties:\n- Effect: Restore 250 HP\n- Price: 180\n- Category: healing (add as comment only — not a decorator property)\n- Max stack: 10 (add as comment only — not a decorator property)\n- Tier: 3 (add as comment only — not a decorator property)\n\nUse the @Item decorator from '@rpgjs/database'.\nSet id, name, description, consumable: true. Set price: 180.\nFor HP restoration: use hpValue.\nFor SP restoration: there is no spValue — use paramsModifier: { maxsp: { value: N } } or add as a comment.\nFor status cures: use removeStates with imported State classes (or leave as TODO comment).\nDo NOT use: spValue, mpValue, stackMax, tier, category, type, target — none of these exist.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Consumables",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "ad16c109f64266a2",
+        "outputHash": "7ac0bdbf644d709aae19349439fae11b950198cf2d2c16d12bdfd3ecc449b99a",
+        "generatedAt": "2026-02-13T13:25:04.216Z",
+        "generationTimeMs": 1836,
+        "fileSizeBytes": 280,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "C-HP-04",
+      "name": "Elixir",
+      "category": "database-consumables",
+      "filename": "elixir.ts",
+      "targetPath": "main/database/items/elixir.ts",
+      "prompt": "Generate an RPG-JS consumable item file for \"Elixir\" (ID: C-HP-04).\n\nProperties:\n- Effect: Restore 100% HP\n- Price: 500\n- Category: healing (add as comment only — not a decorator property)\n- Max stack: 5 (add as comment only — not a decorator property)\n- Tier: 3 (add as comment only — not a decorator property)\n\nUse the @Item decorator from '@rpgjs/database'.\nSet id, name, description, consumable: true. Set price: 500.\nFor HP restoration: use hpValue.\nFor SP restoration: there is no spValue — use paramsModifier: { maxsp: { value: N } } or add as a comment.\nFor status cures: use removeStates with imported State classes (or leave as TODO comment).\nDo NOT use: spValue, mpValue, stackMax, tier, category, type, target — none of these exist.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Consumables",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "ba5b852bac9d3570",
+        "outputHash": "6d35d8af53973307352cc32a6a6b166499f14da1b27a318e415225a98a4885de",
+        "generatedAt": "2026-02-13T13:25:19.064Z",
+        "generationTimeMs": 12846,
+        "fileSizeBytes": 506,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "C-SP-01",
+      "name": "Mana Drop",
+      "category": "database-consumables",
+      "filename": "mana-drop.ts",
+      "targetPath": "main/database/items/mana-drop.ts",
+      "prompt": "Generate an RPG-JS consumable item file for \"Mana Drop\" (ID: C-SP-01).\n\nProperties:\n- Effect: Restore 20 SP\n- Price: 25\n- Category: sp-recovery (add as comment only — not a decorator property)\n- Max stack: 10 (add as comment only — not a decorator property)\n- Tier: 1 (add as comment only — not a decorator property)\n\nUse the @Item decorator from '@rpgjs/database'.\nSet id, name, description, consumable: true. Set price: 25.\nFor HP restoration: use hpValue.\nFor SP restoration: there is no spValue — use paramsModifier: { maxsp: { value: N } } or add as a comment.\nFor status cures: use removeStates with imported State classes (or leave as TODO comment).\nDo NOT use: spValue, mpValue, stackMax, tier, category, type, target — none of these exist.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Consumables",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "67620297eb0d3ce4",
+        "outputHash": "ae4dcc9eaeb7a1e73ccadeaa14fac003757ce5a17a6e0f742505f7550c0e02d1",
+        "generatedAt": "2026-02-13T13:25:22.922Z",
+        "generationTimeMs": 1854,
+        "fileSizeBytes": 324,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "C-SP-02",
+      "name": "Mana Draught",
+      "category": "database-consumables",
+      "filename": "mana-draught.ts",
+      "targetPath": "main/database/items/mana-draught.ts",
+      "prompt": "Generate an RPG-JS consumable item file for \"Mana Draught\" (ID: C-SP-02).\n\nProperties:\n- Effect: Restore 50 SP\n- Price: 70\n- Category: sp-recovery (add as comment only — not a decorator property)\n- Max stack: 10 (add as comment only — not a decorator property)\n- Tier: 2 (add as comment only — not a decorator property)\n\nUse the @Item decorator from '@rpgjs/database'.\nSet id, name, description, consumable: true. Set price: 70.\nFor HP restoration: use hpValue.\nFor SP restoration: there is no spValue — use paramsModifier: { maxsp: { value: N } } or add as a comment.\nFor status cures: use removeStates with imported State classes (or leave as TODO comment).\nDo NOT use: spValue, mpValue, stackMax, tier, category, type, target — none of these exist.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Consumables",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "324eeb9eee5057ae",
+        "outputHash": "29be9d8f6a9f1dc085bbc29c6bf071d3db77604e3f461e41701fa703d7ee35bb",
+        "generatedAt": "2026-02-13T13:25:27.256Z",
+        "generationTimeMs": 2331,
+        "fileSizeBytes": 315,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "C-SP-03",
+      "name": "Mana Surge",
+      "category": "database-consumables",
+      "filename": "mana-surge.ts",
+      "targetPath": "main/database/items/mana-surge.ts",
+      "prompt": "Generate an RPG-JS consumable item file for \"Mana Surge\" (ID: C-SP-03).\n\nProperties:\n- Effect: Restore 120 SP\n- Price: 160\n- Category: sp-recovery (add as comment only — not a decorator property)\n- Max stack: 10 (add as comment only — not a decorator property)\n- Tier: 3 (add as comment only — not a decorator property)\n\nUse the @Item decorator from '@rpgjs/database'.\nSet id, name, description, consumable: true. Set price: 160.\nFor HP restoration: use hpValue.\nFor SP restoration: there is no spValue — use paramsModifier: { maxsp: { value: N } } or add as a comment.\nFor status cures: use removeStates with imported State classes (or leave as TODO comment).\nDo NOT use: spValue, mpValue, stackMax, tier, category, type, target — none of these exist.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Consumables",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "a6b1a06f32e2f1a7",
+        "outputHash": "a76a1c7c69252901318c4d677a211f36cd7472aeda4987fbd9144ec5c0266c56",
+        "generatedAt": "2026-02-13T13:25:33.124Z",
+        "generationTimeMs": 3864,
+        "fileSizeBytes": 341,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "C-SP-04",
+      "name": "Ether",
+      "category": "database-consumables",
+      "filename": "ether.ts",
+      "targetPath": "main/database/items/ether.ts",
+      "prompt": "Generate an RPG-JS consumable item file for \"Ether\" (ID: C-SP-04).\n\nProperties:\n- Effect: Restore 100% SP\n- Price: 450\n- Category: sp-recovery (add as comment only — not a decorator property)\n- Max stack: 5 (add as comment only — not a decorator property)\n- Tier: 3 (add as comment only — not a decorator property)\n\nUse the @Item decorator from '@rpgjs/database'.\nSet id, name, description, consumable: true. Set price: 450.\nFor HP restoration: use hpValue.\nFor SP restoration: there is no spValue — use paramsModifier: { maxsp: { value: N } } or add as a comment.\nFor status cures: use removeStates with imported State classes (or leave as TODO comment).\nDo NOT use: spValue, mpValue, stackMax, tier, category, type, target — none of these exist.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Consumables",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "889cf01e43419f3e",
+        "outputHash": "d2ccd5cc21a8b16fce7ec070fbb67841cb08deb1409adbe239dcf666263f8c77",
+        "generatedAt": "2026-02-13T13:25:42.071Z",
+        "generationTimeMs": 6944,
+        "fileSizeBytes": 425,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "C-SP-05",
+      "name": "Smoke Bomb",
+      "category": "database-consumables",
+      "filename": "smoke-bomb.ts",
+      "targetPath": "main/database/items/smoke-bomb.ts",
+      "prompt": "Generate an RPG-JS consumable item file for \"Smoke Bomb\" (ID: C-SP-05).\n\nProperties:\n- Effect: Guaranteed flee from non-boss encounters.\n- Price: 40\n- Category: special (add as comment only — not a decorator property)\n- Max stack: 5 (add as comment only — not a decorator property)\n- Tier: 1 (add as comment only — not a decorator property)\n\nUse the @Item decorator from '@rpgjs/database'.\nSet id, name, description, consumable: true. Set price: 40.\nFor HP restoration: use hpValue.\nFor SP restoration: there is no spValue — use paramsModifier: { maxsp: { value: N } } or add as a comment.\nFor status cures: use removeStates with imported State classes (or leave as TODO comment).\nDo NOT use: spValue, mpValue, stackMax, tier, category, type, target — none of these exist.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Consumables",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "30c7f27fb7e5bce6",
+        "outputHash": "25b85c60dc59cae179c17514791dfaf7a8230542a51cebc66475ac605029f22f",
+        "generatedAt": "2026-02-13T13:25:46.101Z",
+        "generationTimeMs": 2027,
+        "fileSizeBytes": 265,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "C-SP-06",
+      "name": "Crystal Dust",
+      "category": "database-consumables",
+      "filename": "crystal-dust.ts",
+      "targetPath": "main/database/items/crystal-dust.ts",
+      "prompt": "Generate an RPG-JS consumable item file for \"Crystal Dust\" (ID: C-SP-06).\n\nProperties:\n- Effect: Cure all debuffs on one character. Deal 50 fixed light damage to one Preserver enemy.\n- Price: 200\n- Category: special (add as comment only — not a decorator property)\n- Max stack: 5 (add as comment only — not a decorator property)\n- Tier: 3 (add as comment only — not a decorator property)\n\nUse the @Item decorator from '@rpgjs/database'.\nSet id, name, description, consumable: true. Set price: 200.\nFor HP restoration: use hpValue.\nFor SP restoration: there is no spValue — use paramsModifier: { maxsp: { value: N } } or add as a comment.\nFor status cures: use removeStates with imported State classes (or leave as TODO comment).\nDo NOT use: spValue, mpValue, stackMax, tier, category, type, target — none of these exist.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Consumables",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "66525c10b46eca37",
+        "outputHash": "25f26dcf51121be33ffdb4e719b32fab370c7dceb51169ef9bb2eb48c7e33afb",
+        "generatedAt": "2026-02-13T13:25:52.975Z",
+        "generationTimeMs": 4872,
+        "fileSizeBytes": 739,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "C-SP-07",
+      "name": "Stasis Shard",
+      "category": "database-consumables",
+      "filename": "stasis-shard.ts",
+      "targetPath": "main/database/items/stasis-shard.ts",
+      "prompt": "Generate an RPG-JS consumable item file for \"Stasis Shard\" (ID: C-SP-07).\n\nProperties:\n- Effect: Freeze one non-boss enemy for 2 turns (cannot act).\n- Price: 150\n- Category: special (add as comment only — not a decorator property)\n- Max stack: 5 (add as comment only — not a decorator property)\n- Tier: 3 (add as comment only — not a decorator property)\n\nUse the @Item decorator from '@rpgjs/database'.\nSet id, name, description, consumable: true. Set price: 150.\nFor HP restoration: use hpValue.\nFor SP restoration: there is no spValue — use paramsModifier: { maxsp: { value: N } } or add as a comment.\nFor status cures: use removeStates with imported State classes (or leave as TODO comment).\nDo NOT use: spValue, mpValue, stackMax, tier, category, type, target — none of these exist.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Consumables",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "cb91df88aaed476b",
+        "outputHash": "37440be50cef6fd9583241257d8332dda4807911c4c997deba6bf10d5cb6b717",
+        "generatedAt": "2026-02-13T13:25:57.669Z",
+        "generationTimeMs": 2690,
+        "fileSizeBytes": 474,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "C-SP-08",
+      "name": "Broadcast Amplifier",
+      "category": "database-consumables",
+      "filename": "broadcast-amplifier.ts",
+      "targetPath": "main/database/items/broadcast-amplifier.ts",
+      "prompt": "Generate an RPG-JS consumable item file for \"Broadcast Amplifier\" (ID: C-SP-08).\n\nProperties:\n- Effect: Next memory broadcast gains +5 vibrancy bonus (consumed on use, outside combat).\n- Price: 300\n- Category: special (add as comment only — not a decorator property)\n- Max stack: 3 (add as comment only — not a decorator property)\n- Tier: 3 (add as comment only — not a decorator property)\n\nUse the @Item decorator from '@rpgjs/database'.\nSet id, name, description, consumable: true. Set price: 300.\nFor HP restoration: use hpValue.\nFor SP restoration: there is no spValue — use paramsModifier: { maxsp: { value: N } } or add as a comment.\nFor status cures: use removeStates with imported State classes (or leave as TODO comment).\nDo NOT use: spValue, mpValue, stackMax, tier, category, type, target — none of these exist.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Consumables",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "3ebe31aa986f083e",
+        "outputHash": "d7a52e6f021cec95ea6b0e1c9b3e604e562911d8cf2b6cd1a6b407dca98dcbbe",
+        "generatedAt": "2026-02-13T13:26:01.355Z",
+        "generationTimeMs": 1682,
+        "fileSizeBytes": 331,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "C-SP-09",
+      "name": "Dissolved Essence",
+      "category": "database-consumables",
+      "filename": "dissolved-essence.ts",
+      "targetPath": "main/database/items/dissolved-essence.ts",
+      "prompt": "Generate an RPG-JS consumable item file for \"Dissolved Essence\" (ID: C-SP-09).\n\nProperties:\n- Effect: Restore 50% HP and 50% SP to entire party.\n- Price: 0 (omit price or set undefined — not purchasable)\n- Category: special (add as comment only — not a decorator property)\n- Max stack: 3 (add as comment only — not a decorator property)\n- Tier: 3 (add as comment only — not a decorator property)\n\nUse the @Item decorator from '@rpgjs/database'.\nSet id, name, description, consumable: true.\nFor HP restoration: use hpValue.\nFor SP restoration: there is no spValue — use paramsModifier: { maxsp: { value: N } } or add as a comment.\nFor status cures: use removeStates with imported State classes (or leave as TODO comment).\nDo NOT use: spValue, mpValue, stackMax, tier, category, type, target — none of these exist.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Consumables",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "bacac6c0829ba6c8",
+        "outputHash": "cd96402be17af5efb87a7cf97dae199815cd9f76cc00061c69d14c78917fc011",
+        "generatedAt": "2026-02-13T13:26:18.970Z",
+        "generationTimeMs": 15613,
+        "fileSizeBytes": 906,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "C-SP-10",
+      "name": "Phoenix Feather",
+      "category": "database-consumables",
+      "filename": "phoenix-feather.ts",
+      "targetPath": "main/database/items/phoenix-feather.ts",
+      "prompt": "Generate an RPG-JS consumable item file for \"Phoenix Feather\" (ID: C-SP-10).\n\nProperties:\n- Effect: Auto-revive: if party member knocked to 0 HP, restore to 30% HP.\n- Price: 0 (omit price or set undefined — not purchasable)\n- Category: special (add as comment only — not a decorator property)\n- Max stack: 1 (add as comment only — not a decorator property)\n- Tier: 3 (add as comment only — not a decorator property)\n\nUse the @Item decorator from '@rpgjs/database'.\nSet id, name, description, consumable: true.\nFor HP restoration: use hpValue.\nFor SP restoration: there is no spValue — use paramsModifier: { maxsp: { value: N } } or add as a comment.\nFor status cures: use removeStates with imported State classes (or leave as TODO comment).\nDo NOT use: spValue, mpValue, stackMax, tier, category, type, target — none of these exist.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Consumables",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "5d74fd79ad089f13",
+        "outputHash": "ac9bd0ae29a8438bc482f7de5041ef044d11f02d81e4501af5f35dd50a838010",
+        "generatedAt": "2026-02-13T13:26:40.473Z",
+        "generationTimeMs": 19500,
+        "fileSizeBytes": 516,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "C-SC-01",
+      "name": "Antidote",
+      "category": "database-consumables",
+      "filename": "antidote.ts",
+      "targetPath": "main/database/items/antidote.ts",
+      "prompt": "Generate an RPG-JS consumable item file for \"Antidote\" (ID: C-SC-01).\n\nProperties:\n- Effect: Cure Poison\n- Price: 20\n- Category: status-cure (add as comment only — not a decorator property)\n- Max stack: 10 (add as comment only — not a decorator property)\n- Tier: 1 (add as comment only — not a decorator property)\n\nUse the @Item decorator from '@rpgjs/database'.\nSet id, name, description, consumable: true. Set price: 20.\nFor HP restoration: use hpValue.\nFor SP restoration: there is no spValue — use paramsModifier: { maxsp: { value: N } } or add as a comment.\nFor status cures: use removeStates with imported State classes (or leave as TODO comment).\nDo NOT use: spValue, mpValue, stackMax, tier, category, type, target — none of these exist.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Consumables",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "4af82db23324bbe1",
+        "outputHash": "61f607dfa03dfe6edfb95d61b2705b5b73e57af2009bfeb4c6449f6dca1f54ef",
+        "generatedAt": "2026-02-13T13:26:44.569Z",
+        "generationTimeMs": 2093,
+        "fileSizeBytes": 413,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "C-SC-02",
+      "name": "Haste Charm",
+      "category": "database-consumables",
+      "filename": "haste-charm.ts",
+      "targetPath": "main/database/items/haste-charm.ts",
+      "prompt": "Generate an RPG-JS consumable item file for \"Haste Charm\" (ID: C-SC-02).\n\nProperties:\n- Effect: Cure Slow. Grant AGI +20% for 2 turns.\n- Price: 60\n- Category: status-cure (add as comment only — not a decorator property)\n- Max stack: 10 (add as comment only — not a decorator property)\n- Tier: 2 (add as comment only — not a decorator property)\n\nUse the @Item decorator from '@rpgjs/database'.\nSet id, name, description, consumable: true. Set price: 60.\nFor HP restoration: use hpValue.\nFor SP restoration: there is no spValue — use paramsModifier: { maxsp: { value: N } } or add as a comment.\nFor status cures: use removeStates with imported State classes (or leave as TODO comment).\nDo NOT use: spValue, mpValue, stackMax, tier, category, type, target — none of these exist.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Consumables",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "436700f30c432e46",
+        "outputHash": "a9c3f27a1738b51b5af0c915715b4d9c0dfea63a459b1ddbf3d8762c8bd3dcc2",
+        "generatedAt": "2026-02-13T13:26:53.580Z",
+        "generationTimeMs": 7007,
+        "fileSizeBytes": 487,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "C-SC-03",
+      "name": "Fortify Tonic",
+      "category": "database-consumables",
+      "filename": "fortify-tonic.ts",
+      "targetPath": "main/database/items/fortify-tonic.ts",
+      "prompt": "Generate an RPG-JS consumable item file for \"Fortify Tonic\" (ID: C-SC-03).\n\nProperties:\n- Effect: Cure Weakness. Grant DEF +20% for 2 turns.\n- Price: 60\n- Category: status-cure (add as comment only — not a decorator property)\n- Max stack: 10 (add as comment only — not a decorator property)\n- Tier: 2 (add as comment only — not a decorator property)\n\nUse the @Item decorator from '@rpgjs/database'.\nSet id, name, description, consumable: true. Set price: 60.\nFor HP restoration: use hpValue.\nFor SP restoration: there is no spValue — use paramsModifier: { maxsp: { value: N } } or add as a comment.\nFor status cures: use removeStates with imported State classes (or leave as TODO comment).\nDo NOT use: spValue, mpValue, stackMax, tier, category, type, target — none of these exist.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Consumables",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "41357c6226df5248",
+        "outputHash": "4579e16d5f864d6aca85a718ab639ebd3888be9516c1943c3eb497bdf6fa483d",
+        "generatedAt": "2026-02-13T13:27:00.851Z",
+        "generationTimeMs": 5267,
+        "fileSizeBytes": 664,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "C-SC-04",
+      "name": "Stasis Breaker",
+      "category": "database-consumables",
+      "filename": "stasis-breaker.ts",
+      "targetPath": "main/database/items/stasis-breaker.ts",
+      "prompt": "Generate an RPG-JS consumable item file for \"Stasis Breaker\" (ID: C-SC-04).\n\nProperties:\n- Effect: Cure Stasis. Grant immunity to Stasis for 3 turns.\n- Price: 120\n- Category: status-cure (add as comment only — not a decorator property)\n- Max stack: 10 (add as comment only — not a decorator property)\n- Tier: 2 (add as comment only — not a decorator property)\n\nUse the @Item decorator from '@rpgjs/database'.\nSet id, name, description, consumable: true. Set price: 120.\nFor HP restoration: use hpValue.\nFor SP restoration: there is no spValue — use paramsModifier: { maxsp: { value: N } } or add as a comment.\nFor status cures: use removeStates with imported State classes (or leave as TODO comment).\nDo NOT use: spValue, mpValue, stackMax, tier, category, type, target — none of these exist.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Consumables",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "c9a9d03851eb0a69",
+        "outputHash": "0390e5e4b16345600450c88ce45dcaf3c34f0f7c6767bf2175fd99742d91875d",
+        "generatedAt": "2026-02-13T13:27:05.459Z",
+        "generationTimeMs": 2605,
+        "fileSizeBytes": 611,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "C-SC-05",
+      "name": "Panacea",
+      "category": "database-consumables",
+      "filename": "panacea.ts",
+      "targetPath": "main/database/items/panacea.ts",
+      "prompt": "Generate an RPG-JS consumable item file for \"Panacea\" (ID: C-SC-05).\n\nProperties:\n- Effect: Cure ALL status effects on one character.\n- Price: 200\n- Category: status-cure (add as comment only — not a decorator property)\n- Max stack: 5 (add as comment only — not a decorator property)\n- Tier: 3 (add as comment only — not a decorator property)\n\nUse the @Item decorator from '@rpgjs/database'.\nSet id, name, description, consumable: true. Set price: 200.\nFor HP restoration: use hpValue.\nFor SP restoration: there is no spValue — use paramsModifier: { maxsp: { value: N } } or add as a comment.\nFor status cures: use removeStates with imported State classes (or leave as TODO comment).\nDo NOT use: spValue, mpValue, stackMax, tier, category, type, target — none of these exist.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Consumables",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "1b4726f06dbceef7",
+        "outputHash": "80c94f09383a221d539a37cf63d1dec3391821f602e09e84a37a37cbf550a825",
+        "generatedAt": "2026-02-13T13:27:10.068Z",
+        "generationTimeMs": 2606,
+        "fileSizeBytes": 455,
+        "model": "gemini-2.5-flash"
+      }
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "SFX-MEM-01",
+    "name": "Fragment collect",
+    "category": "memory",
+    "description": "Golden chime ascending, warm. Pitch rises with potency.",
+    "durationSec": 0.5,
+    "preset": [0,0,0.3,0.1,0.5,0.7,0.1,0.4,0,0,0.5,0,0,0,0,0,0,0,1,0,0,0,0,0.5]
+  },
+  {
+    "id": "SFX-MEM-02",
+    "name": "Fragment remix",
+    "category": "memory",
+    "description": "Two tones swirl together, flash, resolve to new tone",
+    "durationSec": 0.8,
+    "preset": [0,0.15,0.35,0,0.7,0.6,0.15,0.5,0,0,0.4,0,0,0,0,0,0,0,1,0,0,0,0,0.5]
+  },
+  {
+    "id": "SFX-MEM-03",
+    "name": "Broadcast (small)",
+    "category": "memory",
+    "description": "Gentle expanding ring tone, like a stone in still water",
+    "durationSec": 1.0,
+    "preset": [0,0.2,0.28,0,0.8,0.5,0.08,0.3,0,0,0.3,0,0,0,0,0,0,0,1,0,0,0,0,0.5]
+  },
+  {
+    "id": "SFX-MEM-04",
+    "name": "Broadcast (large)",
+    "category": "memory",
+    "description": "Larger version, deeper tone, wave of warmth",
+    "durationSec": 1.5,
+    "preset": [0,0.3,0.2,0,1.2,0.4,0.1,0.3,0,0,0.3,0,0,0,0,0,0,0,1,0,0,0,0,0.5]
+  },
+  {
+    "id": "SFX-MEM-05",
+    "name": "Vibrancy tier change",
+    "category": "memory",
+    "description": "Musical sting: 3-note ascending chord (zone instrument)",
+    "durationSec": 0.6,
+    "preset": [0,0,0.32,0.08,0.55,0.65,0.12,0.4,0,0,0.5,0,0,0,0,0,0,0,1,0,0,0,0,0.5]
+  },
+  {
+    "id": "SFX-MEM-06",
+    "name": "Stagnation break",
+    "category": "memory",
+    "description": "Crystal shatter + warm flood. Dramatic.",
+    "durationSec": 1.0,
+    "preset": [3,0.1,0.15,0,0.8,0.08,0.15,0.9,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0.5]
+  }
+]

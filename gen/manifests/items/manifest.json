@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
   "description": "Item icon generation manifest",
-  "updatedAt": "2026-02-13T05:42:29.282Z",
-  "styleGuide": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light. Icons are 32×32, SNES-style inventory icons on transparent backgrounds.",
+  "updatedAt": "2026-02-13T14:13:51.959Z",
+  "styleGuide": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light. Icons are 32x32, SNES-style.",
   "styleDocRefs": [
     {
       "path": "docs/design/visual-direction.md",
@@ -27,7 +27,7 @@
         "genWidth": 256,
         "genHeight": 256
       },
-      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit RPG item icon, 32×32 pixels. Simple iron sword with leather-wrapped grip. Basic starter weapon. Top-down perspective, clean silhouette on transparent background. Style: SNES inventory icon.",
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit RPG item icon, 32x32 pixels. Simple iron sword with leather-wrapped grip. Basic starter weapon. Top-down, clean silhouette. SNES inventory icon.",
       "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, hand holding weapon",
       "docRefs": [
         {
@@ -40,11 +40,11 @@
       "format": "png",
       "status": "generated",
       "metadata": {
-        "promptHash": "4a6afca2d725079b",
-        "outputHash": "897917e23479536e2be682ce620e150a1c6c6a0c93df1c7be3da51867f0c33ef",
-        "generatedAt": "2026-02-13T05:34:52.057Z",
-        "generationTimeMs": 5020,
-        "fileSizeBytes": 854388,
+        "promptHash": "6cf1aec1cf8a104d",
+        "outputHash": "8559cd5b9604cc8e01b26df0dc9cce61d802c537745798cc931261c57092ebfa",
+        "generatedAt": "2026-02-13T08:26:20.134Z",
+        "generationTimeMs": 6044,
+        "fileSizeBytes": 855682,
         "model": "gemini-2.5-flash-image",
         "postProcessing": []
       }
@@ -60,7 +60,7 @@
         "genWidth": 256,
         "genHeight": 256
       },
-      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit RPG item icon, 32×32 pixels. Wooden staff topped with a small amber crystal. Mage starter weapon. Top-down perspective, clean silhouette on transparent background. Style: SNES inventory icon.",
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit RPG item icon, 32x32 pixels. Wooden staff topped with a small amber crystal. Mage starter weapon. Top-down, clean silhouette. SNES inventory icon.",
       "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, hand holding weapon",
       "docRefs": [
         {
@@ -73,11 +73,11 @@
       "format": "png",
       "status": "generated",
       "metadata": {
-        "promptHash": "ec83ed18795108f6",
-        "outputHash": "e73b592d97255b5f1649de3839b1c1620a8feb59f8d30596fa55b1f0bdc60838",
-        "generatedAt": "2026-02-13T05:34:59.329Z",
-        "generationTimeMs": 5270,
-        "fileSizeBytes": 850552,
+        "promptHash": "d7c2dd73b0223cbd",
+        "outputHash": "5a4ebc7d2d3496c180d7c2f86d5fa2beef6ffe7f58d8cbd5538c9c4c22b03a19",
+        "generatedAt": "2026-02-13T08:26:28.064Z",
+        "generationTimeMs": 5927,
+        "fileSizeBytes": 378865,
         "model": "gemini-2.5-flash-image",
         "postProcessing": []
       }
@@ -93,7 +93,7 @@
         "genWidth": 256,
         "genHeight": 256
       },
-      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit RPG item icon, 32×32 pixels. Slender willow wand with a glowing amber tip. Cleric starter weapon. Top-down perspective, clean silhouette on transparent background. Style: SNES inventory icon.",
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit RPG item icon, 32x32 pixels. Slender willow wand with a glowing amber tip. Cleric starter weapon. Top-down, clean silhouette. SNES inventory icon.",
       "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, hand holding weapon",
       "docRefs": [
         {
@@ -106,11 +106,11 @@
       "format": "png",
       "status": "generated",
       "metadata": {
-        "promptHash": "d53777a61c1ad63f",
-        "outputHash": "85f6e2ad92de37c15f6f75a5d24eeec40e2e457aa94b9b4c657967ad8d53ded0",
-        "generatedAt": "2026-02-13T05:35:07.053Z",
-        "generationTimeMs": 5722,
-        "fileSizeBytes": 779843,
+        "promptHash": "b799d347ec5eb0ea",
+        "outputHash": "0ad6f5158301136b088ae5dad8648ab52bd826fe64c03b2690407e0641293aca",
+        "generatedAt": "2026-02-13T08:26:37.733Z",
+        "generationTimeMs": 7669,
+        "fileSizeBytes": 930895,
         "model": "gemini-2.5-flash-image",
         "postProcessing": []
       }
@@ -126,7 +126,7 @@
         "genWidth": 256,
         "genHeight": 256
       },
-      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit RPG item icon, 32×32 pixels. Short iron dagger, slightly curved. Rogue starter weapon. Top-down perspective, clean silhouette on transparent background. Style: SNES inventory icon.",
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit RPG item icon, 32x32 pixels. Short iron dagger, slightly curved. Rogue starter weapon. Top-down, clean silhouette. SNES inventory icon.",
       "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, hand holding weapon",
       "docRefs": [
         {
@@ -139,11 +139,11 @@
       "format": "png",
       "status": "generated",
       "metadata": {
-        "promptHash": "e80a17f0c5bf78f1",
-        "outputHash": "295067afb0399896b943db00b10a520c19a6164563a9ee6d4c236efc2e12b472",
-        "generatedAt": "2026-02-13T05:35:14.331Z",
-        "generationTimeMs": 5277,
-        "fileSizeBytes": 950159,
+        "promptHash": "93ff0079d7b47302",
+        "outputHash": "e80d692b63f25462920b6fb24102ea47627d2f6121477793d9c91491a8160983",
+        "generatedAt": "2026-02-13T08:26:46.084Z",
+        "generationTimeMs": 6349,
+        "fileSizeBytes": 1005408,
         "model": "gemini-2.5-flash-image",
         "postProcessing": []
       }
@@ -159,7 +159,7 @@
         "genWidth": 256,
         "genHeight": 256
       },
-      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit RPG item icon, 32×32 pixels. Small green herb with golden shimmer. Basic HP restoration. Clean silhouette on transparent background.",
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit RPG item icon, 32x32 pixels. Small green herb with golden shimmer. Basic HP restoration. Clean silhouette on transparent background.",
       "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, hand",
       "docRefs": [
         {
@@ -172,11 +172,11 @@
       "format": "png",
       "status": "generated",
       "metadata": {
-        "promptHash": "de75a02aa43bcead",
-        "outputHash": "860df3ebf4e3205d4542be54c6e349ba7e3ed1ae8e455d19fb36bd3715603532",
-        "generatedAt": "2026-02-13T05:35:22.161Z",
-        "generationTimeMs": 5828,
-        "fileSizeBytes": 861903,
+        "promptHash": "1cb6c4dd164a0454",
+        "outputHash": "4d7276a5cfb800c21f96d943f313967bea9b0d485735557ee859f9e693e333c0",
+        "generatedAt": "2026-02-13T08:26:53.611Z",
+        "generationTimeMs": 5525,
+        "fileSizeBytes": 1203388,
         "model": "gemini-2.5-flash-image",
         "postProcessing": []
       }
@@ -192,7 +192,7 @@
         "genWidth": 256,
         "genHeight": 256
       },
-      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit RPG item icon, 32×32 pixels. Small vial of amber liquid, glowing softly. SP restoration. Clean silhouette on transparent background.",
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit RPG item icon, 32x32 pixels. Small vial of amber liquid, glowing softly. SP restoration. Clean silhouette on transparent background.",
       "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, hand",
       "docRefs": [
         {
@@ -205,11 +205,11 @@
       "format": "png",
       "status": "generated",
       "metadata": {
-        "promptHash": "37479e146faaf780",
-        "outputHash": "def4dda81c85e472b10df8769ec5f4df88f04b75d500183e4245b1503021919b",
-        "generatedAt": "2026-02-13T05:35:29.562Z",
-        "generationTimeMs": 5399,
-        "fileSizeBytes": 906264,
+        "promptHash": "4b764c92b9fa5480",
+        "outputHash": "83e397cb263382da5c7e462e9f816d52b354f3e031a3178ab9423f33d087a442",
+        "generatedAt": "2026-02-13T08:27:00.805Z",
+        "generationTimeMs": 5192,
+        "fileSizeBytes": 851579,
         "model": "gemini-2.5-flash-image",
         "postProcessing": []
       }
@@ -225,7 +225,7 @@
         "genWidth": 256,
         "genHeight": 256
       },
-      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit RPG item icon, 32×32 pixels. Clear glass bottle with green liquid. Cures poison. Clean silhouette on transparent background.",
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit RPG item icon, 32x32 pixels. Clear glass bottle with green liquid. Cures poison. Clean silhouette on transparent background.",
       "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, hand",
       "docRefs": [
         {
@@ -238,11 +238,11 @@
       "format": "png",
       "status": "generated",
       "metadata": {
-        "promptHash": "d7d67a6c31915eda",
-        "outputHash": "db45dc000b9f9a4cc59d8a1c968bb972d43600d42845d98e20a1ef2fdf8d4b81",
-        "generatedAt": "2026-02-13T04:52:53.733Z",
-        "generationTimeMs": 6958,
-        "fileSizeBytes": 1072363,
+        "promptHash": "21c998cc7019126f",
+        "outputHash": "4efd915dd958b14916f58e6d954a377c4f088b156838e7750eadb08994ef0da8",
+        "generatedAt": "2026-02-13T08:27:13.796Z",
+        "generationTimeMs": 10989,
+        "fileSizeBytes": 1403140,
         "model": "gemini-2.5-flash-image",
         "postProcessing": []
       }
@@ -251,7 +251,7 @@
       "id": "MF-GENERIC",
       "name": "Memory Fragment",
       "category": "memory-fragment",
-      "appearance": "Glowing amber crystal shard, warm golden light radiating outward. The core collectible of the game.",
+      "appearance": "Glowing amber crystal shard, warm golden light radiating outward. The core collectible.",
       "glowEffect": true,
       "dimensions": {
         "width": 64,
@@ -259,7 +259,7 @@
         "genWidth": 256,
         "genHeight": 256
       },
-      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit RPG item icon, 32×32 pixels. Glowing amber crystal shard, warm golden light radiating outward. The core collectible of the game. Distinct glowing effect, readable at small size. Transparent background.",
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit RPG item icon, 32x32 pixels. Glowing amber crystal shard, warm golden light radiating outward. The core collectible. Distinct glow effect. Transparent background.",
       "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, realistic crystal",
       "docRefs": [
         {
@@ -277,11 +277,11 @@
       "format": "png",
       "status": "generated",
       "metadata": {
-        "promptHash": "5e08c787da50b341",
-        "outputHash": "a8aa3d634814e1fb1333d13fa14974f29566c2fb0b946cf5b509e8db4730b130",
-        "generatedAt": "2026-02-13T05:35:37.351Z",
-        "generationTimeMs": 5785,
-        "fileSizeBytes": 919075,
+        "promptHash": "a50782e7d82dfd46",
+        "outputHash": "5fa6b841998a7944f33e7324daa6aa0d7df118a8720f24f0d2d14d994b761abf",
+        "generatedAt": "2026-02-13T08:27:22.655Z",
+        "generationTimeMs": 6858,
+        "fileSizeBytes": 973817,
         "model": "gemini-2.5-flash-image",
         "postProcessing": []
       }
@@ -298,7 +298,7 @@
         "genWidth": 256,
         "genHeight": 256
       },
-      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit RPG item icon, 32×32 pixels. Bright golden crystal shard with sunlight yellow glow and warm sparkles. Distinct glowing effect, readable at small size. Transparent background.",
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit RPG item icon, 32x32 pixels. Bright golden crystal shard with sunlight yellow glow and warm sparkles. Distinct glow effect. Transparent background.",
       "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, realistic crystal",
       "docRefs": [
         {
@@ -316,11 +316,11 @@
       "format": "png",
       "status": "generated",
       "metadata": {
-        "promptHash": "aecc42fe3302fac5",
-        "outputHash": "238cdcd35a28430077b166177e79a2d45884d42b02dd35f0fbc1b7315e979093",
-        "generatedAt": "2026-02-13T05:35:44.561Z",
-        "generationTimeMs": 5209,
-        "fileSizeBytes": 878178,
+        "promptHash": "e9838415cf6afb76",
+        "outputHash": "46b3be9e7c7b71509cf4529732f05e567d6a63246f5eb1662365ef468e568226",
+        "generatedAt": "2026-02-13T08:27:31.463Z",
+        "generationTimeMs": 6805,
+        "fileSizeBytes": 796471,
         "model": "gemini-2.5-flash-image",
         "postProcessing": []
       }
@@ -337,7 +337,7 @@
         "genWidth": 256,
         "genHeight": 256
       },
-      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit RPG item icon, 32×32 pixels. Deep red crystal shard with forge-fire glow, small flame particles. Distinct glowing effect, readable at small size. Transparent background.",
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit RPG item icon, 32x32 pixels. Deep red crystal shard with forge-fire glow, small flame particles. Distinct glow effect. Transparent background.",
       "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, realistic crystal",
       "docRefs": [
         {
@@ -355,11 +355,11 @@
       "format": "png",
       "status": "generated",
       "metadata": {
-        "promptHash": "34b9334eed465ce3",
-        "outputHash": "4614f5197f0a5e70d60f81190bf9ec907aa644454cbfb0a8d19a6eccd29c133a",
-        "generatedAt": "2026-02-13T05:35:52.423Z",
-        "generationTimeMs": 5861,
-        "fileSizeBytes": 912999,
+        "promptHash": "91b6925998b9ce00",
+        "outputHash": "695eee4b3e5abb611c5c397ce080633cad6c722d00289114e785eb96bc27adb7",
+        "generatedAt": "2026-02-13T08:27:39.578Z",
+        "generationTimeMs": 6114,
+        "fileSizeBytes": 1017127,
         "model": "gemini-2.5-flash-image",
         "postProcessing": []
       }
@@ -376,7 +376,7 @@
         "genWidth": 256,
         "genHeight": 256
       },
-      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit RPG item icon, 32×32 pixels. Twilight purple crystal shard with soft luminous tears of light. Distinct glowing effect, readable at small size. Transparent background.",
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit RPG item icon, 32x32 pixels. Twilight purple crystal shard with soft luminous tears of light. Distinct glow effect. Transparent background.",
       "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, realistic crystal",
       "docRefs": [
         {
@@ -394,11 +394,11 @@
       "format": "png",
       "status": "generated",
       "metadata": {
-        "promptHash": "515d23c6f0ad61e5",
-        "outputHash": "a14f1d578c89fc3f7710571525947ca80db19ad1f4a0ac6faf3864c914ebc22a",
-        "generatedAt": "2026-02-13T05:36:00.433Z",
-        "generationTimeMs": 6008,
-        "fileSizeBytes": 921024,
+        "promptHash": "25ad011d0b633651",
+        "outputHash": "43e7371a8ed9d412cd73af82e61a2c2398c6f5f08afed85577212ed3c64082a8",
+        "generatedAt": "2026-02-13T08:27:48.493Z",
+        "generationTimeMs": 6912,
+        "fileSizeBytes": 994141,
         "model": "gemini-2.5-flash-image",
         "postProcessing": []
       }
@@ -415,7 +415,7 @@
         "genWidth": 256,
         "genHeight": 256
       },
-      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit RPG item icon, 32×32 pixels. Aurora green crystal shard with prismatic sparkle, shifting colors at edges. Distinct glowing effect, readable at small size. Transparent background.",
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit RPG item icon, 32x32 pixels. Aurora green crystal shard with prismatic sparkle, shifting colors at edges. Distinct glow effect. Transparent background.",
       "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, realistic crystal",
       "docRefs": [
         {
@@ -433,11 +433,11 @@
       "format": "png",
       "status": "generated",
       "metadata": {
-        "promptHash": "438743ad44ceb0b1",
-        "outputHash": "77f96568df0f53104e40819236ce8bf145b6d08fdd496e1532e9ee8b9b03d6b2",
-        "generatedAt": "2026-02-13T05:36:06.950Z",
-        "generationTimeMs": 4514,
-        "fileSizeBytes": 965795,
+        "promptHash": "fa17ff73d26b5dc7",
+        "outputHash": "70624f165bb7cc563ff46b5a72e20a87d70d2f688549007901b1193cc9a24fa8",
+        "generatedAt": "2026-02-13T08:27:59.426Z",
+        "generationTimeMs": 8930,
+        "fileSizeBytes": 930667,
         "model": "gemini-2.5-flash-image",
         "postProcessing": []
       }
@@ -454,7 +454,7 @@
         "genWidth": 256,
         "genHeight": 256
       },
-      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit RPG item icon, 32×32 pixels. Sky blue crystal shard with gentle steady glow, no sparkle, peaceful. Distinct glowing effect, readable at small size. Transparent background.",
+      "prompt": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light.\n\n16-bit RPG item icon, 32x32 pixels. Sky blue crystal shard with gentle steady glow, no sparkle, peaceful. Distinct glow effect. Transparent background.",
       "negativePrompt": "3D rendering, photorealistic, anime style, neon colors, grimdark, desaturated post-apocalyptic, dark souls brown, chibi with huge heads, modern technology, sci-fi elements, cyberpunk, blurry, low quality, text, watermark, signature, UI elements in the image, thick black outlines on tiles, gradient shading on sprites, text, realistic crystal",
       "docRefs": [
         {
@@ -472,11 +472,11 @@
       "format": "png",
       "status": "generated",
       "metadata": {
-        "promptHash": "d02ffbabc546304a",
-        "outputHash": "69478f5918fb4dff18cf57fcb3d3bf3844e513c6d01a67aec6ca0e7e64e3a28a",
-        "generatedAt": "2026-02-13T05:36:14.584Z",
-        "generationTimeMs": 5632,
-        "fileSizeBytes": 947208,
+        "promptHash": "80bc072e1151aee3",
+        "outputHash": "4b6f6067aee78533105e057831c7e66dc887c1080e48dd5e12d54bf43359480f",
+        "generatedAt": "2026-02-13T08:28:06.793Z",
+        "generationTimeMs": 5365,
+        "fileSizeBytes": 900355,
         "model": "gemini-2.5-flash-image",
         "postProcessing": []
       }

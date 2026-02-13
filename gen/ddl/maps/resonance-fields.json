@@ -1,0 +1,60 @@
+[
+  {
+    "id": "resonance-fields",
+    "name": "Resonance Fields",
+    "filename": "resonance-fields.tmx",
+    "width": 50,
+    "height": 50,
+    "tileSize": 32,
+    "biome": "plains",
+    "tilesetRefs": ["tiles_plains_{tier}"],
+    "startVibrancy": 15,
+    "category": "overworld",
+    "act": "II",
+    "connections": [
+      { "fromTile": "49,25", "direction": "east", "toMap": "shimmer-marsh", "toTile": "0,25", "condition": "MQ-05+" },
+      { "fromTile": "25,0", "direction": "north", "toMap": "hollow-ridge", "toTile": "25,49", "condition": "MQ-05+" },
+      { "fromTile": "0,25", "direction": "west", "toMap": "luminous-wastes", "toTile": "39,20", "condition": "MQ-07+" },
+      { "fromTile": "28,44", "direction": "down", "toMap": "depths-l4", "toTile": "10,0", "condition": "Singing Stones puzzle" }
+    ],
+    "npcSpawns": [
+      { "npcId": "lead-audiomancer", "name": "Lead Audiomancer", "position": "9,34", "graphic": "npc_audiomancer_m1", "movement": "Static", "quests": ["SQ-09","SQ-13"] },
+      { "npcId": "audiomancer-b", "name": "Audiomancer B", "position": "10,36", "graphic": "npc_audiomancer_f1", "movement": "Patrol" },
+      { "npcId": "audiomancer-c", "name": "Audiomancer C", "position": "8,35", "graphic": "npc_audiomancer_m2", "movement": "Static" },
+      { "npcId": "audiomancer-d", "name": "Audiomancer D", "position": "11,34", "graphic": "npc_audiomancer_f2", "movement": "Static" },
+      { "npcId": "preserver-captain-rf", "name": "Preserver Captain", "position": "40,14", "graphic": "npc_preserver_captain", "movement": "Static" },
+      { "npcId": "preserver-agent-rf-a", "name": "Preserver Agent A", "position": "37,13", "graphic": "npc_preserver_agent", "movement": "Patrol" },
+      { "npcId": "preserver-agent-rf-b", "name": "Preserver Agent B", "position": "41,15", "graphic": "npc_preserver_agent", "movement": "Patrol" },
+      { "npcId": "preserver-agent-rf-c", "name": "Preserver Agent C", "position": "39,12", "graphic": "npc_preserver_agent", "movement": "Static" }
+    ],
+    "enemyZones": [
+      { "zone": "Open Plains", "bounds": "5,5 -> 35,40", "enemies": ["Sound Echo","Stone Guardian"], "levelRange": "13-16", "encounterRate": "Common: 1 Echo; Standard: 1 Echo + 1 Guardian" },
+      { "zone": "Cathedral Zone", "bounds": "33,8 -> 45,20", "enemies": ["Preserver Agent","Harmony Wraith"], "levelRange": "15-17", "encounterRate": "Fixed garrison + 1-2 Wraiths" },
+      { "zone": "South Plains", "bounds": "15,35 -> 45,48", "enemies": ["Stone Guardian","Harmony Wraith"], "levelRange": "14-16", "encounterRate": "Standard: 2 Guardians; Rare: 2 Guardians + 1 Wraith" }
+    ],
+    "eventTriggers": [
+      { "id": "EV-RF-001", "position": "9,34", "type": "action", "linkedQuest": "SQ-09", "repeat": "quest", "description": "Lead Audiomancer dialogue" },
+      { "id": "EV-RF-003", "position": "25,25", "type": "auto", "linkedQuest": "GQ-01", "repeat": "once", "description": "Resonance recall vision" },
+      { "id": "EV-RF-004", "position": "25,25", "type": "action", "linkedQuest": "GQ-01", "repeat": "quest", "description": "4 emotion pedestals" },
+      { "id": "EV-RF-005", "position": "38,13", "type": "action", "linkedQuest": "GQ-01-F2", "repeat": "quest", "description": "Cathedral assault" },
+      { "id": "EV-RF-006", "position": "28,43", "type": "action", "repeat": "quest", "description": "Singing Stones puzzle -> Depths L4" },
+      { "id": "EV-RF-007", "position": "49,25", "type": "touch", "repeat": "conditional", "description": "East -> Shimmer Marsh" },
+      { "id": "EV-RF-008", "position": "25,0", "type": "touch", "repeat": "conditional", "description": "North -> Hollow Ridge" },
+      { "id": "EV-RF-009", "position": "0,25", "type": "touch", "repeat": "conditional", "description": "West -> Luminous Wastes" },
+      { "id": "EV-RF-010", "position": "25,25", "type": "parallel", "repeat": "repeat", "description": "Amphitheater ambient hum" }
+    ],
+    "resonanceStones": [
+      { "id": "RS-RF-01", "position": "25,25", "fragments": "recall pedestal", "notes": "Amphitheater center" },
+      { "id": "RS-RF-02", "position": "10,10", "fragments": "awe/wind/2" },
+      { "id": "RS-RF-03", "position": "35,8", "fragments": "fury/wind/2", "notes": "Near Cathedral (contested)" },
+      { "id": "RS-RF-04", "position": "15,45", "fragments": "calm/earth/2" },
+      { "id": "RS-RF-05", "position": "45,40", "fragments": "sorrow/wind/3" },
+      { "id": "RS-RF-06", "position": "8,34", "fragments": "joy/wind/2" }
+    ],
+    "treasureChests": [
+      { "id": "CH-RF-01", "position": "25,26", "contents": "Choir's Final Note (MF-05)", "condition": "GQ-01 recall" },
+      { "id": "CH-RF-02", "position": "40,16", "contents": "Preserver's Crystal Mail (A-10)", "condition": "After clearing Cathedral" },
+      { "id": "CH-RF-03", "position": "10,45", "contents": "Mana Draught (C-SP-02) x3" }
+    ]
+  }
+]

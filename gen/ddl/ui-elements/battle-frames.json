@@ -1,0 +1,14 @@
+[
+  {
+    "id": "UI-BTL-BG",
+    "name": "Battle Background Overlay",
+    "type": "battle-frame",
+    "desc": "Full-screen combat UI backdrop. Dark parchment (#2A1810) with soft vignette, styled as a remembered battle. Warm amber border trim."
+  },
+  {
+    "id": "UI-BTL-CMD",
+    "name": "Battle Command Panel",
+    "type": "battle-frame",
+    "desc": "Bottom command menu panel for combat. Leather-textured background with bronze studs along border. Clear sections for Attack/Magic/Item/Flee."
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "A-01",
+    "name": "Traveler's Tunic",
+    "def": 3,
+    "price": 0,
+    "tier": 1,
+    "specialEffect": "None",
+    "acquisition": "Starting equipment (all classes)"
+  },
+  {
+    "id": "A-02",
+    "name": "Padded Vest",
+    "def": 6,
+    "price": 60,
+    "tier": 1,
+    "specialEffect": "None",
+    "acquisition": "Maren's General Shop"
+  },
+  {
+    "id": "A-03",
+    "name": "Leather Armor",
+    "def": 10,
+    "price": 120,
+    "tier": 1,
+    "specialEffect": "+5% HP",
+    "acquisition": "Torvan's Blacksmith"
+  },
+  {
+    "id": "A-04",
+    "name": "Chain Mail",
+    "def": 15,
+    "price": 300,
+    "tier": 2,
+    "specialEffect": "Knight: +8 DEF instead of +15. Others: AGI -3.",
+    "acquisition": "Torvan's Blacksmith (Normal vibrancy)"
+  },
+  {
+    "id": "A-05",
+    "name": "Forest Weave",
+    "def": 12,
+    "price": 250,
+    "tier": 2,
+    "specialEffect": "+10% evasion. Rogue: +15% evasion instead.",
+    "acquisition": "Ambergrove (Woodcutter's Camp quest)"
+  },
+  {
+    "id": "A-06",
+    "name": "Riverstone Plate",
+    "def": 18,
+    "price": 450,
+    "tier": 2,
+    "specialEffect": "+10% water resistance. Immune to Poison.",
+    "acquisition": "Millbrook specialty shop"
+  },
+  {
+    "id": "A-07",
+    "name": "Hermit's Robe",
+    "def": 14,
+    "price": 0,
+    "tier": 2,
+    "specialEffect": "+20% SP regen from Defend. Cleric/Mage: +25%.",
+    "acquisition": "Quest reward from Wynn (Shimmer Marsh)"
+  },
+  {
+    "id": "A-08",
+    "name": "Ridgewalker's Coat",
+    "def": 20,
+    "price": 500,
+    "tier": 2,
+    "specialEffect": "+10% ATK. Wind resistance +15%.",
+    "acquisition": "Ridgewalker Camp merchant"
+  }
+]

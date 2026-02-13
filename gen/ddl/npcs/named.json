@@ -1,0 +1,37 @@
+[
+  {
+    "id": "lira",
+    "name": "Lira",
+    "heading": "NPC-LIRA: Lira (Mentor)",
+    "type": "named",
+    "desc": "Mid-30s woman, sage green traveler's clothes, satchel, hair tied back."
+  },
+  {
+    "id": "callum",
+    "name": "Callum",
+    "heading": "NPC-CALLUM: Callum (Village Elder)",
+    "type": "named",
+    "desc": "Elderly man, tall and thin. Dark warm brown coat, walking stick, white hair."
+  },
+  {
+    "id": "curator",
+    "name": "The Curator",
+    "heading": "NPC-CURATOR: The Curator (Antagonist)",
+    "type": "named",
+    "desc": "Tall, elegant. Crystalline near-white robes, high collar, hands clasped."
+  },
+  {
+    "id": "maren",
+    "name": "Maren",
+    "heading": "NPC-MAREN: Maren (Shopkeeper)",
+    "type": "named",
+    "desc": "Round, cheerful. Warm rust red apron, short curly chestnut hair."
+  },
+  {
+    "id": "torvan",
+    "name": "Torvan",
+    "heading": "NPC-TORVAN: Torvan (Blacksmith)",
+    "type": "named",
+    "desc": "Broad, muscular. Dark leather apron, thick arms, dark hair, hammer at belt."
+  }
+]

@@ -1,0 +1,76 @@
+[
+  {
+    "id": "E-SL-07",
+    "name": "Highland Hawk",
+    "zone": "Sunridge",
+    "category": "settled",
+    "hp": 45,
+    "atk": 11,
+    "int": 3,
+    "def": 6,
+    "agi": 18,
+    "baseLevel": 5,
+    "xp": 40,
+    "gold": 18,
+    "abilities": [
+      {
+        "name": "Dive Strike",
+        "formula": "ATK * 1.5 (first: ATK * 1.8)",
+        "effect": "Speed-bonus physical attack"
+      },
+      {
+        "name": "Evasive Climb",
+        "formula": "Untargetable by ST physical 1 turn",
+        "effect": "Used every 3rd turn"
+      }
+    ],
+    "drops": [
+      {
+        "itemId": "C-SC-02",
+        "chance": 0.1
+      },
+      {
+        "itemId": "C-SP-05",
+        "chance": 0.15
+      }
+    ],
+    "fragmentAffinity": "Fury / Wind"
+  },
+  {
+    "id": "E-SL-08",
+    "name": "Crag Golem",
+    "zone": "Sunridge",
+    "category": "settled",
+    "hp": 80,
+    "atk": 13,
+    "int": 1,
+    "def": 15,
+    "agi": 3,
+    "baseLevel": 6,
+    "xp": 50,
+    "gold": 22,
+    "abilities": [
+      {
+        "name": "Stone Fist",
+        "formula": "ATK * 1.5",
+        "effect": "Heavy physical attack"
+      },
+      {
+        "name": "Quake Stomp",
+        "formula": "ATK * 0.8 (AE)",
+        "effect": "AoE physical, all party members"
+      }
+    ],
+    "drops": [
+      {
+        "itemId": "C-HP-01",
+        "chance": 0.2
+      },
+      {
+        "itemId": "C-BF-01",
+        "chance": 0.05
+      }
+    ],
+    "fragmentAffinity": "Calm / Earth"
+  }
+]

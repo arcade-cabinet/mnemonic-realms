@@ -1,0 +1,65 @@
+[
+  {
+    "id": "dlg-maren-first-visit", "npcId": "maren", "npcName": "Maren",
+    "trigger": "First visit (Act I)",
+    "location": "Village Hub — General Shop (18, 16)",
+    "lines": [
+      { "speaker": "Maren", "text": "Welcome, welcome! You must be the one Callum's been talking about — the new Architect!" }
+    ],
+    "targetPath": "main/server/dialogue/maren-first-visit.ts"
+  },
+  {
+    "id": "dlg-maren-shop", "npcId": "maren", "npcName": "Maren",
+    "trigger": "Shop interaction (all acts)",
+    "location": "Village Hub — General Shop (18, 16)",
+    "lines": [
+      { "speaker": "Maren", "text": "Take a look! Potions, antidotes, and the odd curiosity.", "emotion": "browse" },
+      { "speaker": "Maren", "text": "Excellent choice! That'll serve you well out there.", "emotion": "buy" },
+      { "speaker": "Maren", "text": "I can take that off your hands. Fair price, always.", "emotion": "sell" },
+      { "speaker": "Maren", "text": "Not quite enough gold for that one.", "emotion": "insufficient" },
+      { "speaker": "Maren", "text": "Safe travels! Come back anytime.", "emotion": "farewell" }
+    ],
+    "targetPath": "main/server/dialogue/maren-shop.ts"
+  },
+  {
+    "id": "dlg-torvan-first-visit", "npcId": "torvan", "npcName": "Torvan",
+    "trigger": "First visit (Act I)",
+    "location": "Village Hub — Blacksmith (18, 18)",
+    "lines": [
+      { "speaker": "Torvan", "text": "Mm. New Architect? Callum told me. I make weapons and armor — nothing fancy, but solid." }
+    ],
+    "targetPath": "main/server/dialogue/torvan-first-visit.ts"
+  },
+  {
+    "id": "dlg-torvan-shop", "npcId": "torvan", "npcName": "Torvan",
+    "trigger": "Shop interaction",
+    "location": "Village Hub — Blacksmith (18, 18)",
+    "lines": [
+      { "speaker": "Torvan", "text": "Steel, leather, and honest craft. No enchantments.", "emotion": "browse" },
+      { "speaker": "Torvan", "text": "Good blade, that. Treat it right and it'll return the favor.", "emotion": "buy" },
+      { "speaker": "Torvan", "text": "I'll melt it down and make something better.", "emotion": "sell" },
+      { "speaker": "Torvan", "text": "Can't give it away, friend. Gold talks.", "emotion": "insufficient" },
+      { "speaker": "Torvan", "text": "Keep your guard up.", "emotion": "farewell" }
+    ],
+    "targetPath": "main/server/dialogue/torvan-shop.ts"
+  },
+  {
+    "id": "dlg-ren-first-visit", "npcId": "ren", "npcName": "Ren",
+    "trigger": "First visit (Act I)",
+    "location": "Village Hub — Inn: The Bright Hearth (20, 14)",
+    "lines": [
+      { "speaker": "Ren", "text": "The Bright Hearth — best inn in the village! Well, only inn. Rest your feet, rest your mind." }
+    ],
+    "targetPath": "main/server/dialogue/ren-first-visit.ts"
+  },
+  {
+    "id": "dlg-ren-inn", "npcId": "ren", "npcName": "Ren",
+    "trigger": "Inn interaction",
+    "location": "Village Hub — Inn: The Bright Hearth (20, 14)",
+    "lines": [
+      { "speaker": "Ren", "text": "Sweet dreams. The beds are soft and the walls keep out the worry.", "emotion": "rest" },
+      { "speaker": "Ren", "text": "Rest well. You've earned it more than most.", "emotion": "rest-late" }
+    ],
+    "targetPath": "main/server/dialogue/ren-inn.ts"
+  }
+]

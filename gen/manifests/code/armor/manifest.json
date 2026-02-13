@@ -1,0 +1,345 @@
+{
+  "schemaVersion": "1.0.0",
+  "description": "Armor database code generation manifest",
+  "updatedAt": "2026-02-13T14:13:51.965Z",
+  "category": "database-armor",
+  "systemPrompt": "You are an RPG-JS 4.3.0 TypeScript code generator.\nGenerate a single RPG-JS armor database file using @rpgjs/database decorators.\nOutput ONLY valid TypeScript code. No markdown fences. No explanatory text.\nThe file must export the armor class as the default export.\nImport from '@rpgjs/database'.\n\n=== RPG-JS 4.3.0 @Armor API Reference ===\nimport { Armor } from '@rpgjs/database';\n\nValid @Armor decorator params (ArmorOptions extends EquipmentOptions):\n  id?: string              — Unique ID. Defaults to lowercased class name.\n  name?: string            — Display name.\n  description?: string     — Flavor text.\n  price?: number           — Shop price. Omit or undefined = cannot buy/sell.\n  pdef?: number            — Physical defense bonus. THIS IS THE CORRECT NAME (not pdefense).\n  sdef?: number            — Special/magic defense bonus.\n  paramsModifier?: object  — Stat modifiers: { [paramName]: { value?: number, rate?: number } }\n                             Valid param names: 'maxhp', 'maxsp', 'str', 'int', 'dex', 'agi'\n  elements?: array         — Element affinities.\n  addStates?: array        — States to inflict on equip.\n  removeStates?: array     — States to cure on equip.\n  statesDefense?: array    — Resistance to states when equipped.\n  elementsDefense?: array  — Resistance to elements when equipped.\n\nINVALID properties (do NOT use): pdefense, mdefense, defense, def, tier, equipable, class, type, slot, armor.\n\nExample:\n@Armor({\n  id: 'leather-armor',\n  name: 'Leather Armor',\n  description: 'Basic leather protection.',\n  price: 100,\n  pdef: 8,\n})\nexport default class LeatherArmor {}\n\nExample with stat modifier:\n@Armor({\n  id: 'hermit-robe',\n  name: \"Hermit's Robe\",\n  description: 'A robe that boosts magical power.',\n  price: 300,\n  pdef: 5,\n  sdef: 10,\n  paramsModifier: { maxhp: { value: 50 } },\n})\nexport default class HermitRobe {}\n=== End API Reference ===",
+  "assets": [
+    {
+      "id": "A-01",
+      "name": "Traveler's Tunic",
+      "category": "database-armor",
+      "filename": "traveler-s-tunic.ts",
+      "targetPath": "main/database/armor/traveler-s-tunic.ts",
+      "prompt": "Generate an RPG-JS armor file for \"Traveler's Tunic\" (ID: A-01).\n\nStats:\n- pdef: 3 (physical defense — use the property name \"pdef\", NOT \"pdefense\" or \"def\")\n- Price: 0 (omit price or set undefined — not purchasable)\n- Tier: 1 (add as comment only — no tier property exists in @Armor)\n- Special effect: None\n\nSet id, name, description, pdef: 3.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: pdefense, mdefense, defense, def, tier, equipable, class, type.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Armor",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "8c0b03b8e5c5c50c",
+        "outputHash": "b61a65ea754fdee8e5671cf7e5dc22c14c7b2d5ef01939ae4a9af17840c44b2f",
+        "generatedAt": "2026-02-13T13:38:51.013Z",
+        "generationTimeMs": 1026,
+        "fileSizeBytes": 284,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "A-02",
+      "name": "Padded Vest",
+      "category": "database-armor",
+      "filename": "padded-vest.ts",
+      "targetPath": "main/database/armor/padded-vest.ts",
+      "prompt": "Generate an RPG-JS armor file for \"Padded Vest\" (ID: A-02).\n\nStats:\n- pdef: 6 (physical defense — use the property name \"pdef\", NOT \"pdefense\" or \"def\")\n- Price: 60\n- Tier: 1 (add as comment only — no tier property exists in @Armor)\n- Special effect: None\n\nSet id, name, description, pdef: 6. Set price: 60.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: pdefense, mdefense, defense, def, tier, equipable, class, type.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Armor",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "e5be06aa3633818c",
+        "outputHash": "1a709b7c2c57814fd787aa2fa998873ec11cbd1c832be27951256b60e33a94b2",
+        "generatedAt": "2026-02-13T13:38:54.951Z",
+        "generationTimeMs": 1935,
+        "fileSizeBytes": 242,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "A-03",
+      "name": "Leather Armor",
+      "category": "database-armor",
+      "filename": "leather-armor.ts",
+      "targetPath": "main/database/armor/leather-armor.ts",
+      "prompt": "Generate an RPG-JS armor file for \"Leather Armor\" (ID: A-03).\n\nStats:\n- pdef: 10 (physical defense — use the property name \"pdef\", NOT \"pdefense\" or \"def\")\n- Price: 120\n- Tier: 1 (add as comment only — no tier property exists in @Armor)\n- Special effect: +5% HP\n\nSet id, name, description, pdef: 10. Set price: 120.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: pdefense, mdefense, defense, def, tier, equipable, class, type.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Armor",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "d4a3357aaeb8073d",
+        "outputHash": "fd7665616d1f8ae94fb81afca6df7386c672aaec3e939b2585cb1c512dee9187",
+        "generatedAt": "2026-02-13T13:38:59.064Z",
+        "generationTimeMs": 2109,
+        "fileSizeBytes": 327,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "A-04",
+      "name": "Chain Mail",
+      "category": "database-armor",
+      "filename": "chain-mail.ts",
+      "targetPath": "main/database/armor/chain-mail.ts",
+      "prompt": "Generate an RPG-JS armor file for \"Chain Mail\" (ID: A-04).\n\nStats:\n- pdef: 15 (physical defense — use the property name \"pdef\", NOT \"pdefense\" or \"def\")\n- Price: 300\n- Tier: 2 (add as comment only — no tier property exists in @Armor)\n- Special effect: Knight: +8 DEF instead of +15. Others: AGI -3.\n\nSet id, name, description, pdef: 15. Set price: 300.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: pdefense, mdefense, defense, def, tier, equipable, class, type.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Armor",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "7caf79ed293f82fe",
+        "outputHash": "ef32e1517e42a68ae695525ae7cb3be6f9fc4ec24c40ebf6b7e7a47848781853",
+        "generatedAt": "2026-02-13T13:39:04.154Z",
+        "generationTimeMs": 3087,
+        "fileSizeBytes": 346,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "A-05",
+      "name": "Forest Weave",
+      "category": "database-armor",
+      "filename": "forest-weave.ts",
+      "targetPath": "main/database/armor/forest-weave.ts",
+      "prompt": "Generate an RPG-JS armor file for \"Forest Weave\" (ID: A-05).\n\nStats:\n- pdef: 12 (physical defense — use the property name \"pdef\", NOT \"pdefense\" or \"def\")\n- Price: 250\n- Tier: 2 (add as comment only — no tier property exists in @Armor)\n- Special effect: +10% evasion. Rogue: +15% evasion instead.\n\nSet id, name, description, pdef: 12. Set price: 250.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: pdefense, mdefense, defense, def, tier, equipable, class, type.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Armor",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "17fc02cf2ab3db26",
+        "outputHash": "edc4ca7023abfec96bba1f70f89a695c5e22526bde5cc399914e8c34921eff08",
+        "generatedAt": "2026-02-13T13:39:08.250Z",
+        "generationTimeMs": 2093,
+        "fileSizeBytes": 312,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "A-06",
+      "name": "Riverstone Plate",
+      "category": "database-armor",
+      "filename": "riverstone-plate.ts",
+      "targetPath": "main/database/armor/riverstone-plate.ts",
+      "prompt": "Generate an RPG-JS armor file for \"Riverstone Plate\" (ID: A-06).\n\nStats:\n- pdef: 18 (physical defense — use the property name \"pdef\", NOT \"pdefense\" or \"def\")\n- Price: 450\n- Tier: 2 (add as comment only — no tier property exists in @Armor)\n- Special effect: +10% water resistance. Immune to Poison.\n\nSet id, name, description, pdef: 18. Set price: 450.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: pdefense, mdefense, defense, def, tier, equipable, class, type.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Armor",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "2ddbdc1810c51158",
+        "outputHash": "3479c983e67d7471ee38101627ce96130c82262d6018715bafc0aa04109e9e72",
+        "generatedAt": "2026-02-13T13:39:13.777Z",
+        "generationTimeMs": 3524,
+        "fileSizeBytes": 423,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "A-07",
+      "name": "Hermit's Robe",
+      "category": "database-armor",
+      "filename": "hermit-s-robe.ts",
+      "targetPath": "main/database/armor/hermit-s-robe.ts",
+      "prompt": "Generate an RPG-JS armor file for \"Hermit's Robe\" (ID: A-07).\n\nStats:\n- pdef: 14 (physical defense — use the property name \"pdef\", NOT \"pdefense\" or \"def\")\n- Price: 0 (omit price or set undefined — not purchasable)\n- Tier: 2 (add as comment only — no tier property exists in @Armor)\n- Special effect: +20% SP regen from Defend. Cleric/Mage: +25%.\n\nSet id, name, description, pdef: 14.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: pdefense, mdefense, defense, def, tier, equipable, class, type.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Armor",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "625d45c768407719",
+        "outputHash": "fc5aa479b8f2a121586cb5450a570c53ceee4b979fe8c58a201a233857ac6597",
+        "generatedAt": "2026-02-13T13:39:18.388Z",
+        "generationTimeMs": 2607,
+        "fileSizeBytes": 424,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "A-08",
+      "name": "Ridgewalker's Coat",
+      "category": "database-armor",
+      "filename": "ridgewalker-s-coat.ts",
+      "targetPath": "main/database/armor/ridgewalker-s-coat.ts",
+      "prompt": "Generate an RPG-JS armor file for \"Ridgewalker's Coat\" (ID: A-08).\n\nStats:\n- pdef: 20 (physical defense — use the property name \"pdef\", NOT \"pdefense\" or \"def\")\n- Price: 500\n- Tier: 2 (add as comment only — no tier property exists in @Armor)\n- Special effect: +10% ATK. Wind resistance +15%.\n\nSet id, name, description, pdef: 20. Set price: 500.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: pdefense, mdefense, defense, def, tier, equipable, class, type.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Armor",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "58bf74d2e8439376",
+        "outputHash": "7efb68f5e91f58363c1245c3c2937b3f3962bad8f0ded68862cdf4283c52dcfd",
+        "generatedAt": "2026-02-13T13:39:24.000Z",
+        "generationTimeMs": 3607,
+        "fileSizeBytes": 480,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "A-09",
+      "name": "Frontier Guard",
+      "category": "database-armor",
+      "filename": "frontier-guard.ts",
+      "targetPath": "main/database/armor/frontier-guard.ts",
+      "prompt": "Generate an RPG-JS armor file for \"Frontier Guard\" (ID: A-09).\n\nStats:\n- pdef: 25 (physical defense — use the property name \"pdef\", NOT \"pdefense\" or \"def\")\n- Price: 800\n- Tier: 3 (add as comment only — no tier property exists in @Armor)\n- Special effect: +15% resistance to Stasis status.\n\nSet id, name, description, pdef: 25. Set price: 800.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: pdefense, mdefense, defense, def, tier, equipable, class, type.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Armor",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "233060dd66b78466",
+        "outputHash": "0327eaccee70e5bbda668bdffb97d5563df2acc1a9ca6066ad7aa3f0f34e0840",
+        "generatedAt": "2026-02-13T13:39:31.292Z",
+        "generationTimeMs": 5289,
+        "fileSizeBytes": 285,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "A-10",
+      "name": "Preserver's Crystal Mail",
+      "category": "database-armor",
+      "filename": "preserver-s-crystal-mail.ts",
+      "targetPath": "main/database/armor/preserver-s-crystal-mail.ts",
+      "prompt": "Generate an RPG-JS armor file for \"Preserver's Crystal Mail\" (ID: A-10).\n\nStats:\n- pdef: 30 (physical defense — use the property name \"pdef\", NOT \"pdefense\" or \"def\")\n- Price: 0 (omit price or set undefined — not purchasable)\n- Tier: 3 (add as comment only — no tier property exists in @Armor)\n- Special effect: +20% DEF. Immune to Stasis.\n\nSet id, name, description, pdef: 30.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: pdefense, mdefense, defense, def, tier, equipable, class, type.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Armor",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "c9b2c4240904fcdf",
+        "outputHash": "83f49787afc1f596e0812ca54c391d3c2ee06b24689330b7b27efac7f99b0b67",
+        "generatedAt": "2026-02-13T13:39:37.815Z",
+        "generationTimeMs": 4520,
+        "fileSizeBytes": 426,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "A-11",
+      "name": "Luminary Vestment",
+      "category": "database-armor",
+      "filename": "luminary-vestment.ts",
+      "targetPath": "main/database/armor/luminary-vestment.ts",
+      "prompt": "Generate an RPG-JS armor file for \"Luminary Vestment\" (ID: A-11).\n\nStats:\n- pdef: 22 (physical defense — use the property name \"pdef\", NOT \"pdefense\" or \"def\")\n- Price: 1000\n- Tier: 3 (add as comment only — no tier property exists in @Armor)\n- Special effect: All healing received +20%. Knight: oath bonuses +5%.\n\nSet id, name, description, pdef: 22. Set price: 1000.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: pdefense, mdefense, defense, def, tier, equipable, class, type.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Armor",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "027ac325f132662f",
+        "outputHash": "b38684ce14ba9e13555a39fc713ddd10ebe8bcbc552e649bf1c771a7a9284e55",
+        "generatedAt": "2026-02-13T13:39:41.686Z",
+        "generationTimeMs": 1869,
+        "fileSizeBytes": 321,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "A-12",
+      "name": "Verdant Mantle",
+      "category": "database-armor",
+      "filename": "verdant-mantle.ts",
+      "targetPath": "main/database/armor/verdant-mantle.ts",
+      "prompt": "Generate an RPG-JS armor file for \"Verdant Mantle\" (ID: A-12).\n\nStats:\n- pdef: 28 (physical defense — use the property name \"pdef\", NOT \"pdefense\" or \"def\")\n- Price: 0 (omit price or set undefined — not purchasable)\n- Tier: 3 (add as comment only — no tier property exists in @Armor)\n- Special effect: Regenerate 2% max HP per turn in combat.\n\nSet id, name, description, pdef: 28.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: pdefense, mdefense, defense, def, tier, equipable, class, type.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Armor",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "758eea4dd0328305",
+        "outputHash": "55e1603030d7682c454e1c6adeae7a786f58829b38f37ca115eba122c828e869",
+        "generatedAt": "2026-02-13T13:39:46.155Z",
+        "generationTimeMs": 2465,
+        "fileSizeBytes": 324,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "A-13",
+      "name": "Sketchweave Cloak",
+      "category": "database-armor",
+      "filename": "sketchweave-cloak.ts",
+      "targetPath": "main/database/armor/sketchweave-cloak.ts",
+      "prompt": "Generate an RPG-JS armor file for \"Sketchweave Cloak\" (ID: A-13).\n\nStats:\n- pdef: 24 (physical defense — use the property name \"pdef\", NOT \"pdefense\" or \"def\")\n- Price: 0 (omit price or set undefined — not purchasable)\n- Tier: 3 (add as comment only — no tier property exists in @Armor)\n- Special effect: +20% evasion. In Sketch zones: +30% evasion.\n\nSet id, name, description, pdef: 24.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: pdefense, mdefense, defense, def, tier, equipable, class, type.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Armor",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "018c87243a1bbc7a",
+        "outputHash": "82b6b423603ba4cbf9b57a8eb3d95b542f14ac0780cb6a7d287f14f379cd93ef",
+        "generatedAt": "2026-02-13T13:39:51.007Z",
+        "generationTimeMs": 2849,
+        "fileSizeBytes": 336,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "A-14",
+      "name": "Memory-Woven Plate",
+      "category": "database-armor",
+      "filename": "memory-woven-plate.ts",
+      "targetPath": "main/database/armor/memory-woven-plate.ts",
+      "prompt": "Generate an RPG-JS armor file for \"Memory-Woven Plate\" (ID: A-14).\n\nStats:\n- pdef: 35 (physical defense — use the property name \"pdef\", NOT \"pdefense\" or \"def\")\n- Price: 0 (omit price or set undefined — not purchasable)\n- Tier: 3 (add as comment only — no tier property exists in @Armor)\n- Special effect: DEF scales with fragments broadcast (+1 per 3, max +10).\n\nSet id, name, description, pdef: 35.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: pdefense, mdefense, defense, def, tier, equipable, class, type.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Armor",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "23944e793cdd3342",
+        "outputHash": "cd9cb24441a5187d14a40c6dc67591dd9a4e036fbc533bf93145fcbbbb15b6df",
+        "generatedAt": "2026-02-13T13:39:55.684Z",
+        "generationTimeMs": 2674,
+        "fileSizeBytes": 383,
+        "model": "gemini-2.5-flash"
+      }
+    }
+  ]
+}

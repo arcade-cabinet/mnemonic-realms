@@ -1,0 +1,23 @@
+[
+  {
+    "id": "UI-WIN-STD",
+    "name": "Standard Window Border",
+    "type": "window-border",
+    "nineSlice": true,
+    "desc": "9-slice tileable panel border. Dark wood frame with subtle gold inlay. Clean corners, 8px border thickness."
+  },
+  {
+    "id": "UI-WIN-MEM",
+    "name": "Memory Window Border",
+    "type": "window-border",
+    "nineSlice": true,
+    "desc": "9-slice border with amber glow effect. Golden light emanates from frame edges. Used for memory-related panels."
+  },
+  {
+    "id": "UI-WIN-STG",
+    "name": "Stagnation Window Border",
+    "type": "window-border",
+    "nineSlice": true,
+    "desc": "9-slice border with cold crystal blue-white (#B0C4DE) frost pattern. Used for Preserver/stagnation UI contexts."
+  }
+]

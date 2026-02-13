@@ -1,0 +1,109 @@
+[
+  {
+    "id": "SQ-10", "name": "The Depths Expedition", "category": "side", "act": "act2",
+    "levelRange": "14-18", "giver": "Callum", "giverLocation": "Village Hub — Elder's House (18, 10)",
+    "triggerCondition": "MQ-05 complete, player level 14+",
+    "objectives": [
+      { "index": 0, "description": "Speak with Callum about the Depths" },
+      { "index": 1, "description": "Travel to Depths entrance in Memorial Garden (8, 17)" },
+      { "index": 2, "description": "Navigate Depths Level 1 (5 rooms)" },
+      { "index": 3, "description": "Defeat the Depths L1 floor guardian" },
+      { "index": 4, "description": "Collect dissolved memory fragment from guardian chamber" },
+      { "index": 5, "description": "Return to Callum" }
+    ],
+    "rewards": [
+      { "type": "gold", "name": "Gold", "amount": 400 },
+      { "type": "item", "id": "A-09", "name": "Frontier Guard" },
+      { "type": "fragment", "name": "Sorrow/Dark Fragment (3-star)" },
+      { "type": "fragment", "name": "Awe/Neutral Fragment (3-star)" }
+    ],
+    "completionDialogue": "Callum: The Depths... the dissolved civilizations stored their densest memories underground. What you found is just the beginning.",
+    "failureConditions": "None (can retry boss if defeated)",
+    "unlocks": [], "dependencies": ["MQ-05"],
+    "targetPath": "main/server/quests/sq10-depths-expedition.ts"
+  },
+  {
+    "id": "SQ-11", "name": "Torvan's Masterwork", "category": "side", "act": "act2",
+    "levelRange": "15-20", "giver": "Torvan", "giverLocation": "Village Hub — Blacksmith (18, 18)",
+    "triggerCondition": "Village Hub vibrancy reaches 70+",
+    "objectives": [
+      { "index": 0, "description": "Speak with Torvan at the Blacksmith" },
+      { "index": 1, "description": "Collect Crag Golem core from Sunridge" },
+      { "index": 2, "description": "Collect Crystal Shard from Preserver Agent/Captain" },
+      { "index": 3, "description": "Collect Dissolved Metal from Depths Level 2" },
+      { "index": 4, "description": "Bring materials to Torvan" },
+      { "index": 5, "description": "Wait 1 in-game day for forging" },
+      { "index": 6, "description": "Collect class-specific masterwork weapon" }
+    ],
+    "rewards": [
+      { "type": "item", "name": "Class-specific Tier 3 masterwork weapon" }
+    ],
+    "completionDialogue": "Torvan: There. My finest work. The Crag Golem's core gives it weight, the crystal gives it edge, and the dissolved metal... it hums.",
+    "failureConditions": "None (materials are farmable)",
+    "unlocks": [], "dependencies": [],
+    "targetPath": "main/server/quests/sq11-torvans-masterwork.ts"
+  },
+  {
+    "id": "SQ-12", "name": "Ren's Dream Visions", "category": "side", "act": "act2",
+    "levelRange": "16-22", "giver": "Ren", "giverLocation": "Village Hub — Inn: The Bright Hearth (20, 14)",
+    "triggerCondition": "MQ-05 complete, 3+ inn rests",
+    "objectives": [
+      { "index": 0, "description": "Speak with Ren about dream visions" },
+      { "index": 1, "description": "Rest at the inn 5 total times (unique dream each time)" },
+      { "index": 2, "description": "After 5th dream, dream fragment materializes" },
+      { "index": 3, "description": "Broadcast dream fragment at Inn's hearth Resonance Stone" },
+      { "index": 4, "description": "Witness permanent lore projection activation" }
+    ],
+    "rewards": [
+      { "type": "gold", "name": "Gold", "amount": 250 },
+      { "type": "item", "id": "C-BF-05", "name": "Memory Incense x3" },
+      { "type": "fragment", "name": "Calm/Neutral Fragment (4-star)" }
+    ],
+    "completionDialogue": "Ren: I always knew there was something behind that fireplace. I think it was waiting for the right dreams. Yours.",
+    "failureConditions": "None",
+    "unlocks": [], "dependencies": ["MQ-05"],
+    "targetPath": "main/server/quests/sq12-rens-dream-visions.ts"
+  },
+  {
+    "id": "SQ-13", "name": "The Dissolved Choir's Instruments", "category": "side", "act": "act2",
+    "levelRange": "18-24", "giver": "Audiomancer NPC", "giverLocation": "Resonance Fields — Listener's Camp (10, 35)",
+    "triggerCondition": "SQ-09 complete, GQ-01 complete (any emotion)",
+    "objectives": [
+      { "index": 0, "description": "Return to Listener's Camp after Resonance recall" },
+      { "index": 1, "description": "Learn about awakened Choir Instruments" },
+      { "index": 2, "description": "Find 5 Choir Instruments in Settled Lands Resonance Stones" },
+      { "index": 3, "description": "Bring all 5 instruments to the Amphitheater (25, 25)" }
+    ],
+    "rewards": [
+      { "type": "gold", "name": "Gold", "amount": 500 },
+      { "type": "item", "id": "C-SP-08", "name": "Broadcast Amplifier x3" },
+      { "type": "fragment", "name": "Awe/Wind Fragment (4-star)" }
+    ],
+    "completionDialogue": "Audiomancer: Five instruments. Five voices of the Choir. When you placed them, I heard the song they sang at the end. It wasn't sad. It was proud.",
+    "failureConditions": "None",
+    "unlocks": [], "dependencies": ["SQ-09", "GQ-01"],
+    "targetPath": "main/server/quests/sq13-dissolved-choir-instruments.ts"
+  },
+  {
+    "id": "SQ-14", "name": "The Stagnation Breaker", "category": "side", "act": "act3",
+    "levelRange": "22-26", "giver": "Callum", "giverLocation": "Village Hub — Elder's House (18, 10)",
+    "triggerCondition": "MQ-07 complete",
+    "objectives": [
+      { "index": 0, "description": "Speak with Callum about freeing Lira" },
+      { "index": 1, "description": "Travel to Heartfield Stagnation Clearing (35, 30)" },
+      { "index": 2, "description": "Defeat Preserver reinforcements (2x Agent + 1x Captain)" },
+      { "index": 3, "description": "Broadcast potency 4+ joy fragment into Lira's frozen form" },
+      { "index": 4, "description": "Witness Lira's partial awakening message" },
+      { "index": 5, "description": "Return to Callum with Lira's message" }
+    ],
+    "rewards": [
+      { "type": "gold", "name": "Gold", "amount": 500 },
+      { "type": "item", "id": "C-HP-04", "name": "Elixir x2" },
+      { "type": "fragment", "name": "Fury/Light Fragment (4-star)" }
+    ],
+    "completionDialogue": "Callum: She spoke? 'The First Memory is the key.' The Curator isn't just preserving the world — they're using the First Memory as the anchor for all stasis.",
+    "failureConditions": "None",
+    "unlocks": [], "dependencies": ["MQ-07"],
+    "targetPath": "main/server/quests/sq14-stagnation-breaker.ts"
+  }
+]

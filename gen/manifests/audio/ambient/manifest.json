@@ -1,0 +1,208 @@
+{
+  "schemaVersion": "1.0.0",
+  "description": "Ambient loop manifest",
+  "updatedAt": "2026-02-13T14:13:51.963Z",
+  "assets": [
+    {
+      "id": "AMB-VILLAGE",
+      "name": "Village",
+      "biome": "village",
+      "description": "Chatter, birdsong, rooster",
+      "sourceQuery": "village ambience birdsong chatter",
+      "defaultVolume": 0.3,
+      "mutedDesc": "Chatter only",
+      "vividDesc": "Children laughing, festival sounds",
+      "filename": "amb-village.ogg",
+      "status": "generated",
+      "metadata": {
+        "promptHash": "55d09c9cc6f4c299",
+        "outputHash": "b13f593ad5e0e1a861ddcba116211b531c67b6e82630d91e96a545cea748b05e",
+        "generatedAt": "2026-02-13T09:43:37.026Z",
+        "generationTimeMs": 243,
+        "fileSizeBytes": 341766,
+        "model": "synth-v1"
+      },
+      "lastError": "addRandomChimes is not defined"
+    },
+    {
+      "id": "AMB-GRASSLAND",
+      "name": "Grassland",
+      "biome": "grassland",
+      "description": "Wind through grass, insects, bird",
+      "sourceQuery": "grassland wind insects ambience",
+      "defaultVolume": 0.25,
+      "mutedDesc": "Wind only",
+      "vividDesc": "Bird variety, cricket chorus",
+      "filename": "amb-grassland.ogg",
+      "status": "generated",
+      "metadata": {
+        "promptHash": "694498d1b3106002",
+        "outputHash": "d0aeb5c10274cb47c0464344d7c39636b9c5e6f46a0474b5d6726d85e9671302",
+        "generatedAt": "2026-02-13T09:41:17.909Z",
+        "generationTimeMs": 247,
+        "fileSizeBytes": 326026,
+        "model": "synth-v1"
+      }
+    },
+    {
+      "id": "AMB-FOREST",
+      "name": "Forest",
+      "biome": "forest",
+      "description": "Rustling leaves, birds, woodpecker",
+      "sourceQuery": "forest leaves birds woodpecker",
+      "defaultVolume": 0.3,
+      "mutedDesc": "Light rustle",
+      "vividDesc": "Owl, squirrel chatter, stream",
+      "filename": "amb-forest.ogg",
+      "status": "generated",
+      "metadata": {
+        "promptHash": "e1c8ed6ea9c20751",
+        "outputHash": "9d6dc3e428dc7a8d2683015691de798d9cb48afd9e2632b23bf022ddc5a0a6ff",
+        "generatedAt": "2026-02-13T09:41:18.114Z",
+        "generationTimeMs": 205,
+        "fileSizeBytes": 326701,
+        "model": "synth-v1"
+      }
+    },
+    {
+      "id": "AMB-MOUNTAIN",
+      "name": "Mountain",
+      "biome": "mountain",
+      "description": "Wind howl, rockfall, eagle cry",
+      "sourceQuery": "mountain wind eagle rockfall",
+      "defaultVolume": 0.25,
+      "mutedDesc": "Wind only",
+      "vividDesc": "Waterfall, goat bells",
+      "filename": "amb-mountain.ogg",
+      "status": "generated",
+      "metadata": {
+        "promptHash": "9fd1c3200540f1bd",
+        "outputHash": "2deef7c650215930add23ba5eacad0504a51f816992d59f9f1b2ad3055a2c8ae",
+        "generatedAt": "2026-02-13T09:41:18.377Z",
+        "generationTimeMs": 262,
+        "fileSizeBytes": 328411,
+        "model": "synth-v1"
+      }
+    },
+    {
+      "id": "AMB-RIVERSIDE",
+      "name": "Riverside",
+      "biome": "riverside",
+      "description": "Flowing water, splashing, waterwheel",
+      "sourceQuery": "river water splash waterwheel",
+      "defaultVolume": 0.35,
+      "mutedDesc": "Gentle flow",
+      "vividDesc": "Fish splash, laughter, market",
+      "filename": "amb-riverside.ogg",
+      "status": "generated",
+      "metadata": {
+        "promptHash": "26a54e13afe43575",
+        "outputHash": "7a690ee250bf46dc3adfd5b6cc072b67be902b483b6895188c8ec72544192b87",
+        "generatedAt": "2026-02-13T09:41:18.586Z",
+        "generationTimeMs": 208,
+        "fileSizeBytes": 338765,
+        "model": "synth-v1"
+      }
+    },
+    {
+      "id": "AMB-WETLAND",
+      "name": "Wetland",
+      "biome": "wetland",
+      "description": "Frog chorus, dripping water, insect buzz",
+      "sourceQuery": "wetland frogs dripping insects",
+      "defaultVolume": 0.3,
+      "mutedDesc": "Drip only",
+      "vividDesc": "Full frog chorus, firefly hum",
+      "filename": "amb-wetland.ogg",
+      "status": "generated",
+      "metadata": {
+        "promptHash": "0a0f21fcfa982f16",
+        "outputHash": "c2feff0862ef93e8d74553fb2930b896d7d755b07b02c6083e1be79fbe5bc7b8",
+        "generatedAt": "2026-02-13T09:41:18.822Z",
+        "generationTimeMs": 235,
+        "fileSizeBytes": 425747,
+        "model": "synth-v1"
+      }
+    },
+    {
+      "id": "AMB-PLAINS",
+      "name": "Plains",
+      "biome": "plains",
+      "description": "Wind, stone resonance hum, grass",
+      "sourceQuery": "plains wind grass rustle",
+      "defaultVolume": 0.2,
+      "mutedDesc": "Wind",
+      "vividDesc": "Stone harmonics, bird song",
+      "filename": "amb-plains.ogg",
+      "status": "generated",
+      "metadata": {
+        "promptHash": "abe3b51bf34cd802",
+        "outputHash": "6bb3f8eb86bee8394d9f0599d23b083e30d05b41180050fe78df87dc00ddd611",
+        "generatedAt": "2026-02-13T09:41:19.074Z",
+        "generationTimeMs": 252,
+        "fileSizeBytes": 322060,
+        "model": "synth-v1"
+      }
+    },
+    {
+      "id": "AMB-DUNGEON",
+      "name": "Dungeon",
+      "biome": "dungeon",
+      "description": "Dripping water, rumble, echo",
+      "sourceQuery": "dungeon cave dripping echo",
+      "defaultVolume": 0.25,
+      "mutedDesc": "Drip",
+      "vividDesc": "Singing crystal, memory whispers",
+      "filename": "amb-dungeon.ogg",
+      "status": "generated",
+      "metadata": {
+        "promptHash": "63ffb22eb929fab7",
+        "outputHash": "16702ecb7ba1677370552227601706fd17d227eaf878f592e8b853a121ceb592",
+        "generatedAt": "2026-02-13T09:41:19.293Z",
+        "generationTimeMs": 218,
+        "fileSizeBytes": 349061,
+        "model": "synth-v1"
+      }
+    },
+    {
+      "id": "AMB-SKETCH",
+      "name": "Sketch Zone",
+      "biome": "sketch",
+      "description": "Near silence. Faint pen-on-paper scratching",
+      "sourceQuery": "pen paper scratching quiet",
+      "defaultVolume": 0.1,
+      "mutedDesc": "Silence",
+      "vividDesc": "Faint color-filling sound",
+      "filename": "amb-sketch.ogg",
+      "status": "generated",
+      "metadata": {
+        "promptHash": "d6dabb549f231f03",
+        "outputHash": "8f6135cf94e7da4200798992726b63ea3e32d69c21301d14c1d62fbfceda2b79",
+        "generatedAt": "2026-02-13T09:41:19.412Z",
+        "generationTimeMs": 119,
+        "fileSizeBytes": 127594,
+        "model": "synth-v1"
+      }
+    },
+    {
+      "id": "AMB-STAGNATION",
+      "name": "Stagnation",
+      "biome": "stagnation",
+      "description": "Crystal tinkling, frozen wind, silence between tinks",
+      "sourceQuery": "ice crystal tinkling frozen wind",
+      "defaultVolume": 0.2,
+      "mutedDesc": "Overrides biome ambient",
+      "vividDesc": "Always this sound in stagnation",
+      "filename": "amb-stagnation.ogg",
+      "status": "generated",
+      "metadata": {
+        "promptHash": "fb439b98bb571ddf",
+        "outputHash": "663d7fe52c08fccdc5c710f9d64a9e870ea1ab3f195da093367204afa7ea8881",
+        "generatedAt": "2026-02-13T09:41:19.645Z",
+        "generationTimeMs": 232,
+        "fileSizeBytes": 333470,
+        "model": "synth-v1"
+      }
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+[
+  {
+    "id": "ST-POISON",
+    "name": "Poison",
+    "effect": "Lose 5% max HP at end of each turn",
+    "duration": 3,
+    "stackable": false
+  },
+  {
+    "id": "ST-SLOW",
+    "name": "Slow",
+    "effect": "AGI halved",
+    "duration": 2,
+    "stackable": false
+  },
+  {
+    "id": "ST-WEAKNESS",
+    "name": "Weakness",
+    "effect": "DEF -30%",
+    "duration": 2,
+    "stackable": false
+  },
+  {
+    "id": "ST-STASIS",
+    "name": "Stasis",
+    "effect": "Cannot use memory-based class abilities",
+    "duration": 2,
+    "stackable": false
+  },
+  {
+    "id": "ST-STUN",
+    "name": "Stun",
+    "effect": "Cannot act for 1 turn",
+    "duration": 1,
+    "stackable": false
+  },
+  {
+    "id": "ST-INSPIRED",
+    "name": "Inspired",
+    "effect": "+20% all stats",
+    "duration": 3,
+    "stackable": false
+  },
+  {
+    "id": "ST-INVISIBLE",
+    "name": "Invisible",
+    "effect": "Immune to single-target attacks. Next attack deals 2.0x damage.",
+    "duration": 2,
+    "stackable": false
+  },
+  {
+    "id": "ST-VOW-STEEL",
+    "name": "Vow of Steel",
+    "effect": "DEF +40%. Cannot flee.",
+    "duration": 3,
+    "stackable": false
+  },
+  {
+    "id": "ST-GUARDIAN",
+    "name": "Guardian's Shield",
+    "effect": "Redirecting 50% of single-target damage from chosen ally",
+    "duration": 1,
+    "stackable": false
+  },
+  {
+    "id": "ST-STEADFAST",
+    "name": "Steadfast Wall",
+    "effect": "Absorbing all single-target physical attacks for allies at 70% damage",
+    "duration": 1,
+    "stackable": false
+  }
+]

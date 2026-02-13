@@ -1,0 +1,53 @@
+[
+  {
+    "id": "BGM-DEP",
+    "name": "Fossil Songs",
+    "type": "zone",
+    "zone": "depths-general",
+    "tempo": 60,
+    "key": "G minor",
+    "timeSignature": "4/4",
+    "mood": "ancient",
+    "durationSec": 150,
+    "stems": [
+      { "layer": 1, "instruments": "Contrabass (arco)", "description": "Deep cavernous tone. Heavy reverb for underground." },
+      { "layer": 2, "instruments": "Vibraphone + dripping samples", "description": "Light in the dark. Water drips as organic rhythm." },
+      { "layer": 3, "instruments": "Muted strings + bass clarinet", "description": "Intimate texture. Bass clarinet weaves through." },
+      { "layer": 4, "instruments": "Low voices (humming)", "description": "Ancient voices preserved in stone." }
+    ]
+  },
+  {
+    "id": "BGM-SL4",
+    "name": "Final Verse",
+    "type": "zone",
+    "zone": "songline-l4",
+    "tempo": 72,
+    "key": "D major",
+    "timeSignature": "4/4",
+    "mood": "joyful",
+    "durationSec": 180,
+    "stems": [
+      { "layer": 1, "instruments": "Solo flute (concert)", "description": "Pure, clear melody. Dissolved civilization's voice." },
+      { "layer": 2, "instruments": "Harp + celesta", "description": "Shimmering, crystalline support. Memory given sound." },
+      { "layer": 3, "instruments": "Full chamber orchestra", "description": "Rich, warm, celebratory." },
+      { "layer": 4, "instruments": "Full mixed choir", "description": "Civilization sings along. Wordless but human." }
+    ]
+  },
+  {
+    "id": "BGM-DM5",
+    "name": "Before the Beginning",
+    "type": "zone",
+    "zone": "deepest-memory",
+    "tempo": 44,
+    "key": "A Aeolian",
+    "timeSignature": "free",
+    "mood": "primordial",
+    "durationSec": 240,
+    "stems": [
+      { "layer": 1, "instruments": "Harmonic overtone series (synth)", "description": "Slowly evolving harmonic. World's first sound." },
+      { "layer": 2, "instruments": "Glass armonica + distant bell", "description": "Otherworldly, ethereal. Bell at irregular intervals." },
+      { "layer": 3, "instruments": "Full orchestra (extremely slow)", "description": "Grandest arrangement. 30+ sec to full volume." },
+      { "layer": 4, "instruments": "Full choir (silence to fortissimo)", "description": "Pure emotional power. World remembering itself." }
+    ]
+  }
+]

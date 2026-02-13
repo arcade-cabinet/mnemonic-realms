@@ -1,0 +1,26 @@
+[
+  {
+    "id": "UI-MNU-INV",
+    "name": "Inventory Menu Background",
+    "type": "menu-background",
+    "desc": "Full-screen inventory panel. Aged parchment texture with leather corner reinforcements. Grid layout area for item slots."
+  },
+  {
+    "id": "UI-MNU-EQP",
+    "name": "Equipment Menu Background",
+    "type": "menu-background",
+    "desc": "Equipment screen with character silhouette area on left, gear slots on right. Warm parchment with bronze clasps."
+  },
+  {
+    "id": "UI-MNU-STS",
+    "name": "Status Menu Background",
+    "type": "menu-background",
+    "desc": "Character status display. Scroll-like parchment with decorative header. Areas for portrait, stats, and memory fragment count."
+  },
+  {
+    "id": "UI-MNU-SAV",
+    "name": "Save Menu Background",
+    "type": "menu-background",
+    "desc": "Save/load screen. Open book aesthetic with two pages. Left page for save slots, right page for preview. Warm candlelight glow."
+  }
+]

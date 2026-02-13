@@ -1,0 +1,56 @@
+[
+  {
+    "id": "C-SP-05",
+    "name": "Smoke Bomb",
+    "category": "special",
+    "effect": "Guaranteed flee from non-boss encounters.",
+    "price": 40,
+    "stackMax": 5,
+    "tier": 1
+  },
+  {
+    "id": "C-SP-06",
+    "name": "Crystal Dust",
+    "category": "special",
+    "effect": "Cure all debuffs on one character. Deal 50 fixed light damage to one Preserver enemy.",
+    "price": 200,
+    "stackMax": 5,
+    "tier": 3
+  },
+  {
+    "id": "C-SP-07",
+    "name": "Stasis Shard",
+    "category": "special",
+    "effect": "Freeze one non-boss enemy for 2 turns (cannot act).",
+    "price": 150,
+    "stackMax": 5,
+    "tier": 3
+  },
+  {
+    "id": "C-SP-08",
+    "name": "Broadcast Amplifier",
+    "category": "special",
+    "effect": "Next memory broadcast gains +5 vibrancy bonus (consumed on use, outside combat).",
+    "price": 300,
+    "stackMax": 3,
+    "tier": 3
+  },
+  {
+    "id": "C-SP-09",
+    "name": "Dissolved Essence",
+    "category": "special",
+    "effect": "Restore 50% HP and 50% SP to entire party.",
+    "price": 0,
+    "stackMax": 3,
+    "tier": 3
+  },
+  {
+    "id": "C-SP-10",
+    "name": "Phoenix Feather",
+    "category": "special",
+    "effect": "Auto-revive: if party member knocked to 0 HP, restore to 30% HP.",
+    "price": 0,
+    "stackMax": 1,
+    "tier": 3
+  }
+]

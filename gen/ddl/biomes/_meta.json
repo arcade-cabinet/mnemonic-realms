@@ -1,0 +1,12 @@
+{
+  "tierColumnMap": {
+    "muted": "Muted",
+    "normal": "Normal",
+    "vivid": "Vivid"
+  },
+  "sketchTierColumnMap": {
+    "muted": "Muted (Outline)",
+    "normal": "Normal (Partial Fill)",
+    "vivid": "Vivid (Nearly Complete)"
+  }
+}

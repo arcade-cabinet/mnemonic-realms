@@ -1,0 +1,597 @@
+{
+  "schemaVersion": "1.0.0",
+  "description": "Quest chain code generation manifest",
+  "updatedAt": "2026-02-13T14:13:51.979Z",
+  "category": "event-quests",
+  "systemPrompt": "You are an RPG-JS 4.3.0 TypeScript code generator.\nGenerate a single RPG-JS server-side quest file.\nOutput ONLY valid TypeScript code. No markdown fences. No explanatory text.\nThe file must define a quest with objectives, rewards, completion checks, and dialogue.\nUse RpgPlayer hooks for quest state tracking.\nUse player.getVariable() and player.setVariable() for quest progress.\nExport the quest definition as default.",
+  "assets": [
+    {
+      "id": "GQ-01",
+      "name": "Recall Resonance",
+      "category": "event-quests",
+      "filename": "recall-resonance.ts",
+      "targetPath": "main/server/quests/gq01-recall-resonance.ts",
+      "prompt": "Generate an RPG-JS quest file for \"Recall Resonance\" (ID: GQ-01).\n\nCategory: god-recall | Act: act2 | Level: 12-16\nGiver: Audiomancer Vess at Resonance Fields — Amphitheater (25, 25)\nTrigger: MQ-05 complete, SQ-09 complete (path harmonized)\n\nObjectives:\n0. Enter Resonance's Amphitheater\n1. Watch the Choir recall vision\n2. Choose an emotion pedestal (Joy/Fury/Sorrow/Awe)\n3. Place potency 3+ fragment on pedestal\n4. Witness Resonance transformation\n\nRewards: vibrancy: Resonance Fields vibrancy +15, unlock: Subclass branch (if first recall)\n\nCompletion Dialogue: Varies by god form: Cantara (Joy), Tempestus (Fury), Tacet (Sorrow), Harmonia (Awe)\nFailure Conditions: None\nDependencies: MQ-05, SQ-09\nUnlocks: MQ-06\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "Recall Resonance",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "GQ-02",
+      "name": "Recall Verdance",
+      "category": "event-quests",
+      "filename": "recall-verdance.ts",
+      "targetPath": "main/server/quests/gq02-recall-verdance.ts",
+      "prompt": "Generate an RPG-JS quest file for \"Recall Verdance\" (ID: GQ-02).\n\nCategory: god-recall | Act: act2 | Level: 12-16\nGiver: Wynn at Shimmer Marsh — Verdance's Hollow (25, 35)\nTrigger: MQ-05 complete, Hermit's Path quest complete\n\nObjectives:\n0. Follow Wynn to Verdance's Hollow\n1. Solve root puzzle (broadcast earth/water fragment)\n2. Watch the Rootwalker recall vision\n3. Choose emotion and place potency 3+ fragment\n4. Witness Verdance transformation\n\nRewards: vibrancy: Shimmer Marsh vibrancy +15, unlock: Subclass branch (if first recall)\n\nCompletion Dialogue: Varies: Floriana (Joy), Thornweald (Fury), Autumnus (Sorrow), Sylvanos (Awe)\nFailure Conditions: None\nDependencies: MQ-05\nUnlocks: MQ-06\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "Recall Verdance",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "GQ-03",
+      "name": "Recall Luminos",
+      "category": "event-quests",
+      "filename": "recall-luminos.ts",
+      "targetPath": "main/server/quests/gq03-recall-luminos.ts",
+      "prompt": "Generate an RPG-JS quest file for \"Recall Luminos\" (ID: GQ-03).\n\nCategory: god-recall | Act: act2 | Level: 14-18\nGiver: Solen at Flickerveil — Luminos Grove (20, 20)\nTrigger: MQ-05 complete, Light Lens (K-04) obtained\n\nObjectives:\n0. Enter Luminos Grove with Light Lens\n1. Navigate light corridor to prism\n2. Watch the Radiant Lens recall vision\n3. Choose emotion and place potency 3+ fragment\n4. Witness Luminos transformation\n\nRewards: vibrancy: Flickerveil vibrancy +15, unlock: Subclass branch (if first recall)\n\nCompletion Dialogue: Varies: Solara (Joy), Pyralis (Fury), Vesperis (Sorrow), Prisma (Awe)\nFailure Conditions: None\nDependencies: MQ-05\nUnlocks: MQ-06\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "Recall Luminos",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "GQ-04",
+      "name": "Recall Kinesis",
+      "category": "event-quests",
+      "filename": "recall-kinesis.ts",
+      "targetPath": "main/server/quests/gq04-recall-kinesis.ts",
+      "prompt": "Generate an RPG-JS quest file for \"Recall Kinesis\" (ID: GQ-04).\n\nCategory: god-recall | Act: act2 | Level: 14-18\nGiver: Petra at Hollow Ridge — Kinesis Spire (24, 10)\nTrigger: MQ-05 complete, Kinetic Boots (K-05) obtained\n\nObjectives:\n0. Climb to Kinesis Spire with Kinetic Boots\n1. Survive vibration gauntlet\n2. Watch the Peregrine Road recall vision\n3. Choose emotion and place potency 3+ fragment\n4. Witness Kinesis transformation\n\nRewards: vibrancy: Hollow Ridge vibrancy +15, unlock: Subclass branch (if first recall)\n\nCompletion Dialogue: Varies: Zephira (Joy), Tecton (Fury), Stillara (Sorrow), Orbitas (Awe)\nFailure Conditions: None\nDependencies: MQ-05\nUnlocks: MQ-06\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "Recall Kinesis",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "MQ-01",
+      "name": "The Architect's Awakening",
+      "category": "event-quests",
+      "filename": "the-architect-s-awakening.ts",
+      "targetPath": "main/server/quests/mq01-architects-awakening.ts",
+      "prompt": "Generate an RPG-JS quest file for \"The Architect's Awakening\" (ID: MQ-01).\n\nCategory: main | Act: act1 | Level: 1\nGiver: Callum at Village Hub — Elder's House (18, 10)\nTrigger: Game start, after class selection\n\nObjectives:\n0. Speak with Callum at Elder's House\n1. Receive Architect's Signet from Lira\n2. Collect first fragment from Memorial Garden\n3. Return to Callum\n\nRewards: key-item: Architect's Signet [K-01], fragment: Callum's First Lesson [MF-01], gold: Gold (50)\n\nCompletion Dialogue: Callum: There it is — that glow in your palm. You can feel it, can't you? The world remembering through you.\nFailure Conditions: None (tutorial quest)\nDependencies: None\nUnlocks: MQ-02\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "The Architect's Awakening",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "MQ-02",
+      "name": "First Broadcast",
+      "category": "event-quests",
+      "filename": "first-broadcast.ts",
+      "targetPath": "main/server/quests/mq02-first-broadcast.ts",
+      "prompt": "Generate an RPG-JS quest file for \"First Broadcast\" (ID: MQ-02).\n\nCategory: main | Act: act1 | Level: 1-2\nGiver: Lira at Village Hub — Lira's Workshop (8, 18)\nTrigger: MQ-01 complete\n\nObjectives:\n0. Visit Lira and learn memory operations\n1. Collect 2 fragments from Memorial Garden\n2. Use the Remix Table\n3. Broadcast a remixed fragment\n\nRewards: key-item: Remix Table Access [K-03], fragment: Lira's Warmth [MF-02], gold: Gold (80)\n\nCompletion Dialogue: Lira: Did you feel that? The stone sang back to you. That's the world saying 'thank you.'\nFailure Conditions: None (tutorial quest)\nDependencies: MQ-01\nUnlocks: MQ-03, SQ-01\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "First Broadcast",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "MQ-03",
+      "name": "The Settled Lands",
+      "category": "event-quests",
+      "filename": "the-settled-lands.ts",
+      "targetPath": "main/server/quests/mq03-settled-lands.ts",
+      "prompt": "Generate an RPG-JS quest file for \"The Settled Lands\" (ID: MQ-03).\n\nCategory: main | Act: act1 | Level: 2-6\nGiver: Callum at Village Hub — Elder's House\nTrigger: MQ-02 complete\n\nObjectives:\n0. Speak with Callum for exploration guidance\n1. Visit Heartfield, Ambergrove, Millbrook, Sunridge\n2. Collect at least 5 memory fragments\n3. Defeat encounters in each zone\n4. Return to Callum\n\nRewards: gold: Gold (200), fragment: Joy/Earth Fragment (2-star), key-item: Callum's Letters [K-02]\n\nCompletion Dialogue: Callum: You've seen it now — how the world changes at the edges.\nFailure Conditions: None\nDependencies: MQ-02\nUnlocks: MQ-04, SQ-02, SQ-03, SQ-04\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "The Settled Lands",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "MQ-04",
+      "name": "The Stagnation",
+      "category": "event-quests",
+      "filename": "the-stagnation.ts",
+      "targetPath": "main/server/quests/mq04-the-stagnation.ts",
+      "prompt": "Generate an RPG-JS quest file for \"The Stagnation\" (ID: MQ-04).\n\nCategory: main | Act: act1 | Level: 6-10\nGiver: Automatic at Heartfield — Stagnation Clearing (35, 30)\nTrigger: MQ-03 complete, player enters Heartfield\n\nObjectives:\n0. Travel to Stagnation Clearing\n1. Witness Lira investigating\n2. Survive Preserver patrol combat\n3. Watch Lira's freezing cutscene\n4. Collect Lira's Scream (MF-04)\n5. Broadcast potency 2+ fragment to halt expansion\n6. Return to Callum\n\nRewards: fragment: Lira's Scream [MF-04], fragment: Echo of the Stagnation [MF-03], gold: Gold (150)\n\nCompletion Dialogue: Callum: Lira... No. The Frontier. The answers are in the Frontier.\nFailure Conditions: None (combat auto-resolves)\nDependencies: MQ-03\nUnlocks: MQ-05, SQ-05\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "The Stagnation",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "MQ-05",
+      "name": "Into the Frontier",
+      "category": "event-quests",
+      "filename": "into-the-frontier.ts",
+      "targetPath": "main/server/quests/mq05-into-frontier.ts",
+      "prompt": "Generate an RPG-JS quest file for \"Into the Frontier\" (ID: MQ-05).\n\nCategory: main | Act: act2 | Level: 10-12\nGiver: Callum at Village Hub — Lookout Hill\nTrigger: MQ-04 complete\n\nObjectives:\n0. Speak with Callum at Lookout Hill\n1. Cross mountain pass into Hollow Ridge\n2. Reach Ridgewalker Camp and speak with Petra\n3. Learn about dormant gods\n4. Visit another Frontier zone\n\nRewards: gold: Gold (300), item: Stasis Breaker x3 [C-SC-04]\n\nCompletion Dialogue: Petra: You're the Architect Callum wrote about. Good — we've been waiting.\nFailure Conditions: None\nDependencies: MQ-04\nUnlocks: MQ-06, GQ-01, GQ-02, GQ-03, GQ-04, SQ-06, SQ-07, SQ-08, SQ-09\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "Into the Frontier",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "MQ-06",
+      "name": "Recall the First God",
+      "category": "event-quests",
+      "filename": "recall-the-first-god.ts",
+      "targetPath": "main/server/quests/mq06-recall-first-god.ts",
+      "prompt": "Generate an RPG-JS quest file for \"Recall the First God\" (ID: MQ-06).\n\nCategory: main | Act: act2 | Level: 12-16\nGiver: Any dormant god shrine at Any Frontier shrine\nTrigger: MQ-05 complete\n\nObjectives:\n0. Discover a dormant god shrine\n1. Complete shrine approach challenge\n2. Choose emotion and recall god with potency 3+ fragment\n3. Witness transformation\n\nRewards: vibrancy: Zone vibrancy +15, unlock: Subclass unlock (first recall)\n\nCompletion Dialogue: Varies by god and emotion\nFailure Conditions: None\nDependencies: MQ-05\nUnlocks: MQ-07\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "Recall the First God",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "MQ-07",
+      "name": "The Curator's Endgame",
+      "category": "event-quests",
+      "filename": "the-curator-s-endgame.ts",
+      "targetPath": "main/server/quests/mq07-curators-endgame.ts",
+      "prompt": "Generate an RPG-JS quest file for \"The Curator's Endgame\" (ID: MQ-07).\n\nCategory: main | Act: act2 | Level: 16-20\nGiver: Callum at Village Hub — Elder's House\nTrigger: 1+ gods recalled AND SQ-05 complete\n\nObjectives:\n0. Return to Village Hub and speak with Callum\n1. Learn about Curator's plan for First Memory\n2. Speak with Aric\n3. Recall at least 2 total gods\n4. Return to Callum for expedition plan\n\nRewards: gold: Gold (500), item: High Potion x5 [C-HP-03], item: Mana Surge x3 [C-SP-03]\n\nCompletion Dialogue: Callum: The First Memory. If the Curator crystallizes it, the world becomes a museum.\nFailure Conditions: None\nDependencies: MQ-06, SQ-05\nUnlocks: MQ-08\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "The Curator's Endgame",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "MQ-08",
+      "name": "Through the Sketch",
+      "category": "event-quests",
+      "filename": "through-the-sketch.ts",
+      "targetPath": "main/server/quests/mq08-through-sketch.ts",
+      "prompt": "Generate an RPG-JS quest file for \"Through the Sketch\" (ID: MQ-08).\n\nCategory: main | Act: act3 | Level: 20-24\nGiver: Callum at Frontier zone edge\nTrigger: MQ-07 complete\n\nObjectives:\n0. Enter the Sketch\n1. Navigate Half-Drawn Forest (3 broadcasts)\n2. Cross Luminous Wastes (5 stones)\n3. Reach Undrawn Peaks\n4. Survive 2 Sketch encounters\n5. Broadcast potency 3+ at Fortress Gate\n\nRewards: gold: Gold (400), item: Sketchweave Cloak [A-13]\n\nCompletion Dialogue: The fortress shimmers into focus before you.\nFailure Conditions: None\nDependencies: MQ-07\nUnlocks: MQ-09\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "Through the Sketch",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "MQ-09",
+      "name": "The Preserver Fortress",
+      "category": "event-quests",
+      "filename": "the-preserver-fortress.ts",
+      "targetPath": "main/server/quests/mq09-preserver-fortress.ts",
+      "prompt": "Generate an RPG-JS quest file for \"The Preserver Fortress\" (ID: MQ-09).\n\nCategory: main | Act: act3 | Level: 24-28\nGiver: Automatic at Preserver Fortress\nTrigger: MQ-08 complete\n\nObjectives:\n0. Navigate Floor 1: Crystal Gallery\n1. Navigate Floor 2: Archive of Perfection\n2. Navigate Floor 3: First Memory Chamber\n3. Confront the Curator (dialogue)\n4. Collect the First Memory (MF-10)\n\nRewards: fragment: Curator's Grief [MF-09], fragment: The First Memory [MF-10], gold: Gold (800)\n\nCompletion Dialogue: The Curator: Then show me. Remix the First Memory.\nFailure Conditions: Respawn at F2 entrance if defeated by Preserver Captain\nDependencies: MQ-08\nUnlocks: MQ-10\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "The Preserver Fortress",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "MQ-10",
+      "name": "The First Memory Remix",
+      "category": "event-quests",
+      "filename": "the-first-memory-remix.ts",
+      "targetPath": "main/server/quests/mq10-first-memory-remix.ts",
+      "prompt": "Generate an RPG-JS quest file for \"The First Memory Remix\" (ID: MQ-10).\n\nCategory: main | Act: act3 | Level: 28-30\nGiver: Automatic at Fortress — First Memory Chamber\nTrigger: MQ-09 complete\n\nObjectives:\n0. Remix First Memory with any fragment\n1. Create World's New Dawn (MF-11)\n2. Broadcast World's New Dawn\n3. Watch Endgame Bloom\n4. View epilogue\n\nRewards: fragment: World's New Dawn [MF-11], unlock: Game completion + New Game+\n\nCompletion Dialogue: Lira: I can feel it. The whole world, singing. What did you do?\nFailure Conditions: None (remix always succeeds)\nDependencies: MQ-09\nUnlocks: new-game-plus\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "The First Memory Remix",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "SQ-10",
+      "name": "The Depths Expedition",
+      "category": "event-quests",
+      "filename": "the-depths-expedition.ts",
+      "targetPath": "main/server/quests/sq10-depths-expedition.ts",
+      "prompt": "Generate an RPG-JS quest file for \"The Depths Expedition\" (ID: SQ-10).\n\nCategory: side | Act: act2 | Level: 14-18\nGiver: Callum at Village Hub — Elder's House (18, 10)\nTrigger: MQ-05 complete, player level 14+\n\nObjectives:\n0. Speak with Callum about the Depths\n1. Travel to Depths entrance in Memorial Garden (8, 17)\n2. Navigate Depths Level 1 (5 rooms)\n3. Defeat the Depths L1 floor guardian\n4. Collect dissolved memory fragment from guardian chamber\n5. Return to Callum\n\nRewards: gold: Gold (400), item: Frontier Guard [A-09], fragment: Sorrow/Dark Fragment (3-star), fragment: Awe/Neutral Fragment (3-star)\n\nCompletion Dialogue: Callum: The Depths... the dissolved civilizations stored their densest memories underground. What you found is just the beginning.\nFailure Conditions: None (can retry boss if defeated)\nDependencies: MQ-05\nUnlocks: None\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "The Depths Expedition",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "SQ-11",
+      "name": "Torvan's Masterwork",
+      "category": "event-quests",
+      "filename": "torvan-s-masterwork.ts",
+      "targetPath": "main/server/quests/sq11-torvans-masterwork.ts",
+      "prompt": "Generate an RPG-JS quest file for \"Torvan's Masterwork\" (ID: SQ-11).\n\nCategory: side | Act: act2 | Level: 15-20\nGiver: Torvan at Village Hub — Blacksmith (18, 18)\nTrigger: Village Hub vibrancy reaches 70+\n\nObjectives:\n0. Speak with Torvan at the Blacksmith\n1. Collect Crag Golem core from Sunridge\n2. Collect Crystal Shard from Preserver Agent/Captain\n3. Collect Dissolved Metal from Depths Level 2\n4. Bring materials to Torvan\n5. Wait 1 in-game day for forging\n6. Collect class-specific masterwork weapon\n\nRewards: item: Class-specific Tier 3 masterwork weapon\n\nCompletion Dialogue: Torvan: There. My finest work. The Crag Golem's core gives it weight, the crystal gives it edge, and the dissolved metal... it hums.\nFailure Conditions: None (materials are farmable)\nDependencies: None\nUnlocks: None\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "Torvan's Masterwork",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "SQ-12",
+      "name": "Ren's Dream Visions",
+      "category": "event-quests",
+      "filename": "ren-s-dream-visions.ts",
+      "targetPath": "main/server/quests/sq12-rens-dream-visions.ts",
+      "prompt": "Generate an RPG-JS quest file for \"Ren's Dream Visions\" (ID: SQ-12).\n\nCategory: side | Act: act2 | Level: 16-22\nGiver: Ren at Village Hub — Inn: The Bright Hearth (20, 14)\nTrigger: MQ-05 complete, 3+ inn rests\n\nObjectives:\n0. Speak with Ren about dream visions\n1. Rest at the inn 5 total times (unique dream each time)\n2. After 5th dream, dream fragment materializes\n3. Broadcast dream fragment at Inn's hearth Resonance Stone\n4. Witness permanent lore projection activation\n\nRewards: gold: Gold (250), item: Memory Incense x3 [C-BF-05], fragment: Calm/Neutral Fragment (4-star)\n\nCompletion Dialogue: Ren: I always knew there was something behind that fireplace. I think it was waiting for the right dreams. Yours.\nFailure Conditions: None\nDependencies: MQ-05\nUnlocks: None\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "Ren's Dream Visions",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "SQ-13",
+      "name": "The Dissolved Choir's Instruments",
+      "category": "event-quests",
+      "filename": "the-dissolved-choir-s-instruments.ts",
+      "targetPath": "main/server/quests/sq13-dissolved-choir-instruments.ts",
+      "prompt": "Generate an RPG-JS quest file for \"The Dissolved Choir's Instruments\" (ID: SQ-13).\n\nCategory: side | Act: act2 | Level: 18-24\nGiver: Audiomancer NPC at Resonance Fields — Listener's Camp (10, 35)\nTrigger: SQ-09 complete, GQ-01 complete (any emotion)\n\nObjectives:\n0. Return to Listener's Camp after Resonance recall\n1. Learn about awakened Choir Instruments\n2. Find 5 Choir Instruments in Settled Lands Resonance Stones\n3. Bring all 5 instruments to the Amphitheater (25, 25)\n\nRewards: gold: Gold (500), item: Broadcast Amplifier x3 [C-SP-08], fragment: Awe/Wind Fragment (4-star)\n\nCompletion Dialogue: Audiomancer: Five instruments. Five voices of the Choir. When you placed them, I heard the song they sang at the end. It wasn't sad. It was proud.\nFailure Conditions: None\nDependencies: SQ-09, GQ-01\nUnlocks: None\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "The Dissolved Choir's Instruments",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "SQ-14",
+      "name": "The Stagnation Breaker",
+      "category": "event-quests",
+      "filename": "the-stagnation-breaker.ts",
+      "targetPath": "main/server/quests/sq14-stagnation-breaker.ts",
+      "prompt": "Generate an RPG-JS quest file for \"The Stagnation Breaker\" (ID: SQ-14).\n\nCategory: side | Act: act3 | Level: 22-26\nGiver: Callum at Village Hub — Elder's House (18, 10)\nTrigger: MQ-07 complete\n\nObjectives:\n0. Speak with Callum about freeing Lira\n1. Travel to Heartfield Stagnation Clearing (35, 30)\n2. Defeat Preserver reinforcements (2x Agent + 1x Captain)\n3. Broadcast potency 4+ joy fragment into Lira's frozen form\n4. Witness Lira's partial awakening message\n5. Return to Callum with Lira's message\n\nRewards: gold: Gold (500), item: Elixir x2 [C-HP-04], fragment: Fury/Light Fragment (4-star)\n\nCompletion Dialogue: Callum: She spoke? 'The First Memory is the key.' The Curator isn't just preserving the world — they're using the First Memory as the anchor for all stasis.\nFailure Conditions: None\nDependencies: MQ-07\nUnlocks: None\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "The Stagnation Breaker",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "SQ-01",
+      "name": "The Memorial Garden",
+      "category": "event-quests",
+      "filename": "the-memorial-garden.ts",
+      "targetPath": "main/server/quests/sq01-memorial-garden.ts",
+      "prompt": "Generate an RPG-JS quest file for \"The Memorial Garden\" (ID: SQ-01).\n\nCategory: side | Act: act1 | Level: 2-4\nGiver: Maren at Village Hub — General Shop (18, 16)\nTrigger: MQ-02 complete\n\nObjectives:\n0. Speak with Maren about the fading garden\n1. Broadcast 3 fragments into Memorial Garden stones\n2. Return to Maren\n\nRewards: gold: Gold (120), item: Minor Potion x5 [C-HP-01], item: Mana Drop x3 [C-SP-01]\n\nCompletion Dialogue: Maren: The flowers are actually glowing! I haven't seen the garden like this since I was a girl.\nFailure Conditions: None\nDependencies: MQ-02\nUnlocks: None\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "The Memorial Garden",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "SQ-02",
+      "name": "The Windmill Mystery",
+      "category": "event-quests",
+      "filename": "the-windmill-mystery.ts",
+      "targetPath": "main/server/quests/sq02-windmill-mystery.ts",
+      "prompt": "Generate an RPG-JS quest file for \"The Windmill Mystery\" (ID: SQ-02).\n\nCategory: side | Act: act1 | Level: 3-5\nGiver: Farmer Gale at Heartfield Hamlet (15, 15)\nTrigger: MQ-03 complete\n\nObjectives:\n0. Speak with farmer at Heartfield Hamlet\n1. Travel to Old Windmill (30, 8)\n2. Defeat Dissolved Memory encounter\n3. Collect fragment from grinding stone\n4. Return to farmer\n\nRewards: gold: Gold (100), item: Windmill Blade [W-DG-03], fragment: Awe/Wind Fragment (2-star)\n\nCompletion Dialogue: Farmer: The groaning's stopped. That blade was stuck in the grinding stone — feels right you should have it.\nFailure Conditions: None\nDependencies: MQ-03\nUnlocks: None\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "The Windmill Mystery",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "SQ-03",
+      "name": "The Woodcutter's Dilemma",
+      "category": "event-quests",
+      "filename": "the-woodcutter-s-dilemma.ts",
+      "targetPath": "main/server/quests/sq03-woodcutters-dilemma.ts",
+      "prompt": "Generate an RPG-JS quest file for \"The Woodcutter's Dilemma\" (ID: SQ-03).\n\nCategory: side | Act: act1 | Level: 4-6\nGiver: Lead Woodcutter at Ambergrove — Woodcutter's Camp (10, 30)\nTrigger: MQ-03 complete\n\nObjectives:\n0. Speak with woodcutter\n1. Investigate 3 rapid-growth sites\n2. Broadcast fragments at each site\n3. Defeat Thornback Beetle nest\n4. Return to woodcutter\n\nRewards: gold: Gold (150), item: Forest Weave [A-05], fragment: Calm/Earth Fragment (2-star)\n\nCompletion Dialogue: Woodcutter: The forest's calmer now. Still growing, but peacefully.\nFailure Conditions: None\nDependencies: MQ-03\nUnlocks: None\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "The Woodcutter's Dilemma",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "SQ-04",
+      "name": "Upstream Secrets",
+      "category": "event-quests",
+      "filename": "upstream-secrets.ts",
+      "targetPath": "main/server/quests/sq04-upstream-secrets.ts",
+      "prompt": "Generate an RPG-JS quest file for \"Upstream Secrets\" (ID: SQ-04).\n\nCategory: side | Act: act1 | Level: 5-7\nGiver: Fisher Tam at Millbrook — Fisher's Rest (30, 30)\nTrigger: MQ-03 complete\n\nObjectives:\n0. Speak with fisher\n1. Travel to Upstream Falls (8, 5)\n2. Find hidden cave behind waterfall\n3. Navigate dissolved memory grotto\n4. Collect 2 high-potency fragments\n5. Return to fisher\n\nRewards: gold: Gold (180), fragment: Sorrow/Water Fragment (3-star), fragment: Awe/Water Fragment (3-star), item: Hearthstone Staff [W-ST-03]\n\nCompletion Dialogue: Fisher: You went behind the falls? And came back?\nFailure Conditions: None\nDependencies: MQ-03\nUnlocks: None\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "Upstream Secrets",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "SQ-05",
+      "name": "Aric's Doubt",
+      "category": "event-quests",
+      "filename": "aric-s-doubt.ts",
+      "targetPath": "main/server/quests/sq05-arics-doubt.ts",
+      "prompt": "Generate an RPG-JS quest file for \"Aric's Doubt\" (ID: SQ-05).\n\nCategory: side | Act: act1 | Level: 8-12\nGiver: Aric at Sunridge — Preserver Outpost (32, 15)\nTrigger: MQ-04 complete\n\nObjectives:\n0. Speak with Aric at Sunridge\n1. Listen to Aric's confession\n2. Collect 3 fragments of different emotions (potency 2+)\n3. Return after 1 in-game day\n4. Receive Preserver intelligence\n\nRewards: gold: Gold (250), item: Stasis Breaker x5 [C-SC-04], key-item: Curator's Manifesto [K-06], fragment: Sorrow/Dark Fragment (3-star)\n\nCompletion Dialogue: Aric: Watching that woman freeze... that wasn't preservation. That was theft.\nFailure Conditions: None\nDependencies: MQ-04\nUnlocks: MQ-07\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "Aric's Doubt",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "SQ-06",
+      "name": "The Marsh Hermit's Request",
+      "category": "event-quests",
+      "filename": "the-marsh-hermit-s-request.ts",
+      "targetPath": "main/server/quests/sq06-marsh-hermits-request.ts",
+      "prompt": "Generate an RPG-JS quest file for \"The Marsh Hermit's Request\" (ID: SQ-06).\n\nCategory: side | Act: act2 | Level: 11-14\nGiver: Wynn at Shimmer Marsh — Hermit's Hut (12, 15)\nTrigger: MQ-05 complete, enter Shimmer Marsh\n\nObjectives:\n0. Speak with Wynn\n1. Collect 3 water-element fragments\n2. Broadcast into 3 marsh Resonance Stones\n3. Defeat Mire Crawler ambush\n4. Return to Wynn\n\nRewards: gold: Gold (300), item: Hermit's Robe [A-07], item: Marsh Hermit's Crook [W-ST-05]\n\nCompletion Dialogue: Wynn: The vibrancy readings are exactly as I hypothesized.\nFailure Conditions: None\nDependencies: MQ-05\nUnlocks: None\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "The Marsh Hermit's Request",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "SQ-07",
+      "name": "Petra's Ridgewalkers",
+      "category": "event-quests",
+      "filename": "petra-s-ridgewalkers.ts",
+      "targetPath": "main/server/quests/sq07-petras-ridgewalkers.ts",
+      "prompt": "Generate an RPG-JS quest file for \"Petra's Ridgewalkers\" (ID: SQ-07).\n\nCategory: side | Act: act2 | Level: 12-15\nGiver: Petra at Hollow Ridge — Ridgewalker Camp (15, 25)\nTrigger: MQ-05 complete, visit Ridgewalker Camp\n\nObjectives:\n0. Speak with Petra\n1. Escort scouting party (3 patrol encounters)\n2. Reach Shattered Pass entrance (35, 30)\n3. Report to Petra\n\nRewards: gold: Gold (350), item: Ridgewalker's Coat [A-08], key-item: Kinetic Boots [K-05]\n\nCompletion Dialogue: Petra: Now we know what we're dealing with. Take these boots.\nFailure Conditions: Escort NPCs defeated = quest resets to objective 2\nDependencies: MQ-05\nUnlocks: None\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "Petra's Ridgewalkers",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "SQ-08",
+      "name": "Solen's Light Studies",
+      "category": "event-quests",
+      "filename": "solen-s-light-studies.ts",
+      "targetPath": "main/server/quests/sq08-solens-light-studies.ts",
+      "prompt": "Generate an RPG-JS quest file for \"Solen's Light Studies\" (ID: SQ-08).\n\nCategory: side | Act: act2 | Level: 13-16\nGiver: Solen at Flickerveil — Flickering Village (35, 30)\nTrigger: MQ-05 complete, visit Flickerveil\n\nObjectives:\n0. Speak with Solen\n1. Investigate 4 flickering anomalies\n2. Broadcast light-element fragment at archive\n3. Defeat Preserver patrol\n4. Return to Solen\n\nRewards: gold: Gold (300), key-item: Light Lens [K-04], fragment: Awe/Light Fragment (3-star)\n\nCompletion Dialogue: Solen: The flicker frequency has stabilized. Whatever you broadcast tuned the local resonance.\nFailure Conditions: None\nDependencies: MQ-05\nUnlocks: None\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "Solen's Light Studies",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "SQ-09",
+      "name": "Harmonize the Path",
+      "category": "event-quests",
+      "filename": "harmonize-the-path.ts",
+      "targetPath": "main/server/quests/sq09-harmonize-path.ts",
+      "prompt": "Generate an RPG-JS quest file for \"Harmonize the Path\" (ID: SQ-09).\n\nCategory: side | Act: act2 | Level: 12-14\nGiver: Audiomancer Vess at Resonance Fields — Listener's Camp (10, 35)\nTrigger: MQ-05 complete, visit Resonance Fields\n\nObjectives:\n0. Speak with Vess\n1. Broadcast into 3 dissonant Resonance Stones\n2. Open path to amphitheater\n\nRewards: gold: Gold (200), fragment: Joy/Wind Fragment (2-star)\n\nCompletion Dialogue: Vess: The dissonance resolved! The amphitheater is open.\nFailure Conditions: None\nDependencies: MQ-05\nUnlocks: GQ-01\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/quest-chains.md",
+          "heading": "Harmonize the Path",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Items",
+          "purpose": "reference"
+        }
+      ],
+      "status": "pending"
+    }
+  ]
+}

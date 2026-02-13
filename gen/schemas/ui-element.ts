@@ -21,13 +21,13 @@ import {
 // ============================================================================
 
 export const UIElementTypeSchema = z.enum([
-  'dialogue-frame',     // Bottom-panel dialogue box background
-  'battle-frame',       // Combat UI background/overlay
-  'menu-background',    // Inventory/equipment/status menu background
-  'title-background',   // Title screen background
-  'window-border',      // 9-slice window border for generic panels
-  'button',             // UI button backgrounds (normal, hover, pressed)
-  'hud-element',        // HP/SP bars, fragment counter
+  'dialogue-frame', // Bottom-panel dialogue box background
+  'battle-frame', // Combat UI background/overlay
+  'menu-background', // Inventory/equipment/status menu background
+  'title-background', // Title screen background
+  'window-border', // 9-slice window border for generic panels
+  'button', // UI button backgrounds (normal, hover, pressed)
+  'hud-element', // HP/SP bars, fragment counter
 ]);
 export type UIElementType = z.infer<typeof UIElementTypeSchema>;
 

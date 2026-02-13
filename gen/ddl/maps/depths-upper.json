@@ -1,0 +1,152 @@
+[
+  {
+    "id": "depths-l3",
+    "name": "Depths Level 3: Resonant Caverns",
+    "filename": "depths-l3.tmx",
+    "width": 20,
+    "height": 25,
+    "tileSize": 32,
+    "biome": "dungeon",
+    "tilesetRefs": ["tiles_dungeon_{tier}"],
+    "startVibrancy": 40,
+    "category": "depths",
+    "act": "II",
+    "connections": [
+      { "fromTile": "10,0", "direction": "up", "toMap": "depths-l2", "toTile": "10,24", "condition": "always" },
+      { "fromTile": "10,24", "direction": "down", "toMap": "depths-l4", "toTile": "10,0", "condition": "always" },
+      { "fromTile": "3,10", "direction": "up", "toMap": "hollow-ridge", "toTile": "38,3", "condition": "Memory lift (after puzzle)" }
+    ],
+    "npcSpawns": [],
+    "enemyZones": [
+      { "zone": "Echo Chamber", "bounds": "1,4 -> 4,8", "enemies": ["E-DP-03"], "levelRange": "16-17", "encounterRate": "Common: 1 Crystal" },
+      { "zone": "Puzzle hall", "bounds": "11,4 -> 20,8", "enemies": ["E-DP-03"], "levelRange": "16-17", "encounterRate": "Common: 1; Standard: 2 Crystals" },
+      { "zone": "Nexus", "bounds": "1,9 -> 20,12", "enemies": ["E-DP-03","E-DP-02"], "levelRange": "16-17", "encounterRate": "Standard: 2 Crystals; Rare: 2 + 1 scaled Scholar" },
+      { "zone": "Bridge approach", "bounds": "10,13 -> 14,15", "enemies": ["E-DP-03"], "levelRange": "16-18", "encounterRate": "Standard: 1 Crystal" }
+    ],
+    "eventTriggers": [
+      { "id": "EV-D3-001", "position": "10,0", "type": "touch", "repeat": "repeat", "description": "Entry from Hollow Ridge" },
+      { "id": "EV-D3-004", "position": "7,6", "type": "action", "linkedQuest": "GQ-02-S1", "repeat": "once", "description": "Burdened RS: compost sorrow" },
+      { "id": "EV-D3-005", "position": "12,6", "type": "action", "repeat": "repeat", "description": "Sound puzzle pillar A" },
+      { "id": "EV-D3-006", "position": "14,5", "type": "action", "repeat": "repeat", "description": "Sound puzzle pillar C" },
+      { "id": "EV-D3-007", "position": "16,5", "type": "action", "repeat": "repeat", "description": "Sound puzzle pillar E" },
+      { "id": "EV-D3-008", "position": "18,6", "type": "action", "repeat": "repeat", "description": "Sound puzzle pillar G" },
+      { "id": "EV-D3-009", "position": "19,7", "type": "action", "repeat": "repeat", "description": "Sound puzzle pillar B" },
+      { "id": "EV-D3-011", "position": "3,10", "type": "action", "repeat": "repeat", "description": "Memory lift -> Hollow Ridge" },
+      { "id": "EV-D3-017", "position": "15,14", "type": "touch", "repeat": "repeat", "description": "Bridge walking check" },
+      { "id": "EV-D3-018", "position": "10,20", "type": "action", "repeat": "once", "description": "Boss: Resonant King dialogue" },
+      { "id": "EV-D3-019", "position": "10,20", "type": "auto", "repeat": "once", "description": "Boss fight: Resonant King" },
+      { "id": "EV-D3-020", "position": "10,24", "type": "touch", "repeat": "repeat", "description": "Stairway -> Depths L4" }
+    ],
+    "resonanceStones": [
+      { "id": "RS-D3-01", "position": "2,6", "fragments": "awe/wind/3" },
+      { "id": "RS-D3-02", "position": "7,6", "fragments": "burdened (GQ-02-S1)" },
+      { "id": "RS-D3-03", "position": "10,10", "fragments": "fury/earth/3" },
+      { "id": "RS-D3-04", "position": "6,16", "fragments": "sorrow/earth/2" }
+    ],
+    "treasureChests": [
+      { "id": "CH-D3-01", "position": "17,11", "contents": "Stasis Breaker (C-SC-04) x3, 80 gold" },
+      { "id": "CH-D3-02", "position": "2,14", "contents": "Potion (C-HP-02) x3, Mana Draught (C-SP-02) x2" },
+      { "id": "CH-D3-03", "position": "15,19", "contents": "Dissolved Essence (C-SP-09) x1, 150 gold" }
+    ]
+  },
+  {
+    "id": "depths-l4",
+    "name": "Depths Level 4: The Songline",
+    "filename": "depths-l4.tmx",
+    "width": 20,
+    "height": 25,
+    "tileSize": 32,
+    "biome": "dungeon",
+    "tilesetRefs": ["tiles_dungeon_{tier}"],
+    "startVibrancy": 45,
+    "category": "depths",
+    "act": "II-III",
+    "connections": [
+      { "fromTile": "10,0", "direction": "up", "toMap": "depths-l3", "toTile": "10,24", "condition": "always" },
+      { "fromTile": "10,24", "direction": "down", "toMap": "depths-l5", "toTile": "10,0", "condition": "always" },
+      { "fromTile": "4,7", "direction": "up", "toMap": "resonance-fields", "toTile": "28,44", "condition": "Memory lift" }
+    ],
+    "npcSpawns": [],
+    "enemyZones": [
+      { "zone": "Prelude hall", "bounds": "1,1 -> 20,4", "enemies": ["E-DP-04"], "levelRange": "19-20", "encounterRate": "Common: 1 Phantom" },
+      { "zone": "Rising hall", "bounds": "10,5 -> 20,9", "enemies": ["E-DP-04"], "levelRange": "19-21", "encounterRate": "Common: 1; Standard: 2 Phantoms" },
+      { "zone": "Crescendo corridor", "bounds": "1,10 -> 20,14", "enemies": ["E-DP-04"], "levelRange": "19-21", "encounterRate": "Standard: 2; Rare: 3 Phantoms" },
+      { "zone": "Dissolution hall", "bounds": "10,15 -> 20,19", "enemies": ["E-DP-04"], "levelRange": "20-21", "encounterRate": "Standard: 2; Rare: 3 Phantoms" },
+      { "zone": "Alcove guard", "bounds": "1,15 -> 8,19", "enemies": ["E-DP-04"], "levelRange": "19-21", "encounterRate": "Common: 1 Phantom" }
+    ],
+    "eventTriggers": [
+      { "id": "EV-D4-001", "position": "10,0", "type": "touch", "repeat": "repeat", "description": "Entry from Resonance Fields" },
+      { "id": "EV-D4-002", "position": "10,2", "type": "auto", "repeat": "once", "description": "First Verse vision" },
+      { "id": "EV-D4-004", "position": "15,7", "type": "action", "linkedQuest": "GQ-02-S1", "repeat": "once", "description": "Burdened RS: final compost" },
+      { "id": "EV-D4-006", "position": "4,7", "type": "action", "repeat": "repeat", "description": "Memory lift -> Resonance Fields" },
+      { "id": "EV-D4-010", "position": "15,17", "type": "auto", "repeat": "once", "description": "Fourth Verse dissolution vision" },
+      { "id": "EV-D4-014", "position": "10,22", "type": "action", "repeat": "once", "description": "Boss: The Conductor dialogue" },
+      { "id": "EV-D4-015", "position": "10,22", "type": "auto", "repeat": "once", "description": "Boss fight: The Conductor" },
+      { "id": "EV-D4-017", "position": "10,24", "type": "touch", "repeat": "repeat", "description": "Stairway -> Depths L5" }
+    ],
+    "resonanceStones": [
+      { "id": "RS-D4-01", "position": "5,3", "fragments": "awe/wind/3" },
+      { "id": "RS-D4-02", "position": "15,7", "fragments": "burdened (GQ-02-S1 final)" },
+      { "id": "RS-D4-03", "position": "2,6", "fragments": "rest point (HP/SP)" },
+      { "id": "RS-D4-04", "position": "5,12", "fragments": "fury/fire/3" }
+    ],
+    "treasureChests": [
+      { "id": "CH-D4-01", "position": "18,6", "contents": "Strength Seed (C-BF-01) x2, 100 gold" },
+      { "id": "CH-D4-02", "position": "15,12", "contents": "Tier 3 weapon (class-matched)" },
+      { "id": "CH-D4-03", "position": "18,16", "contents": "Dissolved Essence (C-SP-09) x1, 150 gold" },
+      { "id": "CH-D4-04", "position": "4,17", "contents": "Aegis Seed (C-BF-03) x3, Wisdom Seed (C-BF-02) x3" },
+      { "id": "CH-D4-05", "position": "5,21", "contents": "Phoenix Feather (C-SP-10), 200 gold" }
+    ]
+  },
+  {
+    "id": "depths-l5",
+    "name": "Depths Level 5: The Deepest Memory",
+    "filename": "depths-l5.tmx",
+    "width": 20,
+    "height": 25,
+    "tileSize": 32,
+    "biome": "dungeon",
+    "tilesetRefs": ["tiles_dungeon_{tier}"],
+    "startVibrancy": 30,
+    "category": "depths",
+    "act": "III",
+    "connections": [
+      { "fromTile": "10,0", "direction": "up", "toMap": "depths-l4", "toTile": "10,24", "condition": "always" },
+      { "fromTile": "3,10", "direction": "up", "toMap": "half-drawn-forest", "toTile": "13,36", "condition": "Memory lift" },
+      { "fromTile": "19,16", "direction": "down", "toMap": "fortress-f1", "toTile": "10,0", "condition": "GQ-03-F2" }
+    ],
+    "npcSpawns": [],
+    "enemyZones": [
+      { "zone": "Inverted chamber", "bounds": "1,4 -> 4,8", "enemies": ["E-DP-05"], "levelRange": "24-25", "encounterRate": "Common: 1 Abyssal Memory" },
+      { "zone": "Fracture zone", "bounds": "6,4 -> 9,8", "enemies": ["E-DP-05"], "levelRange": "24-25", "encounterRate": "Common: 1 Abyssal Memory" },
+      { "zone": "Paradox corridor", "bounds": "11,4 -> 20,8", "enemies": ["E-DP-05","E-DP-04"], "levelRange": "24-26", "encounterRate": "Standard: 1 Abyssal; Rare: 1 + 1 scaled Phantom" },
+      { "zone": "Echo gallery", "bounds": "1,13 -> 4,17", "enemies": ["E-DP-05"], "levelRange": "24-26", "encounterRate": "Common: 1 Abyssal Memory" },
+      { "zone": "Fragment vault", "bounds": "11,13 -> 14,17", "enemies": ["E-DP-05"], "levelRange": "25-27", "encounterRate": "Standard: 1; Rare: 2 Abyssal Memories" }
+    ],
+    "eventTriggers": [
+      { "id": "EV-D5-001", "position": "10,0", "type": "touch", "repeat": "repeat", "description": "Entry from Half-Drawn Forest" },
+      { "id": "EV-D5-002", "position": "10,1", "type": "auto", "repeat": "once", "description": "Threshold vision montage" },
+      { "id": "EV-D5-005", "position": "15,6", "type": "auto", "repeat": "repeat", "description": "Paradox loop forward trigger" },
+      { "id": "EV-D5-006", "position": "11,6", "type": "auto", "repeat": "repeat", "description": "Paradox reverse progress" },
+      { "id": "EV-D5-007", "position": "3,10", "type": "action", "repeat": "repeat", "description": "Memory lift -> Half-Drawn Forest" },
+      { "id": "EV-D5-011", "position": "7,15", "type": "auto", "repeat": "once", "description": "Civilization dissolution vision" },
+      { "id": "EV-D5-018", "position": "19,16", "type": "action", "linkedQuest": "GQ-03-F2", "repeat": "conditional", "description": "Shortcut -> Fortress" },
+      { "id": "EV-D5-019", "position": "10,21", "type": "action", "repeat": "once", "description": "Boss: First Dreamer dialogue" },
+      { "id": "EV-D5-020", "position": "10,21", "type": "auto", "repeat": "once", "description": "Boss fight: First Dreamer" }
+    ],
+    "resonanceStones": [
+      { "id": "RS-D5-01", "position": "2,6", "fragments": "awe/light/4" },
+      { "id": "RS-D5-02", "position": "5,10", "fragments": "rest point (HP/SP)" },
+      { "id": "RS-D5-03", "position": "17,11", "fragments": "calm/neutral/4" },
+      { "id": "RS-D5-04", "position": "12,14", "fragments": "joy/light/4" },
+      { "id": "RS-D5-05", "position": "13,16", "fragments": "fury/fire/4" },
+      { "id": "RS-D5-06", "position": "12,16", "fragments": "sorrow/dark/4" }
+    ],
+    "treasureChests": [
+      { "id": "CH-D5-01", "position": "7,6", "contents": "Tier 3 weapon (class-matched)" },
+      { "id": "CH-D5-02", "position": "8,14", "contents": "Elixir (C-HP-04) x1, Ether (C-SP-04) x1" },
+      { "id": "CH-D5-03", "position": "18,15", "contents": "Memory-Woven Plate (A-14)" },
+      { "id": "CH-D5-04", "position": "10,23", "contents": "Dissolved Essence (C-SP-09) x2, Memory Incense (C-BF-05) x1, 300 gold" }
+    ]
+  }
+]

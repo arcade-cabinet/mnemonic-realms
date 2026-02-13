@@ -1,0 +1,50 @@
+[
+  {
+    "id": "BGM-BTL",
+    "name": "Clash of Memories",
+    "type": "combat",
+    "tempo": 120,
+    "key": "E minor",
+    "timeSignature": "4/4",
+    "mood": "energetic",
+    "durationSec": 105,
+    "stems": [
+      { "layer": 1, "instruments": "Snare + bass drum + electric bass", "description": "Driving rhythm foundation." },
+      { "layer": 2, "instruments": "Brass + rhythm guitar", "description": "Melody and harmonic power. Main battle theme." },
+      { "layer": 3, "instruments": "Full strings + wind section", "description": "Orchestral weight and drama." },
+      { "layer": 4, "instruments": "Choir + full percussion", "description": "Maximum intensity. World fights with you." }
+    ]
+  },
+  {
+    "id": "BGM-BOSS",
+    "name": "Remembered Promise",
+    "type": "combat",
+    "tempo": 140,
+    "key": "D minor",
+    "timeSignature": "7/8",
+    "mood": "epic",
+    "durationSec": 150,
+    "stems": [
+      { "layer": 1, "instruments": "Timpani + bass drum + low brass", "description": "Thunderous rhythmic foundation." },
+      { "layer": 2, "instruments": "Full brass + full strings", "description": "Heroic melody. Ascending tension phrases." },
+      { "layer": 3, "instruments": "Choir + full percussion", "description": "Voices add gravitas. Cymbal crashes." },
+      { "layer": 4, "instruments": "Solo violin (soaring)", "description": "Player's theme rising above the storm." }
+    ]
+  },
+  {
+    "id": "BGM-PVB",
+    "name": "Crystallized Resistance",
+    "type": "combat",
+    "tempo": 100,
+    "key": "Db minor",
+    "timeSignature": "4/4",
+    "mood": "tense",
+    "durationSec": 120,
+    "stems": [
+      { "layer": 1, "instruments": "Glass harmonica + crystal percussion", "description": "Cold, precise rhythm." },
+      { "layer": 2, "instruments": "Distorted zone BGM foundation", "description": "Preservers corrupt familiar sounds." },
+      { "layer": 3, "instruments": "Muted strings + damped bass drum", "description": "Tension without warmth. Every note controlled." },
+      { "layer": 4, "instruments": "Single sustained choir note", "description": "One frozen chord. Memory of music." }
+    ]
+  }
+]
