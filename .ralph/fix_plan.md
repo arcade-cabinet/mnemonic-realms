@@ -39,7 +39,7 @@
 
 ## Priority 6 — Event Placement (SEQUENTIAL)
 
-- [ ] **US-019**: Write `docs/maps/event-placement.md` — Master event table for all maps (depends on US-016, US-017, US-018)
+- [x] **US-019**: Write `docs/maps/event-placement.md` — Master event table for all maps (depends on US-016, US-017, US-018)
 
 ## Priority 7 — Integration (SEQUENTIAL)
 
