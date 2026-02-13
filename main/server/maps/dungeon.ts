@@ -82,8 +82,7 @@ function createDungeonEnemy(seed: string, index: number) {
 
     async onAction(player: RpgPlayer) {
       player.playSound('sfx-attack');
-      player.gui('combat-gui').open();
-      player.emit('combat-start', {
+      player.gui('combat-gui').open({
         enemyName: `Dungeon ${enemyName}`,
         enemyMaxHp: baseHp,
         enemyAtk: baseAtk,
@@ -111,7 +110,6 @@ function createDungeonEnemy(seed: string, index: number) {
         player.hp = 1;
         player.playSound('sfx-hit');
         player.gui('game-over').open();
-        player.emit('show-game-over', {});
       }
     }
   }
@@ -146,8 +144,7 @@ function createBossEvent(seed: string) {
       await player.showText(`${bossName} blocks your path! Prepare for battle!`);
       player.playSound('sfx-attack');
 
-      player.gui('combat-gui').open();
-      player.emit('combat-start', {
+      player.gui('combat-gui').open({
         enemyName: bossName,
         enemyMaxHp: bossHp,
         enemyAtk: bossAtk,
@@ -182,11 +179,9 @@ function createBossEvent(seed: string) {
 
         // Show victory screen
         player.gui('victory-screen').open();
-        player.emit('show-victory', {});
       } else {
         player.hp = 1;
         player.gui('game-over').open();
-        player.emit('show-game-over', {});
       }
     }
   }

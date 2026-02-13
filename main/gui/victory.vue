@@ -32,47 +32,46 @@
 </template>
 
 <script lang="ts">
-import { RpgGui } from '@rpgjs/client';
+import { rpg, type RpgPlayerObject } from './rpg-helpers';
 
 export default {
   name: 'victory-screen',
-  inject: ['rpgCurrentPlayer'],
+  inject: ['rpgCurrentPlayer', 'rpgGuiInteraction', 'rpgGuiClose', 'rpgSocket'],
   data() {
     return {
       visible: false,
+      seed: '',
+      level: 1,
+      playerClass: 'Adventurer',
+      gold: 0,
+      _sub: null as { unsubscribe(): void } | null,
     };
-  },
-  computed: {
-    player(): any {
-      return (this as any).rpgCurrentPlayer?.object;
-    },
-    seed(): string {
-      return this.player?.variables?.SEED ?? '';
-    },
-    level(): number {
-      return this.player?.level ?? 1;
-    },
-    playerClass(): string {
-      return this.player?.variables?.class ?? 'Adventurer';
-    },
-    gold(): number {
-      return this.player?.gold ?? 0;
-    },
   },
   methods: {
     continueExploring() {
       this.visible = false;
-      RpgGui.emit('victory-choice', { action: 'continue' });
+      rpg(this).interact('victory-screen', 'victory-choice', { action: 'continue' });
     },
     newSeed() {
       this.visible = false;
-      RpgGui.emit('victory-choice', { action: 'new-seed' });
+      rpg(this).interact('victory-screen', 'victory-choice', { action: 'new-seed' });
     },
   },
   mounted() {
-    RpgGui.on('show-victory', () => {
-      this.visible = true;
+    this._sub = rpg(this).subscribePlayer((player: RpgPlayerObject) => {
+      this.seed = (player.variables?.SEED as string) ?? '';
+      this.level = player.level ?? 1;
+      this.playerClass = (player.variables?.class as string) ?? 'Adventurer';
+      this.gold = player.gold ?? 0;
     });
+    rpg(this).socket().on('gui.open', ({ guiId }: { guiId: string }) => {
+      if (guiId === 'victory-screen') {
+        this.visible = true;
+      }
+    });
+  },
+  unmounted() {
+    this._sub?.unsubscribe();
   },
 };
 </script>

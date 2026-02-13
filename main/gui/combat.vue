@@ -81,7 +81,7 @@
 </template>
 
 <script lang="ts">
-import { RpgGui } from '@rpgjs/client';
+import { rpg, type RpgPlayerObject } from './rpg-helpers';
 
 interface CombatData {
   enemyName: string;
@@ -97,7 +97,7 @@ interface CombatData {
 
 export default {
   name: 'combat-gui',
-  inject: ['rpgCurrentPlayer'],
+  inject: ['rpgCurrentPlayer', 'rpgGuiInteraction', 'rpgGuiClose', 'rpgSocket'],
   data() {
     return {
       visible: false,
@@ -118,24 +118,18 @@ export default {
       showSkills: false,
       showItems: false,
       turnCount: 0,
+      // Player stats from subscription
+      playerHp: 0,
+      playerMaxHp: 100,
+      playerSp: 0,
+      playerMaxSp: 50,
+      playerStr: 10,
+      playerDex: 10,
+      playerAgi: 10,
+      _sub: null as { unsubscribe(): void } | null,
     };
   },
   computed: {
-    player(): any {
-      return (this as any).rpgCurrentPlayer?.object;
-    },
-    playerHp(): number {
-      return this.player?.hp ?? 0;
-    },
-    playerMaxHp(): number {
-      return this.player?.param?.maxHp ?? 100;
-    },
-    playerSp(): number {
-      return this.player?.sp ?? 0;
-    },
-    playerMaxSp(): number {
-      return this.player?.param?.maxSp ?? 50;
-    },
     playerHpPercent(): number {
       return this.playerMaxHp ? (this.playerHp / this.playerMaxHp) * 100 : 0;
     },
@@ -146,7 +140,6 @@ export default {
       return this.enemyMaxHp ? (this.enemyHp / this.enemyMaxHp) * 100 : 0;
     },
     playerSkills(): any[] {
-      // Return skills the player has learned
       return [
         { name: 'Power Strike', spCost: 10, power: 1.8 },
         { name: 'Fireball', spCost: 15, power: 2.0 },
@@ -193,8 +186,7 @@ export default {
       });
     },
     doAttack() {
-      const playerStr = this.player?.param?.str || 10;
-      const damage = Math.max(1, playerStr - this.enemyDef + Math.floor(Math.random() * 5));
+      const damage = Math.max(1, this.playerStr - this.enemyDef + Math.floor(Math.random() * 5));
       this.enemyHp = Math.max(0, this.enemyHp - damage);
       this.addMessage(`You attack for ${damage} damage!`);
       this.showSkills = false;
@@ -204,29 +196,28 @@ export default {
     doSkill(skill: any) {
       if (skill.isHeal) {
         const heal = skill.healAmount;
-        RpgGui.emit('combat-action', { type: 'heal', amount: heal });
+        rpg(this).interact('combat-gui', 'combat-action', { type: 'heal', amount: heal });
         this.addMessage(`You cast ${skill.name} and restore ${heal} HP!`);
-        RpgGui.emit('combat-sp-cost', { cost: skill.spCost });
+        rpg(this).interact('combat-gui', 'combat-sp-cost', { cost: skill.spCost });
       } else if (skill.isBuff) {
         this.addMessage(`You use ${skill.name}! ATK increased!`);
-        RpgGui.emit('combat-sp-cost', { cost: skill.spCost });
+        rpg(this).interact('combat-gui', 'combat-sp-cost', { cost: skill.spCost });
       } else {
-        const playerStr = this.player?.param?.str || 10;
-        const damage = Math.max(1, Math.floor(playerStr * skill.power) - this.enemyDef);
+        const damage = Math.max(1, Math.floor(this.playerStr * skill.power) - this.enemyDef);
         this.enemyHp = Math.max(0, this.enemyHp - damage);
         this.addMessage(`You cast ${skill.name} for ${damage} damage!`);
-        RpgGui.emit('combat-sp-cost', { cost: skill.spCost });
+        rpg(this).interact('combat-gui', 'combat-sp-cost', { cost: skill.spCost });
       }
       this.showSkills = false;
       this.checkCombatEnd();
     },
     doItem(item: any) {
       if (item.hpRestore) {
-        RpgGui.emit('combat-action', { type: 'heal', amount: item.hpRestore });
+        rpg(this).interact('combat-gui', 'combat-action', { type: 'heal', amount: item.hpRestore });
         this.addMessage(`You use ${item.name} and restore ${item.hpRestore} HP!`);
         item.qty--;
       } else if (item.spRestore) {
-        RpgGui.emit('combat-action', { type: 'sp-restore', amount: item.spRestore });
+        rpg(this).interact('combat-gui', 'combat-action', { type: 'sp-restore', amount: item.spRestore });
         this.addMessage(`You use ${item.name} and restore ${item.spRestore} SP!`);
         item.qty--;
       }
@@ -238,8 +229,7 @@ export default {
       this.checkCombatEnd();
     },
     doFlee() {
-      const playerAgi = this.player?.param?.agi || 10;
-      const fleeChance = Math.min(0.9, 0.4 + (playerAgi - this.enemyAgi) * 0.05);
+      const fleeChance = Math.min(0.9, 0.4 + (this.playerAgi - this.enemyAgi) * 0.05);
       if (Math.random() < fleeChance) {
         this.addMessage('You fled successfully!');
         this.combatOver = true;
@@ -254,7 +244,7 @@ export default {
       this.turnCount++;
 
       setTimeout(() => {
-        let damage = Math.max(1, this.enemyAtk - (this.player?.param?.dex || 5));
+        let damage = Math.max(1, this.enemyAtk - this.playerDex);
 
         // Boss special attack every 3 turns
         if (this.isBoss && this.turnCount % 3 === 0) {
@@ -264,7 +254,7 @@ export default {
           this.addMessage(`${this.enemyName} attacks for ${damage} damage!`);
         }
 
-        RpgGui.emit('combat-action', { type: 'damage', amount: damage });
+        rpg(this).interact('combat-gui', 'combat-action', { type: 'damage', amount: damage });
         this.isPlayerTurn = true;
         this.checkCombatEnd();
       }, 500);
@@ -273,7 +263,7 @@ export default {
       if (this.enemyHp <= 0) {
         this.combatOver = true;
         this.resultText = `Victory! +${this.xpReward} XP, +${this.goldReward} Gold`;
-        RpgGui.emit('combat-result', {
+        rpg(this).interact('combat-gui', 'combat-result', {
           victory: true,
           xp: this.xpReward,
           gold: this.goldReward,
@@ -285,7 +275,7 @@ export default {
       if (this.playerHp <= 0) {
         this.combatOver = true;
         this.resultText = 'Defeated...';
-        RpgGui.emit('combat-result', { victory: false });
+        rpg(this).interact('combat-gui', 'combat-result', { victory: false });
         return;
       }
       if (!this.combatOver && !this.isPlayerTurn) return;
@@ -293,13 +283,27 @@ export default {
     },
     endCombat() {
       this.visible = false;
-      RpgGui.emit('combat-end', {});
+      rpg(this).close('combat-gui');
     },
   },
   mounted() {
-    RpgGui.on('combat-start', (data: CombatData) => {
-      this.initCombat(data);
+    this._sub = rpg(this).subscribePlayer((player: RpgPlayerObject) => {
+      this.playerHp = player.hp ?? 0;
+      this.playerMaxHp = player.param?.maxHp ?? 100;
+      this.playerSp = player.sp ?? 0;
+      this.playerMaxSp = player.param?.maxSp ?? 50;
+      this.playerStr = player.param?.str ?? 10;
+      this.playerDex = player.param?.dex ?? 10;
+      this.playerAgi = player.param?.agi ?? 10;
     });
+    rpg(this).socket().on('gui.open', ({ guiId, data }: { guiId: string; data: CombatData }) => {
+      if (guiId === 'combat-gui') {
+        this.initCombat(data);
+      }
+    });
+  },
+  unmounted() {
+    this._sub?.unsubscribe();
   },
 };
 </script>

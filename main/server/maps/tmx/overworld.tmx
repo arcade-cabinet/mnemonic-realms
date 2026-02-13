@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down"
      width="40" height="40" tilewidth="32" tileheight="32" infinite="0">
-  <tileset firstgid="1" name="overworld" tilewidth="32" tileheight="32" tilecount="132" columns="12">
-    <image source="overworld-tiles.png" width="384" height="352"/>
-  </tileset>
+  <tileset firstgid="1" source="overworld-tileset.tsx"/>
     <layer id="1" name="ground" width="40" height="40">
     <data encoding="csv">
 1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,2,1,1,1,1,1,1,2,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,

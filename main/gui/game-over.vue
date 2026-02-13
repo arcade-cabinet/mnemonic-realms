@@ -13,10 +13,11 @@
 </template>
 
 <script lang="ts">
-import { RpgGui } from '@rpgjs/client';
+import { rpg } from './rpg-helpers';
 
 export default {
   name: 'game-over',
+  inject: ['rpgGuiInteraction', 'rpgGuiClose', 'rpgSocket'],
   data() {
     return {
       visible: false,
@@ -25,16 +26,18 @@ export default {
   methods: {
     retry() {
       this.visible = false;
-      RpgGui.emit('game-over-choice', { action: 'retry' });
+      rpg(this).interact('game-over', 'game-over-choice', { action: 'retry' });
     },
     newSeed() {
       this.visible = false;
-      RpgGui.emit('game-over-choice', { action: 'new-seed' });
+      rpg(this).interact('game-over', 'game-over-choice', { action: 'new-seed' });
     },
   },
   mounted() {
-    RpgGui.on('show-game-over', () => {
-      this.visible = true;
+    rpg(this).socket().on('gui.open', ({ guiId }: { guiId: string }) => {
+      if (guiId === 'game-over') {
+        this.visible = true;
+      }
     });
   },
 };

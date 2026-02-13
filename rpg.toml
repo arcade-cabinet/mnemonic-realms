@@ -21,3 +21,6 @@ modules = [
 
 [compilerOptions.build]
     pwaEnabled = false
+
+[vite.optimizeDeps]
+    include = ["sat"]

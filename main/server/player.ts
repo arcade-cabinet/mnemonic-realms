@@ -35,7 +35,6 @@ export const player: RpgPlayerHooks = {
       'Shadow Priest': 'cleric-dark',
     };
     player.setGraphic(classGraphicMap[playerClass] || 'hero');
-
     player.changeMap('overworld');
   },
 
@@ -47,7 +46,11 @@ export const player: RpgPlayerHooks = {
   },
 
   async onJoinMap(player: RpgPlayer) {
-    // Open HUD when entering any map
+    // Sync HP/SP to client now that player is in a room
+    player.hp = player.hp || player.param.maxHp;
+    player.sp = player.sp || player.param.maxSp;
+    player.syncChanges();
+
     player.gui('game-hud').open();
 
     if (player.getVariable('INTRO_DONE')) return;
@@ -64,25 +67,7 @@ export const player: RpgPlayerHooks = {
   },
 
   onLevelUp(player: RpgPlayer, level: number) {
-    const seed = player.getVariable('SEED') || DEFAULT_SEED;
-    const world = new ProceduralWorld();
-    const _charId = world.createCharacter(`${seed}-level-${level}`);
-    world.update();
-
-    // Procedural stat gains per level
-    player.param = {
-      ...player.param,
-      maxHp: (player.param.maxHp || 100) + 10 + level * 2,
-      maxSp: (player.param.maxSp || 50) + 5 + level,
-      str: (player.param.str || 10) + Math.floor(level / 3),
-      int: (player.param.int || 10) + Math.floor(level / 3),
-      dex: (player.param.dex || 10) + Math.floor(level / 4),
-      agi: (player.param.agi || 10) + Math.floor(level / 4),
-    };
-
-    player.hp = player.param.maxHp;
-    player.sp = player.param.maxSp;
-
+    player.recovery({ hp: 1, sp: 1 });
     player.playSound('sfx-levelup');
     player.showText(`Level Up! You are now level ${level}!`);
   },
@@ -147,9 +132,13 @@ function applyProceduralStats(player: RpgPlayer, seed: string) {
     }
   }
 
-  player.param = baseStats;
-  player.hp = baseStats.maxHp;
-  player.sp = baseStats.maxSp;
+  // Set stat curves: start = procedural base, end = 10x at max level
+  for (const [stat, value] of Object.entries(baseStats)) {
+    player.addParameter(stat, { start: value, end: value * 10 });
+  }
+  // Set HP/SP to max after parameters are defined
+  player.hp = player.param.maxHp;
+  player.sp = player.param.maxSp;
 }
 
 function applyStartingEquipment(player: RpgPlayer) {

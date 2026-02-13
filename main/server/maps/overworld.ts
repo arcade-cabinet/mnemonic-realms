@@ -250,9 +250,8 @@ function createCombatEnemy(seed: string, index: number) {
 
     async onAction(player: RpgPlayer) {
       player.playSound('sfx-attack');
-      // Open combat GUI
-      player.gui('combat-gui').open();
-      player.emit('combat-start', {
+      // Open combat GUI with enemy data
+      player.gui('combat-gui').open({
         enemyName,
         enemyMaxHp: baseHp,
         enemyAtk: baseAtk,
@@ -290,7 +289,6 @@ function createCombatEnemy(seed: string, index: number) {
         player.hp = 1;
         player.playSound('sfx-hit');
         player.gui('game-over').open();
-        player.emit('show-game-over', {});
       }
     }
   }

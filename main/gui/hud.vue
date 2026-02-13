@@ -36,30 +36,25 @@
 </template>
 
 <script lang="ts">
+import { rpg, type RpgPlayerObject } from './rpg-helpers';
+
 export default {
   name: 'game-hud',
   inject: ['rpgCurrentPlayer'],
   data() {
     return {
       visible: true,
+      currentHp: 0,
+      maxHp: 0,
+      currentSp: 0,
+      maxSp: 0,
+      level: 1,
+      gold: 0,
+      seed: '',
+      _sub: null as ReturnType<typeof rpg>['subscribePlayer'] extends (...args: never[]) => infer R ? R : never,
     };
   },
   computed: {
-    player(): any {
-      return (this as any).rpgCurrentPlayer?.object;
-    },
-    currentHp(): number {
-      return this.player?.hp ?? 0;
-    },
-    maxHp(): number {
-      return this.player?.param?.maxHp ?? 100;
-    },
-    currentSp(): number {
-      return this.player?.sp ?? 0;
-    },
-    maxSp(): number {
-      return this.player?.param?.maxSp ?? 50;
-    },
     hpPercent(): number {
       if (!this.maxHp) return 0;
       return Math.max(0, Math.min(100, (this.currentHp / this.maxHp) * 100));
@@ -68,15 +63,20 @@ export default {
       if (!this.maxSp) return 0;
       return Math.max(0, Math.min(100, (this.currentSp / this.maxSp) * 100));
     },
-    level(): number {
-      return this.player?.level ?? 1;
-    },
-    gold(): number {
-      return this.player?.gold ?? 0;
-    },
-    seed(): string {
-      return this.player?.variables?.SEED ?? '';
-    },
+  },
+  mounted() {
+    this._sub = rpg(this).subscribePlayer((player: RpgPlayerObject) => {
+      this.currentHp = player.hp ?? 0;
+      this.maxHp = player.param?.maxHp ?? 0;
+      this.currentSp = player.sp ?? 0;
+      this.maxSp = player.param?.maxSp ?? 0;
+      this.level = player.level ?? 1;
+      this.gold = player.gold ?? 0;
+      this.seed = (player.variables?.SEED as string) ?? '';
+    });
+  },
+  unmounted() {
+    this._sub?.unsubscribe();
   },
 };
 </script>
