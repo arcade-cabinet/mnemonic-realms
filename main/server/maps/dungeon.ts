@@ -219,41 +219,54 @@ export class DungeonMap extends RpgMap {
     // biome-ignore lint/suspicious/noExplicitAny: RPG-JS createDynamicEvent expects untyped event class
     const events: Array<{ x: number; y: number; event: any }> = [];
 
-    // Spawn dungeon exit near entrance
+    // Spawn dungeon exit in entrance room (top-left)
     const Exit = createDungeonExit();
     events.push({
-      x: 2 * 32,
-      y: 2 * 32,
+      x: 3 * 32,
+      y: 3 * 32,
       event: Exit,
     });
 
-    // Spawn dungeon enemies
+    // Spawn dungeon enemies in rooms
+    // Room positions: central hall (14-21, 10-15), mid-left (2-7, 12-16), pre-boss (12-17, 20-24)
+    const enemyRooms = [
+      { minX: 15, maxX: 20, minY: 11, maxY: 14 },
+      { minX: 3, maxX: 6, minY: 13, maxY: 15 },
+      { minX: 13, maxX: 16, minY: 21, maxY: 23 },
+    ];
     const enemyCount = rng.randomInt(3, 5);
     for (let i = 0; i < enemyCount; i++) {
       const Enemy = createDungeonEnemy(seed, i);
+      const room = enemyRooms[i % enemyRooms.length];
       events.push({
-        x: rng.randomInt(3, 17) * 32,
-        y: rng.randomInt(3, 17) * 32,
+        x: rng.randomInt(room.minX, room.maxX) * 32,
+        y: rng.randomInt(room.minY, room.maxY) * 32,
         event: Enemy,
       });
     }
 
-    // Spawn chests
+    // Spawn chests in side rooms
+    // Side room (12-18, 2-6), bottom-left (2-7, 22-27)
+    const chestRooms = [
+      { minX: 13, maxX: 17, minY: 3, maxY: 5 },
+      { minX: 3, maxX: 6, minY: 23, maxY: 26 },
+    ];
     const chestCount = rng.randomInt(2, 4);
     for (let i = 0; i < chestCount; i++) {
       const Chest = createChestEvent(seed, i);
+      const room = chestRooms[i % chestRooms.length];
       events.push({
-        x: rng.randomInt(2, 18) * 32,
-        y: rng.randomInt(2, 18) * 32,
+        x: rng.randomInt(room.minX, room.maxX) * 32,
+        y: rng.randomInt(room.minY, room.maxY) * 32,
         event: Chest,
       });
     }
 
-    // Spawn boss at the far end
+    // Spawn boss in boss room (bottom-right, 22-28, 22-28)
     const Boss = createBossEvent(seed);
     events.push({
-      x: 15 * 32,
-      y: 15 * 32,
+      x: 25 * 32,
+      y: 25 * 32,
       event: Boss,
     });
 

@@ -311,56 +311,56 @@ export class OverworldMap extends RpgMap {
     // biome-ignore lint/suspicious/noExplicitAny: RPG-JS createDynamicEvent expects untyped event class
     const events: Array<{ x: number; y: number; event: any }> = [];
 
-    // Spawn procedural NPCs
+    // Spawn procedural NPCs in village area (5-11, 5-8) and scattered
     const npcCount = rng.randomInt(3, 5);
     for (let i = 0; i < npcCount; i++) {
       const NPC = createProceduralNPC(seed, i);
       events.push({
-        x: rng.randomInt(4, 25) * 32,
-        y: rng.randomInt(4, 25) * 32,
+        x: rng.randomInt(5, 10) * 32,
+        y: rng.randomInt(5, 8) * 32,
         event: NPC,
       });
     }
 
-    // Spawn combat enemies
+    // Spawn combat enemies along paths and in open areas
     const enemyCount = rng.randomInt(3, 6);
     for (let i = 0; i < enemyCount; i++) {
       const Enemy = createCombatEnemy(seed, i);
       events.push({
-        x: rng.randomInt(4, 25) * 32,
-        y: rng.randomInt(4, 25) * 32,
+        x: rng.randomInt(10, 35) * 32,
+        y: rng.randomInt(10, 35) * 32,
         event: Enemy,
       });
     }
 
-    // Spawn shop NPC
+    // Spawn shop NPC in village
     const Shop = createShopNPC(seed);
     events.push({
-      x: rng.randomInt(8, 20) * 32,
-      y: rng.randomInt(3, 8) * 32,
+      x: 7 * 32,
+      y: 6 * 32,
       event: Shop,
     });
 
-    // Spawn quest NPCs
+    // Spawn quest NPCs near village
     const QuestNPC = createQuestNPC(seed);
     events.push({
-      x: rng.randomInt(5, 15) * 32,
-      y: rng.randomInt(5, 10) * 32,
+      x: 6 * 32,
+      y: 9 * 32,
       event: QuestNPC,
     });
 
     const BossQuestNPC = createBossQuestNPC(seed);
     events.push({
-      x: rng.randomInt(15, 25) * 32,
-      y: rng.randomInt(5, 10) * 32,
+      x: 10 * 32,
+      y: 9 * 32,
       event: BossQuestNPC,
     });
 
-    // Spawn dungeon entrance
+    // Spawn dungeon entrance near bottom-right (along the path)
     const DungeonEntrance = createDungeonEntrance();
     events.push({
-      x: 20 * 32,
-      y: 20 * 32,
+      x: 30 * 32,
+      y: 30 * 32,
       event: DungeonEntrance,
     });
 
