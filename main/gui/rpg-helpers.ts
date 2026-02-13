@@ -13,6 +13,28 @@ interface RpgSocket {
   emit(event: string, data: unknown): void;
 }
 
+export interface RpgSkillObject {
+  id?: string;
+  name?: string;
+  description?: string;
+  spCost?: number;
+}
+
+export interface RpgItemObject {
+  id?: string;
+  name?: string;
+  description?: string;
+  price?: number;
+  consumable?: boolean;
+  hpValue?: number;
+  spValue?: number;
+}
+
+export interface RpgInventoryEntry {
+  nb: number;
+  item: RpgItemObject;
+}
+
 export interface RpgPlayerObject {
   hp?: number;
   sp?: number;
@@ -23,6 +45,8 @@ export interface RpgPlayerObject {
   variables?: Record<string, unknown>;
   expForNextlevel?: number;
   exp?: number;
+  skills?: RpgSkillObject[];
+  items?: RpgInventoryEntry[];
   [key: string]: unknown;
 }
 

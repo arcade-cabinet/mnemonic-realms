@@ -81,7 +81,7 @@
 </template>
 
 <script lang="ts">
-import { rpg, type RpgPlayerObject } from './rpg-helpers';
+import { rpg, type RpgPlayerObject, type RpgSkillObject, type RpgInventoryEntry } from './rpg-helpers';
 
 interface CombatData {
   enemyName: string;
@@ -93,6 +93,41 @@ interface CombatData {
   xpReward: number;
   goldReward: number;
   eventId: string;
+}
+
+// Known heal/buff skill names from the database
+const HEAL_SKILLS = new Set(['Heal', 'Cure']);
+const BUFF_SKILLS = new Set(['Berserk']);
+
+// Skill power multipliers — skills without explicit power in the database
+// use STR-based scaling
+const SKILL_POWER_MAP: Record<string, number> = {
+  Slash: 1.2,
+  'Power Strike': 1.8,
+  Fireball: 2.0,
+  'Ice Bolt': 1.5,
+  Backstab: 2.2,
+  'Poison Strike': 1.6,
+};
+
+const HEAL_AMOUNT = 60;
+
+interface CombatSkill {
+  name: string;
+  spCost: number;
+  power: number;
+  isHeal?: boolean;
+  healAmount?: number;
+  isBuff?: boolean;
+  id?: string;
+}
+
+interface CombatItem {
+  name: string;
+  qty: number;
+  hpRestore?: number;
+  spRestore?: number;
+  id?: string;
 }
 
 export default {
@@ -126,6 +161,9 @@ export default {
       playerStr: 10,
       playerDex: 10,
       playerAgi: 10,
+      // Real player skills/items from subscription
+      _rawSkills: [] as RpgSkillObject[],
+      _rawItems: [] as RpgInventoryEntry[],
       _sub: null as { unsubscribe(): void } | null,
     };
   },
@@ -139,22 +177,37 @@ export default {
     enemyHpPercent(): number {
       return this.enemyMaxHp ? (this.enemyHp / this.enemyMaxHp) * 100 : 0;
     },
-    playerSkills(): any[] {
-      return [
-        { name: 'Power Strike', spCost: 10, power: 1.8 },
-        { name: 'Fireball', spCost: 15, power: 2.0 },
-        { name: 'Heal', spCost: 8, power: 0, isHeal: true, healAmount: 60 },
-        { name: 'Backstab', spCost: 12, power: 2.2 },
-        { name: 'Ice Bolt', spCost: 10, power: 1.5 },
-        { name: 'Berserk', spCost: 14, power: 0, isBuff: true },
-      ];
+    playerSkills(): CombatSkill[] {
+      if (this._rawSkills.length === 0) {
+        // Fallback: basic attack only if no skills learned
+        return [{ name: 'Strike', spCost: 0, power: 1.2 }];
+      }
+      return this._rawSkills.map((sk: RpgSkillObject) => {
+        const name = sk.name || 'Unknown';
+        const spCost = sk.spCost ?? 0;
+        if (HEAL_SKILLS.has(name)) {
+          return { name, spCost, power: 0, isHeal: true, healAmount: HEAL_AMOUNT, id: sk.id };
+        }
+        if (BUFF_SKILLS.has(name)) {
+          return { name, spCost, power: 0, isBuff: true, id: sk.id };
+        }
+        return { name, spCost, power: SKILL_POWER_MAP[name] ?? 1.5, id: sk.id };
+      });
     },
-    playerItems(): any[] {
-      return [
-        { name: 'Potion', qty: 3, hpRestore: 50 },
-        { name: 'Hi-Potion', qty: 1, hpRestore: 200 },
-        { name: 'Mana Potion', qty: 1, spRestore: 50 },
-      ];
+    playerItems(): CombatItem[] {
+      return this._rawItems
+        .filter((entry: RpgInventoryEntry) => entry.item.consumable !== false)
+        .map((entry: RpgInventoryEntry) => {
+          const item = entry.item;
+          return {
+            name: item.name || 'Unknown',
+            qty: entry.nb,
+            hpRestore: (item as any).hpValue || undefined,
+            spRestore: (item as any).spValue || undefined,
+            id: item.id,
+          };
+        })
+        .filter((it: CombatItem) => it.qty > 0 && (it.hpRestore || it.spRestore));
     },
   },
   methods: {
@@ -211,19 +264,17 @@ export default {
       this.showSkills = false;
       this.checkCombatEnd();
     },
-    doItem(item: any) {
+    doItem(item: CombatItem) {
       if (item.hpRestore) {
         rpg(this).interact('combat-gui', 'combat-action', { type: 'heal', amount: item.hpRestore });
         this.addMessage(`You use ${item.name} and restore ${item.hpRestore} HP!`);
-        item.qty--;
       } else if (item.spRestore) {
         rpg(this).interact('combat-gui', 'combat-action', { type: 'sp-restore', amount: item.spRestore });
         this.addMessage(`You use ${item.name} and restore ${item.spRestore} SP!`);
-        item.qty--;
       }
-      if (item.qty <= 0) {
-        const idx = this.playerItems.indexOf(item);
-        if (idx >= 0) this.playerItems.splice(idx, 1);
+      // Tell server to consume the item from real inventory
+      if (item.id) {
+        rpg(this).interact('combat-gui', 'combat-use-item', { itemId: item.id });
       }
       this.showItems = false;
       this.checkCombatEnd();
@@ -295,6 +346,13 @@ export default {
       this.playerStr = player.param?.str ?? 10;
       this.playerDex = player.param?.dex ?? 10;
       this.playerAgi = player.param?.agi ?? 10;
+      // Sync real skills and items from RPG-JS player state
+      if (player.skills) {
+        this._rawSkills = player.skills;
+      }
+      if (player.items) {
+        this._rawItems = player.items;
+      }
     });
     rpg(this).socket().on('gui.open', ({ guiId, data }: { guiId: string; data: CombatData }) => {
       if (guiId === 'combat-gui') {

@@ -93,22 +93,49 @@
 
         <!-- Tab: Class -->
         <div class="tab-content" v-if="activeTab === 'class'">
-          <div class="class-card" v-if="charClass">
-            <div class="class-header">
-              <span class="class-icon">{{ classIcon }}</span>
-              <div>
-                <h3 class="class-name">{{ charClass.name }}</h3>
-                <span class="class-alignment" :class="charClass.alignment">{{ charClass.alignment }}</span>
+          <p class="tab-desc">Choose your path. Each class shapes your abilities and destiny.</p>
+          <div
+            class="class-carousel"
+            @touchstart="onTouchStart"
+            @touchend="onTouchEnd"
+          >
+            <button
+              class="carousel-arrow carousel-prev"
+              @click="prevClass"
+              aria-label="Previous class"
+            >&#x25C0;</button>
+            <div class="class-card selected-class">
+              <div class="class-header">
+                <span class="class-icon">{{ selectedClassIcon }}</span>
+                <div>
+                  <h3 class="class-name">{{ allClasses[selectedClassIndex].name }}</h3>
+                  <span class="class-alignment">{{ allClasses[selectedClassIndex].alignment }}</span>
+                </div>
+              </div>
+              <p class="class-desc">{{ allClasses[selectedClassIndex].description }}</p>
+              <div class="class-skills">
+                <span
+                  class="skill-tag"
+                  v-for="s in allClasses[selectedClassIndex].skills"
+                  :key="s"
+                >{{ s }}</span>
               </div>
             </div>
-            <p class="class-desc">{{ charClass.description }}</p>
-            <div class="class-skills">
-              <span class="skill-tag" v-for="s in charClass.primarySkills" :key="s.name">
-                {{ s.name }}
-              </span>
-            </div>
+            <button
+              class="carousel-arrow carousel-next"
+              @click="nextClass"
+              aria-label="Next class"
+            >&#x25B6;</button>
           </div>
-          <p class="tab-hint">Class is determined by your seed. Shuffle to explore different paths.</p>
+          <div class="class-pips">
+            <span
+              class="pip"
+              v-for="(cls, idx) in allClasses"
+              :key="cls.id"
+              :class="{ active: idx === selectedClassIndex }"
+              @click="selectedClassIndex = idx"
+            ></span>
+          </div>
         </div>
 
         <!-- Tab: Fate (Stats) -->
@@ -122,7 +149,7 @@
               <span class="stat-val">{{ val }}</span>
             </div>
           </div>
-          <p class="tab-hint">Stats are forged from your seed and class mastery.</p>
+          <p class="tab-hint">Stats are shaped by your chosen class.</p>
         </div>
 
         <!-- Embark Button -->
@@ -137,9 +164,7 @@
 </template>
 
 <script lang="ts">
-import { ClassGenerator } from '../generation/generators/classGenerator';
 import { NameGenerator } from '../generation/generators/nameGenerator';
-import { SeededRandom } from '../generation/seededRandom';
 import { rpg } from './rpg-helpers';
 
 const ADJECTIVE_POOL = [
@@ -155,10 +180,54 @@ const NOUN_POOL = [
   'sentinel', 'harbinger', 'wraith', 'champion', 'titan', 'specter', 'marauder', 'revenant',
 ];
 
-const CLASS_ICONS: Record<string, string> = {
-  Warrior: '\u2694', Mage: '\u2728', Rogue: '\uD83D\uDDE1', Cleric: '\u2720',
-  'Dark Knight': '\u2620', Necromancer: '\uD83D\uDD2E', Assassin: '\uD83D\uDCA8', 'Shadow Priest': '\u262F',
-};
+interface ClassDef {
+  id: string;
+  name: string;
+  icon: string;
+  alignment: string;
+  description: string;
+  skills: string[];
+  masteryBonus: Record<string, number>;
+}
+
+const ALL_CLASSES: ClassDef[] = [
+  {
+    id: 'warrior',
+    name: 'Warrior',
+    icon: '\u2694',
+    alignment: 'martial',
+    description: 'A steadfast fighter who masters weapons and armor. Warriors excel in direct combat, shielding allies and cleaving through enemies with brute strength.',
+    skills: ['Slash', 'Power Strike', 'Berserk'],
+    masteryBonus: { combat: 25, support: 10 },
+  },
+  {
+    id: 'mage',
+    name: 'Mage',
+    icon: '\u2728',
+    alignment: 'arcane',
+    description: 'A wielder of elemental forces and forbidden knowledge. Mages command fire, ice, and poison, devastating foes from afar with devastating spells.',
+    skills: ['Fireball', 'Ice Bolt', 'Poison Strike'],
+    masteryBonus: { magic: 25, crafting: 10 },
+  },
+  {
+    id: 'rogue',
+    name: 'Rogue',
+    icon: '\uD83D\uDDE1',
+    alignment: 'shadow',
+    description: 'A cunning trickster who strikes from the shadows. Rogues rely on speed, precision, and dirty tactics to exploit every weakness.',
+    skills: ['Slash', 'Backstab', 'Poison Strike'],
+    masteryBonus: { stealth: 25, combat: 10 },
+  },
+  {
+    id: 'cleric',
+    name: 'Cleric',
+    icon: '\u2720',
+    alignment: 'divine',
+    description: 'A devoted servant of higher powers who mends wounds and wards off darkness. Clerics sustain their allies through the harshest trials.',
+    skills: ['Heal', 'Cure'],
+    masteryBonus: { support: 25, magic: 10 },
+  },
+];
 
 export default {
   name: 'title-screen',
@@ -170,9 +239,20 @@ export default {
       activeTab: 'seed' as string,
       seedText: '',
       seedError: '',
+      selectedClassIndex: 0,
+      touchStartX: 0,
     };
   },
   computed: {
+    allClasses(): ClassDef[] {
+      return ALL_CLASSES;
+    },
+    selectedClass(): ClassDef {
+      return ALL_CLASSES[this.selectedClassIndex];
+    },
+    selectedClassIcon(): string {
+      return this.selectedClass.icon;
+    },
     isValidSeed(): boolean {
       const parts = this.seedText.trim().split(/\s+/);
       return parts.length === 3 && parts.every((p: string) => p.length > 0);
@@ -182,32 +262,17 @@ export default {
       const gen = new NameGenerator(this.seedText.trim().toLowerCase());
       return gen.generateCharacterWithTitle();
     },
-    alignment(): string {
-      if (!this.isValidSeed) return 'neutral';
-      const rng = new SeededRandom(this.seedText.trim().toLowerCase());
-      return rng.pick(['light', 'dark', 'neutral']);
-    },
-    charClass(): any {
-      if (!this.isValidSeed) return null;
-      const gen = new ClassGenerator(this.seedText.trim().toLowerCase());
-      // biome-ignore lint/suspicious/noExplicitAny: seed-driven alignment type
-      return gen.generateClass(this.alignment as any);
-    },
-    classIcon(): string {
-      if (!this.charClass) return '\u2694';
-      return CLASS_ICONS[this.charClass.name] || '\u2694';
-    },
     previewStats(): Record<string, number> | null {
-      if (!this.charClass) return null;
+      const cls = this.selectedClass;
+      if (!cls) return null;
       const base: Record<string, number> = { HP: 100, SP: 50, STR: 10, INT: 10, DEX: 10, AGI: 10 };
-      for (const [skill, bonus] of Object.entries(this.charClass.masteryBonus)) {
-        const b = bonus as number;
+      for (const [skill, bonus] of Object.entries(cls.masteryBonus)) {
         switch (skill) {
-          case 'combat': base.STR += b; base.HP += b * 2; break;
-          case 'magic': base.INT += b; base.SP += b * 2; break;
-          case 'stealth': base.DEX += b; base.AGI += b; break;
-          case 'support': base.HP += b; base.SP += b; break;
-          case 'crafting': base.DEX += Math.floor(b / 2); base.INT += Math.floor(b / 2); break;
+          case 'combat': base.STR += bonus; base.HP += bonus * 2; break;
+          case 'magic': base.INT += bonus; base.SP += bonus * 2; break;
+          case 'stealth': base.DEX += bonus; base.AGI += bonus; break;
+          case 'support': base.HP += bonus; base.SP += bonus; break;
+          case 'crafting': base.DEX += Math.floor(bonus / 2); base.INT += Math.floor(bonus / 2); break;
         }
       }
       return base;
@@ -220,6 +285,22 @@ export default {
       const noun = NOUN_POOL[Math.floor(Math.random() * NOUN_POOL.length)];
       this.seedText = `${adj1} ${adj2} ${noun}`;
     },
+    prevClass() {
+      this.selectedClassIndex = (this.selectedClassIndex - 1 + ALL_CLASSES.length) % ALL_CLASSES.length;
+    },
+    nextClass() {
+      this.selectedClassIndex = (this.selectedClassIndex + 1) % ALL_CLASSES.length;
+    },
+    onTouchStart(e: TouchEvent) {
+      this.touchStartX = e.changedTouches[0].clientX;
+    },
+    onTouchEnd(e: TouchEvent) {
+      const dx = e.changedTouches[0].clientX - this.touchStartX;
+      if (Math.abs(dx) > 40) {
+        if (dx < 0) this.nextClass();
+        else this.prevClass();
+      }
+    },
     startGame() {
       if (!this.isValidSeed) {
         this.seedError = 'Enter exactly 3 words: adjective adjective noun';
@@ -229,6 +310,7 @@ export default {
       this.visible = false;
       rpg(this).interact('title-screen', 'seed-selected', {
         seed: this.seedText.trim().toLowerCase(),
+        classId: this.selectedClass.id,
       });
     },
     emberStyle(i: number) {
@@ -672,6 +754,78 @@ export default {
   font-size: 0.7rem;
   color: #d4c4a0;
   text-align: right;
+}
+
+/* ── Class Carousel ──────────────────────────── */
+.class-carousel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+.carousel-arrow {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid #5a2a2a;
+  border-radius: 4px;
+  color: #b8860b;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-arrow:hover {
+  background: rgba(184, 134, 11, 0.15);
+  border-color: #b8860b;
+  box-shadow: 0 0 10px rgba(184, 134, 11, 0.2);
+}
+
+.carousel-arrow:active {
+  transform: scale(0.92);
+}
+
+.class-carousel .class-card {
+  flex: 1;
+  min-width: 0;
+}
+
+.selected-class {
+  border-color: #b8860b !important;
+  box-shadow: 0 0 15px rgba(184, 134, 11, 0.2), inset 0 0 10px rgba(184, 134, 11, 0.05);
+}
+
+.class-pips {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+.pip {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #333;
+  border: 1px solid #5a2a2a;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pip.active {
+  background: #b8860b;
+  border-color: #b8860b;
+  box-shadow: 0 0 6px rgba(184, 134, 11, 0.5);
+}
+
+.pip:hover:not(.active) {
+  background: #555;
 }
 
 /* ── Embark Button ────────────────────────────── */
