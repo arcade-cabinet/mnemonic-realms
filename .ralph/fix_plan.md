@@ -20,7 +20,7 @@
 
 - [x] **US-011**: Write `docs/design/enemies-catalog.md` — Overworld (6+), dungeon (6+), Preserver agents (3+), bosses (4+), drop tables (depends on US-009, US-010)
 - [x] **US-012**: Write `docs/design/skills-catalog.md` — All skills per class with formulas, SP costs, level learned (depends on US-009)
-- [ ] **US-013**: Write `docs/design/tileset-spec.md` — Tile-by-tile per biome per vibrancy level (depends on US-002)
+- [x] **US-013**: Write `docs/design/tileset-spec.md` — Tile-by-tile per biome per vibrancy level (depends on US-002)
 - [ ] **US-014**: Write `docs/design/spritesheet-spec.md` + `docs/design/audio-direction.md` — Sprite dimensions/frames, audio mood per zone
 - [ ] **US-015**: Write `docs/design/ui-spec.md` — Wireframes for every GUI screen, mobile-first
 
