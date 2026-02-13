@@ -1,0 +1,490 @@
+{
+  "project": "Mnemonic Realms",
+  "branchName": "rebuild/rpgjs-proper",
+  "description": "Mnemonic Realms v1.0 — Full RPG loop: explore, fight, loot, equip, level up. Seed-generated world deployed to GitHub Pages.",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Commit the RPG-JS rebuild",
+      "description": "As a developer, I need all rebuild changes committed so subsequent work has a clean base.",
+      "acceptanceCriteria": [
+        "All changed files staged and committed on rebuild/rpgjs-proper branch",
+        "Commit message: 'Rebuild as pure RPG-JS 4.3.0 standalone game'",
+        "git status is clean after commit",
+        "pnpm lint passes",
+        "pnpm build succeeds"
+      ],
+      "priority": 1,
+      "passes": false,
+      "notes": "108 files: delete Next.js/React cruft, relocate proc gen src/ -> main/generation/ via git mv, add RPG-JS module main/server + main/client + main/database + main/gui + tests"
+    },
+
+    {
+      "id": "US-010",
+      "title": "Add weapons database: bow, staff, dagger, axe",
+      "description": "As a developer, I need more weapon types so loot and shops have variety.",
+      "acceptanceCriteria": [
+        "main/database/weapons/ has 4 new files: bow.ts, staff.ts, dagger.ts, axe.ts",
+        "Each uses @Weapon decorator with name, description, price, atk stats",
+        "Bow: atk 12, price 120. Staff: atk 8 + int bonus, price 100. Dagger: atk 10, price 80. Axe: atk 18, price 200",
+        "All exported from main/database/index.ts barrel",
+        "Typecheck passes"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "PARALLEL with US-011, US-012, US-013, US-014, US-020, US-021, US-022. Follow existing sword.ts pattern."
+    },
+    {
+      "id": "US-011",
+      "title": "Add armor database: shield, helmet, robe, leather",
+      "description": "As a developer, I need armor items so players can equip defensive gear.",
+      "acceptanceCriteria": [
+        "main/database/armor/ directory created with shield.ts, helmet.ts, robe.ts, leather.ts",
+        "Each uses @Armor decorator with name, description, price, def/mdef stats",
+        "Shield: def 10. Helmet: def 5. Robe: mdef 8. Leather: def 7",
+        "All exported from main/database/index.ts",
+        "Typecheck passes"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "PARALLEL with US-010, US-012, US-013, US-014, US-020, US-021, US-022. Check @rpgjs/database for @Armor decorator — if not available, use @Item with defensive properties."
+    },
+    {
+      "id": "US-012",
+      "title": "Add consumables database: mana potion, antidote, elixir, scroll",
+      "description": "As a developer, I need more consumable items for varied gameplay.",
+      "acceptanceCriteria": [
+        "main/database/items/ has 4 new files: manaPotion.ts, antidote.ts, elixir.ts, scroll.ts",
+        "Mana Potion: restores 50 SP. Antidote: removes Poison state. Elixir: restores 500 HP. Scroll: temporary ATK boost",
+        "All consumable: true, with appropriate prices",
+        "All exported from main/database/index.ts",
+        "Typecheck passes"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "PARALLEL with US-010, US-011, US-013, US-014, US-020, US-021, US-022. Follow existing potion.ts pattern."
+    },
+    {
+      "id": "US-013",
+      "title": "Add enemy actor database: slime, wolf, skeleton, goblin, dark knight",
+      "description": "As a developer, I need enemy actor definitions with stat curves for varied combat.",
+      "acceptanceCriteria": [
+        "main/database/actors/ has 5 new files: slime.ts, wolf.ts, skeleton.ts, goblin.ts, darkKnight.ts",
+        "Each uses @Actor decorator with name, parameters (maxHp, str, def, exp, gold)",
+        "Slime: weak (HP 20, exp 5). Wolf: medium (HP 40, exp 15). Skeleton: medium (HP 50, exp 20). Goblin: medium (HP 35, exp 12). DarkKnight: strong (HP 120, exp 50)",
+        "All exported from main/database/index.ts",
+        "Typecheck passes"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "PARALLEL with US-010, US-011, US-012, US-014, US-020, US-021, US-022. Follow existing hero.ts pattern. These actors will be referenced by enemy events on maps."
+    },
+    {
+      "id": "US-014",
+      "title": "Add more skills database: backstab, ice bolt, cure, berserk, poison strike",
+      "description": "As a developer, I need skills for each class so combat has tactical depth.",
+      "acceptanceCriteria": [
+        "main/database/skills/ has 5 new files: backstab.ts, iceBolt.ts, cure.ts, berserk.ts, poisonStrike.ts",
+        "Backstab: Rogue skill, high damage single target. IceBolt: Mage skill, medium damage. Cure: Cleric skill, removes status effects. Berserk: Warrior skill, boosts ATK. PoisonStrike: applies Poison state",
+        "Each has spCost and appropriate effects",
+        "Class files in main/database/classes/ updated with new skillsToLearn entries",
+        "All exported from main/database/index.ts",
+        "Typecheck passes"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "PARALLEL with US-010, US-011, US-012, US-013, US-020, US-021, US-022. Follow existing slash.ts pattern."
+    },
+    {
+      "id": "US-020",
+      "title": "Replace placeholder spritesheets with real RPG character art",
+      "description": "As a developer, I need real character sprites so the game looks like an RPG.",
+      "acceptanceCriteria": [
+        "hero.png is a proper 96x128 RPG Maker-style spritesheet (3x4 grid of 32x32 frames)",
+        "female13.png, male1_1.png, male4_1.png are distinct NPC character sprites",
+        "enemy.png shows a monster/creature sprite",
+        "boss.png shows a large or imposing boss sprite",
+        "chest.png shows a treasure chest sprite",
+        "Characters animate when walking in-game (4 directional walk cycles)",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "PARALLEL with US-010-014, US-021, US-022. Search /Volumes/home/assets/ for RPG Maker format spritesheets. If none found, download pipo-kun character pack from RPG-JS starter repo or opengameart.org."
+    },
+    {
+      "id": "US-021",
+      "title": "Replace placeholder tilesets with real terrain art",
+      "description": "As a developer, I need real terrain tiles so maps render as an actual RPG world.",
+      "acceptanceCriteria": [
+        "[A]Grass_pipo.png is a real grass/outdoor tileset (at minimum a proper 32x32 tile, ideally a tileset sheet)",
+        "[A]Dirt_pipo.png is a real dirt/stone/dungeon floor tileset",
+        "TMX files updated if tileset dimensions change",
+        "Overworld renders with visible terrain variety",
+        "Dungeon renders with floor/wall distinction",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "PARALLEL with US-010-014, US-020, US-022. Search /Volumes/home/assets/ for pipo-kun tilesets. These are commonly named [A]Grass_pipo.png, [A]Water_pipo.png, etc."
+    },
+    {
+      "id": "US-022",
+      "title": "Add HUD overlay showing HP, level, gold, and seed",
+      "description": "As a player, I want to see my stats on screen while exploring.",
+      "acceptanceCriteria": [
+        "main/gui/hud.vue created with player stats display",
+        "Shows: HP bar (current/max), Level number, Gold amount, Current seed",
+        "HUD positioned at top or bottom of screen, not blocking gameplay",
+        "HUD registered in main/client/index.ts gui array",
+        "HUD opens automatically when player enters a map (via server hook or auto-open)",
+        "Styled with game theme (blood red, aged bronze, dark background)",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "PARALLEL with US-010-014, US-020, US-021. RPG-JS Vue GUI components can access player data via RpgGui props. Use scoped CSS matching title-screen.vue aesthetic."
+    },
+
+    {
+      "id": "US-030",
+      "title": "Wire equipment system: equip weapons and armor",
+      "description": "As a player, I want to equip weapons and armor to improve my stats.",
+      "acceptanceCriteria": [
+        "Player starts with Iron Sword equipped (added in onConnected)",
+        "Equipping a weapon changes player ATK stat",
+        "Equipping armor changes player DEF stat",
+        "Equipment visible in ESC main menu",
+        "player.equip() called correctly with database item references",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Depends on US-010 (weapons) and US-011 (armor). Use player.addItem() then player.equip() in player.ts onConnected. @rpgjs/default-gui menu should show equipment."
+    },
+    {
+      "id": "US-031",
+      "title": "Wire enemy loot drops: enemies give items on defeat",
+      "description": "As a player, I want enemies to drop items when I defeat them.",
+      "acceptanceCriteria": [
+        "Defeating an enemy adds random items to player inventory via LootGenerator",
+        "Loot uses seed + enemy index for deterministic drops",
+        "Player receives both gold and 0-2 items per enemy kill",
+        "Loot notification shown via player.showText()",
+        "Typecheck passes"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Depends on US-010, US-012, US-013. Modify enemy onPlayerTouch in overworld.ts to call player.addItem() with generated loot. Map database items to LootGenerator output."
+    },
+    {
+      "id": "US-032",
+      "title": "Add shop NPC event on overworld",
+      "description": "As a player, I want to buy items from a shop NPC.",
+      "acceptanceCriteria": [
+        "A shop NPC spawns on the overworld (procedural position from seed)",
+        "Interacting with shop NPC opens RPG-JS shop GUI via player.callShop()",
+        "Shop sells: Potion, Hi-Potion, Mana Potion, Antidote, and one random weapon",
+        "Player can buy items using gold",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Depends on US-010, US-012. Add shop event class to overworld.ts. Use player.callShop([Potion, HiPotion, ...]) — RPG-JS handles the shop GUI."
+    },
+    {
+      "id": "US-033",
+      "title": "Add dungeon entrance and exit map transitions",
+      "description": "As a player, I want to enter and exit the dungeon from the overworld.",
+      "acceptanceCriteria": [
+        "A 'dungeon entrance' event appears on the overworld map (cave or stairway graphic)",
+        "Walking onto entrance triggers player.changeMap('dungeon')",
+        "Dungeon has an exit event near start point that returns to overworld",
+        "Player position preserved when returning to overworld (or returns to entrance)",
+        "Transition shows brief text ('Descending into the depths...')",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Depends on US-021 (tilesets). Add entrance event to overworld.ts onJoin. Add exit event to dungeon.ts onJoin."
+    },
+    {
+      "id": "US-034",
+      "title": "Wire XP and level-up system with notification",
+      "description": "As a player, I want to level up when I gain enough XP and see a notification.",
+      "acceptanceCriteria": [
+        "Player gains XP from defeating enemies (already partially implemented)",
+        "When XP threshold reached, player levels up automatically",
+        "Level-up shows notification text with new level and stat increases",
+        "onLevelUp hook applies procedural stat gains (already implemented)",
+        "Level visible in HUD",
+        "Typecheck passes"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Depends on US-022 (HUD). RPG-JS handles XP/level math via @Actor exp curve. The onLevelUp hook in player.ts already applies stats. Just need to add notification text."
+    },
+    {
+      "id": "US-035",
+      "title": "Design real overworld TMX map with terrain variety",
+      "description": "As a developer, I need the overworld map to have paths, water, trees, and obstacles.",
+      "acceptanceCriteria": [
+        "overworld.tmx updated to 40x40 (or larger) with multiple terrain types",
+        "Map has: grass areas, dirt paths, water (impassable), trees/rocks (collision layer)",
+        "Collision layer prevents walking through walls/water/obstacles",
+        "Start point is on an accessible tile",
+        "Map looks like a believable RPG overworld when rendered",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Depends on US-021 (real tilesets). Edit TMX XML directly or use Tiled editor. Must have collision layer with object types or tile properties."
+    },
+    {
+      "id": "US-036",
+      "title": "Design real dungeon TMX map with rooms and corridors",
+      "description": "As a developer, I need the dungeon map to look like an actual dungeon.",
+      "acceptanceCriteria": [
+        "dungeon.tmx updated to 30x30 with rooms connected by corridors",
+        "Map has: floor tiles, wall tiles (collision), doorways between rooms",
+        "Collision layer prevents walking through walls",
+        "Boss room at far end, chests in side rooms",
+        "Start point near entrance",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Depends on US-021 (real tilesets). Can be hand-designed or use RoomGenerator data to inform layout."
+    },
+
+    {
+      "id": "US-040",
+      "title": "Implement real-time combat with attack command",
+      "description": "As a player, I want combat to feel like an RPG with attack/defend options, not just touch-and-damage.",
+      "acceptanceCriteria": [
+        "Touching an enemy opens a combat GUI (main/gui/combat.vue)",
+        "Combat GUI shows: enemy name, enemy HP bar, player HP bar, Attack/Skill/Item/Flee buttons",
+        "Attack button deals damage based on player ATK - enemy DEF",
+        "Enemy attacks back after player turn (simple AI: random attack)",
+        "Combat ends when enemy HP reaches 0 (victory) or player HP reaches 0 (defeat)",
+        "Victory grants XP and gold, triggers loot drops",
+        "Combat GUI registered in main/client/index.ts",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 4,
+      "passes": false,
+      "notes": "Depends on US-030 (equipment affecting stats), US-031 (loot drops). Replace the simple onPlayerTouch damage with a GUI-driven combat system. Use RpgGui.emit/on pattern like title screen."
+    },
+    {
+      "id": "US-041",
+      "title": "Wire skill usage in combat",
+      "description": "As a player, I want to use my class skills during combat.",
+      "acceptanceCriteria": [
+        "Combat GUI 'Skill' button shows list of player's learned skills",
+        "Using a skill costs SP and deals skill-specific damage/effect",
+        "Heal skill restores HP instead of dealing damage",
+        "Skills that the player hasn't learned yet are not shown",
+        "SP cost deducted and shown in combat UI",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 4,
+      "passes": false,
+      "notes": "Depends on US-040 (combat GUI) and US-014 (skills database). Skills are tied to classes via skillsToLearn. Access player.getSkill() or similar RPG-JS API."
+    },
+    {
+      "id": "US-042",
+      "title": "Wire item usage in combat",
+      "description": "As a player, I want to use potions and items during combat.",
+      "acceptanceCriteria": [
+        "Combat GUI 'Item' button shows player's consumable items",
+        "Using a Potion restores 50 HP",
+        "Using a Hi-Potion restores 200 HP",
+        "Using a Mana Potion restores 50 SP",
+        "Item is consumed (removed from inventory) after use",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 4,
+      "passes": false,
+      "notes": "Depends on US-040 (combat GUI) and US-012 (consumables). Use player.useItem() RPG-JS API."
+    },
+    {
+      "id": "US-043",
+      "title": "Implement boss fight with special mechanics",
+      "description": "As a player, I want the dungeon boss to be a challenging encounter.",
+      "acceptanceCriteria": [
+        "Boss fight uses the combat GUI but boss has higher stats",
+        "Boss has a special attack every 3 turns (double damage or area effect)",
+        "Boss drops a unique weapon or rare item on defeat",
+        "Defeating boss shows victory text with boss name",
+        "Boss is generated from seed (name, stats deterministic)",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 4,
+      "passes": false,
+      "notes": "Depends on US-040 (combat GUI). Boss event already exists in dungeon.ts — enhance it to use combat GUI with special logic."
+    },
+    {
+      "id": "US-044",
+      "title": "Implement game over and death handling",
+      "description": "As a player, I want to see a game over screen when I die and be able to restart.",
+      "acceptanceCriteria": [
+        "When player HP reaches 0, combat ends with defeat",
+        "Game over GUI shows (main/gui/game-over.vue) with 'You Have Fallen' message",
+        "Game over screen has 'Retry' button (restarts with same seed) and 'New Seed' button (returns to title)",
+        "Game over GUI registered in main/client/index.ts",
+        "Retry restores player to overworld with full HP",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 4,
+      "passes": false,
+      "notes": "Depends on US-040 (combat). Create game-over.vue following title-screen.vue pattern."
+    },
+    {
+      "id": "US-045",
+      "title": "Implement flee mechanic in combat",
+      "description": "As a player, I want to flee from combat if the enemy is too strong.",
+      "acceptanceCriteria": [
+        "Combat GUI 'Flee' button attempts to escape combat",
+        "Flee success rate based on player AGI vs enemy AGI (higher AGI = better chance)",
+        "Successful flee closes combat GUI and returns to map exploration",
+        "Failed flee wastes a turn (enemy attacks)",
+        "Cannot flee from boss fights",
+        "Typecheck passes"
+      ],
+      "priority": 4,
+      "passes": false,
+      "notes": "Depends on US-040 (combat GUI). Add flee logic to combat.vue."
+    },
+
+    {
+      "id": "US-050",
+      "title": "Add procedural quest NPC: fetch quest",
+      "description": "As a player, I want NPCs to give me quests that involve fetching items.",
+      "acceptanceCriteria": [
+        "One NPC on the overworld gives a procedurally generated fetch quest",
+        "Quest text generated from DialogueGenerator: 'Bring me [item] from the dungeon'",
+        "Quest item is tracked via player variable",
+        "Returning with the item gives a reward (gold + XP + item)",
+        "Quest NPC dialogue changes after completion",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 5,
+      "passes": false,
+      "notes": "Depends on US-031 (loot), US-033 (dungeon access). Use player.setVariable() to track quest state. Generate quest parameters from seed."
+    },
+    {
+      "id": "US-051",
+      "title": "Add procedural quest NPC: defeat boss quest",
+      "description": "As a player, I want an NPC to send me on a quest to defeat the dungeon boss.",
+      "acceptanceCriteria": [
+        "One NPC on the overworld gives a 'defeat the boss' quest",
+        "Quest tracked via player variable 'BOSS_QUEST'",
+        "After defeating dungeon boss, returning to NPC gives reward",
+        "Reward: large gold amount + rare equipment piece",
+        "NPC dialogue generated from seed",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 5,
+      "passes": false,
+      "notes": "Depends on US-043 (boss fight). Track boss defeat via player.setVariable('BOSS_DEFEATED', true)."
+    },
+    {
+      "id": "US-052",
+      "title": "Add victory/completion screen after boss defeat",
+      "description": "As a player, I want to see a completion screen after defeating the dungeon boss.",
+      "acceptanceCriteria": [
+        "After defeating boss and returning to overworld, a completion GUI appears",
+        "Shows: seed used, player level, class, total gold, time played",
+        "Has 'Continue Exploring' and 'New Seed' buttons",
+        "'New Seed' returns to title screen",
+        "main/gui/victory.vue created and registered",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 5,
+      "passes": false,
+      "notes": "Depends on US-043 (boss). Light-touch summary screen, not essential for RPG loop but great for v1 polish."
+    },
+
+    {
+      "id": "US-060",
+      "title": "Add background music and sound effects",
+      "description": "As a player, I want ambient music and sound effects for an immersive experience.",
+      "acceptanceCriteria": [
+        "Overworld has looping background music (8-bit/chiptune style)",
+        "Dungeon has different looping background music (darker tone)",
+        "Combat has combat music that plays during encounters",
+        "Sound effect for: attack hit, item pickup, level up, menu open",
+        "Music files in main/sounds/ and registered in client module",
+        "Audio can be muted (optional toggle)",
+        "Typecheck passes"
+      ],
+      "priority": 5,
+      "passes": false,
+      "notes": "PARALLEL with US-050, US-051, US-052. Use royalty-free chiptune tracks. Check /Volumes/home/assets/ or use freesound.org/opengameart.org. RPG-JS supports audio via @Sound decorator."
+    },
+
+    {
+      "id": "US-070",
+      "title": "Write and pass E2E tests for full game loop",
+      "description": "As a developer, I need E2E tests verifying the core game loop works.",
+      "acceptanceCriteria": [
+        "npx playwright install chromium succeeds",
+        "pnpm test runs all E2E tests",
+        "Title screen test: renders, validates seed, starts game",
+        "Determinism test: same seed produces same intro text",
+        "Navigation test: player can move on overworld",
+        "All tests pass with 0 failures",
+        "Typecheck passes"
+      ],
+      "priority": 6,
+      "passes": false,
+      "notes": "Depends on all previous stories. Tests in tests/e2e/. May need to adjust selectors based on actual RPG-JS DOM structure."
+    },
+    {
+      "id": "US-071",
+      "title": "Final lint, build verification, and commit",
+      "description": "As a developer, I need all code linted, built, and committed before PR.",
+      "acceptanceCriteria": [
+        "pnpm lint passes with 0 errors",
+        "pnpm build succeeds with dist/ output",
+        "All changes committed with descriptive messages",
+        "git log shows clean commit history on rebuild/rpgjs-proper",
+        "No uncommitted changes remain"
+      ],
+      "priority": 7,
+      "passes": false,
+      "notes": "Final verification pass before PR."
+    },
+    {
+      "id": "US-072",
+      "title": "Create PR from rebuild branch to main",
+      "description": "As a developer, I want a PR summarizing all v1.0 work for review and merge.",
+      "acceptanceCriteria": [
+        "PR created from rebuild/rpgjs-proper to main via gh pr create",
+        "PR title: 'Mnemonic Realms v1.0 — RPG-JS Standalone Game'",
+        "PR body lists: architecture change, features implemented, how to test",
+        "CI passes (lint + build)",
+        "PR link returned"
+      ],
+      "priority": 8,
+      "passes": false,
+      "notes": "Final story. CI in .github/workflows/build-deploy.yml."
+    }
+  ]
+}

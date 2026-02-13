@@ -1,13 +1,10 @@
-/**
- * Main Client Module for Mnemonic Realms
- * Handles rendering and client-side game logic
- */
-
-import { RpgModule, RpgClient } from '@rpgjs/client';
+import { type RpgClient, RpgModule } from '@rpgjs/client';
+import titleScreen from '../gui/title-screen.vue';
+import { Characters } from './characters';
 
 @RpgModule<RpgClient>({
-  spritesheets: [],
+  spritesheets: [Characters],
   sounds: [],
-  gui: [],
+  gui: [titleScreen],
 })
-export default class ClientModule {}
+export default class RpgClientModule {}

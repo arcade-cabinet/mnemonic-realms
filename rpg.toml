@@ -1,27 +1,15 @@
-# Mnemonic Realms - RPG-JS Configuration
-# Procedural RPG with seed-based generation
-
-[app]
 name = "Mnemonic Realms"
-shortName = "mnemonic"
-description = "Sword & sorcery procedural RPG with deterministic seed-based generation"
 
-[type]
-# Standalone mode for browser-only execution
-standalone = true
-
-[modules]
-# Main game module with procedural generation
-main = "./main"
+modules = [
+    './main',
+    '@rpgjs/default-gui',
+    '@rpgjs/gamepad'
+]
 
 [start]
-# Initial map and player configuration
-map = "proceduralWorld"
-graphic = "hero"
-hitbox = [16, 16]
-speed = 3
+    map = 'overworld'
+    graphic = 'hero'
+    hitbox = [16, 16]
 
-[compilerOptions]
-# Build configuration for RPG-JS compiler
-mode = "production"
-output = "dist/game"
+[compilerOptions.build]
+    pwaEnabled = false
