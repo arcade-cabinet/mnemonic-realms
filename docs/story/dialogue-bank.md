@@ -1097,7 +1097,7 @@ When specific gods are recalled, shops gain new stock and new dialogue:
 
 ## Part 11: Procedural NPC Dialogue Templates
 
-These templates generate dialogue for non-named NPCs. The RPG-JS implementation fills `{variables}` from the ECS personality system (see [characters.md](characters.md)).
+These templates generate dialogue for non-named NPCs. The RPG-JS implementation fills `{variables}` from the NPC's assigned personality type (see [characters.md](characters.md)).
 
 ### Greeting Variants (10+)
 

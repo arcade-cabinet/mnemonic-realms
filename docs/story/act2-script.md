@@ -28,7 +28,7 @@ Callum joins the party in Scene 2 and remains through Act II. Unlike Lira's Cler
 |------|----------------------|
 | HP | Player HP × 0.6 |
 | SP | Player SP × 1.2 |
-| STR | Low (base 8, +1 per level) |
+| ATK | Low (base 8, +1 per level) |
 | INT | High (base 18, +3 per level) |
 | DEF | Low (base 7, +1 per level) |
 | AGI | Medium (base 12, +2 per level) |

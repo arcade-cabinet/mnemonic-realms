@@ -124,7 +124,7 @@ Conversely, there is no bonus for fighting enemies above the player's level. The
 | Defense | DEF | Damage reduction against both physical and magical attacks (physical: DEF * 0.8, magical: DEF * 0.4). |
 | Agility | AGI | Turn order priority, evasion chance, and flee success rate. |
 
-Note: Some documents reference "STR" — this is the same stat as ATK. The implementation should use ATK consistently.
+Note: The canonical stat abbreviation is ATK (not STR). All documents have been updated to use ATK consistently.
 
 ### Stat Growth Formulas
 

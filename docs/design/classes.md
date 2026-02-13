@@ -21,7 +21,7 @@ The Knight doesn't just swing a sword — they bind themselves to remembered oat
 
 **Memory Twist**: The Knight's power is literally built on keeping promises. Breaking an oath (failing a quest, abandoning an NPC) has real mechanical consequences — not as punishment, but as the natural cost of broken memory.
 
-**Stat Focus**: STR, DEF. High HP growth. Frontline tank/damage.
+**Stat Focus**: ATK, DEF. High HP growth. Frontline tank/damage.
 
 ---
 
@@ -81,7 +81,7 @@ The Rogue has a unique relationship with memory — they can perceive the **futu
 
 **Memory Twist**: The Rogue's power comes from memories that haven't happened yet. This makes them thematically tied to the game's core question about growth vs. preservation — they literally embody the idea that the future is worth more than a frozen past.
 
-**Stat Focus**: AGI, DEX. Moderate HP. Evasion-based damage dealer.
+**Stat Focus**: AGI. Moderate HP. Evasion-based damage dealer.
 
 ## Class Progression
 

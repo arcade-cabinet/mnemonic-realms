@@ -258,7 +258,7 @@ Accessories are reward items from god-recall side quests and special encounters.
 | ACC-09 | **Lantern Keeper's Cloak** | +12 DEF. Immune to Blind. | Quest: "Solara's Lanterns" (Solara recall) |
 | ACC-10 | **Peregrine Boots** | +20 AGI. +25% movement speed. Immune to Slow. | Quest: "The Peregrine Circuit" (Jubila recall) |
 | ACC-11 | **Earthshaker Hammer** | Weapon override: ATK +40. AoE attacks have +15% area. (Knight only.) | Quest: "The Mountain's March" (Tecton recall) |
-| ACC-12 | **Tecton's Fist** | +15 STR. +15 DEF. Critical hits deal +25% damage. | Quest: "Tecton's Challenge" (Tecton recall) |
+| ACC-12 | **Tecton's Fist** | +15 ATK. +15 DEF. Critical hits deal +25% damage. | Quest: "Tecton's Challenge" (Tecton recall) |
 | ACC-13 | **Gyroscope Charm** | +15 AGI. Immune to knockback. Momentum cap +3 (Rogue). | Quest: "The Perpetual Engine" (Vortis recall) |
 
 Note: Not all players will have access to all accessories. Each is tied to a specific god recall form (see [dormant-gods.md](../world/dormant-gods.md)). A typical playthrough yields 2-4 accessories depending on which gods are recalled and which side quests are completed.

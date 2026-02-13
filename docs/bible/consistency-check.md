@@ -286,11 +286,11 @@ No contradictions that would cause ambiguous or incorrect implementation.
 
 | # | Issue | Files | Phase 2 Fix |
 |---|-------|-------|-------------|
-| A1 | STR used instead of ATK | `classes.md:24` | Use ATK in implementation; optionally fix prose |
-| A2 | DEX used (doesn't exist) | `classes.md:84` | Use AGI in implementation; optionally fix prose |
-| A3 | Stasis missing from status table | `combat.md:51-57` | Add Stasis row to table |
-| A4 | Inspired duration: 2 vs 3 turns | `combat.md:57` vs items/skills | Use 3 turns; fix `combat.md` |
-| A5 | Global vs per-zone vibrancy | `memory-system.md:60` vs `:88` | Rewrite line 60 to say "per-zone" |
+| A1 | STR used instead of ATK | `classes.md:24` | FIXED — applied 2026-02-13 |
+| A2 | DEX used (doesn't exist) | `classes.md:84` | FIXED — applied 2026-02-13 |
+| A3 | Stasis missing from status table | `combat.md:51-57` | FIXED — applied 2026-02-13 |
+| A4 | Inspired duration: 2 vs 3 turns | `combat.md:57` vs items/skills | FIXED — applied 2026-02-13 |
+| A5 | Global vs per-zone vibrancy | `memory-system.md:60` vs `:88` | FIXED — applied 2026-02-13 |
 
 All advisories are editorial — the correct values are unambiguous from context. None would cause implementation confusion because the more detailed/specific docs always have the right answer.
 

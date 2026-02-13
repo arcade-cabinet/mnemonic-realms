@@ -51,7 +51,7 @@ Every map uses these standard layers:
 
 **File**: `village-hub.tmx` | **Size**: 30x30 tiles (960x960 px) | **Tileset**: `tiles_village_{tier}.png`
 
-**Starting Vibrancy**: 60 (Normal tier)
+**Starting Vibrancy**: 50 (Normal tier)
 
 ### Layout Diagram
 

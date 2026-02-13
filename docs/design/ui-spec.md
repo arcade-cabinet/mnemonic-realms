@@ -112,7 +112,7 @@ All interactive elements must be at least **44x44 CSS pixels** (Apple HIG / WCAG
 | Class portrait | Image | Centered in carousel | 128x128 pixel art portrait of the selected class. From [spritesheet-spec.md](spritesheet-spec.md). |
 | Class name | Text | Below portrait | `--font-heading` 14px, `--text-bright` |
 | Class tagline | Text | Below name | 2 lines max, `--font-body`, `--text-primary`. E.g., "A warrior bound by remembered oaths." |
-| Stat preview | Bar group | Below tagline | 4 mini-bars showing STR/INT/DEF/AGI relative strengths per class |
+| Stat preview | Bar group | Below tagline | 4 mini-bars showing ATK/INT/DEF/AGI relative strengths per class |
 | Dot indicators | Navigation dots | Below carousel | 4 dots, active = `--text-accent`, inactive = `--text-secondary` |
 | Arrow buttons (◄ ►) | Buttons | Left/right of portrait | 44x44 tap target. Cycle classes. Desktop: also responds to arrow keys. |
 | "Begin Your Journey" | Button | Bottom center | Full-width (minus margins). `--btn-primary` bg, `--text-bright` text. |
@@ -476,7 +476,7 @@ Key items cannot be used manually — they're story triggers. Each card shows: n
 |  Accessory: [Empty         ▼]    |
 |                                   |
 +------- Stats Summary ────────────+
-| STR: 28  INT: 12  DEF: 22       |
+| ATK: 28  INT: 12  DEF: 22       |
 | AGI: 15  HP: 150  SP: 50        |
 +-----------------------------------+
 ```

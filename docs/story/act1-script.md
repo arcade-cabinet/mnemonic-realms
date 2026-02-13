@@ -349,7 +349,7 @@ The player leaves the village for the first time. Heartfield is rolling golden f
 
 #### Heartfield Hamlet (15, 15)
 
-4-5 farming families. Each NPC has seed-derived dialogue. Example interactions:
+4-5 farming families. Each NPC has personality-variant dialogue. Example interactions:
 
 **Farmer (near wheat field)**: The wheat's coming in well this season. Sometimes I swear it grows faster when we're happy about the harvest. Silly, right?
 
