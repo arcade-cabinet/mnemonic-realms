@@ -35,7 +35,7 @@
 - [x] **US-008**: Write `docs/story/quest-chains.md` — Main quests (8-12), side quests (10+), god quests (4 chains) (depends on act scripts)
 - [x] **US-016**: Write `docs/maps/overworld-layout.md` — Full overworld with zones, NPCs, enemies, events (depends on US-001, US-008, US-011)
 - [x] **US-017**: Write `docs/maps/dungeon-depths.md` — All dungeon floors + god shrines + final dungeon
-- [ ] **US-018**: Write `docs/maps/stagnation-zones.md` + `docs/maps/frontier-zones.md` — Crystalline zones, frontier transitions
+- [x] **US-018**: Write `docs/maps/stagnation-zones.md` + `docs/maps/frontier-zones.md` — Crystalline zones, frontier transitions
 
 ## Priority 6 — Event Placement (SEQUENTIAL)
 
