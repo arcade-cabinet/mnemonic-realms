@@ -8,11 +8,26 @@
       }
     </script>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimum-scale=1, width=device-width, height=device-height">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <title>Mnemonic Realms</title>
     <style>
+      :root {
+        --font-heading: 'Cinzel', 'Georgia', serif;
+        --font-body: 'Merriweather', 'Georgia', serif;
+        --text-primary: #d4c4a0;
+        --text-bright: #f0e6d0;
+        --text-accent: #b8860b;
+        --text-secondary: #8a7a60;
+        --bg-primary: #2a0e0e;
+        --bg-secondary: #110505;
+        --border-primary: #8b1f1f;
+        --btn-primary: #8b1f1f;
+      }
       html, body {
         margin: 0;
         padding: 0;
@@ -21,16 +36,30 @@
         background: #000;
         touch-action: none;
       }
-      /* Mobile-first: fullscreen */
+      /*
+       * Responsive viewport scaling
+       * RPG-JS auto-fills #rpg via Renderer.resize() which reads
+       * offsetWidth/offsetHeight from the container element.
+       * We control how much screen real estate to give it per breakpoint.
+       */
+
+      /* Mobile-first: fullscreen on all phones, foldables, tablets */
       #rpg {
         position: absolute;
         top: 0;
         left: 0;
-        right: 0;
-        bottom: 0;
+        width: 100%;
+        height: 100%;
       }
-      /* Desktop: centered fixed size */
-      @media (min-width: 800px) {
+
+      /* Crisp pixel art rendering on the PixiJS canvas */
+      #rpg canvas {
+        image-rendering: pixelated;
+        image-rendering: crisp-edges;
+      }
+
+      /* Desktop (1024px+): centered with max dimensions */
+      @media (min-width: 1024px) {
         body {
           display: flex;
           align-items: center;
@@ -38,8 +67,8 @@
         }
         #rpg {
           position: relative;
-          width: 816px;
-          height: 624px;
+          width: min(100vw, 1280px);
+          height: min(100vh, 960px);
         }
       }
     </style>

@@ -1,11 +1,18 @@
 name = "Mnemonic Realms"
 
 modules = [
-    './main'
+    './main',
+    '@rpgjs/default-gui'
 ]
 
 [compilerOptions.build]
     pwaEnabled = false
 
+[vite]
+    publicDir = "assets"
+
+[vite.server]
+    host = "0.0.0.0"
+
 [vite.optimizeDeps]
-    include = ["sat"]
+    include = ["sat", "xml-js", "eventemitter3", "earcut", "url", "punycode", "howler", "object-assign", "seedrandom", "sax"]

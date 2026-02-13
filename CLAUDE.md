@@ -15,11 +15,21 @@ pnpm build            # Production build (RPG_TYPE=rpg rpgjs build -> dist/)
 pnpm lint             # Biome check (main/**/*.ts, gen/**/*.ts)
 pnpm lint:fix         # Biome auto-fix
 pnpm test             # Playwright E2E tests (auto-starts dev server)
-pnpm gen:build        # Rebuild manifests from bible docs
-pnpm gen:assets       # Generate assets via Gemini (needs GEMINI_API_KEY)
-pnpm gen:status       # Show generation status
-pnpm gen:integrate    # Post-process gen/output -> main/ (sharp downscale + WebP)
-pnpm gen:full         # Full pipeline: build -> generate -> integrate
+
+# GenAI Pipeline CLI — unified via `pnpm gen <subcommand> [targets] [flags]`
+pnpm gen build [tilesets|sprites|portraits|items|code|all]
+                      # Rebuild manifests from bible docs + DDL data
+pnpm gen generate [images|code|all] [--dry-run] [--force] [--model <id>]
+                      # Generate assets/code via Gemini (needs GOOGLE_API_KEY or GEMINI_API_KEY)
+pnpm gen integrate [images|code|all] [--dry-run]
+                      # Post-process gen/output -> main/ (sharp downscale + WebP for images, copy for code)
+pnpm gen status       # Show generation status across all manifests
+
+# Shorthand scripts (same as above)
+pnpm gen:build        # pnpm gen build all
+pnpm gen:generate     # pnpm gen generate all
+pnpm gen:integrate    # pnpm gen integrate all
+pnpm gen:status       # pnpm gen status
 ```
 
 ## Architecture
@@ -38,39 +48,53 @@ Single RPG-JS module. No Next.js, no React. RPG-JS uses its own Vite-based compi
 
 ### GenAI Pipeline (`gen/`)
 
-Manifest-driven asset generation using Google Gemini 2.5 Flash.
+Manifest-driven asset and code generation using Google Gemini. Decomposed into focused modules:
 
-**`gen/schemas/`** — Zod schemas for tilesets, sprites, portraits, item icons.
+**`gen/cli.ts`** — Unified CLI entry point. Dispatches to `cli-build.ts`, `cli-generate.ts`, `cli-integrate.ts`, `cli-status.ts`.
 
-**`gen/style-context.ts`** — Global art direction constants (master style prompt, color palette, tier styles, dimension presets).
+**`gen/config/`** — Global art direction constants: master style prompt, color palette, tier styles, dimension presets, sprite style, DocRef defaults. Derived from `docs/design/visual-direction.md`.
 
-**`gen/scripts/`**:
-- `build-manifests.ts` — Reads bible docs (`docs/design/`) and generates `gen/manifests/*/manifest.json` files with prompts, dimensions, and docRefs.
-- `generate-assets.ts` — Processes manifests, calls Gemini API, writes raw PNGs to `gen/output/`. SHA-256 prompt hashing for idempotent reruns.
-- `integrate-assets.ts` — Post-processes `gen/output/` into RPG-JS module: sharp downscale to pixel-perfect dimensions, lossless WebP output (PNG for tilesets), generates `@Spritesheet` TypeScript bindings.
-- `markdown-loader.ts` — Extracts heading-scoped sections from bible markdown for DocRef resolution.
+**`gen/schemas/`** — Zod schemas for all pipeline data: tilesets, sprites, portraits, item icons, codegen DDL (weapons, armor, consumables, skills, enemies, classes, states), and common types (hashes, generation metadata, DocRefs).
 
-**`gen/manifests/`** — JSON manifests tracking asset generation status, prompts, and metadata. Committed to git. Merge-safe: rebuilding manifests preserves generation status for unchanged assets.
+**`gen/builders/`** — Manifest builders. Read bible docs and DDL data, emit `gen/manifests/*/manifest.json` files with prompts, dimensions, and DocRefs. Includes codegen builders for each database category (weapons, armor, consumables, skills, enemies, classes, states) plus image builders (tilesets, sprites, portraits, items).
 
-**`gen/output/`** — Raw generated PNGs. Gitignored. Regenerated from manifests.
+**`gen/generators/`** — Generation runners. `batch-runner.ts` and `code-batch-runner.ts` process manifests, call Gemini API via `image-gen.ts` / `text-gen.ts`, write outputs to `gen/output/`. SHA-256 prompt hashing for idempotent reruns. `model-config.ts` manages Gemini model selection. `prompt-assembly.ts` handles DocRef resolution into prompts.
+
+**`gen/integrators/`** — Post-processing. `sprite-integrator.ts` and `tileset-integrator.ts` use sharp for pixel-perfect downscaling. `code-integrator.ts` copies generated TypeScript files into `main/`. `generic-integrator.ts` handles portraits and item icons.
+
+**`gen/ddl/`** — Data Definition Layer. Structured game data organized by category (armor, biomes, classes, consumables, enemies, items, npcs, player-classes, portraits, skills, stagnation, status-effects, transitions, weapons). Source of truth for code generation — bible docs define the creative vision, DDL entries define the mechanical specs.
+
+**`gen/manifests/`** — JSON manifests tracking asset/code generation status, prompts, and metadata. Committed to git. Merge-safe: rebuilding manifests preserves generation status for unchanged entries.
+
+**`gen/output/`** — Raw generated PNGs and TypeScript code. Gitignored. Regenerated from manifests.
+
+**`gen/scripts/`** — Standalone pipeline scripts: `build-manifests.ts`, `generate-assets.ts`, `generate-code.ts`, `integrate-assets.ts`, `integrate-code.ts`, `markdown-loader.ts`.
+
+**`gen/utils/`** — Shared utilities: `docref-resolver.ts` (extracts heading-scoped sections from bible markdown), `markdown-parser.ts`.
 
 ### Bible Docs (`docs/`)
 
 Authored game content written by Ralph (autonomous agent). These are the source of truth for all game content and drive both the GenAI pipeline and the code generation.
 
-**`docs/design/`** — tileset-spec, spritesheet-spec, ui-spec, audio-direction, skills-catalog, enemies-catalog, items-catalog, progression, combat, classes, memory-system, visual-direction
+**`docs/design/`** — tileset-spec, spritesheet-spec, ui-spec, audio-direction, audio-pipeline-research, skills-catalog, enemies-catalog, items-catalog, progression, combat, classes, memory-system, visual-direction
 
-**`docs/story/`** — characters, structure, act scripts
+**`docs/story/`** — characters, structure, act scripts (1-3), dialogue-bank, quest-chains
 
 **`docs/world/`** — core-theme, setting, factions, geography, vibrancy-system, dormant-gods
+
+**`docs/maps/`** — overworld-layout, frontier-zones, dungeon-depths, stagnation-zones, event-placement
+
+**`docs/bible/`** — master-index, implementation-order, consistency-check
 
 ### Key Patterns
 
 - **RPG-JS standalone**: `RPG_TYPE=rpg` env var + `@rpgjs/standalone` mocks socket.io in-process for single-player browser deployment.
-- **Gemini 2.5 Flash for all generation**: Cost-optimized. Flash handles structured pixel art layouts well because it reasons about art direction.
+- **Gemini for all generation**: Image assets via Gemini imagen/flash models. Code generation via Gemini text models. Cost-optimized pipeline.
 - **Idempotent pipeline**: SHA-256 prompt hash + output file hash + manifest merge on rebuild = assets only regenerate when prompts change.
 - **DocRef system**: Manifest entries reference bible sections by `{ path, heading, purpose }`. The markdown-loader extracts the relevant section and injects it into the Gemini prompt.
+- **DDL architecture**: Game data definitions in `gen/ddl/` subdirectories with Zod validation. Separates creative content (docs) from mechanical specs (DDL).
 - **WebP for sprites/portraits/icons, PNG for tilesets**: Tilesets stay PNG for Tiled TMX compatibility. Everything else uses lossless WebP.
+- **Code generation categories**: weapons, armor, consumables, skills, enemies, classes, states — each with its own builder, schema, and DDL directory.
 
 ### Config Files
 

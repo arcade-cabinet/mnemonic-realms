@@ -10,12 +10,15 @@
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "test": "playwright test",
-    "gen:build": "tsx gen/scripts/build-manifests.ts",
-    "gen:assets": "tsx gen/scripts/generate-assets.ts",
-    "gen:status": "tsx gen/scripts/generate-assets.ts status",
-    "gen:dry-run": "tsx gen/scripts/generate-assets.ts --dry-run all",
-    "gen:integrate": "tsx gen/scripts/integrate-assets.ts",
-    "gen:full": "pnpm gen:build && pnpm gen:assets all && pnpm gen:integrate"
+    "test:unit": "vitest run",
+    "gen": "tsx gen/cli.ts",
+    "gen:build": "tsx gen/cli.ts build",
+    "gen:generate": "tsx gen/cli.ts generate",
+    "gen:integrate": "tsx gen/cli.ts integrate",
+    "gen:status": "tsx gen/cli.ts status",
+    "gen:full": "tsx gen/cli.ts build all && tsx gen/cli.ts generate all && tsx gen/cli.ts integrate all",
+    "audio:fetch-ambient": "tsx scripts/fetch-ambient-loops.ts",
+    "audio:gen-bgm-placeholders": "tsx scripts/generate-placeholder-bgm.ts"
   },
   "dependencies": {
     "@rpgjs/client": "4.3.0",
@@ -38,6 +41,7 @@
     "sharp": "^0.34.5",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
+    "vitest": "^4.0.18",
     "zod": "^4.3.6"
   },
   "pnpm": {
