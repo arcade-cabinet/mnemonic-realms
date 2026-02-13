@@ -10,15 +10,18 @@
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "test": "playwright test",
-    "example": "tsx main/generation/examples.ts"
+    "example": "tsx main/generation/examples.ts",
+    "assets": "tsx scripts/process-assets.ts",
+    "maps": "tsx scripts/generate-maps.ts",
+    "generate": "pnpm run assets && pnpm run maps"
   },
   "dependencies": {
     "@rpgjs/client": "4.3.0",
-    "@rpgjs/server": "4.3.0",
-    "@rpgjs/standalone": "4.3.0",
+    "@rpgjs/database": "^4.3.0",
     "@rpgjs/default-gui": "^4.3.0",
     "@rpgjs/gamepad": "^4.3.0",
-    "@rpgjs/database": "^4.3.0",
+    "@rpgjs/server": "4.3.0",
+    "@rpgjs/standalone": "4.3.0",
     "@rpgjs/types": "4.0.5",
     "ecsy": "^0.4.3",
     "seedrandom": "^3.0.5",
@@ -26,10 +29,12 @@
     "vue": "^3.5.0"
   },
   "devDependencies": {
-    "@rpgjs/compiler": "4.3.0",
     "@biomejs/biome": "~2.3.15",
     "@playwright/test": "^1.58.2",
+    "@rpgjs/compiler": "4.3.0",
     "@types/seedrandom": "^3.0.8",
+    "@types/sharp": "^0.32.0",
+    "sharp": "^0.34.5",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   },
@@ -37,7 +42,8 @@
     "onlyBuiltDependencies": [
       "@parcel/watcher",
       "esbuild",
-      "protobufjs"
+      "protobufjs",
+      "sharp"
     ],
     "overrides": {
       "@babel/parser": "7.26.10",

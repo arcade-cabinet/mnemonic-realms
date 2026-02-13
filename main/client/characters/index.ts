@@ -4,12 +4,25 @@ const { RMSpritesheet } = Presets;
 
 @Spritesheet({
   images: {
+    // Hero class variants (color-remapped from base Kenney roguelike character)
     hero: require('./hero.png'),
-    female13: require('./female13.png'),
-    male1_1: require('./male1_1.png'),
-    male4_1: require('./male4_1.png'),
+    warrior: require('./warrior.png'),
+    'warrior-dark': require('./warrior-dark.png'),
+    mage: require('./mage.png'),
+    'mage-dark': require('./mage-dark.png'),
+    rogue: require('./rogue.png'),
+    'rogue-dark': require('./rogue-dark.png'),
+    cleric: require('./cleric.png'),
+    'cleric-dark': require('./cleric-dark.png'),
+    // NPC variants
+    'npc-villager': require('./npc-villager.png'),
+    'npc-merchant': require('./npc-merchant.png'),
+    'npc-elder': require('./npc-elder.png'),
+    // Enemy variants
     enemy: require('./enemy.png'),
+    'enemy-strong': require('./enemy-strong.png'),
     boss: require('./boss.png'),
+    // Objects
     chest: require('./chest.png'),
   },
   width: 96,

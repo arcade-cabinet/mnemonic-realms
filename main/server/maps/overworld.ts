@@ -16,7 +16,7 @@ function createProceduralNPC(seed: string, index: number) {
   const npcName = nameGen.generateCharacterWithTitle();
   const dialogue = dialogueGen.generateRandomDialogue();
 
-  const graphicOptions = ['female13', 'male1_1', 'male4_1'];
+  const graphicOptions = ['npc-villager', 'npc-merchant', 'npc-elder'];
   const rng = new SeededRandom(`${seed}-npc-graphic-${index}`);
   const graphic = rng.pick(graphicOptions);
 
@@ -53,7 +53,7 @@ function createShopNPC(seed: string) {
   })
   class ShopNPCEvent extends RpgEvent {
     onInit() {
-      this.setGraphic('male4_1');
+      this.setGraphic('npc-merchant');
     }
 
     async onAction(player: RpgPlayer) {
@@ -95,7 +95,7 @@ function createQuestNPC(seed: string) {
   })
   class QuestNPCEvent extends RpgEvent {
     onInit() {
-      this.setGraphic('female13');
+      this.setGraphic('npc-elder');
     }
 
     async onAction(player: RpgPlayer) {
@@ -156,7 +156,7 @@ function createBossQuestNPC(seed: string) {
   })
   class BossQuestNPCEvent extends RpgEvent {
     onInit() {
-      this.setGraphic('male1_1');
+      this.setGraphic('npc-villager');
     }
 
     async onAction(player: RpgPlayer) {

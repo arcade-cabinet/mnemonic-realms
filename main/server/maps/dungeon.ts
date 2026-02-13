@@ -74,7 +74,7 @@ function createDungeonEnemy(seed: string, index: number) {
   })
   class DungeonEnemyEvent extends RpgEvent {
     onInit() {
-      this.setGraphic('enemy');
+      this.setGraphic(difficulty > 5 ? 'enemy-strong' : 'enemy');
       this.speed = 1;
       this.frequency = 250;
       this.infiniteMoveRoute([Move.tileRandom()]);

@@ -21,7 +21,21 @@ export const player: RpgPlayerHooks = {
     applyProceduralStats(player, seed || DEFAULT_SEED);
     applyStartingEquipment(player);
     player.setHitbox(20, 16);
-    player.setGraphic('hero');
+
+    // Set class-specific sprite variant
+    const playerClass = player.getVariable('class') || 'Warrior';
+    const classGraphicMap: Record<string, string> = {
+      Warrior: 'warrior',
+      Mage: 'mage',
+      Rogue: 'rogue',
+      Cleric: 'cleric',
+      'Dark Knight': 'warrior-dark',
+      Necromancer: 'mage-dark',
+      Assassin: 'rogue-dark',
+      'Shadow Priest': 'cleric-dark',
+    };
+    player.setGraphic(classGraphicMap[playerClass] || 'hero');
+
     player.changeMap('overworld');
   },
 
