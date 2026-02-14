@@ -40,7 +40,16 @@ export function readSave(slotId: SaveSlotId): SaveData | null {
   try {
     const raw = localStorage.getItem(slotKey(slotId));
     if (!raw) return null;
-    return JSON.parse(raw) as SaveData;
+
+    const data: unknown = JSON.parse(raw);
+
+    // Basic structural validation — reject corrupted or tampered data
+    if (!data || typeof data !== 'object' || !('version' in data)) {
+      console.warn(`[save-load] Corrupted save in slot "${slotId}", ignoring`);
+      return null;
+    }
+
+    return data as SaveData;
   } catch {
     console.warn(`[save-load] Failed to read save from slot "${slotId}"`);
     return null;

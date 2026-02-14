@@ -70,7 +70,8 @@ export type SaveSlotId = (typeof SAVE_SLOTS)[number];
 const STORAGE_PREFIX = 'mnemonic-realms-save-';
 const META_KEY = 'mnemonic-realms-save-meta';
 
-// Variable keys managed by known systems (excluded from generic variables capture)
+// Variable keys managed by known systems (excluded from generic variables capture).
+// PLAYER_CLASS_ID is covered by SYSTEM_VAR_PREFIXES ('PLAYER_'), listed here for clarity.
 const SYSTEM_VAR_PREFIXES = ['PLAYER_', 'VIBRANCY_'];
 const SYSTEM_VAR_EXACT = [
   'INVENTORY',
@@ -87,12 +88,12 @@ const SYSTEM_VAR_EXACT = [
 // Internal helpers
 // ---------------------------------------------------------------------------
 
-type VarMap = Record<string, unknown>;
+type VarMap = Map<string, unknown>;
 
-function getAllVars(player: RpgPlayer): VarMap {
-  // RPG-JS stores player variables in an internal `variables` record.
+function getAllVarsMap(player: RpgPlayer): VarMap {
+  // RPG-JS 4.3.0 stores player variables in a Map<string, any>.
   // The typed API only exposes get/setVariable; bulk access requires a cast.
-  return (player as unknown as { variables: VarMap }).variables ?? {};
+  return (player as unknown as { variables: VarMap }).variables ?? new Map();
 }
 
 function getPlayerMapId(player: RpgPlayer): string {
@@ -102,14 +103,14 @@ function getPlayerMapId(player: RpgPlayer): string {
 function extractVibrancy(vars: VarMap): Record<string, number> {
   const vibrancy: Record<string, number> = {};
   for (const zone of VIBRANCY_ZONES) {
-    vibrancy[zone] = (vars[`VIBRANCY_${zone}`] as number) ?? 0;
+    vibrancy[zone] = (vars.get(`VIBRANCY_${zone}`) as number) ?? 0;
   }
   return vibrancy;
 }
 
 function extractGenericVars(vars: VarMap): Record<string, unknown> {
   const result: Record<string, unknown> = {};
-  for (const [key, value] of Object.entries(vars)) {
+  for (const [key, value] of vars) {
     if (SYSTEM_VAR_EXACT.includes(key)) continue;
     if (SYSTEM_VAR_PREFIXES.some((p) => key.startsWith(p))) continue;
     result[key] = value;
@@ -119,12 +120,12 @@ function extractGenericVars(vars: VarMap): Record<string, unknown> {
 
 function extractStats(vars: VarMap): SaveData['stats'] {
   return {
-    hp: (vars.PLAYER_HP as number) ?? 0,
-    sp: (vars.PLAYER_SP as number) ?? 0,
-    atk: (vars.PLAYER_ATK as number) ?? 0,
-    int: (vars.PLAYER_INT as number) ?? 0,
-    def: (vars.PLAYER_DEF as number) ?? 0,
-    agi: (vars.PLAYER_AGI as number) ?? 0,
+    hp: (vars.get('PLAYER_HP') as number) ?? 0,
+    sp: (vars.get('PLAYER_SP') as number) ?? 0,
+    atk: (vars.get('PLAYER_ATK') as number) ?? 0,
+    int: (vars.get('PLAYER_INT') as number) ?? 0,
+    def: (vars.get('PLAYER_DEF') as number) ?? 0,
+    agi: (vars.get('PLAYER_AGI') as number) ?? 0,
   };
 }
 
@@ -133,7 +134,7 @@ function extractStats(vars: VarMap): SaveData['stats'] {
 // ---------------------------------------------------------------------------
 
 export function serializePlayer(player: RpgPlayer): SaveData {
-  const allVars = getAllVars(player);
+  const vars = getAllVarsMap(player);
 
   return {
     version: SAVE_VERSION,
@@ -142,27 +143,27 @@ export function serializePlayer(player: RpgPlayer): SaveData {
     positionX: player.position?.x ?? 0,
     positionY: player.position?.y ?? 0,
     classId: player.class?.id ?? '',
-    level: (allVars.PLAYER_LEVEL as number) ?? 1,
-    xp: (allVars.PLAYER_XP as number) ?? 0,
+    level: (vars.get('PLAYER_LEVEL') as number) ?? 1,
+    xp: (vars.get('PLAYER_XP') as number) ?? 0,
     hp: player.hp ?? 0,
     sp: player.sp ?? 0,
-    stats: extractStats(allVars),
-    inventory: { ...((allVars.INVENTORY as Record<string, number>) ?? {}) },
-    equipment: (allVars.EQUIPMENT as SaveData['equipment']) ?? {
+    stats: extractStats(vars),
+    inventory: { ...((vars.get('INVENTORY') as Record<string, number>) ?? {}) },
+    equipment: (vars.get('EQUIPMENT') as SaveData['equipment']) ?? {
       weapon: null,
       armor: null,
       accessory: null,
     },
-    equipBonuses: (allVars.EQUIP_BONUSES as SaveData['equipBonuses']) ?? {
+    equipBonuses: (vars.get('EQUIP_BONUSES') as SaveData['equipBonuses']) ?? {
       atk: 0,
       def: 0,
       int: 0,
     },
-    gold: (allVars.GOLD as number) ?? 0,
-    memoryFragments: [...((allVars.MEMORY_FRAGMENTS as string[]) ?? [])],
-    vibrancy: extractVibrancy(allVars),
-    variables: extractGenericVars(allVars),
-    playTimeMs: (allVars.PLAY_TIME_MS as number) ?? 0,
+    gold: (vars.get('GOLD') as number) ?? 0,
+    memoryFragments: [...((vars.get('MEMORY_FRAGMENTS') as string[]) ?? [])],
+    vibrancy: extractVibrancy(vars),
+    variables: extractGenericVars(vars),
+    playTimeMs: (vars.get('PLAY_TIME_MS') as number) ?? 0,
   };
 }
 
@@ -171,6 +172,12 @@ export function serializePlayer(player: RpgPlayer): SaveData {
 // ---------------------------------------------------------------------------
 
 export async function deserializePlayer(player: RpgPlayer, data: SaveData): Promise<void> {
+  // Defensive: validate that data has the expected shape before accessing
+  if (!data || typeof data !== 'object' || typeof data.version !== 'number') {
+    console.warn('[save-load] Invalid or corrupted save data, skipping load');
+    return;
+  }
+
   // Restore class
   if (data.classId) {
     try {
@@ -178,6 +185,8 @@ export async function deserializePlayer(player: RpgPlayer, data: SaveData): Prom
     } catch {
       // Class may not be registered yet
     }
+    // Restore the class ID variable that the progression system reads from
+    player.setVariable('PLAYER_CLASS_ID', data.classId);
   }
 
   // Restore progression variables
@@ -200,12 +209,12 @@ export async function deserializePlayer(player: RpgPlayer, data: SaveData): Prom
   player.setVariable('MEMORY_FRAGMENTS', data.memoryFragments);
 
   // Restore vibrancy per zone
-  for (const [zone, value] of Object.entries(data.vibrancy)) {
+  for (const [zone, value] of Object.entries(data.vibrancy ?? {})) {
     player.setVariable(`VIBRANCY_${zone}`, value);
   }
 
   // Restore generic variables (quests, event flags, etc.)
-  for (const [key, value] of Object.entries(data.variables)) {
+  for (const [key, value] of Object.entries(data.variables ?? {})) {
     player.setVariable(key, value);
   }
 
@@ -278,8 +287,15 @@ export async function loadGame(player: RpgPlayer, slotId: SaveSlotId): Promise<b
     const raw = localStorage.getItem(`${STORAGE_PREFIX}${slotId}`);
     if (!raw) return false;
 
-    const data = JSON.parse(raw) as SaveData;
-    await deserializePlayer(player, data);
+    const data: unknown = JSON.parse(raw);
+
+    // Basic structural validation before casting
+    if (!data || typeof data !== 'object' || !('version' in data)) {
+      console.warn(`[save-load] Corrupted save in slot "${slotId}", ignoring`);
+      return false;
+    }
+
+    await deserializePlayer(player, data as SaveData);
     return true;
   } catch {
     return false;
