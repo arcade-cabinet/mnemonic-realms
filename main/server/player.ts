@@ -1,4 +1,6 @@
 import type { RpgPlayer, RpgPlayerHooks } from '@rpgjs/server';
+import type { EquipmentSlot } from './systems/inventory';
+import { equipItem, useItem } from './systems/inventory';
 import type { SaveData, SaveSlotId } from './systems/save-load';
 import { autoSave, deserializePlayer, loadGame } from './systems/save-load';
 
@@ -8,6 +10,20 @@ const SPRITE_MAP: Record<string, string> = {
   rogue: 'sprite-player-rogue',
   cleric: 'sprite-player-cleric',
 };
+
+function openInventory(player: RpgPlayer) {
+  const inv = player.gui('inventory-screen');
+
+  inv.on('use-item', (data: { itemId: string }) => {
+    useItem(player, data.itemId);
+  });
+
+  inv.on('equip-item', (data: { slot: string; itemId: string }) => {
+    equipItem(player, data.slot as EquipmentSlot, data.itemId);
+  });
+
+  inv.open();
+}
 
 function openTitleScreen(player: RpgPlayer) {
   const gui = player.gui('title-screen');
@@ -28,18 +44,21 @@ function openTitleScreen(player: RpgPlayer) {
     player.setVariable('CHOSEN_GRAPHIC', SPRITE_MAP[classId] ?? 'sprite-player-knight');
     player.removeGui('title-screen');
     player.gui('rpg-hud').open();
+    openInventory(player);
     await player.changeMap('village-hub', { x: 480, y: 480 });
   });
 
   gui.on('load-save', async (data: { slotId: SaveSlotId; saveData: SaveData }) => {
     player.removeGui('title-screen');
     player.gui('rpg-hud').open();
+    openInventory(player);
     await deserializePlayer(player, data.saveData);
   });
 
   gui.on('continue-game', async (data: { slotId: SaveSlotId }) => {
     player.removeGui('title-screen');
     player.gui('rpg-hud').open();
+    openInventory(player);
     await loadGame(player, data.slotId);
   });
 
@@ -73,6 +92,7 @@ export const player: RpgPlayerHooks = {
 
   onDead(player: RpgPlayer) {
     player.removeGui('rpg-hud');
+    player.removeGui('inventory-screen');
     const gameOver = player.gui('game-over');
 
     gameOver.on('return-to-title', () => {

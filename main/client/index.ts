@@ -4,6 +4,7 @@ import CreditsScreen from '../gui/credits.vue';
 import DialogueBox from '../gui/dialogue-box.vue';
 import GameOver from '../gui/game-over.vue';
 import Hud from '../gui/hud.vue';
+import InventoryScreen from '../gui/inventory.vue';
 import TitleScreen from '../gui/title-screen.vue';
 import { audioManager } from './audio';
 import { aliasSprites } from './characters/aliases';
@@ -47,7 +48,7 @@ const sceneMap: RpgSceneMapHooks = {
 
 @RpgModule<RpgClient>({
   spritesheets: [...generatedSprites, ...aliasSprites],
-  gui: [TitleScreen, DialogueBox, Hud, GameOver, CreditsScreen],
+  gui: [TitleScreen, DialogueBox, Hud, GameOver, CreditsScreen, InventoryScreen],
   scenes: {
     map: sceneMap,
   },
