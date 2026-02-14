@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="20" height="25" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="100">
+ <properties>
+  <property name="category" value="dungeon"/>
+  <property name="mapName" value="The Deepest Memory"/>
+  <property name="vibrancy" type="int" value="30"/>
+ </properties>
+ <tileset firstgid="1" source="tiles_dungeon_vivid.tsx"/>
+ <layer id="1" name="ground" width="20" height="25">
+  <data encoding="csv">
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+6,6,6,6,7,7,7,7,7,7,3,3,3,3,3,3,3,3,3,3,
+6,6,6,6,7,7,7,7,7,7,3,3,3,3,3,3,3,3,3,3,
+6,6,6,6,7,7,7,7,7,7,3,3,3,3,3,3,3,3,3,3,
+6,6,6,6,7,7,7,7,7,7,3,3,3,3,3,3,3,3,3,3,
+6,6,6,6,6,8,8,8,8,6,3,3,3,3,3,3,3,3,3,3,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+6,6,6,6,7,7,7,7,7,3,8,8,8,8,7,6,6,6,6,6,
+6,6,6,6,7,7,7,7,7,7,8,8,8,8,7,6,6,6,6,6,
+6,6,6,6,6,7,7,7,7,6,8,8,8,8,6,6,6,6,6,6,
+6,6,6,6,7,7,7,7,7,7,8,8,8,8,3,6,6,6,6,6,
+6,6,6,6,7,7,7,7,7,7,8,8,8,8,7,6,6,6,6,6,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8
+  </data>
+ </layer>
+ <layer id="2" name="ground2" width="20" height="25">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0
+  </data>
+ </layer>
+ <layer id="3" name="objects" width="20" height="25">
+  <data encoding="csv">
+178,178,178,178,178,178,178,178,178,0,0,178,178,178,178,178,178,178,178,178,
+178,0,0,0,0,146,0,0,0,0,0,0,0,0,146,0,0,0,0,178,
+178,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,178,
+178,178,178,178,178,178,178,178,178,178,178,178,178,178,178,178,178,178,178,178,
+178,0,0,0,178,0,0,0,0,178,0,0,0,0,0,0,0,0,0,178,
+178,153,0,0,0,0,153,0,0,0,0,0,0,0,153,0,0,0,0,178,
+178,0,151,0,178,0,0,148,0,178,0,0,0,0,0,0,0,146,0,178,
+178,0,0,0,178,0,0,0,0,178,0,0,0,0,0,0,0,0,0,178,
+178,178,0,178,178,178,178,0,178,0,178,178,178,178,178,178,178,178,178,178,
+178,0,0,153,0,0,146,0,0,0,0,0,146,0,0,0,0,0,0,178,
+178,0,0,0,0,0,0,0,0,153,0,0,0,0,0,151,0,0,0,178,
+178,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,178,
+178,178,0,178,178,178,178,0,178,178,178,178,0,178,178,178,178,0,178,178,
+178,0,0,0,178,0,0,0,0,178,0,0,0,0,178,0,0,0,0,178,
+178,153,0,0,0,0,153,0,0,0,0,153,0,0,0,0,0,153,0,178,
+178,0,151,0,178,0,0,148,0,178,0,0,151,0,178,0,151,0,0,178,
+178,0,0,0,178,0,0,0,0,178,0,0,0,0,178,0,0,0,38,178,
+178,178,178,178,178,178,178,178,178,0,178,178,178,178,178,178,178,178,178,178,
+178,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,178,
+178,0,0,146,0,0,0,0,0,0,0,0,0,0,0,146,0,0,0,178,
+178,0,0,0,0,0,0,0,0,153,0,0,0,0,0,0,0,0,0,178,
+178,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,178,
+178,0,0,0,0,0,0,0,0,0,0,0,0,0,151,0,0,0,0,178,
+178,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,178,
+178,178,178,178,178,178,178,178,178,178,178,178,178,178,178,178,178,178,178,178
+  </data>
+ </layer>
+ <layer id="4" name="objects_upper" width="20" height="25">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+  </data>
+ </layer>
+ <layer id="5" name="collision" width="20" height="25">
+  <data encoding="csv">
+1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,
+1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,
+1,1,0,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,1,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,1,0,1,1,1,1,0,1,1,1,1,0,1,1,1,1,0,1,1,
+1,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,
+1,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,
+1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+  </data>
+ </layer>
+ <objectgroup id="6" name="events">
+  <object id="1" x="320" y="0" width="32" height="32">
+   <properties>
+    <property name="direction" value="up"/>
+    <property name="target_map" value="depths-l4"/>
+    <property name="target_x" type="int" value="10"/>
+    <property name="target_y" type="int" value="24"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="2" name="EV-D5-002" type="event_trigger" x="320" y="32" width="32" height="32">
+   <properties>
+    <property name="description" value="Threshold vision: the player sees a rapid montage of all the world's dissolved civilizations — a thousand years compressed into 10 seconds. One-time."/>
+    <property name="id" value="EV-D5-002"/>
+    <property name="trigger" value="auto"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="3" name="EV-D5-003" type="event_trigger" x="64" y="192" width="32" height="32">
+   <properties>
+    <property name="description" value="Resonance Stone (inverted): 1 fragment (awe/light/4). One-time."/>
+    <property name="fragment_element" value="light"/>
+    <property name="fragment_potency" type="int" value="4"/>
+    <property name="fragment_type" value="awe"/>
+    <property name="id" value="EV-D5-003"/>
+    <property name="trigger" value="action"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="4" name="EV-D5-004" type="event_trigger" x="224" y="192" width="32" height="32">
+   <properties>
+    <property name="description" value="Treasure chest (Vivid half): First Light (W-ST-08, INT +48) or Dissolved Memory Lens (W-WD-08, INT +49). Weapon type matches player's class (Cleric gets First Light, Mage gets Dissolved Memory Lens). One-time."/>
+    <property name="id" value="EV-D5-004"/>
+    <property name="item_alt_id" value="W-WD-08"/>
+    <property name="item_id" value="W-ST-08"/>
+    <property name="item_quantity" type="int" value="1"/>
+    <property name="trigger" value="action"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="5" name="EV-D5-005" type="event_trigger" x="480" y="192" width="32" height="32">
+   <properties>
+    <property name="description" value="Loop trigger: if player walks forward past this point, teleport to (11, 6)."/>
+    <property name="id" value="EV-D5-005"/>
+    <property name="teleport_target_x" type="int" value="11"/>
+    <property name="teleport_target_y" type="int" value="6"/>
+    <property name="trigger" value="auto"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="6" name="EV-D5-006" type="event_trigger" x="352" y="192" width="32" height="32">
+   <properties>
+    <property name="description" value="Reverse progress: if player walks backward through here, proceed normally to Room 5."/>
+    <property name="id" value="EV-D5-006"/>
+    <property name="trigger" value="auto"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="7" name="EV-D5-007" type="map_connection" x="96" y="320" width="32" height="32">
+   <properties>
+    <property name="description" value="Memory lift: fast-travel to Half-Drawn Forest (13, 36)."/>
+    <property name="direction" value="up"/>
+    <property name="id" value="EV-D5-007"/>
+    <property name="target_map" value="half-drawn-forest"/>
+    <property name="target_x" type="int" value="13"/>
+    <property name="target_y" type="int" value="36"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="8" name="EV-D5-008" type="event_trigger" x="160" y="320" width="32" height="32">
+   <properties>
+    <property name="description" value="Resonance Stone (rest): full HP/SP restore. Reusable."/>
+    <property name="id" value="EV-D5-008"/>
+    <property name="rest_point" type="bool" value="true"/>
+    <property name="trigger" value="action"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="9" name="EV-D5-009" type="event_trigger" x="544" y="352" width="32" height="32">
+   <properties>
+    <property name="description" value="Resonance Stone: 1 fragment (calm/neutral/4). One-time."/>
+    <property name="fragment_element" value="neutral"/>
+    <property name="fragment_potency" type="int" value="4"/>
+    <property name="fragment_type" value="calm"/>
+    <property name="id" value="EV-D5-009"/>
+    <property name="trigger" value="action"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="10" name="EV-D5-010" type="event_trigger" x="64" y="480" width="32" height="32">
+   <properties>
+    <property name="description" value="Curator image: lore entry about the Curator's origins. &quot;Before the crystal. Before the title. There was just a person who loved their home.&quot;"/>
+    <property name="id" value="EV-D5-010"/>
+    <property name="trigger" value="action"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="11" name="EV-D5-011" type="event_trigger" x="224" y="480" width="32" height="32">
+   <properties>
+    <property name="description" value="Civilization vision: 30-second cinematic of the oldest dissolution. One-time. Lore entry."/>
+    <property name="id" value="EV-D5-011"/>
+    <property name="trigger" value="auto"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="12" name="EV-D5-012" type="event_trigger" x="256" y="448" width="32" height="32">
+   <properties>
+    <property name="description" value="Treasure chest: Elixir (C-HP-04) ×1, Ether (C-SP-04) ×1. One-time."/>
+    <property name="id" value="EV-D5-012"/>
+    <property name="item_alt_id" value="C-SP-04"/>
+    <property name="item_alt_quantity" type="int" value="1"/>
+    <property name="item_id" value="C-HP-04"/>
+    <property name="item_quantity" type="int" value="1"/>
+    <property name="trigger" value="action"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="13" name="EV-D5-013" type="event_trigger" x="384" y="448" width="32" height="32">
+   <properties>
+    <property name="description" value="Resonance Stone A: 1 fragment (joy/light/4). One-time."/>
+    <property name="fragment_element" value="light"/>
+    <property name="fragment_potency" type="int" value="4"/>
+    <property name="fragment_type" value="joy"/>
+    <property name="id" value="EV-D5-013"/>
+    <property name="trigger" value="action"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="14" name="EV-D5-014" type="event_trigger" x="416" y="512" width="32" height="32">
+   <properties>
+    <property name="description" value="Resonance Stone B: 1 fragment (fury/fire/4). One-time."/>
+    <property name="fragment_element" value="fire"/>
+    <property name="fragment_potency" type="int" value="4"/>
+    <property name="fragment_type" value="fury"/>
+    <property name="id" value="EV-D5-014"/>
+    <property name="trigger" value="action"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="15" name="EV-D5-015" type="event_trigger" x="384" y="512" width="32" height="32">
+   <properties>
+    <property name="description" value="Resonance Stone C: 1 fragment (sorrow/dark/4). One-time."/>
+    <property name="fragment_element" value="dark"/>
+    <property name="fragment_potency" type="int" value="4"/>
+    <property name="fragment_type" value="sorrow"/>
+    <property name="id" value="EV-D5-015"/>
+    <property name="trigger" value="action"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="16" name="EV-D5-016" type="event_trigger" x="576" y="480" width="32" height="32">
+   <properties>
+    <property name="description" value="Treasure chest: Memory-Woven Plate (A-14, DEF +35). One-time."/>
+    <property name="id" value="EV-D5-016"/>
+    <property name="item_id" value="A-14"/>
+    <property name="item_quantity" type="int" value="1"/>
+    <property name="trigger" value="action"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="17" name="EV-D5-017" type="event_trigger" x="544" y="448" width="32" height="32">
+   <properties>
+    <property name="description" value="Stone tablet: &quot;The First Memory is not a beginning. It is a question: 'What do you want the world to be?' We dissolved so that someone new could answer.&quot;"/>
+    <property name="id" value="EV-D5-017"/>
+    <property name="trigger" value="action"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="18" name="EV-D5-018" type="map_connection" x="608" y="512" width="32" height="32">
+   <properties>
+    <property name="description" value="Shortcut passage to Preserver Fortress basement. Only accessible if GQ-03-F2 (Shadows of the Curator) is completed. See MQ-09 notes."/>
+    <property name="direction" value="down"/>
+    <property name="id" value="EV-D5-018"/>
+    <property name="quest_required" value="GQ-03-F2"/>
+    <property name="target_map" value="fortress-f1"/>
+    <property name="target_x" type="int" value="10"/>
+    <property name="target_y" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="19" name="EV-D5-019" type="event_trigger" x="320" y="672" width="32" height="32">
+   <properties>
+    <property name="description" value="Pre-boss dialogue. The First Dreamer speaks."/>
+    <property name="id" value="EV-D5-019"/>
+    <property name="trigger" value="action"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="20" name="EV-D5-020" type="event_trigger" x="320" y="672" width="32" height="32">
+   <properties>
+    <property name="boss_id" value="B-03d"/>
+    <property name="description" value="Boss fight: B-03d The First Dreamer."/>
+    <property name="id" value="EV-D5-020"/>
+    <property name="trigger" value="auto"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="21" name="EV-D5-021" type="event_trigger" x="320" y="672" width="32" height="32">
+   <properties>
+    <property name="description" value="Post-victory: The First Dreamer dissolves peacefully. Reveals the First Memory's existence and the Fortress's purpose."/>
+    <property name="id" value="EV-D5-021"/>
+    <property name="quest_complete" value="MQ-09"/>
+    <property name="trigger" value="auto"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="22" name="EV-D5-022" type="event_trigger" x="320" y="736" width="32" height="32">
+   <properties>
+    <property name="description" value="Treasure chest (boss reward): Dissolved Essence (C-SP-09) ×2, Memory Incense (C-BF-05) ×1, 300 gold."/>
+    <property name="gold_reward" type="int" value="300"/>
+    <property name="id" value="EV-D5-022"/>
+    <property name="item_alt_id" value="C-BF-05"/>
+    <property name="item_alt_quantity" type="int" value="1"/>
+    <property name="item_id" value="C-SP-09"/>
+    <property name="item_quantity" type="int" value="2"/>
+    <property name="trigger" value="action"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="23" name="EZ-D5-01" type="enemy_zone" x="32" y="128" width="128" height="160">
+   <properties>
+    <property name="encounter_rate" value="common"/>
+    <property name="enemies" value="E-DP-05"/>
+    <property name="id" value="EZ-D5-01"/>
+    <property name="level_range" value="24-25"/>
+   </properties>
+  </object>
+  <object id="24" name="EZ-D5-02" type="enemy_zone" x="192" y="128" width="128" height="160">
+   <properties>
+    <property name="encounter_rate" value="common"/>
+    <property name="enemies" value="E-DP-05"/>
+    <property name="id" value="EZ-D5-02"/>
+    <property name="level_range" value="24-25"/>
+   </properties>
+  </object>
+  <object id="25" name="EZ-D5-03" type="enemy_zone" x="352" y="128" width="288" height="160">
+   <properties>
+    <property name="encounter_rate" value="standard"/>
+    <property name="enemies" value="E-DP-05,E-DP-04"/>
+    <property name="id" value="EZ-D5-03"/>
+    <property name="level_range" value="24-26"/>
+   </properties>
+  </object>
+  <object id="26" name="EZ-D5-04" type="enemy_zone" x="32" y="416" width="128" height="160">
+   <properties>
+    <property name="encounter_rate" value="common"/>
+    <property name="enemies" value="E-DP-05"/>
+    <property name="id" value="EZ-D5-04"/>
+    <property name="level_range" value="24-26"/>
+   </properties>
+  </object>
+  <object id="27" name="EZ-D5-05" type="enemy_zone" x="352" y="416" width="128" height="160">
+   <properties>
+    <property name="encounter_rate" value="standard"/>
+    <property name="enemies" value="E-DP-05"/>
+    <property name="id" value="EZ-D5-05"/>
+    <property name="level_range" value="25-27"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

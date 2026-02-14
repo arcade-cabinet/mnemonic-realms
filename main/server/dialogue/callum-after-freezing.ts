@@ -1,0 +1,34 @@
+import type { RpgPlayer } from '@rpgjs/server';
+
+export default async function dialogue(player: RpgPlayer) {
+  // Trigger condition: MQ-04 must be complete
+  const mq04Complete = await player.getQuest('MQ-04')?.isCompleted();
+
+  // Optional: Check if player is in the Elder's House at the specified coordinates
+  // This dialogue is triggered *after* Scene 11, so the location check might be handled by the event system.
+  // However, including it here makes the dialogue more robust if triggered manually.
+  const isInEldersHouse =
+    player.map.id === 'village_hub' && player.position.x === 18 && player.position.y === 10;
+
+  if (mq04Complete) {
+    await player.showText('I heard. Lira...', { speaker: 'callum_graphic' });
+    await player.showText("She's alive. The crystal doesn't kill.", { speaker: 'callum_graphic' });
+    await player.showText(
+      "You'll need to go north. Into the Frontier — where the dormant gods sleep.",
+      { speaker: 'callum_graphic' },
+    );
+    await player.showText(
+      "The mountain pass north of here — it's been closed for as long as I can remember. But I don't think anything's stopping you anymore.",
+      { speaker: 'callum_graphic' },
+    );
+
+    // Optionally, set a flag or advance a quest state after this dialogue
+    // For example, to mark that Callum has given this information
+    // await player.setVariable('callum_info_after_lira_freezing', true);
+    // await player.updateQuest('MQ-05', 'started'); // Assuming MQ-05 starts here
+  } else {
+    // If the condition is not met, Callum might say something else or nothing at all.
+    // For this specific dialogue, we assume it only triggers when MQ-04 is complete.
+    // await player.showText('Hello, adventurer.', { speaker: 'callum_graphic' });
+  }
+}

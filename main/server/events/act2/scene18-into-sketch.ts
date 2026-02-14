@@ -1,0 +1,97 @@
+import { EventData, RpgEvent, type RpgPlayer } from '@rpgjs/server';
+
+// Placeholder dialogue content for NPCs
+const DLG_CALLUM_SKETCH_ENTRY = [
+  "Callum: The air... it's different here. Like a breath held for too long.",
+  "Callum: This is it, then. The edge of what is, and what isn't yet.",
+  'Callum: Are you ready, [player_name]? The Sketch awaits.',
+];
+
+const DLG_LIRA_SKETCH_ENTRY = [
+  "Lira: Incredible. The world... it's a canvas, waiting for its final strokes.",
+  'Lira: Every line, every shade... it tells a story of what could be.',
+  'Lira: We must be careful. This place is fragile, yet full of potential.',
+];
+
+@EventData({
+  name: 'act2-scene18-into-sketch',
+  // The hitbox should cover the transition tile on the 'frontier-edge' map
+  hitbox: {
+    width: 32,
+    height: 32,
+  },
+})
+export class Act2Scene18IntoSketch extends RpgEvent {
+  onInit() {
+    // This event should only be visible/interactive when MQ-07 is completed
+    // and it hasn't been triggered before.
+    this.onChanges(({ player }) => {
+      if (
+        player.getQuest('MQ-07') === 'completed' &&
+        !player.getVariable('act2_scene18_triggered')
+      ) {
+        this.show(); // Make the event visible/interactive
+      } else {
+        this.hide(); // Hide it otherwise
+      }
+    });
+  }
+
+  async onPlayerTouch(player: RpgPlayer) {
+    // Ensure the quest condition is met and the event hasn't been triggered
+    if (player.getQuest('MQ-07') !== 'completed' || player.getVariable('act2_scene18_triggered')) {
+      return;
+    }
+
+    // Mark the event as triggered to prevent re-execution
+    player.setVariable('act2_scene18_triggered', true);
+
+    // 1. Transition to the Sketch map
+    // Assuming 'half-drawn-forest' is the entry map to the Sketch,
+    // and player lands at (20, 20) on this new map.
+    await player.changeMap('half-drawn-forest', { x: 20, y: 20 });
+
+    // 2. Apply visual and audio effects
+    await player.screenEffect('sketch-transition');
+    await player.changeMusic('sketch-ambient');
+    await player.showText("You've entered the Sketch — the world's unfinished edge.");
+
+    // 3. Spawn NPCs at appropriate positions on the new map
+    // NPCs are created as dynamic events on the player's current map ('half-drawn-forest')
+    const callum = await player.createDynamicEvent(RpgEvent, {
+      eventId: 'callum_sketch_entry_npc', // Unique ID for the dynamic NPC event
+      x: 18, // Position relative to player's landing spot
+      y: 20,
+      graphic: 'npc_callum',
+      name: 'Callum',
+    });
+
+    const lira = await player.createDynamicEvent(RpgEvent, {
+      eventId: 'lira_sketch_entry_npc', // Unique ID for the dynamic NPC event
+      x: 22, // Position relative to player's landing spot
+      y: 20,
+      graphic: 'npc_lira',
+      name: 'Lira',
+    });
+
+    // 4. Play dialogue sequences
+    await player.showText(DLG_CALLUM_SKETCH_ENTRY);
+    await player.showText(DLG_LIRA_SKETCH_ENTRY);
+
+    // 5. Update quest state
+    player.setQuest('MQ-07', 'completed'); // Explicitly mark as completed
+    player.setQuest('MQ-08', 'active'); // Activate the next main quest
+
+    // Optional: If NPCs are temporary for this scene, remove them after dialogue.
+    // If they are meant to persist for further interaction, keep them.
+    // For a major scene transition, they might persist.
+    // If removal is desired:
+    // callum.remove();
+    // lira.remove();
+  }
+}
+
+// Export the setup function to register the event with RPG-JS
+export default function setup() {
+  return Act2Scene18IntoSketch;
+}

@@ -1,0 +1,161 @@
+import {
+  EventData,
+  MapData,
+  RpgCommonPlayer,
+  RpgEvent,
+  RpgMap,
+  type RpgPlayer,
+  RpgScene,
+} from '@rpgjs/server';
+import { Dialogue } from '../database/dialogue';
+import { Fragments } from '../database/fragments';
+import { Quests } from '../database/quests';
+
+@EventData({
+  id: 'act1-scene8-millbrook',
+  name: 'Millbrook — River of Memory',
+  hitbox: { width: 32, height: 32 },
+  // This event is triggered on map entry, so no specific position is needed for the main event.
+  // Dynamic events will be created for NPCs.
+})
+export class MillbrookSceneEvent extends RpgEvent {
+  onInit() {
+    this.set({
+      name: 'Millbrook Scene Trigger',
+      // This event is invisible and serves as a scene trigger
+      graphic: '',
+      visible: false,
+    });
+  }
+
+  async onPlayerTouch(player: RpgPlayer) {
+    // Check if the player is on the 'millbrook' map and it's their first visit for this scene.
+    // The map-enter trigger is handled by checking player.getVariable('first_visit_millbrook_scene8')
+    // and the current map ID.
+    if (player.map.id === 'millbrook' && !player.getVariable('first_visit_millbrook_scene8')) {
+      await this.triggerScene(player);
+    }
+  }
+
+  async onPlayerChanges(player: RpgPlayer) {
+    // This hook is called when player properties change, including map.
+    // We use it to detect map entry for the first time.
+    if (player.map.id === 'millbrook' && !player.getVariable('first_visit_millbrook_scene8')) {
+      await this.triggerScene(player);
+    }
+  }
+
+  private async triggerScene(player: RpgPlayer) {
+    // Ensure the scene only triggers once per player
+    if (player.getVariable('first_visit_millbrook_scene8')) {
+      return;
+    }
+    player.setVariable('first_visit_millbrook_scene8', true);
+
+    // 1. Effects: System message
+    await player.showText('Millbrook: riverside town with specialty shops and hidden grotto.', {
+      system: true,
+      time: 3000,
+    });
+
+    // 2. Spawn Lira (npc_lira)
+    // Lira's initial position for this scene is near the town center or where the player enters.
+    // Based on "Millbrook Town (15, 15)" and "Lira: Millbrook. More people here..."
+    // Let's place her near the player's entry point or a central location.
+    // Assuming player enters from (39, 20) from Village Hub, Lira could be at (35, 20) or (15, 15)
+    const lira = await player.map.createDynamicEvent({
+      x: 15, // Central Millbrook location
+      y: 15,
+      event: LiraMillbrookEvent,
+      properties: {
+        graphic: 'npc_lira',
+        direction: 0, // Facing down
+      },
+    });
+
+    // 3. Dialogue calls
+    await player.showText(Dialogue['dlg-lira-scene8'].millbrookIntro, { speaker: 'Lira' });
+
+    // Lira's dialogue about the specialty shop
+    await player.showText(Dialogue['dlg-lira-scene8'].millbrookShop, { speaker: 'Lira' });
+
+    // Lira's dialogue about the Brightwater Bridge
+    await player.showText(Dialogue['dlg-lira-scene8'].brightwaterBridge, { speaker: 'Lira' });
+
+    // 4. Quest Changes: MQ-03 → advance (obj 2)
+    player.addQuest(Quests.MQ_03.id); // Ensure MQ-03 is active if not already
+    player.updateQuest(Quests.MQ_03.id, 'advance', 2); // Advance to objective 2
+
+    // Additional scene elements (not directly handled by this trigger, but good to note for other events)
+    // - Specialty Shopkeeper (EV-MB-003) at (15, 15)
+    // - Brightwater Bridge Resonance Stone (RS-MB-01) at (21, 19)
+    // - Upstream Falls secret area (CH-MB-01, RS-MB-02, RS-MB-04) at (7, 5) and (8, 5)
+    // - Fisher Lane (EV-MB-001) at (29, 29)
+    // - Remix strategy tutorial (triggered after collecting water fragments)
+  }
+}
+
+@EventData({
+  id: 'npc_lira_millbrook_scene8',
+  name: 'Lira',
+  hitbox: { width: 32, height: 32 },
+})
+export class LiraMillbrookEvent extends RpgEvent {
+  onInit() {
+    this.setGraphic('npc_lira');
+    this.setDirection(0); // Facing down
+  }
+
+  async onAction(player: RpgPlayer) {
+    // Lira's dialogue when interacted with after the initial scene trigger
+    if (player.getVariable('first_visit_millbrook_scene8')) {
+      // Check if player has collected water fragments for remix tutorial
+      const hasWaterFragments =
+        player.hasFragment(Fragments.AWE_WATER_2.id) ||
+        player.hasFragment(Fragments.FURY_WATER_3.id) ||
+        player.hasFragment(Fragments.SORROW_WATER_3.id) ||
+        player.hasFragment(Fragments.CALM_WATER_1.id);
+
+      if (
+        player.getVariable('found_upstream_falls_grotto') &&
+        !player.getVariable('lira_remix_tutorial_given')
+      ) {
+        await player.showText(Dialogue['dlg-lira-scene8'].grottoFragments, { speaker: 'Lira' });
+        await player.showText(Dialogue['dlg-lira-scene8'].remixGuidanceIntro, { speaker: 'Lira' });
+        await player.showText(Dialogue['dlg-lira-scene8'].remixGuidanceCompound, {
+          speaker: 'Lira',
+        });
+        await player.showText(Dialogue['dlg-lira-scene8'].remixGuidanceMatching, {
+          speaker: 'Lira',
+        });
+        await player.showText(
+          "Remix tip: match the fragment's emotion to the zone's resonant emotion for a bonus when broadcasting. See the Memory menu for zone emotion details.",
+          { system: true, time: 5000 },
+        );
+        player.setVariable('lira_remix_tutorial_given', true);
+      } else if (!player.getVariable('lira_remix_tutorial_given') && hasWaterFragments) {
+        // If player has fragments but hasn't found grotto, Lira can still offer general remix advice
+        await player.showText(Dialogue['dlg-lira-scene8'].remixGuidanceIntro, { speaker: 'Lira' });
+        await player.showText(Dialogue['dlg-lira-scene8'].remixGuidanceCompound, {
+          speaker: 'Lira',
+        });
+        await player.showText(Dialogue['dlg-lira-scene8'].remixGuidanceMatching, {
+          speaker: 'Lira',
+        });
+        await player.showText(
+          "Remix tip: match the fragment's emotion to the zone's resonant emotion for a bonus when broadcasting. See the Memory menu for zone emotion details.",
+          { system: true, time: 5000 },
+        );
+        player.setVariable('lira_remix_tutorial_given', true);
+      } else {
+        await player.showText(Dialogue['dlg-lira-scene8'].millbrookGeneral, { speaker: 'Lira' });
+      }
+    }
+  }
+}
+
+// Export the setup function as default
+export default async function setup() {
+  // No global setup needed here, as the main event handles its own trigger logic.
+  // Dynamic events like Lira are created by the main scene event.
+}

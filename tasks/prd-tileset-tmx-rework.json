@@ -1,0 +1,461 @@
+{
+  "name": "Mnemonic Realms — Tileset & TMX Complete Rework",
+  "description": "Regenerate all tilesets with Gemini Pro (no text artifacts), write authoritative tile catalog, and rewrite all 20 TMX maps with correct tile placement per overworld-layout.md. PBR reference: docs/pbr-tileset-tmx-quality.md",
+  "branchName": "ralph/tileset-tmx-rework",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Fix tileset builder prompts to prevent text artifacts",
+      "description": "As a developer, I need the tileset generation prompts fixed so regenerated tilesets don't have text labels burned into tile images.",
+      "acceptanceCriteria": [
+        "gen/builders/tilesets.ts modified: all tile ID labels (VIL-GR-01, FOR-DE-03, etc.) removed from user prompts",
+        "Negative prompt added: 'No text, no letters, no labels, no words, no numbers, no watermarks' included in every tileset generation prompt",
+        "Prompt structure simplified: describe tile categories in bulk (e.g., 'Row 1-2: 16 ground tiles') instead of per-tile with IDs",
+        "Autotile rows 4-9 explicitly instructed as 'LEAVE EMPTY (transparent background)'",
+        "gen/generators/model-config.ts updated: CATEGORY_MODELS.tilesets changed from MODELS.gemini to MODELS.geminiPro",
+        "pnpm lint passes"
+      ],
+      "priority": 1,
+      "passes": false,
+      "notes": "CRITICAL GATE — nothing else can proceed until prompts are fixed. Read gen/builders/tilesets.ts, gen/generators/model-config.ts, and docs/design/tileset-spec.md for context. The tileset-spec.md defines the intended row layout: Ground (rows 1-2), Path (row 3), Autotile (rows 4-9), Decoration (rows 10-11), Obstacle (row 12), Animated (rows 13-14).",
+      "dependsOn": []
+    },
+    {
+      "id": "US-002",
+      "title": "Regenerate Village tilesets (3 tiers) with visual QC",
+      "description": "As a developer, I need clean village tilesets regenerated with Gemini Pro so the starting map has usable tile art.",
+      "acceptanceCriteria": [
+        "Run: doppler run --project gha --config ci -- pnpm gen generate tilesets --force --filter village",
+        "Visually inspect each PNG (tiles_village_muted.png, tiles_village_normal.png, tiles_village_vivid.png) by reading them",
+        "No text or labels visible on any tile",
+        "Ground tiles (rows 1-2) look like cobblestone and grass variants",
+        "Path tiles (row 3) are recognizable as paths/roads",
+        "Rows 4-9 are empty/transparent",
+        "Decoration tiles (rows 10-11) show village objects: benches, barrels, lanterns, flower pots, wells",
+        "Obstacle tiles (row 12) show walls, roofs, fences, trees, doors",
+        "If QC fails on ANY check, adjust the prompt in gen/builders/tilesets.ts and regenerate until it passes"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "After generation, read each PNG file to visually verify. This is the most important tileset — it's the starting map. Iterate on prompts if needed.",
+      "dependsOn": [
+        "US-001"
+      ]
+    },
+    {
+      "id": "US-003",
+      "title": "Regenerate Forest tilesets (3 tiers) with visual QC",
+      "description": "As a developer, I need clean forest tilesets for Ambergrove and Flickerveil maps.",
+      "acceptanceCriteria": [
+        "Run: doppler run --project gha --config ci -- pnpm gen generate tilesets --force --filter forest",
+        "Visually inspect all 3 PNGs by reading them",
+        "No text or labels visible",
+        "Ground tiles show forest floor, leaf litter, moss variants",
+        "Trees: deciduous and conifer variants visible in decoration/obstacle rows",
+        "Water/pond tiles present",
+        "Rows 4-9 empty/transparent"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Forest was the best quality in the original generation. Should need fewer prompt iterations.",
+      "dependsOn": [
+        "US-001"
+      ]
+    },
+    {
+      "id": "US-004",
+      "title": "Regenerate Grassland tilesets (3 tiers) with visual QC",
+      "description": "As a developer, I need clean grassland tilesets for Heartfield and Sunridge maps.",
+      "acceptanceCriteria": [
+        "Run: doppler run --project gha --config ci -- pnpm gen generate tilesets --force --filter grassland",
+        "Visually inspect all 3 PNGs",
+        "No text or labels visible",
+        "Ground tiles show grass, wheat field, tilled soil variants",
+        "Decoration/obstacle rows show farmstead elements: fences, hay bales, windmill, scarecrow, boulders, trees",
+        "Rows 4-9 empty/transparent"
+      ],
+      "priority": 4,
+      "passes": false,
+      "notes": "",
+      "dependsOn": [
+        "US-001"
+      ]
+    },
+    {
+      "id": "US-005",
+      "title": "Regenerate Mountain tilesets (3 tiers) with visual QC",
+      "description": "As a developer, I need clean mountain tilesets for Hollow Ridge and Undrawn Peaks.",
+      "acceptanceCriteria": [
+        "Run: doppler run --project gha --config ci -- pnpm gen generate tilesets --force --filter mountain",
+        "Visually inspect all 3 PNGs",
+        "No text or labels visible",
+        "Ground tiles show rock face, alpine grass, gravel, snow/ice variants",
+        "Obstacle rows show cliff faces, boulders, cave entrances, pine trees",
+        "Rows 4-9 empty/transparent"
+      ],
+      "priority": 5,
+      "passes": false,
+      "notes": "",
+      "dependsOn": [
+        "US-001"
+      ]
+    },
+    {
+      "id": "US-006",
+      "title": "Regenerate Riverside tilesets (3 tiers) with visual QC",
+      "description": "As a developer, I need clean riverside tilesets for Millbrook map.",
+      "acceptanceCriteria": [
+        "Run: doppler run --project gha --config ci -- pnpm gen generate tilesets --force --filter riverside",
+        "Visually inspect all 3 PNGs",
+        "No text or labels visible",
+        "Ground tiles show riverbank, water (shallow/deep), cobblestone variants",
+        "Decoration rows show reeds, boats, fishing gear, bridge elements, waterwheel",
+        "Rows 4-9 empty/transparent"
+      ],
+      "priority": 6,
+      "passes": false,
+      "notes": "",
+      "dependsOn": [
+        "US-001"
+      ]
+    },
+    {
+      "id": "US-007",
+      "title": "Regenerate Wetland tilesets (3 tiers) with visual QC",
+      "description": "As a developer, I need clean wetland tilesets for Shimmer Marsh map.",
+      "acceptanceCriteria": [
+        "Run: doppler run --project gha --config ci -- pnpm gen generate tilesets --force --filter wetland",
+        "Visually inspect all 3 PNGs",
+        "No text or labels visible",
+        "Ground tiles show marsh ground, shallow pools, moss carpet, peat/bog",
+        "Decoration rows show reeds, lily pads, frogs, hanging moss, ruins",
+        "Obstacle rows show mangrove trunks, cattails, sunken ruins",
+        "Rows 4-9 empty/transparent"
+      ],
+      "priority": 7,
+      "passes": false,
+      "notes": "",
+      "dependsOn": [
+        "US-001"
+      ]
+    },
+    {
+      "id": "US-008",
+      "title": "Regenerate Plains, Dungeon, and Sketch tilesets with visual QC",
+      "description": "As a developer, I need the remaining 3 biome tilesets regenerated clean.",
+      "acceptanceCriteria": [
+        "Run plains: doppler run --project gha --config ci -- pnpm gen generate tilesets --force --filter plains",
+        "Run dungeon: doppler run --project gha --config ci -- pnpm gen generate tilesets --force --filter dungeon",
+        "Run sketch: doppler run --project gha --config ci -- pnpm gen generate tilesets --force --filter sketch",
+        "Visually inspect all 9 PNGs (3 biomes x 3 tiers)",
+        "Plains: grass, resonance stones, tents, campfire visible, no text",
+        "Dungeon: stone floors, walls, torches, doors, chests, crystals visible, no text",
+        "Sketch: pencil-drawn aesthetic on parchment, appropriate content density per tier (muted sparse, vivid fuller), no text",
+        "All autotile rows 4-9 empty/transparent across all 3 biomes"
+      ],
+      "priority": 8,
+      "passes": false,
+      "notes": "Batching 3 biomes since they're lower priority (Act II/III maps). Still QC each individually.",
+      "dependsOn": [
+        "US-001"
+      ]
+    },
+    {
+      "id": "US-009",
+      "title": "Integrate regenerated tilesets and repair edge pixels",
+      "description": "As a developer, I need regenerated tilesets integrated into the game and edge pixels repaired for seamless rendering.",
+      "acceptanceCriteria": [
+        "Run: pnpm gen integrate images --filter tilesets",
+        "Run: pnpm exec tsx scripts/repair-tileset-edges.ts",
+        "All 27 tiles_*.png files in main/server/maps/tmx/ updated",
+        "Edge repair reports reasonable numbers (expect lower than 16k since new tilesets should have cleaner edges)",
+        "Run repair a second time — should report 0 pixels repaired (idempotent)",
+        "pnpm dev starts without errors"
+      ],
+      "priority": 9,
+      "passes": false,
+      "notes": "This integrates ALL regenerated tilesets from US-002 through US-008. Must wait for all biome regen stories to complete.",
+      "dependsOn": [
+        "US-002",
+        "US-003",
+        "US-004",
+        "US-005",
+        "US-006",
+        "US-007",
+        "US-008"
+      ]
+    },
+    {
+      "id": "US-010",
+      "title": "Regenerate dirty sprites and verify quality",
+      "description": "As a developer, I need the 43 dirty-flagged sprites regenerated without solid-line artifacts.",
+      "acceptanceCriteria": [
+        "Run: doppler run --project gha --config ci -- pnpm gen generate sprites --dirty",
+        "Run: pnpm gen integrate images --filter sprites",
+        "Run: pnpm exec tsx scripts/verify-sprites.ts",
+        "Target: 0 warnings from verify-sprites.ts",
+        "If any sprites still fail, re-dirty them in gen/dirty.json and regenerate until all pass"
+      ],
+      "priority": 10,
+      "passes": false,
+      "notes": "43 sprites flagged in gen/dirty.json. Can run in parallel with tileset regen since sprites use different manifest.",
+      "dependsOn": [
+        "US-001"
+      ]
+    },
+    {
+      "id": "US-011",
+      "title": "Write tile catalog for Village and Forest tilesets",
+      "description": "As a developer, I need an authoritative tile catalog documenting what's at every tile position in the Village and Forest tilesets so TMX maps can be written correctly.",
+      "acceptanceCriteria": [
+        "docs/design/tileset-catalog.md created",
+        "Village Normal section: every non-empty tile documented with Tile ID, Column, Row, Visual Description, Category (ground/path/decoration/obstacle/animated)",
+        "Forest Normal section: same format",
+        "Each tile description is specific enough to choose the right ID for TMX placement (e.g., 'tan cobblestone with mortar lines' not just 'ground')",
+        "Empty/transparent tiles noted as such",
+        "Muted and Vivid tiers noted as palette variants of Normal (same layout)"
+      ],
+      "priority": 11,
+      "passes": false,
+      "notes": "Read the regenerated PNG files to visually inspect each tile. Use the Normal tier as the reference. These are the two most-used biomes (village hub + ambergrove + flickerveil).",
+      "dependsOn": [
+        "US-009"
+      ]
+    },
+    {
+      "id": "US-012",
+      "title": "Write tile catalog for Grassland, Mountain, Riverside, Wetland tilesets",
+      "description": "As a developer, I need tile catalogs for the remaining overworld biomes.",
+      "acceptanceCriteria": [
+        "docs/design/tileset-catalog.md updated with Grassland Normal, Mountain Normal, Riverside Normal, Wetland Normal sections",
+        "Every non-empty tile documented per same format as US-011",
+        "Empty tiles noted"
+      ],
+      "priority": 12,
+      "passes": false,
+      "notes": "These cover Heartfield, Sunridge, Hollow Ridge, Millbrook, Shimmer Marsh maps.",
+      "dependsOn": [
+        "US-009"
+      ]
+    },
+    {
+      "id": "US-013",
+      "title": "Write tile catalog for Plains, Dungeon, Sketch tilesets and cross-reference",
+      "description": "As a developer, I need tile catalogs for the remaining biomes plus a verification cross-reference against tileset-spec.md.",
+      "acceptanceCriteria": [
+        "docs/design/tileset-catalog.md updated with Plains Normal, Dungeon Normal, Sketch Normal sections",
+        "Verification section added at end: for each biome, note which spec-defined tiles exist vs missing",
+        "Ground tiles verified as seamlessly tileable (note any that aren't)",
+        "Three tiers of each biome verified as same layout with different palette"
+      ],
+      "priority": 13,
+      "passes": false,
+      "notes": "Final catalog story. After this, all 9 biomes documented.",
+      "dependsOn": [
+        "US-009"
+      ]
+    },
+    {
+      "id": "US-014",
+      "title": "Rewrite village-hub.tmx with correct tile placement",
+      "description": "As a developer, I need the starting village map rewritten with correct tile IDs matching the tile catalog and layout diagram.",
+      "acceptanceCriteria": [
+        "main/server/maps/tmx/village-hub.tmx rewritten",
+        "Ground layer: cobblestone in village center, grass on edges, dirt paths connecting locations per layout diagram",
+        "Ground2 layer: sparse decorative overlay (flowers, puddles) at 10-20% coverage",
+        "Objects layer: building walls at spec positions (Elder's House, Inn, Shop, Blacksmith, Workshop), trees along N/S perimeter, benches/barrels/signs in Central Square",
+        "Objects_upper layer: roof tiles above each building, tree canopy above tree trunks",
+        "Collision layer: buildings blocked, trees blocked, water blocked, all paths and open ground passable, player spawn (15,15) guaranteed passable",
+        "Events layer: NPC objects at positions from overworld-layout.md Map 1, transition zones at N/S/E/W gates",
+        "Uses ONLY tile IDs documented in docs/design/tileset-catalog.md Village section",
+        "pnpm dev loads the map without errors"
+      ],
+      "priority": 14,
+      "passes": false,
+      "notes": "HIGHEST PRIORITY TMX. Read docs/maps/overworld-layout.md Map 1 section for the complete layout diagram, NPC positions, and event placement. Read docs/design/tileset-catalog.md Village section for tile IDs. Size: 30x30 tiles.",
+      "dependsOn": [
+        "US-011"
+      ]
+    },
+    {
+      "id": "US-015",
+      "title": "Rewrite heartfield.tmx (South Settled Lands)",
+      "description": "As a developer, I need Heartfield map rewritten with correct grassland tile placement.",
+      "acceptanceCriteria": [
+        "main/server/maps/tmx/heartfield.tmx rewritten with grassland tiles per catalog",
+        "Ground: grass, wheat fields, dirt roads per overworld-layout.md Map 2A",
+        "Objects: farmsteads, fences, trees, boulders at spec positions",
+        "Collision: matches feature placement",
+        "Events: NPCs, transitions, resonance stones per spec",
+        "pnpm dev loads map without errors"
+      ],
+      "priority": 15,
+      "passes": false,
+      "notes": "40x40 map. Read overworld-layout.md Map 2A. Tileset: grassland.",
+      "dependsOn": [
+        "US-012"
+      ]
+    },
+    {
+      "id": "US-016",
+      "title": "Rewrite ambergrove.tmx (East Settled Lands)",
+      "description": "As a developer, I need Ambergrove map rewritten with correct forest tile placement.",
+      "acceptanceCriteria": [
+        "main/server/maps/tmx/ambergrove.tmx rewritten with forest tiles per catalog",
+        "Ground: forest floor, clearings, trails per overworld-layout.md Map 2B",
+        "Objects: trees (deciduous + conifer), mushrooms, logs, rocks at spec positions",
+        "Collision: dense forest blocked, trails passable",
+        "Events: NPCs, transitions per spec",
+        "pnpm dev loads map without errors"
+      ],
+      "priority": 16,
+      "passes": false,
+      "notes": "40x40 map. Read overworld-layout.md Map 2B. Tileset: forest.",
+      "dependsOn": [
+        "US-011"
+      ]
+    },
+    {
+      "id": "US-017",
+      "title": "Rewrite millbrook.tmx (West Settled Lands)",
+      "description": "As a developer, I need Millbrook map rewritten with correct riverside tile placement.",
+      "acceptanceCriteria": [
+        "main/server/maps/tmx/millbrook.tmx rewritten with riverside tiles per catalog",
+        "Ground: riverbanks, water, cobblestone town area per Map 2C",
+        "Objects: bridges, docks, town buildings, waterwheel, willow trees",
+        "Collision: water blocked (except bridges), buildings blocked",
+        "Events: NPCs, shop events, transitions per spec",
+        "pnpm dev loads map without errors"
+      ],
+      "priority": 17,
+      "passes": false,
+      "notes": "40x40 map. Read overworld-layout.md Map 2C. Tileset: riverside.",
+      "dependsOn": [
+        "US-012"
+      ]
+    },
+    {
+      "id": "US-018",
+      "title": "Rewrite sunridge.tmx (North Settled Lands)",
+      "description": "As a developer, I need Sunridge map rewritten with correct grassland tile placement.",
+      "acceptanceCriteria": [
+        "main/server/maps/tmx/sunridge.tmx rewritten with grassland tiles per catalog",
+        "Ground: grass, hills, roads per Map 2D",
+        "Objects: farms, fences, elevated areas",
+        "Collision and events per spec",
+        "pnpm dev loads map without errors"
+      ],
+      "priority": 18,
+      "passes": false,
+      "notes": "40x40 map. Read overworld-layout.md Map 2D. Tileset: grassland.",
+      "dependsOn": [
+        "US-012"
+      ]
+    },
+    {
+      "id": "US-019",
+      "title": "Rewrite Frontier zone maps (resonance-fields, hollow-ridge, shimmer-marsh, flickerveil)",
+      "description": "As a developer, I need all 4 Frontier maps rewritten with correct tile placement per their biomes.",
+      "acceptanceCriteria": [
+        "resonance-fields.tmx rewritten: plains tiles, 50x50, per Map 3A spec",
+        "hollow-ridge.tmx rewritten: mountain tiles, 50x50, per Map 3B spec",
+        "shimmer-marsh.tmx rewritten: wetland tiles, 50x50, per Map 3C spec",
+        "flickerveil.tmx rewritten: forest tiles, 50x50, per Map 3D spec",
+        "All 4 maps: ground, objects, collision, events layers correct per overworld-layout.md",
+        "pnpm dev loads all 4 maps without errors"
+      ],
+      "priority": 19,
+      "passes": false,
+      "notes": "Batching 4 Frontier maps since they're Act II content and less immediately visible. All are 50x50 tiles. Read overworld-layout.md Maps 3A-3D.",
+      "dependsOn": [
+        "US-012",
+        "US-013"
+      ]
+    },
+    {
+      "id": "US-020",
+      "title": "Rewrite Sketch zone maps (luminous-wastes, undrawn-peaks, half-drawn-forest)",
+      "description": "As a developer, I need all 3 Sketch zone maps rewritten with sketch tileset.",
+      "acceptanceCriteria": [
+        "luminous-wastes.tmx rewritten: sketch tiles, 40x40, per Map 4A spec",
+        "undrawn-peaks.tmx rewritten: sketch tiles, 40x40, per Map 4B spec",
+        "half-drawn-forest.tmx rewritten: sketch tiles, 40x40, per Map 4C spec",
+        "Sketch maps use sparser tile placement (more empty/void tiles) per the unfinished world aesthetic",
+        "pnpm dev loads all 3 maps without errors"
+      ],
+      "priority": 20,
+      "passes": false,
+      "notes": "Act III content. Sketch biome is intentionally sparse. Read overworld-layout.md Maps 4A-4C.",
+      "dependsOn": [
+        "US-013"
+      ]
+    },
+    {
+      "id": "US-021",
+      "title": "Rewrite Depths dungeon maps (depths-l1 through depths-l5)",
+      "description": "As a developer, I need all 5 Depths level maps rewritten with dungeon tileset.",
+      "acceptanceCriteria": [
+        "depths-l1.tmx through depths-l5.tmx rewritten: dungeon tiles, 20x25 each",
+        "Each level: stone floors, corridors, rooms, doors, torches per dungeon-depths.md",
+        "Collision: walls blocked, corridors passable",
+        "Events: stairways connecting levels, treasure chests, enemy spawn zones per spec",
+        "pnpm dev loads all 5 maps without errors"
+      ],
+      "priority": 21,
+      "passes": false,
+      "notes": "Read docs/maps/dungeon-depths.md for level layouts. 20x25 tiles each — smaller than overworld maps.",
+      "dependsOn": [
+        "US-013"
+      ]
+    },
+    {
+      "id": "US-022",
+      "title": "Rewrite Fortress maps (fortress-f1 through fortress-f3)",
+      "description": "As a developer, I need all 3 Preserver Fortress floor maps rewritten with dungeon tileset.",
+      "acceptanceCriteria": [
+        "fortress-f1.tmx through fortress-f3.tmx rewritten: dungeon tiles, 20x25 each",
+        "Fortress floors: more ornate than Depths — carved walls, crystal formations, boss arena on f3",
+        "Collision and events per dungeon-depths.md fortress section",
+        "pnpm dev loads all 3 maps without errors"
+      ],
+      "priority": 22,
+      "passes": false,
+      "notes": "Read docs/maps/dungeon-depths.md fortress section. End-game content.",
+      "dependsOn": [
+        "US-013"
+      ]
+    },
+    {
+      "id": "US-023",
+      "title": "Full visual playthrough verification and fix remaining issues",
+      "description": "As a developer, I need to verify the entire game works visually by playing through it and fixing any remaining issues.",
+      "acceptanceCriteria": [
+        "Start pnpm dev, navigate title screen -> class select -> village hub",
+        "Walk around village hub — buildings, paths, trees visible and correct",
+        "Transition to at least 2 adjacent maps (Heartfield, Ambergrove)",
+        "Verify adjacent maps render correctly",
+        "Screenshot each visited map for visual record",
+        "Run pnpm exec tsx scripts/verify-sprites.ts — 0 warnings",
+        "Run pnpm build — clean build, no errors",
+        "Any issues found: fix in this iteration"
+      ],
+      "priority": 23,
+      "passes": false,
+      "notes": "Final verification. If issues are found, fix them here rather than creating new stories.",
+      "dependsOn": [
+        "US-014",
+        "US-015",
+        "US-016",
+        "US-017",
+        "US-018",
+        "US-019",
+        "US-020",
+        "US-021",
+        "US-022"
+      ]
+    }
+  ],
+  "metadata": {
+    "updatedAt": "2026-02-13T19:14:45.775Z"
+  }
+}

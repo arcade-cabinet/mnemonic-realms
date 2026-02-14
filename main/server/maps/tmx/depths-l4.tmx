@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="20" height="25" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="100">
+ <properties>
+  <property name="category" value="dungeon"/>
+  <property name="mapName" value="The Songline"/>
+  <property name="vibrancy" type="int" value="45"/>
+ </properties>
+ <tileset firstgid="1" source="tiles_dungeon_normal.tsx"/>
+ <layer id="1" name="ground" width="20" height="25">
+  <data encoding="csv">
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+6,6,6,6,6,6,6,6,8,8,8,8,8,8,8,8,8,8,8,8,
+6,6,6,6,6,6,6,6,8,8,8,8,8,8,8,8,8,8,8,8,
+6,6,6,6,6,6,6,6,8,8,8,8,8,8,8,8,8,8,8,8,
+6,6,6,6,6,6,6,6,6,4,4,4,4,4,4,4,4,4,4,4,
+6,6,6,6,6,6,6,6,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,
+6,6,6,6,6,6,6,6,8,7,7,7,7,7,7,7,7,7,7,7,
+6,6,6,6,6,6,6,6,8,7,7,7,7,7,7,7,7,7,7,7,
+6,6,6,6,6,6,6,6,8,7,7,7,7,7,7,7,7,7,7,7,
+6,6,6,6,6,6,6,6,8,7,7,7,7,7,7,7,7,7,7,7,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8
+  </data>
+ </layer>
+ <layer id="2" name="ground2" width="20" height="25">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0
+  </data>
+ </layer>
+ <layer id="3" name="objects" width="20" height="25">
+  <data encoding="csv">
+177,177,177,177,177,177,177,177,177,0,0,177,177,177,177,177,177,177,177,177,
+177,0,0,0,0,146,0,0,0,0,0,0,0,0,0,0,0,0,0,177,
+177,0,0,0,0,0,0,0,0,153,0,0,0,0,146,0,0,0,0,177,
+177,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,177,
+177,177,177,177,177,177,177,177,177,0,177,177,177,177,177,177,177,177,177,177,
+177,0,0,0,0,0,0,0,177,0,0,0,0,0,0,0,0,151,0,177,
+177,0,0,153,0,0,0,0,0,0,0,0,0,0,153,0,0,0,0,177,
+177,153,0,0,0,0,0,0,177,0,0,0,146,0,0,0,0,0,0,177,
+177,0,0,0,0,0,0,0,177,0,0,0,0,0,0,0,0,0,0,177,
+177,177,177,177,0,177,177,177,177,0,177,177,177,177,177,177,177,177,177,177,
+177,0,0,0,0,0,0,0,0,148,0,0,0,0,0,0,0,0,0,177,
+177,0,0,0,0,153,0,0,0,0,0,0,0,0,153,0,0,0,0,177,
+177,0,0,146,0,0,0,0,0,0,0,0,0,0,0,0,146,0,0,177,
+177,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,177,
+177,177,177,177,177,177,177,177,177,0,177,177,177,177,177,177,177,177,177,177,
+177,0,0,0,0,0,0,0,177,0,0,0,0,0,0,0,0,0,0,177,
+177,0,0,151,0,0,0,0,0,0,0,0,0,0,153,0,0,0,0,177,
+177,153,0,0,0,0,0,0,177,0,0,0,0,0,0,0,0,151,0,177,
+177,0,0,0,0,0,0,0,177,0,0,0,0,0,0,0,0,0,0,177,
+177,177,177,177,177,177,177,177,177,0,177,177,177,177,177,177,177,177,177,177,
+177,0,0,146,0,0,0,0,0,0,0,0,0,0,0,146,0,0,0,177,
+177,0,0,0,0,0,0,0,0,153,0,0,0,0,0,0,0,0,0,177,
+177,0,0,0,0,0,0,0,0,0,0,0,0,0,151,0,0,0,0,177,
+177,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,177,
+177,177,177,177,177,177,177,177,177,38,177,177,177,177,177,177,177,177,177,177
+  </data>
+ </layer>
+ <layer id="4" name="objects_upper" width="20" height="25">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+  </data>
+ </layer>
+ <layer id="5" name="collision" width="20" height="25">
+  <data encoding="csv">
+1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,
+1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,
+1,1,1,1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,
+1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,
+1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1
+  </data>
+ </layer>
+ <objectgroup id="6" name="events">
+  <object id="1" x="320" y="0" width="32" height="32">
+   <properties>
+    <property name="id" value="depths-l4_from_depths-l3"/>
+    <property name="type" value="player_start"/>
+   </properties>
+  </object>
+  <object id="2" x="320" y="64" width="32" height="32">
+   <properties>
+    <property name="id" value="EV-D4-002"/>
+    <property name="oneTime" type="bool" value="true"/>
+    <property name="script" value="cinematic_d4_verse1"/>
+    <property name="trigger" value="auto"/>
+    <property name="type" value="event_trigger"/>
+   </properties>
+  </object>
+  <object id="3" x="160" y="96" width="32" height="32">
+   <properties>
+    <property name="fragmentElement" value="wind"/>
+    <property name="fragmentPotency" type="int" value="3"/>
+    <property name="fragmentType" value="awe"/>
+    <property name="id" value="RS-D4-01"/>
+    <property name="oneTime" type="bool" value="true"/>
+    <property name="type" value="resonance_stone"/>
+   </properties>
+  </object>
+  <object id="4" x="480" y="224" width="32" height="32">
+   <properties>
+    <property name="burdened" type="bool" value="true"/>
+    <property name="fragmentPotency" type="int" value="3"/>
+    <property name="fragmentType" value="sorrow"/>
+    <property name="id" value="RS-D4-02"/>
+    <property name="oneTime" type="bool" value="true"/>
+    <property name="questId" value="GQ-02-S1"/>
+    <property name="restPoint" type="bool" value="true"/>
+    <property name="type" value="resonance_stone"/>
+    <property name="yieldFragments" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="5" x="576" y="192" width="32" height="32">
+   <properties>
+    <property name="id" value="CH-D4-01"/>
+    <property name="items" value="C-BF-01:2,gold:100"/>
+    <property name="oneTime" type="bool" value="true"/>
+    <property name="type" value="treasure_chest"/>
+   </properties>
+  </object>
+  <object id="6" x="128" y="224" width="32" height="32">
+   <properties>
+    <property name="direction" value="up"/>
+    <property name="id" value="EV-D4-006"/>
+    <property name="targetMap" value="resonance-fields"/>
+    <property name="targetX" type="int" value="28"/>
+    <property name="targetY" type="int" value="44"/>
+    <property name="type" value="teleport"/>
+   </properties>
+  </object>
+  <object id="7" x="64" y="192" width="32" height="32">
+   <properties>
+    <property name="id" value="RS-D4-03"/>
+    <property name="reusable" type="bool" value="true"/>
+    <property name="restPoint" type="bool" value="true"/>
+    <property name="type" value="resonance_stone"/>
+   </properties>
+  </object>
+  <object id="8" x="160" y="384" width="32" height="32">
+   <properties>
+    <property name="fragmentElement" value="fire"/>
+    <property name="fragmentPotency" type="int" value="3"/>
+    <property name="fragmentType" value="fury"/>
+    <property name="id" value="RS-D4-04"/>
+    <property name="oneTime" type="bool" value="true"/>
+    <property name="type" value="resonance_stone"/>
+   </properties>
+  </object>
+  <object id="9" x="480" y="384" width="32" height="32">
+   <properties>
+    <property name="enemies" value="E-DP-04:2"/>
+    <property name="guarded" type="bool" value="true"/>
+    <property name="id" value="CH-D4-02"/>
+    <property name="items" value="W-SW-08:1,W-DG-08:1"/>
+    <property name="oneTime" type="bool" value="true"/>
+    <property name="type" value="treasure_chest"/>
+   </properties>
+  </object>
+  <object id="10" x="480" y="544" width="32" height="32">
+   <properties>
+    <property name="id" value="EV-D4-010"/>
+    <property name="oneTime" type="bool" value="true"/>
+    <property name="script" value="cinematic_d4_verse4"/>
+    <property name="trigger" value="auto"/>
+    <property name="type" value="event_trigger"/>
+   </properties>
+  </object>
+  <object id="11" x="576" y="512" width="32" height="32">
+   <properties>
+    <property name="id" value="CH-D4-03"/>
+    <property name="items" value="C-SP-09:1,gold:150"/>
+    <property name="oneTime" type="bool" value="true"/>
+    <property name="type" value="treasure_chest"/>
+   </properties>
+  </object>
+  <object id="12" x="128" y="544" width="32" height="32">
+   <properties>
+    <property name="id" value="CH-D4-04"/>
+    <property name="items" value="C-BF-03:3,C-BF-02:3"/>
+    <property name="oneTime" type="bool" value="true"/>
+    <property name="type" value="treasure_chest"/>
+   </properties>
+  </object>
+  <object id="13" x="64" y="576" width="32" height="32">
+   <properties>
+    <property name="id" value="EV-D4-013"/>
+    <property name="oneTime" type="bool" value="true"/>
+    <property name="text" value="We play not because the world needs saving, but because the world needs music."/>
+    <property name="type" value="lore_note"/>
+   </properties>
+  </object>
+  <object id="14" x="320" y="704" width="32" height="32">
+   <properties>
+    <property name="id" value="EV-D4-014"/>
+    <property name="oneTime" type="bool" value="true"/>
+    <property name="script" value="boss_sequence_d4_conductor"/>
+    <property name="trigger" value="action"/>
+    <property name="type" value="event_trigger"/>
+   </properties>
+  </object>
+  <object id="15" x="320" y="768" width="32" height="32">
+   <properties>
+    <property name="direction" value="down"/>
+    <property name="id" value="EV-D4-017"/>
+    <property name="targetMap" value="depths-l5"/>
+    <property name="targetX" type="int" value="10"/>
+    <property name="targetY" type="int" value="0"/>
+    <property name="type" value="teleport"/>
+   </properties>
+  </object>
+  <object id="16" x="160" y="672" width="32" height="32">
+   <properties>
+    <property name="condition" value="boss_defeated_B-03c"/>
+    <property name="id" value="CH-D4-05"/>
+    <property name="items" value="C-SP-10:1,gold:200"/>
+    <property name="oneTime" type="bool" value="true"/>
+    <property name="type" value="treasure_chest"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

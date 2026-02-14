@@ -1,0 +1,156 @@
+import {
+  EventData,
+  RpgCommonEvent,
+  RpgEvent,
+  type RpgMap,
+  type RpgPlayer,
+  RpgSceneMap,
+} from '@rpgjs/server';
+
+@EventData({
+  id: 'act2-scene17-curator-endgame',
+  name: "The Curator's Endgame",
+  hitbox: { width: 32, height: 32 },
+  // This event is auto-triggered when conditions are met, so no specific graphic or position is needed for the trigger itself.
+  // NPCs will be dynamically spawned.
+})
+export class Act2Scene17CuratorEndgame extends RpgEvent {
+  onInit() {
+    this.set({
+      name: 'act2-scene17-curator-endgame',
+      // This event is a scene trigger, it doesn't have a physical presence on the map.
+      // It's triggered by quest state and map entry.
+      // We set its position to an arbitrary off-map location or a central point if it needs to be "present" for onInit.
+      // For auto-triggering on map load with conditions, the position doesn't strictly matter for the trigger itself.
+      x: 0,
+      y: 0,
+      width: 1,
+      height: 1,
+      // The event itself is invisible, it just manages the scene.
+      graphic: '',
+      visible: false,
+      priority: 0, // Lower priority so it doesn't block other events if placed on a visible tile
+    });
+  }
+
+  async onChanges(player: RpgPlayer) {
+    // Trigger condition: quest-state, map: village-hub, condition: lira-freed-and-SQ05-complete
+    const isLiraFreed = player.getQuest('MQ-04')?.state === 'completed'; // Assuming MQ-04 is "Lira Freed"
+    const isSQ05Complete = player.getQuest('SQ-05')?.state === 'completed'; // "Aric's Doubt"
+
+    if (
+      player.map.id === 'village-hub' &&
+      isLiraFreed &&
+      isSQ05Complete &&
+      player.getQuest('MQ-07')?.state === 'not-started'
+    ) {
+      // Ensure this scene only plays once
+      if (player.getVariable('ACT2_SCENE17_PLAYED')) {
+        return;
+      }
+      player.setVariable('ACT2_SCENE17_PLAYED', true);
+
+      // Prevent re-triggering if player moves
+      this.removeEvent(player.map.id, this.id);
+
+      // Pause player movement and interaction
+      player.canMove = false;
+      player.fixDirection = true;
+
+      // --- 1. Spawns NPCs at appropriate positions using createDynamicEvent() ---
+      // Assuming Elder's House is a specific room or area within Village Hub
+      // These positions are illustrative; adjust based on actual map layout for Elder's House
+      const callumX = 19; // Example position in Elder's House
+      const callumY = 11;
+      const liraX = 20; // Example position near Callum
+      const liraY = 11;
+
+      const map = player.map as RpgMap;
+
+      // Create Callum
+      const callumEvent = await map.createDynamicEvent({
+        x: callumX,
+        y: callumY,
+        id: 'npc_callum_scene', // Unique ID for this scene's NPC
+        graphic: 'npc_callum',
+        name: 'Callum',
+        speed: 1,
+        direction: 2, // Facing down
+        through: false,
+        priority: 1,
+        sync: true,
+        // Add any specific event logic for Callum if needed, e.g., onAction
+        onAction(player: RpgPlayer) {
+          // This NPC is part of a cutscene, so direct interaction might be limited
+          // or lead to a "wait" message.
+        },
+      });
+
+      // Create Lira
+      const liraEvent = await map.createDynamicEvent({
+        x: liraX,
+        y: liraY,
+        id: 'npc_lira_scene', // Unique ID for this scene's NPC
+        graphic: 'npc_lira',
+        name: 'Lira',
+        speed: 1,
+        direction: 2, // Facing down
+        through: false,
+        priority: 1,
+        sync: true,
+        onAction(player: RpgPlayer) {
+          // Similar to Callum, direct interaction might be limited
+        },
+      });
+
+      // Make player face Callum
+      await player.changeDirection(4); // Face left towards Callum if Callum is to the left
+
+      // --- 3. Plays dialogue sequences via player.showText() ---
+      await player.showText(
+        'Callum: "Player, Lira, I\'ve gathered you here because the situation has become dire."',
+      );
+      await player.showText(
+        'Lira: "What is it, Callum? Your tone suggests something truly grave."',
+      );
+      await player.showText('Callum: "The Curator... he has found it. The First Memory."');
+      await player.showText('Player: "The First Memory? But I thought it was lost, a legend..."');
+      await player.showText(
+        'Callum: "He intends to crystallize it. To lock away the very essence of creation, to prevent any further ' +
+          'dissolution. He believes it\'s the only way to achieve true, unchanging perfection."',
+      );
+      await player.showText(
+        'Lira: "Crystallize the First Memory... that would be the end of everything. No new thoughts, no new emotions, just... stasis."',
+      );
+      await player.showText(
+        'Callum: "Precisely. We must stop him. This is no longer about restoring memories, but about preserving the future itself."',
+      );
+      await player.showText('Player: "Where is he? Where is the First Memory?"');
+      await player.showText(
+        'Callum: "The Fortress. Deep within the Undrawn Peaks. It\'s heavily guarded, a place few have ever reached."',
+      );
+      await player.showText('Lira: "Then we must prepare. This will be our greatest challenge."');
+      await player.showText(
+        'Callum: "Indeed. The fate of Mnemonic Realms rests on your shoulders, Player."',
+      );
+
+      // --- 4. Fires effects (combat, GUI, screen effects, music) ---
+      await player.showText('The Curator has found the First Memory.', {
+        type: 'system',
+      });
+
+      // --- 5. Updates quest state ---
+      player.updateQuest('MQ-07', 'activate'); // Activate Main Quest 07: "The Fortress Approach"
+
+      // Clean up dynamic NPCs
+      map.removeEvent(callumEvent.id);
+      map.removeEvent(liraEvent.id);
+
+      // Resume player movement and interaction
+      player.canMove = true;
+      player.fixDirection = false;
+    }
+  }
+}
+
+export default Act2Scene17CuratorEndgame;

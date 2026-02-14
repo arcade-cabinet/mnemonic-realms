@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="100">
+ <properties>
+  <property name="category" value="overworld"/>
+  <property name="mapName" value="Village Hub"/>
+  <property name="vibrancy" type="int" value="60"/>
+ </properties>
+ <tileset firstgid="1" source="tiles_village_normal.tsx"/>
+ <layer id="1" name="ground" width="30" height="30">
+  <data encoding="csv">
+5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,5,5,5,5,1,2,1,1,2,1,5,5,5,5,5,5,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,5,5,5,5,2,1,1,2,1,1,5,5,5,5,5,5,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,5,5,5,5,1,1,2,1,1,2,5,5,5,5,5,5,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,5,5,5,5,1,2,1,1,2,1,5,5,5,5,5,5,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,5,5,5,5,2,1,1,2,1,1,5,5,5,5,5,5,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,5,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,1,1,1,1,1,1,1,3,1,1,1,1,1,1,1,5,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,1,1,3,1,1,1,1,1,1,1,1,1,1,3,1,5,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,1,1,1,1,1,1,1,1,3,1,1,1,1,1,1,5,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,1,1,1,3,1,1,1,1,1,1,1,1,1,1,3,5,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,1,1,1,1,1,1,1,1,1,3,1,1,1,1,1,5,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,1,1,1,1,3,1,1,1,1,1,1,1,1,1,1,5,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,5,5,5,5,5,
+5,5,5,5,5,5,5,5,1,1,1,1,1,3,1,1,1,1,1,1,1,1,1,1,1,5,5,5,5,5,
+5,5,5,5,5,5,5,5,4,4,4,4,1,1,1,1,1,1,1,3,1,1,1,1,1,5,5,5,5,5,
+5,5,5,5,5,5,5,5,4,4,4,4,1,1,3,1,1,1,1,1,1,1,1,1,1,5,5,5,5,5,
+5,5,5,5,5,5,5,5,4,4,4,4,1,1,1,1,1,1,1,1,3,1,1,5,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,1,1,1,1,1,1,1,3,1,1,1,1,1,1,1,5,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,1,1,3,1,1,1,1,1,1,1,1,1,1,3,1,5,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,5,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,1,1,1,3,1,1,1,1,1,1,1,1,1,1,3,5,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,1,1,1,1,1,1,1,1,1,3,1,1,1,1,1,5,5,5,5,5,5,5,
+6,6,6,6,6,6,6,6,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,6,6,6,6,6,6,6,
+5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5
+  </data>
+ </layer>
+ <layer id="2" name="ground2" width="30" height="30">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,33,33,37,33,33,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,33,33,33,33,33,36,33,33,33,33,33,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+  </data>
+ </layer>
+ <layer id="3" name="objects" width="30" height="30">
+  <data encoding="csv">
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,0,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,0,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,0,183,0,183,0,183,183,0,0,0,0,178,178,178,178,178,178,0,0,0,0,0,0,183,0,183,0,183,0,
+0,183,0,183,0,183,0,183,0,0,0,0,178,0,0,0,0,178,0,0,0,0,0,0,0,183,0,183,0,183,
+183,0,183,0,183,0,183,183,0,0,0,0,178,0,0,0,0,178,0,0,0,0,0,0,183,0,183,0,183,0,
+0,183,0,183,0,183,0,183,0,0,0,0,178,0,0,0,0,178,0,0,0,0,0,0,0,183,0,183,0,183,
+183,0,183,0,183,0,183,183,0,0,0,0,178,178,0,0,178,178,0,0,0,0,0,0,183,0,183,0,183,0,
+0,183,0,183,0,183,0,183,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,0,183,0,183,0,183,
+183,0,183,0,183,0,183,183,0,0,0,0,0,0,0,146,0,0,0,0,0,0,0,183,183,0,183,0,183,0,
+0,183,0,183,0,183,0,183,0,0,151,151,0,0,0,0,0,0,0,0,0,0,0,183,0,183,0,183,0,183,
+183,0,183,0,183,0,183,183,177,177,177,177,177,177,0,0,0,0,178,178,178,178,178,183,183,0,183,0,183,0,
+0,183,0,183,0,183,0,183,177,177,177,177,177,177,0,0,0,0,178,178,178,178,178,183,0,183,0,183,0,183,
+183,0,183,0,183,0,183,183,177,177,177,177,177,177,0,0,0,0,178,178,178,178,178,183,183,0,183,0,183,0,
+0,183,0,183,0,183,0,183,177,177,177,177,177,177,0,0,0,0,178,178,178,178,178,183,0,183,0,183,0,183,
+0,0,0,0,0,0,0,0,154,177,184,184,146,177,0,0,0,146,178,178,177,177,177,177,177,0,0,0,0,0,
+0,183,0,183,0,183,0,183,0,0,0,0,0,145,193,193,145,0,0,0,177,177,177,177,177,183,0,183,0,183,
+183,0,183,0,183,0,183,183,182,153,0,153,147,0,0,0,0,147,178,178,178,178,178,177,177,0,183,0,183,0,
+0,183,0,183,0,183,0,183,0,0,153,0,0,0,0,0,0,0,178,178,178,178,178,177,177,183,0,183,0,183,
+183,0,183,0,183,0,183,183,182,182,182,182,0,0,0,0,0,0,178,178,178,178,178,183,183,0,183,0,183,0,
+0,183,0,183,0,183,0,183,177,177,184,177,177,0,0,0,0,146,178,178,184,178,178,183,0,183,0,183,0,183,
+183,0,183,0,183,0,183,183,177,177,177,177,177,0,0,0,0,0,178,178,184,178,0,183,183,0,183,0,183,0,
+0,183,0,183,0,183,0,183,177,177,177,177,177,0,0,0,0,0,178,178,178,178,0,183,0,183,0,183,0,183,
+183,0,183,0,183,0,183,183,0,0,0,0,0,0,0,146,0,0,178,178,178,178,0,183,183,0,183,0,183,0,
+0,183,0,183,0,183,0,183,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,0,183,0,183,0,183,
+183,0,183,0,183,0,183,183,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,0,183,0,183,0,
+0,183,0,183,0,183,0,183,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,0,183,0,183,
+183,0,183,0,183,0,183,183,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,0,183,0,183,0,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,0,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,0,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183
+  </data>
+ </layer>
+ <layer id="4" name="objects_upper" width="30" height="30">
+  <data encoding="csv">
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,0,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,0,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,0,183,0,183,0,183,183,0,0,0,0,180,180,180,180,180,180,0,0,0,0,0,0,183,0,183,0,183,0,
+0,183,0,183,0,183,0,183,0,0,0,0,180,180,180,180,180,180,0,0,0,0,0,0,0,183,0,183,0,183,
+183,0,183,0,183,0,183,183,0,0,0,0,180,180,180,180,180,180,0,0,0,0,0,0,183,0,183,0,183,0,
+0,183,0,183,0,183,0,183,0,0,0,0,180,180,180,180,180,180,0,0,0,0,0,0,0,183,0,183,0,183,
+183,0,183,0,183,0,183,183,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,0,183,0,183,0,
+0,183,0,183,0,183,0,183,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,0,183,0,183,0,183,
+183,0,183,0,183,0,183,183,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,183,0,183,0,183,0,
+0,183,0,183,0,183,0,183,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,0,183,0,183,0,183,
+183,0,183,0,183,0,183,183,179,179,179,179,179,179,0,0,0,0,180,180,180,180,180,183,183,0,183,0,183,0,
+0,183,0,183,0,183,0,183,179,179,179,179,179,179,0,0,0,0,180,180,180,180,180,183,0,183,0,183,0,183,
+183,0,183,0,183,0,183,183,179,179,179,179,179,179,0,0,0,0,180,180,180,180,180,183,183,0,183,0,183,0,
+0,183,0,183,0,183,0,183,179,179,179,179,179,179,0,0,0,0,180,180,180,180,180,183,0,183,0,183,0,183,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,179,179,179,179,179,0,0,0,0,0,
+0,183,0,183,0,183,0,183,0,0,0,0,0,0,0,0,0,0,0,0,179,179,179,179,179,183,0,183,0,183,
+183,0,183,0,183,0,183,183,0,0,0,0,0,0,0,0,0,0,180,180,180,180,180,179,179,0,183,0,183,0,
+0,183,0,183,0,183,0,183,0,0,0,0,0,0,0,0,0,0,180,180,180,180,180,0,0,183,0,183,0,183,
+183,0,183,0,183,0,183,183,0,0,0,0,0,0,0,0,0,0,180,180,180,180,180,183,183,0,183,0,183,0,
+0,183,0,183,0,183,0,183,179,179,179,179,179,0,0,0,0,0,0,0,0,0,0,183,0,183,0,183,0,183,
+183,0,183,0,183,0,183,183,179,179,179,179,179,0,0,0,0,0,180,180,180,180,0,183,183,0,183,0,183,0,
+0,183,0,183,0,183,0,183,0,0,0,0,0,0,0,0,0,0,180,180,180,180,0,183,0,183,0,183,0,183,
+183,0,183,0,183,0,183,183,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,183,0,183,0,183,0,
+0,183,0,183,0,183,0,183,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,0,183,0,183,0,183,
+183,0,183,0,183,0,183,183,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,0,183,0,183,0,
+0,183,0,183,0,183,0,183,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,0,183,0,183,
+183,0,183,0,183,0,183,183,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,0,183,0,183,0,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,0,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,0,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183
+  </data>
+ </layer>
+ <layer id="5" name="collision" width="30" height="30">
+  <data encoding="csv">
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,0,1,0,1,0,1,1,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,1,0,1,0,1,1,
+1,1,0,1,0,1,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,1,
+1,0,1,0,1,0,1,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,1,0,1,0,1,1,
+1,1,0,1,0,1,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,1,
+1,0,1,0,1,0,1,1,0,0,0,0,1,1,0,0,1,1,0,0,0,0,0,0,1,0,1,0,1,1,
+1,1,0,1,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,0,1,
+1,0,1,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,0,1,1,
+1,1,0,1,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,0,1,
+1,0,1,0,1,0,1,1,1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,1,0,1,0,1,1,
+1,1,0,1,0,1,0,1,1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,0,1,0,1,0,1,
+1,0,1,0,1,0,1,1,1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,1,0,1,0,1,1,
+1,1,0,1,0,1,0,1,1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,0,1,0,1,0,1,
+0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,
+1,1,0,1,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,1,0,1,
+1,0,1,0,1,0,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,0,1,0,1,1,
+1,1,0,1,0,1,0,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,1,0,1,
+1,0,1,0,1,0,1,1,1,1,1,1,0,0,0,0,0,0,1,1,1,1,1,1,1,0,1,0,1,1,
+1,1,0,1,0,1,0,1,1,1,0,1,1,0,0,0,0,0,1,1,0,1,1,1,0,1,0,1,0,1,
+1,0,1,0,1,0,1,1,1,1,1,1,1,0,0,0,0,0,1,1,0,1,0,1,1,0,1,0,1,1,
+1,1,0,1,0,1,0,1,1,1,1,1,1,0,0,0,0,0,1,1,1,1,0,1,0,1,0,1,0,1,
+1,0,1,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,1,1,0,1,0,1,1,
+1,1,0,1,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,0,1,
+1,0,1,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,1,
+1,1,0,1,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,
+1,0,1,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+  </data>
+ </layer>
+ <objectgroup draworder="index" id="7" name="events">
+   <object id="1" name="Callum" type="spawn" x="608" y="352" width="32" height="32">
+    <properties>
+     <property name="graphic" value="npc_callum"/>
+     <property name="id" value="Callum"/>
+     <property name="movement" value="Patrols: Elder's House ↔ Lookout Hill (12, 3) on 60s cycle"/>
+    </properties>
+   </object>
+   <object id="2" name="Lira" type="spawn" x="288" y="608" width="32" height="32">
+    <properties>
+     <property name="graphic" value="npc_lira"/>
+     <property name="id" value="Lira"/>
+     <property name="movement" value="Static at workshop until MQ-02 complete; roams village after"/>
+    </properties>
+   </object>
+   <object id="3" name="Maren" type="spawn" x="608" y="544" width="32" height="32">
+    <properties>
+     <property name="graphic" value="npc_maren"/>
+     <property name="id" value="Maren"/>
+     <property name="movement" value="Static behind shop counter"/>
+    </properties>
+   </object>
+   <object id="4" name="Torvan" type="spawn" x="608" y="608" width="32" height="32">
+    <properties>
+     <property name="graphic" value="npc_torvan"/>
+     <property name="id" value="Torvan"/>
+     <property name="movement" value="Static at anvil"/>
+    </properties>
+   </object>
+   <object id="5" name="Ren" type="spawn" x="672" y="480" width="32" height="32">
+    <properties>
+     <property name="graphic" value="npc_ren"/>
+     <property name="id" value="Ren"/>
+     <property name="movement" value="Static behind inn bar"/>
+    </properties>
+   </object>
+   <object id="6" name="Villager A" type="spawn" x="448" y="480" width="32" height="32">
+    <properties>
+     <property name="graphic" value="npc_villager_m1"/>
+     <property name="id" value="Villager A"/>
+     <property name="movement" value="Wanders Central Square (12-17, 14-19)"/>
+    </properties>
+   </object>
+   <object id="7" name="Villager B" type="spawn" x="512" y="512" width="32" height="32">
+    <properties>
+     <property name="graphic" value="npc_villager_f1"/>
+     <property name="id" value="Villager B"/>
+     <property name="movement" value="Wanders Central Square"/>
+    </properties>
+   </object>
+   <object id="8" name="Villager C" type="spawn" x="320" y="704" width="32" height="32">
+    <properties>
+     <property name="graphic" value="npc_villager_m2"/>
+     <property name="id" value="Villager C"/>
+     <property name="movement" value="Patrols South Gate road"/>
+    </properties>
+   </object>
+   <object id="9" name="RS-VH-01" type="resonanceStone" x="448" y="480" width="32" height="32">
+    <properties>
+     <property name="fragmentType" value="joy/neutral/1"/>
+     <property name="id" value="RS-VH-01"/>
+     <property name="notes" value="Central Square fountain; glows at Normal+ vibrancy"/>
+    </properties>
+   </object>
+   <object id="10" name="RS-VH-02" type="resonanceStone" x="288" y="512" width="32" height="32">
+    <properties>
+     <property name="fragmentType" value="calm/earth/1"/>
+     <property name="id" value="RS-VH-02"/>
+     <property name="notes" value="Memorial Garden left stone; MQ-02 tutorial target"/>
+    </properties>
+   </object>
+   <object id="11" name="RS-VH-03" type="resonanceStone" x="320" y="544" width="32" height="32">
+    <properties>
+     <property name="fragmentType" value="joy/light/1"/>
+     <property name="id" value="RS-VH-03"/>
+     <property name="notes" value="Memorial Garden center stone; MQ-02 tutorial target"/>
+    </properties>
+   </object>
+   <object id="12" name="RS-VH-04" type="resonanceStone" x="352" y="512" width="32" height="32">
+    <properties>
+     <property name="fragmentType" value="sorrow/neutral/1"/>
+     <property name="id" value="RS-VH-04"/>
+     <property name="notes" value="Memorial Garden right stone; SQ-01 broadcast target"/>
+    </properties>
+   </object>
+   <object id="13" name="RS-VH-05" type="resonanceStone" x="672" y="480" width="32" height="32">
+    <properties>
+     <property name="fragmentType" value="calm/neutral/2"/>
+     <property name="id" value="RS-VH-05"/>
+     <property name="notes" value="Behind inn fireplace; revealed after SQ-12 dream 5"/>
+    </properties>
+   </object>
+   <object id="14" name="CH-VH-01" type="chest" x="416" y="96" width="32" height="32">
+    <properties>
+     <property name="condition" value="always available"/>
+     <property name="contents" value="Minor Potion (C-HP-01) x2"/>
+     <property name="id" value="CH-VH-01"/>
+    </properties>
+   </object>
+   <object id="15" name="CH-VH-02" type="chest" x="288" y="352" width="32" height="32">
+    <properties>
+     <property name="condition" value="after MQ-01"/>
+     <property name="contents" value="Mana Drop (C-SP-01) x2"/>
+     <property name="id" value="CH-VH-02"/>
+    </properties>
+   </object>
+   <object id="16" name="EV-VH-001" type="event" x="608" y="352" width="32" height="32">
+    <properties>
+     <property name="condition" value="MQ-01"/>
+     <property name="description" value="Callum intro dialogue; gives Architect's Signet direction"/>
+     <property name="id" value="EV-VH-001"/>
+     <property name="linkedQuest" value="MQ-01"/>
+     <property name="trigger" value="action"/>
+    </properties>
+   </object>
+   <object id="17" name="EV-VH-002" type="event" x="288" y="608" width="32" height="32">
+    <properties>
+     <property name="condition" value="MQ-01"/>
+     <property name="description" value="Lira gives Architect's Signet (K-01); teaches memory ops"/>
+     <property name="id" value="EV-VH-002"/>
+     <property name="linkedQuest" value="MQ-01, MQ-02"/>
+     <property name="trigger" value="action"/>
+    </properties>
+   </object>
+   <object id="18" name="EV-VH-003" type="event" x="320" y="544" width="32" height="32">
+    <properties>
+     <property name="condition" value="MQ-02"/>
+     <property name="description" value="Memorial Garden Resonance Stone; first fragment collection (MF-01)"/>
+     <property name="id" value="EV-VH-003"/>
+     <property name="linkedQuest" value="MQ-02"/>
+     <property name="trigger" value="action"/>
+    </properties>
+   </object>
+   <object id="19" name="EV-VH-004" type="event" x="320" y="544" width="32" height="32">
+    <properties>
+     <property name="condition" value="MQ-02"/>
+     <property name="description" value="Remix Table tutorial; broadcast tutorial"/>
+     <property name="id" value="EV-VH-004"/>
+     <property name="linkedQuest" value="MQ-02"/>
+     <property name="trigger" value="action"/>
+    </properties>
+   </object>
+   <object id="20" name="EV-VH-005" type="event" x="608" y="544" width="32" height="32">
+    <properties>
+     <property name="condition" value="always"/>
+     <property name="description" value="Maren shop interface + SQ-01 dialogue trigger"/>
+     <property name="id" value="EV-VH-005"/>
+     <property name="linkedQuest" value="SQ-01"/>
+     <property name="trigger" value="action"/>
+    </properties>
+   </object>
+   <object id="21" name="EV-VH-006" type="event" x="608" y="608" width="32" height="32">
+    <properties>
+     <property name="condition" value="always"/>
+     <property name="description" value="Torvan shop interface + SQ-11 trigger (vibrancy 70+)"/>
+     <property name="id" value="EV-VH-006"/>
+     <property name="linkedQuest" value="SQ-11"/>
+     <property name="trigger" value="action"/>
+    </properties>
+   </object>
+   <object id="22" name="EV-VH-007" type="event" x="672" y="480" width="32" height="32">
+    <properties>
+     <property name="condition" value="always"/>
+     <property name="description" value="Ren inn: rest + dream sequence trigger"/>
+     <property name="id" value="EV-VH-007"/>
+     <property name="linkedQuest" value="SQ-12"/>
+     <property name="trigger" value="action"/>
+    </properties>
+   </object>
+   <object id="23" name="EV-VH-008" type="event" x="256" y="448" width="32" height="32">
+    <properties>
+     <property name="condition" value="MQ-03+"/>
+     <property name="description" value="Quest Board: displays available side quests"/>
+     <property name="id" value="EV-VH-008"/>
+     <property name="trigger" value="action"/>
+    </properties>
+   </object>
+   <object id="24" name="EV-VH-009" type="event" x="480" y="800" width="32" height="32">
+    <properties>
+     <property name="condition" value="always"/>
+     <property name="destinationMap" value="heartfield"/>
+     <property name="destinationTile" value="15,0"/>
+     <property name="description" value="South Gate transition → Heartfield (15, 0)"/>
+     <property name="id" value="EV-VH-009"/>
+     <property name="trigger" value="touch"/>
+    </properties>
+   </object>
+   <object id="25" name="EV-VH-010" type="event" x="928" y="448" width="32" height="32">
+    <properties>
+     <property name="condition" value="always"/>
+     <property name="destinationMap" value="ambergrove"/>
+     <property name="destinationTile" value="0,20"/>
+     <property name="description" value="East Gate transition → Ambergrove (0, 20)"/>
+     <property name="id" value="EV-VH-010"/>
+     <property name="trigger" value="touch"/>
+    </properties>
+   </object>
+   <object id="26" name="EV-VH-011" type="event" x="0" y="448" width="32" height="32">
+    <properties>
+     <property name="condition" value="always"/>
+     <property name="destinationMap" value="millbrook"/>
+     <property name="destinationTile" value="39,20"/>
+     <property name="description" value="West Gate transition → Millbrook (39, 20)"/>
+     <property name="id" value="EV-VH-011"/>
+     <property name="trigger" value="touch"/>
+    </properties>
+   </object>
+   <object id="27" name="EV-VH-012" type="event" x="480" y="0" width="32" height="32">
+    <properties>
+     <property name="condition" value="MQ-04+"/>
+     <property name="destinationMap" value="sunridge"/>
+     <property name="destinationTile" value="20,39"/>
+     <property name="description" value="North Gate transition → Sunridge (20, 39); locked until Act II"/>
+     <property name="id" value="EV-VH-012"/>
+     <property name="trigger" value="touch"/>
+    </properties>
+   </object>
+   <object id="28" name="EV-VH-013" type="event" x="384" y="96" width="32" height="32">
+    <properties>
+     <property name="condition" value="always"/>
+     <property name="description" value="Callum's telescope: narrative lookout over Settled Lands"/>
+     <property name="id" value="EV-VH-013"/>
+     <property name="trigger" value="action"/>
+    </properties>
+   </object>
+   <object id="29" name="EV-VH-014" type="event" x="256" y="544" width="32" height="32">
+    <properties>
+     <property name="condition" value="MQ-05+"/>
+     <property name="description" value="Hidden Depths entrance under Memorial Garden → Depths L1"/>
+     <property name="id" value="EV-VH-014"/>
+     <property name="linkedQuest" value="SQ-10"/>
+     <property name="trigger" value="touch"/>
+    </properties>
+   </object>
+   <object id="30" name="EV-VH-015" type="event" x="448" y="480" width="32" height="32">
+    <properties>
+     <property name="condition" value="always"/>
+     <property name="description" value="Fountain vibrancy check: particle effects scale with zone vibrancy"/>
+     <property name="id" value="EV-VH-015"/>
+     <property name="trigger" value="parallel"/>
+    </properties>
+   </object>
+   <object id="31" name="EV-VH-016" type="event" x="0" y="0" width="32" height="32">
+    <properties>
+     <property name="condition" value="MQ-01"/>
+     <property name="description" value="Opening cutscene trigger on first map load"/>
+     <property name="id" value="EV-VH-016"/>
+     <property name="linkedQuest" value="MQ-01"/>
+     <property name="trigger" value="auto"/>
+    </properties>
+   </object>
+ </objectgroup>
+</map>
