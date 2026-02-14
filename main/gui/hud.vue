@@ -47,6 +47,7 @@
 
 <script lang="ts">
 import { defineComponent, inject, ref, computed, onMounted, onUnmounted } from 'vue';
+import { audioManager } from '../client/audio';
 
 /**
  * Read a custom variable from the client-side player object.
@@ -98,6 +99,8 @@ export default defineComponent({
 
     const rpgCurrentPlayer = inject<any>('rpgCurrentPlayer');
     let subscription: { unsubscribe(): void } | null = null;
+    let prevLevel = 0;
+    let prevQuestCompleteCount = -1;
 
     function formatMapId(mapId: string): string {
       return mapId
@@ -122,7 +125,14 @@ export default defineComponent({
         // Level: try built-in first, fall back to custom variable
         const builtinLevel = object.level;
         const varLevel = readVar(object, 'PLAYER_LEVEL') as number | undefined;
-        level.value = builtinLevel ?? varLevel ?? 1;
+        const newLevel = builtinLevel ?? varLevel ?? 1;
+
+        // SFX: level up (skip initial load when prevLevel is 0)
+        if (prevLevel > 0 && newLevel > prevLevel) {
+          audioManager.playSfx('SFX-UI-05');
+        }
+        prevLevel = newLevel;
+        level.value = newLevel;
 
         // Gold: try built-in first, fall back to custom variable
         const builtinGold = object.gold;
@@ -140,6 +150,13 @@ export default defineComponent({
         // Active quest info (set by server quest system)
         questName.value = (readVar(object, 'ACTIVE_QUEST_NAME') as string) ?? '';
         questObj.value = (readVar(object, 'ACTIVE_QUEST_OBJ') as string) ?? '';
+
+        // SFX: quest complete (server increments QUEST_COMPLETE_COUNT)
+        const qcc = (readVar(object, 'QUEST_COMPLETE_COUNT') as number) ?? 0;
+        if (prevQuestCompleteCount >= 0 && qcc > prevQuestCompleteCount) {
+          audioManager.playSfx('SFX-MEM-03');
+        }
+        prevQuestCompleteCount = qcc;
       });
     });
 

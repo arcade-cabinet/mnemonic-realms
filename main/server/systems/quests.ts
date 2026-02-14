@@ -317,6 +317,9 @@ export function completeQuest(player: RpgPlayer, questId: string): boolean {
 
   player.setVariable(statusKey(questId), 'completed');
   distributeRewards(player, def.rewards);
+  // Increment counter so the client can detect quest completions for SFX
+  const count = (player.getVariable('QUEST_COMPLETE_COUNT') as number) ?? 0;
+  player.setVariable('QUEST_COMPLETE_COUNT', count + 1);
   syncHudQuest(player);
   return true;
 }

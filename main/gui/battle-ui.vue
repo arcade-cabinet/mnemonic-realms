@@ -166,7 +166,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue';
+import { defineComponent, inject, ref, computed, onMounted, onUnmounted } from 'vue';
+import { audioManager } from '../client/audio';
+import type { SfxId } from '../client/audio';
+
+// ── Combat SFX mapping ──────────────────────────────
+const COMBAT_SFX: Record<string, SfxId> = {
+  'player-attack': 'SFX-CBT-01',
+  'enemy-attack': 'SFX-CBT-02',
+  'skill-cast': 'SFX-CBT-03',
+  defend: 'SFX-CBT-06',
+  'item-use': 'SFX-UI-03',
+  victory: 'SFX-MEM-05',
+  flee: 'SFX-ENV-01',
+};
 
 // Import DDL data for skill names and SP costs
 import clericBase from '../../../gen/ddl/skills/cleric-base.json';
@@ -267,6 +280,9 @@ export default defineComponent({
     const inventory = ref<Record<string, number>>({});
     const floatingDamage = ref<FloatingDmg[]>([]);
     const prevLastResult = ref<any>(null);
+    const prevCombatActive = ref(false);
+    const prevPhase = ref('');
+    let currentMapId = '';
 
     // Derived: player skills with names + SP costs
     const playerSkills = computed(() => {
@@ -414,9 +430,19 @@ export default defineComponent({
       subscription = rpgCurrentPlayer.subscribe(({ object }: { object: any }) => {
         if (!object) return;
 
+        // Track current map for restoring zone BGM after combat
+        currentMapId = object.map ?? (readVar(object, 'CURRENT_MAP') as string) ?? '';
+
         const state = readVar(object, 'COMBAT_STATE') as any;
         if (!state) {
+          // Combat just ended — restore zone BGM
+          if (prevCombatActive.value) {
+            const vibrancy = (readVar(object, 'ZONE_VIBRANCY') as number) ?? 50;
+            audioManager.endCombat(currentMapId, vibrancy);
+          }
           combatActive.value = false;
+          prevCombatActive.value = false;
+          prevPhase.value = '';
           return;
         }
 
@@ -426,6 +452,23 @@ export default defineComponent({
         turnOrder.value = state.turnOrder ?? [];
         turnIndex.value = state.turnIndex ?? 0;
 
+        // ── Audio: start battle BGM on combat entry ──
+        if (!prevCombatActive.value) {
+          audioManager.startCombat().catch(() => {});
+        }
+
+        // ── Audio: victory/flee SFX on phase transition ──
+        const currentPhase = state.phase ?? '';
+        if (currentPhase !== prevPhase.value) {
+          if (currentPhase === 'victory') {
+            audioManager.playSfx(COMBAT_SFX.victory);
+          } else if (currentPhase === 'fled') {
+            audioManager.playSfx(COMBAT_SFX.flee);
+          }
+        }
+        prevCombatActive.value = true;
+        prevPhase.value = currentPhase;
+
         // Read player SP
         currentSp.value = object.sp ?? 0;
 
@@ -433,7 +476,7 @@ export default defineComponent({
         playerSkillIds.value = (readVar(object, 'PLAYER_SKILLS') as string[]) ?? [];
         inventory.value = (readVar(object, 'INVENTORY') as Record<string, number>) ?? {};
 
-        // Handle last result — spawn floating damage
+        // Handle last result — spawn floating damage + combat SFX
         const lastResult = state.lastResult;
         if (lastResult && lastResult !== prevLastResult.value) {
           lastMessage.value = lastResult.message ?? '';
@@ -441,6 +484,22 @@ export default defineComponent({
             const targetIsPlayer = lastResult.targetName === 'Player';
             spawnFloatingDamage(lastResult.damage, targetIsPlayer);
           }
+
+          // ── Audio: action SFX ──
+          const action = lastResult.action as string;
+          const actor = lastResult.actor as string;
+          if (action === 'attack') {
+            audioManager.playSfx(
+              actor === 'Player' ? COMBAT_SFX['player-attack'] : COMBAT_SFX['enemy-attack'],
+            );
+          } else if (action === 'skill') {
+            audioManager.playSfx(COMBAT_SFX['skill-cast']);
+          } else if (action === 'item') {
+            audioManager.playSfx(COMBAT_SFX['item-use']);
+          } else if (action === 'defend') {
+            audioManager.playSfx(COMBAT_SFX.defend);
+          }
+
           prevLastResult.value = lastResult;
         }
 
