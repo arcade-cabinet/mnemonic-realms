@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "description": "Quest chain code generation manifest",
-  "updatedAt": "2026-02-14T05:25:24.993Z",
+  "updatedAt": "2026-02-14T15:11:55.062Z",
   "category": "event-quests",
   "systemPrompt": "You are an RPG-JS 4.3.0 TypeScript code generator.\nGenerate a single RPG-JS server-side quest file.\nOutput ONLY valid TypeScript code. No markdown fences. No explanatory text.\nOutput must be syntactically complete — all braces must be balanced.\nKeep the file CONCISE — under 300 lines. Do NOT generate excessive imports.\nValid RPG-JS imports: { RpgPlayer, RpgMap, RpgServer, RpgWorld, RpgEvent, RpgSceneMap } from '@rpgjs/server'.\nDo NOT invent types that don't exist. Only import what you actually use.\nUse player.getVariable() and player.setVariable() for quest progress.\nExport the quest definition as default.",
   "assets": [
@@ -444,15 +444,15 @@
     },
     {
       "id": "SQ-11",
-      "name": "Torvan's Masterwork",
+      "name": "Hark's Masterwork",
       "category": "event-quests",
-      "filename": "torvan-s-masterwork.ts",
+      "filename": "hark-s-masterwork.ts",
       "targetPath": "main/server/quests/sq11-torvans-masterwork.ts",
-      "prompt": "Generate an RPG-JS quest file for \"Torvan's Masterwork\" (ID: SQ-11).\n\nCategory: side | Act: act2 | Level: 15-20\nGiver: Torvan at Village Hub — Blacksmith (18, 18)\nTrigger: Village Hub vibrancy reaches 70+\n\nObjectives:\n0. Speak with Torvan at the Blacksmith\n1. Collect Crag Golem core from Sunridge\n2. Collect Crystal Shard from Preserver Agent/Captain\n3. Collect Dissolved Metal from Depths Level 2\n4. Bring materials to Torvan\n5. Wait 1 in-game day for forging\n6. Collect class-specific masterwork weapon\n\nRewards: item: Class-specific Tier 3 masterwork weapon\n\nCompletion Dialogue: Torvan: There. My finest work. The Crag Golem's core gives it weight, the crystal gives it edge, and the dissolved metal... it hums.\nFailure Conditions: None (materials are farmable)\nDependencies: None\nUnlocks: None\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "prompt": "Generate an RPG-JS quest file for \"Hark's Masterwork\" (ID: SQ-11).\n\nCategory: side | Act: act2 | Level: 15-20\nGiver: Hark at Village Hub — Blacksmith (18, 18)\nTrigger: Village Hub vibrancy reaches 70+\n\nObjectives:\n0. Speak with Hark at the Blacksmith\n1. Collect Crag Golem core from Sunridge\n2. Collect Crystal Shard from Preserver Agent/Captain\n3. Collect Dissolved Metal from Depths Level 2\n4. Bring materials to Hark\n5. Wait 1 in-game day for forging\n6. Collect class-specific masterwork weapon\n\nRewards: item: Class-specific Tier 3 masterwork weapon\n\nCompletion Dialogue: Hark: There. My finest work. The Crag Golem's core gives it weight, the crystal gives it edge, and the dissolved metal... it hums.\nFailure Conditions: None (materials are farmable)\nDependencies: None\nUnlocks: None\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
       "docRefs": [
         {
           "path": "docs/story/quest-chains.md",
-          "heading": "Torvan's Masterwork",
+          "heading": "Hark's Masterwork",
           "purpose": "content"
         },
         {
@@ -473,15 +473,15 @@
     },
     {
       "id": "SQ-12",
-      "name": "Ren's Dream Visions",
+      "name": "Nyro's Dream Visions",
       "category": "event-quests",
-      "filename": "ren-s-dream-visions.ts",
+      "filename": "nyro-s-dream-visions.ts",
       "targetPath": "main/server/quests/sq12-rens-dream-visions.ts",
-      "prompt": "Generate an RPG-JS quest file for \"Ren's Dream Visions\" (ID: SQ-12).\n\nCategory: side | Act: act2 | Level: 16-22\nGiver: Ren at Village Hub — Inn: The Bright Hearth (20, 14)\nTrigger: MQ-05 complete, 3+ inn rests\n\nObjectives:\n0. Speak with Ren about dream visions\n1. Rest at the inn 5 total times (unique dream each time)\n2. After 5th dream, dream fragment materializes\n3. Broadcast dream fragment at Inn's hearth Resonance Stone\n4. Witness permanent lore projection activation\n\nRewards: gold: Gold (250), item: Memory Incense x3 [C-BF-05], fragment: Calm/Neutral Fragment (4-star)\n\nCompletion Dialogue: Ren: I always knew there was something behind that fireplace. I think it was waiting for the right dreams. Yours.\nFailure Conditions: None\nDependencies: MQ-05\nUnlocks: None\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "prompt": "Generate an RPG-JS quest file for \"Nyro's Dream Visions\" (ID: SQ-12).\n\nCategory: side | Act: act2 | Level: 16-22\nGiver: Nyro at Village Hub — Inn: The Bright Hearth (20, 14)\nTrigger: MQ-05 complete, 3+ inn rests\n\nObjectives:\n0. Speak with Nyro about dream visions\n1. Rest at the inn 5 total times (unique dream each time)\n2. After 5th dream, dream fragment materializes\n3. Broadcast dream fragment at Inn's hearth Resonance Stone\n4. Witness permanent lore projection activation\n\nRewards: gold: Gold (250), item: Memory Incense x3 [C-BF-05], fragment: Calm/Neutral Fragment (4-star)\n\nCompletion Dialogue: Nyro: I always knew there was something behind that fireplace. I think it was waiting for the right dreams. Yours.\nFailure Conditions: None\nDependencies: MQ-05\nUnlocks: None\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
       "docRefs": [
         {
           "path": "docs/story/quest-chains.md",
-          "heading": "Ren's Dream Visions",
+          "heading": "Nyro's Dream Visions",
           "purpose": "content"
         },
         {
@@ -565,7 +565,7 @@
       "category": "event-quests",
       "filename": "the-memorial-garden.ts",
       "targetPath": "main/server/quests/sq01-memorial-garden.ts",
-      "prompt": "Generate an RPG-JS quest file for \"The Memorial Garden\" (ID: SQ-01).\n\nCategory: side | Act: act1 | Level: 2-4\nGiver: Maren at Village Hub — General Shop (18, 16)\nTrigger: MQ-02 complete\n\nObjectives:\n0. Speak with Maren about the fading garden\n1. Broadcast 3 fragments into Memorial Garden stones\n2. Return to Maren\n\nRewards: gold: Gold (120), item: Minor Potion x5 [C-HP-01], item: Mana Drop x3 [C-SP-01]\n\nCompletion Dialogue: Maren: The flowers are actually glowing! I haven't seen the garden like this since I was a girl.\nFailure Conditions: None\nDependencies: MQ-02\nUnlocks: None\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
+      "prompt": "Generate an RPG-JS quest file for \"The Memorial Garden\" (ID: SQ-01).\n\nCategory: side | Act: act1 | Level: 2-4\nGiver: Khali at Village Hub — General Shop (18, 16)\nTrigger: MQ-02 complete\n\nObjectives:\n0. Speak with Khali about the fading garden\n1. Broadcast 3 fragments into Memorial Garden stones\n2. Return to Khali\n\nRewards: gold: Gold (120), item: Minor Potion x5 [C-HP-01], item: Mana Drop x3 [C-SP-01]\n\nCompletion Dialogue: Khali: The flowers are actually glowing! I haven't seen the garden like this since I was a girl.\nFailure Conditions: None\nDependencies: MQ-02\nUnlocks: None\n\nCreate a quest definition that:\n1. Checks trigger conditions (dependencies, level, location)\n2. Tracks objective progress via player variables\n3. Awards rewards on completion\n4. Shows completion dialogue\n5. Updates quest log and unlocks dependent quests\nExport the quest definition as default.",
       "docRefs": [
         {
           "path": "docs/story/quest-chains.md",
