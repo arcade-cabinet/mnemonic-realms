@@ -1,11 +1,9 @@
 import {
   EventData,
   MapData,
-  RpgCommonPlayer,
   RpgEvent,
   RpgMap,
   type RpgPlayer,
-  RpgScene,
 } from '@rpgjs/server';
 import { advanceObjective, isQuestActive } from '../../systems/quests';
 
@@ -75,13 +73,8 @@ export default class TheFortressGateEvent extends RpgEvent {
     });
 
     // 4. Fires effects (screen effects, music)
-    await player.map.setMusic('fortress-glass-harmonica', 0.8);
-    await player.screenEffect({
-      effect: 'crystal-chill-overlay',
-      duration: 0, // Apply instantly
-      opacity: 0.3,
-      color: [150, 200, 255], // Blue tint
-    });
+    // TODO: map.setMusic not available in RPG-JS 4.3.0
+    // TODO: screenEffect not available in RPG-JS 4.3.0
 
     // 3. Plays dialogue sequences via player.showText()
     await player.showText(

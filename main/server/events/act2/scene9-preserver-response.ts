@@ -1,11 +1,9 @@
 import {
   EventData,
   MapData,
-  RpgCommonPlayer,
   RpgEvent,
   RpgMap,
   type RpgPlayer,
-  RpgScene,
 } from '@rpgjs/server';
 // --- Inline NPC event classes (no database module) ---
 
@@ -65,11 +63,7 @@ export class PreserverResponseEvent extends RpgEvent {
     player.canMove = false;
 
     // 1. Screen effect: Crystal Wall Appear
-    await player.screenEffect({
-      effect: 'crystal-wall-appear',
-      duration: 2000,
-      animation: true,
-    });
+    // TODO: screenEffect not available in RPG-JS 4.3.0
 
     // 2. Spawn NPCs
     // Janik appears from behind the crystal wall
@@ -182,11 +176,7 @@ export class PreserverResponseEvent extends RpgEvent {
       );
 
     // Janik drops crystal wall and walks away
-    await player.screenEffect({
-      effect: 'crystal-wall-disappear',
-      duration: 1500,
-      animation: true,
-    });
+    // TODO: screenEffect not available in RPG-JS 4.3.0
 
     if (aricEvent)
       await aricEvent.moveRoutes([

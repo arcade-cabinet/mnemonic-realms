@@ -59,6 +59,9 @@
       "@babel/generator": "7.26.10",
       "@babel/traverse": "7.26.10",
       "@babel/types": "7.26.10"
+    },
+    "patchedDependencies": {
+      "@rpgjs/compiler": "patches/@rpgjs__compiler.patch"
     }
   }
 }

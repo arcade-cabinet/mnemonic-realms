@@ -1,6 +1,5 @@
 import {
   EventData,
-  RpgCommonEvent,
   RpgEvent,
   type RpgMap,
   type RpgPlayer,
@@ -133,8 +132,8 @@ export default class TheRemixEvent extends RpgEvent {
       { speaker: 'NARRATION' },
     );
 
-    await player.screenEffect('white-out', 2000); // White-out for 2 seconds
-    await player.wait(2000); // Wait for the effect to finish
+    // TODO: screenEffect not available in RPG-JS 4.3.0
+    await new Promise(resolve => setTimeout(resolve, 2000)); // Wait for the effect to finish
 
     await player.showText(
       "The new memory forms: MF-11: World's New Dawn. It is not a sphere but a branching, growing shape — like a tree, like a river delta, like a network of roots. It is alive. It is asking a new question.",

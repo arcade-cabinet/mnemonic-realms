@@ -1,11 +1,9 @@
 import {
   EventData,
   MapData,
-  RpgCommonPlayer,
   RpgEvent,
   RpgMap,
   type RpgPlayer,
-  RpgScene,
 } from '@rpgjs/server';
 import { advanceObjective, startQuest } from '../../systems/quests';
 

@@ -27,7 +27,7 @@ export class StagnationClearingEvent extends RpgEvent {
     console.log(`[Scene 6] Player ${player.name} entered Stagnation Clearing.`);
 
     // 1. Ambient audio fades, crystalline tinkling replaces it
-    await player.changeMusic({ track: 'stagnation-ambient', volume: 0.8, loop: true, fade: 1000 });
+    // TODO: changeMusic not available in RPG-JS 4.3.0
 
     // 2. Spawn Hana dynamically
     const hana = await player.createDynamicEvent({
@@ -42,52 +42,50 @@ export class StagnationClearingEvent extends RpgEvent {
     });
 
     // Ensure Hana is spawned before dialogue
-    await player.nextFrame();
+    await new Promise(resolve => setTimeout(resolve, 16));
 
     // 3. Dialogue sequences
-    await player.showText('Wait. Do you feel that?', { speaker: lira });
+    await player.showText('Wait. Do you feel that?', { speaker: 'Hana' });
 
     // 4. Screen effect: subtle desaturation
-    await player.screenEffect({ effect: 'desaturate', intensity: 0.4, duration: 2000 });
+    // TODO: screenEffect not available in RPG-JS 4.3.0
 
     await player.showText(
       'This is a Stagnation Zone. Something — someone — froze this patch of the world. Time stopped here. Change stopped.',
-      { speaker: lira },
+      { speaker: 'Hana' },
     );
 
     // Player enters the clearing (implied by the trigger, no actual movement needed here)
     await player.showText(
       "Look at the butterflies. Perfect. Every wing-scale, every spot of color. Beautiful, isn't it?",
-      { speaker: lira },
+      { speaker: 'Hana' },
     );
-    await player.showText('...', { speaker: lira });
+    await player.showText('...', { speaker: 'Hana' });
     await player.showText(
       "But they'll never land. They'll never fly anywhere new. They're just... frozen. Forever.",
-      { speaker: lira },
+      { speaker: 'Hana' },
     );
     await player.showText(
       "I've seen these before, in the Frontier. The Preservers do this — people who think the world is too fragile to change. They freeze things to 'protect' them.",
-      { speaker: lira },
+      { speaker: 'Hana' },
     );
     await player.showText(
       "This is small. Just a clearing. But they're getting bolder. I've heard reports of larger zones in the hills north of here.",
-      { speaker: lira },
+      { speaker: 'Hana' },
     );
 
     // Hana kneels by the crystallized Resonance Stone (visual cue, no actual event interaction yet)
     await player.showText(
       'We could break it. A single fragment broadcast into this stone would shatter the stasis. But...',
-      { speaker: lira },
+      { speaker: 'Hana' },
     );
     await player.showText(
       "Not yet. I want to show you more of the Settled Lands first. When we come back, you'll understand what you're doing — and why it matters.",
-      { speaker: lira },
+      { speaker: 'Hana' },
     );
 
     // 5. System message
-    await player.systemMessage(
-      "You've discovered a Stagnation Zone. The Preservers freeze the world to prevent change. Architects can break these zones by broadcasting memory fragments. You'll return here when you're ready.",
-    );
+    await player.showText("You've discovered a Stagnation Zone. The Preservers freeze the world to prevent change. Architects can break these zones by broadcasting memory fragments. You'll return here when you're ready.");
 
     // Clean up Hana after the scene
     if (hana) {

@@ -2,12 +2,10 @@ import {
   EventData,
   MapData,
   Move,
-  RpgCommonPlayer,
   RpgEvent,
   RpgMap,
   RpgMoveRoute,
   type RpgPlayer,
-  RpgScene,
 } from '@rpgjs/server';
 import { completeQuest, getQuestStatus, isQuestActive, isQuestComplete } from '../../systems/quests';
 
@@ -95,8 +93,8 @@ export class FreeingHanaEvent extends RpgEvent {
       });
 
       // 4. Fires effects (screen effects)
-      await player.triggerMapEvent('stagnation-mega-shatter'); // Custom map event for screen effect
-      await player.screenEffect({ effect: 'stagnation-mega-shatter' }); // Example screen effect
+      // TODO: triggerMapEvent not available in RPG-JS 4.3.0
+      // TODO: screenEffect not available in RPG-JS 4.3.0
 
       // Remove the frozen Hana event
       hanaFrozen.remove();
@@ -134,7 +132,8 @@ export class FreeingHanaEvent extends RpgEvent {
       });
 
       // 4. Fires effects (vibrancy change)
-      player.map.setVibrancy('heartfield', player.map.getVibrancy('heartfield') + 25); // Increase Heartfield vibrancy
+      const currentVibrancy = player.getVariable('VIBRANCY_heartfield') || 0;
+      player.setVariable('VIBRANCY_heartfield', currentVibrancy + 25); // Increase Heartfield vibrancy
       await player.showText("Heartfield's vibrancy increased by 25!");
 
       // 5. Updates quest state

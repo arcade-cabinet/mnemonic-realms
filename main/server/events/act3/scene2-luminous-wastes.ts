@@ -1,7 +1,6 @@
 import {
   EventData,
   Move,
-  RpgCommonPlayer,
   RpgEvent,
   type RpgMap,
   type RpgPlayer,
@@ -29,21 +28,15 @@ export class LuminousWastesSceneEvent extends RpgEvent {
         player.setVariable('ACT3_SCENE2_LUMINOUS_WASTES_TRIGGERED', true);
       }
 
-      // NPC visibility based on quest state
-      const mq08State = getQuestStatus(player, 'MQ-08');
-      const isMq08Active = mq08State === 'active' || mq08State === 'completed';
-
-      // Hana
-      const liraEvent = map.getEvent('npc_hana_luminous_wastes');
-      if (liraEvent) {
-        liraEvent.event.setVisible(isMq08Active);
-      }
-
-      // Artun
-      const callumEvent = map.getEvent('npc_artun_luminous_wastes');
-      if (callumEvent) {
-        callumEvent.event.setVisible(isMq08Active);
-      }
+      // TODO: getEvent not available in RPG-JS 4.3.0
+      // NPC visibility based on quest state would need to be managed
+      // through the dynamic event references stored from createDynamicEvent
+      // const mq08State = getQuestStatus(player, 'MQ-08');
+      // const isMq08Active = mq08State === 'active' || mq08State === 'completed';
+      // const liraEvent = map.getEvent('npc_hana_luminous_wastes');
+      // if (liraEvent) { liraEvent.setVisible(isMq08Active); }
+      // const callumEvent = map.getEvent('npc_artun_luminous_wastes');
+      // if (callumEvent) { callumEvent.setVisible(isMq08Active); }
     });
   }
 

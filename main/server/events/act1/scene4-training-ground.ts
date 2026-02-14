@@ -1,8 +1,6 @@
 import {
   createDynamicEvent,
   EventData,
-  RpgCommonEvent,
-  RpgCommonPlayer,
   RpgEvent,
   RpgMap,
   type RpgPlayer,

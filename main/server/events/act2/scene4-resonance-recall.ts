@@ -1,7 +1,6 @@
 import {
   EventData,
   MapData,
-  RpgCommonPlayer,
   RpgEvent,
   type RpgMap,
   type RpgPlayer,
@@ -263,7 +262,7 @@ export class ResonanceRecallEvent extends RpgEvent {
 
       // Remove Artun after the event
       if (artun) {
-        await player.map.removeDynamicEvent(artun.id);
+        await player.map.removeEvent(artun.id);
       }
 
       // This event is now complete for this player.

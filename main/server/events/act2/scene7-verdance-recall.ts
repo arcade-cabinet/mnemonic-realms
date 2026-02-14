@@ -1,7 +1,6 @@
 import {
   EventData,
   MapData,
-  RpgCommonPlayer,
   RpgEvent,
   RpgMap,
   type RpgPlayer,
@@ -42,7 +41,7 @@ export default class VerdanceRecallEvent extends RpgEvent {
 
     if (isOnLocation && isHermitPathDone && !isVerdanceRecalled && !this.hasSpawnedNpcs) {
       this.hasSpawnedNpcs = true; // Prevent re-spawning
-      this.event.setVisible(true); // Make the trigger visible/active
+      this.setVisible(true); // Make the trigger visible/active
 
       // Spawn Artun and Vash
       const artun = await player.map.createDynamicEvent({
@@ -90,15 +89,16 @@ export default class VerdanceRecallEvent extends RpgEvent {
         this.hasTriggeredVision = true;
         await this.triggerRecallVision(player);
       }
-    } else if (isVerdanceRecalled && this.event.isVisible()) {
+    } else if (isVerdanceRecalled && this.isVisible()) {
       // If Verdance is recalled, hide this trigger event
-      this.event.setVisible(false);
+      this.setVisible(false);
       // Optionally remove NPCs if they are dynamic and no longer needed
       // (This depends on whether they have post-recall dialogue)
-      const callumEvent = player.map.getEventByName('Artun');
-      if (callumEvent) player.map.removeEvent(callumEvent.id);
-      const wynnEvent = player.map.getEventByName('Vash');
-      if (wynnEvent) player.map.removeEvent(wynnEvent.id);
+      // TODO: getEventByName not available in RPG-JS 4.3.0
+      // const callumEvent = player.map.getEventByName('Artun');
+      // if (callumEvent) player.map.removeEvent(callumEvent.id);
+      // const wynnEvent = player.map.getEventByName('Vash');
+      // if (wynnEvent) player.map.removeEvent(wynnEvent.id);
     }
   }
 
@@ -175,13 +175,13 @@ export default class VerdanceRecallEvent extends RpgEvent {
     }
     await player.showText(wynnReaction);
 
-    // Remove the NPCs if they are no longer needed
-    const callumEvent = player.map.getEventByName('Artun');
-    if (callumEvent) player.map.removeEvent(callumEvent.id);
-    const wynnEvent = player.map.getEventByName('Vash');
-    if (wynnEvent) player.map.removeEvent(wynnEvent.id);
+    // TODO: getEventByName not available in RPG-JS 4.3.0
+    // const callumEvent = player.map.getEventByName('Artun');
+    // if (callumEvent) player.map.removeEvent(callumEvent.id);
+    // const wynnEvent = player.map.getEventByName('Vash');
+    // if (wynnEvent) player.map.removeEvent(wynnEvent.id);
 
-    this.event.setVisible(false); // Hide the trigger event
+    this.setVisible(false); // Hide the trigger event
   }
 
   private async triggerRecallVision(player: RpgPlayer) {

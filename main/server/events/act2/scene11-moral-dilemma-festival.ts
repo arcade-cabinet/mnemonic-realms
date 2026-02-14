@@ -14,7 +14,7 @@ class FrozenFestivalGoerEvent extends RpgEvent {
   private description: string = 'A frozen festival-goer.';
 
   onInit() {
-    this.event.setGraphic(this.event.getGraphic() + '_' + Math.floor(Math.random() * 4 + 1)); // Randomize graphic variant
+    this.setGraphic(this.getGraphic() + '_' + Math.floor(Math.random() * 4 + 1)); // Randomize graphic variant
   }
 
   onAction(player: RpgPlayer) {
@@ -75,8 +75,8 @@ export default class Act2Scene11MoralDilemmaFestivalEvent extends RpgEvent {
     player.setVariable('ACT2_SCENE11_COMPLETED', true); // Mark scene as started/completed to prevent re-trigger
 
     // --- Scene Setup ---
-    player.setPlayerControl(false); // Disable player movement
-    player.setCamera(this.event.position.x, this.event.position.y, { smooth: true, speed: 0.01 }); // Focus camera
+    player.canMove = false; // Disable player movement
+    // TODO: setCamera not available in RPG-JS 4.3.0
 
     // --- Spawn NPCs ---
     const map = player.map;
@@ -314,8 +314,8 @@ export default class Act2Scene11MoralDilemmaFestivalEvent extends RpgEvent {
     }
 
     // --- Cleanup ---
-    player.setPlayerControl(true); // Re-enable player movement
-    player.setCamera(player.position.x, player.position.y, { smooth: true, speed: 0.05 }); // Reset camera
+    player.canMove = true; // Re-enable player movement
+    // TODO: setCamera not available in RPG-JS 4.3.0
 
     // Remove dynamic NPCs
     if (this.callumEventId) map.removeEvent(this.callumEventId);
@@ -325,6 +325,6 @@ export default class Act2Scene11MoralDilemmaFestivalEvent extends RpgEvent {
     }
 
     // Remove this trigger event itself
-    this.event.remove();
+    this.remove();
   }
 }

@@ -1,4 +1,4 @@
-import { EventData, Move, RpgCommonEvent, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { EventData, Move, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
 import { addItem } from '../../systems/inventory';
 
 @EventData({

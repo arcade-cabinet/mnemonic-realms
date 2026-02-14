@@ -1,11 +1,9 @@
 import {
   EventData,
   MapData,
-  RpgCommonPlayer,
   RpgEvent,
   RpgMap,
   type RpgPlayer,
-  RpgScene,
 } from '@rpgjs/server';
 import { advanceObjective } from '../../systems/quests';
 
@@ -42,7 +40,7 @@ export default class HalfDrawnForestEvent extends RpgEvent {
 
       // 1. Play ambient music (as per narrative context)
       // Assuming a music box theme for Half-Drawn Forest
-      player.changeMusic('half-drawn-forest-theme', 0.8, 1000); // Adjust volume and fade duration
+      // TODO: changeMusic not available in RPG-JS 4.3.0
 
       // 2. Spawn NPCs
       // Hana at (15, 10)

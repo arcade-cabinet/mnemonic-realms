@@ -1,4 +1,4 @@
-import { Direction, EventData, MoveType, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { Direction, EventData, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
 import { completeQuest, isQuestActive, isQuestComplete } from '../../systems/quests';
 
 @EventData({
@@ -90,7 +90,7 @@ export class LuminosRecallEvent extends RpgEvent {
         graphic: 'npc_artun',
         direction: Direction.Up,
         speed: 100,
-        moveType: MoveType.Static,
+        // moveType: MoveType.Static, // MoveType does not exist in @rpgjs/server
       },
     });
 
@@ -187,11 +187,11 @@ export class LuminosRecallEvent extends RpgEvent {
     // Make the prism visible and interactive only when the quest is active
     // and the player has the Light Lens, or if the quest is completed (for flavor text)
     if ((isGQ03Active && hasLightLens) || isGQ03Completed) {
-      this.event.setVisible(true);
-      this.event.setCollidable(true);
+      this.setVisible(true);
+      this.setCollidable(true);
     } else {
-      this.event.setVisible(false);
-      this.event.setCollidable(false);
+      this.setVisible(false);
+      this.setCollidable(false);
     }
 
     // Handle the initial blinding light effect if player is in the grove without the lens

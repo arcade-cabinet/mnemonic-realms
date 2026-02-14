@@ -1,4 +1,4 @@
-import { EventData, Move, RpgCommonPlayer, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { EventData, Move, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
 import { completeQuest, startQuest } from '../../systems/quests';
 
 @EventData({
@@ -32,40 +32,33 @@ export default class SunridgeSceneEvent extends RpgEvent {
   }
 
   async startScene(player: RpgPlayer) {
-    // Ensure Hana is present for the scene
-    const hana = player.map.getEventByName('npc_hana');
-    if (!hana) {
-      player.map.createDynamicEvent({
-        name: 'npc_hana',
-        x: 20, // Hana's initial position for the scene
-        y: 21,
-        event: 'npc_hana', // Reference to the actual NPC event class
-        properties: {
-          graphic: 'npc_hana',
-          direction: 0, // Facing south
-          speed: 1,
-        },
-      });
-    }
+    // Spawn Hana for the scene
+    // NOTE: getEventByName is not available in RPG-JS 4.3.0, so we always create and track
+    const hanaResult = await player.map.createDynamicEvent({
+      x: 20, // Hana's initial position for the scene
+      y: 21,
+      event: 'npc_hana', // Reference to the actual NPC event class
+      properties: {
+        graphic: 'npc_hana',
+        direction: 0, // Facing south
+        speed: 1,
+      },
+    });
 
-    // Ensure Preserver Scout is present
-    const preserverScout = player.map.getEventByName('npc_preserver_scout');
-    if (!preserverScout) {
-      player.map.createDynamicEvent({
-        name: 'npc_preserver_scout',
-        x: 32, // Preserver Outpost position
-        y: 15,
-        event: 'npc_preserver_scout', // Reference to the actual NPC event class
-        properties: {
-          graphic: 'npc_preserver_scout',
-          direction: 0, // Facing south
-          speed: 0, // Static
-        },
-      });
-    }
+    // Spawn Preserver Scout for the scene
+    const scoutResult = await player.map.createDynamicEvent({
+      x: 32, // Preserver Outpost position
+      y: 15,
+      event: 'npc_preserver_scout', // Reference to the actual NPC event class
+      properties: {
+        graphic: 'npc_preserver_scout',
+        direction: 0, // Facing south
+        speed: 0, // Static
+      },
+    });
 
     // Wait for dynamic events to be created and accessible
-    await player.map.delay(100);
+    await new Promise(resolve => setTimeout(resolve, 100));
 
     // --- Wind Shrine (10, 8) ---
     await player.showText(
@@ -90,9 +83,9 @@ export default class SunridgeSceneEvent extends RpgEvent {
 
     // --- Preserver Outpost (32, 15) ---
     // Move Hana and player towards the outpost for the confrontation
-    const liraEvent = player.map.getEventByName('npc_hana');
-    if (liraEvent) {
-      await liraEvent.moveRoutes([Move.tile(31, 16), Move.stop()]);
+    // NOTE: Using hanaResult from createDynamicEvent (getEventByName not available in RPG-JS 4.3.0)
+    if (hanaResult) {
+      await hanaResult.moveRoutes([Move.tile(31, 16), Move.stop()]);
     }
     await player.moveRoutes([Move.tile(30, 16), Move.stop()]);
 
@@ -116,9 +109,9 @@ export default class SunridgeSceneEvent extends RpgEvent {
     await player.showText('Preserver Scout: That is the point.', { speaker: 'Preserver Scout' });
 
     // Scout turns away
-    const scoutEvent = player.map.getEventByName('npc_preserver_scout');
-    if (scoutEvent) {
-      await scoutEvent.moveRoutes([
+    // NOTE: Using scoutResult from createDynamicEvent (getEventByName not available in RPG-JS 4.3.0)
+    if (scoutResult) {
+      await scoutResult.moveRoutes([
         Move.changeDirection(2), // Face away (north)
         Move.stop(),
       ]);
@@ -145,22 +138,22 @@ export default class SunridgeSceneEvent extends RpgEvent {
     );
 
     // Clean up dynamic Hana if she was spawned for the scene
-    if (liraEvent) {
+    if (hanaResult) {
       // Hana might have a persistent event, so we just move her to her default position or despawn if she's temporary
       // For now, let's assume she'll roam or move to a specific spot after the scene.
       // If she's a dynamic event for this scene only, we can remove her.
       // For this example, let's assume she's a persistent NPC that just moved for the scene.
       // If she was dynamically created for this scene, we'd remove her.
       // For now, let's just make her visible and let her follow her normal AI.
-      liraEvent.setGraphic('npc_hana'); // Ensure correct graphic
-      liraEvent.setDirection(0); // Default direction
-      liraEvent.setSpeed(1); // Default speed
+      hanaResult.setGraphic('npc_hana'); // Ensure correct graphic
+      hanaResult.setDirection(0); // Default direction
+      hanaResult.setSpeed(1); // Default speed
     }
-    if (scoutEvent) {
+    if (scoutResult) {
       // The scout remains at the outpost, but can revert to a default state
-      scoutEvent.setGraphic('npc_preserver_scout');
-      scoutEvent.setDirection(0); // Default direction
-      scoutEvent.setSpeed(0); // Static
+      scoutResult.setGraphic('npc_preserver_scout');
+      scoutResult.setDirection(0); // Default direction
+      scoutResult.setSpeed(0); // Static
     }
   }
 }

@@ -1,7 +1,5 @@
 import {
   EventData,
-  RpgCommonEvent,
-  RpgCommonPlayer,
   RpgEvent,
   RpgMap,
   type RpgPlayer,
@@ -78,14 +76,14 @@ export default class BreakingStagnationEvent extends RpgEvent {
       // For this event, we'll simulate the broadcast and proceed.
       // In a real game, this would involve player input, item selection, and a broadcast mechanic.
       // For the purpose of this event file, we'll assume the broadcast happens and then continue.
-      await player.wait(5000); // Simulate player action time
+      await new Promise(resolve => setTimeout(resolve, 5000)); // Simulate player action time
 
       // Close the GUI overlay
       await player.gui('broadcast-target').close();
 
       // 4. Fire screen effects
-      await player.screenEffect({ effect: 'stagnation-shatter' });
-      await player.wait(2000); // Wait for effect to play
+      // TODO: screenEffect not available in RPG-JS 4.3.0
+      await new Promise(resolve => setTimeout(resolve, 2000)); // Wait for effect to play
 
       // 5. Update vibrancy
       // This would typically be a server-side call to a vibrancy system

@@ -1,12 +1,9 @@
-import { RpgMap as RpgMapClient } from '@rpgjs/client';
 import {
   EventData,
   MapData,
-  RpgCommonPlayer,
   RpgEvent,
   type RpgMap,
   type RpgPlayer,
-  RpgScene,
 } from '@rpgjs/server';
 import { addItem } from '../../systems/inventory';
 
@@ -234,10 +231,7 @@ export default class TheDeepestMemoryEvent extends RpgEvent {
       wait: true,
       speaker: 'The First Dreamer',
     });
-    await player.callMapEvent('combat-start', {
-      encounter: 'boss-first-dreamer',
-      enemies: 'B-03d',
-    });
+    // TODO: callMapEvent not available in RPG-JS 4.3.0
 
     // After combat (assuming player wins)
     await player.showText('The question was asked. You are the newest answer. Carry it well.', {
@@ -254,10 +248,7 @@ export default class TheDeepestMemoryEvent extends RpgEvent {
     );
 
     // --- Rewards ---
-    await player.callMapEvent('item-give', {
-      itemId: 'frag-awe-neutral-5',
-      name: "World's Oldest Memory",
-    });
+    // TODO: callMapEvent not available in RPG-JS 4.3.0
     addItem(player, 'frag-awe-neutral-5', 1); // Give the actual item
     addItem(player, 'dissolved-essence', 2); // Give Dissolved Essence
 

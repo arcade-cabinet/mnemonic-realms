@@ -1,6 +1,5 @@
 import {
   EventData,
-  RpgCommonEvent,
   RpgEvent,
   type RpgMap,
   type RpgPlayer,
@@ -66,7 +65,7 @@ export default async function setupAct3Scene12NewBeginning(player: RpgPlayer, ma
 
     // Play credits sequence (assuming player.gui() can trigger this or a dedicated cutscene system)
     await player.gui('credits-sequence', true); // Show credits GUI overlay
-    await player.changeMusic({ track: 'credits-theme', loop: true, volume: 0.8 });
+    // TODO: changeMusic not available in RPG-JS 4.3.0
 
     // 2. Spawn NPCs at appropriate positions using createDynamicEvent()
     // Hana at (6, 20)
@@ -137,7 +136,7 @@ export default async function setupAct3Scene12NewBeginning(player: RpgPlayer, ma
     await player.gui('credits-sequence', false);
 
     // Change music back or to a post-game theme
-    await player.changeMusic({ track: 'village-hub-theme', loop: true, volume: 0.6 }); // Example: return to hub music
+    // TODO: changeMusic not available in RPG-JS 4.3.0
 
     // Return player to Village Hub (example: 19, 11)
     await player.changeMap('village-hub', { x: 19, y: 11 });

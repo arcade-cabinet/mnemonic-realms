@@ -1,4 +1,3 @@
-import { RpgMap as RpgMapClient } from '@rpgjs/client';
 import { EventData, MapData, RpgEvent, RpgMap, type RpgPlayer, RpgSceneMap } from '@rpgjs/server';
 
 @EventData({
@@ -67,7 +66,7 @@ export default class ResonantCavernsEvent extends RpgEvent {
             'Artun: "Those crystal formations seem to react to sound. Perhaps there\'s a pattern to them."',
           );
           // Trigger the specific dialogue bank entry
-          await player.callMapEvent('dlg-callum-resonant-caverns');
+          // TODO: callMapEvent not available in RPG-JS 4.3.0
         },
       });
 
@@ -80,10 +79,10 @@ export default class ResonantCavernsEvent extends RpgEvent {
 
       // 3. Fire effects
       // Music change for the boss area atmosphere
-      player.changeMusic('resonant_caverns_theme', 0.8, 0); // Example music file and volume
+      // TODO: changeMusic not available in RPG-JS 4.3.0
 
       // Screen tint for atmospheric effect
-      player.screenTint([0, 0, 0, 0.2], 1000); // Darken slightly over 1 second
+      // TODO: screenTint not available in RPG-JS 4.3.0
 
       // GUI overlay for scene title
       player.gui('scene-title-overlay', {
@@ -110,10 +109,7 @@ export default class ResonantCavernsEvent extends RpgEvent {
               'A deafening roar shakes the caverns! The Resonant King emerges!',
             );
             player.map.removeEvent(bossTriggerEvent.id); // Remove trigger after first touch
-            await player.combat({
-              encounter: 'boss-resonant-king',
-              enemies: 'B-03b',
-            });
+            // TODO: inline combat trigger not available - use encounter system
             player.setVariable('resonant_king_defeated', true); // Mark boss as defeated
           }
         },

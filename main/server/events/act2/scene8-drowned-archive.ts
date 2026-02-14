@@ -1,7 +1,6 @@
 import { Direction } from '@rpgjs/common';
 import {
   EventData,
-  RpgCommonEvent,
   RpgEvent,
   type RpgMap,
   type RpgPlayer,

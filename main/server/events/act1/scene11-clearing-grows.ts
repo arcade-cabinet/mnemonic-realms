@@ -1,7 +1,6 @@
 import {
   EventData,
   Move,
-  RpgCommonPlayer,
   RpgEvent,
   type RpgMap,
   type RpgPlayer,
@@ -82,8 +81,8 @@ export class TheClearingGrowsEvent extends RpgEvent {
     );
 
     // Rumble and light flare effect (simulate with screen effects or temporary graphic)
-    await player.screenEffect('shake', { duration: 1000, strength: 5 });
-    await player.screenEffect('flash', { color: [150, 150, 255, 0.5], duration: 1500 }); // Pale blue light
+    // TODO: screenEffect not available in RPG-JS 4.3.0
+    // TODO: screenEffect not available in RPG-JS 4.3.0
 
     await player.showText("...they're pushing back.");
 

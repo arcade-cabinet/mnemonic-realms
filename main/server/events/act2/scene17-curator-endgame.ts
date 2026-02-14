@@ -1,6 +1,5 @@
 import {
   EventData,
-  RpgCommonEvent,
   RpgEvent,
   type RpgMap,
   type RpgPlayer,

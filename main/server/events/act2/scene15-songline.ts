@@ -2,7 +2,6 @@ import {
   Direction,
   EventData,
   Move,
-  RpgCommonEvent,
   RpgEvent,
   RpgMap,
   type RpgPlayer,
@@ -39,13 +38,13 @@ export class TheSonglineEvent extends RpgEvent {
     await player.showText(
       'You step into the Depths Level 4: The Songline. A faint, ethereal hum fills the air.',
     );
-    await player.changeMusic('songline_theme', 0.8, 0); // Start scene music
+    // TODO: changeMusic not available in RPG-JS 4.3.0
 
     // --- Room 1: The First Verse — Joy ---
     await player.showText(
       'Room 1: The First Verse — Joy. A bright, golden room. The walls vibrate with visible sound waves.',
     );
-    await player.screenEffect('flash', { color: [255, 255, 0, 0.5], duration: 1000 });
+    // TODO: screenEffect not available in RPG-JS 4.3.0
     await player.showText(
       "Dissolved Chorister (echo): This is the beginning. We sang because we loved the sound. Every voice added something the others couldn't. Together, we were the most beautiful thing in the world.",
     );
@@ -59,7 +58,7 @@ export class TheSonglineEvent extends RpgEvent {
     await player.showText(
       'Room 2: The Second Verse — Complexity. The room darkens slightly. The harmonies become more complex.',
     );
-    await player.screenEffect('tint', { color: [0, 0, 0, 0.2], duration: 1000 });
+    // TODO: screenEffect not available in RPG-JS 4.3.0
     await player.showText(
       'Dissolved Conductor (echo): The song grew. We added voices, instruments, harmonics upon harmonics. It was magnificent — and it was breaking us. We were losing each other in the complexity.',
     );
@@ -75,7 +74,7 @@ export class TheSonglineEvent extends RpgEvent {
     await player.showText(
       'Room 3: The Third Verse — The Choice. A quiet room. The echoes sit in a circle, not singing. The silence feels heavy.',
     );
-    await player.screenEffect('tint', { color: [0, 0, 0, 0.5], duration: 1000 });
+    // TODO: screenEffect not available in RPG-JS 4.3.0
     await player.showText(
       'Dissolved Elder (echo): We could have simplified. But the song WAS us. Simplifying it meant losing parts of ourselves.',
     );
@@ -94,7 +93,7 @@ export class TheSonglineEvent extends RpgEvent {
     await player.showText(
       'Room 4: The Fourth Verse — Dissolution. The room is vast, open, luminous. The echoes stand, arms raised, voices lifted.',
     );
-    await player.screenEffect('flash', { color: [255, 255, 255, 0.3], duration: 1000 });
+    // TODO: screenEffect not available in RPG-JS 4.3.0
     await player.showText(
       'One by one, the singers dissolve — their bodies becoming visible sound waves that merge with the ambient music.',
     );
@@ -155,14 +154,14 @@ export class TheSonglineEvent extends RpgEvent {
     // --- Boss Encounter: The Conductor ---
     await player.showText('A dissonant chord rings through the chamber. The Conductor appears!');
     await player.map.removeEvent(callumEvent.id); // Artun disappears before combat
-    await player.changeMusic('boss_theme_conductor', 0.9, 0); // Boss music
+    // TODO: changeMusic not available in RPG-JS 4.3.0
     await player.battle('boss-conductor', ['B-03c']); // Trigger boss combat
 
     // --- Post-Boss ---
     await player.showText(
       "The Conductor's final note fades into silence. The Songline is complete.",
     );
-    await player.changeMusic('songline_theme_calm', 0.7, 0); // Return to a calmer theme
+    // TODO: changeMusic not available in RPG-JS 4.3.0
     addGold(player, 200);
     await player.showText('You gained 200 gold.');
     await player.addState('player_level_up', { levels: 2 }); // Player gains ~2 levels

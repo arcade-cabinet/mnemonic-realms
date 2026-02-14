@@ -79,11 +79,11 @@ export class KinesisRecallEvent extends RpgEvent {
         );
 
         if (this.callumEventId) {
-          await player.removeDynamicEvent(this.callumEventId);
+          player.map.removeEvent(this.callumEventId);
           this.callumEventId = null;
         }
         if (this.petraEventId) {
-          await player.removeDynamicEvent(this.petraEventId);
+          player.map.removeEvent(this.petraEventId);
           this.petraEventId = null;
         }
       } else {

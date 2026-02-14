@@ -1,0 +1,13 @@
+diff --git a/lib/build/utils.js b/lib/build/utils.js
+index e32e75ac515191b96c2759b28126f83a07fe896c..de95eb19bc818c5ae557c5ed76698878a5788712 100644
+--- a/lib/build/utils.js
++++ b/lib/build/utils.js
+@@ -12,7 +12,7 @@ export const entryPointServer = (entryPointPath) => {
+ };
+ export const globFiles = (extension) => {
+     return [
+-        ...glob.sync('**/*.' + extension, { nodir: true, ignore: ['node_modules/**', 'dist/**'] }),
++        ...glob.sync('**/*.' + extension, { nodir: true, ignore: ['node_modules/**', 'dist/**', 'assets/tilesets/**', 'gen/**'] }),
+         ...glob.sync('node_modules/rpgjs-*/*.' + extension, { nodir: true }),
+         ...glob.sync('node_modules/@rpgjs/**/*.' + extension, { nodir: true })
+     ];

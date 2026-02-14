@@ -1,4 +1,4 @@
-import { EventData, Move, RpgCommonEvent, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { EventData, Move, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
 import { addItem } from '../../systems/inventory';
 import { increaseVibrancy } from '../../systems/vibrancy';
 
@@ -38,7 +38,8 @@ export default class MoralDilemmaGardenEvent extends RpgEvent {
 
   async triggerScene(player: RpgPlayer) {
     // 1. Spawn Artun
-    this.callumEventId = await player.map.createDynamicEvent({
+    // NOTE: getEvent not available in RPG-JS 4.3.0 — use createDynamicEvent return value directly
+    const callumEvent = await player.map.createDynamicEvent({
       x: 27, // Position Artun near the garden
       y: 32,
       id: 'callum_garden_dilemma_npc',
@@ -47,8 +48,8 @@ export default class MoralDilemmaGardenEvent extends RpgEvent {
       speed: 0,
       // Artun is static for this scene
     });
+    this.callumEventId = callumEvent?.id ?? null;
 
-    const callumEvent = player.map.getEvent(this.callumEventId);
     if (callumEvent) {
       await callumEvent.moveRoutes([
         Move.tile(27, 32), // Ensure Artun is at the correct spot
@@ -62,7 +63,8 @@ export default class MoralDilemmaGardenEvent extends RpgEvent {
     );
 
     // 3. Spawn Rootwalker Echo
-    const rootwalkerEchoEventId = await player.map.createDynamicEvent({
+    // NOTE: getEvent not available in RPG-JS 4.3.0 — use createDynamicEvent return value directly
+    const rootwalkerEchoEvent = await player.map.createDynamicEvent({
       x: 28, // Position Rootwalker Echo at the garden's center
       y: 32,
       id: 'rootwalker_echo_npc',
@@ -72,7 +74,6 @@ export default class MoralDilemmaGardenEvent extends RpgEvent {
       // Echo is static for this scene
     });
 
-    const rootwalkerEchoEvent = player.map.getEvent(rootwalkerEchoEventId);
     if (rootwalkerEchoEvent) {
       await rootwalkerEchoEvent.moveRoutes([
         Move.tile(28, 32), // Ensure echo is at the correct spot

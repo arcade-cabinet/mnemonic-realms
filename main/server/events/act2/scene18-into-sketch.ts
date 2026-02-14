@@ -53,8 +53,8 @@ export class Act2Scene18IntoSketch extends RpgEvent {
     await player.changeMap('half-drawn-forest', { x: 20, y: 20 });
 
     // 2. Apply visual and audio effects
-    await player.screenEffect('sketch-transition');
-    await player.changeMusic('sketch-ambient');
+    // TODO: screenEffect not available in RPG-JS 4.3.0
+    // TODO: changeMusic not available in RPG-JS 4.3.0
     await player.showText("You've entered the Sketch — the world's unfinished edge.");
 
     // 3. Spawn NPCs at appropriate positions on the new map

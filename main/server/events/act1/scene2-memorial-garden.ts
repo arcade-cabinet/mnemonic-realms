@@ -1,4 +1,4 @@
-import { Direction, EventData, MoveType, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { Direction, EventData, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
 import { addItem } from '../../systems/inventory';
 import { advanceObjective, isQuestActive } from '../../systems/quests';
 

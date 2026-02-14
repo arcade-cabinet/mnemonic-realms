@@ -1,14 +1,11 @@
 import {
   EventData,
   MapData,
-  RpgCommonPlayer,
   RpgEvent,
   type RpgMap,
   type RpgPlayer,
-  RpgScene,
 } from '@rpgjs/server';
 import { completeQuest, isQuestActive, startQuest } from '../../systems/quests';
-import { PreserverFortressF3Map } from '../maps/fortress-f3'; // Assuming map definition is here
 
 @EventData({
   name: 'act3-scene8-first-memory-chamber',
@@ -237,7 +234,7 @@ export default class FirstMemoryChamberEvent extends RpgEvent {
             });
             break;
         }
-        await player.wait(2000); // Pause between god responses
+        await new Promise(resolve => setTimeout(resolve, 2000)); // Pause between god responses
       }
     }
 

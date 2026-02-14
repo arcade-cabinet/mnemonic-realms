@@ -11,6 +11,11 @@ overrides:
   '@babel/traverse': 7.26.10
   '@babel/types': 7.26.10
 
+patchedDependencies:
+  '@rpgjs/compiler':
+    hash: e3b5526961a69ee5a57cecb9ad038dd1457c954229870f1dbd29812dbf119131
+    path: patches/@rpgjs__compiler.patch
+
 importers:
 
   .:
@@ -57,7 +62,7 @@ importers:
         version: 1.58.2
       '@rpgjs/compiler':
         specifier: 4.3.0
-        version: 4.3.0(@types/node@25.2.3)(esbuild@0.27.3)(terser@5.46.0)(vue@3.5.28(typescript@5.9.3))(workbox-build@7.4.0(@types/babel__core@7.20.5))(workbox-window@7.4.0)
+        version: 4.3.0(patch_hash=e3b5526961a69ee5a57cecb9ad038dd1457c954229870f1dbd29812dbf119131)(@types/node@25.2.3)(esbuild@0.27.3)(terser@5.46.0)(vue@3.5.28(typescript@5.9.3))(workbox-build@7.4.0(@types/babel__core@7.20.5))(workbox-window@7.4.0)
       '@types/sharp':
         specifier: ^0.32.0
         version: 0.32.0
@@ -5861,7 +5866,7 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  '@rpgjs/compiler@4.3.0(@types/node@25.2.3)(esbuild@0.27.3)(terser@5.46.0)(vue@3.5.28(typescript@5.9.3))(workbox-build@7.4.0(@types/babel__core@7.20.5))(workbox-window@7.4.0)':
+  '@rpgjs/compiler@4.3.0(patch_hash=e3b5526961a69ee5a57cecb9ad038dd1457c954229870f1dbd29812dbf119131)(@types/node@25.2.3)(esbuild@0.27.3)(terser@5.46.0)(vue@3.5.28(typescript@5.9.3))(workbox-build@7.4.0(@types/babel__core@7.20.5))(workbox-window@7.4.0)':
     dependencies:
       '@babel/core': 7.26.10
       '@babel/generator': 7.26.10

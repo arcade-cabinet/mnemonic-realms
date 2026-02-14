@@ -1,11 +1,9 @@
 import {
   EventData,
   MapData,
-  RpgCommonPlayer,
   RpgEvent,
   type RpgMap,
   type RpgPlayer,
-  RpgScene,
 } from '@rpgjs/server';
 import { addItem } from '../../systems/inventory';
 import { startQuest } from '../../systems/quests';

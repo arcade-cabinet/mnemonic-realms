@@ -1,7 +1,6 @@
 import {
   EventData,
   RpgCommonMap,
-  RpgCommonPlayer,
   RpgEvent,
   RpgMap,
   type RpgPlayer,
@@ -51,10 +50,10 @@ export class EndgameBloomEvent extends RpgEvent {
     player.emit('apply-global-vibrancy', { zone: 'all', delta: 95 });
 
     // Music change
-    await player.changeMusic('endgame-bloom-orchestral');
+    // TODO: changeMusic not available in RPG-JS 4.3.0
 
     // Screen effect
-    await player.screenEffect('bloom-cascade', 90000); // 90 seconds for the cinematic
+    // TODO: screenEffect not available in RPG-JS 4.3.0
 
     // 3. Dialogue sequence
     await player.showText(
