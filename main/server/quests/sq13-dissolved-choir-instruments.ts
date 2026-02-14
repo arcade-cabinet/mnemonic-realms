@@ -1,4 +1,3 @@
-import { Element, Emotion } from '@rpgjs/common';
 import {
   HookClient,
   Quest,
@@ -8,6 +7,8 @@ import {
   RpgSceneMap,
   RpgServer,
 } from '@rpgjs/server';
+import type { Emotion } from '../systems/memory';
+import { Element } from '../systems/damage';
 
 export const SQ13_CHOIR_INSTRUMENTS_QUEST_ID = 'SQ-13';
 

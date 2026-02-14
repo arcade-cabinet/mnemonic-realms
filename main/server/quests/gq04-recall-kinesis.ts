@@ -1,5 +1,6 @@
-import { Element, Emotion } from '@rpgjs/common';
 import { type RpgPlayer, type RpgQuest, RpgSceneMap, RpgWorld } from '@rpgjs/server';
+import type { Emotion } from '../systems/memory';
+import { Element } from '../systems/damage';
 
 export default {
   id: 'GQ-04',

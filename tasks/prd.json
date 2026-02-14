@@ -1,382 +1,763 @@
 {
-  "name": "Mnemonic Realms v2.0 — Game Bible",
-  "description": "Author the complete game bible as markdown documentation. Every location, character, quest, item, enemy, and system fully specified. No code — pure content.",
-  "branchName": "ralph/v2-bible",
+  "name": "Mnemonic Realms — Production Release (Phases 2–5, 7)",
+  "description": "Implement all core game systems, rewrite generated content, build UI, wire effects, and create tests. Takes the game from 'content authored but zero mechanics' to a playable v1.0.0 JRPG.",
+  "branchName": "rebuild/rpgjs-proper",
   "userStories": [
     {
       "id": "US-001",
-      "title": "Author detailed geography document with zone specs",
-      "description": "As a game designer, I need a complete geography document specifying every zone in the game world with tile-level detail, so map designers know exactly what to build.",
+      "title": "Create player progression system (XP, leveling, stat growth)",
+      "description": "As a player, I want to gain XP from combat and quests, level up, and have my stats grow according to my class, so that I feel a sense of progression.",
       "acceptanceCriteria": [
-        "docs/world/geography.md created",
-        "Defines 5+ distinct zones: Village Hub, Settled Lands, Frontier, The Sketch, The Depths",
-        "Each zone has: size (tile dimensions), biome type, dominant tileset, key landmarks, connections to other zones",
-        "Village Hub specifies building positions: shop, elder's house, quest board, inn, training ground",
-        "Frontier specifies vibrancy transition gradients",
-        "The Sketch specifies abstract/unfinished tile aesthetics",
-        "Cross-references docs/world/setting.md for consistency",
-        "No TBD markers remain"
+        "New file main/server/systems/progression.ts created",
+        "XP gain function: addXP(player, amount) that checks for level-up",
+        "Level-up stat growth per class using DDL data from gen/ddl/classes/classes.json",
+        "Max level cap of 35",
+        "player.setVariable() used for all progression state (level, xp, stats)",
+        "Exported functions usable by combat and quest systems",
+        "pnpm lint passes on new files"
       ],
       "priority": 1,
-      "passes": false,
-      "notes": "SEQUENTIAL — must complete before map docs (US-015+). Read docs/world/setting.md for context. The world is young and unfinished, not dying."
+      "passes": true,
+      "notes": "Read gen/ddl/classes/classes.json and main/database/classes/*.ts for class stat definitions. RPG-JS uses player.setVariable() for persistence. This is foundational — combat, quests, and UI all depend on it.",
+      "dependsOn": []
     },
     {
       "id": "US-002",
-      "title": "Author per-zone vibrancy system specification",
-      "description": "As a game designer, I need the vibrancy mechanic fully specified so implementers know exactly how broadcasting memories changes zone visuals and gameplay.",
+      "title": "Create inventory and equipment system",
+      "description": "As a player, I want to collect items, equip weapons and armor, and use consumables, so that I can prepare for combat.",
       "acceptanceCriteria": [
-        "docs/world/vibrancy-system.md created",
-        "Defines vibrancy scale: 0-100 per zone",
-        "Three visual tiers: Muted (0-33), Normal (34-66), Vivid (67-100)",
-        "Specifies exactly which tiles swap at each threshold for each biome type",
-        "Defines how broadcasting a memory fragment changes vibrancy (formula or table)",
-        "Defines vibrancy decay (if any) and Preserver reinforcement mechanics",
-        "Specifies global ambient effects (sky color, particle density) as average of visited zones",
-        "Audio layer changes per vibrancy tier documented",
-        "Cross-references docs/design/memory-system.md",
-        "No TBD markers remain"
+        "New file main/server/systems/inventory.ts created",
+        "Inventory data structure using player variables: items with quantities",
+        "Equipment slots: weapon, armor, accessory",
+        "addItem(player, itemId, qty), removeItem(), getInventory() functions",
+        "equipItem(player, slot, itemId) with stat recalculation",
+        "useItem(player, itemId) for consumables (HP/SP restore from DDL data)",
+        "Gold tracking: addGold(), removeGold(), getGold()",
+        "pnpm lint passes on new files"
       ],
       "priority": 1,
-      "passes": false,
-      "notes": "PARALLEL with US-001. Read docs/design/memory-system.md and docs/design/visual-direction.md for context."
+      "passes": true,
+      "notes": "Read gen/ddl/consumables/*.json for item effects. Read gen/ddl/weapons/*.json and gen/ddl/armor/*.json for equipment stats. RPG-JS player.setVariable() for all state.",
+      "dependsOn": []
     },
     {
       "id": "US-003",
-      "title": "Author dormant gods document with all recall options",
-      "description": "As a game designer, I need all four dormant gods fully specified with their recall options and world-state effects.",
+      "title": "Create combat engine core (turn order, action loop)",
+      "description": "As a developer, I need a turn-based combat engine that manages turn order, player actions, and enemy turns, so combat encounters can function.",
       "acceptanceCriteria": [
-        "docs/world/dormant-gods.md created",
-        "Four gods defined: Resonance (sound), Verdance (growth), Luminos (light), Kinesis (motion)",
-        "Each god has: origin story (which dissolved civilization created them), dormant location, discovery quest trigger",
-        "Each god has 4 recall options based on emotion type (joy/fury/sorrow/awe)",
-        "Each recall option specifies: god's new name, new domain, passive world effect, player buff, NPC behavior change, new side quests unlocked",
-        "Total: 16 distinct recall outcomes documented",
-        "Recall is permanent — document why and how this creates replay value",
-        "Cross-references docs/world/factions.md (Dormant Pantheon section)",
-        "No TBD markers remain"
+        "New file main/server/systems/combat.ts created",
+        "Turn order calculation based on AGI stat",
+        "Action types enum: Attack, Skill, Item, Defend, Flee",
+        "Combat state machine: start → player_turn → enemy_turn → check_end → loop/end",
+        "startCombat(player, enemyIds[]) initializes combat state",
+        "processTurn(player, action) executes one turn",
+        "Combat state stored in player variables",
+        "pnpm lint passes on new files"
       ],
-      "priority": 1,
-      "passes": false,
-      "notes": "PARALLEL with US-001, US-002. Read docs/world/factions.md for the Dormant Pantheon concept. Each god = one Act II set piece."
+      "priority": 2,
+      "passes": true,
+      "notes": "This is the combat skeleton. Damage formulas, skills, and AI come in subsequent stories. Read gen/ddl/enemies/*.json for enemy stats. Keep it simple — variable-based state, no external combat library.",
+      "dependsOn": [
+        "US-001",
+        "US-002"
+      ]
     },
     {
       "id": "US-004",
-      "title": "Author Act I scene-by-scene script",
-      "description": "As a game designer, I need a complete scene-by-scene script for Act I so dialogue writers and event programmers know exactly what happens.",
+      "title": "Implement damage formulas and element system",
+      "description": "As a player, I want attacks and skills to deal damage based on stats, equipment, and elemental affinities, so combat feels strategic.",
       "acceptanceCriteria": [
-        "docs/story/act1-script.md created",
-        "10-15 scenes covering: player arrival, meeting Lira, learning memory operations, first combat, village exploration, NPC relationships, first Stagnation Zone discovery, Lira getting frozen",
-        "Each scene has: location, involved characters, trigger condition, dialogue (full text), player actions, rewards/consequences",
-        "Tutorial integration: which scenes teach which mechanics (collect, remix, broadcast, combat)",
-        "Emotional arc clear: wonder → learning → growing confidence → shock (Lira frozen)",
-        "Cross-references docs/story/structure.md Act I section",
-        "Cross-references docs/story/characters.md for character voice consistency",
-        "No TBD markers remain"
+        "New file main/server/systems/damage.ts created",
+        "Physical damage formula: ATK * (1 + weapon_bonus/100) - DEF * 0.5, with 0.85-1.15 variance",
+        "Magical damage formula: INT * (1 + skill_power/100) - SDEF * 0.5",
+        "7 elements defined: fire, water, wind, earth, light, dark, neutral",
+        "Element effectiveness table (1.5x strong, 0.5x weak, 1.0x neutral)",
+        "Critical hit system: 5% base + AGI/200, deals 1.5x damage",
+        "Damage floor of 1 (never zero damage)",
+        "Exported calculateDamage(attacker, defender, skill?, element?) function",
+        "pnpm lint passes"
       ],
-      "priority": 2,
-      "passes": false,
-      "notes": "SEQUENTIAL — depends on US-001 (geography for locations). Read docs/story/structure.md and docs/story/characters.md first."
+      "priority": 3,
+      "passes": true,
+      "notes": "Read gen/ddl/skills/*.json for skill formulas and elements. Read docs/design/combat.md for the design spec. Keep formulas simple and fun — avoid over-engineering.",
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-005",
-      "title": "Author Act II scene-by-scene script",
-      "description": "As a game designer, I need a complete Act II script covering the Frontier expansion, god recalls, and moral complexity.",
+      "title": "Implement skill execution and status effects in combat",
+      "description": "As a player, I want to use skills with SP costs and have status effects apply correctly, so combat has depth.",
       "acceptanceCriteria": [
-        "docs/story/act2-script.md created",
-        "15-20 scenes covering: Frontier exploration, 4 dormant god recall sequences, Preserver confrontations, moral dilemma scenes, Curator's endgame reveal",
-        "Each god recall is a major set piece with: location, puzzle/challenge, emotion choice moment, immediate world-state change",
-        "At least 2 scenes where preservation is the right call (moral complexity)",
-        "Frontier settlements with unique NPCs and memory-sharing quests",
-        "Emotional arc: confidence → moral questioning → determination",
-        "Cross-references docs/world/dormant-gods.md (US-003) for recall options",
-        "Cross-references docs/story/structure.md Act II section",
-        "No TBD markers remain"
+        "Skill execution added to combat.ts or new systems/skills-runtime.ts",
+        "SP cost deducted on skill use, skill fails if insufficient SP",
+        "Skill targeting: single_enemy, all_enemies, single_ally, all_allies, self",
+        "Status effect application from gen/ddl/status-effects/effects.json",
+        "Status effects tick at start of affected combatant's turn",
+        "Duration tracking (turns remaining) in combat state",
+        "At least poison (damage/turn), stun (skip turn), and regen (heal/turn) working",
+        "pnpm lint passes"
       ],
-      "priority": 3,
+      "priority": 4,
       "passes": false,
-      "notes": "SEQUENTIAL — depends on US-003 (dormant gods) and US-004 (Act I establishes characters). This is the longest section."
+      "notes": "Read gen/ddl/skills/ for all skill definitions. Read gen/ddl/status-effects/ for effect definitions. Read main/database/states/*.ts for the database entries.",
+      "dependsOn": [
+        "US-004"
+      ]
     },
     {
       "id": "US-006",
-      "title": "Author Act III scene-by-scene script",
-      "description": "As a game designer, I need a complete Act III script covering the climax, final dungeon, and ending.",
+      "title": "Implement enemy AI and encounter triggers",
+      "description": "As a player, I want enemies to take intelligent actions and encounters to trigger on maps, so the world feels alive and dangerous.",
       "acceptanceCriteria": [
-        "docs/story/act3-script.md created",
-        "10-15 scenes covering: The Sketch traversal, The Depths exploration, Preserver fortress, First Memory confrontation, ending sequence",
-        "The Sketch scenes specify abstract/unfinished landscape challenges the player must 'remember into solidity'",
-        "Final dungeon (Preserver fortress) is a crystalline museum with specific rooms and puzzles",
-        "First Memory scene: player remixes it (not destroy vs preserve), world leaps forward",
-        "Ending: world blooms, NPCs evolve, gods fully awaken, Preservers become archivists",
-        "Emotional arc: awe → challenge → triumph → wonder (ending)",
-        "Cross-references docs/story/structure.md Act III section",
-        "No TBD markers remain"
+        "Enemy AI in combat: per-enemy behavior patterns (aggressive, defensive, healer, random)",
+        "AI selects action based on HP threshold, available skills, and target priority",
+        "Random encounter system: per-zone encounter tables with enemy groups",
+        "Encounter rate configurable per map (steps between encounters)",
+        "Encounter triggers on player movement in designated map zones",
+        "At least 3 different encounter groups defined for Settled Lands zones",
+        "pnpm lint passes"
       ],
-      "priority": 4,
+      "priority": 5,
       "passes": false,
-      "notes": "SEQUENTIAL — depends on US-005. Keep the hopeful tone — this is NOT grimdark."
+      "notes": "Read gen/ddl/enemies/*.json for enemy stats and types. Read docs/design/enemies-catalog.md for behavior descriptions. Keep AI simple: if HP < 30% and has heal, heal; otherwise attack strongest.",
+      "dependsOn": [
+        "US-005"
+      ]
     },
     {
       "id": "US-007",
-      "title": "Author complete NPC dialogue bank",
-      "description": "As a game designer, I need every line of NPC dialogue written and organized so implementers can wire it directly into RPG-JS events.",
+      "title": "Implement combat victory, defeat, and rewards",
+      "description": "As a player, I want to receive XP, gold, and item drops on victory, and see a game over on defeat, so combat has consequences.",
       "acceptanceCriteria": [
-        "docs/story/dialogue-bank.md created",
-        "All named NPCs have complete dialogue: Lira (~30 lines), Callum (~20 lines), Curator (~25 lines)",
-        "Dialogue organized by: character → trigger condition → lines",
-        "Trigger conditions match scene scripts (Act I/II/III)",
-        "Procedural NPC dialogue templates: 10+ greeting variants, 10+ personality lines, 10+ quest hooks",
-        "Shop NPC dialogue: browse, buy, sell, insufficient gold, farewell",
-        "Dormant god dialogue: per recall form (4 gods × 4 forms = 16 sets)",
-        "Voice consistency verified: each character sounds distinct",
-        "No TBD markers remain"
-      ],
-      "priority": 4,
-      "passes": false,
-      "notes": "PARALLEL with US-006. Can be written alongside Act III since it pulls from all acts. Read docs/story/characters.md for voice."
-    },
-    {
-      "id": "US-008",
-      "title": "Author complete quest chains document",
-      "description": "As a game designer, I need every quest fully specified with triggers, objectives, rewards, and branching dialogue.",
-      "acceptanceCriteria": [
-        "docs/story/quest-chains.md created",
-        "Main quest chain: 8-12 quests spanning Acts I-III with explicit triggers and completion conditions",
-        "Side quests: 10+ optional quests tied to memory broadcasting, NPC relationships, and exploration",
-        "God recall quests: 4 quest chains (one per dormant god) with emotion-based branching",
-        "Each quest has: ID, title, giver NPC, trigger condition, objectives (numbered), rewards (XP/gold/items/memory fragments), completion dialogue, failure conditions (if any)",
-        "Quest dependencies documented (which quests unlock which)",
-        "Rewards reference items from docs/design/items-catalog.md (US-010)",
-        "No TBD markers remain"
-      ],
-      "priority": 5,
-      "passes": false,
-      "notes": "SEQUENTIAL — depends on US-004, US-005, US-006 (act scripts define quest moments). This is the bridge between story and implementation."
-    },
-    {
-      "id": "US-009",
-      "title": "Author class progression document with stat tables",
-      "description": "As a game designer, I need exact XP curves, stat growth tables, and skill unlock schedules for all four classes.",
-      "acceptanceCriteria": [
-        "docs/design/progression.md created",
-        "XP curve: table of XP required per level (1-30), formula documented",
-        "Stat growth per level per class: HP, SP, STR, INT, DEF, AGI as exact numbers (not ranges)",
-        "Skill unlock schedule: which skills unlock at which levels for each class (4 classes × 6-8 skills each)",
-        "Memory-based progression: how memory broadcasting affects class power (per docs/design/classes.md)",
-        "Subclass unlock conditions (Act II, tied to god recall)",
-        "Level cap and endgame stat targets documented",
-        "Balanced: no class is obviously dominant in all situations",
-        "No TBD markers remain"
-      ],
-      "priority": 2,
-      "passes": false,
-      "notes": "PARALLEL with US-001-003. Read docs/design/classes.md and docs/design/combat.md for context. Systems section — independent of story."
-    },
-    {
-      "id": "US-010",
-      "title": "Author complete items catalog",
-      "description": "As a game designer, I need every item in the game specified with stats, prices, and acquisition methods.",
-      "acceptanceCriteria": [
-        "docs/design/items-catalog.md created",
-        "Weapons: 12+ weapons across 4 types (sword, bow, staff, dagger) with name, ATK, price, special effect, acquisition",
-        "Armor: 8+ pieces across types (shield, helmet, robe, leather) with name, DEF, price, special, acquisition",
-        "Consumables: 8+ items (potions, antidotes, elixirs, scrolls) with name, effect, price, stack limit",
-        "Key Items: 5+ quest-related items (non-consumable) with name, description, quest link",
-        "Memory Fragments: catalog of named fragments with source, emotion, element, potency",
-        "Items organized by acquisition method: shop, drop, quest reward, exploration",
-        "Prices balanced relative to gold income from combat",
-        "No TBD markers remain"
-      ],
-      "priority": 2,
-      "passes": false,
-      "notes": "PARALLEL with US-009. Systems section. These items will be referenced by quest rewards (US-008) and enemy drops (US-011)."
-    },
-    {
-      "id": "US-011",
-      "title": "Author complete enemies catalog",
-      "description": "As a game designer, I need every enemy in the game specified with stats, abilities, drops, and spawn locations.",
-      "acceptanceCriteria": [
-        "docs/design/enemies-catalog.md created",
-        "Overworld enemies: 6+ types with name, stats (HP/ATK/DEF/AGI), abilities, XP, gold, drop table, spawn zone",
-        "Dungeon enemies: 6+ types, scaled 1.3-1.9x from overworld equivalents",
-        "Preserver agents: 3+ types with unique stasis-themed abilities",
-        "Bosses: 4+ major bosses (one per dormant god area + final boss) with multi-phase mechanics",
-        "Final boss: The Curator's crystalline guardian, 3-phase fight, unique mechanics per phase",
-        "Each enemy has: flavor text tying it to the memory/vibrancy theme",
-        "Drop tables reference docs/design/items-catalog.md (US-010)",
-        "Spawn locations reference docs/world/geography.md (US-001)",
-        "Difficulty curve: enemies get harder as player progresses through zones",
-        "No TBD markers remain"
-      ],
-      "priority": 3,
-      "passes": false,
-      "notes": "SEQUENTIAL — depends on US-009 (to balance against player stats) and US-010 (for drop items). Also needs US-001 (zones for spawn locations)."
-    },
-    {
-      "id": "US-012",
-      "title": "Author complete skills catalog",
-      "description": "As a game designer, I need every skill per class fully specified with formulas, costs, and animations.",
-      "acceptanceCriteria": [
-        "docs/design/skills-catalog.md created",
-        "Knight skills: 6-8 skills with name, level learned, SP cost, damage formula, target type, animation description",
-        "Cleric skills: 6-8 skills focusing on healing and support",
-        "Mage skills: 6-8 skills with element system and inspired casting mechanics",
-        "Rogue skills: 6-8 skills with foreshadow and evasion mechanics",
-        "Each skill references the class memory twist from docs/design/classes.md",
-        "Damage formulas use variables from docs/design/combat.md",
-        "Skills balanced: no single skill dominates all encounters",
-        "Status effect skills reference status table from docs/design/combat.md",
-        "No TBD markers remain"
-      ],
-      "priority": 3,
-      "passes": false,
-      "notes": "PARALLEL with US-011. Depends on US-009 (progression determines when skills unlock)."
-    },
-    {
-      "id": "US-013",
-      "title": "Author tileset specification for all biomes and vibrancy levels",
-      "description": "As an artist/implementer, I need a tile-by-tile spec for every biome at every vibrancy level.",
-      "acceptanceCriteria": [
-        "docs/design/tileset-spec.md created",
-        "Biomes covered: grassland, forest, mountain, water, village, dungeon, stagnation, sketch",
-        "Each biome has tiles for 3 vibrancy levels (muted, normal, vivid)",
-        "Tile list per biome: ground, path, decoration, obstacle, transition (edge tiles between biomes)",
-        "Stagnation biome: crystalline overlay variants for each base biome",
-        "Sketch biome: abstract/unfinished tile descriptions (shimmering, half-drawn, luminous)",
-        "Tile dimensions: 32x32 confirmed",
-        "Tileset sheet layout described (how tiles are organized in the PNG)",
-        "Color keys per vibrancy level reference docs/design/visual-direction.md palette",
-        "No TBD markers remain"
-      ],
-      "priority": 3,
-      "passes": false,
-      "notes": "PARALLEL with US-011, US-012. Depends on US-002 (vibrancy system defines the tier thresholds). Art spec for GenAI pipeline (Phase 3)."
-    },
-    {
-      "id": "US-014",
-      "title": "Author spritesheet and audio specifications",
-      "description": "As an artist/implementer, I need sprite specs for all characters/enemies and audio specs for all zones.",
-      "acceptanceCriteria": [
-        "docs/design/spritesheet-spec.md created with: player sprites (4 classes × idle/walk/attack/cast/hit), NPC sprites (6+ types), enemy sprites (12+ types), boss sprites (4+), Preserver agent sprites",
-        "Each sprite: dimensions, animation frames, direction count, color key per class",
-        "docs/design/audio-direction.md created with: BGM per zone/act (8+ tracks), SFX catalog (20+ effects), vibrancy audio layers (how music adds instruments per tier)",
-        "Audio describes mood/style per track, not specific files",
-        "Stagnation zones: muffled/stripped audio effect described",
-        "Combat music: normal battle theme, boss battle theme, Preserver battle theme",
-        "No TBD markers remain"
-      ],
-      "priority": 3,
-      "passes": false,
-      "notes": "PARALLEL with US-013. Art/audio specs for GenAI pipeline. Read docs/design/visual-direction.md for style guidelines."
-    },
-    {
-      "id": "US-015",
-      "title": "Author UI wireframes specification for all GUI screens",
-      "description": "As a frontend implementer, I need wireframe specs for every in-game GUI screen.",
-      "acceptanceCriteria": [
-        "docs/design/ui-spec.md created",
-        "Screens specified: title screen (class selection, no seed input), HUD overlay, combat GUI, inventory/equipment, memory collection grid, memory remix interface, dialogue panel, shop, quest log, game over, victory/ending",
-        "Each screen has: layout description, element list with positions, responsive behavior (mobile vs desktop), color scheme reference, font specs, interaction model (tap targets, swipe areas)",
-        "Title screen: class carousel (no seed input — seed is buried internally)",
-        "Memory collection grid: how fragments are displayed, sorted, filtered",
-        "Memory remix interface: how player combines fragments (drag? select? menu?)",
-        "Mobile-first: all screens must work at 375px width",
-        "No TBD markers remain"
-      ],
-      "priority": 3,
-      "passes": false,
-      "notes": "PARALLEL with US-013, US-014. Depends on US-002 (vibrancy affects HUD) and US-009 (progression affects what's shown)."
-    },
-    {
-      "id": "US-016",
-      "title": "Author overworld map layout document",
-      "description": "As a map designer, I need the complete overworld map specified zone-by-zone with NPC placements, enemy spawns, and event triggers.",
-      "acceptanceCriteria": [
-        "docs/maps/overworld-layout.md created",
-        "Overall map dimensions specified (e.g., 60x60 or 80x80 tiles)",
-        "Zone boundaries drawn: Village Hub center, Settled Lands ring, Frontier ring, Sketch edges",
-        "Village Hub: building positions, NPC spawn points (Lira, Callum, shop, quest givers), paths",
-        "Settled Lands: farm areas, neighboring settlement locations, road connections",
-        "Frontier: dungeon entrances, dormant god shrine locations, Preserver stagnation zones",
-        "Enemy spawn zones with enemy type assignments from docs/design/enemies-catalog.md",
-        "Dungeon entrance positions (one per dormant god area + main dungeon)",
-        "Resonance Stone positions for memory fragment collection",
-        "Map event list: every trigger with position, type, and linked quest/dialogue",
-        "No TBD markers remain"
-      ],
-      "priority": 5,
-      "passes": false,
-      "notes": "SEQUENTIAL — depends on US-001 (geography), US-008 (quests for trigger placement), US-011 (enemies for spawn zones). This is the map implementation blueprint."
-    },
-    {
-      "id": "US-017",
-      "title": "Author dungeon layouts document",
-      "description": "As a map designer, I need every dungeon floor fully specified with rooms, corridors, encounters, and puzzles.",
-      "acceptanceCriteria": [
-        "docs/maps/dungeon-depths.md created",
-        "Main dungeon: 3+ floors with room layouts, corridor connections, chest positions, enemy spawns",
-        "God shrine dungeons: 4 unique dungeons (one per dormant god) with themed rooms and recall challenge",
-        "Preserver fortress (final dungeon): crystalline museum layout with stasis puzzles, frozen NPC positions, boss arena",
-        "Each room has: dimensions, tile types, event triggers, enemy spawns, loot",
-        "Boss arenas: large rooms (minimum 10x10) with pre-fight dialogue triggers",
-        "Dungeon progression: later floors are harder, better loot, denser enemies",
-        "No TBD markers remain"
-      ],
-      "priority": 5,
-      "passes": false,
-      "notes": "PARALLEL with US-016. Same dependencies. Can be written alongside overworld layout."
-    },
-    {
-      "id": "US-018",
-      "title": "Author stagnation zones and frontier zones documents",
-      "description": "As a map designer, I need the Preserver zones and unfinished frontier areas fully specified.",
-      "acceptanceCriteria": [
-        "docs/maps/stagnation-zones.md created with: 3+ stagnation zone layouts, crystalline tile specs, frozen NPC positions, memory broadcasting puzzle requirements (which emotion/element combos break the stasis)",
-        "docs/maps/frontier-zones.md created with: transition tile gradients between settled and sketch, unfinished aesthetic descriptions, how player 'remembers' areas into solidity (gameplay mechanic)",
-        "Stagnation zones increase in difficulty: first is tutorial (Act I), later ones require specific high-potency fragments",
-        "Frontier zones tied to Act II expansion",
-        "No TBD markers remain"
-      ],
-      "priority": 5,
-      "passes": false,
-      "notes": "PARALLEL with US-016, US-017. Depends on US-002 (vibrancy) and US-003 (dormant gods for frontier shrines)."
-    },
-    {
-      "id": "US-019",
-      "title": "Author master event placement document",
-      "description": "As an implementer, I need every map event cataloged with exact positions, trigger types, and linked quest/dialogue IDs.",
-      "acceptanceCriteria": [
-        "docs/maps/event-placement.md created",
-        "Every event across all maps listed in a table: event ID, map, position (x,y), trigger type (touch/action/auto), linked quest ID, linked dialogue ID, one-time vs repeatable",
-        "Events organized by map, then by type",
-        "NPC events: spawn position, movement pattern, graphic ID",
-        "Chest events: position, contents (item ID + quantity)",
-        "Transition events: source map, destination map, destination position",
-        "Cutscene triggers: position, linked act script scene ID",
-        "Cross-references: quest-chains.md, dialogue-bank.md, enemies-catalog.md",
-        "No TBD markers remain"
+        "Victory flow: calculate total XP and gold from defeated enemies",
+        "Item drops: per-enemy drop tables from DDL (item ID, quantity, drop chance)",
+        "XP distributed to player via progression.addXP()",
+        "Gold added via inventory.addGold()",
+        "Dropped items added via inventory.addItem()",
+        "Defeat flow: set game-over variable, return player to last save point",
+        "Combat cleanup: reset all combat state variables",
+        "pnpm lint passes"
       ],
       "priority": 6,
       "passes": false,
-      "notes": "SEQUENTIAL — depends on US-016, US-017, US-018 (all map layouts must exist). This is the final map spec before code translation."
+      "notes": "Wire to progression system (US-001) for XP and inventory system (US-002) for gold/items. Read enemy DDL for drop tables.",
+      "dependsOn": [
+        "US-006"
+      ]
     },
     {
-      "id": "US-020",
-      "title": "Author master index and run consistency check",
-      "description": "As a game designer, I need a master cross-reference index and verified consistency across all bible documents.",
+      "id": "US-008",
+      "title": "Create memory fragment collection system",
+      "description": "As a player, I want to discover and collect memory fragments throughout the world, so I can engage with the core memory mechanic.",
       "acceptanceCriteria": [
-        "docs/bible/master-index.md created with alphabetical index of every named entity: NPCs (with doc references), locations (with doc references), items (with doc references), quests (with doc references), enemies (with doc references), skills (with doc references), gods (with doc references)",
-        "docs/bible/consistency-check.md created documenting: every cross-reference verified (e.g., quest reward items exist in items catalog), no stat contradictions between combat.md formulas and progression.md tables, no location contradictions between geography and map layouts, no character contradictions between characters.md and dialogue-bank.md",
-        "docs/bible/implementation-order.md created: ordered list of what to implement first in Phase 2, with rationale",
-        "Zero TBD markers across ALL docs/ files",
-        "Zero dangling references (nothing references an entity that doesn't exist)"
+        "New file main/server/systems/memory.ts created",
+        "Memory fragment data structure: id, name, category, emotion (joy/fury/sorrow/awe), zone, potency",
+        "collectFragment(player, fragmentId) stores fragment in player variables",
+        "getCollectedFragments(player) returns all collected fragments",
+        "hasFragment(player, fragmentId) check function",
+        "getFragmentCount(player) returns total collected",
+        "Fragment definitions loaded from gen/ddl/ or inline data (40-60 fragments)",
+        "Collection event emits for UI notification",
+        "pnpm lint passes"
+      ],
+      "priority": 2,
+      "passes": true,
+      "notes": "The game's core mechanic. 4 emotions (joy, fury, sorrow, awe) × multiple fragments each. Read docs/world/core-theme.md and docs/design/memory-system.md. Fragments are collected from events, NPC dialogue, exploration, and combat milestones.",
+      "dependsOn": []
+    },
+    {
+      "id": "US-009",
+      "title": "Implement memory recall at god shrines",
+      "description": "As a player, I want to recall memories at dormant god shrines choosing which emotion to broadcast, so my choices shape the world.",
+      "acceptanceCriteria": [
+        "recallMemory(player, godId, emotion) function in memory.ts",
+        "4 gods: resonance, verdance, luminos, kinesis",
+        "4 emotions per god: joy, fury, sorrow, awe",
+        "Recall stores god+emotion choice in player variables",
+        "Recall triggers vibrancy increase in the zone",
+        "Recall unlocks subclass ability based on god+emotion combo",
+        "Only one emotion per god (cannot re-recall same god)",
+        "16 total world-state permutations tracked",
+        "pnpm lint passes"
+      ],
+      "priority": 7,
+      "passes": true,
+      "notes": "Read docs/world/dormant-gods.md for the 4 gods. Read docs/design/memory-system.md for recall mechanics. Each recall permanently alters the zone and unlocks a subclass skill tree.",
+      "dependsOn": [
+        "US-008"
+      ]
+    },
+    {
+      "id": "US-010",
+      "title": "Create vibrancy runtime system",
+      "description": "As a developer, I need a vibrancy system that tracks per-zone values and determines visual tiers, so the world responds to player actions.",
+      "acceptanceCriteria": [
+        "New file main/server/systems/vibrancy.ts created",
+        "Per-zone vibrancy value (0-100) stored in player variables",
+        "Three tiers: muted (0-33), normal (34-66), vivid (67-100)",
+        "getVibrancy(player, zoneId) and setVibrancy(player, zoneId, value)",
+        "increaseVibrancy(player, zoneId, amount) with cap at 100",
+        "getVibrancyTier(player, zoneId) returns 'muted' | 'normal' | 'vivid'",
+        "Default vibrancy values per zone (from docs)",
+        "pnpm lint passes"
+      ],
+      "priority": 2,
+      "passes": true,
+      "notes": "Read docs/world/vibrancy-system.md. Vibrancy increases from: memory collection, quest completion, stagnation clearing. Decreases from: Preserver actions. Client-side visual effects already exist in main/client/effects/vibrancy-tier.ts.",
+      "dependsOn": []
+    },
+    {
+      "id": "US-011",
+      "title": "Create quest tracking runtime",
+      "description": "As a player, I want quests to track my progress with objectives and rewards, so I have clear goals.",
+      "acceptanceCriteria": [
+        "New file main/server/systems/quests.ts created",
+        "Quest state machine: inactive → active → completed | failed",
+        "startQuest(player, questId), completeQuest(), failQuest()",
+        "Objective tracking via player variables per quest",
+        "getActiveQuests(player), getCompletedQuests(player)",
+        "isQuestActive(player, questId), isQuestComplete(player, questId)",
+        "Quest rewards distribution (XP, gold, items) on completion",
+        "28 quest IDs registered (10 main, 4 god, 14 side)",
+        "pnpm lint passes"
+      ],
+      "priority": 3,
+      "passes": true,
+      "notes": "Read gen/ddl/quests/*.json for quest definitions. Keep it simple — variable-based state tracking. The existing quest files in main/server/quests/ use non-standard APIs; this system replaces them with a clean runtime.",
+      "dependsOn": [
+        "US-001",
+        "US-002"
+      ]
+    },
+    {
+      "id": "US-012",
+      "title": "Create save/load system with localStorage",
+      "description": "As a player, I want to save my progress and load it later, so I can play across sessions.",
+      "acceptanceCriteria": [
+        "New file main/server/systems/save-load.ts created (server-side serialize/deserialize)",
+        "New file main/client/save-load.ts created (client-side localStorage)",
+        "Serializes: position, map, level, XP, stats, inventory, equipment, quest progress, memory fragments, vibrancy values, all player variables",
+        "3 save slots + 1 auto-save slot",
+        "saveGame(player, slotId) serializes all state to JSON",
+        "loadGame(player, slotId) deserializes and restores state",
+        "Auto-save triggers on map change",
+        "Save file includes version number for future compatibility",
+        "pnpm lint passes"
+      ],
+      "priority": 3,
+      "passes": true,
+      "notes": "RPG-JS standalone uses browser-only mode. Storage must use client-side localStorage via player GUI communication. Server serializes state, client stores it.",
+      "dependsOn": [
+        "US-001",
+        "US-002"
+      ]
+    },
+    {
+      "id": "US-013",
+      "title": "Create shop system",
+      "description": "As a player, I want to buy items from shops and sell my items for gold, so I can prepare for challenges.",
+      "acceptanceCriteria": [
+        "New file main/server/systems/shop.ts created",
+        "Shop data structure: shopId, items[] with prices",
+        "buyItem(player, shopId, itemId, qty) deducts gold, adds item",
+        "sellItem(player, itemId, qty) adds gold at 50% price, removes item",
+        "canAfford(player, price) check function",
+        "getShopInventory(shopId) returns available items with prices",
+        "At least 3 shop definitions: village general, village weapons, frontier supplies",
+        "pnpm lint passes"
+      ],
+      "priority": 4,
+      "passes": true,
+      "notes": "Read gen/ddl/consumables/*.json and gen/ddl/weapons/*.json for item prices. Shop inventory is static per shop — no dynamic stock for v1.",
+      "dependsOn": [
+        "US-002"
+      ]
+    },
+    {
+      "id": "US-014",
+      "title": "Create NPC interaction system",
+      "description": "As a player, I want to talk to NPCs by pressing action when facing them, triggering context-aware dialogue.",
+      "acceptanceCriteria": [
+        "New file main/server/systems/npc-interaction.ts created",
+        "Action button (Enter/Space) when facing NPC triggers dialogue",
+        "NPC dialogue selected based on: quest state, story progress, vibrancy",
+        "showDialogue(player, npcId) resolves to correct dialogue function",
+        "Dialogue functions from main/server/dialogue/*.ts invoked correctly",
+        "NPC facing direction turns toward player during conversation",
+        "At least village NPCs (Hana, Artun, Grym, Khali) have working dialogue",
+        "pnpm lint passes"
+      ],
+      "priority": 5,
+      "passes": false,
+      "notes": "Read main/server/dialogue/*.ts for existing dialogue functions. Read gen/ddl/npcs/named.json for NPC data. RPG-JS events use onAction() for NPC interaction.",
+      "dependsOn": [
+        "US-011"
+      ]
+    },
+    {
+      "id": "US-015",
+      "title": "Implement skill unlock on level-up",
+      "description": "As a player, I want to learn new skills as I level up, according to my class skill tree.",
+      "acceptanceCriteria": [
+        "Skill unlock integrated into progression.ts level-up flow",
+        "Each class has skills at specific levels from gen/ddl/skills/*.json",
+        "On level-up, check if new skills are available and grant them",
+        "getPlayerSkills(player) returns all learned skills",
+        "hasSkill(player, skillId) check function",
+        "Skill data includes: name, description, SP cost, element, targeting",
+        "All 44 skills mapped to correct class and level",
+        "pnpm lint passes"
+      ],
+      "priority": 5,
+      "passes": false,
+      "notes": "Read gen/ddl/skills/ — each class has base skills and subclass skills. Subclass skills unlock after god recall. Base skills unlock by level.",
+      "dependsOn": [
+        "US-001"
+      ]
+    },
+    {
+      "id": "US-016",
+      "title": "Expand HUD with HP/SP bars, zone name, quest objective, gold",
+      "description": "As a player, I want to see my health, mana, current zone, active quest objective, and gold on screen at all times.",
+      "acceptanceCriteria": [
+        "main/gui/hud.vue updated with new sections",
+        "HP bar: current/max with color (green→yellow→red)",
+        "SP bar: current/max with blue color",
+        "Zone name displayed at top",
+        "Active quest mini-objective text",
+        "Gold amount with icon",
+        "Player level displayed",
+        "Reactive: updates when values change (no polling)",
+        "pnpm lint passes"
+      ],
+      "priority": 6,
+      "passes": false,
+      "notes": "Read main/gui/hud.vue for existing HUD. RPG-JS uses Vue 3 for GUI. Use player.getVariable() calls from GUI to read state. The existing HUD polls every 500ms — refactor to reactive.",
+      "dependsOn": [
+        "US-001",
+        "US-002",
+        "US-010",
+        "US-011"
+      ]
+    },
+    {
+      "id": "US-017",
+      "title": "Create battle UI Vue component",
+      "description": "As a player, I want a battle interface showing turn order, action menu, enemy HP, and damage numbers during combat.",
+      "acceptanceCriteria": [
+        "New file main/gui/battle-ui.vue created",
+        "Turn order indicator showing who acts next",
+        "Action menu: Attack, Skills, Items, Defend, Flee",
+        "Skills submenu listing available skills with SP costs",
+        "Items submenu listing usable items",
+        "Enemy name and HP bar for each enemy",
+        "Damage numbers displayed on hit (floating text)",
+        "Victory screen: XP gained, gold gained, items dropped",
+        "Registered in main/client/index.ts gui array",
+        "pnpm lint passes"
       ],
       "priority": 7,
       "passes": false,
-      "notes": "SEQUENTIAL — depends on ALL previous stories. This is the final validation pass. Read every doc in docs/ and verify internal consistency."
+      "notes": "Read main/gui/title-screen.vue for Vue component style reference — it's the most polished component. Use CSS variables from the existing design system. Combat state comes from player variables set by the combat system.",
+      "dependsOn": [
+        "US-003"
+      ]
+    },
+    {
+      "id": "US-018",
+      "title": "Create inventory screen Vue component",
+      "description": "As a player, I want an inventory screen to view, use, and equip my items.",
+      "acceptanceCriteria": [
+        "New file main/gui/inventory.vue created",
+        "Tab layout: Items, Equipment, Key Items",
+        "Item list showing icon, name, quantity, description",
+        "Use button for consumables, Equip button for equipment",
+        "Equipment view showing current weapon, armor, accessory",
+        "Stat comparison when hovering equipment",
+        "Opens via menu key (ESC or gamepad)",
+        "Registered in main/client/index.ts gui array",
+        "pnpm lint passes"
+      ],
+      "priority": 7,
+      "passes": false,
+      "notes": "Read inventory system (US-002) for data access patterns. Read main/gui/title-screen.vue for Vue styling conventions.",
+      "dependsOn": [
+        "US-002"
+      ]
+    },
+    {
+      "id": "US-019",
+      "title": "Create quest log screen Vue component",
+      "description": "As a player, I want a quest log showing my active and completed quests with objectives.",
+      "acceptanceCriteria": [
+        "New file main/gui/quest-log.vue created",
+        "Active quests tab: quest name, current objectives with checkmarks",
+        "Completed quests tab",
+        "Quest detail view: full description, all objectives, rewards",
+        "Scrollable list for many quests",
+        "Opens via menu key or dedicated quest key",
+        "Registered in main/client/index.ts gui array",
+        "pnpm lint passes"
+      ],
+      "priority": 8,
+      "passes": false,
+      "notes": "Read quest system (US-011) for data access. 28 quests total: 10 main, 4 god, 14 side.",
+      "dependsOn": [
+        "US-011"
+      ]
+    },
+    {
+      "id": "US-020",
+      "title": "Create memory collection screen Vue component",
+      "description": "As a player, I want a screen showing all my collected memory fragments organized by category.",
+      "acceptanceCriteria": [
+        "New file main/gui/memory-album.vue created",
+        "Grid view of all discovered fragments with icons",
+        "Filter by: emotion (joy/fury/sorrow/awe), zone, god",
+        "Fragment detail: name, description, emotional resonance, zone found",
+        "Progress indicator: X/total fragments found",
+        "Undiscovered fragments shown as silhouettes or question marks",
+        "Registered in main/client/index.ts gui array",
+        "pnpm lint passes"
+      ],
+      "priority": 8,
+      "passes": false,
+      "notes": "Read memory system (US-008) for data access. 40-60 total fragments. Read docs/design/memory-system.md for creative direction.",
+      "dependsOn": [
+        "US-008"
+      ]
+    },
+    {
+      "id": "US-021",
+      "title": "Create shop UI Vue component",
+      "description": "As a player, I want a shop interface to browse, buy, and sell items.",
+      "acceptanceCriteria": [
+        "New file main/gui/shop.vue created",
+        "Buy tab: list items with prices, quantity selector",
+        "Sell tab: list player items with sell prices",
+        "Player gold displayed prominently",
+        "Equipment stat comparison when buying weapons/armor",
+        "Buy/sell confirmation",
+        "Registered in main/client/index.ts gui array",
+        "pnpm lint passes"
+      ],
+      "priority": 8,
+      "passes": false,
+      "notes": "Read shop system (US-013) for data access. Use existing CSS variable system.",
+      "dependsOn": [
+        "US-013"
+      ]
+    },
+    {
+      "id": "US-022",
+      "title": "Create pause menu and settings screen",
+      "description": "As a player, I want a pause menu with party status, save option, and settings.",
+      "acceptanceCriteria": [
+        "New file main/gui/pause-menu.vue created",
+        "Opens on ESC key or gamepad start button",
+        "Shows: player level, class, HP/SP, equipped items",
+        "Menu options: Inventory, Quest Log, Memories, Save, Settings, Return to Title",
+        "Settings submenu: BGM volume, SFX volume, text speed, screen shake toggle",
+        "Save triggers save-load system",
+        "Return to Title with confirmation dialog",
+        "Registered in main/client/index.ts gui array",
+        "pnpm lint passes"
+      ],
+      "priority": 8,
+      "passes": false,
+      "notes": "This is the central hub menu. Links to other GUI screens. Read main/client/audio/ for volume controls.",
+      "dependsOn": [
+        "US-012",
+        "US-016"
+      ]
+    },
+    {
+      "id": "US-023",
+      "title": "Enhance dialogue box with portraits and typewriter effect",
+      "description": "As a player, I want dialogue to show speaker portraits and text that types out letter by letter.",
+      "acceptanceCriteria": [
+        "main/gui/dialogue-box.vue enhanced",
+        "Speaker name displayed in header",
+        "Speaker portrait shown (from main/client/gui/portraits/)",
+        "Text typewriter effect: characters appear one at a time",
+        "Text speed configurable: slow (30ms), normal (15ms), fast (5ms), instant",
+        "Press action to skip to full text or advance to next line",
+        "Choice selection with keyboard/gamepad for branching dialogue",
+        "pnpm lint passes"
+      ],
+      "priority": 7,
+      "passes": true,
+      "notes": "Read main/gui/dialogue-box.vue for current implementation. Read main/gui/portraits.ts for portrait loading. Portraits are in main/client/gui/portraits/ as WebP files.",
+      "dependsOn": []
+    },
+    {
+      "id": "US-024",
+      "title": "Create game over and credits screens",
+      "description": "As a player, I want a game over screen on defeat and a credits screen accessible from the title.",
+      "acceptanceCriteria": [
+        "New file main/gui/game-over.vue created",
+        "Game over shows on party defeat",
+        "Options: Load Last Save, Return to Title",
+        "New file main/gui/credits.vue created",
+        "Credits lists: CC0 asset attributions (required), game credits",
+        "Scrolling text format",
+        "Accessible from title screen and after game completion",
+        "Both registered in main/client/index.ts gui array",
+        "pnpm lint passes"
+      ],
+      "priority": 9,
+      "passes": true,
+      "notes": "CC0 attributions are legally required for the purchased asset packs. Read assets/tilesets/ directory names for attribution sources.",
+      "dependsOn": []
+    },
+    {
+      "id": "US-025",
+      "title": "Wire save/load to title screen",
+      "description": "As a player, I want Continue and Load Game buttons on the title screen to work.",
+      "acceptanceCriteria": [
+        "main/gui/title-screen.vue updated",
+        "Continue button loads most recent auto-save",
+        "Load Game button shows save slot picker with timestamps",
+        "Disabled states removed (currently shows 'Coming soon')",
+        "Empty slots shown as 'Empty'",
+        "Slot preview shows: player level, class, map name, play time",
+        "pnpm lint passes"
+      ],
+      "priority": 9,
+      "passes": false,
+      "notes": "Read main/gui/title-screen.vue — it already has Continue and Load Game buttons but they're disabled with 'Coming soon' hints. Wire them to the save-load system from US-012.",
+      "dependsOn": [
+        "US-012"
+      ]
+    },
+    {
+      "id": "US-026",
+      "title": "Migrate event files: replace legacy sprite IDs with citizen names",
+      "description": "As a developer, I need all event files to use the new citizen sprite IDs instead of legacy NPC names.",
+      "acceptanceCriteria": [
+        "All 42 event files in main/server/events/ updated",
+        "Replace npc_lira → npc_hana (or sprite-citizen-hana)",
+        "Replace npc_callum → npc_artun",
+        "Replace npc_curator → npc_grym",
+        "Replace npc_maren → npc_khali",
+        "Replace npc_torvan → npc_hark",
+        "Replace npc_ren → npc_nyro",
+        "Replace npc_petra → npc_nel",
+        "Replace npc_aric → npc_janik",
+        "Replace npc_elyn → npc_julz",
+        "Replace npc_solen → npc_reza",
+        "Replace npc_wynn → npc_vash",
+        "Also update dialogue text references (Lira→Hana, Callum→Artun, etc.)",
+        "pnpm lint passes on modified files"
+      ],
+      "priority": 10,
+      "passes": true,
+      "notes": "See main/client/characters/aliases.ts for the full mapping. After this, legacy aliases can be removed. Some files use 'Lira' in dialogue text and 'npc_lira' as graphic IDs — update BOTH.",
+      "dependsOn": []
+    },
+    {
+      "id": "US-027",
+      "title": "Migrate dialogue files: replace legacy names and fix API",
+      "description": "As a developer, I need all dialogue files to use correct citizen names and valid RPG-JS API calls.",
+      "acceptanceCriteria": [
+        "All 70 dialogue files in main/server/dialogue/ updated",
+        "Legacy NPC names replaced with citizen names in dialogue text",
+        "All files use player.showText() for speech (not showDialog or other)",
+        "All files use player.showChoices() for branching (if applicable)",
+        "All files export a default async function(player: RpgPlayer)",
+        "No broken syntax: no spaced identifiers (get  Variable), no invalid literals",
+        "Import type { RpgPlayer } from '@rpgjs/server' in every file",
+        "pnpm lint passes on modified files"
+      ],
+      "priority": 10,
+      "passes": true,
+      "notes": "Many of these files have Gemini-generated broken syntax: spaces in method names, invalid object literals, missing imports. Fix all syntax issues while migrating names.",
+      "dependsOn": []
+    },
+    {
+      "id": "US-028",
+      "title": "Rewrite quest files to use standard quest runtime",
+      "description": "As a developer, I need all 28 quest files to use the new quest runtime system instead of non-standard API patterns.",
+      "acceptanceCriteria": [
+        "All 28 quest files in main/server/quests/ rewritten",
+        "Each quest file exports quest metadata: id, name, category, act, objectives, rewards",
+        "Quest files use the quest runtime from US-011 (not @Quest/@QuestStep decorators)",
+        "No imports from @rpgjs/server/lib/ (non-public API paths)",
+        "All quest IDs match gen/ddl/quests/*.json",
+        "Objectives defined as structured data, not inline logic",
+        "Rewards reference valid item/weapon/armor IDs from DDL",
+        "pnpm lint passes"
+      ],
+      "priority": 10,
+      "passes": false,
+      "notes": "The existing quest files import from @rpgjs/server/lib/quests/quest which is a non-public API path. Replace with simple data exports that the quest runtime consumes. Read gen/ddl/quests/*.json for quest definitions.",
+      "dependsOn": [
+        "US-011"
+      ]
+    },
+    {
+      "id": "US-029",
+      "title": "Expand enemy database with missing enemy types",
+      "description": "As a developer, I need the full enemy roster from the bible implemented in the database.",
+      "acceptanceCriteria": [
+        "At least 12 additional enemies added to main/database/enemies/",
+        "Each enemy has: id, name, stats (hp, str, dex, agi, int), element, drop table",
+        "Enemies cover all zones: village, forest, mountain, marsh, depths, fortress",
+        "Boss enemies included: Curator's Right Hand, zone bosses",
+        "Enemy classes with database decorators matching existing pattern",
+        "Index file main/database/enemies/index.ts updated to export all",
+        "pnpm lint passes"
+      ],
+      "priority": 6,
+      "passes": true,
+      "notes": "Currently only 8 enemies. Read docs/design/enemies-catalog.md for the full roster. Use same decorator pattern as existing enemies in main/database/enemies/.",
+      "dependsOn": []
+    },
+    {
+      "id": "US-030",
+      "title": "Wire audio to game events",
+      "description": "As a player, I want music to change when entering zones, battle music on combat, and sound effects on actions.",
+      "acceptanceCriteria": [
+        "Zone BGM changes on map transition (using existing zone-audio-map.ts)",
+        "Battle music starts on combat.startCombat() and stops on combat end",
+        "SFX triggers: attack hit, skill cast, item use, level up, quest complete",
+        "Audio manager properly fades between tracks",
+        "At least village, forest, and battle BGM working",
+        "pnpm lint passes"
+      ],
+      "priority": 9,
+      "passes": false,
+      "notes": "Read main/client/audio/ for the existing audio engine — it's complete and just needs wiring. Read main/client/audio/zone-audio-map.ts for zone→track mappings. 125 audio files available in assets/audio/.",
+      "dependsOn": [
+        "US-003"
+      ]
+    },
+    {
+      "id": "US-031",
+      "title": "Wire vibrancy visual effects to runtime",
+      "description": "As a player, I want to see the world visually change as vibrancy increases in each zone.",
+      "acceptanceCriteria": [
+        "Client-side reads vibrancy tier from player variables",
+        "main/client/effects/vibrancy-tier.ts connected to actual vibrancy values",
+        "Particle density changes with tier (muted=few, vivid=many)",
+        "Color saturation filter changes with tier",
+        "Zone-effects.ts applies per-biome atmospheric effects",
+        "Transition animation when vibrancy tier changes",
+        "pnpm lint passes"
+      ],
+      "priority": 9,
+      "passes": false,
+      "notes": "The client-side effects code already EXISTS in main/client/effects/ — it just needs to be wired to actual vibrancy values from the server-side vibrancy system (US-010).",
+      "dependsOn": [
+        "US-010"
+      ]
+    },
+    {
+      "id": "US-032",
+      "title": "Wire combat visual effects",
+      "description": "As a player, I want to see skill animations, elemental particles, and screen shake during combat.",
+      "acceptanceCriteria": [
+        "main/client/effects/combat-effects.ts wired to combat events",
+        "elementalHit() called with correct element type on skill/attack",
+        "showStatusEffect() called when status applied",
+        "Screen shake on critical hits",
+        "Damage numbers displayed as floating text",
+        "Victory fanfare effect",
+        "pnpm lint passes"
+      ],
+      "priority": 9,
+      "passes": false,
+      "notes": "The combat effects code already EXISTS in main/client/effects/combat-effects.ts with real implementations for 7 element types and 6 status types. Just needs wiring to combat events.",
+      "dependsOn": [
+        "US-003"
+      ]
+    },
+    {
+      "id": "US-033",
+      "title": "Wire memory collection and god recall effects",
+      "description": "As a player, I want visual and audio flourish when discovering fragments and recalling memories at god shrines.",
+      "acceptanceCriteria": [
+        "Memory collection triggers particle effect from memory-effects.ts",
+        "Different visual per emotion type (joy=warm, fury=red, sorrow=blue, awe=gold)",
+        "Audio chime on fragment collection",
+        "God recall: dramatic visual transformation using god-specific effect files",
+        "god-resonance.ts, god-verdance.ts, god-luminos.ts, god-kinesis.ts effects triggered",
+        "Zone-wide visual change after recall",
+        "pnpm lint passes"
+      ],
+      "priority": 9,
+      "passes": false,
+      "notes": "All effect files already exist in main/client/effects/. Wire them to the memory and recall events from US-008 and US-009.",
+      "dependsOn": [
+        "US-009"
+      ]
+    },
+    {
+      "id": "US-034",
+      "title": "Create E2E tests for core game flow",
+      "description": "As a developer, I want automated tests that verify the game boots, class selection works, and basic gameplay functions.",
+      "acceptanceCriteria": [
+        "tests/e2e/game-flow.test.ts created",
+        "Test: title screen loads and shows class options",
+        "Test: selecting a class transitions to village-hub map",
+        "Test: player can move on the map (WASD or arrow keys)",
+        "Test: player can interact with an NPC (shows dialogue)",
+        "Test: pause menu opens and closes",
+        "Uses Playwright with RPG-JS dev server",
+        "pnpm test passes (or at least new tests pass)"
+      ],
+      "priority": 10,
+      "passes": false,
+      "notes": "Read tests/e2e/*.test.ts for existing test patterns. The dev server auto-starts via Playwright config. Test the happy path — don't test edge cases yet.",
+      "dependsOn": [
+        "US-014",
+        "US-016"
+      ]
+    },
+    {
+      "id": "US-035",
+      "title": "Create unit tests for core systems",
+      "description": "As a developer, I want unit tests for combat damage, progression, inventory, memory, and vibrancy calculations.",
+      "acceptanceCriteria": [
+        "tests/unit/damage.test.ts: tests calculateDamage with various inputs",
+        "tests/unit/progression.test.ts: tests XP calculation and level-up",
+        "tests/unit/inventory.test.ts: tests add/remove/equip operations",
+        "tests/unit/memory.test.ts: tests fragment collection and recall",
+        "tests/unit/vibrancy.test.ts: tests tier calculation",
+        "Uses vitest (already configured)",
+        "pnpm test:unit passes"
+      ],
+      "priority": 10,
+      "passes": false,
+      "notes": "Use vitest (pnpm test:unit). Test pure functions from the systems files. Mock player.setVariable/getVariable for unit isolation.",
+      "dependsOn": [
+        "US-004",
+        "US-001",
+        "US-002",
+        "US-008",
+        "US-010"
+      ]
+    },
+    {
+      "id": "US-036",
+      "title": "Register all database entries in server module",
+      "description": "As a developer, I need all 138 database entries properly exported and registered with RPG-JS.",
+      "acceptanceCriteria": [
+        "main/database/index.ts exports all entries from all categories",
+        "All 32 weapons, 14 armor, 44 skills, 24 items, 20+ enemies, 4 classes, 11 states exported",
+        "main/server/index.ts database import works",
+        "No duplicate IDs across categories",
+        "Any empty class bodies in database files get basic implementations",
+        "pnpm lint passes"
+      ],
+      "priority": 6,
+      "passes": true,
+      "notes": "Read main/database/index.ts for current exports. 59 of 138 database entries are empty class bodies with only decorator metadata — add at minimum an empty constructor or basic implementation.",
+      "dependsOn": []
     }
   ],
   "metadata": {
-    "updatedAt": "2026-02-13T03:20:14.457Z"
+    "updatedAt": "2026-02-14T04:32:18.578Z"
   }
 }

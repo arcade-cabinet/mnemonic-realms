@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "description": "Quest chain code generation manifest",
-  "updatedAt": "2026-02-13T18:29:33.722Z",
+  "updatedAt": "2026-02-14T04:09:45.411Z",
   "category": "event-quests",
   "systemPrompt": "You are an RPG-JS 4.3.0 TypeScript code generator.\nGenerate a single RPG-JS server-side quest file.\nOutput ONLY valid TypeScript code. No markdown fences. No explanatory text.\nOutput must be syntactically complete — all braces must be balanced.\nKeep the file CONCISE — under 300 lines. Do NOT generate excessive imports.\nValid RPG-JS imports: { RpgPlayer, RpgMap, RpgServer, RpgWorld, RpgEvent, RpgSceneMap } from '@rpgjs/server'.\nDo NOT invent types that don't exist. Only import what you actually use.\nUse player.getVariable() and player.setVariable() for quest progress.\nExport the quest definition as default.",
   "assets": [
@@ -21,7 +21,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -50,7 +50,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -80,7 +80,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -110,7 +110,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -139,7 +139,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -168,7 +168,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -197,7 +197,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -226,7 +226,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -255,7 +255,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -284,7 +284,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -313,7 +313,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -342,7 +342,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -371,7 +371,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -400,7 +400,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -429,7 +429,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -458,7 +458,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -487,7 +487,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -517,7 +517,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -546,7 +546,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -575,7 +575,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -604,7 +604,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -634,7 +634,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -663,7 +663,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -692,7 +692,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -721,7 +721,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -750,7 +750,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -780,7 +780,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -810,7 +810,7 @@
         {
           "path": "docs/design/items-catalog.md",
           "heading": "Items",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",

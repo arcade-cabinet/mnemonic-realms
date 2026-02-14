@@ -8,7 +8,8 @@ import {
   type RpgQuest,
   RpgSceneMap,
 } from '@rpgjs/server';
-import { Element, Emotion, Fragment } from '@rpgjs/types';
+import type { Emotion } from '../systems/memory';
+import { Element } from '../systems/damage';
 
 // Define custom types for quest variables if needed
 declare module '@rpgjs/server' {

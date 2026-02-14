@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "description": "NPC dialogue code generation manifest",
-  "updatedAt": "2026-02-13T18:29:33.726Z",
+  "updatedAt": "2026-02-14T04:09:45.413Z",
   "category": "event-dialogue",
   "systemPrompt": "You are an RPG-JS 4.3.0 TypeScript code generator.\nGenerate a single RPG-JS server-side dialogue file.\nOutput ONLY valid TypeScript code. No markdown fences. No explanatory text.\nThe file must use player.showText() for NPC speech lines.\nUse player.showChoices() for branching dialogue.\nWire trigger conditions and quest state checks.\nLines marked [SYSTEM] use player.gui('rpg-notification') or system overlay.\nLines marked [NARRATION] use showText with no speaker portrait.\nExport the dialogue function as default.",
   "assets": [
@@ -21,7 +21,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Aric",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -50,7 +50,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Aric",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -79,7 +79,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Aric",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -108,7 +108,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Aric",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -137,7 +137,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Aric",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -166,7 +166,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Callum",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -195,7 +195,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Callum",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -224,7 +224,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Callum",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -253,7 +253,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Callum",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -282,7 +282,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Callum",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -311,7 +311,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Callum",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -340,7 +340,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Callum",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -369,7 +369,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Callum",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -398,7 +398,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Callum",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -427,7 +427,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Callum",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -456,7 +456,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Callum",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -485,7 +485,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Callum",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -514,7 +514,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Callum",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -543,7 +543,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "The Curator",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -572,7 +572,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "The Curator",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -601,7 +601,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "The Curator",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -630,7 +630,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "The Curator",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -659,7 +659,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "The Curator",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -688,7 +688,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "The Curator",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -717,7 +717,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "The Light",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -746,7 +746,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "The First Dreamer",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -775,7 +775,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Curator's Right Hand",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -804,7 +804,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Archive Keeper",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -833,7 +833,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Wynn",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -862,7 +862,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Petra",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -891,7 +891,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Solen",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -920,7 +920,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Preserver Scout",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -949,7 +949,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Preserver Agent",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -978,7 +978,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Cantara",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1007,7 +1007,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Tempestus",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1036,7 +1036,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Tacet",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1065,7 +1065,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Harmonia",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1094,7 +1094,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Floriana",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1123,7 +1123,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Thornweald",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1152,7 +1152,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Autumnus",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1181,7 +1181,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Sylvanos",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1210,7 +1210,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Solara",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1239,7 +1239,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Pyralis",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1268,7 +1268,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Vesperis",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1297,7 +1297,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Prisma",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1326,7 +1326,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Jubila",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1355,7 +1355,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Tecton",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1384,7 +1384,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Errantis",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1413,7 +1413,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Vortis",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1442,7 +1442,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Lira",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1471,7 +1471,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Lira",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1500,7 +1500,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Lira",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1529,7 +1529,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Lira",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1558,7 +1558,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Lira",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1587,7 +1587,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Lira",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1616,7 +1616,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Lira",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1645,7 +1645,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Lira",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1674,7 +1674,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Lira",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1703,7 +1703,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Lira",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1732,7 +1732,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Lira",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1761,7 +1761,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Lira",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1790,7 +1790,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Lira",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1819,7 +1819,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Lira",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1848,7 +1848,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Lira",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1877,7 +1877,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Maren",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1906,7 +1906,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Maren",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1935,7 +1935,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Torvan",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1964,7 +1964,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Torvan",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -1993,7 +1993,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Ren",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
@@ -2022,7 +2022,7 @@
         {
           "path": "docs/story/characters.md",
           "heading": "Ren",
-          "purpose": "reference"
+          "purpose": "content"
         }
       ],
       "status": "generated",
