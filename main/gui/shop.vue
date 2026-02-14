@@ -580,11 +580,11 @@ export default defineComponent({
         qty: sellQty.value,
       });
       confirmAction.value = null;
-      sellQty.value = 1;
       // Clear selection if item will be fully sold
       if (sellQty.value >= info.qty) {
         selectedSellId.value = null;
       }
+      sellQty.value = 1;
     }
 
     // ── Lifecycle ──
