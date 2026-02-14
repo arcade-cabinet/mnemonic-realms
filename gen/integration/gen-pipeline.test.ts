@@ -394,7 +394,7 @@ describe('DDL schema validation', () => {
     it('status-effects DDL validates', async () => {
       const { loadStatusEffects } = await import('../builders/ddl-loader');
       const effects = loadStatusEffects();
-      expect(effects.length).toBe(10);
+      expect(effects.length).toBe(11);
       for (const e of effects) {
         expect(e.duration).toBeGreaterThan(0);
         expect(typeof e.stackable).toBe('boolean');
