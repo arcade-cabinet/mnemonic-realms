@@ -1,122 +1,68 @@
 import type { RpgMap, RpgPlayer } from '@rpgjs/server';
-import { openShop } from '../../player';
+import { showDialogue } from '../../systems/npc-interaction';
 
 export function spawnMapEvents(player: RpgPlayer) {
   const map = player.map as RpgMap;
 
-  // --- NPCs ---
+  // --- NPCs (dialogue routed via npc-interaction system) ---
 
-  // Artun (artun)
+  // Artun (Village Elder)
   map.createDynamicEvent({
     x: 19,
     y: 11,
     name: 'artun',
     graphic: 'npc_artun',
     hitbox: { width: 16, height: 16 },
-    onAction(player: RpgPlayer) {
-      const mq01Started = player.getVariable('MQ_01_STARTED');
-      const mq01Completed = player.getVariable('MQ_01_COMPLETED');
-
-      if (mq01Started && !mq01Completed) {
-        player.showText(
-          "Artun: Welcome, traveler. The Architect's Signet will guide you. Hana can tell you more.",
-        );
-      } else if (mq01Completed) {
-        player.showText(
-          "Artun: The village thrives, thanks to the Architect's legacy. Keep an eye on the horizon.",
-        );
-      } else {
-        player.showText('Artun: A new face in the village. What brings you to Mnemonic Realms?');
-      }
+    async onAction(player: RpgPlayer) {
+      await showDialogue(player, 'artun');
     },
   });
 
-  // Hana (hana)
+  // Hana (Mentor)
   map.createDynamicEvent({
     x: 9,
     y: 19,
     name: 'hana',
     graphic: 'npc_hana',
     hitbox: { width: 16, height: 16 },
-    onAction(player: RpgPlayer) {
-      const mq01Started = player.getVariable('MQ_01_STARTED');
-      const mq01Completed = player.getVariable('MQ_01_COMPLETED');
-      const mq02Completed = player.getVariable('MQ_02_COMPLETED');
-
-      if (mq01Started && !mq01Completed) {
-        player.showText(
-          "Hana: Ah, you must be the one Artun spoke of. Take this Architect's Signet. It will help you understand the Resonance Stones.",
-        );
-        // TODO: Implement item system — addItem(player, 'architect-signet', 1)
-        player.setVariable('MQ_01_COMPLETED', true);
-        player.setVariable('MQ_02_STARTED', true);
-      } else if (mq02Completed) {
-        player.showText(
-          'Hana: The Resonance Stones hold many secrets. Keep exploring their echoes.',
-        );
-      } else if (mq01Completed && !mq02Completed) {
-        player.showText(
-          'Hana: The Memorial Garden has a stone that needs your attention. Try using the Signet there.',
-        );
-      } else {
-        player.showText('Hana: My workshop is always busy. Memories are a delicate craft.');
-      }
+    async onAction(player: RpgPlayer) {
+      await showDialogue(player, 'hana');
     },
   });
 
-  // Maren (maren)
+  // Khali (Shopkeeper — village-general)
   map.createDynamicEvent({
     x: 19,
     y: 17,
-    name: 'maren',
-    graphic: 'npc_maren',
+    name: 'khali',
+    graphic: 'npc_khali',
     hitbox: { width: 16, height: 16 },
     async onAction(player: RpgPlayer) {
-      await player.showText('Maren: Welcome to the General Shop! What can I get for you?');
-      if (!player.getVariable('SQ_01_STARTED') && !player.getVariable('SQ_01_COMPLETED')) {
-        await player.showText(
-          "Maren: Oh, and if you have a moment, I'm looking for some rare herbs for a special order. Interested?",
-        );
-      }
-      openShop(player, 'village-general');
+      await showDialogue(player, 'khali');
     },
   });
 
-  // Torvan (torvan)
+  // Hark (Blacksmith — village-weapons)
   map.createDynamicEvent({
     x: 19,
     y: 19,
-    name: 'torvan',
-    graphic: 'npc_torvan',
+    name: 'hark',
+    graphic: 'npc_hark',
     hitbox: { width: 16, height: 16 },
     async onAction(player: RpgPlayer) {
-      await player.showText('Torvan: The forge awaits. Let me show you what I have.');
-      if (!player.getVariable('SQ_11_STARTED') && !player.getVariable('SQ_11_COMPLETED')) {
-        await player.showText(
-          "Torvan: I've been meaning to try a new forging technique, but I need a rare ore. Perhaps you could help?",
-        );
-      }
-      openShop(player, 'village-weapons');
+      await showDialogue(player, 'hark');
     },
   });
 
-  // Ren (ren)
+  // Nyro (Innkeeper)
   map.createDynamicEvent({
     x: 21,
     y: 15,
-    name: 'ren',
-    graphic: 'npc_ren',
+    name: 'nyro',
+    graphic: 'npc_nyro',
     hitbox: { width: 16, height: 16 },
-    onAction(player: RpgPlayer) {
-      player.showText(
-        'Ren: Welcome to the Bright Hearth Inn! A warm bed and a good meal await. Rest for the night?',
-      );
-      // TODO: Implement rest/inn system — heal HP/SP
-      if (!player.getVariable('SQ_12_COMPLETED')) {
-        player.showText(
-          'Ren: Sometimes, a good rest brings more than just energy. Pay attention to your dreams...',
-        );
-      }
+    async onAction(player: RpgPlayer) {
+      await showDialogue(player, 'nyro');
     },
   });
 

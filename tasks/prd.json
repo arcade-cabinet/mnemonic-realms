@@ -1,5 +1,5 @@
 {
-  "name": "Mnemonic Realms — Production Release (Phases 2–5, 7)",
+  "name": "Mnemonic Realms \u2014 Production Release (Phases 2\u20135, 7)",
   "description": "Implement all core game systems, rewrite generated content, build UI, wire effects, and create tests. Takes the game from 'content authored but zero mechanics' to a playable v1.0.0 JRPG.",
   "branchName": "rebuild/rpgjs-proper",
   "userStories": [
@@ -18,7 +18,7 @@
       ],
       "priority": 1,
       "passes": true,
-      "notes": "Read gen/ddl/classes/classes.json and main/database/classes/*.ts for class stat definitions. RPG-JS uses player.setVariable() for persistence. This is foundational — combat, quests, and UI all depend on it.",
+      "notes": "Read gen/ddl/classes/classes.json and main/database/classes/*.ts for class stat definitions. RPG-JS uses player.setVariable() for persistence. This is foundational \u2014 combat, quests, and UI all depend on it.",
       "dependsOn": []
     },
     {
@@ -48,7 +48,7 @@
         "New file main/server/systems/combat.ts created",
         "Turn order calculation based on AGI stat",
         "Action types enum: Attack, Skill, Item, Defend, Flee",
-        "Combat state machine: start → player_turn → enemy_turn → check_end → loop/end",
+        "Combat state machine: start \u2192 player_turn \u2192 enemy_turn \u2192 check_end \u2192 loop/end",
         "startCombat(player, enemyIds[]) initializes combat state",
         "processTurn(player, action) executes one turn",
         "Combat state stored in player variables",
@@ -56,7 +56,7 @@
       ],
       "priority": 2,
       "passes": true,
-      "notes": "This is the combat skeleton. Damage formulas, skills, and AI come in subsequent stories. Read gen/ddl/enemies/*.json for enemy stats. Keep it simple — variable-based state, no external combat library.",
+      "notes": "This is the combat skeleton. Damage formulas, skills, and AI come in subsequent stories. Read gen/ddl/enemies/*.json for enemy stats. Keep it simple \u2014 variable-based state, no external combat library.",
       "dependsOn": [
         "US-001",
         "US-002"
@@ -79,7 +79,7 @@
       ],
       "priority": 3,
       "passes": true,
-      "notes": "Read gen/ddl/skills/*.json for skill formulas and elements. Read docs/design/combat.md for the design spec. Keep formulas simple and fun — avoid over-engineering.",
+      "notes": "Read gen/ddl/skills/*.json for skill formulas and elements. Read docs/design/combat.md for the design spec. Keep formulas simple and fun \u2014 avoid over-engineering.",
       "dependsOn": [
         "US-003"
       ]
@@ -99,7 +99,7 @@
         "pnpm lint passes"
       ],
       "priority": 4,
-      "passes": false,
+      "passes": true,
       "notes": "Read gen/ddl/skills/ for all skill definitions. Read gen/ddl/status-effects/ for effect definitions. Read main/database/states/*.ts for the database entries.",
       "dependsOn": [
         "US-004"
@@ -119,7 +119,7 @@
         "pnpm lint passes"
       ],
       "priority": 5,
-      "passes": false,
+      "passes": true,
       "notes": "Read gen/ddl/enemies/*.json for enemy stats and types. Read docs/design/enemies-catalog.md for behavior descriptions. Keep AI simple: if HP < 30% and has heal, heal; otherwise attack strongest.",
       "dependsOn": [
         "US-005"
@@ -140,7 +140,7 @@
         "pnpm lint passes"
       ],
       "priority": 6,
-      "passes": false,
+      "passes": true,
       "notes": "Wire to progression system (US-001) for XP and inventory system (US-002) for gold/items. Read enemy DDL for drop tables.",
       "dependsOn": [
         "US-006"
@@ -163,7 +163,7 @@
       ],
       "priority": 2,
       "passes": true,
-      "notes": "The game's core mechanic. 4 emotions (joy, fury, sorrow, awe) × multiple fragments each. Read docs/world/core-theme.md and docs/design/memory-system.md. Fragments are collected from events, NPC dialogue, exploration, and combat milestones.",
+      "notes": "The game's core mechanic. 4 emotions (joy, fury, sorrow, awe) \u00d7 multiple fragments each. Read docs/world/core-theme.md and docs/design/memory-system.md. Fragments are collected from events, NPC dialogue, exploration, and combat milestones.",
       "dependsOn": []
     },
     {
@@ -213,7 +213,7 @@
       "description": "As a player, I want quests to track my progress with objectives and rewards, so I have clear goals.",
       "acceptanceCriteria": [
         "New file main/server/systems/quests.ts created",
-        "Quest state machine: inactive → active → completed | failed",
+        "Quest state machine: inactive \u2192 active \u2192 completed | failed",
         "startQuest(player, questId), completeQuest(), failQuest()",
         "Objective tracking via player variables per quest",
         "getActiveQuests(player), getCompletedQuests(player)",
@@ -224,7 +224,7 @@
       ],
       "priority": 3,
       "passes": true,
-      "notes": "Read gen/ddl/quests/*.json for quest definitions. Keep it simple — variable-based state tracking. The existing quest files in main/server/quests/ use non-standard APIs; this system replaces them with a clean runtime.",
+      "notes": "Read gen/ddl/quests/*.json for quest definitions. Keep it simple \u2014 variable-based state tracking. The existing quest files in main/server/quests/ use non-standard APIs; this system replaces them with a clean runtime.",
       "dependsOn": [
         "US-001",
         "US-002"
@@ -269,7 +269,7 @@
       ],
       "priority": 4,
       "passes": true,
-      "notes": "Read gen/ddl/consumables/*.json and gen/ddl/weapons/*.json for item prices. Shop inventory is static per shop — no dynamic stock for v1.",
+      "notes": "Read gen/ddl/consumables/*.json and gen/ddl/weapons/*.json for item prices. Shop inventory is static per shop \u2014 no dynamic stock for v1.",
       "dependsOn": [
         "US-002"
       ]
@@ -289,8 +289,8 @@
         "pnpm lint passes"
       ],
       "priority": 5,
-      "passes": false,
-      "notes": "Read main/server/dialogue/*.ts for existing dialogue functions. Read gen/ddl/npcs/named.json for NPC data. RPG-JS events use onAction() for NPC interaction.",
+      "passes": true,
+      "notes": "Implemented npc-interaction.ts with condition-first routing tables for Hana, Artun, Grym, Khali, Hark, Nyro. Village-hub-events.ts updated to use showDialogue(). Fixed lira-workshop.ts broken quest variable name.",
       "dependsOn": [
         "US-011"
       ]
@@ -310,8 +310,8 @@
         "pnpm lint passes"
       ],
       "priority": 5,
-      "passes": false,
-      "notes": "Read gen/ddl/skills/ — each class has base skills and subclass skills. Subclass skills unlock after god recall. Base skills unlock by level.",
+      "passes": true,
+      "notes": "Read gen/ddl/skills/ \u2014 each class has base skills and subclass skills. Subclass skills unlock after god recall. Base skills unlock by level.",
       "dependsOn": [
         "US-001"
       ]
@@ -322,7 +322,7 @@
       "description": "As a player, I want to see my health, mana, current zone, active quest objective, and gold on screen at all times.",
       "acceptanceCriteria": [
         "main/gui/hud.vue updated with new sections",
-        "HP bar: current/max with color (green→yellow→red)",
+        "HP bar: current/max with color (green\u2192yellow\u2192red)",
         "SP bar: current/max with blue color",
         "Zone name displayed at top",
         "Active quest mini-objective text",
@@ -332,8 +332,8 @@
         "pnpm lint passes"
       ],
       "priority": 6,
-      "passes": false,
-      "notes": "Read main/gui/hud.vue for existing HUD. RPG-JS uses Vue 3 for GUI. Use player.getVariable() calls from GUI to read state. The existing HUD polls every 500ms — refactor to reactive.",
+      "passes": true,
+      "notes": "Read main/gui/hud.vue for existing HUD. RPG-JS uses Vue 3 for GUI. Use player.getVariable() calls from GUI to read state. The existing HUD polls every 500ms \u2014 refactor to reactive.",
       "dependsOn": [
         "US-001",
         "US-002",
@@ -358,8 +358,8 @@
         "pnpm lint passes"
       ],
       "priority": 7,
-      "passes": false,
-      "notes": "Read main/gui/title-screen.vue for Vue component style reference — it's the most polished component. Use CSS variables from the existing design system. Combat state comes from player variables set by the combat system.",
+      "passes": true,
+      "notes": "Read main/gui/title-screen.vue for Vue component style reference \u2014 it's the most polished component. Use CSS variables from the existing design system. Combat state comes from player variables set by the combat system.",
       "dependsOn": [
         "US-003"
       ]
@@ -380,7 +380,7 @@
         "pnpm lint passes"
       ],
       "priority": 7,
-      "passes": false,
+      "passes": true,
       "notes": "Read inventory system (US-002) for data access patterns. Read main/gui/title-screen.vue for Vue styling conventions.",
       "dependsOn": [
         "US-002"
@@ -401,7 +401,7 @@
         "pnpm lint passes"
       ],
       "priority": 8,
-      "passes": false,
+      "passes": true,
       "notes": "Read quest system (US-011) for data access. 28 quests total: 10 main, 4 god, 14 side.",
       "dependsOn": [
         "US-011"
@@ -422,7 +422,7 @@
         "pnpm lint passes"
       ],
       "priority": 8,
-      "passes": false,
+      "passes": true,
       "notes": "Read memory system (US-008) for data access. 40-60 total fragments. Read docs/design/memory-system.md for creative direction.",
       "dependsOn": [
         "US-008"
@@ -443,7 +443,7 @@
         "pnpm lint passes"
       ],
       "priority": 8,
-      "passes": false,
+      "passes": true,
       "notes": "Read shop system (US-013) for data access. Use existing CSS variable system.",
       "dependsOn": [
         "US-013"
@@ -465,7 +465,7 @@
         "pnpm lint passes"
       ],
       "priority": 8,
-      "passes": false,
+      "passes": true,
       "notes": "This is the central hub menu. Links to other GUI screens. Read main/client/audio/ for volume controls.",
       "dependsOn": [
         "US-012",
@@ -525,8 +525,8 @@
         "pnpm lint passes"
       ],
       "priority": 9,
-      "passes": false,
-      "notes": "Read main/gui/title-screen.vue — it already has Continue and Load Game buttons but they're disabled with 'Coming soon' hints. Wire them to the save-load system from US-012.",
+      "passes": true,
+      "notes": "Read main/gui/title-screen.vue \u2014 it already has Continue and Load Game buttons but they're disabled with 'Coming soon' hints. Wire them to the save-load system from US-012.",
       "dependsOn": [
         "US-012"
       ]
@@ -537,23 +537,23 @@
       "description": "As a developer, I need all event files to use the new citizen sprite IDs instead of legacy NPC names.",
       "acceptanceCriteria": [
         "All 42 event files in main/server/events/ updated",
-        "Replace npc_lira → npc_hana (or sprite-citizen-hana)",
-        "Replace npc_callum → npc_artun",
-        "Replace npc_curator → npc_grym",
-        "Replace npc_maren → npc_khali",
-        "Replace npc_torvan → npc_hark",
-        "Replace npc_ren → npc_nyro",
-        "Replace npc_petra → npc_nel",
-        "Replace npc_aric → npc_janik",
-        "Replace npc_elyn → npc_julz",
-        "Replace npc_solen → npc_reza",
-        "Replace npc_wynn → npc_vash",
-        "Also update dialogue text references (Lira→Hana, Callum→Artun, etc.)",
+        "Replace npc_lira \u2192 npc_hana (or sprite-citizen-hana)",
+        "Replace npc_callum \u2192 npc_artun",
+        "Replace npc_curator \u2192 npc_grym",
+        "Replace npc_maren \u2192 npc_khali",
+        "Replace npc_torvan \u2192 npc_hark",
+        "Replace npc_ren \u2192 npc_nyro",
+        "Replace npc_petra \u2192 npc_nel",
+        "Replace npc_aric \u2192 npc_janik",
+        "Replace npc_elyn \u2192 npc_julz",
+        "Replace npc_solen \u2192 npc_reza",
+        "Replace npc_wynn \u2192 npc_vash",
+        "Also update dialogue text references (Lira\u2192Hana, Callum\u2192Artun, etc.)",
         "pnpm lint passes on modified files"
       ],
       "priority": 10,
       "passes": true,
-      "notes": "See main/client/characters/aliases.ts for the full mapping. After this, legacy aliases can be removed. Some files use 'Lira' in dialogue text and 'npc_lira' as graphic IDs — update BOTH.",
+      "notes": "See main/client/characters/aliases.ts for the full mapping. After this, legacy aliases can be removed. Some files use 'Lira' in dialogue text and 'npc_lira' as graphic IDs \u2014 update BOTH.",
       "dependsOn": []
     },
     {
@@ -590,7 +590,7 @@
         "pnpm lint passes"
       ],
       "priority": 10,
-      "passes": false,
+      "passes": true,
       "notes": "The existing quest files import from @rpgjs/server/lib/quests/quest which is a non-public API path. Replace with simple data exports that the quest runtime consumes. Read gen/ddl/quests/*.json for quest definitions.",
       "dependsOn": [
         "US-011"
@@ -627,8 +627,8 @@
         "pnpm lint passes"
       ],
       "priority": 9,
-      "passes": false,
-      "notes": "Read main/client/audio/ for the existing audio engine — it's complete and just needs wiring. Read main/client/audio/zone-audio-map.ts for zone→track mappings. 125 audio files available in assets/audio/.",
+      "passes": true,
+      "notes": "Read main/client/audio/ for the existing audio engine \u2014 it's complete and just needs wiring. Read main/client/audio/zone-audio-map.ts for zone\u2192track mappings. 125 audio files available in assets/audio/.",
       "dependsOn": [
         "US-003"
       ]
@@ -647,8 +647,8 @@
         "pnpm lint passes"
       ],
       "priority": 9,
-      "passes": false,
-      "notes": "The client-side effects code already EXISTS in main/client/effects/ — it just needs to be wired to actual vibrancy values from the server-side vibrancy system (US-010).",
+      "passes": true,
+      "notes": "The client-side effects code already EXISTS in main/client/effects/ \u2014 it just needs to be wired to actual vibrancy values from the server-side vibrancy system (US-010).",
       "dependsOn": [
         "US-010"
       ]
@@ -667,7 +667,7 @@
         "pnpm lint passes"
       ],
       "priority": 9,
-      "passes": false,
+      "passes": true,
       "notes": "The combat effects code already EXISTS in main/client/effects/combat-effects.ts with real implementations for 7 element types and 6 status types. Just needs wiring to combat events.",
       "dependsOn": [
         "US-003"
@@ -687,7 +687,7 @@
         "pnpm lint passes"
       ],
       "priority": 9,
-      "passes": false,
+      "passes": true,
       "notes": "All effect files already exist in main/client/effects/. Wire them to the memory and recall events from US-008 and US-009.",
       "dependsOn": [
         "US-009"
@@ -708,8 +708,8 @@
         "pnpm test passes (or at least new tests pass)"
       ],
       "priority": 10,
-      "passes": false,
-      "notes": "Read tests/e2e/*.test.ts for existing test patterns. The dev server auto-starts via Playwright config. Test the happy path — don't test edge cases yet.",
+      "passes": true,
+      "notes": "Read tests/e2e/*.test.ts for existing test patterns. The dev server auto-starts via Playwright config. Test the happy path \u2014 don't test edge cases yet.",
       "dependsOn": [
         "US-014",
         "US-016"
@@ -729,7 +729,7 @@
         "pnpm test:unit passes"
       ],
       "priority": 10,
-      "passes": false,
+      "passes": true,
       "notes": "Use vitest (pnpm test:unit). Test pure functions from the systems files. Mock player.setVariable/getVariable for unit isolation.",
       "dependsOn": [
         "US-004",
@@ -753,11 +753,11 @@
       ],
       "priority": 6,
       "passes": true,
-      "notes": "Read main/database/index.ts for current exports. 59 of 138 database entries are empty class bodies with only decorator metadata — add at minimum an empty constructor or basic implementation.",
+      "notes": "Read main/database/index.ts for current exports. 59 of 138 database entries are empty class bodies with only decorator metadata \u2014 add at minimum an empty constructor or basic implementation.",
       "dependsOn": []
     }
   ],
   "metadata": {
-    "updatedAt": "2026-02-14T04:32:18.578Z"
+    "updatedAt": "2026-02-14T07:09:27.071Z"
   }
 }

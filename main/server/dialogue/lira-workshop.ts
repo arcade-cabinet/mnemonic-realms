@@ -3,14 +3,14 @@ import type { RpgPlayer } from '@rpgjs/server';
 export default async function (player: RpgPlayer) {
   // Define Hana as a speaker with her graphic ID
   // --- Trigger Conditions ---
-  // Check if the main quest 'MQ-01' is completed
-  const mq01Completed = player.getVariable('quest:MQ-01') === 'completed';
+  // Check if the main quest 'MQ-01' is completed (quest system stores status as QUEST_<id>_STATUS)
+  const mq01Completed = player.getVariable('QUEST_MQ-01_STATUS') === 'completed';
   // Check if this specific introductory dialogue has already been played
   const introPlayed = player.getVariable('dlg:lira-workshop-intro');
 
   // This dialogue should only play if MQ-01 is completed AND it hasn't played before.
   if (!mq01Completed || introPlayed) {
-    return; // Exit if conditions are not met or dialogue already played
+    return;
   }
 
   // --- Dialogue Sequence ---

@@ -11,7 +11,7 @@ export default async function (player: RpgPlayer) {
 
   let choice: { text: string; value: string };
   do {
-    choice = await player.showChoices([
+    choice = await player.showChoices('What would you like?', [
       { text: 'Browse Wares', value: 'browse' },
       { text: 'Sell Items', value: 'sell' },
       { text: 'Leave', value: 'leave' },
