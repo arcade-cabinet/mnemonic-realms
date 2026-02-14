@@ -1,20 +1,19 @@
 // ---------------------------------------------------------------------------
 // Damage Formula & Element System
-// US-004: Implements physical/magical damage, 7 elements, crits, variance.
+// US-004: Implements physical/magical damage, 6 lore elements, crits, variance.
 // ---------------------------------------------------------------------------
 
 // ---------------------------------------------------------------------------
-// Elements
+// Elements (Lore-Aligned)
 // ---------------------------------------------------------------------------
 
 export enum Element {
-  Fire = 'fire',
-  Water = 'water',
-  Wind = 'wind',
-  Earth = 'earth',
-  Light = 'light',
-  Dark = 'dark',
-  Neutral = 'neutral',
+  Resonance = 'resonance', // Sound — domain of the god Resonance
+  Verdance = 'verdance', // Growth — domain of the god Verdance
+  Luminos = 'luminos', // Light — domain of the god Luminos
+  Kinesis = 'kinesis', // Motion — domain of the god Kinesis
+  Dark = 'dark', // Opposition/stagnation
+  Neutral = 'neutral', // Default
 }
 
 const STRONG = 1.5;
@@ -23,71 +22,60 @@ const EVEN = 1.0;
 
 /**
  * Element effectiveness: attackElement -> defenderElement -> multiplier.
- * Cycle: Fire > Wind > Earth > Water > Fire.
- * Dual opposition: Light <> Dark.
- * Neutral has no strengths or weaknesses.
+ * Lore-coherent interactions based on the four dormant gods:
+ * - Resonance (sound) disrupts Kinesis (motion) with vibration
+ * - Verdance (growth) absorbs/dampens Resonance (sound)
+ * - Kinesis (motion) breaks through Verdance (roots/growth)
+ * - Luminos (light) dispels Dark (shadow)
+ * - Dark (shadow) smothers Luminos (light)
+ * - Neutral has no special interactions
  */
 const EFFECTIVENESS: Record<Element, Record<Element, number>> = {
-  [Element.Fire]: {
-    [Element.Fire]: EVEN,
-    [Element.Water]: WEAK,
-    [Element.Wind]: STRONG,
-    [Element.Earth]: EVEN,
-    [Element.Light]: EVEN,
+  [Element.Resonance]: {
+    [Element.Resonance]: EVEN,
+    [Element.Verdance]: WEAK,
+    [Element.Luminos]: EVEN,
+    [Element.Kinesis]: STRONG,
     [Element.Dark]: EVEN,
     [Element.Neutral]: EVEN,
   },
-  [Element.Water]: {
-    [Element.Fire]: STRONG,
-    [Element.Water]: EVEN,
-    [Element.Wind]: EVEN,
-    [Element.Earth]: WEAK,
-    [Element.Light]: EVEN,
+  [Element.Verdance]: {
+    [Element.Resonance]: STRONG,
+    [Element.Verdance]: EVEN,
+    [Element.Luminos]: EVEN,
+    [Element.Kinesis]: WEAK,
     [Element.Dark]: EVEN,
     [Element.Neutral]: EVEN,
   },
-  [Element.Wind]: {
-    [Element.Fire]: WEAK,
-    [Element.Water]: EVEN,
-    [Element.Wind]: EVEN,
-    [Element.Earth]: STRONG,
-    [Element.Light]: EVEN,
-    [Element.Dark]: EVEN,
-    [Element.Neutral]: EVEN,
-  },
-  [Element.Earth]: {
-    [Element.Fire]: EVEN,
-    [Element.Water]: STRONG,
-    [Element.Wind]: WEAK,
-    [Element.Earth]: EVEN,
-    [Element.Light]: EVEN,
-    [Element.Dark]: EVEN,
-    [Element.Neutral]: EVEN,
-  },
-  [Element.Light]: {
-    [Element.Fire]: EVEN,
-    [Element.Water]: EVEN,
-    [Element.Wind]: EVEN,
-    [Element.Earth]: EVEN,
-    [Element.Light]: EVEN,
+  [Element.Luminos]: {
+    [Element.Resonance]: EVEN,
+    [Element.Verdance]: EVEN,
+    [Element.Luminos]: EVEN,
+    [Element.Kinesis]: EVEN,
     [Element.Dark]: STRONG,
     [Element.Neutral]: EVEN,
   },
+  [Element.Kinesis]: {
+    [Element.Resonance]: WEAK,
+    [Element.Verdance]: STRONG,
+    [Element.Luminos]: EVEN,
+    [Element.Kinesis]: EVEN,
+    [Element.Dark]: EVEN,
+    [Element.Neutral]: EVEN,
+  },
   [Element.Dark]: {
-    [Element.Fire]: EVEN,
-    [Element.Water]: EVEN,
-    [Element.Wind]: EVEN,
-    [Element.Earth]: EVEN,
-    [Element.Light]: STRONG,
+    [Element.Resonance]: EVEN,
+    [Element.Verdance]: EVEN,
+    [Element.Luminos]: STRONG,
+    [Element.Kinesis]: EVEN,
     [Element.Dark]: EVEN,
     [Element.Neutral]: EVEN,
   },
   [Element.Neutral]: {
-    [Element.Fire]: EVEN,
-    [Element.Water]: EVEN,
-    [Element.Wind]: EVEN,
-    [Element.Earth]: EVEN,
-    [Element.Light]: EVEN,
+    [Element.Resonance]: EVEN,
+    [Element.Verdance]: EVEN,
+    [Element.Luminos]: EVEN,
+    [Element.Kinesis]: EVEN,
     [Element.Dark]: EVEN,
     [Element.Neutral]: EVEN,
   },

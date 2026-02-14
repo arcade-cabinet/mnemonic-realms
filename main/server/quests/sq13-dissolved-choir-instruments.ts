@@ -22,7 +22,7 @@ export const SQ13_CHOIR_INSTRUMENTS_QUEST_ID = 'SQ-13';
   rewards: [
     { type: 'gold', value: 500 },
     { type: 'item', id: 'C-SP-08', quantity: 3 }, // Broadcast Amplifier x3
-    { type: 'fragment', emotion: Emotion.AWE, element: Element.WIND, potency: 4 }, // Awe/Wind Fragment (4-star)
+    { type: 'fragment', emotion: Emotion.AWE, element: Element.Resonance, potency: 4 }, // Awe/Resonance Fragment (4-star)
   ],
 })
 export default class TheDissolvedChoirInstrumentsQuest extends Quest<RpgPlayer> {
@@ -136,7 +136,7 @@ export default class TheDissolvedChoirInstrumentsQuest extends Quest<RpgPlayer> 
     player.showNotification("Quest Completed: The Dissolved Choir's Instruments", 'success');
     player.addGold(500);
     player.addItem('C-SP-08', 3); // Broadcast Amplifier x3
-    player.addFragment(Emotion.AWE, Element.WIND, 4); // Awe/Wind Fragment (4-star)
+    player.addFragment(Emotion.AWE, Element.Resonance, 4); // Awe/Resonance Fragment (4-star)
 
     player.showText(
       "Audiomancer: Five instruments. Five voices of the Choir, found after all this time. When you placed them in the Amphitheater, I heard it — just for a moment — the song they sang at the end. It wasn't sad. It was... proud. Like parents watching their child take a first step.",
