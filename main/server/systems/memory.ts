@@ -1,4 +1,5 @@
 import type { RpgPlayer } from '@rpgjs/server';
+import { increaseVibrancy, type VibrancyZone } from './vibrancy';
 
 // ---------------------------------------------------------------------------
 // Types
@@ -537,4 +538,261 @@ export function getFragmentsByZone(player: RpgPlayer, zone: Zone): MemoryFragmen
 
 function getCollectedIds(player: RpgPlayer): string[] {
   return (player.getVariable(COLLECTED_KEY) as string[] | undefined) ?? [];
+}
+
+// ---------------------------------------------------------------------------
+// God Recall System
+// ---------------------------------------------------------------------------
+
+export type GodId = 'resonance' | 'verdance' | 'luminos' | 'kinesis';
+export type RecallEmotion = 'joy' | 'fury' | 'sorrow' | 'awe';
+export type SubclassBranch = 'luminary' | 'crucible';
+
+export interface RecallResult {
+  success: boolean;
+  error?: string;
+  godName?: string;
+  abilityName?: string;
+  subclassBranch?: SubclassBranch;
+  vibrancyGain?: number;
+}
+
+export interface GodRecallState {
+  godId: GodId;
+  emotion: RecallEmotion;
+  godName: string;
+  abilityName: string;
+}
+
+const GODS: readonly GodId[] = ['resonance', 'verdance', 'luminos', 'kinesis'];
+const RECALL_EMOTIONS: readonly RecallEmotion[] = ['joy', 'fury', 'sorrow', 'awe'];
+
+/** Player variable keys for the recall system. */
+const RECALL_PREFIX = 'RECALL_';
+const RECALL_ORDER_KEY = 'RECALL_ORDER';
+const SUBCLASS_BRANCH_KEY = 'SUBCLASS_BRANCH';
+
+/** Map each god to the vibrancy zone affected by recall. */
+const GOD_ZONE: Record<GodId, VibrancyZone> = {
+  resonance: 'resonance-fields',
+  verdance: 'shimmer-marsh',
+  luminos: 'flickerveil',
+  kinesis: 'hollow-ridge',
+};
+
+/** Base vibrancy increase from any recall (per docs/world/dormant-gods.md). */
+const RECALL_VIBRANCY_BASE = 15;
+
+/**
+ * 16 recalled god names — one per god+emotion combination.
+ * Source: docs/world/dormant-gods.md summary table.
+ */
+const RECALLED_GOD_NAMES: Record<GodId, Record<RecallEmotion, string>> = {
+  resonance: {
+    joy: 'Cantara, God of the Living Song',
+    fury: 'Tempestus, God of the Thundersong',
+    sorrow: 'Tacet, God of the Necessary Silence',
+    awe: 'Harmonia, God of the Perfect Chord',
+  },
+  verdance: {
+    joy: 'Floriana, God of the Endless Bloom',
+    fury: 'Thornweald, God of the Wild Overgrowth',
+    sorrow: 'Autumnus, God of the Falling Leaf',
+    awe: 'Sylvanos, God of the Deep Root',
+  },
+  luminos: {
+    joy: 'Solara, God of the Golden Dawn',
+    fury: 'Pyralis, God of the Searing Truth',
+    sorrow: 'Vesperis, God of the Twilight',
+    awe: 'Prisma, God of the Living Spectrum',
+  },
+  kinesis: {
+    joy: 'Jubila, God of the Joyful Stride',
+    fury: 'Tecton, God of the Avalanche',
+    sorrow: 'Errantis, God of the Fading Footprint',
+    awe: 'Vortis, God of the Eternal Momentum',
+  },
+};
+
+/**
+ * 16 subclass abilities — the player buff unlocked by each god+emotion combo.
+ * Source: docs/world/dormant-gods.md player buff names.
+ */
+const SUBCLASS_ABILITIES: Record<GodId, Record<RecallEmotion, string>> = {
+  resonance: {
+    joy: 'Song of the Heart',
+    fury: 'Thunderstrike',
+    sorrow: 'Veil of Silence',
+    awe: 'Perfect Chord',
+  },
+  verdance: {
+    joy: 'Verdant Embrace',
+    fury: 'Thorn Barrier',
+    sorrow: "Cycle's Gift",
+    awe: 'Root Sense',
+  },
+  luminos: {
+    joy: "Dawn's Clarity",
+    fury: 'Searing Gaze',
+    sorrow: 'Twilight Grace',
+    awe: 'Spectral Shift',
+  },
+  kinesis: {
+    joy: 'Swift Stride',
+    fury: 'Tectonic Force',
+    sorrow: 'Fading Step',
+    awe: 'Orbital Force',
+  },
+};
+
+// ---------------------------------------------------------------------------
+// Recall Public API
+// ---------------------------------------------------------------------------
+
+/**
+ * Recall a dormant god at its shrine by broadcasting an emotion.
+ *
+ * This is permanent and irreversible within a playthrough:
+ * - Stores the god+emotion choice in player variables
+ * - Increases the god's zone vibrancy by +15
+ * - Unlocks the subclass ability for that god+emotion combo
+ * - On first recall, determines the player's subclass branch
+ *   (joy/awe → luminary, fury/sorrow → crucible)
+ *
+ * Returns a result indicating success or the reason for failure.
+ */
+export function recallMemory(
+  player: RpgPlayer,
+  godId: GodId,
+  emotion: RecallEmotion,
+): RecallResult {
+  if (!GODS.includes(godId)) {
+    return { success: false, error: `Unknown god: ${godId}` };
+  }
+  if (!RECALL_EMOTIONS.includes(emotion)) {
+    return { success: false, error: `Invalid recall emotion: ${emotion}` };
+  }
+
+  // Check if this god has already been recalled
+  const existing = player.getVariable(`${RECALL_PREFIX}${godId}`) as string | undefined;
+  if (existing) {
+    return { success: false, error: `${godId} has already been recalled with ${existing}` };
+  }
+
+  // Store the god+emotion choice
+  player.setVariable(`${RECALL_PREFIX}${godId}`, emotion);
+
+  // Track recall order
+  const order = getRecallOrder(player);
+  order.push(godId);
+  player.setVariable(RECALL_ORDER_KEY, order);
+
+  // On first recall, determine subclass branch
+  const isFirstRecall = order.length === 1;
+  let subclassBranch: SubclassBranch | undefined;
+  if (isFirstRecall) {
+    subclassBranch = emotion === 'joy' || emotion === 'awe' ? 'luminary' : 'crucible';
+    player.setVariable(SUBCLASS_BRANCH_KEY, subclassBranch);
+  }
+
+  // Increase zone vibrancy
+  const zone = GOD_ZONE[godId];
+  const newVibrancy = increaseVibrancy(player, zone, RECALL_VIBRANCY_BASE);
+
+  // Store the unlocked ability
+  const abilityName = SUBCLASS_ABILITIES[godId][emotion];
+  player.setVariable(`${RECALL_PREFIX}${godId}_ABILITY`, abilityName);
+
+  const godName = RECALLED_GOD_NAMES[godId][emotion];
+
+  // Emit event for UI/scene system
+  player.emit('god-recalled', {
+    godId,
+    emotion,
+    godName,
+    abilityName,
+    subclassBranch,
+    isFirstRecall,
+    zoneVibrancy: newVibrancy,
+  });
+
+  return {
+    success: true,
+    godName,
+    abilityName,
+    subclassBranch,
+    vibrancyGain: RECALL_VIBRANCY_BASE,
+  };
+}
+
+/**
+ * Get the emotion used to recall a specific god, or undefined if not yet recalled.
+ */
+export function getGodRecallEmotion(player: RpgPlayer, godId: GodId): RecallEmotion | undefined {
+  return player.getVariable(`${RECALL_PREFIX}${godId}`) as RecallEmotion | undefined;
+}
+
+/**
+ * Check whether a specific god has been recalled.
+ */
+export function isGodRecalled(player: RpgPlayer, godId: GodId): boolean {
+  return getGodRecallEmotion(player, godId) !== undefined;
+}
+
+/**
+ * Get the full recall state for a god (name, emotion, ability), or undefined.
+ */
+export function getGodRecallState(player: RpgPlayer, godId: GodId): GodRecallState | undefined {
+  const emotion = getGodRecallEmotion(player, godId);
+  if (!emotion) return undefined;
+  return {
+    godId,
+    emotion,
+    godName: RECALLED_GOD_NAMES[godId][emotion],
+    abilityName: SUBCLASS_ABILITIES[godId][emotion],
+  };
+}
+
+/**
+ * Get the ordered list of god IDs in the sequence they were recalled.
+ */
+export function getRecallOrder(player: RpgPlayer): GodId[] {
+  return (player.getVariable(RECALL_ORDER_KEY) as GodId[] | undefined) ?? [];
+}
+
+/**
+ * Get the number of gods recalled so far (0-4).
+ */
+export function getRecallCount(player: RpgPlayer): number {
+  return getRecallOrder(player).length;
+}
+
+/**
+ * Get the player's subclass branch, or undefined if no god has been recalled yet.
+ */
+export function getSubclassBranch(player: RpgPlayer): SubclassBranch | undefined {
+  return player.getVariable(SUBCLASS_BRANCH_KEY) as SubclassBranch | undefined;
+}
+
+/**
+ * Get all recall states for gods that have been recalled.
+ */
+export function getAllRecallStates(player: RpgPlayer): GodRecallState[] {
+  return getRecallOrder(player)
+    .map((godId) => getGodRecallState(player, godId))
+    .filter((s): s is GodRecallState => s !== undefined);
+}
+
+/**
+ * Return the full world-state permutation key.
+ * Format: "resonance:joy|verdance:fury|luminos:sorrow|kinesis:awe" (only recalled gods).
+ * Useful for tracking which of the 16^n states the player is in.
+ */
+export function getWorldStateKey(player: RpgPlayer): string {
+  return GODS.map((godId) => {
+    const emotion = getGodRecallEmotion(player, godId);
+    return emotion ? `${godId}:${emotion}` : null;
+  })
+    .filter(Boolean)
+    .join('|');
 }
