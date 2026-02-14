@@ -68,5 +68,12 @@
     "effect": "Absorbing all single-target physical attacks for allies at 70% damage",
     "duration": 1,
     "stackable": false
+  },
+  {
+    "id": "ST-REGEN",
+    "name": "Regen",
+    "effect": "Recover 5% max HP at start of each turn",
+    "duration": 3,
+    "stackable": false
   }
 ]
