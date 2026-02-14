@@ -23,6 +23,9 @@ export interface SkillExecutionResult {
   message: string;
   damage?: number;
   healing?: number;
+  critical?: boolean;
+  element?: string;
+  statusApplied?: string[];
 }
 
 export interface TickResult {
@@ -358,13 +361,15 @@ function executeAoeDamage(
     hitMessages.push(`${enemy.name}: ${result.damage}`);
   }
 
-  applyDebuffsFromSkill(skill, enemies);
+  const appliedStatuses = applyDebuffsFromSkill(skill, enemies);
 
   return {
     success: true,
     skillName: skill.name,
     targetName: 'all enemies',
     damage: totalDamage,
+    element: skill.element,
+    statusApplied: appliedStatuses.length > 0 ? appliedStatuses : undefined,
     message: `Player uses ${skill.name}! ${hitMessages.join(', ')}.`,
   };
 }
@@ -395,9 +400,13 @@ function executeDamageSkill(
 
   // Apply debuff on hit
   const debuffId = SKILL_DEBUFF[skill.id];
+  const appliedStatuses: string[] = [];
   if (debuffId) {
     const eDef = effectById.get(debuffId);
-    if (eDef) applyEffect(target.effects, debuffId, eDef.duration);
+    if (eDef) {
+      applyEffect(target.effects, debuffId, eDef.duration);
+      appliedStatuses.push(debuffId);
+    }
   }
 
   const critMsg = result.critical ? ' Critical!' : '';
@@ -406,18 +415,22 @@ function executeDamageSkill(
     skillName: skill.name,
     targetName: target.name,
     damage: result.damage,
+    critical: result.critical,
+    element: skill.element,
+    statusApplied: appliedStatuses.length > 0 ? appliedStatuses : undefined,
     message: `Player uses ${skill.name} on ${target.name} for ${result.damage} damage.${critMsg}`,
   };
 }
 
-function applyDebuffsFromSkill(skill: SkillDef, enemies: CombatEnemy[]): void {
+function applyDebuffsFromSkill(skill: SkillDef, enemies: CombatEnemy[]): string[] {
   const debuffId = SKILL_DEBUFF[skill.id];
-  if (!debuffId) return;
+  if (!debuffId) return [];
   const eDef = effectById.get(debuffId);
-  if (!eDef) return;
+  if (!eDef) return [];
   for (const enemy of enemies) {
     if (enemy.hp > 0) applyEffect(enemy.effects, debuffId, eDef.duration);
   }
+  return [debuffId];
 }
 
 // ---------------------------------------------------------------------------
@@ -442,11 +455,13 @@ function executeHealSkill(
   // Some heal skills also apply buffs (e.g., Emotional Resonance → Inspired)
   const buffId = SKILL_ALLY_BUFF[skill.id];
   let buffMsg = '';
+  const appliedStatuses: string[] = [];
   if (buffId) {
     const eDef = effectById.get(buffId);
     if (eDef) {
       applyEffect(playerEffects, buffId, eDef.duration);
       buffMsg = ` ${eDef.name} applied!`;
+      appliedStatuses.push(buffId);
     }
   }
 
@@ -454,6 +469,7 @@ function executeHealSkill(
     success: true,
     skillName: skill.name,
     healing: healed,
+    statusApplied: appliedStatuses.length > 0 ? appliedStatuses : undefined,
     message: `Player uses ${skill.name}! Healed ${healed} HP.${buffMsg}`,
   };
 }
@@ -476,6 +492,7 @@ function executeBuffSkill(
       return {
         success: true,
         skillName: skill.name,
+        statusApplied: [selfBuffId],
         message: `Player uses ${skill.name}! ${eDef.name} for ${eDef.duration} turns.`,
       };
     }
@@ -490,6 +507,7 @@ function executeBuffSkill(
       return {
         success: true,
         skillName: skill.name,
+        statusApplied: [allyBuffId],
         message: `Player uses ${skill.name}! ${eDef.name} for ${eDef.duration} turns.`,
       };
     }
