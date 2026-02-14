@@ -1,5 +1,7 @@
-`★ Insight ─────────────────────────────────────`
-**Merge resolution**: Both branches added a new Vue GUI component to the same `gui` array — `BattleUi` from main (US-017) and `InventoryScreen` from the worker (US-018). Since RPG-JS's `gui` array is order-independent for registration, combining both additions is the correct resolution. The imports were already auto-merged by git (no conflict there), so only the array literal needed manual resolution.
-`─────────────────────────────────────────────────`
+Resolved. The file now has:
 
-Resolved — kept both `BattleUi` (from main/US-017) and `InventoryScreen` (from worker/US-018) in the `gui` array. The imports were already cleanly merged by git.
+- **BattleUi** (US-017, from main) - `../gui/battle-ui.vue`
+- **InventoryScreen** (US-018, from main) - `../gui/inventory.vue`  
+- **QuestLog** (US-019, from worker) - `../gui/quest-log.vue`
+
+All three new GUI components are imported and registered in the `gui` array alongside the original five (`TitleScreen`, `DialogueBox`, `Hud`, `GameOver`, `CreditsScreen`). Conflict markers are gone, no more corrupted text.
