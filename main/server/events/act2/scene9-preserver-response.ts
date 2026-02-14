@@ -7,7 +7,29 @@ import {
   type RpgPlayer,
   RpgScene,
 } from '@rpgjs/server';
-import { Artun, PreserverCaptainJanik } from '../database/npcs/all'; // Assuming NPC classes are defined here
+// --- Inline NPC event classes (no database module) ---
+
+@EventData({
+  id: 'npc-preserver-captain-janik',
+  name: 'Preserver Captain Janik',
+  hitbox: { width: 32, height: 32 },
+})
+class PreserverCaptainJanik extends RpgEvent {
+  onInit() {
+    this.setGraphic('npc_janik');
+  }
+}
+
+@EventData({
+  id: 'npc-artun-scene9',
+  name: 'Artun',
+  hitbox: { width: 32, height: 32 },
+})
+class ArtunEvent extends RpgEvent {
+  onInit() {
+    this.setGraphic('npc_artun');
+  }
+}
 
 @EventData({
   id: 'act2-scene9-preserver-response',
@@ -70,7 +92,7 @@ export class PreserverResponseEvent extends RpgEvent {
     const callumEvent = await player.map.createDynamicEvent({
       x: callumX,
       y: callumY,
-      event: Artun,
+      event: ArtunEvent,
       properties: {
         name: 'Artun',
         graphic: 'npc_artun',

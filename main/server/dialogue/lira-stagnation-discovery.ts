@@ -3,7 +3,7 @@ import type { RpgPlayer } from '@rpgjs/server';
 export default async function (player: RpgPlayer) {
   // Trigger conditions: Player approaches Stagnation Clearing (Scene 6)
   // Location: Heartfield — Stagnation Clearing (35, 30)
-  const mapId = player.map.id;
+  const mapId = (player.map as { id?: string })?.id;
   const playerX = player.position.x;
   const playerY = player.position.y;
 

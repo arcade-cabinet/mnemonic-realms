@@ -7,23 +7,24 @@
     "type": "named"
   },
   {
-    "id": "lira",
-    "name": "Lira",
-    "heading": "Lira (Mentor Figure)",
-    "appearance": "Young woman, early 20s. Warm smile, auburn hair in a loose braid, freckles. Amber-accented Cleric vestments.",
+    "id": "hana",
+    "name": "Hana",
+    "heading": "Hana (Mentor / Workshop Keeper)",
+    "appearance": "Mid-30s woman, sage green traveler's clothes, satchel, hair tied back. Warm, steady expression.",
     "type": "named"
   },
   {
-    "id": "callum",
-    "name": "Callum",
-    "heading": "Callum (Village Elder)",
-    "appearance": "Young man, mid 20s. Messy dark hair, round wire spectacles, ink-stained fingers. Deep blue Mage robes.",
+    "id": "artun",
+    "name": "Artun",
+    "heading": "Artun (Village Elder)",
+    "appearance": "Elderly man, tall and thin. Dark warm brown coat, walking stick, white hair. Wise, measured gaze.",
     "type": "named"
   },
   {
-    "id": "petra",
-    "name": "Petra",
-    "appearance": "Woman, late 20s. Short-cropped silver hair, strong jaw, weathered armor. Stoic expression with kind eyes.",
+    "id": "nel",
+    "name": "Nel",
+    "heading": "Nel (Ridge Guide)",
+    "appearance": "Weathered, lean. Gray-brown cloak, climbing rope coiled at hip, wind-tanned skin. Stoic expression with kind eyes.",
     "type": "named"
   },
   {

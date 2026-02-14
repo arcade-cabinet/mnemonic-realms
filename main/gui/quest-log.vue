@@ -176,8 +176,8 @@ const QUEST_DEFS: readonly QuestDef[] = [
   { id: 'SQ-08', name: "Solen's Light Studies", category: 'side', objectiveCount: 5, rewards: { gold: 300 } },
   { id: 'SQ-09', name: 'Harmonize the Path', category: 'side', objectiveCount: 3, rewards: { gold: 200 } },
   { id: 'SQ-10', name: 'The Depths Expedition', category: 'side', objectiveCount: 6, rewards: { gold: 400, items: [{ id: 'A-09', qty: 1 }] } },
-  { id: 'SQ-11', name: "Torvan's Masterwork", category: 'side', objectiveCount: 7, rewards: {} },
-  { id: 'SQ-12', name: "Ren's Dream Visions", category: 'side', objectiveCount: 5, rewards: { gold: 250, items: [{ id: 'C-BF-05', qty: 3 }] } },
+  { id: 'SQ-11', name: "Hark's Masterwork", category: 'side', objectiveCount: 7, rewards: {} },
+  { id: 'SQ-12', name: "Nyro's Dream Visions", category: 'side', objectiveCount: 5, rewards: { gold: 250, items: [{ id: 'C-BF-05', qty: 3 }] } },
   { id: 'SQ-13', name: "The Dissolved Choir's Instruments", category: 'side', objectiveCount: 4, rewards: { gold: 500, items: [{ id: 'C-SP-08', qty: 3 }] } },
   { id: 'SQ-14', name: 'The Stagnation Breaker', category: 'side', objectiveCount: 6, rewards: { gold: 500, items: [{ id: 'C-HP-04', qty: 2 }] } },
 ];

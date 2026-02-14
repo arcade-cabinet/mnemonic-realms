@@ -1,14 +1,13 @@
 import type { RpgPlayer } from '@rpgjs/server';
+import { isQuestActive } from '../systems/quests';
 
 export default async function (player: RpgPlayer) {
   // --- Trigger Conditions Check ---
   // This dialogue is intended to be triggered by "Resonance recall — Fury".
   // The following checks ensure the dialogue only proceeds if specific quest conditions are met.
 
-  const questGQ01 = player.getQuest('GQ-01');
-
-  // Check if Quest GQ-01 exists and is currently active ('started' state)
-  if (!questGQ01 || questGQ01.state !== 'started') {
+  // Check if Quest GQ-01 is currently active
+  if (!isQuestActive(player, 'GQ-01')) {
     // If the quest is not active, Tempestus might not engage in this specific dialogue.
     // Optionally, you could add a different dialogue line here or simply return.
     // await player.showText({ text: "Tempestus is lost in thought, seemingly ignoring you.", speaker: 'Tempestus' });
@@ -16,7 +15,7 @@ export default async function (player: RpgPlayer) {
   }
 
   // Check if the 'fury emotion chosen' condition for Quest GQ-01 is met
-  const furyEmotionChosen = questGQ01.getCondition('fury emotion chosen');
+  const furyEmotionChosen = player.getVariable('GQ-01_fury_emotion_chosen');
 
   if (!furyEmotionChosen) {
     // If the specific condition is not met, Tempestus might have a different response.

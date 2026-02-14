@@ -1,8 +1,13 @@
 import type { RpgPlayer } from '@rpgjs/server';
+import { isQuestComplete } from '../systems/quests';
 
 export default async function (player: RpgPlayer) {
-  // Trigger condition: After 3 god recalls
-  if (player.getQuest('god-recalls-completed') < 3) {
+  // Trigger condition: After 3 god recalls completed
+  // Count how many god-recall quests are completed
+  const godRecallQuests = ['GQ-01', 'GQ-02', 'GQ-03', 'GQ-04'];
+  const completedCount = godRecallQuests.filter((id) => isQuestComplete(player, id)).length;
+
+  if (completedCount < 3) {
     return;
   }
 

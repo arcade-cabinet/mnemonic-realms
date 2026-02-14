@@ -6,7 +6,7 @@ export default async function (player: RpgPlayer) {
   const requiredMapId = 'preserver_fortress_floor_1';
   const sceneQuestFlag = 'act3_scene6_gallery_of_moments_active';
 
-  if (player.getMapId() !== requiredMapId) {
+  if ((player.map as { id?: string })?.id !== requiredMapId) {
     return;
   }
 

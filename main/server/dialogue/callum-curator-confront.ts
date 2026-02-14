@@ -1,16 +1,16 @@
 import type { RpgPlayer } from '@rpgjs/server';
+import { isQuestActive } from '../systems/quests';
 
 export default async function dialogue(player: RpgPlayer) {
-  const quest = player.getQuest('MQ-09');
-  const mapId = player.getMapId();
+  const mapId = (player.map as { id?: string })?.id;
   const hasPlayed = player.getVariable('dlg_callum_curator_confront_played');
+  const atConfrontStage = player.getVariable('MQ09_STAGE') === 'confrontCurator';
 
   // Trigger conditions: Quest MQ-09 is active and at the specific confrontation stage,
   // player is on Preserver Fortress Floor 3, and this dialogue hasn't played yet.
   if (
-    quest &&
-    quest.state === 'active' &&
-    quest.stage === 'confrontCurator' &&
+    isQuestActive(player, 'MQ-09') &&
+    atConfrontStage &&
     mapId === 'preserver_fortress_floor3' &&
     !hasPlayed
   ) {

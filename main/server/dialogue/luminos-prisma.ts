@@ -1,12 +1,12 @@
 import type { RpgPlayer } from '@rpgjs/server';
+import { isQuestActive } from '../systems/quests';
 
 export default async function (player: RpgPlayer) {
   // --- Trigger Conditions and Quest State Checks ---
-  const questGQ03 = player.getQuest('GQ-03');
   const aweEmotionChosen: boolean = player.getVariable('aweEmotionChosen') || false;
 
-  // Check if Quest GQ-03 is active (e.g., 'started' or 'accepted')
-  if (!questGQ03 || questGQ03.state !== 'started') {
+  // Check if Quest GQ-03 is active
+  if (!isQuestActive(player, 'GQ-03')) {
     return;
   }
 

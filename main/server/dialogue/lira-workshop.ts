@@ -6,7 +6,7 @@ export default async function (player: RpgPlayer) {
   // Check if the main quest 'MQ-01' is completed (quest system stores status as QUEST_<id>_STATUS)
   const mq01Completed = player.getVariable('QUEST_MQ-01_STATUS') === 'completed';
   // Check if this specific introductory dialogue has already been played
-  const introPlayed = player.getVariable('dlg:lira-workshop-intro');
+  const introPlayed = player.getVariable('DIALOGUE_HANA_FIRST_VISIT');
 
   // This dialogue should only play if MQ-01 is completed AND it hasn't played before.
   if (!mq01Completed || introPlayed) {
@@ -39,7 +39,7 @@ export default async function (player: RpgPlayer) {
 
   // --- Post-Dialogue Actions ---
   // Set a flag to indicate this dialogue has been played, preventing it from re-triggering.
-  player.setVariable('dlg:lira-workshop-intro', true);
+  player.setVariable('DIALOGUE_HANA_FIRST_VISIT', true);
 
   // Optionally, update quest state or add Hana to the party here if this is the point she joins.
   // Example: player.addPartyMember('lira_character_id');

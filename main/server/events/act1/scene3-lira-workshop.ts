@@ -1,5 +1,6 @@
 import { EventData, Move, RpgEvent, type RpgMap, type RpgPlayer } from '@rpgjs/server';
 import { addItem, removeItem } from '../../systems/inventory';
+import { completeQuest, getQuestStatus, isQuestActive, startQuest } from '../../systems/quests';
 
 @EventData({
   id: 'act1-scene3-lira-workshop',
@@ -20,8 +21,8 @@ export class HanaWorkshopEvent extends RpgEvent {
   async onChanges(player: RpgPlayer) {
     // This event should only trigger once per game, specifically when MQ-01 is active and MQ-02 is not.
     // It's designed to be a map-enter trigger for the scene.
-    const mq01Status = player.getQuest('MQ-01')?.state;
-    const mq02Status = player.getQuest('MQ-02')?.state;
+    const mq01Status = getQuestStatus(player, 'MQ-01');
+    const mq02Status = getQuestStatus(player, 'MQ-02');
     const eventCompleted = player.getVariable('LIRA_WORKSHOP_SCENE_COMPLETED');
 
     if (mq01Status === 'active' && mq02Status !== 'active' && !eventCompleted) {
@@ -96,8 +97,8 @@ export class HanaWorkshopEvent extends RpgEvent {
     );
 
     // 4. Update quest state
-    player.updateQuest('MQ-01', 'complete');
-    player.updateQuest('MQ-02', 'activate');
+    completeQuest(player, 'MQ-01');
+    startQuest(player, 'MQ-02');
     await player.showText(
       'SYSTEM: Quest "MQ-01" completed. Quest "MQ-02: Learn to fight" activated.',
       { speaker: 'SYSTEM' },

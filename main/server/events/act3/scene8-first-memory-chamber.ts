@@ -7,6 +7,7 @@ import {
   type RpgPlayer,
   RpgScene,
 } from '@rpgjs/server';
+import { completeQuest, isQuestActive, startQuest } from '../../systems/quests';
 import { PreserverFortressF3Map } from '../maps/fortress-f3'; // Assuming map definition is here
 
 @EventData({
@@ -34,7 +35,7 @@ export default class FirstMemoryChamberEvent extends RpgEvent {
     }
 
     // Check if the player is on the correct map and quest state
-    if (player.map.id === 'fortress-f3' && player.getQuest('MQ-09')?.state === 'active') {
+    if (player.map.id === 'fortress-f3' && isQuestActive(player, 'MQ-09')) {
       this.hasTriggered = true;
       await this.startConfrontation(player);
     }
@@ -46,7 +47,7 @@ export default class FirstMemoryChamberEvent extends RpgEvent {
     if (
       !this.hasTriggered &&
       player.map.id === 'fortress-f3' &&
-      player.getQuest('MQ-09')?.state === 'active'
+      isQuestActive(player, 'MQ-09')
     ) {
       this.hasTriggered = true;
       await this.startConfrontation(player);
@@ -268,8 +269,8 @@ export default class FirstMemoryChamberEvent extends RpgEvent {
     ); // true means wait for completion
 
     // --- Quest Changes ---
-    player.setQuest('MQ-09', 'completed');
-    player.setQuest('MQ-10', 'active');
+    completeQuest(player, 'MQ-09');
+    startQuest(player, 'MQ-10');
 
     await player.showText("Quest 'The Curator's Stasis' completed!", { type: 'quest' });
     await player.showText("Quest 'The World's Bloom' activated!", { type: 'quest' });

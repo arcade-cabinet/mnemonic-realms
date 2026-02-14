@@ -7,7 +7,7 @@ import {
   type RpgPlayer,
 } from '@rpgjs/server';
 import { addItem } from '../../systems/inventory';
-import { advanceObjective } from '../../systems/quests';
+import { advanceObjective, getQuestStatus, isQuestActive } from '../../systems/quests';
 
 @EventData({
   id: 'act3-scene2-luminous-wastes',
@@ -30,8 +30,8 @@ export class LuminousWastesSceneEvent extends RpgEvent {
       }
 
       // NPC visibility based on quest state
-      const mq08State = player.getQuest('MQ-08')?.state;
-      const isMq08Active = mq08State === 'started' || mq08State === 'completed';
+      const mq08State = getQuestStatus(player, 'MQ-08');
+      const isMq08Active = mq08State === 'active' || mq08State === 'completed';
 
       // Hana
       const liraEvent = map.getEvent('npc_hana_luminous_wastes');
@@ -54,8 +54,8 @@ export class LuminousWastesSceneEvent extends RpgEvent {
     }
 
     // Check if MQ-08 is active or completed
-    const mq08State = player.getQuest('MQ-08')?.state;
-    if (mq08State !== 'started' && mq08State !== 'completed') {
+    const mq08State = getQuestStatus(player, 'MQ-08');
+    if (mq08State !== 'active' && mq08State !== 'completed') {
       return;
     }
 
@@ -128,9 +128,9 @@ export class HanaLuminousWastesEvent extends RpgEvent {
   }
 
   async dialogue(player: RpgPlayer) {
-    const mq08State = player.getQuest('MQ-08')?.state;
+    const mq08State = getQuestStatus(player, 'MQ-08');
 
-    if (mq08State === 'started' && player.getQuest('MQ-08')?.objective === 2) {
+    if (mq08State === 'active' && player.getVariable('QUEST_MQ-08_OBJ') === 2) {
       // Dialogue at The Edge
       if (player.x >= 4 && player.x <= 6 && player.y >= 19 && player.y <= 21) {
         // Approximate Edge location (5, 20)
@@ -166,9 +166,9 @@ export class ArtunLuminousWastesEvent extends RpgEvent {
   }
 
   async dialogue(player: RpgPlayer) {
-    const mq08State = player.getQuest('MQ-08')?.state;
+    const mq08State = getQuestStatus(player, 'MQ-08');
 
-    if (mq08State === 'started' && player.getQuest('MQ-08')?.objective === 2) {
+    if (mq08State === 'active' && player.getVariable('QUEST_MQ-08_OBJ') === 2) {
       // Dialogue at The Edge
       if (player.x >= 4 && player.x <= 6 && player.y >= 19 && player.y <= 21) {
         // Approximate Edge location (5, 20)

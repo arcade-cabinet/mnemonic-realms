@@ -6,6 +6,7 @@ import {
   RpgMap,
   type RpgPlayer,
 } from '@rpgjs/server';
+import { completeQuest, isQuestComplete } from '../../systems/quests';
 
 @EventData({
   id: 'act2-scene7-verdance-recall',
@@ -36,10 +37,10 @@ export default class VerdanceRecallEvent extends RpgEvent {
     // Check if the player is on the correct map and position
     const isOnLocation =
       player.map.id === 'shimmer-marsh' && player.position.x === 25 && player.position.y === 35;
-    const isQuestComplete = player.getQuest('hermit-path-complete')?.state === 'completed';
-    const isVerdanceRecalled = player.getQuest('GQ-02')?.state === 'completed';
+    const isHermitPathDone = isQuestComplete(player, 'hermit-path-complete');
+    const isVerdanceRecalled = isQuestComplete(player, 'GQ-02');
 
-    if (isOnLocation && isQuestComplete && !isVerdanceRecalled && !this.hasSpawnedNpcs) {
+    if (isOnLocation && isHermitPathDone && !isVerdanceRecalled && !this.hasSpawnedNpcs) {
       this.hasSpawnedNpcs = true; // Prevent re-spawning
       this.event.setVisible(true); // Make the trigger visible/active
 
@@ -102,10 +103,10 @@ export default class VerdanceRecallEvent extends RpgEvent {
   }
 
   async onAction(player: RpgPlayer) {
-    const isQuestComplete = player.getQuest('hermit-path-complete')?.state === 'completed';
-    const isVerdanceRecalled = player.getQuest('GQ-02')?.state === 'completed';
+    const isHermitPathDone = isQuestComplete(player, 'hermit-path-complete');
+    const isVerdanceRecalled = isQuestComplete(player, 'GQ-02');
 
-    if (isQuestComplete && !isVerdanceRecalled && this.hasTriggeredVision) {
+    if (isHermitPathDone && !isVerdanceRecalled && this.hasTriggeredVision) {
       // Part D: Emotion Choice and Transformation
       await player.showText(
         'SYSTEM: Place a memory fragment (potency 3+, matching emotion) on a pedestal to recall Verdance.',
@@ -146,7 +147,7 @@ export default class VerdanceRecallEvent extends RpgEvent {
     await player.showText('Shimmer Marsh feels more alive! Vibrancy +15.');
 
     // Update quest state
-    player.setQuest('GQ-02', 'completed');
+    completeQuest(player, 'GQ-02');
     await player.showText("Quest 'Verdance — The Dormant God of Growth' completed!");
 
     // Close GUI if still open

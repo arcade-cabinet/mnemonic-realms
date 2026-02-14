@@ -1,4 +1,5 @@
 import type { RpgEvent, RpgPlayer } from '@rpgjs/server';
+import { isQuestActive } from '../systems/quests';
 
 export default async function (player: RpgPlayer, event: RpgEvent) {
   // Trigger Conditions:
@@ -6,14 +7,13 @@ export default async function (player: RpgPlayer, event: RpgEvent) {
   // 2. Quest 'GQ-01' has 'sorrow emotion chosen'.
   // 3. The triggering event (Tacet) is at the specified location.
 
-  const questGQ01 = player.getQuest('GQ-01');
-  const isQuestActive = questGQ01 && questGQ01.state === 'started';
-  const hasSorrowChosen = questGQ01 && questGQ01.getVariable('emotionChosen') === 'sorrow';
+  const questActive = isQuestActive(player, 'GQ-01');
+  const hasSorrowChosen = player.getVariable('GQ-01_emotionChosen') === 'sorrow';
 
   const isAtAmphitheater =
     event.map.id === 'Resonance Fields — Amphitheater' && event.x === 25 && event.y === 25;
 
-  if (!isQuestActive || !hasSorrowChosen || !isAtAmphitheater) {
+  if (!questActive || !hasSorrowChosen || !isAtAmphitheater) {
     return;
   }
 

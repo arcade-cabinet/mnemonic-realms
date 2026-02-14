@@ -1,14 +1,15 @@
 import type { RpgPlayer } from '@rpgjs/server';
+import { isQuestActive } from '../systems/quests';
 
 export default async function (player: RpgPlayer) {
   // Trigger conditions:
   // Location: Heartfield — Stagnation Clearing (35, 30)
   // Quest: MQ-04 active
   if (
-    player.map.id !== 'Heartfield' ||
+    (player.map as { id?: string })?.id !== 'Heartfield' ||
     player.position.x !== 35 ||
     player.position.y !== 30 ||
-    player.getQuest('MQ-04')?.state !== 'active'
+    !isQuestActive(player, 'MQ-04')
   ) {
     return;
   }

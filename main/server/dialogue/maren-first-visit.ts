@@ -2,7 +2,7 @@ import type { RpgPlayer } from '@rpgjs/server';
 import marenShop from './maren-shop';
 
 export default async function (player: RpgPlayer) {
-  const KHALI_FIRST_VISIT_FLAG = 'ACT_I_KHALI_FIRST_VISIT_DONE';
+  const KHALI_FIRST_VISIT_FLAG = 'DIALOGUE_KHALI_FIRST_VISIT';
 
   // Check if this specific introductory dialogue has already been played
   if (player.getVariable(KHALI_FIRST_VISIT_FLAG)) {

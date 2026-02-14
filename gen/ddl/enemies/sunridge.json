@@ -34,7 +34,7 @@
         "chance": 0.15
       }
     ],
-    "fragmentAffinity": "Fury / Wind"
+    "fragmentAffinity": "Fury / Resonance"
   },
   {
     "id": "E-SL-08",
@@ -71,6 +71,6 @@
         "chance": 0.05
       }
     ],
-    "fragmentAffinity": "Calm / Earth"
+    "fragmentAffinity": "Calm / Verdance"
   }
 ]

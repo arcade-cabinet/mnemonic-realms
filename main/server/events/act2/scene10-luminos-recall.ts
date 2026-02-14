@@ -1,4 +1,5 @@
 import { Direction, EventData, MoveType, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { completeQuest, isQuestActive, isQuestComplete } from '../../systems/quests';
 
 @EventData({
   id: 'act2-scene10-luminos-recall',
@@ -33,7 +34,7 @@ export class LuminosRecallEvent extends RpgEvent {
     }
 
     // Check if the quest GQ-03 is active (Luminos recall quest)
-    const isGQ03Active = player.getQuest('GQ-03')?.state === 'active';
+    const isGQ03Active = isQuestActive(player, 'GQ-03');
 
     if (!isGQ03Active) {
       // If the quest isn't active, maybe a different message or no interaction
@@ -74,7 +75,7 @@ export class LuminosRecallEvent extends RpgEvent {
     // This means the player has successfully navigated the initial blinding light.
 
     // Prevent re-triggering if already completed
-    if (player.getQuest('GQ-03')?.state === 'completed') {
+    if (isQuestComplete(player, 'GQ-03')) {
       await player.showText('Luminos has already been recalled. The grove hums with a new light.');
       return;
     }
@@ -163,7 +164,7 @@ export class LuminosRecallEvent extends RpgEvent {
     await player.changeMapProperty('flickerveil', 'vibrancy', 15, true); // true for delta
 
     // Quest Changes: GQ-03 → complete
-    player.setQuest('GQ-03', 'completed');
+    completeQuest(player, 'GQ-03');
 
     // Clean up dynamic NPC
     if (callumEvent) {
@@ -180,8 +181,8 @@ export class LuminosRecallEvent extends RpgEvent {
   // based on quest state or player inventory (Light Lens).
   async onChanges(player: RpgPlayer) {
     const hasLightLens = player.hasItem('K-04');
-    const isGQ03Active = player.getQuest('GQ-03')?.state === 'active';
-    const isGQ03Completed = player.getQuest('GQ-03')?.state === 'completed';
+    const isGQ03Active = isQuestActive(player, 'GQ-03');
+    const isGQ03Completed = isQuestComplete(player, 'GQ-03');
 
     // Make the prism visible and interactive only when the quest is active
     // and the player has the Light Lens, or if the quest is completed (for flavor text)

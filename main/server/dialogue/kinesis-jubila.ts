@@ -1,4 +1,5 @@
 import type { RpgPlayer } from '@rpgjs/server';
+import { isQuestActive, isQuestComplete } from '../systems/quests';
 
 /**
  * Dialogue for Jubila, triggered by the "Kinesis recall — Joy" event.
@@ -10,17 +11,15 @@ import type { RpgPlayer } from '@rpgjs/server';
  */
 export default async function (player: RpgPlayer) {
   // Retrieve current player and quest state
-  const currentMapId = player.getMap().id;
-  const playerPosition = player.getPosition();
-  const questGQ04 = player.getQuest('GQ-04');
+  const currentMapId = (player.map as { id?: string })?.id;
+  const playerPosition = player.position;
   const emotionChoice = player.getVariable('kinesis_emotion_choice');
 
   // Define trigger conditions
   const isAtCorrectLocation =
     currentMapId === 'hollow_ridge' && playerPosition.x === 24 && playerPosition.y === 10;
 
-  const isQuestRelevant =
-    questGQ04 && (questGQ04.state === 'active' || questGQ04.state === 'completed');
+  const isQuestRelevant = isQuestActive(player, 'GQ-04') || isQuestComplete(player, 'GQ-04');
   const isJoyChosen = emotionChoice === 'joy';
 
   // Only proceed with the dialogue if all conditions are met

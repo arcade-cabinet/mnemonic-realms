@@ -1,19 +1,19 @@
 import type { RpgPlayer } from '@rpgjs/server';
+import { isQuestActive } from '../systems/quests';
 
 export default async function dlgHanaRemix(player: RpgPlayer) {
   const _HANA_GRAPHIC = 'npc_hana'; // Assuming 'npc_hana' is the graphic ID for Hana's portrait
 
   // Trigger conditions: Quest MQ-10 must be active and player must be in 'act3-scene9-the-remix'
-  const questState = player.getQuest('MQ-10');
-  const currentMap = player.map;
+  const currentMapId = (player.map as { id?: string })?.id;
 
-  if (!questState || questState.state !== 'started') {
+  if (!isQuestActive(player, 'MQ-10')) {
     // [SYSTEM] Quest MQ-10 is not active.
     player.gui('rpg-notification', { message: 'Quest "MQ-10" is not active.', type: 'error' });
     return;
   }
 
-  if (currentMap !== 'act3-scene9-the-remix') {
+  if (currentMapId !== 'act3-scene9-the-remix') {
     // [SYSTEM] Player is not in the First Memory Chamber.
     player.gui('rpg-notification', {
       message: 'You are not in the First Memory Chamber.',

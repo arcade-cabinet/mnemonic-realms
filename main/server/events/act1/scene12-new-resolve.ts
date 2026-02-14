@@ -9,6 +9,7 @@ import {
   RpgScene,
 } from '@rpgjs/server';
 import { addItem } from '../../systems/inventory';
+import { completeQuest, isQuestActive } from '../../systems/quests';
 
 @EventData({
   id: 'act1-scene12-new-resolve',
@@ -28,7 +29,8 @@ export class Act1Scene12NewResolve extends RpgEvent {
 
   async onChanges(player: RpgPlayer) {
     // Trigger condition: auto, map: village-hub, condition: lira-frozen
-    const isHanaFrozen = (await player.getQuest('MQ-04')?.state) === 'frozen'; // Assuming 'frozen' is a state for MQ-04
+    // Note: there is no 'frozen' quest state — treat as active (Hana is frozen while MQ-04 is active)
+    const isHanaFrozen = isQuestActive(player, 'MQ-04');
     const isOnVillageHub = player.map.id === 'village-hub';
     const hasNotTriggered = !(await player.getVariable('ACT1_SCENE12_TRIGGERED'));
 
@@ -125,7 +127,7 @@ export class Act1Scene12NewResolve extends RpgEvent {
     await artun.remove(); // Remove dynamic event
 
     // 4. Quest Changes: MQ-04 → complete
-    await player.updateQuest('MQ-04', 'complete');
+    completeQuest(player, 'MQ-04');
 
     // Part B: The Lookout
     // Move player to Lookout Hill (12, 2)

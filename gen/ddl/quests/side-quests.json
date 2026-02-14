@@ -1,19 +1,19 @@
 [
   {
     "id": "SQ-01", "name": "The Memorial Garden", "category": "side", "act": "act1",
-    "levelRange": "2-4", "giver": "Maren", "giverLocation": "Village Hub — General Shop (18, 16)",
+    "levelRange": "2-4", "giver": "Khali", "giverLocation": "Village Hub — General Shop (18, 16)",
     "triggerCondition": "MQ-02 complete",
     "objectives": [
-      { "index": 0, "description": "Speak with Maren about the fading garden" },
+      { "index": 0, "description": "Speak with Khali about the fading garden" },
       { "index": 1, "description": "Broadcast 3 fragments into Memorial Garden stones" },
-      { "index": 2, "description": "Return to Maren" }
+      { "index": 2, "description": "Return to Khali" }
     ],
     "rewards": [
       { "type": "gold", "name": "Gold", "amount": 120 },
       { "type": "item", "id": "C-HP-01", "name": "Minor Potion x5" },
       { "type": "item", "id": "C-SP-01", "name": "Mana Drop x3" }
     ],
-    "completionDialogue": "Maren: The flowers are actually glowing! I haven't seen the garden like this since I was a girl.",
+    "completionDialogue": "Khali: The flowers are actually glowing! I haven't seen the garden like this since I was a girl.",
     "failureConditions": "None", "unlocks": [], "dependencies": ["MQ-02"],
     "targetPath": "main/server/quests/sq01-memorial-garden.ts"
   },

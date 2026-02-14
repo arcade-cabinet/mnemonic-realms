@@ -7,6 +7,7 @@ import {
   type RpgPlayer,
   RpgScene,
 } from '@rpgjs/server';
+import { advanceObjective, isQuestActive } from '../../systems/quests';
 
 @EventData({
   id: 'act3-scene5-fortress-gate',
@@ -25,8 +26,7 @@ export default class TheFortressGateEvent extends RpgEvent {
 
   async onPlayerTouch(player: RpgPlayer) {
     // 1. Checks trigger conditions
-    const questState = player.getQuest('MQ-09');
-    if (!questState || questState.state !== 'active') {
+    if (!isQuestActive(player, 'MQ-09')) {
       return; // Only trigger if MQ-09 is active
     }
 
@@ -132,7 +132,7 @@ export default class TheFortressGateEvent extends RpgEvent {
     );
 
     // 5. Updates quest state
-    player.updateQuest('MQ-09', 'advance', 0); // Advance Main Quest 09 to objective 0
+    advanceObjective(player, 'MQ-09'); // Advance Main Quest 09
 
     // Allow player movement again
     player.canMove = true;

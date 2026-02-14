@@ -1,7 +1,7 @@
 import type { RpgPlayer } from '@rpgjs/server';
 
 export default async function (player: RpgPlayer) {
-  const hasVisitedHarkBlacksmith = player.getVariable('firstVisitHarkBlacksmith');
+  const hasVisitedHarkBlacksmith = player.getVariable('DIALOGUE_HARK_FIRST_VISIT');
 
   if (hasVisitedHarkBlacksmith) {
     return;
@@ -14,5 +14,5 @@ export default async function (player: RpgPlayer) {
     },
   );
 
-  player.setVariable('firstVisitHarkBlacksmith', true);
+  player.setVariable('DIALOGUE_HARK_FIRST_VISIT', true);
 }

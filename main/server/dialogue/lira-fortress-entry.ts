@@ -14,25 +14,25 @@ export default async function (player: RpgPlayer) {
   // dialogue, it's usually assumed she's present if the player reaches this point.
   // For this specific dialogue, it's Hana's reaction, so her presence is key.
 
-  // Hana's portrait (assuming 'lira' is the ID for her character graphic)
-  const liraPortrait = 'lira';
+  // Hana's portrait character ID (matches hana-*.webp portrait files)
+  const hanaPortrait = 'hana';
 
   await player.showText(
     `I recognize this feeling. The crystal. The cold. The way everything is perfectly still.`,
     {
-      speaker: liraPortrait,
+      speaker: hanaPortrait,
     },
   );
 
   await player.showText(
     `I was frozen in crystal like this. For weeks. From my perspective, it was a single moment — one heartbeat between consciousness and nothing. But I remember the nothing. A perfect, silent, beautiful nothing.`,
     {
-      speaker: liraPortrait,
+      speaker: hanaPortrait,
     },
   );
 
   await player.showText(`I don't want the world to feel that.`, {
-    speaker: liraPortrait,
+    speaker: hanaPortrait,
   });
 
   // Set the flag so this dialogue doesn't repeat

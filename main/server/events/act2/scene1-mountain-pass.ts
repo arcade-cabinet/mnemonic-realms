@@ -7,6 +7,7 @@ import {
   type RpgPlayer,
   RpgScene,
 } from '@rpgjs/server';
+import { getQuestStatus, startQuest } from '../../systems/quests';
 
 @EventData({
   id: 'act2-scene1-mountain-pass',
@@ -25,9 +26,9 @@ export class MountainPassEvent extends RpgEvent {
     // This event is placed at (20,2) on the 'sunridge' map.
     // The check for 'act2-unlocked' is done here.
     const act2Unlocked = player.getVariable('act2-unlocked');
-    const questMQ05Status = player.getQuest('MQ-05')?.state;
+    const questMQ05Status = getQuestStatus(player, 'MQ-05');
 
-    if (act2Unlocked && questMQ05Status !== 'activated' && questMQ05Status !== 'completed') {
+    if (act2Unlocked && questMQ05Status !== 'active' && questMQ05Status !== 'completed') {
       // Prevent re-triggering if quest is already active or completed
       player.setVariable('act2-unlocked', false); // Consume the trigger
 
@@ -97,7 +98,7 @@ export class MountainPassEvent extends RpgEvent {
       );
 
       // 4. Update quest state
-      player.setQuest('MQ-05', 'activated');
+      startQuest(player, 'MQ-05');
 
       // Player and Artun enter the mountain pass.
       await player.showText(

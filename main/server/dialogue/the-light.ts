@@ -4,7 +4,7 @@ const LIGHT_NPC_GRAPHIC = 'light_entity'; // Placeholder for The Light's graphic
 
 export default async function (player: RpgPlayer) {
   // Trigger condition: Ensure the player is on the correct map for this dialogue.
-  if (player.map.id !== 'act3-scene4-deepest-memory') {
+  if ((player.map as { id?: string })?.id !== 'act3-scene4-deepest-memory') {
     return;
   }
 

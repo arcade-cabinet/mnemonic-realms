@@ -7,7 +7,7 @@ import {
   type RpgPlayer,
 } from '@rpgjs/server';
 import { addItem } from '../../systems/inventory';
-import { advanceObjective } from '../../systems/quests';
+import { advanceObjective, isQuestActive } from '../../systems/quests';
 
 @EventData({
   name: 'act1-scene10-breaking-stagnation',
@@ -36,8 +36,7 @@ export default class BreakingStagnationEvent extends RpgEvent {
       return;
     }
 
-    const questState = player.getQuest('MQ-04');
-    const isMQ04Active = questState && questState.state === 'active';
+    const isMQ04Active = isQuestActive(player, 'MQ-04');
     const isAtLocation =
       player.map.id === 'heartfield' && player.position.x === 35 && player.position.y === 30;
 
@@ -153,8 +152,7 @@ export default class BreakingStagnationEvent extends RpgEvent {
       return;
     }
 
-    const questState = player.getQuest('MQ-04');
-    const isMQ04Active = questState && questState.state === 'active';
+    const isMQ04Active = isQuestActive(player, 'MQ-04');
     const isAtLocation =
       player.map.id === 'heartfield' && player.position.x === 35 && player.position.y === 30;
 

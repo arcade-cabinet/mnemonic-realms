@@ -6,6 +6,7 @@ import {
   type RpgPlayer,
   RpgSceneMap,
 } from '@rpgjs/server';
+import { getQuestStatus, isQuestComplete, startQuest } from '../../systems/quests';
 
 @EventData({
   id: 'act2-scene17-curator-endgame',
@@ -35,14 +36,14 @@ export class Act2Scene17CuratorEndgame extends RpgEvent {
 
   async onChanges(player: RpgPlayer) {
     // Trigger condition: quest-state, map: village-hub, condition: lira-freed-and-SQ05-complete
-    const isHanaFreed = player.getQuest('MQ-04')?.state === 'completed'; // Assuming MQ-04 is "Hana Freed"
-    const isSQ05Complete = player.getQuest('SQ-05')?.state === 'completed'; // "Janik's Doubt"
+    const isHanaFreed = isQuestComplete(player, 'MQ-04'); // Assuming MQ-04 is "Hana Freed"
+    const isSQ05Complete = isQuestComplete(player, 'SQ-05'); // "Janik's Doubt"
 
     if (
       player.map.id === 'village-hub' &&
       isHanaFreed &&
       isSQ05Complete &&
-      player.getQuest('MQ-07')?.state === 'not-started'
+      getQuestStatus(player, 'MQ-07') === 'inactive'
     ) {
       // Ensure this scene only plays once
       if (player.getVariable('ACT2_SCENE17_PLAYED')) {
@@ -138,7 +139,7 @@ export class Act2Scene17CuratorEndgame extends RpgEvent {
       });
 
       // --- 5. Updates quest state ---
-      player.updateQuest('MQ-07', 'activate'); // Activate Main Quest 07: "The Fortress Approach"
+      startQuest(player, 'MQ-07'); // Activate Main Quest 07: "The Fortress Approach"
 
       // Clean up dynamic NPCs
       map.removeEvent(callumEvent.id);

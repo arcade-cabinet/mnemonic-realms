@@ -3,7 +3,7 @@ import type { RpgPlayer } from '@rpgjs/server';
 export default async function (player: RpgPlayer) {
   // Check if this dialogue has been played before for "first visit" logic
   // This is a common pattern to ensure "first visit" dialogues only play once.
-  if (player.getVariable('DIALOGUE_NYRO_FIRST_VISIT_PLAYED')) {
+  if (player.getVariable('DIALOGUE_NYRO_FIRST_VISIT')) {
     return; // Dialogue already played, exit
   }
 
@@ -14,5 +14,5 @@ export default async function (player: RpgPlayer) {
   );
 
   // Mark the dialogue as played
-  player.setVariable('DIALOGUE_NYRO_FIRST_VISIT_PLAYED', true);
+  player.setVariable('DIALOGUE_NYRO_FIRST_VISIT', true);
 }

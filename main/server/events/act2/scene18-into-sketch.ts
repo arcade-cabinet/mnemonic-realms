@@ -1,4 +1,5 @@
 import { EventData, RpgEvent, type RpgPlayer } from '@rpgjs/server';
+import { completeQuest, isQuestComplete, startQuest } from '../../systems/quests';
 
 // Placeholder dialogue content for NPCs
 const DLG_CALLUM_SKETCH_ENTRY = [
@@ -27,7 +28,7 @@ export class Act2Scene18IntoSketch extends RpgEvent {
     // and it hasn't been triggered before.
     this.onChanges(({ player }) => {
       if (
-        player.getQuest('MQ-07') === 'completed' &&
+        isQuestComplete(player, 'MQ-07') &&
         !player.getVariable('act2_scene18_triggered')
       ) {
         this.show(); // Make the event visible/interactive
@@ -39,7 +40,7 @@ export class Act2Scene18IntoSketch extends RpgEvent {
 
   async onPlayerTouch(player: RpgPlayer) {
     // Ensure the quest condition is met and the event hasn't been triggered
-    if (player.getQuest('MQ-07') !== 'completed' || player.getVariable('act2_scene18_triggered')) {
+    if (!isQuestComplete(player, 'MQ-07') || player.getVariable('act2_scene18_triggered')) {
       return;
     }
 
@@ -79,8 +80,8 @@ export class Act2Scene18IntoSketch extends RpgEvent {
     await player.showText(DLG_LIRA_SKETCH_ENTRY);
 
     // 5. Update quest state
-    player.setQuest('MQ-07', 'completed'); // Explicitly mark as completed
-    player.setQuest('MQ-08', 'active'); // Activate the next main quest
+    completeQuest(player, 'MQ-07'); // Explicitly mark as completed
+    startQuest(player, 'MQ-08'); // Activate the next main quest
 
     // Optional: If NPCs are temporary for this scene, remove them after dialogue.
     // If they are meant to persist for further interaction, keep them.

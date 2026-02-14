@@ -1,17 +1,17 @@
 import type { RpgPlayer } from '@rpgjs/server';
+import { isQuestComplete, startQuest, completeQuest } from '../systems/quests';
 
 export default async function (player: RpgPlayer) {
   // Trigger conditions: After combat tutorial, player is in Hana's Workshop (8, 18)
-  const hasCompletedCombatTutorial =
-    player.getQuest('act1-scene4a-combat-tutorial')?.state === 'completed';
+  const hasCompletedCombatTutorial = isQuestComplete(player, 'act1-scene4a-combat-tutorial');
   const isInHanasWorkshop =
-    player.map.id === 'village_hub' && player.position.x === 8 && player.position.y === 18;
+    (player.map as { id?: string })?.id === 'village_hub' && player.position.x === 8 && player.position.y === 18;
 
   if (!hasCompletedCombatTutorial || !isInHanasWorkshop) {
     return;
   }
 
-  player.setQuest('act1-scene4b-remix-broadcast', { state: 'started' });
+  startQuest(player, 'act1-scene4b-remix-broadcast');
 
   await player.showText(
     'Now for the real work. Come back to the Workshop — I want to show you the Remix Table.',
@@ -36,5 +36,5 @@ export default async function (player: RpgPlayer) {
     { speaker: 'Hana' },
   );
 
-  player.setQuest('act1-scene4b-remix-broadcast', { state: 'completed' });
+  completeQuest(player, 'act1-scene4b-remix-broadcast');
 }

@@ -1,6 +1,6 @@
 import { Direction, EventData, MoveType, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
 import { addItem } from '../../systems/inventory';
-import { advanceObjective } from '../../systems/quests';
+import { advanceObjective, isQuestActive } from '../../systems/quests';
 
 @EventData({
   id: 'act1-scene2-memorial-garden',
@@ -29,8 +29,7 @@ export class MemorialGardenEvent extends RpgEvent {
       player.position.y === 16 * 16
     ) {
       // Check if MQ-01 is active and objective 2 is not yet completed
-      const mq01State = player.getQuest('MQ-01');
-      if (mq01State && mq01State.state === 'started' && mq01State.objectiveId === 'obj1') {
+      if (isQuestActive(player, 'MQ-01') && player.getVariable('QUEST_MQ-01_OBJ') === 'obj1') {
         await this.startMemorialGardenScene(player);
       }
     }

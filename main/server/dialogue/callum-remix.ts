@@ -1,11 +1,12 @@
 import type { RpgPlayer } from '@rpgjs/server';
+import { isQuestActive } from '../systems/quests';
 
 export default async function (player: RpgPlayer) {
   const questId = 'MQ-10';
   const requiredMapId = 'first-memory-chamber'; // Assuming 'first-memory-chamber' is the ID for the First Memory Chamber map
 
   // Check if the player is on the correct map and the quest MQ-10 is active
-  if (player.map.id !== requiredMapId || player.getQuest(questId)?.state !== 'started') {
+  if ((player.map as { id?: string })?.id !== requiredMapId || !isQuestActive(player, questId)) {
     // Dialogue conditions not met, do not proceed
     return;
   }

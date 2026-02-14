@@ -8,6 +8,7 @@ import {
   RpgScene,
 } from '@rpgjs/server';
 import { addItem } from '../../systems/inventory';
+import { startQuest } from '../../systems/quests';
 
 @EventData({
   id: 'act1-scene5-heartfield',
@@ -66,7 +67,7 @@ export class HeartfieldSceneEvent extends RpgEvent {
       });
 
       // 3. Update quest state
-      player.updateQuest('MQ-03', 'activate');
+      startQuest(player, 'MQ-03');
     }
   }
 

@@ -1,20 +1,20 @@
 import type { RpgPlayer } from '@rpgjs/server';
+import { isQuestActive } from '../systems/quests';
 
 export default async function (player: RpgPlayer) {
   const NPC_ID = 'errantis'; // Assuming 'errantis' is the ID for the Errantis NPC graphic
 
   // 1. Check trigger conditions
-  const questGQ04 = player.getQuest('GQ-04');
-  const isQuestGQ04Active = questGQ04?.isStarted();
-  const isSorrowEmotionChosen = questGQ04 && questGQ04.get('emotion') === 'sorrow';
+  const questGQ04Active = isQuestActive(player, 'GQ-04');
+  const isSorrowEmotionChosen = player.getVariable('GQ-04_emotion') === 'sorrow';
 
   // Location check (assuming map ID is 'hollow-ridge-kinesis-spire')
   const isAtCorrectLocation =
-    player.map.id === 'hollow-ridge-kinesis-spire' &&
+    (player.map as { id?: string })?.id === 'hollow-ridge-kinesis-spire' &&
     player.position.x === 24 &&
     player.position.y === 10;
 
-  if (!isQuestGQ04Active || !isSorrowEmotionChosen || !isAtCorrectLocation) {
+  if (!questGQ04Active || !isSorrowEmotionChosen || !isAtCorrectLocation) {
     // If conditions are not met, do not proceed with the dialogue
     // Optionally, you could add a different dialogue or a system message here.
     // For this request, we'll just exit.

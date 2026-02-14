@@ -1,9 +1,10 @@
 import type { RpgPlayer } from '@rpgjs/server';
+import { isQuestActive as checkQuestActive } from '../systems/quests';
 
 export default async function (player: RpgPlayer) {
   // Trigger condition: Stagnation expansion — Hana rescues farmer (Scene 11)
   // This dialogue is part of the main quest MQ-04, specifically the climax of Act I.
-  const isQuestActive = player.getQuest('MQ-04')?.state === 'active';
+  const isQuestActive = checkQuestActive(player, 'MQ-04');
   const isCorrectScene = player.getVariable('ACT1_SCENE11_HANAS_FREEZING_ACTIVE') === true;
 
   if (!isQuestActive || !isCorrectScene) {
@@ -28,5 +29,5 @@ export default async function (player: RpgPlayer) {
   });
 
   player.setVariable('HANA_IS_FROZEN', true);
-  player.updateQuest('MQ-04', 'hana_frozen');
+  player.setVariable('MQ04_STAGE', 'hana_frozen');
 }

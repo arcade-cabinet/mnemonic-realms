@@ -6,6 +6,7 @@ import {
   type RpgMap,
   type RpgPlayer,
 } from '@rpgjs/server';
+import { completeQuest, isQuestActive, isQuestComplete, startQuest } from '../../systems/quests';
 
 // Dialogue bank reference: docs/story/dialogue-bank.md
 // Quest state reference: docs/story/quest-chains.md
@@ -36,8 +37,8 @@ export class ResonanceRecallEvent extends RpgEvent {
       player.map.id === 'resonance-fields' &&
       player.position.x === 25 &&
       player.position.y === 25 &&
-      player.getQuest('GQ-01')?.state === 'activate' &&
-      player.getQuest('SQ-09')?.state === 'complete' &&
+      isQuestActive(player, 'GQ-01') &&
+      isQuestComplete(player, 'SQ-09') &&
       !player.getVariable('resonance_recalled')
     ) {
       // Ensure it only triggers once per player
@@ -257,8 +258,8 @@ export class ResonanceRecallEvent extends RpgEvent {
       });
 
       // Quest Changes: GQ-01 → complete, MQ-06 → activate
-      player.setQuest('GQ-01', 'complete');
-      player.setQuest('MQ-06', 'activate');
+      completeQuest(player, 'GQ-01');
+      startQuest(player, 'MQ-06');
 
       // Remove Artun after the event
       if (artun) {

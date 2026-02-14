@@ -218,10 +218,10 @@ const QUEST_DEFS: readonly QuestDef[] = [
     objectiveCount: 6,
     rewards: { gold: 400, items: [{ id: 'A-09', qty: 1 }] },
   },
-  { id: 'SQ-11', name: "Torvan's Masterwork", category: 'side', objectiveCount: 7, rewards: {} },
+  { id: 'SQ-11', name: "Hark's Masterwork", category: 'side', objectiveCount: 7, rewards: {} },
   {
     id: 'SQ-12',
-    name: "Ren's Dream Visions",
+    name: "Nyro's Dream Visions",
     category: 'side',
     objectiveCount: 5,
     rewards: { gold: 250, items: [{ id: 'C-BF-05', qty: 3 }] },

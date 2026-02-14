@@ -9,6 +9,7 @@ import {
   type RpgPlayer,
   RpgScene,
 } from '@rpgjs/server';
+import { completeQuest, getQuestStatus, isQuestActive, isQuestComplete } from '../../systems/quests';
 
 @EventData({
   id: 'act2-scene16-lira-freed',
@@ -22,18 +23,17 @@ export class FreeingHanaEvent extends RpgEvent {
 
   async onPlayerTouch(player: RpgPlayer) {
     // 1. Check trigger conditions
-    const questState = player.getQuest('SQ-14'); // Hana's Freeing Quest
     const allGodsRecalled = player.getVariable('4-gods-recalled'); // Custom variable for all gods recalled
 
     if (
       player.map.id === 'heartfield' &&
       this.pos.x === 35 &&
       this.pos.y === 30 &&
-      questState?.state === 'active' &&
+      isQuestActive(player, 'SQ-14') &&
       allGodsRecalled
     ) {
       // Prevent re-triggering if already completed
-      if (player.getQuest('SQ-14')?.state === 'completed') {
+      if (isQuestComplete(player, 'SQ-14')) {
         return;
       }
 
@@ -138,7 +138,7 @@ export class FreeingHanaEvent extends RpgEvent {
       await player.showText("Heartfield's vibrancy increased by 25!");
 
       // 5. Updates quest state
-      player.setQuest('SQ-14', 'completed');
+      completeQuest(player, 'SQ-14');
 
       // Clean up dynamic NPCs
       artun.remove();

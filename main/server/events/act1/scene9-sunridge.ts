@@ -1,4 +1,5 @@
 import { EventData, Move, RpgCommonPlayer, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { completeQuest, startQuest } from '../../systems/quests';
 
 @EventData({
   name: 'act1-scene9-sunridge',
@@ -137,8 +138,8 @@ export default class SunridgeSceneEvent extends RpgEvent {
     );
 
     // --- Quest Updates ---
-    player.updateQuest('MQ-03', 'complete');
-    player.updateQuest('MQ-04', 'activate');
+    completeQuest(player, 'MQ-03');
+    startQuest(player, 'MQ-04');
     await player.showText(
       "QUEST: 'Break the Stagnation Clearing' — Return to Heartfield's Stagnation Clearing and broadcast a memory fragment into the crystallized Resonance Stone.",
     );

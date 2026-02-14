@@ -1,13 +1,13 @@
 import type { RpgPlayer } from '@rpgjs/server';
+import { isQuestActive } from '../systems/quests';
 
 export default async function (player: RpgPlayer) {
   // --- Trigger Conditions and Quest State Checks ---
   // This dialogue is specifically for the "Resonance recall — Awe" event.
   // It should only proceed if the following conditions are met.
 
-  // Check if Quest GQ-01 is active (started)
-  const questGQ01 = player.getQuest('GQ-01');
-  const isQuestGQ01Active = questGQ01 && questGQ01.state === 'started';
+  // Check if Quest GQ-01 is active
+  const isQuestGQ01Active = isQuestActive(player, 'GQ-01');
 
   // Check if the 'awe emotion chosen' condition is met.
   // Assuming 'awe_emotion_chosen' is a boolean variable set by a previous player choice or event.
@@ -16,7 +16,7 @@ export default async function (player: RpgPlayer) {
   // Check player's current location: "Resonance Fields — Amphitheater (25, 25)"
   // Assuming the map ID for "Resonance Fields — Amphitheater" is 'resonance-fields-amphitheater'.
   const isAtAmphitheater =
-    player.map.id === 'resonance-fields-amphitheater' &&
+    (player.map as { id?: string })?.id === 'resonance-fields-amphitheater' &&
     player.position.x === 25 &&
     player.position.y === 25;
 

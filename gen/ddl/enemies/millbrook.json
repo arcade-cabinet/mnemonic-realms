@@ -34,7 +34,7 @@
         "chance": 0.1
       }
     ],
-    "fragmentAffinity": "Joy / Water"
+    "fragmentAffinity": "Joy / Kinesis"
   },
   {
     "id": "E-SL-06",
@@ -71,6 +71,6 @@
         "chance": 0.15
       }
     ],
-    "fragmentAffinity": "Calm / Water"
+    "fragmentAffinity": "Calm / Kinesis"
   }
 ]

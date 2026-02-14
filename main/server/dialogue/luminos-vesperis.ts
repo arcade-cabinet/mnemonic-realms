@@ -1,13 +1,12 @@
 import type { RpgPlayer } from '@rpgjs/server';
+import { isQuestActive, isQuestComplete } from '../systems/quests';
 
 export default async function (player: RpgPlayer) {
   // Trigger Condition: Luminos recall — Sorrow
-  const questGQ03 = player.getQuest('GQ-03');
   const luminosRecallEmotion = player.getVariable('luminos_recall_emotion');
 
   if (
-    questGQ03 &&
-    (questGQ03.isStarted || questGQ03.isCompleted) &&
+    (isQuestActive(player, 'GQ-03') || isQuestComplete(player, 'GQ-03')) &&
     luminosRecallEmotion === 'sorrow'
   ) {
     await player.showText(

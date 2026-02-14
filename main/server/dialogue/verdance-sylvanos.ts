@@ -1,17 +1,15 @@
 import type { RpgPlayer } from '@rpgjs/server';
+import { isQuestActive, isQuestComplete } from '../systems/quests';
 
 export default async function (player: RpgPlayer) {
   // Trigger conditions and quest state checks
-  const questGQ02 = player.getQuest('GQ-02');
+  const questActive = isQuestActive(player, 'GQ-02');
+  const questComplete = isQuestComplete(player, 'GQ-02');
   const aweEmotionChosen = player.getVariable('awe_emotion_chosen'); // Assuming 'awe_emotion_chosen' is a boolean variable set when the emotion is chosen.
 
   // This dialogue is specifically for the "Verdance recall — Awe" trigger,
   // which implies Quest GQ-02 is active/completed and 'awe_emotion_chosen' is true.
-  if (
-    questGQ02 &&
-    (questGQ02.state === 'started' || questGQ02.state === 'completed') &&
-    aweEmotionChosen === true
-  ) {
+  if ((questActive || questComplete) && aweEmotionChosen === true) {
     // Sylvanos's speech line
     await player.showText(
       'I grew downward while you looked up. I am Sylvanos. The patient understand what the hurried never will.',

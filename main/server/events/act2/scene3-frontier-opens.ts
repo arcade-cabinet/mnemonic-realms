@@ -8,7 +8,7 @@ import {
   RpgScene,
 } from '@rpgjs/server';
 import { addItem } from '../../systems/inventory';
-import { startQuest } from '../../systems/quests';
+import { completeQuest, getQuestStatus, startQuest } from '../../systems/quests';
 
 // Define the event data for the scene
 @EventData({
@@ -32,7 +32,7 @@ export class TheFrontierOpensEvent extends RpgEvent {
     const frontierMaps = ['shimmer_marsh', 'flickerveil', 'resonance_fields', 'hollow_ridge']; // Include Hollow Ridge as it's the gateway
 
     // Check if the player is in a frontier map and MQ-05 is active/completed
-    if (frontierMaps.includes(currentMap.id) && player.getQuest('MQ-05')?.state !== 'not-started') {
+    if (frontierMaps.includes(currentMap.id) && getQuestStatus(player, 'MQ-05') !== 'inactive') {
       // Check if this scene has already been processed for this player to prevent re-triggering
       if (player.getVariable('ACT2_SCENE3_FRONTIER_OPENED')) {
         return;
@@ -145,7 +145,7 @@ export class TheFrontierOpensEvent extends RpgEvent {
         player.getVariable('FV_SOLEN_INTRO_DONE') &&
         player.getVariable('RF_AUDIOMANCER_INTRO_DONE')
       ) {
-        player.updateQuest('MQ-05', 'completed');
+        completeQuest(player, 'MQ-05');
       }
     }
   }

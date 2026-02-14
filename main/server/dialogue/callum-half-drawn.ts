@@ -8,7 +8,7 @@ import type { RpgPlayer } from '@rpgjs/server';
 export default async function (player: RpgPlayer) {
   // Trigger Condition: Player enters the 'act3-scene1-half-drawn-forest' map
   // AND this specific dialogue has not been played before.
-  const currentMapId = player.getMap().id;
+  const currentMapId = (player.map as { id?: string })?.id;
   const hasDialoguePlayed = player.getVariable('dlg_callum_half_drawn_played');
 
   if (currentMapId === 'act3-scene1-half-drawn-forest' && !hasDialoguePlayed) {

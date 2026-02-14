@@ -11,8 +11,8 @@ export default async function (player: RpgPlayer) {
     return;
   }
 
-  const currentMapId = player.getMapId();
-  const playerPosition = player.getPosition();
+  const currentMapId = (player.map as { id?: string })?.id;
+  const playerPosition = player.position;
 
   if (
     currentMapId !== TARGET_MAP_ID ||

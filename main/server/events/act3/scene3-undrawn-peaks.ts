@@ -1,4 +1,5 @@
 import { EventData, RpgEvent, type RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { completeQuest, startQuest } from '../../systems/quests';
 
 @EventData({
   name: 'EV-UP-SCENE3-ENTRY',
@@ -111,8 +112,8 @@ export default class UndrawnPeaksScene3Event extends RpgEvent {
     });
 
     // --- Quest State Changes ---
-    player.setQuest('MQ-08', 'completed');
-    player.setQuest('MQ-09', 'active');
+    completeQuest(player, 'MQ-08');
+    startQuest(player, 'MQ-09');
 
     // Set a player variable to indicate the Fortress map layout has been revealed
     // This can be used by a GUI or map system to update the player's map.

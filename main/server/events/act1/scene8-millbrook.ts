@@ -7,10 +7,7 @@ import {
   type RpgPlayer,
   RpgScene,
 } from '@rpgjs/server';
-import { Dialogue } from '../database/dialogue';
-import { Fragments } from '../database/fragments';
-import { Quests } from '../database/quests';
-import { startQuest } from '../../systems/quests';
+import { advanceObjective, startQuest } from '../../systems/quests';
 
 @EventData({
   id: 'act1-scene8-millbrook',
@@ -75,17 +72,25 @@ export class MillbrookSceneEvent extends RpgEvent {
     });
 
     // 3. Dialogue calls
-    await player.showText(Dialogue['dlg-lira-scene8'].millbrookIntro, { speaker: 'Hana' });
+    await player.showText(
+      'Millbrook. More people here — more memories layered into the stones. This town has been remembered well.',
+      { speaker: 'Hana' },
+    );
 
-    // Hana's dialogue about the specialty shop
-    await player.showText(Dialogue['dlg-lira-scene8'].millbrookShop, { speaker: 'Hana' });
+    await player.showText(
+      'The specialty shop here carries supplies you won\'t find in the village. Worth a look before we head further.',
+      { speaker: 'Hana' },
+    );
 
-    // Hana's dialogue about the Brightwater Bridge
-    await player.showText(Dialogue['dlg-lira-scene8'].brightwaterBridge, { speaker: 'Hana' });
+    await player.showText(
+      'See the Brightwater Bridge? There\'s a Resonance Stone near the falls upstream. I can feel it from here.',
+      { speaker: 'Hana' },
+    );
 
     // 4. Quest Changes: MQ-03 → advance (obj 2)
-    startQuest(player, Quests.MQ_03.id); // Ensure MQ-03 is active if not already
-    player.updateQuest(Quests.MQ_03.id, 'advance', 2); // Advance to objective 2
+    startQuest(player, 'MQ-03'); // Ensure MQ-03 is active if not already
+    advanceObjective(player, 'MQ-03'); // Advance to objective 1
+    advanceObjective(player, 'MQ-03'); // Advance to objective 2
 
     // Additional scene elements (not directly handled by this trigger, but good to note for other events)
     // - Specialty Shopkeeper (EV-MB-003) at (15, 15)
@@ -110,46 +115,50 @@ export class HanaMillbrookEvent extends RpgEvent {
   async onAction(player: RpgPlayer) {
     // Hana's dialogue when interacted with after the initial scene trigger
     if (player.getVariable('first_visit_millbrook_scene8')) {
-      // Check if player has collected water fragments for remix tutorial
-      const hasWaterFragments =
-        player.hasFragment(Fragments.AWE_WATER_2.id) ||
-        player.hasFragment(Fragments.FURY_WATER_3.id) ||
-        player.hasFragment(Fragments.SORROW_WATER_3.id) ||
-        player.hasFragment(Fragments.CALM_WATER_1.id);
+      // Check if player has collected water-affinity fragments
+      const fragmentCount = player.getVariable('FRAGMENT_COUNT') ?? 0;
+      const hasWaterFragments = fragmentCount > 0;
 
       if (
         player.getVariable('found_upstream_falls_grotto') &&
         !player.getVariable('lira_remix_tutorial_given')
       ) {
-        await player.showText(Dialogue['dlg-lira-scene8'].grottoFragments, { speaker: 'Hana' });
-        await player.showText(Dialogue['dlg-lira-scene8'].remixGuidanceIntro, { speaker: 'Hana' });
-        await player.showText(Dialogue['dlg-lira-scene8'].remixGuidanceCompound, {
-          speaker: 'Hana',
-        });
-        await player.showText(Dialogue['dlg-lira-scene8'].remixGuidanceMatching, {
-          speaker: 'Hana',
-        });
         await player.showText(
-          "Remix tip: match the fragment's emotion to the zone's resonant emotion for a bonus when broadcasting. See the Memory menu for zone emotion details.",
-          { system: true, time: 5000 },
+          'You found the grotto fragments! These are special — water-touched memories carry different resonances.',
+          { speaker: 'Hana' },
+        );
+        await player.showText(
+          'Let me show you something. When you combine fragments, their emotions blend. Two joy fragments create something brighter than either alone.',
+          { speaker: 'Hana' },
+        );
+        await player.showText(
+          'But mixing emotions — joy with fury, or sorrow with awe — creates compound memories. Richer, stranger, more powerful.',
+          { speaker: 'Hana' },
+        );
+        await player.showText(
+          'And if a fragment\'s emotion matches the zone\'s natural resonance, broadcasting it there creates a harmonic bonus. The world responds more strongly.',
+          { speaker: 'Hana' },
         );
         player.setVariable('lira_remix_tutorial_given', true);
       } else if (!player.getVariable('lira_remix_tutorial_given') && hasWaterFragments) {
-        // If player has fragments but hasn't found grotto, Hana can still offer general remix advice
-        await player.showText(Dialogue['dlg-lira-scene8'].remixGuidanceIntro, { speaker: 'Hana' });
-        await player.showText(Dialogue['dlg-lira-scene8'].remixGuidanceCompound, {
-          speaker: 'Hana',
-        });
-        await player.showText(Dialogue['dlg-lira-scene8'].remixGuidanceMatching, {
-          speaker: 'Hana',
-        });
         await player.showText(
-          "Remix tip: match the fragment's emotion to the zone's resonant emotion for a bonus when broadcasting. See the Memory menu for zone emotion details.",
-          { system: true, time: 5000 },
+          'You\'ve collected some fragments. Let me teach you about remixing — combining fragments to create new memories.',
+          { speaker: 'Hana' },
+        );
+        await player.showText(
+          'Mixing emotions — joy with fury, or sorrow with awe — creates compound memories. Richer and more powerful.',
+          { speaker: 'Hana' },
+        );
+        await player.showText(
+          'Match a fragment\'s emotion to the zone\'s resonance when broadcasting for a harmonic bonus.',
+          { speaker: 'Hana' },
         );
         player.setVariable('lira_remix_tutorial_given', true);
       } else {
-        await player.showText(Dialogue['dlg-lira-scene8'].millbrookGeneral, { speaker: 'Hana' });
+        await player.showText(
+          'Millbrook is well-remembered. The people here have strong connections to this place.',
+          { speaker: 'Hana' },
+        );
       }
     }
   }

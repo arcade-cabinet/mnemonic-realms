@@ -9,6 +9,7 @@ import {
 } from '@rpgjs/server';
 import { addItem } from '../../systems/inventory';
 import { advanceObjective } from '../../systems/quests';
+// Note: quest step/objective is tracked via player variable QUEST_<id>_OBJ
 
 @EventData({
   id: 'act1-scene11-clearing-grows',
@@ -43,7 +44,7 @@ export class TheClearingGrowsEvent extends RpgEvent {
     // This event should only fire once.
     if (
       player.map.id === 'village-hub' &&
-      player.getQuest('MQ-04')?.step === 6 &&
+      player.getVariable('QUEST_MQ-04_OBJ') === 6 &&
       !player.getVariable('ACT1_SCENE11_COMPLETED')
     ) {
       await this.triggerScene(player);

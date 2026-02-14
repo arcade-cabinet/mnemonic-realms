@@ -75,7 +75,7 @@ const NPC_ROUTES: Record<string, DialogueRoute[]> = {
     {
       label: 'Workshop intro — after MQ-01 complete',
       condition: (p) =>
-        isQuestComplete(p, 'MQ-01') && !p.getVariable('dlg:lira-workshop-intro'),
+        isQuestComplete(p, 'MQ-01') && !p.getVariable('DIALOGUE_HANA_FIRST_VISIT'),
       run: async (p) => {
         const mod = await import('../dialogue/lira-workshop');
         await mod.default(p);
@@ -260,7 +260,7 @@ const NPC_ROUTES: Record<string, DialogueRoute[]> = {
   khali: [
     {
       label: 'First visit — intro + shop',
-      condition: (p) => !p.getVariable('ACT_I_KHALI_FIRST_VISIT_DONE'),
+      condition: (p) => !p.getVariable('DIALOGUE_KHALI_FIRST_VISIT'),
       run: async (p) => {
         const mod = await import('../dialogue/maren-first-visit');
         await mod.default(p);
@@ -293,7 +293,7 @@ const NPC_ROUTES: Record<string, DialogueRoute[]> = {
   hark: [
     {
       label: 'First visit — intro',
-      condition: (p) => !p.getVariable('firstVisitHarkBlacksmith'),
+      condition: (p) => !p.getVariable('DIALOGUE_HARK_FIRST_VISIT'),
       run: async (p) => {
         const mod = await import('../dialogue/torvan-first-visit');
         await mod.default(p);
@@ -326,7 +326,7 @@ const NPC_ROUTES: Record<string, DialogueRoute[]> = {
   nyro: [
     {
       label: 'First visit — inn intro',
-      condition: (p) => !p.getVariable('DIALOGUE_NYRO_FIRST_VISIT_PLAYED'),
+      condition: (p) => !p.getVariable('DIALOGUE_NYRO_FIRST_VISIT'),
       run: async (p) => {
         const mod = await import('../dialogue/ren-first-visit');
         await mod.default(p);

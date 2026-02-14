@@ -1,9 +1,10 @@
 import type { RpgPlayer } from '@rpgjs/server';
+import { getQuestStatus } from '../systems/quests';
 
 export default async function (player: RpgPlayer) {
   // Trigger condition: The Edge — final scene (Scene 12)
-  const questState = player.getQuest('act3-scene12-new-beginning')?.state;
-  const isFinalSceneActive = questState === 'active' || questState === 'stage_final_dialogue';
+  const questState = getQuestStatus(player, 'act3-scene12-new-beginning');
+  const isFinalSceneActive = questState === 'active';
 
   if (!isFinalSceneActive) {
     return;

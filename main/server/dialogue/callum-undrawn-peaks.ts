@@ -1,7 +1,7 @@
 import type { RpgPlayer } from '@rpgjs/server';
 
-// Assuming 'callum' is a registered graphic ID for Artun's portrait
-const _ARTUN_PORTRAIT_GRAPHIC = 'callum';
+// Artun's portrait character ID (matches artun-*.webp portrait files)
+const _ARTUN_PORTRAIT_GRAPHIC = 'artun';
 
 export default async function (player: RpgPlayer) {
   // This dialogue is triggered as part of the "Undrawn Peaks — Fortress layout (Scene 3)".
