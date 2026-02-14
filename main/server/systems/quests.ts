@@ -16,12 +16,30 @@ export interface QuestReward {
   items?: { id: string; qty: number }[];
 }
 
+export interface QuestObjective {
+  index: number;
+  description: string;
+  location?: string;
+  position?: string;
+}
+
 export interface QuestDef {
   id: string;
   name: string;
   category: QuestCategory;
   objectiveCount: number;
   rewards: QuestReward;
+}
+
+export interface QuestFileExport {
+  id: string;
+  name: string;
+  category: QuestCategory;
+  act: string;
+  objectives: QuestObjective[];
+  rewards: QuestReward;
+  dependencies: string[];
+  unlocks: string[];
 }
 
 // ---------------------------------------------------------------------------
@@ -174,7 +192,7 @@ const QUEST_DEFS: readonly QuestDef[] = [
   },
   {
     id: 'SQ-07',
-    name: "Nel's Ridgewalkers",
+    name: "Petra's Ridgewalkers",
     category: 'side',
     objectiveCount: 4,
     rewards: { gold: 350, items: [{ id: 'A-08', qty: 1 }] },
