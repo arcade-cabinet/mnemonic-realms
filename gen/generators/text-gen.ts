@@ -5,12 +5,16 @@ import type { GoogleGenAI } from '@google/genai';
 /**
  * Generate text/code using Gemini with text-only output.
  * Used for code generation pipeline (TypeScript, Vue, etc.).
+ *
+ * @param maxOutputTokens - Override default token limit (default: 16384).
+ *   TMX maps need 65536 for large tile data arrays.
  */
 export async function generateText(
   ai: GoogleGenAI,
   systemPrompt: string,
   userPrompt: string,
   model: string,
+  maxOutputTokens = 16384,
 ): Promise<string> {
   const response = await ai.models.generateContent({
     model,
@@ -18,13 +22,21 @@ export async function generateText(
     config: {
       systemInstruction: systemPrompt,
       temperature: 0.2,
-      maxOutputTokens: 4096,
+      maxOutputTokens,
     },
   });
 
+  // Check finish reason for diagnostics
+  const candidate = response.candidates?.[0];
+  const finishReason = candidate?.finishReason;
+  if (finishReason && finishReason !== 'STOP' && finishReason !== 'MAX_TOKENS') {
+    console.warn(`    Gemini finishReason: ${finishReason}`);
+  }
+
   const text = response.text;
   if (!text) {
-    throw new Error('No text content in Gemini response');
+    const reason = finishReason || 'unknown';
+    throw new Error(`No text content in Gemini response (finishReason: ${reason})`);
   }
 
   return stripMarkdownFences(text);

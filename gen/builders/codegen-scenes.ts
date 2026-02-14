@@ -8,8 +8,10 @@ import { slugify, timestamp } from './manifest-io';
 const SYSTEM_PROMPT = `You are an RPG-JS 4.3.0 TypeScript code generator.
 Generate a single RPG-JS server-side event file for a scene.
 Output ONLY valid TypeScript code. No markdown fences. No explanatory text.
-The file must use RpgEvent, RpgPlayer, and RpgMap imports.
-Wire trigger conditions, NPC spawns, dialogue calls, effects, and quest state changes.
+Output must be syntactically complete — all braces must be balanced.
+Keep the file CONCISE — under 300 lines. Do NOT generate excessive imports.
+Valid RPG-JS imports: { RpgEvent, RpgPlayer, RpgMap, RpgServer, RpgWorld, RpgSceneMap } from '@rpgjs/server'.
+Do NOT invent types that don't exist. Only import what you actually use.
 Use createDynamicEvent() for NPC placement. Use player.showText() for dialogue.
 Use player.gui() for GUI overlays. Export the event setup function as default.`;
 

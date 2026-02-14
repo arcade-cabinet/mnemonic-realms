@@ -8,4 +8,4 @@ const dryRun = args.includes('--dry-run');
 const targets = args.filter((a) => !a.startsWith('--'));
 
 console.log('Mnemonic Realms — Asset Integration\n');
-await runIntegrate(targets.length ? targets : ['images'], dryRun);
+await runIntegrate(targets.length ? targets : ['all'], dryRun);

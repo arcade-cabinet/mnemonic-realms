@@ -1,29 +1,15 @@
-/** CLI status subcommand — shows generation status for images, code, and audio. */
+/** CLI status subcommand — shows generation status for code and audio. */
 
 import { existsSync, readFileSync } from 'node:fs';
 import { AUDIO_MANIFEST_MAP } from './generators/audio-batch-runner';
 import { CODE_MANIFEST_MAP } from './generators/code-config';
-import { loadManifest, MANIFEST_MAP } from './generators/model-config';
-import type { AssetEntry } from './generators/types';
+import { loadManifest } from './generators/model-config';
 import type { CodeGenManifest } from './schemas/codegen';
 
 export function runStatus(): void {
   console.log('Mnemonic Realms — Generation Status\n');
 
-  console.log('=== Image Assets ===\n');
-  for (const [name, info] of Object.entries(MANIFEST_MAP)) {
-    if (!existsSync(info.path)) {
-      console.log(`  ${name}: no manifest`);
-      continue;
-    }
-    const m = loadManifest<{ assets: AssetEntry[] }>(info);
-    const g = m.assets.filter((a) => a.status === 'generated').length;
-    const p = m.assets.filter((a) => a.status === 'pending').length;
-    const f = m.assets.filter((a) => a.status === 'failed').length;
-    console.log(`  ${name}: ${g}/${m.assets.length} generated, ${p} pending, ${f} failed`);
-  }
-
-  console.log('\n=== Code Generation ===\n');
+  console.log('=== Code Generation ===\n');
   for (const [name, info] of Object.entries(CODE_MANIFEST_MAP)) {
     try {
       const m = loadManifest<CodeGenManifest>(info);

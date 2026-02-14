@@ -16,41 +16,87 @@ export function parseHeading(line: string): { level: number; text: string } | nu
 }
 
 /**
- * Extract a section from markdown content given a heading text.
- *
- * Finds the first heading whose text matches (case-insensitive, trimmed),
- * then captures everything until the next heading of the same or higher level.
+ * Find the best matching heading line index using tiered matching:
+ *   1. Exact match (case-insensitive)
+ *   2. Heading contains target as substring
+ *   3. All significant words from target appear in heading
  */
-export function extractSection(markdown: string, heading: string): string | null {
-  const lines = markdown.split('\n');
-  const targetHeading = heading.toLowerCase().trim();
+function findBestHeadingMatch(lines: string[], target: string): number {
+  // Pass 1: exact match
+  for (let i = 0; i < lines.length; i++) {
+    const h = parseHeading(lines[i]);
+    if (h && h.text.toLowerCase().trim() === target) return i;
+  }
 
-  let capturing = false;
-  let capturedLevel = 0;
-  const captured: string[] = [];
-
-  for (const line of lines) {
-    const parsed = parseHeading(line);
-
-    if (capturing) {
-      if (parsed && parsed.level <= capturedLevel) {
-        break;
-      }
-      captured.push(line);
-    } else if (parsed && parsed.text.toLowerCase().trim() === targetHeading) {
-      capturing = true;
-      capturedLevel = parsed.level;
-      captured.push(line);
+  // Pass 2: heading contains target as substring (min 3 chars to avoid noise)
+  if (target.length >= 3) {
+    for (let i = 0; i < lines.length; i++) {
+      const h = parseHeading(lines[i]);
+      if (!h) continue;
+      if (h.text.toLowerCase().trim().includes(target)) return i;
     }
   }
 
-  if (captured.length === 0) return null;
+  // Pass 3: all significant words (3+ chars) from target found in heading
+  const targetWords = target.split(/[\s:,\u2014\-()/]+/).filter((w) => w.length >= 3);
+  if (targetWords.length >= 1) {
+    for (let i = 0; i < lines.length; i++) {
+      const h = parseHeading(lines[i]);
+      if (!h) continue;
+      const ht = h.text.toLowerCase();
+      if (targetWords.every((w) => ht.includes(w))) return i;
+    }
+  }
+
+  // Pass 4: partial keyword match — ≥75% of significant words found in heading
+  // Catches cases like "Fortress Floor 1: Gallery of Moments" vs "Floor 1: The Gallery of Moments"
+  if (targetWords.length >= 3) {
+    const threshold = Math.ceil(targetWords.length * 0.75);
+    let bestIdx = -1;
+    let bestCount = 0;
+    for (let i = 0; i < lines.length; i++) {
+      const h = parseHeading(lines[i]);
+      if (!h) continue;
+      const ht = h.text.toLowerCase();
+      const matchCount = targetWords.filter((w) => ht.includes(w)).length;
+      if (matchCount >= threshold && matchCount > bestCount) {
+        bestCount = matchCount;
+        bestIdx = i;
+      }
+    }
+    if (bestIdx !== -1) return bestIdx;
+  }
+
+  return -1;
+}
+
+/**
+ * Extract a section from markdown content given a heading text.
+ *
+ * Uses tiered matching: exact → substring → keyword.
+ * Captures everything until the next heading of the same or higher level.
+ */
+export function extractSection(markdown: string, heading: string): string | null {
+  const lines = markdown.split('\n');
+  const target = heading.toLowerCase().trim();
+
+  const matchIdx = findBestHeadingMatch(lines, target);
+  if (matchIdx === -1) return null;
+
+  const matchedHeading = parseHeading(lines[matchIdx])!;
+  const captured: string[] = [lines[matchIdx]];
+
+  for (let i = matchIdx + 1; i < lines.length; i++) {
+    const h = parseHeading(lines[i]);
+    if (h && h.level <= matchedHeading.level) break;
+    captured.push(lines[i]);
+  }
 
   while (captured.length > 0 && captured[captured.length - 1].trim() === '') {
     captured.pop();
   }
 
-  return captured.join('\n');
+  return captured.length === 0 ? null : captured.join('\n');
 }
 
 /**

@@ -8,8 +8,10 @@ import { slugify, timestamp } from './manifest-io';
 const SYSTEM_PROMPT = `You are an RPG-JS 4.3.0 TypeScript code generator.
 Generate a single RPG-JS server-side quest file.
 Output ONLY valid TypeScript code. No markdown fences. No explanatory text.
-The file must define a quest with objectives, rewards, completion checks, and dialogue.
-Use RpgPlayer hooks for quest state tracking.
+Output must be syntactically complete — all braces must be balanced.
+Keep the file CONCISE — under 300 lines. Do NOT generate excessive imports.
+Valid RPG-JS imports: { RpgPlayer, RpgMap, RpgServer, RpgWorld, RpgEvent, RpgSceneMap } from '@rpgjs/server'.
+Do NOT invent types that don't exist. Only import what you actually use.
 Use player.getVariable() and player.setVariable() for quest progress.
 Export the quest definition as default.`;
 

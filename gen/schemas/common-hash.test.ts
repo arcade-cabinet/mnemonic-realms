@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
 import type { GenerationMetadata } from './common-generation';
-import { hashFile, hashPrompt, needsRegeneration } from './common-hash';
+import { hashFile, hashPrompt, isCodeTruncated, needsRegeneration } from './common-hash';
 
 describe('hashPrompt', () => {
   it('returns a 16-character hex string', () => {
@@ -43,6 +43,94 @@ describe('hashFile', () => {
     const data = Buffer.from('hello');
     const expected = createHash('sha256').update(data).digest('hex');
     expect(hashFile(data)).toBe(expected);
+  });
+});
+
+describe('isCodeTruncated', () => {
+  it('detects empty content', () => {
+    expect(isCodeTruncated('')).toBe(true);
+    expect(isCodeTruncated('   ')).toBe(true);
+  });
+
+  it('detects unbalanced braces', () => {
+    expect(isCodeTruncated('export default {\n  name: "test"')).toBe(true);
+  });
+
+  it('accepts balanced code ending with }', () => {
+    expect(isCodeTruncated('export default {\n  name: "test"\n}')).toBe(false);
+  });
+
+  it('accepts code ending with ;', () => {
+    expect(isCodeTruncated('const x = 1;')).toBe(false);
+  });
+
+  it('ignores trailing single-line comments', () => {
+    expect(isCodeTruncated('export default {\n  name: "test"\n}\n// end of file')).toBe(false);
+  });
+
+  it('ignores trailing block comments with braces (Gemini artifact)', () => {
+    const code = `export default {
+  id: 'MQ-04',
+  check(player) {
+    return player.getVariable('mq04') === 1;
+  }
+}
+
+/*
+// Example usage:
+// if (quest.check(player)) {
+//   doSomething();
+// }
+*/`;
+    expect(isCodeTruncated(code)).toBe(false);
+  });
+
+  it('strips trailing // comments then block comment then more // comments', () => {
+    // MQ-04 pattern: code → // comments → /* block with braces */ → //comments → */
+    const code = `export default {
+  id: 'MQ-04',
+  onDead: async (player) => {
+    // auto-resolve
+  }
+};
+
+// --- Quest Trigger Event ---
+// This event would be placed on the map.
+
+// Example of how the trigger might look:
+/*
+export class StagnationEvent {
+  async onInit() {
+    this.set('trigger', 'playerTouch');
+  }
+  async onAction(player) {
+    if (player.getVariable('MQ-04_OBJ_3') === 0) {
+      player.setVariable('MQ-04_OBJ_3', 1);
+    }
+  }
+}
+*/`;
+    expect(isCodeTruncated(code)).toBe(false);
+  });
+
+  it('counts braces correctly when block comments contain braces', () => {
+    const code = `function foo() {
+  /* this has { unbalanced braces inside */
+  return 1;
+}`;
+    expect(isCodeTruncated(code)).toBe(false);
+  });
+
+  it('handles string literals with comment-like content', () => {
+    const code = `const x = "// not a comment";
+const y = '/* also not */';
+export default { x, y };`;
+    expect(isCodeTruncated(code)).toBe(false);
+  });
+
+  it('detects actually truncated code within block comments', () => {
+    // File ends mid-function, even with a trailing comment
+    expect(isCodeTruncated('function foo() {\n  const x = 1;')).toBe(true);
   });
 });
 

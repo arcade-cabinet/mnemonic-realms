@@ -35,7 +35,13 @@ export async function integrateCode(categories: string[], dryRun: boolean): Prom
     console.log(`  ${cat}: ${generated.length} files to integrate`);
 
     for (const entry of generated) {
-      const sourcePath = resolve(info.outputDir, entry.filename);
+      // TMX files are saved with .gen suffix in gen/output/ to avoid RPG-JS
+      // build scanner (globFiles('tmx') scans **/*.tmx from project root).
+      // Check both the original filename and the .gen variant.
+      let sourcePath = resolve(info.outputDir, entry.filename);
+      if (!existsSync(sourcePath) && entry.filename.endsWith('.tmx')) {
+        sourcePath = resolve(info.outputDir, `${entry.filename}.gen`);
+      }
       if (!existsSync(sourcePath)) {
         console.warn(`    Missing: ${sourcePath}`);
         continue;

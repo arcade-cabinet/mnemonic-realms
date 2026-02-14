@@ -147,6 +147,121 @@ Second content.`;
     expect(result).toContain('First content.');
     expect(result).not.toContain('Second content.');
   });
+
+  // --- Fuzzy matching (substring + keyword) ---
+
+  it('matches when heading contains target as substring', () => {
+    const md = `## Map 2B: Ambergrove (East Settled Lands)
+
+Map content here.
+
+## Map 3: Other`;
+    const result = extractSection(md, 'Ambergrove');
+    expect(result).toContain('Map 2B: Ambergrove');
+    expect(result).toContain('Map content here.');
+    expect(result).not.toContain('Other');
+  });
+
+  it('matches quest headings with ID prefixes', () => {
+    const md = `### MQ-06: Recall the First God
+
+Quest objectives.
+
+### MQ-07: The Curator's Endgame
+
+Other quest.`;
+    const result = extractSection(md, 'Recall the First God');
+    expect(result).toContain('MQ-06: Recall the First God');
+    expect(result).toContain('Quest objectives.');
+    expect(result).not.toContain("Curator's Endgame");
+  });
+
+  it('matches via keyword when substring fails', () => {
+    // "Biome: forest" is NOT a substring of "Biome 3: Forest"
+    // but keywords "biome" and "forest" both appear
+    const md = `## Biome 1: Village
+
+Village tiles.
+
+## Biome 3: Forest
+
+Forest tiles.
+
+## Biome 4: Mountain`;
+    const result = extractSection(md, 'Biome: forest');
+    expect(result).toContain('Biome 3: Forest');
+    expect(result).toContain('Forest tiles.');
+    expect(result).not.toContain('Village tiles.');
+    expect(result).not.toContain('Mountain');
+  });
+
+  it('prefers exact match over substring match', () => {
+    const md = `## Section A
+
+Exact.
+
+## Section A Extended
+
+Extended.`;
+    const result = extractSection(md, 'Section A');
+    expect(result).toContain('Exact.');
+    expect(result).not.toContain('Extended.');
+  });
+
+  it('matches top-level heading via substring', () => {
+    const md = `# Items Catalog: Complete Inventory
+
+All items listed below.
+
+## Weapons
+
+Sword, axe.`;
+    const result = extractSection(md, 'Items');
+    expect(result).toContain('Items Catalog: Complete Inventory');
+    expect(result).toContain('All items listed below.');
+  });
+
+  it('keyword match handles slash-separated terms', () => {
+    const md = `## Biome 8: Dungeon/Underground
+
+Dark tiles.
+
+## Biome 9: Snow`;
+    const result = extractSection(md, 'Biome: dungeon');
+    expect(result).toContain('Dungeon/Underground');
+    expect(result).toContain('Dark tiles.');
+  });
+
+  it('partial keyword match finds heading when ≥75% of words match', () => {
+    const md = `### Floor 1: The Gallery of Moments
+
+Gallery content here.
+
+### Floor 2: The Archive of Perfection
+
+Archive content.`;
+    // Target has "Fortress" which isn't in heading, but Floor/Gallery/Moments all match
+    const result = extractSection(md, 'Fortress Floor 1: Gallery of Moments');
+    expect(result).not.toBeNull();
+    expect(result).toContain('Gallery content here.');
+  });
+
+  it('partial keyword match picks best match when multiple headings partially match', () => {
+    const md = `### Floor 1: The Gallery of Moments
+
+Gallery content.
+
+### Floor 2: The Archive of Perfection
+
+Archive content.
+
+### Floor 3: The First Memory Chamber
+
+Chamber content.`;
+    const result = extractSection(md, 'Fortress Floor 3: First Memory Chamber');
+    expect(result).not.toBeNull();
+    expect(result).toContain('Chamber content.');
+  });
 });
 
 describe('extractTable', () => {

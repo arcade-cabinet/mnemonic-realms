@@ -1,9 +1,9 @@
 {
   "schemaVersion": "1.0.0",
   "description": "Quest chain code generation manifest",
-  "updatedAt": "2026-02-13T14:13:51.979Z",
+  "updatedAt": "2026-02-13T18:29:33.722Z",
   "category": "event-quests",
-  "systemPrompt": "You are an RPG-JS 4.3.0 TypeScript code generator.\nGenerate a single RPG-JS server-side quest file.\nOutput ONLY valid TypeScript code. No markdown fences. No explanatory text.\nThe file must define a quest with objectives, rewards, completion checks, and dialogue.\nUse RpgPlayer hooks for quest state tracking.\nUse player.getVariable() and player.setVariable() for quest progress.\nExport the quest definition as default.",
+  "systemPrompt": "You are an RPG-JS 4.3.0 TypeScript code generator.\nGenerate a single RPG-JS server-side quest file.\nOutput ONLY valid TypeScript code. No markdown fences. No explanatory text.\nOutput must be syntactically complete — all braces must be balanced.\nKeep the file CONCISE — under 300 lines. Do NOT generate excessive imports.\nValid RPG-JS imports: { RpgPlayer, RpgMap, RpgServer, RpgWorld, RpgEvent, RpgSceneMap } from '@rpgjs/server'.\nDo NOT invent types that don't exist. Only import what you actually use.\nUse player.getVariable() and player.setVariable() for quest progress.\nExport the quest definition as default.",
   "assets": [
     {
       "id": "GQ-01",
@@ -24,7 +24,15 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "d85f76a8a5bf1408",
+        "outputHash": "bc634a3b7f4c30b63beb93cc17b8aca8368a81bc29d135456cd1ec435ffc7caf",
+        "generatedAt": "2026-02-13T14:32:34.347Z",
+        "generationTimeMs": 18481,
+        "fileSizeBytes": 14043,
+        "model": "gemini-2.5-flash"
+      }
     },
     {
       "id": "GQ-02",
@@ -45,7 +53,16 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "7896581b494eae3f",
+        "outputHash": "98eb7470b0b14391a2c4b98111fd78be802f8092322cac7cede286cc413bdf4a",
+        "generatedAt": "2026-02-13T14:46:52.120Z",
+        "generationTimeMs": 17551,
+        "fileSizeBytes": 15574,
+        "model": "gemini-2.5-flash"
+      },
+      "lastError": "Truncated output: unbalanced braces or missing closing statement"
     },
     {
       "id": "GQ-03",
@@ -66,7 +83,16 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "682a28f5020e6f4e",
+        "outputHash": "0fad6a616ee3377c12c948c5b5411f8aa228d1eb73b02883811f11f6ce670be6",
+        "generatedAt": "2026-02-13T14:47:08.875Z",
+        "generationTimeMs": 14751,
+        "fileSizeBytes": 13236,
+        "model": "gemini-2.5-flash"
+      },
+      "lastError": "Truncated output: unbalanced braces or missing closing statement"
     },
     {
       "id": "GQ-04",
@@ -87,7 +113,15 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "367fc0fc78230588",
+        "outputHash": "3050b18696b97200b93107889ec189994be957bf627f06f88da265818d514451",
+        "generatedAt": "2026-02-13T14:33:15.710Z",
+        "generationTimeMs": 9142,
+        "fileSizeBytes": 7761,
+        "model": "gemini-2.5-flash"
+      }
     },
     {
       "id": "MQ-01",
@@ -108,7 +142,15 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "21b00e943e489df5",
+        "outputHash": "e82224d3ef04a86df83a8fba40b87c5f856efad749ea74f9c39fbeb3038eed3b",
+        "generatedAt": "2026-02-13T14:33:26.130Z",
+        "generationTimeMs": 8418,
+        "fileSizeBytes": 7358,
+        "model": "gemini-2.5-flash"
+      }
     },
     {
       "id": "MQ-02",
@@ -129,7 +171,15 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "4493d6f9c9dd522e",
+        "outputHash": "71299dd98e6e95cbcf4307794e11a1b938a1d7da18c69a8b7834c2adc74af661",
+        "generatedAt": "2026-02-13T14:33:38.372Z",
+        "generationTimeMs": 10240,
+        "fileSizeBytes": 9136,
+        "model": "gemini-2.5-flash"
+      }
     },
     {
       "id": "MQ-03",
@@ -150,7 +200,15 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "98d2628b0874d326",
+        "outputHash": "7f2cc8cf6ac2befc1c38dd96a13ede4f1ba5f468b4cead90b77c804b0047e8dd",
+        "generatedAt": "2026-02-13T14:33:50.472Z",
+        "generationTimeMs": 10098,
+        "fileSizeBytes": 8650,
+        "model": "gemini-2.5-flash"
+      }
     },
     {
       "id": "MQ-04",
@@ -171,7 +229,15 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "4438817e5bb3203b",
+        "outputHash": "db0c73753b4836a25f21be74e4a1cb72c1e500d5c46a588a2a649fe5e1257fc2",
+        "generatedAt": "2026-02-13T15:20:48.750Z",
+        "generationTimeMs": 15877,
+        "fileSizeBytes": 13312,
+        "model": "gemini-2.5-flash"
+      }
     },
     {
       "id": "MQ-05",
@@ -192,7 +258,15 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "ed3a45d30ddab748",
+        "outputHash": "17a89b08ac9b40a6b2915b6be7d23a7f6ca4b17d35788973f865c3a8b087c323",
+        "generatedAt": "2026-02-13T14:34:16.420Z",
+        "generationTimeMs": 8074,
+        "fileSizeBytes": 6532,
+        "model": "gemini-2.5-flash"
+      }
     },
     {
       "id": "MQ-06",
@@ -213,7 +287,15 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "5ad193cb23195772",
+        "outputHash": "b86d5fb6da4feb9ba552342b8323a37460543454c81a19e26baebd40d62f587d",
+        "generatedAt": "2026-02-13T14:34:32.223Z",
+        "generationTimeMs": 13801,
+        "fileSizeBytes": 12277,
+        "model": "gemini-2.5-flash"
+      }
     },
     {
       "id": "MQ-07",
@@ -234,7 +316,15 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "39cd894e53552a78",
+        "outputHash": "4ac1d39b59e900ab6ed0c8effc94564b44c4fd373c090a5a84a9d0a1f7b32a9c",
+        "generatedAt": "2026-02-13T14:34:40.403Z",
+        "generationTimeMs": 6179,
+        "fileSizeBytes": 5093,
+        "model": "gemini-2.5-flash"
+      }
     },
     {
       "id": "MQ-08",
@@ -255,7 +345,15 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "ac08f4391a301546",
+        "outputHash": "797c36f379cc10e394f6a519d37c713f2dccb885eb8b1c1c4e75fa63634bae4f",
+        "generatedAt": "2026-02-13T14:34:50.814Z",
+        "generationTimeMs": 8409,
+        "fileSizeBytes": 6547,
+        "model": "gemini-2.5-flash"
+      }
     },
     {
       "id": "MQ-09",
@@ -276,7 +374,15 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "267601004456d702",
+        "outputHash": "45a6c9519203566d9559e33ee9cef3f397077003709d078e8f9d0803cc3c96d6",
+        "generatedAt": "2026-02-13T14:35:05.396Z",
+        "generationTimeMs": 12580,
+        "fileSizeBytes": 10791,
+        "model": "gemini-2.5-flash"
+      }
     },
     {
       "id": "MQ-10",
@@ -297,7 +403,15 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "59b6beea5d26f154",
+        "outputHash": "c9f69a0cb3ab4382d15686133e8a340032fc54c76d4c0c365b00f59e3d554000",
+        "generatedAt": "2026-02-13T14:35:18.328Z",
+        "generationTimeMs": 10930,
+        "fileSizeBytes": 8828,
+        "model": "gemini-2.5-flash"
+      }
     },
     {
       "id": "SQ-10",
@@ -318,7 +432,15 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "bf1208eb6a27262d",
+        "outputHash": "d29bb7e7bd11b48edf2a6357086189b4f081577367017142fcd04aa1bde7ec1d",
+        "generatedAt": "2026-02-13T14:35:29.357Z",
+        "generationTimeMs": 9027,
+        "fileSizeBytes": 7452,
+        "model": "gemini-2.5-flash"
+      }
     },
     {
       "id": "SQ-11",
@@ -339,7 +461,15 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "23953778bf8f383e",
+        "outputHash": "8547d15c0dfedb12d86319d37b24971bc3ad592b97ad2a4f3d28e0df2860227b",
+        "generatedAt": "2026-02-13T14:35:45.932Z",
+        "generationTimeMs": 14572,
+        "fileSizeBytes": 13321,
+        "model": "gemini-2.5-flash"
+      }
     },
     {
       "id": "SQ-12",
@@ -360,7 +490,16 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "2a225fcb87574c4a",
+        "outputHash": "91f22421e7e837a89d8771cf07051f6d5c8904d84f8f2309969f73b42c1bfdef",
+        "generatedAt": "2026-02-13T15:12:14.325Z",
+        "generationTimeMs": 15204,
+        "fileSizeBytes": 13363,
+        "model": "gemini-2.5-flash"
+      },
+      "lastError": "Truncated output: unbalanced braces or missing closing statement"
     },
     {
       "id": "SQ-13",
@@ -381,7 +520,15 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "6bcef12f2b86a9ba",
+        "outputHash": "43603a720ce37a0c848b968997d3031bcb161d299f1ab1c8b34b778bfefb72b3",
+        "generatedAt": "2026-02-13T14:36:15.360Z",
+        "generationTimeMs": 12122,
+        "fileSizeBytes": 10368,
+        "model": "gemini-2.5-flash"
+      }
     },
     {
       "id": "SQ-14",
@@ -402,7 +549,15 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "fbe6a99ebaa418bb",
+        "outputHash": "adffa9ab74c22020e980faf935c6a15d2d3a273c19348b71467c25e31160fa16",
+        "generatedAt": "2026-02-13T14:36:31.948Z",
+        "generationTimeMs": 14585,
+        "fileSizeBytes": 11173,
+        "model": "gemini-2.5-flash"
+      }
     },
     {
       "id": "SQ-01",
@@ -423,7 +578,15 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "8ce58627f21990ab",
+        "outputHash": "7750fabe003c280b18d3541470c414186ddf27c291c33bb7ce790ec15459e842",
+        "generatedAt": "2026-02-13T14:36:39.999Z",
+        "generationTimeMs": 6048,
+        "fileSizeBytes": 4655,
+        "model": "gemini-2.5-flash"
+      }
     },
     {
       "id": "SQ-02",
@@ -444,7 +607,16 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "f4bac222fe1c9507",
+        "outputHash": "2182d3e4137871d4a9a1c951298b46403ab2084a61ca405b51f84254ea566ca2",
+        "generatedAt": "2026-02-13T15:12:36.456Z",
+        "generationTimeMs": 20126,
+        "fileSizeBytes": 2443,
+        "model": "gemini-2.5-flash"
+      },
+      "lastError": "Truncated output: unbalanced braces or missing closing statement"
     },
     {
       "id": "SQ-03",
@@ -465,7 +637,15 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "50537d8b4622758f",
+        "outputHash": "ab72c495e3f7790f4c041a001079b16183965659cc3dca39a9f0b31fb8181f8c",
+        "generatedAt": "2026-02-13T14:37:15.945Z",
+        "generationTimeMs": 16766,
+        "fileSizeBytes": 14334,
+        "model": "gemini-2.5-flash"
+      }
     },
     {
       "id": "SQ-04",
@@ -486,7 +666,15 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "e8e838af5c01b141",
+        "outputHash": "a486ccce760898835e4273db3b3a2a53d89f607daaa5b9b14b39a6b3206d7da1",
+        "generatedAt": "2026-02-13T14:37:29.358Z",
+        "generationTimeMs": 11410,
+        "fileSizeBytes": 9534,
+        "model": "gemini-2.5-flash"
+      }
     },
     {
       "id": "SQ-05",
@@ -507,7 +695,15 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "1a3edc7be7ca0c3c",
+        "outputHash": "d69a0b9b36d2cecf77f55771a849c784a94d961270c9f7913d51db28892bd99f",
+        "generatedAt": "2026-02-13T14:37:45.741Z",
+        "generationTimeMs": 14380,
+        "fileSizeBytes": 12488,
+        "model": "gemini-2.5-flash"
+      }
     },
     {
       "id": "SQ-06",
@@ -528,7 +724,15 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "81b427baf42fa220",
+        "outputHash": "afbf578990422d399a64f17d116f0bc466bd89dc41c5459b45f880c1d4e95c2d",
+        "generatedAt": "2026-02-13T14:37:56.085Z",
+        "generationTimeMs": 8341,
+        "fileSizeBytes": 7570,
+        "model": "gemini-2.5-flash"
+      }
     },
     {
       "id": "SQ-07",
@@ -549,7 +753,16 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "33afd9584ed5cce0",
+        "outputHash": "a3696136ddb93039260c963e9bdb5d7ced77c70535edbb2d3f2610d5c3c1e609",
+        "generatedAt": "2026-02-13T14:48:53.072Z",
+        "generationTimeMs": 6280,
+        "fileSizeBytes": 5054,
+        "model": "gemini-2.5-flash"
+      },
+      "lastError": "Truncated output: unbalanced braces or missing closing statement"
     },
     {
       "id": "SQ-08",
@@ -570,7 +783,16 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "ca136baf8baef79e",
+        "outputHash": "1497de664c205182d4f068443929f4922ae84f646059783de7b7cf58ccfab31f",
+        "generatedAt": "2026-02-13T14:49:05.909Z",
+        "generationTimeMs": 10834,
+        "fileSizeBytes": 9109,
+        "model": "gemini-2.5-flash"
+      },
+      "lastError": "Truncated output: unbalanced braces or missing closing statement"
     },
     {
       "id": "SQ-09",
@@ -591,7 +813,15 @@
           "purpose": "reference"
         }
       ],
-      "status": "pending"
+      "status": "generated",
+      "metadata": {
+        "promptHash": "45c685d2fa70c4d2",
+        "outputHash": "debc29375704e56c50b3f4b60363d501704720a4e0d3c5fcdc6f7cf8d5c1e693",
+        "generatedAt": "2026-02-13T14:38:33.459Z",
+        "generationTimeMs": 4812,
+        "fileSizeBytes": 3407,
+        "model": "gemini-2.5-flash"
+      }
     }
   ]
 }

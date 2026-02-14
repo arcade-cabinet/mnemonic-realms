@@ -5,30 +5,42 @@ import type { MapDdl } from '../schemas/ddl-maps';
 import { loadMaps } from './ddl-loader';
 import { slugify, timestamp } from './manifest-io';
 
-const SYSTEM_PROMPT_TMX = `You are a Tiled TMX map generator for RPG-JS 4.3.0.
-Generate a valid TMX XML file with the exact dimensions and layers specified.
-Output ONLY valid XML. No markdown fences. No explanatory text.
+/** Generic system prompt for all map code entries (TMX + TypeScript). */
+const SYSTEM_PROMPT = `You are a code generator for the Mnemonic Realms JRPG built on RPG-JS 4.3.0.
+Generate ONLY the requested output format (TypeScript or TMX XML).
+No markdown fences. No explanatory text. No trailing comments.
+Follow RPG-JS 4.3.0 API conventions exactly.
+Output must be syntactically complete — all braces/tags must be balanced.`;
+
+/** TMX-specific instructions prepended to TMX entry prompts. */
+const TMX_CONTEXT = `You are generating a Tiled TMX XML map file.
+Output ONLY valid XML starting with <?xml ...?> and ending with </map>.
 Use 6 layers: ground, ground2, objects, objects_upper, collision, events.
 Tile GIDs reference the tileset in firstgid order.
 Object layer entries use Tiled object format for NPC spawns and event triggers.
 Mark collision tiles on the collision layer for walls, water, and obstacles.
-Place event triggers on the events layer as point objects with type and properties.`;
+Place event triggers on the events layer as point objects with type and properties.
 
-/** System prompt injected into each @MapData entry's prompt text. */
-const MAPDATA_CONTEXT = `[SYSTEM: You are an RPG-JS 4.3.0 TypeScript code generator.
-Generate a single RPG-JS map module file using @MapData decorator.
-Output ONLY valid TypeScript code. No markdown fences. No explanatory text.
-Import from '@rpgjs/server'. Use the exact map ID and file path provided.
+`;
+
+/** MapData-specific instructions prepended to @MapData entry prompts. */
+const MAPDATA_CONTEXT = `You are generating an RPG-JS 4.3.0 TypeScript module file.
+Output ONLY valid TypeScript code starting with import statements and ending with a closing brace.
+Use @MapData decorator. Import from '@rpgjs/server'.
+Use the exact map ID and file path provided.
 Include onInit, onJoin hooks for event spawning.
-Use createDynamicEvent for NPCs and enemies per the spawn data.]`;
+Use createDynamicEvent for NPCs and enemies per the spawn data.
 
-/** System prompt injected into each event spawner entry's prompt text. */
-const EVENTS_CONTEXT = `[SYSTEM: You are an RPG-JS 4.3.0 TypeScript code generator.
-Generate map event spawner functions for createDynamicEvent calls.
-Output ONLY valid TypeScript code. No markdown fences.
+`;
+
+/** Events-specific instructions prepended to event spawner entry prompts. */
+const EVENTS_CONTEXT = `You are generating RPG-JS 4.3.0 TypeScript event spawner functions.
+Output ONLY valid TypeScript code starting with import statements and ending with a closing brace.
 Each event gets a createDynamicEvent call with proper position, graphics, and hooks.
 NPC events use onAction for dialogue. Transition events use onPlayerInput.
-Enemy zone events use onChanges with random encounter checks.]`;
+Enemy zone events use onChanges with random encounter checks.
+
+`;
 
 export function buildMapCodeManifest(): CodeGenManifest {
   console.log('Building map code generation manifest...');
@@ -83,7 +95,7 @@ export function buildMapCodeManifest(): CodeGenManifest {
     description: 'Map TMX, MapData, and event spawner code generation manifest',
     updatedAt: timestamp(),
     category: 'database-maps',
-    systemPrompt: SYSTEM_PROMPT_TMX,
+    systemPrompt: SYSTEM_PROMPT,
     assets,
   };
 }
@@ -112,7 +124,7 @@ function buildTmxPrompt(map: MapDdl): string {
     )
     .join('\n');
 
-  return `Generate a Tiled TMX map for "${map.name}" (${map.filename}).
+  return `${TMX_CONTEXT}Generate a Tiled TMX map for "${map.name}" (${map.filename}).
 
 Dimensions: ${map.width}x${map.height} tiles, ${map.tileSize}px per tile.
 Biome: ${map.biome} | Vibrancy: ${map.startVibrancy} | Category: ${map.category}
@@ -148,9 +160,7 @@ function buildMapDataPrompt(map: MapDdl): string {
     )
     .join('\n');
 
-  return `${MAPDATA_CONTEXT}
-
-Generate an RPG-JS @MapData class for "${map.name}".
+  return `${MAPDATA_CONTEXT}Generate an RPG-JS @MapData class for "${map.name}".
 
 Map ID: "${map.id}"
 TMX file: "./tmx/${map.filename}"
@@ -192,9 +202,7 @@ function buildEventsPrompt(map: MapDdl): string {
     )
     .join('\n');
 
-  return `${EVENTS_CONTEXT}
-
-Generate event spawner functions for map "${map.name}" (${map.id}).
+  return `${EVENTS_CONTEXT}Generate event spawner functions for map "${map.name}" (${map.id}).
 
 NPCs:
 ${npcLines || '  - None'}

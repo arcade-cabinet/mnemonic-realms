@@ -6,7 +6,6 @@ import { runGenerate } from './cli-generate';
 import { runIntegrate } from './cli-integrate';
 import { runStatus } from './cli-status';
 import { addDirtyId, clearDirty, loadDirty, removeDirtyId } from './dirty';
-import { validatePalette } from './integrators/palette-validator';
 
 const args = process.argv.slice(2);
 const sub = args[0];
@@ -33,11 +32,6 @@ switch (sub) {
     break;
   case 'status':
     runStatus();
-    break;
-  case 'validate':
-    if (targets.includes('palette') || targets.length === 0) {
-      await validatePalette();
-    }
     break;
   case 'dirty': {
     const action = targets[0];
@@ -78,15 +72,12 @@ switch (sub) {
     break;
   }
   default:
-    console.log(
-      'Usage: pnpm gen <build|generate|integrate|validate|dirty|status> [targets] [flags]',
-    );
+    console.log('Usage: pnpm gen <build|generate|integrate|dirty|status> [targets] [flags]');
     console.log('\nSubcommands:');
-    console.log('  build      [tilesets|sprites|portraits|items|code|all]');
-    console.log('  generate   [images|code|audio|bgm|ambient|all] [--dry-run]');
-    console.log('  integrate  [images|code|audio|bgm|ambient|all] [--dry-run]');
-    console.log('  validate   [palette]');
-    console.log('  dirty      [list|add|remove|clear]  — targeted regen without --force');
+    console.log('  build      [code|audio|all]');
+    console.log('  generate   [code|audio|bgm|ambient|all] [--dry-run]');
+    console.log('  integrate  [code|audio|bgm|ambient|all] [--dry-run]');
+    console.log('  dirty      [list|add|remove|clear]  — targeted regeneration manifest');
     console.log('  status');
     process.exit(sub ? 1 : 0);
 }

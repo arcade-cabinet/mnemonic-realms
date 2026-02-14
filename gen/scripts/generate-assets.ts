@@ -1,5 +1,5 @@
 #!/usr/bin/env npx tsx
-/** Image generation — thin wrapper around cli-generate. */
+/** Code/audio generation — thin wrapper around cli-generate. */
 
 import { runGenerate } from '../cli-generate';
 import { runStatus } from '../cli-status';

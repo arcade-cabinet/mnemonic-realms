@@ -9,12 +9,13 @@
 import { createHash } from 'node:crypto';
 import { copyFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { GEN_OUTPUT, MANIFESTS_DIR } from './shared';
 
 const PROJECT_ROOT = resolve(
   import.meta.dirname ?? process.cwd(),
   import.meta.dirname ? '../..' : '.',
 );
+const GEN_OUTPUT = resolve(PROJECT_ROOT, 'gen/output');
+const MANIFESTS_DIR = resolve(PROJECT_ROOT, 'gen/manifests');
 
 // Vite publicDir is "assets" (set in rpg.toml), so static files
 // live at <root>/assets/ and get copied to dist/ at build time.

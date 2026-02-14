@@ -8,28 +8,15 @@ import {
   buildConsumableCodeManifest,
   buildDialogueCodeManifest,
   buildEnemyCodeManifest,
-  buildItemIconManifest,
   buildMapCodeManifest,
-  buildPortraitManifest,
   buildQuestCodeManifest,
   buildSceneCodeManifest,
   buildSfxManifest,
   buildSkillCodeManifest,
-  buildSpritesheetManifest,
   buildStateCodeManifest,
-  buildTilesetManifest,
-  buildUIElementManifest,
   buildWeaponCodeManifest,
   writeManifest,
 } from './builders/index';
-
-const IMAGE_TARGETS: Record<string, () => unknown> = {
-  tilesets: buildTilesetManifest,
-  sprites: buildSpritesheetManifest,
-  portraits: buildPortraitManifest,
-  items: buildItemIconManifest,
-  ui: buildUIElementManifest,
-};
 
 const AUDIO_TARGETS: Record<string, () => unknown> = {
   sfx: buildSfxManifest,
@@ -56,9 +43,6 @@ export function runBuild(targets: string[]): void {
   const code = all || targets.includes('code');
   const audio = all || targets.includes('audio');
 
-  for (const [name, builder] of Object.entries(IMAGE_TARGETS)) {
-    if (all || targets.includes(name)) writeManifest(name, builder());
-  }
   for (const [name, builder] of Object.entries(AUDIO_TARGETS)) {
     if (audio || targets.includes(name)) writeManifest(`audio/${name}`, builder());
   }

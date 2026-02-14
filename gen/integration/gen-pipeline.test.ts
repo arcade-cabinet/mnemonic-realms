@@ -37,7 +37,6 @@ describe('pnpm gen build all', () => {
     cli('build all');
   }, 30_000);
 
-  const imageCategories = ['tilesets', 'sprites', 'portraits', 'items'];
   const codeCategories = [
     'weapons',
     'armor',
@@ -48,21 +47,12 @@ describe('pnpm gen build all', () => {
     'states',
   ];
 
-  it.each(imageCategories)('creates %s manifest', (cat) => {
-    const path = resolve(MANIFESTS_DIR, cat, 'manifest.json');
-    expect(existsSync(path), `${cat}/manifest.json should exist`).toBe(true);
-  });
-
   it.each(codeCategories)('creates code/%s manifest', (cat) => {
     const path = resolve(MANIFESTS_DIR, 'code', cat, 'manifest.json');
     expect(existsSync(path), `code/${cat}/manifest.json should exist`).toBe(true);
   });
 
-  it('each manifest has non-empty assets array', () => {
-    for (const cat of imageCategories) {
-      const m = readManifest(cat);
-      expect(m.assets.length, `${cat} should have assets`).toBeGreaterThan(0);
-    }
+  it('each code manifest has non-empty assets array', () => {
     for (const cat of codeCategories) {
       const m = readManifest(`code/${cat}`);
       expect(m.assets.length, `code/${cat} should have assets`).toBeGreaterThan(0);
@@ -128,11 +118,11 @@ describe('pnpm gen build all', () => {
     }
   });
 
-  it('no duplicate IDs within any manifest', () => {
-    const allManifests = [
-      ...imageCategories.map((c) => ({ name: c, manifest: readManifest(c) })),
-      ...codeCategories.map((c) => ({ name: `code/${c}`, manifest: readManifest(`code/${c}`) })),
-    ];
+  it('no duplicate IDs within any code manifest', () => {
+    const allManifests = codeCategories.map((c) => ({
+      name: `code/${c}`,
+      manifest: readManifest(`code/${c}`),
+    }));
     for (const { name, manifest } of allManifests) {
       const ids = manifest.assets.map((a: any) => a.id);
       const unique = new Set(ids);
@@ -225,12 +215,9 @@ describe('manifest idempotency', () => {
 // ────────────────────────────────────────────────────────────
 
 describe('CLI dispatching', () => {
-  it('build tilesets only builds tilesets manifest', () => {
-    const output = cli('build tilesets');
-    expect(output).toContain('tilesets');
-
-    // Tileset manifest should exist
-    expect(existsSync(resolve(MANIFESTS_DIR, 'tilesets/manifest.json'))).toBe(true);
+  it('build code builds code manifests', () => {
+    const output = cli('build code');
+    expect(output).toContain('weapons');
   });
 
   it('status subcommand runs without errors', () => {
@@ -238,10 +225,10 @@ describe('CLI dispatching', () => {
     expect(output).toContain('Generation Status');
   });
 
-  it('status output reports image and code sections', () => {
+  it('status output reports code and audio sections', () => {
     const output = cli('status');
-    expect(output).toContain('Image Assets');
     expect(output).toContain('Code Generation');
+    expect(output).toContain('Audio Assets');
   });
 
   it('unknown subcommand shows usage and exits non-zero', () => {
@@ -259,7 +246,7 @@ describe('CLI dispatching', () => {
   });
 
   it('generate --dry-run does not require API key', () => {
-    const output = cli('generate images --dry-run');
+    const output = cli('generate code --dry-run');
     expect(output).toBeDefined();
   });
 });

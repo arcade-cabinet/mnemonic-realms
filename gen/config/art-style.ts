@@ -15,5 +15,6 @@ Think: watercolor sketch evolving into illuminated manuscript evolving into stai
 export const MASTER_NEGATIVE_PROMPT = `3D rendering, photorealistic, anime style, neon colors, grimdark, \
 desaturated post-apocalyptic, dark souls brown, chibi with huge heads, \
 modern technology, sci-fi elements, cyberpunk, blurry, low quality, \
-text, watermark, signature, UI elements in the image, \
-thick black outlines on tiles, gradient shading on sprites`;
+text, letters, words, numbers, labels, captions, watermark, signature, \
+tile IDs, tile names, annotations, any written characters whatsoever, \
+UI elements in the image, thick black outlines on tiles, gradient shading on sprites`;
