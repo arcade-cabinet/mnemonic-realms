@@ -12,7 +12,14 @@ import TitleScreen from '../gui/title-screen.vue';
 import { audioManager } from './audio';
 import { aliasSprites } from './characters/aliases';
 import { generatedSprites } from './characters/generated';
-import { initVibrancySystem, resetParticles, resetVibrancy, resetZoneEffects } from './effects';
+import {
+  initMemoryEventWiring,
+  initVibrancySystem,
+  resetMemoryEventWiring,
+  resetParticles,
+  resetVibrancy,
+  resetZoneEffects,
+} from './effects';
 
 // Snap all sprite positions to integer pixels — eliminates tile seam gaps in pixel-art rendering.
 settings.ROUND_PIXELS = true;
@@ -38,7 +45,9 @@ const sceneMap: RpgSceneMapHooks = {
     resetParticles();
     resetVibrancy();
     resetZoneEffects();
+    resetMemoryEventWiring();
     initVibrancySystem();
+    initMemoryEventWiring();
     // Trigger zone audio change based on current map
     audioManager.init().then(() => {
       const mapId = (scene as RpgSceneMap & { data?: { id?: string } })?.data?.id ?? '';
