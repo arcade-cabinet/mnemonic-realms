@@ -149,16 +149,9 @@ export function spawnMapEvents(player: RpgPlayer) {
   });
 
   // --- Enemy Zones ---
-
-  // TODO: Highland Grass zone — implement random encounters when RPG-JS battle API is available
-  // Enemies: Highland Hawk, levels 5-6, 15% encounter rate
-  // Bounds: tiles (5,10) to (25,35)
-
-  // TODO: Rocky Outcrops zone — implement random encounters when RPG-JS battle API is available
-  // Enemies: Crag Golem + Highland Hawk, levels 6-7, 18% encounter rate
-  // Bounds: tiles (25,5) to (38,25)
-
-  // TODO: Outpost Perimeter zone (conditional on MQ_04_COMPLETED) — implement random encounters
-  // Enemies: Preserver Scout x2, levels 8-10, 25% encounter rate
-  // Bounds: tiles (27,10) to (35,18)
+  // Encounter zones defined in systems/encounters.ts (SUNRIDGE_ZONES).
+  // Random encounters triggered via player.ts onInput hook -> checkEncounter().
+  //
+  // Highland Grass: bounds=(5,10) to (25,35), rate=5%
+  // Rocky Outcrops: bounds=(25,5) to (38,25), rate=6%
 }

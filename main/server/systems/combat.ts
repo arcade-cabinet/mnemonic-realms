@@ -6,6 +6,7 @@ import millbrookEnemies from '../../../gen/ddl/enemies/millbrook.json';
 import sunridgeEnemies from '../../../gen/ddl/enemies/sunridge.json';
 import type { Attacker } from './damage';
 import { calculateDamage } from './damage';
+import { resolveAIDamage, selectEnemyAction } from './enemy-ai';
 import { getEquipBonuses } from './inventory';
 import type { ActiveEffect } from './skills-runtime';
 import {
@@ -479,20 +480,53 @@ function resolveEnemyTurn(player: RpgPlayer, state: CombatState): void {
   const enemy = state.enemies[entry.enemyIndex];
   if (enemy.hp <= 0) return;
 
-  // Simple AI: basic attack against the player
+  // AI selects action based on behavior pattern, HP, and round
+  const aiAction = selectEnemyAction(enemy, state.round);
+
   const baseDef = getPlayerDef(player) * (state.defending ? 2 : 1);
   const defVal = Math.floor(baseDef * (1 + getEffectStatModifier(state.playerEffects, 'def')));
-  const result = calculateDamage(enemyAsAttacker(enemy), { def: defVal });
-  player.hp = Math.max(0, player.hp - result.damage);
 
-  const critMsg = result.critical ? ' Critical hit!' : '';
-  state.lastResult = {
-    actor: enemy.name,
-    action: ActionType.Attack,
-    targetName: 'Player',
-    damage: result.damage,
-    message: `${enemy.name} attacks Player for ${result.damage} damage.${critMsg}`,
-  };
+  switch (aiAction.type) {
+    case 'defend': {
+      // Defensive action: enemy takes a defensive stance (no damage dealt)
+      state.lastResult = {
+        actor: enemy.name,
+        action: ActionType.Defend,
+        message: aiAction.message,
+      };
+      break;
+    }
+
+    case 'skill': {
+      // Skill-based attack: use ability formula for damage
+      const skillResult = resolveAIDamage(enemy, aiAction, defVal);
+      player.hp = Math.max(0, player.hp - skillResult.damage);
+      const critMsg = skillResult.critical ? ' Critical hit!' : '';
+      state.lastResult = {
+        actor: enemy.name,
+        action: ActionType.Skill,
+        targetName: 'Player',
+        damage: skillResult.damage,
+        message: `${aiAction.message} ${skillResult.damage} damage to Player.${critMsg}`,
+      };
+      break;
+    }
+
+    default: {
+      // Basic attack
+      const result = calculateDamage(enemyAsAttacker(enemy), { def: defVal });
+      player.hp = Math.max(0, player.hp - result.damage);
+      const critMsg = result.critical ? ' Critical hit!' : '';
+      state.lastResult = {
+        actor: enemy.name,
+        action: ActionType.Attack,
+        targetName: 'Player',
+        damage: result.damage,
+        message: `${enemy.name} attacks Player for ${result.damage} damage.${critMsg}`,
+      };
+      break;
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------

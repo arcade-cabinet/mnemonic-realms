@@ -225,15 +225,9 @@ export function spawnMapEvents(player: RpgPlayer) {
   });
 
   // --- Enemy Zones ---
-  // TODO: Implement encounter zones when battle system is ready
+  // Encounter zones defined in systems/encounters.ts (HEARTFIELD_ZONES).
+  // Random encounters triggered via player.ts onInput hook -> checkEncounter().
   //
-  // Wheat Fields West: bounds=(2,5) to (14,20)
-  //   enemies: [E-SL-01, E-SL-02], levels: 1-3, rate: 3%
-  //
-  // Wheat Fields East: bounds=(22,5) to (32,17)
-  //   enemies: [E-SL-02], levels: 2-3, rate: 4%
-  //
-  // Stagnation Approach: bounds=(28,25) to (38,33)
-  //   enemies: [Preserver Scout], levels: 8-10, rate: 2%
-  //   condition: MQ_04_COMPLETED
+  // Wheat Fields West: bounds=(2,5) to (14,20), rate=3%
+  // Wheat Fields East: bounds=(22,5) to (32,17), rate=4%
 }

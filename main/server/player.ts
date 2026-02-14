@@ -1,4 +1,5 @@
-import type { RpgPlayer, RpgPlayerHooks } from '@rpgjs/server';
+import type { Direction, RpgPlayer, RpgPlayerHooks } from '@rpgjs/server';
+import { checkEncounter, resetEncounterSteps } from './systems/encounters';
 import type { EquipmentSlot } from './systems/inventory';
 import { equipItem, useItem } from './systems/inventory';
 import type { SaveData, SaveSlotId } from './systems/save-load';
@@ -98,8 +99,22 @@ export const player: RpgPlayerHooks = {
     // Sync current zone vibrancy + biome to client
     syncZoneVibrancy(player);
 
+    // Reset encounter step counter on map transition
+    resetEncounterSteps(player);
+
     // Auto-save on every map change
     autoSave(player);
+  },
+
+  onInput(player: RpgPlayer, { input }: { input: Direction | string }) {
+    // Only check encounters on directional movement input
+    const moveInputs = ['up', 'down', 'left', 'right'];
+    if (!moveInputs.includes(input as string)) return;
+
+    const mapId = player.map?.id;
+    if (!mapId) return;
+
+    checkEncounter(player, mapId);
   },
 
   onDead(player: RpgPlayer) {
