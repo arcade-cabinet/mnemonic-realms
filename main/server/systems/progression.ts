@@ -1,5 +1,6 @@
 import type { RpgPlayer } from '@rpgjs/server';
 import classData from '../../../gen/ddl/classes/all.json';
+import { checkSkillUnlocks } from './skills';
 
 const MAX_LEVEL = 35;
 
@@ -58,6 +59,7 @@ export function initProgression(player: RpgPlayer): void {
   player.setVariable('PLAYER_LEVEL', 1);
   player.setVariable('PLAYER_XP', 0);
   applyStatGrowth(player, classId, 1);
+  checkSkillUnlocks(player);
 }
 
 /**
@@ -84,6 +86,7 @@ export function addXP(player: RpgPlayer, amount: number): number {
   if (levelsGained > 0) {
     player.setVariable('PLAYER_LEVEL', level);
     applyStatGrowth(player, classId, level);
+    checkSkillUnlocks(player);
   }
 
   return levelsGained;
