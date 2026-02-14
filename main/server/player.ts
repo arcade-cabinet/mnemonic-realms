@@ -1,4 +1,6 @@
 import type { RpgPlayer, RpgPlayerHooks } from '@rpgjs/server';
+import type { SaveData, SaveSlotId } from './systems/save-load';
+import { autoSave, deserializePlayer, loadGame } from './systems/save-load';
 
 const SPRITE_MAP: Record<string, string> = {
   knight: 'sprite-player-knight',
@@ -29,6 +31,18 @@ function openTitleScreen(player: RpgPlayer) {
     await player.changeMap('village-hub', { x: 480, y: 480 });
   });
 
+  gui.on('load-save', async (data: { slotId: SaveSlotId; saveData: SaveData }) => {
+    player.removeGui('title-screen');
+    player.gui('rpg-hud').open();
+    await deserializePlayer(player, data.saveData);
+  });
+
+  gui.on('continue-game', async (data: { slotId: SaveSlotId }) => {
+    player.removeGui('title-screen');
+    player.gui('rpg-hud').open();
+    await loadGame(player, data.slotId);
+  });
+
   gui.on('open-credits', () => {
     player.gui('credits-screen').open();
   });
@@ -52,6 +66,9 @@ export const player: RpgPlayerHooks = {
     if (graphic) {
       player.setGraphic(graphic);
     }
+
+    // Auto-save on every map change
+    autoSave(player);
   },
 
   onDead(player: RpgPlayer) {
