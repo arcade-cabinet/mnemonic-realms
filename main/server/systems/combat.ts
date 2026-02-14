@@ -4,6 +4,8 @@ import ambergroveEnemies from '../../../gen/ddl/enemies/ambergrove.json';
 import heartfieldEnemies from '../../../gen/ddl/enemies/heartfield.json';
 import millbrookEnemies from '../../../gen/ddl/enemies/millbrook.json';
 import sunridgeEnemies from '../../../gen/ddl/enemies/sunridge.json';
+import type { Attacker } from './damage';
+import { calculateDamage } from './damage';
 import { getEquipBonuses } from './inventory';
 
 // ---------------------------------------------------------------------------
@@ -125,6 +127,11 @@ function getPlayerAtk(player: RpgPlayer): number {
   return base + getEquipBonuses(player).atk;
 }
 
+function getPlayerInt(player: RpgPlayer): number {
+  const base = (player.getVariable('PLAYER_INT') as number) || 5;
+  return base + getEquipBonuses(player).int;
+}
+
 function getPlayerDef(player: RpgPlayer): number {
   const base = (player.getVariable('PLAYER_DEF') as number) || 5;
   return base + getEquipBonuses(player).def;
@@ -162,12 +169,16 @@ function instantiateEnemy(ddl: EnemyDDL): EnemyInstance {
   };
 }
 
-/**
- * Simple damage formula: max(1, attackerAtk - defenderDef / 2).
- * Placeholder — real formulas come in subsequent user stories.
- */
-function calcDamage(attackerAtk: number, defenderDef: number): number {
-  return Math.max(1, Math.floor(attackerAtk - defenderDef / 2));
+function playerAsAttacker(player: RpgPlayer): Attacker {
+  return { atk: getPlayerAtk(player), int: getPlayerInt(player), agi: getPlayerAgi(player) };
+}
+
+function enemyAsAttacker(enemy: EnemyInstance): Attacker {
+  return { atk: enemy.atk, int: enemy.int, agi: enemy.agi };
+}
+
+function enemyAsDefender(enemy: EnemyInstance): { def: number } {
+  return { def: enemy.def };
 }
 
 // ---------------------------------------------------------------------------
@@ -300,15 +311,16 @@ function resolvePlayerAttack(player: RpgPlayer, state: CombatState, action: Comb
   if (targetIdx === -1) return;
 
   const target = state.enemies[targetIdx];
-  const damage = calcDamage(getPlayerAtk(player), target.def);
-  target.hp = Math.max(0, target.hp - damage);
+  const result = calculateDamage(playerAsAttacker(player), enemyAsDefender(target));
+  target.hp = Math.max(0, target.hp - result.damage);
 
+  const critMsg = result.critical ? ' Critical hit!' : '';
   state.lastResult = {
     actor: 'Player',
     action: ActionType.Attack,
     targetName: target.name,
-    damage,
-    message: `Player attacks ${target.name} for ${damage} damage.`,
+    damage: result.damage,
+    message: `Player attacks ${target.name} for ${result.damage} damage.${critMsg}`,
   };
 }
 
@@ -341,16 +353,17 @@ function resolveEnemyTurn(player: RpgPlayer, state: CombatState): void {
   if (enemy.hp <= 0) return;
 
   // Simple AI: basic attack against the player
-  const defMultiplier = state.defending ? 2 : 1;
-  const damage = calcDamage(enemy.atk, getPlayerDef(player) * defMultiplier);
-  player.hp = Math.max(0, player.hp - damage);
+  const defVal = getPlayerDef(player) * (state.defending ? 2 : 1);
+  const result = calculateDamage(enemyAsAttacker(enemy), { def: defVal });
+  player.hp = Math.max(0, player.hp - result.damage);
 
+  const critMsg = result.critical ? ' Critical hit!' : '';
   state.lastResult = {
     actor: enemy.name,
     action: ActionType.Attack,
     targetName: 'Player',
-    damage,
-    message: `${enemy.name} attacks Player for ${damage} damage.`,
+    damage: result.damage,
+    message: `${enemy.name} attacks Player for ${result.damage} damage.${critMsg}`,
   };
 }
 
