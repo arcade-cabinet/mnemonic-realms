@@ -115,6 +115,7 @@ import Haste from './states/haste';
 import Inspired from './states/inspired';
 import Invisible from './states/invisible';
 import Poison from './states/poison';
+import Regen from './states/regen';
 import Slow from './states/slow';
 import Stasis from './states/stasis';
 import { default as SteadfastWallStates } from './states/steadfast-wall';
@@ -270,6 +271,7 @@ export const database = {
   Inspired,
   Invisible,
   Poison,
+  Regen,
   Slow,
   Stasis,
   SteadfastWallStates,

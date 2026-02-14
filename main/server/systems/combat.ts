@@ -7,6 +7,14 @@ import sunridgeEnemies from '../../../gen/ddl/enemies/sunridge.json';
 import type { Attacker } from './damage';
 import { calculateDamage } from './damage';
 import { getEquipBonuses } from './inventory';
+import type { ActiveEffect } from './skills-runtime';
+import {
+  executeSkill,
+  getEffectStatModifier,
+  hasEffect,
+  tickEnemyEffects,
+  tickPlayerEffects,
+} from './skills-runtime';
 
 // ---------------------------------------------------------------------------
 // Types
@@ -41,6 +49,7 @@ export interface EnemyInstance {
   agi: number;
   xp: number;
   gold: number;
+  effects: ActiveEffect[];
 }
 
 export interface CombatAction {
@@ -64,6 +73,7 @@ export interface CombatState {
   round: number;
   defending: boolean;
   lastResult: TurnResult | null;
+  playerEffects: ActiveEffect[];
 }
 
 export interface TurnResult {
@@ -71,7 +81,9 @@ export interface TurnResult {
   action: ActionType;
   targetName?: string;
   damage?: number;
+  healing?: number;
   fled?: boolean;
+  skillName?: string;
   message: string;
 }
 
@@ -166,6 +178,7 @@ function instantiateEnemy(ddl: EnemyDDL): EnemyInstance {
     agi: ddl.agi,
     xp: ddl.xp,
     gold: ddl.gold,
+    effects: [],
   };
 }
 
@@ -174,11 +187,15 @@ function playerAsAttacker(player: RpgPlayer): Attacker {
 }
 
 function enemyAsAttacker(enemy: EnemyInstance): Attacker {
-  return { atk: enemy.atk, int: enemy.int, agi: enemy.agi };
+  return {
+    atk: Math.floor(enemy.atk * (1 + getEffectStatModifier(enemy.effects, 'atk'))),
+    int: Math.floor(enemy.int * (1 + getEffectStatModifier(enemy.effects, 'int'))),
+    agi: Math.floor(enemy.agi * (1 + getEffectStatModifier(enemy.effects, 'agi'))),
+  };
 }
 
 function enemyAsDefender(enemy: EnemyInstance): { def: number } {
-  return { def: enemy.def };
+  return { def: Math.floor(enemy.def * (1 + getEffectStatModifier(enemy.effects, 'def'))) };
 }
 
 // ---------------------------------------------------------------------------
@@ -212,6 +229,7 @@ export function startCombat(player: RpgPlayer, enemyIds: string[]): CombatState 
     round: 1,
     defending: false,
     lastResult: null,
+    playerEffects: [],
   };
 
   // Advance to the first turn (might be enemy if they have higher AGI)
@@ -226,38 +244,107 @@ export function startCombat(player: RpgPlayer, enemyIds: string[]): CombatState 
 }
 
 /**
+ * Resolve the player's turn: tick effects, then act (or skip if stunned).
+ * Returns true if the player died from status effects.
+ */
+function resolvePlayerTurnWithEffects(
+  player: RpgPlayer,
+  state: CombatState,
+  action: CombatAction,
+): boolean {
+  const { messages: tickMsgs, stunned } = tickPlayerEffects(player, state.playerEffects);
+
+  if (player.hp <= 0) {
+    state.phase = CombatPhase.Defeat;
+    state.lastResult = { actor: 'Player', action: ActionType.Defend, message: tickMsgs.join(' ') };
+    return true;
+  }
+
+  if (stunned) {
+    state.lastResult = { actor: 'Player', action: ActionType.Defend, message: tickMsgs.join(' ') };
+  } else {
+    resolvePlayerAction(player, state, action);
+    if (tickMsgs.length > 0 && state.lastResult) {
+      state.lastResult.message = `${tickMsgs.join(' ')} ${state.lastResult.message}`;
+    }
+  }
+  return false;
+}
+
+/**
+ * Tick an enemy's effects and determine if they should skip their turn.
+ * Returns 'skip' if the enemy died or is stunned, 'act' otherwise.
+ */
+function tickAndCheckEnemy(state: CombatState, enemy: EnemyInstance): 'skip' | 'act' {
+  const { messages: msgs, stunned } = tickEnemyEffects(enemy);
+
+  if (enemy.hp <= 0) {
+    state.lastResult = {
+      actor: enemy.name,
+      action: ActionType.Attack,
+      message: `${msgs.join(' ')} ${enemy.name} was defeated!`,
+    };
+    return 'skip';
+  }
+
+  if (stunned) {
+    state.lastResult = { actor: enemy.name, action: ActionType.Attack, message: msgs.join(' ') };
+    return 'skip';
+  }
+
+  return 'act';
+}
+
+/**
+ * Process all enemy turns until it's the player's turn again or combat ends.
+ */
+function processEnemyTurns(player: RpgPlayer, state: CombatState): void {
+  advanceTurn(player, state);
+  while (state.phase === CombatPhase.EnemyTurn) {
+    const entry = state.turnOrder[state.turnIndex];
+    if (entry.kind === 'enemy' && entry.enemyIndex !== undefined) {
+      const enemy = state.enemies[entry.enemyIndex];
+      if (enemy.hp > 0 && tickAndCheckEnemy(state, enemy) === 'skip') {
+        if (allEnemiesDead(state.enemies)) {
+          state.phase = CombatPhase.Victory;
+          return;
+        }
+        advanceTurn(player, state);
+        continue;
+      }
+    }
+
+    resolveEnemyTurn(player, state);
+    if (player.hp <= 0) {
+      state.phase = CombatPhase.Defeat;
+      return;
+    }
+    advanceTurn(player, state);
+  }
+}
+
+/**
  * Process one turn of combat. The player provides an action when it's their turn.
  * Enemy turns are resolved automatically after the player acts.
+ * Status effects tick at the start of each combatant's turn.
  * Returns the updated combat state, or null if no combat is active.
  */
 export function processTurn(player: RpgPlayer, action: CombatAction): CombatState | null {
   const state = getCombatState(player);
-  if (!state) return null;
-
-  // Ignore actions if combat is already over
-  if (isCombatOver(state)) {
-    saveCombatState(player, state);
+  if (!state || isCombatOver(state)) {
+    if (state) saveCombatState(player, state);
     return state;
   }
 
   const current = state.turnOrder[state.turnIndex];
-
   if (current.kind === 'player') {
-    resolvePlayerAction(player, state, action);
-  }
-
-  // After the player acts, advance through enemy turns automatically
-  advanceTurn(player, state);
-  while (state.phase === CombatPhase.EnemyTurn) {
-    resolveEnemyTurn(player, state);
-    // Check if player died from this enemy attack
-    if (player.hp <= 0) {
-      state.phase = CombatPhase.Defeat;
-      break;
+    if (resolvePlayerTurnWithEffects(player, state, action)) {
+      saveCombatState(player, state);
+      return state;
     }
-    advanceTurn(player, state);
   }
 
+  processEnemyTurns(player, state);
   saveCombatState(player, state);
   return state;
 }
@@ -305,14 +392,25 @@ function resolvePlayerAction(player: RpgPlayer, state: CombatState, action: Comb
     case ActionType.Flee:
       resolvePlayerFlee(state);
       break;
-    case ActionType.Skill:
-      // Skill resolution is a stub — detailed in subsequent stories
+    case ActionType.Skill: {
+      const skillResult = executeSkill(
+        player,
+        state.enemies,
+        state.playerEffects,
+        action.skillId ?? '',
+        action.targetIndex,
+      );
       state.lastResult = {
         actor: 'Player',
         action: ActionType.Skill,
-        message: 'Player uses a skill. (Not yet implemented)',
+        targetName: skillResult.targetName,
+        damage: skillResult.damage,
+        healing: skillResult.healing,
+        skillName: skillResult.skillName,
+        message: skillResult.message,
       };
       break;
+    }
     case ActionType.Item:
       // Item-in-combat resolution is a stub — detailed in subsequent stories
       state.lastResult = {
@@ -343,6 +441,17 @@ function resolvePlayerAttack(player: RpgPlayer, state: CombatState, action: Comb
 }
 
 function resolvePlayerFlee(state: CombatState): void {
+  // Vow of Steel prevents fleeing
+  if (hasEffect(state.playerEffects, 'ST-VOW-STEEL')) {
+    state.lastResult = {
+      actor: 'Player',
+      action: ActionType.Flee,
+      fled: false,
+      message: 'Cannot flee while Vow of Steel is active!',
+    };
+    return;
+  }
+
   // Simple flee: 50% base chance. Could be refined with AGI comparison later.
   const success = Math.random() < 0.5;
   if (success) {
@@ -371,7 +480,8 @@ function resolveEnemyTurn(player: RpgPlayer, state: CombatState): void {
   if (enemy.hp <= 0) return;
 
   // Simple AI: basic attack against the player
-  const defVal = getPlayerDef(player) * (state.defending ? 2 : 1);
+  const baseDef = getPlayerDef(player) * (state.defending ? 2 : 1);
+  const defVal = Math.floor(baseDef * (1 + getEffectStatModifier(state.playerEffects, 'def')));
   const result = calculateDamage(enemyAsAttacker(enemy), { def: defVal });
   player.hp = Math.max(0, player.hp - result.damage);
 
