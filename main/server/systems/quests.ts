@@ -259,6 +259,10 @@ export function isQuestComplete(player: RpgPlayer, questId: string): boolean {
   return getQuestStatus(player, questId) === 'completed';
 }
 
+export function isQuestFailed(player: RpgPlayer, questId: string): boolean {
+  return getQuestStatus(player, questId) === 'failed';
+}
+
 export function startQuest(player: RpgPlayer, questId: string): boolean {
   const def = questById.get(questId);
   if (!def) return false;
@@ -274,7 +278,12 @@ export function startQuest(player: RpgPlayer, questId: string): boolean {
 export function advanceObjective(player: RpgPlayer, questId: string): number {
   if (!isQuestActive(player, questId)) return -1;
 
+  const def = questById.get(questId);
+  if (!def) return -1;
+
   const current = getObjectiveProgress(player, questId);
+  if (current >= def.objectiveCount) return current; // Already at or past final objective
+
   const next = current + 1;
   player.setVariable(objectiveKey(questId), next);
   return next;
@@ -308,6 +317,10 @@ export function getActiveQuests(player: RpgPlayer): QuestDef[] {
 
 export function getCompletedQuests(player: RpgPlayer): QuestDef[] {
   return QUEST_DEFS.filter((q) => isQuestComplete(player, q.id));
+}
+
+export function getQuestsByCategory(category: QuestCategory): readonly QuestDef[] {
+  return QUEST_DEFS.filter((q) => q.category === category);
 }
 
 // ---------------------------------------------------------------------------
