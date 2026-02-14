@@ -4,6 +4,7 @@ import type { EquipmentSlot } from './systems/inventory';
 import { equipItem, useItem } from './systems/inventory';
 import type { SaveData, SaveSlotId } from './systems/save-load';
 import { autoSave, deserializePlayer, loadGame } from './systems/save-load';
+import { buyItem, getShopDefinitions, getShopInventory, sellItem } from './systems/shop';
 import { initVibrancy, syncZoneVibrancy } from './systems/vibrancy';
 
 const SPRITE_MAP: Record<string, string> = {
@@ -25,6 +26,60 @@ function openInventory(player: RpgPlayer) {
   });
 
   inv.open();
+}
+
+/**
+ * Opens the shop GUI for a given shop and wires buy-item / sell-item / close
+ * event handlers on the server side. The Vue component reads SHOP_DATA for the
+ * item catalog and SHOP_RESULT for transaction feedback.
+ */
+export function openShop(player: RpgPlayer, shopId: string): void {
+  const items = getShopInventory(shopId);
+  if (!items) return;
+
+  // Look up the shop definition for display name
+  const defs = getShopDefinitions();
+  const def = defs.find((d) => d.shopId === shopId);
+  const shopName = def?.name ?? 'Shop';
+
+  // Push shop data to the client via player variable so the Vue component can
+  // reactively read it from the player observable.
+  player.setVariable('SHOP_DATA', {
+    shopId,
+    shopName,
+    items: items.map((i) => ({ itemId: i.itemId, name: i.name, price: i.price })),
+  });
+
+  // Clear any prior result message
+  player.setVariable('SHOP_RESULT', null);
+
+  const gui = player.gui('shop-screen');
+
+  gui.on('buy-item', (data: { itemId: string; qty: number }) => {
+    const qty = Math.max(1, Math.floor(data.qty ?? 1));
+    const result = buyItem(player, shopId, data.itemId, qty);
+    player.setVariable('SHOP_RESULT', {
+      message: result.message,
+      success: result.success,
+    });
+  });
+
+  gui.on('sell-item', (data: { itemId: string; qty: number }) => {
+    const qty = Math.max(1, Math.floor(data.qty ?? 1));
+    const result = sellItem(player, data.itemId, qty);
+    player.setVariable('SHOP_RESULT', {
+      message: result.message,
+      success: result.success,
+    });
+  });
+
+  gui.on('close', () => {
+    player.setVariable('SHOP_DATA', null);
+    player.setVariable('SHOP_RESULT', null);
+    player.removeGui('shop-screen');
+  });
+
+  gui.open();
 }
 
 function openTitleScreen(player: RpgPlayer) {

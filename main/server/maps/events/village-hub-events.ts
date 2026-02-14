@@ -1,5 +1,5 @@
 import type { RpgMap, RpgPlayer } from '@rpgjs/server';
-import { addItem } from '../../systems/inventory';
+import { openShop } from '../../player';
 
 export function spawnMapEvents(player: RpgPlayer) {
   const map = player.map as RpgMap;
@@ -71,14 +71,14 @@ export function spawnMapEvents(player: RpgPlayer) {
     name: 'maren',
     graphic: 'npc_maren',
     hitbox: { width: 16, height: 16 },
-    onAction(player: RpgPlayer) {
-      player.showText('Maren: Welcome to the General Shop! What can I get for you?');
-      // TODO: shop system wiring pending
+    async onAction(player: RpgPlayer) {
+      await player.showText('Maren: Welcome to the General Shop! What can I get for you?');
       if (!player.getVariable('SQ_01_STARTED') && !player.getVariable('SQ_01_COMPLETED')) {
-        player.showText(
+        await player.showText(
           "Maren: Oh, and if you have a moment, I'm looking for some rare herbs for a special order. Interested?",
         );
       }
+      openShop(player, 'village-general');
     },
   });
 
@@ -89,18 +89,14 @@ export function spawnMapEvents(player: RpgPlayer) {
     name: 'torvan',
     graphic: 'npc_torvan',
     hitbox: { width: 16, height: 16 },
-    onAction(player: RpgPlayer) {
-      // TODO: Implement vibrancy system — check zone vibrancy level
-      // For now, default to base dialogue
-      player.showText(
-        'Torvan: The forge awaits. When the village vibrancy is high enough, I can craft my finest wares.',
-      );
-      // TODO: shop system wiring pending
+    async onAction(player: RpgPlayer) {
+      await player.showText('Torvan: The forge awaits. Let me show you what I have.');
       if (!player.getVariable('SQ_11_STARTED') && !player.getVariable('SQ_11_COMPLETED')) {
-        player.showText(
+        await player.showText(
           "Torvan: I've been meaning to try a new forging technique, but I need a rare ore. Perhaps you could help?",
         );
       }
+      openShop(player, 'village-weapons');
     },
   });
 

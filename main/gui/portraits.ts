@@ -7,7 +7,7 @@
  * All portraits are 256x256 webp in main/client/gui/portraits/.
  */
 
-const NAMED_CHARACTERS = ['protagonist', 'lira', 'callum', 'petra', 'elder-torin'] as const;
+const NAMED_CHARACTERS = ['protagonist', 'hana', 'artun', 'nel', 'vash', 'elder-torin'] as const;
 
 const GODS = ['resonance', 'verdance', 'luminos', 'kinesis'] as const;
 
