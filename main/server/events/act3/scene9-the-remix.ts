@@ -54,7 +54,7 @@ export default class TheRemixEvent extends RpgEvent {
     // 2. Spawns NPCs at appropriate positions using createDynamicEvent()
     // Hana: (12, 10), Artun: (8, 10), The Curator: (10, 15) - relative to pedestal (10,10)
     // Assuming the pedestal is at (10,10) on fortress-f3
-    const lira = await map.createDynamicEvent({
+    const hana = await map.createDynamicEvent({
       x: 12,
       y: 10,
       event: class HanaRemix extends RpgEvent {
@@ -64,7 +64,7 @@ export default class TheRemixEvent extends RpgEvent {
         }
       },
     });
-    const callum = await map.createDynamicEvent({
+    const artun = await map.createDynamicEvent({
       x: 8,
       y: 10,
       event: class ArtunRemix extends RpgEvent {
@@ -86,8 +86,8 @@ export default class TheRemixEvent extends RpgEvent {
     });
 
     // Ensure NPCs are visible
-    lira.show();
-    callum.show();
+    hana.show();
+    artun.show();
     curator.show();
 
     // 3. Plays dialogue sequences via player.showText()
@@ -161,8 +161,8 @@ export default class TheRemixEvent extends RpgEvent {
     await player.setQuestState('MQ-10', 'obj-2-complete');
 
     // Clean up dynamic NPCs
-    lira.remove();
-    callum.remove();
+    hana.remove();
+    artun.remove();
     curator.remove();
 
     // Optionally, trigger the endgame cinematic or next scene transition

@@ -68,7 +68,7 @@ export class LuminousWastesSceneEvent extends RpgEvent {
     if (!map) return;
 
     // Hana at (10, 20) for initial dialogue
-    const lira = await map.createDynamicEvent({
+    const hana = await map.createDynamicEvent({
       x: 10,
       y: 20,
       event: HanaLuminousWastesEvent,
@@ -79,7 +79,7 @@ export class LuminousWastesSceneEvent extends RpgEvent {
     });
 
     // Artun at (12, 20) for initial dialogue
-    const callum = await map.createDynamicEvent({
+    const artun = await map.createDynamicEvent({
       x: 12,
       y: 20,
       event: ArtunLuminousWastesEvent,

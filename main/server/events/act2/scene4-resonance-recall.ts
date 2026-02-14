@@ -49,7 +49,7 @@ export class ResonanceRecallEvent extends RpgEvent {
       this.set({ visible: true });
 
       // Ensure Artun is spawned and visible
-      const callum = await player.map.createDynamicEvent({
+      const artun = await player.map.createDynamicEvent({
         x: 23, // Position Artun near the amphitheater
         y: 26,
         event: 'npc_artun',
@@ -76,20 +76,20 @@ export class ResonanceRecallEvent extends RpgEvent {
       );
 
       await player.showText("I've read about this for decades. I never thought I'd see it.", {
-        speaker: callum,
+        speaker: artun,
         wait: true,
       });
       await player.showText(
         "That column — those sound waves — that's Resonance. A dormant god of sound, created by the Choir of the First Dawn. They sang the world's ambient soundscape into existence. Every breeze, every birdsong, every rush of water — that was their work.",
         {
-          speaker: callum,
+          speaker: artun,
           wait: true,
         },
       );
       await player.showText(
         "And then they dissolved. They chose to become the sound they loved. What remains is this — an unfinished prototype, humming a note that's been sustained for centuries.",
         {
-          speaker: callum,
+          speaker: artun,
           wait: true,
         },
       );
@@ -124,21 +124,21 @@ export class ResonanceRecallEvent extends RpgEvent {
       await player.showText(
         'They chose that. They chose to become the song rather than let it fade.',
         {
-          speaker: callum,
+          speaker: artun,
           wait: true,
         },
       );
       await player.showText(
         "Now it's your turn. That god — Resonance — is waiting for someone to finish what the Choir started. The emotion you choose will determine what Resonance becomes. Joy, fury, sorrow, or awe — each will create a different god with a different domain.",
         {
-          speaker: callum,
+          speaker: artun,
           wait: true,
         },
       );
       await player.showText(
         "This is permanent. Once you recall Resonance, the god takes their final form. There's no going back. Choose the emotion that feels right to you.",
         {
-          speaker: callum,
+          speaker: artun,
           wait: true,
         },
       );
@@ -261,8 +261,8 @@ export class ResonanceRecallEvent extends RpgEvent {
       player.setQuest('MQ-06', 'activate');
 
       // Remove Artun after the event
-      if (callum) {
-        await player.map.removeDynamicEvent(callum.id);
+      if (artun) {
+        await player.map.removeDynamicEvent(artun.id);
       }
 
       // This event is now complete for this player.

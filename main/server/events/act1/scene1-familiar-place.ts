@@ -36,7 +36,7 @@ export class Act1Scene1FamiliarPlace extends RpgEvent {
 
       // --- 1. Spawn NPCs ---
       // Artun at (19, 11)
-      const callum = await player.map.createDynamicEvent({
+      const artun = await player.map.createDynamicEvent({
         x: 19,
         y: 11,
         event: class ArtunScene1 extends RpgEvent {
@@ -119,9 +119,9 @@ export class Act1Scene1FamiliarPlace extends RpgEvent {
       );
 
       // Remove Artun after the scene, or set him to patrol
-      if (callum) {
+      if (artun) {
         // For now, remove him. A more complex game might have him patrol.
-        player.map.removeEvent(callum.id);
+        player.map.removeEvent(artun.id);
       }
     }
   }

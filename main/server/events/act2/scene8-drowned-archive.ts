@@ -55,7 +55,7 @@ export default class DrownedArchiveEvent extends RpgEvent {
     );
 
     // 1. Spawn Artun
-    const callum = await map.createDynamicEvent({
+    const artun = await map.createDynamicEvent({
       x: 10,
       y: 5,
       event: 'npc_artun',
@@ -69,7 +69,7 @@ export default class DrownedArchiveEvent extends RpgEvent {
     await player.showText(
       'Artun: A library. Submerged, but intact. The books are gone — dissolved into memory — but the shelves, the architecture... this civilization valued knowledge above everything.',
       {
-        speaker: callum,
+        speaker: artun,
         wait: true,
         type: 'cutscene',
       },
@@ -153,7 +153,7 @@ export default class DrownedArchiveEvent extends RpgEvent {
     await player.showText(
       "Artun (shaken): Graduation. They didn't fail — they finished. They chose to become something larger than themselves.",
       {
-        speaker: callum,
+        speaker: artun,
         wait: true,
         type: 'cutscene',
       },
@@ -161,7 +161,7 @@ export default class DrownedArchiveEvent extends RpgEvent {
     await player.showText(
       "Artun: That changes everything I thought I knew about the Dissolved. They weren't victims. They were... completed.",
       {
-        speaker: callum,
+        speaker: artun,
         wait: true,
         type: 'cutscene',
       },
@@ -204,8 +204,8 @@ export default class DrownedArchiveEvent extends RpgEvent {
     );
 
     // Clean up Artun
-    if (callum) {
-      map.removeEvent(callum.id);
+    if (artun) {
+      map.removeEvent(artun.id);
     }
 
     // --- Scene End ---

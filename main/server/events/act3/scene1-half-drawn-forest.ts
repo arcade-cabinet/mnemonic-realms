@@ -45,7 +45,7 @@ export default class HalfDrawnForestEvent extends RpgEvent {
 
       // 2. Spawn NPCs
       // Hana at (15, 10)
-      const lira = await player.map.createDynamicEvent({
+      const hana = await player.map.createDynamicEvent({
         x: 15,
         y: 10,
         event: 'npc_hana', // Assuming 'npc_hana' is a defined RpgEvent class for Hana
@@ -57,7 +57,7 @@ export default class HalfDrawnForestEvent extends RpgEvent {
       });
 
       // Artun at (16, 10)
-      const callum = await player.map.createDynamicEvent({
+      const artun = await player.map.createDynamicEvent({
         x: 16,
         y: 10,
         event: 'npc_artun', // Assuming 'npc_artun' is a defined RpgEvent class for Artun

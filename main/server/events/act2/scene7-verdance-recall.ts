@@ -44,7 +44,7 @@ export default class VerdanceRecallEvent extends RpgEvent {
       this.event.setVisible(true); // Make the trigger visible/active
 
       // Spawn Artun and Vash
-      const callum = await player.map.createDynamicEvent({
+      const artun = await player.map.createDynamicEvent({
         x: 23,
         y: 33,
         event: 'npc_artun', // Assuming 'npc_artun' is a registered RpgEvent class
@@ -55,7 +55,7 @@ export default class VerdanceRecallEvent extends RpgEvent {
         },
       });
 
-      const wynn = await player.map.createDynamicEvent({
+      const vash = await player.map.createDynamicEvent({
         x: 27,
         y: 33,
         event: 'npc_vash', // Assuming 'npc_vash' is a registered RpgEvent class

@@ -37,7 +37,7 @@ export class MountainPassEvent extends RpgEvent {
       );
 
       // 2. Spawn Artun
-      const callum = await this.map.createDynamicEvent({
+      const artun = await this.map.createDynamicEvent({
         x: player.x - 1, // Spawn Artun slightly behind the player
         y: player.y,
         event: 'npc_artun', // Assuming 'npc_artun' is a registered RpgEvent class
@@ -51,7 +51,7 @@ export class MountainPassEvent extends RpgEvent {
       // Ensure Artun is an RpgEvent instance to call its methods
       if (callum instanceof RpgEvent) {
         // Artun moves to the pass entrance
-        await callum.moveRoutes([
+        await artun.moveRoutes([
           {
             x: player.x,
             y: player.y,

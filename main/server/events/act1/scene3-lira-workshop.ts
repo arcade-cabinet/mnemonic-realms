@@ -31,7 +31,7 @@ export class HanaWorkshopEvent extends RpgEvent {
 
   async triggerScene(player: RpgPlayer) {
     // 1. Spawn Hana NPC
-    const liraNpc = await player.map.createDynamicEvent({
+    const hanaNpc = await player.map.createDynamicEvent({
       x: 9,
       y: 19,
       id: 'npc_hana_scene3',
@@ -43,7 +43,7 @@ export class HanaWorkshopEvent extends RpgEvent {
     });
 
     // Ensure Hana is facing the player or a default direction
-    await liraNpc.changeDirection(Move.up); // Assuming player enters from bottom
+    await hanaNpc.changeDirection(Move.up); // Assuming player enters from bottom
 
     // 2. Play dialogue sequences
     await player.showText(
@@ -109,14 +109,14 @@ export class HanaWorkshopEvent extends RpgEvent {
 
     // After the scene, Hana can be set to follow the player or move to a new position.
     // For now, let's make her follow the player.
-    liraNpc.setPlayerFollow(player);
+    hanaNpc.setPlayerFollow(player);
     // Or if she should stay in the workshop but allow interaction:
-    // liraNpc.setGraphic('npc_hana'); // Ensure graphic is visible
-    // liraNpc.onAction = async (p) => { await p.showText('Hana: Ready when you are!'); };
+    // hanaNpc.setGraphic('npc_hana'); // Ensure graphic is visible
+    // hanaNpc.onAction = async (p) => { await p.showText('Hana: Ready when you are!'); };
   }
 }
 
-export default async function liraWorkshopSetup(map: RpgMap) {
+export default async function hanaWorkshopSetup(map: RpgMap) {
   // This function can be used to add the event to the map if it's not placed directly in Tiled.
   // For a map-enter trigger, it's often handled by the map's onReady hook or a global event manager.
   // If this event is placed in Tiled, this setup function might not be strictly necessary,

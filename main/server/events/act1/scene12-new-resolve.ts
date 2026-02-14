@@ -50,7 +50,7 @@ export class Act1Scene12NewResolve extends RpgEvent {
     }
 
     // 1. Spawn Artun
-    const callum = await player.map.createDynamicEvent({
+    const artun = await player.map.createDynamicEvent({
       x: 19,
       y: 11,
       event: Presets.Event, // Use a basic event preset
@@ -79,7 +79,7 @@ export class Act1Scene12NewResolve extends RpgEvent {
     );
 
     // Artun walks to his desk (assume desk is at 18, 11)
-    await callum.moveRoutes([{ x: 18, y: 11, time: 500 }]);
+    await artun.moveRoutes([{ x: 18, y: 11, time: 500 }]);
 
     await player.showText(
       "I've been writing these for years. Letters about the Frontier — what I've learned from travelers, from the Dissolved records, from my own theories. Each one covers a different zone. Read them when you get there.",
@@ -120,8 +120,8 @@ export class Act1Scene12NewResolve extends RpgEvent {
     );
 
     // Artun moves back to original position or disappears
-    await callum.moveRoutes([{ x: 19, y: 11, time: 500 }]);
-    await callum.remove(); // Remove dynamic event
+    await artun.moveRoutes([{ x: 19, y: 11, time: 500 }]);
+    await artun.remove(); // Remove dynamic event
 
     // 4. Quest Changes: MQ-04 → complete
     await player.updateQuest('MQ-04', 'complete');

@@ -58,7 +58,7 @@ export class Act2Scene18IntoSketch extends RpgEvent {
 
     // 3. Spawn NPCs at appropriate positions on the new map
     // NPCs are created as dynamic events on the player's current map ('half-drawn-forest')
-    const callum = await player.createDynamicEvent(RpgEvent, {
+    const artun = await player.createDynamicEvent(RpgEvent, {
       eventId: 'callum_sketch_entry_npc', // Unique ID for the dynamic NPC event
       x: 18, // Position relative to player's landing spot
       y: 20,
@@ -66,7 +66,7 @@ export class Act2Scene18IntoSketch extends RpgEvent {
       name: 'Artun',
     });
 
-    const lira = await player.createDynamicEvent(RpgEvent, {
+    const hana = await player.createDynamicEvent(RpgEvent, {
       eventId: 'lira_sketch_entry_npc', // Unique ID for the dynamic NPC event
       x: 22, // Position relative to player's landing spot
       y: 20,

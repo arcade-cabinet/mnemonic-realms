@@ -55,10 +55,10 @@ export default class TheDeepestMemoryEvent extends RpgEvent {
 
     // For this scene, Hana and Artun are assumed to be with the player.
     // If they need to be placed at specific coordinates for a cutscene:
-    const lira = player.getOtherPlayerById('npc_hana');
-    const callum = player.getOtherPlayerById('npc_artun');
+    const hana = player.getOtherPlayerById('npc_hana');
+    const artun = player.getOtherPlayerById('npc_artun');
 
-    if (!lira) {
+    if (!hana) {
       // Create Hana if not already present (e.g., if she's a dynamic follower)
       // For a scene, it's more likely they are already part of the party.
       // This is a placeholder if they need to be spawned as independent NPCs.
@@ -75,11 +75,11 @@ export default class TheDeepestMemoryEvent extends RpgEvent {
       });
     } else {
       // Move Hana to the starting position for the scene
-      await lira.teleport(map.id, 10, 3);
-      lira.setDirection(2); // Face down
+      await hana.teleport(map.id, 10, 3);
+      hana.setDirection(2); // Face down
     }
 
-    if (!callum) {
+    if (!artun) {
       map.createDynamicEvent({
         x: 11,
         y: 3,
@@ -93,8 +93,8 @@ export default class TheDeepestMemoryEvent extends RpgEvent {
       });
     } else {
       // Move Artun to the starting position for the scene
-      await callum.teleport(map.id, 11, 3);
-      callum.setDirection(2); // Face down
+      await artun.teleport(map.id, 11, 3);
+      artun.setDirection(2); // Face down
     }
 
     // --- Narrative Sequence: Room 1: The Surface Memory ---
@@ -117,8 +117,8 @@ export default class TheDeepestMemoryEvent extends RpgEvent {
     // Player moves to a new area, NPCs follow or are moved.
     // For simplicity, we'll just trigger the dialogue here.
     await player.teleport(map.id, 15, 10); // Simulate moving to Room 3
-    if (lira) await lira.teleport(map.id, 14, 10);
-    if (callum) await callum.teleport(map.id, 16, 10);
+    if (hana) await hana.teleport(map.id, 14, 10);
+    if (artun) await artun.teleport(map.id, 16, 10);
 
     await player.showText(
       'The rooms have become more abstract. The walls show geological cross-sections — layers of memory stacked like sediment. Each layer is a different civilization, a different era. The player walks through compressed time.',
@@ -148,8 +148,8 @@ export default class TheDeepestMemoryEvent extends RpgEvent {
 
     // --- Narrative Sequence: Room 5: The Deep Memory — The First Question ---
     await player.teleport(map.id, 10, 15); // Simulate moving to Room 5
-    if (lira) await lira.teleport(map.id, 9, 15);
-    if (callum) await callum.teleport(map.id, 11, 15);
+    if (hana) await hana.teleport(map.id, 9, 15);
+    if (artun) await artun.teleport(map.id, 11, 15);
 
     await player.showText(
       'The room is vast and dark, except for a single point of amber light at its center. The light is warm and steady — not flickering, not pulsing. Just present. Approaching it, the player hears a voice — not from a speaker, but from the light itself.',
@@ -217,8 +217,8 @@ export default class TheDeepestMemoryEvent extends RpgEvent {
 
     // --- Transition to Boss Room: Room 8: The First Dreamer ---
     await player.teleport(map.id, 10, 21); // Move player to boss room entrance
-    if (lira) await lira.teleport(map.id, 9, 21);
-    if (callum) await callum.teleport(map.id, 11, 21);
+    if (hana) await hana.teleport(map.id, 9, 21);
+    if (artun) await artun.teleport(map.id, 11, 21);
 
     await player.showText(
       'The final room. An immense cavern where the ceiling is invisible and the floor is a mosaic of every biome in the game, layered on top of each other. At the center: the First Dreamer — the oldest dissolved memory given temporary form.',

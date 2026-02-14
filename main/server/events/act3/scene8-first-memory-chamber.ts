@@ -79,7 +79,7 @@ export default class FirstMemoryChamberEvent extends RpgEvent {
     // --- NPC Spawns ---
     const map = player.map as RpgMap;
 
-    const lira = await map.createDynamicEvent({
+    const hana = await map.createDynamicEvent({
       name: 'npc_hana',
       x: 8,
       y: 10,
@@ -89,7 +89,7 @@ export default class FirstMemoryChamberEvent extends RpgEvent {
       // No onAction for Hana here, her dialogue is part of the main sequence
     });
 
-    const callum = await map.createDynamicEvent({
+    const artun = await map.createDynamicEvent({
       name: 'npc_artun',
       x: 12,
       y: 10,
@@ -275,8 +275,8 @@ export default class FirstMemoryChamberEvent extends RpgEvent {
     await player.showText("Quest 'The World's Bloom' activated!", { type: 'quest' });
 
     // Clean up dynamic NPCs
-    await map.removeEvent(lira.id);
-    await map.removeEvent(callum.id);
+    await map.removeEvent(hana.id);
+    await map.removeEvent(artun.id);
     await map.removeEvent(curator.id);
 
     // End of scene, potentially transition to next phase or map

@@ -47,7 +47,7 @@ export class RidgewalkerCampEvent extends RpgEvent {
       // For this scene, Artun is assumed to be with the player, then moves to a camp spot.
       // If Artun is a persistent NPC, he might be a static event on the map, and we just move him.
       // For dynamic placement:
-      const callum = await player.map.createDynamicEvent({
+      const artun = await player.map.createDynamicEvent({
         x: 17,
         y: 24,
         graphic: 'npc_artun',
@@ -62,7 +62,7 @@ export class RidgewalkerCampEvent extends RpgEvent {
       });
 
       // Create Nel
-      const petra = await player.map.createDynamicEvent({
+      const nel = await player.map.createDynamicEvent({
         x: 14,
         y: 24, // Nel's initial position
         graphic: 'npc_nel',
@@ -118,7 +118,7 @@ export class RidgewalkerCampEvent extends RpgEvent {
       });
 
       // Nel approaches and dialogue
-      await petra.moveRoutes([
+      await nel.moveRoutes([
         { x: player.pos.x, y: player.pos.y - 1, time: 500 }, // Move towards player
       ]);
       await player.showText(

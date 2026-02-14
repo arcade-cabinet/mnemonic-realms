@@ -110,9 +110,7 @@ export class Act2Scene17CuratorEndgame extends RpgEvent {
       await player.showText(
         'Artun: "Player, Hana, I\'ve gathered you here because the situation has become dire."',
       );
-      await player.showText(
-        'Hana: "What is it, Artun? Your tone suggests something truly grave."',
-      );
+      await player.showText('Hana: "What is it, Artun? Your tone suggests something truly grave."');
       await player.showText('Artun: "The Curator... he has found it. The First Memory."');
       await player.showText('Player: "The First Memory? But I thought it was lost, a legend..."');
       await player.showText(

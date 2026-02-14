@@ -32,8 +32,8 @@ export default class SunridgeSceneEvent extends RpgEvent {
 
   async startScene(player: RpgPlayer) {
     // Ensure Hana is present for the scene
-    const lira = player.map.getEventByName('npc_hana');
-    if (!lira) {
+    const hana = player.map.getEventByName('npc_hana');
+    if (!hana) {
       player.map.createDynamicEvent({
         name: 'npc_hana',
         x: 20, // Hana's initial position for the scene

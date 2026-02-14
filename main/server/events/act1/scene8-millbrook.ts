@@ -63,7 +63,7 @@ export class MillbrookSceneEvent extends RpgEvent {
     // Based on "Millbrook Town (15, 15)" and "Hana: Millbrook. More people here..."
     // Let's place her near the player's entry point or a central location.
     // Assuming player enters from (39, 20) from Village Hub, Hana could be at (35, 20) or (15, 15)
-    const lira = await player.map.createDynamicEvent({
+    const hana = await player.map.createDynamicEvent({
       x: 15, // Central Millbrook location
       y: 15,
       event: HanaMillbrookEvent,

@@ -43,7 +43,7 @@ export default class BreakingStagnationEvent extends RpgEvent {
       this.hasTriggered = true; // Ensure it only fires once
 
       // 1. Spawn Hana
-      const lira = await this.map.createDynamicEvent({
+      const hana = await this.map.createDynamicEvent({
         x: 34,
         y: 29,
         event: 'npc_hana', // Assuming 'npc_hana' is a registered event class
@@ -129,8 +129,8 @@ export default class BreakingStagnationEvent extends RpgEvent {
       player.advanceQuest('MQ-04', 5); // Advance MQ-04 to objective 5
 
       // Remove Hana NPC after dialogue
-      if (lira) {
-        this.map.removeEvent(lira.id);
+      if (hana) {
+        this.map.removeEvent(hana.id);
       }
 
       // Mark the stagnation zone as broken in player state or map state

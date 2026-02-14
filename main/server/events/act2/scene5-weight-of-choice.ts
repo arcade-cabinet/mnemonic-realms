@@ -53,7 +53,7 @@ export class TheWeightOfChoiceEvent extends RpgEvent {
     // Based on the event placement table, a good spot near the amphitheater
     // could be (25, 20) or similar, relative to the recall vision (25,25).
     // Let's place him at (25, 20) looking south.
-    const callum = await player.map.createDynamicEvent({
+    const artun = await player.map.createDynamicEvent({
       x: 25,
       y: 20,
       event: 'npc_artun', // Assuming 'npc_artun' is a registered NPC event class
@@ -62,7 +62,7 @@ export class TheWeightOfChoiceEvent extends RpgEvent {
     });
 
     // Ensure Artun is visible
-    callum.setGraphic('npc_artun'); // Set the graphic for Artun
+    artun.setGraphic('npc_artun'); // Set the graphic for Artun
 
     // 2. Play dialogue sequences
     await player.showText(
@@ -106,7 +106,7 @@ export class TheWeightOfChoiceEvent extends RpgEvent {
     );
 
     // Artun turns to the player
-    await callum.changeDirection(4); // Assuming 4 is facing towards the player (e.g., left if player is right)
+    await artun.changeDirection(4); // Assuming 4 is facing towards the player (e.g., left if player is right)
     await player.showText(
       "But I also know this: a world that can't change is a world that can't grow. And a god that stays dormant helps no one.",
       {
@@ -131,7 +131,7 @@ export class TheWeightOfChoiceEvent extends RpgEvent {
     player.setVariable('ACT2_SCENE5_COMPLETE', true);
 
     // Remove Artun after the dialogue
-    await callum.removeEvent();
+    await artun.removeEvent();
     this.removeEvent(); // Remove the scene trigger event itself
   }
 }
