@@ -182,20 +182,20 @@ const COMBAT_SFX: Record<string, SfxId> = {
 };
 
 // Import DDL data for skill names and SP costs
-import clericBase from '../../../gen/ddl/skills/cleric-base.json';
-import clericSubclass from '../../../gen/ddl/skills/cleric-subclass.json';
-import knightBase from '../../../gen/ddl/skills/knight-base.json';
-import knightSubclass from '../../../gen/ddl/skills/knight-subclass.json';
-import mageBase from '../../../gen/ddl/skills/mage-base.json';
-import mageSubclass from '../../../gen/ddl/skills/mage-subclass.json';
-import rogueBase from '../../../gen/ddl/skills/rogue-base.json';
-import rogueSubclass from '../../../gen/ddl/skills/rogue-subclass.json';
+import clericBase from '../../gen/ddl/skills/cleric-base.json';
+import clericSubclass from '../../gen/ddl/skills/cleric-subclass.json';
+import knightBase from '../../gen/ddl/skills/knight-base.json';
+import knightSubclass from '../../gen/ddl/skills/knight-subclass.json';
+import mageBase from '../../gen/ddl/skills/mage-base.json';
+import mageSubclass from '../../gen/ddl/skills/mage-subclass.json';
+import rogueBase from '../../gen/ddl/skills/rogue-base.json';
+import rogueSubclass from '../../gen/ddl/skills/rogue-subclass.json';
 
 // Import consumable DDL for item names
-import recoveryItems from '../../../gen/ddl/consumables/recovery.json';
-import specialItems from '../../../gen/ddl/consumables/specials.json';
-import buffItems from '../../../gen/ddl/consumables/buffs.json';
-import statusCureItems from '../../../gen/ddl/consumables/status-cure.json';
+import recoveryItems from '../../gen/ddl/consumables/recovery.json';
+import specialItems from '../../gen/ddl/consumables/specials.json';
+import buffItems from '../../gen/ddl/consumables/buffs.json';
+import statusCureItems from '../../gen/ddl/consumables/status-cure.json';
 
 // ── Client-side lookup maps ─────────────────────────
 
