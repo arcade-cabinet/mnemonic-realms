@@ -177,10 +177,12 @@ function calcDamage(attackerAtk: number, defenderDef: number): number {
 /**
  * Start a combat encounter. Creates enemy instances from DDL IDs,
  * builds turn order, and stores the initial combat state.
- * Returns null if any enemy ID is unknown or combat is already active.
+ * Returns null if any enemy ID is unknown, combat is already active,
+ * or the enemy list is empty.
  */
 export function startCombat(player: RpgPlayer, enemyIds: string[]): CombatState | null {
   if (getCombatState(player)) return null;
+  if (enemyIds.length === 0) return null;
 
   const enemies: EnemyInstance[] = [];
   for (const id of enemyIds) {
@@ -203,6 +205,11 @@ export function startCombat(player: RpgPlayer, enemyIds: string[]): CombatState 
 
   // Advance to the first turn (might be enemy if they have higher AGI)
   advanceToNextAlive(state);
+
+  // Set initial phase based on who actually goes first
+  const first = state.turnOrder[state.turnIndex];
+  state.phase = first.kind === 'player' ? CombatPhase.PlayerTurn : CombatPhase.EnemyTurn;
+
   saveCombatState(player, state);
   return state;
 }
@@ -216,6 +223,12 @@ export function processTurn(player: RpgPlayer, action: CombatAction): CombatStat
   const state = getCombatState(player);
   if (!state) return null;
 
+  // Ignore actions if combat is already over
+  if (isCombatOver(state)) {
+    saveCombatState(player, state);
+    return state;
+  }
+
   const current = state.turnOrder[state.turnIndex];
 
   if (current.kind === 'player') {
@@ -223,10 +236,15 @@ export function processTurn(player: RpgPlayer, action: CombatAction): CombatStat
   }
 
   // After the player acts, advance through enemy turns automatically
-  advanceTurn(state);
+  advanceTurn(player, state);
   while (state.phase === CombatPhase.EnemyTurn) {
     resolveEnemyTurn(player, state);
-    advanceTurn(state);
+    // Check if player died from this enemy attack
+    if (player.hp <= 0) {
+      state.phase = CombatPhase.Defeat;
+      break;
+    }
+    advanceTurn(player, state);
   }
 
   saveCombatState(player, state);
@@ -358,18 +376,18 @@ function resolveEnemyTurn(player: RpgPlayer, state: CombatState): void {
 // Turn management
 // ---------------------------------------------------------------------------
 
-function advanceTurn(state: CombatState): void {
-  if (
-    state.phase === CombatPhase.Victory ||
-    state.phase === CombatPhase.Defeat ||
-    state.phase === CombatPhase.Fled
-  ) {
+function advanceTurn(player: RpgPlayer, state: CombatState): void {
+  if (isCombatOver(state)) {
     return;
   }
 
   // Check end conditions
   if (allEnemiesDead(state.enemies)) {
     state.phase = CombatPhase.Victory;
+    return;
+  }
+  if (player.hp <= 0) {
+    state.phase = CombatPhase.Defeat;
     return;
   }
 
@@ -389,22 +407,27 @@ function advanceTurn(state: CombatState): void {
 }
 
 /**
- * Skip dead enemies in the turn order.
+ * Skip dead enemies in the turn order. Uses iterative wrapping with a
+ * safety limit to prevent infinite loops if all combatants are dead.
  */
 function advanceToNextAlive(state: CombatState): void {
-  while (state.turnIndex < state.turnOrder.length) {
-    const entry = state.turnOrder[state.turnIndex];
-    if (entry.kind === 'player') break;
-    if (entry.enemyIndex !== undefined && state.enemies[entry.enemyIndex].hp > 0) break;
-    state.turnIndex++;
-  }
+  // Safety limit: at most 2 round wraps (if we wrap twice, something is wrong)
+  let wraps = 0;
+  const maxWraps = 2;
 
-  if (state.turnIndex >= state.turnOrder.length) {
+  while (wraps < maxWraps) {
+    while (state.turnIndex < state.turnOrder.length) {
+      const entry = state.turnOrder[state.turnIndex];
+      if (entry.kind === 'player') return;
+      if (entry.enemyIndex !== undefined && state.enemies[entry.enemyIndex].hp > 0) return;
+      state.turnIndex++;
+    }
+
     // Wrap to new round
     state.round++;
     state.turnOrder = rebuildTurnOrder(state);
     state.turnIndex = 0;
-    advanceToNextAlive(state);
+    wraps++;
   }
 }
 
@@ -413,6 +436,14 @@ function rebuildTurnOrder(state: CombatState): TurnEntry[] {
   const playerEntry = state.turnOrder.find((e) => e.kind === 'player');
   const playerAgi = playerEntry?.agi ?? 10;
   return buildTurnOrder(playerAgi, state.enemies);
+}
+
+function isCombatOver(state: CombatState): boolean {
+  return (
+    state.phase === CombatPhase.Victory ||
+    state.phase === CombatPhase.Defeat ||
+    state.phase === CombatPhase.Fled
+  );
 }
 
 function allEnemiesDead(enemies: EnemyInstance[]): boolean {
