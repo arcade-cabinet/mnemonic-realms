@@ -1,4 +1,5 @@
 import { EventData, Move, RpgCommonEvent, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { increaseVibrancy } from '../../systems/vibrancy';
 
 @EventData({
   name: 'act2-scene6-moral-dilemma-garden',
@@ -139,7 +140,7 @@ export default class MoralDilemmaGardenEvent extends RpgEvent {
           { speaker: 'SYSTEM' },
         );
         // Apply vibrancy change
-        player.addVibrancy('shimmer-marsh', 5);
+        increaseVibrancy(player, 'shimmer-marsh', 5);
         // Artun's reaction
         await player.showText(
           "It was the right thing. Growth is always the right thing. ...Isn't it?",

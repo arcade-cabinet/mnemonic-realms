@@ -1,5 +1,6 @@
 import { Quest, type RpgPlayer, RpgServer, RpgWorld } from '@rpgjs/server';
 import { type Emotion, type FragmentPotency, GodId, ZoneId } from '../database/enums'; // Assuming these enums exist
+import { increaseVibrancy, type VibrancyZone } from '../systems/vibrancy';
 
 export interface RecallGodQuestVariables {
   0: boolean; // Discovered shrine
@@ -196,25 +197,25 @@ export default class RecallTheFirstGodQuest extends Quest<RecallGodQuestVariable
 
     // Dynamic Rewards
     // 1. Zone vibrancy +15 (specific to the god's zone)
-    let zoneId: ZoneId;
+    let vibrancyZone: VibrancyZone;
     switch (godId) {
       case GodId.Verdance:
-        zoneId = ZoneId.ShimmerMarsh;
+        vibrancyZone = 'shimmer-marsh';
         break;
       case GodId.Luminos:
-        zoneId = ZoneId.Flickerveil;
+        vibrancyZone = 'flickerveil';
         break;
       case GodId.Peregrine:
-        zoneId = ZoneId.HollowRidge;
+        vibrancyZone = 'hollow-ridge';
         break;
       case GodId.Resonance:
-        zoneId = ZoneId.ResonanceFields;
+        vibrancyZone = 'resonance-fields';
         break;
       default:
-        zoneId = ZoneId.ShimmerMarsh; // Fallback
+        vibrancyZone = 'shimmer-marsh'; // Fallback
     }
-    RpgWorld.getZone(zoneId)?.addVibrancy(15);
-    player.showNotification(`Vibrancy in ${zoneId} increased by +15!`);
+    increaseVibrancy(player, vibrancyZone, 15);
+    player.showNotification(`Vibrancy in ${vibrancyZone} increased by +15!`);
 
     // 2. Subclass unlock (first recall only)
     if (recalledGods.length === 1) {

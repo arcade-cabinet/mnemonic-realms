@@ -1,6 +1,9 @@
 import type { RpgPlayer } from '@rpgjs/server';
+import { buyItem, getShopInventory } from '../systems/shop';
 
 export default async function (player: RpgPlayer) {
+  const shopId = 'village-general';
+
   // Khali's initial greeting, offering to browse wares
   await player.showText('Take a look! Potions, antidotes, and the odd curiosity.', {
     speaker: 'Khali',
@@ -17,20 +20,35 @@ export default async function (player: RpgPlayer) {
 
     switch (choice.value) {
       case 'browse': {
-        // Khali's line when the player chooses to browse/buy
-        await player.showText("Excellent choice! That'll serve you well out there.", {
-          speaker: 'Khali',
-        });
+        const inventory = getShopInventory(shopId);
+        if (!inventory || inventory.length === 0) {
+          await player.showText("Sorry, I'm all out of stock at the moment!", {
+            speaker: 'Khali',
+          });
+          break;
+        }
 
-        const playerGold = player.getVariable('gold');
-        const itemCost = 500;
+        // Build shop menu choices
+        const shopChoices = inventory.map((item) => ({
+          text: `${item.name} - ${item.price}g`,
+          value: item.itemId,
+        }));
+        shopChoices.push({ text: 'Back', value: 'back' });
 
-        if (playerGold < itemCost) {
-          // Khali's line for insufficient gold
-          await player.showText(
-            "Ah, not quite enough gold for that one. Come back when your pockets are heavier — I'll hold it for you.",
-            { speaker: 'Khali' },
-          );
+        const itemChoice = await player.showChoices('What would you like to buy?', shopChoices);
+
+        if (itemChoice.value !== 'back') {
+          const result = buyItem(player, shopId, itemChoice.value, 1);
+          if (result.success) {
+            await player.showText("Excellent choice! That'll serve you well out there.", {
+              speaker: 'Khali',
+            });
+          } else {
+            await player.showText(
+              "Ah, not quite enough gold for that one. Come back when your pockets are heavier — I'll hold it for you.",
+              { speaker: 'Khali' },
+            );
+          }
         }
         break;
       }
@@ -40,6 +58,7 @@ export default async function (player: RpgPlayer) {
         await player.showText('I can take that off your hands. Fair price, always.', {
           speaker: 'Khali',
         });
+        // TODO: Build sell menu from player inventory
         break;
 
       case 'leave':

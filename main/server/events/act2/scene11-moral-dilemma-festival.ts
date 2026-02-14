@@ -1,4 +1,5 @@
 import { EventData, Move, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { increaseVibrancy } from '../../systems/vibrancy';
 
 // --- Dynamic NPC Event Definitions ---
 
@@ -255,7 +256,7 @@ export default class Act2Scene11MoralDilemmaFestivalEvent extends RpgEvent {
     // --- Process Choice ---
     if (choice.res === 'break-festival') {
       // Break the crystal
-      player.addVibrancy('resonance-fields', 8); // Vibrancy +8
+      increaseVibrancy(player, 'resonance-fields', 8); // Vibrancy +8
       await player.showText(
         'The crystal shatters! The festival-goers wake, confused and disoriented. The child cries, the dancers are strangers, but they are alive and free.',
         {

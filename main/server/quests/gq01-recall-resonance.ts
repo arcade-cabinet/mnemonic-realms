@@ -6,6 +6,7 @@ import {
   type RpgPlayer,
   RpgSceneMap,
 } from '@rpgjs/server';
+import { increaseVibrancy } from '../../systems/vibrancy';
 
 interface Fragment {
   id: string;
@@ -241,7 +242,7 @@ export class RecallResonanceQuest extends Quest {
   }
 
   async onComplete(player: RpgPlayer) {
-    player.addVibrancy('Resonance Fields', 15);
+    increaseVibrancy(player, 'resonance-fields', 15);
     await player.showText('Resonance Fields vibrancy increased by 15!');
 
     // Check if this is the first god recall to unlock subclass branch

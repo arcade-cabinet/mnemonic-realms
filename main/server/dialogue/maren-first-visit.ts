@@ -1,4 +1,5 @@
 import type { RpgPlayer } from '@rpgjs/server';
+import marenShop from './maren-shop';
 
 export default async function (player: RpgPlayer) {
   const KHALI_FIRST_VISIT_FLAG = 'ACT_I_KHALI_FIRST_VISIT_DONE';
@@ -7,8 +8,8 @@ export default async function (player: RpgPlayer) {
   if (player.getVariable(KHALI_FIRST_VISIT_FLAG)) {
     // If it's not the first visit, subsequent interactions should typically
     // just open the shop or play a different ambient line.
-    // For this dialogue file, we'll open the shop directly.
-    await player.openShop('general-shop');
+    // For this dialogue file, we'll delegate to the main shop dialogue.
+    await marenShop(player);
     return;
   }
 
@@ -26,5 +27,5 @@ export default async function (player: RpgPlayer) {
   player.setVariable(KHALI_FIRST_VISIT_FLAG, true);
 
   // After the introduction, open the shop
-  await player.openShop('general-shop');
+  await marenShop(player);
 }
