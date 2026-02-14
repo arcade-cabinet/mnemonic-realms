@@ -12,4 +12,6 @@ import { Item } from '@rpgjs/database';
   hpValue: 0, // This item's HP restoration is part of its special auto-revive effect, not a direct HP restoration on use.
   consumable: true,
 })
-export default class PhoenixFeather {}
+export default class PhoenixFeather {
+  // Item properties configured via @Item decorator
+}

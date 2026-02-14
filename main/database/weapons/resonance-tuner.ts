@@ -15,4 +15,6 @@ import { Weapon } from '@rpgjs/database';
     int: { value: 27 },
   },
 })
-export default class ResonanceTuner {}
+export default class ResonanceTuner {
+  // Weapon stats configured via @Weapon decorator
+}

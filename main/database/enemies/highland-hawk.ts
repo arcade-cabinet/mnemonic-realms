@@ -1,20 +1,6 @@
-import { Enemy, Item } from '@rpgjs/database';
-
-// In a full project, these item classes would typically be in their own files
-// and imported. For a single-file output, they are defined here.
-@Item({
-  id: 'C-SC-02',
-  name: 'Haste Charm',
-  description: 'A charm that slightly increases agility.',
-})
-export class C_SC_02 {}
-
-@Item({
-  id: 'C-SP-05',
-  name: 'Smoke Bomb',
-  description: 'Creates a cloud of smoke, allowing for escape.',
-})
-export class C_SP_05 {}
+import { Enemy } from '@rpgjs/database';
+import HasteCharm from '../items/haste-charm';
+import SmokeBomb from '../items/smoke-bomb';
 
 @Enemy({
   id: 'E-SL-07',
@@ -32,8 +18,8 @@ export class C_SP_05 {}
     exp: 40,
     gold: 18,
     items: [
-      { nb: 1, item: C_SC_02, chance: 0.1 }, // 10% chance for Haste Charm
-      { nb: 1, item: C_SP_05, chance: 0.15 }, // 15% chance for Smoke Bomb
+      { nb: 1, item: HasteCharm, chance: 0.1 }, // 10% chance for Haste Charm
+      { nb: 1, item: SmokeBomb, chance: 0.15 }, // 15% chance for Smoke Bomb
     ],
   },
 })

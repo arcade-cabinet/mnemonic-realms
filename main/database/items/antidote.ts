@@ -14,4 +14,6 @@ import { Item } from '@rpgjs/database';
   consumable: true,
   // removeStates: [Poison], // Uncomment and import Poison state when available
 })
-export default class Antidote {}
+export default class Antidote {
+  // Item properties configured via @Item decorator
+}

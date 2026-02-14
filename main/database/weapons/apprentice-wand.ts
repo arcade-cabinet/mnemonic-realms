@@ -13,4 +13,6 @@ import { Weapon } from '@rpgjs/database';
   },
   // Price is omitted as it's not purchasable (0g)
 })
-export default class ApprenticeWand {}
+export default class ApprenticeWand {
+  // Weapon stats configured via @Weapon decorator
+}

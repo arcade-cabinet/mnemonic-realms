@@ -15,4 +15,6 @@ import { Item } from '@rpgjs/database';
   // Note: The effect "Deal 50 fixed light damage to one Preserver enemy" is a custom combat effect
   // and would typically be implemented in a custom item use handler or skill, not directly via @Item decorator properties.
 })
-export default class CrystalDust {}
+export default class CrystalDust {
+  // Item properties configured via @Item decorator
+}

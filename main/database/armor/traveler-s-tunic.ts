@@ -8,4 +8,6 @@ import { Armor } from '@rpgjs/database';
   pdef: 3,
   // price: 0 (omit or undefined for not purchasable)
 })
-export default class TravelersTunic {}
+export default class TravelersTunic {
+  // Stat modifiers applied via @Armor decorator
+}

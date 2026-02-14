@@ -10,4 +10,6 @@ import { Weapon } from '@rpgjs/database';
   description: 'A blade that grows stronger with each fragment of the past recovered.',
   atk: 50,
 })
-export default class MemorysEdge {}
+export default class MemorysEdge {
+  // Weapon stats configured via @Weapon decorator
+}

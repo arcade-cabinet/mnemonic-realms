@@ -9,4 +9,6 @@ import { Armor } from '@rpgjs/database';
   price: 1000,
   pdef: 22,
 })
-export default class LuminaryVestment {}
+export default class LuminaryVestment {
+  // Stat modifiers applied via @Armor decorator
+}

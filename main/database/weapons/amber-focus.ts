@@ -14,4 +14,6 @@ import { Weapon } from '@rpgjs/database';
     int: { value: 9 },
   },
 })
-export default class AmberFocus {}
+export default class AmberFocus {
+  // Weapon stats configured via @Weapon decorator
+}

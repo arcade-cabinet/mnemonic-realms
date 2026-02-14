@@ -9,4 +9,6 @@ import { Armor } from '@rpgjs/database';
   price: 800,
   pdef: 25,
 })
-export default class FrontierGuard {}
+export default class FrontierGuard {
+  // Stat modifiers applied via @Armor decorator
+}

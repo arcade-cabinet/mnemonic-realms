@@ -14,4 +14,6 @@ import { Weapon } from '@rpgjs/database';
   },
   // price is omitted as it is not purchasable (price: 0)
 })
-export default class EuphoricWand {}
+export default class EuphoricWand {
+  // Weapon stats configured via @Weapon decorator
+}

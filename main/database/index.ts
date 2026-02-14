@@ -1,4 +1,4 @@
-/** Auto-generated database barrel export. All 152 RPG-JS database entries. */
+/** Auto-generated database barrel export. All 153 RPG-JS database entries. */
 
 import ChainMail from './armor/chain-mail';
 import ForestWeave from './armor/forest-weave';

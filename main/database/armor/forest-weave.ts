@@ -9,4 +9,6 @@ import { Armor } from '@rpgjs/database';
   price: 250,
   pdef: 12,
 })
-export default class ForestWeave {}
+export default class ForestWeave {
+  // Stat modifiers applied via @Armor decorator
+}

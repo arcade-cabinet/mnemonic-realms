@@ -22,4 +22,6 @@ export class DefBuffState extends State {}
   consumable: true,
   addStates: [DefBuffState],
 })
-export default class AegisSeed {}
+export default class AegisSeed {
+  // Item properties configured via @Item decorator
+}

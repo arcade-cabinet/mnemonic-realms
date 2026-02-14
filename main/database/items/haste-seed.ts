@@ -17,4 +17,6 @@ import { Item } from '@rpgjs/database';
   // The "for 3 turns" duration typically requires applying a State.
   // This item's paramsModifier applies the stat change directly.
 })
-export default class HasteSeed {}
+export default class HasteSeed {
+  // Item properties configured via @Item decorator
+}

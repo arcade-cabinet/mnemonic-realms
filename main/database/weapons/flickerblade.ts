@@ -11,4 +11,6 @@ import { Weapon } from '@rpgjs/database';
   price: 550,
   atk: 25,
 })
-export default class Flickerblade {}
+export default class Flickerblade {
+  // Weapon stats configured via @Weapon decorator
+}

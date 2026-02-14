@@ -11,4 +11,6 @@ import { Weapon } from '@rpgjs/database';
   price: 250,
   atk: 16,
 })
-export default class OathkeepersEdge {}
+export default class OathkeepersEdge {
+  // Weapon stats configured via @Weapon decorator
+}

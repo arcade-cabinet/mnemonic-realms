@@ -12,4 +12,6 @@ import { Weapon } from '@rpgjs/database';
   price: 600,
   atk: 28,
 })
-export default class RidgewalkerClaymore {}
+export default class RidgewalkerClaymore {
+  // Weapon stats configured via @Weapon decorator
+}

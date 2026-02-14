@@ -16,4 +16,6 @@ import { Item } from '@rpgjs/database';
   //          Implementing percentage-based SP restoration also requires custom game logic.
   // The "entire party" effect also requires custom game logic beyond the standard item decorator properties.
 })
-export default class DissolvedEssence {}
+export default class DissolvedEssence {
+  // Item properties configured via @Item decorator
+}

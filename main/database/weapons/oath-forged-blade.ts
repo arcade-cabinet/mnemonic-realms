@@ -12,4 +12,6 @@ import { Weapon } from '@rpgjs/database';
   atk: 42,
   // price is omitted as it's not purchasable (0g or undefined)
 })
-export default class OathForgedBlade {}
+export default class OathForgedBlade {
+  // Weapon stats configured via @Weapon decorator
+}

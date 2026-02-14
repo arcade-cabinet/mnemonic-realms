@@ -11,4 +11,6 @@ import { Weapon } from '@rpgjs/database';
   atk: 1,
   paramsModifier: { int: { value: 4 } },
 })
-export default class WoodenStaff {}
+export default class WoodenStaff {
+  // Weapon stats configured via @Weapon decorator
+}

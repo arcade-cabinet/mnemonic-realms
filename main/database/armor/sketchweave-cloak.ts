@@ -9,4 +9,6 @@ import { Armor } from '@rpgjs/database';
     'A cloak woven from the fabric of half-drawn realities, granting enhanced agility and evasion.',
   pdef: 24,
 })
-export default class SketchweaveCloak {}
+export default class SketchweaveCloak {
+  // Stat modifiers applied via @Armor decorator
+}

@@ -12,4 +12,6 @@ import { Item } from '@rpgjs/database';
   price: 300,
   consumable: true,
 })
-export default class BroadcastAmplifier {}
+export default class BroadcastAmplifier {
+  // Item properties configured via @Item decorator
+}

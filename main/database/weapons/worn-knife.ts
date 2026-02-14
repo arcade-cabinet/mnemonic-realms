@@ -9,4 +9,6 @@ import { Weapon } from '@rpgjs/database';
   description: 'A simple, well-used knife. Still sharp enough for a beginner.',
   atk: 4,
 })
-export default class WornKnife {}
+export default class WornKnife {
+  // Weapon stats configured via @Weapon decorator
+}

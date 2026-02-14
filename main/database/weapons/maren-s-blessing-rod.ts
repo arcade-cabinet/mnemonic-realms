@@ -14,4 +14,6 @@ import { Weapon } from '@rpgjs/database';
     int: { value: 8 },
   },
 })
-export default class MarensBlessingRod {}
+export default class MarensBlessingRod {
+  // Weapon stats configured via @Weapon decorator
+}

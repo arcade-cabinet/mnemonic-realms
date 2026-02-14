@@ -12,4 +12,6 @@ import { Weapon } from '@rpgjs/database';
   price: 900,
   atk: 35,
 })
-export default class FrontierGreatsword {}
+export default class FrontierGreatsword {
+  // Weapon stats configured via @Weapon decorator
+}

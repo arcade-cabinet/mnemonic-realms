@@ -11,4 +11,6 @@ import { Weapon } from '@rpgjs/database';
   price: 0,
   atk: 5,
 })
-export default class TrainingSword {}
+export default class TrainingSword {
+  // Weapon stats configured via @Weapon decorator
+}

@@ -11,4 +11,6 @@ import { Weapon } from '@rpgjs/database';
   price: 400,
   atk: 22,
 })
-export default class BrightwaterSaber {}
+export default class BrightwaterSaber {
+  // Weapon stats configured via @Weapon decorator
+}

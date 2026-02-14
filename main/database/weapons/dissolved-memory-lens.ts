@@ -15,4 +15,6 @@ import { Weapon } from '@rpgjs/database';
   },
   // price is omitted as it's not purchasable (price: 0 or undefined)
 })
-export default class DissolvedMemoryLens {}
+export default class DissolvedMemoryLens {
+  // Weapon stats configured via @Weapon decorator
+}

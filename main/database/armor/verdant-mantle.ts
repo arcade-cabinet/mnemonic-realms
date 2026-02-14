@@ -9,4 +9,6 @@ import { Armor } from '@rpgjs/database';
     'A mantle imbued with natural vitality, granting its wearer a steady regeneration in combat.',
   pdef: 28,
 })
-export default class VerdantMantle {}
+export default class VerdantMantle {
+  // Stat modifiers applied via @Armor decorator
+}

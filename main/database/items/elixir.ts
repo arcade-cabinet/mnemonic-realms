@@ -14,4 +14,6 @@ import { Item } from '@rpgjs/database';
   hpValue: 0,
   consumable: true,
 })
-export default class Elixir {}
+export default class Elixir {
+  // Item properties configured via @Item decorator
+}

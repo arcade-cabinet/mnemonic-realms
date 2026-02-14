@@ -15,4 +15,6 @@ import { Armor } from '@rpgjs/database';
     { elementId: 'wind', rate: 0.15 }, // +15% Wind resistance
   ],
 })
-export default class RidgewalkersCoat {}
+export default class RidgewalkersCoat {
+  // Stat modifiers applied via @Armor decorator
+}

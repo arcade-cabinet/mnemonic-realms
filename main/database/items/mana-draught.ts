@@ -13,4 +13,6 @@ import { Item } from '@rpgjs/database';
     maxsp: { value: 50 },
   },
 })
-export default class ManaDraught {}
+export default class ManaDraught {
+  // Item properties configured via @Item decorator
+}
