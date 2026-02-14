@@ -115,6 +115,7 @@ export {
 // Vibrancy system (7 effects)
 export {
   applySkyGradient,
+  type Biome,
   broadcastRadialBloom,
   initVibrancySystem,
   resetVibrancy,
@@ -125,6 +126,7 @@ export {
   weatherAmbient,
 } from './vibrancy-tier';
 export {
+  applyBiomeAtmosphere,
   applyZoneFilter,
   applyZoneOverlay,
   checkZoneBoundaries,

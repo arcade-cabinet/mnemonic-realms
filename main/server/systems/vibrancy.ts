@@ -1,10 +1,35 @@
 import type { RpgPlayer } from '@rpgjs/server';
 
+// Extend RpgPlayer with synced vibrancy props (declared in player.ts props)
+declare module '@rpgjs/server' {
+  interface RpgPlayer {
+    zoneVibrancy: number;
+    zoneBiome: string;
+  }
+}
+
 // ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
 
 export type VibrancyTier = 'muted' | 'normal' | 'vivid';
+
+export type Biome =
+  | 'village'
+  | 'grassland'
+  | 'forest'
+  | 'mountain'
+  | 'riverside'
+  | 'wetland'
+  | 'plains'
+  | 'dungeon'
+  | 'sketch'
+  | 'fortress';
+
+interface ZoneInfo {
+  zone: VibrancyZone;
+  biome: Biome;
+}
 
 /**
  * Zone IDs for vibrancy tracking. More granular than the memory system's Zone
@@ -71,6 +96,30 @@ export const DEFAULT_VIBRANCY: Readonly<Record<VibrancyZone, number>> = {
 /** All valid zone IDs, derived from the defaults map. */
 export const VIBRANCY_ZONES = Object.keys(DEFAULT_VIBRANCY) as VibrancyZone[];
 
+/** Maps RPG-JS map IDs to their vibrancy zone and biome type. */
+const MAP_TO_ZONE: Readonly<Record<string, ZoneInfo>> = {
+  'village-hub': { zone: 'village-hub', biome: 'village' },
+  heartfield: { zone: 'heartfield', biome: 'grassland' },
+  millbrook: { zone: 'millbrook', biome: 'riverside' },
+  ambergrove: { zone: 'ambergrove', biome: 'forest' },
+  sunridge: { zone: 'sunridge', biome: 'grassland' },
+  'shimmer-marsh': { zone: 'shimmer-marsh', biome: 'wetland' },
+  flickerveil: { zone: 'flickerveil', biome: 'forest' },
+  'hollow-ridge': { zone: 'hollow-ridge', biome: 'mountain' },
+  'resonance-fields': { zone: 'resonance-fields', biome: 'plains' },
+  'luminous-wastes': { zone: 'luminous-wastes', biome: 'sketch' },
+  'half-drawn-forest': { zone: 'half-drawn-forest', biome: 'forest' },
+  'undrawn-peaks': { zone: 'undrawn-peaks', biome: 'mountain' },
+  'depths-l1': { zone: 'depths-1', biome: 'dungeon' },
+  'depths-l2': { zone: 'depths-2', biome: 'dungeon' },
+  'depths-l3': { zone: 'depths-3', biome: 'dungeon' },
+  'depths-l4': { zone: 'depths-4', biome: 'dungeon' },
+  'depths-l5': { zone: 'depths-5', biome: 'dungeon' },
+  'fortress-f1': { zone: 'fortress', biome: 'fortress' },
+  'fortress-f2': { zone: 'fortress', biome: 'fortress' },
+  'fortress-f3': { zone: 'fortress', biome: 'fortress' },
+};
+
 // ---------------------------------------------------------------------------
 // Internal helpers
 // ---------------------------------------------------------------------------
@@ -108,19 +157,24 @@ export function getVibrancy(player: RpgPlayer, zoneId: VibrancyZone): number {
 
 /**
  * Set the vibrancy value for a zone. Clamped to 0-100.
+ * Also syncs to client if the player is currently in this zone.
  */
 export function setVibrancy(player: RpgPlayer, zoneId: VibrancyZone, value: number): void {
-  player.setVariable(varKey(zoneId), clamp(value));
+  const v = clamp(value);
+  player.setVariable(varKey(zoneId), v);
+  autoSync(player, zoneId, v);
 }
 
 /**
  * Increase vibrancy for a zone by the given amount, capped at 100.
  * Returns the new vibrancy value after the increase.
+ * Also syncs to client if the player is currently in this zone.
  */
 export function increaseVibrancy(player: RpgPlayer, zoneId: VibrancyZone, amount: number): number {
   const current = getVibrancy(player, zoneId);
   const next = clamp(current + amount);
   player.setVariable(varKey(zoneId), next);
+  autoSync(player, zoneId, next);
   return next;
 }
 
@@ -135,4 +189,39 @@ export function getVibrancyTier(player: RpgPlayer, zoneId: VibrancyZone): Vibran
   if (v <= MUTED_UPPER) return 'muted';
   if (v >= VIVID_LOWER) return 'vivid';
   return 'normal';
+}
+
+// ---------------------------------------------------------------------------
+// Client Sync — synced props (zoneVibrancy, zoneBiome) declared in player.ts
+// ---------------------------------------------------------------------------
+
+/**
+ * Resolve a map ID to its zone info, or undefined if unknown.
+ */
+export function resolveMapZone(mapId: string): ZoneInfo | undefined {
+  return MAP_TO_ZONE[mapId];
+}
+
+/**
+ * Push current zone vibrancy + biome to synced player props.
+ * Call from onJoinMap so the client receives the values.
+ */
+export function syncZoneVibrancy(player: RpgPlayer): void {
+  const mapId = (player.map as { id?: string } | undefined)?.id;
+  if (!mapId) return;
+  const info = MAP_TO_ZONE[mapId];
+  if (!info) return;
+  const v = getVibrancy(player, info.zone);
+  player.zoneVibrancy = v;
+  player.zoneBiome = info.biome;
+}
+
+/** If the player is currently in the given zone, sync the new value. */
+function autoSync(player: RpgPlayer, zoneId: VibrancyZone, value: number): void {
+  const mapId = (player.map as { id?: string } | undefined)?.id;
+  if (!mapId) return;
+  const info = MAP_TO_ZONE[mapId];
+  if (info?.zone === zoneId) {
+    player.zoneVibrancy = value;
+  }
 }
