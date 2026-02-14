@@ -1,5 +1,7 @@
 import type { RpgPlayer } from '@rpgjs/server';
 
+export type TextSpeed = 'slow' | 'normal' | 'fast' | 'instant';
+
 export interface DialogueOptions {
   /** Display name of the speaker (shown in amber above text). */
   speaker?: string;
@@ -7,6 +9,8 @@ export interface DialogueOptions {
   characterId?: string;
   /** Expression variant: 'neutral' | 'happy' | 'sad' | 'determined'. */
   expression?: string;
+  /** Typewriter speed: 'slow' (30ms), 'normal' (15ms), 'fast' (5ms), 'instant'. */
+  speed?: TextSpeed;
 }
 
 export interface DialogueChoice {
@@ -33,6 +37,7 @@ export async function showDialogue(
       speaker: options.speaker ?? '',
       characterId: options.characterId ?? '',
       expression: options.expression ?? 'neutral',
+      speed: options.speed ?? 'normal',
       choices: [],
     },
     {
@@ -59,6 +64,7 @@ export async function showDialogueChoices(
       speaker: options.speaker ?? '',
       characterId: options.characterId ?? '',
       expression: options.expression ?? 'neutral',
+      speed: options.speed ?? 'normal',
       choices,
     },
     {
