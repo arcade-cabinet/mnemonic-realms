@@ -1,7 +1,9 @@
-export default async function (player: RpgPlayer, event: RpgEvent) {
+import type { RpgPlayer } from '@rpgjs/server';
+
+export default async function (player: RpgPlayer) {
   // Trigger Conditions:
   // 1. Quest GQ-02 is active or completed
-  // 2. The 'joy' emotion was chosen during the Verdance recall event (represented by a player variable)
+  // 2. The 'joy' emotion was chosen during the Verdance recall event
   // 3. Player is at Shimmer Marsh, Verdance's Hollow (25, 35)
 
   const questGQ02 = player.getQuest('GQ-02');
@@ -14,21 +16,11 @@ export default async function (player: RpgPlayer, event: RpgEvent) {
   const isEmotionConditionMet = verdanceRecallEmotion === 'joy';
 
   if (isAtCorrectLocation && isQuestConditionMet && isEmotionConditionMet) {
-    // Floriana's dialogue
     await player.showText(
       'I was a seed! A seed dreaming of forests and flowers — and now I bloom! I am Floriana.',
-      {
-        speaker: 'Floriana',
-        portrait: 'floriana_portrait', // Assuming 'floriana_portrait' is the graphic ID for Floriana
-      },
+      { speaker: 'Floriana' },
     );
 
-    // Optionally, set a flag so this specific dialogue doesn't repeat
     player.setVariable('dlg_verdance_floriana_joy_spoken', true);
-  } else {
-    // If conditions are not met, the dialogue does not play.
-    // You could add a default "else" dialogue here if needed,
-    // or simply let the event continue without dialogue.
-    // For this specific request, we only play if conditions are met.
   }
 }

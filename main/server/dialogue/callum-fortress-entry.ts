@@ -1,4 +1,4 @@
-import { RpgEvent, RpgMap, type RpgPlayer, RpgSceneMap } from '@rpgjs/server';
+import type { RpgPlayer } from '@rpgjs/server';
 
 export default async function (player: RpgPlayer) {
   // No specific trigger conditions (quest state, location, flags) are provided for this dialogue,
@@ -9,16 +9,12 @@ export default async function (player: RpgPlayer) {
   // }
 
   await player.showText('The god recall fractures — look.', {
-    speaker: 'Callum',
-    graphic: 'callum_portrait', // Assuming 'callum_portrait' is the graphic ID for Callum
+    speaker: 'Artun',
   });
 
   await player.showText(
     'The gods are here. Their influence has been eroding this crystal since the moment you recalled them.',
-    {
-      speaker: 'Callum',
-      graphic: 'callum_portrait',
-    },
+    { speaker: 'Artun' },
   );
 
   // End of dialogue

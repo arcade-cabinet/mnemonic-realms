@@ -1,4 +1,4 @@
-import { type RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
+import type { RpgPlayer } from '@rpgjs/server';
 
 /**
  * Dialogue for Jubila, triggered by the "Kinesis recall — Joy" event.
@@ -8,7 +8,7 @@ import { type RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
  * Trigger Location: Hollow Ridge — Kinesis Spire (24, 10)
  * Conditions: Quest GQ-04 is active or completed, and 'joy' emotion was chosen.
  */
-export default async function (player: RpgPlayer, event: RpgEvent) {
+export default async function (player: RpgPlayer) {
   // Retrieve current player and quest state
   const currentMapId = player.getMap().id;
   const playerPosition = player.getPosition();
@@ -27,7 +27,7 @@ export default async function (player: RpgPlayer, event: RpgEvent) {
   if (isAtCorrectLocation && isQuestRelevant && isJoyChosen) {
     // Jubila: "Stillness? Stillness is OVER! I am Jubila. Follow me if you can!"
     await player.showText('Stillness? Stillness is OVER! I am Jubila. Follow me if you can!', {
-      speaker: 'jubila', // Assuming 'jubila' is the graphic ID for Jubila's portrait
+      speaker: 'Jubila',
     });
   }
   // If conditions are not met, the dialogue function will simply complete without showing any text.

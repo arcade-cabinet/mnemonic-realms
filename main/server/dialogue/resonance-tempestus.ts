@@ -1,6 +1,6 @@
-import type { RpgEvent, RpgPlayer } from '@rpgjs/server';
+import type { RpgPlayer } from '@rpgjs/server';
 
-export default async function (player: RpgPlayer, event: RpgEvent) {
+export default async function (player: RpgPlayer) {
   // --- Trigger Conditions Check ---
   // This dialogue is intended to be triggered by "Resonance recall — Fury".
   // The following checks ensure the dialogue only proceeds if specific quest conditions are met.
@@ -11,7 +11,7 @@ export default async function (player: RpgPlayer, event: RpgEvent) {
   if (!questGQ01 || questGQ01.state !== 'started') {
     // If the quest is not active, Tempestus might not engage in this specific dialogue.
     // Optionally, you could add a different dialogue line here or simply return.
-    // await player.showText({ text: "Tempestus is lost in thought, seemingly ignoring you.", speaker: event.graphic });
+    // await player.showText({ text: "Tempestus is lost in thought, seemingly ignoring you.", speaker: 'Tempestus' });
     return;
   }
 
@@ -21,16 +21,15 @@ export default async function (player: RpgPlayer, event: RpgEvent) {
   if (!furyEmotionChosen) {
     // If the specific condition is not met, Tempestus might have a different response.
     // Optionally, you could add a different dialogue line here or simply return.
-    // await player.showText({ text: "Tempestus eyes you with a gaze that demands more.", speaker: event.graphic });
+    // await player.showText({ text: "Tempestus eyes you with a gaze that demands more.", speaker: 'Tempestus' });
     return;
   }
 
   // --- Dialogue Sequence ---
 
   // Tempestus: "ENOUGH SILENCE. I am Tempestus, and the sky will answer when I call."
-  await player.showText({
-    text: 'ENOUGH SILENCE. I am Tempestus, and the sky will answer when I call.',
-    speaker: event.graphic, // Uses the graphic of the event (Tempestus) as the speaker portrait
+  await player.showText('ENOUGH SILENCE. I am Tempestus, and the sky will answer when I call.', {
+    speaker: 'Tempestus',
   });
 
   // End of dialogue.

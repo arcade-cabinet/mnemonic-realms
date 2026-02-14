@@ -1,8 +1,7 @@
-import { RpgSceneMap } from '@rpgjs/client';
-import { Move, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
+import type { RpgPlayer } from '@rpgjs/server';
 
-export default async function dlgLiraRemix(player: RpgPlayer) {
-  const LIRA_GRAPHIC = 'lira_portrait'; // Assuming 'lira_portrait' is the graphic ID for Lira's portrait
+export default async function dlgHanaRemix(player: RpgPlayer) {
+  const _HANA_GRAPHIC = 'npc_hana'; // Assuming 'npc_hana' is the graphic ID for Hana's portrait
 
   // Trigger conditions: Quest MQ-10 must be active and player must be in 'act3-scene9-the-remix'
   const questState = player.getQuest('MQ-10');
@@ -24,21 +23,15 @@ export default async function dlgLiraRemix(player: RpgPlayer) {
   }
 
   await player.showText("This is it. The first question. 'Why do things change?'", {
-    speaker: {
-      name: 'Lira',
-      graphic: LIRA_GRAPHIC,
-    },
+    speaker: 'Hana',
   });
 
   // Assuming there's an implicit action or another character's line here
-  // before Lira's next line, as per the story context.
-  // For this exercise, we'll just proceed with Lira's next line.
+  // before Hana's next line, as per the story context.
+  // For this exercise, we'll just proceed with Hana's next line.
 
   await player.showText('What do you mean?', {
-    speaker: {
-      name: 'Lira',
-      graphic: LIRA_GRAPHIC,
-    },
+    speaker: 'Hana',
   });
 
   // End of dialogue

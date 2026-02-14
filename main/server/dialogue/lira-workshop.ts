@@ -1,12 +1,7 @@
-import { RpgCommonPlayer, type RpgPlayer } from '@rpgjs/server';
+import type { RpgPlayer } from '@rpgjs/server';
 
-export default async function (player: RpgPlayer, engine: any) {
+export default async function (player: RpgPlayer) {
   // Define Lira as a speaker with her graphic ID
-  const Lira = {
-    name: 'Lira',
-    graphic: 'lira_portrait', // Replace with the actual graphic ID for Lira's portrait
-  };
-
   // --- Trigger Conditions ---
   // Check if the main quest 'MQ-01' is completed
   const mq01Completed = player.getVariable('quest:MQ-01') === 'completed';
@@ -21,32 +16,32 @@ export default async function (player: RpgPlayer, engine: any) {
   // --- Dialogue Sequence ---
 
   await player.showText(
-    "You must be the one Callum keeps talking about. I'm Lira — Mnemonic Architect, freelance, currently between assignments.",
-    { speaker: Lira },
+    "You must be the one Artun keeps talking about. I'm Hana — Mnemonic Architect, freelance, currently between assignments.",
+    { speaker: 'Hana' },
   );
 
   await player.showText(
     "He told me you can see the shimmer around Resonance Stones. Most people can't. That's the first sign of the talent.",
-    { speaker: Lira },
+    { speaker: 'Hana' },
   );
 
-  await player.showText("Show me what you've collected.", { speaker: Lira });
+  await player.showText("Show me what you've collected.", { speaker: 'Hana' });
 
   await player.showText(
     "Four fragments already? From the garden stones? Good instincts. You didn't force them — you just... noticed. That's exactly right.",
-    { speaker: Lira },
+    { speaker: 'Hana' },
   );
 
   await player.showText(
-    "I want to travel with you for a while, if that's all right. Callum tells me you're curious about the world beyond the village, and there are things I can teach you better in the field than in a workshop.",
-    { speaker: Lira },
+    "I want to travel with you for a while, if that's all right. Artun tells me you're curious about the world beyond the village, and there are things I can teach you better in the field than in a workshop.",
+    { speaker: 'Hana' },
   );
 
   // --- Post-Dialogue Actions ---
   // Set a flag to indicate this dialogue has been played, preventing it from re-triggering.
   player.setVariable('dlg:lira-workshop-intro', true);
 
-  // Optionally, update quest state or add Lira to the party here if this is the point she joins.
+  // Optionally, update quest state or add Hana to the party here if this is the point she joins.
   // Example: player.addPartyMember('lira_character_id');
   // Example: player.setVariable('quest:MQ-02', 'started');
 }

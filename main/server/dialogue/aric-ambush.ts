@@ -1,3 +1,5 @@
+import type { RpgPlayer } from '@rpgjs/server';
+
 export default async function (player: RpgPlayer) {
   // Dialogue ID: dlg-aric-ambush
   // Trigger Condition: After 3 recalls (assuming a variable 'godRecallsComplete' tracks this)
@@ -7,17 +9,12 @@ export default async function (player: RpgPlayer) {
     return;
   }
 
-  // Assuming 'aric' is the graphic ID for Aric.
-  const aricPortrait = {
-    speaker: 'Aric',
-    graphic: 'aric', // Replace with actual graphic ID if different
-  };
-
+  // Assuming 'aric' is the graphic ID for Serek.
   await player.showText('Architect. I need to talk to you. Not fight — talk.', aricPortrait);
   await player.showText('I was given orders to stop you. These are those orders.', aricPortrait);
 
   // NARRATION line - no speaker or portrait
-  await player.showText('Aric sets his crystal gauntlet on the ground.');
+  await player.showText('Serek sets his crystal gauntlet on the ground.');
 
   await player.showText("I'm choosing not to follow them.", aricPortrait);
 

@@ -1,30 +1,21 @@
-import type { Player } from '@rpgjs/server';
+import type { RpgPlayer } from '@rpgjs/server';
 
-export default async function (player: Player) {
+export default async function (player: RpgPlayer) {
   // Check if this 'first visit' dialogue has already been played
-  if (player.get('dialogue.petra.firstVisit')) {
-    return; // Dialogue already played, exit
+  if (player.getVariable('dialogue_nel_firstVisit')) {
+    return;
   }
 
-  // Petra's dialogue lines
   await player.showText(
-    "Welcome to the edge of the map! I'm Petra — we Ridgewalkers live here because we like watching new land form.",
-    {
-      speaker: 'Petra',
-      portrait: 'petra', // Assuming 'petra' is the ID for Petra's portrait graphic
-    },
+    "Welcome to the edge of the map! I'm Nel — we Ridgewalkers live here because we like watching new land form.",
+    { speaker: 'Nel' },
   );
 
-  await player.showText("You're the Architect from the village? Callum sent a letter ahead.", {
-    speaker: 'Petra',
-    portrait: 'petra',
+  await player.showText("You're the Architect from the village? Artun sent a letter ahead.", {
+    speaker: 'Nel',
   });
 
-  await player.showText('Need supplies? Rest? Directions?', {
-    speaker: 'Petra',
-    portrait: 'petra',
-  });
+  await player.showText('Need supplies? Rest? Directions?', { speaker: 'Nel' });
 
-  // Mark the 'first visit' dialogue as played for this player
-  player.set('dialogue.petra.firstVisit', true);
+  player.setVariable('dialogue_nel_firstVisit', true);
 }

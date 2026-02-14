@@ -1,6 +1,6 @@
-import type { RpgEvent, RpgPlayer } from '@rpgjs/server';
+import type { RpgPlayer } from '@rpgjs/server';
 
-export default async function (player: RpgPlayer, event: RpgEvent) {
+export default async function (player: RpgPlayer) {
   // Trigger: Luminos recall — Fury
   // Location: Flickerveil — Luminos Grove (20, 20)
   // References: Quest: GQ-03 | Condition: GQ-03, fury emotion chosen
@@ -21,7 +21,7 @@ export default async function (player: RpgPlayer, event: RpgEvent) {
   if (isCorrectLocation && isQuestActive && isFuryConditionMet) {
     // Pyralis: "What hides in shadow rots. I am the burning eye. I am Pyralis."
     await player.showText('What hides in shadow rots. I am the burning eye. I am Pyralis.', {
-      speaker: event, // The event object represents Pyralis, using its graphic as portrait
+      speaker: 'Pyralis', // The event object represents Pyralis, using its graphic as portrait
     });
   }
 }

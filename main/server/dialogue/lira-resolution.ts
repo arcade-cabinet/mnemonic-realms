@@ -1,4 +1,3 @@
-import { player } from '@rpgjs/client';
 import type { RpgPlayer } from '@rpgjs/server';
 
 export default async function (player: RpgPlayer) {
@@ -17,17 +16,11 @@ export default async function (player: RpgPlayer) {
   await player.showText(
     "Don't speak for me, old man. I'm proud of myself too — I taught you everything you know.",
     {
-      speaker: {
-        name: 'Lira',
-        graphic: 'lira_portrait', // Assuming 'lira_portrait' is the graphic ID for Lira
-      },
+      speaker: 'Hana',
     },
   );
 
   await player.showText("You taught the lectures. There's a difference.", {
-    speaker: {
-      name: 'Lira',
-      graphic: 'lira_portrait',
-    },
+    speaker: 'Hana',
   });
 }

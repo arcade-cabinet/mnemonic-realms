@@ -1,6 +1,6 @@
-import type { Event, Player } from '@rpgjs/server';
+import type { RpgPlayer } from '@rpgjs/server';
 
-export default async function (player: Player, event: Event) {
+export default async function (player: RpgPlayer) {
   // --- Trigger Conditions Check ---
   const questGQ02 = player.getQuest('GQ-02');
   const isSorrowEmotionChosen = player.getVariable('verdance_recall_emotion') === 'sorrow';
@@ -17,7 +17,7 @@ export default async function (player: Player, event: Event) {
     // Autumnus: "Every garden has its autumn. Growth means shedding. I am Autumnus. What falls feeds what rises."
     await player.showText(
       'Every garden has its autumn. Growth means shedding. I am Autumnus. What falls feeds what rises.',
-      { speaker: 'autumnus' },
+      { speaker: 'Autumnus' },
     );
 
     // Optionally, after this dialogue, you might want to update a quest objective
