@@ -1,4 +1,5 @@
 import { EventData, RpgEvent, type RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { startQuest, advanceObjective } from '../../systems/quests';
 
 @EventData({
   id: 'act2-scene2-ridgewalker-camp',
@@ -103,12 +104,12 @@ export class RidgewalkerCampEvent extends RpgEvent {
         direction: 0,
         event: {
           async onAction(player: RpgPlayer) {
-            if (!player.hasQuest('SQ-07-Dains-Markers')) {
+            if (!player.hasQuest('SQ-07')) {
               await player.showText(
                 "Ridgewalker Scout Dain: I've been mapping the ridgeline trails, but the Preservers destroyed my survey markers. If you find any intact markers while you're exploring, I'd pay well for the data. Last I placed them: one near the Echo Caverns, one above the Shattered Pass, and one at the base of the Spire.",
               );
               // Trigger side quest
-              player.addQuest('SQ-07-Dains-Markers');
+              startQuest(player, 'SQ-07');
               player.showText("Quest Accepted: Dain's Markers");
             } else {
               player.showText('Ridgewalker Scout Dain: Any luck with those markers?');
@@ -162,7 +163,7 @@ export class RidgewalkerCampEvent extends RpgEvent {
 
       // 5. Update quest state
       // Advance Main Quest MQ-05 to objective 2 (Learn about dormant gods)
-      player.advanceQuest('MQ-05', 2);
+      advanceObjective(player, 'MQ-05');
 
       // Set a flag to indicate this scene has been completed, so it doesn't re-trigger
       player.setVariable('ACT2_SCENE2_RIDGEWALKER_CAMP_COMPLETED', true);

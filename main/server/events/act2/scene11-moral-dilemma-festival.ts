@@ -1,4 +1,5 @@
 import { EventData, Move, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { addItem } from '../../systems/inventory';
 import { increaseVibrancy } from '../../systems/vibrancy';
 
 // --- Dynamic NPC Event Definitions ---
@@ -288,7 +289,7 @@ export default class Act2Scene11MoralDilemmaFestivalEvent extends RpgEvent {
     } else if (choice.res === 'preserve-festival') {
       // Leave it preserved
       // No vibrancy gain
-      player.addItem('MF-07: The Perfect Moment', 1); // Player receives unique fragment
+      addItem(player, 'MF-07', 1); // The Perfect Moment — Player receives unique fragment
       await player.showText(
         "The festival remains frozen, a perfect moment preserved. A unique sorrow-type fragment appears at the zone's edge.",
         {

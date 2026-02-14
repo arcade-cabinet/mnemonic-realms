@@ -1,4 +1,5 @@
 import type { RpgMap, RpgPlayer } from '@rpgjs/server';
+import { addItem } from '../../systems/inventory';
 
 export function spawnMapEvents(player: RpgPlayer) {
   const map = player.map as RpgMap;
@@ -46,7 +47,7 @@ export function spawnMapEvents(player: RpgPlayer) {
         player.showText(
           "Hana: Ah, you must be the one Artun spoke of. Take this Architect's Signet. It will help you understand the Resonance Stones.",
         );
-        // TODO: Implement item system — player.addItem('architect-signet', 1)
+        // TODO: Implement item system — addItem(player, 'architect-signet', 1)
         player.setVariable('MQ_01_COMPLETED', true);
         player.setVariable('MQ_02_STARTED', true);
       } else if (mq02Completed) {
@@ -72,7 +73,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
       player.showText('Maren: Welcome to the General Shop! What can I get for you?');
-      // TODO: Implement shop system — player.openShop([...items])
+      // TODO: shop system wiring pending
       if (!player.getVariable('SQ_01_STARTED') && !player.getVariable('SQ_01_COMPLETED')) {
         player.showText(
           "Maren: Oh, and if you have a moment, I'm looking for some rare herbs for a special order. Interested?",
@@ -94,7 +95,7 @@ export function spawnMapEvents(player: RpgPlayer) {
       player.showText(
         'Torvan: The forge awaits. When the village vibrancy is high enough, I can craft my finest wares.',
       );
-      // TODO: Implement shop system — player.openShop([...items])
+      // TODO: shop system wiring pending
       if (!player.getVariable('SQ_11_STARTED') && !player.getVariable('SQ_11_COMPLETED')) {
         player.showText(
           "Torvan: I've been meaning to try a new forging technique, but I need a rare ore. Perhaps you could help?",

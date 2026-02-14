@@ -7,6 +7,7 @@ import {
   RpgMap,
   type RpgPlayer,
 } from '@rpgjs/server';
+import { addItem, removeItem } from '../../systems/inventory';
 
 @EventData({
   id: 'act1-scene4-training-ground',
@@ -124,7 +125,7 @@ export class TrainingGroundEvent extends RpgEvent {
     // After victory, if fragment drop triggers (scripted to succeed for tutorial):
     // This would typically be handled by the combat system's loot drop logic.
     // For a scripted tutorial, we can ensure it here.
-    player.addItem('FRAG-JOY-EARTH-1', 1); // Assuming this is the item ID for Joy/Earth/1★ fragment
+    addItem(player, 'FRAG-JOY-EARTH-1', 1); // Assuming this is the item ID for Joy/Earth/1★ fragment
     await player.showText(
       'Well done! You earned that. Sprites drop a little gold and sometimes... yes, there it is.',
       { speaker: 'Hana' },
@@ -167,7 +168,7 @@ export class TrainingGroundEvent extends RpgEvent {
     await player.gui('remix-tutorial').close();
 
     // After Remix (simulated)
-    player.addItem('K-03', 1); // Give Remix Table Access
+    addItem(player, 'K-03', 1); // Give Remix Table Access
     await player.showText(
       'SYSTEM: Remix complete! Two fragments combined into a stronger one. Remixing consumes the input fragments — choose carefully.',
       { speaker: 'SYSTEM', type: 'dialog' },
@@ -194,7 +195,7 @@ export class TrainingGroundEvent extends RpgEvent {
     // Player broadcasts MF-02: Hana's Warmth
     // This would involve a player action, likely via a GUI or specific interaction.
     // For the tutorial, we can script it.
-    player.removeItem('MF-02', 1); // Consume Hana's Warmth fragment
+    removeItem(player, 'MF-02', 1); // Consume Hana's Warmth fragment
     await player.call('vibrancy-change', { zone: 'village-hub', delta: 12 }); // Apply vibrancy change
     await player.showText(
       'SYSTEM: You broadcast "Hana\'s Warmth" into the workshop. Vibrancy in Village Hub increased by +12! (potency 3 × 3 = 9, +3 emotion match [Joy resonates with Village Hub]) The world remembers what you shared.',

@@ -7,6 +7,7 @@ import {
   type RpgPlayer,
   RpgSceneMap,
 } from '@rpgjs/server';
+import { addItem } from '../../systems/inventory';
 
 @EventData({
   name: 'act2-scene8-drowned-archive',
@@ -148,7 +149,7 @@ export default class DrownedArchiveEvent extends RpgEvent {
         type: 'cutscene',
       },
     );
-    player.addItem('MF-06', 1); // Assuming MF-06 is the item ID for the fragment
+    addItem(player, 'MF-06', 1); // Assuming MF-06 is the item ID for the fragment
 
     await player.showText(
       "Artun (shaken): Graduation. They didn't fail — they finished. They chose to become something larger than themselves.",

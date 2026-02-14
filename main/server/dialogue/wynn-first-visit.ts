@@ -1,4 +1,5 @@
 import type { RpgPlayer } from '@rpgjs/server';
+import { startQuest } from '../systems/quests';
 
 export default async function dialogue(player: RpgPlayer) {
   // Vash's graphic is usually 'wynn' or similar, assuming it's registered in the game.
@@ -22,5 +23,5 @@ export default async function dialogue(player: RpgPlayer) {
   // After this initial dialogue, the game might set a flag or start a quest (SQ-06)
   // For example:
   // player.setVariable('SQ-06_Started', true);
-  // player.addQuest('SQ-06'); // Assuming a quest system
+  // startQuest(player, 'SQ-06'); // Assuming a quest system
 }

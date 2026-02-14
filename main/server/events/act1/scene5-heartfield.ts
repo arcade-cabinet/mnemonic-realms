@@ -7,6 +7,7 @@ import {
   type RpgPlayer,
   RpgScene,
 } from '@rpgjs/server';
+import { addItem } from '../../systems/inventory';
 
 @EventData({
   id: 'act1-scene5-heartfield',
@@ -98,7 +99,7 @@ export class HeartfieldSceneEvent extends RpgEvent {
           // Simulate a brief vision
           await player.sleep(2000); // Vision plays
 
-          player.addItem('fragment_calm_earth_2star', 1); // Add fragment
+          addItem(player, 'fragment_calm_earth_2star', 1); // Add fragment
           player.sendActorToPlayer(player.id, {
             systemMessage: {
               text: 'Received: Calm/Earth/2★ Fragment',
@@ -125,9 +126,9 @@ export class HeartfieldSceneEvent extends RpgEvent {
       hitbox: { width: 16, height: 16 },
       async onAction(player: RpgPlayer) {
         if (!player.get<boolean>('EV-HF-WindmillBladeChest_opened')) {
-          if (player.class.id === 'rogue') {
+          if (player.getVariable('PLAYER_CLASS_ID') === 'rogue') {
             // Check if player is Rogue
-            player.addItem('W-DG-03', 1); // Windmill Blade
+            addItem(player, 'W-DG-03', 1); // Windmill Blade
             player.sendActorToPlayer(player.id, {
               systemMessage: {
                 text: 'Received: Windmill Blade (Rogue-only)',
@@ -189,7 +190,7 @@ export class HeartfieldSceneEvent extends RpgEvent {
         await player.showText(
           "Merchant: Seeds, tools, and the odd potion. I walk the Settled Lands — Heartfield, Ambergrove, Millbrook. You'll see me around.",
         );
-        // player.openShop('merchant_shop_heartfield'); // Example shop call
+        // TODO: shop system wiring pending
       },
     });
 

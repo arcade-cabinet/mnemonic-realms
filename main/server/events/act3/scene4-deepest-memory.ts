@@ -8,6 +8,7 @@ import {
   type RpgPlayer,
   RpgScene,
 } from '@rpgjs/server';
+import { addItem } from '../../systems/inventory';
 
 @EventData({
   id: 'act3-scene4-deepest-memory',
@@ -257,8 +258,8 @@ export default class TheDeepestMemoryEvent extends RpgEvent {
       itemId: 'frag-awe-neutral-5',
       name: "World's Oldest Memory",
     });
-    await player.addItem('frag-awe-neutral-5', 1); // Give the actual item
-    await player.addItem('dissolved-essence', 2); // Give Dissolved Essence
+    addItem(player, 'frag-awe-neutral-5', 1); // Give the actual item
+    addItem(player, 'dissolved-essence', 2); // Give Dissolved Essence
 
     await player.showText(
       'A question. The world exists because someone asked a question. And the Curator wants to answer it with silence.',

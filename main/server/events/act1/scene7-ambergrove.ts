@@ -1,4 +1,5 @@
 import { Direction, EventData, Move, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { advanceObjective } from '../../systems/quests';
 
 @EventData({
   id: 'act1-scene7-ambergrove',
@@ -58,7 +59,7 @@ export class AmbergroveSceneEvent extends RpgEvent {
       );
 
       // Quest Changes: MQ-03 → advance (obj 1)
-      player.addQuestProgress('MQ-03', 1);
+      advanceObjective(player, 'MQ-03');
 
       // Hearthstone Circle fragments (RS-AG-01, RS-AG-02, RS-AG-03)
       // These would typically be separate action events on the map,

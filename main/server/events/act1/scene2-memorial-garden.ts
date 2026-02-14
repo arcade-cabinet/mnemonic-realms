@@ -1,4 +1,6 @@
 import { Direction, EventData, MoveType, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { addItem } from '../../systems/inventory';
+import { advanceObjective } from '../../systems/quests';
 
 @EventData({
   id: 'act1-scene2-memorial-garden',
@@ -79,7 +81,7 @@ export class MemorialGardenEvent extends RpgEvent {
             talkWith: this,
           },
         );
-        await p.addItem('frag-joy-earth-1', 1); // Joy/Earth/Potency 1
+        addItem(p, 'frag-joy-earth-1', 1); // Joy/Earth/Potency 1
         await p.gui('memory-menu').open(); // Teach menu navigation
         await p.map.removeEvent(stone1Id); // Stone collected, remove dynamic event
         await this.checkSceneCompletion(p);
@@ -105,7 +107,7 @@ export class MemorialGardenEvent extends RpgEvent {
             talkWith: this,
           },
         );
-        await p.addItem('frag-calm-neutral-1', 1); // Calm/Neutral/Potency 1
+        addItem(p, 'frag-calm-neutral-1', 1); // Calm/Neutral/Potency 1
         await p.map.removeEvent(stone2Id); // Stone collected, remove dynamic event
         await this.checkSceneCompletion(p);
       },
@@ -130,7 +132,7 @@ export class MemorialGardenEvent extends RpgEvent {
             talkWith: this,
           },
         );
-        await p.addItem('frag-awe-wind-2', 1); // Awe/Wind/Potency 2
+        addItem(p, 'frag-awe-wind-2', 1); // Awe/Wind/Potency 2
         await p.map.removeEvent(stone3Id); // Stone collected, remove dynamic event
         await this.checkSceneCompletion(p);
       },
@@ -153,7 +155,7 @@ export class MemorialGardenEvent extends RpgEvent {
           talkWith: this,
         },
       );
-      await player.addQuest('MQ-01', 'obj2'); // Advance MQ-01 to objective 2
+      advanceObjective(player, 'MQ-01'); // Advance MQ-01 to objective 2
       await player.call('system-message', { text: 'You now carry 4 memory fragments.' });
 
       // Clean up dynamic events

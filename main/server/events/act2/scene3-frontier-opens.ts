@@ -7,6 +7,8 @@ import {
   type RpgPlayer,
   RpgScene,
 } from '@rpgjs/server';
+import { addItem } from '../../systems/inventory';
+import { startQuest } from '../../systems/quests';
 
 // Define the event data for the scene
 @EventData({
@@ -73,7 +75,7 @@ export class TheFrontierOpensEvent extends RpgEvent {
           "I could clear the way, but I'll need help first. The marsh creatures have been more aggressive lately. Something about the Preserver's crystallization is agitating them. Clear the Stagnation Bog's perimeter — drive back the Mire Crawlers — and I'll show you the safe route to the Hollow.",
           { speaker: 'Vash' },
         );
-        player.addQuest('SQ-06'); // "The Hermit's Path"
+        startQuest(player, 'SQ-06'); // "The Hermit's Path"
       }
 
       // Dialogue for Flickerveil (Reza) - EV-FV-001
@@ -99,8 +101,8 @@ export class TheFrontierOpensEvent extends RpgEvent {
           'Take this. I polished it from grove crystal. It focuses scattered light into a coherent beam.',
           { speaker: 'Reza' },
         );
-        player.addItem('K-04', 1); // Give Light Lens
-        player.addQuest('SQ-08'); // "The Light in the Grove"
+        addItem(player, 'K-04', 1); // Give Light Lens
+        startQuest(player, 'SQ-08'); // "The Light in the Grove"
       }
 
       // Dialogue for Resonance Fields (Lead Audiomancer) - EV-RF-001
@@ -127,7 +129,7 @@ export class TheFrontierOpensEvent extends RpgEvent {
           "But you're an Architect. If you could harmonize three specific stones along the path — broadcast memories into them to tune them — the dissonance would resolve and the way would open.",
           { speaker: 'Vess' },
         );
-        player.addQuest('SQ-09'); // "Harmonize the Path"
+        startQuest(player, 'SQ-09'); // "Harmonize the Path"
       }
 
       // --- 4. Fires effects (combat, GUI, screen effects, music) ---

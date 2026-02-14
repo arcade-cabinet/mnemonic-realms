@@ -1,4 +1,5 @@
 import { EventData, Move, RpgEvent, type RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { addItem, removeItem } from '../../systems/inventory';
 
 @EventData({
   id: 'act1-scene3-lira-workshop',
@@ -85,7 +86,7 @@ export class HanaWorkshopEvent extends RpgEvent {
     );
 
     // Item give
-    await player.addItem('K-01', 1); // Assuming K-01 is the Architect's Signet
+    addItem(player, 'K-01', 1); // Assuming K-01 is the Architect's Signet
     await player.showText("SYSTEM: You received the Architect's Signet (K-01)!", {
       speaker: 'SYSTEM',
     });

@@ -1,4 +1,5 @@
 import { EventData, Move, RpgCommonEvent, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { addItem } from '../../systems/inventory';
 
 @EventData({
   id: 'act1-scene1-familiar-place',
@@ -98,7 +99,7 @@ export class Act1Scene1FamiliarPlace extends RpgEvent {
 
       // --- 3. Fire effects ---
       // Item-give: MF-01
-      player.addItem('MF-01', 1); // Assuming MF-01 is the item ID
+      addItem(player, 'MF-01', 1); // Assuming MF-01 is the item ID
 
       // System message
       await player.showText(

@@ -7,6 +7,7 @@ import {
   RpgMap,
   type RpgPlayer,
 } from '@rpgjs/server';
+import { addItem, addGold } from '../../systems/inventory';
 
 @EventData({
   id: 'act2-scene15-songline',
@@ -48,12 +49,7 @@ export class TheSonglineEvent extends RpgEvent {
     await player.showText(
       "Dissolved Chorister (echo): This is the beginning. We sang because we loved the sound. Every voice added something the others couldn't. Together, we were the most beautiful thing in the world.",
     );
-    await player.addFragment({
-      id: 'frag-joy-light-3',
-      emotion: 'joy',
-      element: 'light',
-      potency: 3,
-    });
+    addItem(player, 'frag-joy-light-3', 1); // Joy / Light / Potency 3
     await player.showText('You feel a surge of Joy. (Fragment: Joy / Light / Potency 3 acquired)');
 
     // Move player to Room 2 entrance
@@ -86,12 +82,7 @@ export class TheSonglineEvent extends RpgEvent {
     await player.showText(
       'Dissolved Elder (echo): So we chose the other option. If the song was too large for us... we would become large enough for the song.',
     );
-    await player.addFragment({
-      id: 'frag-sorrow-wind-4',
-      emotion: 'sorrow',
-      element: 'wind',
-      potency: 4,
-    });
+    addItem(player, 'frag-sorrow-wind-4', 1); // Sorrow / Wind / Potency 4
     await player.showText(
       'A profound sadness washes over you. (Fragment: Sorrow / Wind / Potency 4 acquired)',
     );
@@ -156,12 +147,7 @@ export class TheSonglineEvent extends RpgEvent {
         'Artun: Perhaps one day, someone will finish this note. Complete the song.',
       );
     }
-    await player.addFragment({
-      id: 'frag-awe-neutral-5',
-      emotion: 'awe',
-      element: 'neutral',
-      potency: 5,
-    });
+    addItem(player, 'frag-awe-neutral-5', 1); // Awe / Neutral / Potency 5
     await player.showText(
       'You feel a profound sense of Awe. (Fragment: Awe / Neutral / Potency 5 acquired)',
     );
@@ -177,7 +163,7 @@ export class TheSonglineEvent extends RpgEvent {
       "The Conductor's final note fades into silence. The Songline is complete.",
     );
     await player.changeMusic('songline_theme_calm', 0.7, 0); // Return to a calmer theme
-    await player.addGold(200);
+    addGold(player, 200);
     await player.showText('You gained 200 gold.');
     await player.addState('player_level_up', { levels: 2 }); // Player gains ~2 levels
     await player.showText(

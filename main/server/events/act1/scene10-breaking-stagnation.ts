@@ -6,6 +6,8 @@ import {
   RpgMap,
   type RpgPlayer,
 } from '@rpgjs/server';
+import { addItem } from '../../systems/inventory';
+import { advanceObjective } from '../../systems/quests';
 
 @EventData({
   name: 'act1-scene10-breaking-stagnation',
@@ -98,7 +100,7 @@ export default class BreakingStagnationEvent extends RpgEvent {
       );
 
       // 6. Give item
-      await player.addItem('MF-03', 1); // "Echo of the Stagnation"
+      addItem(player, 'MF-03', 1); // "Echo of the Stagnation"
 
       // 7. System messages
       await player.showText('Stagnation Zone broken! Heartfield vibrancy +10!', {
@@ -126,7 +128,7 @@ export default class BreakingStagnationEvent extends RpgEvent {
       );
 
       // 8. Update quest state
-      player.advanceQuest('MQ-04', 5); // Advance MQ-04 to objective 5
+      advanceObjective(player, 'MQ-04'); // Advance MQ-04 to objective 5
 
       // Remove Hana NPC after dialogue
       if (hana) {

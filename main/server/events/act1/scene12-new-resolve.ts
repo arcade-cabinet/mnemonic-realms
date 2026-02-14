@@ -8,6 +8,7 @@ import {
   type RpgPlayer,
   RpgScene,
 } from '@rpgjs/server';
+import { addItem } from '../../systems/inventory';
 
 @EventData({
   id: 'act1-scene12-new-resolve',
@@ -87,7 +88,7 @@ export class Act1Scene12NewResolve extends RpgEvent {
     );
 
     // 3. Effects: item-give: {"itemId":"K-02","name":"Artun's Letters"}
-    await player.addItem('K-02', 1);
+    addItem(player, 'K-02', 1);
     await player.showText("You received Artun's Letters (K-02).", { style: { color: 'gold' } });
 
     await player.showText(
@@ -105,7 +106,7 @@ export class Act1Scene12NewResolve extends RpgEvent {
     );
 
     // 3. Effects: item-give: {"itemId":"frag-awe-neutral-3","name":"Artun's Favorite Memory"}
-    await player.addItem('frag-awe-neutral-3', 1);
+    addItem(player, 'frag-awe-neutral-3', 1);
     await player.showText("You received Artun's Favorite Memory (Awe/Neutral/3★).", {
       style: { color: 'gold' },
     });

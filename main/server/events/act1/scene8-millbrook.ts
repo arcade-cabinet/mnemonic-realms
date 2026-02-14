@@ -10,6 +10,7 @@ import {
 import { Dialogue } from '../database/dialogue';
 import { Fragments } from '../database/fragments';
 import { Quests } from '../database/quests';
+import { startQuest } from '../../systems/quests';
 
 @EventData({
   id: 'act1-scene8-millbrook',
@@ -83,7 +84,7 @@ export class MillbrookSceneEvent extends RpgEvent {
     await player.showText(Dialogue['dlg-lira-scene8'].brightwaterBridge, { speaker: 'Hana' });
 
     // 4. Quest Changes: MQ-03 → advance (obj 2)
-    player.addQuest(Quests.MQ_03.id); // Ensure MQ-03 is active if not already
+    startQuest(player, Quests.MQ_03.id); // Ensure MQ-03 is active if not already
     player.updateQuest(Quests.MQ_03.id, 'advance', 2); // Advance to objective 2
 
     // Additional scene elements (not directly handled by this trigger, but good to note for other events)

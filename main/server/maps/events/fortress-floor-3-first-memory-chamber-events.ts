@@ -1,4 +1,5 @@
 import type { RpgMap, RpgPlayer } from '@rpgjs/server';
+import { addItem } from '../../systems/inventory';
 
 export function spawnMapEvents(player: RpgPlayer) {
   const map = player.map as RpgMap;
@@ -70,7 +71,7 @@ export function spawnMapEvents(player: RpgPlayer) {
           "You reach out and touch the pulsing sphere. A wave of pure, calm energy washes over you. You've acquired the First Memory (MF-10).",
         );
         // TODO: Implement addItem when item system is ready
-        // player.addItem('MF-10', 1);
+        // addItem(player, 'MF-10', 1);
         player.setVariable('MF_10_COLLECTED', true);
         player.setVariable('MQ_09_OBJECTIVE3_COMPLETED', true);
         player.showText(
@@ -92,7 +93,7 @@ export function spawnMapEvents(player: RpgPlayer) {
           "You use the Remix interface, combining MF-10 with a fragment of your journey. A new memory, MF-11: World's New Dawn, is created!",
         );
         // TODO: Implement addItem when item system is ready
-        // player.addItem('MF-11', 1);
+        // addItem(player, 'MF-11', 1);
         player.setVariable('MF_11_COLLECTED', true);
         player.setVariable('MQ_10_OBJECTIVE1_COMPLETED', true);
         player.showText(

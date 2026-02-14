@@ -6,6 +6,8 @@ import {
   type RpgMap,
   type RpgPlayer,
 } from '@rpgjs/server';
+import { addItem } from '../../systems/inventory';
+import { advanceObjective } from '../../systems/quests';
 
 @EventData({
   id: 'act3-scene2-luminous-wastes',
@@ -107,7 +109,7 @@ export class LuminousWastesSceneEvent extends RpgEvent {
     );
 
     // 4. Update quest state: MQ-08 advance (obj 2)
-    player.updateQuest('MQ-08', 'advance', 2);
+    advanceObjective(player, 'MQ-08');
 
     // Set flag to prevent re-triggering
     player.setVariable('ACT3_SCENE2_LUMINOUS_WASTES_TRIGGERED', true);
@@ -264,8 +266,8 @@ export class HalfBuiltVillageEvent extends RpgEvent {
     player.setVariable('HALF_BUILT_VILLAGE_SOLIDIFIED', true);
 
     // Rewards
-    player.addItem('Awe/Light/4★ Fragment', 1); // Placeholder item ID
-    player.addItem('Mixed Emotion Fragment', 3); // Placeholder item ID for 3 foundation fragments
+    addItem(player, 'Awe/Light/4★ Fragment', 1); // Placeholder item ID
+    addItem(player, 'Mixed Emotion Fragment', 3); // Placeholder item ID for 3 foundation fragments
 
     await player.showText(
       "You found: Awe/Light/4★ Fragment (The architect's vision of what this village could have been. It is now.)",

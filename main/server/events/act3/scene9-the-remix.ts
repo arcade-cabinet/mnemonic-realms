@@ -6,6 +6,8 @@ import {
   type RpgPlayer,
   RpgSceneMap,
 } from '@rpgjs/server';
+import { addItem } from '../../systems/inventory';
+import { advanceObjective } from '../../systems/quests';
 
 @EventData({
   id: 'act3-scene9-the-remix',
@@ -30,7 +32,7 @@ export default class TheRemixEvent extends RpgEvent {
     const map = player.map as RpgMap;
 
     // 1. Check trigger conditions
-    const curatorDialogueComplete = (await player.getQuestState('MQ-09')) === 'obj-5-complete'; // Assuming MQ-09, objective 5 is the Curator dialogue
+    const curatorDialogueComplete = player.getVariable('MQ_09_OBJ5_COMPLETE') === true; // Assuming MQ-09, objective 5 is the Curator dialogue
     const onCorrectMap = map.id === 'fortress-f3';
 
     if (!onCorrectMap || !curatorDialogueComplete) {
@@ -46,7 +48,7 @@ export default class TheRemixEvent extends RpgEvent {
     }
 
     // Prevent re-triggering the main sequence if already completed
-    if ((await player.getQuestState('MQ-10')) === 'obj-2-complete') {
+    if (player.getVariable('MQ_10_OBJ2_COMPLETE') === true) {
       await player.showText("The World's New Dawn pulses with infinite possibility.");
       return;
     }
@@ -146,7 +148,7 @@ export default class TheRemixEvent extends RpgEvent {
     await player.gui('first-memory-remix').close(); // Close the GUI after remix
 
     // Give the item
-    await player.addItem('MF-11', 1);
+    addItem(player, 'MF-11', 1);
     await player.showText("You received MF-11: World's New Dawn!", { speaker: 'SYSTEM' });
 
     // Final dialogue
@@ -158,7 +160,8 @@ export default class TheRemixEvent extends RpgEvent {
     await player.showText('"What will we create next?"', { speaker: 'Hana' });
 
     // 5. Updates quest state
-    await player.setQuestState('MQ-10', 'obj-2-complete');
+    player.setVariable('MQ_10_OBJ2_COMPLETE', true);
+    advanceObjective(player, 'MQ-10');
 
     // Clean up dynamic NPCs
     hana.remove();

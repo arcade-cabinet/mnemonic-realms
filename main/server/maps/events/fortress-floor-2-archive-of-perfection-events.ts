@@ -1,4 +1,5 @@
 import type { RpgMap, RpgPlayer } from '@rpgjs/server';
+import { addItem, addGold } from '../../systems/inventory';
 
 export function spawnMapEvents(player: RpgPlayer) {
   const map = player.map as RpgMap;
@@ -152,7 +153,7 @@ export function spawnMapEvents(player: RpgPlayer) {
         // TODO: Implement choice mechanic when showChoices is available
         // Options: Yes (collect), No (leave)
         // On collect:
-        //   TODO: player.addItem('MF-09') when item system is ready
+        //   TODO: addItem(player, 'MF-09', 1) when item system is ready
         //   player.setVariable('F2_GRIEF_COLLECTED', true);
         //   player.showText("You collected the Curator's Grief (MF-09).");
       }
@@ -197,9 +198,9 @@ export function spawnMapEvents(player: RpgPlayer) {
         //   player.setVariable('F2_ARCHIVE_KEEPER_DEFEATED', true);
         //   player.showText('The Archive Keeper dissolves into a cascade of shimmering fragments. The archive is silent once more.');
         //   player.showText('A wave of residual energy washes over you. You feel stronger, more resolute.');
-        //   TODO: player.addItem('C-SP-09') — Dissolved Essence
-        //   TODO: player.addItem('C-BF-05') — Memory Incense
-        //   TODO: player.addGold(300)
+        //   TODO: addItem(player, 'C-SP-09', 1) — Dissolved Essence
+        //   TODO: addItem(player, 'C-BF-05', 1) — Memory Incense
+        //   TODO: addGold(player, 300)
         //   player.showText('You received Dissolved Essence, Memory Incense, and 300 gold.');
       }
     },

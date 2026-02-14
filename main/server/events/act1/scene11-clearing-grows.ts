@@ -7,6 +7,8 @@ import {
   type RpgPlayer,
   RpgSceneMap,
 } from '@rpgjs/server';
+import { addItem } from '../../systems/inventory';
+import { advanceObjective } from '../../systems/quests';
 
 @EventData({
   id: 'act1-scene11-clearing-grows',
@@ -147,7 +149,7 @@ export class TheClearingGrowsEvent extends RpgEvent {
       map.setVariable('vibrancy_heartfield', Math.max(40, currentVibrancy - 25)); // Drops to 40
     }
     // 3. Item give: MF-04 "Hana's Scream"
-    player.addItem('MF-04', 1);
+    addItem(player, 'MF-04', 1);
     await player.showText(
       "You received a Memory Fragment: \"Hana's Scream\" (Fury, Light, ★★★★) — the emotional shockwave of Hana's freezing. The player's most potent fragment yet — and the most painful.",
       { type: 'system' },
@@ -155,7 +157,7 @@ export class TheClearingGrowsEvent extends RpgEvent {
 
     // Quest Changes: MQ-04 → advance (obj 6)
     // This event is triggered *after* MQ-04 step 6 is met, so we advance to the next step.
-    player.advanceQuest('MQ-04'); // Advances to step 7 (or completes if step 6 was the last objective)
+    advanceObjective(player, 'MQ-04'); // Advances to step 7 (or completes if step 6 was the last objective)
 
     // Re-enable player movement
     player.canMove = true;

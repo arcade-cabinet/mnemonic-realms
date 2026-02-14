@@ -1,4 +1,5 @@
 import type { RpgPlayer } from '@rpgjs/server';
+import { addItem } from '../systems/inventory';
 
 export default async function (player: RpgPlayer) {
   const DIALOGUE_FLAG = 'JULZ_FIRST_VISIT_DONE';
@@ -31,7 +32,7 @@ export default async function (player: RpgPlayer) {
     { speaker: 'Julz' },
   );
 
-  player.addItem('item_light_lens', 1);
+  addItem(player, 'item_light_lens', 1);
 
   await player.gui('rpg-notification', {
     message: 'Received: Light Lens',

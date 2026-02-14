@@ -1,4 +1,6 @@
 import type { RpgMap, RpgPlayer } from '@rpgjs/server';
+import { addItem } from '../systems/inventory';
+import { advanceObjective } from '../systems/quests';
 
 export default async function (player: RpgPlayer) {
   const DIALOGUE_FLAG = 'dlg-callum-awakening-played';
@@ -58,8 +60,8 @@ export default async function (player: RpgPlayer) {
   );
 
   // Example: Granting a quest item or updating quest state for MQ-01
-  // player.addItem('memory-fragment-joyful', 1);
-  // player.updateQuest('MQ-01', 'received_first_fragment');
+  // addItem(player, 'memory-fragment-joyful', 1);
+  // advanceObjective(player, 'MQ-01');
 
   await player.showText('Now go find Hana. Her workshop is south of the square.', {
     speaker: 'Artun',

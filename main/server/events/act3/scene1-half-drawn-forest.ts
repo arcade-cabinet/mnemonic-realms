@@ -7,6 +7,7 @@ import {
   type RpgPlayer,
   RpgScene,
 } from '@rpgjs/server';
+import { advanceObjective } from '../../systems/quests';
 
 @EventData({
   name: 'act3-scene1-half-drawn-forest',
@@ -111,7 +112,7 @@ export default class HalfDrawnForestEvent extends RpgEvent {
 
       // 5. Update quest state
       // Assuming MQ-08 is the Main Quest for Act 3, and obj 0 is the first objective
-      player.addQuestProgress('MQ-08', 0); // Advance objective 0 of MQ-08
+      advanceObjective(player, 'MQ-08'); // Advance objective of MQ-08
 
       // Remove NPCs after initial dialogue if they are not meant to stay
       // Or set them to patrol/static if they have further interactions

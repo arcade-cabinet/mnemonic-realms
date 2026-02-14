@@ -1,4 +1,5 @@
 import { EventData, Move, RpgCommonEvent, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { addItem } from '../../systems/inventory';
 import { increaseVibrancy } from '../../systems/vibrancy';
 
 @EventData({
@@ -154,7 +155,7 @@ export default class MoralDilemmaGardenEvent extends RpgEvent {
           { speaker: 'SYSTEM' },
         );
         // Give fragment reward
-        player.addItem("MF-05: The Gardener's Peace", 1); // Assuming this is an item ID
+        addItem(player, 'MF-05', 1); // The Gardener's Peace
         // Artun's reaction
         await player.showText(
           'Thank you. Some things deserve to stay as they are. Not everything — but some things.',
