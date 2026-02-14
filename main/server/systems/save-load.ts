@@ -143,7 +143,7 @@ export function serializePlayer(player: RpgPlayer): SaveData {
     mapId: getPlayerMapId(player),
     positionX: player.position?.x ?? 0,
     positionY: player.position?.y ?? 0,
-    classId: player.class?.id ?? '',
+    classId: (player.getVariable('PLAYER_CLASS_ID') as string) ?? '',
     level: (vars.get('PLAYER_LEVEL') as number) ?? 1,
     xp: (vars.get('PLAYER_XP') as number) ?? 0,
     hp: player.hp ?? 0,
@@ -311,6 +311,6 @@ export async function loadGame(player: RpgPlayer, slotId: SaveSlotId): Promise<b
  */
 export function autoSave(player: RpgPlayer): void {
   // Skip auto-save if the player hasn't chosen a class yet (still on title screen)
-  if (!player.class?.id) return;
+  if (!player.getVariable('PLAYER_CLASS_ID')) return;
   saveGame(player, 'auto');
 }

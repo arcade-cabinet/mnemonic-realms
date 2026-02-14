@@ -49,6 +49,11 @@
           :class="{ active: activeFilter === 'awe' }"
           @click="activeFilter = 'awe'"
         >Awe</button>
+        <button
+          class="filter-btn emotion-calm"
+          :class="{ active: activeFilter === 'calm' }"
+          @click="activeFilter = 'calm'"
+        >Calm</button>
       </div>
 
       <div class="filter-bar secondary-filters">
