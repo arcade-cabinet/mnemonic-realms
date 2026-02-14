@@ -72,6 +72,8 @@ export {
   playCollectEffect,
   remixSwirl,
 } from './memory-effects';
+// Memory event wiring (US-033)
+export { initMemoryEventWiring, resetMemoryEventWiring } from './memory-event-wiring';
 export {
   getActiveCount,
   getEffectContainer,

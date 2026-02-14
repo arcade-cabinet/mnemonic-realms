@@ -486,6 +486,11 @@ export function collectFragment(player: RpgPlayer, fragmentId: string): boolean 
   collected.push(fragmentId);
   player.setVariable(COLLECTED_KEY, collected);
 
+  // Set transient variables for client-side effect wiring
+  const seq = ((player.getVariable('FRAGMENT_COLLECT_SEQ') as number) ?? 0) + 1;
+  player.setVariable('FRAGMENT_COLLECT_SEQ', seq);
+  player.setVariable('LAST_FRAGMENT_EMOTION', def.emotion);
+
   // Emit event for UI notification (client-side GUI can listen for this)
   player.emit('memory-fragment-collected', {
     fragment: def,
@@ -704,6 +709,12 @@ export function recallMemory(
   player.setVariable(`${RECALL_PREFIX}${godId}_ABILITY`, abilityName);
 
   const godName = RECALLED_GOD_NAMES[godId][emotion];
+
+  // Set transient variables for client-side effect wiring
+  const recallSeq = ((player.getVariable('RECALL_SEQ') as number) ?? 0) + 1;
+  player.setVariable('RECALL_SEQ', recallSeq);
+  player.setVariable('LAST_RECALL_GOD', godId);
+  player.setVariable('LAST_RECALL_EMOTION', emotion);
 
   // Emit event for UI/scene system
   player.emit('god-recalled', {
