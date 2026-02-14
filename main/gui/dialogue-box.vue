@@ -22,10 +22,15 @@
       <div class="dialogue-choices" v-if="showChoices">
         <button
           class="choice-btn"
+          :class="{ 'choice-focused': idx === focusedChoice }"
           v-for="(choice, idx) in choices"
           :key="idx"
           @click.stop="selectChoice(idx)"
-        >{{ choice.text }}</button>
+          @mouseenter="focusedChoice = idx"
+        >
+          <span class="choice-cursor" v-if="idx === focusedChoice">&#x25B8;</span>
+          {{ choice.text }}
+        </button>
       </div>
 
       <!-- Advance indicator -->
@@ -39,6 +44,15 @@
 <script lang="ts">
 import { getPortraitUrl, type Expression } from './portraits';
 
+type TextSpeed = 'slow' | 'normal' | 'fast' | 'instant';
+
+const SPEED_DELAYS: Record<TextSpeed, number> = {
+  slow: 30,
+  normal: 15,
+  fast: 5,
+  instant: 0,
+};
+
 export default {
   name: 'dialogue-box',
   inject: ['rpgGuiInteraction', 'rpgGuiClose'],
@@ -48,6 +62,7 @@ export default {
     characterId: { type: String, default: '' },
     expression: { type: String, default: 'neutral' },
     choices: { type: Array, default: () => [] },
+    speed: { type: String, default: 'normal' },
   },
   data() {
     return {
@@ -56,6 +71,7 @@ export default {
       textComplete: false,
       typewriterTimer: null as ReturnType<typeof setTimeout> | null,
       charIndex: 0,
+      focusedChoice: 0,
       keyHandler: null as ((e: KeyboardEvent) => void) | null,
     };
   },
@@ -70,6 +86,9 @@ export default {
     showChoices(): boolean {
       return this.textComplete && this.choices && this.choices.length > 0;
     },
+    baseDelay(): number {
+      return SPEED_DELAYS[this.speed as TextSpeed] ?? SPEED_DELAYS.normal;
+    },
   },
   watch: {
     text: {
@@ -77,6 +96,11 @@ export default {
       handler() {
         this.startTypewriter();
       },
+    },
+    showChoices(visible: boolean) {
+      if (visible) {
+        this.focusedChoice = 0;
+      }
     },
   },
   methods: {
@@ -87,6 +111,13 @@ export default {
       this.charIndex = 0;
 
       if (!this.text) {
+        this.textComplete = true;
+        return;
+      }
+
+      // Instant speed: show all text immediately
+      if (this.baseDelay === 0) {
+        this.displayedText = this.text;
         this.textComplete = true;
         return;
       }
@@ -104,11 +135,11 @@ export default {
       this.displayedText += char;
       this.charIndex++;
 
-      // Punctuation pauses per UI spec
-      let delay = 30;
-      if (char === '.') delay = 200;
-      else if (char === ',') delay = 100;
-      else if (char === '\u2026') delay = 400; // ellipsis
+      // Punctuation pauses scaled relative to base speed
+      let delay = this.baseDelay;
+      if (char === '.') delay = Math.max(delay * 6, 60);
+      else if (char === ',') delay = Math.max(delay * 3, 30);
+      else if (char === '\u2026') delay = Math.max(delay * 10, 100); // ellipsis
 
       this.typewriterTimer = setTimeout(() => this.typewriterTick(), delay);
     },
@@ -151,6 +182,28 @@ export default {
   mounted() {
     const onKey = (e: KeyboardEvent) => {
       if (!this.visible) return;
+
+      // Choice navigation when choices are visible
+      if (this.showChoices) {
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          this.focusedChoice = (this.focusedChoice + 1) % this.choices.length;
+          return;
+        }
+        if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          this.focusedChoice =
+            (this.focusedChoice - 1 + this.choices.length) % this.choices.length;
+          return;
+        }
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.selectChoice(this.focusedChoice);
+          return;
+        }
+        return;
+      }
+
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         this.advance();
@@ -264,7 +317,8 @@ export default {
   -webkit-tap-highlight-color: transparent;
 }
 
-.choice-btn:hover {
+.choice-btn:hover,
+.choice-btn.choice-focused {
   background: linear-gradient(135deg, rgba(139, 31, 31, 0.3) 0%, rgba(60, 20, 20, 0.9) 100%);
   border-color: #8b1f1f;
   box-shadow: 0 0 15px rgba(139, 31, 31, 0.3);
@@ -272,6 +326,12 @@ export default {
 
 .choice-btn:active {
   transform: scale(0.98);
+}
+
+.choice-cursor {
+  color: #daa520;
+  margin-right: 8px;
+  text-shadow: 0 0 6px rgba(218, 165, 32, 0.5);
 }
 
 /* ── Advance indicator ───────────────────────── */
