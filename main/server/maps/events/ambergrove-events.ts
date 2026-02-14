@@ -146,8 +146,10 @@ export function spawnMapEvents(player: RpgPlayer) {
   });
 
   // --- Enemy Zones ---
-  // TODO: Implement encounter zones when battle system is ready
-  // Dense Forest: bounds=5,2 -> 35,15, enemies=[E-SL-03,E-SL-04], rate=8%
-  // Lake Shore: bounds=24,20 -> 35,30, enemies=[E-SL-03], rate=3%
-  // Canopy Path: bounds=36,15 -> 39,28, enemies=[E-SL-04,E-SL-04], rate=6%
+  // Encounter zones defined in systems/encounters.ts (AMBERGROVE_ZONES).
+  // Random encounters triggered via player.ts onInput hook -> checkEncounter().
+  //
+  // Dense Forest: bounds=(5,2) to (35,15), rate=8%
+  // Lake Shore: bounds=(24,20) to (35,30), rate=3%
+  // Canopy Path: bounds=(36,15) to (39,28), rate=6%
 }

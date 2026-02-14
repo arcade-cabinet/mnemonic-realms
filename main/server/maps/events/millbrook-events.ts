@@ -185,8 +185,10 @@ export function spawnMapEvents(player: RpgPlayer) {
   });
 
   // --- Enemy Zones ---
-  // TODO: Implement encounter zones when battle system is ready
-  // West Riverbank: bounds=2,10 -> 16,30, enemies=[E-SL-05,E-SL-06], levels=4-5, rate=20%
-  // East Riverbank: bounds=22,8 -> 38,30, enemies=[E-SL-06], levels=4-5, rate=20%
-  // Falls Approach: bounds=2,2 -> 12,8, enemies=[E-SL-05], levels=4, rate=10%
+  // Encounter zones defined in systems/encounters.ts (MILLBROOK_ZONES).
+  // Random encounters triggered via player.ts onInput hook -> checkEncounter().
+  //
+  // West Riverbank: bounds=(2,10) to (16,30), rate=5%
+  // East Riverbank: bounds=(22,8) to (38,30), rate=5%
+  // Falls Approach: bounds=(2,2) to (12,8), rate=3%
 }
