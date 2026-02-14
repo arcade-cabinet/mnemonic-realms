@@ -31,14 +31,14 @@ export class LuminousWastesSceneEvent extends RpgEvent {
       const mq08State = player.getQuest('MQ-08')?.state;
       const isMq08Active = mq08State === 'started' || mq08State === 'completed';
 
-      // Lira
-      const liraEvent = map.getEvent('npc_lira_luminous_wastes');
+      // Hana
+      const liraEvent = map.getEvent('npc_hana_luminous_wastes');
       if (liraEvent) {
         liraEvent.event.setVisible(isMq08Active);
       }
 
-      // Callum
-      const callumEvent = map.getEvent('npc_callum_luminous_wastes');
+      // Artun
+      const callumEvent = map.getEvent('npc_artun_luminous_wastes');
       if (callumEvent) {
         callumEvent.event.setVisible(isMq08Active);
       }
@@ -67,24 +67,24 @@ export class LuminousWastesSceneEvent extends RpgEvent {
     const map = player.map;
     if (!map) return;
 
-    // Lira at (10, 20) for initial dialogue
+    // Hana at (10, 20) for initial dialogue
     const lira = await map.createDynamicEvent({
       x: 10,
       y: 20,
-      event: LiraLuminousWastesEvent,
-      id: 'npc_lira_luminous_wastes',
-      graphic: 'npc_lira',
+      event: HanaLuminousWastesEvent,
+      id: 'npc_hana_luminous_wastes',
+      graphic: 'npc_hana',
       direction: 0, // Facing south
       visible: true, // Will be controlled by onChanges
     });
 
-    // Callum at (12, 20) for initial dialogue
+    // Artun at (12, 20) for initial dialogue
     const callum = await map.createDynamicEvent({
       x: 12,
       y: 20,
-      event: CallumLuminousWastesEvent,
-      id: 'npc_callum_luminous_wastes',
-      graphic: 'npc_callum',
+      event: ArtunLuminousWastesEvent,
+      id: 'npc_artun_luminous_wastes',
+      graphic: 'npc_artun',
       direction: 0, // Facing south
       visible: true, // Will be controlled by onChanges
     });
@@ -94,14 +94,14 @@ export class LuminousWastesSceneEvent extends RpgEvent {
 
     // 3. Play dialogue sequences
     await player.showText("Nothing. There's almost nothing here.", {
-      speaker: 'Lira',
+      speaker: 'Hana',
       dialogue: 'dlg-lira-luminous-wastes-intro',
     });
 
     await player.showText(
       "No — not nothing. Potential. Every tile of this wasteland is waiting for its first memory. The Dissolved never planned anything for this area. It's completely open.",
       {
-        speaker: 'Callum',
+        speaker: 'Artun',
         dialogue: 'dlg-callum-luminous-wastes-intro',
       },
     );
@@ -115,12 +115,12 @@ export class LuminousWastesSceneEvent extends RpgEvent {
 }
 
 @EventData({
-  id: 'npc_lira_luminous_wastes',
-  name: 'Lira',
+  id: 'npc_hana_luminous_wastes',
+  name: 'Hana',
   hitbox: { width: 32, height: 32 },
   // Graphic and position set by createDynamicEvent
 })
-export class LiraLuminousWastesEvent extends RpgEvent {
+export class HanaLuminousWastesEvent extends RpgEvent {
   onAction(player: RpgPlayer) {
     this.dialogue(player);
   }
@@ -133,19 +133,19 @@ export class LiraLuminousWastesEvent extends RpgEvent {
       if (player.x >= 4 && player.x <= 6 && player.y >= 19 && player.y <= 21) {
         // Approximate Edge location (5, 20)
         await player.showText('This is where the world ends. Right here.', {
-          speaker: 'Lira',
+          speaker: 'Hana',
           dialogue: 'dlg-lira-luminous-wastes-edge',
         });
       } else {
-        // General dialogue for Lira in Luminous Wastes
+        // General dialogue for Hana in Luminous Wastes
         await player.showText("It's so... empty. Like a canvas waiting for a painter.", {
-          speaker: 'Lira',
+          speaker: 'Hana',
           dialogue: 'dlg-lira-luminous-wastes-general',
         });
       }
     } else {
       await player.showText("I'm not sure what to make of this place.", {
-        speaker: 'Lira',
+        speaker: 'Hana',
         dialogue: 'dlg-lira-luminous-wastes-fallback',
       });
     }
@@ -153,12 +153,12 @@ export class LiraLuminousWastesEvent extends RpgEvent {
 }
 
 @EventData({
-  id: 'npc_callum_luminous_wastes',
-  name: 'Callum',
+  id: 'npc_artun_luminous_wastes',
+  name: 'Artun',
   hitbox: { width: 32, height: 32 },
   // Graphic and position set by createDynamicEvent
 })
-export class CallumLuminousWastesEvent extends RpgEvent {
+export class ArtunLuminousWastesEvent extends RpgEvent {
   onAction(player: RpgPlayer) {
     this.dialogue(player);
   }
@@ -171,13 +171,13 @@ export class CallumLuminousWastesEvent extends RpgEvent {
       if (player.x >= 4 && player.x <= 6 && player.y >= 19 && player.y <= 21) {
         // Approximate Edge location (5, 20)
         await player.showText('No. This is where the world is still beginning.', {
-          speaker: 'Callum',
+          speaker: 'Artun',
           dialogue: 'dlg-callum-luminous-wastes-edge-1',
         });
         await player.showText(
           'The Curator wants to freeze the First Memory to stop change forever. But change IS the world. Every new line out there is the world choosing to keep going. If the Curator succeeds... these lines stop. The drawing ends mid-stroke.',
           {
-            speaker: 'Callum',
+            speaker: 'Artun',
             dialogue: 'dlg-callum-luminous-wastes-edge-2',
           },
         );
@@ -186,7 +186,7 @@ export class CallumLuminousWastesEvent extends RpgEvent {
         await player.showText(
           'A village that was planned but never remembered into existence. The civilization that designed it dissolved before they could finish. Look — you can see the layout. A central square, a market, homes along two roads. Everything a village needs except reality.',
           {
-            speaker: 'Callum',
+            speaker: 'Artun',
             dialogue: 'dlg-callum-luminous-wastes-village',
           },
         );
@@ -199,15 +199,15 @@ export class CallumLuminousWastesEvent extends RpgEvent {
           },
         );
       } else {
-        // General dialogue for Callum in Luminous Wastes
+        // General dialogue for Artun in Luminous Wastes
         await player.showText('This is the frontier of creation. A place of pure potential.', {
-          speaker: 'Callum',
+          speaker: 'Artun',
           dialogue: 'dlg-callum-luminous-wastes-general',
         });
       }
     } else {
       await player.showText('The silence here is profound. It speaks of what could be.', {
-        speaker: 'Callum',
+        speaker: 'Artun',
         dialogue: 'dlg-callum-luminous-wastes-fallback',
       });
     }
@@ -383,10 +383,10 @@ export default async function setupLuminousWastesEvents(map: RpgMap) {
   map.createEvent(HalfBuiltVillageEvent);
   map.createEvent(PreserverWatchtowerEvent);
 
-  // Dynamic events (Lira, Callum) are created by LuminousWastesSceneEvent
+  // Dynamic events (Hana, Artun) are created by LuminousWastesSceneEvent
   // but their classes need to be registered for dynamic creation to work.
-  map.registerEvent(LiraLuminousWastesEvent);
-  map.registerEvent(CallumLuminousWastesEvent);
+  map.registerEvent(HanaLuminousWastesEvent);
+  map.registerEvent(ArtunLuminousWastesEvent);
   map.registerEvent(RestPointEvent);
   map.registerEvent(ResonanceStoneVillageEvent);
 }

@@ -4,7 +4,7 @@ import { EventData, Move, RpgCommonEvent, RpgEvent, RpgMap, type RpgPlayer } fro
   name: 'act2-scene6-moral-dilemma-garden',
   hitbox: { width: 32, height: 32 },
   // This event is triggered by area-enter, so it doesn't need a graphic initially.
-  // It will dynamically spawn Callum and the Rootwalker echo.
+  // It will dynamically spawn Artun and the Rootwalker echo.
   // The actual trigger condition is handled in onInit.
 })
 export default class MoralDilemmaGardenEvent extends RpgEvent {
@@ -35,28 +35,28 @@ export default class MoralDilemmaGardenEvent extends RpgEvent {
   }
 
   async triggerScene(player: RpgPlayer) {
-    // 1. Spawn Callum
+    // 1. Spawn Artun
     this.callumEventId = await player.map.createDynamicEvent({
-      x: 27, // Position Callum near the garden
+      x: 27, // Position Artun near the garden
       y: 32,
       id: 'callum_garden_dilemma_npc',
-      graphic: 'npc_callum',
-      name: 'Callum',
+      graphic: 'npc_artun',
+      name: 'Artun',
       speed: 0,
-      // Callum is static for this scene
+      // Artun is static for this scene
     });
 
     const callumEvent = player.map.getEvent(this.callumEventId);
     if (callumEvent) {
       await callumEvent.moveRoutes([
-        Move.tile(27, 32), // Ensure Callum is at the correct spot
+        Move.tile(27, 32), // Ensure Artun is at the correct spot
       ]);
     }
 
-    // 2. Initial dialogue with Callum
+    // 2. Initial dialogue with Artun
     await player.showText(
       'Another stagnation zone? But this one feels... different. The crystal is lighter. Almost gentle.',
-      { speaker: 'Callum' },
+      { speaker: 'Artun' },
     );
 
     // 3. Spawn Rootwalker Echo
@@ -105,17 +105,17 @@ export default class MoralDilemmaGardenEvent extends RpgEvent {
       await rootwalkerEchoEvent.remove(); // Remove the dynamic event
     }
 
-    // 6. Callum's reaction
+    // 6. Artun's reaction
     await player.showText("She asked for this. The Preservers didn't force it — she chose it.", {
-      speaker: 'Callum',
+      speaker: 'Artun',
     });
     await player.showText(
       "I... I don't know what the right answer is here. Breaking the crystal would free the garden to grow, to change, to eventually decay. That's what we believe in, isn't it? Growth? Change?",
-      { speaker: 'Callum' },
+      { speaker: 'Artun' },
     );
     await player.showText(
       'But she chose this. This is how she wanted to be remembered. Does our belief in change mean we override her choice?',
-      { speaker: 'Callum' },
+      { speaker: 'Artun' },
     );
 
     // 7. Show GUI for moral choice
@@ -140,10 +140,10 @@ export default class MoralDilemmaGardenEvent extends RpgEvent {
         );
         // Apply vibrancy change
         player.addVibrancy('shimmer-marsh', 5);
-        // Callum's reaction
+        // Artun's reaction
         await player.showText(
           "It was the right thing. Growth is always the right thing. ...Isn't it?",
-          { speaker: 'Callum' },
+          { speaker: 'Artun' },
         );
         // Visual effect for wilting (e.g., change graphic of the garden event itself)
         this.setGraphic('wilted_garden_patch'); // Assuming a graphic for the wilted garden
@@ -154,10 +154,10 @@ export default class MoralDilemmaGardenEvent extends RpgEvent {
         );
         // Give fragment reward
         player.addItem("MF-05: The Gardener's Peace", 1); // Assuming this is an item ID
-        // Callum's reaction
+        // Artun's reaction
         await player.showText(
           'Thank you. Some things deserve to stay as they are. Not everything — but some things.',
-          { speaker: 'Callum' },
+          { speaker: 'Artun' },
         );
         // Visual effect for fragment (e.g., spawn a temporary item graphic)
         await player.map.createDynamicEvent({
@@ -172,7 +172,7 @@ export default class MoralDilemmaGardenEvent extends RpgEvent {
       }
     }
 
-    // 8. Clean up Callum
+    // 8. Clean up Artun
     if (callumEvent) {
       await callumEvent.remove();
     }

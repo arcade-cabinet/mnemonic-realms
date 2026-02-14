@@ -44,21 +44,21 @@ export default class MoralDilemmaMonument extends RpgEvent {
       player.setVariable('monument-dilemma-triggered', true);
 
       // 1. Spawn NPCs
-      // Callum (npc_callum)
+      // Artun (npc_artun)
       const callumEvent = await player.map.createDynamicEvent({
         x: 31, // Slightly offset from the monument for interaction
         y: 6,
         event: {
-          name: 'npc_callum_monument',
-          graphic: 'npc_callum',
+          name: 'npc_artun_monument',
+          graphic: 'npc_artun',
           width: 32,
           height: 32,
           speed: 1,
           speedAnimation: 4,
-          // Make Callum interactable
+          // Make Artun interactable
           onAction: async (player: RpgPlayer) => {
             await player.showText('dlg-callum-monument');
-            // After Callum's dialogue, present the moral choice GUI
+            // After Artun's dialogue, present the moral choice GUI
             await player.gui('moral-choice').open({
               choices: [
                 { id: 'break-monument', text: 'Break the Monument' },
@@ -71,12 +71,12 @@ export default class MoralDilemmaMonument extends RpgEvent {
 
       // 3. Play dialogue sequences
       await player.showText(
-        'A crystallized monument stands before you, shimmering with ancient energy. It depicts a Ridgewalker, frozen in a moment of triumph. Callum approaches, his expression somber.',
+        'A crystallized monument stands before you, shimmering with ancient energy. It depicts a Ridgewalker, frozen in a moment of triumph. Artun approaches, his expression somber.',
       );
-      await player.showText('dlg-callum-monument'); // This will be triggered by interacting with Callum, as defined in his dynamic event.
+      await player.showText('dlg-callum-monument'); // This will be triggered by interacting with Artun, as defined in his dynamic event.
 
       // 4. Fire effects (GUI overlay for moral choice)
-      // The GUI will be opened after Callum's initial dialogue, via his onAction.
+      // The GUI will be opened after Artun's initial dialogue, via his onAction.
       // This ensures the player has context before making a choice.
 
       // The GUI response will be handled by a separate GUI event or a global listener.
@@ -92,7 +92,7 @@ export default class MoralDilemmaMonument extends RpgEvent {
       //         player.setVariable('monument-state', 'preserved');
       //     }
       //     player.gui('moral-choice').close();
-      //     // Remove Callum after the choice is made
+      //     // Remove Artun after the choice is made
       //     player.map.removeEvent(callumEvent.id);
       // });
 

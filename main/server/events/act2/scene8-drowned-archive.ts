@@ -54,20 +54,20 @@ export default class DrownedArchiveEvent extends RpgEvent {
       },
     );
 
-    // 1. Spawn Callum
+    // 1. Spawn Artun
     const callum = await map.createDynamicEvent({
       x: 10,
       y: 5,
-      event: 'npc_callum',
+      event: 'npc_artun',
       properties: {
-        graphic: 'npc_callum',
+        graphic: 'npc_artun',
         direction: Direction.DOWN,
-        name: 'Callum',
+        name: 'Artun',
       },
     });
 
     await player.showText(
-      'Callum: A library. Submerged, but intact. The books are gone — dissolved into memory — but the shelves, the architecture... this civilization valued knowledge above everything.',
+      'Artun: A library. Submerged, but intact. The books are gone — dissolved into memory — but the shelves, the architecture... this civilization valued knowledge above everything.',
       {
         speaker: callum,
         wait: true,
@@ -151,7 +151,7 @@ export default class DrownedArchiveEvent extends RpgEvent {
     player.addItem('MF-06', 1); // Assuming MF-06 is the item ID for the fragment
 
     await player.showText(
-      "Callum (shaken): Graduation. They didn't fail — they finished. They chose to become something larger than themselves.",
+      "Artun (shaken): Graduation. They didn't fail — they finished. They chose to become something larger than themselves.",
       {
         speaker: callum,
         wait: true,
@@ -159,7 +159,7 @@ export default class DrownedArchiveEvent extends RpgEvent {
       },
     );
     await player.showText(
-      "Callum: That changes everything I thought I knew about the Dissolved. They weren't victims. They were... completed.",
+      "Artun: That changes everything I thought I knew about the Dissolved. They weren't victims. They were... completed.",
       {
         speaker: callum,
         wait: true,
@@ -203,7 +203,7 @@ export default class DrownedArchiveEvent extends RpgEvent {
       },
     );
 
-    // Clean up Callum
+    // Clean up Artun
     if (callum) {
       map.removeEvent(callum.id);
     }

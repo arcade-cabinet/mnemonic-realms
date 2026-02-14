@@ -79,14 +79,14 @@ export class LuminosRecallEvent extends RpgEvent {
       return;
     }
 
-    // Part A: Discovery (dialogue with Callum)
-    // Spawn Callum dynamically for this scene
+    // Part A: Discovery (dialogue with Artun)
+    // Spawn Artun dynamically for this scene
     const callumEvent = await player.map.createDynamicEvent({
-      x: playerPosition.x - 3, // Position Callum near the player
+      x: playerPosition.x - 3, // Position Artun near the player
       y: playerPosition.y + 2,
-      event: 'npc_callum', // Assuming 'npc_callum' is a registered RpgEvent class
+      event: 'npc_artun', // Assuming 'npc_artun' is a registered RpgEvent class
       properties: {
-        graphic: 'npc_callum',
+        graphic: 'npc_artun',
         direction: Direction.Up,
         speed: 100,
         moveType: MoveType.Static,
@@ -104,16 +104,16 @@ export class LuminosRecallEvent extends RpgEvent {
     await player.showText(
       "The Radiant Lens built their entire civilization around capturing light. They mapped every star, charted every beam. And then they realized they'd left no room for mystery.",
       {
-        name: 'Callum',
-        speakerGraphic: 'npc_callum',
+        name: 'Artun',
+        speakerGraphic: 'npc_artun',
       },
     );
 
     await player.showText(
       "They dissolved into the light itself — sunbeams, starlight, the ambient glow of the unfinished world. That warm amber quality everything has? That's them.",
       {
-        name: 'Callum',
-        speakerGraphic: 'npc_callum',
+        name: 'Artun',
+        speakerGraphic: 'npc_artun',
       },
     );
 

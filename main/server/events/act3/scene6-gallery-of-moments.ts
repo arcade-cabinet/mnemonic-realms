@@ -21,34 +21,34 @@ export default class GalleryOfMomentsEvent extends RpgEvent {
         const currentMap = player.map as RpgMap;
         if (!currentMap) return;
 
-        // Spawn Lira
+        // Spawn Hana
         const liraEvent = await currentMap.createDynamicEvent({
             x: 5, y: 5,
-            graphic: 'npc_lira',
+            graphic: 'npc_hana',
         });
 
-        // Spawn Callum
+        // Spawn Artun
         const callumEvent = await currentMap.createDynamicEvent({
             x: 15, y: 10,
-            graphic: 'npc_callum',
+            graphic: 'npc_artun',
         });
 
-        // Lira dialogue
-        await player.showText('Lira: More frozen people. The Curator has been collecting these for years.');
+        // Hana dialogue
+        await player.showText('Hana: More frozen people. The Curator has been collecting these for years.');
 
         // Conditional dialogue based on Act II choice
         const preservedFestival = player.getVariable('ACT2_FROZEN_FESTIVAL_PRESERVED');
         if (preservedFestival === true) {
-            await player.showText('Callum: The one in Resonance Fields... that was a test. The Curator was deciding whether to add it to the Gallery.');
+            await player.showText('Artun: The one in Resonance Fields... that was a test. The Curator was deciding whether to add it to the Gallery.');
         } else if (preservedFestival === false) {
             await player.showText('A Preserver Archivist ambushes from the side, motivated by anger at your previous destruction!');
         }
 
-        // Callum dialogue
-        await player.showText('Callum (stopping): This one... this one is hard.');
-        await player.showText('Callum: That child learned to walk. That parent was proud. And the Curator froze it because it was the most perfect moment of that child\'s life.');
-        await player.showText('Callum: But the child never learned to run. Never learned to fall and get back up. Never grew into the person those first steps were leading toward.');
-        await player.showText('Callum: Perfect moments aren\'t meant to last. They\'re meant to lead somewhere.');
+        // Artun dialogue
+        await player.showText('Artun (stopping): This one... this one is hard.');
+        await player.showText('Artun: That child learned to walk. That parent was proud. And the Curator froze it because it was the most perfect moment of that child\'s life.');
+        await player.showText('Artun: But the child never learned to run. Never learned to fall and get back up. Never grew into the person those first steps were leading toward.');
+        await player.showText('Artun: Perfect moments aren\'t meant to last. They\'re meant to lead somewhere.');
 
         // Clean up NPCs
         if (liraEvent) liraEvent.remove();

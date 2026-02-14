@@ -42,14 +42,14 @@ export default class BreakingStagnationEvent extends RpgEvent {
     if (isMQ04Active && isAtLocation) {
       this.hasTriggered = true; // Ensure it only fires once
 
-      // 1. Spawn Lira
+      // 1. Spawn Hana
       const lira = await this.map.createDynamicEvent({
         x: 34,
         y: 29,
-        event: 'npc_lira', // Assuming 'npc_lira' is a registered event class
+        event: 'npc_hana', // Assuming 'npc_hana' is a registered event class
         properties: {
-          name: 'Lira',
-          graphic: 'npc_lira',
+          name: 'Hana',
+          graphic: 'npc_hana',
           direction: 0, // Facing down
         },
       });
@@ -111,7 +111,7 @@ export default class BreakingStagnationEvent extends RpgEvent {
         },
       );
 
-      // Lira's post-break dialogue
+      // Hana's post-break dialogue
       await player.showText(
         "There. That's what it looks like when the world starts breathing again.",
       );
@@ -122,13 +122,13 @@ export default class BreakingStagnationEvent extends RpgEvent {
         "Hold onto that one. Sorrow fragments are rare from the Settled Lands. And they're powerful against stagnation — nothing breaks a freeze like the memory of what the freeze took away.",
       );
       await player.showText(
-        'We should head back to the village. Callum will want to hear about the Preservers.',
+        'We should head back to the village. Artun will want to hear about the Preservers.',
       );
 
       // 8. Update quest state
       player.advanceQuest('MQ-04', 5); // Advance MQ-04 to objective 5
 
-      // Remove Lira NPC after dialogue
+      // Remove Hana NPC after dialogue
       if (lira) {
         this.map.removeEvent(lira.id);
       }

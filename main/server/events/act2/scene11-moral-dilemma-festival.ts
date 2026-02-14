@@ -28,13 +28,13 @@ class FrozenFestivalGoerEvent extends RpgEvent {
   }
 }
 
-// Callum's dynamic event (no specific interaction here, just presence)
+// Artun's dynamic event (no specific interaction here, just presence)
 @EventData({
   name: 'callum_frozen_festival_event',
   hitbox: { width: 1, height: 1 },
-  graphic: 'npc_callum',
+  graphic: 'npc_artun',
 })
-class CallumFrozenFestivalEvent extends RpgEvent {}
+class ArtunFrozenFestivalEvent extends RpgEvent {}
 
 // Preserver Scout Miel's dynamic event
 @EventData({
@@ -79,11 +79,11 @@ export default class Act2Scene11MoralDilemmaFestivalEvent extends RpgEvent {
     // --- Spawn NPCs ---
     const map = player.map;
 
-    // Callum
+    // Artun
     const callumEvent = await map.createDynamicEvent({
       x: 33,
       y: 36,
-      event: CallumFrozenFestivalEvent,
+      event: ArtunFrozenFestivalEvent,
       direction: Move.up,
     });
     this.callumEventId = callumEvent.id;
@@ -175,8 +175,8 @@ export default class Act2Scene11MoralDilemmaFestivalEvent extends RpgEvent {
     });
 
     await player.showText("It's a cage.", {
-      speaker: 'Callum',
-      graphic: 'npc_callum',
+      speaker: 'Artun',
+      graphic: 'npc_artun',
     });
 
     await player.showText(
@@ -222,16 +222,16 @@ export default class Act2Scene11MoralDilemmaFestivalEvent extends RpgEvent {
     await player.showText(
       'Twelve years. That child is eighteen now — or would be, if time had passed for her. Twelve years of growing up, lost. Her parents have aged. Her friends have moved on.',
       {
-        speaker: 'Callum',
-        graphic: 'npc_callum',
+        speaker: 'Artun',
+        graphic: 'npc_artun',
       },
     );
 
     await player.showText(
       "But she doesn't know that. Right now, in her frozen moment, she's reaching for a lantern and her whole life is joy.",
       {
-        speaker: 'Callum',
-        graphic: 'npc_callum',
+        speaker: 'Artun',
+        graphic: 'npc_artun',
       },
     );
 
@@ -274,8 +274,8 @@ export default class Act2Scene11MoralDilemmaFestivalEvent extends RpgEvent {
       await player.showText(
         'That was hard to watch. But they have a chance now. A chance to make new moments.',
         {
-          speaker: 'Callum',
-          graphic: 'npc_callum',
+          speaker: 'Artun',
+          graphic: 'npc_artun',
         },
       );
 
@@ -305,8 +305,8 @@ export default class Act2Scene11MoralDilemmaFestivalEvent extends RpgEvent {
       await player.showText(
         "I'm not sure we made the right choice. But I'm not sure we would have, either way.",
         {
-          speaker: 'Callum',
-          graphic: 'npc_callum',
+          speaker: 'Artun',
+          graphic: 'npc_artun',
         },
       );
     }

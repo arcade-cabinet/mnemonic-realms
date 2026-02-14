@@ -80,30 +80,30 @@ export default class FirstMemoryChamberEvent extends RpgEvent {
     const map = player.map as RpgMap;
 
     const lira = await map.createDynamicEvent({
-      name: 'npc_lira',
+      name: 'npc_hana',
       x: 8,
       y: 10,
-      graphic: 'npc_lira',
+      graphic: 'npc_hana',
       direction: 2, // Facing right
       speed: 0, // Static
-      // No onAction for Lira here, her dialogue is part of the main sequence
+      // No onAction for Hana here, her dialogue is part of the main sequence
     });
 
     const callum = await map.createDynamicEvent({
-      name: 'npc_callum',
+      name: 'npc_artun',
       x: 12,
       y: 10,
-      graphic: 'npc_callum',
+      graphic: 'npc_artun',
       direction: 2, // Facing left
       speed: 0, // Static
-      // No onAction for Callum here, his dialogue is part of the main sequence
+      // No onAction for Artun here, his dialogue is part of the main sequence
     });
 
     const curator = await map.createDynamicEvent({
-      name: 'npc_curator',
+      name: 'npc_grym',
       x: 10,
       y: 5,
-      graphic: 'npc_curator',
+      graphic: 'npc_grym',
       direction: 0, // Facing down towards the party
       speed: 0, // Static
       // The Curator's dialogue is handled directly in the sequence
@@ -112,68 +112,68 @@ export default class FirstMemoryChamberEvent extends RpgEvent {
     // --- Dialogue Sequence ---
     await player.showText("I was hoping you'd come.", {
       speaker: 'The Curator',
-      graphic: 'npc_curator',
+      graphic: 'npc_grym',
     });
     await player.showText(
       "That is the world's first thought. The first act of wonder. The question that started everything: 'Why do things change?'",
-      { speaker: 'The Curator', graphic: 'npc_curator' },
+      { speaker: 'The Curator', graphic: 'npc_grym' },
     );
     await player.showText(
       'Every civilization since has tried to answer it. Every answer has dissolved into the world, adding another layer, another voice to the question. The Choir answered with song. The Rootwalkers answered with growth. The Radiant Lens answered with light. The Peregrine Road answered with motion.',
-      { speaker: 'The Curator', graphic: 'npc_curator' },
+      { speaker: 'The Curator', graphic: 'npc_grym' },
     );
     await player.showText(
       "And each answer eventually destroyed the civilization that gave it. They dissolved. They're gone. Their answer became the world, and THEY became nothing.",
-      { speaker: 'The Curator', graphic: 'npc_curator' },
+      { speaker: 'The Curator', graphic: 'npc_grym' },
     );
     await player.showText(
       "I've watched it happen. Not personally — I'm not that old. But through the crystal. Through the frozen memories I've collected. I've seen the pattern: ask, answer, dissolve. Ask, answer, dissolve. An endless cycle of civilizations creating beautiful things and then ceasing to exist.",
-      { speaker: 'The Curator', graphic: 'npc_curator' },
+      { speaker: 'The Curator', graphic: 'npc_grym' },
     );
     await player.showText(
       'I want it to stop. Not the beauty — the loss. I want to crystallize the question so that no one has to answer it anymore. No more civilizations dissolving. No more loss. Just... peace.',
-      { speaker: 'The Curator', graphic: 'npc_curator' },
+      { speaker: 'The Curator', graphic: 'npc_grym' },
     );
 
-    // Callum's response
+    // Artun's response
     await player.showText(
       "You want to silence the question. But the question IS the world. Without 'why do things change?' there's no reason for anything to exist.",
-      { speaker: 'Callum', graphic: 'npc_callum' },
+      { speaker: 'Artun', graphic: 'npc_artun' },
     );
     await player.showText(
       "The world exists WHETHER it asks questions or not. The mountains don't need to wonder why they erode. The rivers don't need to wonder why they flow. They just ARE. I want the world to just BE.",
-      { speaker: 'The Curator', graphic: 'npc_curator' },
+      { speaker: 'The Curator', graphic: 'npc_grym' },
     );
 
-    // Lira's response
+    // Hana's response
     await player.showText(
       "I was frozen. I was inside the crystal, in the silence you're describing. It wasn't terrible. But it wasn't alive, either.",
-      { speaker: 'Lira', graphic: 'npc_lira' },
+      { speaker: 'Hana', graphic: 'npc_hana' },
     );
     await player.showText('Were you suffering?', {
       speaker: 'The Curator',
-      graphic: 'npc_curator',
+      graphic: 'npc_grym',
     });
-    await player.showText('No.', { speaker: 'Lira', graphic: 'npc_lira' });
+    await player.showText('No.', { speaker: 'Hana', graphic: 'npc_hana' });
     await player.showText('Then what was wrong with it?', {
       speaker: 'The Curator',
-      graphic: 'npc_curator',
+      graphic: 'npc_grym',
     });
-    await player.showText("I couldn't choose.", { speaker: 'Lira', graphic: 'npc_lira' });
+    await player.showText("I couldn't choose.", { speaker: 'Hana', graphic: 'npc_hana' });
     await player.showText('Choice is what leads to dissolution.', {
       speaker: 'The Curator',
-      graphic: 'npc_curator',
+      graphic: 'npc_grym',
     });
 
     // Curator turns to player
     await curator.setDirection(player.direction); // Curator faces the player
     await player.showText(
       "You've recalled four gods. Permanent choices, made with single emotions, reshaping deities that the Dissolved left unfinished. You've broken stagnation zones, freed frozen people, shattered my cathedral.",
-      { speaker: 'The Curator', graphic: 'npc_curator' },
+      { speaker: 'The Curator', graphic: 'npc_grym' },
     );
     await player.showText('Why? What makes your vision of the world better than mine?', {
       speaker: 'The Curator',
-      graphic: 'npc_curator',
+      graphic: 'npc_grym',
     });
 
     // --- God Recall Responses Manifest ---
@@ -243,7 +243,7 @@ export default class FirstMemoryChamberEvent extends RpgEvent {
     if (emotionCount === 4 && allSameEmotion !== 'mixed' && allSameEmotion !== null) {
       await player.showText(
         "You're consistent. You chose one feeling and committed to it. Four times. I don't agree with your choice — but I respect the commitment. That's more than most people manage.",
-        { speaker: 'The Curator', graphic: 'npc_curator' },
+        { speaker: 'The Curator', graphic: 'npc_grym' },
       );
     }
 

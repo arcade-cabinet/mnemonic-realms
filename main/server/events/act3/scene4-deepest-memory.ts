@@ -49,32 +49,32 @@ export default class TheDeepestMemoryEvent extends RpgEvent {
     }
 
     // --- Scene Setup: Spawning NPCs ---
-    // Lira and Callum are companions, so they should already be in the player's party
+    // Hana and Artun are companions, so they should already be in the player's party
     // or follow the player. If they need to appear at specific spots for dialogue,
     // we can create dynamic events for them.
 
-    // For this scene, Lira and Callum are assumed to be with the player.
+    // For this scene, Hana and Artun are assumed to be with the player.
     // If they need to be placed at specific coordinates for a cutscene:
-    const lira = player.getOtherPlayerById('npc_lira');
-    const callum = player.getOtherPlayerById('npc_callum');
+    const lira = player.getOtherPlayerById('npc_hana');
+    const callum = player.getOtherPlayerById('npc_artun');
 
     if (!lira) {
-      // Create Lira if not already present (e.g., if she's a dynamic follower)
+      // Create Hana if not already present (e.g., if she's a dynamic follower)
       // For a scene, it's more likely they are already part of the party.
       // This is a placeholder if they need to be spawned as independent NPCs.
       map.createDynamicEvent({
         x: 10,
         y: 3,
-        name: 'Lira',
-        event: 'npc_lira', // Assuming 'npc_lira' is an existing RpgEvent class
+        name: 'Hana',
+        event: 'npc_hana', // Assuming 'npc_hana' is an existing RpgEvent class
         properties: {
-          graphic: 'npc_lira',
+          graphic: 'npc_hana',
           direction: 2,
           speed: 1,
         },
       });
     } else {
-      // Move Lira to the starting position for the scene
+      // Move Hana to the starting position for the scene
       await lira.teleport(map.id, 10, 3);
       lira.setDirection(2); // Face down
     }
@@ -83,16 +83,16 @@ export default class TheDeepestMemoryEvent extends RpgEvent {
       map.createDynamicEvent({
         x: 11,
         y: 3,
-        name: 'Callum',
-        event: 'npc_callum', // Assuming 'npc_callum' is an existing RpgEvent class
+        name: 'Artun',
+        event: 'npc_artun', // Assuming 'npc_artun' is an existing RpgEvent class
         properties: {
-          graphic: 'npc_callum',
+          graphic: 'npc_artun',
           direction: 2,
           speed: 1,
         },
       });
     } else {
-      // Move Callum to the starting position for the scene
+      // Move Artun to the starting position for the scene
       await callum.teleport(map.id, 11, 3);
       callum.setDirection(2); // Face down
     }
@@ -109,7 +109,7 @@ export default class TheDeepestMemoryEvent extends RpgEvent {
       "These are surface memories. Recent by the Depths' standards — maybe a few hundred years old. A civilization going about its daily life. They haven't dissolved yet. They're still deciding.",
       {
         wait: true,
-        speaker: 'Callum',
+        speaker: 'Artun',
       },
     );
 
@@ -131,18 +131,18 @@ export default class TheDeepestMemoryEvent extends RpgEvent {
       "We're going deeper. Each layer is older. Look — that stratum is the Rootwalkers. Below it, the Choir. Below that... civilizations I don't have names for. Older than anything in my journals.",
       {
         wait: true,
-        speaker: 'Callum',
+        speaker: 'Artun',
       },
     );
     await player.showText('How many civilizations have dissolved?', {
       wait: true,
-      speaker: 'Lira',
+      speaker: 'Hana',
     });
     await player.showText(
       'Dozens. Maybe hundreds. Each one completing its purpose and choosing to become part of the world.',
       {
         wait: true,
-        speaker: 'Callum',
+        speaker: 'Artun',
       },
     );
 
@@ -164,7 +164,7 @@ export default class TheDeepestMemoryEvent extends RpgEvent {
     });
     await player.showText('It spoke. The memory spoke.', {
       wait: true,
-      speaker: 'Callum',
+      speaker: 'Artun',
       style: { fontStyle: 'italic' },
     });
     await player.showText(
@@ -176,7 +176,7 @@ export default class TheDeepestMemoryEvent extends RpgEvent {
     );
     await player.showText("The First Memory isn't a thing. It's a question.", {
       wait: true,
-      speaker: 'Lira',
+      speaker: 'Hana',
     });
     await player.showText(
       'I am the echo of that question. The question itself is in the chamber above — the place the crystal-maker calls their fortress. The question is: "Why do things change?" And every civilization since has tried to answer it.',
@@ -203,7 +203,7 @@ export default class TheDeepestMemoryEvent extends RpgEvent {
       'If the Curator crystallizes the First Memory — the first question — the world stops asking. It stops wondering. It stops changing.',
       {
         wait: true,
-        speaker: 'Callum',
+        speaker: 'Artun',
         style: { fontStyle: 'italic' },
       },
     );
@@ -264,13 +264,13 @@ export default class TheDeepestMemoryEvent extends RpgEvent {
       'A question. The world exists because someone asked a question. And the Curator wants to answer it with silence.',
       {
         wait: true,
-        speaker: 'Callum',
+        speaker: 'Artun',
         style: { fontStyle: 'italic' },
       },
     );
     await player.showText("Then we give a better answer. Let's go.", {
       wait: true,
-      speaker: 'Lira',
+      speaker: 'Hana',
     });
 
     // Mark scene as completed

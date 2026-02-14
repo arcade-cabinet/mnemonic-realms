@@ -26,19 +26,19 @@ export class Act3Scene11CuratorsChoice extends RpgEvent {
         player.setVariable('MQ-10-complete', true);
 
         // --- Part 1: Curator's Transformation at Preserver Fortress Gate (Undrawn Peaks) ---
-        // Spawn Curator and Aric dynamically
+        // Spawn Curator and Janik dynamically
         const curatorEvent = await player.createDynamicEvent({
             x: 19,
             y: 33,
-            graphic: 'npc_curator',
+            graphic: 'npc_grym',
             name: 'The Curator',
         });
 
         const aricEvent = await player.createDynamicEvent({
             x: 17,
             y: 35,
-            graphic: 'npc_aric',
-            name: 'Aric',
+            graphic: 'npc_janik',
+            name: 'Janik',
         });
 
         // Curator dialogue
@@ -47,8 +47,8 @@ export class Act3Scene11CuratorsChoice extends RpgEvent {
         await player.showText('I was wrong. Not about the moments being beautiful — they were. They are. But about what to do with beauty. I wanted to hold it still. You showed me that beauty moves.');
         await player.showText('The question I wanted to silence — "Why do things change?" — you gave it a new answer. Not silence. Not stasis. Just... "What will we create next?"');
 
-        // Aric approaches
-        await player.showText('Aric: Curator. The Gallery subjects are waking up. They\'re confused but alive. Someone needs to help them adjust.');
+        // Janik approaches
+        await player.showText('Janik: Curator. The Gallery subjects are waking up. They\'re confused but alive. Someone needs to help them adjust.');
 
         // Curator's new role
         await player.showText('The Curator: Then that\'s what we\'ll do. The Preservers built a museum. Perhaps it\'s time we became librarians instead — not freezing memories, but keeping them. Sharing them. Letting people borrow what they need and bring it back changed.');
@@ -62,31 +62,31 @@ export class Act3Scene11CuratorsChoice extends RpgEvent {
         if (aricEvent) aricEvent.remove();
 
         // --- Part 2: Return to Village Hub and NPC Reactions ---
-        // Spawn Callum and Lira dynamically for this scene
+        // Spawn Artun and Hana dynamically for this scene
         const callumEvent = await player.createDynamicEvent({
             x: 14,
             y: 16,
-            graphic: 'npc_callum',
-            name: 'Callum',
+            graphic: 'npc_artun',
+            name: 'Artun',
         });
 
         const liraEvent = await player.createDynamicEvent({
             x: 16,
             y: 16,
-            graphic: 'npc_lira',
-            name: 'Lira',
+            graphic: 'npc_hana',
+            name: 'Hana',
         });
 
-        // Callum dialogue
-        await player.showText('Callum: Forty years I spent studying the Dissolved. Reading their journals, tracing their memories, trying to understand why they chose to let go.');
-        await player.showText('Callum: I think I understand now. They let go because they were done. Their work was complete. The world was better for what they built, and the best thing they could do was trust the next generation to carry it forward.');
-        await player.showText('Callum: That\'s what you did with the First Memory. You didn\'t destroy it or freeze it. You carried it forward. Into something new.');
-        await player.showText('Callum: I\'m proud of you. Lira and I both are.');
+        // Artun dialogue
+        await player.showText('Artun: Forty years I spent studying the Dissolved. Reading their journals, tracing their memories, trying to understand why they chose to let go.');
+        await player.showText('Artun: I think I understand now. They let go because they were done. Their work was complete. The world was better for what they built, and the best thing they could do was trust the next generation to carry it forward.');
+        await player.showText('Artun: That\'s what you did with the First Memory. You didn\'t destroy it or freeze it. You carried it forward. Into something new.');
+        await player.showText('Artun: I\'m proud of you. Hana and I both are.');
 
-        // Lira dialogue
-        await player.showText('Lira: Don\'t speak for me, old man. I\'m proud of myself too — I taught you everything you know.');
-        await player.showText('Callum: You taught the combat. I taught the wisdom.');
-        await player.showText('Lira: You taught the lectures. There\'s a difference.');
+        // Hana dialogue
+        await player.showText('Hana: Don\'t speak for me, old man. I\'m proud of myself too — I taught you everything you know.');
+        await player.showText('Artun: You taught the combat. I taught the wisdom.');
+        await player.showText('Hana: You taught the lectures. There\'s a difference.');
 
         // Clean up dynamic events
         if (callumEvent) callumEvent.remove();

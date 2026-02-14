@@ -41,10 +41,10 @@ export class HeartfieldSceneEvent extends RpgEvent {
 
       // 1. Play dialogue sequences
       await player.showText(
-        "Lira: The Settled Lands. Everything south, east, and west of the village for a day's walk. It's well-remembered territory — people have been living here for generations.",
+        "Hana: The Settled Lands. Everything south, east, and west of the village for a day's walk. It's well-remembered territory — people have been living here for generations.",
       );
       await player.showText(
-        'Lira: But look at the edges. See how the fence line over there just... stops? Like someone forgot to finish it?',
+        'Hana: But look at the edges. See how the fence line over there just... stops? Like someone forgot to finish it?',
       );
 
       // Brief camera pan to eastern edge (simulated, as direct camera control isn't in RpgPlayer yet)
@@ -53,7 +53,7 @@ export class HeartfieldSceneEvent extends RpgEvent {
       await player.sleep(1000); // Simulate camera pan duration
 
       await player.showText(
-        "Lira: The world's young. It's still being built. Most people don't think about it — they're used to things appearing when they need them. But we see the seams.",
+        "Hana: The world's young. It's still being built. Most people don't think about it — they're used to things appearing when they need them. But we see the seams.",
       );
 
       // 2. Fire effects
@@ -72,12 +72,12 @@ export class HeartfieldSceneEvent extends RpgEvent {
   // This method will be called by the map to set up dynamic events
   // It's not directly an RpgEvent hook, but a helper function called by the map's onInit
   static async setupDynamicEvents(map: RpgMap) {
-    // Spawns Lira at an appropriate position
-    // Lira is already with the player, so we don't need to spawn her as a separate NPC here.
+    // Spawns Hana at an appropriate position
+    // Hana is already with the player, so we don't need to spawn her as a separate NPC here.
     // Her dialogue is handled in onChanges.
 
     // Heartfield Hamlet NPCs (procedural farmers) - these would be defined as separate RpgEvents
-    // For this scene event, we'll just define the Lira interaction and the Windmill.
+    // For this scene event, we'll just define the Hana interaction and the Windmill.
 
     // Old Windmill Dissolved Memory Deposit (30, 8)
     map.createDynamicEvent({
@@ -89,7 +89,7 @@ export class HeartfieldSceneEvent extends RpgEvent {
       async onAction(player: RpgPlayer) {
         if (!player.get<boolean>('EV-HF-WindmillMemory_collected')) {
           await player.showText(
-            "Lira: This windmill's been abandoned for years. But look — there's memory here. Dense memory, from something old.",
+            "Hana: This windmill's been abandoned for years. But look — there's memory here. Dense memory, from something old.",
           );
           await player.showText(
             'You found a Dissolved memory deposit. These contain memories from civilizations that chose to dissolve into the land.',

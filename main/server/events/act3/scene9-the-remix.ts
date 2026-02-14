@@ -52,14 +52,14 @@ export default class TheRemixEvent extends RpgEvent {
     }
 
     // 2. Spawns NPCs at appropriate positions using createDynamicEvent()
-    // Lira: (12, 10), Callum: (8, 10), The Curator: (10, 15) - relative to pedestal (10,10)
+    // Hana: (12, 10), Artun: (8, 10), The Curator: (10, 15) - relative to pedestal (10,10)
     // Assuming the pedestal is at (10,10) on fortress-f3
     const lira = await map.createDynamicEvent({
       x: 12,
       y: 10,
-      event: class LiraRemix extends RpgEvent {
+      event: class HanaRemix extends RpgEvent {
         onInit() {
-          this.setGraphic('npc_lira');
+          this.setGraphic('npc_hana');
           this.setDirection(0);
         }
       },
@@ -67,9 +67,9 @@ export default class TheRemixEvent extends RpgEvent {
     const callum = await map.createDynamicEvent({
       x: 8,
       y: 10,
-      event: class CallumRemix extends RpgEvent {
+      event: class ArtunRemix extends RpgEvent {
         onInit() {
-          this.setGraphic('npc_callum');
+          this.setGraphic('npc_artun');
           this.setDirection(0);
         }
       },
@@ -79,7 +79,7 @@ export default class TheRemixEvent extends RpgEvent {
       y: 15,
       event: class CuratorRemix extends RpgEvent {
         onInit() {
-          this.setGraphic('npc_curator');
+          this.setGraphic('npc_grym');
           this.setDirection(2);
         } // Facing player
       },
@@ -92,21 +92,21 @@ export default class TheRemixEvent extends RpgEvent {
 
     // 3. Plays dialogue sequences via player.showText()
     await player.showText('This is it. The first question. "Why do things change?"', {
-      speaker: 'Lira',
+      speaker: 'Hana',
     });
     await player.showText(
       "The Dissolved answered it by becoming the world. The Curator wants to answer it by stopping the world. But there's a third option.",
-      { speaker: 'Callum' },
+      { speaker: 'Artun' },
     );
-    await player.showText('You can answer it with a new question.', { speaker: 'Callum' });
-    await player.showText('What do you mean?', { speaker: 'Lira' });
+    await player.showText('You can answer it with a new question.', { speaker: 'Artun' });
+    await player.showText('What do you mean?', { speaker: 'Hana' });
     await player.showText(
       '"Why do things change?" That question created the world. But the world has grown beyond that question — it\'s bigger now, richer, more complex. It doesn\'t need the old question anymore. It needs a new one.',
-      { speaker: 'Callum' },
+      { speaker: 'Artun' },
     );
     await player.showText(
       'One that includes everything this Architect has experienced. Every god recalled, every fragment collected, every moment preserved or freed.',
-      { speaker: 'Callum' },
+      { speaker: 'Artun' },
     );
 
     await player.showText(
@@ -153,9 +153,9 @@ export default class TheRemixEvent extends RpgEvent {
     await player.showText("You didn't destroy it. You... grew it.", { speaker: 'The Curator' });
     await player.showText(
       'The question changed. It\'s not "Why do things change?" anymore. It\'s...',
-      { speaker: 'Callum' },
+      { speaker: 'Artun' },
     );
-    await player.showText('"What will we create next?"', { speaker: 'Lira' });
+    await player.showText('"What will we create next?"', { speaker: 'Hana' });
 
     // 5. Updates quest state
     await player.setQuestState('MQ-10', 'obj-2-complete');

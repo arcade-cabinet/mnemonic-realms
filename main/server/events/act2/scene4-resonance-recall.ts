@@ -48,13 +48,13 @@ export class ResonanceRecallEvent extends RpgEvent {
       // Make the event visible if needed, or just proceed with the sequence
       this.set({ visible: true });
 
-      // Ensure Callum is spawned and visible
+      // Ensure Artun is spawned and visible
       const callum = await player.map.createDynamicEvent({
-        x: 23, // Position Callum near the amphitheater
+        x: 23, // Position Artun near the amphitheater
         y: 26,
-        event: 'npc_callum',
-        name: 'Callum',
-        graphic: 'npc_callum',
+        event: 'npc_artun',
+        name: 'Artun',
+        graphic: 'npc_artun',
         direction: 2, // Facing up
         speed: 1,
         speedAnimation: 1,
@@ -260,7 +260,7 @@ export class ResonanceRecallEvent extends RpgEvent {
       player.setQuest('GQ-01', 'complete');
       player.setQuest('MQ-06', 'activate');
 
-      // Remove Callum after the event
+      // Remove Artun after the event
       if (callum) {
         await player.map.removeDynamicEvent(callum.id);
       }

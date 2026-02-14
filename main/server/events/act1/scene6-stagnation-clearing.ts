@@ -29,19 +29,19 @@ export class StagnationClearingEvent extends RpgEvent {
         // 1. Ambient audio fades, crystalline tinkling replaces it
         await player.changeMusic({ track: 'stagnation-ambient', volume: 0.8, loop: true, fade: 1000 });
 
-        // 2. Spawn Lira dynamically
+        // 2. Spawn Hana dynamically
         const lira = await player.createDynamicEvent({
-            name: 'npc_lira',
-            x: 34, // Lira's position near the clearing
+            name: 'npc_hana',
+            x: 34, // Hana's position near the clearing
             y: 29,
-            graphic: 'npc_lira',
+            graphic: 'npc_hana',
             speed: 1,
             direction: 2, // Facing south
-            // Lira will be static for this scene
-            // We don't need to define onAction for Lira here as her dialogue is part of the scene flow
+            // Hana will be static for this scene
+            // We don't need to define onAction for Hana here as her dialogue is part of the scene flow
         });
 
-        // Ensure Lira is spawned before dialogue
+        // Ensure Hana is spawned before dialogue
         await player.nextFrame();
 
         // 3. Dialogue sequences
@@ -59,14 +59,14 @@ export class StagnationClearingEvent extends RpgEvent {
         await player.showText("I've seen these before, in the Frontier. The Preservers do this — people who think the world is too fragile to change. They freeze things to 'protect' them.", { speaker: lira });
         await player.showText("This is small. Just a clearing. But they're getting bolder. I've heard reports of larger zones in the hills north of here.", { speaker: lira });
 
-        // Lira kneels by the crystallized Resonance Stone (visual cue, no actual event interaction yet)
+        // Hana kneels by the crystallized Resonance Stone (visual cue, no actual event interaction yet)
         await player.showText("We could break it. A single fragment broadcast into this stone would shatter the stasis. But...", { speaker: lira });
         await player.showText("Not yet. I want to show you more of the Settled Lands first. When we come back, you'll understand what you're doing — and why it matters.", { speaker: lira });
 
         // 5. System message
         await player.systemMessage("You've discovered a Stagnation Zone. The Preservers freeze the world to prevent change. Architects can break these zones by broadcasting memory fragments. You'll return here when you're ready.");
 
-        // Clean up Lira after the scene
+        // Clean up Hana after the scene
         if (lira) {
             await lira.remove();
         }

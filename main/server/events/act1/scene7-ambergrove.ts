@@ -31,14 +31,14 @@ export class AmbergroveSceneEvent extends RpgEvent {
         },
       });
 
-      // Spawn Lira (npc_lira) at Hearthstone Circle (20, 10)
+      // Spawn Hana (npc_hana) at Hearthstone Circle (20, 10)
       const liraEvent = await player.map.createDynamicEvent({
         x: 20,
         y: 10,
-        event: 'npc_lira', // Assuming 'npc_lira' is a registered RpgEvent class
+        event: 'npc_hana', // Assuming 'npc_hana' is a registered RpgEvent class
         properties: {
-          name: 'Lira',
-          graphic: 'npc_lira',
+          name: 'Hana',
+          graphic: 'npc_hana',
           direction: Direction.DOWN,
           speed: 1,
           frequency: 1000,
@@ -52,7 +52,7 @@ export class AmbergroveSceneEvent extends RpgEvent {
       await player.showText(
         'This is a Hearthstone Circle. Before the Dissolved chose to let go, they gathered in places like this. Their strongest memories are still here — more concentrated than anything in the village.',
         {
-          speaker: 'Lira',
+          speaker: 'Hana',
           talkWith: liraEvent,
         },
       );
@@ -69,13 +69,13 @@ export class AmbergroveSceneEvent extends RpgEvent {
       // This would also be a separate action event on the map.
       // For this scene event, we'll simulate the initial observation.
       await player.showText('That stone in the lake... I can hear it from here. Can you?', {
-        speaker: 'Lira',
+        speaker: 'Hana',
         talkWith: liraEvent,
       });
       await player.showText(
         "It's dormant, but not empty. Whatever it's carrying is strong. Too strong for us right now — we'd need to be much further along in our training to handle a memory that dense.",
         {
-          speaker: 'Lira',
+          speaker: 'Hana',
           talkWith: liraEvent,
         },
       );
@@ -110,7 +110,7 @@ export class AmbergroveSceneEvent extends RpgEvent {
         },
       );
 
-      // Lira moves to a less central position after initial dialogue
+      // Hana moves to a less central position after initial dialogue
       await liraEvent.moveAndPlay(Move.tile(22, 12));
     }
   }

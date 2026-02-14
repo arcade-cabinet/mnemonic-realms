@@ -36,21 +36,21 @@ export class MountainPassEvent extends RpgEvent {
         'The player approaches the Threshold. Where a solid cliff face stood before, a narrow mountain pass now cuts through the rock. The stone is rough-hewn and new — no moss, no weathering. Morning light streams through the gap.',
       );
 
-      // 2. Spawn Callum
+      // 2. Spawn Artun
       const callum = await this.map.createDynamicEvent({
-        x: player.x - 1, // Spawn Callum slightly behind the player
+        x: player.x - 1, // Spawn Artun slightly behind the player
         y: player.y,
-        event: 'npc_callum', // Assuming 'npc_callum' is a registered RpgEvent class
+        event: 'npc_artun', // Assuming 'npc_artun' is a registered RpgEvent class
         properties: {
-          graphic: 'npc_callum',
+          graphic: 'npc_artun',
           direction: 2, // Facing up
           speed: 100,
         },
       });
 
-      // Ensure Callum is an RpgEvent instance to call its methods
+      // Ensure Artun is an RpgEvent instance to call its methods
       if (callum instanceof RpgEvent) {
-        // Callum moves to the pass entrance
+        // Artun moves to the pass entrance
         await callum.moveRoutes([
           {
             x: player.x,
@@ -67,41 +67,41 @@ export class MountainPassEvent extends RpgEvent {
         ]);
       }
 
-      // Dialogue: Callum catches up
+      // Dialogue: Artun catches up
       await player.showText("Wait — wait for me. These old legs aren't what they were.", {
-        speaker: 'Callum',
+        speaker: 'Artun',
       });
       await player.showText(
-        'The world opened this. Not you, not me — the world itself. It felt what happened to Lira and decided the Frontier needed reaching.',
-        { speaker: 'Callum' },
+        'The world opened this. Not you, not me — the world itself. It felt what happened to Hana and decided the Frontier needed reaching.',
+        { speaker: 'Artun' },
       );
       await player.showText(
         "I told you I'd stay in the village, but I've been studying the Dissolved from my desk for forty years. If I'm ever going to see what's out there with my own eyes, it's now.",
-        { speaker: 'Callum' },
+        { speaker: 'Artun' },
       );
 
-      // 3. Effects: Callum joins the party
+      // 3. Effects: Artun joins the party
       player.addCompanion('callum', { class: 'scholar' });
       await player.showText(
-        'Callum joins the party! (Scholar — support moveset: Dissolved Insight, Memory Ward, Lore Pulse)',
+        'Artun joins the party! (Scholar — support moveset: Dissolved Insight, Memory Ward, Lore Pulse)',
         { type: 'system' },
       );
 
       await player.showText(
         "I won't be much use in a fight. But I know things about the Frontier that might keep you alive. And I brought these —",
-        { speaker: 'Callum' },
+        { speaker: 'Artun' },
       );
       await player.showText(
         "One letter per zone. I'll read them when we arrive. Think of it as... a traveler's guide, written by someone who's never actually traveled.",
-        { speaker: 'Callum' },
+        { speaker: 'Artun' },
       );
 
       // 4. Update quest state
       player.setQuest('MQ-05', 'activated');
 
-      // Player and Callum enter the mountain pass.
+      // Player and Artun enter the mountain pass.
       await player.showText(
-        'The player and Callum enter the mountain pass. The path climbs steeply. The ambient audio shifts — wind intensifies, birdsong fades. The color palette begins to desaturate as they ascend.',
+        'The player and Artun enter the mountain pass. The path climbs steeply. The ambient audio shifts — wind intensifies, birdsong fades. The color palette begins to desaturate as they ascend.',
       );
 
       // First Frontier vista
@@ -112,13 +112,13 @@ export class MountainPassEvent extends RpgEvent {
 
       await player.showText(
         "I've dreamed about this view for thirty years. It's exactly as beautiful as I imagined. And exactly as unfinished.",
-        { speaker: 'Callum' },
+        { speaker: 'Artun' },
       );
       await player.showText(
         "Look there — see how those trees to the east flicker between solid and outline? And those marshlands to the south — the water doesn't quite sparkle. It's all waiting. Waiting for someone to remember it into fullness.",
-        { speaker: 'Callum' },
+        { speaker: 'Artun' },
       );
-      await player.showText("That's your job now.", { speaker: 'Callum' });
+      await player.showText("That's your job now.", { speaker: 'Artun' });
 
       // Transition to Hollow Ridge
       await player.changeMap('hollow-ridge', { x: 25, y: 49 }); // Assuming Hollow Ridge southern entrance is (25,49)
@@ -126,22 +126,22 @@ export class MountainPassEvent extends RpgEvent {
   }
 }
 
-// You would also need to define the npc_callum event if it's not already global
+// You would also need to define the npc_artun event if it's not already global
 @EventData({
-  id: 'npc_callum',
-  name: 'Callum',
-  graphic: 'npc_callum',
+  id: 'npc_artun',
+  name: 'Artun',
+  graphic: 'npc_artun',
   hitbox: { width: 32, height: 32 },
 })
-export class NpcCallum extends RpgEvent {
+export class NpcArtun extends RpgEvent {
   onInit() {
-    this.setGraphic('npc_callum');
+    this.setGraphic('npc_artun');
   }
 }
 
 export default function mountainPassSetup() {
   return [
     MountainPassEvent,
-    NpcCallum, // Include Callum's NPC definition if it's not already globally available
+    NpcArtun, // Include Artun's NPC definition if it's not already globally available
   ];
 }

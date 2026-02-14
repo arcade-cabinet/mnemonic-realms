@@ -35,12 +35,12 @@ export class Act2Scene17CuratorEndgame extends RpgEvent {
 
   async onChanges(player: RpgPlayer) {
     // Trigger condition: quest-state, map: village-hub, condition: lira-freed-and-SQ05-complete
-    const isLiraFreed = player.getQuest('MQ-04')?.state === 'completed'; // Assuming MQ-04 is "Lira Freed"
-    const isSQ05Complete = player.getQuest('SQ-05')?.state === 'completed'; // "Aric's Doubt"
+    const isHanaFreed = player.getQuest('MQ-04')?.state === 'completed'; // Assuming MQ-04 is "Hana Freed"
+    const isSQ05Complete = player.getQuest('SQ-05')?.state === 'completed'; // "Janik's Doubt"
 
     if (
       player.map.id === 'village-hub' &&
-      isLiraFreed &&
+      isHanaFreed &&
       isSQ05Complete &&
       player.getQuest('MQ-07')?.state === 'not-started'
     ) {
@@ -62,76 +62,76 @@ export class Act2Scene17CuratorEndgame extends RpgEvent {
       // These positions are illustrative; adjust based on actual map layout for Elder's House
       const callumX = 19; // Example position in Elder's House
       const callumY = 11;
-      const liraX = 20; // Example position near Callum
+      const liraX = 20; // Example position near Artun
       const liraY = 11;
 
       const map = player.map as RpgMap;
 
-      // Create Callum
+      // Create Artun
       const callumEvent = await map.createDynamicEvent({
         x: callumX,
         y: callumY,
-        id: 'npc_callum_scene', // Unique ID for this scene's NPC
-        graphic: 'npc_callum',
-        name: 'Callum',
+        id: 'npc_artun_scene', // Unique ID for this scene's NPC
+        graphic: 'npc_artun',
+        name: 'Artun',
         speed: 1,
         direction: 2, // Facing down
         through: false,
         priority: 1,
         sync: true,
-        // Add any specific event logic for Callum if needed, e.g., onAction
+        // Add any specific event logic for Artun if needed, e.g., onAction
         onAction(player: RpgPlayer) {
           // This NPC is part of a cutscene, so direct interaction might be limited
           // or lead to a "wait" message.
         },
       });
 
-      // Create Lira
+      // Create Hana
       const liraEvent = await map.createDynamicEvent({
         x: liraX,
         y: liraY,
-        id: 'npc_lira_scene', // Unique ID for this scene's NPC
-        graphic: 'npc_lira',
-        name: 'Lira',
+        id: 'npc_hana_scene', // Unique ID for this scene's NPC
+        graphic: 'npc_hana',
+        name: 'Hana',
         speed: 1,
         direction: 2, // Facing down
         through: false,
         priority: 1,
         sync: true,
         onAction(player: RpgPlayer) {
-          // Similar to Callum, direct interaction might be limited
+          // Similar to Artun, direct interaction might be limited
         },
       });
 
-      // Make player face Callum
-      await player.changeDirection(4); // Face left towards Callum if Callum is to the left
+      // Make player face Artun
+      await player.changeDirection(4); // Face left towards Artun if Artun is to the left
 
       // --- 3. Plays dialogue sequences via player.showText() ---
       await player.showText(
-        'Callum: "Player, Lira, I\'ve gathered you here because the situation has become dire."',
+        'Artun: "Player, Hana, I\'ve gathered you here because the situation has become dire."',
       );
       await player.showText(
-        'Lira: "What is it, Callum? Your tone suggests something truly grave."',
+        'Hana: "What is it, Artun? Your tone suggests something truly grave."',
       );
-      await player.showText('Callum: "The Curator... he has found it. The First Memory."');
+      await player.showText('Artun: "The Curator... he has found it. The First Memory."');
       await player.showText('Player: "The First Memory? But I thought it was lost, a legend..."');
       await player.showText(
-        'Callum: "He intends to crystallize it. To lock away the very essence of creation, to prevent any further ' +
+        'Artun: "He intends to crystallize it. To lock away the very essence of creation, to prevent any further ' +
           'dissolution. He believes it\'s the only way to achieve true, unchanging perfection."',
       );
       await player.showText(
-        'Lira: "Crystallize the First Memory... that would be the end of everything. No new thoughts, no new emotions, just... stasis."',
+        'Hana: "Crystallize the First Memory... that would be the end of everything. No new thoughts, no new emotions, just... stasis."',
       );
       await player.showText(
-        'Callum: "Precisely. We must stop him. This is no longer about restoring memories, but about preserving the future itself."',
+        'Artun: "Precisely. We must stop him. This is no longer about restoring memories, but about preserving the future itself."',
       );
       await player.showText('Player: "Where is he? Where is the First Memory?"');
       await player.showText(
-        'Callum: "The Fortress. Deep within the Undrawn Peaks. It\'s heavily guarded, a place few have ever reached."',
+        'Artun: "The Fortress. Deep within the Undrawn Peaks. It\'s heavily guarded, a place few have ever reached."',
       );
-      await player.showText('Lira: "Then we must prepare. This will be our greatest challenge."');
+      await player.showText('Hana: "Then we must prepare. This will be our greatest challenge."');
       await player.showText(
-        'Callum: "Indeed. The fate of Mnemonic Realms rests on your shoulders, Player."',
+        'Artun: "Indeed. The fate of Mnemonic Realms rests on your shoulders, Player."',
       );
 
       // --- 4. Fires effects (combat, GUI, screen effects, music) ---

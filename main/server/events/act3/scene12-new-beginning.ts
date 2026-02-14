@@ -69,12 +69,12 @@ export default async function setupAct3Scene12NewBeginning(player: RpgPlayer, ma
     await player.changeMusic({ track: 'credits-theme', loop: true, volume: 0.8 });
 
     // 2. Spawn NPCs at appropriate positions using createDynamicEvent()
-    // Lira at (6, 20)
+    // Hana at (6, 20)
     const liraEvent = await player.createDynamicEvent({
       x: 6,
       y: 20,
-      graphic: 'npc_lira',
-      name: 'Lira (Ending)',
+      graphic: 'npc_hana',
+      name: 'Hana (Ending)',
       width: 1,
       height: 1,
       speed: 0,
@@ -84,12 +84,12 @@ export default async function setupAct3Scene12NewBeginning(player: RpgPlayer, ma
       },
     });
 
-    // Callum at (4, 20)
+    // Artun at (4, 20)
     const callumEvent = await player.createDynamicEvent({
       x: 4,
       y: 20,
-      graphic: 'npc_callum',
-      name: 'Callum (Ending)',
+      graphic: 'npc_artun',
+      name: 'Artun (Ending)',
       width: 1,
       height: 1,
       speed: 0,
@@ -105,13 +105,13 @@ export default async function setupAct3Scene12NewBeginning(player: RpgPlayer, ma
     player.setDirection(2); // Player faces down, towards the new world
 
     // 3. Play dialogue sequences via player.showText()
-    // Dialogue from Lira and Callum
-    await player.showText("It's not stopping. It's still growing.", { speaker: 'Lira' });
+    // Dialogue from Hana and Artun
+    await player.showText("It's not stopping. It's still growing.", { speaker: 'Hana' });
     await player.showText(
       "Of course it is. The old question was 'Why do things change?' The new question is 'What will we create next?' That's a question with infinite answers.",
-      { speaker: 'Callum' },
+      { speaker: 'Artun' },
     );
-    await player.showText('What will YOU create next?', { speaker: 'Lira' });
+    await player.showText('What will YOU create next?', { speaker: 'Hana' });
 
     // 4. Fire effects (system message)
     await player.showText('Not an ending. A beginning.', { type: 'system' });

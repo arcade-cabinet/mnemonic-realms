@@ -7,7 +7,7 @@ import {
   type RpgPlayer,
   RpgScene,
 } from '@rpgjs/server';
-import { Callum, PreserverCaptainAric } from '../database/npcs/all'; // Assuming NPC classes are defined here
+import { Artun, PreserverCaptainJanik } from '../database/npcs/all'; // Assuming NPC classes are defined here
 
 @EventData({
   id: 'act2-scene9-preserver-response',
@@ -50,41 +50,41 @@ export class PreserverResponseEvent extends RpgEvent {
     });
 
     // 2. Spawn NPCs
-    // Aric appears from behind the crystal wall
-    const aricX = player.position.x + 64; // Aric appears a bit ahead of the player
+    // Janik appears from behind the crystal wall
+    const aricX = player.position.x + 64; // Janik appears a bit ahead of the player
     const aricY = player.position.y;
     const aricEvent = await player.map.createDynamicEvent({
       x: aricX,
       y: aricY,
-      event: PreserverCaptainAric,
+      event: PreserverCaptainJanik,
       properties: {
-        name: 'Preserver Captain Aric',
-        graphic: 'npc_aric',
+        name: 'Preserver Captain Janik',
+        graphic: 'npc_janik',
         direction: 4, // Facing left, towards player
       },
     });
 
-    // Callum steps forward protectively
-    const callumX = player.position.x - 32; // Callum steps slightly behind/to the side of player
+    // Artun steps forward protectively
+    const callumX = player.position.x - 32; // Artun steps slightly behind/to the side of player
     const callumY = player.position.y;
     const callumEvent = await player.map.createDynamicEvent({
       x: callumX,
       y: callumY,
-      event: Callum,
+      event: Artun,
       properties: {
-        name: 'Callum',
-        graphic: 'npc_callum',
-        direction: 6, // Facing right, towards Aric
+        name: 'Artun',
+        graphic: 'npc_artun',
+        direction: 6, // Facing right, towards Janik
       },
     });
 
     // Ensure NPCs are visible and have their graphics set
-    if (aricEvent) aricEvent.setGraphic('npc_aric');
-    if (callumEvent) callumEvent.setGraphic('npc_callum');
+    if (aricEvent) aricEvent.setGraphic('npc_janik');
+    if (callumEvent) callumEvent.setGraphic('npc_artun');
 
     // 3. Dialogue sequences
     await player.showText(
-      'The path ahead crystallizes. A wall of blue-white crystal erupts across the trail — not attacking, but blocking. A figure steps from behind the crystal: Preserver Captain Aric, armored in crystalline plate, stern but not hostile.',
+      'The path ahead crystallizes. A wall of blue-white crystal erupts across the trail — not attacking, but blocking. A figure steps from behind the crystal: Preserver Captain Janik, armored in crystalline plate, stern but not hostile.',
     );
 
     if (aricEvent) await aricEvent.showText('Architect. Stop.', player);
@@ -100,7 +100,7 @@ export class PreserverResponseEvent extends RpgEvent {
           time: 500,
         },
       ]);
-    await player.showText('Callum steps forward protectively. Aric raises a hand.');
+    await player.showText('Artun steps forward protectively. Janik raises a hand.');
 
     if (aricEvent)
       await aricEvent.showText(
@@ -141,7 +141,7 @@ export class PreserverResponseEvent extends RpgEvent {
           time: 500,
         },
       ]);
-    await player.showText('Aric turns to the player.');
+    await player.showText('Janik turns to the player.');
 
     if (aricEvent)
       await aricEvent.showText(
@@ -159,7 +159,7 @@ export class PreserverResponseEvent extends RpgEvent {
         player,
       );
 
-    // Aric drops crystal wall and walks away
+    // Janik drops crystal wall and walks away
     await player.screenEffect({
       effect: 'crystal-wall-disappear',
       duration: 1500,
@@ -182,10 +182,10 @@ export class PreserverResponseEvent extends RpgEvent {
           distance: 100,
         },
       ]);
-    if (aricEvent) await aricEvent.remove(); // Remove Aric after he walks off screen
+    if (aricEvent) await aricEvent.remove(); // Remove Janik after he walks off screen
 
     await player.showText(
-      'Aric drops the crystal wall and walks away. No combat. No threat. Just a question that lingers.',
+      'Janik drops the crystal wall and walks away. No combat. No threat. Just a question that lingers.',
     );
 
     if (callumEvent) await callumEvent.showText("He's not entirely wrong, you know.", player);
@@ -200,7 +200,7 @@ export class PreserverResponseEvent extends RpgEvent {
         player,
       );
 
-    // Remove Callum after his dialogue
+    // Remove Artun after his dialogue
     if (callumEvent) await callumEvent.remove();
 
     // Re-enable player movement

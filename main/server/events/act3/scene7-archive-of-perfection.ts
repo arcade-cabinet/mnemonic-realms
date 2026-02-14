@@ -44,61 +44,61 @@ export class Floor2ArchiveOfPerfectionEvent extends RpgEvent {
     console.log(`Player entered Floor 2: The Archive of Perfection. Initializing scene events.`);
 
     // 2. Spawns NPCs at appropriate positions using createDynamicEvent()
-    // Lira's Insight (Room 4)
+    // Hana's Insight (Room 4)
     const liraEvent = await player.map.createDynamicEvent({
-      x: 8 * 32, // Example position for Lira in Room 4
+      x: 8 * 32, // Example position for Hana in Room 4
       y: 10 * 32,
       id: 'EV-F2-LIRA-INSIGHT',
-      graphic: 'npc_lira',
-      name: 'Lira',
+      graphic: 'npc_hana',
+      name: 'Hana',
       width: 1,
       height: 1,
       onAction: async (p: RpgPlayer) => {
         await p.showText(
-          'Lira (stopping at a window): I know what this feels like. From the inside.',
-          { speaker: 'Lira' },
+          'Hana (stopping at a window): I know what this feels like. From the inside.',
+          { speaker: 'Hana' },
         );
         await p.showText(
-          "Lira: When I was frozen, I was aware. Not of time passing — there was no time. But of... being held. Like being carried in someone's arms while you sleep. Safe. Still. Protected.",
-          { speaker: 'Lira' },
+          "Hana: When I was frozen, I was aware. Not of time passing — there was no time. But of... being held. Like being carried in someone's arms while you sleep. Safe. Still. Protected.",
+          { speaker: 'Hana' },
         );
         await p.showText(
-          "Lira: It wasn't terrible. That's the worst part. The Curator isn't lying when they say this is a kindness. For the frozen, it IS a kindness. They don't suffer. They don't fear. They don't lose.",
-          { speaker: 'Lira' },
+          "Hana: It wasn't terrible. That's the worst part. The Curator isn't lying when they say this is a kindness. For the frozen, it IS a kindness. They don't suffer. They don't fear. They don't lose.",
+          { speaker: 'Hana' },
         );
         await p.showText(
-          "Lira: But they don't choose, either. And that's what the Curator can't understand. A kindness you didn't choose isn't kindness. It's control.",
-          { speaker: 'Lira' },
+          "Hana: But they don't choose, either. And that's what the Curator can't understand. A kindness you didn't choose isn't kindness. It's control.",
+          { speaker: 'Hana' },
         );
         // Mark dialogue as complete to prevent repeat on action
         liraEvent.setVariable('dialogue_complete', true);
-        liraEvent.setGraphic(''); // Lira disappears after dialogue, or moves
+        liraEvent.setGraphic(''); // Hana disappears after dialogue, or moves
       },
     });
     liraEvent.setVariable('dialogue_complete', false); // Initialize variable
 
-    // Callum (optional, if he's with the party and has something to say)
-    // For this scene, Callum isn't explicitly mentioned in dialogue, but if he were,
+    // Artun (optional, if he's with the party and has something to say)
+    // For this scene, Artun isn't explicitly mentioned in dialogue, but if he were,
     // you'd spawn him similarly. Let's assume he's just present, not interactive for this scene.
     const callumEvent = await player.map.createDynamicEvent({
-      x: 7 * 32, // Example position for Callum near Lira
+      x: 7 * 32, // Example position for Artun near Hana
       y: 10 * 32,
       id: 'EV-F2-CALLUM-PRESENT',
-      graphic: 'npc_callum',
-      name: 'Callum',
+      graphic: 'npc_artun',
+      name: 'Artun',
       width: 1,
       height: 1,
-      // Callum might have a short, non-essential line if interacted with
+      // Artun might have a short, non-essential line if interacted with
       onAction: async (p: RpgPlayer) => {
         await p.showText(
-          'Callum: This place... it feels like a tomb, but they call it an archive.',
-          { speaker: 'Callum' },
+          'Artun: This place... it feels like a tomb, but they call it an archive.',
+          { speaker: 'Artun' },
         );
       },
     });
 
     // 3. Plays dialogue sequences via player.showText()
-    // Lira's insight dialogue is triggered by player action on her event.
+    // Hana's insight dialogue is triggered by player action on her event.
     // The moral puzzle system message is a direct player.showText().
 
     // Moral Puzzle Trigger (Room 2)
@@ -160,8 +160,8 @@ export class Floor2ArchiveOfPerfectionEvent extends RpgEvent {
                 { speaker: 'System' },
               );
               await playerGui.showText(
-                "Lira (quietly): Two freed. One stays. That's the Curator's final lesson — you can't save everything. Not even you.",
-                { speaker: 'Lira' },
+                "Hana (quietly): Two freed. One stays. That's the Curator's final lesson — you can't save everything. Not even you.",
+                { speaker: 'Hana' },
               );
               playerGui.setVariable('moral_puzzle_solved', true);
               // Remove the GUI or close it

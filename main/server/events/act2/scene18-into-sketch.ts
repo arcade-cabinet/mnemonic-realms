@@ -2,15 +2,15 @@ import { EventData, RpgEvent, type RpgPlayer } from '@rpgjs/server';
 
 // Placeholder dialogue content for NPCs
 const DLG_CALLUM_SKETCH_ENTRY = [
-  "Callum: The air... it's different here. Like a breath held for too long.",
-  "Callum: This is it, then. The edge of what is, and what isn't yet.",
-  'Callum: Are you ready, [player_name]? The Sketch awaits.',
+  "Artun: The air... it's different here. Like a breath held for too long.",
+  "Artun: This is it, then. The edge of what is, and what isn't yet.",
+  'Artun: Are you ready, [player_name]? The Sketch awaits.',
 ];
 
 const DLG_LIRA_SKETCH_ENTRY = [
-  "Lira: Incredible. The world... it's a canvas, waiting for its final strokes.",
-  'Lira: Every line, every shade... it tells a story of what could be.',
-  'Lira: We must be careful. This place is fragile, yet full of potential.',
+  "Hana: Incredible. The world... it's a canvas, waiting for its final strokes.",
+  'Hana: Every line, every shade... it tells a story of what could be.',
+  'Hana: We must be careful. This place is fragile, yet full of potential.',
 ];
 
 @EventData({
@@ -62,16 +62,16 @@ export class Act2Scene18IntoSketch extends RpgEvent {
       eventId: 'callum_sketch_entry_npc', // Unique ID for the dynamic NPC event
       x: 18, // Position relative to player's landing spot
       y: 20,
-      graphic: 'npc_callum',
-      name: 'Callum',
+      graphic: 'npc_artun',
+      name: 'Artun',
     });
 
     const lira = await player.createDynamicEvent(RpgEvent, {
       eventId: 'lira_sketch_entry_npc', // Unique ID for the dynamic NPC event
       x: 22, // Position relative to player's landing spot
       y: 20,
-      graphic: 'npc_lira',
-      name: 'Lira',
+      graphic: 'npc_hana',
+      name: 'Hana',
     });
 
     // 4. Play dialogue sequences

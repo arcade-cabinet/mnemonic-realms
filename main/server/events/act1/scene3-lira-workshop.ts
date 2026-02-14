@@ -2,12 +2,12 @@ import { EventData, Move, RpgEvent, type RpgMap, type RpgPlayer } from '@rpgjs/s
 
 @EventData({
   id: 'act1-scene3-lira-workshop',
-  name: "Lira's Workshop Scene",
+  name: "Hana's Workshop Scene",
   hitbox: { width: 32, height: 32 },
   // This event is triggered by map-enter, so it doesn't need a graphic or specific position.
   // It will be dynamically created or managed by the map's onReady hook.
 })
-export class LiraWorkshopEvent extends RpgEvent {
+export class HanaWorkshopEvent extends RpgEvent {
   onInit() {
     this.set({
       graphic: '', // Invisible event
@@ -30,31 +30,31 @@ export class LiraWorkshopEvent extends RpgEvent {
   }
 
   async triggerScene(player: RpgPlayer) {
-    // 1. Spawn Lira NPC
+    // 1. Spawn Hana NPC
     const liraNpc = await player.map.createDynamicEvent({
       x: 9,
       y: 19,
-      id: 'npc_lira_scene3',
-      graphic: 'npc_lira',
-      name: 'Lira',
+      id: 'npc_hana_scene3',
+      graphic: 'npc_hana',
+      name: 'Hana',
       speed: 100,
-      // Lira will be static during the dialogue
+      // Hana will be static during the dialogue
       // After the scene, she might roam or be removed/repositioned
     });
 
-    // Ensure Lira is facing the player or a default direction
+    // Ensure Hana is facing the player or a default direction
     await liraNpc.changeDirection(Move.up); // Assuming player enters from bottom
 
     // 2. Play dialogue sequences
     await player.showText(
-      "You must be the one Callum keeps talking about. I'm Lira — Mnemonic Architect, freelance, currently between assignments.",
-      { speaker: 'Lira' },
+      "You must be the one Artun keeps talking about. I'm Hana — Mnemonic Architect, freelance, currently between assignments.",
+      { speaker: 'Hana' },
     );
     await player.showText(
       "He told me you can see the shimmer around Resonance Stones. Most people can't. That's the first sign of the talent.",
-      { speaker: 'Lira' },
+      { speaker: 'Hana' },
     );
-    await player.showText("Show me what you've collected.", { speaker: 'Lira' });
+    await player.showText("Show me what you've collected.", { speaker: 'Hana' });
 
     // [The player's fragment inventory appears briefly on screen — a visual grid showing all 4 fragments.]
     // This would typically be a GUI call. For now, we'll simulate with a text message.
@@ -69,18 +69,18 @@ export class LiraWorkshopEvent extends RpgEvent {
 
     await player.showText(
       "Four fragments already? From the garden stones? Good instincts. You didn't force them — you just... noticed. That's exactly right.",
-      { speaker: 'Lira' },
+      { speaker: 'Hana' },
     );
     await player.showText(
-      "I want to travel with you for a while, if that's all right. Callum tells me you're curious about the world beyond the village, and there are things I can teach you better in the field than in a workshop.",
-      { speaker: 'Lira' },
+      "I want to travel with you for a while, if that's all right. Artun tells me you're curious about the world beyond the village, and there are things I can teach you better in the field than in a workshop.",
+      { speaker: 'Hana' },
     );
 
     // 3. Fire effects
     // Companion join
     await player.addCompanion('lira', 'cleric');
     await player.showText(
-      'SYSTEM: Lira joins the party! (Cleric — simplified moveset: Joyful Mending, Sorrowful Cleanse, Awestruck Ward)',
+      'SYSTEM: Hana joins the party! (Cleric — simplified moveset: Joyful Mending, Sorrowful Cleanse, Awestruck Ward)',
       { speaker: 'SYSTEM' },
     );
 
@@ -91,7 +91,7 @@ export class LiraWorkshopEvent extends RpgEvent {
     });
     await player.showText(
       "Almost forgot. This marks you as one of us. You'll need it to interact with Resonance Stones properly.",
-      { speaker: 'Lira' },
+      { speaker: 'Hana' },
     );
 
     // 4. Update quest state
@@ -104,15 +104,15 @@ export class LiraWorkshopEvent extends RpgEvent {
 
     await player.showText(
       "Before we head out, let's get you properly introduced. Come to the Training Ground — north of the square. Best to learn the basics of defending yourself before we go anywhere interesting.",
-      { speaker: 'Lira' },
+      { speaker: 'Hana' },
     );
 
-    // After the scene, Lira can be set to follow the player or move to a new position.
+    // After the scene, Hana can be set to follow the player or move to a new position.
     // For now, let's make her follow the player.
     liraNpc.setPlayerFollow(player);
     // Or if she should stay in the workshop but allow interaction:
-    // liraNpc.setGraphic('npc_lira'); // Ensure graphic is visible
-    // liraNpc.onAction = async (p) => { await p.showText('Lira: Ready when you are!'); };
+    // liraNpc.setGraphic('npc_hana'); // Ensure graphic is visible
+    // liraNpc.onAction = async (p) => { await p.showText('Hana: Ready when you are!'); };
   }
 }
 

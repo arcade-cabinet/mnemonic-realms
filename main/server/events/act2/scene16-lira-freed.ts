@@ -2,17 +2,17 @@ import { EventData, MapData, Move, RpgCommonPlayer, RpgEvent, RpgMap, RpgMoveRou
 
 @EventData({
     id: 'act2-scene16-lira-freed',
-    name: 'Freeing Lira',
+    name: 'Freeing Hana',
     hitbox: { width: 32, height: 32 },
 })
-export class FreeingLiraEvent extends RpgEvent {
+export class FreeingHanaEvent extends RpgEvent {
     onInit() {
         this.setGraphic('invisible'); // Start invisible, only trigger on specific conditions
     }
 
     async onPlayerTouch(player: RpgPlayer) {
         // 1. Check trigger conditions
-        const questState = player.getQuest('SQ-14'); // Lira's Freeing Quest
+        const questState = player.getQuest('SQ-14'); // Hana's Freeing Quest
         const allGodsRecalled = player.getVariable('4-gods-recalled'); // Custom variable for all gods recalled
 
         if (player.map.id === 'heartfield' && this.pos.x === 35 && this.pos.y === 30 && questState?.state === 'active' && allGodsRecalled) {
@@ -25,15 +25,15 @@ export class FreeingLiraEvent extends RpgEvent {
             this.setGraphic('invisible'); // The actual crystal is a map tile, this event is just the trigger
             this.setHitbox(32, 32); // Make sure it's interactable
 
-            // Part A: Return to Heartfield - Dialogue with Callum
+            // Part A: Return to Heartfield - Dialogue with Artun
             const callum = await player.map.createDynamicEvent({
                 x: 34,
                 y: 29,
-                event: 'npc_callum', // Assuming 'npc_callum' is an existing RpgEvent class
+                event: 'npc_artun', // Assuming 'npc_artun' is an existing RpgEvent class
                 properties: {
-                    graphic: 'npc_callum',
+                    graphic: 'npc_artun',
                     direction: 2, // Facing player
-                    name: 'Callum'
+                    name: 'Artun'
                 }
             });
 
@@ -41,7 +41,7 @@ export class FreeingLiraEvent extends RpgEvent {
             await player.showText(player.getDialogue('dlg-callum-lira-freed').partA2, { speaker: callum });
 
             // System message for broadcasting
-            await player.showText("SYSTEM: The expanded stagnation zone's crystal is fractured and weakened. Broadcasting a **potency 4+ fragment** into the focal point will shatter the zone and free Lira.");
+            await player.showText("SYSTEM: The expanded stagnation zone's crystal is fractured and weakened. Broadcasting a **potency 4+ fragment** into the focal point will shatter the zone and free Hana.");
 
             // Wait for player to broadcast a fragment
             const fragmentBroadcasted = await player.gui('broadcast-fragment-gui').open({
@@ -60,15 +60,15 @@ export class FreeingLiraEvent extends RpgEvent {
 
             // Part B: The Shattering
             // 2. Spawns NPCs at appropriate positions using createDynamicEvent()
-            // Lira is initially frozen, her dynamic event will be created after shattering
+            // Hana is initially frozen, her dynamic event will be created after shattering
             const liraFrozen = await player.map.createDynamicEvent({
                 x: 35,
                 y: 30,
-                event: 'npc_lira', // Assuming 'npc_lira' is an existing RpgEvent class
+                event: 'npc_hana', // Assuming 'npc_hana' is an existing RpgEvent class
                 properties: {
-                    graphic: 'npc_lira_frozen', // A special graphic for frozen Lira
+                    graphic: 'npc_hana_frozen', // A special graphic for frozen Hana
                     direction: 2,
-                    name: 'Lira'
+                    name: 'Hana'
                 }
             });
 
@@ -76,22 +76,22 @@ export class FreeingLiraEvent extends RpgEvent {
             await player.triggerMapEvent('stagnation-mega-shatter'); // Custom map event for screen effect
             await player.screenEffect({ effect: 'stagnation-mega-shatter' }); // Example screen effect
 
-            // Remove the frozen Lira event
+            // Remove the frozen Hana event
             liraFrozen.remove();
 
-            // Create the freed Lira event
+            // Create the freed Hana event
             const liraFreed = await player.map.createDynamicEvent({
                 x: 35,
                 y: 30,
-                event: 'npc_lira',
+                event: 'npc_hana',
                 properties: {
-                    graphic: 'npc_lira', // Normal Lira graphic
+                    graphic: 'npc_hana', // Normal Hana graphic
                     direction: 2,
-                    name: 'Lira'
+                    name: 'Hana'
                 }
             });
 
-            // Dialogue with Lira and Callum
+            // Dialogue with Hana and Artun
             await player.showText(player.getDialogue('dlg-lira-freed').partB1, { speaker: liraFreed });
             await player.showText(player.getDialogue('dlg-lira-freed').partB2, { speaker: liraFreed });
             await player.showText(player.getDialogue('dlg-callum-lira-freed').partB3, { speaker: callum });
@@ -99,8 +99,8 @@ export class FreeingLiraEvent extends RpgEvent {
             await player.showText(player.getDialogue('dlg-lira-freed').partB5, { speaker: liraFreed });
 
             // 4. Fires effects (companion join)
-            await player.addCompanion('lira', { class: 'cleric' }); // Lira rejoins the party
-            await player.showText("SYSTEM: Lira rejoins the party! (Cleric — full moveset restored, leveled to match player)");
+            await player.addCompanion('lira', { class: 'cleric' }); // Hana rejoins the party
+            await player.showText("SYSTEM: Hana rejoins the party! (Cleric — full moveset restored, leveled to match player)");
 
             // Final dialogue
             await player.showText(player.getDialogue('dlg-callum-lira-freed').partB6, { speaker: callum });
@@ -124,5 +124,5 @@ export class FreeingLiraEvent extends RpgEvent {
 }
 
 export default function setup() {
-    return FreeingLiraEvent;
+    return FreeingHanaEvent;
 }

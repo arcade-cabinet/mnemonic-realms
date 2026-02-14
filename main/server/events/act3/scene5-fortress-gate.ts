@@ -40,13 +40,13 @@ export default class TheFortressGateEvent extends RpgEvent {
     player.canMove = false;
 
     // 2. Spawns NPCs at appropriate positions using createDynamicEvent()
-    // Lira (npc_lira)
+    // Hana (npc_hana)
     const liraEvent = await player.map.createDynamicEvent({
       x: player.x - 1, // Position relative to player
       y: player.y + 1,
       event: {
-        name: 'LiraFortressEntry',
-        graphic: 'npc_lira',
+        name: 'HanaFortressEntry',
+        graphic: 'npc_hana',
         width: 1,
         height: 1,
         collision: true,
@@ -57,13 +57,13 @@ export default class TheFortressGateEvent extends RpgEvent {
       },
     });
 
-    // Callum (npc_callum)
+    // Artun (npc_artun)
     const callumEvent = await player.map.createDynamicEvent({
       x: player.x + 1, // Position relative to player
       y: player.y + 1,
       event: {
-        name: 'CallumFortressEntry',
-        graphic: 'npc_callum',
+        name: 'ArtunFortressEntry',
+        graphic: 'npc_artun',
         width: 1,
         height: 1,
         collision: true,

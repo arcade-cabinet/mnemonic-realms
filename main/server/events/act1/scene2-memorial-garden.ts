@@ -148,7 +148,7 @@ export class MemorialGardenEvent extends RpgEvent {
     if (stone1Collected && stone2Collected && stone3Collected) {
       // All fragments collected, advance quest and show final message
       await player.showText(
-        "You now carry 4 memory fragments. Callum mentioned Lira's Workshop — she can teach you what to do with them.",
+        "You now carry 4 memory fragments. Artun mentioned Hana's Workshop — she can teach you what to do with them.",
         {
           talkWith: this,
         },

@@ -54,22 +54,22 @@ export class TheClearingGrowsEvent extends RpgEvent {
     player.canMove = false;
     player.fixDirection();
 
-    // --- Part A: Callum's Warning (in Village Hub) ---
-    // Dynamically spawn Callum in his house (18, 10)
+    // --- Part A: Artun's Warning (in Village Hub) ---
+    // Dynamically spawn Artun in his house (18, 10)
     const callumEvent = await player.map.createDynamicEvent({
       x: 18,
       y: 10,
-      event: class CallumScene11 extends RpgEvent {
+      event: class ArtunScene11 extends RpgEvent {
         onInit() {
-          this.setGraphic('npc_callum');
+          this.setGraphic('npc_artun');
           this.setDirection(Move.up);
         }
       },
     });
 
-    await player.teleport('village-hub', 19, 11); // Player appears in Callum's house
+    await player.teleport('village-hub', 19, 11); // Player appears in Artun's house
     await player.showText(
-      'You broke the clearing. Good. Lira told me what you found — a Preserver scout, a frozen watchtower, the whole thing.',
+      'You broke the clearing. Good. Hana told me what you found — a Preserver scout, a frozen watchtower, the whole thing.',
     );
     await player.showText(
       "I wish I could say it's an isolated case. But I've been reading reports from travelers for months now. Stagnation zones in the Frontier. Whole settlements frozen. The Preservers are expanding.",
@@ -84,22 +84,22 @@ export class TheClearingGrowsEvent extends RpgEvent {
 
     await player.showText("...they're pushing back.");
 
-    // Remove Callum's dynamic event
+    // Remove Artun's dynamic event
     await player.map.removeEvent(callumEvent.id);
 
     // --- Part B: The Expansion (Transition to Heartfield) ---
-    await player.teleport('heartfield', 35, 30); // Player and Lira run to Heartfield
+    await player.teleport('heartfield', 35, 30); // Player and Hana run to Heartfield
 
-    // Play cutscene: Lira freezing
-    await player.playCutscene('lira-freezing'); // This cutscene handles the visual expansion and Lira's initial actions
+    // Play cutscene: Hana freezing
+    await player.playCutscene('lira-freezing'); // This cutscene handles the visual expansion and Hana's initial actions
 
-    // Dynamically spawn Lira (frozen) at the stagnation border
+    // Dynamically spawn Hana (frozen) at the stagnation border
     const liraFrozenEvent = await player.map.createDynamicEvent({
       x: 34,
       y: 29,
-      event: class LiraFrozenScene11 extends RpgEvent {
+      event: class HanaFrozenScene11 extends RpgEvent {
         onInit() {
-          this.setGraphic('npc_lira'); // Use Lira's graphic
+          this.setGraphic('npc_hana'); // Use Hana's graphic
           this.setDirection(Move.up); // Frozen mid-stride, hand extended
           this.setAnimation('frozen_state'); // Assuming a 'frozen_state' animation or graphic
           this.setHitbox(1, 1); // Make her interactable for the player to "hammer"
@@ -118,8 +118,8 @@ export class TheClearingGrowsEvent extends RpgEvent {
       },
     });
 
-    // System message for Lira being frozen
-    await player.showText('Lira has been frozen by the Stagnation Zone.', { type: 'system' });
+    // System message for Hana being frozen
+    await player.showText('Hana has been frozen by the Stagnation Zone.', { type: 'system' });
 
     // Dialogue from The Curator (echoing from crystal)
     await player.showText('I did not want this.', {
@@ -136,7 +136,7 @@ export class TheClearingGrowsEvent extends RpgEvent {
     );
 
     // Effects:
-    // 1. Companion leave: Lira is removed from the party
+    // 1. Companion leave: Hana is removed from the party
     player.removeCompanion('lira');
     // 2. Vibrancy change: Heartfield vibrancy drops sharply
     // Assuming a global vibrancy system or map-specific variable
@@ -146,10 +146,10 @@ export class TheClearingGrowsEvent extends RpgEvent {
       const currentVibrancy = map.getVariable('vibrancy_heartfield') || 65; // Default from docs
       map.setVariable('vibrancy_heartfield', Math.max(40, currentVibrancy - 25)); // Drops to 40
     }
-    // 3. Item give: MF-04 "Lira's Scream"
+    // 3. Item give: MF-04 "Hana's Scream"
     player.addItem('MF-04', 1);
     await player.showText(
-      "You received a Memory Fragment: \"Lira's Scream\" (Fury, Light, ★★★★) — the emotional shockwave of Lira's freezing. The player's most potent fragment yet — and the most painful.",
+      "You received a Memory Fragment: \"Hana's Scream\" (Fury, Light, ★★★★) — the emotional shockwave of Hana's freezing. The player's most potent fragment yet — and the most painful.",
       { type: 'system' },
     );
 

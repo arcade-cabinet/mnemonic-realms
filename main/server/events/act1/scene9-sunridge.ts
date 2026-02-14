@@ -31,16 +31,16 @@ export default class SunridgeSceneEvent extends RpgEvent {
   }
 
   async startScene(player: RpgPlayer) {
-    // Ensure Lira is present for the scene
-    const lira = player.map.getEventByName('npc_lira');
+    // Ensure Hana is present for the scene
+    const lira = player.map.getEventByName('npc_hana');
     if (!lira) {
       player.map.createDynamicEvent({
-        name: 'npc_lira',
-        x: 20, // Lira's initial position for the scene
+        name: 'npc_hana',
+        x: 20, // Hana's initial position for the scene
         y: 21,
-        event: 'npc_lira', // Reference to the actual NPC event class
+        event: 'npc_hana', // Reference to the actual NPC event class
         properties: {
-          graphic: 'npc_lira',
+          graphic: 'npc_hana',
           direction: 0, // Facing south
           speed: 1,
         },
@@ -68,28 +68,28 @@ export default class SunridgeSceneEvent extends RpgEvent {
 
     // --- Wind Shrine (10, 8) ---
     await player.showText(
-      'Lira: This shrine is old. Pre-Dissolved old. Whoever built this was trying to capture something — the wind itself, maybe.',
-      { speaker: 'Lira' },
+      'Hana: This shrine is old. Pre-Dissolved old. Whoever built this was trying to capture something — the wind itself, maybe.',
+      { speaker: 'Hana' },
     );
     await player.showText(
       'SYSTEM: The Resonance Stone vibrates with overwhelming energy. Something immense sleeps here — a memory too large for you to hold. Not yet.',
     );
     await player.showText(
-      "Lira: Did you feel that? Speed. Motion. Joy of movement. Whatever's in that stone isn't just a memory — it's something alive. Dormant, but alive.",
-      { speaker: 'Lira' },
+      "Hana: Did you feel that? Speed. Motion. Joy of movement. Whatever's in that stone isn't just a memory — it's something alive. Dormant, but alive.",
+      { speaker: 'Hana' },
     );
     await player.showText(
-      "Lira: I've read about things like this in Callum's journals. He calls them 'dormant gods.' Prototypes — incomplete deities left behind by the Dissolved. If the right memories were channeled into them...",
-      { speaker: 'Lira' },
+      "Hana: I've read about things like this in Artun's journals. He calls them 'dormant gods.' Prototypes — incomplete deities left behind by the Dissolved. If the right memories were channeled into them...",
+      { speaker: 'Hana' },
     );
     await player.showText(
-      "Lira: But that's far beyond what we can do right now. Let's keep it in mind and move on.",
-      { speaker: 'Lira' },
+      "Hana: But that's far beyond what we can do right now. Let's keep it in mind and move on.",
+      { speaker: 'Hana' },
     );
 
     // --- Preserver Outpost (32, 15) ---
-    // Move Lira and player towards the outpost for the confrontation
-    const liraEvent = player.map.getEventByName('npc_lira');
+    // Move Hana and player towards the outpost for the confrontation
+    const liraEvent = player.map.getEventByName('npc_hana');
     if (liraEvent) {
       await liraEvent.moveRoutes([Move.tile(31, 16), Move.stop()]);
     }
@@ -99,19 +99,19 @@ export default class SunridgeSceneEvent extends RpgEvent {
       'Preserver Scout: Halt. This area is under preservation protocol. You may observe, but do not approach the watchtower.',
       { speaker: 'Preserver Scout' },
     );
-    await player.showText('Lira: Who are you?', { speaker: 'Lira' });
+    await player.showText('Hana: Who are you?', { speaker: 'Hana' });
     await player.showText(
       'Preserver Scout: I am a watcher for the Curator. We maintain the borders — ensuring that the settled regions remain... stable. Unchanged. Safe.',
       { speaker: 'Preserver Scout' },
     );
-    await player.showText("Lira: You call this safe? You've frozen an entire watchtower.", {
-      speaker: 'Lira',
+    await player.showText("Hana: You call this safe? You've frozen an entire watchtower.", {
+      speaker: 'Hana',
     });
     await player.showText(
       "Preserver Scout: We've preserved it. This tower was built by a civilization that chose to dissolve. In a generation, their work would have crumbled. Now it will endure forever. Every stone, every chisel mark. Exactly as it was.",
       { speaker: 'Preserver Scout' },
     );
-    await player.showText('Lira: Exactly as it was. And never anything more.', { speaker: 'Lira' });
+    await player.showText('Hana: Exactly as it was. And never anything more.', { speaker: 'Hana' });
     await player.showText('Preserver Scout: That is the point.', { speaker: 'Preserver Scout' });
 
     // Scout turns away
@@ -124,16 +124,16 @@ export default class SunridgeSceneEvent extends RpgEvent {
     }
 
     await player.showText(
-      "Lira: The Preservers. That's who made the clearing in Heartfield. That's who's doing this.",
-      { speaker: 'Lira' },
+      "Hana: The Preservers. That's who made the clearing in Heartfield. That's who's doing this.",
+      { speaker: 'Hana' },
     );
     await player.showText(
-      "Lira: They're not monsters. That scout was polite, even reasonable. But they want to freeze the whole world. Every stone, every river, every person — 'exactly as it was.'",
-      { speaker: 'Lira' },
+      "Hana: They're not monsters. That scout was polite, even reasonable. But they want to freeze the whole world. Every stone, every river, every person — 'exactly as it was.'",
+      { speaker: 'Hana' },
     );
     await player.showText(
-      "Lira: We need to go back to Heartfield. I think it's time you learned to break a stagnation zone.",
-      { speaker: 'Lira' },
+      "Hana: We need to go back to Heartfield. I think it's time you learned to break a stagnation zone.",
+      { speaker: 'Hana' },
     );
 
     // --- Quest Updates ---
@@ -143,15 +143,15 @@ export default class SunridgeSceneEvent extends RpgEvent {
       "QUEST: 'Break the Stagnation Clearing' — Return to Heartfield's Stagnation Clearing and broadcast a memory fragment into the crystallized Resonance Stone.",
     );
 
-    // Clean up dynamic Lira if she was spawned for the scene
+    // Clean up dynamic Hana if she was spawned for the scene
     if (liraEvent) {
-      // Lira might have a persistent event, so we just move her to her default position or despawn if she's temporary
+      // Hana might have a persistent event, so we just move her to her default position or despawn if she's temporary
       // For now, let's assume she'll roam or move to a specific spot after the scene.
       // If she's a dynamic event for this scene only, we can remove her.
       // For this example, let's assume she's a persistent NPC that just moved for the scene.
       // If she was dynamically created for this scene, we'd remove her.
       // For now, let's just make her visible and let her follow her normal AI.
-      liraEvent.setGraphic('npc_lira'); // Ensure correct graphic
+      liraEvent.setGraphic('npc_hana'); // Ensure correct graphic
       liraEvent.setDirection(0); // Default direction
       liraEvent.setSpeed(1); // Default speed
     }

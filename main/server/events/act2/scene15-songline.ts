@@ -112,26 +112,26 @@ export class TheSonglineEvent extends RpgEvent {
     );
     await player.showText('The last chorister dissolves into pure sound.');
 
-    // Spawn Callum dynamically
+    // Spawn Artun dynamically
     const callumEvent = await player.map.createDynamicEvent({
       x: player.x,
       y: player.y + 1, // Spawn near player
-      graphic: 'npc_callum',
-      name: 'Callum_Songline',
+      graphic: 'npc_artun',
+      name: 'Artun_Songline',
       event: class extends RpgEvent {
         onInit() {
-          this.setGraphic('npc_callum');
+          this.setGraphic('npc_artun');
           this.setHitbox(16, 16);
         }
         async onAction(player: RpgPlayer) {
           await player.showText(
-            "Callum: They didn't die. They became infinite. The song... the song is everywhere. It always was.",
+            "Artun: They didn't die. They became infinite. The song... the song is everywhere. It always was.",
           );
         }
       },
     });
     await player.showText(
-      "Callum (crying openly): They didn't die. They became infinite. The song... the song is everywhere. It always was.",
+      "Artun (crying openly): They didn't die. They became infinite. The song... the song is everywhere. It always was.",
     );
 
     // Move player to Room 5 entrance
@@ -142,18 +142,18 @@ export class TheSonglineEvent extends RpgEvent {
       'Room 5: The Fifth Verse — The Unfinished Note. A single room with a single Resonance Stone. The stone hums with the note A below middle C.',
     );
     await player.showText(
-      "Callum: The note they couldn't finish. The last piece of the song, left for someone else to complete.",
+      "Artun: The note they couldn't finish. The last piece of the song, left for someone else to complete.",
     );
 
-    // Check for Resonance recall state to determine Callum's next line
+    // Check for Resonance recall state to determine Artun's next line
     const hasRecalledResonance = player.getVariable('GOD_RECALLED_Resonance'); // Assuming a variable for recalled gods
     if (hasRecalledResonance) {
       await player.showText(
-        "Callum: You completed it. When you recalled Resonance, you finished the Choir's work. Not the way they would have, but the way you chose. And that's exactly what they hoped for.",
+        "Artun: You completed it. When you recalled Resonance, you finished the Choir's work. Not the way they would have, but the way you chose. And that's exactly what they hoped for.",
       );
     } else {
       await player.showText(
-        'Callum: Perhaps one day, someone will finish this note. Complete the song.',
+        'Artun: Perhaps one day, someone will finish this note. Complete the song.',
       );
     }
     await player.addFragment({
@@ -168,7 +168,7 @@ export class TheSonglineEvent extends RpgEvent {
 
     // --- Boss Encounter: The Conductor ---
     await player.showText('A dissonant chord rings through the chamber. The Conductor appears!');
-    await player.map.removeEvent(callumEvent.id); // Callum disappears before combat
+    await player.map.removeEvent(callumEvent.id); // Artun disappears before combat
     await player.changeMusic('boss_theme_conductor', 0.9, 0); // Boss music
     await player.battle('boss-conductor', ['B-03c']); // Trigger boss combat
 

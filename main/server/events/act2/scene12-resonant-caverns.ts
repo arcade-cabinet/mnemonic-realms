@@ -42,15 +42,15 @@ export default class ResonantCavernsEvent extends RpgEvent {
       player.setVariable(sceneId + '_triggered', true);
 
       // 1. Spawn NPCs
-      // Callum (npc_callum) at a specific position for dialogue
+      // Artun (npc_artun) at a specific position for dialogue
       const callumEvent = player.map.createDynamicEvent({
         x: 10, // Example X coordinate
         y: 15, // Example Y coordinate
-        id: 'npc_callum_resonant_caverns',
-        name: 'Callum',
-        graphic: 'npc_callum',
+        id: 'npc_artun_resonant_caverns',
+        name: 'Artun',
+        graphic: 'npc_artun',
         speed: 1,
-        // Make Callum static for this dialogue
+        // Make Artun static for this dialogue
         moveRandom: false,
         // Make him face the player when they approach
         direction: 2, // Down
@@ -58,13 +58,13 @@ export default class ResonantCavernsEvent extends RpgEvent {
           width: 32,
           height: 32,
         },
-        // Define an onAction for Callum to trigger his dialogue
+        // Define an onAction for Artun to trigger his dialogue
         onAction: async (player: RpgPlayer) => {
           await player.showText(
-            'Callum: "The air here... it hums with a strange energy. Be careful, [PLAYER_NAME]."',
+            'Artun: "The air here... it hums with a strange energy. Be careful, [PLAYER_NAME]."',
           );
           await player.showText(
-            'Callum: "Those crystal formations seem to react to sound. Perhaps there\'s a pattern to them."',
+            'Artun: "Those crystal formations seem to react to sound. Perhaps there\'s a pattern to them."',
           );
           // Trigger the specific dialogue bank entry
           await player.callMapEvent('dlg-callum-resonant-caverns');

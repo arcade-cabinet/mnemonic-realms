@@ -35,8 +35,8 @@ export class KinesisRecallEvent extends RpgEvent {
       this.callumEventId = await player.createDynamicEvent({
         x: 23,
         y: 11,
-        graphic: 'npc_callum',
-        name: 'npc_callum_kinesis_recall',
+        graphic: 'npc_artun',
+        name: 'npc_artun_kinesis_recall',
         properties: {
           isTemporary: true,
         },
@@ -44,8 +44,8 @@ export class KinesisRecallEvent extends RpgEvent {
       this.petraEventId = await player.createDynamicEvent({
         x: 25,
         y: 11,
-        graphic: 'npc_petra',
-        name: 'npc_petra_kinesis_recall',
+        graphic: 'npc_nel',
+        name: 'npc_nel_kinesis_recall',
         properties: {
           isTemporary: true,
         },

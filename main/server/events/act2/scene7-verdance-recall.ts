@@ -43,14 +43,14 @@ export default class VerdanceRecallEvent extends RpgEvent {
       this.hasSpawnedNpcs = true; // Prevent re-spawning
       this.event.setVisible(true); // Make the trigger visible/active
 
-      // Spawn Callum and Wynn
+      // Spawn Artun and Vash
       const callum = await player.map.createDynamicEvent({
         x: 23,
         y: 33,
-        event: 'npc_callum', // Assuming 'npc_callum' is a registered RpgEvent class
+        event: 'npc_artun', // Assuming 'npc_artun' is a registered RpgEvent class
         properties: {
-          name: 'Callum',
-          graphic: 'npc_callum',
+          name: 'Artun',
+          graphic: 'npc_artun',
           direction: 2, // Facing down
         },
       });
@@ -58,23 +58,23 @@ export default class VerdanceRecallEvent extends RpgEvent {
       const wynn = await player.map.createDynamicEvent({
         x: 27,
         y: 33,
-        event: 'npc_wynn', // Assuming 'npc_wynn' is a registered RpgEvent class
+        event: 'npc_vash', // Assuming 'npc_vash' is a registered RpgEvent class
         properties: {
-          name: 'Wynn',
-          graphic: 'npc_wynn',
+          name: 'Vash',
+          graphic: 'npc_vash',
           direction: 2, // Facing down
         },
       });
 
-      // Part A: Discovery (Wynn's dialogue)
+      // Part A: Discovery (Vash's dialogue)
       await player.showText(
-        "Wynn: Verdance's Hollow. The Rootwalkers' final gift. This tree was meant to be their god — a living embodiment of growth itself. But they dissolved before they could finish it.",
+        "Vash: Verdance's Hollow. The Rootwalkers' final gift. This tree was meant to be their god — a living embodiment of growth itself. But they dissolved before they could finish it.",
       );
       await player.showText(
-        "Wynn: The roots extend in every direction — I've traced them for twenty years. Wherever they surface, things grow. Even through the muted marsh soil. Even through the Stagnation Bog's crystal edge.",
+        "Vash: The roots extend in every direction — I've traced them for twenty years. Wherever they surface, things grow. Even through the muted marsh soil. Even through the Stagnation Bog's crystal edge.",
       );
       await player.showText(
-        'Wynn: But the path to the shrine is blocked. The root cluster at the base — see it? — has grown so dense that nothing can pass through. The tree is protecting itself.',
+        'Vash: But the path to the shrine is blocked. The root cluster at the base — see it? — has grown so dense that nothing can pass through. The tree is protecting itself.',
       );
 
       // Part B: Puzzle — Clearing the Roots
@@ -94,9 +94,9 @@ export default class VerdanceRecallEvent extends RpgEvent {
       this.event.setVisible(false);
       // Optionally remove NPCs if they are dynamic and no longer needed
       // (This depends on whether they have post-recall dialogue)
-      const callumEvent = player.map.getEventByName('Callum');
+      const callumEvent = player.map.getEventByName('Artun');
       if (callumEvent) player.map.removeEvent(callumEvent.id);
-      const wynnEvent = player.map.getEventByName('Wynn');
+      const wynnEvent = player.map.getEventByName('Vash');
       if (wynnEvent) player.map.removeEvent(wynnEvent.id);
     }
   }
@@ -152,32 +152,32 @@ export default class VerdanceRecallEvent extends RpgEvent {
     // Close GUI if still open
     player.gui('god-recall-pedestal').close();
 
-    // Wynn's reaction varies by recall emotion (as per narrative context)
-    let wynnReaction = 'Wynn: Incredible! The marsh is vibrant again!';
+    // Vash's reaction varies by recall emotion (as per narrative context)
+    let wynnReaction = 'Vash: Incredible! The marsh is vibrant again!';
     switch (emotion) {
       case 'Joy':
         wynnReaction =
-          "Wynn: Floriana... the Endless Bloom. Such abundance, such generosity. It's truly beautiful.";
+          "Vash: Floriana... the Endless Bloom. Such abundance, such generosity. It's truly beautiful.";
         break;
       case 'Fury':
         wynnReaction =
-          'Wynn: Thornweald... the Wild Overgrowth. Untamed, reclaiming. A powerful, almost alarming, surge of life.';
+          'Vash: Thornweald... the Wild Overgrowth. Untamed, reclaiming. A powerful, almost alarming, surge of life.';
         break;
       case 'Sorrow':
         wynnReaction =
-          "Wynn: Autumnus... the Falling Leaf. Natural cycles, composting old into new. There's a profound wisdom in this transformation.";
+          "Vash: Autumnus... the Falling Leaf. Natural cycles, composting old into new. There's a profound wisdom in this transformation.";
         break;
       case 'Awe':
         wynnReaction =
-          'Wynn: Sylvanos... the Deep Root. Hidden networks, interconnection, patience. A fascinating, intricate awakening.';
+          'Vash: Sylvanos... the Deep Root. Hidden networks, interconnection, patience. A fascinating, intricate awakening.';
         break;
     }
     await player.showText(wynnReaction);
 
     // Remove the NPCs if they are no longer needed
-    const callumEvent = player.map.getEventByName('Callum');
+    const callumEvent = player.map.getEventByName('Artun');
     if (callumEvent) player.map.removeEvent(callumEvent.id);
-    const wynnEvent = player.map.getEventByName('Wynn');
+    const wynnEvent = player.map.getEventByName('Vash');
     if (wynnEvent) player.map.removeEvent(wynnEvent.id);
 
     this.event.setVisible(false); // Hide the trigger event
