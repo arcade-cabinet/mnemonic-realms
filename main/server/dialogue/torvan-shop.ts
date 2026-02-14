@@ -1,17 +1,12 @@
-import type { RpgEvent, RpgPlayer } from '@rpgjs/server';
+import type { RpgPlayer } from '@rpgjs/server';
 
-export default async function (player: RpgPlayer, event: RpgEvent) {
-  // Trigger conditions and quest state checks would go here if specified.
-  // For a general shop interaction, no specific checks are required by the prompt.
+export default async function (player: RpgPlayer) {
+  // Hark's initial greeting, also serving as the [browse] line
+  await player.showText('Steel, leather, and honest craft. No enchantments.', {
+    speaker: 'Hark',
+  });
 
-  // Torvan's initial greeting, also serving as the [browse] line
-  await player.showText(
-    event.graphic,
-    'Torvan',
-    'Steel, leather, and honest craft. No enchantments.',
-  );
-
-  let choice;
+  let choice: { text: string; value: string };
   do {
     choice = await player.showChoices([
       { text: 'Browse Wares', value: 'browse' },
@@ -21,29 +16,24 @@ export default async function (player: RpgPlayer, event: RpgEvent) {
     ]);
 
     if (choice.value === 'browse') {
-      // Torvan's [buy] line, spoken before opening the shop
-      await player.showText(
-        event.graphic,
-        'Torvan',
-        "Good blade, that. Treat it right and it'll return the favor.",
-      );
+      // Hark's [buy] line, spoken before opening the shop
+      await player.showText("Good blade, that. Treat it right and it'll return the favor.", {
+        speaker: 'Hark',
+      });
       await player.openShop(); // Opens the actual shop UI for buying
     } else if (choice.value === 'sell') {
-      // Torvan's [sell] line
-      await player.showText(
-        event.graphic,
-        'Torvan',
-        "I'll melt it down and make something better.",
-      );
+      // Hark's [sell] line
+      await player.showText("I'll melt it down and make something better.", {
+        speaker: 'Hark',
+      });
       await player.openShop('sell'); // Opens the actual shop UI in sell mode
     } else if (choice.value === 'insufficient') {
-      // Torvan's [insufficient] gold line
-      await player.showText(event.graphic, 'Torvan', "Can't give it away, friend. Gold talks.");
-      // No shop opens, this choice is purely to trigger the dialogue line.
+      // Hark's [insufficient] gold line
+      await player.showText("Can't give it away, friend. Gold talks.", { speaker: 'Hark' });
     }
     // The loop continues until 'leave' is chosen.
   } while (choice.value !== 'leave');
 
-  // Torvan's [farewell] line
-  await player.showText(event.graphic, 'Torvan', 'Keep your guard up.');
+  // Hark's [farewell] line
+  await player.showText('Keep your guard up.', { speaker: 'Hark' });
 }

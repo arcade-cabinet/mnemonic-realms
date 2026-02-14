@@ -38,31 +38,31 @@ export default async function (player: RpgPlayer) {
 
   // Dialogue Sequence
   await player.showText('There you are. Come in, come in — careful of the stack by the door.', {
-    speaker: 'callum',
+    speaker: 'Artun',
   });
   await player.showText(
     "This passage describes a talent the Dissolved called 'Mnemonic Architecture.'",
-    { speaker: 'callum' },
+    { speaker: 'Artun' },
   );
   await player.showText(
     "You're a Mnemonic Architect, and we just didn't have a word for it until now.",
-    { speaker: 'callum' },
+    { speaker: 'Artun' },
   );
   await player.showText(
-    'A traveler came through last month — a woman named Lira. She recognized it in you immediately.',
-    { speaker: 'callum' },
+    'A traveler came through last month — a woman named Hana. She recognized it in you immediately.',
+    { speaker: 'Artun' },
   );
   await player.showText(
     "This is a memory fragment. My first lesson. It's a joyful memory. I'd like you to have it.",
-    { speaker: 'callum' },
+    { speaker: 'Artun' },
   );
 
   // Example: Granting a quest item or updating quest state for MQ-01
   // player.addItem('memory-fragment-joyful', 1);
   // player.updateQuest('MQ-01', 'received_first_fragment');
 
-  await player.showText('Now go find Lira. Her workshop is south of the square.', {
-    speaker: 'callum',
+  await player.showText('Now go find Hana. Her workshop is south of the square.', {
+    speaker: 'Artun',
   });
 
   // Example: Set a new quest objective or flag to guide the player

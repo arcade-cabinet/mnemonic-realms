@@ -7,11 +7,11 @@ export default async function dialogue(player: RpgPlayer) {
   // Optional: Check if player is in the Elder's House at the specified coordinates
   // This dialogue is triggered *after* Scene 11, so the location check might be handled by the event system.
   // However, including it here makes the dialogue more robust if triggered manually.
-  const isInEldersHouse =
+  const _isInEldersHouse =
     player.map.id === 'village_hub' && player.position.x === 18 && player.position.y === 10;
 
   if (mq04Complete) {
-    await player.showText('I heard. Lira...', { speaker: 'callum_graphic' });
+    await player.showText('I heard. Hana...', { speaker: 'callum_graphic' });
     await player.showText("She's alive. The crystal doesn't kill.", { speaker: 'callum_graphic' });
     await player.showText(
       "You'll need to go north. Into the Frontier — where the dormant gods sleep.",
@@ -27,7 +27,7 @@ export default async function dialogue(player: RpgPlayer) {
     // await player.setVariable('callum_info_after_lira_freezing', true);
     // await player.updateQuest('MQ-05', 'started'); // Assuming MQ-05 starts here
   } else {
-    // If the condition is not met, Callum might say something else or nothing at all.
+    // If the condition is not met, Artun might say something else or nothing at all.
     // For this specific dialogue, we assume it only triggers when MQ-04 is complete.
     // await player.showText('Hello, adventurer.', { speaker: 'callum_graphic' });
   }

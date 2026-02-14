@@ -1,6 +1,6 @@
-import type { Player } from '@rpgjs/server';
+import type { RpgPlayer } from '@rpgjs/server';
 
-export default async function (player: Player) {
+export default async function (player: RpgPlayer) {
   // Trigger condition check:
   // This dialogue is intended to play after the First Dreamer boss is defeated.
   // We assume a game variable 'firstDreamerDefeated' is set to true upon the boss's defeat.
@@ -13,13 +13,9 @@ export default async function (player: Player) {
   }
 
   // Dialogue sequence
-  await player.showText({
-    speaker: 'The First Dreamer',
-    text: 'Will you carry this forward?',
-  });
+  await player.showText('Will you carry this forward?', { speaker: 'The First Dreamer' });
 
-  await player.showText({
+  await player.showText('The question was asked. You are the newest answer. Carry it well.', {
     speaker: 'The First Dreamer',
-    text: 'The question was asked. You are the newest answer. Carry it well.',
   });
 }

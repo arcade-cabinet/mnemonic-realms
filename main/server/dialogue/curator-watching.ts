@@ -1,4 +1,4 @@
-import { RpgMap, type RpgPlayer } from '@rpgjs/server';
+import type { RpgPlayer } from '@rpgjs/server';
 
 export default async function (player: RpgPlayer) {
   // Define the NPC ID for The Curator's graphic, used for the speaker portrait.

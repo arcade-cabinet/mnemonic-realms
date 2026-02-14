@@ -16,12 +16,8 @@ export default async function dialogue(player: RpgPlayer) {
   ) {
     player.setVariable('dlg_callum_curator_confront_played', true);
 
-    await player.showText({
-      text: 'You want to silence the question. But the question IS the world.',
-      speaker: {
-        name: 'Callum',
-        graphic: 'callum_portrait', // Placeholder for Callum's graphic ID
-      },
+    await player.showText('You want to silence the question. But the question IS the world.', {
+      speaker: 'Artun',
     });
 
     // Optionally, advance the quest stage after this dialogue

@@ -1,4 +1,4 @@
-import { type RpgPlayer, RpgSceneMap } from '@rpgjs/server';
+import type { RpgPlayer } from '@rpgjs/server';
 
 export default async function (player: RpgPlayer) {
   // Trigger condition: Entering the Preserver Fortress entrance (Scene 5)
@@ -10,11 +10,11 @@ export default async function (player: RpgPlayer) {
     return; // Dialogue already played
   }
 
-  // Ensure Lira is in the party and visible if needed, though for a map entry
+  // Ensure Hana is in the party and visible if needed, though for a map entry
   // dialogue, it's usually assumed she's present if the player reaches this point.
-  // For this specific dialogue, it's Lira's reaction, so her presence is key.
+  // For this specific dialogue, it's Hana's reaction, so her presence is key.
 
-  // Lira's portrait (assuming 'lira' is the ID for her character graphic)
+  // Hana's portrait (assuming 'lira' is the ID for her character graphic)
   const liraPortrait = 'lira';
 
   await player.showText(

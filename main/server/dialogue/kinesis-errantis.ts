@@ -1,9 +1,11 @@
+import type { RpgPlayer } from '@rpgjs/server';
+
 export default async function (player: RpgPlayer) {
   const NPC_ID = 'errantis'; // Assuming 'errantis' is the ID for the Errantis NPC graphic
 
   // 1. Check trigger conditions
   const questGQ04 = player.getQuest('GQ-04');
-  const isQuestGQ04Active = questGQ04 && questGQ04.isStarted();
+  const isQuestGQ04Active = questGQ04?.isStarted();
   const isSorrowEmotionChosen = questGQ04 && questGQ04.get('emotion') === 'sorrow';
 
   // Location check (assuming map ID is 'hollow-ridge-kinesis-spire')

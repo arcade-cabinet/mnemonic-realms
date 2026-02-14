@@ -1,6 +1,6 @@
-import type { Event, Player } from '@rpgjs/server';
+import type { RpgPlayer } from '@rpgjs/server';
 
-export default async function (player: Player, event: Event) {
+export default async function (player: RpgPlayer) {
   // Check for a condition that might indicate the player has "earned" the 'rest-late' dialogue.
   // For this example, let's use a hypothetical player variable.
   // In a real game, this could be tied to quest completion, a specific flag, or game progression.
@@ -8,11 +8,11 @@ export default async function (player: Player, event: Event) {
 
   if (hasEarnedSpecialRest) {
     // Dialogue for [rest-late] condition
-    await player.showText("Rest well. You've earned it more than most.", { speaker: 'Ren' });
+    await player.showText("Rest well. You've earned it more than most.", { speaker: 'Nyro' });
   } else {
     // Default dialogue for [rest] condition
     await player.showText('Sweet dreams. The beds are soft and the walls keep out the worry.', {
-      speaker: 'Ren',
+      speaker: 'Nyro',
     });
   }
 }

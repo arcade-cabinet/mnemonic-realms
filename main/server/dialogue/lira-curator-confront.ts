@@ -16,11 +16,11 @@ export default async function (player: RpgPlayer) {
   await player.showText(
     "I was frozen. I was inside the crystal, in the silence you're describing. It wasn't terrible. But it wasn't alive, either.",
     {
-      speaker: 'Lira',
+      speaker: 'Hana',
     },
   );
 
   await player.showText("I couldn't choose.", {
-    speaker: 'Lira',
+    speaker: 'Hana',
   });
 }

@@ -11,15 +11,13 @@ export default async function (player: RpgPlayer) {
   }
 
   await player.showText(`The question changed. It's not 'Why do things change?' anymore.`, {
-    speaker: 'Callum',
-    graphic: 'callum', // Assuming 'callum' is the graphic ID for Callum
+    speaker: 'Artun',
   });
 
   await player.showText(`The world has grown beyond that question. It needs a new one.`, {
-    speaker: 'Callum',
-    graphic: 'callum',
+    speaker: 'Artun',
   });
 
   // Optionally, update quest state or set a flag after this dialogue
-  // player.set  QuestStep(questId, 'remix-dialogue-completed');
+  // player.setVariable('remix-dialogue-completed', true);
 }

@@ -14,7 +14,7 @@ export default async function (player: RpgPlayer) {
   // }
 
   const speaker = {
-    name: 'Callum',
+    name: 'Artun',
     character: 'callum', // Assumes 'callum' is the character ID for his graphic
   };
 

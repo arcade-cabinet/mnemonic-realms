@@ -1,6 +1,6 @@
-import type { RpgEvent, RpgPlayer } from '@rpgjs/server';
+import type { RpgPlayer } from '@rpgjs/server';
 
-export default async function (player: RpgPlayer, event: RpgEvent) {
+export default async function (player: RpgPlayer) {
   // --- Trigger Conditions and Quest State Checks ---
   // This dialogue is specifically for the "Resonance recall — Awe" event.
   // It should only proceed if the following conditions are met.
@@ -34,7 +34,7 @@ export default async function (player: RpgPlayer, event: RpgEvent) {
   await player.showText(
     'I am Harmonia. Every sound the Choir ever made — I hold them all, and they are in balance.',
     {
-      speaker: event,
+      speaker: 'Harmonia',
     },
   );
 

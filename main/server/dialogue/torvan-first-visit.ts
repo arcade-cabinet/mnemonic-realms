@@ -1,18 +1,18 @@
 import type { RpgPlayer } from '@rpgjs/server';
 
 export default async function (player: RpgPlayer) {
-  const hasVisitedTorvanBlacksmith = player.getVariable('firstVisitTorvanBlacksmith');
+  const hasVisitedHarkBlacksmith = player.getVariable('firstVisitHarkBlacksmith');
 
-  if (hasVisitedTorvanBlacksmith) {
+  if (hasVisitedHarkBlacksmith) {
     return;
   }
 
   await player.showText(
-    "Mm. New Architect? Callum told me. I make weapons and armor — nothing fancy, but solid. If the world's going to test you, at least you'll be properly equipped.",
+    "Mm. New Architect? Artun told me. I make weapons and armor — nothing fancy, but solid. If the world's going to test you, at least you'll be properly equipped.",
     {
-      speaker: 'torvan',
+      speaker: 'Hark',
     },
   );
 
-  player.setVariable('firstVisitTorvanBlacksmith', true);
+  player.setVariable('firstVisitHarkBlacksmith', true);
 }

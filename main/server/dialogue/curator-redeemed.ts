@@ -1,14 +1,6 @@
-import type { Player } from '@rpgjs/server';
+import type { RpgPlayer } from '@rpgjs/server';
 
-export default async function (player: Player) {
-  // Define the speaker for The Curator
-  const curatorSpeaker = {
-    name: 'The Curator',
-    // Assuming 'curator' is the graphic ID for The Curator NPC
-    // This graphic should be defined in client/src/modules/main/client.ts or similar
-    graphic: 'curator',
-  };
-
+export default async function (player: RpgPlayer) {
   // --- Trigger Conditions ---
   // This dialogue is intended to be triggered after the Endgame Bloom (Scene 11)
   // and at the Preserver Fortress Gate (exterior).
@@ -25,18 +17,18 @@ export default async function (player: Player) {
 
   // --- Dialogue Sequence ---
 
-  await player.showText('I spent years building a perfect museum.', curatorSpeaker);
+  await player.showText('I spent years building a perfect museum.', { speaker: 'Grym' });
   await player.showText(
     'And you turned the whole world into something more beautiful than anything I ever froze.',
-    curatorSpeaker,
+    { speaker: 'Grym' },
   );
   await player.showText(
     'I was wrong. Not about the moments being beautiful — but about what to do with beauty.',
-    curatorSpeaker,
+    { speaker: 'Grym' },
   );
   await player.showText(
     "Perhaps it's time we became librarians instead — not freezing memories, but keeping them. An archive, not a prison.",
-    curatorSpeaker,
+    { speaker: 'Grym' },
   );
 
   // Mark this dialogue as played to prevent it from repeating

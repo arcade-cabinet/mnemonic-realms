@@ -8,22 +8,16 @@ export default async function (player: RpgPlayer) {
   if (!endgameBloomTriggered || currentMapId !== 'village_hub' || hasPlayed) {
     return;
   }
-
-  const callumGraphic = 'callum_portrait';
-
   await player.showText('Forty years I spent studying the Dissolved.', {
-    speaker: 'Callum',
-    graphic: callumGraphic,
+    speaker: 'Artun',
   });
 
   await player.showText('They let go because they were done. Their work was complete.', {
-    speaker: 'Callum',
-    graphic: callumGraphic,
+    speaker: 'Artun',
   });
 
-  await player.showText("I'm proud of you. Lira and I both are.", {
-    speaker: 'Callum',
-    graphic: callumGraphic,
+  await player.showText("I'm proud of you. Hana and I both are.", {
+    speaker: 'Artun',
   });
 
   player.set('dlg-callum-resolution-played', true);
