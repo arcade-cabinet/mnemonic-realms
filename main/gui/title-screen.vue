@@ -43,6 +43,11 @@
           <span class="menu-label">Settings</span>
           <span class="menu-hint">Coming soon</span>
         </button>
+        <button class="menu-btn" @click="openCredits">
+          <span class="menu-icon">&#x2606;</span>
+          <span class="menu-label">Credits</span>
+          <span class="menu-arrow">&#x25B8;</span>
+        </button>
       </nav>
 
       <p class="version">v0.2.0</p>
@@ -232,6 +237,12 @@ export default {
       audioManager.init().then(() => {
         audioManager.playSfx('SFX-UI-04');
       });
+    },
+    openCredits() {
+      audioManager.init().then(() => {
+        audioManager.playSfx('SFX-UI-04');
+      });
+      this.rpgGuiInteraction('title-screen', 'open-credits', {});
     },
     prevClass() {
       this.selectedClassIndex = (this.selectedClassIndex - 1 + ALL_CLASSES.length) % ALL_CLASSES.length;
