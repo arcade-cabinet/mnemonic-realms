@@ -2,8 +2,8 @@ import type { RpgPlayer } from '@rpgjs/server';
 
 export default async function (player: RpgPlayer) {
   const currentMapId = player.map?.id;
-  const endgameBloomTriggered = player.get('endgameBloomTriggered');
-  const hasPlayed = player.get('dlg-callum-resolution-played');
+  const endgameBloomTriggered = player.getVariable('endgameBloomTriggered');
+  const hasPlayed = player.getVariable('dlg-callum-resolution-played');
 
   if (!endgameBloomTriggered || currentMapId !== 'village_hub' || hasPlayed) {
     return;
@@ -20,5 +20,5 @@ export default async function (player: RpgPlayer) {
     speaker: 'Artun',
   });
 
-  player.set('dlg-callum-resolution-played', true);
+  player.setVariable('dlg-callum-resolution-played', true);
 }

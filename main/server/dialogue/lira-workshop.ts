@@ -1,7 +1,7 @@
 import type { RpgPlayer } from '@rpgjs/server';
 
 export default async function (player: RpgPlayer) {
-  // Define Lira as a speaker with her graphic ID
+  // Define Hana as a speaker with her graphic ID
   // --- Trigger Conditions ---
   // Check if the main quest 'MQ-01' is completed
   const mq01Completed = player.getVariable('quest:MQ-01') === 'completed';

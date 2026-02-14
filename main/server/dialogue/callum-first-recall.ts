@@ -1,15 +1,15 @@
 import type { RpgPlayer } from '@rpgjs/server';
 
 export default async function (player: RpgPlayer) {
-  const hasRecalledFirstGod = player.get('hasRecalledFirstGod');
-  const dialoguePlayed = player.get('dlg_callum_first_recall_played');
+  const hasRecalledFirstGod = player.getVariable('hasRecalledFirstGod');
+  const dialoguePlayed = player.getVariable('dlg_callum_first_recall_played');
   const mq06Completed = player.getQuest('MQ-06')?.isCompleted();
 
   if (!hasRecalledFirstGod || dialoguePlayed || !mq06Completed) {
     return;
   }
 
-  player.set('dlg_callum_first_recall_played', true);
+  player.setVariable('dlg_callum_first_recall_played', true);
 
   await player.showText("Forty years of study. And now I'm watching one wake up.", {
     speaker: 'Artun',

@@ -3,12 +3,12 @@ import type { RpgPlayer } from '@rpgjs/server';
 export default async function (player: RpgPlayer) {
   const dialogueFlag = 'dlg_callum_gallery_scene6_played';
 
-  if (player.get(dialogueFlag)) {
+  if (player.getVariable(dialogueFlag)) {
     return;
   }
 
   // Example of a quest state check if needed:
-  // const questState = player.get('quest_act3_scene6_gallery_of_moments_state');
+  // const questState = player.getVariable('quest_act3_scene6_gallery_of_moments_state');
   // if (questState !== 'active') {
   //     return;
   // }
@@ -30,5 +30,5 @@ export default async function (player: RpgPlayer) {
     speaker,
   );
 
-  player.set(dialogueFlag, true);
+  player.setVariable(dialogueFlag, true);
 }

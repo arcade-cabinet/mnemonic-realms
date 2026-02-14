@@ -8,7 +8,7 @@ export default async function (player: RpgPlayer) {
   // Quest: MQ-09
   if (
     map.id !== 'act3-scene8-first-memory-chamber' ||
-    player.get('quest:MQ-09:state') !== 'active'
+    player.getVariable('quest:MQ-09:state') !== 'active'
   ) {
     return;
   }

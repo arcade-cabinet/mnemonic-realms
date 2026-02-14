@@ -23,8 +23,8 @@ export default async function dialogue(player: RpgPlayer) {
     );
 
     // Optionally, set a flag or advance a quest state after this dialogue
-    // For example, to mark that Callum has given this information
-    // await player.setVariable('callum_info_after_lira_freezing', true);
+    // For example, to mark that Artun has given this information
+    // await player.setVariable('artun_info_after_hana_freezing', true);
     // await player.updateQuest('MQ-05', 'started'); // Assuming MQ-05 starts here
   } else {
     // If the condition is not met, Artun might say something else or nothing at all.

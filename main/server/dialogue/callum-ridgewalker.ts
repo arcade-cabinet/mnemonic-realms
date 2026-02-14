@@ -6,7 +6,7 @@ export default async function (player: RpgPlayer, map: RpgMap) {
   // Location: Hollow Ridge — Ridgewalker Camp (15, 25)
 
   const ARTUN_ACTOR_ID = 'callum'; // Assuming 'callum' is the actor ID for Artun
-  const ARTUN_GRAPHIC_ID = 'callum'; // Assuming 'callum' is the graphic ID for Callum
+  const ARTUN_GRAPHIC_ID = 'callum'; // Assuming 'callum' is the graphic ID for Artun
 
   // --- Trigger Conditions ---
   // This dialogue should only play once when Artun joins the party at the specific location.
@@ -46,20 +46,20 @@ export default async function (player: RpgPlayer, map: RpgMap) {
 
   // --- Post-Dialogue Actions ---
 
-  // Add Callum to the player's party
+  // Add Artun to the player's party
   player.addActor(ARTUN_ACTOR_ID);
 
   // Set a variable to prevent this dialogue from re-triggering
   player.setVariable('ARTUN_JOINED_PARTY', true);
 
-  // [SYSTEM] Callum has joined your party.
+  // [SYSTEM] Artun has joined your party.
   await player.gui('rpg-notification', {
     text: 'Artun has joined your party.',
     type: 'info', // 'info', 'success', 'warning', 'error'
   });
 
-  // Note: The "Hana meets Callum" dialogue is described as a separate trigger
+  // Note: The "Hana meets Artun" dialogue is described as a separate trigger
   // and would typically be handled by a different dialogue file or a conditional
-  // branch within a more general "talk to Callum" dialogue, not this specific
+  // branch within a more general "talk to Artun" dialogue, not this specific
   // "Artun joins party" event.
 }
