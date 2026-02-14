@@ -172,7 +172,7 @@ const QUEST_DEFS: readonly QuestDef[] = [
   { id: 'SQ-04', name: 'Upstream Secrets', category: 'side', objectiveCount: 6, rewards: { gold: 180, items: [{ id: 'W-ST-03', qty: 1 }] } },
   { id: 'SQ-05', name: "Aric's Doubt", category: 'side', objectiveCount: 5, rewards: { gold: 250, items: [{ id: 'C-SC-04', qty: 5 }] } },
   { id: 'SQ-06', name: "The Marsh Hermit's Request", category: 'side', objectiveCount: 5, rewards: { gold: 300, items: [{ id: 'A-07', qty: 1 }, { id: 'W-ST-05', qty: 1 }] } },
-  { id: 'SQ-07', name: "Petra's Ridgewalkers", category: 'side', objectiveCount: 4, rewards: { gold: 350, items: [{ id: 'A-08', qty: 1 }] } },
+  { id: 'SQ-07', name: "Nel's Ridgewalkers", category: 'side', objectiveCount: 4, rewards: { gold: 350, items: [{ id: 'A-08', qty: 1 }] } },
   { id: 'SQ-08', name: "Solen's Light Studies", category: 'side', objectiveCount: 5, rewards: { gold: 300 } },
   { id: 'SQ-09', name: 'Harmonize the Path', category: 'side', objectiveCount: 3, rewards: { gold: 200 } },
   { id: 'SQ-10', name: 'The Depths Expedition', category: 'side', objectiveCount: 6, rewards: { gold: 400, items: [{ id: 'A-09', qty: 1 }] } },

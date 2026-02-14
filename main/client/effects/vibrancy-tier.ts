@@ -100,7 +100,10 @@ function spawnAmbient(v: number, biome: Biome | null) {
   const d = ambientDensity(v);
   if (d <= 0) return;
   const cfg = BIOME_AMBIENT[biome ?? 'village'];
-  const c = v > 60 ? cfg.hi : v > 40 ? cfg.hi : cfg.lo;
+  const mid = ((((cfg.lo >> 16) + (cfg.hi >> 16)) >> 1) << 16)
+    | (((((cfg.lo >> 8) & 0xff) + ((cfg.hi >> 8) & 0xff)) >> 1) << 8)
+    | (((cfg.lo & 0xff) + (cfg.hi & 0xff)) >> 1);
+  const c = v > 60 ? cfg.hi : v > 40 ? mid : cfg.lo;
   for (let i = 0; i < d; i++) {
     const x = scene.viewport.x + Math.random() * 480,
       y = scene.viewport.y + Math.random() * 320;
