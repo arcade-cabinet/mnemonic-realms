@@ -7,6 +7,7 @@ import GameOver from '../gui/game-over.vue';
 import Hud from '../gui/hud.vue';
 import InventoryScreen from '../gui/inventory.vue';
 import MemoryAlbum from '../gui/memory-album.vue';
+import PauseMenu from '../gui/pause-menu.vue';
 import QuestLog from '../gui/quest-log.vue';
 import ShopScreen from '../gui/shop.vue';
 import TitleScreen from '../gui/title-screen.vue';
@@ -72,6 +73,7 @@ const sceneMap: RpgSceneMapHooks = {
     QuestLog,
     MemoryAlbum,
     ShopScreen,
+    PauseMenu,
   ],
   scenes: {
     map: sceneMap,
