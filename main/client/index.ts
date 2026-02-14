@@ -8,6 +8,7 @@ import Hud from '../gui/hud.vue';
 import InventoryScreen from '../gui/inventory.vue';
 import MemoryAlbum from '../gui/memory-album.vue';
 import QuestLog from '../gui/quest-log.vue';
+import ShopScreen from '../gui/shop.vue';
 import TitleScreen from '../gui/title-screen.vue';
 import { audioManager } from './audio';
 import { aliasSprites } from './characters/aliases';
@@ -70,6 +71,7 @@ const sceneMap: RpgSceneMapHooks = {
     InventoryScreen,
     QuestLog,
     MemoryAlbum,
+    ShopScreen,
   ],
   scenes: {
     map: sceneMap,
