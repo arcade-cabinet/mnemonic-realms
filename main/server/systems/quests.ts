@@ -272,6 +272,7 @@ export function startQuest(player: RpgPlayer, questId: string): boolean {
 
   player.setVariable(statusKey(questId), 'active');
   player.setVariable(objectiveKey(questId), 0);
+  syncHudQuest(player);
   return true;
 }
 
@@ -286,6 +287,7 @@ export function advanceObjective(player: RpgPlayer, questId: string): number {
 
   const next = current + 1;
   player.setVariable(objectiveKey(questId), next);
+  syncHudQuest(player);
   return next;
 }
 
@@ -297,6 +299,7 @@ export function completeQuest(player: RpgPlayer, questId: string): boolean {
 
   player.setVariable(statusKey(questId), 'completed');
   distributeRewards(player, def.rewards);
+  syncHudQuest(player);
   return true;
 }
 
@@ -304,6 +307,7 @@ export function failQuest(player: RpgPlayer, questId: string): boolean {
   if (!isQuestActive(player, questId)) return false;
 
   player.setVariable(statusKey(questId), 'failed');
+  syncHudQuest(player);
   return true;
 }
 
@@ -321,6 +325,33 @@ export function getCompletedQuests(player: RpgPlayer): QuestDef[] {
 
 export function getQuestsByCategory(category: QuestCategory): readonly QuestDef[] {
   return QUEST_DEFS.filter((q) => q.category === category);
+}
+
+// ---------------------------------------------------------------------------
+// Internal — HUD Sync
+// ---------------------------------------------------------------------------
+
+const CATEGORY_PRIORITY: QuestCategory[] = ['main', 'god-recall', 'side'];
+
+/**
+ * Update HUD variables with the highest-priority active quest.
+ * Sets ACTIVE_QUEST_NAME and ACTIVE_QUEST_OBJ for the GUI to display.
+ */
+function syncHudQuest(player: RpgPlayer): void {
+  let best: QuestDef | undefined;
+  for (const cat of CATEGORY_PRIORITY) {
+    best = QUEST_DEFS.find((q) => q.category === cat && isQuestActive(player, q.id));
+    if (best) break;
+  }
+
+  if (best) {
+    const obj = getObjectiveProgress(player, best.id);
+    player.setVariable('ACTIVE_QUEST_NAME', best.name);
+    player.setVariable('ACTIVE_QUEST_OBJ', `${obj}/${best.objectiveCount}`);
+  } else {
+    player.setVariable('ACTIVE_QUEST_NAME', '');
+    player.setVariable('ACTIVE_QUEST_OBJ', '');
+  }
 }
 
 // ---------------------------------------------------------------------------
