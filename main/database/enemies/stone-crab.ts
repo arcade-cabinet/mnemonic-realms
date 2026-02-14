@@ -15,6 +15,21 @@ import { Enemy } from '@rpgjs/database';
   gain: {
     exp: 40,
     gold: 18,
+    // items: [
+    //   { nb: 1, item: FortifyTonic, chance: 0.10 }, // C-SC-03
+    //   { nb: 1, item: MinorPotion, chance: 0.15 },  // C-HP-01
+    // ]
   },
 })
-export default class StoneCrab {}
+export default class StoneCrab {
+  // Context:
+  // - Zone: Millbrook
+  // - Category: settled
+  // - Fragment affinity: Calm / Water
+  // Abilities:
+  // - Pincer Snap: ATK * 1.4 (10% chance Weakness (DEF -30%, 3 turns))
+  // - Shell Hunker: DEF +50% for 1 turn (Used when hit 2+ times prev round)
+  // Drop table:
+  // - C-SC-03 (Fortify Tonic): 10% chance
+  // - C-HP-01 (Minor Potion): 15% chance
+}

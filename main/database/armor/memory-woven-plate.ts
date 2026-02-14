@@ -1,5 +1,6 @@
 import { Armor } from '@rpgjs/database';
 
+// Special Effect: DEF scales with total fragments broadcast (+1 DEF per 3 broadcasts, max +10).
 // Tier: 3
 @Armor({
   id: 'A-14',

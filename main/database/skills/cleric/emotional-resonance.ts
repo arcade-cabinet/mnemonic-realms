@@ -9,4 +9,6 @@ import { Skill } from '@rpgjs/database';
   hitRate: 1,
   coefficient: { int: 1 },
 })
-export default class EmotionalResonance {}
+export default class EmotionalResonance {
+  // Formula: floor(INT * 2.0 * variance) HP. Grant Inspired status (+20% all stats) to all allies for 3 turns.
+}

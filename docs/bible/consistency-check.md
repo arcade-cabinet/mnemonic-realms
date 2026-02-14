@@ -171,9 +171,9 @@ Every named character in `characters.md` has corresponding dialogue entries in `
 
 | Companion | Class | Join Point | Level Range | In progression.md? | In skills-catalog? |
 |-----------|-------|------------|-------------|--------------------|--------------------|
-| Lira | Cleric | Act I (MQ-02) | 1-30 | Yes (lines 500-520) | Yes (3 skills) |
-| Callum | Mage | Act II (MQ-05) | 10-30 | Yes (lines 523-543) | Yes (3 skills) |
-| Petra | Knight | Act II (SQ-07) | 12-30 | Yes (lines 546-566) | Yes (3 skills) |
+| Hana | Cleric | Act I (MQ-02) | 1-30 | Yes (lines 500-520) | Yes (3 skills) |
+| Artun | Mage | Act II (MQ-05) | 10-30 | Yes (lines 523-543) | Yes (3 skills) |
+| Nel | Knight | Act II (SQ-07) | 12-30 | Yes (lines 546-566) | Yes (3 skills) |
 
 **Result**: Companion availability, stats, and skills are consistent across `characters.md`, `progression.md`, and `skills-catalog.md`.
 

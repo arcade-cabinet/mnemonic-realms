@@ -1,5 +1,6 @@
 import { Armor } from '@rpgjs/database';
 
+// Special Effect: +15% resistance to Stasis status.
 // Tier: 3
 @Armor({
   id: 'A-09',

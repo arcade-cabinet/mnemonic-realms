@@ -4,41 +4,119 @@
     "name": "Villager",
     "heading": "NPT-01: Villager (Generic)",
     "type": "template",
-    "desc": "Average build, simple tunic and trousers. Earth tones."
+    "desc": "Average build, simple tunic and trousers. Earth tones.",
+    "spritePool": ["hana", "artun", "khali", "hark", "nyro", "nel", "julz", "meza", "seza", "vash", "serek", "reza", "janik"]
   },
   {
     "id": "merchant",
     "name": "Merchant",
     "heading": "NPT-02: Merchant",
     "type": "template",
-    "desc": "Round body, large hat, traveling pack. Rich brown coat, gold trim."
+    "desc": "Traveling traders and market vendors. Rich clothing, trade goods.",
+    "spriteRef": "serek"
   },
   {
     "id": "farmer",
     "name": "Farmer",
     "heading": "NPT-03: Farmer",
     "type": "template",
-    "desc": "Sturdy build, straw hat, tool over shoulder. Tan overalls, green shirt."
+    "desc": "Sturdy build, practical clothing. Agricultural workers in settled zones.",
+    "spriteRef": "artun"
   },
   {
     "id": "scholar",
     "name": "Scholar",
     "heading": "NPT-04: Scholar",
     "type": "template",
-    "desc": "Thin, hunched over book. Glasses. Dark blue robe. Quick, distracted walk."
+    "desc": "Thin, bookish. Researchers and knowledge-keepers.",
+    "spriteRef": "reza"
   },
   {
     "id": "guard",
     "name": "Guard",
-    "heading": "NPT-05: Guard/Warrior",
+    "heading": "NPT-05: Guard",
     "type": "template",
-    "desc": "Broad shoulders, simple armor, spear or sword. Chain mail gray, leather brown."
+    "desc": "Settlement and zone protectors. Armor and weapons.",
+    "spritePool": ["guard_swordsman", "guard_spearman", "guard_archer"]
   },
   {
     "id": "child",
     "name": "Child",
     "heading": "NPT-06: Child",
     "type": "template",
-    "desc": "Small (1.5 heads tall). Quick, bouncy walk. Bright tunic, short pants."
+    "desc": "Young villagers. Quick, curious, bouncy walk.",
+    "spriteRef": "julz"
+  },
+  {
+    "id": "elder",
+    "name": "Elder",
+    "heading": "NPT-07: Elder",
+    "type": "template",
+    "desc": "Senior community members. Slow walk, wise demeanor.",
+    "spriteRef": "grym"
+  },
+  {
+    "id": "fisher",
+    "name": "Fisher",
+    "heading": "NPT-08: Fisher",
+    "type": "template",
+    "desc": "Dockside and lakeside workers. Practical waterside clothing.",
+    "spriteRef": "serek"
+  },
+  {
+    "id": "innkeeper",
+    "name": "Innkeeper",
+    "heading": "NPT-09: Innkeeper",
+    "type": "template",
+    "desc": "Tavern and rest-stop operators. Warm, welcoming.",
+    "spriteRef": "nyro"
+  },
+  {
+    "id": "woodcutter",
+    "name": "Woodcutter",
+    "heading": "NPT-10: Woodcutter",
+    "type": "template",
+    "desc": "Frontier workers and lumber gatherers. Strong build.",
+    "spriteRef": "hark"
+  },
+  {
+    "id": "audiomancer",
+    "name": "Audiomancer",
+    "heading": "NPT-11: Audiomancer",
+    "type": "template",
+    "desc": "Sound-magic practitioners. Flowing robes with musical motifs.",
+    "spriteRef": "meza"
+  },
+  {
+    "id": "preserver_agent",
+    "name": "Preserver Agent",
+    "heading": "NPT-12: Preserver Agent",
+    "type": "template",
+    "desc": "Preserver faction field operatives. Crystalline accents.",
+    "spriteRef": "serek"
+  },
+  {
+    "id": "ridgewalker",
+    "name": "Ridgewalker",
+    "heading": "NPT-13: Ridgewalker",
+    "type": "template",
+    "desc": "Mountain territory scouts and guides. Weathered, climbing gear.",
+    "spriteRef": "nel"
+  },
+  {
+    "id": "shopkeeper",
+    "name": "Shopkeeper",
+    "heading": "NPT-14: Shopkeeper",
+    "type": "template",
+    "desc": "Local goods vendors. Aprons, organized displays.",
+    "spriteRef": "khali"
+  },
+  {
+    "id": "healer",
+    "name": "Healer",
+    "heading": "NPT-15: Healer",
+    "type": "template",
+    "desc": "Herbalists and medical practitioners. Pouches, herbs.",
+    "spriteRef": "seza"
   }
 ]

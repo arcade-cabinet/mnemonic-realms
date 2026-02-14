@@ -6,6 +6,7 @@ import { Item } from '@rpgjs/database';
   description: 'Restores a moderate amount of SP.',
   price: 160,
   consumable: true,
+  // SP restoration: 120 (RPG-JS items do not have a native spValue property)
 })
 // Category: sp-recovery
 // Max stack: 10

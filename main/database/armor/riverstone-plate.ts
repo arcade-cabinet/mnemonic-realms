@@ -1,5 +1,6 @@
 import { Armor } from '@rpgjs/database';
 
+// Special effect: +10% water resistance. Immune to Poison.
 // Tier: 2
 @Armor({
   id: 'a-06',

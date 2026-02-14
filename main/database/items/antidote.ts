@@ -1,4 +1,5 @@
 import { Item } from '@rpgjs/database';
+// TODO: Import the Poison state class, e.g., import Poison from '../states/poison';
 
 /**
  * Category: status-cure
@@ -11,5 +12,6 @@ import { Item } from '@rpgjs/database';
   description: 'Cures poison.',
   price: 20,
   consumable: true,
+  // removeStates: [Poison], // Uncomment and import Poison state when available
 })
 export default class Antidote {}

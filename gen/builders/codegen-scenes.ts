@@ -32,7 +32,7 @@ export function buildSceneCodeManifest(): CodeGenManifest {
       prompt,
       docRefs: [
         { path: `docs/story/${scene.act}-script.md`, heading: scene.name, purpose: 'content' },
-        { path: 'docs/maps/event-placement.md', heading: 'Event Placement', purpose: 'reference' },
+        { path: 'docs/maps/event-placement.md', heading: 'Event Placement', purpose: 'content' },
       ],
       status: 'pending',
     });

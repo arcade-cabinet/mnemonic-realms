@@ -17,4 +17,15 @@ import { Enemy } from '@rpgjs/database';
     gold: 22,
   },
 })
-export default class CragGolem {}
+export default class CragGolem {
+  // Context:
+  // - Zone: Sunridge
+  // - Category: settled
+  // - Fragment affinity: Calm / Earth
+  // Abilities:
+  // - Stone Fist: ATK * 1.5 (Heavy physical attack)
+  // - Quake Stomp: ATK * 0.8 (AE) (AoE physical, all party members)
+  // Drop table:
+  // - C-HP-01: 20% chance
+  // - C-BF-01: 5% chance
+}

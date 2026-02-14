@@ -1,5 +1,6 @@
 import { Armor } from '@rpgjs/database';
 
+// Special Effect: +20% evasion. In Sketch zones: +30% evasion.
 // Tier: 3
 @Armor({
   id: 'A-13',

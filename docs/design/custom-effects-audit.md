@@ -606,18 +606,18 @@ Each variant is a ~15-second choreographed sequence.
 
 ## Category 7: Narrative Cinematic Effects
 
-### E-CIN-01: Lira's Freezing Sequence (Act I Climax)
+### E-CIN-01: Hana's Freezing Sequence (Act I Climax)
 
-**Description**: Lira runs into expanding stagnation zone, broadcasting amber light. Her glow stops. Blue-white energy pulse radiates outward. Crystal surges. Lira is visible through semi-transparent crystal, frozen mid-stride. The player hammers against the crystal (automatic).
+**Description**: Hana runs into expanding stagnation zone, broadcasting amber light. Her glow stops. Blue-white energy pulse radiates outward. Crystal surges. Hana is visible through semi-transparent crystal, frozen mid-stride. The player hammers against the crystal (automatic).
 
 **Trigger**: Act I Scene 11 — scripted sequence.
 
 **Technical approach**: Scripted cutscene with:
-- Lira NPC sprite moving along a path with trailing amber particles
+- Hana NPC sprite moving along a path with trailing amber particles
 - Particles stop (all particle emitters freeze)
 - Blue-white radial pulse (expanding circle, opposite of broadcast bloom — cold colors)
 - Crystal overlay rapidly spreading (E-STAG-01 applied in real-time expansion)
-- Lira sprite gets E-STAG-04 frozen treatment
+- Hana sprite gets E-STAG-04 frozen treatment
 - Player sprite automatic approach + "hammering" animation
 
 **Complexity**: Complex — Multi-stage scripted sequence with precise timing.
@@ -628,7 +628,7 @@ Each variant is a ~15-second choreographed sequence.
 
 ### E-CIN-02: God Recall Vision (Pre-Recall Cinematic)
 
-**Description**: When approaching a dormant god shrine, a 30-second cinematic plays showing fragments of the dissolved civilization that created the god. Narrated by Callum's letter. Fragments of ancient life: people singing (Resonance), cultivating (Verdance), stargazing (Luminos), traveling (Kinesis).
+**Description**: When approaching a dormant god shrine, a 30-second cinematic plays showing fragments of the dissolved civilization that created the god. Narrated by Artun's letter. Fragments of ancient life: people singing (Resonance), cultivating (Verdance), stargazing (Luminos), traveling (Kinesis).
 
 **Trigger**: Player approaches any dormant god shrine for the first time.
 
@@ -681,11 +681,11 @@ Likely implemented as a dedicated cinematic mode that loads zone snapshots as ba
 
 ---
 
-### E-CIN-05: Curator Dialogue — God Pulse Responses
+### E-CIN-05: Grym Dialogue — God Pulse Responses
 
-**Description**: During the Curator confrontation, each recalled god sends a visible pulse into the chamber: Joy = warm golden light, Fury = crystal wall cracks, Sorrow = gentle hush (particle slowdown), Awe = harmonic resonance (prismatic shimmer).
+**Description**: During Grym confrontation, each recalled god sends a visible pulse into the chamber: Joy = warm golden light, Fury = crystal wall cracks, Sorrow = gentle hush (particle slowdown), Awe = harmonic resonance (prismatic shimmer).
 
-**Trigger**: Curator dialogue sequence in Act III Scene 8.
+**Trigger**: Grym dialogue sequence in Act III Scene 8.
 
 **Technical approach**: Per-emotion screen effect:
 - Joy: `ColorMatrixFilter` warm shift + golden mote particles
@@ -856,7 +856,7 @@ Likely implemented as a dedicated cinematic mode that loads zone snapshots as ba
 | E-CMB-01 | Elemental Attack Particles | Medium |
 | E-CMB-02 | Status Effect Indicators | Simple |
 | E-CMB-03 | Healing Bloom | Simple |
-| E-CIN-01 | Lira's Freezing Sequence | Complex |
+| E-CIN-01 | Hana's Freezing Sequence | Complex |
 | E-CIN-03 | Endgame Bloom | Complex |
 | E-CIN-04 | First Memory Remix | Complex |
 | E-CIN-07 | Stagnation Zone Expansion | Medium |
@@ -880,7 +880,7 @@ Likely implemented as a dedicated cinematic mode that loads zone snapshots as ba
 | E-CMB-05 | Preserver Stasis Attack | Medium |
 | E-CMB-06 | Boss Phase Transition | Simple |
 | E-CIN-02 | God Recall Vision (x4) | Medium |
-| E-CIN-05 | Curator God Pulse Responses | Medium |
+| E-CIN-05 | Grym God Pulse Responses | Medium |
 | E-UI-02 | Combat Vignette | Simple |
 | E-UI-03 | Menu Transitions | Simple |
 | E-UI-04 | Vibrancy Tier HUD Flash | Simple |

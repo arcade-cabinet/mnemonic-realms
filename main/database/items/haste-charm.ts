@@ -1,5 +1,6 @@
 import { Item } from '@rpgjs/database';
 import Haste from '../states/haste';
+// TODO: Create actual state classes for Slow and Haste in '../states/slow' and '../states/haste'
 import Slow from '../states/slow';
 
 // Category: status-cure

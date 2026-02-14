@@ -1,4 +1,12 @@
 import { Class } from '@rpgjs/database';
+// TODO: import skill classes when generated
+// import Heal from '../skills/cleric/heal';
+// import Shield from '../skills/cleric/shield';
+// import Cleanse from '../skills/cleric/cleanse';
+// import AttackBuff from '../skills/cleric/attack-buff';
+// import PartyHeal from '../skills/cleric/party-heal';
+// import Revive from '../skills/cleric/revive';
+// import HolySmite from '../skills/cleric/holy-smite';
 
 /**
  * Cleric Class
@@ -20,5 +28,13 @@ import { Class } from '@rpgjs/database';
   description:
     'Pure support and healer. Highest SP for sustained casting. Strong INT for heal power.',
   skillsToLearn: [],
+  // Planned skills (import when generated):
+  // level 1: Joyful Mending (SK-CL-01) from '../skills/cleric/joyful-mending'
+  // level 3: Awestruck Ward (SK-CL-02) from '../skills/cleric/awestruck-ward'
+  // level 5: Sorrowful Cleanse (SK-CL-03) from '../skills/cleric/sorrowful-cleanse'
+  // level 8: Fury Blessing (SK-CL-04) from '../skills/cleric/fury-blessing'
+  // level 12: Divine Intervention (SK-CL-05) from '../skills/cleric/divine-intervention'
+  // level 18: Holy Smite (SK-CL-06) from '../skills/cleric/holy-smite'
+  // level 25: Emotional Resonance (SK-CL-07) from '../skills/cleric/emotional-resonance'
 })
 export default class Cleric {}

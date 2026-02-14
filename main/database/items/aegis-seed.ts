@@ -10,7 +10,7 @@ import { Item, State } from '@rpgjs/database';
   paramsModifier: {
     def: { rate: 0.15 },
   },
-  duration: 3,
+  duration: 3, // turns
 })
 export class DefBuffState extends State {}
 

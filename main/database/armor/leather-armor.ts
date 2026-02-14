@@ -1,6 +1,7 @@
 import { Armor } from '@rpgjs/database';
 
 // Tier: 1
+// Special Effect: +5% HP
 @Armor({
   id: 'A-03',
   name: 'Leather Armor',

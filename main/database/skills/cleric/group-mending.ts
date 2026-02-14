@@ -9,4 +9,6 @@ import { Skill } from '@rpgjs/database';
   hitRate: 1,
   coefficient: { int: 1 },
 })
-export default class GroupMending {}
+export default class GroupMending {
+  // Formula: floor(INT * 0.7 * variance) HP to all allies
+}

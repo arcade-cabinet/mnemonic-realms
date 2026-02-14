@@ -187,13 +187,13 @@ Sorrow+water broadcasts gain maximum bonus (+3 emotion + 2 element = +5 bonus) o
 
 #### Frontier Expansion Trigger
 
-Shimmer Marsh becomes accessible after MQ-04 (Lira's freezing opens the southern road from Heartfield). The zone opens fully after MQ-05 when the player enters the Frontier proper. Key content gated by vibrancy:
+Shimmer Marsh becomes accessible after MQ-04 (Hana's freezing opens the southern road from Heartfield). The zone opens fully after MQ-05 when the player enters the Frontier proper. Key content gated by vibrancy:
 
 | Vibrancy Threshold | Content Unlocked |
 |-------------------|------------------|
-| 30 (start) | Basic marsh exploration, Wynn's hut, initial fragments |
+| 30 (start) | Basic marsh exploration, Vash's hut, initial fragments |
 | 34 (Normal tier) | Verdance's Hollow approach clears, SQ-06 dormant stones activate, deeper marsh paths become traversable |
-| 50 | Traveling merchant visits Wynn's hut (sells Tier 2 consumables), additional NPC dialogue about the marsh's history |
+| 50 | Traveling merchant visits Vash's hut (sells Tier 2 consumables), additional NPC dialogue about the marsh's history |
 | 67 (Vivid tier) | Marsh pools become fully reflective (show real-time scene). Memory fragment potency +1. Deepwater Sinkhole entrance glows brighter. |
 
 ---
@@ -263,7 +263,7 @@ Flickerveil is accessible from Ambergrove (east, via Canopy Path) after MQ-04, a
 |-------------------|------------------|
 | 25 (start) | Flickering Village reachable, Luminos Grove visible but blinding (requires K-04), Resonance Archive occupied |
 | 34 (Normal tier) | Flickering reduces to 50% of trees (half are permanently stable). Veil's Edge becomes traversable. Additional paths through forest stabilize. |
-| 50 | Flickering Village stabilizes fully (buildings stop shimmering). Elyn's shop opens (if GQ-03-S1 completed). |
+| 50 | Flickering Village stabilizes fully (buildings stop shimmering). Julz's shop opens (if GQ-03-S1 completed). |
 | 67 (Vivid tier) | All flickering stops — the entire forest locks into its rendered state permanently. The transition from solid forest to Sketch at Veil's Edge becomes visually dramatic (fully rendered → outline over 3-4 tiles). Fragment potency +1. |
 
 ---
@@ -322,7 +322,7 @@ The Frontier zones open in a staged progression tied to the main quest:
 | MQ-04 (Act I climax) | Mountain pass north of Village Hub opens | Sunridge → Hollow Ridge border visible, Heartfield → Shimmer Marsh road opens |
 | MQ-05 (Enter the Frontier) | All Frontier zones accessible | Shimmer Marsh, Hollow Ridge, Flickerveil, Resonance Fields all reachable |
 | GQ-01–04 (God recalls) | God shrine areas activate | Each shrine's approach challenge becomes solvable |
-| MQ-07 (Curator's Endgame) | Sketch borders open | Frontier → Sketch transitions traversable (Shimmer → Luminous, Hollow → Undrawn, Flickerveil → Half-Drawn, Resonance → Luminous) |
+| MQ-07 (Grym's Endgame) | Sketch borders open | Frontier → Sketch transitions traversable (Shimmer → Luminous, Hollow → Undrawn, Flickerveil → Half-Drawn, Resonance → Luminous) |
 
 ### Typical Vibrancy Progression (Frontier, Full Playthrough)
 

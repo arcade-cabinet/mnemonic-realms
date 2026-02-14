@@ -8,7 +8,7 @@
  *   - Boss dragon (2304x96): 24 frames @ 96x96, single horizontal strip
  */
 
-import { Spritesheet, Animation, Direction } from '@rpgjs/client';
+import { Animation, Direction, Spritesheet } from '@rpgjs/client';
 
 // ---------------------------------------------------------------------------
 // Helper: direction -> walk-row offset for multi-direction sheets
@@ -24,12 +24,7 @@ const dirRow = (dir: number, rowsPerDir: number): number =>
 // ---------------------------------------------------------------------------
 // Factory: 4-column walk/stand sprite (characters, NPCs, enemies)
 // ---------------------------------------------------------------------------
-function makeWalkSprite(
-  id: string,
-  image: any,
-  totalRows: number,
-  rowsPerDir: number,
-) {
+function makeWalkSprite(id: string, image: any, totalRows: number, rowsPerDir: number) {
   return Spritesheet({
     id,
     image,
@@ -37,9 +32,7 @@ function makeWalkSprite(
     framesHeight: totalRows,
     textures: {
       [Animation.Stand]: {
-        animations: (dir: number) => [
-          [{ time: 0, frameX: 0, frameY: dirRow(dir, rowsPerDir) }],
-        ],
+        animations: (dir: number) => [[{ time: 0, frameX: 0, frameY: dirRow(dir, rowsPerDir) }]],
       },
       [Animation.Walk]: {
         animations: (dir: number) => [
@@ -136,71 +129,236 @@ const CHAR_ROWS = 31;
 const CHAR_ROWS_PER_DIR = 4;
 
 // ---- Players ----
-const PlayerKnightSprite = makeWalkSprite('sprite-player-knight', IMG_PLAYER_KNIGHT, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const PlayerMageSprite = makeWalkSprite('sprite-player-mage', IMG_PLAYER_MAGE, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const PlayerRogueSprite = makeWalkSprite('sprite-player-rogue', IMG_PLAYER_ROGUE, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const PlayerClericSprite = makeWalkSprite('sprite-player-cleric', IMG_PLAYER_CLERIC, CHAR_ROWS, CHAR_ROWS_PER_DIR);
+const PlayerKnightSprite = makeWalkSprite(
+  'sprite-player-knight',
+  IMG_PLAYER_KNIGHT,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const PlayerMageSprite = makeWalkSprite(
+  'sprite-player-mage',
+  IMG_PLAYER_MAGE,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const PlayerRogueSprite = makeWalkSprite(
+  'sprite-player-rogue',
+  IMG_PLAYER_ROGUE,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const PlayerClericSprite = makeWalkSprite(
+  'sprite-player-cleric',
+  IMG_PLAYER_CLERIC,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
 
-// ---- Named NPCs ----
-// Hana -> npc_lira | Artun -> npc_callum | Grym -> npc_curator | Khali -> npc_maren
-// Hark -> npc_torvan | Nyro -> npc_ren | Nel -> npc_petra | Janik -> npc_aric
-// Julz -> npc_elyn | Reza -> npc_solen | Vash -> npc_wynn
-const NpcLiraSprite = makeWalkSprite('npc_lira', IMG_HANA, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcCallumSprite = makeWalkSprite('npc_callum', IMG_ARTUN, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcCuratorSprite = makeWalkSprite('npc_curator', IMG_GRYM, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcMarenSprite = makeWalkSprite('npc_maren', IMG_KHALI, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcTorvanSprite = makeWalkSprite('npc_torvan', IMG_HARK, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcRenSprite = makeWalkSprite('npc_ren', IMG_NYRO, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcPetraSprite = makeWalkSprite('npc_petra', IMG_NEL, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcAricSprite = makeWalkSprite('npc_aric', IMG_JANIK, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcElynSprite = makeWalkSprite('npc_elyn', IMG_JULZ, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcSolenSprite = makeWalkSprite('npc_solen', IMG_REZA, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcWynnSprite = makeWalkSprite('npc_wynn', IMG_VASH, CHAR_ROWS, CHAR_ROWS_PER_DIR);
+// ---- Named NPCs (14 citizens = 14 named characters) ----
+const NpcHanaSprite = makeWalkSprite('npc_hana', IMG_HANA, CHAR_ROWS, CHAR_ROWS_PER_DIR);
+const NpcArtunSprite = makeWalkSprite('npc_artun', IMG_ARTUN, CHAR_ROWS, CHAR_ROWS_PER_DIR);
+const NpcGrymSprite = makeWalkSprite('npc_grym', IMG_GRYM, CHAR_ROWS, CHAR_ROWS_PER_DIR);
+const NpcKhaliSprite = makeWalkSprite('npc_khali', IMG_KHALI, CHAR_ROWS, CHAR_ROWS_PER_DIR);
+const NpcHarkSprite = makeWalkSprite('npc_hark', IMG_HARK, CHAR_ROWS, CHAR_ROWS_PER_DIR);
+const NpcNyroSprite = makeWalkSprite('npc_nyro', IMG_NYRO, CHAR_ROWS, CHAR_ROWS_PER_DIR);
+const NpcNelSprite = makeWalkSprite('npc_nel', IMG_NEL, CHAR_ROWS, CHAR_ROWS_PER_DIR);
+const NpcJanikSprite = makeWalkSprite('npc_janik', IMG_JANIK, CHAR_ROWS, CHAR_ROWS_PER_DIR);
+const NpcJulzSprite = makeWalkSprite('npc_julz', IMG_JULZ, CHAR_ROWS, CHAR_ROWS_PER_DIR);
+const NpcRezaSprite = makeWalkSprite('npc_reza', IMG_REZA, CHAR_ROWS, CHAR_ROWS_PER_DIR);
+const NpcVashSprite = makeWalkSprite('npc_vash', IMG_VASH, CHAR_ROWS, CHAR_ROWS_PER_DIR);
+const NpcMezaSprite = makeWalkSprite('npc_meza', IMG_MEZA, CHAR_ROWS, CHAR_ROWS_PER_DIR);
+const NpcSezaSprite = makeWalkSprite('npc_seza', IMG_SEZA, CHAR_ROWS, CHAR_ROWS_PER_DIR);
+const NpcSerekSprite = makeWalkSprite('npc_serek', IMG_SEREK, CHAR_ROWS, CHAR_ROWS_PER_DIR);
 
 // ---- Template NPCs (reuse citizen sprites) ----
 const NpcVillagerSprite = makeWalkSprite('npc_villager', IMG_MEZA, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcVillagerM1Sprite = makeWalkSprite('npc_villager_m1', IMG_SEREK, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcVillagerF1Sprite = makeWalkSprite('npc_villager_f1', IMG_SEZA, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcVillagerM2Sprite = makeWalkSprite('npc_villager_m2', IMG_NYRO, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcVillagerM3Sprite = makeWalkSprite('npc_villager_m3', IMG_HARK, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcVillagerM4Sprite = makeWalkSprite('npc_villager_m4', IMG_REZA, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcVillagerF2Sprite = makeWalkSprite('npc_villager_f2', IMG_VASH, CHAR_ROWS, CHAR_ROWS_PER_DIR);
+const NpcVillagerM1Sprite = makeWalkSprite(
+  'npc_villager_m1',
+  IMG_SEREK,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const NpcVillagerF1Sprite = makeWalkSprite(
+  'npc_villager_f1',
+  IMG_SEZA,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const NpcVillagerM2Sprite = makeWalkSprite(
+  'npc_villager_m2',
+  IMG_NYRO,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const NpcVillagerM3Sprite = makeWalkSprite(
+  'npc_villager_m3',
+  IMG_HARK,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const NpcVillagerM4Sprite = makeWalkSprite(
+  'npc_villager_m4',
+  IMG_REZA,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const NpcVillagerF2Sprite = makeWalkSprite(
+  'npc_villager_f2',
+  IMG_VASH,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
 const NpcMerchantSprite = makeWalkSprite('npc_merchant', IMG_GRYM, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcMerchantM1Sprite = makeWalkSprite('npc_merchant_m1', IMG_JANIK, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcMerchantM2Sprite = makeWalkSprite('npc_merchant_m2', IMG_SEREK, CHAR_ROWS, CHAR_ROWS_PER_DIR);
+const NpcMerchantM1Sprite = makeWalkSprite(
+  'npc_merchant_m1',
+  IMG_JANIK,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const NpcMerchantM2Sprite = makeWalkSprite(
+  'npc_merchant_m2',
+  IMG_SEREK,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
 const NpcFarmerSprite = makeWalkSprite('npc_farmer', IMG_ARTUN, CHAR_ROWS, CHAR_ROWS_PER_DIR);
 const NpcFarmerM1Sprite = makeWalkSprite('npc_farmer_m1', IMG_HARK, CHAR_ROWS, CHAR_ROWS_PER_DIR);
 const NpcFarmerF1Sprite = makeWalkSprite('npc_farmer_f1', IMG_KHALI, CHAR_ROWS, CHAR_ROWS_PER_DIR);
 const NpcFarmerM2Sprite = makeWalkSprite('npc_farmer_m2', IMG_REZA, CHAR_ROWS, CHAR_ROWS_PER_DIR);
 const NpcScholarSprite = makeWalkSprite('npc_scholar', IMG_NYRO, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcGuardSprite = makeWalkSprite('npc_guard', IMG_GUARD_SWORDSMAN, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcGuardM1Sprite = makeWalkSprite('npc_guard_m1', IMG_GUARD_SPEARMAN, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcGuardM2Sprite = makeWalkSprite('npc_guard_m2', IMG_GUARD_ARCHER, CHAR_ROWS, CHAR_ROWS_PER_DIR);
+const NpcGuardSprite = makeWalkSprite(
+  'npc_guard',
+  IMG_GUARD_SWORDSMAN,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const NpcGuardM1Sprite = makeWalkSprite(
+  'npc_guard_m1',
+  IMG_GUARD_SPEARMAN,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const NpcGuardM2Sprite = makeWalkSprite(
+  'npc_guard_m2',
+  IMG_GUARD_ARCHER,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
 const NpcChildSprite = makeWalkSprite('npc_child', IMG_NEL, CHAR_ROWS, CHAR_ROWS_PER_DIR);
 const NpcChild01Sprite = makeWalkSprite('npc_child_01', IMG_JULZ, CHAR_ROWS, CHAR_ROWS_PER_DIR);
 const NpcElderF1Sprite = makeWalkSprite('npc_elder_f1', IMG_SEZA, CHAR_ROWS, CHAR_ROWS_PER_DIR);
 const NpcElderM1Sprite = makeWalkSprite('npc_elder_m1', IMG_GRYM, CHAR_ROWS, CHAR_ROWS_PER_DIR);
 const NpcElderM2Sprite = makeWalkSprite('npc_elder_m2', IMG_ARTUN, CHAR_ROWS, CHAR_ROWS_PER_DIR);
 const NpcFisherM1Sprite = makeWalkSprite('npc_fisher_m1', IMG_SEREK, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcInnkeeperF1Sprite = makeWalkSprite('npc_innkeeper_f1', IMG_MEZA, CHAR_ROWS, CHAR_ROWS_PER_DIR);
+const NpcInnkeeperF1Sprite = makeWalkSprite(
+  'npc_innkeeper_f1',
+  IMG_MEZA,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
 const NpcKeeperF1Sprite = makeWalkSprite('npc_keeper_f1', IMG_KHALI, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcResearcherF1Sprite = makeWalkSprite('npc_researcher_f1', IMG_HANA, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcRidgewalkerM1Sprite = makeWalkSprite('npc_ridgewalker_m1', IMG_HARK, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcRidgewalkerM2Sprite = makeWalkSprite('npc_ridgewalker_m2', IMG_JANIK, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcRidgewalkerF1Sprite = makeWalkSprite('npc_ridgewalker_f1', IMG_VASH, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcShopkeepF1Sprite = makeWalkSprite('npc_shopkeep_f1', IMG_NEL, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcShopkeepF2Sprite = makeWalkSprite('npc_shopkeep_f2', IMG_JULZ, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcWoodcutterM1Sprite = makeWalkSprite('npc_woodcutter_m1', IMG_ARTUN, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcWoodcutterM2Sprite = makeWalkSprite('npc_woodcutter_m2', IMG_REZA, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcWoodcutterF1Sprite = makeWalkSprite('npc_woodcutter_f1', IMG_SEZA, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcAudiomancerM1Sprite = makeWalkSprite('npc_audiomancer_m1', IMG_NYRO, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcAudiomancerM2Sprite = makeWalkSprite('npc_audiomancer_m2', IMG_SEREK, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcAudiomancerF1Sprite = makeWalkSprite('npc_audiomancer_f1', IMG_HANA, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcAudiomancerF2Sprite = makeWalkSprite('npc_audiomancer_f2', IMG_MEZA, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcPreserverCaptainSprite = makeWalkSprite('npc_preserver_captain', IMG_JANIK, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcPreserverAgentSprite = makeWalkSprite('npc_preserver_agent', IMG_HARK, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcPreserverEliteSprite = makeWalkSprite('npc_preserver_elite', IMG_GRYM, CHAR_ROWS, CHAR_ROWS_PER_DIR);
-const NpcPreserverScoutSprite = makeWalkSprite('npc_preserver_scout', IMG_REZA, CHAR_ROWS, CHAR_ROWS_PER_DIR);
+const NpcResearcherF1Sprite = makeWalkSprite(
+  'npc_researcher_f1',
+  IMG_HANA,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const NpcRidgewalkerM1Sprite = makeWalkSprite(
+  'npc_ridgewalker_m1',
+  IMG_HARK,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const NpcRidgewalkerM2Sprite = makeWalkSprite(
+  'npc_ridgewalker_m2',
+  IMG_JANIK,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const NpcRidgewalkerF1Sprite = makeWalkSprite(
+  'npc_ridgewalker_f1',
+  IMG_VASH,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const NpcShopkeepF1Sprite = makeWalkSprite(
+  'npc_shopkeep_f1',
+  IMG_NEL,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const NpcShopkeepF2Sprite = makeWalkSprite(
+  'npc_shopkeep_f2',
+  IMG_JULZ,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const NpcWoodcutterM1Sprite = makeWalkSprite(
+  'npc_woodcutter_m1',
+  IMG_ARTUN,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const NpcWoodcutterM2Sprite = makeWalkSprite(
+  'npc_woodcutter_m2',
+  IMG_REZA,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const NpcWoodcutterF1Sprite = makeWalkSprite(
+  'npc_woodcutter_f1',
+  IMG_SEZA,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const NpcAudiomancerM1Sprite = makeWalkSprite(
+  'npc_audiomancer_m1',
+  IMG_NYRO,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const NpcAudiomancerM2Sprite = makeWalkSprite(
+  'npc_audiomancer_m2',
+  IMG_SEREK,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const NpcAudiomancerF1Sprite = makeWalkSprite(
+  'npc_audiomancer_f1',
+  IMG_HANA,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const NpcAudiomancerF2Sprite = makeWalkSprite(
+  'npc_audiomancer_f2',
+  IMG_MEZA,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const NpcPreserverCaptainSprite = makeWalkSprite(
+  'npc_preserver_captain',
+  IMG_JANIK,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const NpcPreserverAgentSprite = makeWalkSprite(
+  'npc_preserver_agent',
+  IMG_HARK,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const NpcPreserverEliteSprite = makeWalkSprite(
+  'npc_preserver_elite',
+  IMG_GRYM,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
+const NpcPreserverScoutSprite = makeWalkSprite(
+  'npc_preserver_scout',
+  IMG_REZA,
+  CHAR_ROWS,
+  CHAR_ROWS_PER_DIR,
+);
 
 // ===========================================================================
 //  Enemies — small (64x128, 8 rows, 2 rows per direction)
@@ -209,14 +367,54 @@ const SMALL_ROWS = 8;
 const SMALL_ROWS_PER_DIR = 2;
 
 // Slimes (e-sl-01 through e-sl-08) -> slime.png
-const EnemyESl01Sprite = makeWalkSprite('sprite-enemy-e-sl-01', IMG_SLIME, SMALL_ROWS, SMALL_ROWS_PER_DIR);
-const EnemyESl02Sprite = makeWalkSprite('sprite-enemy-e-sl-02', IMG_SLIME, SMALL_ROWS, SMALL_ROWS_PER_DIR);
-const EnemyESl03Sprite = makeWalkSprite('sprite-enemy-e-sl-03', IMG_SLIME, SMALL_ROWS, SMALL_ROWS_PER_DIR);
-const EnemyESl04Sprite = makeWalkSprite('sprite-enemy-e-sl-04', IMG_SLIME, SMALL_ROWS, SMALL_ROWS_PER_DIR);
-const EnemyESl05Sprite = makeWalkSprite('sprite-enemy-e-sl-05', IMG_SLIME, SMALL_ROWS, SMALL_ROWS_PER_DIR);
-const EnemyESl06Sprite = makeWalkSprite('sprite-enemy-e-sl-06', IMG_SLIME, SMALL_ROWS, SMALL_ROWS_PER_DIR);
-const EnemyESl07Sprite = makeWalkSprite('sprite-enemy-e-sl-07', IMG_SLIME, SMALL_ROWS, SMALL_ROWS_PER_DIR);
-const EnemyESl08Sprite = makeWalkSprite('sprite-enemy-e-sl-08', IMG_SLIME, SMALL_ROWS, SMALL_ROWS_PER_DIR);
+const EnemyESl01Sprite = makeWalkSprite(
+  'sprite-enemy-e-sl-01',
+  IMG_SLIME,
+  SMALL_ROWS,
+  SMALL_ROWS_PER_DIR,
+);
+const EnemyESl02Sprite = makeWalkSprite(
+  'sprite-enemy-e-sl-02',
+  IMG_SLIME,
+  SMALL_ROWS,
+  SMALL_ROWS_PER_DIR,
+);
+const EnemyESl03Sprite = makeWalkSprite(
+  'sprite-enemy-e-sl-03',
+  IMG_SLIME,
+  SMALL_ROWS,
+  SMALL_ROWS_PER_DIR,
+);
+const EnemyESl04Sprite = makeWalkSprite(
+  'sprite-enemy-e-sl-04',
+  IMG_SLIME,
+  SMALL_ROWS,
+  SMALL_ROWS_PER_DIR,
+);
+const EnemyESl05Sprite = makeWalkSprite(
+  'sprite-enemy-e-sl-05',
+  IMG_SLIME,
+  SMALL_ROWS,
+  SMALL_ROWS_PER_DIR,
+);
+const EnemyESl06Sprite = makeWalkSprite(
+  'sprite-enemy-e-sl-06',
+  IMG_SLIME,
+  SMALL_ROWS,
+  SMALL_ROWS_PER_DIR,
+);
+const EnemyESl07Sprite = makeWalkSprite(
+  'sprite-enemy-e-sl-07',
+  IMG_SLIME,
+  SMALL_ROWS,
+  SMALL_ROWS_PER_DIR,
+);
+const EnemyESl08Sprite = makeWalkSprite(
+  'sprite-enemy-e-sl-08',
+  IMG_SLIME,
+  SMALL_ROWS,
+  SMALL_ROWS_PER_DIR,
+);
 
 // ===========================================================================
 //  Enemies — medium (64x224, 14 rows, 2 rows per direction for walk)
@@ -225,38 +423,168 @@ const MED_ROWS = 14;
 const MED_ROWS_PER_DIR = 2;
 
 // Frontier orcs (e-fr-01..05) -> orc_soldier, (e-fr-06..08) -> orc_champion, (e-fr-09..11) -> goblin
-const EnemyEFr01Sprite = makeWalkSprite('sprite-enemy-e-fr-01', IMG_ORC_SOLDIER, MED_ROWS, MED_ROWS_PER_DIR);
-const EnemyEFr02Sprite = makeWalkSprite('sprite-enemy-e-fr-02', IMG_ORC_SOLDIER, MED_ROWS, MED_ROWS_PER_DIR);
-const EnemyEFr03Sprite = makeWalkSprite('sprite-enemy-e-fr-03', IMG_ORC_SOLDIER, MED_ROWS, MED_ROWS_PER_DIR);
-const EnemyEFr04Sprite = makeWalkSprite('sprite-enemy-e-fr-04', IMG_ORC_SOLDIER, MED_ROWS, MED_ROWS_PER_DIR);
-const EnemyEFr05Sprite = makeWalkSprite('sprite-enemy-e-fr-05', IMG_ORC_SOLDIER, MED_ROWS, MED_ROWS_PER_DIR);
-const EnemyEFr06Sprite = makeWalkSprite('sprite-enemy-e-fr-06', IMG_ORC_CHAMPION, MED_ROWS, MED_ROWS_PER_DIR);
-const EnemyEFr07Sprite = makeWalkSprite('sprite-enemy-e-fr-07', IMG_ORC_CHAMPION, MED_ROWS, MED_ROWS_PER_DIR);
-const EnemyEFr08Sprite = makeWalkSprite('sprite-enemy-e-fr-08', IMG_ORC_CHAMPION, MED_ROWS, MED_ROWS_PER_DIR);
-const EnemyEFr09Sprite = makeWalkSprite('sprite-enemy-e-fr-09', IMG_GOBLIN, MED_ROWS, MED_ROWS_PER_DIR);
-const EnemyEFr10Sprite = makeWalkSprite('sprite-enemy-e-fr-10', IMG_GOBLIN, MED_ROWS, MED_ROWS_PER_DIR);
-const EnemyEFr11Sprite = makeWalkSprite('sprite-enemy-e-fr-11', IMG_GOBLIN, MED_ROWS, MED_ROWS_PER_DIR);
+const EnemyEFr01Sprite = makeWalkSprite(
+  'sprite-enemy-e-fr-01',
+  IMG_ORC_SOLDIER,
+  MED_ROWS,
+  MED_ROWS_PER_DIR,
+);
+const EnemyEFr02Sprite = makeWalkSprite(
+  'sprite-enemy-e-fr-02',
+  IMG_ORC_SOLDIER,
+  MED_ROWS,
+  MED_ROWS_PER_DIR,
+);
+const EnemyEFr03Sprite = makeWalkSprite(
+  'sprite-enemy-e-fr-03',
+  IMG_ORC_SOLDIER,
+  MED_ROWS,
+  MED_ROWS_PER_DIR,
+);
+const EnemyEFr04Sprite = makeWalkSprite(
+  'sprite-enemy-e-fr-04',
+  IMG_ORC_SOLDIER,
+  MED_ROWS,
+  MED_ROWS_PER_DIR,
+);
+const EnemyEFr05Sprite = makeWalkSprite(
+  'sprite-enemy-e-fr-05',
+  IMG_ORC_SOLDIER,
+  MED_ROWS,
+  MED_ROWS_PER_DIR,
+);
+const EnemyEFr06Sprite = makeWalkSprite(
+  'sprite-enemy-e-fr-06',
+  IMG_ORC_CHAMPION,
+  MED_ROWS,
+  MED_ROWS_PER_DIR,
+);
+const EnemyEFr07Sprite = makeWalkSprite(
+  'sprite-enemy-e-fr-07',
+  IMG_ORC_CHAMPION,
+  MED_ROWS,
+  MED_ROWS_PER_DIR,
+);
+const EnemyEFr08Sprite = makeWalkSprite(
+  'sprite-enemy-e-fr-08',
+  IMG_ORC_CHAMPION,
+  MED_ROWS,
+  MED_ROWS_PER_DIR,
+);
+const EnemyEFr09Sprite = makeWalkSprite(
+  'sprite-enemy-e-fr-09',
+  IMG_GOBLIN,
+  MED_ROWS,
+  MED_ROWS_PER_DIR,
+);
+const EnemyEFr10Sprite = makeWalkSprite(
+  'sprite-enemy-e-fr-10',
+  IMG_GOBLIN,
+  MED_ROWS,
+  MED_ROWS_PER_DIR,
+);
+const EnemyEFr11Sprite = makeWalkSprite(
+  'sprite-enemy-e-fr-11',
+  IMG_GOBLIN,
+  MED_ROWS,
+  MED_ROWS_PER_DIR,
+);
 
 // Skeletons (e-sk-01..03) -> skelly, (e-sk-04..06) -> skelly_archer
-const EnemyESk01Sprite = makeWalkSprite('sprite-enemy-e-sk-01', IMG_SKELLY, MED_ROWS, MED_ROWS_PER_DIR);
-const EnemyESk02Sprite = makeWalkSprite('sprite-enemy-e-sk-02', IMG_SKELLY, MED_ROWS, MED_ROWS_PER_DIR);
-const EnemyESk03Sprite = makeWalkSprite('sprite-enemy-e-sk-03', IMG_SKELLY, MED_ROWS, MED_ROWS_PER_DIR);
-const EnemyESk04Sprite = makeWalkSprite('sprite-enemy-e-sk-04', IMG_SKELLY_ARCHER, MED_ROWS, MED_ROWS_PER_DIR);
-const EnemyESk05Sprite = makeWalkSprite('sprite-enemy-e-sk-05', IMG_SKELLY_ARCHER, MED_ROWS, MED_ROWS_PER_DIR);
-const EnemyESk06Sprite = makeWalkSprite('sprite-enemy-e-sk-06', IMG_SKELLY_ARCHER, MED_ROWS, MED_ROWS_PER_DIR);
+const EnemyESk01Sprite = makeWalkSprite(
+  'sprite-enemy-e-sk-01',
+  IMG_SKELLY,
+  MED_ROWS,
+  MED_ROWS_PER_DIR,
+);
+const EnemyESk02Sprite = makeWalkSprite(
+  'sprite-enemy-e-sk-02',
+  IMG_SKELLY,
+  MED_ROWS,
+  MED_ROWS_PER_DIR,
+);
+const EnemyESk03Sprite = makeWalkSprite(
+  'sprite-enemy-e-sk-03',
+  IMG_SKELLY,
+  MED_ROWS,
+  MED_ROWS_PER_DIR,
+);
+const EnemyESk04Sprite = makeWalkSprite(
+  'sprite-enemy-e-sk-04',
+  IMG_SKELLY_ARCHER,
+  MED_ROWS,
+  MED_ROWS_PER_DIR,
+);
+const EnemyESk05Sprite = makeWalkSprite(
+  'sprite-enemy-e-sk-05',
+  IMG_SKELLY_ARCHER,
+  MED_ROWS,
+  MED_ROWS_PER_DIR,
+);
+const EnemyESk06Sprite = makeWalkSprite(
+  'sprite-enemy-e-sk-06',
+  IMG_SKELLY_ARCHER,
+  MED_ROWS,
+  MED_ROWS_PER_DIR,
+);
 
 // Deep enemies (e-dp-01..02) -> mummy, (e-dp-03..05) -> zombie_burster
-const EnemyEDp01Sprite = makeWalkSprite('sprite-enemy-e-dp-01', IMG_MUMMY, MED_ROWS, MED_ROWS_PER_DIR);
-const EnemyEDp02Sprite = makeWalkSprite('sprite-enemy-e-dp-02', IMG_MUMMY, MED_ROWS, MED_ROWS_PER_DIR);
-const EnemyEDp03Sprite = makeWalkSprite('sprite-enemy-e-dp-03', IMG_ZOMBIE_BURSTER, MED_ROWS, MED_ROWS_PER_DIR);
-const EnemyEDp04Sprite = makeWalkSprite('sprite-enemy-e-dp-04', IMG_ZOMBIE_BURSTER, MED_ROWS, MED_ROWS_PER_DIR);
-const EnemyEDp05Sprite = makeWalkSprite('sprite-enemy-e-dp-05', IMG_ZOMBIE_BURSTER, MED_ROWS, MED_ROWS_PER_DIR);
+const EnemyEDp01Sprite = makeWalkSprite(
+  'sprite-enemy-e-dp-01',
+  IMG_MUMMY,
+  MED_ROWS,
+  MED_ROWS_PER_DIR,
+);
+const EnemyEDp02Sprite = makeWalkSprite(
+  'sprite-enemy-e-dp-02',
+  IMG_MUMMY,
+  MED_ROWS,
+  MED_ROWS_PER_DIR,
+);
+const EnemyEDp03Sprite = makeWalkSprite(
+  'sprite-enemy-e-dp-03',
+  IMG_ZOMBIE_BURSTER,
+  MED_ROWS,
+  MED_ROWS_PER_DIR,
+);
+const EnemyEDp04Sprite = makeWalkSprite(
+  'sprite-enemy-e-dp-04',
+  IMG_ZOMBIE_BURSTER,
+  MED_ROWS,
+  MED_ROWS_PER_DIR,
+);
+const EnemyEDp05Sprite = makeWalkSprite(
+  'sprite-enemy-e-dp-05',
+  IMG_ZOMBIE_BURSTER,
+  MED_ROWS,
+  MED_ROWS_PER_DIR,
+);
 
 // Preserver wraiths (e-pv-01..04) -> wraith
-const EnemyEPv01Sprite = makeWalkSprite('sprite-enemy-e-pv-01', IMG_WRAITH, MED_ROWS, MED_ROWS_PER_DIR);
-const EnemyEPv02Sprite = makeWalkSprite('sprite-enemy-e-pv-02', IMG_WRAITH, MED_ROWS, MED_ROWS_PER_DIR);
-const EnemyEPv03Sprite = makeWalkSprite('sprite-enemy-e-pv-03', IMG_WRAITH, MED_ROWS, MED_ROWS_PER_DIR);
-const EnemyEPv04Sprite = makeWalkSprite('sprite-enemy-e-pv-04', IMG_WRAITH, MED_ROWS, MED_ROWS_PER_DIR);
+const EnemyEPv01Sprite = makeWalkSprite(
+  'sprite-enemy-e-pv-01',
+  IMG_WRAITH,
+  MED_ROWS,
+  MED_ROWS_PER_DIR,
+);
+const EnemyEPv02Sprite = makeWalkSprite(
+  'sprite-enemy-e-pv-02',
+  IMG_WRAITH,
+  MED_ROWS,
+  MED_ROWS_PER_DIR,
+);
+const EnemyEPv03Sprite = makeWalkSprite(
+  'sprite-enemy-e-pv-03',
+  IMG_WRAITH,
+  MED_ROWS,
+  MED_ROWS_PER_DIR,
+);
+const EnemyEPv04Sprite = makeWalkSprite(
+  'sprite-enemy-e-pv-04',
+  IMG_WRAITH,
+  MED_ROWS,
+  MED_ROWS_PER_DIR,
+);
 
 // ===========================================================================
 //  Bosses — dragon horizontal strip (2304x96 = 24 frames @ 96x96)
@@ -278,18 +606,21 @@ export const generatedSprites = [
   PlayerMageSprite,
   PlayerRogueSprite,
   PlayerClericSprite,
-  // Named NPCs
-  NpcLiraSprite,
-  NpcCallumSprite,
-  NpcCuratorSprite,
-  NpcMarenSprite,
-  NpcTorvanSprite,
-  NpcRenSprite,
-  NpcPetraSprite,
-  NpcAricSprite,
-  NpcElynSprite,
-  NpcSolenSprite,
-  NpcWynnSprite,
+  // Named NPCs (14 citizens)
+  NpcHanaSprite,
+  NpcArtunSprite,
+  NpcGrymSprite,
+  NpcKhaliSprite,
+  NpcHarkSprite,
+  NpcNyroSprite,
+  NpcNelSprite,
+  NpcJanikSprite,
+  NpcJulzSprite,
+  NpcRezaSprite,
+  NpcVashSprite,
+  NpcMezaSprite,
+  NpcSezaSprite,
+  NpcSerekSprite,
   // Template NPCs
   NpcVillagerSprite,
   NpcVillagerM1Sprite,

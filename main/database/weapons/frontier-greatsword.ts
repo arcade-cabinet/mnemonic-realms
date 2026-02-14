@@ -1,5 +1,8 @@
 import { Weapon } from '@rpgjs/database';
 
+// Special Effect: +15% damage vs. Preserver enemies
+// Intended for: knight
+// Weapon category: sword
 // Tier: 3
 @Weapon({
   id: 'W-SW-06',

@@ -1,3 +1,6 @@
+// Special effect: +10% critical hit chance
+// Intended for: rogue
+// Weapon category: dagger
 // Tier: 2
 import { Weapon } from '@rpgjs/database';
 

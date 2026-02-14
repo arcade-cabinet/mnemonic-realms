@@ -1,5 +1,14 @@
 import { Class } from '@rpgjs/database';
 
+// TODO: import skill classes when generated
+// import OathStrike from '../skills/knight/oath-strike';
+// import VowOfSteel from '../skills/knight/vow-of-steel';
+// import ShieldBash from '../skills/knight/shield-bash';
+// import OathbreakersGambit from '../skills/knight/oathbreakers-gambit';
+// import GuardiansShield from '../skills/knight/guardians-shield';
+// import RememberedValor from '../skills/knight/remembered-valor';
+// import LastStand from '../skills/knight/last-stand';
+
 /**
  * Knight Class
  *
@@ -21,5 +30,13 @@ import { Class } from '@rpgjs/database';
   name: 'Knight',
   description: 'Frontline tank and physical damage dealer. Highest HP and ATK. Lowest AGI and INT.',
   skillsToLearn: [],
+  // Planned skills (import when generated):
+  // { level: 1, skill: OathStrike } from '../skills/knight/oath-strike' (SK-KN-01)
+  // { level: 3, skill: VowOfSteel } from '../skills/knight/vow-of-steel' (SK-KN-02)
+  // { level: 6, skill: ShieldBash } from '../skills/knight/shield-bash' (SK-KN-03)
+  // { level: 10, skill: OathbreakersGambit } from '../skills/knight/oathbreakers-gambit' (SK-KN-04)
+  // { level: 15, skill: GuardiansShield } from '../skills/knight/guardians-shield' (SK-KN-05)
+  // { level: 20, skill: RememberedValor } from '../skills/knight/remembered-valor' (SK-KN-06)
+  // { level: 25, skill: LastStand } from '../skills/knight/last-stand' (SK-KN-07)
 })
 export default class Knight {}

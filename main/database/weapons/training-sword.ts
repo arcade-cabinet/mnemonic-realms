@@ -1,5 +1,8 @@
 import { Weapon } from '@rpgjs/database';
 
+// Special effect: None
+// Intended for: Knight
+// Weapon category: Sword
 // Tier: 1
 @Weapon({
   id: 'W-SW-01',

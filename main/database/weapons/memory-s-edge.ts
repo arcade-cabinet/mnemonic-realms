@@ -1,6 +1,9 @@
 import { Weapon } from '@rpgjs/database';
 
+// Weapon Category: Sword
+// Intended for: Knight
 // Tier: 3
+// Special Effect: ATK scales with total fragments collected (+1 ATK per 5 fragments, max +12).
 @Weapon({
   id: 'W-SW-08',
   name: "Memory's Edge",

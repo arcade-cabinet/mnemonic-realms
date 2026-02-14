@@ -60,7 +60,7 @@ Every map uses these standard layers:
 0 ┌─────────────────────────────────────────────────────────┐
   │  trees   trees    trees    trees    trees    trees      │
 2 │       ┌──────────────┐                                  │
-  │       │  Lookout Hill │  Callum's telescope (14,3)      │
+  │       │  Lookout Hill │  Artun's telescope (14,3)      │
 4 │       │  (12,2) 6x5  │                                  │
   │       └──────────────┘                                  │
 6 │          path                                           │
@@ -82,8 +82,8 @@ Every map uses these standard layers:
   │  │(8,16)4x3│  └──────────┘       ║                      │
 18│  │         │               ┌──────────┐  ┌──────────┐  │
   │  └────────┘               │  General  │  │Blacksmith│  │
-  │  ┌────────┐               │   Shop    │  │  Torvan  │  │
-  │  │ Lira's │               │(18,16) 5x4│  │(18,18)4x4│  │
+  │  ┌────────┐               │   Shop    │  │  Hark  │  │
+  │  │ Hana's │               │(18,16) 5x4│  │(18,18)4x4│  │
 20│  │Workshop│               └──────────┘  └──────────┘  │
   │  │(8,18)5x4│                                           │
   │  └────────┘                                            │
@@ -102,11 +102,11 @@ Every map uses these standard layers:
 
 | NPC | Position | Movement | Graphic | Linked Quests |
 |-----|----------|----------|---------|---------------|
-| Callum | (19, 11) | Patrols: Elder's House ↔ Lookout Hill (12, 3) on 60s cycle | `npc_callum` | MQ-01, MQ-03, MQ-05, MQ-07, SQ-10, SQ-14 |
-| Lira | (9, 19) | Static at workshop until MQ-02 complete; roams village after | `npc_lira` | MQ-01, MQ-02 |
-| Maren (shopkeeper) | (19, 17) | Static behind shop counter | `npc_maren` | SQ-01 |
-| Torvan (blacksmith) | (19, 19) | Static at anvil | `npc_torvan` | SQ-11 |
-| Ren (innkeeper) | (21, 15) | Static behind inn bar | `npc_ren` | SQ-12 |
+| Artun | (19, 11) | Patrols: Elder's House ↔ Lookout Hill (12, 3) on 60s cycle | `npc_callum` | MQ-01, MQ-03, MQ-05, MQ-07, SQ-10, SQ-14 |
+| Hana | (9, 19) | Static at workshop until MQ-02 complete; roams village after | `npc_lira` | MQ-01, MQ-02 |
+| Khali (shopkeeper) | (19, 17) | Static behind shop counter | `npc_maren` | SQ-01 |
+| Hark (blacksmith) | (19, 19) | Static at anvil | `npc_torvan` | SQ-11 |
+| Nyro (innkeeper) | (21, 15) | Static behind inn bar | `npc_ren` | SQ-12 |
 | Villager A | (14, 15) | Wanders Central Square (12-17, 14-19) | `npc_villager_m1` | — |
 | Villager B | (16, 16) | Wanders Central Square | `npc_villager_f1` | — |
 | Villager C | (10, 22) | Patrols South Gate road | `npc_villager_m2` | — |
@@ -136,19 +136,19 @@ None. Village Hub is a safe zone with no combat encounters.
 
 | Event ID | Position | Type | Trigger | Linked Quest | Description |
 |----------|----------|------|---------|--------------|-------------|
-| EV-VH-001 | (19, 11) | action | MQ-01 | MQ-01 | Callum intro dialogue; gives Architect's Signet direction |
-| EV-VH-002 | (9, 19) | action | MQ-01 | MQ-01, MQ-02 | Lira gives Architect's Signet (K-01); teaches memory ops |
+| EV-VH-001 | (19, 11) | action | MQ-01 | MQ-01 | Artun intro dialogue; gives Architect's Signet direction |
+| EV-VH-002 | (9, 19) | action | MQ-01 | MQ-01, MQ-02 | Hana gives Architect's Signet (K-01); teaches memory ops |
 | EV-VH-003 | (10, 17) | action | MQ-02 | MQ-02 | Memorial Garden Resonance Stone; first fragment collection (MF-01) |
 | EV-VH-004 | (10, 17) | action | MQ-02 | MQ-02 | Remix Table tutorial; broadcast tutorial |
-| EV-VH-005 | (19, 17) | action | always | SQ-01 | Maren shop interface + SQ-01 dialogue trigger |
-| EV-VH-006 | (19, 19) | action | always | SQ-11 | Torvan shop interface + SQ-11 trigger (vibrancy 70+) |
-| EV-VH-007 | (21, 15) | action | always | SQ-12 | Ren inn: rest + dream sequence trigger |
+| EV-VH-005 | (19, 17) | action | always | SQ-01 | Khali shop interface + SQ-01 dialogue trigger |
+| EV-VH-006 | (19, 19) | action | always | SQ-11 | Hark shop interface + SQ-11 trigger (vibrancy 70+) |
+| EV-VH-007 | (21, 15) | action | always | SQ-12 | Nyro inn: rest + dream sequence trigger |
 | EV-VH-008 | (8, 14) | action | MQ-03+ | — | Quest Board: displays available side quests |
 | EV-VH-009 | (15, 25) | touch | always | — | South Gate transition → Heartfield (15, 0) |
 | EV-VH-010 | (29, 14) | touch | always | — | East Gate transition → Ambergrove (0, 20) |
 | EV-VH-011 | (0, 14) | touch | always | — | West Gate transition → Millbrook (39, 20) |
 | EV-VH-012 | (15, 0) | touch | MQ-04+ | — | North Gate transition → Sunridge (20, 39); locked until Act II |
-| EV-VH-013 | (12, 3) | action | always | — | Callum's telescope: narrative lookout over Settled Lands |
+| EV-VH-013 | (12, 3) | action | always | — | Artun's telescope: narrative lookout over Settled Lands |
 | EV-VH-014 | (8, 17) | touch | MQ-05+ | SQ-10 | Hidden Depths entrance under Memorial Garden → Depths L1 |
 | EV-VH-015 | (14, 15) | parallel | always | — | Fountain vibrancy check: particle effects scale with zone vibrancy |
 | EV-VH-016 | (0, 0) | auto | MQ-01 | MQ-01 | Opening cutscene trigger on first map load |
@@ -228,13 +228,13 @@ Rolling farmland with golden wheat fields, vegetable patches, and a small hamlet
 |----------|----------|------|---------|--------------|-------------|
 | EV-HF-001 | (15, 14) | action | MQ-03+ | SQ-02 | Farmer Gale: windmill groaning dialogue; SQ-02 trigger |
 | EV-HF-002 | (30, 8) | touch | SQ-02 | SQ-02 | Old Windmill entrance; Dissolved Memory encounter inside |
-| EV-HF-003 | (33, 28) | auto | MQ-04 | MQ-04 | Stagnation Clearing cutscene: Lira's freezing |
-| EV-HF-004 | (34, 29) | action | MQ-04+ | MQ-04 | Lira's frozen form; broadcast target for SQ-14 |
+| EV-HF-003 | (33, 28) | auto | MQ-04 | MQ-04 | Stagnation Clearing cutscene: Hana's freezing |
+| EV-HF-004 | (34, 29) | action | MQ-04+ | MQ-04 | Hana's frozen form; broadcast target for SQ-14 |
 | EV-HF-005 | (20, 38) | touch | MQ-04+ | — | Southern Crossroads transition → Shimmer Marsh (20, 0) |
 | EV-HF-006 | (15, 0) | touch | always | — | North edge transition → Village Hub (15, 25) |
 | EV-HF-007 | (39, 20) | touch | always | — | East edge transition → Ambergrove (0, 20) |
 | EV-HF-008 | (31, 9) | action | always | — | Windmill Resonance Stone; fragment collection |
-| EV-HF-009 | (34, 29) | action | SQ-14 | SQ-14 | Broadcast joy 4+ fragment into Lira; partial awakening |
+| EV-HF-009 | (34, 29) | action | SQ-14 | SQ-14 | Broadcast joy 4+ fragment into Hana; partial awakening |
 
 ### Map Transitions
 
@@ -407,7 +407,7 @@ Rolling farmland with golden wheat fields, vegetable patches, and a small hamlet
 |------|----------|------|-------------|
 | Ridgetop Waystation | (18, 18) | 5x5 | Traveler's outpost, 3 NPCs, rotating merchant. Rest point. |
 | Wind Shrine | (8, 6) | 4x4 | Ruined shrine on highest point. Kinesis hint. Vibrating Resonance Stone. |
-| Preserver Outpost | (30, 13) | 5x4 | Crystallized watchtower. SQ-05 location (Aric). |
+| Preserver Outpost | (30, 13) | 5x4 | Crystallized watchtower. SQ-05 location (Janik). |
 | The Threshold | (18, 0) | 6x2 | Northern map edge. Visual transition to Frontier shimmer. |
 | Highland Grass | (5, 10) → (35, 35) | — | Primary enemy spawn zone (hawks, golems) |
 
@@ -418,7 +418,7 @@ Rolling farmland with golden wheat fields, vegetable patches, and a small hamlet
 | Waystation Keeper | (19, 19) | Static | `npc_keeper_f1` | — (rest dialogue, rumors) |
 | Traveling Merchant | (20, 20) | Appears on rotation (visits every 3 game-hours) | `npc_merchant_m1` | — |
 | Waystation Guard | (17, 18) | Patrols waystation perimeter | `npc_guard_m2` | — |
-| Aric | (31, 14) | Static at Preserver Outpost perimeter (appears after MQ-04) | `npc_aric` | SQ-05 |
+| Janik | (31, 14) | Static at Preserver Outpost perimeter (appears after MQ-04) | `npc_aric` | SQ-05 |
 
 ### Resonance Stones
 
@@ -448,7 +448,7 @@ Rolling farmland with golden wheat fields, vegetable patches, and a small hamlet
 
 | Event ID | Position | Type | Trigger | Linked Quest | Description |
 |----------|----------|------|---------|--------------|-------------|
-| EV-SR-001 | (31, 14) | action | MQ-04+ | SQ-05 | Aric dialogue: Preserver doubt; SQ-05 trigger |
+| EV-SR-001 | (31, 14) | action | MQ-04+ | SQ-05 | Janik dialogue: Preserver doubt; SQ-05 trigger |
 | EV-SR-002 | (9, 7) | action | always | — | Wind Shrine stone: vibrates, hints at Kinesis (Act II lore) |
 | EV-SR-003 | (19, 19) | action | always | — | Waystation rest point: full HP/SP restore |
 | EV-SR-004 | (20, 39) | touch | always | — | South edge transition → Village Hub (15, 0) |
@@ -476,7 +476,7 @@ Rolling farmland with golden wheat fields, vegetable patches, and a small hamlet
 | Area | Position | Size | Description |
 |------|----------|------|-------------|
 | Verdance's Hollow | (23, 33) | 6x6 | Sunken glade. Dormant god Verdance shrine. Impossibly green. |
-| Marsh Hermit's Hut | (10, 13) | 3x3 | Wynn's stilted hut. SQ-06 and GQ-02 quest hub. |
+| Marsh Hermit's Hut | (10, 13) | 3x3 | Vash's stilted hut. SQ-06 and GQ-02 quest hub. |
 | Stagnation Bog | (38, 8) | 8x6 | Preserver-controlled crystallized marsh. Break requires water+fury. |
 | Deepwater Sinkhole | (33, 43) | 4x4 | Depths Level 2 entrance. Water spirals downward. |
 | Blocked Root Cluster | (18, 28) | 3x3 | GQ-02 approach barrier. Broadcast earth/water to retract roots. |
@@ -486,7 +486,7 @@ Rolling farmland with golden wheat fields, vegetable patches, and a small hamlet
 
 | NPC | Position | Movement | Graphic | Linked Quests |
 |-----|----------|----------|---------|---------------|
-| Wynn (Marsh Hermit) | (11, 14) | Static at hut; moves to Verdance's Hollow after GQ-02 (joy) | `npc_wynn` | SQ-06, GQ-02 |
+| Vash (Marsh Hermit) | (11, 14) | Static at hut; moves to Verdance's Hollow after GQ-02 (joy) | `npc_wynn` | SQ-06, GQ-02 |
 | Marsh Researcher | (12, 15) | Patrols hut vicinity | `npc_researcher_f1` | — (lore) |
 | Preserver Scout A | (36, 9) | Patrols Stagnation Bog perimeter (34-42, 6-14) | `npc_preserver_scout` | — |
 | Preserver Scout B | (40, 10) | Static at bog center | `npc_preserver_scout` | — |
@@ -495,7 +495,7 @@ Rolling farmland with golden wheat fields, vegetable patches, and a small hamlet
 
 | ID | Position | Fragments Available | Notes |
 |----|----------|---------------------|-------|
-| RS-SM-01 | (11, 14) | 1 fragment (sorrow/water/2) | Near Wynn's hut |
+| RS-SM-01 | (11, 14) | 1 fragment (sorrow/water/2) | Near Vash's hut |
 | RS-SM-02 | (25, 35) | Special: recall pedestal | Verdance's Hollow center; 4 emotion pedestals |
 | RS-SM-03 | (40, 12) | 1 fragment (fury/water/2) | Stagnation Bog edge (contested) |
 | RS-SM-04 | (20, 25) | 1 fragment (calm/earth/2) | Mid-marsh, near root cluster |
@@ -509,7 +509,7 @@ Rolling farmland with golden wheat fields, vegetable patches, and a small hamlet
 
 | ID | Position | Contents | Condition |
 |----|----------|----------|-----------|
-| CH-SM-01 | (12, 16) | Antidote (C-SC-01) x5, Potion (C-HP-02) x2 | Near Wynn's hut |
+| CH-SM-01 | (12, 16) | Antidote (C-SC-01) x5, Potion (C-HP-02) x2 | Near Vash's hut |
 | CH-SM-02 | (38, 5) | Stasis Breaker (C-SC-04) x3 | Behind Stagnation Bog (requires breaking or Silent Path) |
 | CH-SM-03 | (24, 36) | Verdant Mantle (A-12) | Verdance's Hollow (post-recall) |
 
@@ -526,7 +526,7 @@ Rolling farmland with golden wheat fields, vegetable patches, and a small hamlet
 
 | Event ID | Position | Type | Trigger | Linked Quest | Description |
 |----------|----------|------|---------|--------------|-------------|
-| EV-SM-001 | (11, 14) | action | MQ-05+ | SQ-06, GQ-02 | Wynn dialogue: marsh research + Verdance's Hollow info |
+| EV-SM-001 | (11, 14) | action | MQ-05+ | SQ-06, GQ-02 | Vash dialogue: marsh research + Verdance's Hollow info |
 | EV-SM-002 | (18, 28) | action | GQ-02 | GQ-02 | Blocked root cluster: broadcast earth/water to clear path |
 | EV-SM-003 | (25, 35) | auto | GQ-02 | GQ-02 | Verdance recall vision (30-sec cinematic) |
 | EV-SM-004 | (25, 35) | action | GQ-02 | GQ-02 | 4 emotion pedestals: place potency 3+ fragment |
@@ -571,7 +571,7 @@ Rolling farmland with golden wheat fields, vegetable patches, and a small hamlet
 
 | NPC | Position | Movement | Graphic | Linked Quests |
 |-----|----------|----------|---------|---------------|
-| Petra | (14, 24) | Static at camp center; patrols camp after GQ-04 | `npc_petra` | MQ-05, SQ-07, GQ-04 |
+| Nel | (14, 24) | Static at camp center; patrols camp after GQ-04 | `npc_petra` | MQ-05, SQ-07, GQ-04 |
 | Ridgewalker Scout | (16, 25) | Patrols camp perimeter (10-20, 20-30) | `npc_ridgewalker_m1` | — |
 | Ridgewalker Merchant | (15, 26) | Static at camp market stall | `npc_merchant_m2` | — |
 | Ridgewalker Elder | (12, 22) | Static at campfire | `npc_elder_m2` | — (lore, Autumnus dialogue post-recall) |
@@ -609,7 +609,7 @@ Rolling farmland with golden wheat fields, vegetable patches, and a small hamlet
 
 | Event ID | Position | Type | Trigger | Linked Quest | Description |
 |----------|----------|------|---------|--------------|-------------|
-| EV-HR-001 | (14, 24) | action | MQ-05+ | MQ-05, SQ-07, GQ-04 | Petra dialogue: dormant gods intro, Kinetic Boots (K-05) |
+| EV-HR-001 | (14, 24) | action | MQ-05+ | MQ-05, SQ-07, GQ-04 | Nel dialogue: dormant gods intro, Kinetic Boots (K-05) |
 | EV-HR-002 | (15, 26) | action | always | — | Ridgewalker merchant shop (Ridgewalker Claymore, Shadow Fang, etc.) |
 | EV-HR-003 | (24, 10) | auto | GQ-04 | GQ-04 | Kinesis Spire recall vision |
 | EV-HR-004 | (24, 10) | action | GQ-04 | GQ-04 | 4 emotion pedestals for Kinesis recall |
@@ -619,7 +619,7 @@ Rolling farmland with golden wheat fields, vegetable patches, and a small hamlet
 | EV-HR-008 | (49, 25) | touch | MQ-05+ | — | East edge → Flickerveil (0, 15) |
 | EV-HR-009 | (49, 35) | touch | MQ-05+ | — | SE edge → Shimmer Marsh (0, 25) |
 | EV-HR-010 | (25, 0) | touch | MQ-07+ | — | North edge → Undrawn Peaks (20, 39) |
-| EV-HR-011 | (14, 24) | action | SQ-07 | SQ-07 | Petra: escort quest trigger |
+| EV-HR-011 | (14, 24) | action | SQ-07 | SQ-07 | Nel: escort quest trigger |
 
 ### Map Transitions
 
@@ -653,14 +653,14 @@ Rolling farmland with golden wheat fields, vegetable patches, and a small hamlet
 
 | NPC | Position | Movement | Graphic | Linked Quests |
 |-----|----------|----------|---------|---------------|
-| Solen (village elder) | (35, 30) | Static at village center | `npc_solen` | SQ-08, GQ-03 |
+| Reza (village elder) | (35, 30) | Static at village center | `npc_solen` | SQ-08, GQ-03 |
 | Village Shopkeeper | (36, 29) | Static in shop | `npc_shopkeep_f2` | — |
 | Village Innkeeper | (34, 32) | Static in inn | `npc_innkeeper_f1` | — |
 | Flickering Guard A | (31, 28) | Patrols village perimeter | `npc_villager_m4` | — |
 | Preserver Agent (archive) | (9, 9) | Static at archive center | `npc_preserver_agent` | GQ-03-F1 (Burning Archive) |
 | Preserver Agent B | (7, 10) | Patrols archive perimeter | `npc_preserver_agent` | — |
 | Preserver Agent C | (10, 7) | Patrols archive perimeter | `npc_preserver_agent` | — |
-| Elyn (Preserver defector) | (30, 26) | Appears after Vesperis recall | `npc_elyn` | GQ-03-S1 (The Defector) |
+| Julz (Preserver defector) | (30, 26) | Appears after Vesperis recall | `npc_elyn` | GQ-03-S1 (The Defector) |
 
 ### Resonance Stones
 
@@ -696,12 +696,12 @@ Rolling farmland with golden wheat fields, vegetable patches, and a small hamlet
 
 | Event ID | Position | Type | Trigger | Linked Quest | Description |
 |----------|----------|------|---------|--------------|-------------|
-| EV-FV-001 | (35, 30) | action | MQ-05+ | SQ-08, GQ-03 | Solen dialogue: Light Lens (K-04), light studies |
+| EV-FV-001 | (35, 30) | action | MQ-05+ | SQ-08, GQ-03 | Reza dialogue: Light Lens (K-04), light studies |
 | EV-FV-002 | (36, 29) | action | always | — | Village shop (Prism Wand, Flickerblade, Stasis Breaker) |
 | EV-FV-003 | (20, 20) | auto | GQ-03 | GQ-03 | Luminos recall vision (requires Light Lens K-04 equipped) |
 | EV-FV-004 | (20, 20) | action | GQ-03 | GQ-03 | 4 emotion pedestals for Luminos recall |
 | EV-FV-005 | (8, 8) | action | GQ-03-F1 | GQ-03-F1 | Archive: Burning Archive assault trigger |
-| EV-FV-006 | (30, 26) | action | GQ-03-S1 | GQ-03-S1 | Elyn: defector escort quest trigger (after Vesperis recall) |
+| EV-FV-006 | (30, 26) | action | GQ-03-S1 | GQ-03-S1 | Julz: defector escort quest trigger (after Vesperis recall) |
 | EV-FV-007 | (0, 25) | touch | MQ-05+ | — | West edge → Shimmer Marsh (49, 25) |
 | EV-FV-008 | (0, 15) | touch | MQ-05+ | — | NW edge → Hollow Ridge (49, 25) |
 | EV-FV-009 | (0, 38) | touch | always | — | SW edge → Ambergrove (38, 20) via Canopy Path |

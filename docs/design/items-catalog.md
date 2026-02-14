@@ -33,11 +33,11 @@ Shop inventories are gated by the local zone's vibrancy tier (see [vibrancy-syst
 | ID | Name | ATK | Price | Special Effect | Acquisition | Tier |
 |----|------|-----|-------|----------------|-------------|------|
 | W-SW-01 | Training Sword | +5 | — | None | Starting equipment | 1 |
-| W-SW-02 | Iron Blade | +10 | 80g | None | Torvan's Blacksmith (Village Hub) | 1 |
-| W-SW-03 | Oathkeeper's Edge | +16 | 250g | +5% Oath Strike damage | Torvan's Blacksmith (Normal vibrancy) | 2 |
+| W-SW-02 | Iron Blade | +10 | 80g | None | Hark's Blacksmith (Village Hub) | 1 |
+| W-SW-03 | Oathkeeper's Edge | +16 | 250g | +5% Oath Strike damage | Hark's Blacksmith (Normal vibrancy) | 2 |
 | W-SW-04 | Brightwater Saber | +22 | 400g | Water element on basic attacks | Millbrook specialty shop | 2 |
 | W-SW-05 | Ridgewalker Claymore | +28 | 600g | +10% ATK when HP above 75% | Ridgewalker Camp merchant | 2 |
-| W-SW-06 | Frontier Greatsword | +35 | 900g | +15% damage vs. Preserver enemies | Torvan's Blacksmith (Vivid vibrancy) | 3 |
+| W-SW-06 | Frontier Greatsword | +35 | 900g | +15% damage vs. Preserver enemies | Hark's Blacksmith (Vivid vibrancy) | 3 |
 | W-SW-07 | Oath-Forged Blade | +42 | — | +3% ATK per active oath. Oath Strike costs 0 SP. | Quest reward: Knight oath chain (Act II) | 3 |
 | W-SW-08 | Memory's Edge | +50 | — | ATK scales with total fragments collected (+1 ATK per 5 fragments, max +12). | Depths Level 4 treasure chest | 3 |
 
@@ -46,11 +46,11 @@ Shop inventories are gated by the local zone's vibrancy tier (see [vibrancy-syst
 | ID | Name | INT | Price | Special Effect | Acquisition | Tier |
 |----|------|-----|-------|----------------|-------------|------|
 | W-ST-01 | Wooden Staff | +4 | — | None | Starting equipment | 1 |
-| W-ST-02 | Maren's Blessing Rod | +8 | 70g | +5% healing power | Maren's General Shop (Village Hub) | 1 |
+| W-ST-02 | Khali's Blessing Rod | +8 | 70g | +5% healing power | Khali's General Shop (Village Hub) | 1 |
 | W-ST-03 | Hearthstone Staff | +14 | 220g | Sorrowful Cleanse also heals INT × 0.3 | Ambergrove (Hearthstone Circle loot) | 2 |
 | W-ST-04 | Riverside Crosier | +20 | 380g | +10% shield strength (Awestruck Ward) | Millbrook specialty shop | 2 |
-| W-ST-05 | Marsh Hermit's Crook | +26 | — | SP cost of all heals reduced by 15% | Quest reward from Wynn (Shimmer Marsh) | 2 |
-| W-ST-06 | Luminary's Scepter | +33 | 850g | Group Mending heals +20% more. | Torvan's Blacksmith (Vivid vibrancy) | 3 |
+| W-ST-05 | Marsh Hermit's Crook | +26 | — | SP cost of all heals reduced by 15% | Quest reward from Vash (Shimmer Marsh) | 2 |
+| W-ST-06 | Luminary's Scepter | +33 | 850g | Group Mending heals +20% more. | Hark's Blacksmith (Vivid vibrancy) | 3 |
 | W-ST-07 | Euphoric Wand | +40 | — | Emotional charges grant +5% each (doubled from base +3%). | Quest reward: Cleric charge quest (Act II) | 3 |
 | W-ST-08 | First Light | +48 | — | Healing spells also grant Inspired (+20% all stats, 1 turn) to the target. | Depths Level 5 treasure chest | 3 |
 
@@ -59,11 +59,11 @@ Shop inventories are gated by the local zone's vibrancy tier (see [vibrancy-syst
 | ID | Name | INT | Price | Special Effect | Acquisition | Tier |
 |----|------|-----|-------|----------------|-------------|------|
 | W-WD-01 | Apprentice Wand | +5 | — | None | Starting equipment | 1 |
-| W-WD-02 | Amber Focus | +9 | 90g | +5% spell damage | Maren's General Shop (Village Hub) | 1 |
+| W-WD-02 | Amber Focus | +9 | 90g | +5% spell damage | Khali's General Shop (Village Hub) | 1 |
 | W-WD-03 | Windcatcher Rod | +15 | 240g | Wind-element spells deal +15% damage | Ambergrove (Canopy Path treasure) | 2 |
 | W-WD-04 | Prism Wand | +21 | 420g | Eureka Moment always hits weakness if one exists | Flickerveil (Flickering Village shop) | 2 |
 | W-WD-05 | Resonance Tuner | +27 | 650g | Memory Wave AoE radius includes back-row enemies | Resonance Fields (Listener's Camp) | 2 |
-| W-WD-06 | Arcane Catalyst | +34 | 950g | Elemental Storm damage +20% | Torvan's Blacksmith (Vivid vibrancy) | 3 |
+| W-WD-06 | Arcane Catalyst | +34 | 950g | Elemental Storm damage +20% | Hark's Blacksmith (Vivid vibrancy) | 3 |
 | W-WD-07 | Inspiration's Core | +41 | — | Grand Inspiration costs 40 SP instead of 55. | Quest reward: Mage element mastery (Act II) | 3 |
 | W-WD-08 | Dissolved Memory Lens | +49 | — | All spell damage +10%. Spells that hit a weakness deal 2.0x instead of 1.5x. | Depths Level 5 treasure chest | 3 |
 
@@ -72,11 +72,11 @@ Shop inventories are gated by the local zone's vibrancy tier (see [vibrancy-syst
 | ID | Name | ATK | Price | Special Effect | Acquisition | Tier |
 |----|------|-----|-------|----------------|-------------|------|
 | W-DG-01 | Worn Knife | +4 | — | None | Starting equipment | 1 |
-| W-DG-02 | Steel Stiletto | +8 | 75g | None | Torvan's Blacksmith (Village Hub) | 1 |
+| W-DG-02 | Steel Stiletto | +8 | 75g | None | Hark's Blacksmith (Village Hub) | 1 |
 | W-DG-03 | Windmill Blade | +13 | 200g | +10% critical hit chance | Heartfield (Old Windmill loot) | 2 |
 | W-DG-04 | Shadow Fang | +19 | 350g | Foreshadow Strike pre-enemy bonus increased by +10% | Ridgewalker Camp merchant | 2 |
 | W-DG-05 | Flickerblade | +25 | 550g | 20% chance to act twice (basic attack only, not skills) | Flickerveil (Flickering Village shop) | 2 |
-| W-DG-06 | Phantom Edge | +32 | 900g | Vanishing Act lasts 3 turns instead of 2. | Torvan's Blacksmith (Vivid vibrancy) | 3 |
+| W-DG-06 | Phantom Edge | +32 | 900g | Vanishing Act lasts 3 turns instead of 2. | Hark's Blacksmith (Vivid vibrancy) | 3 |
 | W-DG-07 | Temporal Shard | +39 | — | Temporal Ambush: the second action deals +25% bonus damage. | Quest reward: Rogue time-echo quest (Act II) | 3 |
 | W-DG-08 | Echo of Tomorrow | +47 | — | Echo Dodge cap increased from 60% to 70%. Memory Theft always succeeds. | Depths Level 4 treasure chest | 3 |
 
@@ -97,16 +97,16 @@ Armor provides flat DEF. Each class can equip any armor piece, but some have cla
 | ID | Name | DEF | Price | Special Effect | Acquisition | Tier |
 |----|------|-----|-------|----------------|-------------|------|
 | A-01 | Traveler's Tunic | +3 | — | None | Starting equipment (all classes) | 1 |
-| A-02 | Padded Vest | +6 | 60g | None | Maren's General Shop (Village Hub) | 1 |
-| A-03 | Leather Armor | +10 | 120g | +5% HP | Torvan's Blacksmith (Village Hub) | 1 |
-| A-04 | Chain Mail | +15 | 300g | Knight: +8 DEF instead of +15. Others: AGI -3. | Torvan's Blacksmith (Normal vibrancy) | 2 |
+| A-02 | Padded Vest | +6 | 60g | None | Khali's General Shop (Village Hub) | 1 |
+| A-03 | Leather Armor | +10 | 120g | +5% HP | Hark's Blacksmith (Village Hub) | 1 |
+| A-04 | Chain Mail | +15 | 300g | Knight: +8 DEF instead of +15. Others: AGI -3. | Hark's Blacksmith (Normal vibrancy) | 2 |
 | A-05 | Forest Weave | +12 | 250g | +10% evasion. Rogue: +15% evasion instead. | Ambergrove (Woodcutter's Camp quest reward) | 2 |
 | A-06 | Riverstone Plate | +18 | 450g | +10% water resistance. Immune to Poison. | Millbrook specialty shop | 2 |
-| A-07 | Hermit's Robe | +14 | — | +20% SP regen from Defend action. Cleric/Mage: +25% instead. | Quest reward from Wynn (Shimmer Marsh) | 2 |
+| A-07 | Hermit's Robe | +14 | — | +20% SP regen from Defend action. Cleric/Mage: +25% instead. | Quest reward from Vash (Shimmer Marsh) | 2 |
 | A-08 | Ridgewalker's Coat | +20 | 500g | +10% ATK. Wind resistance +15%. | Ridgewalker Camp merchant | 2 |
 | A-09 | Frontier Guard | +25 | 800g | +15% resistance to Stasis status. | Hollow Ridge (Shattered Pass loot, after clearing) | 3 |
 | A-10 | Preserver's Crystal Mail | +30 | — | +20% DEF. Immune to Stasis. | Drop from Preserver Captain (Resonance Fields) | 3 |
-| A-11 | Luminary Vestment | +22 | 1,000g | All healing received +20%. Knight: oath bonuses +5%. | Torvan's Blacksmith (Vivid vibrancy) | 3 |
+| A-11 | Luminary Vestment | +22 | 1,000g | All healing received +20%. Knight: oath bonuses +5%. | Hark's Blacksmith (Vivid vibrancy) | 3 |
 | A-12 | Verdant Mantle | +28 | — | Regenerate 2% max HP per turn (in combat). | Verdance's Hollow (post-recall loot) | 3 |
 | A-13 | Sketchweave Cloak | +24 | — | +20% evasion. In Sketch zones: +30% evasion. | The Half-Drawn Forest (Living Sketch reward) | 3 |
 | A-14 | Memory-Woven Plate | +35 | — | DEF scales with total fragments broadcast (+1 DEF per 3 broadcasts, max +10). | Depths Level 5 treasure chest | 3 |
@@ -129,27 +129,27 @@ All consumables stack up to **10** per type in inventory. Using a consumable in 
 
 | ID | Name | Effect | Price | Stack | Acquisition | Tier |
 |----|------|--------|-------|-------|-------------|------|
-| C-HP-01 | Minor Potion | Restore 50 HP | 30g | 10 | Maren's General Shop (always) | 1 |
-| C-HP-02 | Potion | Restore 120 HP | 80g | 10 | Maren's General Shop (Normal vibrancy) | 2 |
-| C-HP-03 | High Potion | Restore 250 HP | 180g | 10 | Maren's General Shop (Vivid vibrancy) | 3 |
+| C-HP-01 | Minor Potion | Restore 50 HP | 30g | 10 | Khali's General Shop (always) | 1 |
+| C-HP-02 | Potion | Restore 120 HP | 80g | 10 | Khali's General Shop (Normal vibrancy) | 2 |
+| C-HP-03 | High Potion | Restore 250 HP | 180g | 10 | Khali's General Shop (Vivid vibrancy) | 3 |
 | C-HP-04 | Elixir | Restore 100% HP | 500g | 5 | Vivid-tier shops only. Also: Depths treasure chests. | 3 |
 
 ### SP Recovery Items
 
 | ID | Name | Effect | Price | Stack | Acquisition | Tier |
 |----|------|--------|-------|-------|-------------|------|
-| C-SP-01 | Mana Drop | Restore 20 SP | 25g | 10 | Maren's General Shop (always) | 1 |
-| C-SP-02 | Mana Draught | Restore 50 SP | 70g | 10 | Maren's General Shop (Normal vibrancy) | 2 |
-| C-SP-03 | Mana Surge | Restore 120 SP | 160g | 10 | Maren's General Shop (Vivid vibrancy) | 3 |
+| C-SP-01 | Mana Drop | Restore 20 SP | 25g | 10 | Khali's General Shop (always) | 1 |
+| C-SP-02 | Mana Draught | Restore 50 SP | 70g | 10 | Khali's General Shop (Normal vibrancy) | 2 |
+| C-SP-03 | Mana Surge | Restore 120 SP | 160g | 10 | Khali's General Shop (Vivid vibrancy) | 3 |
 | C-SP-04 | Ether | Restore 100% SP | 450g | 5 | Vivid-tier shops only. Also: Depths treasure chests. | 3 |
 
 ### Status Cure Items
 
 | ID | Name | Effect | Price | Stack | Acquisition | Tier |
 |----|------|--------|-------|-------|-------------|------|
-| C-SC-01 | Antidote | Cure Poison | 20g | 10 | Maren's General Shop (always) | 1 |
-| C-SC-02 | Haste Charm | Cure Slow. Grant AGI +20% for 2 turns. | 60g | 10 | Maren's General Shop (Normal vibrancy) | 2 |
-| C-SC-03 | Fortify Tonic | Cure Weakness. Grant DEF +20% for 2 turns. | 60g | 10 | Maren's General Shop (Normal vibrancy) | 2 |
+| C-SC-01 | Antidote | Cure Poison | 20g | 10 | Khali's General Shop (always) | 1 |
+| C-SC-02 | Haste Charm | Cure Slow. Grant AGI +20% for 2 turns. | 60g | 10 | Khali's General Shop (Normal vibrancy) | 2 |
+| C-SC-03 | Fortify Tonic | Cure Weakness. Grant DEF +20% for 2 turns. | 60g | 10 | Khali's General Shop (Normal vibrancy) | 2 |
 | C-SC-04 | Stasis Breaker | Cure Stasis. Grant immunity to Stasis for 3 turns. | 120g | 10 | Frontier shops (Ridgewalker, Flickering Village) | 2 |
 | C-SC-05 | Panacea | Cure ALL status effects on one character. | 200g | 5 | Vivid-tier shops only | 3 |
 
@@ -157,9 +157,9 @@ All consumables stack up to **10** per type in inventory. Using a consumable in 
 
 | ID | Name | Effect | Price | Stack | Acquisition | Tier |
 |----|------|--------|-------|-------|-------------|------|
-| C-BF-01 | Strength Seed | ATK +15% for 3 turns (one character) | 100g | 5 | Torvan's Blacksmith (Normal vibrancy) | 2 |
-| C-BF-02 | Wisdom Seed | INT +15% for 3 turns (one character) | 100g | 5 | Maren's General Shop (Normal vibrancy) | 2 |
-| C-BF-03 | Aegis Seed | DEF +15% for 3 turns (one character) | 100g | 5 | Torvan's Blacksmith (Normal vibrancy) | 2 |
+| C-BF-01 | Strength Seed | ATK +15% for 3 turns (one character) | 100g | 5 | Hark's Blacksmith (Normal vibrancy) | 2 |
+| C-BF-02 | Wisdom Seed | INT +15% for 3 turns (one character) | 100g | 5 | Khali's General Shop (Normal vibrancy) | 2 |
+| C-BF-03 | Aegis Seed | DEF +15% for 3 turns (one character) | 100g | 5 | Hark's Blacksmith (Normal vibrancy) | 2 |
 | C-BF-04 | Haste Seed | AGI +15% for 3 turns (one character) | 100g | 5 | Millbrook specialty shop | 2 |
 | C-BF-05 | Memory Incense | Grant Inspired status (+20% all stats, 3 turns) to one character. | 350g | 3 | Vivid-tier shops only | 3 |
 
@@ -167,9 +167,9 @@ All consumables stack up to **10** per type in inventory. Using a consumable in 
 
 | ID | Name | Effect | Price | Stack | Acquisition | Tier |
 |----|------|--------|-------|-------|-------------|------|
-| C-SP-05 | Smoke Bomb | Guaranteed flee from non-boss encounters. | 40g | 5 | Maren's General Shop (always) | 1 |
-| C-SP-06 | Crystal Dust | Cure all debuffs on one character. Deal 50 fixed light damage to one Preserver enemy. | 200g | 5 | Elyn's shop (Flickerveil, after Vesperis recall) | 3 |
-| C-SP-07 | Stasis Shard | Freeze one non-boss enemy for 2 turns (cannot act). | 150g | 5 | Elyn's shop (Flickerveil, after Vesperis recall) | 3 |
+| C-SP-05 | Smoke Bomb | Guaranteed flee from non-boss encounters. | 40g | 5 | Khali's General Shop (always) | 1 |
+| C-SP-06 | Crystal Dust | Cure all debuffs on one character. Deal 50 fixed light damage to one Preserver enemy. | 200g | 5 | Julz's shop (Flickerveil, after Vesperis recall) | 3 |
+| C-SP-07 | Stasis Shard | Freeze one non-boss enemy for 2 turns (cannot act). | 150g | 5 | Julz's shop (Flickerveil, after Vesperis recall) | 3 |
 | C-SP-08 | Broadcast Amplifier | Next memory broadcast gains +5 vibrancy bonus (consumed on use, outside combat). | 300g | 3 | Vivid-tier shops only | 3 |
 | C-SP-09 | Dissolved Essence | Restore 50% HP and 50% SP to entire party. | — | 3 | Depths treasure chests only (not purchasable) | 3 |
 | C-SP-10 | Phoenix Feather | Auto-revive: if a party member is knocked to 0 HP, restore them to 30% HP immediately. Must be in inventory (consumed automatically). | — | 1 | Rare drop from Depths L3+ bosses. Also: 1 found in Preserver Fortress F1. | 3 |
@@ -178,10 +178,10 @@ All consumables stack up to **10** per type in inventory. Using a consumable in 
 
 | Category | Items | Price Range | Primary Source |
 |----------|-------|-------------|---------------|
-| Healing (HP) | 4 | 30-500g | Maren's General Shop |
-| SP Recovery | 4 | 25-450g | Maren's General Shop |
-| Status Cures | 5 | 20-200g | Maren's / Frontier shops |
-| Buff Seeds | 5 | 100-350g | Torvan's / Specialty shops |
+| Healing (HP) | 4 | 30-500g | Khali's General Shop |
+| SP Recovery | 4 | 25-450g | Khali's General Shop |
+| Status Cures | 5 | 20-200g | Khali's / Frontier shops |
+| Buff Seeds | 5 | 100-350g | Hark's / Specialty shops |
 | Special | 6 | 40-300g | Various / non-purchasable |
 | **Total** | **24** | | |
 
@@ -193,20 +193,20 @@ Key items are non-consumable, non-sellable items that serve story, puzzle, or pe
 
 | ID | Name | Description | Acquisition | Purpose |
 |----|------|-------------|-------------|---------|
-| K-01 | **Architect's Signet** | A ring of warm amber that identifies the player as a Mnemonic Architect. | Given by Lira during Act I, Scene 2 | Story item. Required to interact with Resonance Stones and use memory operations. |
-| K-02 | **Callum's Letters** | A bundle of letters from Callum containing lore about each Frontier zone. | Given by Callum before Act II begins | Reading a letter for a specific zone reveals the dissolved civilization backstory narrated during god recall visions. |
-| K-03 | **Remix Table Access** | Grants access to any Remix Table in the game (Lira's Workshop, Frontier camps). | Unlocked during Act I tutorial (Scene 4) | Allows the player to combine memory fragments via the Remix interface. |
-| K-04 | **Light Lens** | A polished crystal that focuses scattered light into a coherent beam. | Given by Solen (Flickerveil elder) | Required to approach Luminos Grove without being blinded. See [dormant-gods.md](../world/dormant-gods.md). |
-| K-05 | **Kinetic Boots** | Weighted boots that resist the Kinesis Spire's vibrational pushback. | Given by Petra (Ridgewalker Camp) | Required to reach Kinesis Spire's base. See [dormant-gods.md](../world/dormant-gods.md). |
-| K-06 | **Curator's Manifesto** | A crystal tablet inscribed with the Curator's philosophy of perfect preservation. | Found in Preserver Cathedral after clearing (Resonance Fields) | Provides the Curator's perspective. Unlocks unique dialogue options in Act III. |
+| K-01 | **Architect's Signet** | A ring of warm amber that identifies the player as a Mnemonic Architect. | Given by Hana during Act I, Scene 2 | Story item. Required to interact with Resonance Stones and use memory operations. |
+| K-02 | **Artun's Letters** | A bundle of letters from Artun containing lore about each Frontier zone. | Given by Artun before Act II begins | Reading a letter for a specific zone reveals the dissolved civilization backstory narrated during god recall visions. |
+| K-03 | **Remix Table Access** | Grants access to any Remix Table in the game (Hana's Workshop, Frontier camps). | Unlocked during Act I tutorial (Scene 4) | Allows the player to combine memory fragments via the Remix interface. |
+| K-04 | **Light Lens** | A polished crystal that focuses scattered light into a coherent beam. | Given by Reza (Flickerveil elder) | Required to approach Luminos Grove without being blinded. See [dormant-gods.md](../world/dormant-gods.md). |
+| K-05 | **Kinetic Boots** | Weighted boots that resist the Kinesis Spire's vibrational pushback. | Given by Nel (Ridgewalker Camp) | Required to reach Kinesis Spire's base. See [dormant-gods.md](../world/dormant-gods.md). |
+| K-06 | **Grym's Manifesto** | A crystal tablet inscribed with Grym's philosophy of perfect preservation. | Found in Preserver Cathedral after clearing (Resonance Fields) | Provides Grym's perspective. Unlocks unique dialogue options in Act III. |
 | K-07 | **Cantara's Baton** | A conductor's baton that resonates with broadcast energy. | Quest reward: "The Unfinished Symphony" (Cantara recall) | Increases broadcast vibrancy gain by +2 in any zone. See [dormant-gods.md](../world/dormant-gods.md). |
 | K-08 | **Harmonia's Tuning Fork** | A crystal fork that vibrates at the world's fundamental frequency. | Quest reward: "The Harmonist's Attunement" (Harmonia recall) | Doubles the visual broadcast radius of all memory broadcasts. |
 | K-09 | **Rootwalker's Seed** | A glowing seed from the last Rootwalker. | Quest reward: "The Last Rootwalker" (Autumnus recall) | When planted at any zone's central point, permanently raises that zone's vibrancy by +5. Single use. |
 | K-10 | **Vesperis's Lantern** | A twilight-hued lantern that reveals fragment properties. | Quest reward: "The Twilight Vigil" (Vesperis recall) | When used at any Resonance Stone, reveals the full emotional spectrum of all available fragments before collecting. |
 | K-11 | **Peregrine's Journal** | An ancient explorer's travel diary that reveals hidden passages. | Quest reward: "The Footprints of the Peregrine" (Errantis recall) | Reveals all hidden items and passages in any zone the player has visited for 5+ minutes. |
 | K-12 | **Wayfinder's Compass** | A compass that always points toward uncollected fragments. | Quest reward: "The Road That Remembers" (Jubila recall) | Points toward the nearest uncollected memory fragment in the current zone. |
-| K-13 | **Curator's Doubt** | A cracked crystal containing the Curator's suppressed uncertainties. | Quest reward: "The Many-Colored Truth" (Prisma recall) | In the final confrontation, provides a unique dialogue option that shortens the encounter. |
-| K-14 | **Elyn's Intelligence Report** | Detailed floor plan of Preserver Fortress Floor 1. | Quest reward: "The Defector" (Vesperis recall) | Reveals the Preserver Fortress F1 map layout before entering. |
+| K-13 | **Grym's Doubt** | A cracked crystal containing Grym's suppressed uncertainties. | Quest reward: "The Many-Colored Truth" (Prisma recall) | In the final confrontation, provides a unique dialogue option that shortens the encounter. |
+| K-14 | **Julz's Intelligence Report** | Detailed floor plan of Preserver Fortress Floor 1. | Quest reward: "The Defector" (Vesperis recall) | Reveals the Preserver Fortress F1 map layout before entering. |
 | K-15 | **Thunderstone** | A fragment of Tempestus's lightning, crackling with storm energy. | Given by Tempestus during "The Shattered Silence" quest | Required to initiate the Preserver Cathedral assault. |
 
 ---
@@ -217,15 +217,15 @@ While most memory fragments are procedurally described (emotion + element + pote
 
 | ID | Name | Emotion | Element | Potency | Source | Narrative Significance |
 |----|------|---------|---------|---------|--------|----------------------|
-| MF-01 | **Callum's First Lesson** | Joy | Neutral | 2 | Given by Callum in Act I, Scene 2 | The player's first fragment. Callum shares a memory of teaching someone to see Resonance Stones. Tutorial item. |
-| MF-02 | **Lira's Warmth** | Joy | Light | 3 | Given by Lira in Act I, Scene 4 | Lira shares a memory of her first successful broadcast as a young Architect. Used for the first tutorial broadcast. |
+| MF-01 | **Artun's First Lesson** | Joy | Neutral | 2 | Given by Artun in Act I, Scene 2 | The player's first fragment. Artun shares a memory of teaching someone to see Resonance Stones. Tutorial item. |
+| MF-02 | **Hana's Warmth** | Joy | Light | 3 | Given by Hana in Act I, Scene 4 | Hana shares a memory of her first successful broadcast as a young Architect. Used for the first tutorial broadcast. |
 | MF-03 | **Echo of the Stagnation** | Sorrow | Dark | 2 | Collected from Heartfield's Stagnation Clearing after breaking it | A frozen butterfly's last moment before crystallization. First encounter with Preserver-touched memories. |
-| MF-04 | **Lira's Scream** | Fury | Light | 4 | Dropped when Lira is frozen during Act I climax | The emotional shockwave of Lira's freezing. The player's most potent fragment at this point — and the most painful. |
+| MF-04 | **Hana's Scream** | Fury | Light | 4 | Dropped when Hana is frozen during Act I climax | The emotional shockwave of Hana's freezing. The player's most potent fragment at this point — and the most painful. |
 | MF-05 | **Choir's Final Note** | Awe | Wind | 4 | Resonance's Amphitheater (Resonance Fields), pre-recall vision | A fragment of the Choir of the First Dawn's last performance. Contains the note that Resonance hums. |
 | MF-06 | **Rootwalker's Seedling** | Joy | Earth | 4 | Verdance's Hollow (Shimmer Marsh), pre-recall vision | A memory of the Rootwalkers planting the first tree. The seed that became Verdance's shrine. |
 | MF-07 | **Radiant Lens Theorem** | Awe | Light | 4 | Luminos Grove (Flickerveil), pre-recall vision | A memory of the Radiant Lens discovering how to focus light into pure truth. |
 | MF-08 | **Peregrine's First Step** | Fury | Fire | 4 | Kinesis Spire (Hollow Ridge), pre-recall vision | A memory of the Peregrine Road's founder taking the first step on an unmapped path. Pure determination. |
-| MF-09 | **The Curator's Grief** | Sorrow | Dark | 5 | Preserver Fortress Floor 2 (Archive of Perfection) | The Curator's personal memory: watching a beloved community dissolve and feeling powerless to stop it. This is why they became a Preserver. |
+| MF-09 | **Grym's Grief** | Sorrow | Dark | 5 | Preserver Fortress Floor 2 (Archive of Perfection) | Grym's personal memory: watching a beloved community dissolve and feeling powerless to stop it. This is why they became a Preserver. |
 | MF-10 | **The First Memory** | Calm | Neutral | 5 | Preserver Fortress Floor 3 (First Memory Chamber) | The world's original memory — the seed from which all reality grew. The player remixes this in the final act. Cannot be broadcast, only remixed. |
 | MF-11 | **World's New Dawn** | Joy | Light | 5 | Created by remixing The First Memory with any player-held fragment | The result of remixing the First Memory. This fragment IS the new world. Broadcasting it triggers the endgame bloom (see [vibrancy-system.md](../world/vibrancy-system.md)). |
 
@@ -269,7 +269,7 @@ Note: Not all players will have access to all accessories. Each is tied to a spe
 
 ### Village Hub Shops
 
-**Maren's General Shop** (consumables + basic gear):
+**Khali's General Shop** (consumables + basic gear):
 
 | Item | Price | Tier |
 |------|-------|------|
@@ -278,7 +278,7 @@ Note: Not all players will have access to all accessories. Each is tied to a spe
 | Antidote (C-SC-01) | 20g | 1 (always) |
 | Smoke Bomb (C-SP-05) | 40g | 1 (always) |
 | Padded Vest (A-02) | 60g | 1 (always) |
-| Maren's Blessing Rod (W-ST-02) | 70g | 1 (always) |
+| Khali's Blessing Rod (W-ST-02) | 70g | 1 (always) |
 | Amber Focus (W-WD-02) | 90g | 1 (always) |
 | Potion (C-HP-02) | 80g | 2 (Normal) |
 | Mana Draught (C-SP-02) | 70g | 2 (Normal) |
@@ -293,7 +293,7 @@ Note: Not all players will have access to all accessories. Each is tied to a spe
 | Memory Incense (C-BF-05) | 350g | 3 (Vivid) |
 | Broadcast Amplifier (C-SP-08) | 300g | 3 (Vivid) |
 
-**Torvan's Blacksmith** (weapons + armor + buff seeds):
+**Hark's Blacksmith** (weapons + armor + buff seeds):
 
 | Item | Price | Tier |
 |------|-------|------|
@@ -344,8 +344,8 @@ Items not sold in any shop — found only through exploration, quests, or dungeo
 | Windmill Blade (W-DG-03) | Heartfield, Old Windmill loot |
 | Hearthstone Staff (W-ST-03) | Ambergrove, Hearthstone Circle |
 | Forest Weave (A-05) | Ambergrove, Woodcutter's Camp quest |
-| Hermit's Robe (A-07) | Shimmer Marsh, Wynn quest reward |
-| Marsh Hermit's Crook (W-ST-05) | Shimmer Marsh, Wynn quest reward |
+| Hermit's Robe (A-07) | Shimmer Marsh, Vash quest reward |
+| Marsh Hermit's Crook (W-ST-05) | Shimmer Marsh, Vash quest reward |
 | Frontier Guard (A-09) | Hollow Ridge, Shattered Pass loot |
 | Preserver's Crystal Mail (A-10) | Drop: Preserver Captain (Resonance Fields) |
 | Verdant Mantle (A-12) | Verdance's Hollow, post-recall |
@@ -367,7 +367,7 @@ Using the gold income baseline from [progression.md](progression.md):
 
 **Essential purchases**: Iron Blade/Steel Stiletto (75-80g) + Leather Armor (120g) + 5× Minor Potions (150g) + 3× Antidotes (60g) = **~420g**
 
-**Affordable upgrades**: Padded Vest (60g), Mana Drops (25g each), Amber Focus/Maren's Blessing (70-90g)
+**Affordable upgrades**: Padded Vest (60g), Mana Drops (25g each), Amber Focus/Khali's Blessing (70-90g)
 
 **Remaining budget for Tier 2**: ~500-700g — enough for ONE Tier 2 weapon or armor, but not both. This encourages exploration for non-shop loot (Windmill Blade, Forest Weave, Hearthstone Staff).
 

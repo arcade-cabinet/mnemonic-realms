@@ -4,7 +4,7 @@
 
 ## Overview
 
-Act I spans the **Village Hub** and **Settled Lands** (see [geography.md](../world/geography.md)). The player arrives as a newly recognized Mnemonic Architect, learns all core mechanics, explores four surrounding zones, builds relationships with key NPCs, and faces the Act I climax when the Stagnation Clearing expands and freezes Lira.
+Act I spans the **Village Hub** and **Settled Lands** (see [geography.md](../world/geography.md)). The player arrives as a newly recognized Mnemonic Architect, learns all core mechanics, explores four surrounding zones, builds relationships with key NPCs, and faces the Act I climax when the Stagnation Clearing expands and freezes Hana.
 
 **Emotional arc**: Wonder → Learning → Growing confidence → Shock
 
@@ -21,7 +21,7 @@ Act I spans the **Village Hub** and **Settled Lands** (see [geography.md](../wor
 | Scene 1 | Movement, interaction, dialogue | Village Hub (Elder's House) |
 | Scene 2 | Memory fragments, collection | Village Hub (Memorial Garden) |
 | Scene 3 | Combat basics, party system | Village Hub (Training Ground) |
-| Scene 4 | Remix, broadcast | Village Hub (Lira's Workshop) |
+| Scene 4 | Remix, broadcast | Village Hub (Hana's Workshop) |
 | Scene 5 | Exploration, environmental storytelling | Heartfield |
 | Scene 6 | Stagnation zones (observation only) | Heartfield (Stagnation Clearing) |
 | Scene 7 | Side quests, shops, NPC relationships | Ambergrove |
@@ -39,51 +39,51 @@ Act I spans the **Village Hub** and **Settled Lands** (see [geography.md](../wor
 
 **Trigger**: Game start, after class selection screen
 
-**Characters**: Player, Callum
+**Characters**: Player, Artun
 
 **Time of day**: Morning
 
 ### Narrative Context
 
-The player character has lived in this village their whole life. They are not a stranger or a newcomer. This morning is different because Callum has asked them to come to his house — he has something to show them.
+The player character has lived in this village their whole life. They are not a stranger or a newcomer. This morning is different because Artun has asked them to come to his house — he has something to show them.
 
 ### Dialogue
 
-*[The player spawns inside Elder's House. Callum stands by his desk, a leather-bound journal open before him. Bookshelves line every wall. Morning light streams through the window.]*
+*[The player spawns inside Elder's House. Artun stands by his desk, a leather-bound journal open before him. Bookshelves line every wall. Morning light streams through the window.]*
 
-**Callum**: There you are. Come in, come in — careful of the stack by the door, I haven't shelved those yet.
+**Artun**: There you are. Come in, come in — careful of the stack by the door, I haven't shelved those yet.
 
-**Callum**: I asked you here because something's been on my mind. Sit down? No? You young ones never sit.
+**Artun**: I asked you here because something's been on my mind. Sit down? No? You young ones never sit.
 
-**Callum**: You know how I study the Dissolved — the civilizations that came before us? Well, I found something in my journals that I should have noticed years ago.
+**Artun**: You know how I study the Dissolved — the civilizations that came before us? Well, I found something in my journals that I should have noticed years ago.
 
-*[Callum picks up the journal and holds it toward the player.]*
+*[Artun picks up the journal and holds it toward the player.]*
 
-**Callum**: This passage describes a talent the Dissolved called "Mnemonic Architecture." The ability to see memory where others see only stone and air. To collect it, reshape it, give it back to the world.
+**Artun**: This passage describes a talent the Dissolved called "Mnemonic Architecture." The ability to see memory where others see only stone and air. To collect it, reshape it, give it back to the world.
 
-**Callum**: Sound familiar?
+**Artun**: Sound familiar?
 
 *[Player has no dialogue options — this is narrated, not interactive. The player's reactions are expressed through gameplay choices later.]*
 
-**Callum**: You've always noticed things the rest of us don't. The way the fountain shimmers when no one's watching. The humming from the Resonance Stones when you walk past. That time you told Maren her shop "felt happy" and she thought you were being poetic.
+**Artun**: You've always noticed things the rest of us don't. The way the fountain shimmers when no one's watching. The humming from the Resonance Stones when you walk past. That time you told Khali her shop "felt happy" and she thought you were being poetic.
 
-**Callum**: You weren't being poetic. You were perceiving memory energy. You're a Mnemonic Architect, and we just didn't have a word for it until now.
+**Artun**: You weren't being poetic. You were perceiving memory energy. You're a Mnemonic Architect, and we just didn't have a word for it until now.
 
-**Callum**: A traveler came through last month — a woman named Lira. She recognized it in you immediately. She's been waiting at her workshop for you to be ready.
+**Artun**: A traveler came through last month — a woman named Hana. She recognized it in you immediately. She's been waiting at her workshop for you to be ready.
 
-**Callum**: But first — take this. It's been sitting in my collection for thirty years, and I think it's been waiting for you.
+**Artun**: But first — take this. It's been sitting in my collection for thirty years, and I think it's been waiting for you.
 
-*[Callum holds out his hands. A warm amber glow rises from his palms.]*
+*[Artun holds out his hands. A warm amber glow rises from his palms.]*
 
-**Callum**: This is a memory fragment. My first lesson — the day my own teacher showed me how to see the world as it really is. It's a joyful memory. I'd like you to have it.
+**Artun**: This is a memory fragment. My first lesson — the day my own teacher showed me how to see the world as it really is. It's a joyful memory. I'd like you to have it.
 
-*[The player receives **MF-01: Callum's First Lesson** (Joy / Neutral / Potency 2). See [items-catalog.md](../design/items-catalog.md).]*
+*[The player receives **MF-01: Artun's First Lesson** (Joy / Neutral / Potency 2). See [items-catalog.md](../design/items-catalog.md).]*
 
-> **SYSTEM**: You received a Memory Fragment: "Callum's First Lesson" (Joy, Neutral, ★★)
+> **SYSTEM**: You received a Memory Fragment: "Artun's First Lesson" (Joy, Neutral, ★★)
 
-**Callum**: Now go find Lira. Her workshop is south of the square — the building with the amber lanterns. She'll teach you what I can't.
+**Artun**: Now go find Hana. Her workshop is south of the square — the building with the amber lanterns. She'll teach you what I can't.
 
-**Callum**: Oh — and take the scenic route through the Memorial Garden, would you? I have a feeling the stones there have something to show you.
+**Artun**: Oh — and take the scenic route through the Memorial Garden, would you? I have a feeling the stones there have something to show you.
 
 ### Player Actions
 
@@ -93,9 +93,9 @@ The player character has lived in this village their whole life. They are not a 
 
 ### Rewards / Consequences
 
-- **Item received**: MF-01: Callum's First Lesson
-- **Quest activated**: "Find Lira" (main quest marker on Lira's Workshop)
-- **Optional**: Player can explore Village Hub freely. Talking to Maren, Torvan, Ren triggers brief intro lines but no quests yet.
+- **Item received**: MF-01: Artun's First Lesson
+- **Quest activated**: "Find Hana" (main quest marker on Hana's Workshop)
+- **Optional**: Player can explore Village Hub freely. Talking to Khali, Hark, Nyro triggers brief intro lines but no quests yet.
 
 ---
 
@@ -140,7 +140,7 @@ The Memorial Garden is a small green space with three Resonance Stones — pilla
 
 *[The player receives an unnamed fragment: Awe / Wind / Potency 2.]*
 
-> **SYSTEM**: You now carry 4 memory fragments. Callum mentioned Lira's Workshop — she can teach you what to do with them.
+> **SYSTEM**: You now carry 4 memory fragments. Artun mentioned Hana's Workshop — she can teach you what to do with them.
 
 ### Player Actions
 
@@ -155,60 +155,60 @@ The Memorial Garden is a small green space with three Resonance Stones — pilla
 ### Rewards / Consequences
 
 - **3 fragments collected**: Joy/Earth/1★, Calm/Neutral/1★, Awe/Wind/2★
-- **Total fragments**: 4 (including MF-01 from Callum)
+- **Total fragments**: 4 (including MF-01 from Artun)
 - **Memorial Garden flowers**: Begin a subtle bloom animation (vibrancy nudges from 60→62 due to ambient collection energy — not a broadcast, just proximity)
 
 ---
 
-## Scene 3: Lira's Workshop
+## Scene 3: Hana's Workshop
 
-**Location**: Village Hub — Lira's Workshop (8, 18)
+**Location**: Village Hub — Hana's Workshop (8, 18)
 
-**Trigger**: Player enters Lira's Workshop
+**Trigger**: Player enters Hana's Workshop
 
-**Characters**: Player, Lira
+**Characters**: Player, Hana
 
 **Time of day**: Late morning
 
 ### Narrative Context
 
-Lira has been waiting. Her workshop is cluttered with Resonance Stone fragments, half-finished instruments, journals, and a large amber table in the center — the Remix Table. Lira is mid-30s, practical, warm. She speaks like someone who enjoys her work and is pleased to share it.
+Hana has been waiting. Her workshop is cluttered with Resonance Stone fragments, half-finished instruments, journals, and a large amber table in the center — the Remix Table. Hana is mid-30s, practical, warm. She speaks like someone who enjoys her work and is pleased to share it.
 
 ### Dialogue
 
-*[The player enters the workshop. Lira stands beside the Remix Table, polishing a small Resonance Stone.]*
+*[The player enters the workshop. Hana stands beside the Remix Table, polishing a small Resonance Stone.]*
 
-**Lira**: You must be the one Callum keeps talking about. I'm Lira — Mnemonic Architect, freelance, currently between assignments.
+**Hana**: You must be the one Artun keeps talking about. I'm Hana — Mnemonic Architect, freelance, currently between assignments.
 
-**Lira**: He told me you can see the shimmer around Resonance Stones. Most people can't. That's the first sign of the talent.
+**Hana**: He told me you can see the shimmer around Resonance Stones. Most people can't. That's the first sign of the talent.
 
-**Lira**: Show me what you've collected.
+**Hana**: Show me what you've collected.
 
 *[The player's fragment inventory appears briefly on screen — a visual grid showing all 4 fragments.]*
 
-**Lira**: Four fragments already? From the garden stones? Good instincts. You didn't force them — you just... noticed. That's exactly right.
+**Hana**: Four fragments already? From the garden stones? Good instincts. You didn't force them — you just... noticed. That's exactly right.
 
-**Lira**: I want to travel with you for a while, if that's all right. Callum tells me you're curious about the world beyond the village, and there are things I can teach you better in the field than in a workshop.
+**Hana**: I want to travel with you for a while, if that's all right. Artun tells me you're curious about the world beyond the village, and there are things I can teach you better in the field than in a workshop.
 
-> **SYSTEM**: Lira joins the party! (Cleric — simplified moveset: Joyful Mending, Sorrowful Cleanse, Awestruck Ward)
+> **SYSTEM**: Hana joins the party! (Cleric — simplified moveset: Joyful Mending, Sorrowful Cleanse, Awestruck Ward)
 
-**Lira**: Before we head out, let's get you properly introduced. Come to the Training Ground — north of the square. Best to learn the basics of defending yourself before we go anywhere interesting.
+**Hana**: Before we head out, let's get you properly introduced. Come to the Training Ground — north of the square. Best to learn the basics of defending yourself before we go anywhere interesting.
 
 ### Player Actions
 
-- Enter Lira's Workshop (dialogue auto-triggers)
+- Enter Hana's Workshop (dialogue auto-triggers)
 - View fragment inventory during the conversation (teaches Memory menu)
-- Lira joins the party (teaches party system)
+- Hana joins the party (teaches party system)
 
 ### Tutorial Integration
 
-**Mechanic taught**: Party system. Lira joins as a companion (Cleric class, simplified). The player sees the party UI for the first time. Lira has 3 skills and stats that follow the Cleric growth formula at player level - 1 (see [progression.md](../design/progression.md)).
+**Mechanic taught**: Party system. Hana joins as a companion (Cleric class, simplified). The player sees the party UI for the first time. Hana has 3 skills and stats that follow the Cleric growth formula at player level - 1 (see [progression.md](../design/progression.md)).
 
 ### Rewards / Consequences
 
-- **Companion gained**: Lira (Cleric, simplified)
+- **Companion gained**: Hana (Cleric, simplified)
 - **Quest updated**: "Learn to fight" (main quest marker on Training Ground)
-- **Item received**: Architect's Signet (K-01) — Lira gives it offhandedly: "Almost forgot. This marks you as one of us. You'll need it to interact with Resonance Stones properly." See [items-catalog.md](../design/items-catalog.md).
+- **Item received**: Architect's Signet (K-01) — Hana gives it offhandedly: "Almost forgot. This marks you as one of us. You'll need it to interact with Resonance Stones properly." See [items-catalog.md](../design/items-catalog.md).
 
 ---
 
@@ -216,19 +216,19 @@ Lira has been waiting. Her workshop is cluttered with Resonance Stone fragments,
 
 **Location**: Village Hub — Training Ground (8, 10)
 
-**Trigger**: Player enters the Training Ground with Lira in the party
+**Trigger**: Player enters the Training Ground with Hana in the party
 
-**Characters**: Player, Lira
+**Characters**: Player, Hana
 
 **Time of day**: Midday
 
 ### Narrative Context
 
-The Training Ground is an open dirt area with chalk markings and practice dummies. Lira runs the player through two training fights, then teaches remix and broadcast at the Workshop afterward.
+The Training Ground is an open dirt area with chalk markings and practice dummies. Hana runs the player through two training fights, then teaches remix and broadcast at the Workshop afterward.
 
 ### Part A: Combat Tutorial
 
-**Lira**: See those practice dummies? They're enchanted with a bit of memory energy — enough to fight back. Don't worry, they can't actually hurt you much.
+**Hana**: See those practice dummies? They're enchanted with a bit of memory energy — enough to fight back. Don't worry, they can't actually hurt you much.
 
 *[Tutorial combat encounter triggers: 2 Training Dummies (HP 20 each, ATK 3, DEF 2, no skills, no drops). This encounter cannot result in Game Over — if the player drops to 1 HP, the dummies stop attacking.]*
 
@@ -238,21 +238,21 @@ The Training Ground is an open dirt area with chalk markings and practice dummie
 > - **Item**: Use a consumable from your inventory.
 > - **Defend**: Reduce incoming damage and recover a little SP.
 
-*[During combat, Lira acts on her own turns, demonstrating Joyful Mending if the player takes damage.]*
+*[During combat, Hana acts on her own turns, demonstrating Joyful Mending if the player takes damage.]*
 
-**Lira** *(in combat)*: I'll keep you standing. Focus on the dummies — try your class skill when you have SP for it.
+**Hana** *(in combat)*: I'll keep you standing. Focus on the dummies — try your class skill when you have SP for it.
 
 *[After victory:]*
 
-**Lira**: Not bad at all. You're a natural.
+**Hana**: Not bad at all. You're a natural.
 
-*[Second encounter triggers: 1 Meadow Sprite (HP 35, ATK 5, DEF 5, drops 15 XP, 8 gold — tutorial-level enemy from Heartfield's table). This is a real enemy, summoned by Lira for training.]*
+*[Second encounter triggers: 1 Meadow Sprite (HP 35, ATK 5, DEF 5, drops 15 XP, 8 gold — tutorial-level enemy from Heartfield's table). This is a real enemy, summoned by Hana for training.]*
 
-**Lira**: Now a real one. This little sprite wandered in from the fields south of here. It won't go easy on you — but it won't go hard, either.
+**Hana**: Now a real one. This little sprite wandered in from the fields south of here. It won't go easy on you — but it won't go hard, either.
 
-*[Combat proceeds normally. The player is expected to win easily with Lira healing.]*
+*[Combat proceeds normally. The player is expected to win easily with Hana healing.]*
 
-**Lira**: Well done! You earned that. Sprites drop a little gold and sometimes... yes, there it is.
+**Hana**: Well done! You earned that. Sprites drop a little gold and sometimes... yes, there it is.
 
 *[After victory, if the 10% fragment drop triggers (scripted to succeed for the tutorial): the player receives an unnamed fragment: Joy/Earth/1★.]*
 
@@ -260,15 +260,15 @@ The Training Ground is an open dirt area with chalk markings and practice dummie
 
 ### Part B: Remix and Broadcast Tutorial
 
-*[Scene transitions back to Lira's Workshop after combat.]*
+*[Scene transitions back to Hana's Workshop after combat.]*
 
-**Lira**: Now for the real work. Come back to the Workshop — I want to show you the Remix Table.
+**Hana**: Now for the real work. Come back to the Workshop — I want to show you the Remix Table.
 
 *[At the Remix Table:]*
 
-**Lira**: You've got a handful of small fragments. Individually, they're minor — barely a whisper of memory. But combined?
+**Hana**: You've got a handful of small fragments. Individually, they're minor — barely a whisper of memory. But combined?
 
-**Lira**: Place two fragments on the table. Same emotion works best for your first try.
+**Hana**: Place two fragments on the table. Same emotion works best for your first try.
 
 > **SYSTEM**: Select 2 fragments of the same emotion to Remix. (The two Joy/Earth/1★ fragments are highlighted as a suggested combination.)
 
@@ -277,29 +277,29 @@ The Training Ground is an open dirt area with chalk markings and practice dummie
 > **SYSTEM**: Remix complete! Two fragments combined into a stronger one. Remixing consumes the input fragments — choose carefully.
 > **SYSTEM**: Unlock: Remix Table Access (K-03). You can now use any Remix Table in the game.
 
-**Lira**: Beautiful. Feel the difference? That fragment has weight to it now.
+**Hana**: Beautiful. Feel the difference? That fragment has weight to it now.
 
-**Lira**: One more thing. The most important thing.
+**Hana**: One more thing. The most important thing.
 
-*[Lira takes the player's hand and guides it toward a small potted plant on the workshop windowsill. The plant is pale and drooping — vibrancy is muted.]*
+*[Hana takes the player's hand and guides it toward a small potted plant on the workshop windowsill. The plant is pale and drooping — vibrancy is muted.]*
 
-**Lira**: Broadcasting. This is how Architects change the world. Hold a fragment and push it outward — into the plant, into the room, into anything that can receive it.
+**Hana**: Broadcasting. This is how Architects change the world. Hold a fragment and push it outward — into the plant, into the room, into anything that can receive it.
 
-**Lira**: Try it. Use the fragment I gave you earlier — the memory of my first broadcast. It seems fitting.
+**Hana**: Try it. Use the fragment I gave you earlier — the memory of my first broadcast. It seems fitting.
 
-*[The player selects MF-02: Lira's Warmth (Joy / Light / Potency 3) from inventory and broadcasts it at the potted plant. A warm amber wave pulses outward from the plant. It straightens, colors deepen, and small flowers bloom along its stem.]*
+*[The player selects MF-02: Hana's Warmth (Joy / Light / Potency 3) from inventory and broadcasts it at the potted plant. A warm amber wave pulses outward from the plant. It straightens, colors deepen, and small flowers bloom along its stem.]*
 
-> **SYSTEM**: You broadcast "Lira's Warmth" into the workshop. Vibrancy in Village Hub increased by +12! (potency 3 × 3 = 9, +3 emotion match [Joy resonates with Village Hub])
+> **SYSTEM**: You broadcast "Hana's Warmth" into the workshop. Vibrancy in Village Hub increased by +12! (potency 3 × 3 = 9, +3 emotion match [Joy resonates with Village Hub])
 > The world remembers what you shared.
 
-**Lira** *(softly)*: That was my memory — the first time I ever did this, years ago. And now you've given it back to the world. Better than it was.
+**Hana** *(softly)*: That was my memory — the first time I ever did this, years ago. And now you've given it back to the world. Better than it was.
 
-**Lira**: That's what we do. Collect. Remix. Broadcast. The world gets brighter. Ready to see what's beyond the village?
+**Hana**: That's what we do. Collect. Remix. Broadcast. The world gets brighter. Ready to see what's beyond the village?
 
 ### Player Actions
 
 - Fight 2 tutorial combats (teaches Attack, Skill, Item, Defend)
-- Observe Lira's healing in combat (teaches party AI)
+- Observe Hana's healing in combat (teaches party AI)
 - Remix 2 fragments at the Remix Table (teaches Remix)
 - Broadcast MF-02 into the workshop (teaches Broadcast)
 
@@ -325,7 +325,7 @@ The Training Ground is an open dirt area with chalk markings and practice dummie
 
 **Trigger**: Player exits Village Hub via the South Gate
 
-**Characters**: Player, Lira, Heartfield NPCs (procedural farmers)
+**Characters**: Player, Hana, Heartfield NPCs (procedural farmers)
 
 **Time of day**: Afternoon
 
@@ -337,13 +337,13 @@ The player leaves the village for the first time. Heartfield is rolling golden f
 
 *[As the player exits through the South Gate onto the Heartfield road:]*
 
-**Lira**: The Settled Lands. Everything south, east, and west of the village for a day's walk. It's well-remembered territory — people have been living here for generations.
+**Hana**: The Settled Lands. Everything south, east, and west of the village for a day's walk. It's well-remembered territory — people have been living here for generations.
 
-**Lira**: But look at the edges. See how the fence line over there just... stops? Like someone forgot to finish it?
+**Hana**: But look at the edges. See how the fence line over there just... stops? Like someone forgot to finish it?
 
 *[The camera briefly pans to the eastern edge of Heartfield, where a wooden fence dissolves into shimmer.]*
 
-**Lira**: The world's young. It's still being built. Most people don't think about it — they're used to things appearing when they need them. But we see the seams.
+**Hana**: The world's young. It's still being built. Most people don't think about it — they're used to things appearing when they need them. But we see the seams.
 
 *[The player is free to explore Heartfield. The following ambient interactions are available:]*
 
@@ -361,7 +361,7 @@ The player leaves the village for the first time. Heartfield is rolling golden f
 
 *[An abandoned windmill on a hilltop. The sails creak in the wind. Inside, a faint amber glow emanates from the floor — a Dissolved memory deposit.]*
 
-**Lira**: This windmill's been abandoned for years. But look — there's memory here. Dense memory, from something old.
+**Hana**: This windmill's been abandoned for years. But look — there's memory here. Dense memory, from something old.
 
 *[The player can interact with the Dissolved memory deposit: a brief vision plays of a miller who lived here long ago, grinding wheat and singing. The vision dissolves into warmth.]*
 
@@ -402,7 +402,7 @@ The player encounters tutorial-level enemies while exploring: Meadow Sprites (pa
 
 **Trigger**: Player approaches the Stagnation Clearing tile area
 
-**Characters**: Player, Lira
+**Characters**: Player, Hana
 
 **Time of day**: Afternoon (same session as Scene 5)
 
@@ -414,36 +414,36 @@ The Stagnation Clearing is a 5x5 patch of crystallized grass and frozen butterfl
 
 *[The player approaches the clearing. The ambient audio fades — wind dies, birdsong stops. A crystalline tinkling replaces it.]*
 
-**Lira** *(stops walking)*: Wait. Do you feel that?
+**Hana** *(stops walking)*: Wait. Do you feel that?
 
 *[The screen subtly desaturates at the clearing's edge. A 2-tile stagnation border shimmers with crystal overlay.]*
 
-**Lira**: This is a Stagnation Zone. Something — someone — froze this patch of the world. Time stopped here. Change stopped.
+**Hana**: This is a Stagnation Zone. Something — someone — froze this patch of the world. Time stopped here. Change stopped.
 
 *[The player enters the clearing. Butterflies hang mid-flight, their wings half-caught between flaps. Grass blades lean into a wind that no longer blows. A small Resonance Stone at the clearing's center is coated in blue-white crystal.]*
 
-**Lira**: Look at the butterflies. Perfect. Every wing-scale, every spot of color. Beautiful, isn't it?
+**Hana**: Look at the butterflies. Perfect. Every wing-scale, every spot of color. Beautiful, isn't it?
 
-**Lira**: ...
+**Hana**: ...
 
-**Lira**: But they'll never land. They'll never fly anywhere new. They're just... frozen. Forever.
+**Hana**: But they'll never land. They'll never fly anywhere new. They're just... frozen. Forever.
 
-**Lira**: I've seen these before, in the Frontier. The Preservers do this — people who think the world is too fragile to change. They freeze things to "protect" them.
+**Hana**: I've seen these before, in the Frontier. The Preservers do this — people who think the world is too fragile to change. They freeze things to "protect" them.
 
-**Lira**: This is small. Just a clearing. But they're getting bolder. I've heard reports of larger zones in the hills north of here.
+**Hana**: This is small. Just a clearing. But they're getting bolder. I've heard reports of larger zones in the hills north of here.
 
-*[Lira kneels by the crystallized Resonance Stone.]*
+*[Hana kneels by the crystallized Resonance Stone.]*
 
-**Lira**: We could break it. A single fragment broadcast into this stone would shatter the stasis. But...
+**Hana**: We could break it. A single fragment broadcast into this stone would shatter the stasis. But...
 
-**Lira**: Not yet. I want to show you more of the Settled Lands first. When we come back, you'll understand what you're doing — and why it matters.
+**Hana**: Not yet. I want to show you more of the Settled Lands first. When we come back, you'll understand what you're doing — and why it matters.
 
 > **SYSTEM**: You've discovered a Stagnation Zone. The Preservers freeze the world to prevent change. Architects can break these zones by broadcasting memory fragments. You'll return here when you're ready.
 
 ### Player Actions
 
 - Enter the Stagnation Clearing (observation only — cannot interact with the frozen stone yet)
-- Listen to Lira's explanation of Preservers and stagnation
+- Listen to Hana's explanation of Preservers and stagnation
 - Leave the clearing (the player can return anytime but the stone remains locked until Scene 10)
 
 ### Tutorial Integration
@@ -463,7 +463,7 @@ The Stagnation Clearing is a 5x5 patch of crystallized grass and frozen butterfl
 
 **Trigger**: Player exits Village Hub via the East Gate (or arrives from Heartfield's cross-country path)
 
-**Characters**: Player, Lira, Ambergrove NPCs (Woodcutter's Camp)
+**Characters**: Player, Hana, Ambergrove NPCs (Woodcutter's Camp)
 
 **Time of day**: Player-driven (no time restriction)
 
@@ -477,7 +477,7 @@ Ambergrove is a dense deciduous forest with canopy-filtered light, winding paths
 
 *[A ring of standing Resonance Stones in a forest clearing — six amber pillars arranged in a circle, each humming a different note. The air shimmers with dissolved memory energy.]*
 
-**Lira**: This is a Hearthstone Circle. Before the Dissolved chose to let go, they gathered in places like this. Their strongest memories are still here — more concentrated than anything in the village.
+**Hana**: This is a Hearthstone Circle. Before the Dissolved chose to let go, they gathered in places like this. Their strongest memories are still here — more concentrated than anything in the village.
 
 *[The player interacts with 3 of the 6 stones (the others are dormant, to be activated later). Each yields a fragment:]*
 
@@ -485,7 +485,7 @@ Ambergrove is a dense deciduous forest with canopy-filtered light, winding paths
 - Stone 2: Awe/Wind/2★ — *A memory of first flight: someone discovering they could leap between treetops.*
 - Stone 3: Joy/Earth/2★ — *A memory of planting: the first tree in what would become this forest.*
 
-**Lira**: Three fragments from a single site — that's a rich deposit. The Dissolved who gathered here must have shared deep memories before they let go. We should use these wisely.
+**Hana**: Three fragments from a single site — that's a rich deposit. The Dissolved who gathered here must have shared deep memories before they let go. We should use these wisely.
 
 *[Loot: Hearthstone Staff (W-ST-03, INT +14, Sorrowful Cleanse heals bonus) — found by examining the central clearing between the stones. Cleric-only.]*
 
@@ -493,9 +493,9 @@ Ambergrove is a dense deciduous forest with canopy-filtered light, winding paths
 
 *[A placid forest lake. At its center, half-submerged, a Resonance Stone hums deeply. The hum is audible from shore but the stone cannot be reached.]*
 
-**Lira**: That stone in the lake... I can hear it from here. Can you?
+**Hana**: That stone in the lake... I can hear it from here. Can you?
 
-**Lira**: It's dormant, but not empty. Whatever it's carrying is strong. Too strong for us right now — we'd need to be much further along in our training to handle a memory that dense.
+**Hana**: It's dormant, but not empty. Whatever it's carrying is strong. Too strong for us right now — we'd need to be much further along in our training to handle a memory that dense.
 
 > **SYSTEM**: The submerged Resonance Stone hums with immense memory energy. It cannot be activated until Act II.
 
@@ -546,7 +546,7 @@ Enemies: Forest Wisps (float between trees, magic attacks), Thornback Beetles (g
 
 **Trigger**: Player exits Village Hub via the West Gate (bridge crossing)
 
-**Characters**: Player, Lira, Millbrook NPCs (town residents)
+**Characters**: Player, Hana, Millbrook NPCs (town residents)
 
 **Time of day**: Player-driven
 
@@ -560,7 +560,7 @@ Millbrook is the largest Settled Lands settlement — a proper riverside town wi
 
 *[A bustling riverside town. Stone bridges cross the Brightwater River. Market stalls line the quay. NPCs walk between buildings with purpose.]*
 
-**Lira**: Millbrook. More people here than anywhere outside the village. They've got a specialty shop — river-themed goods, mostly. And the bridge has a Resonance Stone built right into its keystone.
+**Hana**: Millbrook. More people here than anywhere outside the village. They've got a specialty shop — river-themed goods, mostly. And the bridge has a Resonance Stone built right into its keystone.
 
 *[The Millbrook specialty shop is immediately accessible. Stock:]*
 - Brightwater Saber (W-SW-04): 400g
@@ -576,11 +576,11 @@ Millbrook is the largest Settled Lands settlement — a proper riverside town wi
 
 *[The town's centerpiece — a large stone bridge with a Resonance Stone built into its keystone. The stone glows faintly.]*
 
-**Lira**: This bridge has been here longer than the town. The stone in the keystone predates everything — it's Dissolved-era. The whole bridge was remembered into existence around it.
+**Hana**: This bridge has been here longer than the town. The stone in the keystone predates everything — it's Dissolved-era. The whole bridge was remembered into existence around it.
 
 *[The player can interact with the keystone stone. It yields a fragment: Awe/Water/2★.]*
 
-**Lira**: A water-and-awe fragment from a bridge stone. That makes sense — whoever remembered this bridge into being must have felt awe at what they were creating.
+**Hana**: A water-and-awe fragment from a bridge stone. That makes sense — whoever remembered this bridge into being must have felt awe at what they were creating.
 
 #### Upstream Falls (8, 5) — Secret Area
 
@@ -593,17 +593,17 @@ Millbrook is the largest Settled Lands settlement — a proper riverside town wi
 - Fury/Water/3★ — *A memory of a flood: not destructive, but the sheer force of water breaking through stone to create this waterfall.*
 - Sorrow/Water/3★ — *A memory of a river changing course, leaving a village behind. Bittersweet: the village was saved by the change, but lost the river they loved.*
 
-**Lira** *(if in the grotto)*: Three-star fragments. From the Dissolved era. These are powerful — don't waste them on small broadcasts. Save them for when you really need to push back against something.
+**Hana** *(if in the grotto)*: Three-star fragments. From the Dissolved era. These are powerful — don't waste them on small broadcasts. Save them for when you really need to push back against something.
 
 #### Remix Strategy Moment
 
-*[After collecting the water-element fragments, Lira offers remix guidance:]*
+*[After collecting the water-element fragments, Hana offers remix guidance:]*
 
-**Lira**: You've got several water-element fragments now, and some from different emotions. Want to try something?
+**Hana**: You've got several water-element fragments now, and some from different emotions. Want to try something?
 
-**Lira**: If you remix two fragments of the same emotion, you get a stronger version of that emotion. But if you remix two different emotions... you can create compound feelings. Joy and fury become inspiration. Sorrow and awe become reverence.
+**Hana**: If you remix two fragments of the same emotion, you get a stronger version of that emotion. But if you remix two different emotions... you can create compound feelings. Joy and fury become inspiration. Sorrow and awe become reverence.
 
-**Lira**: There's no wrong answer. But matching the emotion to where you'll broadcast can make a big difference. Millbrook responds to joy — it's a happy place. The marsh to the south, if we ever go there, responds to sorrow.
+**Hana**: There's no wrong answer. But matching the emotion to where you'll broadcast can make a big difference. Millbrook responds to joy — it's a happy place. The marsh to the south, if we ever go there, responds to sorrow.
 
 > **SYSTEM**: Remix tip: match the fragment's emotion to the zone's resonant emotion for a bonus when broadcasting. See the Memory menu for zone emotion details.
 
@@ -623,7 +623,7 @@ Enemies: River Nymphs (water magic, spawn near water tiles), Stone Crabs (armore
 
 - Explore Millbrook town (market, shops, NPC dialogue)
 - Collect fragments from the Brightwater Bridge and Upstream Falls
-- Practice remix strategy with Lira's guidance
+- Practice remix strategy with Hana's guidance
 - Discover and explore the hidden grotto behind the waterfall
 - Try the fishing minigame (optional)
 - Fight 4-6 encounters
@@ -645,9 +645,9 @@ Enemies: River Nymphs (water magic, spawn near water tiles), Stone Crabs (armore
 
 **Location**: Sunridge (Settled Lands — north of Village Hub, unlocks after returning to Village from Millbrook/Ambergrove)
 
-**Trigger**: Player enters Sunridge from the Village Hub north exit. Sunridge is accessible from the start of Act I but Lira recommends visiting last.
+**Trigger**: Player enters Sunridge from the Village Hub north exit. Sunridge is accessible from the start of Act I but Hana recommends visiting last.
 
-**Characters**: Player, Lira, Sunridge NPCs (Ridgetop Waystation), Preserver Scout (non-combat)
+**Characters**: Player, Hana, Sunridge NPCs (Ridgetop Waystation), Preserver Scout (non-combat)
 
 **Time of day**: Player-driven
 
@@ -671,17 +671,17 @@ Sunridge is the transition zone — wind-blown highlands where the player can se
 
 *[A ruined shrine on the highest point. Stone pillars frame a flat altar. The wind howls through gaps in the stone, creating an almost-musical sound. A Resonance Stone at the shrine's center vibrates intensely.]*
 
-**Lira**: This shrine is old. Pre-Dissolved old. Whoever built this was trying to capture something — the wind itself, maybe.
+**Hana**: This shrine is old. Pre-Dissolved old. Whoever built this was trying to capture something — the wind itself, maybe.
 
 *[The Resonance Stone cannot be activated — interacting with it produces a brief flash of sensation: a rush of speed, the ground falling away, a joyous shout lost in the wind. Then nothing.]*
 
 > **SYSTEM**: The Resonance Stone vibrates with overwhelming energy. Something immense sleeps here — a memory too large for you to hold. Not yet.
 
-**Lira**: Did you feel that? Speed. Motion. Joy of movement. Whatever's in that stone isn't just a memory — it's something alive. Dormant, but alive.
+**Hana**: Did you feel that? Speed. Motion. Joy of movement. Whatever's in that stone isn't just a memory — it's something alive. Dormant, but alive.
 
-**Lira**: I've read about things like this in Callum's journals. He calls them "dormant gods." Prototypes — incomplete deities left behind by the Dissolved. If the right memories were channeled into them...
+**Hana**: I've read about things like this in Artun's journals. He calls them "dormant gods." Prototypes — incomplete deities left behind by the Dissolved. If the right memories were channeled into them...
 
-**Lira**: But that's far beyond what we can do right now. Let's keep it in mind and move on.
+**Hana**: But that's far beyond what we can do right now. Let's keep it in mind and move on.
 
 #### Preserver Outpost (32, 15)
 
@@ -691,25 +691,25 @@ Sunridge is the transition zone — wind-blown highlands where the player can se
 
 **Preserver Scout** *(raises a hand, palm outward — a stop gesture)*: Halt. This area is under preservation protocol. You may observe, but do not approach the watchtower.
 
-**Lira**: Who are you?
+**Hana**: Who are you?
 
-**Preserver Scout**: I am a watcher for the Curator. We maintain the borders — ensuring that the settled regions remain... stable. Unchanged. Safe.
+**Preserver Scout**: I am a watcher for Grym. We maintain the borders — ensuring that the settled regions remain... stable. Unchanged. Safe.
 
-**Lira**: You call this safe? You've frozen an entire watchtower.
+**Hana**: You call this safe? You've frozen an entire watchtower.
 
 **Preserver Scout** *(calmly)*: We've preserved it. This tower was built by a civilization that chose to dissolve. In a generation, their work would have crumbled. Now it will endure forever. Every stone, every chisel mark. Exactly as it was.
 
-**Lira**: Exactly as it was. And never anything more.
+**Hana**: Exactly as it was. And never anything more.
 
 **Preserver Scout**: That is the point.
 
 *[The scout turns away. The conversation ends. The player cannot interact with the Preserver Outpost further — it cannot be cleared until Act II.]*
 
-**Lira** *(after the scout leaves)*: The Preservers. That's who made the clearing in Heartfield. That's who's doing this.
+**Hana** *(after the scout leaves)*: The Preservers. That's who made the clearing in Heartfield. That's who's doing this.
 
-**Lira**: They're not monsters. That scout was polite, even reasonable. But they want to freeze the whole world. Every stone, every river, every person — "exactly as it was."
+**Hana**: They're not monsters. That scout was polite, even reasonable. But they want to freeze the whole world. Every stone, every river, every person — "exactly as it was."
 
-**Lira**: We need to go back to Heartfield. I think it's time you learned to break a stagnation zone.
+**Hana**: We need to go back to Heartfield. I think it's time you learned to break a stagnation zone.
 
 > **QUEST**: "Break the Stagnation Clearing" — Return to Heartfield's Stagnation Clearing and broadcast a memory fragment into the crystallized Resonance Stone.
 
@@ -754,7 +754,7 @@ Enemies: Highland Hawks (fast, evasive), Crag Golems (slow, high DEF). Difficult
 
 **Trigger**: Player returns to the Stagnation Clearing with the active quest "Break the Stagnation Clearing"
 
-**Characters**: Player, Lira
+**Characters**: Player, Hana
 
 **Time of day**: Late afternoon
 
@@ -766,11 +766,11 @@ The player returns to the clearing they first saw in Scene 6. Now they have the 
 
 *[The player approaches the clearing. The silence descends again — wind dies, birdsong stops, crystalline tinkling.]*
 
-**Lira**: Here we are. The Stagnation Clearing. Same as when we left it.
+**Hana**: Here we are. The Stagnation Clearing. Same as when we left it.
 
-**Lira**: Here's what you need to do. The crystallized Resonance Stone at the center is the focal point — the Preservers anchor their stasis through it. Broadcasting a memory into that stone will overwhelm the stasis energy and shatter the crystal.
+**Hana**: Here's what you need to do. The crystallized Resonance Stone at the center is the focal point — the Preservers anchor their stasis through it. Broadcasting a memory into that stone will overwhelm the stasis energy and shatter the crystal.
 
-**Lira**: Any fragment will work here. This is a small zone — even a one-star fragment has enough warmth to break it. But use something you're willing to lose, because broadcasting consumes the fragment.
+**Hana**: Any fragment will work here. This is a small zone — even a one-star fragment has enough warmth to break it. But use something you're willing to lose, because broadcasting consumes the fragment.
 
 > **SYSTEM**: Approach the crystallized Resonance Stone and broadcast a memory fragment to break the Stagnation Zone. (Any fragment, potency 1+.)
 
@@ -780,17 +780,17 @@ The player returns to the clearing they first saw in Scene 6. Now they have the 
 
 > **SYSTEM**: Stagnation Zone broken! Heartfield vibrancy +10!
 
-**Lira** *(grinning)*: There. That's what it looks like when the world starts breathing again.
+**Hana** *(grinning)*: There. That's what it looks like when the world starts breathing again.
 
 *[The freed Resonance Stone yields a fragment: MF-03: Echo of the Stagnation (Sorrow / Dark / Potency 2). See [items-catalog.md](../design/items-catalog.md).]*
 
 > **SYSTEM**: You received a Memory Fragment: "Echo of the Stagnation" (Sorrow, Dark, ★★) — a frozen butterfly's last moment before crystallization.
 
-**Lira**: A sorrow fragment. The butterfly was afraid, at the end. It remembered flying, and then it couldn't.
+**Hana**: A sorrow fragment. The butterfly was afraid, at the end. It remembered flying, and then it couldn't.
 
-**Lira**: Hold onto that one. Sorrow fragments are rare from the Settled Lands. And they're powerful against stagnation — nothing breaks a freeze like the memory of what the freeze took away.
+**Hana**: Hold onto that one. Sorrow fragments are rare from the Settled Lands. And they're powerful against stagnation — nothing breaks a freeze like the memory of what the freeze took away.
 
-**Lira**: We should head back to the village. Callum will want to hear about the Preservers.
+**Hana**: We should head back to the village. Artun will want to hear about the Preservers.
 
 ### Player Actions
 
@@ -811,7 +811,7 @@ The player returns to the clearing they first saw in Scene 6. Now they have the 
 - **Heartfield state change**: Stagnation Clearing is permanently clear. The butterflies now fly freely. Flowers bloom where crystal was.
 - **Preserver presence**: The Heartfield Preserver scout (1 scout) becomes hostile upon the zone breaking, but does not engage yet — they retreat. Heartfield's vibrancy decay stops (the Preserver is pushed back permanently).
 - **Quest completed**: "Break the Stagnation Clearing"
-- **Quest activated**: "Report to Callum" (return to Village Hub)
+- **Quest activated**: "Report to Artun" (return to Village Hub)
 
 ---
 
@@ -819,94 +819,94 @@ The player returns to the clearing they first saw in Scene 6. Now they have the 
 
 **Location**: Village Hub — Elder's House (18, 10), then Heartfield — Stagnation Clearing (35, 30)
 
-**Trigger**: Player returns to Callum after breaking the stagnation zone
+**Trigger**: Player returns to Artun after breaking the stagnation zone
 
-**Characters**: Player, Lira, Callum
+**Characters**: Player, Hana, Artun
 
 **Time of day**: Evening
 
-### Part A: Callum's Warning
+### Part A: Artun's Warning
 
-*[The player enters Callum's house. He's at his desk, surrounded by open journals. He looks worried.]*
+*[The player enters Artun's house. He's at his desk, surrounded by open journals. He looks worried.]*
 
-**Callum**: You broke the clearing. Good. Lira told me what you found — a Preserver scout, a frozen watchtower, the whole thing.
+**Artun**: You broke the clearing. Good. Hana told me what you found — a Preserver scout, a frozen watchtower, the whole thing.
 
-**Callum**: I wish I could say it's an isolated case. But I've been reading reports from travelers for months now. Stagnation zones in the Frontier. Whole settlements frozen. The Preservers are expanding.
+**Artun**: I wish I could say it's an isolated case. But I've been reading reports from travelers for months now. Stagnation zones in the Frontier. Whole settlements frozen. The Preservers are expanding.
 
-**Callum**: There's something else. The clearing you broke — it wasn't just a clearing. It was a test. The Preservers were seeing how much they could freeze this close to a populated area. And now that you've broken it...
+**Artun**: There's something else. The clearing you broke — it wasn't just a clearing. It was a test. The Preservers were seeing how much they could freeze this close to a populated area. And now that you've broken it...
 
-*[A rumble. The ground shakes. Through Callum's window, a pale blue light flares from the south.]*
+*[A rumble. The ground shakes. Through Artun's window, a pale blue light flares from the south.]*
 
-**Callum**: ...they're pushing back.
+**Artun**: ...they're pushing back.
 
 ### Part B: The Expansion
 
-*[The scene cuts to Heartfield. The player and Lira run south from the Village Hub, arriving to find the Stagnation Clearing has REGROWN — not just to its original size, but expanded. The 5x5 patch is now a 12x12 zone, engulfing part of the farmland. Crystal formations are growing in real time.]*
+*[The scene cuts to Heartfield. The player and Hana run south from the Village Hub, arriving to find the Stagnation Clearing has REGROWN — not just to its original size, but expanded. The 5x5 patch is now a 12x12 zone, engulfing part of the farmland. Crystal formations are growing in real time.]*
 
-**Lira**: No. No, no — it's bigger. Much bigger. They're reinforcing it.
+**Hana**: No. No, no — it's bigger. Much bigger. They're reinforcing it.
 
 *[Heartfield farmers are running from the expanding crystal edge. One farmer — a woman the player may have spoken to in Scene 5 — is caught at the stagnation border, crystal creeping up her legs.]*
 
 **Farmer Elda** *(terrified)*: I can't move! It's — cold — like my legs are forgetting how to —
 
-**Lira**: I'll get her. You — stay back.
+**Hana**: I'll get her. You — stay back.
 
-*[Lira rushes to the farmer. She kneels, places her hands on the crystal, and begins broadcasting — not a fragment, but raw memory energy. Amber light surges from her palms. The crystal around the farmer cracks and recedes.]*
+*[Hana rushes to the farmer. She kneels, places her hands on the crystal, and begins broadcasting — not a fragment, but raw memory energy. Amber light surges from her palms. The crystal around the farmer cracks and recedes.]*
 
 **Farmer Elda** *(stumbling free)*: Thank — thank you —
 
-**Lira**: Run. Get to the village. Everyone, GO.
+**Hana**: Run. Get to the village. Everyone, GO.
 
-*[The farmers scatter northward. Lira turns to the player.]*
+*[The farmers scatter northward. Hana turns to the player.]*
 
-**Lira**: The focal point's shifted. It's not the clearing stone anymore — the Preservers set up a new anchor deeper in the zone. I can see it — there, behind the crystal wall.
+**Hana**: The focal point's shifted. It's not the clearing stone anymore — the Preservers set up a new anchor deeper in the zone. I can see it — there, behind the crystal wall.
 
-**Lira**: I'm going to break through. Stay here and —
+**Hana**: I'm going to break through. Stay here and —
 
-*[Lira turns and runs into the expanding stagnation zone. She's broadcasting memory energy ahead of her, creating a corridor of warmth through the crystal. The player can see her amber glow moving deeper into the zone.]*
+*[Hana turns and runs into the expanding stagnation zone. She's broadcasting memory energy ahead of her, creating a corridor of warmth through the crystal. The player can see her amber glow moving deeper into the zone.]*
 
 *[Then the glow stops.]*
 
-*[A pulse of blue-white energy radiates outward from the zone's center. The crystal surges. The corridor Lira created freezes shut behind her.]*
+*[A pulse of blue-white energy radiates outward from the zone's center. The crystal surges. The corridor Hana created freezes shut behind her.]*
 
 *[Silence.]*
 
 ### Dialogue — The Freeze
 
-*[The player runs to the stagnation border. Through the semi-transparent crystal wall, Lira is visible — frozen mid-stride, one hand extended, palm trailing amber light. Her expression is determined, not afraid. She was fighting, not fleeing.]*
+*[The player runs to the stagnation border. Through the semi-transparent crystal wall, Hana is visible — frozen mid-stride, one hand extended, palm trailing amber light. Her expression is determined, not afraid. She was fighting, not fleeing.]*
 
-> **SYSTEM**: Lira has been frozen by the Stagnation Zone.
+> **SYSTEM**: Hana has been frozen by the Stagnation Zone.
 
 *[The player hammers against the crystal (automatic action — no input required). It doesn't break. It doesn't even crack.]*
 
 *[A voice speaks. Not from any visible source — it resonates from the crystal itself.]*
 
-**The Curator** *(echoing, calm, measured)*: I did not want this.
+**Grym** *(echoing, calm, measured)*: I did not want this.
 
-**The Curator**: Your friend is brave. She pushed against the boundary, and the boundary pushed back. That is the nature of preservation — it resists change. It must, or it is nothing.
+**Grym**: Your friend is brave. She pushed against the boundary, and the boundary pushed back. That is the nature of preservation — it resists change. It must, or it is nothing.
 
-**The Curator**: She is not harmed. She is... held. Every memory she carries, every breath she took, every thought she was thinking — all preserved. Perfectly. She will not age, will not suffer, will not fade. Is that not a kindness?
+**Grym**: She is not harmed. She is... held. Every memory she carries, every breath she took, every thought she was thinking — all preserved. Perfectly. She will not age, will not suffer, will not fade. Is that not a kindness?
 
-*[The crystal hums. The Curator's voice fades.]*
+*[The crystal hums. Grym's voice fades.]*
 
 *[The player receives a fragment — not from a stone, but from the emotional shockwave of the moment:]*
 
-> **SYSTEM**: You received a Memory Fragment: "Lira's Scream" (Fury, Light, ★★★★) — the emotional shockwave of Lira's freezing. The player's most potent fragment yet — and the most painful.
+> **SYSTEM**: You received a Memory Fragment: "Hana's Scream" (Fury, Light, ★★★★) — the emotional shockwave of Hana's freezing. The player's most potent fragment yet — and the most painful.
 
 *[See MF-04 in [items-catalog.md](../design/items-catalog.md).]*
 
 ### Player Actions
 
-- Return to Callum (triggers Part A)
+- Return to Artun (triggers Part A)
 - Run to Heartfield (automatic cutscene transition for Part B)
 - Witness the stagnation expansion
-- Witness Lira's freezing (cutscene — no player agency during the freeze itself)
-- Receive MF-04: Lira's Scream
+- Witness Hana's freezing (cutscene — no player agency during the freeze itself)
+- Receive MF-04: Hana's Scream
 
 ### Rewards / Consequences
 
-- **Companion lost**: Lira is frozen. She is removed from the party.
-- **Fragment received**: MF-04: Lira's Scream (Fury/Light/4★) — the most powerful fragment the player has at this point
+- **Companion lost**: Hana is frozen. She is removed from the party.
+- **Fragment received**: MF-04: Hana's Scream (Fury/Light/4★) — the most powerful fragment the player has at this point
 - **Heartfield vibrancy**: Drops sharply (65→40) as the expanded stagnation zone reasserts. Vibrancy floor: 40 (Preserver reinforcement cannot push below this — see [vibrancy-system.md](../world/vibrancy-system.md))
 - **Emotional impact**: This is the Act I climax. The player has lost their mentor, companion, and friend. The tone shifts from wonder to determination.
 - **Stagnation state**: The expanded zone is permanent until the player gains enough power to break it (requires a potency 3+ fragment, specific emotion — cannot be broken until the player reaches the Frontier and gains stronger fragments in Act II)
@@ -919,43 +919,43 @@ The player returns to the clearing they first saw in Scene 6. Now they have the 
 
 **Trigger**: Immediately after Scene 11 (player returns to village automatically)
 
-**Characters**: Player, Callum
+**Characters**: Player, Artun
 
 **Time of day**: Night (first time the player sees the village at night — amber lanterns, softer lighting, quieter atmosphere)
 
 ### Dialogue
 
-*[The player enters Callum's house. He is standing, not sitting — the first time the player has seen him on his feet.]*
+*[The player enters Artun's house. He is standing, not sitting — the first time the player has seen him on his feet.]*
 
-**Callum**: I heard. Lira...
+**Artun**: I heard. Hana...
 
 *[Beat.]*
 
-**Callum**: She's alive. The crystal doesn't kill — I know that much from the Dissolved records. But breaking her free will take more than anything we have in the Settled Lands.
+**Artun**: She's alive. The crystal doesn't kill — I know that much from the Dissolved records. But breaking her free will take more than anything we have in the Settled Lands.
 
-**Callum**: You'll need to go north. Into the Frontier — where the world is less formed, where the memory is thicker, where the Preservers are stronger. And where the dormant gods sleep.
+**Artun**: You'll need to go north. Into the Frontier — where the world is less formed, where the memory is thicker, where the Preservers are stronger. And where the dormant gods sleep.
 
-**Callum**: Those gods, the ones the Dissolved left behind — they're the key. If you can recall even one of them, the surge of memory energy would be enough to shatter any stagnation zone on this side of the Sketch.
+**Artun**: Those gods, the ones the Dissolved left behind — they're the key. If you can recall even one of them, the surge of memory energy would be enough to shatter any stagnation zone on this side of the Sketch.
 
-*[Callum walks to his desk and picks up a bundle of sealed letters.]*
+*[Artun walks to his desk and picks up a bundle of sealed letters.]*
 
-**Callum**: I've been writing these for years. Letters about the Frontier — what I've learned from travelers, from the Dissolved records, from my own theories. Each one covers a different zone. Read them when you get there.
+**Artun**: I've been writing these for years. Letters about the Frontier — what I've learned from travelers, from the Dissolved records, from my own theories. Each one covers a different zone. Read them when you get there.
 
-*[The player receives **K-02: Callum's Letters**. See [items-catalog.md](../design/items-catalog.md).]*
+*[The player receives **K-02: Artun's Letters**. See [items-catalog.md](../design/items-catalog.md).]*
 
-**Callum**: The mountain pass north of here — it's been closed for as long as I can remember. But after tonight, after what the Preservers did... I don't think anything's stopping you anymore. The world itself wants to grow. It'll open for someone with the will to walk through.
+**Artun**: The mountain pass north of here — it's been closed for as long as I can remember. But after tonight, after what the Preservers did... I don't think anything's stopping you anymore. The world itself wants to grow. It'll open for someone with the will to walk through.
 
-**Callum**: One more thing.
+**Artun**: One more thing.
 
-*[Callum reaches into his coat and produces a worn leather journal.]*
+*[Artun reaches into his coat and produces a worn leather journal.]*
 
-**Callum**: This was mine. My teacher gave it to me. And Lira gave hers to you — the Architect's Signet. But I think you need this more than I do now.
+**Artun**: This was mine. My teacher gave it to me. And Hana gave hers to you — the Architect's Signet. But I think you need this more than I do now.
 
-*[The player receives an unnamed fragment from Callum: Awe/Neutral/3★ — *Callum's memory of the night sky as a young man, standing on this hill, realizing the world was bigger than he could ever map.*]*
+*[The player receives an unnamed fragment from Artun: Awe/Neutral/3★ — *Artun's memory of the night sky as a young man, standing on this hill, realizing the world was bigger than he could ever map.*]*
 
-**Callum**: That's my favorite memory. The night I understood how much there was left to discover. Use it well.
+**Artun**: That's my favorite memory. The night I understood how much there was left to discover. Use it well.
 
-**Callum**: Now go up to the Lookout Hill. Clear your head. And when you're ready — go north.
+**Artun**: Now go up to the Lookout Hill. Clear your head. And when you're ready — go north.
 
 ### Part B: The Lookout
 
@@ -963,31 +963,31 @@ The player returns to the clearing they first saw in Scene 6. Now they have the 
 
 *[No dialogue. No system messages. Just the player standing on the hill, looking out. The village music plays its foundation layer only — a single acoustic guitar, soft and slow.]*
 
-*[After 5 seconds of stillness, Callum's telescope (on the hill) glints. The player can interact with it.]*
+*[After 5 seconds of stillness, Artun's telescope (on the hill) glints. The player can interact with it.]*
 
 > **SYSTEM** *(through telescope)*: To the north: the mountain pass, snow-dusted peaks, and beyond them — a vast, shimmering expanse where the world is still being written.
-> To the south: Heartfield's golden fields, now scarred by a blue-white crystal mass that pulses slowly in the dark. Lira is in there. Somewhere.
+> To the south: Heartfield's golden fields, now scarred by a blue-white crystal mass that pulses slowly in the dark. Hana is in there. Somewhere.
 
 *[The player can leave the hill at any time. When they do:]*
 
 > **SYSTEM**: The mountain pass to the Frontier is now open. Act II: Expansion begins.
-> Callum will remain in the village. He'll send companion volunteers to the Ridgetop Waystation when you're ready.
+> Artun will remain in the village. He'll send companion volunteers to the Ridgetop Waystation when you're ready.
 
 ### Player Actions
 
-- Talk to Callum (receive K-02 and a 3★ fragment)
+- Talk to Artun (receive K-02 and a 3★ fragment)
 - Climb to Lookout Hill (night vista — narrative moment)
 - Look through telescope (optional — survey the world)
 - Leave the hill to unlock Act II
 
 ### Rewards / Consequences
 
-- **Items received**: K-02: Callum's Letters, Callum's 3★ fragment (Awe/Neutral)
+- **Items received**: K-02: Artun's Letters, Artun's 3★ fragment (Awe/Neutral)
 - **Act II unlocked**: The mountain pass between Sunridge and Hollow Ridge is now open
 - **Village Hub state**: Night mode — lanterns lit, fewer NPCs outdoors, fireflies near Memorial Garden
 - **Player level**: Should be ~9-10 at this point
 - **Player inventory**: ~4-7 fragments, ~600-900g, Tier 1-2 weapon, Tier 1 armor, and various consumables
-- **Party**: Solo (Lira frozen). Callum will join as a companion in Act II, Scene 2.
+- **Party**: Solo (Hana frozen). Artun will join as a companion in Act II, Scene 2.
 
 ---
 
@@ -1000,7 +1000,7 @@ The player returns to the clearing they first saw in Scene 6. Now they have the 
 | Wonder | 1-4 | The world is bright, warm, full of secrets. Memory is a gift. |
 | Learning | 5-8 | The player grows stronger, finds friends, discovers the world's beauty and its seams. |
 | Growing confidence | 9-10 | The player can fight, remix, broadcast, break stagnation. They feel capable. |
-| Shock | 11-12 | Everything the player learned wasn't enough to stop this. Lira is frozen. The stakes are real. The player must go further. |
+| Shock | 11-12 | Everything the player learned wasn't enough to stop this. Hana is frozen. The stakes are real. The player must go further. |
 
 ### Tutorial Completion Checklist
 
@@ -1024,9 +1024,9 @@ The player returns to the clearing they first saw in Scene 6. Now they have the 
 | Level | 9-10 |
 | Gold | 600-900 |
 | Memory fragments held | 4-7 (after broadcasts and remixes) |
-| Named fragments | MF-01 (Callum's First Lesson), MF-03 (Echo of the Stagnation), MF-04 (Lira's Scream), plus Callum's 3★ |
-| Key items | K-01 (Architect's Signet), K-02 (Callum's Letters), K-03 (Remix Table Access) |
-| Party | Solo (Lira frozen). Callum joins early Act II. |
+| Named fragments | MF-01 (Artun's First Lesson), MF-03 (Echo of the Stagnation), MF-04 (Hana's Scream), plus Artun's 3★ |
+| Key items | K-01 (Architect's Signet), K-02 (Artun's Letters), K-03 (Remix Table Access) |
+| Party | Solo (Hana frozen). Artun joins early Act II. |
 | Quests completed | ~4-6 (main quest line + 1-2 side quests) |
 | Zones explored | Village Hub, Heartfield, Ambergrove, Millbrook, Sunridge |
 | Stagnation zones | 1 broken (original clearing), 1 active (expanded clearing — cannot be broken until Act II) |
@@ -1039,8 +1039,8 @@ The player returns to the clearing they first saw in Scene 6. Now they have the 
 | Amber Lake dormant stone (Ambergrove) | Act II — related to a god recall |
 | Wind Shrine / Kinesis hint (Sunridge) | Act II — Kinesis recall at Kinesis Spire |
 | Preserver Outpost (Sunridge) | Act II — clearable encounter |
-| Callum's Letters | Act II — zone-by-zone lore delivery |
-| The Curator's voice | Act II-III — primary antagonist confrontation |
+| Artun's Letters | Act II — zone-by-zone lore delivery |
+| Grym's voice | Act II-III — primary antagonist confrontation |
 | Eastern Canopy Path shimmer (Ambergrove) | Act II — transition to Frontier: Flickerveil |
-| MF-04: Lira's Scream | Act II — powerful fragment for breaking the expanded stagnation |
+| MF-04: Hana's Scream | Act II — powerful fragment for breaking the expanded stagnation |
 | Dissolved civilizations (Old Windmill, Hearthstone Circle, grotto) | Act II — Depths dungeons expand on Dissolved lore |

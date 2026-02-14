@@ -4,63 +4,61 @@
 
 ## Overview
 
-This document specifies every sprite in Mnemonic Realms — player characters, named NPCs, procedural NPC templates, all 34 enemies, and 10 boss encounters. It covers dimensions, frame counts, animation speeds, color keys, and sheet layouts for the GenAI art pipeline.
+This document specifies the sprite assets in Mnemonic Realms. All character, NPC, enemy, and boss sprites are **purchased CC0 pixel art** organized in `assets/sprites/`. The game design sections below (enemies, bosses) describe intended game behavior — multiple game entities may share the same sprite asset.
 
-All sprites use the same 16-bit JRPG chibi proportions defined in [visual-direction.md](visual-direction.md): 2-3 head-tall characters with clear silhouettes readable at 32x32 pixels.
+All sprites use 16x16 pixel frames in 4-column spritesheets.
 
 ---
 
 ## Conventions
 
-### Naming Convention
-
-Spritesheet files follow this pattern:
+### Asset Locations
 
 ```
-sprite_{category}_{name}.png
+assets/sprites/
+├── players/       # 4 player class sprites (warriors, mages, rogues)
+├── npcs/
+│   ├── citizens/  # 14 named NPC sprites (7 female, 7 male)
+│   └── guards/    # 3 guard variants
+├── enemies/       # 9 enemy types
+├── bosses/        # Dragon boss (horizontal strip)
+└── effects/       # Visual effect sprites
 ```
 
-Examples: `sprite_player_knight.png`, `sprite_npc_lira.png`, `sprite_enemy_meadow_sprite.png`, `sprite_boss_stagnation_heart.png`
+### Sprite Format Categories
+
+| Category | Dimensions | Grid | Frame Size | Walk Rows |
+|----------|-----------|------|-----------|-----------|
+| Characters/NPCs | 64x496 | 4 cols x 31 rows | 16x16 | 0/4/8/12 (D/L/R/U) |
+| Small enemies | 64x128 | 4 cols x 8 rows | 16x16 | 0/2/4/6 (D/L/R/U) |
+| Medium enemies | 64x224 | 4 cols x 14 rows | 16x16 | 0/2/4/6 (D/L/R/U) |
+| Dragon boss | 2304x96 | 24 cols x 1 row | 96x96 | N/A (horizontal strip) |
 
 ### Sprite ID Format
 
-```
-{CATEGORY}-{NAME}-{VARIANT}
-```
-
-Categories: `PC` (player character), `NPC` (named NPC), `NPT` (NPC template), `EN` (enemy), `BO` (boss)
-
-Examples: `PC-KNIGHT-BASE`, `NPC-LIRA-FROZEN`, `EN-SL-01`, `BO-01-P1` (boss 01 phase 1)
+Named NPCs use `npc_{citizen_name}` (e.g., `npc_hana`, `npc_artun`).
+Template NPCs use `npc_{role}` or `npc_{role}_{variant}` (e.g., `npc_villager`, `npc_guard_m1`).
+Enemies use `sprite-enemy-{id}` (e.g., `sprite-enemy-e-sl-01`).
+Players use `sprite-player-{class}` (e.g., `sprite-player-knight`).
 
 ### Direction Convention
 
-All multi-directional sprites use the RPG Maker standard 4-direction layout:
+All multi-directional sprites use 4-direction layout with `rowsPerDir` stride:
 
-| Row | Direction | Facing |
-|-----|-----------|--------|
-| 0 | Down | Toward camera (default) |
-| 1 | Left | Left side |
-| 2 | Right | Right side |
-| 3 | Up | Away from camera |
+| Direction | Row Offset | Formula |
+|-----------|-----------|---------|
+| Down | 0 | `0 * rowsPerDir` |
+| Left | N | `1 * rowsPerDir` |
+| Right | 2N | `2 * rowsPerDir` |
+| Up | 3N | `3 * rowsPerDir` |
+
+Characters: `rowsPerDir = 4`. Small/medium enemies: `rowsPerDir = 2`.
 
 ### Animation Frame Standard
 
-- Walking: **3 frames** per direction (left step, center, right step) — 200ms per frame
-- Idle: **2 frames** (center, slight shift) — 500ms per frame
-- Attack: **4 frames** (wind-up, swing, impact, return) — 150ms per frame
-- Cast: **4 frames** (raise hands, channel, release, return) — 200ms per frame
-- Hit: **2 frames** (impact, stagger) — 200ms per frame
-- Death: **3 frames** (stagger, fall, prone) — 250ms per frame
-
-### Sheet Layout Standard
-
-Player and NPC spritesheets use the **RPG Maker character sheet format**:
-
-- **Width**: 12 tiles (3 frames x 4 directions = 12 columns grouped as 3 walk frames x 4 rows)
-- Standard layout: Each row is one direction. Each row contains 3 walk frames. Sheet is 3 columns x 4 rows = 12 cells for walk cycle.
-- Additional animation rows appended below: idle, attack, cast, hit, death
-
-For RPG-JS compatibility, walk cycle sheets are loaded via `RMSpritesheet()` from `@rpgjs/client Presets`.
+- Walking: **4 frames** per direction (4 columns), RPG-JS timing `time: 0/5/10/15/20`
+- Stand: Frame 0 of the walk direction (first column)
+- All animations registered via `Spritesheet({...})(class {})` factory in `generated.ts`
 
 ---
 
@@ -195,144 +193,89 @@ Each class has a distinct silhouette and color accent readable at 32x32 pixels. 
 
 ---
 
-## Named NPC Sprites (5 Characters)
+## Named NPC Sprites (14 Citizens)
 
-Named NPCs have unique sprites (not template-based). They share the 32x32 chibi proportions but have only walk + idle animations (no combat sprites — NPCs don't fight).
+All 14 named NPCs use purchased citizen sprites from `assets/sprites/npcs/citizens/`. Each citizen has a unique visual design in the same 64x496 format (4 cols x 31 rows @ 16x16).
 
 ### Shared NPC Specifications
 
 | Property | Value |
 |----------|-------|
-| Tile size | 32x32 pixels |
-| Walk directions | 4 |
-| Walk frames | 3 per direction |
-| Idle frames | 2 |
-| Sheet size | 96 x 160 pixels (3 cols x 5 rows: 4 walk + 1 idle) |
+| Frame size | 16x16 pixels |
+| Sheet size | 64x496 pixels |
+| Grid | 4 columns x 31 rows |
+| Walk directions | 4 (Down/Left/Right/Up at rows 0/4/8/12) |
+| Walk frames | 4 per direction |
+| Registration | `makeWalkSprite()` factory in `generated.ts` |
 
-### NPC-LIRA: Lira (Mentor)
+### Named NPC Roster
 
-**Silhouette**: Mid-30s woman, practical traveler's clothes. Medium height. Satchel over one shoulder. Hair tied back. Walks with purpose.
+| Sprite ID | Citizen | Role | Sprite Path |
+|-----------|---------|------|-------------|
+| `npc_hana` | Hana | Mentor | `female/Hana/Hana.png` |
+| `npc_artun` | Artun | Village Elder | `male/Artun/Artun.png` |
+| `npc_grym` | Grym | Antagonist (The Curator) | `male/Grym/Grym.png` |
+| `npc_khali` | Khali | Shopkeeper | `female/Khali/Khali.png` |
+| `npc_hark` | Hark | Blacksmith | `male/Hark/Hark.png` |
+| `npc_nyro` | Nyro | Innkeeper | `male/Nyro/Nyro.png` |
+| `npc_nel` | Nel | Ridge Guide | `female/Nel/Nel.png` |
+| `npc_janik` | Janik | Sunridge Keeper | `male/Janik/Janik.png` |
+| `npc_julz` | Julz | Flickerveil Warden | `female/Julz/Julz.png` |
+| `npc_reza` | Reza | Flickerveil Elder | `male/Reza/Reza.png` |
+| `npc_vash` | Vash | Marsh Researcher | `female/Vash/Vash.png` |
+| `npc_meza` | Meza | Audiomancer of Ambergrove | `female/Meza/Meza.png` |
+| `npc_seza` | Seza | Healer of Thornveil | `female/Seza/Seza.png` |
+| `npc_serek` | Serek | Preserver Lieutenant | `male/Serek/Serek.png` |
 
-**Color Key**:
+### Variant Aliases (in `aliases.ts`)
 
-| Element | Hex | Description |
-|---------|-----|-------------|
-| Primary (tunic) | #6B8E6B | Sage green (Architect color) |
-| Secondary (belt/boots) | #5C4033 | Dark leather brown |
-| Accent (memory tools) | #DAA520 | Amber — tools at belt glow faintly |
-| Skin | #E8C8A0 | Warm light skin |
-| Hair | #8B4513 | Warm brown, tied back |
+| Alias ID | Citizen | Purpose |
+|----------|---------|---------|
+| `npc_hana_frozen` | Hana | Hana in frozen state (Act I climax) |
+| `npc_frozen_festival_goer` | Meza | Frozen festival NPC |
+| `npc_ghost_f1` | Seza | Ghost/spirit variant |
+| `npc_ridgewalker_scout` | Hark | Ridgewalker faction scout |
+| `npc_ridgewalker_elder` | Grym | Ridgewalker faction elder |
+| `npc_rootwalker_echo` | Hana | Audiomancer echo |
+| `god_cantara` | Nyro | Dormant god avatar |
 
-**Variants**:
-- `NPC-LIRA-BASE`: Standard walking/idle
-- `NPC-LIRA-FROZEN`: Entire sprite rendered in blue-tinted grayscale (#B0C4DE tint). Crystalline sparkle at edges. Static (no animation). Used during Act I climax through mid-Act II.
-- `NPC-LIRA-FREED`: Base sprite with subtle warm glow particle (returned as companion). Used from mid-Act II onward.
+### Legacy Aliases (backwards compatibility)
 
-### NPC-CALLUM: Callum (Village Elder)
-
-**Silhouette**: Elderly man, tall and thin. Long coat/robe. Walking stick. White hair. Spectacles (tiny detail, but readable as a head-level accent).
-
-**Color Key**:
-
-| Element | Hex | Description |
-|---------|-----|-------------|
-| Primary (coat) | #4A3728 | Dark warm brown |
-| Secondary (shirt) | #F5F0E6 | Cream |
-| Accent (spectacles) | #C0C0C0 | Silver glint |
-| Skin | #D4A87C | Aged warm skin |
-| Hair | #E8E0D0 | White/silver |
-| Walking stick | #6B4C30 | Dark wood |
-
-### NPC-CURATOR: The Curator (Antagonist)
-
-**Silhouette**: Tall, elegant. Flowing crystalline robes. High collar. Hands often clasped. No weapon. The most visually pristine character — too perfect.
-
-**Color Key**:
-
-| Element | Hex | Description |
-|---------|-----|-------------|
-| Primary (robes) | #E8E8E8 | Near-white crystal |
-| Secondary (trim) | #B0C4DE | Cold steel blue |
-| Accent (eyes/gems) | #87CEEB | Ice blue |
-| Skin | #F0E0D0 | Pale porcelain |
-| Hair | #C8D8F0 | Platinum ice blue |
-
-**Notes**: The Curator's sprite should feel slightly uncanny — beautiful but too symmetrical, too still. Their idle animation is almost imperceptible (0.5-pixel shift). They look like a frozen memory of a person.
-
-### NPC-MAREN: Maren (Shopkeeper)
-
-**Silhouette**: Round, cheerful. Apron. Short curly hair. Animated walk (slight bounce).
-
-**Color Key**:
-
-| Element | Hex | Description |
-|---------|-----|-------------|
-| Primary (apron/dress) | #CD5C5C | Warm rust red |
-| Secondary (shirt) | #F5F0E6 | Cream |
-| Skin | #D4A87C | Warm medium skin |
-| Hair | #8B4513 | Curly chestnut brown |
-
-### NPC-TORVAN: Torvan (Blacksmith)
-
-**Silhouette**: Broad, muscular. Leather apron. Thick arms. Bald/short hair. Hammer at belt.
-
-**Color Key**:
-
-| Element | Hex | Description |
-|---------|-----|-------------|
-| Primary (apron) | #5C4033 | Dark leather |
-| Secondary (shirt) | #8C8078 | Stone gray |
-| Skin | #A0724C | Dark warm skin |
-| Hair | #3C3028 | Close-cropped dark |
-| Hammer | #A0A8B0 | Bright steel |
+Old sprite IDs (`npc_lira`, `npc_callum`, etc.) are preserved as aliases in `aliases.ts` so existing event files continue to work. New code should use citizen-name IDs.
 
 ---
 
-## NPC Template Sprites (6 Types)
+## Template NPC Sprites (15 Role Types)
 
-Procedural NPCs use template sprites with palette swaps for variety. Each template has a base sprite with 4 palette variants (total 24 unique NPC appearances from 6 templates).
+Template NPCs reuse citizen sprites for background population. Each role type maps to a default citizen sprite via `spriteRef` in `gen/ddl/npcs/templates.json`.
 
-### Shared Template Specifications
+### Template Specifications
 
 | Property | Value |
 |----------|-------|
-| Tile size | 32x32 pixels |
-| Walk directions | 4 |
-| Walk frames | 3 per direction |
-| Idle frames | 2 |
-| Sheet size | 96 x 160 pixels per variant |
-| Palette variants | 4 per template (base + 3 swaps) |
-| Brightened variant | Each template has a "brightened" overlay: subtle amber glow at edges |
+| Same sprite format as named NPCs | 64x496, 4x31 @ 16x16 |
+| Visual variety | 14 citizen designs + 3 guard variants = 17 unique appearances |
+| Role differentiation | Via dialogue and behavior, not unique sprites |
 
-### NPT-01: Villager (Generic)
+### Role → Sprite Mapping
 
-**Silhouette**: Average build, simple tunic and trousers. Can be any age or gender.
-**Base palette**: Earth tones (#8B6D4C tunic, #F5F0E6 shirt). Variants swap tunic color to blue (#4A8CB8), green (#5C8C3C), or warm red (#B85C4C).
-
-### NPT-02: Merchant
-
-**Silhouette**: Round body, large hat, traveling pack. Bustling walk (wider stride, slight waddle).
-**Base palette**: Rich brown (#6B4C30 coat), gold trim (#DAA520). Variants swap coat to maroon, navy, or olive.
-
-### NPT-03: Farmer
-
-**Silhouette**: Sturdy build, straw hat, tool over shoulder (hoe or rake). Slower walk.
-**Base palette**: Tan overalls (#C8B89C), green shirt (#5C8C3C). Variants swap overalls to blue, brown, or gray.
-
-### NPT-04: Scholar
-
-**Silhouette**: Thin, hunched over book or scroll. Glasses. Quick, distracted walk.
-**Base palette**: Dark blue robe (#2F4F4F), cream pages (#F5F0E6). Variants swap robe to brown, purple, or black.
-
-### NPT-05: Guard/Warrior
-
-**Silhouette**: Broad shoulders, simple armor, spear or sword at side. Measured walk.
-**Base palette**: Chain mail gray (#8C8078), leather brown (#5C4033). Variants swap tabard color to red, blue, green, or gold.
-
-### NPT-06: Child
-
-**Silhouette**: Small (1.5 heads tall instead of 2.5). Quick, bouncy walk. Arms occasionally outstretched.
-**Base palette**: Bright tunic (#4A8CB8), short pants (#5C4033). Variants swap tunic to yellow, green, or red.
+| Role | Default Sprite | Sprite ID |
+|------|---------------|-----------|
+| Villager | Rotates through all citizens | `npc_villager`, `npc_villager_m1`, etc. |
+| Merchant | Serek | `npc_merchant` |
+| Farmer | Artun | `npc_farmer` |
+| Scholar | Reza | `npc_scholar` |
+| Guard | Guard sprites (3 variants) | `npc_guard`, `npc_guard_m1`, `npc_guard_m2` |
+| Child | Julz | `npc_child` |
+| Elder | Grym | `npc_elder_m1` |
+| Fisher | Serek | `npc_fisher_m1` |
+| Innkeeper | Nyro | `npc_innkeeper_f1` |
+| Woodcutter | Hark | `npc_woodcutter_m1` |
+| Audiomancer | Meza | `npc_audiomancer_m1` |
+| Ridgewalker | Nel | `npc_ridgewalker_m1` |
+| Shopkeeper | Khali | `npc_shopkeep_f1` |
+| Healer | Seza | — |
+| Preserver Agent | Serek | `npc_preserver_agent` |
 
 ---
 
@@ -438,9 +381,9 @@ Bosses use larger sprite sizes — 64x64 for standard bosses, 96x96 for major bo
 - Idle: Slow pulse glow. Attack: Crystal spikes shoot outward. Hit: Crack appears in shell. Transition: Shell shatters (4f dramatic explosion).
 
 **Phase 2 — Memory Storm**:
-- Inner heart exposed — swirling vortex of frozen memory fragments. Lira's amber silhouette visible at center.
-- Primary: Swirling blue-white-amber. Accent: Amber Lira silhouette (#DAA520). Background: Dark vortex.
-- Idle: Rotating fragment storm. Attack: Fragments launch outward. Hit: Storm destabilizes briefly. Death: Fragments scatter, warm gold light floods outward, Lira's silhouette brightens.
+- Inner heart exposed — swirling vortex of frozen memory fragments. Hana's amber silhouette visible at center.
+- Primary: Swirling blue-white-amber. Accent: Amber Hana silhouette (#DAA520). Background: Dark vortex.
+- Idle: Rotating fragment storm. Attack: Fragments launch outward. Hit: Storm destabilizes briefly. Death: Fragments scatter, warm gold light floods outward, Hana's silhouette brightens.
 
 ### BO-02: Shrine Guardians (64x64, 4 variants)
 
@@ -482,7 +425,7 @@ An immense shifting face filling the room. Composed of every biome layered toget
 - Primary: All biome colors cycling. This sprite is uniquely multi-textured — grass tiles blend into water tiles blend into mountain stone.
 - Phase 1 idle: Slow biome cycling across the face. Attack: Uses visual of previous bosses' attacks. Phase 2: Face becomes more focused, amber-golden. Death: Face smiles, dissolves into pure warm light.
 
-### BO-04a: Curator's Right Hand (64x64)
+### BO-04a: Grym's Right Hand (64x64)
 
 Preserver in ornate ceremonial armor. Crystal shield depicting frozen scenes.
 - Primary: Pristine crystal armor (#E8E8E8). Accent: Blue crystal details (#B0C4DE). Shield: Contains tiny painted scenes (animated miniatures).
@@ -494,9 +437,9 @@ Partially absorbed by the Archive. Lower body fused to crystal dais. Orbiting sh
 - Primary: Upper body: Archivist robes (#8090A0). Lower body: Crystal dais (#B0C4DE). Accent: Orbiting memory spheres (#DAA520).
 - Idle: Shelves orbit slowly, memory spheres pulse. Attack: Memory sphere projectile. Special: Summons frozen scene. Death: Archive shatters, warm light floods from broken shelves.
 
-### BO-05: The Curator (No combat sprite)
+### BO-05: Grym (No combat sprite)
 
-The Curator is a **dialogue encounter** — no combat sprites needed. The NPC-CURATOR sprite is used in the final scene. However, the Curator has one unique animation:
+Grym is a **dialogue encounter** — no combat sprites needed. The NPC-CURATOR sprite is used in the final scene. However, Grym has one unique animation:
 - `NPC-CURATOR-FINAL`: Standing before the First Memory. Subtle animation — hands clasped, crystal robes flowing. 4 frames, 400ms/frame. Used only in the final chamber.
 
 ---
@@ -551,55 +494,45 @@ In addition to character sprites, the following particle sprites are used for co
 
 ---
 
-## Sprite Count Summary
+## Sprite Asset Summary
 
-| Category | Types | Variants | Total Sheets |
-|----------|-------|----------|-------------|
-| Player characters | 4 classes | 3 each (base + 2 subclass) | 12 |
-| Named NPCs | 5 | 7 (Lira has 3 variants) | 7 |
-| NPC templates | 6 | 4 palette swaps each | 24 |
-| Enemies (standard) | 34 | 1 each | 34 |
-| Bosses | 10 encounters | 14 sheets (multi-phase bosses) | 14 |
-| Particle effects | 16 | 1 each | 16 |
-| **Total** | | | **107 sprite sheets** |
+| Category | Assets | Format | Source |
+|----------|--------|--------|--------|
+| Player characters | 4 classes | 64x496 (4x31 @ 16x16) | Purchased CC0 |
+| Named NPCs | 14 citizens | 64x496 (4x31 @ 16x16) | Purchased CC0 |
+| Guards | 3 variants | 64x496 (4x31 @ 16x16) | Purchased CC0 |
+| Small enemies | 1 type (slime) | 64x128 (4x8 @ 16x16) | Purchased CC0 |
+| Medium enemies | 8 types | 64x224 (4x14 @ 16x16) | Purchased CC0 |
+| Dragon boss | 1 type | 2304x96 (24x1 @ 96x96) | Purchased CC0 |
+| Effects | 26 sprites | Various | Purchased CC0 |
+| **Total sprite PNGs** | **148** | | |
+
+### Game Entity → Sprite Mapping
+
+Multiple game entities share the same sprite asset (e.g., 8 slime variants all use `slime.png`). The enemy/boss design sections above describe game behavior, not unique sprites.
 
 ---
 
-## GenAI Production Notes
+## Technical Notes
 
-### Prompt Structure for Sprite Generation
+### Registration in RPG-JS
 
+All sprites are registered in `main/client/characters/generated.ts` using factory functions:
+
+```typescript
+// Character/NPC: 4-column walk sprite
+makeWalkSprite(id, image, totalRows, rowsPerDir)
+
+// Boss: horizontal strip
+makeBossSprite(id, image, totalFrames)
 ```
-[Style]: 16-bit JRPG pixel art, {size} pixels, chibi proportions (2.5 heads tall)
-[Character]: {name} — {shape description}
-[Colors]: Primary: {hex}, Secondary: {hex}, Accent: {hex}
-[Animation]: {animation type} — {frame count} frames
-[Mood]: {tier keyword from visual-direction.md}
-[Constraints]: 1-pixel warm outline (no black). Elliptical shadow at feet. Clear silhouette. Readable at intended size.
-```
 
-### Production Order
+Aliases and legacy IDs are in `main/client/characters/aliases.ts`.
 
-1. **Player characters first** — establish the art style and proportions
-2. **Named NPCs** — same proportions, varied designs
-3. **NPC templates** — simpler designs, palette-swappable
-4. **Settled Lands enemies** — establish enemy art style (simpler than characters)
-5. **Frontier/Depths/Preserver enemies** — build on established style with increasing complexity
-6. **Sketch enemies** — unique line-art style requires separate art direction
-7. **Bosses** — largest and most complex, benefit from established style language
-8. **Particle effects** — smallest, simplest, last
+### Sprite Quality Validation
 
-### Quality Validation
-
-For each generated sprite:
-
-- [ ] Correct pixel dimensions (32x32, 64x64, or 96x96)
-- [ ] Correct frame count and layout
-- [ ] Uses only colors from the specified color key
-- [ ] 1-pixel outline uses warm shadow tone, never pure black
-- [ ] Readable at intended size (silhouette test: should be identifiable as a solid black shape)
-- [ ] Consistent chibi proportions with other sprites in category
-- [ ] Animations are smooth and cycle-able
-- [ ] Walk cycles have proper weight-shift and bounce
-- [ ] Combat animations have clear wind-up → action → follow-through
-- [ ] Transparent PNG background with correct alpha channel
+Run `pnpm verify:sprites` to check all sprite PNGs for:
+- Correct dimensions per category
+- No solid horizontal lines (rendering artifacts)
+- No identical/duplicate frames
+- No fully blank frames

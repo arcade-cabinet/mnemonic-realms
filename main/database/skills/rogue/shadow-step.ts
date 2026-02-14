@@ -9,4 +9,6 @@ import { Skill } from '@rpgjs/database';
   hitRate: 1,
   coefficient: {},
 })
-export default class ShadowStep {}
+export default class ShadowStep {
+  // Formula: No direct damage. Teleport behind one enemy. The next attack against this enemy (by any party member, this turn only) is guaranteed to hit and deals +25% bonus damage.
+}

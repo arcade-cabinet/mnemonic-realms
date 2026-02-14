@@ -63,11 +63,11 @@ Stagnation zones are designed with an escalating difficulty curve:
 
 **Parent map**: Heartfield | **Position**: (33, 28) | **Size**: 5×5 tiles
 **Act**: I | **Difficulty**: Tutorial
-**Quest link**: MQ-04 (Act I climax — Lira's freezing)
+**Quest link**: MQ-04 (Act I climax — Hana's freezing)
 
 ### Narrative Context
 
-This is the player's first encounter with Preserver stagnation. During the Act I climax (MQ-04), a Preserver scout freezes a patch of farmland near the Heartfield hamlet — and Lira with it. The player witnesses the crystallization but cannot break it during Act I (they lack the knowledge and fragments).
+This is the player's first encounter with Preserver stagnation. During the Act I climax (MQ-04), a Preserver scout freezes a patch of farmland near the Heartfield hamlet — and Hana with it. The player witnesses the crystallization but cannot break it during Act I (they lack the knowledge and fragments).
 
 When the player returns in Act II (after MQ-05 and reaching level 12+), they can break this zone as part of clearing the expanded stagnation from the Act I event. The boss encounter B-01 (Stagnation Heart) emerges from the shattered crystal.
 
@@ -78,7 +78,7 @@ When the player returns in Act II (after MQ-05 and reaching level 12+), they can
  28  ┌────────────────────┐
      │  ·  ·  ·  ·  ·    │    · = crystallized grass
  29  │  ·  · [F] ·  ·    │    F = focal point (crystallized Resonance Stone)
-     │  ·  · [L] ·  ·    │    L = Lira's frozen position
+     │  ·  · [L] ·  ·    │    L = Hana's frozen position
  30  │  ·  ·  ·  ·  ·    │    B = border transition tiles
      │  B  B  B  B  B    │
  32  └────────────────────┘
@@ -89,7 +89,7 @@ When the player returns in Act II (after MQ-05 and reaching level 12+), they can
 | Object | Position | Description |
 |--------|----------|-------------|
 | Crystallized Resonance Stone (focal point) | (35, 29) | A small Resonance Stone encased in blue-white crystal. Faint amber glow visible beneath the ice. This is the broadcast target. |
-| Lira's frozen form | (35, 30) | Lira stands with one hand extended, frozen mid-gesture during her attempt to defend the clearing. Crystal sparkles on her edges. Interacting triggers dialogue: *"She's frozen at the exact moment she tried to broadcast. Her fragment is still in her hand — a potency-4 light fragment, half-delivered."* |
+| Hana's frozen form | (35, 30) | Hana stands with one hand extended, frozen mid-gesture during her attempt to defend the clearing. Crystal sparkles on her edges. Interacting triggers dialogue: *"She's frozen at the exact moment she tried to broadcast. Her fragment is still in her hand — a potency-4 light fragment, half-delivered."* |
 | Frozen butterflies | (33, 28), (37, 28) | Three butterflies frozen mid-flight. Wings catch prismatic light. After breaking: they flutter away and don't return (cosmetic). |
 | Frozen wheat | throughout | Wheat stalks frozen upright, crystal coating each blade. After breaking: wheat sways normally. |
 
@@ -101,26 +101,26 @@ When the player returns in Act II (after MQ-05 and reaching level 12+), they can
 | Fragment element | Any |
 | Fragment potency | 1+ (minimum) |
 | Broadcast target | Crystallized Resonance Stone at (35, 29) |
-| Special notes | This is a tutorial. Lira (through a flashback vision) guides the player through the broadcast. No combat on first break. |
+| Special notes | This is a tutorial. Hana (through a flashback vision) guides the player through the broadcast. No combat on first break. |
 
 ### Breaking Sequence
 
 1. Player approaches the crystallized Resonance Stone.
-2. Lira's flashback vision plays (10-second narrated sequence): *"Remember what I taught you. Hold the fragment. Feel the memory. Now push it into the stone. The crystal will resist — but memories are stronger than ice."*
+2. Hana's flashback vision plays (10-second narrated sequence): *"Remember what I taught you. Hold the fragment. Feel the memory. Now push it into the stone. The crystal will resist — but memories are stronger than ice."*
 3. Player broadcasts any fragment (potency 1+).
 4. Shatter animation plays. Crystal fragments fly outward. Warm gold floods in.
 5. **No combat** on this first break (tutorial exception).
-6. Lira's frozen form remains (she can only be freed by the boss fight or SQ-14 later). Her crystal prison cracks but holds.
+6. Hana's frozen form remains (she can only be freed by the boss fight or SQ-14 later). Her crystal prison cracks but holds.
 7. Heartfield vibrancy gains +10.
 
 ### Act II Return (B-01 Boss Fight)
 
-When the player returns with a potency 3+ fragment (Act II, level 13-16), broadcasting at Lira's frozen form triggers the expanded stagnation break:
+When the player returns with a potency 3+ fragment (Act II, level 13-16), broadcasting at Hana's frozen form triggers the expanded stagnation break:
 
-1. The remaining crystal around Lira's form shatters.
+1. The remaining crystal around Hana's form shatters.
 2. B-01: Stagnation Heart emerges (see [enemies-catalog.md](../design/enemies-catalog.md)).
 3. Boss fight plays out (Phase 1: Crystal Shell, Phase 2: Heart Exposed).
-4. On defeat: Crystal Collapse death trigger (50 fixed damage to party). Lira is freed.
+4. On defeat: Crystal Collapse death trigger (50 fixed damage to party). Hana is freed.
 5. Additional +10 vibrancy to Heartfield.
 
 ### Summary
@@ -128,7 +128,7 @@ When the player returns with a potency 3+ fragment (Act II, level 13-16), broadc
 | Metric | Value |
 |--------|-------|
 | Size | 5×5 tiles |
-| Frozen NPCs | 1 (Lira — freed via B-01 boss or SQ-14) |
+| Frozen NPCs | 1 (Hana — freed via B-01 boss or SQ-14) |
 | Frozen objects | Resonance Stone, butterflies, wheat |
 | Unlock requirement | Any fragment, potency 1+ (tutorial) |
 | Combat | None (tutorial). Boss B-01 on Act II return. |
@@ -142,11 +142,11 @@ When the player returns with a potency 3+ fragment (Act II, level 13-16), broadc
 
 **Parent map**: Sunridge | **Position**: (30, 13) | **Size**: 5×4 tiles
 **Act**: II (early) | **Difficulty**: Easy
-**Quest link**: SQ-05 (The Deserter — Aric's defection)
+**Quest link**: SQ-05 (The Deserter — Janik's defection)
 
 ### Narrative Context
 
-A crystallized watchtower where Preserver scouts monitor the Frontier border. This is the first non-tutorial stagnation zone — the player must choose a specific emotion fragment (fury) to break through, teaching the unlock mechanic. Aric, a Preserver scout who becomes an ally, is stationed here. The SQ-05 quest chain involves converting Aric from loyalist to doubter through dialogue and evidence.
+A crystallized watchtower where Preserver scouts monitor the Frontier border. This is the first non-tutorial stagnation zone — the player must choose a specific emotion fragment (fury) to break through, teaching the unlock mechanic. Janik, a Preserver scout who becomes an ally, is stationed here. The SQ-05 quest chain involves converting Janik from loyalist to doubter through dialogue and evidence.
 
 ### Layout
 
@@ -155,7 +155,7 @@ A crystallized watchtower where Preserver scouts monitor the Frontier border. Th
  13  ┌────────────────────┐
      │  · [T][T] ·  ·    │    T = crystallized watchtower (2 tiles wide)
  14  │  ·  · [F] ·  ·    │    F = focal point (frozen signal fire)
-     │  B  B [A] B  B    │    A = Aric's patrol position
+     │  B  B [A] B  B    │    A = Janik's patrol position
  16  │  B  B  B  B  B    │    B = border tiles
      └────────────────────┘
 ```
@@ -173,7 +173,7 @@ A crystallized watchtower where Preserver scouts monitor the Frontier border. Th
 
 | NPC | Position | Post-Break Behavior |
 |-----|----------|-------------------|
-| Aric (Preserver scout) | (32, 15) | Aric is NOT frozen — he patrols the border voluntarily. After breaking the stagnation zone, he becomes agitated: *"What did you — why did you break that? The signal fire kept the Frontier calm! Now anything could come through!"* This triggers SQ-05 if MQ-04+ is active. |
+| Janik (Preserver scout) | (32, 15) | Janik is NOT frozen — he patrols the border voluntarily. After breaking the stagnation zone, he becomes agitated: *"What did you — why did you break that? The signal fire kept the Frontier calm! Now anything could come through!"* This triggers SQ-05 if MQ-04+ is active. |
 
 ### Unlock Condition
 
@@ -191,7 +191,7 @@ A crystallized watchtower where Preserver scouts monitor the Frontier border. Th
 2. Shatter animation: crystal cracks radially outward from the fire. The signal fire ignites naturally — warm orange flame.
 3. **Combat**: 2 Preserver Scouts (E-PV-01) become hostile. They attack with polite dialogue: *"Please stop. The fire must stay frozen. It's protocol."*
 4. After combat: Sunridge vibrancy gains +10. Supply crates become lootable.
-5. Aric remains on-map as a questgiver (SQ-05).
+5. Janik remains on-map as a questgiver (SQ-05).
 
 ### Preserver Reinforcement (Pre-Break)
 
@@ -204,7 +204,7 @@ A crystallized watchtower where Preserver scouts monitor the Frontier border. Th
 | Metric | Value |
 |--------|-------|
 | Size | 5×4 tiles |
-| Frozen NPCs | 0 (Aric is voluntary, not frozen) |
+| Frozen NPCs | 0 (Janik is voluntary, not frozen) |
 | Frozen objects | Watchtower, signal fire, grass, supply crates |
 | Unlock requirement | Fury emotion, potency 2+ |
 | Combat | 2 Preserver Scouts (E-PV-01) |
@@ -267,7 +267,7 @@ None. The Stagnation Bog is a remote area without permanent NPC residents. The P
 
 Several paths to the required fragment:
 
-1. **Remix**: Combine any fury fragment with any water fragment at a Remix Table (Lira's Workshop or Frontier camps). The result inherits the higher potency and the remixer can choose which emotion/element to keep.
+1. **Remix**: Combine any fury fragment with any water fragment at a Remix Table (Hana's Workshop or Frontier camps). The result inherits the higher potency and the remixer can choose which emotion/element to keep.
 2. **Rare drop**: Mire Crawlers (E-FR-01) in Shimmer Marsh have a 10% fragment drop chance. Their thematic affinity is water/fury (marsh predator). Getting a potency 3+ this way requires Vivid-tier Shimmer Marsh (potency modifier +1 at Vivid).
 3. **River Nymphs**: River Nymphs (E-SL-05) in Millbrook drop water-element fragments. If the player has raised Millbrook's vibrancy to Vivid, they can get potency 3 water fragments and remix with any fury source.
 
@@ -440,7 +440,7 @@ None inside the Cathedral (the Preservers occupy it willingly — they are NOT f
 4. Broadcasts awe fragment (potency 4+). The Grand Stone's amber glow intensifies beneath the crystal.
 5. Shatter animation: the entire Cathedral cracks from inside out. The Grand Stone explodes with SOUND — a deep, resonant chord that vibrates the screen. All stagnation tiles dissolve in a wave pattern radiating from the Stone.
 6. **Combat**: 3 Preserver Agents (E-PV-02) + 1 Preserver Captain (E-PV-03). The Captain speaks: *"The silence kept them safe. You've just exposed every memory in this field to corruption."*
-7. After combat: Resonance Fields vibrancy gains +10. The Curator's Manifesto (K-06) is found on the altar (if not already obtained via SQ-05). All Resonance Stones in the zone regain full activity.
+7. After combat: Resonance Fields vibrancy gains +10. Grym's Manifesto (K-06) is found on the altar (if not already obtained via SQ-05). All Resonance Stones in the zone regain full activity.
 
 ### Preserver Reinforcement (Pre-Break)
 
@@ -458,7 +458,7 @@ None inside the Cathedral (the Preservers occupy it willingly — they are NOT f
 | Unlock requirement | K-15 (Thunderstone) gate + Awe emotion, potency 4+ broadcast |
 | Combat | 3 Preserver Agents + 1 Preserver Captain |
 | Vibrancy reward | +10 |
-| Loot | Curator's Manifesto (K-06) if not already obtained |
+| Loot | Grym's Manifesto (K-06) if not already obtained |
 | Quest links | GQ-01-F2 (The Shattered Silence) |
 
 ---
@@ -613,8 +613,8 @@ This zone is fully documented in [overworld-layout.md](overworld-layout.md) (Und
 
 | Zone | Dependent Quests | Effect of Clearing |
 |------|-----------------|-------------------|
-| Heartfield | MQ-04 (witnessing), SQ-14 (Lira), B-01 (boss) | Frees Lira (via B-01), opens SQ-14 resolution |
-| Sunridge | SQ-05 (Aric's defection) | Aric becomes quest-giver, provides Preserver intel |
+| Heartfield | MQ-04 (witnessing), SQ-14 (Hana), B-01 (boss) | Frees Hana (via B-01), opens SQ-14 resolution |
+| Sunridge | SQ-05 (Janik's defection) | Janik becomes quest-giver, provides Preserver intel |
 | Shimmer Marsh | None directly | Opens RS-SM-03 fragment, removes reinforcement |
 | Hollow Ridge | None directly | Opens passage through Shattered Pass, CH-HR-02 loot |
 | Resonance Fields | GQ-01-F2 (Shattered Silence) | K-06 available, all Resonance Stones reactivate |

@@ -59,21 +59,21 @@ All NPC interactions. Sorted by map, then by NPC.
 
 | Event ID | Position | Trigger | Repeat | Linked Quest | NPC | Graphic | Description |
 |----------|----------|---------|--------|--------------|-----|---------|-------------|
-| EV-VH-001 | (19, 11) | action | quest | MQ-01 | Callum | `npc_callum` | Intro dialogue; gives Architect's Signet direction |
-| EV-VH-002 | (9, 19) | action | quest | MQ-01, MQ-02 | Lira | `npc_lira` | Gives Architect's Signet (K-01); teaches memory ops |
-| EV-VH-005 | (19, 17) | action | repeat | SQ-01 | Maren | `npc_maren` | Shop interface + SQ-01 dialogue trigger |
-| EV-VH-006 | (19, 19) | action | conditional | SQ-11 | Torvan | `npc_torvan` | Shop interface + SQ-11 trigger (vibrancy 70+) |
-| EV-VH-007 | (21, 15) | action | repeat | SQ-12 | Ren | `npc_ren` | Inn: rest + dream sequence trigger |
+| EV-VH-001 | (19, 11) | action | quest | MQ-01 | Artun | `npc_callum` | Intro dialogue; gives Architect's Signet direction |
+| EV-VH-002 | (9, 19) | action | quest | MQ-01, MQ-02 | Hana | `npc_lira` | Gives Architect's Signet (K-01); teaches memory ops |
+| EV-VH-005 | (19, 17) | action | repeat | SQ-01 | Khali | `npc_maren` | Shop interface + SQ-01 dialogue trigger |
+| EV-VH-006 | (19, 19) | action | conditional | SQ-11 | Hark | `npc_torvan` | Shop interface + SQ-11 trigger (vibrancy 70+) |
+| EV-VH-007 | (21, 15) | action | repeat | SQ-12 | Nyro | `npc_ren` | Inn: rest + dream sequence trigger |
 | EV-VH-008 | (8, 14) | action | repeat | — | Quest Board | — | Displays available side quests (MQ-03+) |
-| EV-VH-013 | (12, 3) | action | repeat | — | Callum | `npc_callum` | Telescope: narrative lookout over Settled Lands |
+| EV-VH-013 | (12, 3) | action | repeat | — | Artun | `npc_callum` | Telescope: narrative lookout over Settled Lands |
 
 ### Heartfield NPCs
 
 | Event ID | Position | Trigger | Repeat | Linked Quest | NPC | Graphic | Description |
 |----------|----------|---------|--------|--------------|-----|---------|-------------|
 | EV-HF-001 | (15, 14) | action | quest | SQ-02 | Farmer Gale | `npc_farmer_m1` | Windmill groaning dialogue; SQ-02 trigger (MQ-03+) |
-| EV-HF-004 | (34, 29) | action | quest | MQ-04, SQ-14 | Lira (frozen) | `npc_lira` | Lira's frozen form; broadcast target for SQ-14 |
-| EV-HF-009 | (34, 29) | action | once | SQ-14 | Lira (frozen) | `npc_lira` | Broadcast joy 4+ fragment; partial awakening |
+| EV-HF-004 | (34, 29) | action | quest | MQ-04, SQ-14 | Hana (frozen) | `npc_lira` | Hana's frozen form; broadcast target for SQ-14 |
+| EV-HF-009 | (34, 29) | action | once | SQ-14 | Hana (frozen) | `npc_lira` | Broadcast joy 4+ fragment; partial awakening |
 
 ### Ambergrove NPCs
 
@@ -93,30 +93,30 @@ All NPC interactions. Sorted by map, then by NPC.
 
 | Event ID | Position | Trigger | Repeat | Linked Quest | NPC | Graphic | Description |
 |----------|----------|---------|--------|--------------|-----|---------|-------------|
-| EV-SR-001 | (31, 14) | action | quest | SQ-05 | Aric | `npc_aric` | Preserver doubt dialogue; SQ-05 trigger (MQ-04+) |
+| EV-SR-001 | (31, 14) | action | quest | SQ-05 | Janik | `npc_aric` | Preserver doubt dialogue; SQ-05 trigger (MQ-04+) |
 | EV-SR-003 | (19, 19) | action | repeat | — | Waystation Keeper | `npc_keeper_f1` | Rest point: full HP/SP restore |
 
 ### Shimmer Marsh NPCs
 
 | Event ID | Position | Trigger | Repeat | Linked Quest | NPC | Graphic | Description |
 |----------|----------|---------|--------|--------------|-----|---------|-------------|
-| EV-SM-001 | (11, 14) | action | quest | SQ-06, GQ-02 | Wynn | `npc_wynn` | Marsh research + Verdance's Hollow info (MQ-05+) |
+| EV-SM-001 | (11, 14) | action | quest | SQ-06, GQ-02 | Vash | `npc_wynn` | Marsh research + Verdance's Hollow info (MQ-05+) |
 
 ### Hollow Ridge NPCs
 
 | Event ID | Position | Trigger | Repeat | Linked Quest | NPC | Graphic | Description |
 |----------|----------|---------|--------|--------------|-----|---------|-------------|
-| EV-HR-001 | (14, 24) | action | quest | MQ-05, SQ-07, GQ-04 | Petra | `npc_petra` | Dormant gods intro, Kinetic Boots (K-05) |
+| EV-HR-001 | (14, 24) | action | quest | MQ-05, SQ-07, GQ-04 | Nel | `npc_petra` | Dormant gods intro, Kinetic Boots (K-05) |
 | EV-HR-002 | (15, 26) | action | repeat | — | Ridgewalker Merchant | `npc_merchant_m2` | Shop (Ridgewalker Claymore, Shadow Fang, etc.) |
-| EV-HR-011 | (14, 24) | action | quest | SQ-07 | Petra | `npc_petra` | Escort quest trigger |
+| EV-HR-011 | (14, 24) | action | quest | SQ-07 | Nel | `npc_petra` | Escort quest trigger |
 
 ### Flickerveil NPCs
 
 | Event ID | Position | Trigger | Repeat | Linked Quest | NPC | Graphic | Description |
 |----------|----------|---------|--------|--------------|-----|---------|-------------|
-| EV-FV-001 | (35, 30) | action | quest | SQ-08, GQ-03 | Solen | `npc_solen` | Light Lens (K-04), light studies (MQ-05+) |
+| EV-FV-001 | (35, 30) | action | quest | SQ-08, GQ-03 | Reza | `npc_solen` | Light Lens (K-04), light studies (MQ-05+) |
 | EV-FV-002 | (36, 29) | action | repeat | — | Village Shopkeeper | `npc_shopkeep_f2` | Shop (Prism Wand, Flickerblade, Stasis Breaker) |
-| EV-FV-006 | (30, 26) | action | quest | GQ-03-S1 | Elyn | `npc_elyn` | Defector escort quest (after Vesperis recall) |
+| EV-FV-006 | (30, 26) | action | quest | GQ-03-S1 | Julz | `npc_elyn` | Defector escort quest (after Vesperis recall) |
 
 ### Resonance Fields NPCs
 
@@ -134,11 +134,11 @@ All NPC interactions. Sorted by map, then by NPC.
 
 | NPC | Map | Movement Type | Patrol Path / Range | Condition |
 |-----|-----|--------------|---------------------|-----------|
-| Callum | Village Hub | Patrol (60s cycle) | Elder's House (19, 11) ↔ Lookout Hill (12, 3) | Always |
-| Lira | Village Hub | Static → Roam | Static at (9, 19) until MQ-02; roams village after | MQ-02 flag |
-| Maren | Village Hub | Static | (19, 17) behind counter | Always |
-| Torvan | Village Hub | Static | (19, 19) at anvil | Always |
-| Ren | Village Hub | Static | (21, 15) behind bar | Always |
+| Artun | Village Hub | Patrol (60s cycle) | Elder's House (19, 11) ↔ Lookout Hill (12, 3) | Always |
+| Hana | Village Hub | Static → Roam | Static at (9, 19) until MQ-02; roams village after | MQ-02 flag |
+| Khali | Village Hub | Static | (19, 17) behind counter | Always |
+| Hark | Village Hub | Static | (19, 19) at anvil | Always |
+| Nyro | Village Hub | Static | (21, 15) behind bar | Always |
 | Villager A | Village Hub | Wander | Central Square (12-17, 14-19) | Always |
 | Villager B | Village Hub | Wander | Central Square (12-17, 14-19) | Always |
 | Villager C | Village Hub | Patrol | South Gate road | Always |
@@ -157,24 +157,24 @@ All NPC interactions. Sorted by map, then by NPC.
 | Waystation Keeper | Sunridge | Static | (19, 19) | Always |
 | Traveling Merchant | Sunridge | Appears | (20, 20) every 3 game-hours | Rotation |
 | Waystation Guard | Sunridge | Patrol | Waystation perimeter | Always |
-| Aric | Sunridge | Static | (31, 14) at outpost perimeter | After MQ-04 |
-| Wynn | Shimmer Marsh | Static → Move | (11, 14) at hut; moves to Verdance's Hollow after GQ-02 (joy) | GQ-02 flag |
+| Janik | Sunridge | Static | (31, 14) at outpost perimeter | After MQ-04 |
+| Vash | Shimmer Marsh | Static → Move | (11, 14) at hut; moves to Verdance's Hollow after GQ-02 (joy) | GQ-02 flag |
 | Marsh Researcher | Shimmer Marsh | Patrol | Hut vicinity | Always |
 | Preserver Scout A | Shimmer Marsh | Patrol | Bog perimeter (34-42, 6-14) | Pre-break |
 | Preserver Scout B | Shimmer Marsh | Static | (40, 10) bog center | Pre-break |
-| Petra | Hollow Ridge | Static → Patrol | (14, 24) at camp; patrols after GQ-04 | GQ-04 flag |
+| Nel | Hollow Ridge | Static → Patrol | (14, 24) at camp; patrols after GQ-04 | GQ-04 flag |
 | Ridgewalker Scout | Hollow Ridge | Patrol | Camp perimeter (10-20, 20-30) | Always |
 | Ridgewalker Merchant | Hollow Ridge | Static | (15, 26) at market stall | Always |
 | Ridgewalker Elder | Hollow Ridge | Static | (12, 22) at campfire | Always |
 | Ridgewalker Guards | Hollow Ridge | Patrol | Camp borders | Always |
-| Solen | Flickerveil | Static | (35, 30) village center | Always |
+| Reza | Flickerveil | Static | (35, 30) village center | Always |
 | Village Shopkeeper | Flickerveil | Static | (36, 29) in shop | Always |
 | Village Innkeeper | Flickerveil | Static | (34, 32) in inn | Always |
 | Flickering Guard A | Flickerveil | Patrol | Village perimeter | Always |
 | Preserver Agent (archive) | Flickerveil | Static | (9, 9) archive center | Pre-clear |
 | Preserver Agent B | Flickerveil | Patrol | Archive perimeter | Pre-clear |
 | Preserver Agent C | Flickerveil | Patrol | Archive perimeter | Pre-clear |
-| Elyn | Flickerveil | Static | (30, 26) | After Vesperis recall |
+| Julz | Flickerveil | Static | (30, 26) | After Vesperis recall |
 | Lead Audiomancer | Resonance Fields | Static | (9, 34) at camp | Always |
 | Audiomancer B | Resonance Fields | Patrol | Camp-to-stones route | Always |
 | Audiomancer C | Resonance Fields | Static | (8, 35) listening | Always |
@@ -400,16 +400,16 @@ Cutscene events and narrative cinematics, sorted by quest chain.
 | EV-VH-016 | Village Hub | (0, 0) | auto | First load | MQ-01 | Opening cutscene (Act I opening) | once |
 | EV-VH-003 | Village Hub | (10, 17) | action | MQ-02 active | MQ-02 | Memorial Garden: first fragment collection (MF-01) | once |
 | EV-VH-004 | Village Hub | (10, 17) | action | MQ-02 active | MQ-02 | Remix Table tutorial; broadcast tutorial | once |
-| EV-HF-003 | Heartfield | (33, 28) | auto | MQ-04 active | MQ-04 | Stagnation Clearing cutscene: Lira's freezing | once |
+| EV-HF-003 | Heartfield | (33, 28) | auto | MQ-04 active | MQ-04 | Stagnation Clearing cutscene: Hana's freezing | once |
 | EV-SM-003 | Shimmer Marsh | (25, 35) | auto | GQ-02 active | GQ-02 | Verdance recall vision (30-sec cinematic) | once |
 | EV-HR-003 | Hollow Ridge | (24, 10) | auto | GQ-04 active | GQ-04 | Kinesis Spire recall vision | once |
 | EV-FV-003 | Flickerveil | (20, 20) | auto | GQ-03 active | GQ-03 | Luminos recall vision (requires K-04 equipped) | once |
 | EV-RF-003 | Resonance Fields | (25, 25) | auto | GQ-01 active | GQ-01 | Resonance recall vision | once |
-| EV-F3-002 | Fortress F3 | (5, 2) | auto | MQ-09 active | MQ-09 | Curator vignette: child playing in sunlit village | once |
-| EV-F3-003 | Fortress F3 | (10, 3) | auto | MQ-09 active | MQ-09 | Curator vignette: young Architect broadcasting | once |
-| EV-F3-004 | Fortress F3 | (15, 4) | auto | MQ-09 active | MQ-09 | Curator vignette: community dissolving | once |
-| EV-F3-005 | Fortress F3 | (10, 5) | auto | MQ-09 active | MQ-09 | Curator vignette: founding the Preservers | once |
-| EV-F3-007 | Fortress F3 | (10, 12) | auto | MQ-09 active | MQ-09 | Curator confrontation begins (dialogue sequence) | once |
+| EV-F3-002 | Fortress F3 | (5, 2) | auto | MQ-09 active | MQ-09 | Grym vignette: child playing in sunlit village | once |
+| EV-F3-003 | Fortress F3 | (10, 3) | auto | MQ-09 active | MQ-09 | Grym vignette: young Architect broadcasting | once |
+| EV-F3-004 | Fortress F3 | (15, 4) | auto | MQ-09 active | MQ-09 | Grym vignette: community dissolving | once |
+| EV-F3-005 | Fortress F3 | (10, 5) | auto | MQ-09 active | MQ-09 | Grym vignette: founding the Preservers | once |
+| EV-F3-007 | Fortress F3 | (10, 12) | auto | MQ-09 active | MQ-09 | Grym confrontation begins (dialogue sequence) | once |
 | EV-F3-012 | Fortress F3 | (10, 18) | auto | MQ-10 complete | MQ-10 | Endgame cinematic: world blooms | once |
 
 ### Dungeon Lore Visions
@@ -425,7 +425,7 @@ Cutscene events and narrative cinematics, sorted by quest chain.
 | EV-D4-010 | Depths L4 R5 | (15, 17) | auto | — | Fourth Verse vision: performers dissolving (20-sec) | once |
 | EV-D4-013 | Depths L4 R6 | (2, 18) | action | — | Performer's note: "We play not because the world needs saving" | once |
 | EV-D5-002 | Depths L5 R1 | (10, 1) | auto | — | Threshold vision: montage of all dissolved civilizations (10-sec) | once |
-| EV-D5-010 | Depths L5 R6 | (2, 15) | action | — | Curator image: "Before the crystal. Before the title." | once |
+| EV-D5-010 | Depths L5 R6 | (2, 15) | action | — | Grym image: "Before the crystal. Before the title." | once |
 | EV-D5-011 | Depths L5 R7 | (7, 15) | auto | — | Civilization vision: oldest dissolution (30-sec cinematic) | once |
 | EV-D5-017 | Depths L5 R9 | (17, 14) | action | — | Stone tablet: "The First Memory is not a beginning. It is a question." | once |
 
@@ -439,7 +439,7 @@ All forced combat events and boss triggers.
 
 | Event ID | Map | Position | Boss | Level | HP | Quest | Description |
 |----------|-----|----------|------|-------|-----|-------|-------------|
-| EV-HF-003 | Heartfield | (33, 28) | B-01: Stagnation Heart | 13-16 | — | MQ-04 | Emerges from crystal when player broadcasts pot. 3+ at Lira's form (Act II return) |
+| EV-HF-003 | Heartfield | (33, 28) | B-01: Stagnation Heart | 13-16 | — | MQ-04 | Emerges from crystal when player broadcasts pot. 3+ at Hana's form (Act II return) |
 
 ### Dungeon Boss Events
 
@@ -449,9 +449,9 @@ All forced combat events and boss triggers.
 | EV-D3-018/019 | Depths L3 R8 | (10, 20) | action → auto | B-03b: The Resonant King | 16-18 | 550 | Harmonic speech | Resonant Collapse |
 | EV-D4-014/015 | Depths L4 R7 | (10, 22) | action → auto | B-03c: The Conductor | 19-21 | 650 | "I've been holding this last note for a thousand years." | Full HP/SP heal |
 | EV-D5-019/020 | Depths L5 R10 | (10, 21) | action → auto | B-03d: The First Dreamer | 24-26 | 1,200 (2-phase) | "Show me what you remember." | Peaceful dissolution |
-| EV-F1-016/017 | Fortress F1 R6 | (10, 16) | action → auto | B-04a: Curator's Right Hand | 24-26 | 750 | "Every step forward is a moment that can never be perfect again." | Curator's Lament |
+| EV-F1-016/017 | Fortress F1 R6 | (10, 16) | action → auto | B-04a: Grym's Right Hand | 24-26 | 750 | "Every step forward is a moment that can never be perfect again." | Grym's Lament |
 | EV-F2-016/017 | Fortress F2 R6 | (15, 17) | action → auto | B-04b: Archive Keeper | 26-28 | 900 | "That's not creation. That's vandalism." | +15% all stats for Fortress |
-| EV-F3-007/008 | Fortress F3 R2 | (10, 12)/(10, 15) | auto → action | B-05: The Curator | — | — (dialogue) | Varies by carried items/recalled gods | Endgame bloom |
+| EV-F3-007/008 | Fortress F3 R2 | (10, 12)/(10, 15) | auto → action | B-05: Grym | — | — (dialogue) | Varies by carried items/recalled gods | Endgame bloom |
 
 ### Forced Encounter Events
 
@@ -528,13 +528,13 @@ All puzzle mechanics with their event wiring.
 | Paradox Corridor | Depths L5 R4 | EV-D5-005, 006 | Walk backward to progress | No penalty, just no progress | Press opposite direction |
 | Crystal Receptacle | Fortress F1 R4 | EV-F1-008, 009, 010, 011 | Broadcast 3 emotion-matched fragments | None | Joy at (11,7) → Sorrow at (15,7) → Fury at (19,7) |
 | Moral Dilemma Gallery | Fortress F2 R3 | EV-F2-007, 008, 009 | Free or leave 3 frozen NPCs | None (choice-based) | Broadcast any fragment to free; skip to leave |
-| Curator Dialogue | Fortress F3 R2 | EV-F3-007, 008 | Branching dialogue based on items/recalled gods | None | Varies: K-06, K-13, MF-09 influence outcomes |
+| Grym Dialogue | Fortress F3 R2 | EV-F3-007, 008 | Branching dialogue based on items/recalled gods | None | Varies: K-06, K-13, MF-09 influence outcomes |
 
 ### Stagnation Zone Puzzles
 
 | Puzzle | Map | Unlock Condition | Fail Penalty | Notes |
 |--------|-----|-----------------|-------------|-------|
-| Tutorial Break | Heartfield (35, 29) | Any fragment, potency 1+ | None | Guided by Lira's flashback |
+| Tutorial Break | Heartfield (35, 29) | Any fragment, potency 1+ | None | Guided by Hana's flashback |
 | Fury Break | Sunridge (32, 14) | Fury emotion, potency 2+ | None (wrong fragment type = no effect) | First emotion-specific puzzle |
 | Dual Requirement | Shimmer Marsh (41, 10) | Fury + Water, potency 3+ | None | Teaches remix mechanic |
 | Sequential Broadcasts | Hollow Ridge (36,28)→(39,30)→(35,31) | Earth → Fire → Wind, any potency | Wrong order resets all waypoints | 3 separate fragments needed |
@@ -726,7 +726,7 @@ Complete stagnation break event sequences. Full zone details in [stagnation-zone
 
 | Zone | Map | Focal Point | Unlock Requirement | Break Sequence | Post-Break Combat | Vibrancy Reward |
 |------|-----|-------------|-------------------|---------------|-------------------|----------------|
-| Heartfield Clearing | Heartfield | (35, 29) | Any pot. 1+ | Lira flashback → broadcast → shatter | None (tutorial) | +10 |
+| Heartfield Clearing | Heartfield | (35, 29) | Any pot. 1+ | Hana flashback → broadcast → shatter | None (tutorial) | +10 |
 | Sunridge Outpost | Sunridge | (32, 14) | Fury pot. 2+ | Broadcast → shatter → combat | 2 Scouts (E-PV-01) | +10 |
 | Shimmer Marsh Bog | Shimmer Marsh | (41, 10) | Fury+Water pot. 3+ | Navigate crystals → broadcast → shatter → combat | 2 Scouts + 1 Agent (E-PV-02) | +10 |
 | Hollow Ridge Pass | Hollow Ridge | (37, 30) | Earth→Fire→Wind seq. | Waypoint 1 → 2 → 3 → gate shatters → combat | 3 Agents (E-PV-02) | +10 |

@@ -6,5 +6,6 @@ import { Armor } from '@rpgjs/database';
   name: "Traveler's Tunic",
   description: 'A simple, comfortable tunic suitable for long journeys.',
   pdef: 3,
+  // price: 0 (omit or undefined for not purchasable)
 })
 export default class TravelersTunic {}

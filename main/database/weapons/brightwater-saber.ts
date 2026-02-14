@@ -1,5 +1,8 @@
 import { Weapon } from '@rpgjs/database';
 
+// Special Effect: Water element on basic attacks
+// Intended for: Knight
+// Weapon category: Sword
 // Tier: 2
 @Weapon({
   id: 'W-SW-04',

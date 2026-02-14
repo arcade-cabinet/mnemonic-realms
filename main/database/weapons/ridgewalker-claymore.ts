@@ -1,5 +1,8 @@
 import { Weapon } from '@rpgjs/database';
 
+// Special Effect: +10% ATK when HP above 75%
+// Intended for: Knight
+// Weapon category: Sword
 // Tier: 2
 @Weapon({
   id: 'W-SW-05',

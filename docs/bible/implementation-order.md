@@ -98,7 +98,7 @@
 | 4b | Equipment system: equip/unequip weapons and armor, stat recalculation |
 | 4c | Consumable use: HP/SP restore, status cure, buff application |
 | 4d | Shop system: buy/sell with gold, per-shop inventory lists from `overworld-layout.md` |
-| 4e | Maren's General Shop (Village Hub), Torvan's Blacksmith, specialty shops |
+| 4e | Khali's General Shop (Village Hub), Hark's Blacksmith, specialty shops |
 
 ---
 
@@ -110,8 +110,8 @@
 
 | Task | Description |
 |------|-------------|
-| 5a | Wire all Village Hub NPCs: Callum (EV-VH-001), Lira (EV-VH-002), Maren (EV-VH-005), Torvan (EV-VH-006), Ren (EV-VH-007), Quest Board (EV-VH-008) |
-| 5b | Wire Settled Lands NPCs: Farmer Gale, Lead Woodcutter, Fisher Tam, Waystation Keeper, Aric, Sera |
+| 5a | Wire all Village Hub NPCs: Artun (EV-VH-001), Hana (EV-VH-002), Khali (EV-VH-005), Hark (EV-VH-006), Nyro (EV-VH-007), Quest Board (EV-VH-008) |
+| 5b | Wire Settled Lands NPCs: Farmer Gale, Lead Woodcutter, Fisher Tam, Waystation Keeper, Janik, Sera |
 | 5c | Dialogue system: conditional text based on quest state, vibrancy level, items carried |
 | 5d | Rest points: The Bright Hearth (inn), Ridgetop Waystation — full HP/SP restore |
 
@@ -126,10 +126,10 @@
 | Task | Description |
 |------|-------------|
 | 6a | Quest state engine: accept, track objectives, complete, reward. Quest Board UI per `ui-spec.md` |
-| 6b | MQ-01: The Architect's Awakening — Callum intro, Lira gives K-01, tutorial |
-| 6c | MQ-02: First Broadcast — Lira teaches memory ops, gives K-03, first broadcast tutorial |
+| 6b | MQ-01: The Architect's Awakening — Artun intro, Hana gives K-01, tutorial |
+| 6c | MQ-02: First Broadcast — Hana teaches memory ops, gives K-03, first broadcast tutorial |
 | 6d | MQ-03: The Settled Lands — explore 4 zones, meet NPCs, side quest availability |
-| 6e | MQ-04: The Stagnation — Heartfield stagnation event, Lira freezes, B-01 boss fight |
+| 6e | MQ-04: The Stagnation — Heartfield stagnation event, Hana freezes, B-01 boss fight |
 | 6f | SQ-01 through SQ-05: Village and Settled Lands side quests |
 | 6g | Treasure chests: all CH-VH, CH-HF, CH-AG, CH-MB, CH-SR chests from `event-placement.md` |
 
@@ -179,7 +179,7 @@
 | 9a | Heartfield Stagnation Clearing: frozen zone visual, Preserver scout encounters |
 | 9b | B-01 Stagnation Heart boss: multi-phase fight per `enemies-catalog.md` |
 | 9c | Stagnation breaking mechanic: broadcast fragments to dissolve frozen tiles |
-| 9d | MQ-04 climax: Lira freezes, emotional beat, player earns MF-03/MF-04 |
+| 9d | MQ-04 climax: Hana freezes, emotional beat, player earns MF-03/MF-04 |
 
 ---
 
@@ -211,7 +211,7 @@
 | 11b | Frontier vibrancy gating: content unlocks at 34/50/67 thresholds per `frontier-zones.md` |
 | 11c | Flickerveil flicker system: per-object timers, 3-state cycling, stabilization on broadcast |
 | 11d | Resonance Fields audio system: per-stone chord type, proximity-based audio layers |
-| 11e | Companion system: Lira (Act I), Callum (Act II), Petra (Act II) with companion AI |
+| 11e | Companion system: Hana (Act I), Artun (Act II), Nel (Act II) with companion AI |
 
 ---
 
@@ -239,11 +239,11 @@
 
 | Task | Description |
 |------|-------------|
-| 13a | MQ-05: Into the Frontier — zone unlocks, Callum joins party |
+| 13a | MQ-05: Into the Frontier — zone unlocks, Artun joins party |
 | 13b | MQ-06: Recall the First God — drives to any shrine |
-| 13c | MQ-07: The Curator's Endgame — Sketch borders open |
+| 13c | MQ-07: Grym's Endgame — Sketch borders open |
 | 13d | SQ-06 through SQ-13: Frontier side quests |
-| 13e | Frontier NPCs: Wynn, Petra, Solen, Lead Audiomancer, Elyn |
+| 13e | Frontier NPCs: Vash, Nel, Reza, Lead Audiomancer, Julz |
 | 13f | Frontier stagnation zones: Stagnation Bog, Shattered Pass, Preserver Cathedral |
 | 13g | All Frontier treasure chests (CH-SM, CH-HR, CH-FV, CH-RF series) |
 
@@ -278,7 +278,7 @@
 | 15c | `half-drawn-forest.tmx` (40×40) | Line-art canopy, Living Sketch, Archive of Intentions |
 | 15d | Solidification mechanic | Per-tile boolean, collision layer updates in real-time |
 | 15e | Fortress F1-F3 maps | Gallery of Moments, Archive of Perfection, First Memory Chamber |
-| 15f | B-04a/B-04b/B-05 boss encounters | Fortress bosses + Curator dialogue encounter |
+| 15f | B-04a/B-04b/B-05 boss encounters | Fortress bosses + Grym dialogue encounter |
 
 ---
 
@@ -291,9 +291,9 @@
 | Task | Description |
 |------|-------------|
 | 16a | MQ-08: Through the Sketch — zone exploration, solidification gameplay |
-| 16b | MQ-09: The Preserver Fortress — 3-floor dungeon, boss sequence, Curator confrontation |
+| 16b | MQ-09: The Preserver Fortress — 3-floor dungeon, boss sequence, Grym confrontation |
 | 16c | MQ-10: The First Memory Remix — final ceremony, world bloom, ending |
-| 16d | SQ-14: The Stagnation Breaker — Lira's liberation |
+| 16d | SQ-14: The Stagnation Breaker — Hana's liberation |
 | 16e | Sketch treasure chests (CH-HF2 series) |
 | 16f | Endgame bloom: all zones → Vivid tier, NPC evolutions, final ambient state |
 

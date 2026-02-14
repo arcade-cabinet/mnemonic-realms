@@ -1,5 +1,7 @@
 import { Enemy, Item } from '@rpgjs/database';
 
+// In a full project, these item classes would typically be in their own files
+// and imported. For a single-file output, they are defined here.
 @Item({
   id: 'C-SC-02',
   name: 'Haste Charm',
@@ -30,9 +32,16 @@ export class C_SP_05 {}
     exp: 40,
     gold: 18,
     items: [
-      { nb: 1, item: C_SC_02, chance: 0.1 },
-      { nb: 1, item: C_SP_05, chance: 0.15 },
+      { nb: 1, item: C_SC_02, chance: 0.1 }, // 10% chance for Haste Charm
+      { nb: 1, item: C_SP_05, chance: 0.15 }, // 15% chance for Smoke Bomb
     ],
   },
 })
-export default class HighlandHawk {}
+export default class HighlandHawk {
+  // Context:
+  // - Zone: Sunridge
+  // - Fragment affinity: Fury / Wind
+  // Abilities:
+  // - Dive Strike: Physical attack. Deals ATK * 1.5 damage. If the Hawk acts first this turn, deals ATK * 1.8 instead (Speed-bonus physical attack).
+  // - Evasive Climb: For 1 turn, the Hawk cannot be targeted by single-target physical attacks (it's circling out of range). AoE and magic still hit. Used every 3rd turn.
+}

@@ -653,7 +653,7 @@ When "Remix Now" is tapped:
 | ┌─ Side Quest ──────────────────┐|
 | │ ○ Deliver herbs to the        │|
 | │   Marsh Hermit                │|
-| │   NPC: Wynn (Shimmer Marsh)   │|
+| │   NPC: Vash (Shimmer Marsh)   │|
 | └───────────────────────────────┘|
 |                                   |
 +-----------------------------------+
@@ -674,7 +674,7 @@ When "Remix Now" is tapped:
 
 ## Screen 11: Shop Interface
 
-**When shown**: When interacting with a shop NPC (Maren, Torvan, Millbrook specialty shop, traveling merchants).
+**When shown**: When interacting with a shop NPC (Khali, Hark, Millbrook specialty shop, traveling merchants).
 
 **Purpose**: Buy and sell items.
 
@@ -682,7 +682,7 @@ When "Remix Now" is tapped:
 
 ```
 +-----------------------------------+
-| ◄ Maren's Shop        Gold: 450  |
+| ◄ Khali's Shop        Gold: 450  |
 +-----------------------------------+
 | [Buy] [Sell]                      |  ← Tab bar
 +-----------------------------------+
@@ -852,9 +852,9 @@ The ending is a **multi-phase sequence**, not a single screen:
 - BGM-BLOOM plays
 - No UI elements — pure visual spectacle
 
-**Phase 2: The Curator's Resolution** (1 minute)
+**Phase 2: Grym's Resolution** (1 minute)
 - Dialogue panel over the brightened Preserver Fortress
-- The Curator's final dialogue (varies by player choices — see story scripts)
+- Grym's final dialogue (varies by player choices — see story scripts)
 - Player responds with a single line (auto-selected, not a choice — this is the narrative resolution)
 
 **Phase 3: Credits** (4 minutes)

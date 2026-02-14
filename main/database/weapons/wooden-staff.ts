@@ -1,5 +1,7 @@
 import { Weapon } from '@rpgjs/database';
 
+// Intended for: Cleric
+// Weapon Category: Staff
 // Tier: 1
 @Weapon({
   id: 'W-ST-01',

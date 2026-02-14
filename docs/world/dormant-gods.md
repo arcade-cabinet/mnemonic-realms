@@ -17,7 +17,7 @@ Recall is **permanent and irreversible** within a single playthrough. The player
 ### How Recall Works
 
 1. The player discovers a dormant god's shrine in the Frontier (each shrine is marked as a key landmark in [geography.md](geography.md)).
-2. Approaching the shrine triggers a **recall vision**: a 30-second cinematic sequence showing fragments of the dissolved civilization that created the god. The vision is narrated by Callum (via a letter the player receives before entering the Frontier — see [characters.md](../story/characters.md)).
+2. Approaching the shrine triggers a **recall vision**: a 30-second cinematic sequence showing fragments of the dissolved civilization that created the god. The vision is narrated by Artun (via a letter the player receives before entering the Frontier — see [characters.md](../story/characters.md)).
 3. The shrine presents the player with four pedestals, each marked with an emotion glyph: **Joy** (sun), **Fury** (flame), **Sorrow** (raindrop), **Awe** (star).
 4. The player places a memory fragment of the chosen emotion type onto the corresponding pedestal. The fragment must be **potency 3 or higher** (ensures the player has engaged meaningfully with the memory system before making this permanent choice).
 5. A **recall transformation** plays: the dormant god rises, reshapes, and assumes its new form. The surrounding zone immediately gains +15 vibrancy. The god speaks its new name and announces its domain.
@@ -25,7 +25,7 @@ Recall is **permanent and irreversible** within a single playthrough. The player
 
 ### Recall Order
 
-The player can recall the four gods in **any order**. The gods' Frontier zones are accessible as soon as Act II begins (after the mountain pass north of the Village Hub opens following Lira's freezing — see [geography.md](geography.md)).
+The player can recall the four gods in **any order**. The gods' Frontier zones are accessible as soon as Act II begins (after the mountain pass north of the Village Hub opens following Hana's freezing — see [geography.md](geography.md)).
 
 The **first god recalled** has additional significance: it determines the player's **subclass branch** (see [classes.md](../design/classes.md)):
 
@@ -137,9 +137,9 @@ The fragment is consumed in the recall. This costs the player a meaningful resou
 - Active (once per battle): "Tacet's Hush" — silence all enemies for 2 turns (enemies cannot use magic/special abilities, only basic attacks)
 
 **NPC Behavior Changes**:
-- NPCs become more contemplative and measured. Dialogue becomes shorter but denser — NPCs share deeper, more personal memories. Previously guarded NPCs (the Marsh Hermit Wynn, Callum during his reflective moments) open up with new, lore-rich dialogue.
+- NPCs become more contemplative and measured. Dialogue becomes shorter but denser — NPCs share deeper, more personal memories. Previously guarded NPCs (the Marsh Hermit Vash, Artun during his reflective moments) open up with new, lore-rich dialogue.
 - The Listener's Camp audiomancers become "Silence Readers" — they can now detect dissolved civilization memories by listening to what's NOT there. They offer a new service: analyzing any memory fragment the player brings them and revealing its hidden backstory (bonus lore text per fragment).
-- Preserver agents in the world become visibly unsettled. Their dialogue changes from confident to questioning. Some express doubt about the Curator's plan.
+- Preserver agents in the world become visibly unsettled. Their dialogue changes from confident to questioning. Some express doubt about Grym's plan.
 
 **Side Quests Unlocked**:
 1. **"The Silent Path"** — Tacet reveals that there is a hidden route through any stagnation zone that doesn't require force to traverse — a path of perfect silence that the Preservers' crystals cannot detect. The player must find and walk 3 Silent Paths (one in Shimmer Marsh's Stagnation Bog, one in Hollow Ridge's Shattered Pass, one in Resonance Fields' Cathedral perimeter). Each path is invisible until the player is within 3 tiles, revealed by Tacet's "sound shadow" markers. Walking the paths doesn't break the stagnation but lets the player access areas behind them without combat. Reward: 350 gold, 1 potency-4 sorrow fragment, and Silent Tread (accessory: encounter rate reduced by 50% while equipped).
@@ -190,7 +190,7 @@ The fragment is consumed in the recall. This costs the player a meaningful resou
 
 **Appearance**: A massive half-formed tree trunk, 10 tiles wide at the base, rising 5 tiles into the air before ending in an unfinished crown of branches that trail off into nothing. The bark is deep brown shot through with veins of vivid green light that pulse slowly, like a heartbeat. Roots extend 15 tiles in every direction, glowing beneath the marsh water. The air around the trunk smells of rain and new growth. Small shoots and seedlings sprout wherever the roots surface, even through the muted marsh soil.
 
-**Discovery trigger**: The player must first speak to the Marsh Hermit Wynn (12, 15) in Shimmer Marsh. Wynn has been studying the hollow for years and explains that the tree is not dead — it's waiting. The player must clear a path through dense marsh vegetation (requires broadcasting an earth or water element fragment into a blocked root cluster at (20, 30) to make the roots retract and reveal the path to the shrine).
+**Discovery trigger**: The player must first speak to the Marsh Hermit Vash (12, 15) in Shimmer Marsh. Vash has been studying the hollow for years and explains that the tree is not dead — it's waiting. The player must clear a path through dense marsh vegetation (requires broadcasting an earth or water element fragment into a blocked root cluster at (20, 30) to make the roots retract and reveal the path to the shrine).
 
 ### Recall Options
 
@@ -214,7 +214,7 @@ The fragment is consumed in the recall. This costs the player a meaningful resou
 
 **NPC Behavior Changes**:
 - Farming and gardening NPCs across the world become more productive. Heartfield farmers report record harvests. Millbrook's riverside vegetation flourishes. New "gardener" NPCs appear in settlements, offering plant-based consumables at discount prices.
-- Wynn the Marsh Hermit is overjoyed and becomes Floriana's first acolyte. He relocates to Verdance's Hollow (now a blooming glade) and offers advanced herbalism quests.
+- Vash the Marsh Hermit is overjoyed and becomes Floriana's first acolyte. He relocates to Verdance's Hollow (now a blooming glade) and offers advanced herbalism quests.
 - Wild animals become less hostile in zones adjacent to Shimmer Marsh. Some overworld enemies in Settled Lands zones become non-aggressive (they're too well-fed to bother with combat).
 
 **Side Quests Unlocked**:
@@ -241,7 +241,7 @@ The fragment is consumed in the recall. This costs the player a meaningful resou
 
 **NPC Behavior Changes**:
 - Nature-aligned NPCs become fierce advocates for expansion. Woodcutter's Camp (Ambergrove) workers refuse to cut trees and instead help the forest grow. Frontier settlers build with living wood rather than cutting timber.
-- Wynn the Marsh Hermit becomes alarmed at the aggressive growth but ultimately accepts it as "nature's answer to stagnation." He offers quests to help direct Thornweald's energy productively rather than destructively.
+- Vash the Marsh Hermit becomes alarmed at the aggressive growth but ultimately accepts it as "nature's answer to stagnation." He offers quests to help direct Thornweald's energy productively rather than destructively.
 - Preserver agents in Shimmer Marsh and adjacent zones retreat to more defensible positions. Their dialogue reveals fear of the "wild god."
 
 **Side Quests Unlocked**:
@@ -267,8 +267,8 @@ The fragment is consumed in the recall. This costs the player a meaningful resou
 - Active (once per battle): "Autumnus's Harvest" — sacrifice 20% of the player's current HP to deal 200% of that amount as damage to a single target. If the target is defeated by this attack, the player recovers all sacrificed HP plus 10% more.
 
 **NPC Behavior Changes**:
-- Elder NPCs (Callum, Wynn, the Ridgewalker Camp elders) become reflective and share deeper memories they'd been holding back — stories of loss, change, and acceptance. These conversations yield unique sorrow-type fragments (1 per elder NPC, potency 3-4).
-- Wynn the Marsh Hermit finds peace with his decades of solitary research. He shares his life's work with the player: a comprehensive map of all dissolved civilization memory deposits in the game (reveals hidden fragment locations in all Depths levels).
+- Elder NPCs (Artun, Vash, the Ridgewalker Camp elders) become reflective and share deeper memories they'd been holding back — stories of loss, change, and acceptance. These conversations yield unique sorrow-type fragments (1 per elder NPC, potency 3-4).
+- Vash the Marsh Hermit finds peace with his decades of solitary research. He shares his life's work with the player: a comprehensive map of all dissolved civilization memory deposits in the game (reveals hidden fragment locations in all Depths levels).
 - Young NPCs across settlements begin asking philosophical questions about growth and endings. New dialogue options appear that are gentler, more reflective.
 
 **Side Quests Unlocked**:
@@ -294,7 +294,7 @@ The fragment is consumed in the recall. This costs the player a meaningful resou
 - Active (once per battle): "Sylvanos's Embrace" — target one ally. For 3 turns, they are rooted in place (cannot move to a different battle position) but gain +30% DEF, +30% INT, and immunity to knockback/displacement effects.
 
 **NPC Behavior Changes**:
-- Scholar and researcher NPCs become more knowledgeable. Callum gains new dialogue explaining connections between dissolved civilizations he hadn't previously understood. Wynn develops new theories about how the Rootwalker network functioned.
+- Scholar and researcher NPCs become more knowledgeable. Artun gains new dialogue explaining connections between dissolved civilizations he hadn't previously understood. Vash develops new theories about how the Rootwalker network functioned.
 - "Root Speaker" NPCs appear at 3 locations (Heartfield, Ambergrove, Millbrook) — these are people who have learned to communicate through the root network. They offer inter-zone message delivery and can relay information about events happening in distant zones (gameplay utility: tells the player about Preserver movements, new quest triggers, and vibrancy changes in zones they haven't recently visited).
 - Underground creatures become less hostile: Depths enemies have a 15% chance to be non-aggressive (the root network calms them).
 
@@ -320,7 +320,7 @@ The fragment is consumed in the recall. This costs the player a meaningful resou
 
 **Appearance**: A column of pure white light descending from a gap in the forest canopy, as if the sky had a hole and was pouring concentrated daylight into this single clearing. At the column's center, a suspended prism — a geometric crystal roughly human-sized — rotates slowly, splitting the light into faint rainbow patterns on the surrounding trees. The prism hums at a frequency too high to hear but felt as warmth on the skin. Approaching it causes the player's shadow to multiply — one shadow per nearby tree, all pointing different directions.
 
-**Discovery trigger**: The player must first visit the Flickering Village (35, 30) in Flickerveil and speak with the village elder, a woman named Solen who has studied the grove for her entire life. She gives the player a "Light Lens" (key item) — a polished crystal that, when held up in the grove, focuses the scattered light beams into a coherent path leading to the prism's base. Without the lens, the light column is blinding and the player cannot approach within 5 tiles.
+**Discovery trigger**: The player must first visit the Flickering Village (35, 30) in Flickerveil and speak with the village elder, a woman named Reza who has studied the grove for her entire life. She gives the player a "Light Lens" (key item) — a polished crystal that, when held up in the grove, focuses the scattered light beams into a coherent path leading to the prism's base. Without the lens, the light column is blinding and the player cannot approach within 5 tiles.
 
 ### Recall Options
 
@@ -344,7 +344,7 @@ The fragment is consumed in the recall. This costs the player a meaningful resou
 
 **NPC Behavior Changes**:
 - NPCs become optimistic and proactive. Frontier settlers begin expansion projects. The Flickering Village residents start building a road toward the Settled Lands. Ridgewalker Camp begins constructing a proper waystation.
-- Solen (Flickerveil elder) becomes Solara's high priestess and offers a new service: "Light Reading" — she can analyze any memory fragment and predict what world effect broadcasting it at a specific location would have (tells the player exact vibrancy gain before committing the fragment).
+- Reza (Flickerveil elder) becomes Solara's high priestess and offers a new service: "Light Reading" — she can analyze any memory fragment and predict what world effect broadcasting it at a specific location would have (tells the player exact vibrancy gain before committing the fragment).
 - Children NPCs appear in settlements for the first time (the world is stable enough for families to feel safe raising kids). They offer simple, joyful quests with small but unique rewards.
 
 **Side Quests Unlocked**:
@@ -371,12 +371,12 @@ The fragment is consumed in the recall. This costs the player a meaningful resou
 
 **NPC Behavior Changes**:
 - NPCs become more honest and direct. Dialogue that was previously evasive or cautious becomes blunt. NPCs who were hiding secrets reveal them (several minor NPCs have small hidden quest hooks that only become visible after Pyralis's recall).
-- Solen (Flickerveil elder) becomes conflicted — she loves that the flickering is gone but fears Pyralis's harshness. Her dialogue explores the tension between truth and gentleness.
+- Reza (Flickerveil elder) becomes conflicted — she loves that the flickering is gone but fears Pyralis's harshness. Her dialogue explores the tension between truth and gentleness.
 - Preserver agents who encounter the player begin with a new dialogue option: "We know you can see us. There's no point hiding." Some agents offer information in exchange for being left alone (yields fragments and tactical intel).
 
 **Side Quests Unlocked**:
 1. **"The Burning Archive"** — Pyralis demands the liberation of the Resonance Archive (10, 10) in Flickerveil. The Preserver garrison (3 agents + defenses) is weakened by Pyralis's light and can be challenged directly. The battle is easier than normal (agents have -20% stats due to the searing light exposing their weaknesses). Upon clearing the archive, the player gains access to all 5 fragments within and the archive becomes a permanent lore library — visiting it allows the player to "read" any dissolved memory fragment for bonus backstory text. Reward: 5 collectible fragments (potency 3-5 mix), 500 gold, and the Lens of Truth (accessory: +15 INT, reveals enemy HP bars permanently, critical hits deal 20% bonus damage).
-2. **"Shadows of the Curator"** — Pyralis reveals that the Curator has been projecting "shadow agents" — illusory Preservers that aren't real but consume the player's time and resources. These shadow agents are found in 3 locations (one in Shimmer Marsh, one in Hollow Ridge, one in Resonance Fields). The player must travel to each location and use Pyralis's light to expose them (broadcast a light-element fragment at each shadow). Exposing all 3 reveals a hidden message from the Curator, providing early insight into the Curator's true motivation and the location of a secret Depths entrance. Reward: 400 gold, 1 potency-4 fury fragment, and early access to a Depths Level 5 shortcut.
+2. **"Shadows of Grym"** — Pyralis reveals that Grym has been projecting "shadow agents" — illusory Preservers that aren't real but consume the player's time and resources. These shadow agents are found in 3 locations (one in Shimmer Marsh, one in Hollow Ridge, one in Resonance Fields). The player must travel to each location and use Pyralis's light to expose them (broadcast a light-element fragment at each shadow). Exposing all 3 reveals a hidden message from Grym, providing early insight into Grym's true motivation and the location of a secret Depths entrance. Reward: 400 gold, 1 potency-4 fury fragment, and early access to a Depths Level 5 shortcut.
 
 ---
 
@@ -397,12 +397,12 @@ The fragment is consumed in the recall. This costs the player a meaningful resou
 - Active (once per battle): "Vesperis's Lament" — all enemies have their ATK and INT reduced by 25% for 3 turns (the twilight saps their aggression).
 
 **NPC Behavior Changes**:
-- NPCs become gentler and more reflective. Callum shares memories of his youth that he normally keeps private. Frontier NPCs stop framing everything as a fight against the Preservers and start talking about coexistence.
-- Solen (Flickerveil elder) weeps with relief — the twilight is what she always believed the grove should become. She offers the player a unique "Twilight Meditation" interaction that fully restores HP/SP and grants a temporary +10% XP boost for 10 minutes.
-- Preserver agents in Flickerveil become visibly conflicted. 2 of the 3 garrison agents approach the player for voluntary dialogue, expressing doubts about the Curator's absolute stance. One offers to defect.
+- NPCs become gentler and more reflective. Artun shares memories of his youth that he normally keeps private. Frontier NPCs stop framing everything as a fight against the Preservers and start talking about coexistence.
+- Reza (Flickerveil elder) weeps with relief — the twilight is what she always believed the grove should become. She offers the player a unique "Twilight Meditation" interaction that fully restores HP/SP and grants a temporary +10% XP boost for 10 minutes.
+- Preserver agents in Flickerveil become visibly conflicted. 2 of the 3 garrison agents approach the player for voluntary dialogue, expressing doubts about Grym's absolute stance. One offers to defect.
 
 **Side Quests Unlocked**:
-1. **"The Defector"** — One Preserver agent (name: Elyn) from the Flickerveil garrison approaches the player after Vesperis's recall and asks to leave the Preservers. The player must escort Elyn safely to the Flickering Village (avoiding 2 Preserver ambush encounters along the way). Once safe, Elyn provides detailed intelligence about the Preserver Fortress layout (reveals the map layout of Floor 1 in the Act III final dungeon, giving the player advance knowledge). Elyn becomes a permanent NPC at the Flickering Village, offering Preserver-history lore and selling unique items: Crystal Dust (consumable, 200g, removes all debuffs) and Stasis Shard (consumable, 150g, freezes one enemy for 1 turn). Reward: 400 gold, 1 potency-4 sorrow fragment, Elyn's intelligence report (key item), and access to Elyn's shop.
+1. **"The Defector"** — One Preserver agent (name: Julz) from the Flickerveil garrison approaches the player after Vesperis's recall and asks to leave the Preservers. The player must escort Julz safely to the Flickering Village (avoiding 2 Preserver ambush encounters along the way). Once safe, Julz provides detailed intelligence about the Preserver Fortress layout (reveals the map layout of Floor 1 in the Act III final dungeon, giving the player advance knowledge). Julz becomes a permanent NPC at the Flickering Village, offering Preserver-history lore and selling unique items: Crystal Dust (consumable, 200g, removes all debuffs) and Stasis Shard (consumable, 150g, freezes one enemy for 1 turn). Reward: 400 gold, 1 potency-4 sorrow fragment, Julz's intelligence report (key item), and access to Julz's shop.
 2. **"The Twilight Vigil"** — Vesperis asks the player to hold a vigil at each of the 4 dormant god shrine locations (including ones not yet recalled). At each shrine, the player broadcasts a sorrow-type fragment and witnesses a "twilight vision" — a 30-second cinematic showing the dissolved civilization that created that god during their final moments before dissolution. These visions are among the game's most emotionally resonant content: each one shows people choosing to let go, not in despair but in trust. Completing all 4 vigils grants a deep understanding of why civilizations dissolve. Reward: 500 gold, 4 unique lore entries (permanently viewable in the memory collection menu), 1 potency-5 sorrow fragment, and Vesperis's Lantern (key item: when used at any Resonance Stone, reveals the full emotional spectrum of all fragments that stone contains, allowing the player to choose before collecting).
 
 ---
@@ -425,12 +425,12 @@ The fragment is consumed in the recall. This costs the player a meaningful resou
 
 **NPC Behavior Changes**:
 - NPCs become curious and experimental. Frontier settlers try new building techniques, new crops, new social arrangements. The Flickering Village becomes a hub of innovation.
-- Solen (Flickerveil elder) is delighted and becomes a "Prism Scholar" — she begins cataloging all the different ways light behaves in the world, offering unique lore each time the player visits.
+- Reza (Flickerveil elder) is delighted and becomes a "Prism Scholar" — she begins cataloging all the different ways light behaves in the world, offering unique lore each time the player visits.
 - Some NPCs develop the ability to see Resonance Stone memory content without touching the stones (a visual echo that plays near the stone's surface). These NPCs can preview fragment contents before the player collects them.
 
 **Side Quests Unlocked**:
 1. **"The Spectrum Walk"** — Prisma asks the player to experience every biome in the game through her prismatic lens. The player must visit 7 biome types (village, grassland, forest, riverside, mountain, marsh, plains) and broadcast a light-element fragment in each. At each location, the biome temporarily shifts to a prismatic variant for 30 seconds — a visual feast showing the biome in all its potential color states simultaneously. Each visit yields a unique "spectrum fragment" (potency 3, prismatic emotion type). Collecting all 7 and bringing them to Luminos Grove unlocks a global visual upgrade: subtle rainbow shimmer on all vivid-tier tiles. Reward: 7 prismatic fragments, 500 gold, and the Kaleidoscope Lens (accessory: +10 INT, +10 AGI, prismatic fragment drop rate doubled to 30%).
-2. **"The Many-Colored Truth"** — Prisma reveals that the Curator's worldview is monochromatic — they see only one "correct" state for each memory. The player must find 4 "frozen perspectives" in stagnation zones (one per Frontier stagnation zone). Each frozen perspective is a crystallized moment that the Curator considers "perfect." The player broadcasts a prismatic or light-element fragment into each one, causing it to refract into multiple versions — showing that the "perfect" moment actually contained many interpretations. This doesn't break the stagnation zone but plants seeds of doubt in the crystal structure. In Act III, these seeds cause visual cracks in the Preserver Fortress walls. Reward: 400 gold, 4 prismatic fragments, and the Curator's Doubt (key item: in the final confrontation with the Curator, provides a unique dialogue option that makes the Curator hesitate, removing one phase from the final encounter).
+2. **"The Many-Colored Truth"** — Prisma reveals that Grym's worldview is monochromatic — they see only one "correct" state for each memory. The player must find 4 "frozen perspectives" in stagnation zones (one per Frontier stagnation zone). Each frozen perspective is a crystallized moment that Grym considers "perfect." The player broadcasts a prismatic or light-element fragment into each one, causing it to refract into multiple versions — showing that the "perfect" moment actually contained many interpretations. This doesn't break the stagnation zone but plants seeds of doubt in the crystal structure. In Act III, these seeds cause visual cracks in the Preserver Fortress walls. Reward: 400 gold, 4 prismatic fragments, and Grym's Doubt (key item: in the final confrontation with Grym, provides a unique dialogue option that makes Grym hesitate, removing one phase from the final encounter).
 
 ---
 
@@ -450,7 +450,7 @@ The fragment is consumed in the recall. This costs the player a meaningful resou
 
 **Appearance**: A towering natural rock pillar, 3 tiles wide and 8 tiles tall, visibly vibrating. The stone surface is covered in carved route-maps: spiraling paths, branching roads, and directional arrows etched by the Peregrine Road. Small rocks orbit the spire's peak in a slow ellipse. The ground within 5 tiles shakes rhythmically — not violently, but like a steady heartbeat transmitted through the stone. Approaching the spire, the player's movement speed increases slightly (10% boost), as if the god's dormant energy is accelerating everything nearby.
 
-**Discovery trigger**: The player must first visit the Ridgewalker Camp (15, 25) in Hollow Ridge and speak with the camp leader, a woman named Petra who has spent her life studying the Spire from a safe distance. She gives the player a pair of "Kinetic Boots" (key item) — weighted boots that prevent the player from being knocked off the increasingly unstable path leading to the spire's base. Without the boots, the vibrating terrain forces the player back every 3 tiles (a gentle push, not damage — the god is rejecting approach, not attacking).
+**Discovery trigger**: The player must first visit the Ridgewalker Camp (15, 25) in Hollow Ridge and speak with the camp leader, a woman named Nel who has spent her life studying the Spire from a safe distance. She gives the player a pair of "Kinetic Boots" (key item) — weighted boots that prevent the player from being knocked off the increasingly unstable path leading to the spire's base. Without the boots, the vibrating terrain forces the player back every 3 tiles (a gentle push, not damage — the god is rejecting approach, not attacking).
 
 ### Recall Options
 
@@ -474,7 +474,7 @@ The fragment is consumed in the recall. This costs the player a meaningful resou
 
 **NPC Behavior Changes**:
 - NPCs become more active and mobile. Settlers travel between settlements more frequently. NPCs who were previously static (staying in one building) now roam their zones, making them more interesting to encounter.
-- Petra (Ridgewalker Camp leader) becomes Jubila's champion and begins organizing "Road Festivals" — celebrations of movement where NPCs from multiple settlements gather at rotating locations. Each festival is a mini-event with unique dialogue and a chance to earn joy-type fragments.
+- Nel (Ridgewalker Camp leader) becomes Jubila's champion and begins organizing "Road Festivals" — celebrations of movement where NPCs from multiple settlements gather at rotating locations. Each festival is a mini-event with unique dialogue and a chance to earn joy-type fragments.
 - A new NPC type appears: "Striders" — traveling merchants who move between all settlements on a daily cycle. Each Strider carries unique inventory that changes with each visit.
 
 **Side Quests Unlocked**:
@@ -501,7 +501,7 @@ The fragment is consumed in the recall. This costs the player a meaningful resou
 
 **NPC Behavior Changes**:
 - Mountain-dwelling NPCs become bolder and more ambitious. Ridgewalker Camp begins construction of a proper fortress. The camp doubles in size as new settlers arrive, attracted by the tectonic energy and Tecton's protection.
-- Petra (Ridgewalker Camp leader) becomes Tecton's war-chief and begins training a militia. She offers combat training quests that yield XP bonuses.
+- Nel (Ridgewalker Camp leader) becomes Tecton's war-chief and begins training a militia. She offers combat training quests that yield XP bonuses.
 - Underground Depths entrances become easier to find: tectonic shifts have exposed hidden passages, and all Depths entrances are now visible on the minimap (even ones the player hasn't discovered).
 
 **Side Quests Unlocked**:
@@ -528,7 +528,7 @@ The fragment is consumed in the recall. This costs the player a meaningful resou
 
 **NPC Behavior Changes**:
 - Traveler and explorer NPCs share stories of journeys they've taken and places they've been. Dialogue becomes wistful but warm — not depressing, more "remember that amazing sunset on the road?"
-- Petra (Ridgewalker Camp leader) begins keeping a journal of all the routes the Ridgewalkers have discovered. She shares excerpts with the player (lore entries about the world's hidden paths and secret places).
+- Nel (Ridgewalker Camp leader) begins keeping a journal of all the routes the Ridgewalkers have discovered. She shares excerpts with the player (lore entries about the world's hidden paths and secret places).
 - Dissolved memory encounters in the world become more vivid and detailed: Resonance Ghosts linger longer and share more complete memories before fading.
 
 **Side Quests Unlocked**:
@@ -555,7 +555,7 @@ The fragment is consumed in the recall. This costs the player a meaningful resou
 
 **NPC Behavior Changes**:
 - NPCs become fascinated by momentum and cycles. Settlers begin building windmills, water wheels, and other kinetic devices. The aesthetic of Frontier settlements shifts toward "things that move."
-- Petra (Ridgewalker Camp leader) becomes a philosopher of motion, offering deep dialogue about how all change is movement and all movement is change. She develops a new training technique: "Momentum Sparring" — the player can practice combat at the camp for a +10% AGI buff lasting 30 in-game minutes.
+- Nel (Ridgewalker Camp leader) becomes a philosopher of motion, offering deep dialogue about how all change is movement and all movement is change. She develops a new training technique: "Momentum Sparring" — the player can practice combat at the camp for a +10% AGI buff lasting 30 in-game minutes.
 - New "Courier" NPCs appear who run between settlements at high speed, carrying messages and small items. They offer a delivery service: the player can send items to any settlement's shop for later pickup.
 
 **Side Quests Unlocked**:
@@ -602,7 +602,7 @@ These synergies are **not documented in-game** — they are emergent discoveries
 The gods recalled during Act II directly affect the Preserver Fortress (final dungeon) experience in Act III:
 
 - **God aesthetics** appear in the fortress: if Floriana was recalled, vines crack through the crystal walls. If Tecton was recalled, tectonic fractures run through the floors. If Tacet was recalled, zones of silence disrupt Preserver patrols.
-- **God-buffed dialogue** with the Curator: each recalled god provides a unique argument the player can make during the final confrontation. Recalling all 4 gods with the same emotion type triggers a special Curator response acknowledging the player's consistency (emotional commitment dialogue).
+- **God-buffed dialogue** with Grym: each recalled god provides a unique argument the player can make during the final confrontation. Recalling all 4 gods with the same emotion type triggers a special Grym response acknowledging the player's consistency (emotional commitment dialogue).
 - **Endgame bloom**: when the First Memory is remixed, each recalled god fully awakens simultaneously. Their combined energy drives the global vibrancy surge to 95 (see [vibrancy-system.md](vibrancy-system.md)). The specific visual quality of the bloom depends on which gods were recalled and how.
 
 ---

@@ -27,6 +27,9 @@ importers:
       '@rpgjs/gamepad':
         specifier: ^4.3.0
         version: 4.3.0(@pixi/display@7.2.4(@pixi/core@7.2.4))(@pixi/interaction@6.5.10(@pixi/core@7.2.4)(@pixi/display@7.2.4(@pixi/core@7.2.4))(@pixi/math@7.2.4)(@pixi/ticker@7.2.4)(@pixi/utils@7.2.4))(@pixi/math@7.2.4)(@pixi/ticker@7.2.4)(@pixi/utils@7.2.4)(nanostores@0.8.1)(react@18.3.1)(typescript@5.9.3)
+      '@rpgjs/mobile-gui':
+        specifier: 4.3.0
+        version: 4.3.0(@pixi/display@7.2.4(@pixi/core@7.2.4))(@pixi/interaction@6.5.10(@pixi/core@7.2.4)(@pixi/display@7.2.4(@pixi/core@7.2.4))(@pixi/math@7.2.4)(@pixi/ticker@7.2.4)(@pixi/utils@7.2.4))(@pixi/math@7.2.4)(@pixi/ticker@7.2.4)(@pixi/utils@7.2.4)(nanostores@0.8.1)(react@18.3.1)(typescript@5.9.3)
       '@rpgjs/server':
         specifier: 4.3.0
         version: 4.3.0
@@ -1871,6 +1874,9 @@ packages:
   '@rpgjs/gamepad@4.3.0':
     resolution: {integrity: sha512-5sn5CgrqjCw3A0JJCh/KKwsnEyYVgtVZg2CFP0fCEnK8Be7mCNdqUnEfDn90TwO2OEM1S2OYmB5EBMhfzJj3+w==}
 
+  '@rpgjs/mobile-gui@4.3.0':
+    resolution: {integrity: sha512-svWIq7PjrjjeuUv82j2IuevU9xr0v0sP6S1uLznfK7oE68oUK9+0zZynOxYiOCm+a2Os55/Hky9Fk0WzVnlPIg==}
+
   '@rpgjs/server@4.3.0':
     resolution: {integrity: sha512-UB0YOzefvDYswmrGml0S04NgoJg2yg+qoIJGpnytke057CIXzLIF1rGKQmwseVfgMgEMOjvGe9IM0b0ulX5Gmw==}
 
@@ -3200,6 +3206,9 @@ packages:
   negotiator@0.6.3:
     resolution: {integrity: sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==}
     engines: {node: '>= 0.6'}
+
+  nipplejs@0.10.2:
+    resolution: {integrity: sha512-XGxFY8C2DOtobf1fK+MXINTzkkXJLjZDDpfQhOUZf4TSytbc9s4bmA0lB9eKKM8iDivdr9NQkO7DpIQfsST+9g==}
 
   node-addon-api@7.1.1:
     resolution: {integrity: sha512-5m3bsyrjFWE1xf7nz7YXdN4udnVtXK6/Yfgn5qnahL6bCkf2yKt4k3nuTKAtT4r3IG8JNR2ncsIMdZuAzJjHQQ==}
@@ -5940,6 +5949,22 @@ snapshots:
       - react
       - typescript
 
+  '@rpgjs/mobile-gui@4.3.0(@pixi/display@7.2.4(@pixi/core@7.2.4))(@pixi/interaction@6.5.10(@pixi/core@7.2.4)(@pixi/display@7.2.4(@pixi/core@7.2.4))(@pixi/math@7.2.4)(@pixi/ticker@7.2.4)(@pixi/utils@7.2.4))(@pixi/math@7.2.4)(@pixi/ticker@7.2.4)(@pixi/utils@7.2.4)(nanostores@0.8.1)(react@18.3.1)(typescript@5.9.3)':
+    dependencies:
+      '@rpgjs/client': 4.3.0(@pixi/display@7.2.4(@pixi/core@7.2.4))(@pixi/interaction@6.5.10(@pixi/core@7.2.4)(@pixi/display@7.2.4(@pixi/core@7.2.4))(@pixi/math@7.2.4)(@pixi/ticker@7.2.4)(@pixi/utils@7.2.4))(@pixi/math@7.2.4)(@pixi/ticker@7.2.4)(@pixi/utils@7.2.4)(nanostores@0.8.1)(react@18.3.1)(typescript@5.9.3)
+      nipplejs: 0.10.2
+      vue: 3.5.28(typescript@5.9.3)
+    transitivePeerDependencies:
+      - '@pixi/display'
+      - '@pixi/interaction'
+      - '@pixi/math'
+      - '@pixi/ticker'
+      - '@pixi/utils'
+      - debug
+      - nanostores
+      - react
+      - typescript
+
   '@rpgjs/server@4.3.0':
     dependencies:
       '@rpgjs/common': 4.3.0
@@ -7491,6 +7516,8 @@ snapshots:
   nanostores@0.8.1: {}
 
   negotiator@0.6.3: {}
+
+  nipplejs@0.10.2: {}
 
   node-addon-api@7.1.1:
     optional: true

@@ -4,7 +4,7 @@
  * Named NPCs: {characterId}-{expression}.webp
  * Gods: god-{godName}.webp (single expression only)
  *
- * All portraits are 256x256 webp in assets/portraits/.
+ * All portraits are 256x256 webp in main/client/gui/portraits/.
  */
 
 const NAMED_CHARACTERS = ['protagonist', 'lira', 'callum', 'petra', 'elder-torin'] as const;
@@ -16,7 +16,7 @@ type Expression = 'neutral' | 'happy' | 'sad' | 'determined';
 // Eagerly import all portrait images so Vite resolves them at build time.
 // Using import.meta.glob with eager: true returns resolved URLs.
 const allPortraits: Record<string, { default: string }> = import.meta.glob(
-  '../../assets/portraits/*.webp',
+  '../client/gui/portraits/*.webp',
   { eager: true },
 );
 

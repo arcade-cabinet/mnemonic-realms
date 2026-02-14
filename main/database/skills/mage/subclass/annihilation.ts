@@ -9,4 +9,6 @@ import { Skill } from '@rpgjs/database';
   hitRate: 1,
   coefficient: { int: 1 },
 })
-export default class Annihilation {}
+export default class Annihilation {
+  // Formula: floor(INT * 4.0) ignores DEF. 15% of damage dealt is taken as recoil.
+}

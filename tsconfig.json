@@ -10,5 +10,12 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "skipLibCheck": true
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "gen/output",
+    "main/server/maps/tmx",
+    "assets"
+  ]
 }

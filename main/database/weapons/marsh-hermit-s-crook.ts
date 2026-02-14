@@ -1,5 +1,8 @@
 import { Weapon } from '@rpgjs/database';
 
+// Special Effect: SP cost of all heals reduced by 15%
+// Intended for: Cleric
+// Weapon Category: Staff
 // Tier: 2
 @Weapon({
   id: 'W-ST-05',

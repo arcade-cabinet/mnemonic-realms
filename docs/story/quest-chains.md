@@ -28,20 +28,20 @@ The main quest chain spans all three acts and represents the player's journey fr
 
 ### MQ-01: The Architect's Awakening
 
-**Act**: I (Tutorial) | **Level**: 1 | **Giver**: Callum | **Location**: Village Hub — Elder's House
+**Act**: I (Tutorial) | **Level**: 1 | **Giver**: Artun | **Location**: Village Hub — Elder's House
 
 **Trigger**: Automatic upon starting a new game and completing the opening cutscene.
 
 **Objectives**:
-1. Speak with Callum at the Elder's House (18, 10)
-2. Receive the Architect's Signet (K-01) from Lira at her Workshop (8, 18)
-3. Collect your first memory fragment from the Memorial Garden (8, 16) — Callum's First Lesson (MF-01)
-4. Return to Callum and learn about Resonance Stones
+1. Speak with Artun at the Elder's House (18, 10)
+2. Receive the Architect's Signet (K-01) from Hana at her Workshop (8, 18)
+3. Collect your first memory fragment from the Memorial Garden (8, 16) — Artun's First Lesson (MF-01)
+4. Return to Artun and learn about Resonance Stones
 
-**Rewards**: Architect's Signet (K-01), Callum's First Lesson (MF-01, joy/neutral/2), 50 gold
+**Rewards**: Architect's Signet (K-01), Artun's First Lesson (MF-01, joy/neutral/2), 50 gold
 
 **Completion Dialogue**:
-- Callum: "There it is — that glow in your palm. You can feel it, can't you? The world remembering through you. This is what an Architect does. We listen, we gather, and we give back."
+- Artun: "There it is — that glow in your palm. You can feel it, can't you? The world remembering through you. This is what an Architect does. We listen, we gather, and we give back."
 
 **Failure Conditions**: None (tutorial quest).
 
@@ -53,21 +53,21 @@ The main quest chain spans all three acts and represents the player's journey fr
 
 ### MQ-02: First Broadcast
 
-**Act**: I (Tutorial) | **Level**: 1-2 | **Giver**: Lira | **Location**: Village Hub — Lira's Workshop
+**Act**: I (Tutorial) | **Level**: 1-2 | **Giver**: Hana | **Location**: Village Hub — Hana's Workshop
 
 **Trigger**: Completing MQ-01.
 
 **Objectives**:
-1. Visit Lira at her Workshop (8, 18) and learn memory operations (Collect, Remix, Broadcast)
+1. Visit Hana at her Workshop (8, 18) and learn memory operations (Collect, Remix, Broadcast)
 2. Collect 2 memory fragments from the Memorial Garden Resonance Stones
 3. Use the Remix Table (K-03 unlock) to combine fragments
 4. Broadcast a remixed fragment into the Memorial Garden's central Resonance Stone
 5. Observe the vibrancy increase (Memorial Garden gains +5 vibrancy visually)
 
-**Rewards**: Remix Table Access (K-03), Lira's Warmth (MF-02, joy/light/3), 80 gold
+**Rewards**: Remix Table Access (K-03), Hana's Warmth (MF-02, joy/light/3), 80 gold
 
 **Completion Dialogue**:
-- Lira: "Did you feel that? The stone sang back to you. That's the world saying 'thank you.' Every fragment you share makes this place a little more alive."
+- Hana: "Did you feel that? The stone sang back to you. That's the world saying 'thank you.' Every fragment you share makes this place a little more alive."
 
 **Failure Conditions**: None (tutorial quest).
 
@@ -79,21 +79,21 @@ The main quest chain spans all three acts and represents the player's journey fr
 
 ### MQ-03: The Settled Lands
 
-**Act**: I | **Level**: 2-6 | **Giver**: Callum | **Location**: Village Hub — Elder's House
+**Act**: I | **Level**: 2-6 | **Giver**: Artun | **Location**: Village Hub — Elder's House
 
 **Trigger**: Completing MQ-02.
 
 **Objectives**:
-1. Speak with Callum at the Elder's House and receive exploration guidance
+1. Speak with Artun at the Elder's House and receive exploration guidance
 2. Visit all four Settled Lands sub-maps: Heartfield, Ambergrove, Millbrook, and Sunridge
 3. Collect at least 5 memory fragments from across the Settled Lands
 4. Defeat the training combat encounters in each zone (at least 1 combat per sub-map)
-5. Return to Callum and share what you've found
+5. Return to Artun and share what you've found
 
-**Rewards**: 200 gold, 1 unnamed fragment (joy/earth/2), Callum's Letters (K-02)
+**Rewards**: 200 gold, 1 unnamed fragment (joy/earth/2), Artun's Letters (K-02)
 
 **Completion Dialogue**:
-- Callum: "You've seen it now — how the world changes at the edges. Those shimmering boundaries aren't natural decay. Something is holding the world back from growing. I've written down everything I know about the lands beyond. Take my letters. When you reach the Frontier, read the one for whatever zone you're in."
+- Artun: "You've seen it now — how the world changes at the edges. Those shimmering boundaries aren't natural decay. Something is holding the world back from growing. I've written down everything I know about the lands beyond. Take my letters. When you reach the Frontier, read the one for whatever zone you're in."
 
 **Failure Conditions**: None.
 
@@ -107,21 +107,21 @@ The main quest chain spans all three acts and represents the player's journey fr
 
 **Act**: I (Climax) | **Level**: 6-10 | **Giver**: Automatic (story event) | **Location**: Heartfield — Stagnation Clearing (35, 30)
 
-**Trigger**: After completing MQ-03, a story event triggers when the player next enters Heartfield. Lira is at the Stagnation Clearing investigating.
+**Trigger**: After completing MQ-03, a story event triggers when the player next enters Heartfield. Hana is at the Stagnation Clearing investigating.
 
 **Objectives**:
 1. Travel to the Stagnation Clearing in Heartfield (35, 30)
-2. Witness Lira investigating the expanding stagnation zone
-3. Encounter the Preserver patrol — survive the combat encounter (2x Preserver Scout, cannot lose; if defeated, Lira shields the player and the encounter ends)
-4. Watch the climax cutscene: Lira is caught at the stagnation zone's edge and frozen mid-sentence
-5. Collect Lira's Scream (MF-04, fury/light/4) from the ground where she was frozen
+2. Witness Hana investigating the expanding stagnation zone
+3. Encounter the Preserver patrol — survive the combat encounter (2x Preserver Scout, cannot lose; if defeated, Hana shields the player and the encounter ends)
+4. Watch the climax cutscene: Hana is caught at the stagnation zone's edge and frozen mid-sentence
+5. Collect Hana's Scream (MF-04, fury/light/4) from the ground where she was frozen
 6. Broadcast a potency 2+ fragment into the Stagnation Clearing's edge to halt the expansion (any emotion/element)
-7. Return to Callum at the Village Hub
+7. Return to Artun at the Village Hub
 
-**Rewards**: Lira's Scream (MF-04, fury/light/4), Echo of the Stagnation (MF-03, sorrow/dark/2), 150 gold
+**Rewards**: Hana's Scream (MF-04, fury/light/4), Echo of the Stagnation (MF-03, sorrow/dark/2), 150 gold
 
 **Completion Dialogue**:
-- Callum: "Lira... No. She can't — she was just... Listen to me. The Frontier. The answers are in the Frontier. Those Preservers — they think freezing the world is kindness. I'm opening the mountain pass. Go north. Find the old shrine sites. And find a way to undo what they've done to Lira."
+- Artun: "Hana... No. She can't — she was just... Listen to me. The Frontier. The answers are in the Frontier. Those Preservers — they think freezing the world is kindness. I'm opening the mountain pass. Go north. Find the old shrine sites. And find a way to undo what they've done to Hana."
 
 **Failure Conditions**: None (the combat encounter auto-resolves if the player is defeated).
 
@@ -133,21 +133,21 @@ The main quest chain spans all three acts and represents the player's journey fr
 
 ### MQ-05: Into the Frontier
 
-**Act**: II | **Level**: 10-12 | **Giver**: Callum | **Location**: Village Hub — Lookout Hill
+**Act**: II | **Level**: 10-12 | **Giver**: Artun | **Location**: Village Hub — Lookout Hill
 
 **Trigger**: Completing MQ-04. The mountain pass north of Village Hub is now open.
 
 **Objectives**:
-1. Speak with Callum at the Lookout Hill (12, 2) to receive Frontier briefing
+1. Speak with Artun at the Lookout Hill (12, 2) to receive Frontier briefing
 2. Cross the mountain pass north into Hollow Ridge
-3. Reach the Ridgewalker Camp (15, 25) in Hollow Ridge and speak with Petra
-4. Learn about the dormant gods from Petra's introduction
+3. Reach the Ridgewalker Camp (15, 25) in Hollow Ridge and speak with Nel
+4. Learn about the dormant gods from Nel's introduction
 5. Visit at least one other Frontier zone (Shimmer Marsh, Flickerveil, or Resonance Fields)
 
 **Rewards**: 300 gold, Stasis Breaker x3 (C-SC-04)
 
 **Completion Dialogue**:
-- Petra: "You're the Architect Callum wrote about. Good — we've been waiting. There are four places in the Frontier where the land itself is... dreaming. Old gods, unfinished, waiting for someone who can remember them into being. The Preservers want them to stay asleep forever. I think you should wake them up."
+- Nel: "You're the Architect Artun wrote about. Good — we've been waiting. There are four places in the Frontier where the land itself is... dreaming. Old gods, unfinished, waiting for someone who can remember them into being. The Preservers want them to stay asleep forever. I think you should wake them up."
 
 **Failure Conditions**: None.
 
@@ -181,23 +181,23 @@ The main quest chain spans all three acts and represents the player's journey fr
 
 ---
 
-### MQ-07: The Curator's Endgame
+### MQ-07: Grym's Endgame
 
-**Act**: II (Climax) | **Level**: 16-20 | **Giver**: Callum (automatic event) | **Location**: Village Hub — Elder's House
+**Act**: II (Climax) | **Level**: 16-20 | **Giver**: Artun (automatic event) | **Location**: Village Hub — Elder's House
 
-**Trigger**: After recalling at least 1 god AND completing SQ-05, Callum sends word that he's discovered the Preservers' true plan.
+**Trigger**: After recalling at least 1 god AND completing SQ-05, Artun sends word that he's discovered the Preservers' true plan.
 
 **Objectives**:
-1. Return to the Village Hub and speak with Callum at the Elder's House
-2. Learn that the Curator has found the First Memory and intends to crystallize it (freezing the world permanently)
-3. Speak with Aric (Preserver scout encountered during the conversation) who confirms the plan and reveals the Preserver Fortress location in the Undrawn Peaks
+1. Return to the Village Hub and speak with Artun at the Elder's House
+2. Learn that Grym has found the First Memory and intends to crystallize it (freezing the world permanently)
+3. Speak with Janik (Preserver scout encountered during the conversation) who confirms the plan and reveals the Preserver Fortress location in the Undrawn Peaks
 4. Recall at least 2 total gods (if only 1 recalled, must recall a second before proceeding)
-5. Return to Callum to receive the expedition plan
+5. Return to Artun to receive the expedition plan
 
 **Rewards**: 500 gold, High Potion x5 (C-HP-03), Mana Surge x3 (C-SP-03)
 
 **Completion Dialogue**:
-- Callum: "The First Memory. The original seed that started everything. If the Curator crystallizes it, the world doesn't just stop growing — it stops being a world. It becomes a museum. Beautiful. Perfect. Dead. You need to reach it first. The fortress is in the Undrawn Peaks — through the Sketch. It's unfinished land out there. You'll have to remember it into existence as you go."
+- Artun: "The First Memory. The original seed that started everything. If Grym crystallizes it, the world doesn't just stop growing — it stops being a world. It becomes a museum. Beautiful. Perfect. Dead. You need to reach it first. The fortress is in the Undrawn Peaks — through the Sketch. It's unfinished land out there. You'll have to remember it into existence as you go."
 
 **Failure Conditions**: None.
 
@@ -209,7 +209,7 @@ The main quest chain spans all three acts and represents the player's journey fr
 
 ### MQ-08: Through the Sketch
 
-**Act**: III | **Level**: 20-24 | **Giver**: Callum | **Location**: The Sketch — accessed from Frontier zone edges
+**Act**: III | **Level**: 20-24 | **Giver**: Artun | **Location**: The Sketch — accessed from Frontier zone edges
 
 **Trigger**: Completing MQ-07.
 
@@ -224,7 +224,7 @@ The main quest chain spans all three acts and represents the player's journey fr
 **Rewards**: 400 gold, Sketchweave Cloak (A-13, found in Half-Drawn Forest as a Living Sketch reward)
 
 **Completion Dialogue**:
-- Narrator: "The fortress shimmers into focus before you. Crystal walls catch light that shouldn't exist this far from the settled world. The Preservers built this place at the edge of reality itself — where the world hasn't decided what it wants to be yet. Inside, the First Memory waits. And so does the Curator."
+- Narrator: "The fortress shimmers into focus before you. Crystal walls catch light that shouldn't exist this far from the settled world. The Preservers built this place at the edge of reality itself — where the world hasn't decided what it wants to be yet. Inside, the First Memory waits. And so does Grym."
 
 **Failure Conditions**: None (the player always has enough fragments from normal gameplay to complete the broadcasts).
 
@@ -247,20 +247,20 @@ The main quest chain spans all three acts and represents the player's journey fr
    - Find the Phoenix Feather (C-SP-10) in F1's hidden alcove
 2. Navigate Preserver Fortress Floor 2: Archive of Perfection
    - Witness the frozen perfect moments on display (narrative vignettes, no combat)
-   - Collect the Curator's Grief (MF-09, sorrow/dark/5) from the central archive pedestal
+   - Collect Grym's Grief (MF-09, sorrow/dark/5) from the central archive pedestal
    - Defeat the Preserver Captain boss guarding the F2-F3 stairway
 3. Navigate Preserver Fortress Floor 3: First Memory Chamber
-   - Confront the Curator in the final dialogue sequence (see [act3-script.md](act3-script.md), Scene 10)
-   - The Curator's confrontation is resolved through dialogue, not combat — the player uses recalled god arguments and collected memories to challenge the Curator's philosophy
-   - If the player has the Curator's Doubt (K-13, from Prisma's "The Many-Colored Truth"), an additional dialogue option shortens the encounter
+   - Confront Grym in the final dialogue sequence (see [act3-script.md](act3-script.md), Scene 10)
+   - Grym's confrontation is resolved through dialogue, not combat — the player uses recalled god arguments and collected memories to challenge Grym's philosophy
+   - If the player has Grym's Doubt (K-13, from Prisma's "The Many-Colored Truth"), an additional dialogue option shortens the encounter
    - Collect the First Memory (MF-10, calm/neutral/5)
 
-**Rewards**: Curator's Grief (MF-09), The First Memory (MF-10), 800 gold, Memory-Woven Plate (A-14, found in Depths L5 treasure chest — accessible via a shortcut from the Fortress basement)
+**Rewards**: Grym's Grief (MF-09), The First Memory (MF-10), 800 gold, Memory-Woven Plate (A-14, found in Depths L5 treasure chest — accessible via a shortcut from the Fortress basement)
 
 **Completion Dialogue**:
-- The Curator: "You've walked through my gallery. You've seen what perfection looks like. And you still choose... change?"
+- Grym: "You've walked through my gallery. You've seen what perfection looks like. And you still choose... change?"
 - Player: "Change isn't the enemy of beauty. It's the source of it."
-- The Curator: "Then show me. Remix the First Memory. Show me what comes after perfection."
+- Grym: "Then show me. Remix the First Memory. Show me what comes after perfection."
 
 **Failure Conditions**: If the player is defeated by the Preserver Captain, they respawn at F2's entrance with full HP/SP.
 
@@ -281,14 +281,14 @@ The main quest chain spans all three acts and represents the player's journey fr
 2. Create World's New Dawn (MF-11, joy/light/5)
 3. Broadcast World's New Dawn at the chamber's central Resonance Stone
 4. Watch the Endgame Bloom: all zones jump to vibrancy 95, all recalled gods fully awaken, the world transforms
-5. View the epilogue sequence: the Preservers become archivists (not jailers), Lira is unfrozen, the world's edge sketches new land into existence
+5. View the epilogue sequence: the Preservers become archivists (not jailers), Hana is unfrozen, the world's edge sketches new land into existence
 
 **Rewards**: World's New Dawn (MF-11), game completion, New Game+ unlocked
 
 **Completion Dialogue**:
-- Lira (unfrozen, blinking): "I... I can feel it. The whole world, singing. What did you do?"
+- Hana (unfrozen, blinking): "I... I can feel it. The whole world, singing. What did you do?"
 - Player: "I reminded it what it's for."
-- Callum: "The edge... look at the edge. It's still going. Still growing. You didn't finish the world. You taught it how to finish itself."
+- Artun: "The edge... look at the edge. It's still going. Still growing. You didn't finish the world. You taught it how to finish itself."
 
 **Failure Conditions**: None (the remix always succeeds).
 
@@ -316,23 +316,23 @@ Side quests are optional content tied to NPC relationships, exploration, and mem
 
 ### SQ-01: The Memorial Garden
 
-**Act**: I | **Level**: 2-4 | **Giver**: Maren (shopkeeper) | **Location**: Village Hub — General Shop
+**Act**: I | **Level**: 2-4 | **Giver**: Khali (shopkeeper) | **Location**: Village Hub — General Shop
 
-**Trigger**: Completing MQ-02. Maren mentions the Memorial Garden looks "dimmer than it used to."
+**Trigger**: Completing MQ-02. Khali mentions the Memorial Garden looks "dimmer than it used to."
 
 **Objectives**:
-1. Speak with Maren at the General Shop (18, 16) about the garden's fading
+1. Speak with Khali at the General Shop (18, 16) about the garden's fading
 2. Broadcast 3 memory fragments (any type, any potency) into the Memorial Garden's three Resonance Stones
-3. Return to Maren and show her the blooming garden
+3. Return to Khali and show her the blooming garden
 
 **Rewards**: 120 gold, Minor Potion x5 (C-HP-01), Mana Drop x3 (C-SP-01)
 
 **Completion Dialogue**:
-- Maren: "Oh! Oh, look at that. The flowers are actually... they're glowing! I haven't seen the garden like this since I was a girl. Thank you, Architect. The village needed this. I needed this."
+- Khali: "Oh! Oh, look at that. The flowers are actually... they're glowing! I haven't seen the garden like this since I was a girl. Thank you, Architect. The village needed this. I needed this."
 
 **Failure Conditions**: None.
 
-**Unlocks**: Maren's shop gains one additional Tier 1 item in stock (Smoke Bomb, C-SP-05, if not already available).
+**Unlocks**: Khali's shop gains one additional Tier 1 item in stock (Smoke Bomb, C-SP-05, if not already available).
 
 **Dependencies**: MQ-02
 
@@ -411,23 +411,23 @@ Side quests are optional content tied to NPC relationships, exploration, and mem
 
 ---
 
-### SQ-05: Aric's Doubt
+### SQ-05: Janik's Doubt
 
-**Act**: I-II | **Level**: 8-12 | **Giver**: Aric (Preserver scout) | **Location**: Sunridge — Preserver Outpost (32, 15)
+**Act**: I-II | **Level**: 8-12 | **Giver**: Janik (Preserver scout) | **Location**: Sunridge — Preserver Outpost (32, 15)
 
-**Trigger**: After MQ-04 (Lira's freezing). Aric appears near the Sunridge Preserver Outpost and initiates conversation.
+**Trigger**: After MQ-04 (Hana's freezing). Janik appears near the Sunridge Preserver Outpost and initiates conversation.
 
 **Objectives**:
-1. Speak with Aric at the Sunridge Preserver Outpost perimeter (32, 15)
-2. Listen to Aric's confession: he's questioning the Preservers' mission after witnessing Lira's freezing
-3. Collect 3 memory fragments of different emotions (any element, potency 2+) and show them to Aric
-4. Return to Aric after at least 1 in-game day has passed (he needs time to process)
-5. Aric shares Preserver intelligence: the Curator's location and the fortress's general direction
+1. Speak with Janik at the Sunridge Preserver Outpost perimeter (32, 15)
+2. Listen to Janik's confession: he's questioning the Preservers' mission after witnessing Hana's freezing
+3. Collect 3 memory fragments of different emotions (any element, potency 2+) and show them to Janik
+4. Return to Janik after at least 1 in-game day has passed (he needs time to process)
+5. Janik shares Preserver intelligence: Grym's location and the fortress's general direction
 
-**Rewards**: 250 gold, Stasis Breaker x5 (C-SC-04), Curator's Manifesto (K-06), 1 unnamed fragment (sorrow/dark/3)
+**Rewards**: 250 gold, Stasis Breaker x5 (C-SC-04), Grym's Manifesto (K-06), 1 unnamed fragment (sorrow/dark/3)
 
 **Completion Dialogue**:
-- Aric: "I joined the Preservers because I was afraid of losing things I loved. The Curator promised that nothing would ever change. But watching that woman freeze... that wasn't preservation. That was theft. Take this manifesto. Understand what the Curator believes. Then decide for yourself whether they're right."
+- Janik: "I joined the Preservers because I was afraid of losing things I loved. Grym promised that nothing would ever change. But watching that woman freeze... that wasn't preservation. That was theft. Take this manifesto. Understand what Grym believes. Then decide for yourself whether they're right."
 
 **Failure Conditions**: None.
 
@@ -439,21 +439,21 @@ Side quests are optional content tied to NPC relationships, exploration, and mem
 
 ### SQ-06: The Marsh Hermit's Request
 
-**Act**: II | **Level**: 11-14 | **Giver**: Wynn | **Location**: Shimmer Marsh — Marsh Hermit's Hut (12, 15)
+**Act**: II | **Level**: 11-14 | **Giver**: Vash | **Location**: Shimmer Marsh — Marsh Hermit's Hut (12, 15)
 
 **Trigger**: Completing MQ-05 and entering Shimmer Marsh.
 
 **Objectives**:
-1. Speak with Wynn at the Marsh Hermit's Hut (12, 15)
+1. Speak with Vash at the Marsh Hermit's Hut (12, 15)
 2. Collect 3 water-element memory fragments from Shimmer Marsh (any emotion, potency 2+)
-3. Broadcast the fragments into 3 dormant marsh Resonance Stones (marked by Wynn on the map)
+3. Broadcast the fragments into 3 dormant marsh Resonance Stones (marked by Vash on the map)
 4. Defeat the Mire Crawler ambush at the third stone (2x Mire Crawler + 1x Echo Toad)
-5. Return to Wynn with the data (he's been measuring vibrancy changes)
+5. Return to Vash with the data (he's been measuring vibrancy changes)
 
 **Rewards**: 300 gold, Hermit's Robe (A-07, DEF +14, +20% SP regen from Defend, Cleric/Mage: +25%), Marsh Hermit's Crook (W-ST-05, INT +26, SP cost of all heals reduced by 15%)
 
 **Completion Dialogue**:
-- Wynn: "Fascinating. The vibrancy readings are exactly as I hypothesized — the marsh remembers itself in waves, not lines. Each broadcast creates a ripple. Here, take this robe and crook. I made them from marsh-woven fiber. They'll serve you better than they serve an old hermit who never leaves his hut."
+- Vash: "Fascinating. The vibrancy readings are exactly as I hypothesized — the marsh remembers itself in waves, not lines. Each broadcast creates a ripple. Here, take this robe and crook. I made them from marsh-woven fiber. They'll serve you better than they serve an old hermit who never leaves his hut."
 
 **Failure Conditions**: None.
 
@@ -461,46 +461,46 @@ Side quests are optional content tied to NPC relationships, exploration, and mem
 
 ---
 
-### SQ-07: Petra's Ridgewalkers
+### SQ-07: Nel's Ridgewalkers
 
-**Act**: II | **Level**: 12-15 | **Giver**: Petra | **Location**: Hollow Ridge — Ridgewalker Camp (15, 25)
+**Act**: II | **Level**: 12-15 | **Giver**: Nel | **Location**: Hollow Ridge — Ridgewalker Camp (15, 25)
 
 **Trigger**: Completing MQ-05 and visiting Ridgewalker Camp.
 
 **Objectives**:
-1. Speak with Petra at Ridgewalker Camp (15, 25)
+1. Speak with Nel at Ridgewalker Camp (15, 25)
 2. Escort a Ridgewalker scouting party through the Shattered Pass approach (3 patrol encounters: each is 2x Preserver Scout)
 3. Reach the Shattered Pass entrance (35, 30) and assess the stagnation zone
-4. Report back to Petra with your findings
+4. Report back to Nel with your findings
 
 **Rewards**: 350 gold, Ridgewalker's Coat (A-08, DEF +20, +10% ATK, wind resistance +15%), Kinetic Boots (K-05)
 
 **Completion Dialogue**:
-- Petra: "So the pass is fully crystallized. Can't push through without breaking the stasis. But now we know what we're dealing with. Take these boots — I had them made for the Spire approach, but you'll need them more than I will. And this coat — Ridgewalker-weave. Keeps you warm, keeps you alive."
+- Nel: "So the pass is fully crystallized. Can't push through without breaking the stasis. But now we know what we're dealing with. Take these boots — I had them made for the Spire approach, but you'll need them more than I will. And this coat — Ridgewalker-weave. Keeps you warm, keeps you alive."
 
-**Failure Conditions**: If all escort NPCs are defeated during the patrol encounters, the quest resets to objective 2 (Petra sends another party).
+**Failure Conditions**: If all escort NPCs are defeated during the patrol encounters, the quest resets to objective 2 (Nel sends another party).
 
 **Dependencies**: MQ-05
 
 ---
 
-### SQ-08: Solen's Light Studies
+### SQ-08: Reza's Light Studies
 
-**Act**: II | **Level**: 13-16 | **Giver**: Solen | **Location**: Flickerveil — Flickering Village (35, 30)
+**Act**: II | **Level**: 13-16 | **Giver**: Reza | **Location**: Flickerveil — Flickering Village (35, 30)
 
 **Trigger**: Completing MQ-05 and visiting Flickerveil.
 
 **Objectives**:
-1. Speak with Solen at the Flickering Village (35, 30)
+1. Speak with Reza at the Flickering Village (35, 30)
 2. Investigate 4 flickering anomalies in Flickerveil (marked on map; at each one, observe the flicker pattern for 5 seconds)
 3. Broadcast a light-element fragment at the strongest anomaly (near the Resonance Archive at (10, 10))
 4. Defeat the Preserver patrol guarding the archive perimeter (2x Preserver Agent + 1x Crystal Sentinel)
-5. Return to Solen with the observational data
+5. Return to Reza with the observational data
 
 **Rewards**: 350 gold, Light Lens (K-04), Prism Wand (W-WD-04, INT +21, Eureka Moment always hits weakness), 1 unnamed fragment (awe/light/3)
 
 **Completion Dialogue**:
-- Solen: "The flickering is the light trying to choose between what the Preservers want it to be and what it wants to become. This lens — I've polished it my whole life, waiting for someone who could use it. The grove where Luminos sleeps... you'll need it to approach without going blind."
+- Reza: "The flickering is the light trying to choose between what the Preservers want it to be and what it wants to become. This lens — I've polished it my whole life, waiting for someone who could use it. The grove where Luminos sleeps... you'll need it to approach without going blind."
 
 **Failure Conditions**: None.
 
@@ -534,22 +534,22 @@ Side quests are optional content tied to NPC relationships, exploration, and mem
 
 ### SQ-10: The Depths Expedition
 
-**Act**: II | **Level**: 14-18 | **Giver**: Callum | **Location**: Village Hub — Elder's House (via letter after MQ-05)
+**Act**: II | **Level**: 14-18 | **Giver**: Artun | **Location**: Village Hub — Elder's House (via letter after MQ-05)
 
-**Trigger**: After completing MQ-05 and reaching level 14+. Callum sends a letter about the Depths entrance he's discovered.
+**Trigger**: After completing MQ-05 and reaching level 14+. Artun sends a letter about the Depths entrance he's discovered.
 
 **Objectives**:
-1. Speak with Callum at the Elder's House about the Depths
+1. Speak with Artun at the Elder's House about the Depths
 2. Travel to the Depths entrance in the Village Hub Memorial Garden (hidden passage at (8, 17), revealed after MQ-05)
 3. Navigate Depths Level 1 (5 rooms, see [dungeon-depths.md](../maps/dungeon-depths.md) when authored)
 4. Defeat the Depths L1 floor guardian boss
 5. Collect the dissolved memory fragment from the guardian's chamber
-6. Return to Callum
+6. Return to Artun
 
 **Rewards**: 400 gold, Frontier Guard (A-09, DEF +25, +15% stasis resistance), 2 unnamed fragments (sorrow/dark/3 and awe/neutral/3)
 
 **Completion Dialogue**:
-- Callum: "The Depths... I've read about them my entire life. The dissolved civilizations stored their densest memories underground — the things too important to scatter on the wind. What you found down there is just the beginning. There are deeper levels. More memories. And more danger."
+- Artun: "The Depths... I've read about them my entire life. The dissolved civilizations stored their densest memories underground — the things too important to scatter on the wind. What you found down there is just the beginning. There are deeper levels. More memories. And more danger."
 
 **Failure Conditions**: None (can retry the boss if defeated).
 
@@ -557,20 +557,20 @@ Side quests are optional content tied to NPC relationships, exploration, and mem
 
 ---
 
-### SQ-11: Torvan's Masterwork
+### SQ-11: Hark's Masterwork
 
-**Act**: II-III | **Level**: 15-20 | **Giver**: Torvan (blacksmith) | **Location**: Village Hub — Blacksmith (18, 18)
+**Act**: II-III | **Level**: 15-20 | **Giver**: Hark (blacksmith) | **Location**: Village Hub — Blacksmith (18, 18)
 
-**Trigger**: Village Hub vibrancy reaches 70+ (Vivid tier). Torvan mentions he's ready to forge "something worthy."
+**Trigger**: Village Hub vibrancy reaches 70+ (Vivid tier). Hark mentions he's ready to forge "something worthy."
 
 **Objectives**:
-1. Speak with Torvan at the Blacksmith (18, 18)
+1. Speak with Hark at the Blacksmith (18, 18)
 2. Collect 3 rare materials:
    - 1 Crag Golem core (dropped by Crag Golems in Sunridge, 15% chance, or guaranteed from the Sunridge elite encounter)
    - 1 Crystal Shard (dropped by Preserver Agents, 10% chance, or guaranteed from any Preserver Captain)
    - 1 Dissolved Metal (found in Depths Level 2 treasure chest)
-3. Bring the materials to Torvan
-4. Wait 1 in-game day for Torvan to forge (can leave and return)
+3. Bring the materials to Hark
+4. Wait 1 in-game day for Hark to forge (can leave and return)
 5. Collect the masterwork weapon (class-specific)
 
 **Rewards**: 1 class-specific Tier 3 weapon (the player chooses which class weapon to forge):
@@ -580,7 +580,7 @@ Side quests are optional content tied to NPC relationships, exploration, and mem
 - Rogue: Phantom Edge (W-DG-06, ATK +32, Vanishing Act 3 turns)
 
 **Completion Dialogue**:
-- Torvan: "There. My finest work. Those materials you brought — I've never worked with anything like them. The Crag Golem's core gives it weight, the crystal gives it edge, and the dissolved metal... it hums. Like the weapon remembers what it's supposed to be."
+- Hark: "There. My finest work. Those materials you brought — I've never worked with anything like them. The Crag Golem's core gives it weight, the crystal gives it edge, and the dissolved metal... it hums. Like the weapon remembers what it's supposed to be."
 
 **Failure Conditions**: None (materials are farmable).
 
@@ -588,14 +588,14 @@ Side quests are optional content tied to NPC relationships, exploration, and mem
 
 ---
 
-### SQ-12: Ren's Dream Visions
+### SQ-12: Nyro's Dream Visions
 
-**Act**: II-III | **Level**: 16-22 | **Giver**: Ren (innkeeper) | **Location**: Village Hub — Inn: The Bright Hearth (20, 14)
+**Act**: II-III | **Level**: 16-22 | **Giver**: Nyro (innkeeper) | **Location**: Village Hub — Inn: The Bright Hearth (20, 14)
 
-**Trigger**: After completing MQ-05, resting at the inn triggers Dissolved dream sequences. After the 3rd rest, Ren comments on the player's restless sleep.
+**Trigger**: After completing MQ-05, resting at the inn triggers Dissolved dream sequences. After the 3rd rest, Nyro comments on the player's restless sleep.
 
 **Objectives**:
-1. Speak with Ren at the Inn (20, 14) about the dream visions
+1. Speak with Nyro at the Inn (20, 14) about the dream visions
 2. Rest at the inn 5 total times (including prior rests), watching a unique dissolved civilization dream each time
 3. After the 5th dream, a dream fragment materializes in the player's inventory
 4. Broadcast the dream fragment at the Inn's hearth Resonance Stone (hidden behind the fireplace, revealed after dream 5)
@@ -604,7 +604,7 @@ Side quests are optional content tied to NPC relationships, exploration, and mem
 **Rewards**: 250 gold, Memory Incense x3 (C-BF-05, grants Inspired +20% all stats), 1 unnamed fragment (calm/neutral/4)
 
 **Completion Dialogue**:
-- Ren: "I always knew there was something behind that fireplace. When I was a child, I'd press my ear against the stones and hear... humming. I think it was waiting for the right dreams. Yours."
+- Nyro: "I always knew there was something behind that fireplace. When I was a child, I'd press my ear against the stones and hear... humming. I think it was waiting for the right dreams. Yours."
 
 **Failure Conditions**: None.
 
@@ -638,25 +638,25 @@ Side quests are optional content tied to NPC relationships, exploration, and mem
 
 ### SQ-14: The Stagnation Breaker
 
-**Act**: III | **Level**: 22-26 | **Giver**: Callum | **Location**: Village Hub — Elder's House
+**Act**: III | **Level**: 22-26 | **Giver**: Artun | **Location**: Village Hub — Elder's House
 
-**Trigger**: After completing MQ-07. Callum has been researching a way to free Lira.
+**Trigger**: After completing MQ-07. Artun has been researching a way to free Hana.
 
 **Objectives**:
-1. Speak with Callum at the Elder's House about freeing Lira
-2. Callum's research indicates that broadcasting a potency 4+ joy fragment directly into Lira's frozen form at the Stagnation Clearing might work
+1. Speak with Artun at the Elder's House about freeing Hana
+2. Artun's research indicates that broadcasting a potency 4+ joy fragment directly into Hana's frozen form at the Stagnation Clearing might work
 3. Travel to Heartfield Stagnation Clearing (35, 30)
-4. Defeat the Preserver reinforcements guarding Lira's frozen form (2x Preserver Agent + 1x Preserver Captain)
-5. Broadcast a potency 4+ joy fragment into Lira's frozen form
-6. The stasis cracks but doesn't fully break — Lira partially awakens and speaks a single message before refreezing
-7. Return to Callum with the message: "The First Memory. It's the key to everything."
+4. Defeat the Preserver reinforcements guarding Hana's frozen form (2x Preserver Agent + 1x Preserver Captain)
+5. Broadcast a potency 4+ joy fragment into Hana's frozen form
+6. The stasis cracks but doesn't fully break — Hana partially awakens and speaks a single message before refreezing
+7. Return to Artun with the message: "The First Memory. It's the key to everything."
 
 **Rewards**: 500 gold, Elixir x2 (C-HP-04), 1 unnamed fragment (fury/light/4)
 
 **Completion Dialogue**:
-- Callum: "She spoke? She actually... 'The First Memory is the key.' Then that confirms it. The Curator isn't just preserving the world — they're using the First Memory as the anchor for all stasis. Free the First Memory, and every frozen thing in the world unfreezes. Including Lira."
+- Artun: "She spoke? She actually... 'The First Memory is the key.' Then that confirms it. Grym isn't just preserving the world — they're using the First Memory as the anchor for all stasis. Free the First Memory, and every frozen thing in the world unfreezes. Including Hana."
 
-**Failure Conditions**: None (Lira's partial awakening always triggers; the message provides narrative motivation for MQ-08+).
+**Failure Conditions**: None (Hana's partial awakening always triggers; the message provides narrative motivation for MQ-08+).
 
 **Dependencies**: MQ-07
 
@@ -670,16 +670,16 @@ Side quests are optional content tied to NPC relationships, exploration, and mem
 | SQ-02 | MQ-03 | Visiting Heartfield |
 | SQ-03 | MQ-03 | Visiting Ambergrove |
 | SQ-04 | MQ-03 | Visiting Millbrook |
-| SQ-05 | MQ-04 | Lira's freezing event |
+| SQ-05 | MQ-04 | Hana's freezing event |
 | SQ-06 | MQ-05 | Entering Shimmer Marsh |
 | SQ-07 | MQ-05 | Visiting Ridgewalker Camp |
 | SQ-08 | MQ-05 | Visiting Flickerveil |
 | SQ-09 | MQ-05 | Visiting Resonance Fields |
-| SQ-10 | MQ-05, Lv14+ | Callum's letter about the Depths |
-| SQ-11 | Village vibrancy 70+ | Torvan's masterwork offer |
+| SQ-10 | MQ-05, Lv14+ | Artun's letter about the Depths |
+| SQ-11 | Village vibrancy 70+ | Hark's masterwork offer |
 | SQ-12 | MQ-05, 5 inn rests | Dream sequence accumulation |
 | SQ-13 | SQ-09, GQ-01 | Post-recall Resonance Stone activation |
-| SQ-14 | MQ-07 | Callum's research into freeing Lira |
+| SQ-14 | MQ-07 | Artun's research into freeing Hana |
 
 ---
 
@@ -774,12 +774,12 @@ All god recall quests become available after MQ-05. The player can complete them
 
 ### GQ-02: The Root Dormant (Verdance)
 
-**Act**: II | **Level**: 12-16 | **Giver**: Wynn | **Location**: Shimmer Marsh
+**Act**: II | **Level**: 12-16 | **Giver**: Vash | **Location**: Shimmer Marsh
 
-**Trigger**: Completing MQ-05 and SQ-06 (Wynn's marsh research).
+**Trigger**: Completing MQ-05 and SQ-06 (Vash's marsh research).
 
 **Objectives**:
-1. Speak with Wynn at the Marsh Hermit's Hut (12, 15) about Verdance's Hollow
+1. Speak with Vash at the Marsh Hermit's Hut (12, 15) about Verdance's Hollow
 2. Clear the path to Verdance's Hollow (25, 35) by broadcasting an earth or water element fragment into the blocked root cluster at (20, 30)
 3. Enter Verdance's Hollow and witness the recall vision: the Rootwalkers planting the world's first forests
 4. Collect Rootwalker's Seedling (MF-06, joy/earth/4)
@@ -854,9 +854,9 @@ All god recall quests become available after MQ-05. The player can complete them
 
 ### GQ-03: The Light Dormant (Luminos)
 
-**Act**: II | **Level**: 12-16 | **Giver**: Solen | **Location**: Flickerveil
+**Act**: II | **Level**: 12-16 | **Giver**: Reza | **Location**: Flickerveil
 
-**Trigger**: Completing MQ-05 and SQ-08 (receiving the Light Lens from Solen).
+**Trigger**: Completing MQ-05 and SQ-08 (receiving the Light Lens from Reza).
 
 **Objectives**:
 1. Equip the Light Lens (K-04) and travel to Luminos Grove (20, 20) in Flickerveil
@@ -895,24 +895,24 @@ All god recall quests become available after MQ-05. The player can complete them
 - **Objectives**: Light lanterns in 5 settlements (Village Hub, Heartfield, Millbrook, Ridgewalker Camp, Flickering Village) by broadcasting light-element fragments.
 - **Rewards**: 400 gold, 5 light-element fragments (potency 2), Lantern Keeper's Cloak (ACC-09, DEF +12, immune to Blind), each shop gains 1 new rare item
 
-**Fury → "The Burning Archive" + "Shadows of the Curator"**
+**Fury → "The Burning Archive" + "Shadows of Grym"**
 
 *GQ-03-F1: The Burning Archive*
 - **Giver**: Pyralis | **Level**: 14-18
 - **Objectives**: Assault the Resonance Archive (10, 10) in Flickerveil. Fight weakened Preserver garrison (3 agents, -20% stats). Clear and claim the archive as a permanent lore library.
 - **Rewards**: 5 fragments (potency 3-5 mix), 500 gold, Lens of Truth (ACC-08, +15 INT, enemy HP bars visible, crit +20%)
 
-*GQ-03-F2: Shadows of the Curator*
+*GQ-03-F2: Shadows of Grym*
 - **Giver**: Pyralis | **Level**: 18-22
 - **Objectives**: Expose 3 shadow agents (illusory Preservers) in Shimmer Marsh, Hollow Ridge, and Resonance Fields by broadcasting light-element fragments at each.
-- **Rewards**: 400 gold, 1 fragment (fury/light/4), early access to Depths L5 shortcut, Curator's hidden motivation revealed
+- **Rewards**: 400 gold, 1 fragment (fury/light/4), early access to Depths L5 shortcut, Grym's hidden motivation revealed
 
 **Sorrow → "The Defector" + "The Twilight Vigil"**
 
 *GQ-03-S1: The Defector*
-- **Giver**: Elyn (Preserver agent) | **Level**: 14-18
-- **Objectives**: After Vesperis recall, escort Elyn from the Flickerveil garrison to Flickering Village. Survive 2 Preserver ambush encounters along the route.
-- **Rewards**: 400 gold, 1 fragment (sorrow/light/4), Elyn's Intelligence Report (K-14, reveals Fortress F1 layout), Elyn's shop unlocked (Crystal Dust C-SP-06, Stasis Shard C-SP-07)
+- **Giver**: Julz (Preserver agent) | **Level**: 14-18
+- **Objectives**: After Vesperis recall, escort Julz from the Flickerveil garrison to Flickering Village. Survive 2 Preserver ambush encounters along the route.
+- **Rewards**: 400 gold, 1 fragment (sorrow/light/4), Julz's Intelligence Report (K-14, reveals Fortress F1 layout), Julz's shop unlocked (Crystal Dust C-SP-06, Stasis Shard C-SP-07)
 
 *GQ-03-S2: The Twilight Vigil*
 - **Giver**: Vesperis | **Level**: 18-22
@@ -929,15 +929,15 @@ All god recall quests become available after MQ-05. The player can complete them
 *GQ-03-A2: The Many-Colored Truth*
 - **Giver**: Prisma | **Level**: 18-22
 - **Objectives**: Find 4 frozen perspectives in Frontier stagnation zones. Broadcast prismatic or light fragments to refract each into multiple interpretations. Seeds of doubt planted in crystal structure.
-- **Rewards**: 400 gold, 4 prismatic fragments, Curator's Doubt (K-13, unique final confrontation dialogue option that removes 1 encounter phase)
+- **Rewards**: 400 gold, 4 prismatic fragments, Grym's Doubt (K-13, unique final confrontation dialogue option that removes 1 encounter phase)
 
 ---
 
 ### GQ-04: The Motion Dormant (Kinesis)
 
-**Act**: II | **Level**: 12-16 | **Giver**: Petra | **Location**: Hollow Ridge
+**Act**: II | **Level**: 12-16 | **Giver**: Nel | **Location**: Hollow Ridge
 
-**Trigger**: Completing MQ-05 and SQ-07 (receiving the Kinetic Boots from Petra).
+**Trigger**: Completing MQ-05 and SQ-07 (receiving the Kinetic Boots from Nel).
 
 **Objectives**:
 1. Equip the Kinetic Boots (K-05) and travel to Kinesis Spire (25, 10) in Hollow Ridge
@@ -1040,8 +1040,8 @@ Some recall-specific quests interact when multiple gods are recalled:
 | GQ-02-J1 (Rootway) | GQ-04-S2 (Rest Stop) | Memorial Waypoint auto-connects to Rootway |
 | GQ-02-A1 (Mycorrhizal Map) | GQ-04-A1 (Perpetual Engine) | Root network + orbital engine = +2 vibrancy/hour all zones |
 | GQ-01-A2 (The Accord) | GQ-03-S1 (The Defector) | Both reduce Preserver hostility in Act III; combined: 2 Preservers switch sides during Fortress |
-| GQ-03-A2 (Many-Colored Truth) | MQ-09 (Fortress) | Curator's Doubt removes 1 encounter phase from final confrontation |
-| GQ-03-F2 (Shadows of Curator) | MQ-09 (Fortress) | Depths L5 shortcut + Curator motivation revealed early |
+| GQ-03-A2 (Many-Colored Truth) | MQ-09 (Fortress) | Grym's Doubt removes 1 encounter phase from final confrontation |
+| GQ-03-F2 (Shadows of Grym) | MQ-09 (Fortress) | Depths L5 shortcut + Grym motivation revealed early |
 | GQ-03-S1 (The Defector) | MQ-09 (Fortress) | K-14 reveals Fortress F1 layout before entering |
 
 ---
@@ -1072,19 +1072,19 @@ START
   │                        ├── SQ-03 (Woodcutter's Dilemma)
   │                        └── SQ-04 (Upstream Secrets)
   │
-  MQ-04 (The Stagnation) ──── SQ-05 (Aric's Doubt) ──────────────────────┐
+  MQ-04 (The Stagnation) ──── SQ-05 (Janik's Doubt) ──────────────────────┐
   │                                                                        │
   MQ-05 (Into the Frontier) ──┬── SQ-06 (Marsh Hermit) → GQ-02 (Verdance)│
   │                            ├── SQ-07 (Ridgewalkers) → GQ-04 (Kinesis) │
   │                            ├── SQ-08 (Light Studies) → GQ-03 (Luminos)│
   │                            ├── SQ-09 (Listener's Camp) → GQ-01 (Resonance)
   │                            ├── SQ-10 (Depths, Lv14+)                  │
-  │                            ├── SQ-11 (Torvan, vibrancy 70+)           │
+  │                            ├── SQ-11 (Hark, vibrancy 70+)           │
   │                            └── SQ-12 (Dream Visions, 5 rests)         │
   │                                                                        │
   MQ-06 (First God Recall) ←── requires ≥1 GQ complete                    │
   │                                                                        │
-  MQ-07 (Curator's Endgame) ←── requires SQ-05 + ≥2 gods recalled ────────┘
+  MQ-07 (Grym's Endgame) ←── requires SQ-05 + ≥2 gods recalled ────────┘
   │                          └── SQ-13 (Choir's Instruments, after GQ-01)
   │                          └── SQ-14 (Stagnation Breaker)
   │

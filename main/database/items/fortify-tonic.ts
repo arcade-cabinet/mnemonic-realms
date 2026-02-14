@@ -1,4 +1,6 @@
 import { Item } from '@rpgjs/database';
+// import Weakness from '../states/weakness'; // TODO: Create Weakness state class
+// import Fortified from '../states/fortified'; // TODO: Create Fortified state class (DEF +20% for 2 turns)
 
 /**
  * Category: status-cure
@@ -11,7 +13,11 @@ import { Item } from '@rpgjs/database';
   description: 'Cures Weakness. Grants DEF +20% for 2 turns.',
   price: 60,
   consumable: true,
-  removeStates: [],
-  addStates: [],
+  removeStates: [
+    // Weakness, // TODO: Uncomment and add Weakness state class here
+  ],
+  addStates: [
+    // Fortified, // TODO: Uncomment and add Fortified state class here
+  ],
 })
 export default class FortifyTonic {}

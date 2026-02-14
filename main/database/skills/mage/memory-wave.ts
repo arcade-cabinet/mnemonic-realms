@@ -9,4 +9,6 @@ import { Skill } from '@rpgjs/database';
   hitRate: 1,
   coefficient: { int: 1 },
 })
-export default class MemoryWave {}
+export default class MemoryWave {
+  // Formula: floor((INT * 1.2 - targetDEF * 0.4) * variance * elementMod) per target
+}

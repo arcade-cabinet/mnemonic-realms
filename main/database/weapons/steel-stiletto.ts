@@ -1,5 +1,7 @@
 import { Weapon } from '@rpgjs/database';
 
+// Intended for: Rogue
+// Weapon category: Dagger
 // Tier: 1
 @Weapon({
   id: 'W-DG-02',

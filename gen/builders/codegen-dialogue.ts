@@ -32,7 +32,7 @@ export function buildDialogueCodeManifest(): CodeGenManifest {
       prompt,
       docRefs: [
         { path: 'docs/story/dialogue-bank.md', heading: entry.npcName, purpose: 'content' },
-        { path: 'docs/story/characters.md', heading: entry.npcName, purpose: 'reference' },
+        { path: 'docs/story/characters.md', heading: entry.npcName, purpose: 'content' },
       ],
       status: 'pending',
     });

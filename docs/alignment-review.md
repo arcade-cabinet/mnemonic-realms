@@ -100,11 +100,11 @@ The "ECS personality system" was the v1 `main/generation/ecs/` system which no l
 
 ---
 
-### S6: `docs/story/act2-script.md` line 31 -- STR stat in Callum's table
+### S6: `docs/story/act2-script.md` line 31 -- STR stat in Artun's table
 
 **Severity**: Low (editorial, same class as A1)
 
-Callum's companion stat table uses `STR` instead of the canonical `ATK`:
+Artun's companion stat table uses `STR` instead of the canonical `ATK`:
 
 ```
 | STR | Low (base 8, +1 per level) |

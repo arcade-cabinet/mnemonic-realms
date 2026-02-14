@@ -1,5 +1,8 @@
 import { Weapon } from '@rpgjs/database';
 
+// Special Effect: 20% chance to act twice (basic attack only)
+// Intended for: Rogue
+// Weapon Category: Dagger
 // Tier: 2
 @Weapon({
   id: 'W-DG-05',

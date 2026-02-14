@@ -1,6 +1,7 @@
 import { Armor } from '@rpgjs/database';
 
 // Tier: 2
+// Special Effect: Knight: +8 DEF instead of +15. Others: AGI -3.
 @Armor({
   id: 'A-04',
   name: 'Chain Mail',

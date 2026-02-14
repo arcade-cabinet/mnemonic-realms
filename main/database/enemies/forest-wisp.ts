@@ -15,6 +15,17 @@ import { Enemy } from '@rpgjs/database';
   gain: {
     exp: 30,
     gold: 14,
+    // items: [{ nb: 1, item: C_SP_01, chance: 0.20 }] // Uncomment and import C_SP_01 if available
   },
 })
-export default class ForestWisp {}
+export default class ForestWisp {
+  // Context:
+  // - Zone: Ambergrove
+  // - Category: settled
+  // - Fragment affinity: Awe / Wind
+  // Abilities:
+  // - Wisp Bolt: INT * 1.5 (wind) (Magic attack, wind element)
+  // - Flicker: 30% dodge next physical (Evasion buff, auto at combat start)
+  // Drop table:
+  // - C-SP-01: 20% chance
+}

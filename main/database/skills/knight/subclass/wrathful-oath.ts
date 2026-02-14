@@ -9,4 +9,6 @@ import { Skill } from '@rpgjs/database';
   hitRate: 1,
   coefficient: { str: 1 },
 })
-export default class WrathfulOath {}
+export default class WrathfulOath {
+  // Formula: Passive: Each fulfilled oath grants +3% ATK (stacking).
+}

@@ -4,7 +4,7 @@
 
 ## Overview
 
-Act III spans the **Sketch** (the world's unfinished edge) and the **Preserver Fortress** (the final dungeon). The player must solidify paths through half-drawn landscapes, descend into the world's oldest memory deposits, infiltrate the Curator's crystalline museum, and reach the First Memory before the Curator can crystallize it. The climax is not destruction or preservation — it is **creation**: the player remixes the First Memory into something new, and the world leaps forward.
+Act III spans the **Sketch** (the world's unfinished edge) and the **Preserver Fortress** (the final dungeon). The player must solidify paths through half-drawn landscapes, descend into the world's oldest memory deposits, infiltrate Grym's crystalline museum, and reach the First Memory before Grym can crystallize it. The climax is not destruction or preservation — it is **creation**: the player remixes the First Memory into something new, and the world leaps forward.
 
 **Emotional arc**: Awe → Challenge → Triumph → Wonder
 
@@ -18,8 +18,8 @@ Act III spans the **Sketch** (the world's unfinished edge) and the **Preserver F
 
 The player enters Act III with a full party of three:
 - **Player** (level 18-20, subclass unlocked, 4 gods recalled)
-- **Lira** (Cleric, full skill set, leveled to match player)
-- **Callum** (Scholar, support skills, leveled to match player)
+- **Hana** (Cleric, full skill set, leveled to match player)
+- **Artun** (Scholar, support skills, leveled to match player)
 
 ### The Sketch Solidification Mechanic
 
@@ -43,7 +43,7 @@ Solidified areas persist permanently. The player must strategically use their fr
 
 **Trigger**: Player crosses Veil's Edge from Flickerveil (continuation from Act II Scene 18)
 
-**Characters**: Player, Lira, Callum
+**Characters**: Player, Hana, Artun
 
 **Time of day**: Indeterminate (the Sketch has no sun — light comes from the ground itself)
 
@@ -55,15 +55,15 @@ The player's first steps into the Sketch. The Half-Drawn Forest is a forest rend
 
 *[The player steps past Veil's Edge. The transition is not gradual — three tiles of shifting detail, then abruptly: the world is a sketch. The ground crunches softly underfoot like thin parchment. The ambient music reduces to a single instrument: a music box, playing the Half-Drawn Forest's theme (see [audio-direction.md](../design/audio-direction.md)).]*
 
-**Lira** *(looking around)*: It's... incomplete. Like someone started drawing a forest and walked away.
+**Hana** *(looking around)*: It's... incomplete. Like someone started drawing a forest and walked away.
 
-**Callum**: Not walked away. Chose not to finish. The Dissolved who planned this forest dissolved while the work was still in progress. They trusted that future generations would complete it in their own way.
+**Artun**: Not walked away. Chose not to finish. The Dissolved who planned this forest dissolved while the work was still in progress. They trusted that future generations would complete it in their own way.
 
 *[The player takes another step. The line-art tree nearest them shimmers — for a moment, bark texture appears, then fades.]*
 
-**Lira**: The world wants to be finished. It's reaching toward detail and just... can't quite hold it.
+**Hana**: The world wants to be finished. It's reaching toward detail and just... can't quite hold it.
 
-**Callum**: That's where you come in. Broadcasting here is different than in the Frontier. When you push a memory into the Sketch, you're not just raising vibrancy — you're painting reality into existence. The fragment becomes the terrain.
+**Artun**: That's where you come in. Broadcasting here is different than in the Frontier. When you push a memory into the Sketch, you're not just raising vibrancy — you're painting reality into existence. The fragment becomes the terrain.
 
 > **SYSTEM — SKETCH SOLIDIFICATION TUTORIAL**:
 > Broadcasting a memory fragment in the Sketch creates permanent solid terrain. The area solidified depends on the fragment's potency:
@@ -73,9 +73,9 @@ The player's first steps into the Sketch. The Half-Drawn Forest is a forest rend
 
 *[The path ahead forks. To the left, sketch-outlined stepping stones cross a line-art river (requires solidification). To the right, a solid path — already crystallized by the Preservers. The crystal path is traversable but narrow, and Preserver agents patrol it.]*
 
-**Lira**: The Curator's path. They're crystallizing a route through the Sketch — freezing it into solidity instead of remembering it. The crystal road leads toward the Fortress.
+**Hana**: Grym's path. They're crystallizing a route through the Sketch — freezing it into solidity instead of remembering it. The crystal road leads toward the Fortress.
 
-**Callum**: We can follow their path and fight through their patrols. Or we can make our own path — it costs fragments, but it's ours.
+**Artun**: We can follow their path and fight through their patrols. Or we can make our own path — it costs fragments, but it's ours.
 
 ### Key Interactions
 
@@ -83,7 +83,7 @@ The player's first steps into the Sketch. The Half-Drawn Forest is a forest rend
 
 *[A unique area where the Sketch is actively drawing itself in real time. New tree-lines appear, branches extend, occasionally a flower outline blooms — then erases itself, starts over. The world is trying to create, but without a memory to anchor it, the creation is unstable.]*
 
-**Callum** *(fascinated)*: It's iterating. The world is running through possibilities — trying to find a version of this clearing that works. Without a memory to commit, it just keeps drafting.
+**Artun** *(fascinated)*: It's iterating. The world is running through possibilities — trying to find a version of this clearing that works. Without a memory to commit, it just keeps drafting.
 
 > **SYSTEM**: Broadcasting a memory fragment here will "lock in" a version of the clearing, creating a permanent rest point with a new Resonance Stone.
 
@@ -95,7 +95,7 @@ The player's first steps into the Sketch. The Half-Drawn Forest is a forest rend
 
 *[A grove of Resonance Stones arranged in a spiral. These contain the dissolved memories of the civilization that planned this forest.]*
 
-**Callum**: The Archive of Intentions. This is the plan — the blueprint for the forest the Dissolved started and never finished. Their memories are the instructions.
+**Artun**: The Archive of Intentions. This is the plan — the blueprint for the forest the Dissolved started and never finished. Their memories are the instructions.
 
 *[Interacting with the stones reveals fragments of the forest plan — images of towering canopy, sprawling root systems, bird-filled clearings. Each stone yields a fragment:]*
 - Stone 1: Awe/Earth/3★ — *The first tree, planned as a seed that would become a cathedral of branches.*
@@ -108,7 +108,7 @@ The player's first steps into the Sketch. The Half-Drawn Forest is a forest rend
 
 *[A gap in the forest floor — a descent into the world's oldest memory deposit.]*
 
-**Lira**: The Deepest Memory. The oldest layer of the Depths. If the First Memory is what the Curator is after, this is where we'll learn what it actually is.
+**Hana**: The Deepest Memory. The oldest layer of the Depths. If the First Memory is what Grym is after, this is where we'll learn what it actually is.
 
 > **SYSTEM**: Descend into the Depths Level 5: The Deepest Memory? The enemies here are the strongest in the Depths. Recommended level: 22+.
 
@@ -119,7 +119,7 @@ Sketch enemies: Sketch Wolves (pack tactics), Unfinished Treants (erratic attack
 ### Player Actions
 
 - Learn the Sketch solidification mechanic (first broadcast in the Sketch)
-- Choose: follow the Curator's crystal path (combat) or make your own path (fragment cost)
+- Choose: follow Grym's crystal path (combat) or make your own path (fragment cost)
 - Explore The Living Sketch (create a permanent rest point)
 - Visit the Archive of Intentions (collect 3 high-quality fragments)
 - Discover the Depths Level 5 entrance
@@ -140,7 +140,7 @@ Sketch enemies: Sketch Wolves (pack tactics), Unfinished Treants (erratic attack
 
 **Trigger**: Player travels south/west from Half-Drawn Forest
 
-**Characters**: Player, Lira, Callum
+**Characters**: Player, Hana, Artun
 
 **Time of day**: N/A (the Wastes glow from below)
 
@@ -152,9 +152,9 @@ The Luminous Wastes is the world's flattest, emptiest zone — a vast expanse of
 
 *[The player enters the Wastes. The screen is nearly white — the ground glows evenly, the sky is a pale luminous void. The party's shadows stretch long and sharp across the featureless surface.]*
 
-**Lira**: Nothing. There's almost nothing here.
+**Hana**: Nothing. There's almost nothing here.
 
-**Callum**: No — not nothing. Potential. Every tile of this wasteland is waiting for its first memory. The Dissolved never planned anything for this area. It's completely open.
+**Artun**: No — not nothing. Potential. Every tile of this wasteland is waiting for its first memory. The Dissolved never planned anything for this area. It's completely open.
 
 *[In the distance, a faint cluster of sketch-lines suggests buildings — the Half-Built Village.]*
 
@@ -162,7 +162,7 @@ The Luminous Wastes is the world's flattest, emptiest zone — a vast expanse of
 
 *[Sketch outlines of an entire village that was never finished. Walls are single lines. Roofs are triangles without thatch. Doorways are rectangles opening onto nothing. A spectral wind blows through structures that can't resist it because they have no substance.]*
 
-**Callum**: A village that was planned but never remembered into existence. The civilization that designed it dissolved before they could finish. Look — you can see the layout. A central square, a market, homes along two roads. Everything a village needs except reality.
+**Artun**: A village that was planned but never remembered into existence. The civilization that designed it dissolved before they could finish. Look — you can see the layout. A central square, a market, homes along two roads. Everything a village needs except reality.
 
 > **SYSTEM**: Broadcasting memory fragments into the Half-Built Village will solidify it, creating a new settlement. Solidifying the central square (5x5 area, requires potency 3+ fragment) reveals a rest point, a Resonance Stone, and 3 dissolved memory fragments embedded in the foundations.
 
@@ -176,13 +176,13 @@ The Luminous Wastes is the world's flattest, emptiest zone — a vast expanse of
 
 *[The world's absolute western boundary. The sketch-lines stop. Beyond this point: a soft, warm, white void. Not darkness — absence. The void glows faintly, invitingly. Standing here, the player can see new lines slowly drawing themselves at the boundary — the world is still growing, one pencil stroke at a time.]*
 
-**Lira** *(at the Edge)*: This is where the world ends. Right here.
+**Hana** *(at the Edge)*: This is where the world ends. Right here.
 
-**Callum**: No. This is where the world is still beginning.
+**Artun**: No. This is where the world is still beginning.
 
 *[The player can stand at the Edge for as long as they wish. Every 5 seconds, a new sketch-line appears in the void — a hill, a tree, a river bend — then solidifies slightly before the next appears. The world is not dying. It is not finished. It is still being dreamed.]*
 
-**Callum**: The Curator wants to freeze the First Memory to stop change forever. But change IS the world. Every new line out there is the world choosing to keep going. If the Curator succeeds... these lines stop. The drawing ends mid-stroke.
+**Artun**: Grym wants to freeze the First Memory to stop change forever. But change IS the world. Every new line out there is the world choosing to keep going. If Grym succeeds... these lines stop. The drawing ends mid-stroke.
 
 *[No system message. No reward. This is purely a narrative moment — one of the game's most powerful.]*
 
@@ -210,7 +210,7 @@ The Luminous Wastes is the world's flattest, emptiest zone — a vast expanse of
 - **Fragments**: Awe/Light/4★ from village, 3 foundation fragments, Watchtower drops
 - **Vibrancy**: Luminous Wastes +10 (from Watchtower), additional from broadcasts
 - **Settlement created**: Half-Built Village (if solidified) — permanent rest point
-- **Emotional impact**: The Edge scene establishes the stakes for the endgame — if the Curator wins, the world stops growing. The new lines stop.
+- **Emotional impact**: The Edge scene establishes the stakes for the endgame — if Grym wins, the world stops growing. The new lines stop.
 
 ---
 
@@ -220,7 +220,7 @@ The Luminous Wastes is the world's flattest, emptiest zone — a vast expanse of
 
 **Trigger**: Player travels north from Half-Drawn Forest or Luminous Wastes
 
-**Characters**: Player, Lira, Callum
+**Characters**: Player, Hana, Artun
 
 **Time of day**: N/A (the peaks glow with ambient light)
 
@@ -232,13 +232,13 @@ The Undrawn Peaks are wireframe mountains — geometric shapes with visible cons
 
 *[The player enters the Undrawn Peaks. The mountains are beautiful in their abstraction — clean geometric forms, glowing vertices, paths that are visible as line segments connecting nodes. The scale is immense — wireframe peaks stretch upward into the pale sky.]*
 
-**Lira**: The Fortress. There.
+**Hana**: The Fortress. There.
 
-*[The Crystalline Fortress Gate (20, 35) is visible in the distance — two massive crystallized pillars framing a passage that descends into the mountain. The crystal radiates cold light. The Curator's crystallized path leads directly to it, a frozen highway through the wireframe landscape.]*
+*[The Crystalline Fortress Gate (20, 35) is visible in the distance — two massive crystallized pillars framing a passage that descends into the mountain. The crystal radiates cold light. Grym's crystallized path leads directly to it, a frozen highway through the wireframe landscape.]*
 
-**Callum**: The Preserver Fortress. Three floors of crystallized perfection — everything the Curator considers worth preserving, frozen forever in a museum no one asked for.
+**Artun**: The Preserver Fortress. Three floors of crystallized perfection — everything Grym considers worth preserving, frozen forever in a museum no one asked for.
 
-**Callum**: The First Memory is on the lowest floor. We need to go through the Fortress to reach it.
+**Artun**: The First Memory is on the lowest floor. We need to go through the Fortress to reach it.
 
 ### The Apex (20, 5)
 
@@ -252,43 +252,43 @@ The Undrawn Peaks are wireframe mountains — geometric shapes with visible cons
 
 *[This mirrors the telescope view from Act I Scene 12 on Lookout Hill, but from vastly higher — and the world is vastly more alive.]*
 
-### The Curator's Path
+### Grym's Path
 
 *[The crystallized path through the Sketch becomes more prominent here — a frozen highway of blue-white crystal, 3 tiles wide, cutting through the wireframe mountains. Preserver patrols move along it. The crystal hums with stasis energy — standing on it drains 1% SP per second.]*
 
-**Lira**: The Curator's route. They've been building this for days — crystallizing a path from the Frontier straight to the Fortress. This is how they plan to reach the First Memory.
+**Hana**: Grym's route. They've been building this for days — crystallizing a path from the Frontier straight to the Fortress. This is how they plan to reach the First Memory.
 
-**Callum**: The path is already complete. The Curator is already inside.
+**Artun**: The path is already complete. Grym is already inside.
 
-**Lira**: Then we need to move. Now.
+**Hana**: Then we need to move. Now.
 
 ### Crystalline Fortress Gate (20, 35)
 
 *[Two massive crystallized pillars frame the Fortress entrance. The crystal is unlike anything the player has seen — not rough or angular, but smooth, flowing, almost organic. It is genuinely beautiful. Between the pillars, a descending passage leads into blue-white light.]*
 
-*[Preserver Captain Aric stands at the gate. His posture is different from his Act II appearances — he's not blocking the path. He's waiting.]*
+*[Preserver Captain Janik stands at the gate. His posture is different from his Act II appearances — he's not blocking the path. He's waiting.]*
 
-**Aric**: Architect. I expected you.
+**Janik**: Architect. I expected you.
 
-**Lira** *(tense)*: Step aside, Aric.
+**Hana** *(tense)*: Step aside, Janik.
 
-**Aric**: I'm not here to fight. Not this time.
+**Janik**: I'm not here to fight. Not this time.
 
-*[Aric removes his crystal gauntlet and sets it on the ground.]*
+*[Janik removes his crystal gauntlet and sets it on the ground.]*
 
-**Aric**: I've been thinking about what I asked you in the Frontier. "Does being stronger make you right?" I still don't know the answer. But I know this: the Curator is wrong about the First Memory. Crystallizing it won't preserve the world — it will kill it.
+**Janik**: I've been thinking about what I asked you in the Frontier. "Does being stronger make you right?" I still don't know the answer. But I know this: Grym is wrong about the First Memory. Crystallizing it won't preserve the world — it will kill it.
 
-**Aric**: I can't fight the Curator directly — the crystal armor binds me to their will. But I can tell you what's inside.
+**Janik**: I can't fight Grym directly — the crystal armor binds me to their will. But I can tell you what's inside.
 
-*[Aric describes the Fortress layout — this information appears on the player's map:]*
+*[Janik describes the Fortress layout — this information appears on the player's map:]*
 
-**Aric**: Three floors. The Gallery of Moments — frozen scenes the Curator considers perfect. The Archive of Perfection — the Curator's personal collection, the most beautiful things they've ever frozen. And the First Memory Chamber.
+**Janik**: Three floors. The Gallery of Moments — frozen scenes Grym considers perfect. The Archive of Perfection — Grym's personal collection, the most beautiful things they've ever frozen. And the First Memory Chamber.
 
-**Aric**: The Gallery is guarded by the Curator's Right Hand — their most loyal lieutenant. The Archive is guarded by the Archive Keeper — a construct of pure crystal intelligence. The Curator waits on the third floor.
+**Janik**: The Gallery is guarded by Grym's Right Hand — their most loyal lieutenant. The Archive is guarded by the Archive Keeper — a construct of pure crystal intelligence. Grym waits on the third floor.
 
-**Aric**: One more thing. The Fortress is crystallized at vibrancy 0. Your broadcasts won't work inside — the crystal absorbs memory energy. But the crystal has fractures. Everywhere a god's influence has touched the world, the Fortress walls crack. Your four recalled gods are weakening the crystal from outside.
+**Janik**: One more thing. The Fortress is crystallized at vibrancy 0. Your broadcasts won't work inside — the crystal absorbs memory energy. But the crystal has fractures. Everywhere a god's influence has touched the world, the Fortress walls crack. Your four recalled gods are weakening the crystal from outside.
 
-*[Aric steps aside. The path to the Fortress is open.]*
+*[Janik steps aside. The path to the Fortress is open.]*
 
 > **SYSTEM**: The Preserver Fortress is open. Three floors await. God recall effects create fractures in the Fortress walls — visual cracks that may provide tactical advantages.
 
@@ -297,15 +297,15 @@ The Undrawn Peaks are wireframe mountains — geometric shapes with visible cons
 - Explore the Undrawn Peaks (wireframe mountain traversal)
 - Climb to the Apex (highest point in the game — panoramic view)
 - Approach the Fortress Gate
-- Meet Aric (final Preserver encounter before the Fortress)
+- Meet Janik (final Preserver encounter before the Fortress)
 - Enter the Preserver Fortress
 
 ### Rewards / Consequences
 
 - **Level**: Player reaches ~23-24
-- **Fortress map**: Aric's intelligence reveals the layout
+- **Fortress map**: Janik's intelligence reveals the layout
 - **God recall fractures**: Each recalled god creates visible fractures in the Fortress walls, making navigation easier and providing environmental advantages in combat
-- **Aric's fate**: He remains at the gate. In the ending, he becomes the Fortress's first new guardian — protecting the archive rather than enforcing stasis.
+- **Janik's fate**: He remains at the gate. In the ending, he becomes the Fortress's first new guardian — protecting the archive rather than enforcing stasis.
 
 ---
 
@@ -315,7 +315,7 @@ The Undrawn Peaks are wireframe mountains — geometric shapes with visible cons
 
 **Trigger**: Player descends through the Sketch Passage (can be done before or after Fortress Scenes — strongly recommended before)
 
-**Characters**: Player, Lira, Callum, Dissolved memory echoes, The First Dreamer (boss)
+**Characters**: Player, Hana, Artun, Dissolved memory echoes, The First Dreamer (boss)
 
 **Time of day**: N/A (underground)
 
@@ -331,17 +331,17 @@ The Deepest Memory is the world's oldest memory deposit — a surreal, non-Eucli
 
 *[A room that looks like a village — but not the player's village. An older village, from a dissolved civilization. The buildings are amber-tinted, translucent, made of solidified memory. NPCs walk through their routines, unaware of the player.]*
 
-**Callum**: These are surface memories. Recent by the Depths' standards — maybe a few hundred years old. A civilization going about its daily life. They haven't dissolved yet. They're still deciding.
+**Artun**: These are surface memories. Recent by the Depths' standards — maybe a few hundred years old. A civilization going about its daily life. They haven't dissolved yet. They're still deciding.
 
 ### Room 3: The Middle Memory
 
 *[The rooms have become more abstract. The walls show geological cross-sections — layers of memory stacked like sediment. Each layer is a different civilization, a different era. The player walks through compressed time.]*
 
-**Callum**: We're going deeper. Each layer is older. Look — that stratum is the Rootwalkers. Below it, the Choir. Below that... civilizations I don't have names for. Older than anything in my journals.
+**Artun**: We're going deeper. Each layer is older. Look — that stratum is the Rootwalkers. Below it, the Choir. Below that... civilizations I don't have names for. Older than anything in my journals.
 
-**Lira**: How many civilizations have dissolved?
+**Hana**: How many civilizations have dissolved?
 
-**Callum**: Dozens. Maybe hundreds. Each one completing its purpose and choosing to become part of the world.
+**Artun**: Dozens. Maybe hundreds. Each one completing its purpose and choosing to become part of the world.
 
 ### Room 5: The Deep Memory — The First Question
 
@@ -351,11 +351,11 @@ The Deepest Memory is the world's oldest memory deposit — a surreal, non-Eucli
 
 *[The party stops.]*
 
-**Callum** *(whispering)*: It spoke. The memory spoke.
+**Artun** *(whispering)*: It spoke. The memory spoke.
 
 **The Light**: I am old. Older than the stone you stand on. I was the first question anyone ever asked. "Why do things change?" And the attempt to answer that question — that act of wondering — created the first memory. Which created the world.
 
-**Lira**: The First Memory isn't a thing. It's a question.
+**Hana**: The First Memory isn't a thing. It's a question.
 
 **The Light**: I am the echo of that question. The question itself is in the chamber above — the place the crystal-maker calls their fortress. The question is: "Why do things change?" And every civilization since has tried to answer it.
 
@@ -363,7 +363,7 @@ The Deepest Memory is the world's oldest memory deposit — a surreal, non-Eucli
 
 **The Light**: The crystal-maker's answer is: "Things shouldn't change." That is the only answer that would silence the question forever.
 
-**Callum** *(to the player)*: If the Curator crystallizes the First Memory — the first question — the world stops asking. It stops wondering. It stops changing.
+**Artun** *(to the player)*: If Grym crystallizes the First Memory — the first question — the world stops asking. It stops wondering. It stops changing.
 
 **The Light**: You will need to offer your own answer. Not with words. With memory. With everything you've carried.
 
@@ -382,9 +382,9 @@ The Deepest Memory is the world's oldest memory deposit — a surreal, non-Eucli
 > **SYSTEM**: You received: Memory Fragment (Awe/Neutral/5★) — "The world's oldest memory: the first moment of wonder."
 > You received: Dissolved Essence × 2
 
-**Callum** *(sitting on the cave floor, staring at where the Dreamer was)*: A question. The world exists because someone asked a question. And the Curator wants to answer it with silence.
+**Artun** *(sitting on the cave floor, staring at where the Dreamer was)*: A question. The world exists because someone asked a question. And Grym wants to answer it with silence.
 
-**Lira**: Then we give a better answer. Let's go.
+**Hana**: Then we give a better answer. Let's go.
 
 ### Player Actions
 
@@ -399,7 +399,7 @@ The Deepest Memory is the world's oldest memory deposit — a surreal, non-Eucli
 - **Fragments**: Awe/Neutral/5★ (strongest non-story fragment), plus room exploration fragments
 - **Items**: 2 Dissolved Essences (full HP/SP restore consumables)
 - **Lore**: The First Memory is a question ("Why do things change?"). Crystallizing it ends the world's capacity for wonder. This reframes the entire endgame — the player isn't fighting to preserve or destroy. They're fighting for the world's right to keep asking questions.
-- **Callum's arc**: He's now face-to-face with the deepest truth about the Dissolved. His 40 years of academic study culminate here.
+- **Artun's arc**: He's now face-to-face with the deepest truth about the Dissolved. His 40 years of academic study culminate here.
 
 ---
 
@@ -409,31 +409,31 @@ The Deepest Memory is the world's oldest memory deposit — a surreal, non-Eucli
 
 **Trigger**: Player approaches the Fortress entrance (from Scene 3 or after completing Scene 4)
 
-**Characters**: Player, Lira, Callum
+**Characters**: Player, Hana, Artun
 
 **Time of day**: N/A (the Fortress has its own cold light)
 
 ### Narrative Context
 
-The player enters the Preserver Fortress — the final dungeon. The crystal here is not the rough, angular stasis of surface stagnation zones. It is smooth, flowing, almost organic — and genuinely beautiful. The Fortress was built with love. The Curator's love for the world, expressed as the desperate desire to keep it exactly as it is.
+The player enters the Preserver Fortress — the final dungeon. The crystal here is not the rough, angular stasis of surface stagnation zones. It is smooth, flowing, almost organic — and genuinely beautiful. The Fortress was built with love. Grym's love for the world, expressed as the desperate desire to keep it exactly as it is.
 
 ### Dialogue
 
 *[The player descends through the gate. The crystal walls close around them — not threateningly, but envelopingly. The ambient audio is the glass harmonica theme (see [audio-direction.md](../design/audio-direction.md)) — cold, pristine, unsettling in its beauty. The temperature drops (a visual blue tint overlays the screen).]*
 
-**Lira** *(touching the wall)*: I recognize this feeling. The crystal. The cold. The way everything is perfectly still.
+**Hana** *(touching the wall)*: I recognize this feeling. The crystal. The cold. The way everything is perfectly still.
 
 *[Beat.]*
 
-**Lira**: I was frozen in crystal like this. For weeks. From my perspective, it was a single moment — one heartbeat between consciousness and nothing. But I remember the nothing. A perfect, silent, beautiful nothing.
+**Hana**: I was frozen in crystal like this. For weeks. From my perspective, it was a single moment — one heartbeat between consciousness and nothing. But I remember the nothing. A perfect, silent, beautiful nothing.
 
-**Lira**: I don't want the world to feel that.
+**Hana**: I don't want the world to feel that.
 
-**Callum**: The god recall fractures — look.
+**Artun**: The god recall fractures — look.
 
 *[Visible cracks run through the crystal walls — amber, green, golden, or kinetic depending on which gods the player recalled and with which emotions. If Floriana (joy Verdance) was recalled, vine-like green cracks. If Tecton (fury Kinesis), tectonic fracture lines. If Tacet (sorrow Resonance), zones of silence in the ambient hum. Each recalled god weakens the Fortress differently.]*
 
-**Callum**: The gods are here. Not physically — but their influence has been eroding this crystal since the moment you recalled them. The Curator built this fortress to resist change, but the world keeps pushing.
+**Artun**: The gods are here. Not physically — but their influence has been eroding this crystal since the moment you recalled them. Grym built this fortress to resist change, but the world keeps pushing.
 
 > **SYSTEM**: The Preserver Fortress. Vibrancy: 0 (crystallized). Broadcasting is disabled — the crystal absorbs memory energy. However, god recall fractures create weak points that can be exploited. Three floors separate you from the First Memory.
 
@@ -441,13 +441,13 @@ The player enters the Preserver Fortress — the final dungeon. The crystal here
 
 - Enter the Fortress (narrative scene)
 - Observe god recall fractures in the crystal walls (visual confirmation of Act II choices)
-- Hear Lira's perspective on being frozen (unique insight from her experience)
+- Hear Hana's perspective on being frozen (unique insight from her experience)
 
 ### Rewards / Consequences
 
 - **Fortress entered**: 3 floors ahead
 - **God effects visible**: Each recalled god creates a different type of fracture, providing environmental storytelling and tactical advantages
-- **Lira's arc**: Her frozen experience gives her unique understanding of what the Curator has built — and what it costs.
+- **Hana's arc**: Her frozen experience gives her unique understanding of what Grym has built — and what it costs.
 
 ---
 
@@ -457,7 +457,7 @@ The player enters the Preserver Fortress — the final dungeon. The crystal here
 
 **Trigger**: Player descends from the Fortress Gate
 
-**Characters**: Player, Lira, Callum, frozen NPCs, Curator's Right Hand (boss)
+**Characters**: Player, Hana, Artun, frozen NPCs, Grym's Right Hand (boss)
 
 **Time of day**: N/A
 
@@ -469,38 +469,38 @@ The Gallery is a crystalline museum. Each room is a "gallery" displaying a froze
 
 **Room 1: The Festival Hall**
 
-*[A large chamber containing 12 frozen NPCs in festival clothing — mid-dance, mid-laugh, mid-embrace. Identical to the Frozen Festival moral dilemma from Act II Scene 11, but larger and more elaborate. This is the Curator's prize exhibit.]*
+*[A large chamber containing 12 frozen NPCs in festival clothing — mid-dance, mid-laugh, mid-embrace. Identical to the Frozen Festival moral dilemma from Act II Scene 11, but larger and more elaborate. This is Grym's prize exhibit.]*
 
 *[Crystal barriers block the exit. The player must find and exploit god-recall fractures in the walls to bypass them — each fracture, when struck, sends a shockwave that cracks nearby barriers. No broadcasting possible.]*
 
-**Lira**: More frozen people. The Curator has been collecting these for years.
+**Hana**: More frozen people. Grym has been collecting these for years.
 
-*[If the player preserved the Frozen Festival in Act II: Callum notes "The one in Resonance Fields... that was a test. The Curator was deciding whether to add it to the Gallery."]*
+*[If the player preserved the Frozen Festival in Act II: Artun notes "The one in Resonance Fields... that was a test. Grym was deciding whether to add it to the Gallery."]*
 *[If the player broke the Frozen Festival in Act II: A Preserver Archivist ambushes from the side, motivated by anger at the player's previous destruction.]*
 
 **Room 3: The Child's First Steps**
 
 *[A small, intimate chamber. A single frozen moment: a toddler taking their first steps, reaching toward a parent whose arms are outstretched. The crystal here is especially fine — gossamer-thin, preserving every detail of the child's expression: concentration, delight, triumph.]*
 
-**Callum** *(stopping)*: This one... this one is hard.
+**Artun** *(stopping)*: This one... this one is hard.
 
-**Callum**: That child learned to walk. That parent was proud. And the Curator froze it because it was the most perfect moment of that child's life.
+**Artun**: That child learned to walk. That parent was proud. And Grym froze it because it was the most perfect moment of that child's life.
 
-**Callum**: But the child never learned to run. Never learned to fall and get back up. Never grew into the person those first steps were leading toward.
+**Artun**: But the child never learned to run. Never learned to fall and get back up. Never grew into the person those first steps were leading toward.
 
-**Callum**: Perfect moments aren't meant to last. They're meant to lead somewhere.
+**Artun**: Perfect moments aren't meant to last. They're meant to lead somewhere.
 
-**Room 5: The Gallery's End — Boss: Curator's Right Hand**
+**Room 5: The Gallery's End — Boss: Grym's Right Hand**
 
-*[The final gallery room. On a raised platform, the Curator's Right Hand stands before a crystal archway leading to Floor 2.]*
+*[The final gallery room. On a raised platform, Grym's Right Hand stands before a crystal archway leading to Floor 2.]*
 
-*[Boss encounter: Curator's Right Hand. See [enemies-catalog.md](../design/enemies-catalog.md) B-04a. HP 900, crystal shield with damage reflection, Gallery Cage (4-tile crystal prison). The frozen scenes in the room serve as environmental hazards — the Right Hand can activate them, creating momentary stasis fields that freeze party members for 1 turn if they're standing adjacent.]*
+*[Boss encounter: Grym's Right Hand. See [enemies-catalog.md](../design/enemies-catalog.md) B-04a. HP 900, crystal shield with damage reflection, Gallery Cage (4-tile crystal prison). The frozen scenes in the room serve as environmental hazards — the Right Hand can activate them, creating momentary stasis fields that freeze party members for 1 turn if they're standing adjacent.]*
 
-**Curator's Right Hand** *(before combat)*: The Curator weeps for every battle. So do I. But these moments — these perfect, frozen moments — they're worth protecting. Even from you.
+**Grym's Right Hand** *(before combat)*: Grym weeps for every battle. So do I. But these moments — these perfect, frozen moments — they're worth protecting. Even from you.
 
 *[After defeat:]*
 
-**Curator's Right Hand** *(kneeling)*: The Curator is below. They know you're coming. They've always known.
+**Grym's Right Hand** *(kneeling)*: Grym is below. They know you're coming. They've always known.
 
 *[The Right Hand dissolves into crystal dust. The frozen NPCs in the gallery do NOT unfreeze — the Fortress's crystal holds them independently of the guardian. They will unfreeze during the Endgame Bloom.]*
 
@@ -509,7 +509,7 @@ The Gallery is a crystalline museum. Each room is a "gallery" displaying a froze
 - Navigate the Gallery of Moments (5 rooms with crystal barrier puzzles)
 - Exploit god-recall fractures to bypass barriers
 - Confront frozen perfect moments (narrative weight)
-- Defeat the Curator's Right Hand (boss)
+- Defeat Grym's Right Hand (boss)
 - Encounter Preserver Agents and Archivists (2-3 random encounters)
 
 ### Rewards / Consequences
@@ -517,7 +517,7 @@ The Gallery is a crystalline museum. Each room is a "gallery" displaying a froze
 - **XP**: ~800 (boss) + ~400 (encounters)
 - **Gold**: ~300
 - **Items**: Boss drops Sorrow/Neutral/4★ fragment, Phoenix Feather
-- **Emotional impact**: The Gallery forces the player to look at what the Curator has been doing — and to acknowledge that these moments ARE beautiful. The child's first steps are worth remembering. The question is whether remembering requires freezing.
+- **Emotional impact**: The Gallery forces the player to look at what Grym has been doing — and to acknowledge that these moments ARE beautiful. The child's first steps are worth remembering. The question is whether remembering requires freezing.
 
 ---
 
@@ -527,13 +527,13 @@ The Gallery is a crystalline museum. Each room is a "gallery" displaying a froze
 
 **Trigger**: Player descends from Floor 1
 
-**Characters**: Player, Lira, Callum, The Archive Keeper (boss)
+**Characters**: Player, Hana, Artun, The Archive Keeper (boss)
 
 **Time of day**: N/A
 
 ### Narrative Context
 
-The Curator's personal collection. This floor is smaller, more intimate, and more disturbing. Each room contains a frozen moment that the Curator personally considered the world's most beautiful. The puzzle here is moral: the player must choose which frozen memories to free and which to leave preserved. Freeing memories weakens the crystal barriers but disturbs the archive's structure. Leaving them preserves the path but leaves people frozen.
+Grym's personal collection. This floor is smaller, more intimate, and more disturbing. Each room contains a frozen moment that Grym personally considered the world's most beautiful. The puzzle here is moral: the player must choose which frozen memories to free and which to leave preserved. Freeing memories weakens the crystal barriers but disturbs the archive's structure. Leaving them preserves the path but leaves people frozen.
 
 ### Archive Rooms
 
@@ -553,33 +553,33 @@ The Curator's personal collection. This floor is smaller, more intimate, and mor
 
 *[The player must choose. There is no "free all" option — the crystal lock requires exactly 2 disruptions. One scene will remain frozen until the Endgame Bloom.]*
 
-**Lira** *(quietly)*: Two freed. One stays. That's the Curator's final lesson — you can't save everything. Not even you.
+**Hana** *(quietly)*: Two freed. One stays. That's Grym's final lesson — you can't save everything. Not even you.
 
-*[This mirrors the Curator's philosophy: choices have permanent consequences. The player's own philosophy (growth, change, new creation) is turned against them — they must decide who stays frozen.]*
+*[This mirrors Grym's philosophy: choices have permanent consequences. The player's own philosophy (growth, change, new creation) is turned against them — they must decide who stays frozen.]*
 
-### Room 4: Lira's Insight
+### Room 4: Hana's Insight
 
-*[A hallway lined with crystal windows. Through each window, a different frozen moment is visible — a panorama of the Curator's collection extending in every direction. Hundreds of frozen moments. Maybe thousands.]*
+*[A hallway lined with crystal windows. Through each window, a different frozen moment is visible — a panorama of Grym's collection extending in every direction. Hundreds of frozen moments. Maybe thousands.]*
 
-**Lira** *(stopping at a window)*: I know what this feels like. From the inside.
+**Hana** *(stopping at a window)*: I know what this feels like. From the inside.
 
-**Lira**: When I was frozen, I was aware. Not of time passing — there was no time. But of... being held. Like being carried in someone's arms while you sleep. Safe. Still. Protected.
+**Hana**: When I was frozen, I was aware. Not of time passing — there was no time. But of... being held. Like being carried in someone's arms while you sleep. Safe. Still. Protected.
 
-**Lira**: It wasn't terrible. That's the worst part. The Curator isn't lying when they say this is a kindness. For the frozen, it IS a kindness. They don't suffer. They don't fear. They don't lose.
+**Hana**: It wasn't terrible. That's the worst part. Grym isn't lying when they say this is a kindness. For the frozen, it IS a kindness. They don't suffer. They don't fear. They don't lose.
 
-**Lira**: But they don't choose, either. And that's what the Curator can't understand. A kindness you didn't choose isn't kindness. It's control.
+**Hana**: But they don't choose, either. And that's what Grym can't understand. A kindness you didn't choose isn't kindness. It's control.
 
 ### Room 5: Boss — The Archive Keeper
 
-*[The floor's central gallery. The Archive Keeper stands at the center — a crystalline construct of pure stasis intelligence, hovering above a display of the Curator's most valued frozen moments.]*
+*[The floor's central gallery. The Archive Keeper stands at the center — a crystalline construct of pure stasis intelligence, hovering above a display of Grym's most valued frozen moments.]*
 
 *[Boss encounter: Archive Keeper. See [enemies-catalog.md](../design/enemies-catalog.md) B-04b. HP 1,100, high INT. Perfect Memory summons frozen scenes that halve healing. Catalogue passive rewards varied skill usage. Dissolution death trigger grants +15% all stats for remainder of the Fortress.]*
 
 **Archive Keeper** *(hovering, expressionless)*: You do not understand what you are destroying. Each frozen moment is irreplaceable. Each one is a universe of perfection, held in crystal, safe from entropy.
 
-**Archive Keeper**: The Curator trusted me to protect these. I will not fail.
+**Archive Keeper**: Grym trusted me to protect these. I will not fail.
 
-*[After defeat: the Archive shatters. All frozen scenes in the room crack. The Keeper whispers: "The Curator... will understand."]*
+*[After defeat: the Archive shatters. All frozen scenes in the room crack. The Keeper whispers: "Grym... will understand."]*
 
 *[Party buff: +15% all stats for remainder of the Fortress.]*
 
@@ -587,7 +587,7 @@ The Curator's personal collection. This floor is smaller, more intimate, and mor
 
 - Navigate the Archive of Perfection (5 rooms)
 - Solve the moral puzzle (choose which 2 of 3 scenes to free)
-- Hear Lira's unique perspective on being frozen
+- Hear Hana's unique perspective on being frozen
 - Defeat the Archive Keeper (boss)
 - Encounter Preserver Archivists and Captains (2-3 random encounters)
 
@@ -598,7 +598,7 @@ The Curator's personal collection. This floor is smaller, more intimate, and mor
 - **Items**: Boss drops Awe/Light/4★ fragment
 - **Party buff**: +15% all stats for the remaining floor
 - **Moral puzzle**: Player chose which scene to leave frozen — this has no gameplay consequence but carries emotional weight into the final confrontation
-- **Lira's arc**: Her understanding of stasis from the inside gives the party (and the player) the most nuanced view of the Curator's work. Stasis isn't evil. It's just not enough.
+- **Hana's arc**: Her understanding of stasis from the inside gives the party (and the player) the most nuanced view of Grym's work. Stasis isn't evil. It's just not enough.
 
 ---
 
@@ -608,67 +608,67 @@ The Curator's personal collection. This floor is smaller, more intimate, and mor
 
 **Trigger**: Player descends from Floor 2
 
-**Characters**: Player, Lira, Callum, The Curator
+**Characters**: Player, Hana, Artun, Grym
 
 **Time of day**: N/A
 
 ### Narrative Context
 
-The final floor is a single vast chamber. No puzzles. No random encounters. Just the Curator, the First Memory, and the confrontation that determines the world's future.
+The final floor is a single vast chamber. No puzzles. No random encounters. Just Grym, the First Memory, and the confrontation that determines the world's future.
 
 The First Memory sits at the chamber's center: a sphere of warm amber light, roughly human-sized, suspended above a crystal pedestal. It pulses slowly — like breathing. Like a question being asked, over and over: *Why do things change?*
 
-The Curator stands before it, hands folded, calm. They have been waiting.
+Grym stands before it, hands folded, calm. They have been waiting.
 
-### The Curator
+### Grym
 
 *[The party enters the chamber. The crystal walls are smooth and seamless — no fractures here. The floor is mirror-polished crystal reflecting the amber light of the First Memory. The glass harmonica theme plays at its lowest, most intimate register.]*
 
-*[The Curator turns. They are not armored, not threatening. They wear simple robes of dark blue-gray. Their face is visible for the first time — middle-aged, tired, kind. They look like someone who has been carrying something heavy for a very long time.]*
+*[Grym turns. They are not armored, not threatening. They wear simple robes of dark blue-gray. Their face is visible for the first time — middle-aged, tired, kind. They look like someone who has been carrying something heavy for a very long time.]*
 
-**The Curator**: I was hoping you'd come.
+**Grym**: I was hoping you'd come.
 
-*[No combat stance. No hostility. The Curator gestures to the First Memory.]*
+*[No combat stance. No hostility. Grym gestures to the First Memory.]*
 
-**The Curator**: That is the world's first thought. The first act of wonder. The question that started everything: "Why do things change?"
+**Grym**: That is the world's first thought. The first act of wonder. The question that started everything: "Why do things change?"
 
-**The Curator**: Every civilization since has tried to answer it. Every answer has dissolved into the world, adding another layer, another voice to the question. The Choir answered with song. The Rootwalkers answered with growth. The Radiant Lens answered with light. The Peregrine Road answered with motion.
+**Grym**: Every civilization since has tried to answer it. Every answer has dissolved into the world, adding another layer, another voice to the question. The Choir answered with song. The Rootwalkers answered with growth. The Radiant Lens answered with light. The Peregrine Road answered with motion.
 
-**The Curator**: And each answer eventually destroyed the civilization that gave it. They dissolved. They're gone. Their answer became the world, and THEY became nothing.
+**Grym**: And each answer eventually destroyed the civilization that gave it. They dissolved. They're gone. Their answer became the world, and THEY became nothing.
 
-*[The Curator's voice breaks, slightly.]*
+*[Grym's voice breaks, slightly.]*
 
-**The Curator**: I've watched it happen. Not personally — I'm not that old. But through the crystal. Through the frozen memories I've collected. I've seen the pattern: ask, answer, dissolve. Ask, answer, dissolve. An endless cycle of civilizations creating beautiful things and then ceasing to exist.
+**Grym**: I've watched it happen. Not personally — I'm not that old. But through the crystal. Through the frozen memories I've collected. I've seen the pattern: ask, answer, dissolve. Ask, answer, dissolve. An endless cycle of civilizations creating beautiful things and then ceasing to exist.
 
-**The Curator**: I want it to stop. Not the beauty — the loss. I want to crystallize the question so that no one has to answer it anymore. No more civilizations dissolving. No more loss. Just... peace.
+**Grym**: I want it to stop. Not the beauty — the loss. I want to crystallize the question so that no one has to answer it anymore. No more civilizations dissolving. No more loss. Just... peace.
 
 ### The Dialogue Confrontation
 
-*[The Curator is not fought in combat — see [enemies-catalog.md](../design/enemies-catalog.md) B-05. This is a dialogue encounter. The player's responses are informed by everything they've experienced.]*
+*[Grym is not fought in combat — see [enemies-catalog.md](../design/enemies-catalog.md) B-05. This is a dialogue encounter. The player's responses are informed by everything they've experienced.]*
 
-**Callum**: You want to silence the question. But the question IS the world. Without "why do things change?" there's no reason for anything to exist.
+**Artun**: You want to silence the question. But the question IS the world. Without "why do things change?" there's no reason for anything to exist.
 
-**The Curator**: The world exists WHETHER it asks questions or not. The mountains don't need to wonder why they erode. The rivers don't need to wonder why they flow. They just ARE. I want the world to just BE.
+**Grym**: The world exists WHETHER it asks questions or not. The mountains don't need to wonder why they erode. The rivers don't need to wonder why they flow. They just ARE. I want the world to just BE.
 
-**Lira**: I was frozen. I was inside the crystal, in the silence you're describing. It wasn't terrible. But it wasn't alive, either.
+**Hana**: I was frozen. I was inside the crystal, in the silence you're describing. It wasn't terrible. But it wasn't alive, either.
 
-**The Curator**: Were you suffering?
+**Grym**: Were you suffering?
 
-**Lira**: No.
+**Hana**: No.
 
-**The Curator**: Then what was wrong with it?
+**Grym**: Then what was wrong with it?
 
-**Lira**: I couldn't choose.
+**Hana**: I couldn't choose.
 
 *[Beat.]*
 
-**The Curator** *(quietly)*: Choice is what leads to dissolution.
+**Grym** *(quietly)*: Choice is what leads to dissolution.
 
-*[The Curator turns to the player. Their expression is searching — not hostile, not defensive. Genuine.]*
+*[Grym turns to the player. Their expression is searching — not hostile, not defensive. Genuine.]*
 
-**The Curator**: You've recalled four gods. Permanent choices, made with single emotions, reshaping deities that the Dissolved left unfinished. You've broken stagnation zones, freed frozen people, shattered my cathedral.
+**Grym**: You've recalled four gods. Permanent choices, made with single emotions, reshaping deities that the Dissolved left unfinished. You've broken stagnation zones, freed frozen people, shattered my cathedral.
 
-**The Curator**: Why? What makes your vision of the world better than mine?
+**Grym**: Why? What makes your vision of the world better than mine?
 
 *[The player has no dialogue wheel. Instead, the game draws from the player's actions — a unique response assembles itself from the Act II choices:]*
 
@@ -676,29 +676,29 @@ The Curator stands before it, hands folded, calm. They have been waiting.
 
 *[Each recalled god sends a pulse of energy into the chamber — a visible manifestation of the player's choices. The specific effect depends on which gods were recalled and how:]*
 
-- **If any god was recalled with Joy**: A warm golden light fills the room. The Curator's hands, folded tight, relax slightly.
-- **If any god was recalled with Fury**: The crystal walls crack. The Curator flinches but doesn't retreat.
-- **If any god was recalled with Sorrow**: A gentle hush falls. The Curator's eyes soften.
-- **If any god was recalled with Awe**: The chamber resonates with a harmonic chord. The Curator closes their eyes to listen.
+- **If any god was recalled with Joy**: A warm golden light fills the room. Grym's hands, folded tight, relax slightly.
+- **If any god was recalled with Fury**: The crystal walls crack. Grym flinches but doesn't retreat.
+- **If any god was recalled with Sorrow**: A gentle hush falls. Grym's eyes soften.
+- **If any god was recalled with Awe**: The chamber resonates with a harmonic chord. Grym closes their eyes to listen.
 
-*[If all four gods were recalled with the same emotion, a special Curator response triggers:]*
+*[If all four gods were recalled with the same emotion, a special Grym response triggers:]*
 
-**The Curator** *(if all 4 same emotion)*: You're consistent. You chose one feeling and committed to it. Four times. I don't agree with your choice — but I respect the commitment. That's more than most people manage.
+**Grym** *(if all 4 same emotion)*: You're consistent. You chose one feeling and committed to it. Four times. I don't agree with your choice — but I respect the commitment. That's more than most people manage.
 
 *[The player has one action: walk to the First Memory.]*
 
 ### Player Actions
 
 - Enter the First Memory Chamber
-- Listen to the Curator's argument
-- Witness the party's responses (Callum, Lira)
+- Listen to Grym's argument
+- Witness the party's responses (Artun, Hana)
 - Watch the god recall responses manifest in the chamber
 - Approach the First Memory
 
 ### Rewards / Consequences
 
-- **No combat**: The Curator is not a combat encounter
-- **Emotional climax**: The Curator's argument is the culmination of the game's central tension. They love the world. They're wrong about how to protect it. But they're not evil.
+- **No combat**: Grym is not a combat encounter
+- **Emotional climax**: Grym's argument is the culmination of the game's central tension. They love the world. They're wrong about how to protect it. But they're not evil.
 - **God recall payoff**: The player's 4 emotion choices from Act II manifest visibly in this scene
 
 ---
@@ -707,9 +707,9 @@ The Curator stands before it, hands folded, calm. They have been waiting.
 
 **Location**: Preserver Fortress — Floor 3: The First Memory Chamber (at the First Memory pedestal)
 
-**Trigger**: Player approaches the First Memory after the Curator dialogue
+**Trigger**: Player approaches the First Memory after Grym dialogue
 
-**Characters**: Player, Lira, Callum, The Curator (observing)
+**Characters**: Player, Hana, Artun, Grym (observing)
 
 **Time of day**: N/A
 
@@ -719,19 +719,19 @@ The game's mechanical and narrative climax. The player remixes the First Memory 
 
 ### The Remix
 
-*[The player stands before the First Memory. The amber sphere pulses warmly, invitingly. The Curator watches from across the chamber, hands at their sides.]*
+*[The player stands before the First Memory. The amber sphere pulses warmly, invitingly. Grym watches from across the chamber, hands at their sides.]*
 
-**Lira**: This is it. The first question. "Why do things change?"
+**Hana**: This is it. The first question. "Why do things change?"
 
-**Callum**: The Dissolved answered it by becoming the world. The Curator wants to answer it by stopping the world. But there's a third option.
+**Artun**: The Dissolved answered it by becoming the world. Grym wants to answer it by stopping the world. But there's a third option.
 
-**Callum**: You can answer it with a new question.
+**Artun**: You can answer it with a new question.
 
-**Lira**: What do you mean?
+**Hana**: What do you mean?
 
-**Callum**: "Why do things change?" That question created the world. But the world has grown beyond that question — it's bigger now, richer, more complex. It doesn't need the old question anymore. It needs a new one.
+**Artun**: "Why do things change?" That question created the world. But the world has grown beyond that question — it's bigger now, richer, more complex. It doesn't need the old question anymore. It needs a new one.
 
-**Callum**: One that includes everything this Architect has experienced. Every god recalled, every fragment collected, every moment preserved or freed.
+**Artun**: One that includes everything this Architect has experienced. Every god recalled, every fragment collected, every moment preserved or freed.
 
 > **SYSTEM**: The First Memory awaits. You carry within you the memories of your journey: fragments collected, gods recalled, moments preserved and freed, the dissolved civilizations' stories, and the world's ongoing growth.
 >
@@ -761,11 +761,11 @@ The game's mechanical and narrative climax. The player remixes the First Memory 
 
 *[The new question is never stated aloud. It doesn't need to be. It is felt rather than heard — a sense of possibility, of forward motion, of growth without end.]*
 
-**The Curator** *(watching, tears on their face)*: You didn't destroy it. You... grew it.
+**Grym** *(watching, tears on their face)*: You didn't destroy it. You... grew it.
 
-**Callum**: The question changed. It's not "Why do things change?" anymore. It's...
+**Artun**: The question changed. It's not "Why do things change?" anymore. It's...
 
-**Lira**: "What will we create next?"
+**Hana**: "What will we create next?"
 
 ### The Broadcast
 
@@ -798,7 +798,7 @@ The game's mechanical and narrative climax. The player remixes the First Memory 
 
 **Trigger**: World's New Dawn is broadcast from the First Memory Chamber
 
-**Characters**: Every NPC in the game, all 4 recalled gods, the player, Lira, Callum, The Curator
+**Characters**: Every NPC in the game, all 4 recalled gods, the player, Hana, Artun, Grym
 
 **Time of day**: Dawn (the world experiences its first true sunrise)
 
@@ -829,11 +829,11 @@ The game's visual and audio climax. Every zone in the world simultaneously jumps
 
 *[The camera arrives at the Settled Lands:]*
 
-**Village Hub**: The fountain throws prismatic light. Flowers cascade over every fence. Banners appear on every building. NPCs emerge from houses, looking up at the sky in wonder. Maren steps out of her shop. Torvan drops his hammer. Ren opens the inn's shutters wide.
+**Village Hub**: The fountain throws prismatic light. Flowers cascade over every fence. Banners appear on every building. NPCs emerge from houses, looking up at the sky in wonder. Khali steps out of her shop. Hark drops his hammer. Nyro opens the inn's shutters wide.
 
 **Heartfield**: The expanded stagnation zone is gone (freed in Act II). The farmland is vivid gold. The Old Windmill's sails spin freely for the first time.
 
-*[The camera finds the player, Lira, and Callum emerging from the Fortress. They stand at the Crystalline Fortress Gate, looking out at the transformed world. The Fortress behind them is no longer crystallized — the warm light has melted the stasis, and the building is now simple stone and mortar. The frozen moments inside are waking up.]*
+*[The camera finds the player, Hana, and Artun emerging from the Fortress. They stand at the Crystalline Fortress Gate, looking out at the transformed world. The Fortress behind them is no longer crystallized — the warm light has melted the stasis, and the building is now simple stone and mortar. The frozen moments inside are waking up.]*
 
 *[90-second cinematic ends. Player regains control.]*
 
@@ -857,41 +857,41 @@ The game's visual and audio climax. Every zone in the world simultaneously jumps
 
 ---
 
-## Scene 11: The Curator's Choice
+## Scene 11: Grym's Choice
 
 **Location**: Preserver Fortress Gate (exterior), then Village Hub
 
-**Trigger**: After the Endgame Bloom, the Curator approaches the party
+**Trigger**: After the Endgame Bloom, Grym approaches the party
 
-**Characters**: Player, Lira, Callum, The Curator, Aric
+**Characters**: Player, Hana, Artun, Grym, Janik
 
 **Time of day**: Morning (the world's first real morning)
 
 ### Narrative Context
 
-The resolution. The Curator is not defeated — they're transformed. The Preservers are not destroyed — they're given a new role. The world is not saved from destruction — it was never dying. It was always growing. Now it grows faster.
+The resolution. Grym is not defeated — they're transformed. The Preservers are not destroyed — they're given a new role. The world is not saved from destruction — it was never dying. It was always growing. Now it grows faster.
 
-### Dialogue — The Curator
+### Dialogue — Grym
 
-*[The Curator emerges from the de-crystallized Fortress. Their robes are no longer pristine — the warm light has softened the fabric, introduced wrinkles, made them look... human. They walk to the Fortress Gate where the player stands, and look out at the vivid world.]*
+*[Grym emerges from the de-crystallized Fortress. Their robes are no longer pristine — the warm light has softened the fabric, introduced wrinkles, made them look... human. They walk to the Fortress Gate where the player stands, and look out at the vivid world.]*
 
-**The Curator** *(quietly)*: I spent years building a perfect museum. Collecting the world's most beautiful moments. Protecting them from time, from change, from entropy.
+**Grym** *(quietly)*: I spent years building a perfect museum. Collecting the world's most beautiful moments. Protecting them from time, from change, from entropy.
 
-**The Curator**: And you turned the whole world into something more beautiful than anything I ever froze.
+**Grym**: And you turned the whole world into something more beautiful than anything I ever froze.
 
-*[The Curator turns to the player.]*
+*[Grym turns to the player.]*
 
-**The Curator**: I was wrong. Not about the moments being beautiful — they were. They are. But about what to do with beauty. I wanted to hold it still. You showed me that beauty moves.
+**Grym**: I was wrong. Not about the moments being beautiful — they were. They are. But about what to do with beauty. I wanted to hold it still. You showed me that beauty moves.
 
-**The Curator**: The question I wanted to silence — "Why do things change?" — you gave it a new answer. Not silence. Not stasis. Just... "What will we create next?"
+**Grym**: The question I wanted to silence — "Why do things change?" — you gave it a new answer. Not silence. Not stasis. Just... "What will we create next?"
 
-*[Aric approaches from the gate, where he's been standing since Scene 3.]*
+*[Janik approaches from the gate, where he's been standing since Scene 3.]*
 
-**Aric**: Curator. The Gallery subjects are waking up. They're confused but alive. Someone needs to help them adjust.
+**Janik**: Grym. The Gallery subjects are waking up. They're confused but alive. Someone needs to help them adjust.
 
-**The Curator** *(nodding)*: Then that's what we'll do. The Preservers built a museum. Perhaps it's time we became librarians instead — not freezing memories, but keeping them. Sharing them. Letting people borrow what they need and bring it back changed.
+**Grym** *(nodding)*: Then that's what we'll do. The Preservers built a museum. Perhaps it's time we became librarians instead — not freezing memories, but keeping them. Sharing them. Letting people borrow what they need and bring it back changed.
 
-**The Curator**: An archive, not a prison.
+**Grym**: An archive, not a prison.
 
 > **SYSTEM**: The Preservers' role transforms. They are no longer enforcers of stasis — they become the world's archivists, memory keepers who record and share rather than freeze and guard.
 
@@ -899,48 +899,48 @@ The resolution. The Curator is not defeated — they're transformed. The Preserv
 
 *[The party returns to the Village Hub. The village is vivid — more vivid than the player has ever seen it. The Central Square fountain throws prismatic light. Every building is decorated with flowering vines. NPCs gather in the square, looking up at the sky, touching walls, laughing at the sheer detail of the world.]*
 
-**Callum** *(sitting on the fountain's edge, looking at the village)*: Forty years I spent studying the Dissolved. Reading their journals, tracing their memories, trying to understand why they chose to let go.
+**Artun** *(sitting on the fountain's edge, looking at the village)*: Forty years I spent studying the Dissolved. Reading their journals, tracing their memories, trying to understand why they chose to let go.
 
-**Callum**: I think I understand now. They let go because they were done. Their work was complete. The world was better for what they built, and the best thing they could do was trust the next generation to carry it forward.
+**Artun**: I think I understand now. They let go because they were done. Their work was complete. The world was better for what they built, and the best thing they could do was trust the next generation to carry it forward.
 
-**Callum**: That's what you did with the First Memory. You didn't destroy it or freeze it. You carried it forward. Into something new.
+**Artun**: That's what you did with the First Memory. You didn't destroy it or freeze it. You carried it forward. Into something new.
 
-*[Callum looks at the player.]*
+*[Artun looks at the player.]*
 
-**Callum**: I'm proud of you. Lira and I both are.
+**Artun**: I'm proud of you. Hana and I both are.
 
-**Lira** *(standing nearby, arms crossed, smiling)*: Don't speak for me, old man. I'm proud of myself too — I taught you everything you know.
+**Hana** *(standing nearby, arms crossed, smiling)*: Don't speak for me, old man. I'm proud of myself too — I taught you everything you know.
 
-**Callum** *(laughing)*: You taught the combat. I taught the wisdom.
+**Artun** *(laughing)*: You taught the combat. I taught the wisdom.
 
-**Lira**: You taught the lectures. There's a difference.
+**Hana**: You taught the lectures. There's a difference.
 
 ### NPC Reactions
 
 *[Unique dialogue lines from key NPCs, triggered by the Endgame Bloom:]*
 
-**Maren** *(shopkeeper)*: Everything in my shop is glowing. Not metaphorically — literally glowing. I may need to adjust my prices.
+**Khali** *(shopkeeper)*: Everything in my shop is glowing. Not metaphorically — literally glowing. I may need to adjust my prices.
 
-**Torvan** *(blacksmith)*: The metal sings when I hammer it now. I've been a smith for twenty years and the metal has never done that.
+**Hark** *(blacksmith)*: The metal sings when I hammer it now. I've been a smith for twenty years and the metal has never done that.
 
-**Ren** *(innkeeper)*: Guests are dreaming in color. One woman woke up and said she dreamed in music. I don't know what that means, but she left a five-star review.
+**Nyro** *(innkeeper)*: Guests are dreaming in color. One woman woke up and said she dreamed in music. I don't know what that means, but she left a five-star review.
 
-**Petra** *(Ridgewalker Camp, via returning NPC message)*: The mountains are finishing themselves. New peaks appearing, new passes opening. We've never had so much to explore.
+**Nel** *(Ridgewalker Camp, via returning NPC message)*: The mountains are finishing themselves. New peaks appearing, new passes opening. We've never had so much to explore.
 
-**Wynn** *(Marsh Hermit, via returning NPC message)*: Verdance's Hollow is a forest now. Not a glade — a proper forest. It grew overnight. I've been cataloging species I've never seen before.
+**Vash** *(Marsh Hermit, via returning NPC message)*: Verdance's Hollow is a forest now. Not a glade — a proper forest. It grew overnight. I've been cataloging species I've never seen before.
 
 ### Player Actions
 
-- Witness the Curator's transformation (narrative scene)
+- Witness Grym's transformation (narrative scene)
 - Return to Village Hub
 - Talk to NPCs who have unique Endgame Bloom dialogue
 - Freely explore the vivid world
 
 ### Rewards / Consequences
 
-- **Curator's new role**: Archivist (records memories without freezing them)
+- **Grym's new role**: Archivist (records memories without freezing them)
 - **Preservers' new role**: Memory keepers and librarians
-- **Aric's new role**: Guardian of the de-crystallized Fortress (protector, not enforcer)
+- **Janik's new role**: Guardian of the de-crystallized Fortress (protector, not enforcer)
 - **NPC dialogue**: Every key NPC has unique post-bloom lines
 - **Free exploration**: The player can now explore the entire vivid world at leisure
 
@@ -952,7 +952,7 @@ The resolution. The Curator is not defeated — they're transformed. The Preserv
 
 **Trigger**: Player approaches The Edge after the Endgame Bloom (or triggered automatically after 10 minutes of post-bloom exploration)
 
-**Characters**: Player, Lira, Callum
+**Characters**: Player, Hana, Artun
 
 **Time of day**: Sunset
 
@@ -962,21 +962,21 @@ The final scene. The player returns to The Edge — the world's boundary — to 
 
 ### The Final Image
 
-*[The player, Lira, and Callum stand at The Edge. The void is no longer empty — beyond the former boundary, new terrain is forming in real-time. Hills rise. Rivers carve themselves. Trees grow from seed to sapling to canopy in seconds. The world is creating at speed, fueled by the remixed First Memory.]*
+*[The player, Hana, and Artun stand at The Edge. The void is no longer empty — beyond the former boundary, new terrain is forming in real-time. Hills rise. Rivers carve themselves. Trees grow from seed to sapling to canopy in seconds. The world is creating at speed, fueled by the remixed First Memory.]*
 
 *[The sunset fills the sky — warm gold and deep amber, the colors of memory energy. The light catches the new terrain and makes it glow.]*
 
-**Lira**: It's not stopping. It's still growing.
+**Hana**: It's not stopping. It's still growing.
 
-**Callum**: Of course it is. The old question was "Why do things change?" The new question is "What will we create next?" That's a question with infinite answers.
+**Artun**: Of course it is. The old question was "Why do things change?" The new question is "What will we create next?" That's a question with infinite answers.
 
-*[Lira turns to the player.]*
+*[Hana turns to the player.]*
 
-**Lira**: What will YOU create next?
+**Hana**: What will YOU create next?
 
 *[No dialogue option. No system message. Just the player standing at the world's edge, watching new land sketch itself into existence and immediately bloom with vivid detail. The music swells — the credits theme, building from a solo acoustic guitar (the Village Hub's foundation instrument) through all four layers, incorporating motifs from every zone the player visited, culminating in the full ensemble.]*
 
-*[The camera slowly pulls back. The player, Lira, and Callum become small figures against the vast, bright, growing world. The sunset deepens. The new terrain keeps forming. The music crescendos, then softens.]*
+*[The camera slowly pulls back. The player, Hana, and Artun become small figures against the vast, bright, growing world. The sunset deepens. The new terrain keeps forming. The music crescendos, then softens.]*
 
 > **SYSTEM**: Not an ending. A beginning.
 
@@ -1002,7 +1002,7 @@ The final scene. The player returns to The Edge — the world's boundary — to 
 - All NPCs have unique post-bloom dialogue
 - All shops are fully stocked with endgame items
 - The de-crystallized Fortress is explorable (the Gallery subjects are awake and have dialogue)
-- The Curator is available as an NPC at the Fortress, offering to "archive" the player's journey (a memory gallery of key moments from the playthrough)
+- Grym is available as an NPC at the Fortress, offering to "archive" the player's journey (a memory gallery of key moments from the playthrough)
 - New Game+ is available from the title screen (retains level, items, and fragments; resets story progression and god recalls)
 
 ### Player Actions
@@ -1016,7 +1016,7 @@ The final scene. The player returns to The Edge — the world's boundary — to 
 - **Game complete**: The story is finished
 - **Post-game access**: Full vivid world exploration
 - **New Game+**: Available (retains level/items/fragments, resets story and god recalls — 16 possible god combinations encourage replay)
-- **Curator's Archive**: The Curator offers to display the player's key moments as a playthrough gallery (a personalized memorial of the journey)
+- **Grym's Archive**: Grym offers to display the player's key moments as a playthrough gallery (a personalized memorial of the journey)
 
 ---
 
@@ -1027,8 +1027,8 @@ The final scene. The player returns to The Edge — the world's boundary — to 
 | Phase | Scenes | Feeling |
 |-------|--------|---------|
 | Awe | 1-3 | The Sketch is beautiful, strange, and vast. The world's unfinished edge is full of possibility. Broadcasting creates reality. |
-| Challenge | 4-7 | The Depths reveal the First Memory's true nature. The Fortress is a gauntlet of moral complexity and combat. The Curator's argument is genuine. |
-| Triumph | 8-9 | The Curator confrontation resolves through dialogue, not violence. The First Memory is remixed, not destroyed or preserved. The player creates something new. |
+| Challenge | 4-7 | The Depths reveal the First Memory's true nature. The Fortress is a gauntlet of moral complexity and combat. Grym's argument is genuine. |
+| Triumph | 8-9 | Grym confrontation resolves through dialogue, not violence. The First Memory is remixed, not destroyed or preserved. The player creates something new. |
 | Wonder | 10-12 | The world blooms. NPCs evolve. Gods fully awaken. The Preservers become archivists. The final image: new land growing from the void. Not an ending — a beginning. |
 
 ### Player State at Game End
@@ -1038,7 +1038,7 @@ The final scene. The player returns to The Edge — the world's boundary — to 
 | Level | 28-30 |
 | Gold | 4000-6000 |
 | Memory fragments held | 5-10 (many consumed during Sketch solidification and Fortress) |
-| Party | Player + Lira + Callum |
+| Party | Player + Hana + Artun |
 | Gods recalled | All 4 (permanent forms from Act II) |
 | Subclass | Luminary or Crucible (from Act II first recall) |
 | Quests completed | ~15-20 (main + side + god quests) |
@@ -1051,7 +1051,7 @@ The final scene. The player returns to The Edge — the world's boundary — to 
 
 1. **Creation over preservation or destruction**: The player didn't destroy the First Memory or freeze it. They remixed it — growing the original question into a new one. This is the game's thesis: the best response to beauty is not to freeze it but to build on it.
 
-2. **The Curator is redeemed, not defeated**: The Curator loved the world. Their method was wrong, but their love was real. In the ending, that love finds a healthier expression: archiving rather than freezing. Recording rather than controlling.
+2. **Grym is redeemed, not defeated**: Grym loved the world. Their method was wrong, but their love was real. In the ending, that love finds a healthier expression: archiving rather than freezing. Recording rather than controlling.
 
 3. **Dissolution is graduation**: Every dissolved civilization completed its purpose and chose to become part of the world. The player doesn't dissolve — they're just beginning. But they understand now that letting go can be an act of trust, not loss.
 

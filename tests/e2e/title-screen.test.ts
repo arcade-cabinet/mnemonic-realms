@@ -17,23 +17,58 @@ test.describe('Title Screen', () => {
   });
 
   test('shows all four class options', async ({ page }) => {
-    const pageText = await page.locator('#rpg').innerText();
-    const lower = pageText.toLowerCase();
+    // Open the New Quest modal to access class selection
+    const newQuestBtn = page.locator('.menu-btn').first();
+    await expect(newQuestBtn).toBeVisible({ timeout: 5_000 });
+    await newQuestBtn.click();
+    await page.waitForTimeout(500);
+
+    // The carousel shows one class at a time — verify all 4 by cycling through pips
+    const pips = page.locator('.pip');
+    await expect(pips).toHaveCount(4, { timeout: 5_000 });
+
+    const classNames: string[] = [];
+    for (let i = 0; i < 4; i++) {
+      await pips.nth(i).click();
+      await page.waitForTimeout(200);
+      const name = await page.locator('.class-name').innerText();
+      classNames.push(name.toLowerCase());
+    }
 
     for (const cls of ['knight', 'mage', 'rogue', 'cleric']) {
-      expect(lower, `Missing class: ${cls}`).toContain(cls);
+      expect(
+        classNames.some((n) => n.includes(cls)),
+        `Missing class: ${cls}`,
+      ).toBe(true);
     }
   });
 
   test('class selection buttons are interactive', async ({ page }) => {
-    const classBtn = page.locator('.class-btn, .class-grid button').first();
-    await expect(classBtn).toBeVisible({ timeout: 5_000 });
-    await classBtn.click();
+    // Open New Quest modal
+    const newQuestBtn = page.locator('.menu-btn').first();
+    await expect(newQuestBtn).toBeVisible({ timeout: 5_000 });
+    await newQuestBtn.click();
+    await page.waitForTimeout(500);
+
+    // Carousel arrows are the class navigation buttons
+    const nextArrow = page.locator('.carousel-next');
+    await expect(nextArrow).toBeVisible({ timeout: 5_000 });
+    await nextArrow.click();
+
+    // Verify class changed (second class should now be active)
+    const activePip = page.locator('.pip.active');
+    await expect(activePip).toBeVisible();
   });
 
-  test('"Begin Journey" button exists', async ({ page }) => {
-    const beginBtn = page.locator('button').filter({ hasText: /begin/i }).first();
-    await expect(beginBtn).toBeVisible({ timeout: 5_000 });
+  test('"Embark" button exists', async ({ page }) => {
+    // Open New Quest modal
+    const newQuestBtn = page.locator('.menu-btn').first();
+    await expect(newQuestBtn).toBeVisible({ timeout: 5_000 });
+    await newQuestBtn.click();
+    await page.waitForTimeout(500);
+
+    const embarkBtn = page.locator('.embark-btn');
+    await expect(embarkBtn).toBeVisible({ timeout: 5_000 });
   });
 
   test('no seed input is shown to the player', async ({ page }) => {

@@ -17,4 +17,15 @@ import { Enemy } from '@rpgjs/database';
     gold: 16,
   },
 })
-export default class RiverNymph {}
+export default class RiverNymph {
+  // Context:
+  // - Zone: Millbrook
+  // - Category: settled
+  // - Fragment affinity: Joy / Water
+  // Abilities:
+  // - Water Jet: INT * 1.6 (water) (Magic attack, water element)
+  // - Splash Guard: Reduce next fire attack by 50% (Party water shield, once per combat)
+  // Drop table:
+  // - C-SP-01 (Mana Drop): 20% chance
+  // - C-HP-01 (Minor Potion): 10% chance
+}

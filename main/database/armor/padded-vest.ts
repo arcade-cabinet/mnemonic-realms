@@ -1,6 +1,7 @@
 import { Armor } from '@rpgjs/database';
 
 // Tier: 1
+// Special effect: None
 @Armor({
   id: 'A-02',
   name: 'Padded Vest',

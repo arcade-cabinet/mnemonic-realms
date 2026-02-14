@@ -974,39 +974,39 @@ An upgraded Temporal Ambush with an extra action and a same-target bonus. Three 
 
 Companions use 3 simplified skills each. Their stats follow the same class formulas at a lower level (1-2 levels behind the player). Companions do NOT have subclass skills or memory-based progression. See [progression.md](progression.md) for companion stat tables and availability.
 
-### Lira (Cleric) — Joins Act I Scene 3, Leaves Act I Climax
+### Hana (Cleric) — Joins Act I Scene 3, Leaves Act I Climax
 
 | Skill | SP Cost | Target | Formula | Notes |
 |-------|---------|--------|---------|-------|
 | **Gentle Mending** | 5 | SA | `floor(INT × 1.0 × variance)` | Simplified Joyful Mending (no charge scaling). Slightly weaker but reliable. |
 | **Calm Cleanse** | 7 | SA | Remove one debuff. No fallback heal. | Simplified Sorrowful Cleanse. Critical for Act I Preserver encounters. |
-| **Warm Ward** | 12 | SA | Shield absorbing `floor(INT × 0.6)` for 2 turns. | Simplified Awestruck Ward. Lira's most valuable Act I contribution. |
+| **Warm Ward** | 12 | SA | Shield absorbing `floor(INT × 0.6)` for 2 turns. | Simplified Awestruck Ward. Hana's most valuable Act I contribution. |
 
-**Animation**: Lira's animations are gentler versions of the Cleric's — softer glow, smaller particle effects. Her healing motes are pale blue-white rather than golden, reflecting her calm temperament.
+**Animation**: Hana's animations are gentler versions of the Cleric's — softer glow, smaller particle effects. Her healing motes are pale blue-white rather than golden, reflecting her calm temperament.
 
 ---
 
-### Callum (Mage) — Joins Act II Scene 2, Permanent
+### Artun (Mage) — Joins Act II Scene 2, Permanent
 
 | Skill | SP Cost | Target | Formula | Notes |
 |-------|---------|--------|---------|-------|
-| **Memory Spark** | 4 | SE | `floor((INT × 1.5 - targetDEF × 0.4) × variance × elementMod)` | Simplified Elemental Bolt (1.5× vs. 1.8×). Element = neutral only (Callum is a historian, not an elementalist). |
+| **Memory Spark** | 4 | SE | `floor((INT × 1.5 - targetDEF × 0.4) × variance × elementMod)` | Simplified Elemental Bolt (1.5× vs. 1.8×). Element = neutral only (Artun is a historian, not an elementalist). |
 | **Lore Shield** | 10 | SA | Shield absorbing `floor(INT × 0.5)` for 2 turns. | Simplified Arcane Barrier, single target. |
 | **Archive Blast** | 16 | AE | `floor((INT × 1.0 - targetDEF × 0.4) × variance)` | Simplified Memory Wave. Always neutral element. |
 
-**Animation**: Callum's spells manifest as glowing pages and text rather than pure elemental energy — reflecting his scholarly approach. Memory Spark fires a spinning book page that explodes on impact. Lore Shield creates a dome of swirling manuscript pages. Archive Blast sends a wave of illuminated text across all enemies.
+**Animation**: Artun's spells manifest as glowing pages and text rather than pure elemental energy — reflecting his scholarly approach. Memory Spark fires a spinning book page that explodes on impact. Lore Shield creates a dome of swirling manuscript pages. Archive Blast sends a wave of illuminated text across all enemies.
 
 ---
 
-### Petra (Knight) — Joins Act II Scene 8, Permanent
+### Nel (Knight) — Joins Act II Scene 8, Permanent
 
 | Skill | SP Cost | Target | Formula | Notes |
 |-------|---------|--------|---------|-------|
 | **Ridge Strike** | 0 | SE | `floor((ATK × 1.4 - targetDEF × 0.8) × variance)` | Simplified Oath Strike (flat 1.4× mult, no oath scaling). |
-| **Mountain Guard** | 8 | SA | Redirect 40% of damage from chosen ally to Petra for 1 turn. | Simplified Guardian's Shield (40% vs. 50%). |
+| **Mountain Guard** | 8 | SA | Redirect 40% of damage from chosen ally to Nel for 1 turn. | Simplified Guardian's Shield (40% vs. 50%). |
 | **Rally Cry** | 15 | AA | All allies ATK +15% for 2 turns. | Simplified Remembered Valor (shorter duration, lower buff). |
 
-**Animation**: Petra's animations are rougher and more kinetic than the player Knight — she's a frontier fighter, not a trained oath-keeper. Ridge Strike has a wide horizontal slash with rock-chip particles. Mountain Guard shows her physically stepping in front of the ally. Rally Cry has her raising her sword with a visible shockwave.
+**Animation**: Nel's animations are rougher and more kinetic than the player Knight — she's a frontier fighter, not a trained oath-keeper. Ridge Strike has a wide horizontal slash with rock-chip particles. Mountain Guard shows her physically stepping in front of the ally. Rally Cry has her raising her sword with a visible shockwave.
 
 ---
 

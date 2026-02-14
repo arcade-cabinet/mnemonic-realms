@@ -1,6 +1,9 @@
 import { Weapon } from '@rpgjs/database';
 
+// Intended for: Knight
+// Weapon category: Sword
 // Tier: 1
+// Special effect: None
 @Weapon({
   id: 'W-SW-02',
   name: 'Iron Blade',

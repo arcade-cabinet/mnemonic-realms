@@ -1,6 +1,7 @@
 import { Armor } from '@rpgjs/database';
 
 // Tier: 3
+// Special Effect: All healing received +20%. Knight: oath bonuses +5%.
 @Armor({
   id: 'A-11',
   name: 'Luminary Vestment',

@@ -153,7 +153,7 @@ The Preservers actively work to reduce vibrancy in zones where they have a prese
 | Hollow Ridge (Shattered Pass) | Heavy — 3 agents | -3 vibrancy per 5 minutes |
 | Resonance Fields (Preserver Cathedral) | Heavy — 3 agents + captain | -3 vibrancy per 5 minutes |
 | Luminous Wastes (Preserver Watchtower) | Elite — archivists | -4 vibrancy per 5 minutes |
-| Preserver Fortress | Total — the Curator | Locked at 0, cannot be raised until boss defeat |
+| Preserver Fortress | Total — Grym | Locked at 0, cannot be raised until boss defeat |
 
 **Clearing Preserver presence permanently stops decay in that zone.** Clearing means defeating all Preserver agents in the zone's stagnation area and broadcasting a memory fragment of potency 3+ into the cleared zone's focal point (the crystallized object/area). This is a one-time action per zone.
 
@@ -180,7 +180,7 @@ Stagnation zones are localized areas within a map where the Preservers have froz
 
 | Stagnation Zone | Location | Unlock Condition | Narrative Moment |
 |----------------|----------|------------------|------------------|
-| Stagnation Clearing | Heartfield (35, 30) | Any fragment, potency 1+ | Act I tutorial — Lira walks you through it |
+| Stagnation Clearing | Heartfield (35, 30) | Any fragment, potency 1+ | Act I tutorial — Hana walks you through it |
 | Preserver Outpost | Sunridge (32, 15) | Fury emotion, potency 2+ | First real challenge — requires intentional fragment choice |
 | Stagnation Bog | Shimmer Marsh (40, 10) | Water element + Fury emotion, potency 3+ | Dual requirement — player must have remixed |
 | Shattered Pass | Hollow Ridge (35, 30) | 3 sequential broadcasts: Earth, Fire, Wind elements | Puzzle — broadcast at 3 different crystals in order |
@@ -482,7 +482,7 @@ Beyond visuals and audio, vibrancy affects concrete gameplay systems.
 
 ### Shop Inventory Scaling
 
-Shop inventories (Maren's General Shop, Torvan's Blacksmith, Millbrook's specialty shop) scale with the **local zone's vibrancy tier**, not global average:
+Shop inventories (Khali's General Shop, Hark's Blacksmith, Millbrook's specialty shop) scale with the **local zone's vibrancy tier**, not global average:
 
 | Tier | Inventory Level |
 |------|----------------|

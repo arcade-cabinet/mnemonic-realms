@@ -32,7 +32,7 @@ export function buildQuestCodeManifest(): CodeGenManifest {
       prompt,
       docRefs: [
         { path: 'docs/story/quest-chains.md', heading: quest.name, purpose: 'content' },
-        { path: 'docs/design/items-catalog.md', heading: 'Items', purpose: 'reference' },
+        { path: 'docs/design/items-catalog.md', heading: 'Items', purpose: 'content' },
       ],
       status: 'pending',
     });

@@ -9,4 +9,6 @@ import { Skill } from '@rpgjs/database';
   hitRate: 1,
   coefficient: { int: 1 },
 })
-export default class ElementalBolt {}
+export default class ElementalBolt {
+  // Formula: floor((INT * 1.8 - targetDEF * 0.4) * variance * elementMod)
+}

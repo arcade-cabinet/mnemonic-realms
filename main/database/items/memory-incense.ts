@@ -1,5 +1,5 @@
 import { Item } from '@rpgjs/database';
-import Inspired from '../states/inspired';
+import Inspired from '../states/inspired'; // Assuming the path to your Inspired state class
 
 /**
  * Category: buff

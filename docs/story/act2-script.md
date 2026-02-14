@@ -4,7 +4,7 @@
 
 ## Overview
 
-Act II spans the **Frontier** — four 50x50 sub-maps where the world thins from Normal-tier vibrancy into Muted territory. The player enters solo after Lira's freezing, gains Callum as a companion, recalls all four dormant gods, confronts the Preservers' growing strength, and faces the Act II climax when the Curator reveals their endgame.
+Act II spans the **Frontier** — four 50x50 sub-maps where the world thins from Normal-tier vibrancy into Muted territory. The player enters solo after Hana's freezing, gains Artun as a companion, recalls all four dormant gods, confronts the Preservers' growing strength, and faces the Act II climax when Grym reveals their endgame.
 
 **Emotional arc**: Confidence → Moral questioning → Determination
 
@@ -22,7 +22,7 @@ The **first god recalled** determines the player's subclass branch (see [classes
 
 ### Companion System — Act II
 
-Callum joins the party in Scene 2 and remains through Act II. Unlike Lira's Cleric role, Callum is a **Scholar** — a support companion with unique utility:
+Artun joins the party in Scene 2 and remains through Act II. Unlike Hana's Cleric role, Artun is a **Scholar** — a support companion with unique utility:
 
 | Stat | Value (at player level) |
 |------|----------------------|
@@ -33,12 +33,12 @@ Callum joins the party in Scene 2 and remains through Act II. Unlike Lira's Cler
 | DEF | Low (base 7, +1 per level) |
 | AGI | Medium (base 12, +2 per level) |
 
-**Callum's Skills** (simplified moveset, 3 skills):
+**Artun's Skills** (simplified moveset, 3 skills):
 - **Dissolved Insight** — Reveals enemy weaknesses for 3 turns (all party members deal +15% damage to that enemy). Costs 8 SP.
-- **Memory Ward** — Shields one ally, absorbing damage equal to 20% of Callum's max HP. Lasts 2 turns. Costs 12 SP.
+- **Memory Ward** — Shields one ally, absorbing damage equal to 20% of Artun's max HP. Lasts 2 turns. Costs 12 SP.
 - **Lore Pulse** — AoE support: all allies recover 10% max SP. Costs 0 SP (once per battle).
 
-Callum is fragile in combat but invaluable for enemy intelligence and SP sustain. He also provides **Callum's Letters** — lore narration that triggers automatically when entering each Frontier zone for the first time.
+Artun is fragile in combat but invaluable for enemy intelligence and SP sustain. He also provides **Artun's Letters** — lore narration that triggers automatically when entering each Frontier zone for the first time.
 
 ---
 
@@ -48,45 +48,45 @@ Callum is fragile in combat but invaluable for enemy intelligence and SP sustain
 
 **Trigger**: Player approaches the northern edge of Sunridge after Act II unlock
 
-**Characters**: Player, Callum
+**Characters**: Player, Artun
 
 **Time of day**: Dawn
 
 ### Narrative Context
 
-The mountain pass between the Settled Lands and the Frontier has been closed for as long as anyone remembers — not by a gate or a wall, but by the land itself. The path simply... stopped. Now, after Lira's freezing and the player's resolve, the world has responded. The mountain pass has remembered itself into existence overnight — fresh stone, newly carved switchbacks, morning fog curling through a gap that wasn't there yesterday.
+The mountain pass between the Settled Lands and the Frontier has been closed for as long as anyone remembers — not by a gate or a wall, but by the land itself. The path simply... stopped. Now, after Hana's freezing and the player's resolve, the world has responded. The mountain pass has remembered itself into existence overnight — fresh stone, newly carved switchbacks, morning fog curling through a gap that wasn't there yesterday.
 
 ### Dialogue
 
 *[The player approaches the Threshold. Where a solid cliff face stood before, a narrow mountain pass now cuts through the rock. The stone is rough-hewn and new — no moss, no weathering. Morning light streams through the gap.]*
 
-**Callum** *(catching up, slightly out of breath)*: Wait — wait for me. These old legs aren't what they were.
+**Artun** *(catching up, slightly out of breath)*: Wait — wait for me. These old legs aren't what they were.
 
-*[Callum appears at the pass entrance. He carries a leather satchel and leans on a walking staff. He looks up at the newly formed pass with wonder.]*
+*[Artun appears at the pass entrance. He carries a leather satchel and leans on a walking staff. He looks up at the newly formed pass with wonder.]*
 
-**Callum**: The world opened this. Not you, not me — the world itself. It felt what happened to Lira and decided the Frontier needed reaching.
+**Artun**: The world opened this. Not you, not me — the world itself. It felt what happened to Hana and decided the Frontier needed reaching.
 
-**Callum**: I told you I'd stay in the village, but I've been studying the Dissolved from my desk for forty years. If I'm ever going to see what's out there with my own eyes, it's now.
+**Artun**: I told you I'd stay in the village, but I've been studying the Dissolved from my desk for forty years. If I'm ever going to see what's out there with my own eyes, it's now.
 
-> **SYSTEM**: Callum joins the party! (Scholar — support moveset: Dissolved Insight, Memory Ward, Lore Pulse)
+> **SYSTEM**: Artun joins the party! (Scholar — support moveset: Dissolved Insight, Memory Ward, Lore Pulse)
 
-**Callum**: I won't be much use in a fight. But I know things about the Frontier that might keep you alive. And I brought these —
+**Artun**: I won't be much use in a fight. But I know things about the Frontier that might keep you alive. And I brought these —
 
-*[Callum holds up the bundle of sealed letters from Act I Scene 12.]*
+*[Artun holds up the bundle of sealed letters from Act I Scene 12.]*
 
-**Callum**: One letter per zone. I'll read them when we arrive. Think of it as... a traveler's guide, written by someone who's never actually traveled.
+**Artun**: One letter per zone. I'll read them when we arrive. Think of it as... a traveler's guide, written by someone who's never actually traveled.
 
-*[The player and Callum enter the mountain pass. The path climbs steeply. The ambient audio shifts — wind intensifies, birdsong fades. The color palette begins to desaturate as they ascend.]*
+*[The player and Artun enter the mountain pass. The path climbs steeply. The ambient audio shifts — wind intensifies, birdsong fades. The color palette begins to desaturate as they ascend.]*
 
 *[At the pass's highest point, the player gets their first view of the Frontier. The camera pans north:]*
 
 > **SYSTEM**: Before you stretches a vast, shimmering expanse. Mountains, marshes, forests, and plains — but all of it softer than the Settled Lands. Colors are muted. Edges shimmer. The sky fades from blue to pale luminous white at the horizon. This is the Frontier — where the world is still being written.
 
-**Callum** *(quietly)*: I've dreamed about this view for thirty years. It's exactly as beautiful as I imagined. And exactly as unfinished.
+**Artun** *(quietly)*: I've dreamed about this view for thirty years. It's exactly as beautiful as I imagined. And exactly as unfinished.
 
-**Callum**: Look there — see how those trees to the east flicker between solid and outline? And those marshlands to the south — the water doesn't quite sparkle. It's all waiting. Waiting for someone to remember it into fullness.
+**Artun**: Look there — see how those trees to the east flicker between solid and outline? And those marshlands to the south — the water doesn't quite sparkle. It's all waiting. Waiting for someone to remember it into fullness.
 
-**Callum**: That's your job now.
+**Artun**: That's your job now.
 
 ### Player Actions
 
@@ -96,9 +96,9 @@ The mountain pass between the Settled Lands and the Frontier has been closed for
 
 ### Rewards / Consequences
 
-- **Companion gained**: Callum (Scholar, support)
+- **Companion gained**: Artun (Scholar, support)
 - **New zone accessible**: Hollow Ridge (Frontier, 50x50)
-- **Callum's Letters**: Will trigger on first entry to each Frontier zone
+- **Artun's Letters**: Will trigger on first entry to each Frontier zone
 
 ---
 
@@ -108,7 +108,7 @@ The mountain pass between the Settled Lands and the Frontier has been closed for
 
 **Trigger**: Player arrives at Ridgewalker Camp (first Frontier settlement)
 
-**Characters**: Player, Callum, Petra (camp leader), Ridgewalker NPCs
+**Characters**: Player, Artun, Nel (camp leader), Ridgewalker NPCs
 
 **Time of day**: Morning
 
@@ -116,39 +116,39 @@ The mountain pass between the Settled Lands and the Frontier has been closed for
 
 Ridgewalker Camp is a frontier settlement of hardy explorers who live at the edge of the unfinished world because they enjoy watching new land form. It's a cluster of tents and stone shelters on a wind-swept plateau. The people here are rough, practical, and fiercely independent. They're the closest thing the Frontier has to a community.
 
-### Callum's Letter — Hollow Ridge
+### Artun's Letter — Hollow Ridge
 
-*[As the player enters Hollow Ridge for the first time, Callum pulls out a letter and reads aloud:]*
+*[As the player enters Hollow Ridge for the first time, Artun pulls out a letter and reads aloud:]*
 
-**Callum** *(reading)*: "Hollow Ridge. A chain of steep, wind-carved ridges rising above the mist. I'm told the peaks here are jagged and unfinished — some mountains end abruptly in flat shimmer, as if the world's sculptor simply stopped mid-carve. The Peregrine Road — a civilization of eternal travelers — left their mark here. Their dormant god, a prototype of motion itself, sleeps at the highest spire. And the Preservers have crystallized part of the mountain pass, trying to lock down even the wind."
+**Artun** *(reading)*: "Hollow Ridge. A chain of steep, wind-carved ridges rising above the mist. I'm told the peaks here are jagged and unfinished — some mountains end abruptly in flat shimmer, as if the world's sculptor simply stopped mid-carve. The Peregrine Road — a civilization of eternal travelers — left their mark here. Their dormant god, a prototype of motion itself, sleeps at the highest spire. And the Preservers have crystallized part of the mountain pass, trying to lock down even the wind."
 
-**Callum**: That last part worries me. If the Preservers are freezing terrain this far from the Settled Lands, they're more organized than I thought.
+**Artun**: That last part worries me. If the Preservers are freezing terrain this far from the Settled Lands, they're more organized than I thought.
 
 ### Main Dialogue
 
 *[The player enters Ridgewalker Camp. Tents snap in the highland wind. A cooking fire sends smoke sideways. 6 NPCs go about their business — mending gear, studying maps, scanning the horizon. A woman with close-cropped hair and a surveyor's glass approaches.]*
 
-**Petra**: You came through the new pass? We saw it form yesterday morning — first new land we've seen in months. Most of the growth has slowed since the Preservers started expanding.
+**Nel**: You came through the new pass? We saw it form yesterday morning — first new land we've seen in months. Most of the growth has slowed since the Preservers started expanding.
 
-**Petra**: I'm Petra. I lead the Ridgewalkers — or at least I try to. We're explorers, not soldiers. But the Preservers are making soldiers necessary.
+**Nel**: I'm Nel. I lead the Ridgewalkers — or at least I try to. We're explorers, not soldiers. But the Preservers are making soldiers necessary.
 
-*[Petra gestures toward the northeast, where the Kinesis Spire is visible as a thin vibrating pillar on the horizon.]*
+*[Nel gestures toward the northeast, where the Kinesis Spire is visible as a thin vibrating pillar on the horizon.]*
 
-**Petra**: See that spire? It's been vibrating for centuries. The Peregrine Road built it — or grew it, more like. Something sleeps inside. Something powerful. We've tried to approach it, but the ground shakes too violently. Knocked us back every time.
+**Nel**: See that spire? It's been vibrating for centuries. The Peregrine Road built it — or grew it, more like. Something sleeps inside. Something powerful. We've tried to approach it, but the ground shakes too violently. Knocked us back every time.
 
-**Callum**: A dormant god. I've read about them — prototypes left by the Dissolved civilizations. There are four in the Frontier. Resonance, Verdance, Luminos, and Kinesis.
+**Artun**: A dormant god. I've read about them — prototypes left by the Dissolved civilizations. There are four in the Frontier. Resonance, Verdance, Luminos, and Kinesis.
 
-**Petra**: Four? We only knew about the Spire. Where are the others?
+**Nel**: Four? We only knew about the Spire. Where are the others?
 
-**Callum**: Shimmer Marsh to the south — a half-formed tree trunk pulsing with green light. Flickerveil to the east — a column of pure light in a forest clearing. And Resonance Fields to the west — an amphitheater of singing stones.
+**Artun**: Shimmer Marsh to the south — a half-formed tree trunk pulsing with green light. Flickerveil to the east — a column of pure light in a forest clearing. And Resonance Fields to the west — an amphitheater of singing stones.
 
-**Petra**: The Preservers have agents near all of those. They've been trying to keep people away from the shrines. Now I know why.
+**Nel**: The Preservers have agents near all of those. They've been trying to keep people away from the shrines. Now I know why.
 
-**Callum** *(to player)*: If you can recall even one of those gods — channel the right memories into the shrine — the surge of energy would change everything. Stronger fragments, higher vibrancy, maybe enough power to break Lira free.
+**Artun** *(to player)*: If you can recall even one of those gods — channel the right memories into the shrine — the surge of energy would change everything. Stronger fragments, higher vibrancy, maybe enough power to break Hana free.
 
-**Petra**: Then you should move fast. The Preservers are reinforcing their positions every day. There's a crystallized pass northeast of here — the Shattered Pass — that blocks the route to the Sketch beyond. And their cathedral in the western plains is a fortress.
+**Nel**: Then you should move fast. The Preservers are reinforcing their positions every day. There's a crystallized pass northeast of here — the Shattered Pass — that blocks the route to the Sketch beyond. And their cathedral in the western plains is a fortress.
 
-**Petra**: We can't help you fight the Preservers directly. But we can keep this camp safe and supplied. Rest here whenever you need to. My people will share what they know.
+**Nel**: We can't help you fight the Preservers directly. But we can keep this camp safe and supplied. Rest here whenever you need to. My people will share what they know.
 
 *[Side quest triggers:]*
 
@@ -159,21 +159,21 @@ Ridgewalker Camp is a frontier settlement of hardy explorers who live at the edg
 ### Player Actions
 
 - Arrive at Ridgewalker Camp (first Frontier rest point)
-- Meet Petra and learn about the Frontier situation
+- Meet Nel and learn about the Frontier situation
 - Learn about all four dormant god locations
 - Accept optional side quest from Dain
 - Rest, resupply (merchant available with rotating Frontier-tier stock)
 
 ### Tutorial Integration
 
-**Mechanic taught**: Frontier navigation and scale. The player learns that the Frontier is larger than the Settled Lands (50x50 vs 40x40 per zone), more dangerous, and less populated. Callum's Letters provide lore on first entry to each zone. The Ridgewalker Camp is the "hub" of the Frontier — a safe base to return to.
+**Mechanic taught**: Frontier navigation and scale. The player learns that the Frontier is larger than the Settled Lands (50x50 vs 40x40 per zone), more dangerous, and less populated. Artun's Letters provide lore on first entry to each zone. The Ridgewalker Camp is the "hub" of the Frontier — a safe base to return to.
 
 ### Rewards / Consequences
 
 - **Rest point**: Ridgewalker Camp (full HP/SP restore)
 - **Merchant access**: Frontier-tier gear (Tier 2 weapons, armor, consumables)
 - **Quest activated**: "Dain's Markers" (optional)
-- **Callum's Letter**: Hollow Ridge lore delivered
+- **Artun's Letter**: Hollow Ridge lore delivered
 - **Map knowledge**: Player now knows all 4 dormant god locations
 
 ---
@@ -184,41 +184,41 @@ Ridgewalker Camp is a frontier settlement of hardy explorers who live at the edg
 
 **Trigger**: Player exits Ridgewalker Camp and explores the Frontier
 
-**Characters**: Player, Callum, Frontier settlement NPCs
+**Characters**: Player, Artun, Frontier settlement NPCs
 
 **Time of day**: Player-driven
 
 ### Narrative Context
 
-This is Act II's open exploration phase. The player can visit the remaining three Frontier zones in any order. Each zone has a Callum Letter, a settlement, ambient encounters, and the dormant god shrine (visible but not yet activated). This scene covers the **non-recall** content of each zone — settlements, NPCs, and environmental storytelling.
+This is Act II's open exploration phase. The player can visit the remaining three Frontier zones in any order. Each zone has a Artun Letter, a settlement, ambient encounters, and the dormant god shrine (visible but not yet activated). This scene covers the **non-recall** content of each zone — settlements, NPCs, and environmental storytelling.
 
-### Callum's Letter — Shimmer Marsh
+### Artun's Letter — Shimmer Marsh
 
 *[First entry to Shimmer Marsh:]*
 
-**Callum** *(reading)*: "Shimmer Marsh. Misty wetland where pools of water reflect memories rather than sky. The Rootwalkers — cultivators who shaped entire biomes — dissolved here, leaving their concentrated memory in a sunken glade of impossibly green growth. Their dormant god, a prototype of growth itself, waits in that glade. The marsh also holds a Preserver-controlled zone — a bog crystallized into frozen ripples. Beautiful and terrible."
+**Artun** *(reading)*: "Shimmer Marsh. Misty wetland where pools of water reflect memories rather than sky. The Rootwalkers — cultivators who shaped entire biomes — dissolved here, leaving their concentrated memory in a sunken glade of impossibly green growth. Their dormant god, a prototype of growth itself, waits in that glade. The marsh also holds a Preserver-controlled zone — a bog crystallized into frozen ripples. Beautiful and terrible."
 
-**Callum**: The air here feels heavy. Not with moisture — with memory. Every breath carries fragments of something old.
+**Artun**: The air here feels heavy. Not with moisture — with memory. Every breath carries fragments of something old.
 
-### Shimmer Marsh — Marsh Hermit Wynn
+### Shimmer Marsh — Marsh Hermit Vash
 
-*[The player visits Wynn's Hut (12, 15) in Shimmer Marsh.]*
+*[The player visits Vash's Hut (12, 15) in Shimmer Marsh.]*
 
-**Wynn** *(a weathered man in his 60s, surrounded by pressed plant specimens and journals)*: A visitor? Out here? Either you're lost or you're looking for something most people think is a fairy tale.
+**Vash** *(a weathered man in his 60s, surrounded by pressed plant specimens and journals)*: A visitor? Out here? Either you're lost or you're looking for something most people think is a fairy tale.
 
-**Callum**: We're looking for the dormant god in the hollow to the south.
+**Artun**: We're looking for the dormant god in the hollow to the south.
 
-**Wynn**: Verdance's Hollow. I've studied it for twenty years. The tree isn't dead — it's waiting. Roots pulse with green light, shoots sprout wherever they surface. But the path is blocked — dense root clusters choke the approach.
+**Vash**: Verdance's Hollow. I've studied it for twenty years. The tree isn't dead — it's waiting. Roots pulse with green light, shoots sprout wherever they surface. But the path is blocked — dense root clusters choke the approach.
 
-**Wynn**: I could clear the way, but I'll need help first. The marsh creatures have been more aggressive lately. Something about the Preserver's crystallization is agitating them. Clear the Stagnation Bog's perimeter — drive back the Mire Crawlers — and I'll show you the safe route to the Hollow.
+**Vash**: I could clear the way, but I'll need help first. The marsh creatures have been more aggressive lately. Something about the Preserver's crystallization is agitating them. Clear the Stagnation Bog's perimeter — drive back the Mire Crawlers — and I'll show you the safe route to the Hollow.
 
-> **QUEST**: "The Hermit's Path" — Clear Mire Crawlers from the Stagnation Bog perimeter (defeat 5 Mire Crawlers). Reward: Wynn's guidance to Verdance's Hollow, Marsh Survival Kit (3 Antidotes + 1 Haste Seed).
+> **QUEST**: "The Hermit's Path" — Clear Mire Crawlers from the Stagnation Bog perimeter (defeat 5 Mire Crawlers). Reward: Vash's guidance to Verdance's Hollow, Marsh Survival Kit (3 Antidotes + 1 Haste Seed).
 
-### Callum's Letter — Flickerveil
+### Artun's Letter — Flickerveil
 
 *[First entry to Flickerveil:]*
 
-**Callum** *(reading)*: "Flickerveil. A vast forest where the trees flicker between fully rendered and sketch-like outlines. The Radiant Lens — astronomers and light-weavers — dissolved their memories into the light itself. Their dormant god, a prototype of light, sleeps in a clearing as a suspended prism of concentrated luminance. A frontier settlement exists here where the buildings shimmer between complete and outline. The residents broadcast memories into their homes daily just to keep them solid."
+**Artun** *(reading)*: "Flickerveil. A vast forest where the trees flicker between fully rendered and sketch-like outlines. The Radiant Lens — astronomers and light-weavers — dissolved their memories into the light itself. Their dormant god, a prototype of light, sleeps in a clearing as a suspended prism of concentrated luminance. A frontier settlement exists here where the buildings shimmer between complete and outline. The residents broadcast memories into their homes daily just to keep them solid."
 
 ### Flickerveil — The Flickering Village
 
@@ -226,23 +226,23 @@ This is Act II's open exploration phase. The player can visit the remaining thre
 
 *[Buildings shimmer — walls flicker between solid timber and faint pencil-sketch outlines. An NPC woman reaches out and touches her doorframe; amber light pulses from her palm and the wood solidifies. She does this casually, the way someone might brush dust off a shelf.]*
 
-**Village Elder Solen** *(a woman in her 50s with sharp, curious eyes)*: Welcome to the Flickering Village. Don't be alarmed when the walls go translucent — they always come back. We just have to remind them.
+**Village Elder Reza** *(a woman in her 50s with sharp, curious eyes)*: Welcome to the Flickering Village. Don't be alarmed when the walls go translucent — they always come back. We just have to remind them.
 
-**Solen**: You're an Architect? Good. We need one. The Preservers have been trying to "stabilize" our village by crystallizing it. We keep refusing. We'd rather live in a place that flickers than one that's frozen solid.
+**Reza**: You're an Architect? Good. We need one. The Preservers have been trying to "stabilize" our village by crystallizing it. We keep refusing. We'd rather live in a place that flickers than one that's frozen solid.
 
-**Solen**: The grove to the west — Luminos Grove — has a column of light so bright you can't approach without shielding. I've spent my life studying it. I believe something sleeps within the light — something that could stabilize this entire forest without freezing it.
+**Reza**: The grove to the west — Luminos Grove — has a column of light so bright you can't approach without shielding. I've spent my life studying it. I believe something sleeps within the light — something that could stabilize this entire forest without freezing it.
 
-**Solen**: Take this. I polished it from grove crystal. It focuses scattered light into a coherent beam.
+**Reza**: Take this. I polished it from grove crystal. It focuses scattered light into a coherent beam.
 
 *[The player receives **Light Lens** — key item required to approach Luminos Grove's shrine.]*
 
 > **QUEST**: "The Light in the Grove" — Use the Light Lens to approach Luminos Grove's dormant shrine. (Activates when entering Luminos Grove.)
 
-### Callum's Letter — Resonance Fields
+### Artun's Letter — Resonance Fields
 
 *[First entry to Resonance Fields:]*
 
-**Callum** *(reading)*: "Resonance Fields. Vast open plains where the wind carries audible memory-sounds — fragments of conversations, distant music, laughter. The Choir of the First Dawn dissolved their memories into the soundscape itself. Their dormant god, a prototype of sound, hums at the center of an amphitheater of singing stones. The Preservers have built a cathedral here — a crystallized fortress that silences everything within ten tiles. It is the largest Preserver installation in the Frontier."
+**Artun** *(reading)*: "Resonance Fields. Vast open plains where the wind carries audible memory-sounds — fragments of conversations, distant music, laughter. The Choir of the First Dawn dissolved their memories into the soundscape itself. Their dormant god, a prototype of sound, hums at the center of an amphitheater of singing stones. The Preservers have built a cathedral here — a crystallized fortress that silences everything within ten tiles. It is the largest Preserver installation in the Frontier."
 
 ### Resonance Fields — The Listener's Camp
 
@@ -276,17 +276,17 @@ See [enemies-catalog.md](../design/enemies-catalog.md) for full stat tables.
 ### Player Actions
 
 - Explore all four Frontier zones (player-order flexible)
-- Hear Callum's Letters for each zone
-- Visit three Frontier settlements (Wynn's Hut, Flickering Village, Listener's Camp)
+- Hear Artun's Letters for each zone
+- Visit three Frontier settlements (Vash's Hut, Flickering Village, Listener's Camp)
 - Accept settlement quests (optional)
-- Receive key items (Light Lens from Solen, Kinetic Boots from Petra — Scene 2)
+- Receive key items (Light Lens from Reza, Kinetic Boots from Nel — Scene 2)
 - Fight Frontier-tier enemies (reaching level 12-14)
 - Collect stronger fragments from Frontier Resonance Stones (2-3★)
 
 ### Rewards / Consequences
 
 - **Level**: Player reaches ~12-14 through exploration and encounters
-- **Key items**: Light Lens (Flickerveil), Kinetic Boots (given by Petra when player expresses intent to approach Kinesis Spire)
+- **Key items**: Light Lens (Flickerveil), Kinetic Boots (given by Nel when player expresses intent to approach Kinesis Spire)
 - **Fragments**: 4-8 from Frontier Resonance Stones (potency 2-3)
 - **Gold**: ~400-600 from encounters
 - **Quests activated**: "The Hermit's Path," "The Light in the Grove," "Harmonize the Path"
@@ -300,7 +300,7 @@ See [enemies-catalog.md](../design/enemies-catalog.md) for full stat tables.
 
 **Trigger**: Player completes "Harmonize the Path" quest and approaches the amphitheater
 
-**Characters**: Player, Callum
+**Characters**: Player, Artun
 
 **Time of day**: Dusk (the amphitheater is most resonant at sunset)
 
@@ -312,11 +312,11 @@ This is the first god recall — the most significant single choice in the game.
 
 *[The player enters the amphitheater — a natural bowl ringed by massive Resonance Stones, each 3 tiles tall. The stones hum in overlapping harmonics. At the bowl's center, a column of visible sound waves rises: concentric rings of shimmering air, pulsing like a heartbeat. The air itself vibrates. The player's screen subtly oscillates.]*
 
-**Callum** *(awed)*: I've read about this for decades. I never thought I'd see it.
+**Artun** *(awed)*: I've read about this for decades. I never thought I'd see it.
 
-**Callum**: That column — those sound waves — that's Resonance. A dormant god of sound, created by the Choir of the First Dawn. They sang the world's ambient soundscape into existence. Every breeze, every birdsong, every rush of water — that was their work.
+**Artun**: That column — those sound waves — that's Resonance. A dormant god of sound, created by the Choir of the First Dawn. They sang the world's ambient soundscape into existence. Every breeze, every birdsong, every rush of water — that was their work.
 
-**Callum**: And then they dissolved. They chose to become the sound they loved. What remains is this — an unfinished prototype, humming a note that's been sustained for centuries.
+**Artun**: And then they dissolved. They chose to become the sound they loved. What remains is this — an unfinished prototype, humming a note that's been sustained for centuries.
 
 *[The player approaches the column. At its base, four stone pedestals emerge from the amphitheater floor, each carved with a glyph:]*
 
@@ -338,11 +338,11 @@ This is the first god recall — the most significant single choice in the game.
 
 *[The vision fades. The player stands before the pedestals.]*
 
-**Callum** *(wiping his eyes)*: They chose that. They chose to become the song rather than let it fade.
+**Artun** *(wiping his eyes)*: They chose that. They chose to become the song rather than let it fade.
 
-**Callum**: Now it's your turn. That god — Resonance — is waiting for someone to finish what the Choir started. The emotion you choose will determine what Resonance becomes. Joy, fury, sorrow, or awe — each will create a different god with a different domain.
+**Artun**: Now it's your turn. That god — Resonance — is waiting for someone to finish what the Choir started. The emotion you choose will determine what Resonance becomes. Joy, fury, sorrow, or awe — each will create a different god with a different domain.
 
-**Callum**: This is permanent. Once you recall Resonance, the god takes their final form. There's no going back. Choose the emotion that feels right to you.
+**Artun**: This is permanent. Once you recall Resonance, the god takes their final form. There's no going back. Choose the emotion that feels right to you.
 
 ### Part C: The Emotion Choice
 
@@ -413,39 +413,39 @@ This is the first god recall — the most significant single choice in the game.
 
 **Trigger**: God recall transformation completes
 
-**Characters**: Player, Callum
+**Characters**: Player, Artun
 
 **Time of day**: Night (the recall takes time — dusk has become full dark)
 
 ### Narrative Context
 
-The aftermath of the first recall. The player has just made the most significant choice in the game. Callum reflects on what happened, foreshadows the consequences, and frames the three remaining recalls.
+The aftermath of the first recall. The player has just made the most significant choice in the game. Artun reflects on what happened, foreshadows the consequences, and frames the three remaining recalls.
 
 ### Dialogue
 
-*[The amphitheater is transformed. The specific changes depend on the recall emotion (see [dormant-gods.md](../world/dormant-gods.md)). Callum stands at the amphitheater's edge, looking out across the changed landscape.]*
+*[The amphitheater is transformed. The specific changes depend on the recall emotion (see [dormant-gods.md](../world/dormant-gods.md)). Artun stands at the amphitheater's edge, looking out across the changed landscape.]*
 
-**Callum**: I've spent my life reading about the Dissolved. Their civilizations, their choices, their gods. But reading about a god is nothing like watching one wake up.
+**Artun**: I've spent my life reading about the Dissolved. Their civilizations, their choices, their gods. But reading about a god is nothing like watching one wake up.
 
-**Callum**: You gave Resonance a form it can never change. That's not a small thing. The Choir dissolved because their song grew too complex to hold — and you just decided what the song becomes.
+**Artun**: You gave Resonance a form it can never change. That's not a small thing. The Choir dissolved because their song grew too complex to hold — and you just decided what the song becomes.
 
 *[Beat.]*
 
-**Callum**: Three more gods sleep in the Frontier. Verdance in the marsh, Luminos in the forest, Kinesis on the spire. Each one is an unfinished prototype waiting for someone to complete it.
+**Artun**: Three more gods sleep in the Frontier. Verdance in the marsh, Luminos in the forest, Kinesis on the spire. Each one is an unfinished prototype waiting for someone to complete it.
 
-**Callum**: The Preservers know about them. They've been trying to keep people away from the shrines — not because they want the gods to stay dormant, but because they're afraid of what happens when someone like you starts making permanent choices.
+**Artun**: The Preservers know about them. They've been trying to keep people away from the shrines — not because they want the gods to stay dormant, but because they're afraid of what happens when someone like you starts making permanent choices.
 
-**Callum**: I understand their fear. What you just did can't be undone. And the next three choices will be just as permanent.
+**Artun**: I understand their fear. What you just did can't be undone. And the next three choices will be just as permanent.
 
-*[Callum turns to the player.]*
+*[Artun turns to the player.]*
 
-**Callum**: But I also know this: a world that can't change is a world that can't grow. And a god that stays dormant helps no one.
+**Artun**: But I also know this: a world that can't change is a world that can't grow. And a god that stays dormant helps no one.
 
-**Callum**: Let's keep moving. The other shrines are waiting. And Lira... Lira is still frozen.
+**Artun**: Let's keep moving. The other shrines are waiting. And Hana... Hana is still frozen.
 
 ### Player Actions
 
-- Listen to Callum's reflection (narrative scene)
+- Listen to Artun's reflection (narrative scene)
 - Optional: explore the transformed Resonance Fields
 - Optional: pursue god recall side quests (unlocked by the specific recall)
 
@@ -453,7 +453,7 @@ The aftermath of the first recall. The player has just made the most significant
 
 - **No items or XP** — this is a narrative beat
 - **Emotional framing**: The player understands that each recall is permanent and world-altering
-- **Motivation reinforced**: Lira is still frozen. The player needs more power.
+- **Motivation reinforced**: Hana is still frozen. The player needs more power.
 
 ---
 
@@ -463,7 +463,7 @@ The aftermath of the first recall. The player has just made the most significant
 
 **Trigger**: Player explores Shimmer Marsh after first recall
 
-**Characters**: Player, Callum, Dissolved memory echo (the Rootwalker gardener)
+**Characters**: Player, Artun, Dissolved memory echo (the Rootwalker gardener)
 
 **Time of day**: Player-driven
 
@@ -475,7 +475,7 @@ This is the first scene where **preservation is the right call**. The player enc
 
 *[The player discovers a small stagnation zone — a 4x4 patch of crystallized garden. Unlike the harsh, angular crystals of the Heartfield clearing, these crystals are delicate, almost organic. They coat the garden's plants like morning frost, preserving every petal, every dewdrop, every curling vine in perfect detail. A small Resonance Stone at the garden's center is coated in soft blue-white crystal.]*
 
-**Callum**: Another stagnation zone? But this one feels... different. The crystal is lighter. Almost gentle.
+**Artun**: Another stagnation zone? But this one feels... different. The crystal is lighter. Almost gentle.
 
 *[The player approaches the crystallized Resonance Stone. A dissolved memory echo materializes — a translucent amber figure of a woman kneeling among the plants. She looks up at the player with calm, warm eyes.]*
 
@@ -495,11 +495,11 @@ This is the first scene where **preservation is the right call**. The player enc
 
 *[The echo fades. The player stands before the crystallized garden.]*
 
-**Callum** *(slowly)*: She asked for this. The Preservers didn't force it — she chose it.
+**Artun** *(slowly)*: She asked for this. The Preservers didn't force it — she chose it.
 
-**Callum**: I... I don't know what the right answer is here. Breaking the crystal would free the garden to grow, to change, to eventually decay. That's what we believe in, isn't it? Growth? Change?
+**Artun**: I... I don't know what the right answer is here. Breaking the crystal would free the garden to grow, to change, to eventually decay. That's what we believe in, isn't it? Growth? Change?
 
-**Callum**: But she chose this. This is how she wanted to be remembered. Does our belief in change mean we override her choice?
+**Artun**: But she chose this. This is how she wanted to be remembered. Does our belief in change mean we override her choice?
 
 > **SYSTEM**: The crystallized garden pulses gently. You can broadcast a fragment to break the stagnation, or leave it preserved.
 >
@@ -517,13 +517,13 @@ This is the first scene where **preservation is the right call**. The player enc
 **If broken**:
 - Vibrancy: Shimmer Marsh +5
 - The garden's flowers wilt and change over 10 in-game minutes
-- Callum is visibly uncomfortable: "It was the right thing. Growth is always the right thing. ...Isn't it?"
+- Artun is visibly uncomfortable: "It was the right thing. Growth is always the right thing. ...Isn't it?"
 - No fragment reward from the garden itself
 
 **If preserved**:
 - No vibrancy change
 - The player receives: **MF-05: The Gardener's Peace** (Calm / Earth / Potency 3) — appears at the garden's base
-- Callum is relieved: "Thank you. Some things deserve to stay as they are. Not everything — but some things."
+- Artun is relieved: "Thank you. Some things deserve to stay as they are. Not everything — but some things."
 - The garden remains as a landmark — a point of beauty in the muted marsh
 
 **Either way**: The player has confronted the idea that preservation isn't always wrong. This is the seed of moral questioning that defines the Act II middle arc.
@@ -534,9 +534,9 @@ This is the first scene where **preservation is the right call**. The player enc
 
 **Location**: Shimmer Marsh — Verdance's Hollow (25, 35)
 
-**Trigger**: Player completes "The Hermit's Path" quest and follows Wynn's guidance to the Hollow
+**Trigger**: Player completes "The Hermit's Path" quest and follows Vash's guidance to the Hollow
 
-**Characters**: Player, Callum, Wynn (guide)
+**Characters**: Player, Artun, Vash (guide)
 
 **Time of day**: Player-driven
 
@@ -546,15 +546,15 @@ The second god recall (in canonical order). Verdance is a massive, half-formed t
 
 ### Part A: Discovery
 
-*[Wynn leads the player along a winding path through dense marsh vegetation. The muted colors of Shimmer Marsh (vibrancy 30) make the journey feel dreamlike — soft, faded, quiet.]*
+*[Vash leads the player along a winding path through dense marsh vegetation. The muted colors of Shimmer Marsh (vibrancy 30) make the journey feel dreamlike — soft, faded, quiet.]*
 
 *[Then, abruptly, color. The path opens into a sunken glade where everything is alive and vivid. The grass is emerald green. Flowers bloom in impossible colors. The air smells of rain and growing things. At the glade's center: a massive half-formed tree trunk, 10 tiles wide, rising 5 tiles before ending in unfinished branches that trail off into nothing. Bark shot through with veins of pulsing green light.]*
 
-**Wynn** *(reverently)*: Verdance's Hollow. The Rootwalkers' final gift. This tree was meant to be their god — a living embodiment of growth itself. But they dissolved before they could finish it.
+**Vash** *(reverently)*: Verdance's Hollow. The Rootwalkers' final gift. This tree was meant to be their god — a living embodiment of growth itself. But they dissolved before they could finish it.
 
-**Wynn**: The roots extend in every direction — I've traced them for twenty years. Wherever they surface, things grow. Even through the muted marsh soil. Even through the Stagnation Bog's crystal edge.
+**Vash**: The roots extend in every direction — I've traced them for twenty years. Wherever they surface, things grow. Even through the muted marsh soil. Even through the Stagnation Bog's crystal edge.
 
-**Wynn**: But the path to the shrine is blocked. The root cluster at the base — see it? — has grown so dense that nothing can pass through. The tree is protecting itself.
+**Vash**: But the path to the shrine is blocked. The root cluster at the base — see it? — has grown so dense that nothing can pass through. The tree is protecting itself.
 
 ### Part B: Puzzle — Clearing the Roots
 
@@ -562,7 +562,7 @@ The second god recall (in canonical order). Verdance is a massive, half-formed t
 
 *[The player broadcasts an earth or water fragment into the root cluster at (20, 30). The roots shudder, pulse green, then slowly retract — pulling aside like a curtain, revealing the path to the shrine.]*
 
-**Wynn**: It recognized you. The roots only respond to memory energy with the right element. Earth or water — the Rootwalkers' domain.
+**Vash**: It recognized you. The roots only respond to memory energy with the right element. Earth or water — the Rootwalkers' domain.
 
 *[The player approaches the massive tree trunk. At its base, four pedestals emerge from the roots, each carved with an emotion glyph.]*
 
@@ -591,7 +591,7 @@ The second god recall (in canonical order). Verdance is a massive, half-formed t
 
 ### Player Actions
 
-- Follow Wynn to Verdance's Hollow
+- Follow Vash to Verdance's Hollow
 - Solve the root puzzle (broadcast earth/water fragment)
 - Watch the recall vision
 - Choose an emotion and recall Verdance
@@ -603,7 +603,7 @@ The second god recall (in canonical order). Verdance is a massive, half-formed t
 - **Fragment consumed**: Potency 3+ fragment
 - **Subclass unlocked** (if first recall)
 - **World-state changes**: Per [dormant-gods.md](../world/dormant-gods.md)
-- **Wynn's reaction**: Varies by recall. Wynn is especially moved by Floriana (joy) or Autumnus (sorrow), visibly alarmed by Thornweald (fury), and intellectually fascinated by Sylvanos (awe).
+- **Vash's reaction**: Varies by recall. Vash is especially moved by Floriana (joy) or Autumnus (sorrow), visibly alarmed by Thornweald (fury), and intellectually fascinated by Sylvanos (awe).
 
 ---
 
@@ -613,7 +613,7 @@ The second god recall (in canonical order). Verdance is a massive, half-formed t
 
 **Trigger**: Player discovers the Deepwater Sinkhole after exploring Shimmer Marsh
 
-**Characters**: Player, Callum, Dissolved memory echoes
+**Characters**: Player, Artun, Dissolved memory echoes
 
 **Time of day**: N/A (underground)
 
@@ -629,7 +629,7 @@ The first Depths dungeon dive of Act II. The Drowned Archive is a submerged libr
 
 *[The player descends through the sinkhole into a vast submerged hall. The water is knee-deep, clear, and luminous — amber light radiates from dissolved memory deposits embedded in the floor. Bookshelves line the walls, their contents dissolved into amber-gold smears that glow faintly.]*
 
-**Callum**: A library. Submerged, but intact. The books are gone — dissolved into memory — but the shelves, the architecture... this civilization valued knowledge above everything.
+**Artun**: A library. Submerged, but intact. The books are gone — dissolved into memory — but the shelves, the architecture... this civilization valued knowledge above everything.
 
 *[Enemies: 2 Echo Toads guard the entrance. Standard Depths-tier encounter.]*
 
@@ -649,9 +649,9 @@ The first Depths dungeon dive of Act II. The Drowned Archive is a submerged libr
 
 *[The echo yields a fragment: MF-06: Dissolution Is a Choice (Calm / Water / Potency 4).]*
 
-**Callum** *(shaken)*: Graduation. They didn't fail — they finished. They chose to become something larger than themselves.
+**Artun** *(shaken)*: Graduation. They didn't fail — they finished. They chose to become something larger than themselves.
 
-**Callum**: That changes everything I thought I knew about the Dissolved. They weren't victims. They were... completed.
+**Artun**: That changes everything I thought I knew about the Dissolved. They weren't victims. They were... completed.
 
 ### Room 6: The Archive's Heart — Boss Encounter
 
@@ -680,7 +680,7 @@ The first Depths dungeon dive of Act II. The Drowned Archive is a submerged libr
 - **Gold**: ~300-400
 - **Items**: Archive Key (K-05) — opens locked rooms in other Depths levels
 - **Lore impact**: The player now understands that dissolution is voluntary. This reframes the Preservers: they're not protecting civilizations from destruction — they're trying to prevent civilizations from choosing to move on.
-- **Callum's arc**: This revelation deeply affects Callum. His understanding of the Dissolved shifts from "noble victims" to "people who completed their purpose." This carries into his Act III dialogue.
+- **Artun's arc**: This revelation deeply affects Artun. His understanding of the Dissolved shifts from "noble victims" to "people who completed their purpose." This carries into his Act III dialogue.
 
 ---
 
@@ -690,7 +690,7 @@ The first Depths dungeon dive of Act II. The Drowned Archive is a submerged libr
 
 **Trigger**: Player has completed 2 god recalls
 
-**Characters**: Player, Callum, Preserver Captain Aric
+**Characters**: Player, Artun, Preserver Captain Janik
 
 **Time of day**: Player-driven
 
@@ -700,51 +700,51 @@ After two god recalls, the Preservers escalate. A Preserver Captain — a named 
 
 ### Dialogue
 
-*[The player is traveling through Hollow Ridge when the path ahead crystallizes. A wall of blue-white crystal erupts across the trail — not attacking, but blocking. A figure steps from behind the crystal: Preserver Captain Aric, armored in crystalline plate, stern but not hostile.]*
+*[The player is traveling through Hollow Ridge when the path ahead crystallizes. A wall of blue-white crystal erupts across the trail — not attacking, but blocking. A figure steps from behind the crystal: Preserver Captain Janik, armored in crystalline plate, stern but not hostile.]*
 
-**Preserver Captain Aric**: Architect. Stop.
+**Preserver Captain Janik**: Architect. Stop.
 
-*[Callum steps forward protectively. Aric raises a hand.]*
+*[Artun steps forward protectively. Janik raises a hand.]*
 
-**Aric**: I'm not here to fight. I'm here to talk. The Curator sent me because words matter more than force.
+**Janik**: I'm not here to fight. I'm here to talk. Grym sent me because words matter more than force.
 
-**Aric**: You've recalled two gods. Two dormant prototypes that the Dissolved left unfinished — and you've forced them into permanent forms based on single emotions. Joy, fury, sorrow, awe — whichever you chose, you chose for the entire world. Forever.
+**Janik**: You've recalled two gods. Two dormant prototypes that the Dissolved left unfinished — and you've forced them into permanent forms based on single emotions. Joy, fury, sorrow, awe — whichever you chose, you chose for the entire world. Forever.
 
-**Aric**: Did you ask the world what it wanted? Did you consult the people who live in those zones? The Frontier settlers who've built their lives around the gods being dormant?
+**Janik**: Did you ask the world what it wanted? Did you consult the people who live in those zones? The Frontier settlers who've built their lives around the gods being dormant?
 
-**Callum**: The gods were meant to be recalled. The Dissolved left them as gifts —
+**Artun**: The gods were meant to be recalled. The Dissolved left them as gifts —
 
-**Aric**: The Dissolved dissolved. They left. Their intentions are irrelevant — they're not here to live with the consequences. You are. And so are we.
+**Janik**: The Dissolved dissolved. They left. Their intentions are irrelevant — they're not here to live with the consequences. You are. And so are we.
 
-*[Aric turns to the player.]*
+*[Janik turns to the player.]*
 
-**Aric**: I've seen what your first recall did. The zone changed. The people changed. Their behavior shifted — not because they chose to, but because a god's passive influence rewrote their personalities. Is that growth? Or is it just a different kind of control?
+**Janik**: I've seen what your first recall did. The zone changed. The people changed. Their behavior shifted — not because they chose to, but because a god's passive influence rewrote their personalities. Is that growth? Or is it just a different kind of control?
 
-**Aric**: The Curator doesn't want to destroy you. The Curator wants you to stop. To think. To consider that some things are worth keeping exactly as they are.
+**Janik**: Grym doesn't want to destroy you. Grym wants you to stop. To think. To consider that some things are worth keeping exactly as they are.
 
-**Aric**: Two gods remain dormant. I'm asking you — not ordering, asking — to leave them be.
+**Janik**: Two gods remain dormant. I'm asking you — not ordering, asking — to leave them be.
 
-*[Aric drops the crystal wall and walks away. No combat. No threat. Just a question that lingers.]*
+*[Janik drops the crystal wall and walks away. No combat. No threat. Just a question that lingers.]*
 
-**Callum** *(after a long pause)*: He's not entirely wrong, you know.
+**Artun** *(after a long pause)*: He's not entirely wrong, you know.
 
-**Callum**: The gods' passive effects do change NPC behavior. I noticed it too — people in Resonance Fields act differently now. Not unhappily. Just... differently than they chose to be.
+**Artun**: The gods' passive effects do change NPC behavior. I noticed it too — people in Resonance Fields act differently now. Not unhappily. Just... differently than they chose to be.
 
-**Callum**: But a world that never changes is worse. I believe that. I just... wish I could be more certain.
+**Artun**: But a world that never changes is worse. I believe that. I just... wish I could be more certain.
 
 ### Player Actions
 
-- Encounter Preserver Captain Aric (automatic, triggered by zone travel)
-- Listen to Aric's argument (no combat, no chase — purely dialogue)
-- Hear Callum's uncertainty
-- Continue with full freedom (Aric does not restrict movement)
+- Encounter Preserver Captain Janik (automatic, triggered by zone travel)
+- Listen to Janik's argument (no combat, no chase — purely dialogue)
+- Hear Artun's uncertainty
+- Continue with full freedom (Janik does not restrict movement)
 
 ### Rewards / Consequences
 
 - **No items, XP, or fragments** — narrative scene
-- **Emotional arc**: This is the heart of "moral questioning." Aric's argument is reasonable. Callum's uncertainty is genuine. The player should feel the weight of their choices.
+- **Emotional arc**: This is the heart of "moral questioning." Janik's argument is reasonable. Artun's uncertainty is genuine. The player should feel the weight of their choices.
 - **Preserver escalation**: After this scene, Preserver patrols increase in all Frontier zones. Encounters with Preserver Scouts and Crystal Sentinels become more frequent.
-- **Aric's fate**: Aric reappears in Act III at the Preserver Fortress. How this encounter went (player's emotional response) subtly affects that interaction.
+- **Janik's fate**: Janik reappears in Act III at the Preserver Fortress. How this encounter went (player's emotional response) subtly affects that interaction.
 
 ---
 
@@ -754,7 +754,7 @@ After two god recalls, the Preservers escalate. A Preserver Captain — a named 
 
 **Trigger**: Player enters Luminos Grove with the Light Lens key item
 
-**Characters**: Player, Callum
+**Characters**: Player, Artun
 
 **Time of day**: Midday (the light column is strongest at noon)
 
@@ -768,11 +768,11 @@ The third god recall (canonical order). Luminos Grove is a clearing where the ca
 
 > **SYSTEM**: The light column is overwhelming. Use the Light Lens to focus the scattered beams.
 
-*[The player uses the Light Lens (key item from Solen). The lens focuses the scattered light into a coherent path — a corridor of tolerable brightness leading to the prism. The player walks the light-path. Shadows multiply around them, one per nearby tree, pointing in impossible directions.]*
+*[The player uses the Light Lens (key item from Reza). The lens focuses the scattered light into a coherent path — a corridor of tolerable brightness leading to the prism. The player walks the light-path. Shadows multiply around them, one per nearby tree, pointing in impossible directions.]*
 
-**Callum** *(shielding his eyes)*: The Radiant Lens built their entire civilization around capturing light. They mapped every star, charted every beam. And then they realized they'd left no room for mystery.
+**Artun** *(shielding his eyes)*: The Radiant Lens built their entire civilization around capturing light. They mapped every star, charted every beam. And then they realized they'd left no room for mystery.
 
-**Callum**: They dissolved into the light itself — sunbeams, starlight, the ambient glow of the unfinished world. That warm amber quality everything has? That's them.
+**Artun**: They dissolved into the light itself — sunbeams, starlight, the ambient glow of the unfinished world. That warm amber quality everything has? That's them.
 
 *[The player reaches the prism. Four pedestals surround it, each carved with an emotion glyph.]*
 
@@ -820,7 +820,7 @@ The third god recall (canonical order). Luminos Grove is a clearing where the ca
 
 **Trigger**: Player explores Resonance Fields after 2-3 recalls
 
-**Characters**: Player, Callum, Preserver Scout, frozen festival NPCs
+**Characters**: Player, Artun, Preserver Scout, frozen festival NPCs
 
 **Time of day**: Player-driven
 
@@ -836,7 +836,7 @@ The second scene where **preservation is the right call**. A small group of Fron
 
 **Preserver Scout Miel**: Beautiful, isn't it?
 
-**Callum**: It's a cage.
+**Artun**: It's a cage.
 
 **Miel**: Is it? Look at their faces. Every single one of them is happy. Not pretending, not performing — genuinely, completely happy. That moment was perfect. I've never seen anything like it.
 
@@ -856,9 +856,9 @@ The second scene where **preservation is the right call**. A small group of Fron
 - The leaping child: *The lantern was just out of reach. She was about to catch it.*
 - The musician: *She set her fiddle down mid-song to join the dance.*
 
-**Callum**: Twelve years. That child is eighteen now — or would be, if time had passed for her. Twelve years of growing up, lost. Her parents have aged. Her friends have moved on.
+**Artun**: Twelve years. That child is eighteen now — or would be, if time had passed for her. Twelve years of growing up, lost. Her parents have aged. Her friends have moved on.
 
-**Callum**: But she doesn't know that. Right now, in her frozen moment, she's reaching for a lantern and her whole life is joy.
+**Artun**: But she doesn't know that. Right now, in her frozen moment, she's reaching for a lantern and her whole life is joy.
 
 > **SYSTEM**: The crystallized festival pulses gently. You can broadcast a fragment to break the stagnation, or leave it preserved.
 >
@@ -879,13 +879,13 @@ The second scene where **preservation is the right call**. A small group of Fron
 - 8 NPCs are freed but deeply disoriented. The child cries. The dancers don't recognize each other. The laughing man goes quiet.
 - Over 10 in-game minutes, the freed NPCs gradually adjust. The child's parents (NPCs from the Listener's Camp, now visibly older) arrive and there's a tearful reunion.
 - Miel walks away without a word.
-- Callum: "That was hard to watch. But they have a chance now. A chance to make new moments."
+- Artun: "That was hard to watch. But they have a chance now. A chance to make new moments."
 
 **If preserved**:
 - No vibrancy change
 - The player receives: **MF-07: The Perfect Moment** (Sorrow / Light / Potency 3) — "your grief at choosing not to free them"
 - Miel: "Thank you. I know what it cost you to walk away."
-- Callum: "I'm not sure we made the right choice. But I'm not sure we would have, either way."
+- Artun: "I'm not sure we made the right choice. But I'm not sure we would have, either way."
 
 **Either way**: The moral questioning deepens. There is no "correct" answer. The player carries the weight of their decision forward.
 
@@ -897,7 +897,7 @@ The second scene where **preservation is the right call**. A small group of Fron
 
 **Trigger**: Player approaches the Cathedral after 3 god recalls (recommended timing — accessible earlier but very difficult)
 
-**Characters**: Player, Callum, 3 Preserver Agents + Preserver Captain Voss
+**Characters**: Player, Artun, 3 Preserver Agents + Preserver Captain Voss
 
 **Time of day**: Player-driven
 
@@ -909,9 +909,9 @@ The Preserver Cathedral is the Preservers' largest Frontier installation — a m
 
 *[As the player enters the Cathedral's 10-tile radius, all sound cuts out. The ambient music stops. The wind stops. Even footstep sounds muffle to near-silence. The HUD's fragment counter grays out — collection is impossible in the silence zone.]*
 
-**Callum** *(whispering — his voice sounds thin, dampened)*: The silence field. I can feel it pressing against my thoughts. They've crystallized the very air — no vibration can pass through.
+**Artun** *(whispering — his voice sounds thin, dampened)*: The silence field. I can feel it pressing against my thoughts. They've crystallized the very air — no vibration can pass through.
 
-**Callum**: The Cathedral is built from frozen Resonance Stones. The same stones that sing and carry dissolved memories — these ones have been silenced. Permanently. It's the opposite of everything the Choir believed in.
+**Artun**: The Cathedral is built from frozen Resonance Stones. The same stones that sing and carry dissolved memories — these ones have been silenced. Permanently. It's the opposite of everything the Choir believed in.
 
 *[The Cathedral comes into view — a towering structure of blue-white crystal, angular and beautiful. Frozen Resonance Stones form its pillars. Light refracts through the crystal in cold, perfect patterns.]*
 
@@ -923,7 +923,7 @@ The Preserver Cathedral is the Preservers' largest Frontier installation — a m
 
 **Voss**: You want to shatter this? Break centuries of preserved sound back into chaos?
 
-**Callum**: It's not chaos. It's music.
+**Artun**: It's not chaos. It's music.
 
 **Voss**: Music fades. What we have here lasts forever.
 
@@ -941,7 +941,7 @@ The Preserver Cathedral is the Preservers' largest Frontier installation — a m
 
 *[Sound floods back. Not gradually — all at once. The rush of wind, the hum of Resonance Stones, the distant singing of the Choir's dissolved memories. Every stone that was silenced rings simultaneously. The Cathedral's crystal walls shatter into prismatic dust. The structure doesn't collapse — it dissolves, the way a held breath releases.]*
 
-**Callum** *(covering his ears, then slowly lowering his hands)*: I can hear them. The Choir. They're still singing. After all this time, after the silence — they never stopped. The Preservers just couldn't hear it.
+**Artun** *(covering his ears, then slowly lowering his hands)*: I can hear them. The Choir. They're still singing. After all this time, after the silence — they never stopped. The Preservers just couldn't hear it.
 
 > **SYSTEM**: The Preserver Cathedral is broken! The silence field dissipates. Resonance Fields gains +10 vibrancy. Memory collection is restored throughout the zone.
 
@@ -968,7 +968,7 @@ The Preserver Cathedral is the Preservers' largest Frontier installation — a m
 
 **Trigger**: Player activates the Singing Stones sequence (broadcast specific emotion-type fragments into 3 stones in order)
 
-**Characters**: Player, Callum, Dissolved memory echoes (the Choir's final members)
+**Characters**: Player, Artun, Dissolved memory echoes (the Choir's final members)
 
 **Time of day**: N/A (underground)
 
@@ -1010,7 +1010,7 @@ The Songline is the most emotionally intense Depths experience. It's a linear me
 
 *[The last chorister dissolves.]*
 
-**Callum** *(crying openly)*: They didn't die. They became infinite. The song... the song is everywhere. It always was.
+**Artun** *(crying openly)*: They didn't die. They became infinite. The song... the song is everywhere. It always was.
 
 ### Room 5: The Fifth Verse — The Unfinished Note
 
@@ -1018,9 +1018,9 @@ The Songline is the most emotionally intense Depths experience. It's a linear me
 
 *[If the player has already recalled Resonance, the stone's hum has changed — it now sings the recalled god's characteristic sound. If Cantara (joy): the hum resolves into a warm major chord. If Tempestus (fury): the hum crackles with storm-static. If Tacet (sorrow): the hum fades to near-silence. If Harmonia (awe): the hum becomes a perfect, self-harmonizing chord.]*
 
-**Callum**: The note they couldn't finish. The last piece of the song, left for someone else to complete.
+**Artun**: The note they couldn't finish. The last piece of the song, left for someone else to complete.
 
-**Callum**: You completed it. When you recalled Resonance, you finished the Choir's work. Not the way they would have, but the way you chose. And that's exactly what they hoped for.
+**Artun**: You completed it. When you recalled Resonance, you finished the Choir's work. Not the way they would have, but the way you chose. And that's exactly what they hoped for.
 
 *[Fragment: Awe / Neutral / Potency 5 — "The Choir's final gift: the space they left for you to fill."]*
 
@@ -1037,7 +1037,7 @@ The Songline is the most emotionally intense Depths experience. It's a linear me
 - **Fragments**: Joy/Light/3★, Sorrow/Wind/4★, Awe/Neutral/5★ (the 5★ is the player's first potency-5 fragment if they haven't obtained one from god recall side quests)
 - **Gold**: ~200 (from encounters in the dungeon)
 - **Lore impact**: The player now deeply understands dissolution. The Choir's story personalizes what the Drowned Archive explained intellectually. The player moves from questioning to understanding — and from understanding to determination.
-- **Callum's arc**: Callum's emotional response here is the climax of his personal journey. He's spent 40 years studying the Dissolved academically. Now he's experienced their choice emotionally. This transforms him for Act III.
+- **Artun's arc**: Artun's emotional response here is the climax of his personal journey. He's spent 40 years studying the Dissolved academically. Now he's experienced their choice emotionally. This transforms him for Act III.
 
 ---
 
@@ -1047,57 +1047,57 @@ The Songline is the most emotionally intense Depths experience. It's a linear me
 
 **Trigger**: Player travels toward Kinesis Spire after 3 recalls
 
-**Characters**: Player, Callum, Preserver Captain Aric (returning from Scene 9)
+**Characters**: Player, Artun, Preserver Captain Janik (returning from Scene 9)
 
 **Time of day**: Player-driven
 
 ### Narrative Context
 
-Aric returns. After 3 god recalls, the Preservers are desperate. Aric was diplomatic before — now he's urgent. This is the only Preserver encounter in Act II where combat is initiated by the Preservers rather than the player.
+Janik returns. After 3 god recalls, the Preservers are desperate. Janik was diplomatic before — now he's urgent. This is the only Preserver encounter in Act II where combat is initiated by the Preservers rather than the player.
 
 ### Dialogue
 
-*[Crystal walls erupt on both sides of the mountain path, channeling the player into a narrow corridor. Aric steps from behind the crystal, flanked by 2 Preserver Agents.]*
+*[Crystal walls erupt on both sides of the mountain path, channeling the player into a narrow corridor. Janik steps from behind the crystal, flanked by 2 Preserver Agents.]*
 
-**Aric**: I asked you to stop. You didn't.
+**Janik**: I asked you to stop. You didn't.
 
-**Aric**: Three gods. Three permanent changes to the world that no one voted for, no one debated, no one agreed to. You walk into a shrine and you decide — for everyone — what a god becomes.
+**Janik**: Three gods. Three permanent changes to the world that no one voted for, no one debated, no one agreed to. You walk into a shrine and you decide — for everyone — what a god becomes.
 
-**Callum**: The Dissolved left those gods for —
+**Artun**: The Dissolved left those gods for —
 
-**Aric**: The Dissolved LEFT. They're gone. They don't get a vote. The people who live here NOW — the settlers, the explorers, the people who've built their lives in the Frontier — they're the ones affected. And you didn't ask a single one of them.
+**Janik**: The Dissolved LEFT. They're gone. They don't get a vote. The people who live here NOW — the settlers, the explorers, the people who've built their lives in the Frontier — they're the ones affected. And you didn't ask a single one of them.
 
 *[Beat.]*
 
-**Aric**: I'm not going to argue anymore. The Curator gave me orders: delay the fourth recall. Give the world time to adjust before another permanent change.
+**Janik**: I'm not going to argue anymore. Grym gave me orders: delay the fourth recall. Give the world time to adjust before another permanent change.
 
-*[Combat encounter: Preserver Captain Aric (elite — HP 500, stasis lance, crystal barrier skill) + 2 Preserver Agents. Aric is a challenging but fair fight. He fights defensively — his crystal barriers absorb damage, and his stasis lance can freeze one party member for 1 turn.]*
+*[Combat encounter: Preserver Captain Janik (elite — HP 500, stasis lance, crystal barrier skill) + 2 Preserver Agents. Janik is a challenging but fair fight. He fights defensively — his crystal barriers absorb damage, and his stasis lance can freeze one party member for 1 turn.]*
 
-*[After Aric's HP drops below 25%:]*
+*[After Janik's HP drops below 25%:]*
 
-**Aric** *(kneeling, crystal armor cracking)*: Enough. You've won this fight. You'll win the next one too. You're stronger than us — that was never the question.
+**Janik** *(kneeling, crystal armor cracking)*: Enough. You've won this fight. You'll win the next one too. You're stronger than us — that was never the question.
 
-**Aric**: The question is whether being stronger makes you right.
+**Janik**: The question is whether being stronger makes you right.
 
-*[Aric retreats. The crystal walls dissolve.]*
+*[Janik retreats. The crystal walls dissolve.]*
 
-**Callum**: He genuinely believes he's protecting people. That's what makes this so difficult.
+**Artun**: He genuinely believes he's protecting people. That's what makes this so difficult.
 
-**Callum**: But Lira is still frozen. And the Curator is still out there, planning something. We can't stop now. We're too close.
+**Artun**: But Hana is still frozen. And Grym is still out there, planning something. We can't stop now. We're too close.
 
 ### Player Actions
 
-- Encounter Aric's ambush (automatic, triggered by zone travel)
-- Fight Aric + 2 Agents
-- Hear Aric's final words
+- Encounter Janik's ambush (automatic, triggered by zone travel)
+- Fight Janik + 2 Agents
+- Hear Janik's final words
 
 ### Rewards / Consequences
 
 - **XP**: ~400
 - **Gold**: ~200
-- **Items**: Aric drops Stasis Lance (W-SP-07, ATK +32, 10% chance to freeze target for 1 turn) — a strong Frontier-tier weapon
-- **Emotional impact**: Aric's final question — "Does being stronger make you right?" — should linger. The player is clearly winning, but the moral certainty is eroding.
-- **Aric's fate**: He reappears at the Preserver Fortress in Act III. If the player recalled any god with Sorrow or Awe, Aric is less hostile in Act III (he respects thoughtful choices even if he disagrees with them).
+- **Items**: Janik drops Stasis Lance (W-SP-07, ATK +32, 10% chance to freeze target for 1 turn) — a strong Frontier-tier weapon
+- **Emotional impact**: Janik's final question — "Does being stronger make you right?" — should linger. The player is clearly winning, but the moral certainty is eroding.
+- **Janik's fate**: He reappears at the Preserver Fortress in Act III. If the player recalled any god with Sorrow or Awe, Janik is less hostile in Act III (he respects thoughtful choices even if he disagrees with them).
 
 ---
 
@@ -1107,7 +1107,7 @@ Aric returns. After 3 god recalls, the Preservers are desperate. Aric was diplom
 
 **Trigger**: Player approaches Kinesis Spire with Kinetic Boots key item
 
-**Characters**: Player, Callum
+**Characters**: Player, Artun
 
 **Time of day**: Player-driven
 
@@ -1117,15 +1117,15 @@ The fourth and final god recall. Kinesis Spire is a towering natural rock pillar
 
 ### Part A: Discovery
 
-*[The player approaches the Spire. The ground vibrates underfoot, and without the Kinetic Boots (key item from Petra), the vibration pushes the player back every 3 tiles.]*
+*[The player approaches the Spire. The ground vibrates underfoot, and without the Kinetic Boots (key item from Nel), the vibration pushes the player back every 3 tiles.]*
 
 > **SYSTEM**: The Kinetic Boots absorb the seismic energy. You can approach the Spire.
 
 *[The path to the Spire's base winds through increasingly unstable terrain — rocks bounce and shift, small landslides cascade harmlessly nearby. The ambient audio is a deep, rhythmic rumble like a planetary heartbeat. The Spire itself is carved with route-maps: spiraling paths, branching roads, directional arrows etched by the Peregrine Road.]*
 
-**Callum**: The Peregrine Road — eternal travelers. They carved the world's first mountain passes and bridged its first rivers. They believed stillness was death. When they'd mapped every route, they dissolved into the kinetic forces of the world — wind, water, tectonic shifts.
+**Artun**: The Peregrine Road — eternal travelers. They carved the world's first mountain passes and bridged its first rivers. They believed stillness was death. When they'd mapped every route, they dissolved into the kinetic forces of the world — wind, water, tectonic shifts.
 
-**Callum**: This Spire is their final monument. A single vibrating moment, sustained for centuries.
+**Artun**: This Spire is their final monument. A single vibrating moment, sustained for centuries.
 
 *[At the Spire's base, four pedestals emerge from the shaking ground, each carved with an emotion glyph. The pedestals vibrate but remain stable.]*
 
@@ -1168,180 +1168,180 @@ The fourth and final god recall. Kinesis Spire is a towering natural rock pillar
 
 ---
 
-## Scene 16: Freeing Lira
+## Scene 16: Freeing Hana
 
 **Location**: Heartfield — Expanded Stagnation Zone (35, 30), then Village Hub
 
 **Trigger**: Player returns to the Settled Lands after all 4 god recalls
 
-**Characters**: Player, Callum, Lira (frozen → freed)
+**Characters**: Player, Artun, Hana (frozen → freed)
 
 **Time of day**: Dawn
 
 ### Narrative Context
 
-The player returns to where it all began. The expanded stagnation zone that froze Lira in Act I Scene 11 has been pulsing weakly — the four god recalls have sent shockwaves of vibrancy through the entire world, and even the Preservers' strongest crystal is straining. Now the player has the power to shatter it.
+The player returns to where it all began. The expanded stagnation zone that froze Hana in Act I Scene 11 has been pulsing weakly — the four god recalls have sent shockwaves of vibrancy through the entire world, and even the Preservers' strongest crystal is straining. Now the player has the power to shatter it.
 
 ### Part A: Return to Heartfield
 
 *[The player enters Heartfield. The landscape has changed — Heartfield's vibrancy is higher than when the player left (broadcasts and god recalls have raised the ambient level). The expanded stagnation zone is still there, but cracks are visible. Amber-gold light seeps through fractures in the crystal.]*
 
-**Callum**: Look. The crystal is weakening. The god recalls — every surge of vibrancy — they've been hammering at this zone from the inside. Lira's own memory energy is fighting the stasis.
+**Artun**: Look. The crystal is weakening. The god recalls — every surge of vibrancy — they've been hammering at this zone from the inside. Hana's own memory energy is fighting the stasis.
 
-**Callum**: But it needs one more push. From you.
+**Artun**: But it needs one more push. From you.
 
-*[The player approaches the crystal wall. Through the semi-transparent crystal, Lira is visible — frozen mid-stride, one hand extended, palm trailing amber light. The same determined expression from the moment she was caught.]*
+*[The player approaches the crystal wall. Through the semi-transparent crystal, Hana is visible — frozen mid-stride, one hand extended, palm trailing amber light. The same determined expression from the moment she was caught.]*
 
-> **SYSTEM**: The expanded stagnation zone's crystal is fractured and weakened. Broadcasting a **potency 4+ fragment** into the focal point will shatter the zone and free Lira.
+> **SYSTEM**: The expanded stagnation zone's crystal is fractured and weakened. Broadcasting a **potency 4+ fragment** into the focal point will shatter the zone and free Hana.
 
-*[The player has MF-04: Lira's Scream (Fury/Light/4★) — the fragment born from Lira's freezing. Using this fragment is poetically fitting but not required. Any potency 4+ fragment works.]*
+*[The player has MF-04: Hana's Scream (Fury/Light/4★) — the fragment born from Hana's freezing. Using this fragment is poetically fitting but not required. Any potency 4+ fragment works.]*
 
 ### Part B: The Shattering
 
 *[The player broadcasts a fragment into the focal point. The amber wave hits the crystal — and this time, the fractures that have been building for the entire act EXPLODE outward. The crystal doesn't shatter piece by piece. It detonates. A shockwave of light and sound radiates from the zone, washing over Heartfield like a warm wind.]*
 
-*[The crystal dust settles. Lira stands where she was frozen, hand still extended. She blinks. Her hand drops.]*
+*[The crystal dust settles. Hana stands where she was frozen, hand still extended. She blinks. Her hand drops.]*
 
-**Lira** *(disoriented, looking at her hand)*: I was... broadcasting. The crystal was expanding. I was trying to reach the focal point and —
+**Hana** *(disoriented, looking at her hand)*: I was... broadcasting. The crystal was expanding. I was trying to reach the focal point and —
 
-*[She looks up. Sees the player. Sees Callum.]*
+*[She looks up. Sees the player. Sees Artun.]*
 
-**Lira**: How long?
+**Hana**: How long?
 
-**Callum** *(gently)*: Weeks. Maybe a month. Time moves strangely in the Frontier.
+**Artun** *(gently)*: Weeks. Maybe a month. Time moves strangely in the Frontier.
 
-**Lira**: Weeks. And you...
+**Hana**: Weeks. And you...
 
-*[Lira looks past the player at the Frontier horizon. The landscape is visibly different — the muted colors of the Frontier have brightened. The sky is warmer. Distant landmarks that were barely visible shimmer with new detail.]*
+*[Hana looks past the player at the Frontier horizon. The landscape is visibly different — the muted colors of the Frontier have brightened. The sky is warmer. Distant landmarks that were barely visible shimmer with new detail.]*
 
-**Lira**: You recalled them. The dormant gods. I can feel them — four new presences in the world, each one different, each one alive.
+**Hana**: You recalled them. The dormant gods. I can feel them — four new presences in the world, each one different, each one alive.
 
-*[Lira turns to the player. Her expression is complex: gratitude, awe, and a flicker of something else. She was frozen at the height of her power, and the player surpassed her while she slept.]*
+*[Hana turns to the player. Her expression is complex: gratitude, awe, and a flicker of something else. She was frozen at the height of her power, and the player surpassed her while she slept.]*
 
-**Lira**: Thank you. For not giving up on me.
+**Hana**: Thank you. For not giving up on me.
 
-> **SYSTEM**: Lira rejoins the party! (Cleric — full moveset restored, leveled to match player)
+> **SYSTEM**: Hana rejoins the party! (Cleric — full moveset restored, leveled to match player)
 
-**Callum**: We should get you to the village. Rest. There's a lot to tell you — and not all of it is good.
+**Artun**: We should get you to the village. Rest. There's a lot to tell you — and not all of it is good.
 
 ### Player Actions
 
 - Return to Heartfield's expanded stagnation zone
 - Broadcast a potency 4+ fragment to shatter the zone
-- Free Lira
+- Free Hana
 
 ### Rewards / Consequences
 
-- **Companion regained**: Lira (Cleric, leveled to player level, full skill set)
+- **Companion regained**: Hana (Cleric, leveled to player level, full skill set)
 - **Vibrancy change**: Heartfield +15 (stagnation zone completely cleared)
 - **Fragment consumed**: Potency 4+ (MF-04 or any equivalent)
-- **Party**: Player + Callum + Lira (full party of 3 for the first time)
-- **Emotional payoff**: This is the resolution of Act I's central crisis. Lira is free. The player's journey through the Frontier — recalling four gods, confronting the Preservers, diving into the Depths — has paid off.
+- **Party**: Player + Artun + Hana (full party of 3 for the first time)
+- **Emotional payoff**: This is the resolution of Act I's central crisis. Hana is free. The player's journey through the Frontier — recalling four gods, confronting the Preservers, diving into the Depths — has paid off.
 
 ---
 
-## Scene 17: The Curator's Revelation — Act II Climax
+## Scene 17: Grym's Revelation — Act II Climax
 
-**Location**: Village Hub — Callum's House (18, 10), then Lookout Hill (12, 2)
+**Location**: Village Hub — Artun's House (18, 10), then Lookout Hill (12, 2)
 
-**Trigger**: The evening after Lira's rescue, upon returning to Village Hub
+**Trigger**: The evening after Hana's rescue, upon returning to Village Hub
 
-**Characters**: Player, Callum, Lira, The Curator (remote communication)
+**Characters**: Player, Artun, Hana, Grym (remote communication)
 
 **Time of day**: Night
 
 ### Part A: Debriefing
 
-*[The party gathers in Callum's house. Lira sits in a chair, wrapped in a blanket, drinking tea. Callum stands by his desk. The player stands near the door.]*
+*[The party gathers in Artun's house. Hana sits in a chair, wrapped in a blanket, drinking tea. Artun stands by his desk. The player stands near the door.]*
 
-**Lira**: Tell me everything. The gods, the Preservers, the Frontier — all of it.
+**Hana**: Tell me everything. The gods, the Preservers, the Frontier — all of it.
 
-*[Callum recounts the Act II journey — a brief summary for Lira's benefit and the player's reflection:]*
+*[Artun recounts the Act II journey — a brief summary for Hana's benefit and the player's reflection:]*
 
-**Callum**: The Frontier is four zones wide and full of the world's unfinished business. Four dormant gods, left by dissolved civilizations, each one a prototype that needed completing. Our friend here completed all four. Permanently shaped four gods with four emotions.
+**Artun**: The Frontier is four zones wide and full of the world's unfinished business. Four dormant gods, left by dissolved civilizations, each one a prototype that needed completing. Our friend here completed all four. Permanently shaped four gods with four emotions.
 
-**Callum**: The Preservers fought us every step. A captain named Aric — reasonable, principled, and absolutely certain we were wrong. Their cathedral in the western plains silenced an entire field of Resonance Stones. We broke it.
+**Artun**: The Preservers fought us every step. A captain named Janik — reasonable, principled, and absolutely certain we were wrong. Their cathedral in the western plains silenced an entire field of Resonance Stones. We broke it.
 
-**Callum**: And in the Depths, we learned the truth about the Dissolved. They didn't fail. They didn't die. They chose. Every civilization that dissolved did so because they finished their work and decided to become something larger.
+**Artun**: And in the Depths, we learned the truth about the Dissolved. They didn't fail. They didn't die. They chose. Every civilization that dissolved did so because they finished their work and decided to become something larger.
 
-**Lira** *(quietly)*: I knew some of that. Before I was frozen, I'd seen enough to suspect the Dissolved chose their fate. But hearing it confirmed...
+**Hana** *(quietly)*: I knew some of that. Before I was frozen, I'd seen enough to suspect the Dissolved chose their fate. But hearing it confirmed...
 
-**Lira**: The Preservers aren't protecting civilizations from destruction. They're preventing civilizations from completing their purpose. They're keeping the world in a state of arrested development — never finished, never dissolved, just... held.
+**Hana**: The Preservers aren't protecting civilizations from destruction. They're preventing civilizations from completing their purpose. They're keeping the world in a state of arrested development — never finished, never dissolved, just... held.
 
-**Callum**: Yes. And there's one more thing. The Curator.
+**Artun**: Yes. And there's one more thing. Grym.
 
-*[A pulse of blue-white light. The room chills. Crystal formations begin growing from Callum's windowsill — not attacking, but forming a communication conduit. The Curator's voice echoes from the crystal.]*
+*[A pulse of blue-white light. The room chills. Crystal formations begin growing from Artun's windowsill — not attacking, but forming a communication conduit. Grym's voice echoes from the crystal.]*
 
-### Part B: The Curator Speaks
+### Part B: Grym Speaks
 
-**The Curator** *(calm, measured, resonating from the crystal)*: Four gods. Four permanent changes. Four irreversible decisions made by one person with the power to reshape the world and the arrogance to use it.
+**Grym** *(calm, measured, resonating from the crystal)*: Four gods. Four permanent changes. Four irreversible decisions made by one person with the power to reshape the world and the arrogance to use it.
 
-**Lira** *(standing)*: Show yourself.
+**Hana** *(standing)*: Show yourself.
 
-**The Curator**: I am everywhere the crystal reaches, Architect. Every stagnation zone, every Preserver outpost, every frozen moment — I see through all of them.
+**Grym**: I am everywhere the crystal reaches, Architect. Every stagnation zone, every Preserver outpost, every frozen moment — I see through all of them.
 
-**The Curator**: I have watched your journey. You freed frozen settlers. You broke my cathedral. You recalled gods that the Dissolved wisely left dormant. And at every step, you chose change over preservation, motion over stillness, noise over silence.
+**Grym**: I have watched your journey. You freed frozen settlers. You broke my cathedral. You recalled gods that the Dissolved wisely left dormant. And at every step, you chose change over preservation, motion over stillness, noise over silence.
 
-**The Curator**: Did you think I would simply let the world unravel?
+**Grym**: Did you think I would simply let the world unravel?
 
 *[Beat.]*
 
-**The Curator**: I have found the **First Memory**. The world's original seed — the very first act of remembering that created everything. It lies in the deepest layer of the Depths, in a chamber that predates every dissolved civilization, every god, every stone and tree and blade of grass.
+**Grym**: I have found the **First Memory**. The world's original seed — the very first act of remembering that created everything. It lies in the deepest layer of the Depths, in a chamber that predates every dissolved civilization, every god, every stone and tree and blade of grass.
 
-**The Curator**: I intend to crystallize it.
+**Grym**: I intend to crystallize it.
 
-**Callum** *(horrified)*: If you crystallize the First Memory —
+**Artun** *(horrified)*: If you crystallize the First Memory —
 
-**The Curator**: The world freezes. Every zone. Every being. Every memory. Preserved perfectly, forever. No more dissolution. No more careless gods being reshaped by single emotions. No more Architects undoing centuries of careful work.
+**Grym**: The world freezes. Every zone. Every being. Every memory. Preserved perfectly, forever. No more dissolution. No more careless gods being reshaped by single emotions. No more Architects undoing centuries of careful work.
 
-**The Curator**: The world was perfect once, at the very beginning. The First Memory holds that perfection. I will restore it.
+**Grym**: The world was perfect once, at the very beginning. The First Memory holds that perfection. I will restore it.
 
-**Lira**: You'll kill it.
+**Hana**: You'll kill it.
 
-**The Curator**: I will save it. From you. From change. From the endless, destructive cycle of creation and dissolution that has eaten civilization after civilization.
+**Grym**: I will save it. From you. From change. From the endless, destructive cycle of creation and dissolution that has eaten civilization after civilization.
 
-**The Curator**: You have time. I cannot reach the First Memory from here — my path goes through the Sketch and the deepest Depths, and the terrain resists crystallization. It will take me time to build a route.
+**Grym**: You have time. I cannot reach the First Memory from here — my path goes through the Sketch and the deepest Depths, and the terrain resists crystallization. It will take me time to build a route.
 
-**The Curator**: Use that time however you wish. Recall more gods. Break more crystals. Make more permanent decisions for a world that didn't ask for your help.
+**Grym**: Use that time however you wish. Recall more gods. Break more crystals. Make more permanent decisions for a world that didn't ask for your help.
 
-**The Curator**: But know this: I will reach the First Memory. And when I do, the world will finally, mercifully, be still.
+**Grym**: But know this: I will reach the First Memory. And when I do, the world will finally, mercifully, be still.
 
 *[The crystal formations shatter. The room returns to normal. Silence.]*
 
 ### Part C: Resolve
 
-**Lira** *(after a long pause)*: We have to get there first.
+**Hana** *(after a long pause)*: We have to get there first.
 
-**Callum**: The First Memory. I've read references to it — the Dissolved mentioned a "seed of all remembering" in their oldest texts. I thought it was metaphorical.
+**Artun**: The First Memory. I've read references to it — the Dissolved mentioned a "seed of all remembering" in their oldest texts. I thought it was metaphorical.
 
-**Lira**: It's not. If the Curator crystallizes it, everything stops. Not just the Frontier — the Settled Lands, the Village, everything. The whole world becomes one perfect, frozen moment.
+**Hana**: It's not. If Grym crystallizes it, everything stops. Not just the Frontier — the Settled Lands, the Village, everything. The whole world becomes one perfect, frozen moment.
 
-**Callum**: The path to the First Memory goes through the Sketch — the world's unfinished edge — and then down into the deepest Depths. It won't be easy. The Sketch is barely formed. You'll have to remember it into solidity just to walk through it.
+**Artun**: The path to the First Memory goes through the Sketch — the world's unfinished edge — and then down into the deepest Depths. It won't be easy. The Sketch is barely formed. You'll have to remember it into solidity just to walk through it.
 
-**Lira**: Then we remember it. We walk through. We get to the First Memory before the Curator. And we do what Architects do — we don't freeze it or destroy it. We remix it. We make something new.
+**Hana**: Then we remember it. We walk through. We get to the First Memory before Grym. And we do what Architects do — we don't freeze it or destroy it. We remix it. We make something new.
 
-*[Lira looks at the player.]*
+*[Hana looks at the player.]*
 
-**Lira**: Are you ready?
+**Hana**: Are you ready?
 
 *[The player climbs to Lookout Hill. Night sky. Stars. The Frontier shimmers on the northern horizon — brighter now, warmer, changed by four recalled gods. Beyond it, faintly visible, the Sketch: pale, luminous, unfinished.]*
 
 *[The music plays a full arrangement — all four layers, reflecting the vibrancy the player has brought to the world.]*
 
-> **SYSTEM**: The path to the Sketch is open. The Curator races toward the First Memory. Act III: Renaissance begins.
+> **SYSTEM**: The path to the Sketch is open. Grym races toward the First Memory. Act III: Renaissance begins.
 
 ### Player Actions
 
-- Listen to the Curator's endgame reveal
-- Hear Lira and Callum's resolve
+- Listen to Grym's endgame reveal
+- Hear Hana and Artun's resolve
 - Climb Lookout Hill (narrative bookend — mirrors Act I Scene 12)
 
 ### Rewards / Consequences
 
 - **Act III unlocked**: The Sketch zones and deepest Depths are now accessible
-- **Party**: Player + Lira + Callum (full party for Act III)
+- **Party**: Player + Hana + Artun (full party for Act III)
 - **Player level**: Should be 18-20 at this point
-- **Stakes**: The Curator is racing to the First Memory. This creates urgency for Act III — not a timer, but a narrative pull.
+- **Stakes**: Grym is racing to the First Memory. This creates urgency for Act III — not a timer, but a narrative pull.
 
 ---
 
@@ -1351,7 +1351,7 @@ The player returns to where it all began. The expanded stagnation zone that froz
 
 **Trigger**: Player approaches the Frontier-Sketch boundary after Act II climax
 
-**Characters**: Player, Lira, Callum
+**Characters**: Player, Hana, Artun
 
 **Time of day**: Dawn
 
@@ -1363,28 +1363,28 @@ The final scene of Act II. The player stands at the boundary between the Frontie
 
 *[The player approaches Veil's Edge. The transition is visible: Flickerveil's forest (now Normal-to-Vivid tier, depending on vibrancy) abruptly shifts. Trees lose their bark texture, becoming line-drawn silhouettes. Color drains from the ground. The sky fades from blue to pale luminous white. The ambient sounds simplify — birdsong becomes a single note, wind becomes a hum.]*
 
-**Lira**: The Sketch. I've been to the Frontier's edge before, but I never crossed. It felt wrong — like stepping off a cliff.
+**Hana**: The Sketch. I've been to the Frontier's edge before, but I never crossed. It felt wrong — like stepping off a cliff.
 
-**Callum**: It's not a cliff. It's a canvas. The world hasn't been painted here yet.
+**Artun**: It's not a cliff. It's a canvas. The world hasn't been painted here yet.
 
 *[The player steps forward. The first Sketch tile crunches softly underfoot — like stepping on thin parchment. The ground glows faintly. Their shadow is the most detailed thing on the screen.]*
 
-**Lira**: The Curator is somewhere ahead, building a crystallized path through this. We need to move faster than they can freeze.
+**Hana**: Grym is somewhere ahead, building a crystallized path through this. We need to move faster than they can freeze.
 
-**Callum**: We have something the Curator doesn't. Memory. Living, changing, growing memory. The Sketch responds to that. Broadcasting here doesn't just raise vibrancy — it paints the world into existence.
+**Artun**: We have something Grym doesn't. Memory. Living, changing, growing memory. The Sketch responds to that. Broadcasting here doesn't just raise vibrancy — it paints the world into existence.
 
-*[Callum turns to the player.]*
+*[Artun turns to the player.]*
 
-**Callum**: You've recalled four gods, freed Lira, broken the Preserver Cathedral, and walked through the memories of dissolved civilizations. Whatever's ahead — the Sketch, the Depths, the Curator, the First Memory — you're ready.
+**Artun**: You've recalled four gods, freed Hana, broken the Preserver Cathedral, and walked through the memories of dissolved civilizations. Whatever's ahead — the Sketch, the Depths, Grym, the First Memory — you're ready.
 
-**Callum**: Let's finish this.
+**Artun**: Let's finish this.
 
-> **SYSTEM**: You have entered the Sketch. The world is unfinished here. Broadcasting memory fragments will paint detail into existence, creating solid ground where only outlines exist. The Curator is building a crystallized path toward the First Memory. Race to reach it first.
+> **SYSTEM**: You have entered the Sketch. The world is unfinished here. Broadcasting memory fragments will paint detail into existence, creating solid ground where only outlines exist. Grym is building a crystallized path toward the First Memory. Race to reach it first.
 
 ### Player Actions
 
 - Cross the Veil's Edge into the Sketch (first Sketch zone)
-- Hear Lira and Callum's final Act II dialogue
+- Hear Hana and Artun's final Act II dialogue
 
 ### Rewards / Consequences
 
@@ -1402,7 +1402,7 @@ The final scene of Act II. The player stands at the boundary between the Frontie
 |-------|--------|---------|
 | Confidence | 1-5 | The Frontier is vast and new. The first god recall is powerful and affirming. The player feels they can change the world. |
 | Moral questioning | 6-11 | Preservation isn't always wrong. The Preservers have a point. The Dissolved chose dissolution, which makes the Preservers' "protection" more complicated. Every recall is permanent — does the player have the right to make these choices? |
-| Determination | 12-18 | The Preserver Cathedral falls. The Songline reveals the beauty of dissolution. Lira is freed. The Curator reveals the endgame. Doubt resolves into purpose: the world must grow, even if growth is messy and imperfect. |
+| Determination | 12-18 | The Preserver Cathedral falls. The Songline reveals the beauty of dissolution. Hana is freed. Grym reveals the endgame. Doubt resolves into purpose: the world must grow, even if growth is messy and imperfect. |
 
 ### Player State at Act II End
 
@@ -1411,26 +1411,26 @@ The final scene of Act II. The player stands at the boundary between the Frontie
 | Level | 18-20 |
 | Gold | 2000-3000 |
 | Memory fragments held | 8-14 (after recalls and broadcasts) |
-| Named fragments | MF-04 (Lira's Scream, consumed if used to free Lira), MF-05 or MF-06 or MF-07 (from moral dilemma/Depths scenes), Songline fragments |
+| Named fragments | MF-04 (Hana's Scream, consumed if used to free Hana), MF-05 or MF-06 or MF-07 (from moral dilemma/Depths scenes), Songline fragments |
 | Key items | K-01, K-02, K-03, K-05, Light Lens, Kinetic Boots, Trail Map, plus god-specific items |
-| Party | Player + Lira + Callum (full party of 3) |
+| Party | Player + Hana + Artun (full party of 3) |
 | Gods recalled | All 4 (Resonance, Verdance, Luminos, Kinesis) — forms determined by player's emotion choices |
 | Subclass | Luminary or Crucible (determined by first recall emotion) |
 | Quests completed | ~10-15 (main + side + god recall quests) |
 | Zones explored | All Settled Lands + all Frontier zones |
 | Depths cleared | Level 2 (Drowned Archive), Level 4 (Songline) |
-| Stagnation zones | Heartfield expanded zone broken (Lira freed). Cathedral broken. Moral dilemma zones: preserved or broken (player's choice). |
+| Stagnation zones | Heartfield expanded zone broken (Hana freed). Cathedral broken. Moral dilemma zones: preserved or broken (player's choice). |
 | Vibrancy | Village Hub: 72+ (Vivid). Heartfield: 55-65 (Normal-Vivid). Frontier zones: 35-50 (Normal, raised by recalls). |
 
 ### Foreshadowing Planted
 
 | Setup | Payoff (Act) |
 |-------|-------------|
-| The Curator's route through the Sketch | Act III — the player follows/races the Curator's crystallized path |
+| Grym's route through the Sketch | Act III — the player follows/races Grym's crystallized path |
 | The First Memory | Act III — final confrontation, the player remixes it |
-| Callum's emotional transformation (Songline) | Act III — Callum volunteers to stay at the First Memory chamber |
-| Aric's final question ("does strength make you right?") | Act III — Aric reappears at the Fortress, either hostile or conflicted |
-| Lira's frozen perspective | Act III — Lira understands stasis from the inside, gives unique dialogue at the Fortress |
+| Artun's emotional transformation (Songline) | Act III — Artun volunteers to stay at the First Memory chamber |
+| Janik's final question ("does strength make you right?") | Act III — Janik reappears at the Fortress, either hostile or conflicted |
+| Hana's frozen perspective | Act III — Hana understands stasis from the inside, gives unique dialogue at the Fortress |
 | Moral dilemma choices (preserved/broken) | Act III — preserved zones either help (show the player's mercy) or hinder (Preservers use them as anchor points) |
 | God recall synergies | Act III — combined god effects during the endgame bloom |
 | Cross-god interactions table | Act III — specific synergy effects during the Fortress infiltration and the final bloom |
@@ -1444,4 +1444,4 @@ The final scene of Act II. The player stands at the boundary between the Frontie
 
 3. **Dissolution is graduation**: The Depths revealed that civilizations dissolve when they complete their purpose. This reframes the entire conflict: the Preservers aren't protecting civilizations from tragedy. They're preventing completion.
 
-4. **The Curator is sympathetic**: The Curator loves the world. Their fear of change comes from genuine love, not malice. The endgame reveal — crystallizing the First Memory — is an act of desperate love, not villainy.
+4. **Grym is sympathetic**: Grym loves the world. Their fear of change comes from genuine love, not malice. The endgame reveal — crystallizing the First Memory — is an act of desperate love, not villainy.

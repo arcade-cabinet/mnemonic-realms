@@ -320,7 +320,7 @@ Used for Depths Levels 1-3. Levels 4-5 have unique themes.
 
 | Layer | Instruments | Description |
 |-------|------------|-------------|
-| 1: Foundation | Glass harmonica (sustained) | Beautiful, eerie, inhuman. Crystal resonance. The Curator's preferred instrument. |
+| 1: Foundation | Glass harmonica (sustained) | Beautiful, eerie, inhuman. Crystal resonance. Grym's preferred instrument. |
 | 2: Harmony | Celesta + pizzicato strings | Celesta adds crystalline precision. Pizzicato strings are metronomically perfect (no human rubato). |
 | 3: Ensemble | Full strings (non-vibrato, exact intonation) | Deliberately sterile perfection. Beautiful but lacks warmth. The uncanny valley of music. |
 | 4: Chorus | Soprano choir (perfect unison, no variation) | All voices exactly identical. Beautiful but mechanical. The sound of frozen memory. |

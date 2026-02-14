@@ -114,7 +114,7 @@ Unlike surface zones, the Depths have **fixed vibrancy per floor** that does not
 | ID | Position | Trigger | Quest | Description |
 |----|----------|---------|-------|-------------|
 | EV-D1-001 | (10, 0) | touch | — | Entry from surface. Transition from Village Hub (8, 17). |
-| EV-D1-002 | (3, 2) | action | SQ-10 | Inscription on wall: "The Memorial Garden was built atop our resting place. We chose this." Callum comments if SQ-10 active. |
+| EV-D1-002 | (3, 2) | action | SQ-10 | Inscription on wall: "The Memorial Garden was built atop our resting place. We chose this." Artun comments if SQ-10 active. |
 | EV-D1-003 | (17, 4) | action | — | Cracked Resonance Stone. Gives 1 unnamed fragment (calm/earth/1). One-time. |
 
 **Enemy spawns**: None (safe entry area).
@@ -812,7 +812,7 @@ Unlike surface zones, the Depths have **fixed vibrancy per floor** that does not
 **Size**: 20 × 25 tiles (640 × 800 px)
 **Theme**: Abstract, surreal, non-euclidean. The world's oldest memory deposit. The architecture defies logic: staircases lead to ceilings, corridors loop back on themselves, rooms shift perspective like an Escher drawing. The color palette is constantly shifting — warm amber to cold violet to deep indigo. This is where memory and reality blur: the player sees fragments of scenes that haven't happened yet and scenes from civilizations that dissolved before the world had names.
 **Difficulty**: Very High (Level 22–27). The hardest non-Fortress content.
-**Quest links**: GQ-03-F2 (The Shadows of the Curator — shortcut access), MQ-09 (Fortress basement shortcut)
+**Quest links**: GQ-03-F2 (The Shadows of Grym — shortcut access), MQ-09 (Fortress basement shortcut)
 
 ### Room Layout
 
@@ -935,13 +935,13 @@ Unlike surface zones, the Depths have **fixed vibrancy per floor** that does not
 #### Room 6: Echo Gallery (Tiles: 1,13 → 4,17)
 
 **Dimensions**: 4 × 5 tiles
-**Description**: A gallery of floating images — dissolved memories rendered as translucent paintings suspended in mid-air. The images shift when the player moves, showing scenes from across the game world's history. One image shows the Curator as a young person, standing in a vibrant village, smiling.
+**Description**: A gallery of floating images — dissolved memories rendered as translucent paintings suspended in mid-air. The images shift when the player moves, showing scenes from across the game world's history. One image shows Grym as a young person, standing in a vibrant village, smiling.
 
 **Events**:
 
 | ID | Position | Trigger | Quest | Description |
 |----|----------|---------|-------|-------------|
-| EV-D5-010 | (2, 15) | action | — | Curator image: lore entry about the Curator's origins. "Before the crystal. Before the title. There was just a person who loved their home." |
+| EV-D5-010 | (2, 15) | action | — | Grym image: lore entry about Grym's origins. "Before the crystal. Before the title. There was just a person who loved their home." |
 
 **Enemy spawns**:
 
@@ -993,7 +993,7 @@ Unlike surface zones, the Depths have **fixed vibrancy per floor** that does not
 |----|----------|---------|-------|-------------|
 | EV-D5-016 | (18, 15) | action | — | Treasure chest: Memory-Woven Plate (A-14, DEF +35). One-time. |
 | EV-D5-017 | (17, 14) | action | — | Stone tablet: "The First Memory is not a beginning. It is a question: 'What do you want the world to be?' We dissolved so that someone new could answer." |
-| EV-D5-018 | (19, 16) | action | GQ-03-F2 | Shortcut passage to Preserver Fortress basement. Only accessible if GQ-03-F2 (Shadows of the Curator) is completed. See MQ-09 notes. |
+| EV-D5-018 | (19, 16) | action | GQ-03-F2 | Shortcut passage to Preserver Fortress basement. Only accessible if GQ-03-F2 (Shadows of Grym) is completed. See MQ-09 notes. |
 
 **Enemy spawns**: None (lore/reward room).
 
@@ -1088,7 +1088,7 @@ Unlike surface zones, the Depths have **fixed vibrancy per floor** that does not
      │──────────────────────│
  14  │    ROOM 6            │
      │  (Boss Arena)        │
-     │  Curator's Right Hand│
+     │  Grym's Right Hand│
      │       ↓ F2           │
  20  └────────────────────┘
 ```
@@ -1115,14 +1115,14 @@ Unlike surface zones, the Depths have **fixed vibrancy per floor** that does not
 #### Room 2: Stasis Wing (Tiles: 1,5 → 4,9)
 
 **Dimensions**: 4 × 5 tiles
-**Description**: A side gallery containing frozen NPCs the player may have interacted with. If Lira was not freed by SQ-14, her crystallized form appears here (narrative consequence). A Resonance Stone hums behind a crystal barrier that must be shattered by broadcasting any fragment.
+**Description**: A side gallery containing frozen NPCs the player may have interacted with. If Hana was not freed by SQ-14, her crystallized form appears here (narrative consequence). A Resonance Stone hums behind a crystal barrier that must be shattered by broadcasting any fragment.
 
 **Events**:
 
 | ID | Position | Trigger | Quest | Description |
 |----|----------|---------|-------|-------------|
 | EV-F1-004 | (2, 7) | action | — | Resonance Stone (behind crystal): 1 fragment (sorrow/dark/3). Broadcast any fragment at the barrier to shatter it. |
-| EV-F1-005 | (3, 6) | action | SQ-14 | If SQ-14 NOT completed: Lira's frozen form. Dialogue: "She's smiling. Whatever moment they froze her in, she was happy." |
+| EV-F1-005 | (3, 6) | action | SQ-14 | If SQ-14 NOT completed: Hana's frozen form. Dialogue: "She's smiling. Whatever moment they froze her in, she was happy." |
 
 **Enemy spawns**: None (narrative room).
 
@@ -1178,29 +1178,29 @@ Unlike surface zones, the Depths have **fixed vibrancy per floor** that does not
 | EV-F1-012 | (3, 11) | action | — | Memory lift: fast-travel to Undrawn Peaks (19, 35). |
 | EV-F1-013 | (5, 11) | action | — | Resonance Stone (rest): full HP/SP restore. Reusable. |
 | EV-F1-014 | (17, 12) | action | MQ-09 | Hidden alcove: Phoenix Feather (C-SP-10). MQ-09 objective 1 sub-goal. |
-| EV-F1-015 | (10, 11) | action | K-14 | If K-14 (Elyn's Intelligence Report) carried: reveals all Room events on floor map. |
+| EV-F1-015 | (10, 11) | action | K-14 | If K-14 (Julz's Intelligence Report) carried: reveals all Room events on floor map. |
 
 **Enemy spawns**: None (safe room before boss).
 
-#### Room 6: Boss Arena — Curator's Right Hand (Tiles: 1,14 → 20,20)
+#### Room 6: Boss Arena — Grym's Right Hand (Tiles: 1,14 → 20,20)
 
 **Dimensions**: 20 × 7 tiles (exceeds 10×10 minimum)
-**Description**: The Gallery's grand finale room — the largest crystal case in the Fortress, designed to hold the Curator's most valued collection piece. The Right Hand stands before it in ceremonial armor, crystal shield depicting frozen scenes. Behind them, a stairway descends to Floor 2.
+**Description**: The Gallery's grand finale room — the largest crystal case in the Fortress, designed to hold Grym's most valued collection piece. The Right Hand stands before it in ceremonial armor, crystal shield depicting frozen scenes. Behind them, a stairway descends to Floor 2.
 
-**Boss**: B-04a: The Curator's Right Hand (see [enemies-catalog.md](../design/enemies-catalog.md))
+**Boss**: B-04a: Grym's Right Hand (see [enemies-catalog.md](../design/enemies-catalog.md))
 - HP: 750 | ATK: 32 | INT: 28 | DEF: 38 | AGI: 16 | Level: 24–26
-- Abilities: Gallery Strike, Exhibit Shield, Stasis Wave, Curator's Lament (hesitation at 25% HP), Final Stand
+- Abilities: Gallery Strike, Exhibit Shield, Stasis Wave, Grym's Lament (hesitation at 25% HP), Final Stand
 - Guaranteed drop: Phoenix Feather (C-SP-10), unnamed sorrow/neutral/4★ fragment
 
-**Pre-fight dialogue**: *"The Curator weeps for every battle. So do I. But you must understand — every step you take forward is a moment that can never be perfect again."*
+**Pre-fight dialogue**: *"Grym weeps for every battle. So do I. But you must understand — every step you take forward is a moment that can never be perfect again."*
 
 **Events**:
 
 | ID | Position | Trigger | Quest | Description |
 |----|----------|---------|-------|-------------|
 | EV-F1-016 | (10, 16) | action | MQ-09 | Pre-boss dialogue. The Right Hand speaks. |
-| EV-F1-017 | (10, 16) | auto | MQ-09 | Boss fight: B-04a Curator's Right Hand. |
-| EV-F1-018 | (10, 16) | auto | — | Post-victory: Curator's Lament narrative beat. The Right Hand removes their helmet and speaks as a person, not a soldier. |
+| EV-F1-017 | (10, 16) | auto | MQ-09 | Boss fight: B-04a Grym's Right Hand. |
+| EV-F1-018 | (10, 16) | auto | — | Post-victory: Grym's Lament narrative beat. The Right Hand removes their helmet and speaks as a person, not a soldier. |
 | EV-F1-019 | (10, 19) | touch | MQ-09 | Stairway descent → Fortress Floor 2 (10, 0). |
 
 **Enemy spawns**: Boss only.
@@ -1213,7 +1213,7 @@ Unlike surface zones, the Depths have **fixed vibrancy per floor** that does not
 | Resonance Stones | 2 (1 behind barrier, 1 rest) |
 | Treasure Chests | 2 |
 | Enemy types | E-PV-02 (Agent), E-PV-04 (Archivist) |
-| Boss | B-04a: Curator's Right Hand |
+| Boss | B-04a: Grym's Right Hand |
 | Unique fragments | 1 unnamed + boss drop (sorrow/neutral/4) |
 | Loot highlights | Phoenix Feather (×2 — alcove + boss drop), Stasis Breakers |
 | Memory lift | Room 5 → Undrawn Peaks |
@@ -1227,7 +1227,7 @@ Unlike surface zones, the Depths have **fixed vibrancy per floor** that does not
 
 **Entry**: Floor 1 stairway → Floor 2 (10, 0)
 **Exit**: Stairway in Room 6 → Floor 3 (10, 0)
-**Theme**: The Curator's personal collection. More refined and curated than Floor 1 — each display case is a masterwork. The crystal here is darker (deep blue) and more ornate. The Curator's personal touch is everywhere: handwritten labels on each display, carefully chosen arrangements, obvious love for the preserved moments.
+**Theme**: Grym's personal collection. More refined and curated than Floor 1 — each display case is a masterwork. The crystal here is darker (deep blue) and more ornate. Grym's personal touch is everywhere: handwritten labels on each display, carefully chosen arrangements, obvious love for the preserved moments.
 
 #### Room Layout
 
@@ -1235,7 +1235,7 @@ Unlike surface zones, the Depths have **fixed vibrancy per floor** that does not
      1    5    10   15   20
   1  ┌────────────────────┐
      │    ROOM 1           │
-     │  (Curator's Hall)   │
+     │  (Grym's Hall)   │
   4  │       ↓             │
      │───┤ ├──────────────│
   5  │R2 │ │   ROOM 3     │
@@ -1245,7 +1245,7 @@ Unlike surface zones, the Depths have **fixed vibrancy per floor** that does not
      │       ↓              │
  10  │    ROOM 4            │
      │  (Central Archive)   │
-     │  Curator's Grief     │
+     │  Grym's Grief     │
  14  │       ↓              │
      │──────┤ ├────────────│
  15  │  R5  │ │   ROOM 6   │
@@ -1257,10 +1257,10 @@ Unlike surface zones, the Depths have **fixed vibrancy per floor** that does not
  25  └────────────────────┘
 ```
 
-#### Room 1: Curator's Hall (Tiles: 1,1 → 20,4)
+#### Room 1: Grym's Hall (Tiles: 1,1 → 20,4)
 
 **Dimensions**: 20 × 4 tiles
-**Description**: A grand entrance hall with the Curator's personal motto inscribed in crystal above the doorway: *"What is perfect should endure. What endures becomes perfect."* Display cases line both walls, containing increasingly personal items — a child's drawing, a wedding ring, a pressed flower.
+**Description**: A grand entrance hall with Grym's personal motto inscribed in crystal above the doorway: *"What is perfect should endure. What endures becomes perfect."* Display cases line both walls, containing increasingly personal items — a child's drawing, a wedding ring, a pressed flower.
 
 **Events**:
 
@@ -1316,17 +1316,17 @@ Unlike surface zones, the Depths have **fixed vibrancy per floor** that does not
 |------|--------|---------|-------------|-----------|
 | Gallery patrol | (6, 5) → (20, 9) | E-PV-04 (Preserver Archivist), E-PV-03 (Preserver Captain) | 26–28 | Standard: 1 Captain; Rare: 1 Captain + 1 Archivist |
 
-#### Room 4: Central Archive — Curator's Grief (Tiles: 1,10 → 20,14)
+#### Room 4: Central Archive — Grym's Grief (Tiles: 1,10 → 20,14)
 
 **Dimensions**: 20 × 5 tiles
-**Description**: The heart of Floor 2. A circular chamber with a single crystal pedestal at its center, holding the Curator's Grief (MF-09) — the Curator's most personal memory: watching their beloved community dissolve and being powerless to stop it. Collecting MF-09 is MQ-09 objective 2. The room is guarded by a Preserver Captain who must be defeated first.
+**Description**: The heart of Floor 2. A circular chamber with a single crystal pedestal at its center, holding Grym's Grief (MF-09) — Grym's most personal memory: watching their beloved community dissolve and being powerless to stop it. Collecting MF-09 is MQ-09 objective 2. The room is guarded by a Preserver Captain who must be defeated first.
 
 **Events**:
 
 | ID | Position | Trigger | Quest | Description |
 |----|----------|---------|-------|-------------|
 | EV-F2-010 | (10, 12) | touch | MQ-09 | Forced encounter: Preserver Captain (E-PV-03). MQ-09 boss guard for F2-F3 stairway. |
-| EV-F2-011 | (10, 11) | action | MQ-09 | Curator's Grief (MF-09, sorrow/dark/5) on pedestal. MQ-09 objective 2 completion. |
+| EV-F2-011 | (10, 11) | action | MQ-09 | Grym's Grief (MF-09, sorrow/dark/5) on pedestal. MQ-09 objective 2 completion. |
 | EV-F2-012 | (5, 12) | action | — | Resonance Stone: 1 fragment (calm/dark/4). One-time. |
 | EV-F2-013 | (15, 13) | action | — | Treasure chest: Panacea (C-SC-05) ×3, 200 gold. One-time. |
 
@@ -1382,7 +1382,7 @@ Unlike surface zones, the Depths have **fixed vibrancy per floor** that does not
 | Treasure Chests | 3 |
 | Enemy types | E-PV-04 (Archivist), E-PV-03 (Captain) |
 | Boss | B-04b: The Archive Keeper |
-| Key item | Curator's Grief (MF-09, sorrow/dark/5) |
+| Key item | Grym's Grief (MF-09, sorrow/dark/5) |
 | Moral dilemmas | 3 (choices tracked for ending) |
 | Loot highlights | MF-09, Panaceas, Dissolved Essence, Memory Incense |
 | Memory lift | None (Floor 2 has no lift — must use Floor 1 lift) |
@@ -1397,7 +1397,7 @@ Unlike surface zones, the Depths have **fixed vibrancy per floor** that does not
 **Entry**: Floor 2 stairway → Floor 3 (10, 0)
 **Exit**: Post-game return to Undrawn Peaks via memory lift (activated after MQ-10)
 **Size**: 20 × 25 tiles (640 × 800 px)
-**Theme**: The Curator's sanctum. A single vast chamber of purest white crystal. The First Memory hovers at the center in a golden lattice — a sphere of warm light that pulses like a heartbeat. The Curator stands before it. This is not a combat floor — it is the game's narrative climax.
+**Theme**: Grym's sanctum. A single vast chamber of purest white crystal. The First Memory hovers at the center in a golden lattice — a sphere of warm light that pulses like a heartbeat. Grym stands before it. This is not a combat floor — it is the game's narrative climax.
 
 **No random encounters.** Floor 3 is a dialogue and narrative experience.
 
@@ -1415,7 +1415,7 @@ Unlike surface zones, the Depths have **fixed vibrancy per floor** that does not
      │  (The First Memory  │
      │   Chamber)          │
      │                     │
-     │   The Curator       │
+     │   Grym       │
      │   The First Memory  │
      │   (MF-10)           │
      │                     │
@@ -1429,17 +1429,17 @@ Unlike surface zones, the Depths have **fixed vibrancy per floor** that does not
 #### Room 1: The Approach (Tiles: 1,1 → 20,7)
 
 **Dimensions**: 20 × 7 tiles
-**Description**: A long crystal corridor leading to the final chamber. The walls display the Curator's life story in frozen vignettes — each step reveals another moment from the Curator's past: as a child, as a young Architect, as the person who watched their community dissolve, as the founder of the Preservers. By the time the player reaches the end, they understand the Curator's motivation completely.
+**Description**: A long crystal corridor leading to the final chamber. The walls display Grym's life story in frozen vignettes — each step reveals another moment from Grym's past: as a child, as a young Architect, as the person who watched their community dissolve, as the founder of the Preservers. By the time the player reaches the end, they understand Grym's motivation completely.
 
 **Events**:
 
 | ID | Position | Trigger | Quest | Description |
 |----|----------|---------|-------|-------------|
 | EV-F3-001 | (10, 0) | touch | MQ-09 | Entry from Fortress Floor 2. |
-| EV-F3-002 | (5, 2) | auto | MQ-09 | Vignette: Curator as a child, playing in a sunlit village. |
-| EV-F3-003 | (10, 3) | auto | MQ-09 | Vignette: Curator as a young Architect, proudly broadcasting their first memory. |
-| EV-F3-004 | (15, 4) | auto | MQ-09 | Vignette: Curator watching their community dissolve. Tears on their face. |
-| EV-F3-005 | (10, 5) | auto | MQ-09 | Vignette: Curator founding the Preservers, face hardened with resolve. "Never again." |
+| EV-F3-002 | (5, 2) | auto | MQ-09 | Vignette: Grym as a child, playing in a sunlit village. |
+| EV-F3-003 | (10, 3) | auto | MQ-09 | Vignette: Grym as a young Architect, proudly broadcasting their first memory. |
+| EV-F3-004 | (15, 4) | auto | MQ-09 | Vignette: Grym watching their community dissolve. Tears on their face. |
+| EV-F3-005 | (10, 5) | auto | MQ-09 | Vignette: Grym founding the Preservers, face hardened with resolve. "Never again." |
 | EV-F3-006 | (10, 6) | auto | MQ-09 | Final Resonance Stone: full HP/SP restore before the confrontation. |
 
 **Enemy spawns**: None (narrative corridor).
@@ -1447,22 +1447,22 @@ Unlike surface zones, the Depths have **fixed vibrancy per floor** that does not
 #### Room 2: The First Memory Chamber (Tiles: 1,8 → 20,25)
 
 **Dimensions**: 20 × 18 tiles
-**Description**: The largest single room in the game. A circular chamber of flawless white crystal with the golden lattice at its center, holding the First Memory (MF-10) — a sphere of warm, pulsing light that is the world's original seed. The Curator stands between the player and the First Memory.
+**Description**: The largest single room in the game. A circular chamber of flawless white crystal with the golden lattice at its center, holding the First Memory (MF-10) — a sphere of warm, pulsing light that is the world's original seed. Grym stands between the player and the First Memory.
 
-The Curator is B-05 (see [enemies-catalog.md](../design/enemies-catalog.md)) — but this is a **dialogue encounter**, not combat. The final confrontation plays out through conversation.
+Grym is B-05 (see [enemies-catalog.md](../design/enemies-catalog.md)) — but this is a **dialogue encounter**, not combat. The final confrontation plays out through conversation.
 
 **The Confrontation Sequence** (MQ-09 objective 3):
 
-1. **The Curator speaks** (position: 10, 15). Dialogue varies based on:
+1. **Grym speaks** (position: 10, 15). Dialogue varies based on:
    - Which gods the player recalled (4 unique dialogue branches)
-   - Whether the player carries K-06 (Curator's Manifesto) — unlocks a philosophical argument
-   - Whether the player carries K-13 (Curator's Doubt) — shortens the encounter by one phase
-   - Whether the player carries MF-09 (Curator's Grief) — unlocks the empathy dialogue option
+   - Whether the player carries K-06 (Grym's Manifesto) — unlocks a philosophical argument
+   - Whether the player carries K-13 (Grym's Doubt) — shortens the encounter by one phase
+   - Whether the player carries MF-09 (Grym's Grief) — unlocks the empathy dialogue option
 
 2. **Three dialogue phases**:
-   - Phase 1: The Curator argues for preservation. The player responds with evidence from their journey.
-   - Phase 2: The Curator challenges the player's recalled gods — "You changed them. Were they better before?"
-   - Phase 3: The player approaches the First Memory. The Curator either steps aside willingly (if K-13 carried), is held back by doubting Preservers (if GQ-01-A2/GQ-03-S1 completed), or simply watches in silence.
+   - Phase 1: Grym argues for preservation. The player responds with evidence from their journey.
+   - Phase 2: Grym challenges the player's recalled gods — "You changed them. Were they better before?"
+   - Phase 3: The player approaches the First Memory. Grym either steps aside willingly (if K-13 carried), is held back by doubting Preservers (if GQ-01-A2/GQ-03-S1 completed), or simply watches in silence.
 
 3. **The player collects the First Memory** (MF-10, calm/neutral/5) from the golden lattice at (10, 18).
 
@@ -1477,8 +1477,8 @@ The Curator is B-05 (see [enemies-catalog.md](../design/enemies-catalog.md)) —
 
 | ID | Position | Trigger | Quest | Description |
 |----|----------|---------|-------|-------------|
-| EV-F3-007 | (10, 12) | auto | MQ-09 | Curator confrontation begins. Dialogue sequence. |
-| EV-F3-008 | (10, 15) | action | MQ-09 | Curator dialogue: phase responses based on carried items and recalled gods. |
+| EV-F3-007 | (10, 12) | auto | MQ-09 | Grym confrontation begins. Dialogue sequence. |
+| EV-F3-008 | (10, 15) | action | MQ-09 | Grym dialogue: phase responses based on carried items and recalled gods. |
 | EV-F3-009 | (10, 18) | action | MQ-09 | Collect the First Memory (MF-10). MQ-09 objective 3 complete. |
 | EV-F3-010 | (10, 18) | action | MQ-10 | Remix MF-10 → MF-11 (World's New Dawn). MQ-10 objective 1. |
 | EV-F3-011 | (10, 18) | action | MQ-10 | Broadcast MF-11. Endgame bloom triggers. MQ-10 objective 2 complete. |
@@ -1495,7 +1495,7 @@ The Curator is B-05 (see [enemies-catalog.md](../design/enemies-catalog.md)) —
 | Resonance Stones | 1 (rest, pre-confrontation) |
 | Treasure Chests | 0 |
 | Enemy types | None (dialogue floor) |
-| Boss | B-05: The Curator (dialogue encounter, no combat) |
+| Boss | B-05: Grym (dialogue encounter, no combat) |
 | Key items | MF-10 (The First Memory), MF-11 (World's New Dawn, created via remix) |
 | Loot highlights | The ending itself |
 | Memory lift | Post-game only → Undrawn Peaks |
@@ -1528,7 +1528,7 @@ Full shrine locations, recall mechanics, and 16 transformation outcomes are deta
 
 ### Luminos Grove (Flickerveil, 20,20)
 
-**Approach mechanic**: Requires K-04 (Light Lens) from Solen in Flickerveil. Without it, the grove's concentrated light blinds the player (screen whites out, player pushed back). With the Light Lens, the player can see a path of shadow stepping-stones through the blinding light. Walking on lit tiles without the Lens deals 30 HP damage per step.
+**Approach mechanic**: Requires K-04 (Light Lens) from Reza in Flickerveil. Without it, the grove's concentrated light blinds the player (screen whites out, player pushed back). With the Light Lens, the player can see a path of shadow stepping-stones through the blinding light. Walking on lit tiles without the Lens deals 30 HP damage per step.
 
 **Approach area**: (14, 14) → (26, 26), within the Flickerveil map.
 
@@ -1536,7 +1536,7 @@ Full shrine locations, recall mechanics, and 16 transformation outcomes are deta
 
 ### Kinesis Spire (Hollow Ridge, 25,10)
 
-**Approach mechanic**: Requires K-05 (Kinetic Boots) from Petra at Ridgewalker Camp. The Spire's vibrational pushback forces the player backward without them. With the boots, the player can resist the pushback and climb. The climb is a linear path (25, 15) → (25, 10) with 3 vibrational wave checkpoints where the player must stop and broadcast any fragment to create a stability anchor.
+**Approach mechanic**: Requires K-05 (Kinetic Boots) from Nel at Ridgewalker Camp. The Spire's vibrational pushback forces the player backward without them. With the boots, the player can resist the pushback and climb. The climb is a linear path (25, 15) → (25, 10) with 3 vibrational wave checkpoints where the player must stop and broadcast any fragment to create a stability anchor.
 
 **Approach area**: (20, 5) → (30, 18), within the Hollow Ridge map.
 
@@ -1565,9 +1565,9 @@ Full shrine locations, recall mechanics, and 16 transformation outcomes are deta
 | Depths L3 | B-03b: The Resonant King | 16–18 | 550 | Dissolved Essence | Resonant Collapse |
 | Depths L4 | B-03c: The Conductor | 19–21 | 650 | Phoenix Feather | Full HP/SP heal |
 | Depths L5 | B-03d: The First Dreamer | 24–26 | 1,200 (2-phase) | Dissolved Essence ×2, Memory Incense | Peaceful dissolution |
-| Fortress F1 | B-04a: Curator's Right Hand | 24–26 | 750 | Phoenix Feather (guaranteed) | Curator's Lament narrative |
+| Fortress F1 | B-04a: Grym's Right Hand | 24–26 | 750 | Phoenix Feather (guaranteed) | Grym's Lament narrative |
 | Fortress F2 | B-04b: The Archive Keeper | 26–28 | 900 | Dissolved Essence, Memory Incense | +15% all stats for Fortress |
-| Fortress F3 | B-05: The Curator | — | — (dialogue) | MF-10 (The First Memory) | Endgame bloom |
+| Fortress F3 | B-05: Grym | — | — (dialogue) | MF-10 (The First Memory) | Endgame bloom |
 
 ### Treasure Distribution
 
@@ -1579,7 +1579,7 @@ Full shrine locations, recall mechanics, and 16 transformation outcomes are deta
 | Depths L4 | 5 | Tier 3 weapons (W-xx-08), Phoenix Feather | 450 |
 | Depths L5 | 5 | Memory-Woven Plate (A-14), Tier 3 weapons | 300 |
 | Fortress F1 | 2 | Phoenix Feather, Stasis Breakers | 0 |
-| Fortress F2 | 3 | MF-09 (Curator's Grief), Panaceas | 500 |
+| Fortress F2 | 3 | MF-09 (Grym's Grief), Panaceas | 500 |
 | Fortress F3 | 0 | MF-10, MF-11 (created) | 0 |
 | **Total** | **25** | | **~1,650** |
 
@@ -1594,19 +1594,19 @@ Full shrine locations, recall mechanics, and 16 transformation outcomes are deta
 | Depths L5 | Paradox Corridor | Walk backward to progress through looping corridor |
 | Fortress F1 | Crystal Receptacle | Broadcast 3 matching-emotion fragments into receptacles |
 | Fortress F2 | Moral Dilemma Gallery | Choose to free or leave 3 frozen NPCs (story consequence) |
-| Fortress F3 | Curator Dialogue | Branching conversation based on inventory and recall choices |
+| Fortress F3 | Grym Dialogue | Branching conversation based on inventory and recall choices |
 
 ### Quest Dependencies
 
 | Quest | Dungeon Interaction |
 |-------|-------------------|
 | SQ-10 (Depths Expedition) | Depths L1 — objectives 3–5 |
-| SQ-11 (Torvan's Masterwork) | Depths L2 — Dissolved Metal in Room 3 |
+| SQ-11 (Hark's Masterwork) | Depths L2 — Dissolved Metal in Room 3 |
 | GQ-02-S1 (The Composting) | Depths L2 Room 3, L3 Room 3, L4 Room 2 — 3 burdened Resonance Stones |
-| GQ-03-F2 (Shadows of Curator) | Depths L5 Room 9 — Fortress basement shortcut |
+| GQ-03-F2 (Shadows of Grym) | Depths L5 Room 9 — Fortress basement shortcut |
 | MQ-09 (Preserver Fortress) | Fortress F1–F3 — all objectives |
 | MQ-10 (First Memory Remix) | Fortress F3 — remix and broadcast |
-| K-14 (Elyn's Intel Report) | Fortress F1 Room 5 — reveals all events on floor map |
+| K-14 (Julz's Intel Report) | Fortress F1 Room 5 — reveals all events on floor map |
 | GQ-01-A2 / GQ-03-S1 | Fortress F2 Room 5 — Preserver defector NPC shop |
 
 ### Floor-to-Floor Connections

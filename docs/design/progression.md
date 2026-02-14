@@ -91,7 +91,7 @@ XP is earned from combat only. Quests do not grant XP — they grant gold, items
 | Preserver agents | 120-180 | Scouts, agents, captains |
 | Mini-bosses | 300-500 | Dormant god shrine guardians, Depths floor bosses |
 | Major bosses | 600-1,000 | Act climax bosses, Preserver Fortress bosses |
-| Final boss | 0 (game ends) | The Curator's confrontation is dialogue, not combat |
+| Final boss | 0 (game ends) | Grym's confrontation is dialogue, not combat |
 
 ### Level Difference XP Modifier
 
@@ -506,9 +506,9 @@ Combat in Mnemonic Realms is party-based. The player controls their chosen chara
 
 | Companion | Class | Joins | Leaves | Level When Joining |
 |-----------|-------|-------|--------|-------------------|
-| Lira | Cleric (simplified) | Act I, Scene 3 | Act I climax (frozen) | Player level - 1 |
-| Callum | Mage (simplified) | Act II, Scene 2 | — (permanent from Act II onward) | Player level - 2 |
-| Petra | Knight (simplified) | Act II, Scene 8 (Ridgewalker Camp) | — (permanent) | Player level - 1 |
+| Hana | Cleric (simplified) | Act I, Scene 3 | Act I climax (frozen) | Player level - 1 |
+| Artun | Mage (simplified) | Act II, Scene 2 | — (permanent from Act II onward) | Player level - 2 |
+| Nel | Knight (simplified) | Act II, Scene 8 (Ridgewalker Camp) | — (permanent) | Player level - 1 |
 
 Companions use **simplified versions** of their class skills (3 skills each instead of 7+). Their stats follow the same formulas as the player character of that class but at a lower level (1-2 levels behind). Companions do not have subclass skills or memory-based progression — they are support characters, not the star.
 
@@ -516,7 +516,7 @@ The player always has the most powerful character in the party. Companions provi
 
 ### Party Size
 
-Maximum party size: **3** (player + 2 companions). In Act I, the player has Lira as their only companion (party of 2). In Act II-III, the player chooses 2 of their available companions for each outing.
+Maximum party size: **3** (player + 2 companions). In Act I, the player has Hana as their only companion (party of 2). In Act II-III, the player chooses 2 of their available companions for each outing.
 
 Single-character sections exist in the story (player alone in certain Depths levels, solo sections in the Preserver Fortress), testing the player character's individual power.
 
@@ -548,7 +548,7 @@ A player who self-broadcasts ~10 fragments (out of 40-60 collected) gains:
 | Mage | 7/7 elements, 4 pattern variants, bonus element pools | Access to every spell combination |
 | Rogue | +70% base evasion (60% + 10% memory), +10% crit | Near-untouchable with burst damage |
 
-The difference between a "no memory" and "full memory" character is significant but not required to beat the game. The final encounter is a dialogue scene with the Curator, not a stat check. The combat bosses leading up to it are tuned for the "without memory broadcasting" stat range — memory-invested characters will find them comfortably beatable rather than trivial.
+The difference between a "no memory" and "full memory" character is significant but not required to beat the game. The final encounter is a dialogue scene with Grym, not a stat check. The combat bosses leading up to it are tuned for the "without memory broadcasting" stat range — memory-invested characters will find them comfortably beatable rather than trivial.
 
 ---
 

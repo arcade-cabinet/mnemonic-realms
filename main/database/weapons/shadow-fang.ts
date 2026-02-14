@@ -1,6 +1,9 @@
 import { Weapon } from '@rpgjs/database';
 
+// Intended for: Rogue
+// Weapon Category: Dagger
 // Tier: 2
+// Special Effect: Foreshadow Strike pre-enemy bonus increased by +10%
 @Weapon({
   id: 'W-DG-04',
   name: 'Shadow Fang',

@@ -1,5 +1,8 @@
 import { Weapon } from '@rpgjs/database';
 
+// Special Effect: +5% Oath Strike damage
+// Intended for: Knight
+// Weapon Category: Sword
 // Tier: 2
 @Weapon({
   id: 'W-SW-03',

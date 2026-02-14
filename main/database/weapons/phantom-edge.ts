@@ -1,5 +1,8 @@
 import { Weapon } from '@rpgjs/database';
 
+// Special Effect: Vanishing Act lasts 3 turns instead of 2.
+// Intended for: Rogue
+// Weapon Category: Dagger
 // Tier: 3
 @Weapon({
   id: 'W-DG-06',

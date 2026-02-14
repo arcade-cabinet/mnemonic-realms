@@ -1,5 +1,6 @@
 import { Armor } from '@rpgjs/database';
 
+// Special Effect: Regenerate 2% max HP per turn in combat.
 // Tier: 3
 @Armor({
   id: 'A-12',

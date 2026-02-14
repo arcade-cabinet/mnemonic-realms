@@ -5,18 +5,18 @@ async function waitForGameReady(page: Page) {
   await page.waitForTimeout(2000);
 }
 
-/** Select a class and click Begin Journey. No fallbacks. */
+/** Open New Quest modal, then click Embark on Your Quest. */
 async function startGame(page: Page) {
-  // Click the first class button (Knight)
-  const classBtn = page.locator('.class-btn, .class-grid button').first();
-  await expect(classBtn).toBeVisible({ timeout: 5_000 });
-  await classBtn.click();
+  // Click "New Quest" — first enabled menu button
+  const newQuestBtn = page.locator('.menu-btn').first();
+  await expect(newQuestBtn).toBeVisible({ timeout: 5_000 });
+  await newQuestBtn.click();
   await page.waitForTimeout(500);
 
-  // Click Begin Journey
-  const beginBtn = page.locator('button').filter({ hasText: /begin/i }).first();
-  await expect(beginBtn).toBeVisible({ timeout: 5_000 });
-  await beginBtn.click();
+  // Click "Embark on Your Quest"
+  const embarkBtn = page.locator('.embark-btn');
+  await expect(embarkBtn).toBeVisible({ timeout: 5_000 });
+  await embarkBtn.click();
   await page.waitForTimeout(3000);
 }
 

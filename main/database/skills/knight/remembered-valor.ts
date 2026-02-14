@@ -9,4 +9,6 @@ import { Skill } from '@rpgjs/database';
   hitRate: 1,
   coefficient: { str: 1 },
 })
-export default class RememberedValor {}
+export default class RememberedValor {
+  // Formula: All allies ATK +20% 3 turns. 3+ oaths: also DEF +10%.
+}

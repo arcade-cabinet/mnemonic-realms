@@ -9,6 +9,8 @@ import { Item } from '@rpgjs/database';
   description: 'Cures all status effects on one character.',
   price: 200,
   consumable: true,
+  // TODO: Import and list all negative State classes here to be removed.
+  // Example: removeStates: [Poison, Slow, Weakness, Stasis, /* ... other negative states */],
   removeStates: [],
 })
 export default class Panacea {}

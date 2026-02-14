@@ -13,4 +13,7 @@ import { State } from '@rpgjs/database';
     maxsp: { rate: 0.2 },
   },
 })
-export default class Inspired {}
+export default class Inspired {
+  // Duration: 3 turns (managed by game logic, not decorator)
+  // Stackable: false (not a decorator property)
+}

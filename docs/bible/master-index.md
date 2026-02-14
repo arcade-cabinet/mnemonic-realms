@@ -64,9 +64,9 @@
 | B-03b | The Resonant King | II-III | Depths L3 | enemies, event-placement |
 | B-03c | The Conductor | II-III | Depths L4 | enemies, event-placement |
 | B-03d | The First Dreamer | II-III | Depths L5 | enemies, act3-script, event-placement |
-| B-04a | Curator's Right Hand | III | Fortress F1 | enemies, act3-script, event-placement |
+| B-04a | Grym's Right Hand | III | Fortress F1 | enemies, act3-script, event-placement |
 | B-04b | Archive Keeper | III | Fortress F2 | enemies, act3-script, event-placement |
-| B-05 | The Curator | III | Fortress F3 (dialogue) | enemies, act3-script, event-placement |
+| B-05 | Grym | III | Fortress F3 (dialogue) | enemies, act3-script, event-placement |
 
 ---
 
@@ -74,25 +74,25 @@
 
 | Name | Role | Class (if combatant) | Refs |
 |------|------|----------------------|------|
-| Aric | Preserver Captain, recurring antagonist | — | characters, dialogue-bank, act2-script, act3-script, overworld-layout, event-placement |
-| Callum | Village Elder, scholar, party companion | Mage | characters, dialogue-bank, act1/2/3-scripts, overworld-layout, event-placement, progression |
-| Curator, The | Preserver leader, primary antagonist | — | characters, dialogue-bank, act2-script, act3-script, factions |
-| Elyn | Preserver defector, Flickerveil shop | — | dialogue-bank, overworld-layout, event-placement |
+| Janik | Preserver Captain, recurring antagonist | — | characters, dialogue-bank, act2-script, act3-script, overworld-layout, event-placement |
+| Artun | Village Elder, scholar, party companion | Mage | characters, dialogue-bank, act1/2/3-scripts, overworld-layout, event-placement, progression |
+| Grym, The | Preserver leader, primary antagonist | — | characters, dialogue-bank, act2-script, act3-script, factions |
+| Julz | Preserver defector, Flickerveil shop | — | dialogue-bank, overworld-layout, event-placement |
 | Farmer Edric | Heartfield field patrol | — | overworld-layout, event-placement |
 | Farmer Gale | Heartfield farmer, SQ-02 giver | — | dialogue-bank, overworld-layout, event-placement |
 | Farmer Suri | Heartfield farmstead resident | — | overworld-layout, event-placement |
 | Fisher Tam | Millbrook fisherman, SQ-04 giver | — | dialogue-bank, overworld-layout, event-placement |
 | Lead Audiomancer | Resonance Fields camp leader | — | dialogue-bank, overworld-layout, event-placement |
 | Lead Woodcutter | Ambergrove camp leader, SQ-03 giver | — | dialogue-bank, overworld-layout, event-placement |
-| Lira | Traveling Architect, mentor, companion | Cleric | characters, dialogue-bank, act1/2/3-scripts, overworld-layout, event-placement, progression |
-| Maren | Village general shop | — | dialogue-bank, overworld-layout, event-placement |
-| Petra | Ridgewalker Camp leader, companion | Knight | dialogue-bank, overworld-layout, event-placement, progression |
+| Hana | Traveling Architect, mentor, companion | Cleric | characters, dialogue-bank, act1/2/3-scripts, overworld-layout, event-placement, progression |
+| Khali | Village general shop | — | dialogue-bank, overworld-layout, event-placement |
+| Nel | Ridgewalker Camp leader, companion | Knight | dialogue-bank, overworld-layout, event-placement, progression |
 | Player Character | Mnemonic Architect, protagonist | Player-chosen | characters, all scripts, classes, progression |
-| Ren | Innkeeper, The Bright Hearth | — | dialogue-bank, overworld-layout, event-placement |
+| Nyro | Innkeeper, The Bright Hearth | — | dialogue-bank, overworld-layout, event-placement |
 | Sera | Traveling merchant, rotating visitor | — | dialogue-bank, overworld-layout, event-placement |
-| Solen | Flickerveil elder, keeper of Light Lens | — | dialogue-bank, overworld-layout, event-placement |
-| Torvan | Village blacksmith | — | dialogue-bank, overworld-layout, event-placement |
-| Wynn | Shimmer Marsh hermit | — | dialogue-bank, overworld-layout, event-placement |
+| Reza | Flickerveil elder, keeper of Light Lens | — | dialogue-bank, overworld-layout, event-placement |
+| Hark | Village blacksmith | — | dialogue-bank, overworld-layout, event-placement |
+| Vash | Shimmer Marsh hermit | — | dialogue-bank, overworld-layout, event-placement |
 
 **Ambient NPCs** (unnamed, referenced by role): Bridge Guard, Child NPC, Flickering Guard A, Hamlet Elder, Marsh Researcher, Millbrook Elder, Ridgewalker Elder, Ridgewalker Guards A/B, Ridgewalker Merchant, Ridgewalker Scout, Specialty Shopkeeper (Millbrook), Village Innkeeper (Flickerveil), Village Shopkeeper (Flickerveil), Villagers A/B/C, Waystation Guard, Waystation Keeper, Woodcutters B/C. All referenced in overworld-layout and event-placement.
 
@@ -236,19 +236,19 @@
 | ID | Name | Purpose | Refs |
 |----|------|---------|------|
 | K-01 | Architect's Signet | Identifies player as Mnemonic Architect | items, quest-chains (MQ-01) |
-| K-02 | Callum's Letters | Lore about Frontier zones | items, quest-chains (MQ-03) |
+| K-02 | Artun's Letters | Lore about Frontier zones | items, quest-chains (MQ-03) |
 | K-03 | Remix Table Access | Unlocks Remix interface | items, quest-chains (MQ-02) |
 | K-04 | Light Lens | Required for Luminos Grove approach | items, quest-chains (SQ-08), event-placement |
 | K-05 | Kinetic Boots | Required for Kinesis Spire approach | items, quest-chains (SQ-07), event-placement |
-| K-06 | Curator's Manifesto | Philosopher's perspective; fortress dialogue | items, quest-chains (SQ-05), event-placement |
+| K-06 | Grym's Manifesto | Philosopher's perspective; fortress dialogue | items, quest-chains (SQ-05), event-placement |
 | K-07 | Cantara's Baton | +2 broadcast vibrancy | items, quest-chains (GQ-01-J1) |
 | K-08 | Harmonia's Tuning Fork | Doubles broadcast radius | items, quest-chains (GQ-01-A1) |
 | K-09 | Rootwalker's Seed | Plant for +5 zone vibrancy (single use) | items, quest-chains (GQ-02-S2) |
 | K-10 | Vesperis's Lantern | Reveals fragment emotional spectrum | items, quest-chains (GQ-03-S2) |
 | K-11 | Peregrine's Journal | Reveals hidden items/passages | items, quest-chains (GQ-04-S1) |
 | K-12 | Wayfinder's Compass | Points to nearest uncollected fragment | items, quest-chains (GQ-04-J2) |
-| K-13 | Curator's Doubt | Unique final confrontation dialogue | items, quest-chains (GQ-03-A2), event-placement |
-| K-14 | Elyn's Intelligence Report | Reveals Fortress F1 layout | items, quest-chains (GQ-03-S1), event-placement |
+| K-13 | Grym's Doubt | Unique final confrontation dialogue | items, quest-chains (GQ-03-A2), event-placement |
+| K-14 | Julz's Intelligence Report | Reveals Fortress F1 layout | items, quest-chains (GQ-03-S1), event-placement |
 | K-15 | Thunderstone | Required for Preserver Cathedral assault | items, quest-chains (GQ-01-F2) |
 
 ---
@@ -285,7 +285,7 @@
 
 | Zone | Biome | Key Landmarks | Refs |
 |------|-------|---------------|------|
-| Village Hub | Settlement | Central Square, General Shop, Elder's House, Quest Board, The Bright Hearth (Inn), Lira's Workshop, Blacksmith, Training Ground, Memorial Garden, Lookout Hill / Callum's Observatory | geography, overworld-layout, event-placement |
+| Village Hub | Settlement | Central Square, General Shop, Elder's House, Quest Board, The Bright Hearth (Inn), Hana's Workshop, Blacksmith, Training Ground, Memorial Garden, Lookout Hill / Artun's Observatory | geography, overworld-layout, event-placement |
 | Heartfield | Pastoral Wheat | Heartfield Hamlet, The Old Windmill, Stagnation Clearing, Southern Crossroads | geography, overworld-layout, stagnation-zones, event-placement |
 | Ambergrove | Amber Forest | Hearthstone Circle, Amber Lake, Woodcutter's Camp, Eastern Canopy Path | geography, overworld-layout, event-placement |
 | Millbrook | Riverside Town | Millbrook Town, Brightwater Bridge, Upstream Falls, Fisher's Rest | geography, overworld-layout, event-placement |
@@ -321,15 +321,15 @@
 
 | ID | Name | Emotion/Element/Potency | Source | Refs |
 |----|------|-------------------------|--------|------|
-| MF-01 | Callum's First Lesson | Joy / Neutral / 2 | MQ-01 (Callum) | items, quest-chains |
-| MF-02 | Lira's Warmth | Joy / Light / 3 | MQ-02 (Lira) | items, quest-chains |
+| MF-01 | Artun's First Lesson | Joy / Neutral / 2 | MQ-01 (Artun) | items, quest-chains |
+| MF-02 | Hana's Warmth | Joy / Light / 3 | MQ-02 (Hana) | items, quest-chains |
 | MF-03 | Echo of the Stagnation | Sorrow / Dark / 2 | MQ-04 (Heartfield) | items, quest-chains |
-| MF-04 | Lira's Scream | Fury / Light / 4 | MQ-04 (Lira's freezing) | items, quest-chains |
+| MF-04 | Hana's Scream | Fury / Light / 4 | MQ-04 (Hana's freezing) | items, quest-chains |
 | MF-05 | Choir's Final Note | Awe / Wind / 4 | GQ-01 (Resonance) | items, quest-chains, event-placement |
 | MF-06 | Rootwalker's Seedling | Joy / Earth / 4 | GQ-02 (Verdance) | items, quest-chains |
 | MF-07 | Radiant Lens Theorem | Awe / Light / 4 | GQ-03 (Luminos) | items, quest-chains |
 | MF-08 | Peregrine's First Step | Fury / Fire / 4 | GQ-04 (Kinesis) | items, quest-chains |
-| MF-09 | The Curator's Grief | Sorrow / Dark / 5 | MQ-09 (Fortress F2) | items, quest-chains |
+| MF-09 | Grym's Grief | Sorrow / Dark / 5 | MQ-09 (Fortress F2) | items, quest-chains |
 | MF-10 | The First Memory | Calm / Neutral / 5 | MQ-09 (Fortress F3) | items, quest-chains |
 | MF-11 | World's New Dawn | Joy / Light / 5 | MQ-10 (remixed) | items, quest-chains |
 
@@ -352,14 +352,14 @@
 
 | ID | Name | Act | Level | Giver | Refs |
 |----|------|-----|-------|-------|------|
-| MQ-01 | The Architect's Awakening | I | 1 | Callum | quest-chains, act1-script, event-placement |
-| MQ-02 | First Broadcast | I | 1-2 | Lira | quest-chains, act1-script, event-placement |
-| MQ-03 | The Settled Lands | I | 2-6 | Callum | quest-chains, act1-script, event-placement |
+| MQ-01 | The Architect's Awakening | I | 1 | Artun | quest-chains, act1-script, event-placement |
+| MQ-02 | First Broadcast | I | 1-2 | Hana | quest-chains, act1-script, event-placement |
+| MQ-03 | The Settled Lands | I | 2-6 | Artun | quest-chains, act1-script, event-placement |
 | MQ-04 | The Stagnation | I | 6-10 | Story event | quest-chains, act1-script, event-placement |
-| MQ-05 | Into the Frontier | II | 10-12 | Callum | quest-chains, act2-script, event-placement |
+| MQ-05 | Into the Frontier | II | 10-12 | Artun | quest-chains, act2-script, event-placement |
 | MQ-06 | Recall the First God | II | 12-16 | Any shrine | quest-chains, act2-script, event-placement |
-| MQ-07 | The Curator's Endgame | II | 16-20 | Callum | quest-chains, act2-script, event-placement |
-| MQ-08 | Through the Sketch | III | 20-24 | Callum | quest-chains, act3-script, event-placement |
+| MQ-07 | Grym's Endgame | II | 16-20 | Artun | quest-chains, act2-script, event-placement |
+| MQ-08 | Through the Sketch | III | 20-24 | Artun | quest-chains, act3-script, event-placement |
 | MQ-09 | The Preserver Fortress | III | 24-28 | Story event | quest-chains, act3-script, event-placement |
 | MQ-10 | The First Memory Remix | III | 28-30 | Story event | quest-chains, act3-script, event-placement |
 
@@ -369,20 +369,20 @@
 
 | ID | Name | Act | Level | Giver | Dependency | Refs |
 |----|------|-----|-------|-------|------------|------|
-| SQ-01 | The Memorial Garden | I | 2-4 | Maren | MQ-02 | quest-chains, event-placement |
+| SQ-01 | The Memorial Garden | I | 2-4 | Khali | MQ-02 | quest-chains, event-placement |
 | SQ-02 | The Windmill Mystery | I | 3-5 | Farmer Gale | MQ-03 | quest-chains, event-placement |
 | SQ-03 | The Woodcutter's Dilemma | I | 4-6 | Lead Woodcutter | MQ-03 | quest-chains, event-placement |
 | SQ-04 | Upstream Secrets | I | 5-7 | Fisher Tam | MQ-03 | quest-chains, event-placement |
-| SQ-05 | Aric's Doubt | I-II | 8-12 | Aric | MQ-04 | quest-chains, event-placement |
-| SQ-06 | The Marsh Hermit's Request | II | 11-14 | Wynn | MQ-05 | quest-chains, event-placement |
-| SQ-07 | Petra's Ridgewalkers | II | 12-15 | Petra | MQ-05 | quest-chains, event-placement |
-| SQ-08 | Solen's Light Studies | II | 13-16 | Solen | MQ-05 | quest-chains, event-placement |
+| SQ-05 | Janik's Doubt | I-II | 8-12 | Janik | MQ-04 | quest-chains, event-placement |
+| SQ-06 | The Marsh Hermit's Request | II | 11-14 | Vash | MQ-05 | quest-chains, event-placement |
+| SQ-07 | Nel's Ridgewalkers | II | 12-15 | Nel | MQ-05 | quest-chains, event-placement |
+| SQ-08 | Reza's Light Studies | II | 13-16 | Reza | MQ-05 | quest-chains, event-placement |
 | SQ-09 | The Listener's Camp | II | 13-16 | Lead Audiomancer | MQ-05 | quest-chains, event-placement |
-| SQ-10 | The Depths Expedition | II | 14-18 | Callum | MQ-05, Lv14+ | quest-chains, event-placement |
-| SQ-11 | Torvan's Masterwork | II-III | 15-20 | Torvan | Hub Vibrancy 70+ | quest-chains, event-placement |
-| SQ-12 | Ren's Dream Visions | II-III | 16-22 | Ren | MQ-05, 5 inn rests | quest-chains, event-placement |
+| SQ-10 | The Depths Expedition | II | 14-18 | Artun | MQ-05, Lv14+ | quest-chains, event-placement |
+| SQ-11 | Hark's Masterwork | II-III | 15-20 | Hark | Hub Vibrancy 70+ | quest-chains, event-placement |
+| SQ-12 | Nyro's Dream Visions | II-III | 16-22 | Nyro | MQ-05, 5 inn rests | quest-chains, event-placement |
 | SQ-13 | The Dissolved Choir's Instruments | II-III | 18-24 | Lead Audiomancer | SQ-09, GQ-01 | quest-chains, event-placement |
-| SQ-14 | The Stagnation Breaker | III | 22-26 | Callum | MQ-07 | quest-chains, event-placement |
+| SQ-14 | The Stagnation Breaker | III | 22-26 | Artun | MQ-07 | quest-chains, event-placement |
 
 ---
 
@@ -465,15 +465,15 @@
 
 | Name | Companion | SP | Refs |
 |------|-----------|-----|------|
-| Gentle Mending | Lira (Cleric) | 5 | skills-catalog, progression |
-| Calm Cleanse | Lira (Cleric) | 7 | skills-catalog, progression |
-| Warm Ward | Lira (Cleric) | 12 | skills-catalog, progression |
-| Memory Spark | Callum (Mage) | 4 | skills-catalog, progression |
-| Lore Shield | Callum (Mage) | 10 | skills-catalog, progression |
-| Archive Blast | Callum (Mage) | 16 | skills-catalog, progression |
-| Ridge Strike | Petra (Knight) | 0 | skills-catalog, progression |
-| Mountain Guard | Petra (Knight) | 8 | skills-catalog, progression |
-| Rally Cry | Petra (Knight) | 15 | skills-catalog, progression |
+| Gentle Mending | Hana (Cleric) | 5 | skills-catalog, progression |
+| Calm Cleanse | Hana (Cleric) | 7 | skills-catalog, progression |
+| Warm Ward | Hana (Cleric) | 12 | skills-catalog, progression |
+| Memory Spark | Artun (Mage) | 4 | skills-catalog, progression |
+| Lore Shield | Artun (Mage) | 10 | skills-catalog, progression |
+| Archive Blast | Artun (Mage) | 16 | skills-catalog, progression |
+| Ridge Strike | Nel (Knight) | 0 | skills-catalog, progression |
+| Mountain Guard | Nel (Knight) | 8 | skills-catalog, progression |
+| Rally Cry | Nel (Knight) | 15 | skills-catalog, progression |
 
 ---
 
@@ -510,7 +510,7 @@
 | ID | Name | INT | Tier | Refs |
 |----|------|-----|------|------|
 | W-ST-01 | Wooden Staff | +4 | 1 | items |
-| W-ST-02 | Maren's Blessing Rod | +8 | 1 | items |
+| W-ST-02 | Khali's Blessing Rod | +8 | 1 | items |
 | W-ST-03 | Hearthstone Staff | +14 | 2 | items, event-placement (CH-AG-01) |
 | W-ST-04 | Riverside Crosier | +20 | 2 | items |
 | W-ST-05 | Marsh Hermit's Crook | +26 | 2 | items (SQ-06) |

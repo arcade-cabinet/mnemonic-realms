@@ -320,7 +320,7 @@ The governor follows the main quest chain as its primary objective, with side qu
 
 ### Phase 2: Act I - Tutorial & Settled Lands (MQ-01 through MQ-04)
 
-1. **MQ-01**: Follow NPC interaction chain (Callum -> Lira -> Memorial Garden -> Callum)
+1. **MQ-01**: Follow NPC interaction chain (Artun -> Hana -> Memorial Garden -> Artun)
 2. **MQ-02**: Learn memory operations (collect, remix, broadcast)
 3. **MQ-03**: Visit all 4 Settled Lands sub-maps, fight encounters, collect fragments
 4. **MQ-04**: Travel to Stagnation Clearing, survive combat, witness cutscene
@@ -331,9 +331,9 @@ The governor follows the main quest chain as its primary objective, with side qu
 1. **MQ-05**: Cross mountain pass, reach Ridgewalker Camp
 2. **SQ-06 through SQ-09**: Complete Frontier exploration quests
 3. **GQ-01 through GQ-04**: Recall all 4 gods (with configurable emotion choices)
-4. **SQ-05**: Complete Aric's Doubt
+4. **SQ-05**: Complete Janik's Doubt
 5. **MQ-06**: First god recall acknowledged
-6. **MQ-07**: Learn Curator's endgame
+6. **MQ-07**: Learn Grym's endgame
 
 ### Phase 4: Act III - The Sketch & Endgame (MQ-08 through MQ-10)
 

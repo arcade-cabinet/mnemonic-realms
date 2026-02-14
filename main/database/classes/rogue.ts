@@ -1,5 +1,14 @@
 import { Class } from '@rpgjs/database';
 
+// TODO: import skill classes when generated
+// import ForeshadowStrike from '../skills/rogue/foreshadow-strike';
+// import EchoDodge from '../skills/rogue/echo-dodge';
+// import MemoryTheft from '../skills/rogue/memory-theft';
+// import ShadowStep from '../skills/rogue/shadow-step';
+// import Vanish from '../skills/rogue/vanish'; // Placeholder for SK-RG-05
+// import CriticalInsight from '../skills/rogue/critical-insight'; // Placeholder for SK-RG-06
+// import TemporalAmbush from '../skills/rogue/temporal-ambush';
+
 /**
  * Rogue Class
  *
@@ -23,5 +32,13 @@ import { Class } from '@rpgjs/database';
   name: 'Rogue',
   description: 'Speed-based damage dealer. Highest AGI, always acts first. Evasion-based survival.',
   skillsToLearn: [],
+  // Planned skills (import when generated):
+  // { level: 1, skill: ForeshadowStrike } from '../skills/rogue/foreshadow-strike' (SK-RG-01)
+  // { level: 3, skill: EchoDodge } from '../skills/rogue/echo-dodge' (SK-RG-02)
+  // { level: 6, skill: MemoryTheft } from '../skills/rogue/memory-theft' (SK-RG-03)
+  // { level: 10, skill: ShadowStep } from '../skills/rogue/shadow-step' (SK-RG-04)
+  // { level: 15, skill: Vanish } from '../skills/rogue/vanish' (SK-RG-05)
+  // { level: 20, skill: CriticalInsight } from '../skills/rogue/critical-insight' (SK-RG-06)
+  // { level: 25, skill: TemporalAmbush } from '../skills/rogue/temporal-ambush' (SK-RG-07)
 })
 export default class Rogue {}

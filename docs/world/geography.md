@@ -37,7 +37,7 @@ The village is organized around a central square with paths radiating outward li
 ```
      N
      |
-  [Lookout Hill / Callum's Observatory]
+  [Lookout Hill / Artun's Observatory]
      |
   [Training Ground]--[Elder's House]
      |                    |
@@ -45,7 +45,7 @@ The village is organized around a central square with paths radiating outward li
      |                    |
   [Memorial Garden]--[General Shop]
      |                    |
-  [Lira's Workshop]--[Blacksmith]
+  [Hana's Workshop]--[Blacksmith]
      |
   [South Gate → Settled Lands]
      S
@@ -56,25 +56,25 @@ The village is organized around a central square with paths radiating outward li
 | Building | Position (x, y) | Size (tiles) | Description |
 |----------|-----------------|--------------|-------------|
 | Central Square | (12, 14) | 6x6 | Open gathering area with a Resonance Stone fountain at center. NPCs mill about here during daytime. |
-| General Shop | (18, 16) | 5x4 | Run by Maren, a cheerful merchant. Sells potions, antidotes, basic gear. Inventory improves as village vibrancy rises. |
-| Elder's House | (18, 10) | 5x5 | Callum's home and informal library. Bookshelves contain lore fragments. First place the player visits after the opening cutscene. |
+| General Shop | (18, 16) | 5x4 | Run by Khali, a cheerful merchant. Sells potions, antidotes, basic gear. Inventory improves as village vibrancy rises. |
+| Elder's House | (18, 10) | 5x5 | Artun's home and informal library. Bookshelves contain lore fragments. First place the player visits after the opening cutscene. |
 | Quest Board | (8, 14) | 3x3 | Wooden board outside the square. Displays available side quests. Updates as vibrancy increases and new NPCs arrive. |
 | Inn: The Bright Hearth | (20, 14) | 5x4 | Rest point (full HP/SP restore). Innkeeper tells rumors that hint at exploration targets. Rest triggers Dissolved dream sequences after Act I. |
-| Lira's Workshop | (8, 18) | 5x4 | Where Lira teaches memory operations (Collect, Remix, Broadcast). Contains a Remix Table — the first place the player can combine fragments. |
+| Hana's Workshop | (8, 18) | 5x4 | Where Hana teaches memory operations (Collect, Remix, Broadcast). Contains a Remix Table — the first place the player can combine fragments. |
 | Blacksmith | (18, 18) | 4x4 | Sells and upgrades weapons/armor. Stock improves with vibrancy. |
 | Training Ground | (8, 10) | 6x5 | Open area with practice dummies. Tutorial combat happens here. The ground is worn dirt with chalk markings. |
 | Memorial Garden | (8, 16) | 4x3 | Small garden with three Resonance Stones. First memory collection tutorial location. Flowers bloom from Muted to Vivid as vibrancy rises. |
-| Lookout Hill | (12, 2) | 6x5 | Elevated area at the village's north edge. Callum's telescope is here. Provides a narrative lookout over the Settled Lands and distant Frontier shimmer. |
+| Lookout Hill | (12, 2) | 6x5 | Elevated area at the village's north edge. Artun's telescope is here. Provides a narrative lookout over the Settled Lands and distant Frontier shimmer. |
 
 ### Key NPCs (Village Hub)
 
 | NPC | Default Position | Role |
 |-----|-----------------|------|
-| Lira | Workshop (8, 18) → Roams after Act I tutorial | Mentor, memory operations teacher |
-| Callum | Elder's House (18, 10) or Lookout Hill (12, 2) | Lore, world-building, first memory fragment source |
-| Maren (shopkeeper) | General Shop (18, 16) | Buy/sell consumables and basic equipment |
-| Torvan (blacksmith) | Blacksmith (18, 18) | Buy/sell/upgrade weapons and armor |
-| Ren (innkeeper) | Inn (20, 14) | Rest, rumors, dream sequence trigger |
+| Hana | Workshop (8, 18) → Roams after Act I tutorial | Mentor, memory operations teacher |
+| Artun | Elder's House (18, 10) or Lookout Hill (12, 2) | Lore, world-building, first memory fragment source |
+| Khali (shopkeeper) | General Shop (18, 16) | Buy/sell consumables and basic equipment |
+| Hark (blacksmith) | Blacksmith (18, 18) | Buy/sell/upgrade weapons and armor |
+| Nyro (innkeeper) | Inn (20, 14) | Rest, rumors, dream sequence trigger |
 
 ### Connections
 
@@ -83,7 +83,7 @@ The village is organized around a central square with paths radiating outward li
 | South | Settled Lands: Heartfield (farmland sub-map) | Open road, no gate |
 | East | Settled Lands: Ambergrove (forest sub-map) | Forest path |
 | West | Settled Lands: Millbrook (riverside sub-map) | Bridge crossing |
-| North (locked Act II) | Frontier: Hollow Ridge (mountain sub-map) | Mountain pass, opens after Lira's freezing |
+| North (locked Act II) | Frontier: Hollow Ridge (mountain sub-map) | Mountain pass, opens after Hana's freezing |
 
 ### Environmental Details
 
@@ -112,7 +112,7 @@ Rolling farmland south of the village. Golden wheat fields, vegetable patches, i
 **Key Landmarks**:
 - **Heartfield Hamlet** (15, 15) — 5 farmsteads with unique farming families. NPCs offer fetch quests and share pastoral memory fragments.
 - **The Old Windmill** (30, 8) — Abandoned windmill on a hilltop. Contains a Dissolved memory deposit accessible from Act I. The windmill's sails turn by themselves when vibrancy exceeds 50.
-- **Stagnation Clearing** (35, 30) — Act I's first Stagnation Zone. A 5x5 patch of crystallized grass and frozen butterflies. Tutorial for understanding the Preserver threat. This is where Lira gets frozen during the Act I climax.
+- **Stagnation Clearing** (35, 30) — Act I's first Stagnation Zone. A 5x5 patch of crystallized grass and frozen butterflies. Tutorial for understanding the Preserver threat. This is where Hana gets frozen during the Act I climax.
 - **Southern Crossroads** (20, 38) — Road junction leading further south toward the Frontier (locked until Act II).
 
 **Connections**: North → Village Hub (South Gate). South → Frontier: Shimmer Marsh (Act II). East → Ambergrove (forest path).
@@ -155,7 +155,7 @@ A river town built along both banks of the Brightwater River. Bridges, watermill
 
 **Size**: 40x40 tiles | **Biome**: Hills/Highland Grassland | **Starting Vibrancy**: 40
 
-Rolling highlands north of the village. The grass here is shorter, wind-blown. Visibility is excellent — on clear tiles, the player can see the Frontier's shimmer on the horizon. This zone opens when the mountain pass north of the Village Hub unlocks after Lira's freezing.
+Rolling highlands north of the village. The grass here is shorter, wind-blown. Visibility is excellent — on clear tiles, the player can see the Frontier's shimmer on the horizon. This zone opens when the mountain pass north of the Village Hub unlocks after Hana's freezing.
 
 **Key Landmarks**:
 - **Ridgetop Waystation** (20, 20) — A small traveler's outpost with 3 NPCs. Serves as a rest stop and transition point to the Frontier. A traveling merchant visits here with rotating stock.
@@ -197,7 +197,7 @@ Misty marshland where pools of water reflect memories rather than sky. The groun
 
 **Key Landmarks**:
 - **Verdance's Hollow** (25, 35) — A sunken glade of impossibly green growth surrounded by muted marsh. This is where the dormant god Verdance (growth) sleeps. The shrine is a massive, half-formed tree trunk with roots that pulse with verdant light. Recall quest triggers here in Act II.
-- **Marsh Hermit's Hut** (12, 15) — Isolated hut built on stilts. An NPC scholar named Wynn studies the Dissolved from here. Offers lore-rich quests and high-potency sorrow-type fragments.
+- **Marsh Hermit's Hut** (12, 15) — Isolated hut built on stilts. An NPC scholar named Vash studies the Dissolved from here. Offers lore-rich quests and high-potency sorrow-type fragments.
 - **Stagnation Bog** (40, 10) — A Preserver-controlled zone where the marsh has been crystallized into a frozen swamp. Ice-like formations trap water mid-ripple. Breaking it requires water + fury fragments broadcast together.
 - **Deepwater Sinkhole** (35, 45) — Entrance to Depths Level 2 (dissolved memory dungeon). Water spirals downward into luminous depths.
 
@@ -365,8 +365,8 @@ A forest rendered in elegant line-art. Tree trunks are single curved lines. Bran
 
 **Structure**:
 - **Floor 1: The Gallery of Moments** — Frozen snapshots of villages, festivals, peaceful scenes. Navigating requires broadcasting memories to shatter crystal barriers without damaging the frozen subjects.
-- **Floor 2: The Archive of Perfection** — The Curator's personal collection. Stronger Preserver agents. Puzzle rooms where the player must choose which frozen memories to free and which to leave preserved (moral complexity).
-- **Floor 3: The First Memory Chamber** — The Curator's sanctum. Contains the First Memory — the world's original seed. The Curator awaits here for the final confrontation (dialogue, not combat). The player's final act: remix the First Memory with their collected fragments.
+- **Floor 2: The Archive of Perfection** — Grym's personal collection. Stronger Preserver agents. Puzzle rooms where the player must choose which frozen memories to free and which to leave preserved (moral complexity).
+- **Floor 3: The First Memory Chamber** — Grym's sanctum. Contains the First Memory — the world's original seed. Grym awaits here for the final confrontation (dialogue, not combat). The player's final act: remix the First Memory with their collected fragments.
 
 ---
 

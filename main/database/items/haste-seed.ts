@@ -11,8 +11,10 @@ import { Item } from '@rpgjs/database';
   consumable: true,
   paramsModifier: {
     agi: {
-      rate: 0.15,
+      rate: 0.15, // AGI +15%
     },
   },
+  // The "for 3 turns" duration typically requires applying a State.
+  // This item's paramsModifier applies the stat change directly.
 })
 export default class HasteSeed {}

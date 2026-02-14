@@ -1245,7 +1245,7 @@ Preserver agents are a distinct faction (see [factions.md](../world/factions.md)
 **Abilities**:
 1. **Twin Crystal Slash** — Physical attack. Two hits: each deals ATK × 0.9 damage. Each hit has 25% chance to inflict Stasis independently.
 2. **Stasis Dome** — AoE. All party members are hit with a 40% chance to inflict Stasis each. No damage. 5-turn cooldown.
-3. **Curator's Blessing** — Self-heal. Recovers 20% max HP and removes all debuffs. Used once per combat when HP drops below 30%.
+3. **Grym's Blessing** — Self-heal. Recovers 20% max HP and removes all debuffs. Used once per combat when HP drops below 30%.
 4. **Crystalline Armor** (passive) — Takes 25% less damage from light-element attacks. Takes 25% more damage from dark-element attacks.
 
 **Rewards**: 180 XP | 75 gold
@@ -1351,13 +1351,13 @@ Bosses are multi-phase fights with unique mechanics. They always drop a named me
 | DEF | 20 |
 | AGI | 16 |
 
-**Appearance**: The inner heart exposed — a swirling vortex of frozen memory fragments. Lira's amber silhouette is visible at its center (this is the anchor point where Lira is frozen). The boss desperately tries to re-crystallize.
+**Appearance**: The inner heart exposed — a swirling vortex of frozen memory fragments. Hana's amber silhouette is visible at its center (this is the anchor point where Hana is frozen). The boss desperately tries to re-crystallize.
 
 **Abilities**:
 1. **Memory Barrage** — 3 random hits across the party. Each hit deals ATK × 0.7 damage.
 2. **Desperate Freeze** — Single target. 60% chance to inflict Stasis. Deals no damage. Used every 3rd turn.
 3. **Re-Crystallize** — Self-heal. Recovers 10% max HP and gains +10% DEF for 2 turns. Used once when HP drops below 50%.
-4. **Crystal Collapse** (death trigger) — On defeat, the boss explodes outward, dealing 50 fixed damage to all party members. Lira is freed.
+4. **Crystal Collapse** (death trigger) — On defeat, the boss explodes outward, dealing 50 fixed damage to all party members. Hana is freed.
 
 **Rewards**: 500 XP | 150 gold
 
@@ -1365,7 +1365,7 @@ Bosses are multi-phase fights with unique mechanics. They always drop a named me
 
 **Item drop**: Phoenix Feather (C-SP-10) — 25% chance
 
-**Narrative**: Defeating this boss frees Lira. She immediately returns to the party (Cleric companion, now at player level - 1). This is the emotional payoff for the Act I climax.
+**Narrative**: Defeating this boss frees Hana. She immediately returns to the party (Cleric companion, now at player level - 1). This is the emotional payoff for the Act I climax.
 
 **Design note**: This boss tests the player's ability to handle Stasis. Phase 1 is a DEF-heavy wall that punishes basic attacks; Phase 2 is a speed-based race against re-crystallization. Bringing Stasis Breakers is essential.
 
@@ -1580,7 +1580,7 @@ At 50% HP, the First Dreamer speaks: *"You have seen what was. Now show me what 
 
 ### B-04: Preserver Fortress Bosses
 
-#### B-04a: The Curator's Right Hand — Fortress Floor 1 Boss
+#### B-04a: Grym's Right Hand — Fortress Floor 1 Boss
 
 **Location**: Gallery of Moments, final gallery room
 
@@ -1594,13 +1594,13 @@ At 50% HP, the First Dreamer speaks: *"You have seen what was. Now show me what 
 | DEF | 38 |
 | AGI | 16 |
 
-**Appearance**: A Preserver in ornate ceremonial armor — the Curator's most loyal lieutenant. They carry a crystal shield depicting frozen scenes from the world's history. They fight with reluctant grace: *"The Curator weeps for every battle. So do I."*
+**Appearance**: A Preserver in ornate ceremonial armor — Grym's most loyal lieutenant. They carry a crystal shield depicting frozen scenes from the world's history. They fight with reluctant grace: *"Grym weeps for every battle. So do I."*
 
 **Abilities**:
 1. **Gallery Strike** — Physical attack. Deals ATK × 1.5 damage. The shield flashes an image of a frozen memory with each swing.
 2. **Exhibit Shield** — Self-buff. Absorbs 120 damage. While active, reflects 20% of incoming damage back to the attacker. Refreshes at 50% HP.
 3. **Stasis Wave** — AoE. 35% chance per target to inflict Stasis. No damage. 4-turn cooldown.
-4. **Curator's Lament** — At 25% HP, the Right Hand hesitates. For 1 turn, they do not attack. They say: *"Is this really what the world needs? More change? More loss?"* This is a narrative beat — the player sees that the Preservers are people, not monsters.
+4. **Grym's Lament** — At 25% HP, the Right Hand hesitates. For 1 turn, they do not attack. They say: *"Is this really what the world needs? More change? More loss?"* This is a narrative beat — the player sees that the Preservers are people, not monsters.
 5. **Final Stand** — After the hesitation turn, the Right Hand attacks with ATK × 2.0 to the party member with the lowest HP. One-time desperation attack.
 
 **Rewards**: 800 XP | 250 gold
@@ -1632,29 +1632,29 @@ At 50% HP, the First Dreamer speaks: *"You have seen what was. Now show me what 
 2. **Perfect Memory** — Summons a frozen scene (HP 200, DEF 40, cannot attack). The scene projects a field: all party healing is reduced by 50%. Destroying the scene removes the effect. Used at start of combat and once more at 50% HP.
 3. **Catalogue** (passive) — Each time a party member uses a skill, the Archive Keeper "catalogues" it. After 3 unique skills have been used, the Keeper gains +15% DEF permanently. This rewards using a varied skill rotation rather than spamming the same skill.
 4. **Stasis Prison** — Single target. Inflicts Stasis for 3 turns (extended duration). 5-turn cooldown. Targets the party member who has dealt the most cumulative damage.
-5. **Dissolution** (death trigger) — The Archive shatters. All frozen scenes in the room crack. The Keeper whispers: *"The Curator... will understand."* All party members gain +15% all stats for the remainder of the Fortress.
+5. **Dissolution** (death trigger) — The Archive shatters. All frozen scenes in the room crack. The Keeper whispers: *"Grym... will understand."* All party members gain +15% all stats for the remainder of the Fortress.
 
 **Rewards**: 900 XP | 300 gold
 
-**Guaranteed drop**: MF-09: The Curator's Grief (Sorrow/Dark/5★) — see [items-catalog.md](items-catalog.md). This is the Curator's personal memory and provides a unique dialogue option in the final scene.
+**Guaranteed drop**: MF-09: Grym's Grief (Sorrow/Dark/5★) — see [items-catalog.md](items-catalog.md). This is Grym's personal memory and provides a unique dialogue option in the final scene.
 
 ---
 
-### B-05: The Curator — Final Confrontation
+### B-05: Grym — Final Confrontation
 
 **Location**: Preserver Fortress Floor 3 — The First Memory Chamber
 
-**Context**: The Curator is not fought in traditional combat. The final confrontation is a **dialogue encounter** — the player must persuade, confront, or simply prove the Curator wrong through their actions. See [structure.md](../story/structure.md) for the narrative framing.
+**Context**: Grym is not fought in traditional combat. The final confrontation is a **dialogue encounter** — the player must persuade, confront, or simply prove Grym wrong through their actions. See [structure.md](../story/structure.md) for the narrative framing.
 
-**No combat stats.** The Curator does not attack the player. Instead:
+**No combat stats.** Grym does not attack the player. Instead:
 
-1. The player enters the First Memory Chamber. The Curator stands before the First Memory (MF-10), which hovers in a crystal lattice.
-2. The Curator speaks. Dialogue varies based on which gods the player recalled and which key items they carry (K-06: Curator's Manifesto, K-13: Curator's Doubt, MF-09: Curator's Grief).
-3. The player does not fight the Curator. They walk to the First Memory and remix it (see [items-catalog.md](items-catalog.md), MF-10 → MF-11).
-4. The Curator watches. Depending on dialogue choices, the Curator either steps aside willingly, is held back by their own Preservers (who have begun to doubt), or simply watches in silence.
+1. The player enters the First Memory Chamber. Grym stands before the First Memory (MF-10), which hovers in a crystal lattice.
+2. Grym speaks. Dialogue varies based on which gods the player recalled and which key items they carry (K-06: Grym's Manifesto, K-13: Grym's Doubt, MF-09: Grym's Grief).
+3. The player does not fight Grym. They walk to the First Memory and remix it (see [items-catalog.md](items-catalog.md), MF-10 → MF-11).
+4. Grym watches. Depending on dialogue choices, Grym either steps aside willingly, is held back by their own Preservers (who have begun to doubt), or simply watches in silence.
 5. The player broadcasts the remixed fragment (MF-11: World's New Dawn). The endgame bloom triggers (see [vibrancy-system.md](../world/vibrancy-system.md)).
 
-**Rewards**: The game ending. No XP (the game is over). The Curator becomes an archivist in the post-game world.
+**Rewards**: The game ending. No XP (the game is over). Grym becomes an archivist in the post-game world.
 
 ---
 
@@ -1774,5 +1774,5 @@ These tables specify which enemies spawn in each zone and at what frequency.
 | Sketch | 6 | Sketch Phantom through Memory Echo |
 | Depths | 5 | Memory Shade through Abyssal Memory |
 | Preservers | 4 | Scout through Archivist |
-| Bosses | 10 | Stagnation Heart, 4 Shrine Guardians, 4 Depths Bosses, Curator's Right Hand, Archive Keeper |
-| **Total unique enemies** | **34** | + The Curator (dialogue, no combat) |
+| Bosses | 10 | Stagnation Heart, 4 Shrine Guardians, 4 Depths Bosses, Grym's Right Hand, Archive Keeper |
+| **Total unique enemies** | **34** | + Grym (dialogue, no combat) |
