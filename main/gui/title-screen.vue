@@ -70,8 +70,8 @@
           >
             <span class="slot-label">{{ slot.label }}</span>
             <div class="slot-info" v-if="slot.meta">
-              <span class="slot-detail">Lv.{{ slot.meta.level }} &middot; {{ formatMap(slot.meta.mapId) }}</span>
-              <span class="slot-time">{{ formatDate(slot.meta.timestamp) }}</span>
+              <span class="slot-detail">Lv.{{ slot.meta.level }} {{ formatClass(slot.meta.classId) }} &middot; {{ formatMap(slot.meta.mapId) }}</span>
+              <span class="slot-extra">{{ formatPlayTime(slot.meta.playTimeMs) }} &middot; {{ formatDate(slot.meta.timestamp) }}</span>
             </div>
             <span class="slot-empty" v-else>Empty</span>
           </button>
@@ -349,6 +349,16 @@ export default {
         slotId,
         saveData,
       });
+    },
+    formatClass(classId: string): string {
+      const cls = ALL_CLASSES.find((c) => c.id === classId);
+      return cls ? cls.name.split(' ')[0] : classId;
+    },
+    formatPlayTime(ms: number): string {
+      const totalSec = Math.floor((ms || 0) / 1000);
+      const h = Math.floor(totalSec / 3600);
+      const m = Math.floor((totalSec % 3600) / 60);
+      return h > 0 ? `${h}h ${m}m` : `${m}m`;
     },
     formatMap(mapId: string): string {
       return mapId
@@ -923,8 +933,8 @@ export default {
 .slot-info {
   flex: 1;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 0.15rem;
 }
 
 .slot-detail {
@@ -933,7 +943,7 @@ export default {
   color: var(--text-primary);
 }
 
-.slot-time {
+.slot-extra {
   font-family: var(--font-body);
   font-size: 0.6rem;
   color: var(--text-secondary);
