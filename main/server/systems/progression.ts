@@ -52,7 +52,7 @@ export function xpForLevel(level: number): number {
  * Call after the player's class has been set.
  */
 export function initProgression(player: RpgPlayer): void {
-  const classId = player.class?.id;
+  const classId = player.getVariable('PLAYER_CLASS_ID') as string | undefined;
   if (!classId) return;
 
   player.setVariable('PLAYER_LEVEL', 1);
@@ -65,7 +65,7 @@ export function initProgression(player: RpgPlayer): void {
  * Returns the number of levels gained (0 if none).
  */
 export function addXP(player: RpgPlayer, amount: number): number {
-  const classId = player.class?.id;
+  const classId = player.getVariable('PLAYER_CLASS_ID') as string | undefined;
   if (!classId) return 0;
 
   const currentLevel = (player.getVariable('PLAYER_LEVEL') as number) || 1;

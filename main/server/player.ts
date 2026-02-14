@@ -19,6 +19,8 @@ function openTitleScreen(player: RpgPlayer) {
       // Generated class data may not match RPG-JS expectations yet
     }
 
+    // Store chosen class ID for progression system
+    player.setVariable('PLAYER_CLASS_ID', classId);
     // Store chosen graphic for onJoinMap; apply after map is loaded
     // so the client-side component exists to receive the sprite.
     player.setVariable('CHOSEN_GRAPHIC', SPRITE_MAP[classId] ?? 'sprite-player-knight');
