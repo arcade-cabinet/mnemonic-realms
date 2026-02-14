@@ -1,7 +1,17 @@
 import type { Direction, RpgPlayer, RpgPlayerHooks } from '@rpgjs/server';
+import type { CombatAction } from './systems/combat';
+import {
+  CombatPhase,
+  endCombat,
+  getCombat,
+  getCombatGoldReward,
+  getCombatXpReward,
+  processTurn,
+} from './systems/combat';
 import { checkEncounter, resetEncounterSteps } from './systems/encounters';
 import type { EquipmentSlot } from './systems/inventory';
-import { equipItem, useItem } from './systems/inventory';
+import { addGold, addItem, equipItem, useItem } from './systems/inventory';
+import { addXP } from './systems/progression';
 import type { SaveData, SaveSlotId } from './systems/save-load';
 import { autoSave, deserializePlayer, loadGame } from './systems/save-load';
 import { buyItem, getShopDefinitions, getShopInventory, sellItem } from './systems/shop';
@@ -26,6 +36,48 @@ function openInventory(player: RpgPlayer) {
   });
 
   inv.open();
+}
+
+function wireBattleUI(player: RpgPlayer) {
+  const gui = player.gui('battle-ui');
+
+  gui.on('combat-action', (data: CombatAction) => {
+    const state = processTurn(player, data);
+    if (!state) return;
+
+    // Auto-end combat on flee (no rewards)
+    if (state.phase === CombatPhase.Fled) {
+      endCombat(player);
+    }
+
+    // Auto-end combat on defeat (onDead handles game-over UI)
+    if (state.phase === CombatPhase.Defeat) {
+      endCombat(player);
+    }
+  });
+
+  gui.on('combat-end', (data: { phase: string }) => {
+    const state = getCombat(player);
+    if (!state) return;
+
+    if (data.phase === 'victory') {
+      // Award XP from defeated enemies
+      const xp = getCombatXpReward(state);
+      addXP(player, xp);
+
+      // Award gold from defeated enemies
+      const gold = getCombatGoldReward(state);
+      addGold(player, gold);
+
+      // Award rolled item drops
+      for (const drop of state.itemDrops) {
+        addItem(player, drop.itemId, drop.quantity);
+      }
+    }
+
+    // Clean up all combat state
+    endCombat(player);
+  });
 }
 
 /**
@@ -138,6 +190,7 @@ export const player: RpgPlayerHooks = {
   onConnected(player: RpgPlayer) {
     // Internal seed -- buried, never shown to the player (v2 creative direction)
     player.setVariable('SEED', Date.now().toString());
+    wireBattleUI(player);
     openTitleScreen(player);
   },
 
@@ -173,6 +226,9 @@ export const player: RpgPlayerHooks = {
   },
 
   onDead(player: RpgPlayer) {
+    // Clear any active combat state on death
+    endCombat(player);
+
     player.removeGui('rpg-hud');
     player.removeGui('inventory-screen');
     const gameOver = player.gui('game-over');

@@ -511,6 +511,13 @@ export default defineComponent({
           goldReward.value = state.enemies
             ?.filter((e: any) => e.hp <= 0)
             .reduce((sum: number, e: any) => sum + (e.gold ?? 0), 0) ?? 0;
+
+          // Read rolled item drops from combat state
+          const drops = (state.itemDrops as { itemId: string; quantity: number }[]) ?? [];
+          itemDrops.value = drops.map((d: { itemId: string; quantity: number }) => {
+            const name = consumableMap.get(d.itemId) ?? d.itemId;
+            return d.quantity > 1 ? `${name} x${d.quantity}` : name;
+          });
         }
 
         // Reset submenu when it's not player turn

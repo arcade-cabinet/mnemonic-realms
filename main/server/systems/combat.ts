@@ -51,6 +51,7 @@ export interface EnemyInstance {
   xp: number;
   gold: number;
   effects: ActiveEffect[];
+  drops: EnemyDropDDL[];
 }
 
 export interface CombatAction {
@@ -66,6 +67,11 @@ export interface TurnEntry {
   agi: number;
 }
 
+export interface ItemDrop {
+  itemId: string;
+  quantity: number;
+}
+
 export interface CombatState {
   phase: CombatPhase;
   enemies: EnemyInstance[];
@@ -75,6 +81,7 @@ export interface CombatState {
   defending: boolean;
   lastResult: TurnResult | null;
   playerEffects: ActiveEffect[];
+  itemDrops: ItemDrop[];
 }
 
 export interface TurnResult {
@@ -101,6 +108,11 @@ const VAR_COMBAT = 'COMBAT_STATE';
 // Enemy data loader (reads from DDL JSON at import time)
 // ---------------------------------------------------------------------------
 
+interface EnemyDropDDL {
+  itemId: string;
+  chance: number;
+}
+
 interface EnemyDDL {
   id: string;
   name: string;
@@ -111,6 +123,7 @@ interface EnemyDDL {
   agi: number;
   xp: number;
   gold: number;
+  drops?: EnemyDropDDL[];
 }
 
 const ALL_ENEMIES: EnemyDDL[] = [
@@ -183,6 +196,7 @@ function instantiateEnemy(ddl: EnemyDDL): EnemyInstance {
     xp: ddl.xp,
     gold: ddl.gold,
     effects: [],
+    drops: ddl.drops ?? [],
   };
 }
 
@@ -234,6 +248,7 @@ export function startCombat(player: RpgPlayer, enemyIds: string[]): CombatState 
     defending: false,
     lastResult: null,
     playerEffects: [],
+    itemDrops: [],
   };
 
   // Advance to the first turn (might be enemy if they have higher AGI)
@@ -349,6 +364,12 @@ export function processTurn(player: RpgPlayer, action: CombatAction): CombatStat
   }
 
   processEnemyTurns(player, state);
+
+  // Roll item drops when combat reaches victory
+  if (state.phase === CombatPhase.Victory && state.itemDrops.length === 0) {
+    state.itemDrops = rollItemDrops(state);
+  }
+
   saveCombatState(player, state);
   return state;
 }
@@ -635,4 +656,28 @@ export function getCombatXpReward(state: CombatState): number {
  */
 export function getCombatGoldReward(state: CombatState): number {
   return state.enemies.filter((e) => e.hp <= 0).reduce((sum, e) => sum + e.gold, 0);
+}
+
+/**
+ * Roll item drops from defeated enemies' drop tables.
+ * Each drop entry is rolled independently per defeated enemy.
+ * Duplicate item IDs are consolidated by summing quantities.
+ */
+export function rollItemDrops(state: CombatState): ItemDrop[] {
+  const dropMap = new Map<string, number>();
+
+  for (const enemy of state.enemies) {
+    if (enemy.hp > 0) continue;
+    for (const drop of enemy.drops) {
+      if (Math.random() < drop.chance) {
+        dropMap.set(drop.itemId, (dropMap.get(drop.itemId) ?? 0) + 1);
+      }
+    }
+  }
+
+  const drops: ItemDrop[] = [];
+  for (const [itemId, quantity] of dropMap) {
+    drops.push({ itemId, quantity });
+  }
+  return drops;
 }
