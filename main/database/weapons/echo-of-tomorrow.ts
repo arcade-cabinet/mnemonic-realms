@@ -11,4 +11,6 @@ import { Weapon } from '@rpgjs/database';
   atk: 47,
   // price is omitted as it's 0 and not purchasable
 })
-export default class EchoOfTomorrow {}
+export default class EchoOfTomorrow {
+  // Weapon stats configured via @Weapon decorator
+}

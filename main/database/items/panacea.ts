@@ -13,4 +13,6 @@ import { Item } from '@rpgjs/database';
   // Example: removeStates: [Poison, Slow, Weakness, Stasis, /* ... other negative states */],
   removeStates: [],
 })
-export default class Panacea {}
+export default class Panacea {
+  // Item properties configured via @Item decorator
+}

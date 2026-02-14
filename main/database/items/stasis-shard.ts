@@ -16,4 +16,6 @@ import { Item } from '@rpgjs/database';
   // TODO: Uncomment and add the Stasis state class once created.
   // addStates: [Stasis],
 })
-export default class StasisShard {}
+export default class StasisShard {
+  // Item properties configured via @Item decorator
+}

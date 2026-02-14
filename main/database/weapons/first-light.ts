@@ -14,4 +14,6 @@ import { Weapon } from '@rpgjs/database';
     int: { value: 48 },
   },
 })
-export default class FirstLight {}
+export default class FirstLight {
+  // Weapon stats configured via @Weapon decorator
+}

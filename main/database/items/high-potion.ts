@@ -11,4 +11,6 @@ import { Item } from '@rpgjs/database';
   hpValue: 250,
   consumable: true,
 })
-export default class HighPotion {}
+export default class HighPotion {
+  // Item properties configured via @Item decorator
+}

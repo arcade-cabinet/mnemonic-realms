@@ -10,4 +10,6 @@ import { Armor } from '@rpgjs/database';
   pdef: 30,
   statesDefense: ['stasis'], // Assuming 'stasis' is the ID for the Stasis state
 })
-export default class PreserversCrystalMail {}
+export default class PreserversCrystalMail {
+  // Stat modifiers applied via @Armor decorator
+}

@@ -18,4 +18,6 @@ import { Item } from '@rpgjs/database';
   // removeStates: [Stasis],
   // addStates: [{ state: StasisImmunity, rate: 1, turns: 3 }],
 })
-export default class StasisBreaker {}
+export default class StasisBreaker {
+  // Item properties configured via @Item decorator
+}

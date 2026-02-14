@@ -10,4 +10,6 @@ import { Weapon } from '@rpgjs/database';
   price: 75,
   atk: 8,
 })
-export default class SteelStiletto {}
+export default class SteelStiletto {
+  // Weapon stats configured via @Weapon decorator
+}

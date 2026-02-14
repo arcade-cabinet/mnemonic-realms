@@ -10,4 +10,6 @@ import { Item } from '@rpgjs/database';
   price: 40,
   consumable: true,
 })
-export default class SmokeBomb {}
+export default class SmokeBomb {
+  // Item properties configured via @Item decorator
+}

@@ -14,4 +14,6 @@ import { Weapon } from '@rpgjs/database';
     int: { value: 26 },
   },
 })
-export default class MarshHermitsCrook {}
+export default class MarshHermitsCrook {
+  // Weapon stats configured via @Weapon decorator
+}

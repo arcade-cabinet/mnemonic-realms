@@ -10,4 +10,6 @@ import { Armor } from '@rpgjs/database';
   pdef: 14,
   // price is omitted as it's not purchasable (indicated by '—' in the reference)
 })
-export default class HermitsRobe {}
+export default class HermitsRobe {
+  // Stat modifiers applied via @Armor decorator
+}

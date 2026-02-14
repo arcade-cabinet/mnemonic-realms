@@ -14,4 +14,6 @@ import { Weapon } from '@rpgjs/database';
     int: { value: 34 },
   },
 })
-export default class ArcaneCatalyst {}
+export default class ArcaneCatalyst {
+  // Weapon stats configured via @Weapon decorator
+}

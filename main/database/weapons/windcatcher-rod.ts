@@ -14,4 +14,6 @@ import { Weapon } from '@rpgjs/database';
     int: { value: 15 },
   },
 })
-export default class WindcatcherRod {}
+export default class WindcatcherRod {
+  // Weapon stats configured via @Weapon decorator
+}

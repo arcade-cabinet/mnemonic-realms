@@ -11,4 +11,6 @@ import { Weapon } from '@rpgjs/database';
   atk: 39,
   // price is omitted as it's 0 (not purchasable)
 })
-export default class TemporalShard {}
+export default class TemporalShard {
+  // Weapon stats configured via @Weapon decorator
+}

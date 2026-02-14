@@ -11,4 +11,6 @@ import { Weapon } from '@rpgjs/database';
   price: 900,
   atk: 32,
 })
-export default class PhantomEdge {}
+export default class PhantomEdge {
+  // Weapon stats configured via @Weapon decorator
+}

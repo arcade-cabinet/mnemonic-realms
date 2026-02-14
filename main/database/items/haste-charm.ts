@@ -15,4 +15,6 @@ import Slow from '../states/slow';
   removeStates: [Slow],
   addStates: [Haste],
 })
-export default class HasteCharm {}
+export default class HasteCharm {
+  // Item properties configured via @Item decorator
+}

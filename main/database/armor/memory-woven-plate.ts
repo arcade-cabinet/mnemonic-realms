@@ -9,4 +9,6 @@ import { Armor } from '@rpgjs/database';
     'Plate armor woven with echoes of forgotten memories. Its defense strengthens with each fragment broadcast.',
   pdef: 35,
 })
-export default class MemoryWovenPlate {}
+export default class MemoryWovenPlate {
+  // Stat modifiers applied via @Armor decorator
+}

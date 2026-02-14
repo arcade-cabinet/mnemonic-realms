@@ -15,4 +15,6 @@ import { Weapon } from '@rpgjs/database';
     int: { value: 20 },
   },
 })
-export default class RiversideCrosier {}
+export default class RiversideCrosier {
+  // Weapon stats configured via @Weapon decorator
+}

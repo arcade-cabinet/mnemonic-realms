@@ -14,4 +14,6 @@ import { Weapon } from '@rpgjs/database';
     int: { value: 33 },
   },
 })
-export default class LuminaryScepter {}
+export default class LuminaryScepter {
+  // Weapon stats configured via @Weapon decorator
+}

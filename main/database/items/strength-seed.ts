@@ -20,4 +20,6 @@ import { Item } from '@rpgjs/database';
 // Category: buff
 // Max stack: 5
 // Tier: 2
-export default class StrengthSeed {}
+export default class StrengthSeed {
+  // Item properties configured via @Item decorator
+}

@@ -18,4 +18,6 @@ import { Item } from '@rpgjs/database';
     },
   },
 })
-export default class WisdomSeed {}
+export default class WisdomSeed {
+  // Item properties configured via @Item decorator
+}

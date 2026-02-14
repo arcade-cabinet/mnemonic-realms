@@ -10,4 +10,6 @@ import { Effect, State } from '@rpgjs/database';
   description: 'Lose 5% max HP at end of each turn.',
   effects: [Effect.SLIP_DAMAGE],
 })
-export default class Poison {}
+export default class Poison {
+  // Status effect configured via @State decorator
+}

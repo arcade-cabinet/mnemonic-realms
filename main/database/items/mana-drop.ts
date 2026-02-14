@@ -17,4 +17,6 @@ import { Item } from '@rpgjs/database';
     },
   },
 })
-export default class ManaDrop {}
+export default class ManaDrop {
+  // Item properties configured via @Item decorator
+}

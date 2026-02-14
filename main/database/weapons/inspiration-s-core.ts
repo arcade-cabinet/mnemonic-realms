@@ -15,4 +15,6 @@ import { Weapon } from '@rpgjs/database';
   },
   // price is omitted as it's not purchasable (0g)
 })
-export default class InspirationsCore {}
+export default class InspirationsCore {
+  // Weapon stats configured via @Weapon decorator
+}

@@ -14,4 +14,6 @@ import Inspired from '../states/inspired'; // Assuming the path to your Inspired
   consumable: true,
   addStates: [Inspired],
 })
-export default class MemoryIncense {}
+export default class MemoryIncense {
+  // Item properties configured via @Item decorator
+}

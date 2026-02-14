@@ -37,4 +37,6 @@ import { Class } from '@rpgjs/database';
   // level 18: Holy Smite (SK-CL-06) from '../skills/cleric/holy-smite'
   // level 25: Emotional Resonance (SK-CL-07) from '../skills/cleric/emotional-resonance'
 })
-export default class Cleric {}
+export default class Cleric {
+  // Class configuration applied via @Class decorator
+}

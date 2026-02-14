@@ -41,4 +41,6 @@ import { Class } from '@rpgjs/database';
   // { level: 20, skill: CriticalInsight } from '../skills/rogue/critical-insight' (SK-RG-06)
   // { level: 25, skill: TemporalAmbush } from '../skills/rogue/temporal-ambush' (SK-RG-07)
 })
-export default class Rogue {}
+export default class Rogue {
+  // Class configuration applied via @Class decorator
+}

@@ -15,4 +15,6 @@ import { Weapon } from '@rpgjs/database';
     int: { value: 14 },
   },
 })
-export default class HearthstoneStaff {}
+export default class HearthstoneStaff {
+  // Weapon stats configured via @Weapon decorator
+}

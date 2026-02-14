@@ -12,4 +12,6 @@ import { Item } from '@rpgjs/database';
   // SP restoration (100%) is handled by game logic on item use,
   // as there is no direct 'spValue' or 'maxsp' current resource restoration via paramsModifier.
 })
-export default class Ether {}
+export default class Ether {
+  // Item properties configured via @Item decorator
+}

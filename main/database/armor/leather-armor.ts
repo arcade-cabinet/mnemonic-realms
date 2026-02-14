@@ -12,4 +12,6 @@ import { Armor } from '@rpgjs/database';
     maxhp: { rate: 0.05 },
   },
 })
-export default class LeatherArmor {}
+export default class LeatherArmor {
+  // Stat modifiers applied via @Armor decorator
+}

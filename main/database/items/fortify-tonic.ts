@@ -20,4 +20,6 @@ import { Item } from '@rpgjs/database';
     // Fortified, // TODO: Uncomment and add Fortified state class here
   ],
 })
-export default class FortifyTonic {}
+export default class FortifyTonic {
+  // Item properties configured via @Item decorator
+}

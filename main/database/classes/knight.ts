@@ -39,4 +39,6 @@ import { Class } from '@rpgjs/database';
   // { level: 20, skill: RememberedValor } from '../skills/knight/remembered-valor' (SK-KN-06)
   // { level: 25, skill: LastStand } from '../skills/knight/last-stand' (SK-KN-07)
 })
-export default class Knight {}
+export default class Knight {
+  // Class configuration applied via @Class decorator
+}

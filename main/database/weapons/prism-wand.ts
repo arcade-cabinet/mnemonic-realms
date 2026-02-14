@@ -15,4 +15,6 @@ import { Weapon } from '@rpgjs/database';
     int: { value: 21 },
   },
 })
-export default class PrismWand {}
+export default class PrismWand {
+  // Weapon stats configured via @Weapon decorator
+}

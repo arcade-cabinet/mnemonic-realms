@@ -7,4 +7,6 @@ import { State } from '@rpgjs/database';
   // Duration: 1 turn (managed by game logic, not a decorator property)
   // Stackable: false (not a decorator property)
 })
-export default class SteadfastWall {}
+export default class SteadfastWall {
+  // Status effect configured via @State decorator
+}

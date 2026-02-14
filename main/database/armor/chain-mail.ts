@@ -12,4 +12,6 @@ import { Armor } from '@rpgjs/database';
     agi: { value: -3 },
   },
 })
-export default class ChainMail {}
+export default class ChainMail {
+  // Stat modifiers applied via @Armor decorator
+}

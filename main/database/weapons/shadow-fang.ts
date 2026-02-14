@@ -12,4 +12,6 @@ import { Weapon } from '@rpgjs/database';
   price: 350,
   atk: 19,
 })
-export default class ShadowFang {}
+export default class ShadowFang {
+  // Weapon stats configured via @Weapon decorator
+}

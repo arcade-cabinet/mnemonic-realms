@@ -11,4 +11,6 @@ import { Item } from '@rpgjs/database';
 // Category: sp-recovery
 // Max stack: 10
 // Tier: 3
-export default class ManaSurge {}
+export default class ManaSurge {
+  // Item properties configured via @Item decorator
+}
