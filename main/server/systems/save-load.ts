@@ -72,7 +72,7 @@ const META_KEY = 'mnemonic-realms-save-meta';
 
 // Variable keys managed by known systems (excluded from generic variables capture).
 // PLAYER_CLASS_ID is covered by SYSTEM_VAR_PREFIXES ('PLAYER_'), listed here for clarity.
-const SYSTEM_VAR_PREFIXES = ['PLAYER_', 'VIBRANCY_'];
+const SYSTEM_VAR_PREFIXES = ['PLAYER_', 'VIBRANCY_', 'ACTIVE_QUEST_'];
 const SYSTEM_VAR_EXACT = [
   'INVENTORY',
   'EQUIPMENT',
