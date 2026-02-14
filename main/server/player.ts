@@ -3,6 +3,7 @@ import type { EquipmentSlot } from './systems/inventory';
 import { equipItem, useItem } from './systems/inventory';
 import type { SaveData, SaveSlotId } from './systems/save-load';
 import { autoSave, deserializePlayer, loadGame } from './systems/save-load';
+import { initVibrancy, syncZoneVibrancy } from './systems/vibrancy';
 
 const SPRITE_MAP: Record<string, string> = {
   knight: 'sprite-player-knight',
@@ -37,6 +38,9 @@ function openTitleScreen(player: RpgPlayer) {
       // Generated class data may not match RPG-JS expectations yet
     }
 
+    // Initialize vibrancy for all zones on new game start
+    initVibrancy(player);
+
     // Store chosen class ID for progression system
     player.setVariable('PLAYER_CLASS_ID', classId);
     // Store chosen graphic for onJoinMap; apply after map is loaded
@@ -70,6 +74,11 @@ function openTitleScreen(player: RpgPlayer) {
 }
 
 export const player: RpgPlayerHooks = {
+  props: {
+    zoneVibrancy: Number,
+    zoneBiome: String,
+  },
+
   onConnected(player: RpgPlayer) {
     // Internal seed -- buried, never shown to the player (v2 creative direction)
     player.setVariable('SEED', Date.now().toString());
@@ -85,6 +94,9 @@ export const player: RpgPlayerHooks = {
     if (graphic) {
       player.setGraphic(graphic);
     }
+
+    // Sync current zone vibrancy + biome to client
+    syncZoneVibrancy(player);
 
     // Auto-save on every map change
     autoSave(player);
