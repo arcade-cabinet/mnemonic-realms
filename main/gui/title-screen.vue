@@ -12,7 +12,7 @@
     <div class="frame-corner br"></div>
 
     <!-- Main Menu -->
-    <div class="main-content" v-if="!showNewGame">
+    <div class="main-content" v-if="!showNewGame && !showLoadGame">
       <div class="title-block">
         <div class="title-ornament">&#x2726;</div>
         <h1 class="title">Mnemonic Realms</h1>
@@ -28,15 +28,17 @@
           <span class="menu-label">New Quest</span>
           <span class="menu-arrow">&#x25B8;</span>
         </button>
-        <button class="menu-btn" disabled>
+        <button class="menu-btn" :disabled="!continueSlotId" @click="continueGame">
           <span class="menu-icon">&#x25C8;</span>
           <span class="menu-label">Continue</span>
-          <span class="menu-hint">No save found</span>
+          <span class="menu-hint" v-if="!continueSlotId">No save found</span>
+          <span class="menu-arrow" v-else>&#x25B8;</span>
         </button>
-        <button class="menu-btn" disabled>
+        <button class="menu-btn" :disabled="!hasSaves" @click="openLoadGame">
           <span class="menu-icon">&#x2630;</span>
           <span class="menu-label">Load Game</span>
-          <span class="menu-hint">Coming soon</span>
+          <span class="menu-hint" v-if="!hasSaves">No saves</span>
+          <span class="menu-arrow" v-else>&#x25B8;</span>
         </button>
         <button class="menu-btn" disabled>
           <span class="menu-icon">&#x2699;</span>
@@ -51,6 +53,30 @@
       </nav>
 
       <p class="version">v0.2.0</p>
+    </div>
+
+    <!-- Load Game Modal -->
+    <div class="new-game-modal" v-if="showLoadGame">
+      <div class="modal-frame">
+        <button class="modal-close" @click="showLoadGame = false">&#x2715;</button>
+        <h2 class="modal-title">Load Game</h2>
+        <div class="save-slots">
+          <button
+            class="save-slot"
+            v-for="slot in saveSlotList"
+            :key="slot.id"
+            :disabled="!slot.meta"
+            @click="loadSlot(slot.id)"
+          >
+            <span class="slot-label">{{ slot.label }}</span>
+            <div class="slot-info" v-if="slot.meta">
+              <span class="slot-detail">Lv.{{ slot.meta.level }} &middot; {{ formatMap(slot.meta.mapId) }}</span>
+              <span class="slot-time">{{ formatDate(slot.meta.timestamp) }}</span>
+            </div>
+            <span class="slot-empty" v-else>Empty</span>
+          </button>
+        </div>
+      </div>
     </div>
 
     <!-- New Game Modal -->
@@ -150,6 +176,14 @@
 
 <script lang="ts">
 import { audioManager } from '../client/audio';
+import { getMostRecentSlot, hasAnySave, readAllMeta, readSave } from '../client/save-load';
+import type { SaveSlotId, SaveSlotMeta } from '../server/systems/save-load';
+
+interface SlotDisplay {
+  id: SaveSlotId;
+  label: string;
+  meta: SaveSlotMeta | null;
+}
 
 interface ClassDef {
   id: string;
@@ -209,10 +243,14 @@ export default {
     return {
       visible: true,
       showNewGame: false,
+      showLoadGame: false,
       activeTab: 'class' as string,
       selectedClassIndex: 0,
       touchStartX: 0,
       keyHandler: null as ((e: KeyboardEvent) => void) | null,
+      hasSaves: false,
+      continueSlotId: null as SaveSlotId | null,
+      slotMeta: {} as Partial<Record<SaveSlotId, SaveSlotMeta>>,
     };
   },
   computed: {
@@ -228,6 +266,18 @@ export default {
         label,
         value,
         percent: Math.min(100, (value / (STAT_MAXES[label] || 100)) * 100),
+      }));
+    },
+    saveSlotList(): SlotDisplay[] {
+      const slots: { id: SaveSlotId; label: string }[] = [
+        { id: 'auto', label: 'Auto Save' },
+        { id: 'slot-1', label: 'Slot 1' },
+        { id: 'slot-2', label: 'Slot 2' },
+        { id: 'slot-3', label: 'Slot 3' },
+      ];
+      return slots.map((s) => ({
+        ...s,
+        meta: this.slotMeta[s.id] ?? null,
       }));
     },
   },
@@ -266,6 +316,53 @@ export default {
         else this.prevClass();
       }
     },
+    refreshSaveState() {
+      this.hasSaves = hasAnySave();
+      this.continueSlotId = getMostRecentSlot();
+      this.slotMeta = readAllMeta();
+    },
+    continueGame() {
+      if (!this.continueSlotId) return;
+      audioManager.init().then(() => {
+        audioManager.playSfx('SFX-UI-07');
+      });
+      this.visible = false;
+      this.rpgGuiInteraction('title-screen', 'continue-game', {
+        slotId: this.continueSlotId,
+      });
+    },
+    openLoadGame() {
+      this.refreshSaveState();
+      this.showLoadGame = true;
+      audioManager.init().then(() => {
+        audioManager.playSfx('SFX-UI-04');
+      });
+    },
+    loadSlot(slotId: SaveSlotId) {
+      const saveData = readSave(slotId);
+      if (!saveData) return;
+      audioManager.init().then(() => {
+        audioManager.playSfx('SFX-UI-07');
+      });
+      this.visible = false;
+      this.rpgGuiInteraction('title-screen', 'load-save', {
+        slotId,
+        saveData,
+      });
+    },
+    formatMap(mapId: string): string {
+      return mapId
+        .replace(/-/g, ' ')
+        .replace(/\b\w/g, (c: string) => c.toUpperCase());
+    },
+    formatDate(timestamp: number): string {
+      return new Date(timestamp).toLocaleDateString(undefined, {
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+      });
+    },
     startGame() {
       audioManager.init().then(() => {
         audioManager.playSfx('SFX-UI-07');
@@ -290,9 +387,13 @@ export default {
     },
   },
   mounted() {
+    this.refreshSaveState();
+
     const onKey = (e: KeyboardEvent) => {
       if (!this.visible) return;
-      if (this.showNewGame) {
+      if (this.showLoadGame) {
+        if (e.key === 'Escape') this.showLoadGame = false;
+      } else if (this.showNewGame) {
         if (e.key === 'ArrowLeft') this.prevClass();
         else if (e.key === 'ArrowRight') this.nextClass();
         else if (e.key === 'Escape') this.showNewGame = false;
@@ -775,6 +876,74 @@ export default {
   .modal-title { font-size: 1.5rem; }
   .tab-content { min-height: 180px; }
   .frame-corner { width: 80px; height: 80px; }
+}
+
+/* ── Save Slots ──────────────────────────────── */
+.save-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.save-slot {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid #5a2a2a;
+  border-radius: 4px;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.save-slot:hover:not(:disabled) {
+  border-color: var(--text-accent);
+  box-shadow: 0 0 12px rgba(184, 134, 11, 0.2);
+}
+
+.save-slot:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.slot-label {
+  font-weight: bold;
+  min-width: 70px;
+  color: var(--text-accent);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.slot-info {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slot-detail {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: var(--text-primary);
+}
+
+.slot-time {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  color: var(--text-secondary);
+}
+
+.slot-empty {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  font-style: italic;
 }
 
 /* ── Reduced Motion ───────────────────────────── */
