@@ -184,7 +184,7 @@
   <object id="5" name="EV-F1-005" type="dialogue" x="96" y="192" width="32" height="32">
    <properties>
     <property name="condition" value="!SQ-14_completed"/>
-    <property name="text" value="If SQ-14 NOT completed: Lira's frozen form. Dialogue: 'She's smiling. Whatever moment they froze her in, she was happy.'"/>
+    <property name="text" value="If SQ-14 NOT completed: Hana's frozen form. Dialogue: 'She's smiling. Whatever moment they froze her in, she was happy.'"/>
    </properties>
   </object>
   <object id="6" name="EV-F1-006" type="enemy_encounter" x="224" y="224" width="32" height="32">

@@ -5,12 +5,12 @@ export function spawnMapEvents(player: RpgPlayer) {
 
   // --- NPCs ---
 
-  // Petra
+  // Nel
   map.createDynamicEvent({
     x: 14,
     y: 24,
-    name: 'petra',
-    graphic: 'npc_petra',
+    name: 'nel',
+    graphic: 'npc_nel',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
       if (
@@ -18,7 +18,7 @@ export function spawnMapEvents(player: RpgPlayer) {
         !player.getVariable('GQ_04_STARTED')
       ) {
         player.showText(
-          'Petra: "Welcome, traveler. The air here hums with ancient power, a dormant god stirs..."',
+          'Nel: "Welcome, traveler. The air here hums with ancient power, a dormant god stirs..."',
         );
         player.setVariable('GQ_04_STARTED', true);
       } else if (
@@ -26,12 +26,12 @@ export function spawnMapEvents(player: RpgPlayer) {
         !player.getVariable('SQ_07_COMPLETED')
       ) {
         player.showText(
-          'Petra: "Are you ready to escort me? The path ahead is treacherous."',
+          'Nel: "Are you ready to escort me? The path ahead is treacherous."',
         );
         // TODO: Implement escort quest mechanic
       } else {
         player.showText(
-          'Petra: "The mountains hold many secrets. Be wary, and be strong."',
+          'Nel: "The mountains hold many secrets. Be wary, and be strong."',
         );
       }
     },

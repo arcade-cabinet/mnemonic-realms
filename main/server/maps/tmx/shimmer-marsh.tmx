@@ -319,9 +319,9 @@
   <object id="35" gid="179" x="576" y="960" width="32" height="32"/>
   <object id="36" gid="179" x="640" y="896" width="32" height="32"/>
   <!-- NPCs -->
-  <object id="37" name="Wynn" type="npc" x="352" y="448" width="32" height="32">
+  <object id="37" name="Vash" type="npc" x="352" y="448" width="32" height="32">
    <properties>
-    <property name="character_id" value="npc_wynn"/>
+    <property name="character_id" value="npc_vash"/>
     <property name="initial_position" value="11,14"/>
     <property name="movement" value="static"/>
    </properties>

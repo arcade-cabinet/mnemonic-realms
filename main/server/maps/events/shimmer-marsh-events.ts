@@ -5,12 +5,12 @@ export function spawnMapEvents(player: RpgPlayer) {
 
   // --- NPCs ---
 
-  // Wynn (Marsh Hermit)
+  // Vash (Marsh Hermit)
   map.createDynamicEvent({
     x: 11,
     y: 14,
-    graphic: 'npc_wynn',
-    name: 'wynn',
+    graphic: 'npc_vash',
+    name: 'vash',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
       if (player.getVariable('GQ_02_STARTED')) {

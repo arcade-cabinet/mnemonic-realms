@@ -5,7 +5,7 @@ export type TextSpeed = 'slow' | 'normal' | 'fast' | 'instant';
 export interface DialogueOptions {
   /** Display name of the speaker (shown in amber above text). */
   speaker?: string;
-  /** Character ID for portrait lookup (e.g. 'lira', 'elder-torin', 'god-resonance'). */
+  /** Character ID for portrait lookup (e.g. 'hana', 'elder-torin', 'god-resonance'). */
   characterId?: string;
   /** Expression variant: 'neutral' | 'happy' | 'sad' | 'determined'. */
   expression?: string;

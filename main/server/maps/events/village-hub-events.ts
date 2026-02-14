@@ -5,12 +5,12 @@ export function spawnMapEvents(player: RpgPlayer) {
 
   // --- NPCs ---
 
-  // Callum (callum)
+  // Artun (artun)
   map.createDynamicEvent({
     x: 19,
     y: 11,
-    name: 'callum',
-    graphic: 'npc_callum',
+    name: 'artun',
+    graphic: 'npc_artun',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
       const mq01Started = player.getVariable('MQ_01_STARTED');
@@ -18,24 +18,24 @@ export function spawnMapEvents(player: RpgPlayer) {
 
       if (mq01Started && !mq01Completed) {
         player.showText(
-          "Callum: Welcome, traveler. The Architect's Signet will guide you. Lira can tell you more.",
+          "Artun: Welcome, traveler. The Architect's Signet will guide you. Hana can tell you more.",
         );
       } else if (mq01Completed) {
         player.showText(
-          "Callum: The village thrives, thanks to the Architect's legacy. Keep an eye on the horizon.",
+          "Artun: The village thrives, thanks to the Architect's legacy. Keep an eye on the horizon.",
         );
       } else {
-        player.showText('Callum: A new face in the village. What brings you to Mnemonic Realms?');
+        player.showText('Artun: A new face in the village. What brings you to Mnemonic Realms?');
       }
     },
   });
 
-  // Lira (lira)
+  // Hana (hana)
   map.createDynamicEvent({
     x: 9,
     y: 19,
-    name: 'lira',
-    graphic: 'npc_lira',
+    name: 'hana',
+    graphic: 'npc_hana',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
       const mq01Started = player.getVariable('MQ_01_STARTED');
@@ -44,21 +44,21 @@ export function spawnMapEvents(player: RpgPlayer) {
 
       if (mq01Started && !mq01Completed) {
         player.showText(
-          "Lira: Ah, you must be the one Callum spoke of. Take this Architect's Signet. It will help you understand the Resonance Stones.",
+          "Hana: Ah, you must be the one Artun spoke of. Take this Architect's Signet. It will help you understand the Resonance Stones.",
         );
         // TODO: Implement item system — player.addItem('architect-signet', 1)
         player.setVariable('MQ_01_COMPLETED', true);
         player.setVariable('MQ_02_STARTED', true);
       } else if (mq02Completed) {
         player.showText(
-          'Lira: The Resonance Stones hold many secrets. Keep exploring their echoes.',
+          'Hana: The Resonance Stones hold many secrets. Keep exploring their echoes.',
         );
       } else if (mq01Completed && !mq02Completed) {
         player.showText(
-          'Lira: The Memorial Garden has a stone that needs your attention. Try using the Signet there.',
+          'Hana: The Memorial Garden has a stone that needs your attention. Try using the Signet there.',
         );
       } else {
-        player.showText('Lira: My workshop is always busy. Memories are a delicate craft.');
+        player.showText('Hana: My workshop is always busy. Memories are a delicate craft.');
       }
     },
   });
@@ -249,7 +249,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     },
   });
 
-  // EV-VH-013: Callum's telescope lookout
+  // EV-VH-013: Artun's telescope lookout
   map.createDynamicEvent({
     x: 12,
     y: 3,

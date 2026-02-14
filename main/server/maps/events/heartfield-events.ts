@@ -195,7 +195,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     },
   });
 
-  // EV-HF-009: Broadcast joy into frozen Lira (conditional SQ_14)
+  // EV-HF-009: Broadcast joy into frozen Hana (conditional SQ_14)
   map.createDynamicEvent({
     x: 34,
     y: 29,
@@ -213,7 +213,7 @@ export function spawnMapEvents(player: RpgPlayer) {
           // TODO: Advance SQ-14, potentially trigger a cutscene or state change
         } else {
           player.showText(
-            'The frozen form of Lira radiates immense sorrow. You feel a pull to broadcast joy, but lack sufficient fragments.',
+            'The frozen form of Hana radiates immense sorrow. You feel a pull to broadcast joy, but lack sufficient fragments.',
           );
         }
       } else {

@@ -24,7 +24,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     onAction(player: RpgPlayer) {
       if (player.getVariable('SQ_10_STARTED')) {
         player.showText(
-          'An ancient inscription reads: "The Memorial Garden was built atop our resting place. We chose this." Callum nods thoughtfully. "More pieces of the puzzle..."',
+          'An ancient inscription reads: "The Memorial Garden was built atop our resting place. We chose this." Artun nods thoughtfully. "More pieces of the puzzle..."',
         );
       } else {
         player.showText(
