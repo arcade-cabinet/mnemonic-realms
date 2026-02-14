@@ -67,7 +67,7 @@ export const MEMORY_FRAGMENTS: readonly MemoryFragment[] = [
   },
   {
     id: 'frag-vh-04',
-    name: "Callum's First Memory",
+    name: "Artun's First Memory",
     category: 'npc',
     emotion: 'joy',
     zone: 'village-hub',
@@ -75,7 +75,7 @@ export const MEMORY_FRAGMENTS: readonly MemoryFragment[] = [
   },
   {
     id: 'frag-vh-05',
-    name: "Lira's Spark",
+    name: "Hana's Spark",
     category: 'npc',
     emotion: 'fury',
     zone: 'village-hub',
