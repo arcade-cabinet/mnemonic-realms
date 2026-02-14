@@ -1,15 +1,51 @@
 import { RpgModule, type RpgServer } from '@rpgjs/server';
 import { database } from '../database';
+import { AmbergroveMap } from './maps/ambergrove';
+import { DepthsLevel1Map } from './maps/depths-level-1-memory-cellar';
+import { DepthsLevel2Map } from './maps/depths-level-2-drowned-archive';
+import { DepthsLevel3Map } from './maps/depths-level-3-resonant-caverns';
+import { DepthsLevel4Map } from './maps/depths-level-4-the-songline';
+import { DepthsLevel5Map } from './maps/depths-level-5-the-deepest-memory';
+import { FlickerveilMap } from './maps/flickerveil';
+import { FortressF1Map } from './maps/fortress-floor-1-gallery-of-moments';
+import { FortressF2Map } from './maps/fortress-floor-2-archive-of-perfection';
+import { FortressF3Map } from './maps/fortress-floor-3-first-memory-chamber';
+import { HalfDrawnForestMap } from './maps/the-half-drawn-forest';
+import { HeartfieldMap } from './maps/heartfield';
+import { HollowRidgeMap } from './maps/hollow-ridge';
+import { LuminousWastesMap } from './maps/luminous-wastes';
+import { MillbrookMap } from './maps/millbrook';
+import { ResonanceFieldsMap } from './maps/resonance-fields';
+import { ShimmerMarshMap } from './maps/shimmer-marsh';
+import { SunridgeMap } from './maps/sunridge';
+import { UndrawnPeaksMap } from './maps/the-undrawn-peaks';
+import { VillageHubMap } from './maps/village-hub';
 import { player } from './player';
-
-// Maps are registered dynamically from generated map modules.
-// If no maps are generated yet, the game will error on player.changeMap()
-// rather than silently loading a placeholder. Run `pnpm gen generate maps`
-// to generate map files from bible specs.
 
 @RpgModule<RpgServer>({
   player,
-  maps: [],
+  maps: [
+    VillageHubMap,
+    HeartfieldMap,
+    AmbergroveMap,
+    MillbrookMap,
+    SunridgeMap,
+    ShimmerMarshMap,
+    FlickerveilMap,
+    HollowRidgeMap,
+    ResonanceFieldsMap,
+    LuminousWastesMap,
+    HalfDrawnForestMap,
+    UndrawnPeaksMap,
+    DepthsLevel1Map,
+    DepthsLevel2Map,
+    DepthsLevel3Map,
+    DepthsLevel4Map,
+    DepthsLevel5Map,
+    FortressF1Map,
+    FortressF2Map,
+    FortressF3Map,
+  ],
   database,
 })
 export default class RpgServerModule {}

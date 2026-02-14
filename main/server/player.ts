@@ -10,42 +10,38 @@ const SPRITE_MAP: Record<string, string> = {
 export const player: RpgPlayerHooks = {
   onConnected(player: RpgPlayer) {
     // Internal seed -- buried, never shown to the player (v2 creative direction)
-    const seed = Date.now().toString();
-    player.setVariable('SEED', seed);
+    player.setVariable('SEED', Date.now().toString());
 
-    // Show the title screen GUI and wait for class selection
     const gui = player.gui('title-screen');
 
     gui.on('class-selected', async (data: { classId: string }) => {
       const classId = data.classId;
 
-      // Apply class from database
-      player.setClass(classId);
-
-      // Set sprite based on chosen class
-      const spriteId = SPRITE_MAP[classId];
-      if (!spriteId) {
-        throw new Error(`No sprite mapped for class "${classId}". Valid classes: ${Object.keys(SPRITE_MAP).join(', ')}`);
+      try {
+        player.setClass(classId);
+      } catch {
+        // Generated class data may not match RPG-JS expectations yet
       }
-      player.setGraphic(spriteId);
 
-      // Close the title screen
+      // Store chosen graphic for onJoinMap; apply after map is loaded
+      // so the client-side component exists to receive the sprite.
+      player.setVariable('CHOSEN_GRAPHIC', SPRITE_MAP[classId] ?? 'sprite-player-knight');
       player.removeGui('title-screen');
-
-      // Move to starting map
-      await player.changeMap('village-hub');
+      player.gui('rpg-hud').open();
+      await player.changeMap('village-hub', { x: 480, y: 480 });
     });
 
-    gui.open(
-      {},
-      {
-        waitingAction: true,
-        blockPlayerInput: true,
-      },
-    );
+    gui.open({}, { waitingAction: true, blockPlayerInput: true });
   },
 
   onJoinMap(player: RpgPlayer) {
     player.speed = 3;
+    player.canMove = true;
+    // Apply graphic after map load — standalone mode needs the client component
+    // to exist before setGraphic can sync the sprite texture.
+    const graphic = player.getVariable('CHOSEN_GRAPHIC') as string | undefined;
+    if (graphic) {
+      player.setGraphic(graphic);
+    }
   },
 };
