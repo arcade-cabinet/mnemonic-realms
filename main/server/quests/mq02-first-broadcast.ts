@@ -6,7 +6,7 @@ const quest: QuestFileExport = {
   category: 'main',
   act: 'act1',
   objectives: [
-    { index: 0, description: 'Visit Lira and learn memory operations', location: 'Village Hub', position: '8,18' },
+    { index: 0, description: 'Visit Hana and learn memory operations', location: 'Village Hub', position: '8,18' },
     { index: 1, description: 'Collect 2 fragments from Memorial Garden', location: 'Village Hub', position: '8,16' },
     { index: 2, description: 'Use the Remix Table', location: 'Village Hub' },
     { index: 3, description: 'Broadcast a remixed fragment', location: 'Village Hub' },

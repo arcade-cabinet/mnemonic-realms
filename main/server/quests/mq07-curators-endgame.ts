@@ -6,11 +6,11 @@ const quest: QuestFileExport = {
   category: 'main',
   act: 'act2',
   objectives: [
-    { index: 0, description: 'Return to Village Hub and speak with Callum' },
+    { index: 0, description: 'Return to Village Hub and speak with Artun' },
     { index: 1, description: "Learn about Curator's plan for First Memory" },
     { index: 2, description: 'Speak with Aric' },
     { index: 3, description: 'Recall at least 2 total gods' },
-    { index: 4, description: 'Return to Callum for expedition plan' },
+    { index: 4, description: 'Return to Artun for expedition plan' },
   ],
   rewards: {
     gold: 500,

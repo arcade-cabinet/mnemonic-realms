@@ -6,8 +6,8 @@ const quest: QuestFileExport = {
   category: 'god-recall',
   act: 'act2',
   objectives: [
-    { index: 0, description: "Follow Wynn to Verdance's Hollow" },
-    { index: 1, description: 'Solve root puzzle (broadcast earth/water fragment)' },
+    { index: 0, description: "Follow Vash to Verdance's Hollow" },
+    { index: 1, description: 'Solve root puzzle (broadcast Verdance fragment)' },
     { index: 2, description: 'Watch the Rootwalker recall vision' },
     { index: 3, description: 'Choose emotion and place potency 3+ fragment' },
     { index: 4, description: 'Witness Verdance transformation' },

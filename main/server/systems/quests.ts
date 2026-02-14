@@ -192,7 +192,7 @@ const QUEST_DEFS: readonly QuestDef[] = [
   },
   {
     id: 'SQ-07',
-    name: "Petra's Ridgewalkers",
+    name: "Nel's Ridgewalkers",
     category: 'side',
     objectiveCount: 4,
     rewards: { gold: 350, items: [{ id: 'A-08', qty: 1 }] },

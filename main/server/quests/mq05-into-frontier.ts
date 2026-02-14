@@ -6,9 +6,9 @@ const quest: QuestFileExport = {
   category: 'main',
   act: 'act2',
   objectives: [
-    { index: 0, description: 'Speak with Callum at Lookout Hill', position: '12,2' },
+    { index: 0, description: 'Speak with Artun at Lookout Hill', position: '12,2' },
     { index: 1, description: 'Cross mountain pass into Hollow Ridge' },
-    { index: 2, description: 'Reach Ridgewalker Camp and speak with Petra', position: '15,25' },
+    { index: 2, description: 'Reach Ridgewalker Camp and speak with Nel', position: '15,25' },
     { index: 3, description: 'Learn about dormant gods' },
     { index: 4, description: 'Visit another Frontier zone' },
   ],

@@ -8,7 +8,7 @@ const quest: QuestFileExport = {
   objectives: [
     { index: 0, description: 'Speak with Solen' },
     { index: 1, description: 'Investigate 4 flickering anomalies' },
-    { index: 2, description: 'Broadcast light-element fragment at archive' },
+    { index: 2, description: 'Broadcast Luminos-attuned fragment at archive' },
     { index: 3, description: 'Defeat Preserver patrol' },
     { index: 4, description: 'Return to Solen' },
   ],

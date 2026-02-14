@@ -6,11 +6,11 @@ const quest: QuestFileExport = {
   category: 'side',
   act: 'act2',
   objectives: [
-    { index: 0, description: 'Speak with Wynn' },
-    { index: 1, description: 'Collect 3 water-element fragments' },
+    { index: 0, description: 'Speak with Vash' },
+    { index: 1, description: 'Collect 3 Verdance-attuned fragments' },
     { index: 2, description: 'Broadcast into 3 marsh Resonance Stones' },
     { index: 3, description: 'Defeat Mire Crawler ambush' },
-    { index: 4, description: 'Return to Wynn' },
+    { index: 4, description: 'Return to Vash' },
   ],
   rewards: {
     gold: 300,
