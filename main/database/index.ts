@@ -1,4 +1,4 @@
-/** Auto-generated database barrel export. All 136 RPG-JS database entries. */
+/** Auto-generated database barrel export. All 152 RPG-JS database entries. */
 
 import ChainMail from './armor/chain-mail';
 import ForestWeave from './armor/forest-weave';
@@ -18,14 +18,30 @@ import Cleric from './classes/cleric';
 import Knight from './classes/knight';
 import Mage from './classes/mage';
 import Rogue from './classes/rogue';
+import AbyssalMemory from './enemies/abyssal-memory';
+import BogWisp from './enemies/bog-wisp';
+import CanopyCrawler from './enemies/canopy-crawler';
 import CragGolem from './enemies/crag-golem';
+import DrownedScholar from './enemies/drowned-scholar';
+import EchoToad from './enemies/echo-toad';
 import ForestWisp from './enemies/forest-wisp';
 import GrassSerpent from './enemies/grass-serpent';
+import GrymsRightHand from './enemies/gryms-right-hand';
 import HighlandHawk from './enemies/highland-hawk';
 import MeadowSprite from './enemies/meadow-sprite';
+import MemoryShade from './enemies/memory-shade';
+import MireCrawler from './enemies/mire-crawler';
+import MountainDrake from './enemies/mountain-drake';
+import PhantomFox from './enemies/phantom-fox';
+import PreserverAgent from './enemies/preserver-agent';
+import PreserverScout from './enemies/preserver-scout';
 import RiverNymph from './enemies/river-nymph';
+import SketchPhantom from './enemies/sketch-phantom';
+import StagnationHeart from './enemies/stagnation-heart';
 import StoneCrab from './enemies/stone-crab';
 import ThornbackBeetle from './enemies/thornback-beetle';
+import WindElemental from './enemies/wind-elemental';
+import WireframeDrake from './enemies/wireframe-drake';
 import AegisSeed from './items/aegis-seed';
 import Antidote from './items/antidote';
 import BroadcastAmplifier from './items/broadcast-amplifier';
@@ -157,14 +173,30 @@ export const database = {
   Knight,
   Mage,
   Rogue,
+  AbyssalMemory,
+  BogWisp,
+  CanopyCrawler,
   CragGolem,
+  DrownedScholar,
+  EchoToad,
   ForestWisp,
   GrassSerpent,
+  GrymsRightHand,
   HighlandHawk,
   MeadowSprite,
+  MemoryShade,
+  MireCrawler,
+  MountainDrake,
+  PhantomFox,
+  PreserverAgent,
+  PreserverScout,
   RiverNymph,
+  SketchPhantom,
+  StagnationHeart,
   StoneCrab,
   ThornbackBeetle,
+  WindElemental,
+  WireframeDrake,
   AegisSeed,
   Antidote,
   BroadcastAmplifier,
