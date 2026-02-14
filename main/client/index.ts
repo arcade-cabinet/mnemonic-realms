@@ -1,5 +1,6 @@
 import { type RpgClient, RpgModule, type RpgSceneMap, type RpgSceneMapHooks } from '@rpgjs/client';
 import { SCALE_MODES, settings } from 'pixi.js';
+import BattleUi from '../gui/battle-ui.vue';
 import CreditsScreen from '../gui/credits.vue';
 import DialogueBox from '../gui/dialogue-box.vue';
 import GameOver from '../gui/game-over.vue';
@@ -47,7 +48,7 @@ const sceneMap: RpgSceneMapHooks = {
 
 @RpgModule<RpgClient>({
   spritesheets: [...generatedSprites, ...aliasSprites],
-  gui: [TitleScreen, DialogueBox, Hud, GameOver, CreditsScreen],
+  gui: [TitleScreen, DialogueBox, Hud, GameOver, CreditsScreen, BattleUi],
   scenes: {
     map: sceneMap,
   },
