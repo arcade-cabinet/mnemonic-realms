@@ -7,6 +7,6 @@ import { spawnMapEvents } from './events/village-hub-events';
 })
 export class VillageHubMap extends RpgMap {
   override onJoin(player: RpgPlayer) {
-    spawnMapEvents(player);
+    spawnMapEvents(player, this);
   }
 }

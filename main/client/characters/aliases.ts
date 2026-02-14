@@ -24,11 +24,15 @@ const CHAR_ROWS = 31;
 const CHAR_ROWS_PER_DIR = 4;
 
 function makeAliasSprite(id: string, image: any) {
-  return Spritesheet({
+  // Spritesheet() decorator returns void — must capture class ref separately
+  class Sprite {}
+  Spritesheet({
     id,
     image,
     framesWidth: 4,
     framesHeight: CHAR_ROWS,
+    width: 4 * 16,
+    height: CHAR_ROWS * 16,
     textures: {
       [Animation.Stand]: {
         animations: (dir: number) => [
@@ -47,7 +51,8 @@ function makeAliasSprite(id: string, image: any) {
         ],
       },
     },
-  })(class {});
+  })(Sprite);
+  return Sprite;
 }
 
 // ---------------------------------------------------------------------------

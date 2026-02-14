@@ -197,6 +197,9 @@ export const player: RpgPlayerHooks = {
   onJoinMap(player: RpgPlayer) {
     player.speed = 3;
     player.canMove = true;
+    // Sprites are 16×16; default hitbox is 32×32 (tile size) which blocks
+    // movement whenever any event occupies an adjacent tile.
+    player.setHitbox(16, 16);
     // Apply graphic after map load — standalone mode needs the client component
     // to exist before setGraphic can sync the sprite texture.
     const graphic = player.getVariable('CHOSEN_GRAPHIC') as string | undefined;

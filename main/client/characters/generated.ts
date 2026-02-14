@@ -25,11 +25,15 @@ const dirRow = (dir: number, rowsPerDir: number): number =>
 // Factory: 4-column walk/stand sprite (characters, NPCs, enemies)
 // ---------------------------------------------------------------------------
 function makeWalkSprite(id: string, image: any, totalRows: number, rowsPerDir: number) {
-  return Spritesheet({
+  // Spritesheet() decorator returns void — must capture class ref separately
+  class Sprite {}
+  Spritesheet({
     id,
     image,
     framesWidth: 4,
     framesHeight: totalRows,
+    width: 4 * 16,
+    height: totalRows * 16,
     textures: {
       [Animation.Stand]: {
         animations: (dir: number) => [[{ time: 0, frameX: 0, frameY: dirRow(dir, rowsPerDir) }]],
@@ -46,7 +50,8 @@ function makeWalkSprite(id: string, image: any, totalRows: number, rowsPerDir: n
         ],
       },
     },
-  })(class {});
+  })(Sprite);
+  return Sprite;
 }
 
 // ---------------------------------------------------------------------------
@@ -59,11 +64,14 @@ function makeBossSprite(id: string, image: any, totalFrames: number) {
   }
   frames.push({ time: totalFrames * 5 });
 
-  return Spritesheet({
+  class Sprite {}
+  Spritesheet({
     id,
     image,
     framesWidth: totalFrames,
     framesHeight: 1,
+    width: totalFrames * 96,
+    height: 96,
     textures: {
       [Animation.Stand]: {
         animations: () => [frames],
@@ -72,7 +80,8 @@ function makeBossSprite(id: string, image: any, totalFrames: number) {
         animations: () => [frames],
       },
     },
-  })(class {});
+  })(Sprite);
+  return Sprite;
 }
 
 // ===========================================================================
