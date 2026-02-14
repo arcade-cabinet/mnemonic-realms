@@ -86,6 +86,9 @@ export interface TurnResult {
   fled?: boolean;
   skillName?: string;
   message: string;
+  critical?: boolean;
+  element?: string;
+  statusApplied?: string[];
 }
 
 // ---------------------------------------------------------------------------
@@ -409,6 +412,9 @@ function resolvePlayerAction(player: RpgPlayer, state: CombatState, action: Comb
         healing: skillResult.healing,
         skillName: skillResult.skillName,
         message: skillResult.message,
+        critical: skillResult.critical,
+        element: skillResult.element,
+        statusApplied: skillResult.statusApplied,
       };
       break;
     }
@@ -437,6 +443,8 @@ function resolvePlayerAttack(player: RpgPlayer, state: CombatState, action: Comb
     action: ActionType.Attack,
     targetName: target.name,
     damage: result.damage,
+    critical: result.critical,
+    element: 'neutral',
     message: `Player attacks ${target.name} for ${result.damage} damage.${critMsg}`,
   };
 }
@@ -507,6 +515,8 @@ function resolveEnemyTurn(player: RpgPlayer, state: CombatState): void {
         action: ActionType.Skill,
         targetName: 'Player',
         damage: skillResult.damage,
+        critical: skillResult.critical,
+        element: 'neutral',
         message: `${aiAction.message} ${skillResult.damage} damage to Player.${critMsg}`,
       };
       break;
@@ -522,6 +532,8 @@ function resolveEnemyTurn(player: RpgPlayer, state: CombatState): void {
         action: ActionType.Attack,
         targetName: 'Player',
         damage: result.damage,
+        critical: result.critical,
+        element: 'neutral',
         message: `${enemy.name} attacks Player for ${result.damage} damage.${critMsg}`,
       };
       break;

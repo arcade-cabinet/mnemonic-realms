@@ -15,8 +15,10 @@ import { audioManager } from './audio';
 import { aliasSprites } from './characters/aliases';
 import { generatedSprites } from './characters/generated';
 import {
+  initCombatEventWiring,
   initMemoryEventWiring,
   initVibrancySystem,
+  resetCombatEventWiring,
   resetMemoryEventWiring,
   resetParticles,
   resetVibrancy,
@@ -48,8 +50,10 @@ const sceneMap: RpgSceneMapHooks = {
     resetVibrancy();
     resetZoneEffects();
     resetMemoryEventWiring();
+    resetCombatEventWiring();
     initVibrancySystem();
     initMemoryEventWiring();
+    initCombatEventWiring();
     // Trigger zone audio change based on current map
     audioManager.init().then(() => {
       const mapId = (scene as RpgSceneMap & { data?: { id?: string } })?.data?.id ?? '';

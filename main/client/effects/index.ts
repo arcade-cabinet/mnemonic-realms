@@ -35,6 +35,8 @@ export {
   showStatusEffect,
   stasisAttack,
 } from './combat-effects';
+// Combat event wiring (US-032)
+export { initCombatEventWiring, resetCombatEventWiring } from './combat-event-wiring';
 export {
   addFilter,
   animateFilter,
