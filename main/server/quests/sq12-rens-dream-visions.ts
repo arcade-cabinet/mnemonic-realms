@@ -39,7 +39,7 @@ export default {
     }
 
     // Check player level
-    const playerLevel = player.get('level');
+    const playerLevel = player.getVariable('PLAYER_LEVEL') as number;
     if (playerLevel < 16 || playerLevel > 22) {
       return false; // Player level not within range
     }

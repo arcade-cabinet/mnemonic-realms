@@ -61,7 +61,7 @@ export class TrainingGroundEvent extends RpgEvent {
     // Assuming Hana is already in the party, this is more about her "presence" for the scene.
     // If Hana is a party member, she might already be following.
     // For dialogue, we might want a dedicated NPC instance for the scene.
-    const liraEvent = await createDynamicEvent({
+    const hanaEvent = await createDynamicEvent({
       map: player.map,
       x: player.position.x + 1, // Place Hana next to the player
       y: player.position.y,
@@ -80,9 +80,9 @@ export class TrainingGroundEvent extends RpgEvent {
     });
 
     // Ensure Hana is facing the player
-    if (liraEvent) {
-      liraEvent.event.setDirection(player.direction); // Hana faces player
-      player.setDirection(liraEvent.event.direction); // Player faces Hana
+    if (hanaEvent) {
+      hanaEvent.event.setDirection(player.direction); // Hana faces player
+      player.setDirection(hanaEvent.event.direction); // Player faces Hana
     }
 
     // 2. Dialogue sequences via player.showText()
@@ -142,8 +142,8 @@ export class TrainingGroundEvent extends RpgEvent {
 
     // Teleport player and Hana to the workshop (assuming workshop is at 9,19 in Village Hub)
     await player.changeMap('village-hub', { x: 9, y: 19 });
-    if (liraEvent) {
-      await liraEvent.event.changeMap('village-hub', { x: 10, y: 19 }); // Hana next to player in workshop
+    if (hanaEvent) {
+      await hanaEvent.event.changeMap('village-hub', { x: 10, y: 19 }); // Hana next to player in workshop
     }
 
     await player.showText(
@@ -210,12 +210,12 @@ export class TrainingGroundEvent extends RpgEvent {
     );
 
     // 5. Update quest state
-    player.set('quest_MQ-02_objective_3_completed', true); // Advance MQ-02 objective 3
-    player.set('quest_MQ-02_completed', true); // Complete MQ-02
+    player.setVariable('quest_MQ-02_objective_3_completed', true); // Advance MQ-02 objective 3
+    player.setVariable('quest_MQ-02_completed', true); // Complete MQ-02
 
     // Clean up dynamic NPC
-    if (liraEvent) {
-      liraEvent.event.remove();
+    if (hanaEvent) {
+      hanaEvent.event.remove();
     }
   }
 }
