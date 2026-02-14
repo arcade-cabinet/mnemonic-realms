@@ -1,4 +1,5 @@
 import type { RpgPlayer } from '@rpgjs/server';
+import { checkSkillUnlocks } from './skills';
 import { VIBRANCY_ZONES } from './vibrancy';
 
 // ---------------------------------------------------------------------------
@@ -235,6 +236,9 @@ export async function deserializePlayer(player: RpgPlayer, data: SaveData): Prom
   if (data.mapId) {
     await player.changeMap(data.mapId, { x: data.positionX, y: data.positionY });
   }
+
+  // Re-derive learned skills from class + level + subclass branch
+  checkSkillUnlocks(player);
 
   // Restore HP/SP after map change (changeMap may reset them)
   player.hp = Math.min(data.hp, player.param.maxHp || data.hp);
