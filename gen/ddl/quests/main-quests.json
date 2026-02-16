@@ -1,0 +1,209 @@
+[
+  {
+    "id": "MQ-01", "name": "The Architect's Awakening", "category": "main", "act": "act1",
+    "levelRange": "1", "giver": "Callum", "giverLocation": "Village Hub — Elder's House (18, 10)",
+    "triggerCondition": "Game start, after class selection",
+    "objectives": [
+      { "index": 0, "description": "Speak with Callum at Elder's House", "location": "Village Hub", "position": "18,10" },
+      { "index": 1, "description": "Receive Architect's Signet from Lira", "location": "Village Hub", "position": "8,18" },
+      { "index": 2, "description": "Collect first fragment from Memorial Garden", "location": "Village Hub", "position": "8,16" },
+      { "index": 3, "description": "Return to Callum", "location": "Village Hub", "position": "18,10" }
+    ],
+    "rewards": [
+      { "type": "key-item", "id": "K-01", "name": "Architect's Signet" },
+      { "type": "fragment", "id": "MF-01", "name": "Callum's First Lesson" },
+      { "type": "gold", "name": "Gold", "amount": 50 }
+    ],
+    "completionDialogue": "Callum: There it is — that glow in your palm. You can feel it, can't you? The world remembering through you.",
+    "failureConditions": "None (tutorial quest)",
+    "unlocks": ["MQ-02"], "dependencies": [],
+    "targetPath": "main/server/quests/mq01-architects-awakening.ts"
+  },
+  {
+    "id": "MQ-02", "name": "First Broadcast", "category": "main", "act": "act1",
+    "levelRange": "1-2", "giver": "Lira", "giverLocation": "Village Hub — Lira's Workshop (8, 18)",
+    "triggerCondition": "MQ-01 complete",
+    "objectives": [
+      { "index": 0, "description": "Visit Lira and learn memory operations", "location": "Village Hub", "position": "8,18" },
+      { "index": 1, "description": "Collect 2 fragments from Memorial Garden", "location": "Village Hub", "position": "8,16" },
+      { "index": 2, "description": "Use the Remix Table", "location": "Village Hub" },
+      { "index": 3, "description": "Broadcast a remixed fragment", "location": "Village Hub" }
+    ],
+    "rewards": [
+      { "type": "key-item", "id": "K-03", "name": "Remix Table Access" },
+      { "type": "fragment", "id": "MF-02", "name": "Lira's Warmth" },
+      { "type": "gold", "name": "Gold", "amount": 80 }
+    ],
+    "completionDialogue": "Lira: Did you feel that? The stone sang back to you. That's the world saying 'thank you.'",
+    "failureConditions": "None (tutorial quest)",
+    "unlocks": ["MQ-03", "SQ-01"], "dependencies": ["MQ-01"],
+    "targetPath": "main/server/quests/mq02-first-broadcast.ts"
+  },
+  {
+    "id": "MQ-03", "name": "The Settled Lands", "category": "main", "act": "act1",
+    "levelRange": "2-6", "giver": "Callum", "giverLocation": "Village Hub — Elder's House",
+    "triggerCondition": "MQ-02 complete",
+    "objectives": [
+      { "index": 0, "description": "Speak with Callum for exploration guidance", "location": "Village Hub" },
+      { "index": 1, "description": "Visit Heartfield, Ambergrove, Millbrook, Sunridge" },
+      { "index": 2, "description": "Collect at least 5 memory fragments" },
+      { "index": 3, "description": "Defeat encounters in each zone" },
+      { "index": 4, "description": "Return to Callum", "location": "Village Hub" }
+    ],
+    "rewards": [
+      { "type": "gold", "name": "Gold", "amount": 200 },
+      { "type": "fragment", "name": "Joy/Earth Fragment (2-star)" },
+      { "type": "key-item", "id": "K-02", "name": "Callum's Letters" }
+    ],
+    "completionDialogue": "Callum: You've seen it now — how the world changes at the edges.",
+    "failureConditions": "None",
+    "unlocks": ["MQ-04", "SQ-02", "SQ-03", "SQ-04"], "dependencies": ["MQ-02"],
+    "targetPath": "main/server/quests/mq03-settled-lands.ts"
+  },
+  {
+    "id": "MQ-04", "name": "The Stagnation", "category": "main", "act": "act1",
+    "levelRange": "6-10", "giver": "Automatic", "giverLocation": "Heartfield — Stagnation Clearing (35, 30)",
+    "triggerCondition": "MQ-03 complete, player enters Heartfield",
+    "objectives": [
+      { "index": 0, "description": "Travel to Stagnation Clearing", "location": "Heartfield", "position": "35,30" },
+      { "index": 1, "description": "Witness Lira investigating" },
+      { "index": 2, "description": "Survive Preserver patrol combat" },
+      { "index": 3, "description": "Watch Lira's freezing cutscene" },
+      { "index": 4, "description": "Collect Lira's Scream (MF-04)" },
+      { "index": 5, "description": "Broadcast potency 2+ fragment to halt expansion" },
+      { "index": 6, "description": "Return to Callum", "location": "Village Hub" }
+    ],
+    "rewards": [
+      { "type": "fragment", "id": "MF-04", "name": "Lira's Scream" },
+      { "type": "fragment", "id": "MF-03", "name": "Echo of the Stagnation" },
+      { "type": "gold", "name": "Gold", "amount": 150 }
+    ],
+    "completionDialogue": "Callum: Lira... No. The Frontier. The answers are in the Frontier.",
+    "failureConditions": "None (combat auto-resolves)",
+    "unlocks": ["MQ-05", "SQ-05"], "dependencies": ["MQ-03"],
+    "targetPath": "main/server/quests/mq04-the-stagnation.ts"
+  },
+  {
+    "id": "MQ-05", "name": "Into the Frontier", "category": "main", "act": "act2",
+    "levelRange": "10-12", "giver": "Callum", "giverLocation": "Village Hub — Lookout Hill",
+    "triggerCondition": "MQ-04 complete",
+    "objectives": [
+      { "index": 0, "description": "Speak with Callum at Lookout Hill", "position": "12,2" },
+      { "index": 1, "description": "Cross mountain pass into Hollow Ridge" },
+      { "index": 2, "description": "Reach Ridgewalker Camp and speak with Petra", "position": "15,25" },
+      { "index": 3, "description": "Learn about dormant gods" },
+      { "index": 4, "description": "Visit another Frontier zone" }
+    ],
+    "rewards": [
+      { "type": "gold", "name": "Gold", "amount": 300 },
+      { "type": "item", "id": "C-SC-04", "name": "Stasis Breaker x3" }
+    ],
+    "completionDialogue": "Petra: You're the Architect Callum wrote about. Good — we've been waiting.",
+    "failureConditions": "None",
+    "unlocks": ["MQ-06", "GQ-01", "GQ-02", "GQ-03", "GQ-04", "SQ-06", "SQ-07", "SQ-08", "SQ-09"],
+    "dependencies": ["MQ-04"],
+    "targetPath": "main/server/quests/mq05-into-frontier.ts"
+  },
+  {
+    "id": "MQ-06", "name": "Recall the First God", "category": "main", "act": "act2",
+    "levelRange": "12-16", "giver": "Any dormant god shrine", "giverLocation": "Any Frontier shrine",
+    "triggerCondition": "MQ-05 complete",
+    "objectives": [
+      { "index": 0, "description": "Discover a dormant god shrine" },
+      { "index": 1, "description": "Complete shrine approach challenge" },
+      { "index": 2, "description": "Choose emotion and recall god with potency 3+ fragment" },
+      { "index": 3, "description": "Witness transformation" }
+    ],
+    "rewards": [
+      { "type": "vibrancy", "name": "Zone vibrancy +15" },
+      { "type": "unlock", "name": "Subclass unlock (first recall)" }
+    ],
+    "completionDialogue": "Varies by god and emotion",
+    "failureConditions": "None",
+    "unlocks": ["MQ-07"], "dependencies": ["MQ-05"],
+    "targetPath": "main/server/quests/mq06-recall-first-god.ts"
+  },
+  {
+    "id": "MQ-07", "name": "The Curator's Endgame", "category": "main", "act": "act2",
+    "levelRange": "16-20", "giver": "Callum", "giverLocation": "Village Hub — Elder's House",
+    "triggerCondition": "1+ gods recalled AND SQ-05 complete",
+    "objectives": [
+      { "index": 0, "description": "Return to Village Hub and speak with Callum" },
+      { "index": 1, "description": "Learn about Curator's plan for First Memory" },
+      { "index": 2, "description": "Speak with Aric" },
+      { "index": 3, "description": "Recall at least 2 total gods" },
+      { "index": 4, "description": "Return to Callum for expedition plan" }
+    ],
+    "rewards": [
+      { "type": "gold", "name": "Gold", "amount": 500 },
+      { "type": "item", "id": "C-HP-03", "name": "High Potion x5" },
+      { "type": "item", "id": "C-SP-03", "name": "Mana Surge x3" }
+    ],
+    "completionDialogue": "Callum: The First Memory. If the Curator crystallizes it, the world becomes a museum.",
+    "failureConditions": "None",
+    "unlocks": ["MQ-08"], "dependencies": ["MQ-06", "SQ-05"],
+    "targetPath": "main/server/quests/mq07-curators-endgame.ts"
+  },
+  {
+    "id": "MQ-08", "name": "Through the Sketch", "category": "main", "act": "act3",
+    "levelRange": "20-24", "giver": "Callum", "giverLocation": "Frontier zone edge",
+    "triggerCondition": "MQ-07 complete",
+    "objectives": [
+      { "index": 0, "description": "Enter the Sketch" },
+      { "index": 1, "description": "Navigate Half-Drawn Forest (3 broadcasts)" },
+      { "index": 2, "description": "Cross Luminous Wastes (5 stones)" },
+      { "index": 3, "description": "Reach Undrawn Peaks" },
+      { "index": 4, "description": "Survive 2 Sketch encounters" },
+      { "index": 5, "description": "Broadcast potency 3+ at Fortress Gate" }
+    ],
+    "rewards": [
+      { "type": "gold", "name": "Gold", "amount": 400 },
+      { "type": "item", "id": "A-13", "name": "Sketchweave Cloak" }
+    ],
+    "completionDialogue": "The fortress shimmers into focus before you.",
+    "failureConditions": "None",
+    "unlocks": ["MQ-09"], "dependencies": ["MQ-07"],
+    "targetPath": "main/server/quests/mq08-through-sketch.ts"
+  },
+  {
+    "id": "MQ-09", "name": "The Preserver Fortress", "category": "main", "act": "act3",
+    "levelRange": "24-28", "giver": "Automatic", "giverLocation": "Preserver Fortress",
+    "triggerCondition": "MQ-08 complete",
+    "objectives": [
+      { "index": 0, "description": "Navigate Floor 1: Crystal Gallery" },
+      { "index": 1, "description": "Navigate Floor 2: Archive of Perfection" },
+      { "index": 2, "description": "Navigate Floor 3: First Memory Chamber" },
+      { "index": 3, "description": "Confront the Curator (dialogue)" },
+      { "index": 4, "description": "Collect the First Memory (MF-10)" }
+    ],
+    "rewards": [
+      { "type": "fragment", "id": "MF-09", "name": "Curator's Grief" },
+      { "type": "fragment", "id": "MF-10", "name": "The First Memory" },
+      { "type": "gold", "name": "Gold", "amount": 800 }
+    ],
+    "completionDialogue": "The Curator: Then show me. Remix the First Memory.",
+    "failureConditions": "Respawn at F2 entrance if defeated by Preserver Captain",
+    "unlocks": ["MQ-10"], "dependencies": ["MQ-08"],
+    "targetPath": "main/server/quests/mq09-preserver-fortress.ts"
+  },
+  {
+    "id": "MQ-10", "name": "The First Memory Remix", "category": "main", "act": "act3",
+    "levelRange": "28-30", "giver": "Automatic", "giverLocation": "Fortress — First Memory Chamber",
+    "triggerCondition": "MQ-09 complete",
+    "objectives": [
+      { "index": 0, "description": "Remix First Memory with any fragment" },
+      { "index": 1, "description": "Create World's New Dawn (MF-11)" },
+      { "index": 2, "description": "Broadcast World's New Dawn" },
+      { "index": 3, "description": "Watch Endgame Bloom" },
+      { "index": 4, "description": "View epilogue" }
+    ],
+    "rewards": [
+      { "type": "fragment", "id": "MF-11", "name": "World's New Dawn" },
+      { "type": "unlock", "name": "Game completion + New Game+" }
+    ],
+    "completionDialogue": "Lira: I can feel it. The whole world, singing. What did you do?",
+    "failureConditions": "None (remix always succeeds)",
+    "unlocks": ["new-game-plus"], "dependencies": ["MQ-09"],
+    "targetPath": "main/server/quests/mq10-first-memory-remix.ts"
+  }
+]

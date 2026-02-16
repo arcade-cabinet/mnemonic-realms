@@ -1,0 +1,36 @@
+[
+  {
+    "id": "BGM-SR",
+    "name": "Wind at the Threshold",
+    "type": "zone",
+    "zone": "sunridge",
+    "tempo": 68,
+    "key": "Bb major",
+    "timeSignature": "4/4",
+    "mood": "expansive",
+    "durationSec": 150,
+    "stems": [
+      { "layer": 1, "instruments": "Pan pipes (breathy)", "description": "Long sustained notes. Wind across highlands." },
+      { "layer": 2, "instruments": "Cello + wind chime", "description": "Cello slow bass. Wind chime random metallic sparkle." },
+      { "layer": 3, "instruments": "French horn + full strings", "description": "Horn melody soars. Strings swell like a vista." },
+      { "layer": 4, "instruments": "Male choir (humming)", "description": "Grounding, earthy, determined. Sound of endurance." }
+    ]
+  },
+  {
+    "id": "BGM-HR",
+    "name": "Stone and Flame",
+    "type": "zone",
+    "zone": "hollow-ridge",
+    "tempo": 76,
+    "key": "D minor",
+    "timeSignature": "4/4",
+    "mood": "determined",
+    "durationSec": 150,
+    "stems": [
+      { "layer": 1, "instruments": "French horn (solo)", "description": "Bold, resolute melody. Mountain echo reverb." },
+      { "layer": 2, "instruments": "Timpani + low strings", "description": "Timpani on downbeats. Strings harmonic foundation." },
+      { "layer": 3, "instruments": "Full brass + snare drum", "description": "Trumpet and trombone join horn. Military precision." },
+      { "layer": 4, "instruments": "Male choir (powerful)", "description": "Driving, heroic. The mountains sing back." }
+    ]
+  }
+]

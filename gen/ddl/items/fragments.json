@@ -1,0 +1,38 @@
+[
+  {
+    "id": "MF-GENERIC",
+    "name": "Memory Fragment",
+    "category": "memory-fragment",
+    "desc": "Glowing amber crystal shard, warm golden light radiating outward. The core collectible."
+  },
+  {
+    "id": "MF-JOY",
+    "name": "Fragment of Joy",
+    "category": "memory-fragment",
+    "desc": "Bright golden crystal shard with sunlight yellow glow and warm sparkles."
+  },
+  {
+    "id": "MF-FURY",
+    "name": "Fragment of Fury",
+    "category": "memory-fragment",
+    "desc": "Deep red crystal shard with forge-fire glow, small flame particles."
+  },
+  {
+    "id": "MF-SORROW",
+    "name": "Fragment of Sorrow",
+    "category": "memory-fragment",
+    "desc": "Twilight purple crystal shard with soft luminous tears of light."
+  },
+  {
+    "id": "MF-AWE",
+    "name": "Fragment of Awe",
+    "category": "memory-fragment",
+    "desc": "Aurora green crystal shard with prismatic sparkle, shifting colors at edges."
+  },
+  {
+    "id": "MF-CALM",
+    "name": "Fragment of Calm",
+    "category": "memory-fragment",
+    "desc": "Sky blue crystal shard with gentle steady glow, no sparkle, peaceful."
+  }
+]

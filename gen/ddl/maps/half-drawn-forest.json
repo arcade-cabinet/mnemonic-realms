@@ -1,0 +1,46 @@
+[
+  {
+    "id": "half-drawn-forest",
+    "name": "The Half-Drawn Forest",
+    "filename": "half-drawn-forest.tmx",
+    "width": 40,
+    "height": 40,
+    "tileSize": 32,
+    "biome": "sketch",
+    "tilesetRefs": ["tiles_sketch_{tier}"],
+    "startVibrancy": 8,
+    "category": "overworld",
+    "act": "III",
+    "connections": [
+      { "fromTile": "0,20", "direction": "west", "toMap": "flickerveil", "toTile": "48,25", "condition": "MQ-07+" },
+      { "fromTile": "0,10", "direction": "northwest", "toMap": "undrawn-peaks", "toTile": "39,25", "condition": "MQ-08+" },
+      { "fromTile": "20,39", "direction": "south", "toMap": "luminous-wastes", "toTile": "20,0", "condition": "MQ-08+" },
+      { "fromTile": "13,36", "direction": "down", "toMap": "depths-l5", "toTile": "10,0", "condition": "MQ-08+" }
+    ],
+    "npcSpawns": [],
+    "enemyZones": [
+      { "zone": "Forest Paths", "bounds": "5,5 -> 35,35", "enemies": ["Sketch Wolf","Unfinished Treant","Memory Echo"], "levelRange": "22-26", "encounterRate": "Common: 2 Wolves; Standard: 1 Wolf + 1 Treant; Rare: 1 Treant + 2 Echoes" },
+      { "zone": "Archive Approach", "bounds": "25,5 -> 35,15", "enemies": ["Memory Echo"], "levelRange": "24-26", "encounterRate": "Standard: 2 Echoes" }
+    ],
+    "eventTriggers": [
+      { "id": "EV-HDF-001", "position": "20,25", "type": "action", "linkedQuest": "MQ-08", "repeat": "quest", "description": "Living Sketch broadcast solidification" },
+      { "id": "EV-HDF-002", "position": "28,9", "type": "action", "repeat": "repeat", "description": "Archive of Intentions lore" },
+      { "id": "EV-HDF-003", "position": "13,36", "type": "touch", "repeat": "conditional", "description": "Sketch Passage -> Depths L5" },
+      { "id": "EV-HDF-004", "position": "0,20", "type": "touch", "repeat": "conditional", "description": "West -> Flickerveil" },
+      { "id": "EV-HDF-005", "position": "0,10", "type": "touch", "repeat": "conditional", "description": "NW -> Undrawn Peaks" },
+      { "id": "EV-HDF-006", "position": "20,39", "type": "touch", "repeat": "conditional", "description": "South -> Luminous Wastes" }
+    ],
+    "resonanceStones": [
+      { "id": "RS-HF2-01", "position": "20,25", "fragments": "created by broadcasting", "notes": "Living Sketch" },
+      { "id": "RS-HF2-02", "position": "28,9", "fragments": "awe/neutral/3 (x2)" },
+      { "id": "RS-HF2-03", "position": "29,10", "fragments": "sorrow/light/3" },
+      { "id": "RS-HF2-04", "position": "10,15", "fragments": "calm/earth/3" },
+      { "id": "RS-HF2-05", "position": "35,30", "fragments": "fury/wind/3" }
+    ],
+    "treasureChests": [
+      { "id": "CH-HF2-01", "position": "20,24", "contents": "Sketchweave Cloak (A-13)", "condition": "After solidification" },
+      { "id": "CH-HF2-02", "position": "30,10", "contents": "Dissolved Essence (C-SP-09) x1" },
+      { "id": "CH-HF2-03", "position": "14,37", "contents": "Mana Surge (C-SP-03) x2" }
+    ]
+  }
+]

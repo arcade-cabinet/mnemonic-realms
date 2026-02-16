@@ -1,0 +1,47 @@
+[
+  {
+    "id": "C-BF-01",
+    "name": "Strength Seed",
+    "category": "buff",
+    "effect": "ATK +15% for 3 turns (one character)",
+    "price": 100,
+    "stackMax": 5,
+    "tier": 2
+  },
+  {
+    "id": "C-BF-02",
+    "name": "Wisdom Seed",
+    "category": "buff",
+    "effect": "INT +15% for 3 turns (one character)",
+    "price": 100,
+    "stackMax": 5,
+    "tier": 2
+  },
+  {
+    "id": "C-BF-03",
+    "name": "Aegis Seed",
+    "category": "buff",
+    "effect": "DEF +15% for 3 turns (one character)",
+    "price": 100,
+    "stackMax": 5,
+    "tier": 2
+  },
+  {
+    "id": "C-BF-04",
+    "name": "Haste Seed",
+    "category": "buff",
+    "effect": "AGI +15% for 3 turns (one character)",
+    "price": 100,
+    "stackMax": 5,
+    "tier": 2
+  },
+  {
+    "id": "C-BF-05",
+    "name": "Memory Incense",
+    "category": "buff",
+    "effect": "Grant Inspired status (+20% all stats, 3 turns) to one character.",
+    "price": 350,
+    "stackMax": 3,
+    "tier": 3
+  }
+]

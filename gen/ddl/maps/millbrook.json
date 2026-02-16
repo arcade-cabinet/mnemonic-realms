@@ -1,0 +1,53 @@
+[
+  {
+    "id": "millbrook",
+    "name": "Millbrook",
+    "filename": "millbrook.tmx",
+    "width": 40,
+    "height": 40,
+    "tileSize": 32,
+    "biome": "riverside",
+    "tilesetRefs": ["tiles_riverside_{tier}"],
+    "startVibrancy": 50,
+    "category": "overworld",
+    "act": "I",
+    "connections": [
+      { "fromTile": "39,20", "direction": "east", "toMap": "village-hub", "toTile": "0,14", "condition": "always" },
+      { "fromTile": "20,39", "direction": "south", "toMap": "heartfield", "toTile": "5,20", "condition": "always" },
+      { "fromTile": "0,20", "direction": "west", "toMap": "hollow-ridge", "toTile": "49,35", "condition": "MQ-04+" }
+    ],
+    "npcSpawns": [
+      { "npcId": "fisher-tam", "name": "Fisher Tam", "position": "29,29", "graphic": "npc_fisher_m1", "movement": "Static", "quests": ["SQ-04"] },
+      { "npcId": "specialty-shop", "name": "Specialty Shopkeeper", "position": "15,15", "graphic": "npc_shopkeep_f1", "movement": "Static" },
+      { "npcId": "millbrook-elder", "name": "Millbrook Elder", "position": "16,13", "graphic": "npc_elder_m1", "movement": "Patrol", "patrolRange": "13,12 -> 22,20" },
+      { "npcId": "bridge-guard", "name": "Bridge Guard", "position": "20,19", "graphic": "npc_guard_m1", "movement": "Static" },
+      { "npcId": "townsfolk-a", "name": "Townsfolk A", "position": "14,17", "graphic": "npc_villager_f2", "movement": "Wander" },
+      { "npcId": "townsfolk-b", "name": "Townsfolk B", "position": "22,14", "graphic": "npc_villager_m3", "movement": "Wander" }
+    ],
+    "enemyZones": [
+      { "zone": "West Riverbank", "bounds": "2,10 -> 16,30", "enemies": ["E-SL-05","E-SL-06"], "levelRange": "4-5", "encounterRate": "Common: 1 Nymph; Standard: 1 Nymph + 1 Crab" },
+      { "zone": "East Riverbank", "bounds": "22,8 -> 38,30", "enemies": ["E-SL-06"], "levelRange": "4-5", "encounterRate": "Common: 1 Crab; Standard: 2 Crabs" },
+      { "zone": "Falls Approach", "bounds": "2,2 -> 12,8", "enemies": ["E-SL-05"], "levelRange": "4", "encounterRate": "Common: 1 Nymph (low)" }
+    ],
+    "eventTriggers": [
+      { "id": "EV-MB-001", "position": "29,29", "type": "action", "linkedQuest": "SQ-04", "repeat": "quest", "description": "Fisher Tam strange lights dialogue" },
+      { "id": "EV-MB-002", "position": "6,4", "type": "touch", "linkedQuest": "SQ-04", "repeat": "quest", "description": "Hidden cave behind waterfall" },
+      { "id": "EV-MB-003", "position": "15,15", "type": "action", "repeat": "repeat", "description": "Specialty shop" },
+      { "id": "EV-MB-004", "position": "39,20", "type": "touch", "repeat": "repeat", "description": "East -> Village Hub" },
+      { "id": "EV-MB-005", "position": "20,39", "type": "touch", "repeat": "repeat", "description": "South -> Heartfield" },
+      { "id": "EV-MB-006", "position": "0,20", "type": "touch", "linkedQuest": "MQ-04", "repeat": "conditional", "description": "West -> Hollow Ridge" },
+      { "id": "EV-MB-007", "position": "21,19", "type": "action", "repeat": "once", "description": "Bridge Resonance Stone + rainbow" }
+    ],
+    "resonanceStones": [
+      { "id": "RS-MB-01", "position": "21,19", "fragments": "joy/water/2", "notes": "Rainbow at Vivid" },
+      { "id": "RS-MB-02", "position": "7,4", "fragments": "awe/water/3", "notes": "Behind Upstream Falls" },
+      { "id": "RS-MB-03", "position": "30,30", "fragments": "calm/water/1" },
+      { "id": "RS-MB-04", "position": "8,5", "fragments": "sorrow/water/3", "notes": "Inside falls cave (SQ-04)" }
+    ],
+    "treasureChests": [
+      { "id": "CH-MB-01", "position": "7,5", "contents": "sorrow/water/3 + awe/water/3 fragments", "condition": "Inside falls cave (SQ-04)" },
+      { "id": "CH-MB-02", "position": "25,10", "contents": "Haste Seed (C-BF-04) x2" },
+      { "id": "CH-MB-03", "position": "32,32", "contents": "Minor Potion (C-HP-01) x3" }
+    ]
+  }
+]

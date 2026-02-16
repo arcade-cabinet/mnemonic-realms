@@ -1,0 +1,36 @@
+[
+  {
+    "id": "protagonist",
+    "name": "Protagonist",
+    "heading": "Player Character",
+    "appearance": "Young adventurer, determined expression. Warm brown hair, bright eyes full of wonder.",
+    "type": "named"
+  },
+  {
+    "id": "hana",
+    "name": "Hana",
+    "heading": "Hana (Mentor / Workshop Keeper)",
+    "appearance": "Mid-30s woman, sage green traveler's clothes, satchel, hair tied back. Warm, steady expression.",
+    "type": "named"
+  },
+  {
+    "id": "artun",
+    "name": "Artun",
+    "heading": "Artun (Village Elder)",
+    "appearance": "Elderly man, tall and thin. Dark warm brown coat, walking stick, white hair. Wise, measured gaze.",
+    "type": "named"
+  },
+  {
+    "id": "nel",
+    "name": "Nel",
+    "heading": "Nel (Ridge Guide)",
+    "appearance": "Weathered, lean. Gray-brown cloak, climbing rope coiled at hip, wind-tanned skin. Stoic expression with kind eyes.",
+    "type": "named"
+  },
+  {
+    "id": "elder-torin",
+    "name": "Elder Torin",
+    "appearance": "Elderly man, tall and thin. Long white beard, warm brown robes, wooden walking stick. Wise eyes.",
+    "type": "named"
+  }
+]

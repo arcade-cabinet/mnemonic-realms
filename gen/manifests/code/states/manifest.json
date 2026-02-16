@@ -1,0 +1,269 @@
+{
+  "schemaVersion": "1.0.0",
+  "description": "Status effect (state) code generation manifest",
+  "updatedAt": "2026-02-14T15:11:55.054Z",
+  "category": "database-states",
+  "systemPrompt": "You are an RPG-JS 4.3.0 TypeScript code generator.\nGenerate a single RPG-JS state database file using @rpgjs/database decorators.\nOutput ONLY valid TypeScript code. No markdown fences. No explanatory text.\nThe file must export the state class as the default export.\nImport from '@rpgjs/database'.\n\n=== RPG-JS 4.3.0 @State API Reference ===\nimport { State, Effect } from '@rpgjs/database';\n\nValid @State decorator params (StateOptions):\n  id?: string              — Unique ID. Defaults to lowercased class name.\n  name?: string            — Display name.\n  description?: string     — Flavor text.\n  paramsModifier?: object  — Runtime stat changes while state is active:\n                             { [paramName]: { value?: number, rate?: number } }\n                             Valid param names: 'maxhp', 'maxsp', 'str', 'int', 'dex', 'agi'\n                             value = flat add/subtract, rate = percentage multiplier (0.2 = +20%, -0.3 = -30%)\n  effects?: Effect[]       — Built-in engine effects from the Effect enum:\n                             Effect.CAN_NOT_SKILL    — Cannot use skills\n                             Effect.CAN_NOT_ITEM     — Cannot use items\n                             Effect.GUARD             — Reduced damage (damageGuard formula)\n                             Effect.SUPER_GUARD       — Damage / 4\n                             Effect.HALF_SP_COST      — SP costs halved\n                             Effect.SLIP_DAMAGE       — Lose 10% HP each turn (poison-like)\n                             Effect.CAN_NOT_EVADE     — Cannot dodge\n                             Effect.DUAL_ATTACK       — Attack twice\n                             Effect.FAST_ATTACK       — Always acts first\n                             Effect.CRITICAL_BONUS    — Increased crit chance\n                             Effect.AUTO_HP_RECOVER   — Regen HP each turn\n                             Effect.DOUBLE_EXP_GAIN   — Double XP\n  statesEfficiency?: array — Vulnerability to other states.\n  elementsEfficiency?: array — Vulnerability to elements.\n\nINVALID properties (do NOT use): duration, stackable, turns, maxStack, removeOnDeath, onTick, onApply.\nState duration is managed by game logic calling player.removeState(), not by the decorator.\n\nExample (stat debuff):\nimport { State } from '@rpgjs/database';\n@State({\n  id: 'ST-SLOW',\n  name: 'Slow',\n  description: 'Agility is halved.',\n  paramsModifier: { agi: { rate: -0.5 } },\n})\nexport default class Slow {}\n\nExample (poison with Effect):\nimport { State, Effect } from '@rpgjs/database';\n@State({\n  id: 'ST-POISON',\n  name: 'Poison',\n  description: 'Lose HP each turn.',\n  effects: [Effect.SLIP_DAMAGE],\n})\nexport default class Poison {}\n\nExample (stun):\nimport { State, Effect } from '@rpgjs/database';\n@State({\n  id: 'ST-STUN',\n  name: 'Stun',\n  description: 'Cannot act.',\n  effects: [Effect.CAN_NOT_SKILL, Effect.CAN_NOT_ITEM],\n})\nexport default class Stun {}\n\nExample (buff):\nimport { State } from '@rpgjs/database';\n@State({\n  id: 'ST-INSPIRED',\n  name: 'Inspired',\n  description: 'All stats increased by 20%.',\n  paramsModifier: {\n    str: { rate: 0.2 },\n    int: { rate: 0.2 },\n    dex: { rate: 0.2 },\n    agi: { rate: 0.2 },\n    maxhp: { rate: 0.2 },\n    maxsp: { rate: 0.2 },\n  },\n})\nexport default class Inspired {}\n=== End API Reference ===",
+  "assets": [
+    {
+      "id": "ST-POISON",
+      "name": "Poison",
+      "category": "database-states",
+      "filename": "poison.ts",
+      "targetPath": "main/database/states/poison.ts",
+      "prompt": "Generate an RPG-JS state file for \"Poison\" (ID: ST-POISON).\n\nProperties:\n- Effect: Lose 5% max HP at end of each turn\n- Duration: 3 turns (add as comment — duration is managed by game logic, not the decorator)\n- Stackable: false (add as comment — not a decorator property)\n\nUse the @State decorator from '@rpgjs/database'.\nSet id, name, description.\nImplement the effect using paramsModifier (for stat changes) and/or effects: [Effect.X] (for engine effects).\n- For stat buffs/debuffs: use paramsModifier with rate (percentage) or value (flat).\n  e.g. DEF +40% = paramsModifier: { dex: { rate: 0.4 } } (note: DEF maps to 'dex' in RPG-JS params)\n  e.g. AGI halved = paramsModifier: { agi: { rate: -0.5 } }\n  e.g. +20% all stats = paramsModifier with rate: 0.2 on str, int, dex, agi, maxhp, maxsp\n- For poison (HP loss per turn): use effects: [Effect.SLIP_DAMAGE]\n- For stun (cannot act): use effects: [Effect.CAN_NOT_SKILL, Effect.CAN_NOT_ITEM]\n- For cannot-evade: use effects: [Effect.CAN_NOT_EVADE]\nDo NOT use: duration, stackable, turns, maxStack, onTick, onApply — none of these are decorator params.\nImport Effect from '@rpgjs/database' if you use effects.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "Status Effects Applied by Skills",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "850945ff09042626",
+        "outputHash": "af10d4c4f9ac7cadcb84c97f095f286150749e4a14c756b4f3aa14d863dbfbf7",
+        "generatedAt": "2026-02-13T13:43:17.726Z",
+        "generationTimeMs": 6955,
+        "fileSizeBytes": 337,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "ST-SLOW",
+      "name": "Slow",
+      "category": "database-states",
+      "filename": "slow.ts",
+      "targetPath": "main/database/states/slow.ts",
+      "prompt": "Generate an RPG-JS state file for \"Slow\" (ID: ST-SLOW).\n\nProperties:\n- Effect: AGI halved\n- Duration: 2 turns (add as comment — duration is managed by game logic, not the decorator)\n- Stackable: false (add as comment — not a decorator property)\n\nUse the @State decorator from '@rpgjs/database'.\nSet id, name, description.\nImplement the effect using paramsModifier (for stat changes) and/or effects: [Effect.X] (for engine effects).\n- For stat buffs/debuffs: use paramsModifier with rate (percentage) or value (flat).\n  e.g. DEF +40% = paramsModifier: { dex: { rate: 0.4 } } (note: DEF maps to 'dex' in RPG-JS params)\n  e.g. AGI halved = paramsModifier: { agi: { rate: -0.5 } }\n  e.g. +20% all stats = paramsModifier with rate: 0.2 on str, int, dex, agi, maxhp, maxsp\n- For poison (HP loss per turn): use effects: [Effect.SLIP_DAMAGE]\n- For stun (cannot act): use effects: [Effect.CAN_NOT_SKILL, Effect.CAN_NOT_ITEM]\n- For cannot-evade: use effects: [Effect.CAN_NOT_EVADE]\nDo NOT use: duration, stackable, turns, maxStack, onTick, onApply — none of these are decorator params.\nImport Effect from '@rpgjs/database' if you use effects.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "Status Effects Applied by Skills",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "12b81de75fc0268b",
+        "outputHash": "cbdbd18de38910034703f75e0e81223da89abce1d002c52e8e51675f2d42785c",
+        "generatedAt": "2026-02-13T13:43:21.332Z",
+        "generationTimeMs": 1602,
+        "fileSizeBytes": 313,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "ST-WEAKNESS",
+      "name": "Weakness",
+      "category": "database-states",
+      "filename": "weakness.ts",
+      "targetPath": "main/database/states/weakness.ts",
+      "prompt": "Generate an RPG-JS state file for \"Weakness\" (ID: ST-WEAKNESS).\n\nProperties:\n- Effect: DEF -30%\n- Duration: 2 turns (add as comment — duration is managed by game logic, not the decorator)\n- Stackable: false (add as comment — not a decorator property)\n\nUse the @State decorator from '@rpgjs/database'.\nSet id, name, description.\nImplement the effect using paramsModifier (for stat changes) and/or effects: [Effect.X] (for engine effects).\n- For stat buffs/debuffs: use paramsModifier with rate (percentage) or value (flat).\n  e.g. DEF +40% = paramsModifier: { dex: { rate: 0.4 } } (note: DEF maps to 'dex' in RPG-JS params)\n  e.g. AGI halved = paramsModifier: { agi: { rate: -0.5 } }\n  e.g. +20% all stats = paramsModifier with rate: 0.2 on str, int, dex, agi, maxhp, maxsp\n- For poison (HP loss per turn): use effects: [Effect.SLIP_DAMAGE]\n- For stun (cannot act): use effects: [Effect.CAN_NOT_SKILL, Effect.CAN_NOT_ITEM]\n- For cannot-evade: use effects: [Effect.CAN_NOT_EVADE]\nDo NOT use: duration, stackable, turns, maxStack, onTick, onApply — none of these are decorator params.\nImport Effect from '@rpgjs/database' if you use effects.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "Status Effects Applied by Skills",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "4189d3d243ad7a21",
+        "outputHash": "f38d83c02b632dce1e5fcb95ccbc9682c271bc8ae5530b79c2be2564101cc882",
+        "generatedAt": "2026-02-13T13:43:24.940Z",
+        "generationTimeMs": 1606,
+        "fileSizeBytes": 378,
+        "model": "gemini-2.5-flash"
+      },
+      "lastError": "Truncated output: unbalanced braces or missing closing statement"
+    },
+    {
+      "id": "ST-STASIS",
+      "name": "Stasis",
+      "category": "database-states",
+      "filename": "stasis.ts",
+      "targetPath": "main/database/states/stasis.ts",
+      "prompt": "Generate an RPG-JS state file for \"Stasis\" (ID: ST-STASIS).\n\nProperties:\n- Effect: Cannot use memory-based class abilities\n- Duration: 2 turns (add as comment — duration is managed by game logic, not the decorator)\n- Stackable: false (add as comment — not a decorator property)\n\nUse the @State decorator from '@rpgjs/database'.\nSet id, name, description.\nImplement the effect using paramsModifier (for stat changes) and/or effects: [Effect.X] (for engine effects).\n- For stat buffs/debuffs: use paramsModifier with rate (percentage) or value (flat).\n  e.g. DEF +40% = paramsModifier: { dex: { rate: 0.4 } } (note: DEF maps to 'dex' in RPG-JS params)\n  e.g. AGI halved = paramsModifier: { agi: { rate: -0.5 } }\n  e.g. +20% all stats = paramsModifier with rate: 0.2 on str, int, dex, agi, maxhp, maxsp\n- For poison (HP loss per turn): use effects: [Effect.SLIP_DAMAGE]\n- For stun (cannot act): use effects: [Effect.CAN_NOT_SKILL, Effect.CAN_NOT_ITEM]\n- For cannot-evade: use effects: [Effect.CAN_NOT_EVADE]\nDo NOT use: duration, stackable, turns, maxStack, onTick, onApply — none of these are decorator params.\nImport Effect from '@rpgjs/database' if you use effects.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "Status Effects Applied by Skills",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "71e8fc39d9139eda",
+        "outputHash": "f4660e5377c5539ca048b6b7e32b0e49d6cf5b33607a5fbc08dd0e62d934451b",
+        "generatedAt": "2026-02-13T13:43:29.964Z",
+        "generationTimeMs": 3021,
+        "fileSizeBytes": 393,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "ST-STUN",
+      "name": "Stun",
+      "category": "database-states",
+      "filename": "stun.ts",
+      "targetPath": "main/database/states/stun.ts",
+      "prompt": "Generate an RPG-JS state file for \"Stun\" (ID: ST-STUN).\n\nProperties:\n- Effect: Cannot act for 1 turn\n- Duration: 1 turns (add as comment — duration is managed by game logic, not the decorator)\n- Stackable: false (add as comment — not a decorator property)\n\nUse the @State decorator from '@rpgjs/database'.\nSet id, name, description.\nImplement the effect using paramsModifier (for stat changes) and/or effects: [Effect.X] (for engine effects).\n- For stat buffs/debuffs: use paramsModifier with rate (percentage) or value (flat).\n  e.g. DEF +40% = paramsModifier: { dex: { rate: 0.4 } } (note: DEF maps to 'dex' in RPG-JS params)\n  e.g. AGI halved = paramsModifier: { agi: { rate: -0.5 } }\n  e.g. +20% all stats = paramsModifier with rate: 0.2 on str, int, dex, agi, maxhp, maxsp\n- For poison (HP loss per turn): use effects: [Effect.SLIP_DAMAGE]\n- For stun (cannot act): use effects: [Effect.CAN_NOT_SKILL, Effect.CAN_NOT_ITEM]\n- For cannot-evade: use effects: [Effect.CAN_NOT_EVADE]\nDo NOT use: duration, stackable, turns, maxStack, onTick, onApply — none of these are decorator params.\nImport Effect from '@rpgjs/database' if you use effects.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "Status Effects Applied by Skills",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "40b0944e64fb7e4a",
+        "outputHash": "4f60422d3640f51dd98cf2367debf9f6475f46f1b5e4717a7a6c80c06811705d",
+        "generatedAt": "2026-02-13T13:43:33.238Z",
+        "generationTimeMs": 1272,
+        "fileSizeBytes": 320,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "ST-INSPIRED",
+      "name": "Inspired",
+      "category": "database-states",
+      "filename": "inspired.ts",
+      "targetPath": "main/database/states/inspired.ts",
+      "prompt": "Generate an RPG-JS state file for \"Inspired\" (ID: ST-INSPIRED).\n\nProperties:\n- Effect: +20% all stats\n- Duration: 3 turns (add as comment — duration is managed by game logic, not the decorator)\n- Stackable: false (add as comment — not a decorator property)\n\nUse the @State decorator from '@rpgjs/database'.\nSet id, name, description.\nImplement the effect using paramsModifier (for stat changes) and/or effects: [Effect.X] (for engine effects).\n- For stat buffs/debuffs: use paramsModifier with rate (percentage) or value (flat).\n  e.g. DEF +40% = paramsModifier: { dex: { rate: 0.4 } } (note: DEF maps to 'dex' in RPG-JS params)\n  e.g. AGI halved = paramsModifier: { agi: { rate: -0.5 } }\n  e.g. +20% all stats = paramsModifier with rate: 0.2 on str, int, dex, agi, maxhp, maxsp\n- For poison (HP loss per turn): use effects: [Effect.SLIP_DAMAGE]\n- For stun (cannot act): use effects: [Effect.CAN_NOT_SKILL, Effect.CAN_NOT_ITEM]\n- For cannot-evade: use effects: [Effect.CAN_NOT_EVADE]\nDo NOT use: duration, stackable, turns, maxStack, onTick, onApply — none of these are decorator params.\nImport Effect from '@rpgjs/database' if you use effects.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "Status Effects Applied by Skills",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "14495a563eb3cfd5",
+        "outputHash": "0477baa431736b9811f4878915a4e0488ffe85731085525a3580aad780e0e55c",
+        "generatedAt": "2026-02-13T13:43:38.057Z",
+        "generationTimeMs": 2817,
+        "fileSizeBytes": 458,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "ST-INVISIBLE",
+      "name": "Invisible",
+      "category": "database-states",
+      "filename": "invisible.ts",
+      "targetPath": "main/database/states/invisible.ts",
+      "prompt": "Generate an RPG-JS state file for \"Invisible\" (ID: ST-INVISIBLE).\n\nProperties:\n- Effect: Immune to single-target attacks. Next attack deals 2.0x damage.\n- Duration: 2 turns (add as comment — duration is managed by game logic, not the decorator)\n- Stackable: false (add as comment — not a decorator property)\n\nUse the @State decorator from '@rpgjs/database'.\nSet id, name, description.\nImplement the effect using paramsModifier (for stat changes) and/or effects: [Effect.X] (for engine effects).\n- For stat buffs/debuffs: use paramsModifier with rate (percentage) or value (flat).\n  e.g. DEF +40% = paramsModifier: { dex: { rate: 0.4 } } (note: DEF maps to 'dex' in RPG-JS params)\n  e.g. AGI halved = paramsModifier: { agi: { rate: -0.5 } }\n  e.g. +20% all stats = paramsModifier with rate: 0.2 on str, int, dex, agi, maxhp, maxsp\n- For poison (HP loss per turn): use effects: [Effect.SLIP_DAMAGE]\n- For stun (cannot act): use effects: [Effect.CAN_NOT_SKILL, Effect.CAN_NOT_ITEM]\n- For cannot-evade: use effects: [Effect.CAN_NOT_EVADE]\nDo NOT use: duration, stackable, turns, maxStack, onTick, onApply — none of these are decorator params.\nImport Effect from '@rpgjs/database' if you use effects.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "Status Effects Applied by Skills",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "8cb1efa024322f89",
+        "outputHash": "bdbb2bcd5687b0faba90b755c09a4a11a868b227e85201b3be0676ab37087f98",
+        "generatedAt": "2026-02-13T13:43:45.373Z",
+        "generationTimeMs": 5313,
+        "fileSizeBytes": 558,
+        "model": "gemini-2.5-flash"
+      },
+      "lastError": "Truncated output: unbalanced braces or missing closing statement"
+    },
+    {
+      "id": "ST-VOW-STEEL",
+      "name": "Vow of Steel",
+      "category": "database-states",
+      "filename": "vow-of-steel.ts",
+      "targetPath": "main/database/states/vow-of-steel.ts",
+      "prompt": "Generate an RPG-JS state file for \"Vow of Steel\" (ID: ST-VOW-STEEL).\n\nProperties:\n- Effect: DEF +40%. Cannot flee.\n- Duration: 3 turns (add as comment — duration is managed by game logic, not the decorator)\n- Stackable: false (add as comment — not a decorator property)\n\nUse the @State decorator from '@rpgjs/database'.\nSet id, name, description.\nImplement the effect using paramsModifier (for stat changes) and/or effects: [Effect.X] (for engine effects).\n- For stat buffs/debuffs: use paramsModifier with rate (percentage) or value (flat).\n  e.g. DEF +40% = paramsModifier: { dex: { rate: 0.4 } } (note: DEF maps to 'dex' in RPG-JS params)\n  e.g. AGI halved = paramsModifier: { agi: { rate: -0.5 } }\n  e.g. +20% all stats = paramsModifier with rate: 0.2 on str, int, dex, agi, maxhp, maxsp\n- For poison (HP loss per turn): use effects: [Effect.SLIP_DAMAGE]\n- For stun (cannot act): use effects: [Effect.CAN_NOT_SKILL, Effect.CAN_NOT_ITEM]\n- For cannot-evade: use effects: [Effect.CAN_NOT_EVADE]\nDo NOT use: duration, stackable, turns, maxStack, onTick, onApply — none of these are decorator params.\nImport Effect from '@rpgjs/database' if you use effects.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "Status Effects Applied by Skills",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "ec3c18b86a018b9c",
+        "outputHash": "fbec3cd57b9b376b31f9701309c8f2d86bcc0a61ae70b4539dda374787c74bcf",
+        "generatedAt": "2026-02-13T13:43:51.591Z",
+        "generationTimeMs": 4211,
+        "fileSizeBytes": 560,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "ST-GUARDIAN",
+      "name": "Guardian's Shield",
+      "category": "database-states",
+      "filename": "guardian-s-shield.ts",
+      "targetPath": "main/database/states/guardian-s-shield.ts",
+      "prompt": "Generate an RPG-JS state file for \"Guardian's Shield\" (ID: ST-GUARDIAN).\n\nProperties:\n- Effect: Redirecting 50% of single-target damage from chosen ally\n- Duration: 1 turns (add as comment — duration is managed by game logic, not the decorator)\n- Stackable: false (add as comment — not a decorator property)\n\nUse the @State decorator from '@rpgjs/database'.\nSet id, name, description.\nImplement the effect using paramsModifier (for stat changes) and/or effects: [Effect.X] (for engine effects).\n- For stat buffs/debuffs: use paramsModifier with rate (percentage) or value (flat).\n  e.g. DEF +40% = paramsModifier: { dex: { rate: 0.4 } } (note: DEF maps to 'dex' in RPG-JS params)\n  e.g. AGI halved = paramsModifier: { agi: { rate: -0.5 } }\n  e.g. +20% all stats = paramsModifier with rate: 0.2 on str, int, dex, agi, maxhp, maxsp\n- For poison (HP loss per turn): use effects: [Effect.SLIP_DAMAGE]\n- For stun (cannot act): use effects: [Effect.CAN_NOT_SKILL, Effect.CAN_NOT_ITEM]\n- For cannot-evade: use effects: [Effect.CAN_NOT_EVADE]\nDo NOT use: duration, stackable, turns, maxStack, onTick, onApply — none of these are decorator params.\nImport Effect from '@rpgjs/database' if you use effects.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "Status Effects Applied by Skills",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "86defccaacf4b2ee",
+        "outputHash": "5a621f18221aea9fda6d11147a005a1f88c7d6144475486ea39232f6885e0fe6",
+        "generatedAt": "2026-02-13T13:43:57.733Z",
+        "generationTimeMs": 4138,
+        "fileSizeBytes": 525,
+        "model": "gemini-2.5-flash"
+      },
+      "lastError": "Truncated output: unbalanced braces or missing closing statement"
+    },
+    {
+      "id": "ST-STEADFAST",
+      "name": "Steadfast Wall",
+      "category": "database-states",
+      "filename": "steadfast-wall.ts",
+      "targetPath": "main/database/states/steadfast-wall.ts",
+      "prompt": "Generate an RPG-JS state file for \"Steadfast Wall\" (ID: ST-STEADFAST).\n\nProperties:\n- Effect: Absorbing all single-target physical attacks for allies at 70% damage\n- Duration: 1 turns (add as comment — duration is managed by game logic, not the decorator)\n- Stackable: false (add as comment — not a decorator property)\n\nUse the @State decorator from '@rpgjs/database'.\nSet id, name, description.\nImplement the effect using paramsModifier (for stat changes) and/or effects: [Effect.X] (for engine effects).\n- For stat buffs/debuffs: use paramsModifier with rate (percentage) or value (flat).\n  e.g. DEF +40% = paramsModifier: { dex: { rate: 0.4 } } (note: DEF maps to 'dex' in RPG-JS params)\n  e.g. AGI halved = paramsModifier: { agi: { rate: -0.5 } }\n  e.g. +20% all stats = paramsModifier with rate: 0.2 on str, int, dex, agi, maxhp, maxsp\n- For poison (HP loss per turn): use effects: [Effect.SLIP_DAMAGE]\n- For stun (cannot act): use effects: [Effect.CAN_NOT_SKILL, Effect.CAN_NOT_ITEM]\n- For cannot-evade: use effects: [Effect.CAN_NOT_EVADE]\nDo NOT use: duration, stackable, turns, maxStack, onTick, onApply — none of these are decorator params.\nImport Effect from '@rpgjs/database' if you use effects.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "Status Effects Applied by Skills",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "00ff68ac9530c3c6",
+        "outputHash": "a1f9bbb243bcb96430aac69a4e490cffbc3238b2a4072ccc61b38662aeedd319",
+        "generatedAt": "2026-02-13T13:44:11.916Z",
+        "generationTimeMs": 12180,
+        "fileSizeBytes": 349,
+        "model": "gemini-2.5-flash"
+      },
+      "lastError": "Truncated output: unbalanced braces or missing closing statement"
+    },
+    {
+      "id": "ST-REGEN",
+      "name": "Regen",
+      "category": "database-states",
+      "filename": "regen.ts",
+      "targetPath": "main/database/states/regen.ts",
+      "prompt": "Generate an RPG-JS state file for \"Regen\" (ID: ST-REGEN).\n\nProperties:\n- Effect: Recover 5% max HP at start of each turn\n- Duration: 3 turns (add as comment — duration is managed by game logic, not the decorator)\n- Stackable: false (add as comment — not a decorator property)\n\nUse the @State decorator from '@rpgjs/database'.\nSet id, name, description.\nImplement the effect using paramsModifier (for stat changes) and/or effects: [Effect.X] (for engine effects).\n- For stat buffs/debuffs: use paramsModifier with rate (percentage) or value (flat).\n  e.g. DEF +40% = paramsModifier: { dex: { rate: 0.4 } } (note: DEF maps to 'dex' in RPG-JS params)\n  e.g. AGI halved = paramsModifier: { agi: { rate: -0.5 } }\n  e.g. +20% all stats = paramsModifier with rate: 0.2 on str, int, dex, agi, maxhp, maxsp\n- For poison (HP loss per turn): use effects: [Effect.SLIP_DAMAGE]\n- For stun (cannot act): use effects: [Effect.CAN_NOT_SKILL, Effect.CAN_NOT_ITEM]\n- For cannot-evade: use effects: [Effect.CAN_NOT_EVADE]\nDo NOT use: duration, stackable, turns, maxStack, onTick, onApply — none of these are decorator params.\nImport Effect from '@rpgjs/database' if you use effects.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "Status Effects Applied by Skills",
+          "purpose": "content"
+        }
+      ],
+      "status": "pending"
+    }
+  ]
+}

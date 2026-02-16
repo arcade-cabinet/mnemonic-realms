@@ -1,0 +1,20 @@
+[
+  {
+    "id": "UI-DLG-STD",
+    "name": "Standard Dialogue Frame",
+    "type": "dialogue-frame",
+    "desc": "Full-width bottom panel with dark parchment background (#2A1810), warm gold trim, subtle vignette edges. Clean interior for text."
+  },
+  {
+    "id": "UI-DLG-MEM",
+    "name": "Memory Recall Frame",
+    "type": "dialogue-frame",
+    "desc": "Dialogue frame with amber glow border (#DAA520), soft golden particle motes along edges. Interior slightly warmer than standard."
+  },
+  {
+    "id": "UI-DLG-GOD",
+    "name": "God Voice Frame",
+    "type": "dialogue-frame",
+    "desc": "Ornate dialogue frame with crystalline border accents, subtle aurora shimmer along top edge. Deeper parchment tone, sacred geometry corner ornaments."
+  }
+]

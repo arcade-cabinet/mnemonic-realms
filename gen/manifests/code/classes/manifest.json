@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "1.0.0",
+  "description": "Class database code generation manifest",
+  "updatedAt": "2026-02-14T15:11:55.054Z",
+  "category": "database-classes",
+  "systemPrompt": "You are an RPG-JS 4.3.0 TypeScript code generator.\nGenerate a single RPG-JS class database file using @rpgjs/database decorators.\nOutput ONLY valid TypeScript code. No markdown fences. No explanatory text.\nThe file must export the class as the default export.\nImport from '@rpgjs/database'.\n\n=== RPG-JS 4.3.0 @Class API Reference ===\nimport { Class } from '@rpgjs/database';\n\nIMPORTANT: @Class in RPG-JS does NOT have a \"parameters\" property.\nThe parameters property belongs to @Actor (and @Enemy), not @Class.\n@Class is for skill learning and efficiency modifiers only.\n\nValid @Class decorator params (ClassOptions):\n  id?: string              — Unique ID. Defaults to lowercased class name.\n  name?: string            — Display name.\n  description?: string     — Class description.\n  skillsToLearn?: array    — Skills to learn at specific levels.\n                             MUST use imported class references, NOT string IDs.\n                             Format: [{ level: number, skill: ImportedSkillClass }]\n  statesEfficiency?: array — Vulnerability to states.\n  elementsEfficiency?: array — Vulnerability to elements.\n\nINVALID properties on @Class (do NOT use): parameters, startingEquipment, expCurve, initialLevel, finalLevel.\nThese belong to @Actor, not @Class.\n\nFor skillsToLearn, each skill MUST be imported as a class reference:\n  import OathStrike from '../skills/knight/oath-strike';\n  skillsToLearn: [{ level: 1, skill: OathStrike }]\n\nDo NOT use string IDs like: { level: 1, skill: 'SK-KN-01' } — this will fail at runtime.\n\nSince skill files may not exist yet, use placeholder TODO imports with the expected paths:\n  // TODO: import when skill files are generated\n  // import OathStrike from '../skills/knight/oath-strike';\n\nAnd leave skillsToLearn as an empty array with a comment listing the planned skills:\n  skillsToLearn: [],\n  // Planned skills (import when generated):\n  // level 1: OathStrike (SK-KN-01) from '../skills/knight/oath-strike'\n\nExample:\nimport { Class } from '@rpgjs/database';\n// TODO: import skill classes when generated\n@Class({\n  id: 'knight',\n  name: 'Knight',\n  description: 'Frontline tank and physical damage dealer.',\n  skillsToLearn: [],\n  // Planned skills:\n  // { level: 1, skill: OathStrike } from '../skills/knight/oath-strike'\n  // { level: 3, skill: GuardiansShield } from '../skills/knight/guardian-s-shield'\n})\nexport default class Knight {}\n=== End API Reference ===",
+  "assets": [
+    {
+      "id": "knight",
+      "name": "Knight",
+      "category": "database-classes",
+      "filename": "knight.ts",
+      "targetPath": "main/database/classes/knight.ts",
+      "prompt": "Generate an RPG-JS class file for the \"Knight\" class (ID: knight).\n\nDescription: Frontline tank and physical damage dealer. Highest HP and ATK. Lowest AGI and INT.\n\nStat progression (for reference in comments only — stats go on @Actor, not @Class):\n- HP: base 45, growth +14.5/level\n- SP: base 15, growth +3.2/level\n- ATK: base 12, growth +3.3/level\n- INT: base 5, growth +1/level\n- DEF: base 10, growth +3.1/level\n- AGI: base 7, growth +1.5/level\nLevel cap: 30\n\nSkill unlock IDs: SK-KN-01, SK-KN-02, SK-KN-03, SK-KN-04, SK-KN-05, SK-KN-06, SK-KN-07\n\nIMPORTANT: @Class does NOT have a \"parameters\" property. Stat curves belong to @Actor.\nSet id, name, description on the @Class decorator.\nSet skillsToLearn as an empty array (skill files are generated separately).\nAdd TODO comments listing each skill with its unlock level and import path.\nDo NOT use string IDs for skills — they must be class imports (leave as TODOs).\nDo NOT use: parameters, startingEquipment, expCurve, initialLevel, finalLevel — these belong to @Actor.\nInclude the stat progression as a comment block for documentation purposes.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/progression.md",
+          "heading": "Stat Growth Formulas",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/classes.md",
+          "heading": "Knight — Oathweave",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "14d9feb9aaf82c8b",
+        "outputHash": "5f3f6eeb78b4ed77bed04425419f175c8ec6b22ccd00d56c3ebe13b398e48185",
+        "generatedAt": "2026-02-13T13:34:56.388Z",
+        "generationTimeMs": 3310,
+        "fileSizeBytes": 2176,
+        "model": "gemini-2.5-flash"
+      },
+      "lastError": "Truncated output detected"
+    },
+    {
+      "id": "cleric",
+      "name": "Cleric",
+      "category": "database-classes",
+      "filename": "cleric.ts",
+      "targetPath": "main/database/classes/cleric.ts",
+      "prompt": "Generate an RPG-JS class file for the \"Cleric\" class (ID: cleric).\n\nDescription: Pure support and healer. Highest SP for sustained casting. Strong INT for heal power.\n\nStat progression (for reference in comments only — stats go on @Actor, not @Class):\n- HP: base 35, growth +10/level\n- SP: base 25, growth +5.5/level\n- ATK: base 7, growth +1.5/level\n- INT: base 12, growth +3.3/level\n- DEF: base 9, growth +2.5/level\n- AGI: base 6, growth +1.3/level\nLevel cap: 30\n\nSkill unlock IDs: SK-CL-01, SK-CL-02, SK-CL-03, SK-CL-04, SK-CL-05, SK-CL-06, SK-CL-07\n\nIMPORTANT: @Class does NOT have a \"parameters\" property. Stat curves belong to @Actor.\nSet id, name, description on the @Class decorator.\nSet skillsToLearn as an empty array (skill files are generated separately).\nAdd TODO comments listing each skill with its unlock level and import path.\nDo NOT use string IDs for skills — they must be class imports (leave as TODOs).\nDo NOT use: parameters, startingEquipment, expCurve, initialLevel, finalLevel — these belong to @Actor.\nInclude the stat progression as a comment block for documentation purposes.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/progression.md",
+          "heading": "Stat Growth Formulas",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/classes.md",
+          "heading": "Cleric — Euphoric Recall",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "29d6210086c2d0ee",
+        "outputHash": "f3d7d8d92474e99d29950c96edbe5803f79cc8f41a6af6d9c2c944cb6107e99f",
+        "generatedAt": "2026-02-13T13:35:01.519Z",
+        "generationTimeMs": 3128,
+        "fileSizeBytes": 1937,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "mage",
+      "name": "Mage",
+      "category": "database-classes",
+      "filename": "mage.ts",
+      "targetPath": "main/database/classes/mage.ts",
+      "prompt": "Generate an RPG-JS class file for the \"Mage\" class (ID: mage).\n\nDescription: Glass cannon with highest INT and SP. Devastating magical damage but lowest HP and DEF.\n\nStat progression (for reference in comments only — stats go on @Actor, not @Class):\n- HP: base 28, growth +7/level\n- SP: base 30, growth +6/level\n- ATK: base 5, growth +1/level\n- INT: base 14, growth +3.8/level\n- DEF: base 5, growth +1.3/level\n- AGI: base 10, growth +2.5/level\nLevel cap: 30\n\nSkill unlock IDs: SK-MG-01, SK-MG-02, SK-MG-03, SK-MG-04, SK-MG-05, SK-MG-06, SK-MG-07\n\nIMPORTANT: @Class does NOT have a \"parameters\" property. Stat curves belong to @Actor.\nSet id, name, description on the @Class decorator.\nSet skillsToLearn as an empty array (skill files are generated separately).\nAdd TODO comments listing each skill with its unlock level and import path.\nDo NOT use string IDs for skills — they must be class imports (leave as TODOs).\nDo NOT use: parameters, startingEquipment, expCurve, initialLevel, finalLevel — these belong to @Actor.\nInclude the stat progression as a comment block for documentation purposes.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/progression.md",
+          "heading": "Stat Growth Formulas",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/classes.md",
+          "heading": "Mage — Inspired Casting",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "2f88806d79c37982",
+        "outputHash": "ac742fcf2c51d6eada9eee41568723a1361cf3c7f636d2dece27aba22f8984f5",
+        "generatedAt": "2026-02-13T13:35:05.923Z",
+        "generationTimeMs": 2400,
+        "fileSizeBytes": 1583,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "rogue",
+      "name": "Rogue",
+      "category": "database-classes",
+      "filename": "rogue.ts",
+      "targetPath": "main/database/classes/rogue.ts",
+      "prompt": "Generate an RPG-JS class file for the \"Rogue\" class (ID: rogue).\n\nDescription: Speed-based damage dealer. Highest AGI, always acts first. Evasion-based survival.\n\nStat progression (for reference in comments only — stats go on @Actor, not @Class):\n- HP: base 32, growth +8.5/level\n- SP: base 20, growth +4.5/level\n- ATK: base 10, growth +2.5/level\n- INT: base 6, growth +1.3/level\n- DEF: base 7, growth +1.5/level\n- AGI: base 13, growth +3.3/level\nLevel cap: 30\n\nSkill unlock IDs: SK-RG-01, SK-RG-02, SK-RG-03, SK-RG-04, SK-RG-05, SK-RG-06, SK-RG-07\n\nIMPORTANT: @Class does NOT have a \"parameters\" property. Stat curves belong to @Actor.\nSet id, name, description on the @Class decorator.\nSet skillsToLearn as an empty array (skill files are generated separately).\nAdd TODO comments listing each skill with its unlock level and import path.\nDo NOT use string IDs for skills — they must be class imports (leave as TODOs).\nDo NOT use: parameters, startingEquipment, expCurve, initialLevel, finalLevel — these belong to @Actor.\nInclude the stat progression as a comment block for documentation purposes.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/progression.md",
+          "heading": "Stat Growth Formulas",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/classes.md",
+          "heading": "Rogue — Foreshadow Strike",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "5ced0c22fd8b21c3",
+        "outputHash": "8236d8e699c40303be4d653ff2c8bf7b52691afb988796e61d25167a8a4d1e45",
+        "generatedAt": "2026-02-13T13:35:17.874Z",
+        "generationTimeMs": 9947,
+        "fileSizeBytes": 2257,
+        "model": "gemini-2.5-flash"
+      }
+    }
+  ]
+}

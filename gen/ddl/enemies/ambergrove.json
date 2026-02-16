@@ -1,0 +1,72 @@
+[
+  {
+    "id": "E-SL-03",
+    "name": "Forest Wisp",
+    "zone": "Ambergrove",
+    "category": "settled",
+    "hp": 35,
+    "atk": 3,
+    "int": 10,
+    "def": 4,
+    "agi": 12,
+    "baseLevel": 3,
+    "xp": 30,
+    "gold": 14,
+    "abilities": [
+      {
+        "name": "Wisp Bolt",
+        "formula": "INT * 1.5 (wind)",
+        "effect": "Magic attack, wind element"
+      },
+      {
+        "name": "Flicker",
+        "formula": "30% dodge next physical",
+        "effect": "Evasion buff, auto at combat start"
+      }
+    ],
+    "drops": [
+      {
+        "itemId": "C-SP-01",
+        "chance": 0.2
+      }
+    ],
+    "fragmentAffinity": "Awe / Resonance"
+  },
+  {
+    "id": "E-SL-04",
+    "name": "Thornback Beetle",
+    "zone": "Ambergrove",
+    "category": "settled",
+    "hp": 55,
+    "atk": 7,
+    "int": 2,
+    "def": 10,
+    "agi": 4,
+    "baseLevel": 3,
+    "xp": 35,
+    "gold": 15,
+    "abilities": [
+      {
+        "name": "Mandible Crush",
+        "formula": "ATK * 1.3",
+        "effect": "Basic physical attack"
+      },
+      {
+        "name": "Thorn Shell",
+        "formula": "15% chance 5 fixed recoil",
+        "effect": "Passive: physical attacks may recoil"
+      }
+    ],
+    "drops": [
+      {
+        "itemId": "C-SC-01",
+        "chance": 0.15
+      },
+      {
+        "itemId": "C-HP-01",
+        "chance": 0.15
+      }
+    ],
+    "fragmentAffinity": "Fury / Verdance"
+  }
+]

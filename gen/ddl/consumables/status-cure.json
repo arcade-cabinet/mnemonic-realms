@@ -1,0 +1,47 @@
+[
+  {
+    "id": "C-SC-01",
+    "name": "Antidote",
+    "category": "status-cure",
+    "effect": "Cure Poison",
+    "price": 20,
+    "stackMax": 10,
+    "tier": 1
+  },
+  {
+    "id": "C-SC-02",
+    "name": "Haste Charm",
+    "category": "status-cure",
+    "effect": "Cure Slow. Grant AGI +20% for 2 turns.",
+    "price": 60,
+    "stackMax": 10,
+    "tier": 2
+  },
+  {
+    "id": "C-SC-03",
+    "name": "Fortify Tonic",
+    "category": "status-cure",
+    "effect": "Cure Weakness. Grant DEF +20% for 2 turns.",
+    "price": 60,
+    "stackMax": 10,
+    "tier": 2
+  },
+  {
+    "id": "C-SC-04",
+    "name": "Stasis Breaker",
+    "category": "status-cure",
+    "effect": "Cure Stasis. Grant immunity to Stasis for 3 turns.",
+    "price": 120,
+    "stackMax": 10,
+    "tier": 2
+  },
+  {
+    "id": "C-SC-05",
+    "name": "Panacea",
+    "category": "status-cure",
+    "effect": "Cure ALL status effects on one character.",
+    "price": 200,
+    "stackMax": 5,
+    "tier": 3
+  }
+]

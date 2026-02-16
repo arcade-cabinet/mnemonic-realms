@@ -1,0 +1,67 @@
+[
+  {
+    "id": "E-SL-01",
+    "name": "Meadow Sprite",
+    "zone": "Heartfield",
+    "category": "settled",
+    "hp": 30,
+    "atk": 5,
+    "int": 3,
+    "def": 3,
+    "agi": 8,
+    "baseLevel": 1,
+    "xp": 18,
+    "gold": 8,
+    "abilities": [
+      {
+        "name": "Pollen Puff",
+        "formula": "ATK * 1.0",
+        "effect": "10% chance to inflict Slow (AGI halved, 2 turns)"
+      }
+    ],
+    "drops": [
+      {
+        "itemId": "C-HP-01",
+        "chance": 0.15
+      }
+    ],
+    "fragmentAffinity": "Joy / Verdance"
+  },
+  {
+    "id": "E-SL-02",
+    "name": "Grass Serpent",
+    "zone": "Heartfield",
+    "category": "settled",
+    "hp": 45,
+    "atk": 8,
+    "int": 2,
+    "def": 5,
+    "agi": 10,
+    "baseLevel": 2,
+    "xp": 25,
+    "gold": 12,
+    "abilities": [
+      {
+        "name": "Lunge",
+        "formula": "ATK * 1.2 (first turn: ATK * 1.5)",
+        "effect": "Ambush bonus on first turn"
+      },
+      {
+        "name": "Coil",
+        "formula": "DEF +30% for 2 turns",
+        "effect": "Used when below 50% HP"
+      }
+    ],
+    "drops": [
+      {
+        "itemId": "C-SC-01",
+        "chance": 0.2
+      },
+      {
+        "itemId": "C-HP-01",
+        "chance": 0.1
+      }
+    ],
+    "fragmentAffinity": "Calm / Verdance"
+  }
+]

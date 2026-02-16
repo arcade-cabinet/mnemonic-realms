@@ -1,0 +1,98 @@
+[
+  {
+    "id": "W-WD-01",
+    "name": "Apprentice Wand",
+    "classRestriction": "mage",
+    "weaponType": "wand",
+    "statType": "int",
+    "statBonus": 5,
+    "price": 0,
+    "tier": 1,
+    "specialEffect": "None",
+    "acquisition": "Starting equipment"
+  },
+  {
+    "id": "W-WD-02",
+    "name": "Amber Focus",
+    "classRestriction": "mage",
+    "weaponType": "wand",
+    "statType": "int",
+    "statBonus": 9,
+    "price": 90,
+    "tier": 1,
+    "specialEffect": "+5% spell damage",
+    "acquisition": "Maren's General Shop"
+  },
+  {
+    "id": "W-WD-03",
+    "name": "Windcatcher Rod",
+    "classRestriction": "mage",
+    "weaponType": "wand",
+    "statType": "int",
+    "statBonus": 15,
+    "price": 240,
+    "tier": 2,
+    "specialEffect": "Wind-element spells deal +15% damage",
+    "acquisition": "Ambergrove (Canopy Path treasure)"
+  },
+  {
+    "id": "W-WD-04",
+    "name": "Prism Wand",
+    "classRestriction": "mage",
+    "weaponType": "wand",
+    "statType": "int",
+    "statBonus": 21,
+    "price": 420,
+    "tier": 2,
+    "specialEffect": "Eureka Moment always hits weakness if one exists",
+    "acquisition": "Flickerveil (Flickering Village shop)"
+  },
+  {
+    "id": "W-WD-05",
+    "name": "Resonance Tuner",
+    "classRestriction": "mage",
+    "weaponType": "wand",
+    "statType": "int",
+    "statBonus": 27,
+    "price": 650,
+    "tier": 2,
+    "specialEffect": "Memory Wave AoE radius includes back-row enemies",
+    "acquisition": "Resonance Fields (Listener's Camp)"
+  },
+  {
+    "id": "W-WD-06",
+    "name": "Arcane Catalyst",
+    "classRestriction": "mage",
+    "weaponType": "wand",
+    "statType": "int",
+    "statBonus": 34,
+    "price": 950,
+    "tier": 3,
+    "specialEffect": "Elemental Storm damage +20%",
+    "acquisition": "Torvan's Blacksmith (Vivid vibrancy)"
+  },
+  {
+    "id": "W-WD-07",
+    "name": "Inspiration's Core",
+    "classRestriction": "mage",
+    "weaponType": "wand",
+    "statType": "int",
+    "statBonus": 41,
+    "price": 0,
+    "tier": 3,
+    "specialEffect": "Grand Inspiration costs 40 SP instead of 55",
+    "acquisition": "Quest reward: Mage element mastery (Act II)"
+  },
+  {
+    "id": "W-WD-08",
+    "name": "Dissolved Memory Lens",
+    "classRestriction": "mage",
+    "weaponType": "wand",
+    "statType": "int",
+    "statBonus": 49,
+    "price": 0,
+    "tier": 3,
+    "specialEffect": "All spell damage +10%. Spells that hit a weakness deal 2.0x instead of 1.5x.",
+    "acquisition": "Depths Level 5 treasure chest"
+  }
+]

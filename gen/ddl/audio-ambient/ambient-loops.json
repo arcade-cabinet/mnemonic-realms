@@ -1,0 +1,102 @@
+[
+  {
+    "id": "AMB-VILLAGE",
+    "name": "Village",
+    "biome": "village",
+    "description": "Chatter, birdsong, rooster",
+    "sourceQuery": "village ambience birdsong chatter",
+    "defaultVolume": 0.3,
+    "mutedDesc": "Chatter only",
+    "vividDesc": "Children laughing, festival sounds"
+  },
+  {
+    "id": "AMB-GRASSLAND",
+    "name": "Grassland",
+    "biome": "grassland",
+    "description": "Wind through grass, insects, bird",
+    "sourceQuery": "grassland wind insects ambience",
+    "defaultVolume": 0.25,
+    "mutedDesc": "Wind only",
+    "vividDesc": "Bird variety, cricket chorus"
+  },
+  {
+    "id": "AMB-FOREST",
+    "name": "Forest",
+    "biome": "forest",
+    "description": "Rustling leaves, birds, woodpecker",
+    "sourceQuery": "forest leaves birds woodpecker",
+    "defaultVolume": 0.3,
+    "mutedDesc": "Light rustle",
+    "vividDesc": "Owl, squirrel chatter, stream"
+  },
+  {
+    "id": "AMB-MOUNTAIN",
+    "name": "Mountain",
+    "biome": "mountain",
+    "description": "Wind howl, rockfall, eagle cry",
+    "sourceQuery": "mountain wind eagle rockfall",
+    "defaultVolume": 0.25,
+    "mutedDesc": "Wind only",
+    "vividDesc": "Waterfall, goat bells"
+  },
+  {
+    "id": "AMB-RIVERSIDE",
+    "name": "Riverside",
+    "biome": "riverside",
+    "description": "Flowing water, splashing, waterwheel",
+    "sourceQuery": "river water splash waterwheel",
+    "defaultVolume": 0.35,
+    "mutedDesc": "Gentle flow",
+    "vividDesc": "Fish splash, laughter, market"
+  },
+  {
+    "id": "AMB-WETLAND",
+    "name": "Wetland",
+    "biome": "wetland",
+    "description": "Frog chorus, dripping water, insect buzz",
+    "sourceQuery": "wetland frogs dripping insects",
+    "defaultVolume": 0.3,
+    "mutedDesc": "Drip only",
+    "vividDesc": "Full frog chorus, firefly hum"
+  },
+  {
+    "id": "AMB-PLAINS",
+    "name": "Plains",
+    "biome": "plains",
+    "description": "Wind, stone resonance hum, grass",
+    "sourceQuery": "plains wind grass rustle",
+    "defaultVolume": 0.2,
+    "mutedDesc": "Wind",
+    "vividDesc": "Stone harmonics, bird song"
+  },
+  {
+    "id": "AMB-DUNGEON",
+    "name": "Dungeon",
+    "biome": "dungeon",
+    "description": "Dripping water, rumble, echo",
+    "sourceQuery": "dungeon cave dripping echo",
+    "defaultVolume": 0.25,
+    "mutedDesc": "Drip",
+    "vividDesc": "Singing crystal, memory whispers"
+  },
+  {
+    "id": "AMB-SKETCH",
+    "name": "Sketch Zone",
+    "biome": "sketch",
+    "description": "Near silence. Faint pen-on-paper scratching",
+    "sourceQuery": "pen paper scratching quiet",
+    "defaultVolume": 0.1,
+    "mutedDesc": "Silence",
+    "vividDesc": "Faint color-filling sound"
+  },
+  {
+    "id": "AMB-STAGNATION",
+    "name": "Stagnation",
+    "biome": "stagnation",
+    "description": "Crystal tinkling, frozen wind, silence between tinks",
+    "sourceQuery": "ice crystal tinkling frozen wind",
+    "defaultVolume": 0.2,
+    "mutedDesc": "Overrides biome ambient",
+    "vividDesc": "Always this sound in stagnation"
+  }
+]

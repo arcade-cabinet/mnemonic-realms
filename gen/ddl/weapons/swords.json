@@ -1,0 +1,98 @@
+[
+  {
+    "id": "W-SW-01",
+    "name": "Training Sword",
+    "classRestriction": "knight",
+    "weaponType": "sword",
+    "statType": "atk",
+    "statBonus": 5,
+    "price": 0,
+    "tier": 1,
+    "specialEffect": "None",
+    "acquisition": "Starting equipment"
+  },
+  {
+    "id": "W-SW-02",
+    "name": "Iron Blade",
+    "classRestriction": "knight",
+    "weaponType": "sword",
+    "statType": "atk",
+    "statBonus": 10,
+    "price": 80,
+    "tier": 1,
+    "specialEffect": "None",
+    "acquisition": "Torvan's Blacksmith"
+  },
+  {
+    "id": "W-SW-03",
+    "name": "Oathkeeper's Edge",
+    "classRestriction": "knight",
+    "weaponType": "sword",
+    "statType": "atk",
+    "statBonus": 16,
+    "price": 250,
+    "tier": 2,
+    "specialEffect": "+5% Oath Strike damage",
+    "acquisition": "Torvan's Blacksmith (Normal vibrancy)"
+  },
+  {
+    "id": "W-SW-04",
+    "name": "Brightwater Saber",
+    "classRestriction": "knight",
+    "weaponType": "sword",
+    "statType": "atk",
+    "statBonus": 22,
+    "price": 400,
+    "tier": 2,
+    "specialEffect": "Water element on basic attacks",
+    "acquisition": "Millbrook specialty shop"
+  },
+  {
+    "id": "W-SW-05",
+    "name": "Ridgewalker Claymore",
+    "classRestriction": "knight",
+    "weaponType": "sword",
+    "statType": "atk",
+    "statBonus": 28,
+    "price": 600,
+    "tier": 2,
+    "specialEffect": "+10% ATK when HP above 75%",
+    "acquisition": "Ridgewalker Camp merchant"
+  },
+  {
+    "id": "W-SW-06",
+    "name": "Frontier Greatsword",
+    "classRestriction": "knight",
+    "weaponType": "sword",
+    "statType": "atk",
+    "statBonus": 35,
+    "price": 900,
+    "tier": 3,
+    "specialEffect": "+15% damage vs. Preserver enemies",
+    "acquisition": "Torvan's Blacksmith (Vivid vibrancy)"
+  },
+  {
+    "id": "W-SW-07",
+    "name": "Oath-Forged Blade",
+    "classRestriction": "knight",
+    "weaponType": "sword",
+    "statType": "atk",
+    "statBonus": 42,
+    "price": 0,
+    "tier": 3,
+    "specialEffect": "+3% ATK per active oath. Oath Strike costs 0 SP.",
+    "acquisition": "Quest reward: Knight oath chain (Act II)"
+  },
+  {
+    "id": "W-SW-08",
+    "name": "Memory's Edge",
+    "classRestriction": "knight",
+    "weaponType": "sword",
+    "statType": "atk",
+    "statBonus": 50,
+    "price": 0,
+    "tier": 3,
+    "specialEffect": "ATK scales with total fragments collected (+1 ATK per 5 fragments, max +12)",
+    "acquisition": "Depths Level 4 treasure chest"
+  }
+]

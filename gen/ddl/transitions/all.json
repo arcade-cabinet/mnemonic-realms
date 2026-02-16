@@ -1,0 +1,17 @@
+[
+  { "from": "village", "to": "grassland", "usedAt": "Village Hub -> Heartfield" },
+  { "from": "village", "to": "forest", "usedAt": "Village Hub -> Ambergrove" },
+  { "from": "village", "to": "riverside", "usedAt": "Village Hub -> Millbrook" },
+  { "from": "grassland", "to": "forest", "usedAt": "Heartfield -> Ambergrove" },
+  { "from": "grassland", "to": "mountain", "usedAt": "Sunridge -> Hollow Ridge" },
+  { "from": "grassland", "to": "marsh", "usedAt": "Heartfield -> Shimmer Marsh" },
+  { "from": "forest", "to": "marsh", "usedAt": "Flickerveil -> Shimmer Marsh" },
+  { "from": "forest", "to": "mountain", "usedAt": "Flickerveil -> Hollow Ridge" },
+  { "from": "forest", "to": "sketch", "usedAt": "Flickerveil -> Half-Drawn Forest" },
+  { "from": "mountain", "to": "sketch", "usedAt": "Hollow Ridge -> Undrawn Peaks" },
+  { "from": "marsh", "to": "sketch", "usedAt": "Shimmer Marsh -> Luminous Wastes" },
+  { "from": "grassland", "to": "plains", "usedAt": "Sunridge -> Resonance Fields" },
+  { "from": "plains", "to": "marsh", "usedAt": "Resonance Fields -> Shimmer Marsh" },
+  { "from": "surface", "to": "dungeon", "usedAt": "All Depths entrances" },
+  { "from": "sketch", "to": "dungeon", "usedAt": "Sketch Passage -> Depths L5" }
+]

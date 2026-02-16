@@ -1,0 +1,36 @@
+[
+  {
+    "id": "BGM-AG",
+    "name": "Dappled Paths",
+    "type": "zone",
+    "zone": "ambergrove",
+    "tempo": 80,
+    "key": "E minor",
+    "timeSignature": "6/8",
+    "mood": "mysterious",
+    "durationSec": 165,
+    "stems": [
+      { "layer": 1, "instruments": "Harp (arpeggiated)", "description": "Flowing broken chords, bell-like tone. Dappled light." },
+      { "layer": 2, "instruments": "Clarinet + triangle", "description": "Clarinet weaves melody through harp. Triangle sparkles." },
+      { "layer": 3, "instruments": "French horn + string section", "description": "Horn adds grandeur. Strings swell like forest canopy." },
+      { "layer": 4, "instruments": "Choir (mixed, ooh)", "description": "Ethereal, reverb-heavy. Forest's ancient memory." }
+    ]
+  },
+  {
+    "id": "BGM-MB",
+    "name": "Brightwater Dance",
+    "type": "zone",
+    "zone": "millbrook",
+    "tempo": 104,
+    "key": "A major",
+    "timeSignature": "4/4",
+    "mood": "lively",
+    "durationSec": 120,
+    "stems": [
+      { "layer": 1, "instruments": "Fiddle (folk style)", "description": "Jaunty melody with slides and double-stops." },
+      { "layer": 2, "instruments": "Tin whistle + bodhran", "description": "Whistle harmonizes fiddle. Bodhran drives Celtic pulse." },
+      { "layer": 3, "instruments": "Accordion + bass + percussion", "description": "Accordion richness. Upright bass grounds rhythm." },
+      { "layer": 4, "instruments": "Group vocals (call-and-response)", "description": "Spirited hey! responses. Riverside festival." }
+    ]
+  }
+]

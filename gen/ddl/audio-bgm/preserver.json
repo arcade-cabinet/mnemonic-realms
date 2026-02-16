@@ -1,0 +1,19 @@
+[
+  {
+    "id": "BGM-PF",
+    "name": "Frozen Perfection",
+    "type": "zone",
+    "zone": "preserver-fortress",
+    "tempo": 64,
+    "key": "Db major",
+    "timeSignature": "4/4",
+    "mood": "cold",
+    "durationSec": 180,
+    "stems": [
+      { "layer": 1, "instruments": "Glass harmonica (sustained)", "description": "Beautiful, eerie, inhuman. Crystal resonance." },
+      { "layer": 2, "instruments": "Celesta + pizzicato strings", "description": "Crystalline precision. Metronomically perfect." },
+      { "layer": 3, "instruments": "Full strings (non-vibrato)", "description": "Deliberately sterile perfection. Uncanny valley." },
+      { "layer": 4, "instruments": "Soprano choir (perfect unison)", "description": "All voices identical. Beautiful but mechanical." }
+    ]
+  }
+]

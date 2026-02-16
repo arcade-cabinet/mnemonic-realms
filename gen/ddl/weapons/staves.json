@@ -1,0 +1,98 @@
+[
+  {
+    "id": "W-ST-01",
+    "name": "Wooden Staff",
+    "classRestriction": "cleric",
+    "weaponType": "staff",
+    "statType": "int",
+    "statBonus": 4,
+    "price": 0,
+    "tier": 1,
+    "specialEffect": "None",
+    "acquisition": "Starting equipment"
+  },
+  {
+    "id": "W-ST-02",
+    "name": "Maren's Blessing Rod",
+    "classRestriction": "cleric",
+    "weaponType": "staff",
+    "statType": "int",
+    "statBonus": 8,
+    "price": 70,
+    "tier": 1,
+    "specialEffect": "+5% healing power",
+    "acquisition": "Maren's General Shop"
+  },
+  {
+    "id": "W-ST-03",
+    "name": "Hearthstone Staff",
+    "classRestriction": "cleric",
+    "weaponType": "staff",
+    "statType": "int",
+    "statBonus": 14,
+    "price": 220,
+    "tier": 2,
+    "specialEffect": "Sorrowful Cleanse also heals INT x 0.3",
+    "acquisition": "Ambergrove (Hearthstone Circle loot)"
+  },
+  {
+    "id": "W-ST-04",
+    "name": "Riverside Crosier",
+    "classRestriction": "cleric",
+    "weaponType": "staff",
+    "statType": "int",
+    "statBonus": 20,
+    "price": 380,
+    "tier": 2,
+    "specialEffect": "+10% shield strength (Awestruck Ward)",
+    "acquisition": "Millbrook specialty shop"
+  },
+  {
+    "id": "W-ST-05",
+    "name": "Marsh Hermit's Crook",
+    "classRestriction": "cleric",
+    "weaponType": "staff",
+    "statType": "int",
+    "statBonus": 26,
+    "price": 0,
+    "tier": 2,
+    "specialEffect": "SP cost of all heals reduced by 15%",
+    "acquisition": "Quest reward from Wynn (Shimmer Marsh)"
+  },
+  {
+    "id": "W-ST-06",
+    "name": "Luminary's Scepter",
+    "classRestriction": "cleric",
+    "weaponType": "staff",
+    "statType": "int",
+    "statBonus": 33,
+    "price": 850,
+    "tier": 3,
+    "specialEffect": "Group Mending heals +20% more",
+    "acquisition": "Torvan's Blacksmith (Vivid vibrancy)"
+  },
+  {
+    "id": "W-ST-07",
+    "name": "Euphoric Wand",
+    "classRestriction": "cleric",
+    "weaponType": "staff",
+    "statType": "int",
+    "statBonus": 40,
+    "price": 0,
+    "tier": 3,
+    "specialEffect": "Emotional charges grant +5% each (doubled from base +3%)",
+    "acquisition": "Quest reward: Cleric charge quest (Act II)"
+  },
+  {
+    "id": "W-ST-08",
+    "name": "First Light",
+    "classRestriction": "cleric",
+    "weaponType": "staff",
+    "statType": "int",
+    "statBonus": 48,
+    "price": 0,
+    "tier": 3,
+    "specialEffect": "Healing spells also grant Inspired (+20% all stats, 1 turn) to the target",
+    "acquisition": "Depths Level 5 treasure chest"
+  }
+]

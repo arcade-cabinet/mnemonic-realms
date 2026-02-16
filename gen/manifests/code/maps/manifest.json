@@ -1,0 +1,1756 @@
+{
+  "schemaVersion": "1.0.0",
+  "description": "Map TMX, MapData, and event spawner code generation manifest",
+  "updatedAt": "2026-02-14T15:11:55.058Z",
+  "category": "database-maps",
+  "systemPrompt": "You are a code generator for the Mnemonic Realms JRPG built on RPG-JS 4.3.0.\nGenerate ONLY the requested output format (TypeScript or TMX XML).\nNo markdown fences. No explanatory text. No trailing comments.\nFollow RPG-JS 4.3.0 API conventions exactly.\nOutput must be syntactically complete — all braces/tags must be balanced.",
+  "assets": [
+    {
+      "id": "tmx-ambergrove",
+      "name": "Ambergrove TMX",
+      "category": "database-maps",
+      "filename": "ambergrove.tmx",
+      "targetPath": "main/server/maps/tmx/ambergrove.tmx",
+      "prompt": "You are generating a Tiled TMX XML map file.\nOutput ONLY valid XML starting with <?xml ...?> and ending with </map>.\nUse 6 layers: ground, ground2, objects, objects_upper, collision, events.\nTile GIDs reference the tileset in firstgid order.\nObject layer entries use Tiled object format for NPC spawns and event triggers.\nMark collision tiles on the collision layer for walls, water, and obstacles.\nPlace event triggers on the events layer as point objects with type and properties.\n\nGenerate a Tiled TMX map for \"Ambergrove\" (ambergrove.tmx).\n\nDimensions: 40x40 tiles, 32px per tile.\nBiome: forest | Vibrancy: 45 | Category: overworld\n\nTilesets:\n  - tiles_forest_{tier} (firstgid: 1)\n\nLayers (6 total): ground, ground2, objects, objects_upper, collision, events.\n\nConnections:\n  - west: tile 0,20 -> village-hub at 29,14 (always)\n  - east: tile 38,20 -> flickerveil at 0,30 (MQ-04+)\n  - south: tile 10,39 -> heartfield at 39,20 (always)\n\nNPC spawn positions: Lead Woodcutter at (9,29), Woodcutter B at (10,31), Woodcutter C at (11,30)\n\nEnemy zones: Dense Forest: 5,2 -> 35,15; Lake Shore: 24,20 -> 35,30; Canopy Path: 36,15 -> 39,28\n\nResonance Stones: RS-AG-01 at (18,8), RS-AG-02 at (22,8), RS-AG-03 at (20,12), RS-AG-04 at (30,27), RS-AG-05 at (15,5)\n\nChests: CH-AG-01 at (21,10), CH-AG-02 at (37,20), CH-AG-03 at (30,5)\n\nFill ground layer with appropriate biome base tiles.\nPlace collision on map edges, building walls, water boundaries, and obstacle tiles.\nPlace objects (trees, rocks, buildings, furniture) per the map layout doc.\nMark event trigger positions on events layer as Tiled point objects.",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Ambergrove",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: forest",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "271e8ac216f39364",
+        "outputHash": "d5a54ba8306c94b686887c3536cd48d5fd45b6e8affdc605a61440941cb30121",
+        "generatedAt": "2026-02-13T15:23:37.095Z",
+        "generationTimeMs": 185104,
+        "fileSizeBytes": 25800,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "mapdata-ambergrove",
+      "name": "Ambergrove MapData",
+      "category": "database-maps",
+      "filename": "ambergrove.ts",
+      "targetPath": "main/server/maps/ambergrove.ts",
+      "prompt": "You are generating an RPG-JS 4.3.0 TypeScript module file.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nUse @MapData decorator. Import from '@rpgjs/server'.\nUse the exact map ID and file path provided.\nInclude onInit, onJoin hooks for event spawning.\nUse createDynamicEvent for NPCs and enemies per the spawn data.\n\nGenerate an RPG-JS @MapData class for \"Ambergrove\".\n\nMap ID: \"ambergrove\"\nTMX file: \"./tmx/ambergrove.tmx\"\nDimensions: 40x40\nBiome: forest\n\nTransitions:\n  - From (0,20) west to \"village-hub\" at (29,14), condition: always\n  - From (38,20) east to \"flickerveil\" at (0,30), condition: MQ-04+\n  - From (10,39) south to \"heartfield\" at (39,20), condition: always\n\nNPC count: 3\nEnemy zones: 3\nEvent triggers: 6\n\nUse @MapData decorator with id and file properties.\nImport event spawner from './events/ambergrove-events' if NPCs/events exist.\nCall spawnMapEvents(player) in onJoin hook.\nSet up map transitions in onInit using player.changeMap().",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Ambergrove",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: forest",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "3a44b107f86d2dcb",
+        "outputHash": "c58a694a84f141ee8fedb24f8d7967308baf4357ffad5be080ccbd7eafa41bf5",
+        "generatedAt": "2026-02-13T15:23:48.602Z",
+        "generationTimeMs": 9501,
+        "fileSizeBytes": 2037,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "events-ambergrove",
+      "name": "Ambergrove Events",
+      "category": "database-maps",
+      "filename": "ambergrove-events.ts",
+      "targetPath": "main/server/maps/events/ambergrove-events.ts",
+      "prompt": "You are generating RPG-JS 4.3.0 TypeScript event spawner functions.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nEach event gets a createDynamicEvent call with proper position, graphics, and hooks.\nNPC events use onAction for dialogue. Transition events use onPlayerInput.\nEnemy zone events use onChanges with random encounter checks.\n\nGenerate event spawner functions for map \"Ambergrove\" (ambergrove).\n\nNPCs:\n  - Lead Woodcutter (lead-woodcutter): pos=9,29, graphic=npc_woodcutter_m1, move=Static, quests=[SQ-03]\n  - Woodcutter B (woodcutter-b): pos=10,31, graphic=npc_woodcutter_m2, move=Patrol\n  - Woodcutter C (woodcutter-c): pos=11,30, graphic=npc_woodcutter_f1, move=Static\n\nEvents:\n  - EV-AG-001: pos=9,29, type=action, Lead Woodcutter rapid-growth dialogue [SQ-03]\n  - EV-AG-002: pos=20,10, type=action, Hearthstone Circle center\n  - EV-AG-003: pos=30,27, type=action, Amber Lake submerged stone (Act II) [MQ-05]\n  - EV-AG-004: pos=0,20, type=touch, West -> Village Hub\n  - EV-AG-006: pos=38,20, type=touch, East -> Flickerveil [MQ-04]\n  - EV-AG-007: pos=10,39, type=touch, South -> Heartfield\n\nEnemy Zones:\n  - Dense Forest: bounds=5,2 -> 35,15, enemies=[E-SL-03,E-SL-04], levels=3-5\n  - Lake Shore: bounds=24,20 -> 35,30, enemies=[E-SL-03], levels=3-4\n  - Canopy Path: bounds=36,15 -> 39,28, enemies=[E-SL-04], levels=3-5\n\nExport a function spawnMapEvents(player: RpgPlayer) that:\n1. Creates NPC events via createDynamicEvent with graphics and movement\n2. Sets up touch/action event triggers at specified positions\n3. Registers enemy encounter zones with random encounter checks\n4. Handles map transitions via player.changeMap()\n5. Checks quest flags before spawning conditional events",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Ambergrove",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: forest",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "73013a4d6718b21d",
+        "outputHash": "77ffb24fb8b3b906fbc15e6b3fff52ba4ec491068f29d5f2fe017cf5455009ff",
+        "generatedAt": "2026-02-13T16:40:47.616Z",
+        "generationTimeMs": 40797,
+        "fileSizeBytes": 7300,
+        "model": "gemini-2.5-flash"
+      },
+      "lastError": "Truncated output: unbalanced braces or missing closing statement"
+    },
+    {
+      "id": "tmx-depths-l3",
+      "name": "Depths Level 3: Resonant Caverns TMX",
+      "category": "database-maps",
+      "filename": "depths-l3.tmx",
+      "targetPath": "main/server/maps/tmx/depths-l3.tmx",
+      "prompt": "You are generating a Tiled TMX XML map file.\nOutput ONLY valid XML starting with <?xml ...?> and ending with </map>.\nUse 6 layers: ground, ground2, objects, objects_upper, collision, events.\nTile GIDs reference the tileset in firstgid order.\nObject layer entries use Tiled object format for NPC spawns and event triggers.\nMark collision tiles on the collision layer for walls, water, and obstacles.\nPlace event triggers on the events layer as point objects with type and properties.\n\nGenerate a Tiled TMX map for \"Depths Level 3: Resonant Caverns\" (depths-l3.tmx).\n\nDimensions: 20x25 tiles, 32px per tile.\nBiome: dungeon | Vibrancy: 40 | Category: depths\n\nTilesets:\n  - tiles_dungeon_{tier} (firstgid: 1)\n\nLayers (6 total): ground, ground2, objects, objects_upper, collision, events.\n\nConnections:\n  - up: tile 10,0 -> depths-l2 at 10,24 (always)\n  - down: tile 10,24 -> depths-l4 at 10,0 (always)\n  - up: tile 3,10 -> hollow-ridge at 38,3 (Memory lift (after puzzle))\n\nNPC spawn positions: none\n\nEnemy zones: Echo Chamber: 1,4 -> 4,8; Puzzle hall: 11,4 -> 20,8; Nexus: 1,9 -> 20,12; Bridge approach: 10,13 -> 14,15\n\nResonance Stones: RS-D3-01 at (2,6), RS-D3-02 at (7,6), RS-D3-03 at (10,10), RS-D3-04 at (6,16)\n\nChests: CH-D3-01 at (17,11), CH-D3-02 at (2,14), CH-D3-03 at (15,19)\n\nFill ground layer with appropriate biome base tiles.\nPlace collision on map edges, building walls, water boundaries, and obstacle tiles.\nPlace objects (trees, rocks, buildings, furniture) per the map layout doc.\nMark event trigger positions on events layer as Tiled point objects.",
+      "docRefs": [
+        {
+          "path": "docs/maps/dungeon-depths.md",
+          "heading": "Depths Level 3: Resonant Caverns",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: dungeon",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "e3d6b97a003b2d76",
+        "outputHash": "497f7fbe44be7d1b959d6f5c804207515dce123b19574beda3b0d2c56c896c1d",
+        "generatedAt": "2026-02-13T15:26:13.658Z",
+        "generationTimeMs": 79586,
+        "fileSizeBytes": 13579,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "mapdata-depths-l3",
+      "name": "Depths Level 3: Resonant Caverns MapData",
+      "category": "database-maps",
+      "filename": "depths-level-3-resonant-caverns.ts",
+      "targetPath": "main/server/maps/depths-level-3-resonant-caverns.ts",
+      "prompt": "You are generating an RPG-JS 4.3.0 TypeScript module file.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nUse @MapData decorator. Import from '@rpgjs/server'.\nUse the exact map ID and file path provided.\nInclude onInit, onJoin hooks for event spawning.\nUse createDynamicEvent for NPCs and enemies per the spawn data.\n\nGenerate an RPG-JS @MapData class for \"Depths Level 3: Resonant Caverns\".\n\nMap ID: \"depths-l3\"\nTMX file: \"./tmx/depths-l3.tmx\"\nDimensions: 20x25\nBiome: dungeon\n\nTransitions:\n  - From (10,0) up to \"depths-l2\" at (10,24), condition: always\n  - From (10,24) down to \"depths-l4\" at (10,0), condition: always\n\nNPC count: 0\nEnemy zones: 4\nEvent triggers: 12\n\nUse @MapData decorator with id and file properties.\nImport event spawner from './events/depths-level-3-resonant-caverns-events' if NPCs/events exist.\nCall spawnMapEvents(player) in onJoin hook.\nSet up map transitions in onInit using player.changeMap().",
+      "docRefs": [
+        {
+          "path": "docs/maps/dungeon-depths.md",
+          "heading": "Depths Level 3: Resonant Caverns",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: dungeon",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "d6999555cb4b430a",
+        "outputHash": "d2eded991f5189d7cc4d51a8312d0c44496f95b128b0c8ebb13af2e51aab3f53",
+        "generatedAt": "2026-02-13T15:26:21.125Z",
+        "generationTimeMs": 5461,
+        "fileSizeBytes": 1134,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "events-depths-l3",
+      "name": "Depths Level 3: Resonant Caverns Events",
+      "category": "database-maps",
+      "filename": "depths-level-3-resonant-caverns-events.ts",
+      "targetPath": "main/server/maps/events/depths-level-3-resonant-caverns-events.ts",
+      "prompt": "You are generating RPG-JS 4.3.0 TypeScript event spawner functions.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nEach event gets a createDynamicEvent call with proper position, graphics, and hooks.\nNPC events use onAction for dialogue. Transition events use onPlayerInput.\nEnemy zone events use onChanges with random encounter checks.\n\nGenerate event spawner functions for map \"Depths Level 3: Resonant Caverns\" (depths-l3).\n\nNPCs:\n  - None\n\nEvents:\n  - EV-D3-001: pos=10,0, type=touch, Entry from Hollow Ridge\n  - EV-D3-004: pos=7,6, type=action, Burdened RS: compost sorrow [GQ-02-S1]\n  - EV-D3-005: pos=12,6, type=action, Sound puzzle pillar A\n  - EV-D3-006: pos=14,5, type=action, Sound puzzle pillar C\n  - EV-D3-007: pos=16,5, type=action, Sound puzzle pillar E\n  - EV-D3-008: pos=18,6, type=action, Sound puzzle pillar G\n  - EV-D3-009: pos=19,7, type=action, Sound puzzle pillar B\n  - EV-D3-011: pos=3,10, type=action, Memory lift -> Hollow Ridge\n  - EV-D3-017: pos=15,14, type=touch, Bridge walking check\n  - EV-D3-018: pos=10,20, type=action, Boss: Resonant King dialogue\n  - EV-D3-019: pos=10,20, type=auto, Boss fight: Resonant King\n  - EV-D3-020: pos=10,24, type=touch, Stairway -> Depths L4\n\nEnemy Zones:\n  - Echo Chamber: bounds=1,4 -> 4,8, enemies=[E-DP-03], levels=16-17\n  - Puzzle hall: bounds=11,4 -> 20,8, enemies=[E-DP-03], levels=16-17\n  - Nexus: bounds=1,9 -> 20,12, enemies=[E-DP-03,E-DP-02], levels=16-17\n  - Bridge approach: bounds=10,13 -> 14,15, enemies=[E-DP-03], levels=16-18\n\nExport a function spawnMapEvents(player: RpgPlayer) that:\n1. Creates NPC events via createDynamicEvent with graphics and movement\n2. Sets up touch/action event triggers at specified positions\n3. Registers enemy encounter zones with random encounter checks\n4. Handles map transitions via player.changeMap()\n5. Checks quest flags before spawning conditional events",
+      "docRefs": [
+        {
+          "path": "docs/maps/dungeon-depths.md",
+          "heading": "Depths Level 3: Resonant Caverns",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: dungeon",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "c0330c5292e75d7b",
+        "outputHash": "ecbb7f18623168f7b23496f998f1632238559e2356efe1e8da5bf34db308836a",
+        "generatedAt": "2026-02-13T15:26:59.125Z",
+        "generationTimeMs": 35997,
+        "fileSizeBytes": 21713,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "tmx-depths-l4",
+      "name": "Depths Level 4: The Songline TMX",
+      "category": "database-maps",
+      "filename": "depths-l4.tmx",
+      "targetPath": "main/server/maps/tmx/depths-l4.tmx",
+      "prompt": "You are generating a Tiled TMX XML map file.\nOutput ONLY valid XML starting with <?xml ...?> and ending with </map>.\nUse 6 layers: ground, ground2, objects, objects_upper, collision, events.\nTile GIDs reference the tileset in firstgid order.\nObject layer entries use Tiled object format for NPC spawns and event triggers.\nMark collision tiles on the collision layer for walls, water, and obstacles.\nPlace event triggers on the events layer as point objects with type and properties.\n\nGenerate a Tiled TMX map for \"Depths Level 4: The Songline\" (depths-l4.tmx).\n\nDimensions: 20x25 tiles, 32px per tile.\nBiome: dungeon | Vibrancy: 45 | Category: depths\n\nTilesets:\n  - tiles_dungeon_{tier} (firstgid: 1)\n\nLayers (6 total): ground, ground2, objects, objects_upper, collision, events.\n\nConnections:\n  - up: tile 10,0 -> depths-l3 at 10,24 (always)\n  - down: tile 10,24 -> depths-l5 at 10,0 (always)\n  - up: tile 4,7 -> resonance-fields at 28,44 (Memory lift)\n\nNPC spawn positions: none\n\nEnemy zones: Prelude hall: 1,1 -> 20,4; Rising hall: 10,5 -> 20,9; Crescendo corridor: 1,10 -> 20,14; Dissolution hall: 10,15 -> 20,19; Alcove guard: 1,15 -> 8,19\n\nResonance Stones: RS-D4-01 at (5,3), RS-D4-02 at (15,7), RS-D4-03 at (2,6), RS-D4-04 at (5,12)\n\nChests: CH-D4-01 at (18,6), CH-D4-02 at (15,12), CH-D4-03 at (18,16), CH-D4-04 at (4,17), CH-D4-05 at (5,21)\n\nFill ground layer with appropriate biome base tiles.\nPlace collision on map edges, building walls, water boundaries, and obstacle tiles.\nPlace objects (trees, rocks, buildings, furniture) per the map layout doc.\nMark event trigger positions on events layer as Tiled point objects.",
+      "docRefs": [
+        {
+          "path": "docs/maps/dungeon-depths.md",
+          "heading": "Depths Level 4: The Songline",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: dungeon",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "8341970ab2791e1b",
+        "outputHash": "f3755bdd9b2b20cccdf16d8472ce1bacbbed423e1012775e0cbb3f1537bbf384",
+        "generatedAt": "2026-02-13T15:28:07.833Z",
+        "generationTimeMs": 66704,
+        "fileSizeBytes": 12418,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "mapdata-depths-l4",
+      "name": "Depths Level 4: The Songline MapData",
+      "category": "database-maps",
+      "filename": "depths-level-4-the-songline.ts",
+      "targetPath": "main/server/maps/depths-level-4-the-songline.ts",
+      "prompt": "You are generating an RPG-JS 4.3.0 TypeScript module file.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nUse @MapData decorator. Import from '@rpgjs/server'.\nUse the exact map ID and file path provided.\nInclude onInit, onJoin hooks for event spawning.\nUse createDynamicEvent for NPCs and enemies per the spawn data.\n\nGenerate an RPG-JS @MapData class for \"Depths Level 4: The Songline\".\n\nMap ID: \"depths-l4\"\nTMX file: \"./tmx/depths-l4.tmx\"\nDimensions: 20x25\nBiome: dungeon\n\nTransitions:\n  - From (10,0) up to \"depths-l3\" at (10,24), condition: always\n  - From (10,24) down to \"depths-l5\" at (10,0), condition: always\n\nNPC count: 0\nEnemy zones: 5\nEvent triggers: 8\n\nUse @MapData decorator with id and file properties.\nImport event spawner from './events/depths-level-4-the-songline-events' if NPCs/events exist.\nCall spawnMapEvents(player) in onJoin hook.\nSet up map transitions in onInit using player.changeMap().",
+      "docRefs": [
+        {
+          "path": "docs/maps/dungeon-depths.md",
+          "heading": "Depths Level 4: The Songline",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: dungeon",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "dbd136f491f6214f",
+        "outputHash": "96d68404c4cab7841417d58ea6f8feb8e7331a5532abe84f2c954b4465d1ed52",
+        "generatedAt": "2026-02-13T15:28:33.241Z",
+        "generationTimeMs": 23404,
+        "fileSizeBytes": 1265,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "events-depths-l4",
+      "name": "Depths Level 4: The Songline Events",
+      "category": "database-maps",
+      "filename": "depths-level-4-the-songline-events.ts",
+      "targetPath": "main/server/maps/events/depths-level-4-the-songline-events.ts",
+      "prompt": "You are generating RPG-JS 4.3.0 TypeScript event spawner functions.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nEach event gets a createDynamicEvent call with proper position, graphics, and hooks.\nNPC events use onAction for dialogue. Transition events use onPlayerInput.\nEnemy zone events use onChanges with random encounter checks.\n\nGenerate event spawner functions for map \"Depths Level 4: The Songline\" (depths-l4).\n\nNPCs:\n  - None\n\nEvents:\n  - EV-D4-001: pos=10,0, type=touch, Entry from Resonance Fields\n  - EV-D4-002: pos=10,2, type=auto, First Verse vision\n  - EV-D4-004: pos=15,7, type=action, Burdened RS: final compost [GQ-02-S1]\n  - EV-D4-006: pos=4,7, type=action, Memory lift -> Resonance Fields\n  - EV-D4-010: pos=15,17, type=auto, Fourth Verse dissolution vision\n  - EV-D4-014: pos=10,22, type=action, Boss: The Conductor dialogue\n  - EV-D4-015: pos=10,22, type=auto, Boss fight: The Conductor\n  - EV-D4-017: pos=10,24, type=touch, Stairway -> Depths L5\n\nEnemy Zones:\n  - Prelude hall: bounds=1,1 -> 20,4, enemies=[E-DP-04], levels=19-20\n  - Rising hall: bounds=10,5 -> 20,9, enemies=[E-DP-04], levels=19-21\n  - Crescendo corridor: bounds=1,10 -> 20,14, enemies=[E-DP-04], levels=19-21\n  - Dissolution hall: bounds=10,15 -> 20,19, enemies=[E-DP-04], levels=20-21\n  - Alcove guard: bounds=1,15 -> 8,19, enemies=[E-DP-04], levels=19-21\n\nExport a function spawnMapEvents(player: RpgPlayer) that:\n1. Creates NPC events via createDynamicEvent with graphics and movement\n2. Sets up touch/action event triggers at specified positions\n3. Registers enemy encounter zones with random encounter checks\n4. Handles map transitions via player.changeMap()\n5. Checks quest flags before spawning conditional events",
+      "docRefs": [
+        {
+          "path": "docs/maps/dungeon-depths.md",
+          "heading": "Depths Level 4: The Songline",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: dungeon",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "35f57db91818f015",
+        "outputHash": "9ad07ddea1c148ad22b45fde307b8ee1f3cd611f858025ff2c006b0da1e7d282",
+        "generatedAt": "2026-02-13T15:29:29.857Z",
+        "generationTimeMs": 54613,
+        "fileSizeBytes": 12750,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "tmx-depths-l5",
+      "name": "Depths Level 5: The Deepest Memory TMX",
+      "category": "database-maps",
+      "filename": "depths-l5.tmx",
+      "targetPath": "main/server/maps/tmx/depths-l5.tmx",
+      "prompt": "You are generating a Tiled TMX XML map file.\nOutput ONLY valid XML starting with <?xml ...?> and ending with </map>.\nUse 6 layers: ground, ground2, objects, objects_upper, collision, events.\nTile GIDs reference the tileset in firstgid order.\nObject layer entries use Tiled object format for NPC spawns and event triggers.\nMark collision tiles on the collision layer for walls, water, and obstacles.\nPlace event triggers on the events layer as point objects with type and properties.\n\nGenerate a Tiled TMX map for \"Depths Level 5: The Deepest Memory\" (depths-l5.tmx).\n\nDimensions: 20x25 tiles, 32px per tile.\nBiome: dungeon | Vibrancy: 30 | Category: depths\n\nTilesets:\n  - tiles_dungeon_{tier} (firstgid: 1)\n\nLayers (6 total): ground, ground2, objects, objects_upper, collision, events.\n\nConnections:\n  - up: tile 10,0 -> depths-l4 at 10,24 (always)\n  - up: tile 3,10 -> half-drawn-forest at 13,36 (Memory lift)\n  - down: tile 19,16 -> fortress-f1 at 10,0 (GQ-03-F2)\n\nNPC spawn positions: none\n\nEnemy zones: Inverted chamber: 1,4 -> 4,8; Fracture zone: 6,4 -> 9,8; Paradox corridor: 11,4 -> 20,8; Echo gallery: 1,13 -> 4,17; Fragment vault: 11,13 -> 14,17\n\nResonance Stones: RS-D5-01 at (2,6), RS-D5-02 at (5,10), RS-D5-03 at (17,11), RS-D5-04 at (12,14), RS-D5-05 at (13,16), RS-D5-06 at (12,16)\n\nChests: CH-D5-01 at (7,6), CH-D5-02 at (8,14), CH-D5-03 at (18,15), CH-D5-04 at (10,23)\n\nFill ground layer with appropriate biome base tiles.\nPlace collision on map edges, building walls, water boundaries, and obstacle tiles.\nPlace objects (trees, rocks, buildings, furniture) per the map layout doc.\nMark event trigger positions on events layer as Tiled point objects.",
+      "docRefs": [
+        {
+          "path": "docs/maps/dungeon-depths.md",
+          "heading": "Depths Level 5: The Deepest Memory",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: dungeon",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "e039cee3546ddaca",
+        "outputHash": "18b87aacb9c492a9d9b686ff1d32b5dddbd9f8db3f9c87db642650db9401c9b7",
+        "generatedAt": "2026-02-13T15:31:37.242Z",
+        "generationTimeMs": 125380,
+        "fileSizeBytes": 18764,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "mapdata-depths-l5",
+      "name": "Depths Level 5: The Deepest Memory MapData",
+      "category": "database-maps",
+      "filename": "depths-level-5-the-deepest-memory.ts",
+      "targetPath": "main/server/maps/depths-level-5-the-deepest-memory.ts",
+      "prompt": "You are generating an RPG-JS 4.3.0 TypeScript module file.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nUse @MapData decorator. Import from '@rpgjs/server'.\nUse the exact map ID and file path provided.\nInclude onInit, onJoin hooks for event spawning.\nUse createDynamicEvent for NPCs and enemies per the spawn data.\n\nGenerate an RPG-JS @MapData class for \"Depths Level 5: The Deepest Memory\".\n\nMap ID: \"depths-l5\"\nTMX file: \"./tmx/depths-l5.tmx\"\nDimensions: 20x25\nBiome: dungeon\n\nTransitions:\n  - From (10,0) up to \"depths-l4\" at (10,24), condition: always\n  - From (19,16) down to \"fortress-f1\" at (10,0), condition: GQ-03-F2\n\nNPC count: 0\nEnemy zones: 5\nEvent triggers: 9\n\nUse @MapData decorator with id and file properties.\nImport event spawner from './events/depths-level-5-the-deepest-memory-events' if NPCs/events exist.\nCall spawnMapEvents(player) in onJoin hook.\nSet up map transitions in onInit using player.changeMap().",
+      "docRefs": [
+        {
+          "path": "docs/maps/dungeon-depths.md",
+          "heading": "Depths Level 5: The Deepest Memory",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: dungeon",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "2b9ff236274ada5a",
+        "outputHash": "723d76cd7a09daa85cd40f58a72aebe631f0cfdb699f64c81d3a98597ce37d79",
+        "generatedAt": "2026-02-13T15:31:48.707Z",
+        "generationTimeMs": 9459,
+        "fileSizeBytes": 1525,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "events-depths-l5",
+      "name": "Depths Level 5: The Deepest Memory Events",
+      "category": "database-maps",
+      "filename": "depths-level-5-the-deepest-memory-events.ts",
+      "targetPath": "main/server/maps/events/depths-level-5-the-deepest-memory-events.ts",
+      "prompt": "You are generating RPG-JS 4.3.0 TypeScript event spawner functions.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nEach event gets a createDynamicEvent call with proper position, graphics, and hooks.\nNPC events use onAction for dialogue. Transition events use onPlayerInput.\nEnemy zone events use onChanges with random encounter checks.\n\nGenerate event spawner functions for map \"Depths Level 5: The Deepest Memory\" (depths-l5).\n\nNPCs:\n  - None\n\nEvents:\n  - EV-D5-001: pos=10,0, type=touch, Entry from Half-Drawn Forest\n  - EV-D5-002: pos=10,1, type=auto, Threshold vision montage\n  - EV-D5-005: pos=15,6, type=auto, Paradox loop forward trigger\n  - EV-D5-006: pos=11,6, type=auto, Paradox reverse progress\n  - EV-D5-007: pos=3,10, type=action, Memory lift -> Half-Drawn Forest\n  - EV-D5-011: pos=7,15, type=auto, Civilization dissolution vision\n  - EV-D5-018: pos=19,16, type=action, Shortcut -> Fortress [GQ-03-F2]\n  - EV-D5-019: pos=10,21, type=action, Boss: First Dreamer dialogue\n  - EV-D5-020: pos=10,21, type=auto, Boss fight: First Dreamer\n\nEnemy Zones:\n  - Inverted chamber: bounds=1,4 -> 4,8, enemies=[E-DP-05], levels=24-25\n  - Fracture zone: bounds=6,4 -> 9,8, enemies=[E-DP-05], levels=24-25\n  - Paradox corridor: bounds=11,4 -> 20,8, enemies=[E-DP-05,E-DP-04], levels=24-26\n  - Echo gallery: bounds=1,13 -> 4,17, enemies=[E-DP-05], levels=24-26\n  - Fragment vault: bounds=11,13 -> 14,17, enemies=[E-DP-05], levels=25-27\n\nExport a function spawnMapEvents(player: RpgPlayer) that:\n1. Creates NPC events via createDynamicEvent with graphics and movement\n2. Sets up touch/action event triggers at specified positions\n3. Registers enemy encounter zones with random encounter checks\n4. Handles map transitions via player.changeMap()\n5. Checks quest flags before spawning conditional events",
+      "docRefs": [
+        {
+          "path": "docs/maps/dungeon-depths.md",
+          "heading": "Depths Level 5: The Deepest Memory",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: dungeon",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "5d42f68b9a7c6800",
+        "outputHash": "964e12b77221478c1cdafae3c472a5c78b38cc3b0453f9aac0c21818e8286fe2",
+        "generatedAt": "2026-02-13T16:53:09.978Z",
+        "generationTimeMs": 66244,
+        "fileSizeBytes": 14050,
+        "model": "gemini-2.5-flash"
+      },
+      "lastError": "Truncated output: unbalanced braces or missing closing statement"
+    },
+    {
+      "id": "tmx-depths-l1",
+      "name": "Depths Level 1: Memory Cellar TMX",
+      "category": "database-maps",
+      "filename": "depths-l1.tmx",
+      "targetPath": "main/server/maps/tmx/depths-l1.tmx",
+      "prompt": "You are generating a Tiled TMX XML map file.\nOutput ONLY valid XML starting with <?xml ...?> and ending with </map>.\nUse 6 layers: ground, ground2, objects, objects_upper, collision, events.\nTile GIDs reference the tileset in firstgid order.\nObject layer entries use Tiled object format for NPC spawns and event triggers.\nMark collision tiles on the collision layer for walls, water, and obstacles.\nPlace event triggers on the events layer as point objects with type and properties.\n\nGenerate a Tiled TMX map for \"Depths Level 1: Memory Cellar\" (depths-l1.tmx).\n\nDimensions: 20x25 tiles, 32px per tile.\nBiome: dungeon | Vibrancy: 25 | Category: depths\n\nTilesets:\n  - tiles_dungeon_{tier} (firstgid: 1)\n\nLayers (6 total): ground, ground2, objects, objects_upper, collision, events.\n\nConnections:\n  - up: tile 10,0 -> village-hub at 8,17 (always)\n  - down: tile 15,22 -> depths-l2 at 10,0 (always)\n  - up: tile 12,20 -> village-hub at 8,17 (Memory lift (after Room 3))\n\nNPC spawn positions: none\n\nEnemy zones: Alcove patrol: 3,7 -> 7,10; Guardian Chamber: 10,7 -> 20,11; Stairway guard: 11,18 -> 19,23\n\nResonance Stones: RS-D1-01 at (17,4), RS-D1-02 at (4,9), RS-D1-03 at (15,14)\n\nChests: CH-D1-01 at (2,8), CH-D1-02 at (12,15)\n\nFill ground layer with appropriate biome base tiles.\nPlace collision on map edges, building walls, water boundaries, and obstacle tiles.\nPlace objects (trees, rocks, buildings, furniture) per the map layout doc.\nMark event trigger positions on events layer as Tiled point objects.",
+      "docRefs": [
+        {
+          "path": "docs/maps/dungeon-depths.md",
+          "heading": "Depths Level 1: Memory Cellar",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: dungeon",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "660e7a44e2116a56",
+        "outputHash": "6d1687291d7be023ebbec08240f20c5b5681b20c35d9054cb4842bbf72e7c9ac",
+        "generatedAt": "2026-02-13T15:34:39.204Z",
+        "generationTimeMs": 100520,
+        "fileSizeBytes": 12738,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "mapdata-depths-l1",
+      "name": "Depths Level 1: Memory Cellar MapData",
+      "category": "database-maps",
+      "filename": "depths-level-1-memory-cellar.ts",
+      "targetPath": "main/server/maps/depths-level-1-memory-cellar.ts",
+      "prompt": "You are generating an RPG-JS 4.3.0 TypeScript module file.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nUse @MapData decorator. Import from '@rpgjs/server'.\nUse the exact map ID and file path provided.\nInclude onInit, onJoin hooks for event spawning.\nUse createDynamicEvent for NPCs and enemies per the spawn data.\n\nGenerate an RPG-JS @MapData class for \"Depths Level 1: Memory Cellar\".\n\nMap ID: \"depths-l1\"\nTMX file: \"./tmx/depths-l1.tmx\"\nDimensions: 20x25\nBiome: dungeon\n\nTransitions:\n  - From (10,0) up to \"village-hub\" at (8,17), condition: always\n  - From (15,22) down to \"depths-l2\" at (10,0), condition: always\n\nNPC count: 0\nEnemy zones: 3\nEvent triggers: 8\n\nUse @MapData decorator with id and file properties.\nImport event spawner from './events/depths-level-1-memory-cellar-events' if NPCs/events exist.\nCall spawnMapEvents(player) in onJoin hook.\nSet up map transitions in onInit using player.changeMap().",
+      "docRefs": [
+        {
+          "path": "docs/maps/dungeon-depths.md",
+          "heading": "Depths Level 1: Memory Cellar",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: dungeon",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "bd517ca114740711",
+        "outputHash": "5ad806033aacc1ca68614db3a609ed8ba4ce30f777b8b1335bffe39173002f2a",
+        "generatedAt": "2026-02-13T15:35:06.161Z",
+        "generationTimeMs": 24954,
+        "fileSizeBytes": 1372,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "events-depths-l1",
+      "name": "Depths Level 1: Memory Cellar Events",
+      "category": "database-maps",
+      "filename": "depths-level-1-memory-cellar-events.ts",
+      "targetPath": "main/server/maps/events/depths-level-1-memory-cellar-events.ts",
+      "prompt": "You are generating RPG-JS 4.3.0 TypeScript event spawner functions.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nEach event gets a createDynamicEvent call with proper position, graphics, and hooks.\nNPC events use onAction for dialogue. Transition events use onPlayerInput.\nEnemy zone events use onChanges with random encounter checks.\n\nGenerate event spawner functions for map \"Depths Level 1: Memory Cellar\" (depths-l1).\n\nNPCs:\n  - None\n\nEvents:\n  - EV-D1-001: pos=10,0, type=touch, Entry from Village Hub\n  - EV-D1-002: pos=3,2, type=action, Wall inscription lore [SQ-10]\n  - EV-D1-003: pos=17,4, type=action, Cracked RS: calm/earth/1\n  - EV-D1-006: pos=14,9, type=touch, Forced encounter: 2+1 Shades [SQ-10]\n  - EV-D1-008: pos=15,14, type=action, RS: joy/neutral/2\n  - EV-D1-010: pos=15,15, type=auto, Memory fog vision\n  - EV-D1-011: pos=12,20, type=action, Memory lift -> Village Hub\n  - EV-D1-012: pos=15,22, type=touch, Stairway -> Depths L2\n\nEnemy Zones:\n  - Alcove patrol: bounds=3,7 -> 7,10, enemies=[E-DP-01], levels=4-5\n  - Guardian Chamber: bounds=10,7 -> 20,11, enemies=[E-DP-01], levels=4-6\n  - Stairway guard: bounds=11,18 -> 19,23, enemies=[E-DP-01], levels=4-6\n\nExport a function spawnMapEvents(player: RpgPlayer) that:\n1. Creates NPC events via createDynamicEvent with graphics and movement\n2. Sets up touch/action event triggers at specified positions\n3. Registers enemy encounter zones with random encounter checks\n4. Handles map transitions via player.changeMap()\n5. Checks quest flags before spawning conditional events",
+      "docRefs": [
+        {
+          "path": "docs/maps/dungeon-depths.md",
+          "heading": "Depths Level 1: Memory Cellar",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: dungeon",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "a09c697f828069fa",
+        "outputHash": "2c99aea18b3892a68ce40074474e4f9c6831854b34638db516b7e5d453e37aae",
+        "generatedAt": "2026-02-13T15:35:52.523Z",
+        "generationTimeMs": 44360,
+        "fileSizeBytes": 14127,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "tmx-depths-l2",
+      "name": "Depths Level 2: Drowned Archive TMX",
+      "category": "database-maps",
+      "filename": "depths-l2.tmx",
+      "targetPath": "main/server/maps/tmx/depths-l2.tmx",
+      "prompt": "You are generating a Tiled TMX XML map file.\nOutput ONLY valid XML starting with <?xml ...?> and ending with </map>.\nUse 6 layers: ground, ground2, objects, objects_upper, collision, events.\nTile GIDs reference the tileset in firstgid order.\nObject layer entries use Tiled object format for NPC spawns and event triggers.\nMark collision tiles on the collision layer for walls, water, and obstacles.\nPlace event triggers on the events layer as point objects with type and properties.\n\nGenerate a Tiled TMX map for \"Depths Level 2: Drowned Archive\" (depths-l2.tmx).\n\nDimensions: 20x25 tiles, 32px per tile.\nBiome: dungeon | Vibrancy: 35 | Category: depths\n\nTilesets:\n  - tiles_dungeon_{tier} (firstgid: 1)\n\nLayers (6 total): ground, ground2, objects, objects_upper, collision, events.\n\nConnections:\n  - up: tile 10,0 -> depths-l1 at 15,22 (always)\n  - down: tile 10,24 -> depths-l3 at 10,0 (always)\n  - up: tile 15,16 -> shimmer-marsh at 33,43 (Memory lift (after puzzle))\n\nNPC spawn positions: none\n\nEnemy zones: Reading Hall: 1,5 -> 9,9; Burdened Chamber: 11,5 -> 20,9; Flood corridor: 1,10 -> 20,13\n\nResonance Stones: RS-D2-01 at (4,7), RS-D2-02 at (15,7), RS-D2-03 at (17,11), RS-D2-04 at (13,15)\n\nChests: CH-D2-01 at (2,6), CH-D2-02 at (18,6), CH-D2-03 at (3,12), CH-D2-04 at (15,20)\n\nFill ground layer with appropriate biome base tiles.\nPlace collision on map edges, building walls, water boundaries, and obstacle tiles.\nPlace objects (trees, rocks, buildings, furniture) per the map layout doc.\nMark event trigger positions on events layer as Tiled point objects.",
+      "docRefs": [
+        {
+          "path": "docs/maps/dungeon-depths.md",
+          "heading": "Depths Level 2: Drowned Archive",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: dungeon",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "77821666045ca24b",
+        "outputHash": "077fce843cf67ad3ad4dc3c5dd295caf1bf2302bb5633253659b819e60f0a519",
+        "generatedAt": "2026-02-13T15:37:38.609Z",
+        "generationTimeMs": 104082,
+        "fileSizeBytes": 16782,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "mapdata-depths-l2",
+      "name": "Depths Level 2: Drowned Archive MapData",
+      "category": "database-maps",
+      "filename": "depths-level-2-drowned-archive.ts",
+      "targetPath": "main/server/maps/depths-level-2-drowned-archive.ts",
+      "prompt": "You are generating an RPG-JS 4.3.0 TypeScript module file.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nUse @MapData decorator. Import from '@rpgjs/server'.\nUse the exact map ID and file path provided.\nInclude onInit, onJoin hooks for event spawning.\nUse createDynamicEvent for NPCs and enemies per the spawn data.\n\nGenerate an RPG-JS @MapData class for \"Depths Level 2: Drowned Archive\".\n\nMap ID: \"depths-l2\"\nTMX file: \"./tmx/depths-l2.tmx\"\nDimensions: 20x25\nBiome: dungeon\n\nTransitions:\n  - From (10,0) up to \"depths-l1\" at (15,22), condition: always\n  - From (10,24) down to \"depths-l3\" at (10,0), condition: always\n\nNPC count: 0\nEnemy zones: 3\nEvent triggers: 9\n\nUse @MapData decorator with id and file properties.\nImport event spawner from './events/depths-level-2-drowned-archive-events' if NPCs/events exist.\nCall spawnMapEvents(player) in onJoin hook.\nSet up map transitions in onInit using player.changeMap().",
+      "docRefs": [
+        {
+          "path": "docs/maps/dungeon-depths.md",
+          "heading": "Depths Level 2: Drowned Archive",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: dungeon",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "4f69fdf18c34039d",
+        "outputHash": "a9386fa53f3859f4dd6ee8f3a0b3485f3241ef4d89da90a34ccda5c74b11e44b",
+        "generatedAt": "2026-02-13T15:37:47.274Z",
+        "generationTimeMs": 6663,
+        "fileSizeBytes": 1365,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "events-depths-l2",
+      "name": "Depths Level 2: Drowned Archive Events",
+      "category": "database-maps",
+      "filename": "depths-level-2-drowned-archive-events.ts",
+      "targetPath": "main/server/maps/events/depths-level-2-drowned-archive-events.ts",
+      "prompt": "You are generating RPG-JS 4.3.0 TypeScript event spawner functions.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nEach event gets a createDynamicEvent call with proper position, graphics, and hooks.\nNPC events use onAction for dialogue. Transition events use onPlayerInput.\nEnemy zone events use onChanges with random encounter checks.\n\nGenerate event spawner functions for map \"Depths Level 2: Drowned Archive\" (depths-l2).\n\nNPCs:\n  - None\n\nEvents:\n  - EV-D2-001: pos=10,0, type=touch, Entry from Shimmer Marsh\n  - EV-D2-005: pos=15,7, type=action, Burdened RS: compost sorrow [GQ-02-S1]\n  - EV-D2-009: pos=3,15, type=action, Left valve\n  - EV-D2-010: pos=7,15, type=action, Right valve\n  - EV-D2-011: pos=5,15, type=action, Center valve\n  - EV-D2-013: pos=15,16, type=action, Memory lift -> Shimmer Marsh\n  - EV-D2-015: pos=10,21, type=action, Boss: The Archivist dialogue\n  - EV-D2-016: pos=10,21, type=auto, Boss fight: The Archivist\n  - EV-D2-018: pos=10,24, type=touch, Stairway -> Depths L3\n\nEnemy Zones:\n  - Reading Hall: bounds=1,5 -> 9,9, enemies=[E-DP-02], levels=14-15\n  - Burdened Chamber: bounds=11,5 -> 20,9, enemies=[E-DP-02,E-DP-01], levels=14-15\n  - Flood corridor: bounds=1,10 -> 20,13, enemies=[E-DP-02], levels=14-16\n\nExport a function spawnMapEvents(player: RpgPlayer) that:\n1. Creates NPC events via createDynamicEvent with graphics and movement\n2. Sets up touch/action event triggers at specified positions\n3. Registers enemy encounter zones with random encounter checks\n4. Handles map transitions via player.changeMap()\n5. Checks quest flags before spawning conditional events",
+      "docRefs": [
+        {
+          "path": "docs/maps/dungeon-depths.md",
+          "heading": "Depths Level 2: Drowned Archive",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: dungeon",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "7a9d791aa07e2396",
+        "outputHash": "c25e5121918ad1570e82485588407d5b7791b315729049fdf46fe827cdf90c7f",
+        "generatedAt": "2026-02-13T15:38:24.484Z",
+        "generationTimeMs": 35207,
+        "fileSizeBytes": 17556,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "tmx-flickerveil",
+      "name": "Flickerveil TMX",
+      "category": "database-maps",
+      "filename": "flickerveil.tmx",
+      "targetPath": "main/server/maps/tmx/flickerveil.tmx",
+      "prompt": "You are generating a Tiled TMX XML map file.\nOutput ONLY valid XML starting with <?xml ...?> and ending with </map>.\nUse 6 layers: ground, ground2, objects, objects_upper, collision, events.\nTile GIDs reference the tileset in firstgid order.\nObject layer entries use Tiled object format for NPC spawns and event triggers.\nMark collision tiles on the collision layer for walls, water, and obstacles.\nPlace event triggers on the events layer as point objects with type and properties.\n\nGenerate a Tiled TMX map for \"Flickerveil\" (flickerveil.tmx).\n\nDimensions: 50x50 tiles, 32px per tile.\nBiome: forest | Vibrancy: 25 | Category: overworld\n\nTilesets:\n  - tiles_forest_{tier} (firstgid: 1)\n  - overlay_flicker (firstgid: 257)\n\nLayers (6 total): ground, ground2, objects, objects_upper, collision, events.\n\nConnections:\n  - west: tile 0,25 -> shimmer-marsh at 49,25 (MQ-05+)\n  - northwest: tile 0,15 -> hollow-ridge at 49,25 (MQ-05+)\n  - southwest: tile 0,38 -> ambergrove at 38,20 (always)\n  - east: tile 48,25 -> half-drawn-forest at 0,20 (MQ-07+)\n\nNPC spawn positions: Solen at (35,30), Village Shopkeeper at (36,29), Village Innkeeper at (34,32), Flickering Guard A at (31,28), Preserver Agent at (9,9), Elyn at (30,26)\n\nEnemy zones: West Forest: 2,15 -> 18,40; East Forest: 25,5 -> 45,25; Archive Perimeter: 5,5 -> 13,13; Veil's Edge: 42,20 -> 49,28\n\nResonance Stones: RS-FV-01 at (20,20), RS-FV-02 at (8,8), RS-FV-03 at (9,10), RS-FV-04 at (10,9), RS-FV-05 at (7,9), RS-FV-06 at (9,7), RS-FV-07 at (35,30), RS-FV-08 at (45,24)\n\nChests: CH-FV-01 at (10,10), CH-FV-02 at (34,28), CH-FV-03 at (47,25)\n\nFill ground layer with appropriate biome base tiles.\nPlace collision on map edges, building walls, water boundaries, and obstacle tiles.\nPlace objects (trees, rocks, buildings, furniture) per the map layout doc.\nMark event trigger positions on events layer as Tiled point objects.",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Flickerveil",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: forest",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "6950dd5628ad0f12",
+        "outputHash": "e8125aa6aadf7ec5da02f1f6e5f714da4d3ca207786f0d09a7fa4faea9007576",
+        "generatedAt": "2026-02-13T15:41:14.671Z",
+        "generationTimeMs": 168183,
+        "fileSizeBytes": 37713,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "mapdata-flickerveil",
+      "name": "Flickerveil MapData",
+      "category": "database-maps",
+      "filename": "flickerveil.ts",
+      "targetPath": "main/server/maps/flickerveil.ts",
+      "prompt": "You are generating an RPG-JS 4.3.0 TypeScript module file.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nUse @MapData decorator. Import from '@rpgjs/server'.\nUse the exact map ID and file path provided.\nInclude onInit, onJoin hooks for event spawning.\nUse createDynamicEvent for NPCs and enemies per the spawn data.\n\nGenerate an RPG-JS @MapData class for \"Flickerveil\".\n\nMap ID: \"flickerveil\"\nTMX file: \"./tmx/flickerveil.tmx\"\nDimensions: 50x50\nBiome: forest\n\nTransitions:\n  - From (0,25) west to \"shimmer-marsh\" at (49,25), condition: MQ-05+\n  - From (0,15) northwest to \"hollow-ridge\" at (49,25), condition: MQ-05+\n  - From (0,38) southwest to \"ambergrove\" at (38,20), condition: always\n  - From (48,25) east to \"half-drawn-forest\" at (0,20), condition: MQ-07+\n\nNPC count: 6\nEnemy zones: 4\nEvent triggers: 11\n\nUse @MapData decorator with id and file properties.\nImport event spawner from './events/flickerveil-events' if NPCs/events exist.\nCall spawnMapEvents(player) in onJoin hook.\nSet up map transitions in onInit using player.changeMap().",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Flickerveil",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: forest",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "5a5241fdc41b0795",
+        "outputHash": "1aa71aafd4226057723a56dbd07de471ea67d72ff7a6355cd150d66cdcfe53cb",
+        "generatedAt": "2026-02-13T15:41:29.369Z",
+        "generationTimeMs": 12694,
+        "fileSizeBytes": 2429,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "events-flickerveil",
+      "name": "Flickerveil Events",
+      "category": "database-maps",
+      "filename": "flickerveil-events.ts",
+      "targetPath": "main/server/maps/events/flickerveil-events.ts",
+      "prompt": "You are generating RPG-JS 4.3.0 TypeScript event spawner functions.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nEach event gets a createDynamicEvent call with proper position, graphics, and hooks.\nNPC events use onAction for dialogue. Transition events use onPlayerInput.\nEnemy zone events use onChanges with random encounter checks.\n\nGenerate event spawner functions for map \"Flickerveil\" (flickerveil).\n\nNPCs:\n  - Solen (solen): pos=35,30, graphic=npc_solen, move=Static, quests=[SQ-08,GQ-03]\n  - Village Shopkeeper (village-shopkeeper-fv): pos=36,29, graphic=npc_shopkeep_f2, move=Static\n  - Village Innkeeper (village-innkeeper-fv): pos=34,32, graphic=npc_innkeeper_f1, move=Static\n  - Flickering Guard A (flickering-guard-a): pos=31,28, graphic=npc_villager_m4, move=Patrol\n  - Preserver Agent (preserver-agent-archive): pos=9,9, graphic=npc_preserver_agent, move=Static\n  - Elyn (elyn): pos=30,26, graphic=npc_elyn, move=Static, quests=[GQ-03-S1]\n\nEvents:\n  - EV-FV-001: pos=35,30, type=action, Solen Light Lens dialogue [GQ-03]\n  - EV-FV-002: pos=36,29, type=action, Village shop\n  - EV-FV-003: pos=20,20, type=auto, Luminos recall vision [GQ-03]\n  - EV-FV-004: pos=20,20, type=action, 4 emotion pedestals for Luminos [GQ-03]\n  - EV-FV-005: pos=8,8, type=action, Archive Burning assault [GQ-03-F1]\n  - EV-FV-006: pos=30,26, type=action, Elyn defector escort [GQ-03-S1]\n  - EV-FV-007: pos=0,25, type=touch, West -> Shimmer Marsh\n  - EV-FV-008: pos=0,15, type=touch, NW -> Hollow Ridge\n  - EV-FV-009: pos=0,38, type=touch, SW -> Ambergrove\n  - EV-FV-010: pos=48,25, type=touch, East -> Half-Drawn Forest\n  - EV-FV-011: pos=20,20, type=parallel, Light column vibrancy effect\n\nEnemy Zones:\n  - West Forest: bounds=2,15 -> 18,40, enemies=[Phantom Fox,Canopy Crawler], levels=13-15\n  - East Forest: bounds=25,5 -> 45,25, enemies=[Flicker Wisp,Phantom Fox], levels=13-16\n  - Archive Perimeter: bounds=5,5 -> 13,13, enemies=[Preserver Agent], levels=14-16\n  - Veil's Edge: bounds=42,20 -> 49,28, enemies=[Flicker Wisp,Sketch Phantom], levels=15-17\n\nExport a function spawnMapEvents(player: RpgPlayer) that:\n1. Creates NPC events via createDynamicEvent with graphics and movement\n2. Sets up touch/action event triggers at specified positions\n3. Registers enemy encounter zones with random encounter checks\n4. Handles map transitions via player.changeMap()\n5. Checks quest flags before spawning conditional events",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Flickerveil",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: forest",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "92ccc3353754faf9",
+        "outputHash": "6976de48ec7d4cea3967b623ddcd1b25c4556e684ce7067a589cfab0c8765429",
+        "generatedAt": "2026-02-13T15:41:59.664Z",
+        "generationTimeMs": 28292,
+        "fileSizeBytes": 15566,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "tmx-fortress-f1",
+      "name": "Fortress Floor 1: Gallery of Moments TMX",
+      "category": "database-maps",
+      "filename": "fortress-f1.tmx",
+      "targetPath": "main/server/maps/tmx/fortress-f1.tmx",
+      "prompt": "You are generating a Tiled TMX XML map file.\nOutput ONLY valid XML starting with <?xml ...?> and ending with </map>.\nUse 6 layers: ground, ground2, objects, objects_upper, collision, events.\nTile GIDs reference the tileset in firstgid order.\nObject layer entries use Tiled object format for NPC spawns and event triggers.\nMark collision tiles on the collision layer for walls, water, and obstacles.\nPlace event triggers on the events layer as point objects with type and properties.\n\nGenerate a Tiled TMX map for \"Fortress Floor 1: Gallery of Moments\" (fortress-f1.tmx).\n\nDimensions: 20x25 tiles, 32px per tile.\nBiome: dungeon | Vibrancy: 50 | Category: fortress\n\nTilesets:\n  - tiles_dungeon_{tier} (firstgid: 1)\n\nLayers (6 total): ground, ground2, objects, objects_upper, collision, events.\n\nConnections:\n  - up: tile 10,0 -> undrawn-peaks at 19,35 (always)\n  - down: tile 10,19 -> fortress-f2 at 10,0 (MQ-09)\n  - up: tile 3,11 -> undrawn-peaks at 19,35 (Memory lift)\n\nNPC spawn positions: none\n\nEnemy zones: Entry patrol: 1,1 -> 20,4; Puzzle room: 11,5 -> 20,9\n\nResonance Stones: RS-F1-01 at (2,7), RS-F1-02 at (5,11)\n\nChests: CH-F1-01 at (8,6), CH-F1-02 at (17,12)\n\nFill ground layer with appropriate biome base tiles.\nPlace collision on map edges, building walls, water boundaries, and obstacle tiles.\nPlace objects (trees, rocks, buildings, furniture) per the map layout doc.\nMark event trigger positions on events layer as Tiled point objects.",
+      "docRefs": [
+        {
+          "path": "docs/maps/dungeon-depths.md",
+          "heading": "Fortress Floor 1: Gallery of Moments",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: dungeon",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "3c80e21f2d2f46aa",
+        "outputHash": "7324f75feeba4bde66a5ae85a176224cab1ebcc4db557d0dc6a6494fbbd4d563",
+        "generatedAt": "2026-02-13T16:43:25.729Z",
+        "generationTimeMs": 92942,
+        "fileSizeBytes": 14147,
+        "model": "gemini-2.5-flash"
+      },
+      "lastError": "Truncated output: unclosed XML tags or missing </map>"
+    },
+    {
+      "id": "mapdata-fortress-f1",
+      "name": "Fortress Floor 1: Gallery of Moments MapData",
+      "category": "database-maps",
+      "filename": "fortress-floor-1-gallery-of-moments.ts",
+      "targetPath": "main/server/maps/fortress-floor-1-gallery-of-moments.ts",
+      "prompt": "You are generating an RPG-JS 4.3.0 TypeScript module file.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nUse @MapData decorator. Import from '@rpgjs/server'.\nUse the exact map ID and file path provided.\nInclude onInit, onJoin hooks for event spawning.\nUse createDynamicEvent for NPCs and enemies per the spawn data.\n\nGenerate an RPG-JS @MapData class for \"Fortress Floor 1: Gallery of Moments\".\n\nMap ID: \"fortress-f1\"\nTMX file: \"./tmx/fortress-f1.tmx\"\nDimensions: 20x25\nBiome: dungeon\n\nTransitions:\n  - From (10,0) up to \"undrawn-peaks\" at (19,35), condition: always\n  - From (10,19) down to \"fortress-f2\" at (10,0), condition: MQ-09\n\nNPC count: 0\nEnemy zones: 2\nEvent triggers: 10\n\nUse @MapData decorator with id and file properties.\nImport event spawner from './events/fortress-floor-1-gallery-of-moments-events' if NPCs/events exist.\nCall spawnMapEvents(player) in onJoin hook.\nSet up map transitions in onInit using player.changeMap().",
+      "docRefs": [
+        {
+          "path": "docs/maps/dungeon-depths.md",
+          "heading": "Fortress Floor 1: Gallery of Moments",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: dungeon",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "16b173c76a68768d",
+        "outputHash": "6d44164ad411d204caeda9e48dba9a7d03710f249c4d0db4d50804b5c37473d4",
+        "generatedAt": "2026-02-13T16:43:33.916Z",
+        "generationTimeMs": 6184,
+        "fileSizeBytes": 1544,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "events-fortress-f1",
+      "name": "Fortress Floor 1: Gallery of Moments Events",
+      "category": "database-maps",
+      "filename": "fortress-floor-1-gallery-of-moments-events.ts",
+      "targetPath": "main/server/maps/events/fortress-floor-1-gallery-of-moments-events.ts",
+      "prompt": "You are generating RPG-JS 4.3.0 TypeScript event spawner functions.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nEach event gets a createDynamicEvent call with proper position, graphics, and hooks.\nNPC events use onAction for dialogue. Transition events use onPlayerInput.\nEnemy zone events use onChanges with random encounter checks.\n\nGenerate event spawner functions for map \"Fortress Floor 1: Gallery of Moments\" (fortress-f1).\n\nNPCs:\n  - None\n\nEvents:\n  - EV-F1-001: pos=10,0, type=touch, Entry from Undrawn Peaks [MQ-09]\n  - EV-F1-004: pos=2,7, type=action, RS behind crystal barrier\n  - EV-F1-006: pos=7,7, type=touch, Forced encounter: 2 Agents\n  - EV-F1-008: pos=11,7, type=action, Joy receptacle [MQ-09]\n  - EV-F1-009: pos=15,7, type=action, Sorrow receptacle [MQ-09]\n  - EV-F1-010: pos=19,7, type=action, Fury receptacle [MQ-09]\n  - EV-F1-012: pos=3,11, type=action, Memory lift -> Undrawn Peaks\n  - EV-F1-016: pos=10,16, type=action, Boss: Curator's Right Hand dialogue [MQ-09]\n  - EV-F1-017: pos=10,16, type=auto, Boss fight: Right Hand\n  - EV-F1-019: pos=10,19, type=touch, Stairway -> F2 [MQ-09]\n\nEnemy Zones:\n  - Entry patrol: bounds=1,1 -> 20,4, enemies=[E-PV-02,E-PV-04], levels=24-26\n  - Puzzle room: bounds=11,5 -> 20,9, enemies=[E-PV-04], levels=24-26\n\nExport a function spawnMapEvents(player: RpgPlayer) that:\n1. Creates NPC events via createDynamicEvent with graphics and movement\n2. Sets up touch/action event triggers at specified positions\n3. Registers enemy encounter zones with random encounter checks\n4. Handles map transitions via player.changeMap()\n5. Checks quest flags before spawning conditional events",
+      "docRefs": [
+        {
+          "path": "docs/maps/dungeon-depths.md",
+          "heading": "Fortress Floor 1: Gallery of Moments",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: dungeon",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "9f9b37cb853672e2",
+        "outputHash": "a319f36e03d5be214b8d1462f563e912023d613939c81b61bb6189bed132b617",
+        "generatedAt": "2026-02-13T16:44:01.803Z",
+        "generationTimeMs": 25884,
+        "fileSizeBytes": 12095,
+        "model": "gemini-2.5-flash"
+      },
+      "lastError": "Truncated output: unbalanced braces or missing closing statement"
+    },
+    {
+      "id": "tmx-fortress-f2",
+      "name": "Fortress Floor 2: Archive of Perfection TMX",
+      "category": "database-maps",
+      "filename": "fortress-f2.tmx",
+      "targetPath": "main/server/maps/tmx/fortress-f2.tmx",
+      "prompt": "You are generating a Tiled TMX XML map file.\nOutput ONLY valid XML starting with <?xml ...?> and ending with </map>.\nUse 6 layers: ground, ground2, objects, objects_upper, collision, events.\nTile GIDs reference the tileset in firstgid order.\nObject layer entries use Tiled object format for NPC spawns and event triggers.\nMark collision tiles on the collision layer for walls, water, and obstacles.\nPlace event triggers on the events layer as point objects with type and properties.\n\nGenerate a Tiled TMX map for \"Fortress Floor 2: Archive of Perfection\" (fortress-f2.tmx).\n\nDimensions: 20x25 tiles, 32px per tile.\nBiome: dungeon | Vibrancy: 55 | Category: fortress\n\nTilesets:\n  - tiles_dungeon_{tier} (firstgid: 1)\n\nLayers (6 total): ground, ground2, objects, objects_upper, collision, events.\n\nConnections:\n  - up: tile 10,0 -> fortress-f1 at 10,19 (always)\n  - down: tile 15,19 -> fortress-f3 at 10,0 (MQ-09)\n\nNPC spawn positions: none\n\nEnemy zones: Entry hall: 1,1 -> 20,4; Gallery patrol: 6,5 -> 20,9; Archive patrol: 1,10 -> 20,14\n\nResonance Stones: RS-F2-01 at (5,12), RS-F2-02 at (3,17)\n\nChests: CH-F2-01 at (15,13), CH-F2-02 at (12,16)\n\nFill ground layer with appropriate biome base tiles.\nPlace collision on map edges, building walls, water boundaries, and obstacle tiles.\nPlace objects (trees, rocks, buildings, furniture) per the map layout doc.\nMark event trigger positions on events layer as Tiled point objects.",
+      "docRefs": [
+        {
+          "path": "docs/maps/dungeon-depths.md",
+          "heading": "Fortress Floor 2: Archive of Perfection",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: dungeon",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "923816cc2b469f10",
+        "outputHash": "887583106d0d083b02b1a9ded556390203bdc4fb36370bd8895edefd2162b61b",
+        "generatedAt": "2026-02-13T16:46:19.702Z",
+        "generationTimeMs": 135896,
+        "fileSizeBytes": 13555,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "mapdata-fortress-f2",
+      "name": "Fortress Floor 2: Archive of Perfection MapData",
+      "category": "database-maps",
+      "filename": "fortress-floor-2-archive-of-perfection.ts",
+      "targetPath": "main/server/maps/fortress-floor-2-archive-of-perfection.ts",
+      "prompt": "You are generating an RPG-JS 4.3.0 TypeScript module file.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nUse @MapData decorator. Import from '@rpgjs/server'.\nUse the exact map ID and file path provided.\nInclude onInit, onJoin hooks for event spawning.\nUse createDynamicEvent for NPCs and enemies per the spawn data.\n\nGenerate an RPG-JS @MapData class for \"Fortress Floor 2: Archive of Perfection\".\n\nMap ID: \"fortress-f2\"\nTMX file: \"./tmx/fortress-f2.tmx\"\nDimensions: 20x25\nBiome: dungeon\n\nTransitions:\n  - From (10,0) up to \"fortress-f1\" at (10,19), condition: always\n  - From (15,19) down to \"fortress-f3\" at (10,0), condition: MQ-09\n\nNPC count: 0\nEnemy zones: 3\nEvent triggers: 9\n\nUse @MapData decorator with id and file properties.\nImport event spawner from './events/fortress-floor-2-archive-of-perfection-events' if NPCs/events exist.\nCall spawnMapEvents(player) in onJoin hook.\nSet up map transitions in onInit using player.changeMap().",
+      "docRefs": [
+        {
+          "path": "docs/maps/dungeon-depths.md",
+          "heading": "Fortress Floor 2: Archive of Perfection",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: dungeon",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "49e9f2cce79e9ca8",
+        "outputHash": "0eafaa9eba9373ddd50956bf7575b30d2ec1db964f629480991745999af81cf9",
+        "generatedAt": "2026-02-13T16:46:29.738Z",
+        "generationTimeMs": 8033,
+        "fileSizeBytes": 1417,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "events-fortress-f2",
+      "name": "Fortress Floor 2: Archive of Perfection Events",
+      "category": "database-maps",
+      "filename": "fortress-floor-2-archive-of-perfection-events.ts",
+      "targetPath": "main/server/maps/events/fortress-floor-2-archive-of-perfection-events.ts",
+      "prompt": "You are generating RPG-JS 4.3.0 TypeScript event spawner functions.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nEach event gets a createDynamicEvent call with proper position, graphics, and hooks.\nNPC events use onAction for dialogue. Transition events use onPlayerInput.\nEnemy zone events use onChanges with random encounter checks.\n\nGenerate event spawner functions for map \"Fortress Floor 2: Archive of Perfection\" (fortress-f2).\n\nNPCs:\n  - None\n\nEvents:\n  - EV-F2-001: pos=10,0, type=touch, Entry from F1 [MQ-09]\n  - EV-F2-007: pos=8,7, type=action, Dilemma 1: free musician\n  - EV-F2-008: pos=13,7, type=action, Dilemma 2: free lovers\n  - EV-F2-009: pos=18,7, type=action, Dilemma 3: free scholar\n  - EV-F2-010: pos=10,12, type=touch, Forced: Preserver Captain [MQ-09]\n  - EV-F2-011: pos=10,11, type=action, Curator's Grief (MF-09) [MQ-09]\n  - EV-F2-016: pos=15,17, type=action, Boss: Archive Keeper dialogue [MQ-09]\n  - EV-F2-017: pos=15,17, type=auto, Boss fight: Archive Keeper\n  - EV-F2-019: pos=15,19, type=touch, Stairway -> F3 [MQ-09]\n\nEnemy Zones:\n  - Entry hall: bounds=1,1 -> 20,4, enemies=[E-PV-04,E-PV-03], levels=26-28\n  - Gallery patrol: bounds=6,5 -> 20,9, enemies=[E-PV-04,E-PV-03], levels=26-28\n  - Archive patrol: bounds=1,10 -> 20,14, enemies=[E-PV-04], levels=26-28\n\nExport a function spawnMapEvents(player: RpgPlayer) that:\n1. Creates NPC events via createDynamicEvent with graphics and movement\n2. Sets up touch/action event triggers at specified positions\n3. Registers enemy encounter zones with random encounter checks\n4. Handles map transitions via player.changeMap()\n5. Checks quest flags before spawning conditional events",
+      "docRefs": [
+        {
+          "path": "docs/maps/dungeon-depths.md",
+          "heading": "Fortress Floor 2: Archive of Perfection",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: dungeon",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "03f974dcf97f0795",
+        "outputHash": "ed5d900c9805c4530f5ed9c4e00a1b7b2799b90a55bf7acef62c584b80c5c1bd",
+        "generatedAt": "2026-02-13T16:47:19.097Z",
+        "generationTimeMs": 47355,
+        "fileSizeBytes": 14865,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "tmx-fortress-f3",
+      "name": "Fortress Floor 3: First Memory Chamber TMX",
+      "category": "database-maps",
+      "filename": "fortress-f3.tmx",
+      "targetPath": "main/server/maps/tmx/fortress-f3.tmx",
+      "prompt": "You are generating a Tiled TMX XML map file.\nOutput ONLY valid XML starting with <?xml ...?> and ending with </map>.\nUse 6 layers: ground, ground2, objects, objects_upper, collision, events.\nTile GIDs reference the tileset in firstgid order.\nObject layer entries use Tiled object format for NPC spawns and event triggers.\nMark collision tiles on the collision layer for walls, water, and obstacles.\nPlace event triggers on the events layer as point objects with type and properties.\n\nGenerate a Tiled TMX map for \"Fortress Floor 3: First Memory Chamber\" (fortress-f3.tmx).\n\nDimensions: 20x25 tiles, 32px per tile.\nBiome: dungeon | Vibrancy: 60 | Category: fortress\n\nTilesets:\n  - tiles_dungeon_{tier} (firstgid: 1)\n\nLayers (6 total): ground, ground2, objects, objects_upper, collision, events.\n\nConnections:\n  - up: tile 10,0 -> fortress-f2 at 15,19 (always)\n\nNPC spawn positions: none\n\nEnemy zones: none\n\nResonance Stones: RS-F3-01 at (10,18)\n\nChests: none\n\nFill ground layer with appropriate biome base tiles.\nPlace collision on map edges, building walls, water boundaries, and obstacle tiles.\nPlace objects (trees, rocks, buildings, furniture) per the map layout doc.\nMark event trigger positions on events layer as Tiled point objects.",
+      "docRefs": [
+        {
+          "path": "docs/maps/dungeon-depths.md",
+          "heading": "Fortress Floor 3: First Memory Chamber",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: dungeon",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "56aea44b54ee8681",
+        "outputHash": "3cd47369d37eca1075550855e03ee07932d62d15963d40781cdaaf5c0a459bfe",
+        "generatedAt": "2026-02-13T16:48:31.088Z",
+        "generationTimeMs": 69987,
+        "fileSizeBytes": 10558,
+        "model": "gemini-2.5-flash"
+      },
+      "lastError": "Truncated output: unclosed XML tags or missing </map>"
+    },
+    {
+      "id": "mapdata-fortress-f3",
+      "name": "Fortress Floor 3: First Memory Chamber MapData",
+      "category": "database-maps",
+      "filename": "fortress-floor-3-first-memory-chamber.ts",
+      "targetPath": "main/server/maps/fortress-floor-3-first-memory-chamber.ts",
+      "prompt": "You are generating an RPG-JS 4.3.0 TypeScript module file.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nUse @MapData decorator. Import from '@rpgjs/server'.\nUse the exact map ID and file path provided.\nInclude onInit, onJoin hooks for event spawning.\nUse createDynamicEvent for NPCs and enemies per the spawn data.\n\nGenerate an RPG-JS @MapData class for \"Fortress Floor 3: First Memory Chamber\".\n\nMap ID: \"fortress-f3\"\nTMX file: \"./tmx/fortress-f3.tmx\"\nDimensions: 20x25\nBiome: dungeon\n\nTransitions:\n  - From (10,0) up to \"fortress-f2\" at (15,19), condition: always\n\nNPC count: 0\nEnemy zones: 0\nEvent triggers: 5\n\nUse @MapData decorator with id and file properties.\nImport event spawner from './events/fortress-floor-3-first-memory-chamber-events' if NPCs/events exist.\nCall spawnMapEvents(player) in onJoin hook.\nSet up map transitions in onInit using player.changeMap().",
+      "docRefs": [
+        {
+          "path": "docs/maps/dungeon-depths.md",
+          "heading": "Fortress Floor 3: First Memory Chamber",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: dungeon",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "035a02836c1bd86c",
+        "outputHash": "7eb32ff91fc4686b32965f4c4645471167160e41000847885f2d78ca0c2c6810",
+        "generatedAt": "2026-02-13T16:53:16.912Z",
+        "generationTimeMs": 4916,
+        "fileSizeBytes": 663,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "events-fortress-f3",
+      "name": "Fortress Floor 3: First Memory Chamber Events",
+      "category": "database-maps",
+      "filename": "fortress-floor-3-first-memory-chamber-events.ts",
+      "targetPath": "main/server/maps/events/fortress-floor-3-first-memory-chamber-events.ts",
+      "prompt": "You are generating RPG-JS 4.3.0 TypeScript event spawner functions.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nEach event gets a createDynamicEvent call with proper position, graphics, and hooks.\nNPC events use onAction for dialogue. Transition events use onPlayerInput.\nEnemy zone events use onChanges with random encounter checks.\n\nGenerate event spawner functions for map \"Fortress Floor 3: First Memory Chamber\" (fortress-f3).\n\nNPCs:\n  - None\n\nEvents:\n  - EV-F3-001: pos=10,0, type=touch, Entry from F2 [MQ-09]\n  - EV-F3-002: pos=10,5, type=auto, Curator dialogue [MQ-09]\n  - EV-F3-003: pos=10,12, type=auto, Final boss: The Curator [MQ-09]\n  - EV-F3-004: pos=10,18, type=action, First Memory interaction [MQ-10]\n  - EV-F3-005: pos=10,20, type=auto, Ending sequence [MQ-10]\n\nEnemy Zones:\n  - None\n\nExport a function spawnMapEvents(player: RpgPlayer) that:\n1. Creates NPC events via createDynamicEvent with graphics and movement\n2. Sets up touch/action event triggers at specified positions\n3. Registers enemy encounter zones with random encounter checks\n4. Handles map transitions via player.changeMap()\n5. Checks quest flags before spawning conditional events",
+      "docRefs": [
+        {
+          "path": "docs/maps/dungeon-depths.md",
+          "heading": "Fortress Floor 3: First Memory Chamber",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: dungeon",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "026ace12770f3287",
+        "outputHash": "e4b427eab80195148ecd5fadc54f7442e3197039882d89b24d1c3380f5f1e55e",
+        "generatedAt": "2026-02-13T16:49:22.797Z",
+        "generationTimeMs": 39983,
+        "fileSizeBytes": 5692,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "tmx-half-drawn-forest",
+      "name": "The Half-Drawn Forest TMX",
+      "category": "database-maps",
+      "filename": "half-drawn-forest.tmx",
+      "targetPath": "main/server/maps/tmx/half-drawn-forest.tmx",
+      "prompt": "You are generating a Tiled TMX XML map file.\nOutput ONLY valid XML starting with <?xml ...?> and ending with </map>.\nUse 6 layers: ground, ground2, objects, objects_upper, collision, events.\nTile GIDs reference the tileset in firstgid order.\nObject layer entries use Tiled object format for NPC spawns and event triggers.\nMark collision tiles on the collision layer for walls, water, and obstacles.\nPlace event triggers on the events layer as point objects with type and properties.\n\nGenerate a Tiled TMX map for \"The Half-Drawn Forest\" (half-drawn-forest.tmx).\n\nDimensions: 40x40 tiles, 32px per tile.\nBiome: sketch | Vibrancy: 8 | Category: overworld\n\nTilesets:\n  - tiles_sketch_{tier} (firstgid: 1)\n\nLayers (6 total): ground, ground2, objects, objects_upper, collision, events.\n\nConnections:\n  - west: tile 0,20 -> flickerveil at 48,25 (MQ-07+)\n  - northwest: tile 0,10 -> undrawn-peaks at 39,25 (MQ-08+)\n  - south: tile 20,39 -> luminous-wastes at 20,0 (MQ-08+)\n  - down: tile 13,36 -> depths-l5 at 10,0 (MQ-08+)\n\nNPC spawn positions: none\n\nEnemy zones: Forest Paths: 5,5 -> 35,35; Archive Approach: 25,5 -> 35,15\n\nResonance Stones: RS-HF2-01 at (20,25), RS-HF2-02 at (28,9), RS-HF2-03 at (29,10), RS-HF2-04 at (10,15), RS-HF2-05 at (35,30)\n\nChests: CH-HF2-01 at (20,24), CH-HF2-02 at (30,10), CH-HF2-03 at (14,37)\n\nFill ground layer with appropriate biome base tiles.\nPlace collision on map edges, building walls, water boundaries, and obstacle tiles.\nPlace objects (trees, rocks, buildings, furniture) per the map layout doc.\nMark event trigger positions on events layer as Tiled point objects.",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "The Half-Drawn Forest",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: sketch",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "f67be680a010b1d2",
+        "outputHash": "25557a8afae27017c609bebea55d834f4c532375e530b4223b2d7da02fe50aa5",
+        "generatedAt": "2026-02-13T15:55:10.552Z",
+        "generationTimeMs": 113531,
+        "fileSizeBytes": 22573,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "mapdata-half-drawn-forest",
+      "name": "The Half-Drawn Forest MapData",
+      "category": "database-maps",
+      "filename": "the-half-drawn-forest.ts",
+      "targetPath": "main/server/maps/the-half-drawn-forest.ts",
+      "prompt": "You are generating an RPG-JS 4.3.0 TypeScript module file.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nUse @MapData decorator. Import from '@rpgjs/server'.\nUse the exact map ID and file path provided.\nInclude onInit, onJoin hooks for event spawning.\nUse createDynamicEvent for NPCs and enemies per the spawn data.\n\nGenerate an RPG-JS @MapData class for \"The Half-Drawn Forest\".\n\nMap ID: \"half-drawn-forest\"\nTMX file: \"./tmx/half-drawn-forest.tmx\"\nDimensions: 40x40\nBiome: sketch\n\nTransitions:\n  - From (0,20) west to \"flickerveil\" at (48,25), condition: MQ-07+\n  - From (0,10) northwest to \"undrawn-peaks\" at (39,25), condition: MQ-08+\n  - From (20,39) south to \"luminous-wastes\" at (20,0), condition: MQ-08+\n  - From (13,36) down to \"depths-l5\" at (10,0), condition: MQ-08+\n\nNPC count: 0\nEnemy zones: 2\nEvent triggers: 6\n\nUse @MapData decorator with id and file properties.\nImport event spawner from './events/the-half-drawn-forest-events' if NPCs/events exist.\nCall spawnMapEvents(player) in onJoin hook.\nSet up map transitions in onInit using player.changeMap().",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "The Half-Drawn Forest",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: sketch",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "15d396f788b2a9d4",
+        "outputHash": "7931eb10f609a0a06c761713734af15529d405ba52e42a99cea238af12c015bc",
+        "generatedAt": "2026-02-13T15:55:31.075Z",
+        "generationTimeMs": 18521,
+        "fileSizeBytes": 3032,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "events-half-drawn-forest",
+      "name": "The Half-Drawn Forest Events",
+      "category": "database-maps",
+      "filename": "the-half-drawn-forest-events.ts",
+      "targetPath": "main/server/maps/events/the-half-drawn-forest-events.ts",
+      "prompt": "You are generating RPG-JS 4.3.0 TypeScript event spawner functions.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nEach event gets a createDynamicEvent call with proper position, graphics, and hooks.\nNPC events use onAction for dialogue. Transition events use onPlayerInput.\nEnemy zone events use onChanges with random encounter checks.\n\nGenerate event spawner functions for map \"The Half-Drawn Forest\" (half-drawn-forest).\n\nNPCs:\n  - None\n\nEvents:\n  - EV-HDF-001: pos=20,25, type=action, Living Sketch broadcast solidification [MQ-08]\n  - EV-HDF-002: pos=28,9, type=action, Archive of Intentions lore\n  - EV-HDF-003: pos=13,36, type=touch, Sketch Passage -> Depths L5\n  - EV-HDF-004: pos=0,20, type=touch, West -> Flickerveil\n  - EV-HDF-005: pos=0,10, type=touch, NW -> Undrawn Peaks\n  - EV-HDF-006: pos=20,39, type=touch, South -> Luminous Wastes\n\nEnemy Zones:\n  - Forest Paths: bounds=5,5 -> 35,35, enemies=[Sketch Wolf,Unfinished Treant,Memory Echo], levels=22-26\n  - Archive Approach: bounds=25,5 -> 35,15, enemies=[Memory Echo], levels=24-26\n\nExport a function spawnMapEvents(player: RpgPlayer) that:\n1. Creates NPC events via createDynamicEvent with graphics and movement\n2. Sets up touch/action event triggers at specified positions\n3. Registers enemy encounter zones with random encounter checks\n4. Handles map transitions via player.changeMap()\n5. Checks quest flags before spawning conditional events",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "The Half-Drawn Forest",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: sketch",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "2470721b5a30db7f",
+        "outputHash": "59644ca34d3c4d925f6f8639f8d1928e71414299f4b1082a464a7452e279c924",
+        "generatedAt": "2026-02-13T15:55:55.967Z",
+        "generationTimeMs": 22891,
+        "fileSizeBytes": 7032,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "tmx-heartfield",
+      "name": "Heartfield TMX",
+      "category": "database-maps",
+      "filename": "heartfield.tmx",
+      "targetPath": "main/server/maps/tmx/heartfield.tmx",
+      "prompt": "You are generating a Tiled TMX XML map file.\nOutput ONLY valid XML starting with <?xml ...?> and ending with </map>.\nUse 6 layers: ground, ground2, objects, objects_upper, collision, events.\nTile GIDs reference the tileset in firstgid order.\nObject layer entries use Tiled object format for NPC spawns and event triggers.\nMark collision tiles on the collision layer for walls, water, and obstacles.\nPlace event triggers on the events layer as point objects with type and properties.\n\nGenerate a Tiled TMX map for \"Heartfield\" (heartfield.tmx).\n\nDimensions: 40x40 tiles, 32px per tile.\nBiome: grassland | Vibrancy: 55 | Category: overworld\n\nTilesets:\n  - tiles_grassland_{tier} (firstgid: 1)\n\nLayers (6 total): ground, ground2, objects, objects_upper, collision, events.\n\nConnections:\n  - north: tile 15,0 -> village-hub at 15,25 (always)\n  - east: tile 39,20 -> ambergrove at 0,20 (always)\n  - south: tile 20,38 -> shimmer-marsh at 20,0 (MQ-04+)\n\nNPC spawn positions: Farmer Gale at (15,14), Farmer Suri at (17,16), Farmer Edric at (14,18), Hamlet Elder at (18,14), Child NPC at (16,15)\n\nEnemy zones: Wheat Fields West: 2,5 -> 14,20; Wheat Fields East: 22,5 -> 32,17; Stagnation Approach: 28,25 -> 38,33\n\nResonance Stones: RS-HF-01 at (18,14), RS-HF-02 at (31,9), RS-HF-03 at (35,30), RS-HF-04 at (8,30)\n\nChests: CH-HF-01 at (32,9), CH-HF-02 at (5,10), CH-HF-03 at (36,25)\n\nFill ground layer with appropriate biome base tiles.\nPlace collision on map edges, building walls, water boundaries, and obstacle tiles.\nPlace objects (trees, rocks, buildings, furniture) per the map layout doc.\nMark event trigger positions on events layer as Tiled point objects.",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Heartfield",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: grassland",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "e716c99af5e9ba4f",
+        "outputHash": "1313068a2315ab099a3a9d92df717016611bc7eef3a3bc2f0291c0cf934e6623",
+        "generatedAt": "2026-02-13T15:57:28.667Z",
+        "generationTimeMs": 90699,
+        "fileSizeBytes": 26247,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "mapdata-heartfield",
+      "name": "Heartfield MapData",
+      "category": "database-maps",
+      "filename": "heartfield.ts",
+      "targetPath": "main/server/maps/heartfield.ts",
+      "prompt": "You are generating an RPG-JS 4.3.0 TypeScript module file.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nUse @MapData decorator. Import from '@rpgjs/server'.\nUse the exact map ID and file path provided.\nInclude onInit, onJoin hooks for event spawning.\nUse createDynamicEvent for NPCs and enemies per the spawn data.\n\nGenerate an RPG-JS @MapData class for \"Heartfield\".\n\nMap ID: \"heartfield\"\nTMX file: \"./tmx/heartfield.tmx\"\nDimensions: 40x40\nBiome: grassland\n\nTransitions:\n  - From (15,0) north to \"village-hub\" at (15,25), condition: always\n  - From (39,20) east to \"ambergrove\" at (0,20), condition: always\n  - From (20,38) south to \"shimmer-marsh\" at (20,0), condition: MQ-04+\n\nNPC count: 5\nEnemy zones: 3\nEvent triggers: 8\n\nUse @MapData decorator with id and file properties.\nImport event spawner from './events/heartfield-events' if NPCs/events exist.\nCall spawnMapEvents(player) in onJoin hook.\nSet up map transitions in onInit using player.changeMap().",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Heartfield",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: grassland",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "0a870c1184a22cc6",
+        "outputHash": "5fd8b7f7df820863333dfb60d29fa8ef9c55a3145f7349360440697465f9fd2f",
+        "generatedAt": "2026-02-13T15:57:40.223Z",
+        "generationTimeMs": 9555,
+        "fileSizeBytes": 2235,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "events-heartfield",
+      "name": "Heartfield Events",
+      "category": "database-maps",
+      "filename": "heartfield-events.ts",
+      "targetPath": "main/server/maps/events/heartfield-events.ts",
+      "prompt": "You are generating RPG-JS 4.3.0 TypeScript event spawner functions.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nEach event gets a createDynamicEvent call with proper position, graphics, and hooks.\nNPC events use onAction for dialogue. Transition events use onPlayerInput.\nEnemy zone events use onChanges with random encounter checks.\n\nGenerate event spawner functions for map \"Heartfield\" (heartfield).\n\nNPCs:\n  - Farmer Gale (farmer-gale): pos=15,14, graphic=npc_farmer_m1, move=Patrol, quests=[SQ-02,MQ-03]\n  - Farmer Suri (farmer-suri): pos=17,16, graphic=npc_farmer_f1, move=Static, quests=[MQ-03]\n  - Farmer Edric (farmer-edric): pos=14,18, graphic=npc_farmer_m2, move=Patrol\n  - Hamlet Elder (hamlet-elder): pos=18,14, graphic=npc_elder_f1, move=Static\n  - Child NPC (child-npc): pos=16,15, graphic=npc_child_01, move=Wander\n\nEvents:\n  - EV-HF-001: pos=15,14, type=action, Farmer Gale windmill dialogue [SQ-02]\n  - EV-HF-002: pos=30,8, type=touch, Old Windmill entrance [SQ-02]\n  - EV-HF-003: pos=33,28, type=auto, Stagnation Clearing cutscene [MQ-04]\n  - EV-HF-005: pos=20,38, type=touch, South -> Shimmer Marsh\n  - EV-HF-006: pos=15,0, type=touch, North -> Village Hub\n  - EV-HF-007: pos=39,20, type=touch, East -> Ambergrove\n  - EV-HF-008: pos=31,9, type=action, Windmill Resonance Stone\n  - EV-HF-009: pos=34,29, type=action, Broadcast joy into frozen Lira [SQ-14]\n\nEnemy Zones:\n  - Wheat Fields West: bounds=2,5 -> 14,20, enemies=[E-SL-01,E-SL-02], levels=1-3\n  - Wheat Fields East: bounds=22,5 -> 32,17, enemies=[E-SL-02], levels=2-3\n  - Stagnation Approach: bounds=28,25 -> 38,33, enemies=[Preserver Scout], levels=8-10\n\nExport a function spawnMapEvents(player: RpgPlayer) that:\n1. Creates NPC events via createDynamicEvent with graphics and movement\n2. Sets up touch/action event triggers at specified positions\n3. Registers enemy encounter zones with random encounter checks\n4. Handles map transitions via player.changeMap()\n5. Checks quest flags before spawning conditional events",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Heartfield",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: grassland",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "30b7002e47a7032b",
+        "outputHash": "e6af7778d813954c30cdcacf911e473f9a3aa1aedb665678eea7249f009e3684",
+        "generatedAt": "2026-02-13T15:58:21.711Z",
+        "generationTimeMs": 39486,
+        "fileSizeBytes": 10417,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "tmx-hollow-ridge",
+      "name": "Hollow Ridge TMX",
+      "category": "database-maps",
+      "filename": "hollow-ridge.tmx",
+      "targetPath": "main/server/maps/tmx/hollow-ridge.tmx",
+      "prompt": "You are generating a Tiled TMX XML map file.\nOutput ONLY valid XML starting with <?xml ...?> and ending with </map>.\nUse 6 layers: ground, ground2, objects, objects_upper, collision, events.\nTile GIDs reference the tileset in firstgid order.\nObject layer entries use Tiled object format for NPC spawns and event triggers.\nMark collision tiles on the collision layer for walls, water, and obstacles.\nPlace event triggers on the events layer as point objects with type and properties.\n\nGenerate a Tiled TMX map for \"Hollow Ridge\" (hollow-ridge.tmx).\n\nDimensions: 50x50 tiles, 32px per tile.\nBiome: mountain | Vibrancy: 20 | Category: overworld\n\nTilesets:\n  - tiles_mountain_{tier} (firstgid: 1)\n\nLayers (6 total): ground, ground2, objects, objects_upper, collision, events.\n\nConnections:\n  - south: tile 25,49 -> sunridge at 18,0 (always)\n  - east: tile 49,25 -> flickerveil at 0,15 (MQ-05+)\n  - southeast: tile 49,35 -> shimmer-marsh at 0,25 (MQ-05+)\n  - north: tile 25,0 -> undrawn-peaks at 20,39 (MQ-07+)\n  - down: tile 38,3 -> depths-l3 at 10,0 (MQ-05+)\n\nNPC spawn positions: Petra at (14,24), Ridgewalker Scout at (16,25), Ridgewalker Merchant at (15,26), Ridgewalker Elder at (12,22), Ridgewalker Guard A at (18,28), Ridgewalker Guard B at (10,22)\n\nEnemy zones: Mountain Trails: 5,10 -> 30,40; Spire Approach: 18,3 -> 30,15; Shattered Pass: 30,25 -> 40,34; Echo Caverns Approach: 35,2 -> 45,10\n\nResonance Stones: RS-HR-01 at (24,10), RS-HR-02 at (14,24), RS-HR-03 at (6,6), RS-HR-04 at (35,30), RS-HR-05 at (40,5)\n\nChests: CH-HR-01 at (5,7), CH-HR-02 at (36,32), CH-HR-03 at (38,4)\n\nFill ground layer with appropriate biome base tiles.\nPlace collision on map edges, building walls, water boundaries, and obstacle tiles.\nPlace objects (trees, rocks, buildings, furniture) per the map layout doc.\nMark event trigger positions on events layer as Tiled point objects.",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Hollow Ridge",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: mountain",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "ba2aa7fa54537bbf",
+        "outputHash": "0f6d6e9aaccca1ca75e1ff525e268256aeaa37588b0454a784e38da28d00c1ac",
+        "generatedAt": "2026-02-13T16:51:27.359Z",
+        "generationTimeMs": 122555,
+        "fileSizeBytes": 31813,
+        "model": "gemini-2.5-flash"
+      },
+      "lastError": "Truncated output: unclosed XML tags or missing </map>"
+    },
+    {
+      "id": "mapdata-hollow-ridge",
+      "name": "Hollow Ridge MapData",
+      "category": "database-maps",
+      "filename": "hollow-ridge.ts",
+      "targetPath": "main/server/maps/hollow-ridge.ts",
+      "prompt": "You are generating an RPG-JS 4.3.0 TypeScript module file.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nUse @MapData decorator. Import from '@rpgjs/server'.\nUse the exact map ID and file path provided.\nInclude onInit, onJoin hooks for event spawning.\nUse createDynamicEvent for NPCs and enemies per the spawn data.\n\nGenerate an RPG-JS @MapData class for \"Hollow Ridge\".\n\nMap ID: \"hollow-ridge\"\nTMX file: \"./tmx/hollow-ridge.tmx\"\nDimensions: 50x50\nBiome: mountain\n\nTransitions:\n  - From (25,49) south to \"sunridge\" at (18,0), condition: always\n  - From (49,25) east to \"flickerveil\" at (0,15), condition: MQ-05+\n  - From (49,35) southeast to \"shimmer-marsh\" at (0,25), condition: MQ-05+\n  - From (25,0) north to \"undrawn-peaks\" at (20,39), condition: MQ-07+\n  - From (38,3) down to \"depths-l3\" at (10,0), condition: MQ-05+\n\nNPC count: 6\nEnemy zones: 4\nEvent triggers: 11\n\nUse @MapData decorator with id and file properties.\nImport event spawner from './events/hollow-ridge-events' if NPCs/events exist.\nCall spawnMapEvents(player) in onJoin hook.\nSet up map transitions in onInit using player.changeMap().",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Hollow Ridge",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: mountain",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "b7b8bd6d34ed2990",
+        "outputHash": "4664bc889239e82f4a7ba9c6222a0bfa92fc336f1d440092e667702367ca7157",
+        "generatedAt": "2026-02-13T16:02:48.179Z",
+        "generationTimeMs": 25414,
+        "fileSizeBytes": 5073,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "events-hollow-ridge",
+      "name": "Hollow Ridge Events",
+      "category": "database-maps",
+      "filename": "hollow-ridge-events.ts",
+      "targetPath": "main/server/maps/events/hollow-ridge-events.ts",
+      "prompt": "You are generating RPG-JS 4.3.0 TypeScript event spawner functions.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nEach event gets a createDynamicEvent call with proper position, graphics, and hooks.\nNPC events use onAction for dialogue. Transition events use onPlayerInput.\nEnemy zone events use onChanges with random encounter checks.\n\nGenerate event spawner functions for map \"Hollow Ridge\" (hollow-ridge).\n\nNPCs:\n  - Petra (petra): pos=14,24, graphic=npc_petra, move=Static, quests=[MQ-05,SQ-07,GQ-04]\n  - Ridgewalker Scout (ridgewalker-scout): pos=16,25, graphic=npc_ridgewalker_m1, move=Patrol\n  - Ridgewalker Merchant (ridgewalker-merchant): pos=15,26, graphic=npc_merchant_m2, move=Static\n  - Ridgewalker Elder (ridgewalker-elder): pos=12,22, graphic=npc_elder_m2, move=Static\n  - Ridgewalker Guard A (ridgewalker-guard-a): pos=18,28, graphic=npc_ridgewalker_m2, move=Patrol\n  - Ridgewalker Guard B (ridgewalker-guard-b): pos=10,22, graphic=npc_ridgewalker_f1, move=Patrol\n\nEvents:\n  - EV-HR-001: pos=14,24, type=action, Petra dormant gods intro [GQ-04]\n  - EV-HR-002: pos=15,26, type=action, Ridgewalker merchant shop\n  - EV-HR-003: pos=24,10, type=auto, Kinesis Spire recall vision [GQ-04]\n  - EV-HR-004: pos=24,10, type=action, 4 emotion pedestals for Kinesis [GQ-04]\n  - EV-HR-005: pos=33,28, type=action, Shattered Pass stagnation puzzle\n  - EV-HR-006: pos=38,3, type=touch, Echo Caverns -> Depths L3\n  - EV-HR-007: pos=25,49, type=touch, South -> Sunridge\n  - EV-HR-008: pos=49,25, type=touch, East -> Flickerveil\n  - EV-HR-009: pos=49,35, type=touch, SE -> Shimmer Marsh\n  - EV-HR-010: pos=25,0, type=touch, North -> Undrawn Peaks\n  - EV-HR-011: pos=14,24, type=action, Petra escort quest [SQ-07]\n\nEnemy Zones:\n  - Mountain Trails: bounds=5,10 -> 30,40, enemies=[Wind Elemental,Mountain Drake], levels=12-16\n  - Spire Approach: bounds=18,3 -> 30,15, enemies=[Wind Elemental,Crystal Sentinel], levels=14-16\n  - Shattered Pass: bounds=30,25 -> 40,34, enemies=[Crystal Sentinel], levels=15-17\n  - Echo Caverns Approach: bounds=35,2 -> 45,10, enemies=[Mountain Drake], levels=14-16\n\nExport a function spawnMapEvents(player: RpgPlayer) that:\n1. Creates NPC events via createDynamicEvent with graphics and movement\n2. Sets up touch/action event triggers at specified positions\n3. Registers enemy encounter zones with random encounter checks\n4. Handles map transitions via player.changeMap()\n5. Checks quest flags before spawning conditional events",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Hollow Ridge",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: mountain",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "1d398b728baa6e26",
+        "outputHash": "099c6e89cf65d886f0facca9872ff4b787e2336177f6ea0196017f910cb11b84",
+        "generatedAt": "2026-02-13T16:03:46.221Z",
+        "generationTimeMs": 56037,
+        "fileSizeBytes": 11081,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "tmx-luminous-wastes",
+      "name": "Luminous Wastes TMX",
+      "category": "database-maps",
+      "filename": "luminous-wastes.tmx",
+      "targetPath": "main/server/maps/tmx/luminous-wastes.tmx",
+      "prompt": "You are generating a Tiled TMX XML map file.\nOutput ONLY valid XML starting with <?xml ...?> and ending with </map>.\nUse 6 layers: ground, ground2, objects, objects_upper, collision, events.\nTile GIDs reference the tileset in firstgid order.\nObject layer entries use Tiled object format for NPC spawns and event triggers.\nMark collision tiles on the collision layer for walls, water, and obstacles.\nPlace event triggers on the events layer as point objects with type and properties.\n\nGenerate a Tiled TMX map for \"Luminous Wastes\" (luminous-wastes.tmx).\n\nDimensions: 40x40 tiles, 32px per tile.\nBiome: sketch | Vibrancy: 5 | Category: overworld\n\nTilesets:\n  - tiles_sketch_{tier} (firstgid: 1)\n\nLayers (6 total): ground, ground2, objects, objects_upper, collision, events.\n\nConnections:\n  - north: tile 25,0 -> shimmer-marsh at 25,49 (MQ-07+)\n  - east: tile 39,20 -> resonance-fields at 0,25 (MQ-07+)\n  - northeast: tile 20,0 -> half-drawn-forest at 20,39 (MQ-08+)\n\nNPC spawn positions: Preserver Archivist at (34,9)\n\nEnemy zones: Open Wastes: 5,5 -> 35,35; Watchtower Zone: 30,5 -> 38,14\n\nResonance Stones: RS-LW-01 at (20,20), RS-LW-02 at (4,18), RS-LW-03 at (30,35)\n\nChests: none\n\nFill ground layer with appropriate biome base tiles.\nPlace collision on map edges, building walls, water boundaries, and obstacle tiles.\nPlace objects (trees, rocks, buildings, furniture) per the map layout doc.\nMark event trigger positions on events layer as Tiled point objects.",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Luminous Wastes",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: sketch",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "18f5b43818f3f3d2",
+        "outputHash": "238e9b80d38e02b2274770494556ddaa87f7951be78c4f6cc6d0310841eb3cbb",
+        "generatedAt": "2026-02-13T16:05:16.846Z",
+        "generationTimeMs": 88624,
+        "fileSizeBytes": 20987,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "mapdata-luminous-wastes",
+      "name": "Luminous Wastes MapData",
+      "category": "database-maps",
+      "filename": "luminous-wastes.ts",
+      "targetPath": "main/server/maps/luminous-wastes.ts",
+      "prompt": "You are generating an RPG-JS 4.3.0 TypeScript module file.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nUse @MapData decorator. Import from '@rpgjs/server'.\nUse the exact map ID and file path provided.\nInclude onInit, onJoin hooks for event spawning.\nUse createDynamicEvent for NPCs and enemies per the spawn data.\n\nGenerate an RPG-JS @MapData class for \"Luminous Wastes\".\n\nMap ID: \"luminous-wastes\"\nTMX file: \"./tmx/luminous-wastes.tmx\"\nDimensions: 40x40\nBiome: sketch\n\nTransitions:\n  - From (25,0) north to \"shimmer-marsh\" at (25,49), condition: MQ-07+\n  - From (39,20) east to \"resonance-fields\" at (0,25), condition: MQ-07+\n  - From (20,0) northeast to \"half-drawn-forest\" at (20,39), condition: MQ-08+\n\nNPC count: 1\nEnemy zones: 2\nEvent triggers: 5\n\nUse @MapData decorator with id and file properties.\nImport event spawner from './events/luminous-wastes-events' if NPCs/events exist.\nCall spawnMapEvents(player) in onJoin hook.\nSet up map transitions in onInit using player.changeMap().",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Luminous Wastes",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: sketch",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "e5ebbddb45e77b27",
+        "outputHash": "77f08ab21b97c6f483c34a65c6a3963d42e90fdbf9f093f5864588077f1b44fa",
+        "generatedAt": "2026-02-13T16:05:35.646Z",
+        "generationTimeMs": 16798,
+        "fileSizeBytes": 5153,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "events-luminous-wastes",
+      "name": "Luminous Wastes Events",
+      "category": "database-maps",
+      "filename": "luminous-wastes-events.ts",
+      "targetPath": "main/server/maps/events/luminous-wastes-events.ts",
+      "prompt": "You are generating RPG-JS 4.3.0 TypeScript event spawner functions.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nEach event gets a createDynamicEvent call with proper position, graphics, and hooks.\nNPC events use onAction for dialogue. Transition events use onPlayerInput.\nEnemy zone events use onChanges with random encounter checks.\n\nGenerate event spawner functions for map \"Luminous Wastes\" (luminous-wastes).\n\nNPCs:\n  - Preserver Archivist (preserver-archivist-lw): pos=34,9, graphic=npc_preserver_elite, move=Static\n\nEvents:\n  - EV-LW-001: pos=20,20, type=action, Half-Built Village broadcast solidification [MQ-08]\n  - EV-LW-002: pos=4,18, type=action, The Edge narrative beat\n  - EV-LW-003: pos=25,0, type=touch, North -> Shimmer Marsh\n  - EV-LW-004: pos=39,20, type=touch, East -> Resonance Fields\n  - EV-LW-005: pos=20,0, type=touch, NE -> Half-Drawn Forest\n\nEnemy Zones:\n  - Open Wastes: bounds=5,5 -> 35,35, enemies=[Sketch Phantom,Void Wisp], levels=21-24\n  - Watchtower Zone: bounds=30,5 -> 38,14, enemies=[Preserver Archivist (elite)], levels=23-25\n\nExport a function spawnMapEvents(player: RpgPlayer) that:\n1. Creates NPC events via createDynamicEvent with graphics and movement\n2. Sets up touch/action event triggers at specified positions\n3. Registers enemy encounter zones with random encounter checks\n4. Handles map transitions via player.changeMap()\n5. Checks quest flags before spawning conditional events",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Luminous Wastes",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: sketch",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "741c60316c48d3dd",
+        "outputHash": "cdb3e056631be92edc3cecfb6f068a73fb89d70b14a8d967a1afbd8260c01250",
+        "generatedAt": "2026-02-13T16:51:52.616Z",
+        "generationTimeMs": 23252,
+        "fileSizeBytes": 6408,
+        "model": "gemini-2.5-flash"
+      },
+      "lastError": "Truncated output: unbalanced braces or missing closing statement"
+    },
+    {
+      "id": "tmx-millbrook",
+      "name": "Millbrook TMX",
+      "category": "database-maps",
+      "filename": "millbrook.tmx",
+      "targetPath": "main/server/maps/tmx/millbrook.tmx",
+      "prompt": "You are generating a Tiled TMX XML map file.\nOutput ONLY valid XML starting with <?xml ...?> and ending with </map>.\nUse 6 layers: ground, ground2, objects, objects_upper, collision, events.\nTile GIDs reference the tileset in firstgid order.\nObject layer entries use Tiled object format for NPC spawns and event triggers.\nMark collision tiles on the collision layer for walls, water, and obstacles.\nPlace event triggers on the events layer as point objects with type and properties.\n\nGenerate a Tiled TMX map for \"Millbrook\" (millbrook.tmx).\n\nDimensions: 40x40 tiles, 32px per tile.\nBiome: riverside | Vibrancy: 50 | Category: overworld\n\nTilesets:\n  - tiles_riverside_{tier} (firstgid: 1)\n\nLayers (6 total): ground, ground2, objects, objects_upper, collision, events.\n\nConnections:\n  - east: tile 39,20 -> village-hub at 0,14 (always)\n  - south: tile 20,39 -> heartfield at 5,20 (always)\n  - west: tile 0,20 -> hollow-ridge at 49,35 (MQ-04+)\n\nNPC spawn positions: Fisher Tam at (29,29), Specialty Shopkeeper at (15,15), Millbrook Elder at (16,13), Bridge Guard at (20,19), Townsfolk A at (14,17), Townsfolk B at (22,14)\n\nEnemy zones: West Riverbank: 2,10 -> 16,30; East Riverbank: 22,8 -> 38,30; Falls Approach: 2,2 -> 12,8\n\nResonance Stones: RS-MB-01 at (21,19), RS-MB-02 at (7,4), RS-MB-03 at (30,30), RS-MB-04 at (8,5)\n\nChests: CH-MB-01 at (7,5), CH-MB-02 at (25,10), CH-MB-03 at (32,32)\n\nFill ground layer with appropriate biome base tiles.\nPlace collision on map edges, building walls, water boundaries, and obstacle tiles.\nPlace objects (trees, rocks, buildings, furniture) per the map layout doc.\nMark event trigger positions on events layer as Tiled point objects.",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Millbrook",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: riverside",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "bf4a1dd19529d9d4",
+        "outputHash": "fdfdbe1b0c3e7d5cd089248336d27127d3fcdaf690e40919e0fdf6ac3e2107c3",
+        "generatedAt": "2026-02-13T16:09:23.755Z",
+        "generationTimeMs": 161611,
+        "fileSizeBytes": 23538,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "mapdata-millbrook",
+      "name": "Millbrook MapData",
+      "category": "database-maps",
+      "filename": "millbrook.ts",
+      "targetPath": "main/server/maps/millbrook.ts",
+      "prompt": "You are generating an RPG-JS 4.3.0 TypeScript module file.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nUse @MapData decorator. Import from '@rpgjs/server'.\nUse the exact map ID and file path provided.\nInclude onInit, onJoin hooks for event spawning.\nUse createDynamicEvent for NPCs and enemies per the spawn data.\n\nGenerate an RPG-JS @MapData class for \"Millbrook\".\n\nMap ID: \"millbrook\"\nTMX file: \"./tmx/millbrook.tmx\"\nDimensions: 40x40\nBiome: riverside\n\nTransitions:\n  - From (39,20) east to \"village-hub\" at (0,14), condition: always\n  - From (20,39) south to \"heartfield\" at (5,20), condition: always\n  - From (0,20) west to \"hollow-ridge\" at (49,35), condition: MQ-04+\n\nNPC count: 6\nEnemy zones: 3\nEvent triggers: 7\n\nUse @MapData decorator with id and file properties.\nImport event spawner from './events/millbrook-events' if NPCs/events exist.\nCall spawnMapEvents(player) in onJoin hook.\nSet up map transitions in onInit using player.changeMap().",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Millbrook",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: riverside",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "940825f59069c619",
+        "outputHash": "ff6ab31e2322f241071afaf1542b01b90d15adf0340a3588cac0a0989e0a82c7",
+        "generatedAt": "2026-02-13T16:09:50.014Z",
+        "generationTimeMs": 24258,
+        "fileSizeBytes": 4956,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "events-millbrook",
+      "name": "Millbrook Events",
+      "category": "database-maps",
+      "filename": "millbrook-events.ts",
+      "targetPath": "main/server/maps/events/millbrook-events.ts",
+      "prompt": "You are generating RPG-JS 4.3.0 TypeScript event spawner functions.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nEach event gets a createDynamicEvent call with proper position, graphics, and hooks.\nNPC events use onAction for dialogue. Transition events use onPlayerInput.\nEnemy zone events use onChanges with random encounter checks.\n\nGenerate event spawner functions for map \"Millbrook\" (millbrook).\n\nNPCs:\n  - Fisher Tam (fisher-tam): pos=29,29, graphic=npc_fisher_m1, move=Static, quests=[SQ-04]\n  - Specialty Shopkeeper (specialty-shop): pos=15,15, graphic=npc_shopkeep_f1, move=Static\n  - Millbrook Elder (millbrook-elder): pos=16,13, graphic=npc_elder_m1, move=Patrol\n  - Bridge Guard (bridge-guard): pos=20,19, graphic=npc_guard_m1, move=Static\n  - Townsfolk A (townsfolk-a): pos=14,17, graphic=npc_villager_f2, move=Wander\n  - Townsfolk B (townsfolk-b): pos=22,14, graphic=npc_villager_m3, move=Wander\n\nEvents:\n  - EV-MB-001: pos=29,29, type=action, Fisher Tam strange lights dialogue [SQ-04]\n  - EV-MB-002: pos=6,4, type=touch, Hidden cave behind waterfall [SQ-04]\n  - EV-MB-003: pos=15,15, type=action, Specialty shop\n  - EV-MB-004: pos=39,20, type=touch, East -> Village Hub\n  - EV-MB-005: pos=20,39, type=touch, South -> Heartfield\n  - EV-MB-006: pos=0,20, type=touch, West -> Hollow Ridge [MQ-04]\n  - EV-MB-007: pos=21,19, type=action, Bridge Resonance Stone + rainbow\n\nEnemy Zones:\n  - West Riverbank: bounds=2,10 -> 16,30, enemies=[E-SL-05,E-SL-06], levels=4-5\n  - East Riverbank: bounds=22,8 -> 38,30, enemies=[E-SL-06], levels=4-5\n  - Falls Approach: bounds=2,2 -> 12,8, enemies=[E-SL-05], levels=4\n\nExport a function spawnMapEvents(player: RpgPlayer) that:\n1. Creates NPC events via createDynamicEvent with graphics and movement\n2. Sets up touch/action event triggers at specified positions\n3. Registers enemy encounter zones with random encounter checks\n4. Handles map transitions via player.changeMap()\n5. Checks quest flags before spawning conditional events",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Millbrook",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: riverside",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "e942364d522bcfeb",
+        "outputHash": "25b21a1a1b8a0f3f0c2809af5bf2c7ac1fc33201929e486cec963f32b2d1d0b7",
+        "generatedAt": "2026-02-13T16:10:33.335Z",
+        "generationTimeMs": 41318,
+        "fileSizeBytes": 10636,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "tmx-resonance-fields",
+      "name": "Resonance Fields TMX",
+      "category": "database-maps",
+      "filename": "resonance-fields.tmx",
+      "targetPath": "main/server/maps/tmx/resonance-fields.tmx",
+      "prompt": "You are generating a Tiled TMX XML map file.\nOutput ONLY valid XML starting with <?xml ...?> and ending with </map>.\nUse 6 layers: ground, ground2, objects, objects_upper, collision, events.\nTile GIDs reference the tileset in firstgid order.\nObject layer entries use Tiled object format for NPC spawns and event triggers.\nMark collision tiles on the collision layer for walls, water, and obstacles.\nPlace event triggers on the events layer as point objects with type and properties.\n\nGenerate a Tiled TMX map for \"Resonance Fields\" (resonance-fields.tmx).\n\nDimensions: 50x50 tiles, 32px per tile.\nBiome: plains | Vibrancy: 15 | Category: overworld\n\nTilesets:\n  - tiles_plains_{tier} (firstgid: 1)\n\nLayers (6 total): ground, ground2, objects, objects_upper, collision, events.\n\nConnections:\n  - east: tile 49,25 -> shimmer-marsh at 0,25 (MQ-05+)\n  - north: tile 25,0 -> hollow-ridge at 25,49 (MQ-05+)\n  - west: tile 0,25 -> luminous-wastes at 39,20 (MQ-07+)\n  - down: tile 28,44 -> depths-l4 at 10,0 (Singing Stones puzzle)\n\nNPC spawn positions: Lead Audiomancer at (9,34), Audiomancer B at (10,36), Audiomancer C at (8,35), Audiomancer D at (11,34), Preserver Captain at (40,14), Preserver Agent A at (37,13), Preserver Agent B at (41,15), Preserver Agent C at (39,12)\n\nEnemy zones: Open Plains: 5,5 -> 35,40; Cathedral Zone: 33,8 -> 45,20; South Plains: 15,35 -> 45,48\n\nResonance Stones: RS-RF-01 at (25,25), RS-RF-02 at (10,10), RS-RF-03 at (35,8), RS-RF-04 at (15,45), RS-RF-05 at (45,40), RS-RF-06 at (8,34)\n\nChests: CH-RF-01 at (25,26), CH-RF-02 at (40,16), CH-RF-03 at (10,45)\n\nFill ground layer with appropriate biome base tiles.\nPlace collision on map edges, building walls, water boundaries, and obstacle tiles.\nPlace objects (trees, rocks, buildings, furniture) per the map layout doc.\nMark event trigger positions on events layer as Tiled point objects.",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Resonance Fields",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: plains",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "8550a18dd658f1c6",
+        "outputHash": "92683c24f6d92eab4e5011e580cf6d12418ef85ed3351a636220d89debf3612b",
+        "generatedAt": "2026-02-13T16:12:55.028Z",
+        "generationTimeMs": 139691,
+        "fileSizeBytes": 42413,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "mapdata-resonance-fields",
+      "name": "Resonance Fields MapData",
+      "category": "database-maps",
+      "filename": "resonance-fields.ts",
+      "targetPath": "main/server/maps/resonance-fields.ts",
+      "prompt": "You are generating an RPG-JS 4.3.0 TypeScript module file.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nUse @MapData decorator. Import from '@rpgjs/server'.\nUse the exact map ID and file path provided.\nInclude onInit, onJoin hooks for event spawning.\nUse createDynamicEvent for NPCs and enemies per the spawn data.\n\nGenerate an RPG-JS @MapData class for \"Resonance Fields\".\n\nMap ID: \"resonance-fields\"\nTMX file: \"./tmx/resonance-fields.tmx\"\nDimensions: 50x50\nBiome: plains\n\nTransitions:\n  - From (49,25) east to \"shimmer-marsh\" at (0,25), condition: MQ-05+\n  - From (25,0) north to \"hollow-ridge\" at (25,49), condition: MQ-05+\n  - From (0,25) west to \"luminous-wastes\" at (39,20), condition: MQ-07+\n  - From (28,44) down to \"depths-l4\" at (10,0), condition: Singing Stones puzzle\n\nNPC count: 8\nEnemy zones: 3\nEvent triggers: 9\n\nUse @MapData decorator with id and file properties.\nImport event spawner from './events/resonance-fields-events' if NPCs/events exist.\nCall spawnMapEvents(player) in onJoin hook.\nSet up map transitions in onInit using player.changeMap().",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Resonance Fields",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: plains",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "3fd0db650ea31165",
+        "outputHash": "e750b3f9bc8ced114f3bcf18719d77896df1eb1d0d8bb5feb1254a139464d0c7",
+        "generatedAt": "2026-02-13T16:13:10.314Z",
+        "generationTimeMs": 13283,
+        "fileSizeBytes": 3752,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "events-resonance-fields",
+      "name": "Resonance Fields Events",
+      "category": "database-maps",
+      "filename": "resonance-fields-events.ts",
+      "targetPath": "main/server/maps/events/resonance-fields-events.ts",
+      "prompt": "You are generating RPG-JS 4.3.0 TypeScript event spawner functions.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nEach event gets a createDynamicEvent call with proper position, graphics, and hooks.\nNPC events use onAction for dialogue. Transition events use onPlayerInput.\nEnemy zone events use onChanges with random encounter checks.\n\nGenerate event spawner functions for map \"Resonance Fields\" (resonance-fields).\n\nNPCs:\n  - Lead Audiomancer (lead-audiomancer): pos=9,34, graphic=npc_audiomancer_m1, move=Static, quests=[SQ-09,SQ-13]\n  - Audiomancer B (audiomancer-b): pos=10,36, graphic=npc_audiomancer_f1, move=Patrol\n  - Audiomancer C (audiomancer-c): pos=8,35, graphic=npc_audiomancer_m2, move=Static\n  - Audiomancer D (audiomancer-d): pos=11,34, graphic=npc_audiomancer_f2, move=Static\n  - Preserver Captain (preserver-captain-rf): pos=40,14, graphic=npc_preserver_captain, move=Static\n  - Preserver Agent A (preserver-agent-rf-a): pos=37,13, graphic=npc_preserver_agent, move=Patrol\n  - Preserver Agent B (preserver-agent-rf-b): pos=41,15, graphic=npc_preserver_agent, move=Patrol\n  - Preserver Agent C (preserver-agent-rf-c): pos=39,12, graphic=npc_preserver_agent, move=Static\n\nEvents:\n  - EV-RF-001: pos=9,34, type=action, Lead Audiomancer dialogue [SQ-09]\n  - EV-RF-003: pos=25,25, type=auto, Resonance recall vision [GQ-01]\n  - EV-RF-004: pos=25,25, type=action, 4 emotion pedestals [GQ-01]\n  - EV-RF-005: pos=38,13, type=action, Cathedral assault [GQ-01-F2]\n  - EV-RF-006: pos=28,43, type=action, Singing Stones puzzle -> Depths L4\n  - EV-RF-007: pos=49,25, type=touch, East -> Shimmer Marsh\n  - EV-RF-008: pos=25,0, type=touch, North -> Hollow Ridge\n  - EV-RF-009: pos=0,25, type=touch, West -> Luminous Wastes\n  - EV-RF-010: pos=25,25, type=parallel, Amphitheater ambient hum\n\nEnemy Zones:\n  - Open Plains: bounds=5,5 -> 35,40, enemies=[Sound Echo,Stone Guardian], levels=13-16\n  - Cathedral Zone: bounds=33,8 -> 45,20, enemies=[Preserver Agent,Harmony Wraith], levels=15-17\n  - South Plains: bounds=15,35 -> 45,48, enemies=[Stone Guardian,Harmony Wraith], levels=14-16\n\nExport a function spawnMapEvents(player: RpgPlayer) that:\n1. Creates NPC events via createDynamicEvent with graphics and movement\n2. Sets up touch/action event triggers at specified positions\n3. Registers enemy encounter zones with random encounter checks\n4. Handles map transitions via player.changeMap()\n5. Checks quest flags before spawning conditional events",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Resonance Fields",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: plains",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "8e49b0195b418230",
+        "outputHash": "cbef3befc9893b3b717a89949470e0dd0272daf25cf1a4e3059a5470ebd4eb1f",
+        "generatedAt": "2026-02-13T16:13:34.877Z",
+        "generationTimeMs": 22560,
+        "fileSizeBytes": 11417,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "tmx-shimmer-marsh",
+      "name": "Shimmer Marsh TMX",
+      "category": "database-maps",
+      "filename": "shimmer-marsh.tmx",
+      "targetPath": "main/server/maps/tmx/shimmer-marsh.tmx",
+      "prompt": "You are generating a Tiled TMX XML map file.\nOutput ONLY valid XML starting with <?xml ...?> and ending with </map>.\nUse 6 layers: ground, ground2, objects, objects_upper, collision, events.\nTile GIDs reference the tileset in firstgid order.\nObject layer entries use Tiled object format for NPC spawns and event triggers.\nMark collision tiles on the collision layer for walls, water, and obstacles.\nPlace event triggers on the events layer as point objects with type and properties.\n\nGenerate a Tiled TMX map for \"Shimmer Marsh\" (shimmer-marsh.tmx).\n\nDimensions: 50x50 tiles, 32px per tile.\nBiome: wetland | Vibrancy: 30 | Category: overworld\n\nTilesets:\n  - tiles_wetland_{tier} (firstgid: 1)\n\nLayers (6 total): ground, ground2, objects, objects_upper, collision, events.\n\nConnections:\n  - north: tile 20,0 -> heartfield at 20,38 (MQ-04+)\n  - east: tile 49,25 -> flickerveil at 0,25 (MQ-05+)\n  - west: tile 0,25 -> hollow-ridge at 49,35 (MQ-05+)\n  - south: tile 25,49 -> luminous-wastes at 25,0 (MQ-07+)\n  - down: tile 33,43 -> depths-l2 at 10,0 (MQ-05+)\n\nNPC spawn positions: Wynn at (11,14), Marsh Researcher at (12,15), Preserver Scout A at (36,9), Preserver Scout B at (40,10)\n\nEnemy zones: Outer Marsh: 5,5 -> 30,20; Deep Marsh: 15,25 -> 40,45; Bog Perimeter: 34,6 -> 44,16; Hollow Approach: 20,28 -> 28,38\n\nResonance Stones: RS-SM-01 at (11,14), RS-SM-02 at (25,35), RS-SM-03 at (40,12), RS-SM-04 at (20,25), RS-SM-05 at (30,20), RS-SM-06 at (15,40)\n\nChests: CH-SM-01 at (12,16), CH-SM-02 at (38,5), CH-SM-03 at (24,36)\n\nFill ground layer with appropriate biome base tiles.\nPlace collision on map edges, building walls, water boundaries, and obstacle tiles.\nPlace objects (trees, rocks, buildings, furniture) per the map layout doc.\nMark event trigger positions on events layer as Tiled point objects.",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Shimmer Marsh",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: wetland",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "c017562a36e53317",
+        "outputHash": "c1ca5ae1982bab570c6cf1ecb5f062677cf01e6f220ae82ace3d21ebbd2af1d5",
+        "generatedAt": "2026-02-13T16:17:22.942Z",
+        "generationTimeMs": 226065,
+        "fileSizeBytes": 40802,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "mapdata-shimmer-marsh",
+      "name": "Shimmer Marsh MapData",
+      "category": "database-maps",
+      "filename": "shimmer-marsh.ts",
+      "targetPath": "main/server/maps/shimmer-marsh.ts",
+      "prompt": "You are generating an RPG-JS 4.3.0 TypeScript module file.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nUse @MapData decorator. Import from '@rpgjs/server'.\nUse the exact map ID and file path provided.\nInclude onInit, onJoin hooks for event spawning.\nUse createDynamicEvent for NPCs and enemies per the spawn data.\n\nGenerate an RPG-JS @MapData class for \"Shimmer Marsh\".\n\nMap ID: \"shimmer-marsh\"\nTMX file: \"./tmx/shimmer-marsh.tmx\"\nDimensions: 50x50\nBiome: wetland\n\nTransitions:\n  - From (20,0) north to \"heartfield\" at (20,38), condition: MQ-04+\n  - From (49,25) east to \"flickerveil\" at (0,25), condition: MQ-05+\n  - From (0,25) west to \"hollow-ridge\" at (49,35), condition: MQ-05+\n  - From (25,49) south to \"luminous-wastes\" at (25,0), condition: MQ-07+\n  - From (33,43) down to \"depths-l2\" at (10,0), condition: MQ-05+\n\nNPC count: 4\nEnemy zones: 4\nEvent triggers: 10\n\nUse @MapData decorator with id and file properties.\nImport event spawner from './events/shimmer-marsh-events' if NPCs/events exist.\nCall spawnMapEvents(player) in onJoin hook.\nSet up map transitions in onInit using player.changeMap().",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Shimmer Marsh",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: wetland",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "b72df0d83cafaf78",
+        "outputHash": "6bb6e423c383538329e50c3d18650fc3fa6b1bda98b2b07aec72971afb2ba6e3",
+        "generatedAt": "2026-02-13T16:17:45.371Z",
+        "generationTimeMs": 20425,
+        "fileSizeBytes": 4339,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "events-shimmer-marsh",
+      "name": "Shimmer Marsh Events",
+      "category": "database-maps",
+      "filename": "shimmer-marsh-events.ts",
+      "targetPath": "main/server/maps/events/shimmer-marsh-events.ts",
+      "prompt": "You are generating RPG-JS 4.3.0 TypeScript event spawner functions.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nEach event gets a createDynamicEvent call with proper position, graphics, and hooks.\nNPC events use onAction for dialogue. Transition events use onPlayerInput.\nEnemy zone events use onChanges with random encounter checks.\n\nGenerate event spawner functions for map \"Shimmer Marsh\" (shimmer-marsh).\n\nNPCs:\n  - Wynn (wynn): pos=11,14, graphic=npc_wynn, move=Static, quests=[SQ-06,GQ-02]\n  - Marsh Researcher (marsh-researcher): pos=12,15, graphic=npc_researcher_f1, move=Patrol\n  - Preserver Scout A (preserver-scout-a): pos=36,9, graphic=npc_preserver_scout, move=Patrol\n  - Preserver Scout B (preserver-scout-b): pos=40,10, graphic=npc_preserver_scout, move=Static\n\nEvents:\n  - EV-SM-001: pos=11,14, type=action, Wynn marsh research dialogue [GQ-02]\n  - EV-SM-002: pos=18,28, type=action, Blocked root cluster broadcast [GQ-02]\n  - EV-SM-003: pos=25,35, type=auto, Verdance recall vision [GQ-02]\n  - EV-SM-004: pos=25,35, type=action, 4 emotion pedestals [GQ-02]\n  - EV-SM-005: pos=33,43, type=touch, Sinkhole -> Depths L2\n  - EV-SM-006: pos=20,0, type=touch, North -> Heartfield\n  - EV-SM-007: pos=49,25, type=touch, East -> Flickerveil\n  - EV-SM-008: pos=0,25, type=touch, West -> Hollow Ridge\n  - EV-SM-009: pos=25,49, type=touch, South -> Luminous Wastes\n  - EV-SM-011: pos=38,8, type=action, Stagnation Bog break mechanic\n\nEnemy Zones:\n  - Outer Marsh: bounds=5,5 -> 30,20, enemies=[E-FR-01,E-FR-02], levels=11-13\n  - Deep Marsh: bounds=15,25 -> 40,45, enemies=[E-FR-01], levels=12-14\n  - Bog Perimeter: bounds=34,6 -> 44,16, enemies=[Preserver Scout,E-FR-01], levels=12-14\n  - Hollow Approach: bounds=20,28 -> 28,38, enemies=[E-FR-02], levels=13-15\n\nExport a function spawnMapEvents(player: RpgPlayer) that:\n1. Creates NPC events via createDynamicEvent with graphics and movement\n2. Sets up touch/action event triggers at specified positions\n3. Registers enemy encounter zones with random encounter checks\n4. Handles map transitions via player.changeMap()\n5. Checks quest flags before spawning conditional events",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Shimmer Marsh",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: wetland",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "e121467e0f85fdf5",
+        "outputHash": "37919c6abcb915792f14c16047f91eb250e2b14aa76d5bce1a98ac085892bfa3",
+        "generatedAt": "2026-02-13T16:18:35.577Z",
+        "generationTimeMs": 48205,
+        "fileSizeBytes": 16848,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "tmx-sunridge",
+      "name": "Sunridge TMX",
+      "category": "database-maps",
+      "filename": "sunridge.tmx",
+      "targetPath": "main/server/maps/tmx/sunridge.tmx",
+      "prompt": "You are generating a Tiled TMX XML map file.\nOutput ONLY valid XML starting with <?xml ...?> and ending with </map>.\nUse 6 layers: ground, ground2, objects, objects_upper, collision, events.\nTile GIDs reference the tileset in firstgid order.\nObject layer entries use Tiled object format for NPC spawns and event triggers.\nMark collision tiles on the collision layer for walls, water, and obstacles.\nPlace event triggers on the events layer as point objects with type and properties.\n\nGenerate a Tiled TMX map for \"Sunridge\" (sunridge.tmx).\n\nDimensions: 40x40 tiles, 32px per tile.\nBiome: highland | Vibrancy: 40 | Category: overworld\n\nTilesets:\n  - tiles_mountain_{tier} (firstgid: 1)\n\nLayers (6 total): ground, ground2, objects, objects_upper, collision, events.\n\nConnections:\n  - south: tile 20,39 -> village-hub at 15,0 (always)\n  - north: tile 18,0 -> hollow-ridge at 25,49 (MQ-04+)\n  - east: tile 39,20 -> ambergrove at 5,0 (always)\n\nNPC spawn positions: Waystation Keeper at (19,19), Traveling Merchant at (20,20), Waystation Guard at (17,18), Aric at (31,14)\n\nEnemy zones: Highland Grass: 5,10 -> 25,35; Rocky Outcrops: 25,5 -> 38,25; Outpost Perimeter: 27,10 -> 35,18\n\nResonance Stones: RS-SR-01 at (9,7), RS-SR-02 at (20,20), RS-SR-03 at (35,5)\n\nChests: CH-SR-01 at (9,8), CH-SR-02 at (25,30), CH-SR-03 at (32,14)\n\nFill ground layer with appropriate biome base tiles.\nPlace collision on map edges, building walls, water boundaries, and obstacle tiles.\nPlace objects (trees, rocks, buildings, furniture) per the map layout doc.\nMark event trigger positions on events layer as Tiled point objects.",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Sunridge",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: highland",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "73c4d0663c93b577",
+        "outputHash": "01a127e02958e6dd47f2bc3d898f7cbce1ba4e98d5e5d34750cea29b80a77be2",
+        "generatedAt": "2026-02-13T16:21:39.414Z",
+        "generationTimeMs": 181835,
+        "fileSizeBytes": 24730,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "mapdata-sunridge",
+      "name": "Sunridge MapData",
+      "category": "database-maps",
+      "filename": "sunridge.ts",
+      "targetPath": "main/server/maps/sunridge.ts",
+      "prompt": "You are generating an RPG-JS 4.3.0 TypeScript module file.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nUse @MapData decorator. Import from '@rpgjs/server'.\nUse the exact map ID and file path provided.\nInclude onInit, onJoin hooks for event spawning.\nUse createDynamicEvent for NPCs and enemies per the spawn data.\n\nGenerate an RPG-JS @MapData class for \"Sunridge\".\n\nMap ID: \"sunridge\"\nTMX file: \"./tmx/sunridge.tmx\"\nDimensions: 40x40\nBiome: highland\n\nTransitions:\n  - From (20,39) south to \"village-hub\" at (15,0), condition: always\n  - From (18,0) north to \"hollow-ridge\" at (25,49), condition: MQ-04+\n  - From (39,20) east to \"ambergrove\" at (5,0), condition: always\n\nNPC count: 4\nEnemy zones: 3\nEvent triggers: 6\n\nUse @MapData decorator with id and file properties.\nImport event spawner from './events/sunridge-events' if NPCs/events exist.\nCall spawnMapEvents(player) in onJoin hook.\nSet up map transitions in onInit using player.changeMap().",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Sunridge",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: highland",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "773a9e1a53560c23",
+        "outputHash": "5ab2870e15f40687b3f45946e14c599acc4390e751c258b2b371bb233048e780",
+        "generatedAt": "2026-02-13T16:21:44.660Z",
+        "generationTimeMs": 3245,
+        "fileSizeBytes": 1521,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "events-sunridge",
+      "name": "Sunridge Events",
+      "category": "database-maps",
+      "filename": "sunridge-events.ts",
+      "targetPath": "main/server/maps/events/sunridge-events.ts",
+      "prompt": "You are generating RPG-JS 4.3.0 TypeScript event spawner functions.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nEach event gets a createDynamicEvent call with proper position, graphics, and hooks.\nNPC events use onAction for dialogue. Transition events use onPlayerInput.\nEnemy zone events use onChanges with random encounter checks.\n\nGenerate event spawner functions for map \"Sunridge\" (sunridge).\n\nNPCs:\n  - Waystation Keeper (waystation-keeper): pos=19,19, graphic=npc_keeper_f1, move=Static\n  - Traveling Merchant (traveling-merchant): pos=20,20, graphic=npc_merchant_m1, move=Static\n  - Waystation Guard (waystation-guard): pos=17,18, graphic=npc_guard_m2, move=Patrol\n  - Aric (aric): pos=31,14, graphic=npc_aric, move=Static, quests=[SQ-05]\n\nEvents:\n  - EV-SR-001: pos=31,14, type=action, Aric Preserver doubt dialogue [SQ-05]\n  - EV-SR-002: pos=9,7, type=action, Wind Shrine vibrating stone\n  - EV-SR-003: pos=19,19, type=action, Waystation rest point\n  - EV-SR-004: pos=20,39, type=touch, South -> Village Hub\n  - EV-SR-005: pos=18,0, type=touch, North -> Hollow Ridge [MQ-04]\n  - EV-SR-006: pos=39,20, type=touch, East -> Ambergrove\n\nEnemy Zones:\n  - Highland Grass: bounds=5,10 -> 25,35, enemies=[E-SL-07], levels=5-6\n  - Rocky Outcrops: bounds=25,5 -> 38,25, enemies=[E-SL-08], levels=6-7\n  - Outpost Perimeter: bounds=27,10 -> 35,18, enemies=[Preserver Scout], levels=8-10\n\nExport a function spawnMapEvents(player: RpgPlayer) that:\n1. Creates NPC events via createDynamicEvent with graphics and movement\n2. Sets up touch/action event triggers at specified positions\n3. Registers enemy encounter zones with random encounter checks\n4. Handles map transitions via player.changeMap()\n5. Checks quest flags before spawning conditional events",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Sunridge",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: highland",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "e22eb1368800ad25",
+        "outputHash": "9e91d571361d717b9a4fb6b77307345522d6b150462062ab0a440021190ff8ad",
+        "generatedAt": "2026-02-13T16:22:24.755Z",
+        "generationTimeMs": 38092,
+        "fileSizeBytes": 9157,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "tmx-undrawn-peaks",
+      "name": "The Undrawn Peaks TMX",
+      "category": "database-maps",
+      "filename": "undrawn-peaks.tmx",
+      "targetPath": "main/server/maps/tmx/undrawn-peaks.tmx",
+      "prompt": "You are generating a Tiled TMX XML map file.\nOutput ONLY valid XML starting with <?xml ...?> and ending with </map>.\nUse 6 layers: ground, ground2, objects, objects_upper, collision, events.\nTile GIDs reference the tileset in firstgid order.\nObject layer entries use Tiled object format for NPC spawns and event triggers.\nMark collision tiles on the collision layer for walls, water, and obstacles.\nPlace event triggers on the events layer as point objects with type and properties.\n\nGenerate a Tiled TMX map for \"The Undrawn Peaks\" (undrawn-peaks.tmx).\n\nDimensions: 40x40 tiles, 32px per tile.\nBiome: sketch | Vibrancy: 10 | Category: overworld\n\nTilesets:\n  - tiles_sketch_{tier} (firstgid: 1)\n\nLayers (6 total): ground, ground2, objects, objects_upper, collision, events.\n\nConnections:\n  - south: tile 20,39 -> hollow-ridge at 25,0 (MQ-07+)\n  - east: tile 39,25 -> half-drawn-forest at 0,10 (MQ-08+)\n  - down: tile 19,35 -> fortress-f1 at 10,0 (MQ-08+)\n\nNPC spawn positions: Preserver Captain A at (17,34), Preserver Captain B at (22,34)\n\nEnemy zones: Mountain Paths: 5,5 -> 35,30; Fortress Approach: 12,28 -> 28,38\n\nResonance Stones: RS-UP-01 at (19,4), RS-UP-02 at (19,34), RS-UP-03 at (10,15), RS-UP-04 at (30,25), RS-UP-05 at (20,20)\n\nChests: none\n\nFill ground layer with appropriate biome base tiles.\nPlace collision on map edges, building walls, water boundaries, and obstacle tiles.\nPlace objects (trees, rocks, buildings, furniture) per the map layout doc.\nMark event trigger positions on events layer as Tiled point objects.",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "The Undrawn Peaks",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: sketch",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "8f8f1e1d374b945e",
+        "outputHash": "7e30cafb2a96ee6fa374d35af6235c4c48d2bbd83618142e417cea344fe792e4",
+        "generatedAt": "2026-02-13T16:25:13.772Z",
+        "generationTimeMs": 167015,
+        "fileSizeBytes": 22844,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "mapdata-undrawn-peaks",
+      "name": "The Undrawn Peaks MapData",
+      "category": "database-maps",
+      "filename": "the-undrawn-peaks.ts",
+      "targetPath": "main/server/maps/the-undrawn-peaks.ts",
+      "prompt": "You are generating an RPG-JS 4.3.0 TypeScript module file.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nUse @MapData decorator. Import from '@rpgjs/server'.\nUse the exact map ID and file path provided.\nInclude onInit, onJoin hooks for event spawning.\nUse createDynamicEvent for NPCs and enemies per the spawn data.\n\nGenerate an RPG-JS @MapData class for \"The Undrawn Peaks\".\n\nMap ID: \"undrawn-peaks\"\nTMX file: \"./tmx/undrawn-peaks.tmx\"\nDimensions: 40x40\nBiome: sketch\n\nTransitions:\n  - From (20,39) south to \"hollow-ridge\" at (25,0), condition: MQ-07+\n  - From (39,25) east to \"half-drawn-forest\" at (0,10), condition: MQ-08+\n  - From (19,35) down to \"fortress-f1\" at (10,0), condition: MQ-08+\n\nNPC count: 2\nEnemy zones: 2\nEvent triggers: 6\n\nUse @MapData decorator with id and file properties.\nImport event spawner from './events/the-undrawn-peaks-events' if NPCs/events exist.\nCall spawnMapEvents(player) in onJoin hook.\nSet up map transitions in onInit using player.changeMap().",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "The Undrawn Peaks",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: sketch",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "8c9e223c9c77f8dc",
+        "outputHash": "d3f647127629dac7dad0a25ffe731a89e2f2fe9a75f0e3b055be7d734f6def05",
+        "generatedAt": "2026-02-13T16:25:40.807Z",
+        "generationTimeMs": 25032,
+        "fileSizeBytes": 3767,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "events-undrawn-peaks",
+      "name": "The Undrawn Peaks Events",
+      "category": "database-maps",
+      "filename": "the-undrawn-peaks-events.ts",
+      "targetPath": "main/server/maps/events/the-undrawn-peaks-events.ts",
+      "prompt": "You are generating RPG-JS 4.3.0 TypeScript event spawner functions.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nEach event gets a createDynamicEvent call with proper position, graphics, and hooks.\nNPC events use onAction for dialogue. Transition events use onPlayerInput.\nEnemy zone events use onChanges with random encounter checks.\n\nGenerate event spawner functions for map \"The Undrawn Peaks\" (undrawn-peaks).\n\nNPCs:\n  - Preserver Captain A (preserver-captain-up-a): pos=17,34, graphic=npc_preserver_captain, move=Static\n  - Preserver Captain B (preserver-captain-up-b): pos=22,34, graphic=npc_preserver_captain, move=Static\n\nEvents:\n  - EV-UP-001: pos=19,4, type=action, Apex sunrise beacon (Solara) [GQ-03-J1]\n  - EV-UP-002: pos=20,20, type=action, Sketch Bridge solidify [MQ-08]\n  - EV-UP-003: pos=19,34, type=action, Fortress Gate broadcast [MQ-08]\n  - EV-UP-004: pos=19,35, type=touch, Fortress Gate -> F1\n  - EV-UP-005: pos=20,39, type=touch, South -> Hollow Ridge\n  - EV-UP-006: pos=39,25, type=touch, East -> Half-Drawn Forest\n\nEnemy Zones:\n  - Mountain Paths: bounds=5,5 -> 35,30, enemies=[Wireframe Drake,Sketch Phantom], levels=22-26\n  - Fortress Approach: bounds=12,28 -> 28,38, enemies=[Apex Guardian], levels=25-28\n\nExport a function spawnMapEvents(player: RpgPlayer) that:\n1. Creates NPC events via createDynamicEvent with graphics and movement\n2. Sets up touch/action event triggers at specified positions\n3. Registers enemy encounter zones with random encounter checks\n4. Handles map transitions via player.changeMap()\n5. Checks quest flags before spawning conditional events",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "The Undrawn Peaks",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: sketch",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "92d82c4a22be477f",
+        "outputHash": "0acdb2e845b12fac7d8e7d8adb9180185cad26c93217e8582861ada3c887a3b1",
+        "generatedAt": "2026-02-13T16:26:07.534Z",
+        "generationTimeMs": 24724,
+        "fileSizeBytes": 5925,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "tmx-village-hub",
+      "name": "Village Hub TMX",
+      "category": "database-maps",
+      "filename": "village-hub.tmx",
+      "targetPath": "main/server/maps/tmx/village-hub.tmx",
+      "prompt": "You are generating a Tiled TMX XML map file.\nOutput ONLY valid XML starting with <?xml ...?> and ending with </map>.\nUse 6 layers: ground, ground2, objects, objects_upper, collision, events.\nTile GIDs reference the tileset in firstgid order.\nObject layer entries use Tiled object format for NPC spawns and event triggers.\nMark collision tiles on the collision layer for walls, water, and obstacles.\nPlace event triggers on the events layer as point objects with type and properties.\n\nGenerate a Tiled TMX map for \"Village Hub\" (village-hub.tmx).\n\nDimensions: 30x30 tiles, 32px per tile.\nBiome: village | Vibrancy: 60 | Category: overworld\n\nTilesets:\n  - tiles_village_{tier} (firstgid: 1)\n\nLayers (6 total): ground, ground2, objects, objects_upper, collision, events.\n\nConnections:\n  - south: tile 15,25 -> heartfield at 15,0 (always)\n  - east: tile 29,14 -> ambergrove at 0,20 (always)\n  - west: tile 0,14 -> millbrook at 39,20 (always)\n  - north: tile 15,0 -> sunridge at 20,39 (MQ-04+)\n  - down: tile 8,17 -> depths-l1 at 10,0 (MQ-05+)\n\nNPC spawn positions: Callum at (19,11), Lira at (9,19), Maren at (19,17), Torvan at (19,19), Ren at (21,15), Villager A at (14,15), Villager B at (16,16), Villager C at (10,22)\n\nEnemy zones: none\n\nResonance Stones: RS-VH-01 at (14,15), RS-VH-02 at (9,16), RS-VH-03 at (10,17), RS-VH-04 at (11,16), RS-VH-05 at (21,15)\n\nChests: CH-VH-01 at (13,3), CH-VH-02 at (9,11)\n\nFill ground layer with appropriate biome base tiles.\nPlace collision on map edges, building walls, water boundaries, and obstacle tiles.\nPlace objects (trees, rocks, buildings, furniture) per the map layout doc.\nMark event trigger positions on events layer as Tiled point objects.",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Village Hub",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: village",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "440d0205c8a71b45",
+        "outputHash": "2c7e736ecbfe659f3cb7adbaebb5e4f6bc7e767d06b4ee858935f88ca50e120f",
+        "generatedAt": "2026-02-13T16:28:31.099Z",
+        "generationTimeMs": 141562,
+        "fileSizeBytes": 23017,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "mapdata-village-hub",
+      "name": "Village Hub MapData",
+      "category": "database-maps",
+      "filename": "village-hub.ts",
+      "targetPath": "main/server/maps/village-hub.ts",
+      "prompt": "You are generating an RPG-JS 4.3.0 TypeScript module file.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nUse @MapData decorator. Import from '@rpgjs/server'.\nUse the exact map ID and file path provided.\nInclude onInit, onJoin hooks for event spawning.\nUse createDynamicEvent for NPCs and enemies per the spawn data.\n\nGenerate an RPG-JS @MapData class for \"Village Hub\".\n\nMap ID: \"village-hub\"\nTMX file: \"./tmx/village-hub.tmx\"\nDimensions: 30x30\nBiome: village\n\nTransitions:\n  - From (15,25) south to \"heartfield\" at (15,0), condition: always\n  - From (29,14) east to \"ambergrove\" at (0,20), condition: always\n  - From (0,14) west to \"millbrook\" at (39,20), condition: always\n  - From (15,0) north to \"sunridge\" at (20,39), condition: MQ-04+\n  - From (8,17) down to \"depths-l1\" at (10,0), condition: MQ-05+\n\nNPC count: 8\nEnemy zones: 0\nEvent triggers: 15\n\nUse @MapData decorator with id and file properties.\nImport event spawner from './events/village-hub-events' if NPCs/events exist.\nCall spawnMapEvents(player) in onJoin hook.\nSet up map transitions in onInit using player.changeMap().",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Village Hub",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: village",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "60b41e726ef517e1",
+        "outputHash": "ad34b850ad6b6bb4f5140ab3e84ccacd7336d850514a53fdf6157b1938e72311",
+        "generatedAt": "2026-02-13T16:28:42.058Z",
+        "generationTimeMs": 8956,
+        "fileSizeBytes": 1750,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "events-village-hub",
+      "name": "Village Hub Events",
+      "category": "database-maps",
+      "filename": "village-hub-events.ts",
+      "targetPath": "main/server/maps/events/village-hub-events.ts",
+      "prompt": "You are generating RPG-JS 4.3.0 TypeScript event spawner functions.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nEach event gets a createDynamicEvent call with proper position, graphics, and hooks.\nNPC events use onAction for dialogue. Transition events use onPlayerInput.\nEnemy zone events use onChanges with random encounter checks.\n\nGenerate event spawner functions for map \"Village Hub\" (village-hub).\n\nNPCs:\n  - Callum (callum): pos=19,11, graphic=npc_callum, move=Patrol, quests=[MQ-01,MQ-03,MQ-05,MQ-07]\n  - Lira (lira): pos=9,19, graphic=npc_lira, move=Static, quests=[MQ-01,MQ-02]\n  - Maren (maren): pos=19,17, graphic=npc_maren, move=Static, quests=[SQ-01]\n  - Torvan (torvan): pos=19,19, graphic=npc_torvan, move=Static, quests=[SQ-11]\n  - Ren (ren): pos=21,15, graphic=npc_ren, move=Static, quests=[SQ-12]\n  - Villager A (villager-a): pos=14,15, graphic=npc_villager_m1, move=Wander\n  - Villager B (villager-b): pos=16,16, graphic=npc_villager_f1, move=Wander\n  - Villager C (villager-c): pos=10,22, graphic=npc_villager_m2, move=Patrol\n\nEvents:\n  - EV-VH-001: pos=19,11, type=action, Callum intro dialogue [MQ-01]\n  - EV-VH-002: pos=9,19, type=action, Lira gives Architect's Signet [MQ-01]\n  - EV-VH-003: pos=10,17, type=action, Memorial Garden Resonance Stone [MQ-02]\n  - EV-VH-005: pos=19,17, type=action, Maren shop + SQ-01\n  - EV-VH-006: pos=19,19, type=action, Torvan shop (vibrancy 70+) [SQ-11]\n  - EV-VH-007: pos=21,15, type=action, Ren inn rest + dreams [SQ-12]\n  - EV-VH-008: pos=8,14, type=action, Quest Board\n  - EV-VH-009: pos=15,25, type=touch, South Gate -> Heartfield\n  - EV-VH-010: pos=29,14, type=touch, East Gate -> Ambergrove\n  - EV-VH-011: pos=0,14, type=touch, West Gate -> Millbrook\n  - EV-VH-012: pos=15,0, type=touch, North Gate -> Sunridge [MQ-04]\n  - EV-VH-013: pos=12,3, type=action, Callum telescope lookout\n  - EV-VH-014: pos=8,17, type=touch, Hidden Depths entrance [MQ-05]\n  - EV-VH-015: pos=14,15, type=parallel, Fountain vibrancy particles\n  - EV-VH-016: pos=0,0, type=auto, Opening cutscene [MQ-01]\n\nEnemy Zones:\n  - None\n\nExport a function spawnMapEvents(player: RpgPlayer) that:\n1. Creates NPC events via createDynamicEvent with graphics and movement\n2. Sets up touch/action event triggers at specified positions\n3. Registers enemy encounter zones with random encounter checks\n4. Handles map transitions via player.changeMap()\n5. Checks quest flags before spawning conditional events",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Village Hub",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: village",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "ab5e785513a45ed8",
+        "outputHash": "9db0d434f702568f124ceee04752acfc25cff1c9c7fb6a90304f944de3774538",
+        "generatedAt": "2026-02-13T16:29:43.530Z",
+        "generationTimeMs": 59469,
+        "fileSizeBytes": 11594,
+        "model": "gemini-2.5-flash"
+      }
+    }
+  ]
+}

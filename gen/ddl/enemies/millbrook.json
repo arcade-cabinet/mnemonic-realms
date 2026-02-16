@@ -1,0 +1,76 @@
+[
+  {
+    "id": "E-SL-05",
+    "name": "River Nymph",
+    "zone": "Millbrook",
+    "category": "settled",
+    "hp": 40,
+    "atk": 4,
+    "int": 9,
+    "def": 6,
+    "agi": 11,
+    "baseLevel": 4,
+    "xp": 35,
+    "gold": 16,
+    "abilities": [
+      {
+        "name": "Water Jet",
+        "formula": "INT * 1.6 (water)",
+        "effect": "Magic attack, water element"
+      },
+      {
+        "name": "Splash Guard",
+        "formula": "Reduce next fire attack by 50%",
+        "effect": "Party water shield, once per combat"
+      }
+    ],
+    "drops": [
+      {
+        "itemId": "C-SP-01",
+        "chance": 0.2
+      },
+      {
+        "itemId": "C-HP-01",
+        "chance": 0.1
+      }
+    ],
+    "fragmentAffinity": "Joy / Kinesis"
+  },
+  {
+    "id": "E-SL-06",
+    "name": "Stone Crab",
+    "zone": "Millbrook",
+    "category": "settled",
+    "hp": 60,
+    "atk": 10,
+    "int": 2,
+    "def": 12,
+    "agi": 5,
+    "baseLevel": 4,
+    "xp": 40,
+    "gold": 18,
+    "abilities": [
+      {
+        "name": "Pincer Snap",
+        "formula": "ATK * 1.4",
+        "effect": "10% chance Weakness (DEF -30%, 3 turns)"
+      },
+      {
+        "name": "Shell Hunker",
+        "formula": "DEF +50% for 1 turn",
+        "effect": "Used when hit 2+ times prev round"
+      }
+    ],
+    "drops": [
+      {
+        "itemId": "C-SC-03",
+        "chance": 0.1
+      },
+      {
+        "itemId": "C-HP-01",
+        "chance": 0.15
+      }
+    ],
+    "fragmentAffinity": "Calm / Kinesis"
+  }
+]

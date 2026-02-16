@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "1.0.0",
+  "description": "UI element generation manifest (image generation removed — using purchased assets)",
+  "updatedAt": "2026-02-14T01:54:49.441Z",
+  "styleGuide": "16-bit JRPG pixel art style. Clean, readable sprites with limited color palette per tile. Warm, inviting aesthetic inspired by SNES-era RPGs (Chrono Trigger, Secret of Mana, Final Fantasy VI). 2-3 head-tall chibi proportions for characters. 32x32 pixel tile grid. Subtle shading with 2-3 tone depth per surface. No outlines on tiles, clean edges on sprites. Bright, hopeful color philosophy — the world gets MORE vivid as it progresses, never darker. Think: watercolor sketch evolving into illuminated manuscript evolving into stained-glass cathedral light. UI elements use parchment/leather aesthetic with warm tones.",
+  "styleDocRefs": [
+    {
+      "path": "docs/design/visual-direction.md",
+      "heading": "Color Philosophy",
+      "purpose": "style"
+    },
+    {
+      "path": "docs/design/visual-direction.md",
+      "heading": "Sprite Style",
+      "purpose": "style"
+    }
+  ],
+  "assets": []
+}

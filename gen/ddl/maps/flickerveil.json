@@ -1,0 +1,63 @@
+[
+  {
+    "id": "flickerveil",
+    "name": "Flickerveil",
+    "filename": "flickerveil.tmx",
+    "width": 50,
+    "height": 50,
+    "tileSize": 32,
+    "biome": "forest",
+    "tilesetRefs": ["tiles_forest_{tier}", "overlay_flicker"],
+    "startVibrancy": 25,
+    "category": "overworld",
+    "act": "II",
+    "connections": [
+      { "fromTile": "0,25", "direction": "west", "toMap": "shimmer-marsh", "toTile": "49,25", "condition": "MQ-05+" },
+      { "fromTile": "0,15", "direction": "northwest", "toMap": "hollow-ridge", "toTile": "49,25", "condition": "MQ-05+" },
+      { "fromTile": "0,38", "direction": "southwest", "toMap": "ambergrove", "toTile": "38,20", "condition": "always" },
+      { "fromTile": "48,25", "direction": "east", "toMap": "half-drawn-forest", "toTile": "0,20", "condition": "MQ-07+" }
+    ],
+    "npcSpawns": [
+      { "npcId": "solen", "name": "Solen", "position": "35,30", "graphic": "npc_solen", "movement": "Static", "quests": ["SQ-08","GQ-03"] },
+      { "npcId": "village-shopkeeper-fv", "name": "Village Shopkeeper", "position": "36,29", "graphic": "npc_shopkeep_f2", "movement": "Static" },
+      { "npcId": "village-innkeeper-fv", "name": "Village Innkeeper", "position": "34,32", "graphic": "npc_innkeeper_f1", "movement": "Static" },
+      { "npcId": "flickering-guard-a", "name": "Flickering Guard A", "position": "31,28", "graphic": "npc_villager_m4", "movement": "Patrol" },
+      { "npcId": "preserver-agent-archive", "name": "Preserver Agent", "position": "9,9", "graphic": "npc_preserver_agent", "movement": "Static" },
+      { "npcId": "elyn", "name": "Elyn", "position": "30,26", "graphic": "npc_elyn", "movement": "Static", "condition": "after Vesperis recall", "quests": ["GQ-03-S1"] }
+    ],
+    "enemyZones": [
+      { "zone": "West Forest", "bounds": "2,15 -> 18,40", "enemies": ["Phantom Fox","Canopy Crawler"], "levelRange": "13-15", "encounterRate": "Common: 1 Fox; Standard: 1 Fox + 1 Crawler" },
+      { "zone": "East Forest", "bounds": "25,5 -> 45,25", "enemies": ["Flicker Wisp","Phantom Fox"], "levelRange": "13-16", "encounterRate": "Standard: 2 Wisps; Rare: 2 Wisps + 1 Fox" },
+      { "zone": "Archive Perimeter", "bounds": "5,5 -> 13,13", "enemies": ["Preserver Agent"], "levelRange": "14-16", "encounterRate": "Fixed: garrison" },
+      { "zone": "Veil's Edge", "bounds": "42,20 -> 49,28", "enemies": ["Flicker Wisp","Sketch Phantom"], "levelRange": "15-17", "encounterRate": "Standard: 1 Wisp + 1 Phantom" }
+    ],
+    "eventTriggers": [
+      { "id": "EV-FV-001", "position": "35,30", "type": "action", "linkedQuest": "GQ-03", "repeat": "quest", "description": "Solen Light Lens dialogue" },
+      { "id": "EV-FV-002", "position": "36,29", "type": "action", "repeat": "repeat", "description": "Village shop" },
+      { "id": "EV-FV-003", "position": "20,20", "type": "auto", "linkedQuest": "GQ-03", "repeat": "once", "description": "Luminos recall vision" },
+      { "id": "EV-FV-004", "position": "20,20", "type": "action", "linkedQuest": "GQ-03", "repeat": "quest", "description": "4 emotion pedestals for Luminos" },
+      { "id": "EV-FV-005", "position": "8,8", "type": "action", "linkedQuest": "GQ-03-F1", "repeat": "quest", "description": "Archive Burning assault" },
+      { "id": "EV-FV-006", "position": "30,26", "type": "action", "linkedQuest": "GQ-03-S1", "repeat": "quest", "description": "Elyn defector escort" },
+      { "id": "EV-FV-007", "position": "0,25", "type": "touch", "repeat": "conditional", "description": "West -> Shimmer Marsh" },
+      { "id": "EV-FV-008", "position": "0,15", "type": "touch", "repeat": "conditional", "description": "NW -> Hollow Ridge" },
+      { "id": "EV-FV-009", "position": "0,38", "type": "touch", "repeat": "repeat", "description": "SW -> Ambergrove" },
+      { "id": "EV-FV-010", "position": "48,25", "type": "touch", "repeat": "conditional", "description": "East -> Half-Drawn Forest" },
+      { "id": "EV-FV-011", "position": "20,20", "type": "parallel", "repeat": "repeat", "description": "Light column vibrancy effect" }
+    ],
+    "resonanceStones": [
+      { "id": "RS-FV-01", "position": "20,20", "fragments": "recall pedestal", "notes": "Luminos Grove prism" },
+      { "id": "RS-FV-02", "position": "8,8", "fragments": "awe/light/3" },
+      { "id": "RS-FV-03", "position": "9,10", "fragments": "sorrow/light/3" },
+      { "id": "RS-FV-04", "position": "10,9", "fragments": "joy/light/2" },
+      { "id": "RS-FV-05", "position": "7,9", "fragments": "fury/light/3" },
+      { "id": "RS-FV-06", "position": "9,7", "fragments": "calm/light/3" },
+      { "id": "RS-FV-07", "position": "35,30", "fragments": "calm/neutral/2" },
+      { "id": "RS-FV-08", "position": "45,24", "fragments": "awe/wind/2" }
+    ],
+    "treasureChests": [
+      { "id": "CH-FV-01", "position": "10,10", "contents": "Flickerblade (W-DG-05)", "condition": "After clearing garrison" },
+      { "id": "CH-FV-02", "position": "34,28", "contents": "Stasis Breaker (C-SC-04) x3" },
+      { "id": "CH-FV-03", "position": "47,25", "contents": "Potion (C-HP-02) x3" }
+    ]
+  }
+]

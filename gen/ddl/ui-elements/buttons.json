@@ -1,0 +1,20 @@
+[
+  {
+    "id": "UI-BTN-NRM",
+    "name": "Standard Button Normal",
+    "type": "button",
+    "desc": "Default button state. Rounded rectangle with warm brown gradient, subtle bevel, gold text area."
+  },
+  {
+    "id": "UI-BTN-HOV",
+    "name": "Standard Button Hover",
+    "type": "button",
+    "desc": "Hovered button state. Slightly brighter than normal, faint amber glow along edges."
+  },
+  {
+    "id": "UI-BTN-PRS",
+    "name": "Standard Button Pressed",
+    "type": "button",
+    "desc": "Pressed button state. Slightly darker, inset bevel reversed. Compressed look."
+  }
+]

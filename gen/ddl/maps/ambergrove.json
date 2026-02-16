@@ -1,0 +1,50 @@
+[
+  {
+    "id": "ambergrove",
+    "name": "Ambergrove",
+    "filename": "ambergrove.tmx",
+    "width": 40,
+    "height": 40,
+    "tileSize": 32,
+    "biome": "forest",
+    "tilesetRefs": ["tiles_forest_{tier}"],
+    "startVibrancy": 45,
+    "category": "overworld",
+    "act": "I",
+    "connections": [
+      { "fromTile": "0,20", "direction": "west", "toMap": "village-hub", "toTile": "29,14", "condition": "always" },
+      { "fromTile": "38,20", "direction": "east", "toMap": "flickerveil", "toTile": "0,30", "condition": "MQ-04+" },
+      { "fromTile": "10,39", "direction": "south", "toMap": "heartfield", "toTile": "39,20", "condition": "always" }
+    ],
+    "npcSpawns": [
+      { "npcId": "lead-woodcutter", "name": "Lead Woodcutter", "position": "9,29", "graphic": "npc_woodcutter_m1", "movement": "Static", "quests": ["SQ-03"] },
+      { "npcId": "woodcutter-b", "name": "Woodcutter B", "position": "10,31", "graphic": "npc_woodcutter_m2", "movement": "Patrol", "patrolRange": "10,31 -> 15,20" },
+      { "npcId": "woodcutter-c", "name": "Woodcutter C", "position": "11,30", "graphic": "npc_woodcutter_f1", "movement": "Static" }
+    ],
+    "enemyZones": [
+      { "zone": "Dense Forest", "bounds": "5,2 -> 35,15", "enemies": ["E-SL-03","E-SL-04"], "levelRange": "3-5", "encounterRate": "Common: 1 Wisp; Standard: 1 Wisp + 1 Beetle" },
+      { "zone": "Lake Shore", "bounds": "24,20 -> 35,30", "enemies": ["E-SL-03"], "levelRange": "3-4", "encounterRate": "Common: 1 Wisp (low)" },
+      { "zone": "Canopy Path", "bounds": "36,15 -> 39,28", "enemies": ["E-SL-04"], "levelRange": "3-5", "encounterRate": "Standard: 2 Beetles" }
+    ],
+    "eventTriggers": [
+      { "id": "EV-AG-001", "position": "9,29", "type": "action", "linkedQuest": "SQ-03", "repeat": "quest", "description": "Lead Woodcutter rapid-growth dialogue" },
+      { "id": "EV-AG-002", "position": "20,10", "type": "action", "repeat": "repeat", "description": "Hearthstone Circle center" },
+      { "id": "EV-AG-003", "position": "30,27", "type": "action", "linkedQuest": "MQ-05", "repeat": "conditional", "description": "Amber Lake submerged stone (Act II)" },
+      { "id": "EV-AG-004", "position": "0,20", "type": "touch", "repeat": "repeat", "description": "West -> Village Hub" },
+      { "id": "EV-AG-006", "position": "38,20", "type": "touch", "linkedQuest": "MQ-04", "repeat": "conditional", "description": "East -> Flickerveil" },
+      { "id": "EV-AG-007", "position": "10,39", "type": "touch", "repeat": "repeat", "description": "South -> Heartfield" }
+    ],
+    "resonanceStones": [
+      { "id": "RS-AG-01", "position": "18,8", "fragments": "awe/earth/2" },
+      { "id": "RS-AG-02", "position": "22,8", "fragments": "joy/earth/2" },
+      { "id": "RS-AG-03", "position": "20,12", "fragments": "calm/wind/2" },
+      { "id": "RS-AG-04", "position": "30,27", "fragments": "awe/water/2", "notes": "Dormant until Act II" },
+      { "id": "RS-AG-05", "position": "15,5", "fragments": "fury/earth/1", "notes": "Hidden in dense forest" }
+    ],
+    "treasureChests": [
+      { "id": "CH-AG-01", "position": "21,10", "contents": "Hearthstone Staff (W-ST-03)" },
+      { "id": "CH-AG-02", "position": "37,20", "contents": "Windcatcher Rod (W-WD-03)" },
+      { "id": "CH-AG-03", "position": "30,5", "contents": "Minor Potion (C-HP-01) x3" }
+    ]
+  }
+]

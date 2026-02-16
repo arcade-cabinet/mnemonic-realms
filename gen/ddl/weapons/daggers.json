@@ -1,0 +1,98 @@
+[
+  {
+    "id": "W-DG-01",
+    "name": "Worn Knife",
+    "classRestriction": "rogue",
+    "weaponType": "dagger",
+    "statType": "atk",
+    "statBonus": 4,
+    "price": 0,
+    "tier": 1,
+    "specialEffect": "None",
+    "acquisition": "Starting equipment"
+  },
+  {
+    "id": "W-DG-02",
+    "name": "Steel Stiletto",
+    "classRestriction": "rogue",
+    "weaponType": "dagger",
+    "statType": "atk",
+    "statBonus": 8,
+    "price": 75,
+    "tier": 1,
+    "specialEffect": "None",
+    "acquisition": "Torvan's Blacksmith"
+  },
+  {
+    "id": "W-DG-03",
+    "name": "Windmill Blade",
+    "classRestriction": "rogue",
+    "weaponType": "dagger",
+    "statType": "atk",
+    "statBonus": 13,
+    "price": 200,
+    "tier": 2,
+    "specialEffect": "+10% critical hit chance",
+    "acquisition": "Heartfield (Old Windmill loot)"
+  },
+  {
+    "id": "W-DG-04",
+    "name": "Shadow Fang",
+    "classRestriction": "rogue",
+    "weaponType": "dagger",
+    "statType": "atk",
+    "statBonus": 19,
+    "price": 350,
+    "tier": 2,
+    "specialEffect": "Foreshadow Strike pre-enemy bonus increased by +10%",
+    "acquisition": "Ridgewalker Camp merchant"
+  },
+  {
+    "id": "W-DG-05",
+    "name": "Flickerblade",
+    "classRestriction": "rogue",
+    "weaponType": "dagger",
+    "statType": "atk",
+    "statBonus": 25,
+    "price": 550,
+    "tier": 2,
+    "specialEffect": "20% chance to act twice (basic attack only)",
+    "acquisition": "Flickerveil (Flickering Village shop)"
+  },
+  {
+    "id": "W-DG-06",
+    "name": "Phantom Edge",
+    "classRestriction": "rogue",
+    "weaponType": "dagger",
+    "statType": "atk",
+    "statBonus": 32,
+    "price": 900,
+    "tier": 3,
+    "specialEffect": "Vanishing Act lasts 3 turns instead of 2",
+    "acquisition": "Torvan's Blacksmith (Vivid vibrancy)"
+  },
+  {
+    "id": "W-DG-07",
+    "name": "Temporal Shard",
+    "classRestriction": "rogue",
+    "weaponType": "dagger",
+    "statType": "atk",
+    "statBonus": 39,
+    "price": 0,
+    "tier": 3,
+    "specialEffect": "Temporal Ambush second action deals +25% bonus damage",
+    "acquisition": "Quest reward: Rogue time-echo quest (Act II)"
+  },
+  {
+    "id": "W-DG-08",
+    "name": "Echo of Tomorrow",
+    "classRestriction": "rogue",
+    "weaponType": "dagger",
+    "statType": "atk",
+    "statBonus": 47,
+    "price": 0,
+    "tier": 3,
+    "specialEffect": "Echo Dodge cap increased from 60% to 70%. Memory Theft always succeeds.",
+    "acquisition": "Depths Level 4 treasure chest"
+  }
+]

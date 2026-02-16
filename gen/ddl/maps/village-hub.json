@@ -1,0 +1,61 @@
+[
+  {
+    "id": "village-hub",
+    "name": "Village Hub",
+    "filename": "village-hub.tmx",
+    "width": 30,
+    "height": 30,
+    "tileSize": 32,
+    "biome": "village",
+    "tilesetRefs": ["tiles_village_{tier}"],
+    "startVibrancy": 60,
+    "category": "overworld",
+    "act": "I",
+    "connections": [
+      { "fromTile": "15,25", "direction": "south", "toMap": "heartfield", "toTile": "15,0", "condition": "always" },
+      { "fromTile": "29,14", "direction": "east", "toMap": "ambergrove", "toTile": "0,20", "condition": "always" },
+      { "fromTile": "0,14", "direction": "west", "toMap": "millbrook", "toTile": "39,20", "condition": "always" },
+      { "fromTile": "15,0", "direction": "north", "toMap": "sunridge", "toTile": "20,39", "condition": "MQ-04+" },
+      { "fromTile": "8,17", "direction": "down", "toMap": "depths-l1", "toTile": "10,0", "condition": "MQ-05+" }
+    ],
+    "npcSpawns": [
+      { "npcId": "callum", "name": "Callum", "position": "19,11", "graphic": "npc_callum", "movement": "Patrol", "patrolRange": "12,3 -> 19,11", "quests": ["MQ-01","MQ-03","MQ-05","MQ-07"] },
+      { "npcId": "lira", "name": "Lira", "position": "9,19", "graphic": "npc_lira", "movement": "Static", "condition": "until MQ-02", "quests": ["MQ-01","MQ-02"] },
+      { "npcId": "maren", "name": "Maren", "position": "19,17", "graphic": "npc_maren", "movement": "Static", "quests": ["SQ-01"] },
+      { "npcId": "torvan", "name": "Torvan", "position": "19,19", "graphic": "npc_torvan", "movement": "Static", "quests": ["SQ-11"] },
+      { "npcId": "ren", "name": "Ren", "position": "21,15", "graphic": "npc_ren", "movement": "Static", "quests": ["SQ-12"] },
+      { "npcId": "villager-a", "name": "Villager A", "position": "14,15", "graphic": "npc_villager_m1", "movement": "Wander", "patrolRange": "12,14 -> 17,19" },
+      { "npcId": "villager-b", "name": "Villager B", "position": "16,16", "graphic": "npc_villager_f1", "movement": "Wander", "patrolRange": "12,14 -> 17,19" },
+      { "npcId": "villager-c", "name": "Villager C", "position": "10,22", "graphic": "npc_villager_m2", "movement": "Patrol", "patrolRange": "10,22 -> 15,25" }
+    ],
+    "enemyZones": [],
+    "eventTriggers": [
+      { "id": "EV-VH-001", "position": "19,11", "type": "action", "linkedQuest": "MQ-01", "repeat": "quest", "description": "Callum intro dialogue" },
+      { "id": "EV-VH-002", "position": "9,19", "type": "action", "linkedQuest": "MQ-01", "repeat": "quest", "description": "Lira gives Architect's Signet" },
+      { "id": "EV-VH-003", "position": "10,17", "type": "action", "linkedQuest": "MQ-02", "repeat": "quest", "description": "Memorial Garden Resonance Stone" },
+      { "id": "EV-VH-005", "position": "19,17", "type": "action", "repeat": "repeat", "description": "Maren shop + SQ-01" },
+      { "id": "EV-VH-006", "position": "19,19", "type": "action", "linkedQuest": "SQ-11", "repeat": "conditional", "description": "Torvan shop (vibrancy 70+)" },
+      { "id": "EV-VH-007", "position": "21,15", "type": "action", "linkedQuest": "SQ-12", "repeat": "repeat", "description": "Ren inn rest + dreams" },
+      { "id": "EV-VH-008", "position": "8,14", "type": "action", "repeat": "repeat", "description": "Quest Board" },
+      { "id": "EV-VH-009", "position": "15,25", "type": "touch", "repeat": "repeat", "description": "South Gate -> Heartfield" },
+      { "id": "EV-VH-010", "position": "29,14", "type": "touch", "repeat": "repeat", "description": "East Gate -> Ambergrove" },
+      { "id": "EV-VH-011", "position": "0,14", "type": "touch", "repeat": "repeat", "description": "West Gate -> Millbrook" },
+      { "id": "EV-VH-012", "position": "15,0", "type": "touch", "linkedQuest": "MQ-04", "repeat": "conditional", "description": "North Gate -> Sunridge" },
+      { "id": "EV-VH-013", "position": "12,3", "type": "action", "repeat": "repeat", "description": "Callum telescope lookout" },
+      { "id": "EV-VH-014", "position": "8,17", "type": "touch", "linkedQuest": "MQ-05", "repeat": "conditional", "description": "Hidden Depths entrance" },
+      { "id": "EV-VH-015", "position": "14,15", "type": "parallel", "repeat": "repeat", "description": "Fountain vibrancy particles" },
+      { "id": "EV-VH-016", "position": "0,0", "type": "auto", "linkedQuest": "MQ-01", "repeat": "once", "description": "Opening cutscene" }
+    ],
+    "resonanceStones": [
+      { "id": "RS-VH-01", "position": "14,15", "fragments": "joy/neutral/1" },
+      { "id": "RS-VH-02", "position": "9,16", "fragments": "calm/earth/1" },
+      { "id": "RS-VH-03", "position": "10,17", "fragments": "joy/light/1" },
+      { "id": "RS-VH-04", "position": "11,16", "fragments": "sorrow/neutral/1" },
+      { "id": "RS-VH-05", "position": "21,15", "fragments": "calm/neutral/2", "notes": "Hidden; revealed after SQ-12 dream 5" }
+    ],
+    "treasureChests": [
+      { "id": "CH-VH-01", "position": "13,3", "contents": "Minor Potion (C-HP-01) x2" },
+      { "id": "CH-VH-02", "position": "9,11", "contents": "Mana Drop (C-SP-01) x2", "condition": "After MQ-01" }
+    ]
+  }
+]

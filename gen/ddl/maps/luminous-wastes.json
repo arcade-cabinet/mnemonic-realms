@@ -1,0 +1,40 @@
+[
+  {
+    "id": "luminous-wastes",
+    "name": "Luminous Wastes",
+    "filename": "luminous-wastes.tmx",
+    "width": 40,
+    "height": 40,
+    "tileSize": 32,
+    "biome": "sketch",
+    "tilesetRefs": ["tiles_sketch_{tier}"],
+    "startVibrancy": 5,
+    "category": "overworld",
+    "act": "III",
+    "connections": [
+      { "fromTile": "25,0", "direction": "north", "toMap": "shimmer-marsh", "toTile": "25,49", "condition": "MQ-07+" },
+      { "fromTile": "39,20", "direction": "east", "toMap": "resonance-fields", "toTile": "0,25", "condition": "MQ-07+" },
+      { "fromTile": "20,0", "direction": "northeast", "toMap": "half-drawn-forest", "toTile": "20,39", "condition": "MQ-08+" }
+    ],
+    "npcSpawns": [
+      { "npcId": "preserver-archivist-lw", "name": "Preserver Archivist", "position": "34,9", "graphic": "npc_preserver_elite", "movement": "Static" }
+    ],
+    "enemyZones": [
+      { "zone": "Open Wastes", "bounds": "5,5 -> 35,35", "enemies": ["Sketch Phantom","Void Wisp"], "levelRange": "21-24", "encounterRate": "Common: 1 Phantom; Standard: 1 Phantom + 1 Wisp" },
+      { "zone": "Watchtower Zone", "bounds": "30,5 -> 38,14", "enemies": ["Preserver Archivist (elite)"], "levelRange": "23-25", "encounterRate": "Standard: 2 Archivists" }
+    ],
+    "eventTriggers": [
+      { "id": "EV-LW-001", "position": "20,20", "type": "action", "linkedQuest": "MQ-08", "repeat": "quest", "description": "Half-Built Village broadcast solidification" },
+      { "id": "EV-LW-002", "position": "4,18", "type": "action", "repeat": "repeat", "description": "The Edge narrative beat" },
+      { "id": "EV-LW-003", "position": "25,0", "type": "touch", "repeat": "conditional", "description": "North -> Shimmer Marsh" },
+      { "id": "EV-LW-004", "position": "39,20", "type": "touch", "repeat": "conditional", "description": "East -> Resonance Fields" },
+      { "id": "EV-LW-005", "position": "20,0", "type": "touch", "repeat": "conditional", "description": "NE -> Half-Drawn Forest" }
+    ],
+    "resonanceStones": [
+      { "id": "RS-LW-01", "position": "20,20", "fragments": "various/3-4 (x3)", "notes": "After solidification" },
+      { "id": "RS-LW-02", "position": "4,18", "fragments": "calm/neutral/4", "notes": "The Edge; world boundary" },
+      { "id": "RS-LW-03", "position": "30,35", "fragments": "sorrow/neutral/3" }
+    ],
+    "treasureChests": []
+  }
+]

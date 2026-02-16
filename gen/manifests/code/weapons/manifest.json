@@ -1,0 +1,776 @@
+{
+  "schemaVersion": "1.0.0",
+  "description": "Weapon database code generation manifest",
+  "updatedAt": "2026-02-14T15:11:55.047Z",
+  "category": "database-weapons",
+  "systemPrompt": "You are an RPG-JS 4.3.0 TypeScript code generator.\nGenerate a single RPG-JS weapon database file using @rpgjs/database decorators.\nOutput ONLY valid TypeScript code. No markdown fences. No explanatory text.\nThe file must export the weapon class as the default export.\nImport from '@rpgjs/database'.\n\n=== RPG-JS 4.3.0 @Weapon API Reference ===\nimport { Weapon } from '@rpgjs/database';\n\nValid @Weapon decorator params (WeaponOptions):\n  id?: string              — Unique ID. Defaults to lowercased class name.\n  name?: string            — Display name.\n  description?: string     — Flavor text.\n  price?: number           — Shop price. Omit or undefined = cannot buy/sell.\n  atk?: number             — Attack bonus (weapon-specific stat).\n  pdef?: number            — Physical defense bonus.\n  sdef?: number            — Special/magic defense bonus.\n  paramsModifier?: object  — Stat modifiers: { [paramName]: { value?: number, rate?: number } }\n                             Valid param names: 'maxhp', 'maxsp', 'str', 'int', 'dex', 'agi'\n  elements?: array         — Element affinities: [ElementClass] or [{ rate: number, element: ElementClass }]\n  addStates?: array        — States to inflict: [StateClass] or [{ rate: number, state: StateClass }]\n  removeStates?: array     — States to cure: [StateClass] or [{ rate: number, state: StateClass }]\n  statesDefense?: array    — Resistance to states when equipped.\n  elementsDefense?: array  — Resistance to elements when equipped.\n\nINVALID properties (do NOT use): equipable, class, type, tier, weaponType, damage, hitRate, critical.\nFor INT-based weapons (staves, wands): use paramsModifier: { int: { value: N } } instead of a nonexistent 'int' property.\n\nExample:\n@Weapon({\n  id: 'training-sword',\n  name: 'Training Sword',\n  description: 'A simple blade for beginners.',\n  price: 50,\n  atk: 5,\n})\nexport default class TrainingSword {}\n\nExample with INT bonus (staff):\nimport { Weapon } from '@rpgjs/database';\n@Weapon({\n  id: 'W-ST-01',\n  name: 'Wooden Staff',\n  description: 'A basic wooden staff.',\n  price: 0,\n  atk: 1,\n  paramsModifier: { int: { value: 4 } },\n})\nexport default class WoodenStaff {}\n=== End API Reference ===",
+  "assets": [
+    {
+      "id": "W-DG-01",
+      "name": "Worn Knife",
+      "category": "database-weapons",
+      "filename": "worn-knife.ts",
+      "targetPath": "main/database/weapons/worn-knife.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Worn Knife\" (ID: W-DG-01).\n\nStats:\n- Primary stat: atk +4\n- Price: 0 (omit price or set undefined — not purchasable)\n- Intended for: rogue (add as comment only — no equipable/class property exists)\n- Weapon category: dagger (add as comment only — no type property exists)\n- Tier: 1 (add as comment only — no tier property exists)\n- Special effect: None\n\nSet atk: 4.\nSet id, name, description.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "test-hash-abc123",
+        "generatedAt": "2026-01-01T00:00:00.000Z",
+        "generationTimeMs": 1500,
+        "fileSizeBytes": 2048,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-DG-02",
+      "name": "Steel Stiletto",
+      "category": "database-weapons",
+      "filename": "steel-stiletto.ts",
+      "targetPath": "main/database/weapons/steel-stiletto.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Steel Stiletto\" (ID: W-DG-02).\n\nStats:\n- Primary stat: atk +8\n- Price: 75\n- Intended for: rogue (add as comment only — no equipable/class property exists)\n- Weapon category: dagger (add as comment only — no type property exists)\n- Tier: 1 (add as comment only — no tier property exists)\n- Special effect: None\n\nSet atk: 8.\nSet id, name, description. Set price: 75.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "5660c6ebaf9f836a",
+        "outputHash": "b0034c83e382f91653d313610ec828ff0c9c14783765a1399b1ec520e5696392",
+        "generatedAt": "2026-02-13T13:36:29.331Z",
+        "generationTimeMs": 2211,
+        "fileSizeBytes": 299,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-DG-03",
+      "name": "Windmill Blade",
+      "category": "database-weapons",
+      "filename": "windmill-blade.ts",
+      "targetPath": "main/database/weapons/windmill-blade.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Windmill Blade\" (ID: W-DG-03).\n\nStats:\n- Primary stat: atk +13\n- Price: 200\n- Intended for: rogue (add as comment only — no equipable/class property exists)\n- Weapon category: dagger (add as comment only — no type property exists)\n- Tier: 2 (add as comment only — no tier property exists)\n- Special effect: +10% critical hit chance\n\nSet atk: 13.\nSet id, name, description. Set price: 200.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "252eded0d94da79d",
+        "outputHash": "47de214db2328d68f6016d4d2d3519578ad289d46c222b4e303fc1dac1ba40f7",
+        "generatedAt": "2026-02-13T13:36:33.623Z",
+        "generationTimeMs": 2289,
+        "fileSizeBytes": 342,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-DG-04",
+      "name": "Shadow Fang",
+      "category": "database-weapons",
+      "filename": "shadow-fang.ts",
+      "targetPath": "main/database/weapons/shadow-fang.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Shadow Fang\" (ID: W-DG-04).\n\nStats:\n- Primary stat: atk +19\n- Price: 350\n- Intended for: rogue (add as comment only — no equipable/class property exists)\n- Weapon category: dagger (add as comment only — no type property exists)\n- Tier: 2 (add as comment only — no tier property exists)\n- Special effect: Foreshadow Strike pre-enemy bonus increased by +10%\n\nSet atk: 19.\nSet id, name, description. Set price: 350.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "cd78750518061494",
+        "outputHash": "d0d4726d8649faf5dc5f2af0d03801224e93cdc996b66c48affd1e40a5e40042",
+        "generatedAt": "2026-02-13T13:36:38.155Z",
+        "generationTimeMs": 2530,
+        "fileSizeBytes": 423,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-DG-05",
+      "name": "Flickerblade",
+      "category": "database-weapons",
+      "filename": "flickerblade.ts",
+      "targetPath": "main/database/weapons/flickerblade.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Flickerblade\" (ID: W-DG-05).\n\nStats:\n- Primary stat: atk +25\n- Price: 550\n- Intended for: rogue (add as comment only — no equipable/class property exists)\n- Weapon category: dagger (add as comment only — no type property exists)\n- Tier: 2 (add as comment only — no tier property exists)\n- Special effect: 20% chance to act twice (basic attack only)\n\nSet atk: 25.\nSet id, name, description. Set price: 550.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "932dfe6e856984ee",
+        "outputHash": "fce2445f2d6641658eb1d901acd4c0e2b75be6e73fe2d5d5cabf753853a53e4f",
+        "generatedAt": "2026-02-13T13:36:42.798Z",
+        "generationTimeMs": 2638,
+        "fileSizeBytes": 373,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-DG-06",
+      "name": "Phantom Edge",
+      "category": "database-weapons",
+      "filename": "phantom-edge.ts",
+      "targetPath": "main/database/weapons/phantom-edge.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Phantom Edge\" (ID: W-DG-06).\n\nStats:\n- Primary stat: atk +32\n- Price: 900\n- Intended for: rogue (add as comment only — no equipable/class property exists)\n- Weapon category: dagger (add as comment only — no type property exists)\n- Tier: 3 (add as comment only — no tier property exists)\n- Special effect: Vanishing Act lasts 3 turns instead of 2\n\nSet atk: 32.\nSet id, name, description. Set price: 900.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "374023c364033e33",
+        "outputHash": "a6f3b1e63c946e8225a43e8f06a72429c976f550a42903c0b40f6331925fa976",
+        "generatedAt": "2026-02-13T13:36:47.034Z",
+        "generationTimeMs": 2232,
+        "fileSizeBytes": 371,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-DG-07",
+      "name": "Temporal Shard",
+      "category": "database-weapons",
+      "filename": "temporal-shard.ts",
+      "targetPath": "main/database/weapons/temporal-shard.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Temporal Shard\" (ID: W-DG-07).\n\nStats:\n- Primary stat: atk +39\n- Price: 0 (omit price or set undefined — not purchasable)\n- Intended for: rogue (add as comment only — no equipable/class property exists)\n- Weapon category: dagger (add as comment only — no type property exists)\n- Tier: 3 (add as comment only — no tier property exists)\n- Special effect: Temporal Ambush second action deals +25% bonus damage\n\nSet atk: 39.\nSet id, name, description.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "6f2cb02ba685bdc9",
+        "outputHash": "0fe2c1290a0ac648fe4bf0c9f66ea0ea7aa88f9cc3be2559113580d208a2ba8b",
+        "generatedAt": "2026-02-13T13:36:52.556Z",
+        "generationTimeMs": 3519,
+        "fileSizeBytes": 410,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-DG-08",
+      "name": "Echo of Tomorrow",
+      "category": "database-weapons",
+      "filename": "echo-of-tomorrow.ts",
+      "targetPath": "main/database/weapons/echo-of-tomorrow.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Echo of Tomorrow\" (ID: W-DG-08).\n\nStats:\n- Primary stat: atk +47\n- Price: 0 (omit price or set undefined — not purchasable)\n- Intended for: rogue (add as comment only — no equipable/class property exists)\n- Weapon category: dagger (add as comment only — no type property exists)\n- Tier: 3 (add as comment only — no tier property exists)\n- Special effect: Echo Dodge cap increased from 60% to 70%. Memory Theft always succeeds.\n\nSet atk: 47.\nSet id, name, description.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "ccb2c9351b114f21",
+        "outputHash": "c15e95363b531bd1f86d303f1fa73aa24bfd97c142f2b3130d9d078ef99e9d0d",
+        "generatedAt": "2026-02-13T13:36:59.541Z",
+        "generationTimeMs": 4981,
+        "fileSizeBytes": 444,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-ST-01",
+      "name": "Wooden Staff",
+      "category": "database-weapons",
+      "filename": "wooden-staff.ts",
+      "targetPath": "main/database/weapons/wooden-staff.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Wooden Staff\" (ID: W-ST-01).\n\nStats:\n- Primary stat: int +4\n- Price: 0 (omit price or set undefined — not purchasable)\n- Intended for: cleric (add as comment only — no equipable/class property exists)\n- Weapon category: staff (add as comment only — no type property exists)\n- Tier: 1 (add as comment only — no tier property exists)\n- Special effect: None\n\nUse paramsModifier: { int: { value: 4 } } for the INT bonus.\nSet atk to 1 (minimum for a weapon).\nSet id, name, description.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "a748de61bc6ce967",
+        "outputHash": "28e91e73afef0f1669b4af5fb93dae2f2e0ebf7a8869c1f4cccbb8af19fb7ae6",
+        "generatedAt": "2026-02-13T13:37:04.655Z",
+        "generationTimeMs": 3112,
+        "fileSizeBytes": 296,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-ST-02",
+      "name": "Maren's Blessing Rod",
+      "category": "database-weapons",
+      "filename": "maren-s-blessing-rod.ts",
+      "targetPath": "main/database/weapons/maren-s-blessing-rod.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Maren's Blessing Rod\" (ID: W-ST-02).\n\nStats:\n- Primary stat: int +8\n- Price: 70\n- Intended for: cleric (add as comment only — no equipable/class property exists)\n- Weapon category: staff (add as comment only — no type property exists)\n- Tier: 1 (add as comment only — no tier property exists)\n- Special effect: +5% healing power\n\nUse paramsModifier: { int: { value: 8 } } for the INT bonus.\nSet atk to 1 (minimum for a weapon).\nSet id, name, description. Set price: 70.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "5125402156a3427e",
+        "outputHash": "61b3780572a42ff239ea3f7c9eba7df9aa21c4792e2835056a74513ecb5b4064",
+        "generatedAt": "2026-02-13T13:37:08.853Z",
+        "generationTimeMs": 2196,
+        "fileSizeBytes": 431,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-ST-03",
+      "name": "Hearthstone Staff",
+      "category": "database-weapons",
+      "filename": "hearthstone-staff.ts",
+      "targetPath": "main/database/weapons/hearthstone-staff.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Hearthstone Staff\" (ID: W-ST-03).\n\nStats:\n- Primary stat: int +14\n- Price: 220\n- Intended for: cleric (add as comment only — no equipable/class property exists)\n- Weapon category: staff (add as comment only — no type property exists)\n- Tier: 2 (add as comment only — no tier property exists)\n- Special effect: Sorrowful Cleanse also heals INT x 0.3\n\nUse paramsModifier: { int: { value: 14 } } for the INT bonus.\nSet atk to 1 (minimum for a weapon).\nSet id, name, description. Set price: 220.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "fa2f3a53cc6c8842",
+        "outputHash": "280cff68c9b9340da02a2e15aef1d253fb084f117ae061a3a529eb195570cebe",
+        "generatedAt": "2026-02-13T13:37:13.259Z",
+        "generationTimeMs": 2402,
+        "fileSizeBytes": 468,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-ST-04",
+      "name": "Riverside Crosier",
+      "category": "database-weapons",
+      "filename": "riverside-crosier.ts",
+      "targetPath": "main/database/weapons/riverside-crosier.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Riverside Crosier\" (ID: W-ST-04).\n\nStats:\n- Primary stat: int +20\n- Price: 380\n- Intended for: cleric (add as comment only — no equipable/class property exists)\n- Weapon category: staff (add as comment only — no type property exists)\n- Tier: 2 (add as comment only — no tier property exists)\n- Special effect: +10% shield strength (Awestruck Ward)\n\nUse paramsModifier: { int: { value: 20 } } for the INT bonus.\nSet atk to 1 (minimum for a weapon).\nSet id, name, description. Set price: 380.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "ec974e1fb897a8ac",
+        "outputHash": "fd50511e75551865616baf1eec8a2a7386d2d05582dd8828e3e67c61b6c1c900",
+        "generatedAt": "2026-02-13T13:37:17.647Z",
+        "generationTimeMs": 2385,
+        "fileSizeBytes": 515,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-ST-05",
+      "name": "Marsh Hermit's Crook",
+      "category": "database-weapons",
+      "filename": "marsh-hermit-s-crook.ts",
+      "targetPath": "main/database/weapons/marsh-hermit-s-crook.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Marsh Hermit's Crook\" (ID: W-ST-05).\n\nStats:\n- Primary stat: int +26\n- Price: 0 (omit price or set undefined — not purchasable)\n- Intended for: cleric (add as comment only — no equipable/class property exists)\n- Weapon category: staff (add as comment only — no type property exists)\n- Tier: 2 (add as comment only — no tier property exists)\n- Special effect: SP cost of all heals reduced by 15%\n\nUse paramsModifier: { int: { value: 26 } } for the INT bonus.\nSet atk to 1 (minimum for a weapon).\nSet id, name, description.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "781b78c123424cf8",
+        "outputHash": "e811d50137b66738fbf8903e5f5c23956904f6fa8b6aa7f5b88b5085c04902ce",
+        "generatedAt": "2026-02-13T13:37:22.781Z",
+        "generationTimeMs": 3130,
+        "fileSizeBytes": 437,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-ST-06",
+      "name": "Luminary's Scepter",
+      "category": "database-weapons",
+      "filename": "luminary-s-scepter.ts",
+      "targetPath": "main/database/weapons/luminary-s-scepter.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Luminary's Scepter\" (ID: W-ST-06).\n\nStats:\n- Primary stat: int +33\n- Price: 850\n- Intended for: cleric (add as comment only — no equipable/class property exists)\n- Weapon category: staff (add as comment only — no type property exists)\n- Tier: 3 (add as comment only — no tier property exists)\n- Special effect: Group Mending heals +20% more\n\nUse paramsModifier: { int: { value: 33 } } for the INT bonus.\nSet atk to 1 (minimum for a weapon).\nSet id, name, description. Set price: 850.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "7b7ef698a579f3c8",
+        "outputHash": "ed82dbeda19b3917b6daf72702ff042bfa6ab0f5a6c7e4a4727a8c28bd2b6693",
+        "generatedAt": "2026-02-13T13:37:27.277Z",
+        "generationTimeMs": 2494,
+        "fileSizeBytes": 457,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-ST-07",
+      "name": "Euphoric Wand",
+      "category": "database-weapons",
+      "filename": "euphoric-wand.ts",
+      "targetPath": "main/database/weapons/euphoric-wand.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Euphoric Wand\" (ID: W-ST-07).\n\nStats:\n- Primary stat: int +40\n- Price: 0 (omit price or set undefined — not purchasable)\n- Intended for: cleric (add as comment only — no equipable/class property exists)\n- Weapon category: staff (add as comment only — no type property exists)\n- Tier: 3 (add as comment only — no tier property exists)\n- Special effect: Emotional charges grant +5% each (doubled from base +3%)\n\nUse paramsModifier: { int: { value: 40 } } for the INT bonus.\nSet atk to 1 (minimum for a weapon).\nSet id, name, description.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "bc4fdaaea3068eda",
+        "outputHash": "0808930332432df199b90a7f7e372e1a820eb092ef12a0d68c4f3f986ea2716c",
+        "generatedAt": "2026-02-13T13:37:33.532Z",
+        "generationTimeMs": 4252,
+        "fileSizeBytes": 493,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-ST-08",
+      "name": "First Light",
+      "category": "database-weapons",
+      "filename": "first-light.ts",
+      "targetPath": "main/database/weapons/first-light.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"First Light\" (ID: W-ST-08).\n\nStats:\n- Primary stat: int +48\n- Price: 0 (omit price or set undefined — not purchasable)\n- Intended for: cleric (add as comment only — no equipable/class property exists)\n- Weapon category: staff (add as comment only — no type property exists)\n- Tier: 3 (add as comment only — no tier property exists)\n- Special effect: Healing spells also grant Inspired (+20% all stats, 1 turn) to the target\n\nUse paramsModifier: { int: { value: 48 } } for the INT bonus.\nSet atk to 1 (minimum for a weapon).\nSet id, name, description.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "f4f337030cda677d",
+        "outputHash": "d031a32957f89d59ae5170b27ce6f1f71a2912a0bb5043d7767945b06076fba7",
+        "generatedAt": "2026-02-13T13:37:38.006Z",
+        "generationTimeMs": 2471,
+        "fileSizeBytes": 482,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-SW-01",
+      "name": "Training Sword",
+      "category": "database-weapons",
+      "filename": "training-sword.ts",
+      "targetPath": "main/database/weapons/training-sword.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Training Sword\" (ID: W-SW-01).\n\nStats:\n- Primary stat: atk +5\n- Price: 0 (omit price or set undefined — not purchasable)\n- Intended for: knight (add as comment only — no equipable/class property exists)\n- Weapon category: sword (add as comment only — no type property exists)\n- Tier: 1 (add as comment only — no tier property exists)\n- Special effect: None\n\nSet atk: 5.\nSet id, name, description.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "35893533595e57e6",
+        "outputHash": "24a3efded52a6f06543161b25fa6d443194ffa6177da024e1b9da52a4c177851",
+        "generatedAt": "2026-02-13T13:37:42.440Z",
+        "generationTimeMs": 2430,
+        "fileSizeBytes": 291,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-SW-02",
+      "name": "Iron Blade",
+      "category": "database-weapons",
+      "filename": "iron-blade.ts",
+      "targetPath": "main/database/weapons/iron-blade.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Iron Blade\" (ID: W-SW-02).\n\nStats:\n- Primary stat: atk +10\n- Price: 80\n- Intended for: knight (add as comment only — no equipable/class property exists)\n- Weapon category: sword (add as comment only — no type property exists)\n- Tier: 1 (add as comment only — no tier property exists)\n- Special effect: None\n\nSet atk: 10.\nSet id, name, description. Set price: 80.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "f7fd5e8eadab7055",
+        "outputHash": "4d13950a296cece5a1e1d6f3a6daee5805598506c651848aae85b829deeb4b7f",
+        "generatedAt": "2026-02-13T13:37:46.218Z",
+        "generationTimeMs": 1775,
+        "fileSizeBytes": 318,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-SW-03",
+      "name": "Oathkeeper's Edge",
+      "category": "database-weapons",
+      "filename": "oathkeeper-s-edge.ts",
+      "targetPath": "main/database/weapons/oathkeeper-s-edge.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Oathkeeper's Edge\" (ID: W-SW-03).\n\nStats:\n- Primary stat: atk +16\n- Price: 250\n- Intended for: knight (add as comment only — no equipable/class property exists)\n- Weapon category: sword (add as comment only — no type property exists)\n- Tier: 2 (add as comment only — no tier property exists)\n- Special effect: +5% Oath Strike damage\n\nSet atk: 16.\nSet id, name, description. Set price: 250.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "38cd9130564261f0",
+        "outputHash": "85d0859971d70c78ade1d8b854829ddd1e417cd6776ee53a94f3eb6cecc8ecc4",
+        "generatedAt": "2026-02-13T13:37:50.120Z",
+        "generationTimeMs": 1898,
+        "fileSizeBytes": 352,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-SW-04",
+      "name": "Brightwater Saber",
+      "category": "database-weapons",
+      "filename": "brightwater-saber.ts",
+      "targetPath": "main/database/weapons/brightwater-saber.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Brightwater Saber\" (ID: W-SW-04).\n\nStats:\n- Primary stat: atk +22\n- Price: 400\n- Intended for: knight (add as comment only — no equipable/class property exists)\n- Weapon category: sword (add as comment only — no type property exists)\n- Tier: 2 (add as comment only — no tier property exists)\n- Special effect: Water element on basic attacks\n\nSet atk: 22.\nSet id, name, description. Set price: 400.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "07d13a619d0fdacf",
+        "outputHash": "982890f5f1217cafafceafdd6cc2b71e2fca5e12cdf9ffa652839061c97568b9",
+        "generatedAt": "2026-02-13T13:37:54.011Z",
+        "generationTimeMs": 1888,
+        "fileSizeBytes": 362,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-SW-05",
+      "name": "Ridgewalker Claymore",
+      "category": "database-weapons",
+      "filename": "ridgewalker-claymore.ts",
+      "targetPath": "main/database/weapons/ridgewalker-claymore.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Ridgewalker Claymore\" (ID: W-SW-05).\n\nStats:\n- Primary stat: atk +28\n- Price: 600\n- Intended for: knight (add as comment only — no equipable/class property exists)\n- Weapon category: sword (add as comment only — no type property exists)\n- Tier: 2 (add as comment only — no tier property exists)\n- Special effect: +10% ATK when HP above 75%\n\nSet atk: 28.\nSet id, name, description. Set price: 600.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "f8617fd8f74271e0",
+        "outputHash": "5488b21cc111010fbed8511c0a4c61f0db229b150ead7142036321a66ace07b3",
+        "generatedAt": "2026-02-13T13:37:59.337Z",
+        "generationTimeMs": 3323,
+        "fileSizeBytes": 418,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-SW-06",
+      "name": "Frontier Greatsword",
+      "category": "database-weapons",
+      "filename": "frontier-greatsword.ts",
+      "targetPath": "main/database/weapons/frontier-greatsword.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Frontier Greatsword\" (ID: W-SW-06).\n\nStats:\n- Primary stat: atk +35\n- Price: 900\n- Intended for: knight (add as comment only — no equipable/class property exists)\n- Weapon category: sword (add as comment only — no type property exists)\n- Tier: 3 (add as comment only — no tier property exists)\n- Special effect: +15% damage vs. Preserver enemies\n\nSet atk: 35.\nSet id, name, description. Set price: 900.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "aa241fb55d6101ab",
+        "outputHash": "5dd21ea0f5f1cff91a63afa466ef4880e3ea588340fdbaa6ccd3271cdc3e7aa8",
+        "generatedAt": "2026-02-13T13:38:03.675Z",
+        "generationTimeMs": 2335,
+        "fileSizeBytes": 426,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-SW-07",
+      "name": "Oath-Forged Blade",
+      "category": "database-weapons",
+      "filename": "oath-forged-blade.ts",
+      "targetPath": "main/database/weapons/oath-forged-blade.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Oath-Forged Blade\" (ID: W-SW-07).\n\nStats:\n- Primary stat: atk +42\n- Price: 0 (omit price or set undefined — not purchasable)\n- Intended for: knight (add as comment only — no equipable/class property exists)\n- Weapon category: sword (add as comment only — no type property exists)\n- Tier: 3 (add as comment only — no tier property exists)\n- Special effect: +3% ATK per active oath. Oath Strike costs 0 SP.\n\nSet atk: 42.\nSet id, name, description.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "0c16fcffa6e503a7",
+        "outputHash": "465f8ae45e3785b52ec100ef4c9ed2f32ea2e77dacb83be5a1d80e099d2a6bb6",
+        "generatedAt": "2026-02-13T13:38:07.734Z",
+        "generationTimeMs": 2056,
+        "fileSizeBytes": 493,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-SW-08",
+      "name": "Memory's Edge",
+      "category": "database-weapons",
+      "filename": "memory-s-edge.ts",
+      "targetPath": "main/database/weapons/memory-s-edge.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Memory's Edge\" (ID: W-SW-08).\n\nStats:\n- Primary stat: atk +50\n- Price: 0 (omit price or set undefined — not purchasable)\n- Intended for: knight (add as comment only — no equipable/class property exists)\n- Weapon category: sword (add as comment only — no type property exists)\n- Tier: 3 (add as comment only — no tier property exists)\n- Special effect: ATK scales with total fragments collected (+1 ATK per 5 fragments, max +12)\n\nSet atk: 50.\nSet id, name, description.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "8aba3eeba912e16b",
+        "outputHash": "27cdca3eaa9c4b2e04b2d348e33745bc89ddf7960d79068555ce501a973caeaa",
+        "generatedAt": "2026-02-13T13:38:11.736Z",
+        "generationTimeMs": 2000,
+        "fileSizeBytes": 390,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-WD-01",
+      "name": "Apprentice Wand",
+      "category": "database-weapons",
+      "filename": "apprentice-wand.ts",
+      "targetPath": "main/database/weapons/apprentice-wand.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Apprentice Wand\" (ID: W-WD-01).\n\nStats:\n- Primary stat: int +5\n- Price: 0 (omit price or set undefined — not purchasable)\n- Intended for: mage (add as comment only — no equipable/class property exists)\n- Weapon category: wand (add as comment only — no type property exists)\n- Tier: 1 (add as comment only — no tier property exists)\n- Special effect: None\n\nUse paramsModifier: { int: { value: 5 } } for the INT bonus.\nSet atk to 1 (minimum for a weapon).\nSet id, name, description.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "48a8affee7ab9d0f",
+        "outputHash": "0770bf37986608bfe49d06ff88aca9edd5a4a2e415f69cc08d6e991042a2956c",
+        "generatedAt": "2026-02-13T13:38:16.232Z",
+        "generationTimeMs": 2492,
+        "fileSizeBytes": 416,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-WD-02",
+      "name": "Amber Focus",
+      "category": "database-weapons",
+      "filename": "amber-focus.ts",
+      "targetPath": "main/database/weapons/amber-focus.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Amber Focus\" (ID: W-WD-02).\n\nStats:\n- Primary stat: int +9\n- Price: 90\n- Intended for: mage (add as comment only — no equipable/class property exists)\n- Weapon category: wand (add as comment only — no type property exists)\n- Tier: 1 (add as comment only — no tier property exists)\n- Special effect: +5% spell damage\n\nUse paramsModifier: { int: { value: 9 } } for the INT bonus.\nSet atk to 1 (minimum for a weapon).\nSet id, name, description. Set price: 90.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "c1a8eb76ace0e0d1",
+        "outputHash": "42fcd77e996457681836f7b7f0e8f2be25e142b6e77cb69699d6307138dd6a64",
+        "generatedAt": "2026-02-13T13:38:20.430Z",
+        "generationTimeMs": 2195,
+        "fileSizeBytes": 392,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-WD-03",
+      "name": "Windcatcher Rod",
+      "category": "database-weapons",
+      "filename": "windcatcher-rod.ts",
+      "targetPath": "main/database/weapons/windcatcher-rod.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Windcatcher Rod\" (ID: W-WD-03).\n\nStats:\n- Primary stat: int +15\n- Price: 240\n- Intended for: mage (add as comment only — no equipable/class property exists)\n- Weapon category: wand (add as comment only — no type property exists)\n- Tier: 2 (add as comment only — no tier property exists)\n- Special effect: Wind-element spells deal +15% damage\n\nUse paramsModifier: { int: { value: 15 } } for the INT bonus.\nSet atk to 1 (minimum for a weapon).\nSet id, name, description. Set price: 240.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "7ff47fe4ddad8a19",
+        "outputHash": "8906b0dde372c7244163b4bfa8257703eecaf474f4ed4e3b78407c39a53bd11d",
+        "generatedAt": "2026-02-13T13:38:24.694Z",
+        "generationTimeMs": 2261,
+        "fileSizeBytes": 454,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-WD-04",
+      "name": "Prism Wand",
+      "category": "database-weapons",
+      "filename": "prism-wand.ts",
+      "targetPath": "main/database/weapons/prism-wand.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Prism Wand\" (ID: W-WD-04).\n\nStats:\n- Primary stat: int +21\n- Price: 420\n- Intended for: mage (add as comment only — no equipable/class property exists)\n- Weapon category: wand (add as comment only — no type property exists)\n- Tier: 2 (add as comment only — no tier property exists)\n- Special effect: Eureka Moment always hits weakness if one exists\n\nUse paramsModifier: { int: { value: 21 } } for the INT bonus.\nSet atk to 1 (minimum for a weapon).\nSet id, name, description. Set price: 420.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "19d9a35af3aa0c0c",
+        "outputHash": "7833423f826065c67c73081a3bbb8e3df28c5b72f32a1c8e8f845a0ca5412adc",
+        "generatedAt": "2026-02-13T13:38:29.853Z",
+        "generationTimeMs": 3156,
+        "fileSizeBytes": 469,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-WD-05",
+      "name": "Resonance Tuner",
+      "category": "database-weapons",
+      "filename": "resonance-tuner.ts",
+      "targetPath": "main/database/weapons/resonance-tuner.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Resonance Tuner\" (ID: W-WD-05).\n\nStats:\n- Primary stat: int +27\n- Price: 650\n- Intended for: mage (add as comment only — no equipable/class property exists)\n- Weapon category: wand (add as comment only — no type property exists)\n- Tier: 2 (add as comment only — no tier property exists)\n- Special effect: Memory Wave AoE radius includes back-row enemies\n\nUse paramsModifier: { int: { value: 27 } } for the INT bonus.\nSet atk to 1 (minimum for a weapon).\nSet id, name, description. Set price: 650.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "0c2cc86a92bd7496",
+        "outputHash": "1e8586cc8a6c72345190fb2e7bba52efa8765912fcd7b062a62c9da9fcf0d5b1",
+        "generatedAt": "2026-02-13T13:38:34.212Z",
+        "generationTimeMs": 2357,
+        "fileSizeBytes": 480,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-WD-06",
+      "name": "Arcane Catalyst",
+      "category": "database-weapons",
+      "filename": "arcane-catalyst.ts",
+      "targetPath": "main/database/weapons/arcane-catalyst.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Arcane Catalyst\" (ID: W-WD-06).\n\nStats:\n- Primary stat: int +34\n- Price: 950\n- Intended for: mage (add as comment only — no equipable/class property exists)\n- Weapon category: wand (add as comment only — no type property exists)\n- Tier: 3 (add as comment only — no tier property exists)\n- Special effect: Elemental Storm damage +20%\n\nUse paramsModifier: { int: { value: 34 } } for the INT bonus.\nSet atk to 1 (minimum for a weapon).\nSet id, name, description. Set price: 950.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "064be1613da4475b",
+        "outputHash": "1619452ba10c3311bf99509fcd1b7150975ff48144c48e1dc73ab06baf283d06",
+        "generatedAt": "2026-02-13T13:38:38.259Z",
+        "generationTimeMs": 2044,
+        "fileSizeBytes": 437,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-WD-07",
+      "name": "Inspiration's Core",
+      "category": "database-weapons",
+      "filename": "inspiration-s-core.ts",
+      "targetPath": "main/database/weapons/inspiration-s-core.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Inspiration's Core\" (ID: W-WD-07).\n\nStats:\n- Primary stat: int +41\n- Price: 0 (omit price or set undefined — not purchasable)\n- Intended for: mage (add as comment only — no equipable/class property exists)\n- Weapon category: wand (add as comment only — no type property exists)\n- Tier: 3 (add as comment only — no tier property exists)\n- Special effect: Grand Inspiration costs 40 SP instead of 55\n\nUse paramsModifier: { int: { value: 41 } } for the INT bonus.\nSet atk to 1 (minimum for a weapon).\nSet id, name, description.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "a251a5fd1a4e33da",
+        "outputHash": "640539acbafdcf58b17beaa9d7a48cd7df830b111ddf21cc2a0d132e7c877130",
+        "generatedAt": "2026-02-13T13:38:42.456Z",
+        "generationTimeMs": 2194,
+        "fileSizeBytes": 508,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "W-WD-08",
+      "name": "Dissolved Memory Lens",
+      "category": "database-weapons",
+      "filename": "dissolved-memory-lens.ts",
+      "targetPath": "main/database/weapons/dissolved-memory-lens.ts",
+      "prompt": "Generate an RPG-JS weapon file for \"Dissolved Memory Lens\" (ID: W-WD-08).\n\nStats:\n- Primary stat: int +49\n- Price: 0 (omit price or set undefined — not purchasable)\n- Intended for: mage (add as comment only — no equipable/class property exists)\n- Weapon category: wand (add as comment only — no type property exists)\n- Tier: 3 (add as comment only — no tier property exists)\n- Special effect: All spell damage +10%. Spells that hit a weakness deal 2.0x instead of 1.5x.\n\nUse paramsModifier: { int: { value: 49 } } for the INT bonus.\nSet atk to 1 (minimum for a weapon).\nSet id, name, description.\nAdd the special effect as a comment above the class if it is not \"None\".\nDo NOT use any of these invalid properties: equipable, class, type, tier, weaponType.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/items-catalog.md",
+          "heading": "Weapons",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "1e0fb3c05602a99f",
+        "outputHash": "0ce9bd6d5f9b8cce5e2075d61d02196100499d5f76ece0e6667d96fac2720ea1",
+        "generatedAt": "2026-02-13T13:38:47.983Z",
+        "generationTimeMs": 3523,
+        "fileSizeBytes": 578,
+        "model": "gemini-2.5-flash"
+      }
+    }
+  ]
+}

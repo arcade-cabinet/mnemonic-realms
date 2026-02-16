@@ -1,0 +1,201 @@
+{
+  "schemaVersion": "1.0.0",
+  "description": "Enemy actor code generation manifest",
+  "updatedAt": "2026-02-14T15:11:55.053Z",
+  "category": "database-enemies",
+  "systemPrompt": "You are an RPG-JS 4.3.0 TypeScript code generator.\nGenerate a single RPG-JS enemy database file using @rpgjs/database decorators.\nOutput ONLY valid TypeScript code. No markdown fences. No explanatory text.\nThe file must export the enemy class as the default export.\nImport from '@rpgjs/database'.\nInclude enemy abilities as comments in the class body.\n\n=== RPG-JS 4.3.0 @Enemy API Reference ===\nimport { Enemy } from '@rpgjs/database';\n\nUse the @Enemy decorator (NOT @Actor) for enemies.\n\nValid @Enemy decorator params (EnemyOptions extends ActorGlobalOptions):\n  id?: string              — Unique ID.\n  name?: string            — Display name.\n  description?: string     — Flavor text.\n  graphic?: string         — Spritesheet reference for the enemy.\n  parameters?: object      — Stats as { start, end } pairs (interpolated from initialLevel to finalLevel).\n                             Format: { [paramName]: { start: number, end: number } }\n                             Valid param names: 'maxhp', 'maxsp', 'str', 'int', 'dex', 'agi'\n                             For fixed-level enemies, set start === end.\n  startingEquipment?: array — Default equipment (imported class references).\n  startingItems?: array    — Starting items: [{ nb: number, item: ImportedItemClass }]\n  class?: any              — Assign a class (imported class reference).\n  gain?: object            — Rewards for defeating:\n                             { exp?: number, gold?: number, items?: [{ nb: number, item: ImportedItemClass, chance?: number }] }\n  statesEfficiency?: array — Vulnerability to states.\n  elementsEfficiency?: array — Vulnerability to elements.\n\nINVALID properties (do NOT use): hp, sp, atk, def, agi, int (flat numbers — must use parameters with {start,end}).\nAlso invalid: exp, gold, xp (use gain: { exp, gold } instead), expCurve, initialLevel, finalLevel.\n\nExample:\nimport { Enemy } from '@rpgjs/database';\n@Enemy({\n  id: 'E-SL-01',\n  name: 'Grass Serpent',\n  description: 'A small snake lurking in tall grass.',\n  parameters: {\n    maxhp: { start: 30, end: 30 },\n    str: { start: 6, end: 6 },\n    int: { start: 2, end: 2 },\n    dex: { start: 4, end: 4 },\n    agi: { start: 8, end: 8 },\n  },\n  gain: {\n    exp: 15,\n    gold: 8,\n  },\n})\nexport default class GrassSerpent {\n  // Abilities:\n  // - Bite: Physical ATK * 1.2\n}\n=== End API Reference ===",
+  "assets": [
+    {
+      "id": "E-SL-03",
+      "name": "Forest Wisp",
+      "category": "database-enemies",
+      "filename": "forest-wisp.ts",
+      "targetPath": "main/database/enemies/forest-wisp.ts",
+      "prompt": "Generate an RPG-JS enemy file for \"Forest Wisp\" (ID: E-SL-03).\n\nStats (use these as { start: N, end: N } in parameters):\n- maxhp: { start: 35, end: 35 }\n- str: { start: 3, end: 3 }  (ATK maps to 'str' in RPG-JS)\n- int: { start: 10, end: 10 }\n- dex: { start: 4, end: 4 }   (DEF maps to 'dex' in RPG-JS)\n- agi: { start: 12, end: 12 }\n\nRewards (use gain object):\n- gain: { exp: 30, gold: 14 }\n\nContext (add as comments):\n- Zone: Ambergrove\n- Category: settled\n- Fragment affinity: Awe / Resonance\n\nAbilities:\n  - Wisp Bolt: INT * 1.5 (wind) (Magic attack, wind element)\n  - Flicker: 30% dodge next physical (Evasion buff, auto at combat start)\n\nDrop table:\n  - C-SP-01: 20% chance\n\nUse the @Enemy decorator from '@rpgjs/database' (NOT @Actor).\nSet id, name, description.\nSet parameters with { start, end } format for each stat.\nSet gain: { exp, gold } for rewards.\nInclude abilities, drops, and context as structured comments.\nDo NOT use: flat number stats, exp/gold/xp as top-level props, @Actor, initialLevel, finalLevel, expCurve.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/enemies-catalog.md",
+          "heading": "E-SL-03: Forest Wisp",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "89c44c2fcb168ec0",
+        "outputHash": "458fc97a72c89b44b8fd97e95d08dccb51d0e1aa6c96ffa29be003114da77da4",
+        "generatedAt": "2026-02-13T13:33:59.463Z",
+        "generationTimeMs": 4031,
+        "fileSizeBytes": 1065,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "E-SL-04",
+      "name": "Thornback Beetle",
+      "category": "database-enemies",
+      "filename": "thornback-beetle.ts",
+      "targetPath": "main/database/enemies/thornback-beetle.ts",
+      "prompt": "Generate an RPG-JS enemy file for \"Thornback Beetle\" (ID: E-SL-04).\n\nStats (use these as { start: N, end: N } in parameters):\n- maxhp: { start: 55, end: 55 }\n- str: { start: 7, end: 7 }  (ATK maps to 'str' in RPG-JS)\n- int: { start: 2, end: 2 }\n- dex: { start: 10, end: 10 }   (DEF maps to 'dex' in RPG-JS)\n- agi: { start: 4, end: 4 }\n\nRewards (use gain object):\n- gain: { exp: 35, gold: 15 }\n\nContext (add as comments):\n- Zone: Ambergrove\n- Category: settled\n- Fragment affinity: Fury / Verdance\n\nAbilities:\n  - Mandible Crush: ATK * 1.3 (Basic physical attack)\n  - Thorn Shell: 15% chance 5 fixed recoil (Passive: physical attacks may recoil)\n\nDrop table:\n  - C-SC-01: 15% chance\n  - C-HP-01: 15% chance\n\nUse the @Enemy decorator from '@rpgjs/database' (NOT @Actor).\nSet id, name, description.\nSet parameters with { start, end } format for each stat.\nSet gain: { exp, gold } for rewards.\nInclude abilities, drops, and context as structured comments.\nDo NOT use: flat number stats, exp/gold/xp as top-level props, @Actor, initialLevel, finalLevel, expCurve.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/enemies-catalog.md",
+          "heading": "E-SL-04: Thornback Beetle",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "3b6440e6ec478fec",
+        "outputHash": "bb1d851301fec7956b55cb602f640c34007a5e69b137b4be4ae008e0d90eb3e6",
+        "generatedAt": "2026-02-13T13:34:04.879Z",
+        "generationTimeMs": 3412,
+        "fileSizeBytes": 1010,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "E-SL-01",
+      "name": "Meadow Sprite",
+      "category": "database-enemies",
+      "filename": "meadow-sprite.ts",
+      "targetPath": "main/database/enemies/meadow-sprite.ts",
+      "prompt": "Generate an RPG-JS enemy file for \"Meadow Sprite\" (ID: E-SL-01).\n\nStats (use these as { start: N, end: N } in parameters):\n- maxhp: { start: 30, end: 30 }\n- str: { start: 5, end: 5 }  (ATK maps to 'str' in RPG-JS)\n- int: { start: 3, end: 3 }\n- dex: { start: 3, end: 3 }   (DEF maps to 'dex' in RPG-JS)\n- agi: { start: 8, end: 8 }\n\nRewards (use gain object):\n- gain: { exp: 18, gold: 8 }\n\nContext (add as comments):\n- Zone: Heartfield\n- Category: settled\n- Fragment affinity: Joy / Verdance\n\nAbilities:\n  - Pollen Puff: ATK * 1.0 (10% chance to inflict Slow (AGI halved, 2 turns))\n\nDrop table:\n  - C-HP-01: 15% chance\n\nUse the @Enemy decorator from '@rpgjs/database' (NOT @Actor).\nSet id, name, description.\nSet parameters with { start, end } format for each stat.\nSet gain: { exp, gold } for rewards.\nInclude abilities, drops, and context as structured comments.\nDo NOT use: flat number stats, exp/gold/xp as top-level props, @Actor, initialLevel, finalLevel, expCurve.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/enemies-catalog.md",
+          "heading": "E-SL-01: Meadow Sprite",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "ea52faef0db8243a",
+        "outputHash": "749ae87f140c3e9ccc438e8bf0b6d5c687e445d5e08085e23a8e36ed39efcd74",
+        "generatedAt": "2026-02-13T13:34:10.934Z",
+        "generationTimeMs": 4051,
+        "fileSizeBytes": 1020,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "E-SL-02",
+      "name": "Grass Serpent",
+      "category": "database-enemies",
+      "filename": "grass-serpent.ts",
+      "targetPath": "main/database/enemies/grass-serpent.ts",
+      "prompt": "Generate an RPG-JS enemy file for \"Grass Serpent\" (ID: E-SL-02).\n\nStats (use these as { start: N, end: N } in parameters):\n- maxhp: { start: 45, end: 45 }\n- str: { start: 8, end: 8 }  (ATK maps to 'str' in RPG-JS)\n- int: { start: 2, end: 2 }\n- dex: { start: 5, end: 5 }   (DEF maps to 'dex' in RPG-JS)\n- agi: { start: 10, end: 10 }\n\nRewards (use gain object):\n- gain: { exp: 25, gold: 12 }\n\nContext (add as comments):\n- Zone: Heartfield\n- Category: settled\n- Fragment affinity: Calm / Verdance\n\nAbilities:\n  - Lunge: ATK * 1.2 (first turn: ATK * 1.5) (Ambush bonus on first turn)\n  - Coil: DEF +30% for 2 turns (Used when below 50% HP)\n\nDrop table:\n  - C-SC-01: 20% chance\n  - C-HP-01: 10% chance\n\nUse the @Enemy decorator from '@rpgjs/database' (NOT @Actor).\nSet id, name, description.\nSet parameters with { start, end } format for each stat.\nSet gain: { exp, gold } for rewards.\nInclude abilities, drops, and context as structured comments.\nDo NOT use: flat number stats, exp/gold/xp as top-level props, @Actor, initialLevel, finalLevel, expCurve.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/enemies-catalog.md",
+          "heading": "E-SL-02: Grass Serpent",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "91892df4e6b3a1f1",
+        "outputHash": "55ba83a0cedd04a2117420cd522a152f370280b57459699e8844e56a4ba9b8a6",
+        "generatedAt": "2026-02-13T13:34:18.102Z",
+        "generationTimeMs": 5164,
+        "fileSizeBytes": 1079,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "E-SL-05",
+      "name": "River Nymph",
+      "category": "database-enemies",
+      "filename": "river-nymph.ts",
+      "targetPath": "main/database/enemies/river-nymph.ts",
+      "prompt": "Generate an RPG-JS enemy file for \"River Nymph\" (ID: E-SL-05).\n\nStats (use these as { start: N, end: N } in parameters):\n- maxhp: { start: 40, end: 40 }\n- str: { start: 4, end: 4 }  (ATK maps to 'str' in RPG-JS)\n- int: { start: 9, end: 9 }\n- dex: { start: 6, end: 6 }   (DEF maps to 'dex' in RPG-JS)\n- agi: { start: 11, end: 11 }\n\nRewards (use gain object):\n- gain: { exp: 35, gold: 16 }\n\nContext (add as comments):\n- Zone: Millbrook\n- Category: settled\n- Fragment affinity: Joy / Kinesis\n\nAbilities:\n  - Water Jet: INT * 1.6 (water) (Magic attack, water element)\n  - Splash Guard: Reduce next fire attack by 50% (Party water shield, once per combat)\n\nDrop table:\n  - C-SP-01: 20% chance\n  - C-HP-01: 10% chance\n\nUse the @Enemy decorator from '@rpgjs/database' (NOT @Actor).\nSet id, name, description.\nSet parameters with { start, end } format for each stat.\nSet gain: { exp, gold } for rewards.\nInclude abilities, drops, and context as structured comments.\nDo NOT use: flat number stats, exp/gold/xp as top-level props, @Actor, initialLevel, finalLevel, expCurve.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/enemies-catalog.md",
+          "heading": "E-SL-05: River Nymph",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "4589048d52ead709",
+        "outputHash": "9fbd4e3a70e65a3d6100995608cf0908bc966186cb444970f1756a940ebc8c1f",
+        "generatedAt": "2026-02-13T13:34:25.763Z",
+        "generationTimeMs": 5659,
+        "fileSizeBytes": 1061,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "E-SL-06",
+      "name": "Stone Crab",
+      "category": "database-enemies",
+      "filename": "stone-crab.ts",
+      "targetPath": "main/database/enemies/stone-crab.ts",
+      "prompt": "Generate an RPG-JS enemy file for \"Stone Crab\" (ID: E-SL-06).\n\nStats (use these as { start: N, end: N } in parameters):\n- maxhp: { start: 60, end: 60 }\n- str: { start: 10, end: 10 }  (ATK maps to 'str' in RPG-JS)\n- int: { start: 2, end: 2 }\n- dex: { start: 12, end: 12 }   (DEF maps to 'dex' in RPG-JS)\n- agi: { start: 5, end: 5 }\n\nRewards (use gain object):\n- gain: { exp: 40, gold: 18 }\n\nContext (add as comments):\n- Zone: Millbrook\n- Category: settled\n- Fragment affinity: Calm / Kinesis\n\nAbilities:\n  - Pincer Snap: ATK * 1.4 (10% chance Weakness (DEF -30%, 3 turns))\n  - Shell Hunker: DEF +50% for 1 turn (Used when hit 2+ times prev round)\n\nDrop table:\n  - C-SC-03: 10% chance\n  - C-HP-01: 15% chance\n\nUse the @Enemy decorator from '@rpgjs/database' (NOT @Actor).\nSet id, name, description.\nSet parameters with { start, end } format for each stat.\nSet gain: { exp, gold } for rewards.\nInclude abilities, drops, and context as structured comments.\nDo NOT use: flat number stats, exp/gold/xp as top-level props, @Actor, initialLevel, finalLevel, expCurve.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/enemies-catalog.md",
+          "heading": "E-SL-06: Stone Crab",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "ee5c8b9dfcb4d8c3",
+        "outputHash": "e658863a614199c6fedf1f1d165e6cc7aa53052c4a0c414df50a9b18237d048d",
+        "generatedAt": "2026-02-13T13:34:31.989Z",
+        "generationTimeMs": 4223,
+        "fileSizeBytes": 1198,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "E-SL-07",
+      "name": "Highland Hawk",
+      "category": "database-enemies",
+      "filename": "highland-hawk.ts",
+      "targetPath": "main/database/enemies/highland-hawk.ts",
+      "prompt": "Generate an RPG-JS enemy file for \"Highland Hawk\" (ID: E-SL-07).\n\nStats (use these as { start: N, end: N } in parameters):\n- maxhp: { start: 45, end: 45 }\n- str: { start: 11, end: 11 }  (ATK maps to 'str' in RPG-JS)\n- int: { start: 3, end: 3 }\n- dex: { start: 6, end: 6 }   (DEF maps to 'dex' in RPG-JS)\n- agi: { start: 18, end: 18 }\n\nRewards (use gain object):\n- gain: { exp: 40, gold: 18 }\n\nContext (add as comments):\n- Zone: Sunridge\n- Category: settled\n- Fragment affinity: Fury / Resonance\n\nAbilities:\n  - Dive Strike: ATK * 1.5 (first: ATK * 1.8) (Speed-bonus physical attack)\n  - Evasive Climb: Untargetable by ST physical 1 turn (Used every 3rd turn)\n\nDrop table:\n  - C-SC-02: 10% chance\n  - C-SP-05: 15% chance\n\nUse the @Enemy decorator from '@rpgjs/database' (NOT @Actor).\nSet id, name, description.\nSet parameters with { start, end } format for each stat.\nSet gain: { exp, gold } for rewards.\nInclude abilities, drops, and context as structured comments.\nDo NOT use: flat number stats, exp/gold/xp as top-level props, @Actor, initialLevel, finalLevel, expCurve.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/enemies-catalog.md",
+          "heading": "E-SL-07: Highland Hawk",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "bfd65159669c70a8",
+        "outputHash": "5eef23d21d435cf60f8f62949e36f988e0ea11039bd44f488ff078178b5698e6",
+        "generatedAt": "2026-02-13T13:34:44.052Z",
+        "generationTimeMs": 10059,
+        "fileSizeBytes": 1681,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "E-SL-08",
+      "name": "Crag Golem",
+      "category": "database-enemies",
+      "filename": "crag-golem.ts",
+      "targetPath": "main/database/enemies/crag-golem.ts",
+      "prompt": "Generate an RPG-JS enemy file for \"Crag Golem\" (ID: E-SL-08).\n\nStats (use these as { start: N, end: N } in parameters):\n- maxhp: { start: 80, end: 80 }\n- str: { start: 13, end: 13 }  (ATK maps to 'str' in RPG-JS)\n- int: { start: 1, end: 1 }\n- dex: { start: 15, end: 15 }   (DEF maps to 'dex' in RPG-JS)\n- agi: { start: 3, end: 3 }\n\nRewards (use gain object):\n- gain: { exp: 50, gold: 22 }\n\nContext (add as comments):\n- Zone: Sunridge\n- Category: settled\n- Fragment affinity: Calm / Verdance\n\nAbilities:\n  - Stone Fist: ATK * 1.5 (Heavy physical attack)\n  - Quake Stomp: ATK * 0.8 (AE) (AoE physical, all party members)\n\nDrop table:\n  - C-HP-01: 20% chance\n  - C-BF-01: 5% chance\n\nUse the @Enemy decorator from '@rpgjs/database' (NOT @Actor).\nSet id, name, description.\nSet parameters with { start, end } format for each stat.\nSet gain: { exp, gold } for rewards.\nInclude abilities, drops, and context as structured comments.\nDo NOT use: flat number stats, exp/gold/xp as top-level props, @Actor, initialLevel, finalLevel, expCurve.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/enemies-catalog.md",
+          "heading": "E-SL-08: Crag Golem",
+          "purpose": "content"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "a696c8e8af22ddb4",
+        "outputHash": "232242d0cff4a98ff8aa12c39ec0397c801e6aa9463f347e031c92347d4d0fec",
+        "generatedAt": "2026-02-13T13:34:51.074Z",
+        "generationTimeMs": 5019,
+        "fileSizeBytes": 1060,
+        "model": "gemini-2.5-flash"
+      }
+    }
+  ]
+}

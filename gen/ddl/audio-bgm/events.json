@@ -1,0 +1,93 @@
+[
+  {
+    "id": "BGM-TITLE",
+    "name": "First Light",
+    "type": "event",
+    "tempo": 76,
+    "key": "C major",
+    "timeSignature": "4/4",
+    "mood": "gentle",
+    "durationSec": 90,
+    "stems": [
+      { "layer": 1, "instruments": "Music box + piano + strings + choir", "description": "Builds over 45 seconds. World waiting to begin." }
+    ]
+  },
+  {
+    "id": "BGM-GAMEOVER",
+    "name": "Fading Echo",
+    "type": "event",
+    "tempo": 40,
+    "key": "F minor",
+    "timeSignature": "4/4",
+    "mood": "melancholic",
+    "durationSec": 20,
+    "stems": [
+      { "layer": 1, "instruments": "Solo cello", "description": "Descending phrase. Final note sustained with reverb fade." }
+    ]
+  },
+  {
+    "id": "BGM-VICTORY",
+    "name": "Memory Claimed",
+    "type": "event",
+    "tempo": 120,
+    "key": "G major",
+    "timeSignature": "4/4",
+    "mood": "triumphant",
+    "durationSec": 8,
+    "stems": [
+      { "layer": 1, "instruments": "Brass fanfare + cymbal + strings", "description": "Classic JRPG victory jingle." }
+    ]
+  },
+  {
+    "id": "BGM-LEVELUP",
+    "name": "Growing Brighter",
+    "type": "event",
+    "tempo": 100,
+    "key": "D major",
+    "timeSignature": "4/4",
+    "mood": "warm",
+    "durationSec": 5,
+    "stems": [
+      { "layer": 1, "instruments": "Harp arpeggio + choir + bell", "description": "Ascending warmth. Warm accomplishment." }
+    ]
+  },
+  {
+    "id": "BGM-RECALL",
+    "name": "Awakening",
+    "type": "event",
+    "tempo": 60,
+    "key": "varies",
+    "timeSignature": "4/4",
+    "mood": "transcendent",
+    "durationSec": 45,
+    "stems": [
+      { "layer": 1, "instruments": "God's foundation + full orchestra + choir", "description": "Most powerful audio moment. Builds 60-120 BPM." }
+    ]
+  },
+  {
+    "id": "BGM-BLOOM",
+    "name": "World's New Dawn",
+    "type": "event",
+    "tempo": 44,
+    "key": "C major to A major",
+    "timeSignature": "4/4",
+    "mood": "transcendent",
+    "durationSec": 120,
+    "stems": [
+      { "layer": 1, "instruments": "Music box to full orchestra to choir", "description": "Entire game's audio arc in 2 minutes." }
+    ]
+  },
+  {
+    "id": "BGM-CREDITS",
+    "name": "What We Remember",
+    "type": "event",
+    "tempo": 80,
+    "key": "G major",
+    "timeSignature": "4/4",
+    "mood": "nostalgic",
+    "durationSec": 240,
+    "stems": [
+      { "layer": 1, "instruments": "Guitar + zone instruments + orchestra", "description": "Journey remembered. Guitar bookends." }
+    ]
+  }
+]

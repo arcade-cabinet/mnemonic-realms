@@ -1,0 +1,30 @@
+[
+  {
+    "id": "knight",
+    "name": "Knight",
+    "heading": "PC-KNIGHT: Knight Oathweave",
+    "color": "Steel blue-gray (#6B7B8B) and warm brown (#8B4513)",
+    "accent": "Broad shoulders, heavy armor, cape, sword at side"
+  },
+  {
+    "id": "mage",
+    "name": "Mage",
+    "heading": "PC-MAGE: Mage Inspired Casting",
+    "color": "Dark slate teal (#2F4F4F) and river blue (#4A8CB8)",
+    "accent": "Slim, angular, wide-brimmed hat, no staff — glowing hands"
+  },
+  {
+    "id": "rogue",
+    "name": "Rogue",
+    "heading": "PC-ROGUE: Rogue Foreshadow Strike",
+    "color": "Dark charcoal (#3C3C3C) and deep forest green (#2E5C4C)",
+    "accent": "Lean, agile, scarf, dual daggers, slightly crouched stance"
+  },
+  {
+    "id": "cleric",
+    "name": "Cleric",
+    "heading": "PC-CLERIC: Cleric Euphoric Recall",
+    "color": "Warm cream/ivory (#F5F0E6) and twilight purple (#7B68EE)",
+    "accent": "Medium build, flowing robes, hood or circlet, staff in one hand"
+  }
+]

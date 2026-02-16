@@ -1,0 +1,129 @@
+[
+  {
+    "id": "hana",
+    "name": "Hana",
+    "heading": "NPC-HANA: Hana (Mentor)",
+    "type": "named",
+    "desc": "Mid-30s woman, sage green traveler's clothes, satchel, hair tied back.",
+    "sprite": "female/Hana/Hana.png",
+    "spriteId": "npc_hana"
+  },
+  {
+    "id": "artun",
+    "name": "Artun",
+    "heading": "NPC-ARTUN: Artun (Village Elder)",
+    "type": "named",
+    "desc": "Elderly man, tall and thin. Dark warm brown coat, walking stick, white hair.",
+    "sprite": "male/Artun/Artun.png",
+    "spriteId": "npc_artun"
+  },
+  {
+    "id": "grym",
+    "name": "Grym",
+    "heading": "NPC-GRYM: Grym / The Curator (Antagonist)",
+    "type": "named",
+    "desc": "Tall, elegant. Crystalline near-white robes, high collar, hands clasped.",
+    "sprite": "male/Grym/Grym.png",
+    "spriteId": "npc_grym",
+    "title": "The Curator"
+  },
+  {
+    "id": "khali",
+    "name": "Khali",
+    "heading": "NPC-KHALI: Khali (Shopkeeper)",
+    "type": "named",
+    "desc": "Round, cheerful. Warm rust red apron, short curly chestnut hair.",
+    "sprite": "female/Khali/Khali.png",
+    "spriteId": "npc_khali"
+  },
+  {
+    "id": "hark",
+    "name": "Hark",
+    "heading": "NPC-HARK: Hark (Blacksmith)",
+    "type": "named",
+    "desc": "Broad, muscular. Dark leather apron, thick arms, dark hair, hammer at belt.",
+    "sprite": "male/Hark/Hark.png",
+    "spriteId": "npc_hark"
+  },
+  {
+    "id": "nyro",
+    "name": "Nyro",
+    "heading": "NPC-NYRO: Nyro (Innkeeper)",
+    "type": "named",
+    "desc": "Stocky, warm smile. White apron over brown tunic, ruddy cheeks, rolled sleeves.",
+    "sprite": "male/Nyro/Nyro.png",
+    "spriteId": "npc_nyro"
+  },
+  {
+    "id": "nel",
+    "name": "Nel",
+    "heading": "NPC-NEL: Nel (Ridge Guide)",
+    "type": "named",
+    "desc": "Weathered, lean. Gray-brown cloak, climbing rope coiled at hip, wind-tanned skin.",
+    "sprite": "female/Nel/Nel.png",
+    "spriteId": "npc_nel"
+  },
+  {
+    "id": "janik",
+    "name": "Janik",
+    "heading": "NPC-JANIK: Janik (Sunridge Keeper)",
+    "type": "named",
+    "desc": "Young man, pale gold hair, sun-bleached tunic, carries a brass telescope.",
+    "sprite": "male/Janik/Janik.png",
+    "spriteId": "npc_janik"
+  },
+  {
+    "id": "julz",
+    "name": "Julz",
+    "heading": "NPC-JULZ: Julz (Flickerveil Warden)",
+    "type": "named",
+    "desc": "Tall woman, silver-streaked dark hair, deep violet cloak with luminous stitching.",
+    "sprite": "female/Julz/Julz.png",
+    "spriteId": "npc_julz"
+  },
+  {
+    "id": "reza",
+    "name": "Reza",
+    "heading": "NPC-REZA: Reza (Flickerveil Elder)",
+    "type": "named",
+    "desc": "Elderly, hunched. Faded indigo robes, long white beard, lantern staff.",
+    "sprite": "male/Reza/Reza.png",
+    "spriteId": "npc_reza"
+  },
+  {
+    "id": "vash",
+    "name": "Vash",
+    "heading": "NPC-VASH: Vash (Marsh Researcher)",
+    "type": "named",
+    "desc": "Wiry, nervous energy. Mud-stained green coat, goggles pushed up on forehead, many pouches.",
+    "sprite": "female/Vash/Vash.png",
+    "spriteId": "npc_vash"
+  },
+  {
+    "id": "meza",
+    "name": "Meza",
+    "heading": "NPC-MEZA: Meza (Audiomancer of Ambergrove)",
+    "type": "named",
+    "desc": "Senior audiomancer. Maintains the sound-wells. Practical, grounded, deep knowledge of resonance.",
+    "sprite": "female/Meza/Meza.png",
+    "spriteId": "npc_meza"
+  },
+  {
+    "id": "seza",
+    "name": "Seza",
+    "heading": "NPC-SEZA: Seza (Healer of Thornveil)",
+    "type": "named",
+    "desc": "Elderly herbalist and healer. Patient, deep knowledge of stagnation sickness and remedies.",
+    "sprite": "female/Seza/Seza.png",
+    "spriteId": "npc_seza"
+  },
+  {
+    "id": "serek",
+    "name": "Serek",
+    "heading": "NPC-SEREK: Serek (Preserver Lieutenant)",
+    "type": "named",
+    "desc": "Preserver field commander. Pragmatic enforcer. Can become ally depending on player choices.",
+    "sprite": "male/Serek/Serek.png",
+    "spriteId": "npc_serek"
+  }
+]

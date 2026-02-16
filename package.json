@@ -1,0 +1,69 @@
+{
+  "name": "mnemonic-realms",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "RPG_TYPE=rpg rpgjs dev",
+    "build": "RPG_TYPE=rpg rpgjs build",
+    "start": "node dist/server/main.mjs",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "test": "playwright test",
+    "test:unit": "vitest run",
+    "gen": "tsx gen/cli.ts",
+    "gen:build": "tsx gen/cli.ts build",
+    "gen:generate": "tsx gen/cli.ts generate",
+    "gen:integrate": "tsx gen/cli.ts integrate",
+    "gen:status": "tsx gen/cli.ts status",
+    "gen:full": "tsx gen/cli.ts build all && tsx gen/cli.ts generate all && tsx gen/cli.ts integrate all",
+    "audio:fetch-ambient": "tsx scripts/fetch-ambient-loops.ts",
+    "audio:gen-bgm-placeholders": "tsx scripts/generate-placeholder-bgm.ts",
+    "verify:sprites": "tsx scripts/verify-sprites.ts",
+    "tileset:build": "tsx gen/scripts/upscale-tilesets.ts",
+    "tileset:tsx": "tsx gen/scripts/generate-tsx.ts"
+  },
+  "dependencies": {
+    "@rpgjs/client": "4.3.0",
+    "@rpgjs/database": "^4.3.0",
+    "@rpgjs/default-gui": "^4.3.0",
+    "@rpgjs/gamepad": "^4.3.0",
+    "@rpgjs/mobile-gui": "4.3.0",
+    "@rpgjs/server": "4.3.0",
+    "@rpgjs/standalone": "4.3.0",
+    "@rpgjs/types": "4.0.5",
+    "socket.io-client": "4.7.4",
+    "vue": "^3.5.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "~2.3.15",
+    "@google/genai": "^1.41.0",
+    "@playwright/test": "^1.58.2",
+    "@rpgjs/compiler": "4.3.0",
+    "@types/sharp": "^0.32.0",
+    "dotenv": "^17.3.1",
+    "sharp": "^0.34.5",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18",
+    "zod": "^4.3.6"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "esbuild",
+      "protobufjs",
+      "sharp"
+    ],
+    "overrides": {
+      "@babel/parser": "7.26.10",
+      "@babel/core": "7.26.10",
+      "@babel/generator": "7.26.10",
+      "@babel/traverse": "7.26.10",
+      "@babel/types": "7.26.10"
+    },
+    "patchedDependencies": {
+      "@rpgjs/compiler": "patches/@rpgjs__compiler.patch"
+    }
+  }
+}

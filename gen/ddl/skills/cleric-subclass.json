@@ -1,0 +1,58 @@
+[
+  {
+    "id": "SK-CL-L1",
+    "name": "Radiant Aura",
+    "classId": "cleric",
+    "level": 1,
+    "spCost": 0,
+    "target": "AA",
+    "element": "none",
+    "formula": "Passive: allies regen 3% max HP end of turn.",
+    "description": "Passive party-wide HP regeneration.",
+    "isPassive": true,
+    "isSubclass": true,
+    "subclassPath": "luminary"
+  },
+  {
+    "id": "SK-CL-L2",
+    "name": "Joyful Renewal",
+    "classId": "cleric",
+    "level": 1,
+    "spCost": 30,
+    "target": "A",
+    "element": "none",
+    "formula": "Auto when ally below 15% HP: heal to 50%. Once/battle.",
+    "description": "Emergency auto-heal for allies.",
+    "isPassive": false,
+    "isSubclass": true,
+    "subclassPath": "luminary"
+  },
+  {
+    "id": "SK-CL-C1",
+    "name": "Sorrow's Edge",
+    "classId": "cleric",
+    "level": 1,
+    "spCost": 0,
+    "target": "RE",
+    "element": "dark",
+    "formula": "Passive: heals deal 30% as dark damage to random enemy.",
+    "description": "Adds dark damage to every heal cast.",
+    "isPassive": true,
+    "isSubclass": true,
+    "subclassPath": "crucible"
+  },
+  {
+    "id": "SK-CL-C2",
+    "name": "Martyrdom",
+    "classId": "cleric",
+    "level": 1,
+    "spCost": 35,
+    "target": "AA",
+    "element": "none",
+    "formula": "Sacrifice 40% HP. Allies healed 150% of sacrificed. Below 10% triggers Inspired.",
+    "description": "HP-to-healing conversion for the party.",
+    "isPassive": false,
+    "isSubclass": true,
+    "subclassPath": "crucible"
+  }
+]

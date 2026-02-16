@@ -1,0 +1,327 @@
+{
+  "schemaVersion": "1.0.0",
+  "description": "SFX generation manifest — Freesound samples",
+  "updatedAt": "2026-02-14T15:11:53.966Z",
+  "assets": [
+    {
+      "id": "SFX-CBT-01",
+      "name": "Physical hit (light)",
+      "category": "combat",
+      "description": "Quick blade slash through air",
+      "durationSec": 0.2,
+      "looping": false,
+      "filename": "sfx-cbt-01.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-CBT-02",
+      "name": "Physical hit (heavy)",
+      "category": "combat",
+      "description": "Weighty impact, slight echo",
+      "durationSec": 0.3,
+      "looping": false,
+      "filename": "sfx-cbt-02.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-CBT-03",
+      "name": "Magic cast",
+      "category": "combat",
+      "description": "Rising crystalline tone, sparkle",
+      "durationSec": 0.5,
+      "looping": false,
+      "filename": "sfx-cbt-03.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-CBT-04",
+      "name": "Heal",
+      "category": "combat",
+      "description": "Warm ascending chime, bell harmonics",
+      "durationSec": 0.6,
+      "looping": false,
+      "filename": "sfx-cbt-04.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-CBT-05",
+      "name": "Critical hit",
+      "category": "combat",
+      "description": "Heavy impact + glass shatter accent",
+      "durationSec": 0.4,
+      "looping": false,
+      "filename": "sfx-cbt-05.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-CBT-06",
+      "name": "Miss / dodge",
+      "category": "combat",
+      "description": "Quick wind swoosh, no impact",
+      "durationSec": 0.2,
+      "looping": false,
+      "filename": "sfx-cbt-06.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-CBT-07",
+      "name": "Stasis inflicted",
+      "category": "combat",
+      "description": "Ice crystallization crackle, frozen chord",
+      "durationSec": 0.5,
+      "looping": false,
+      "filename": "sfx-cbt-07.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-CBT-08",
+      "name": "Poison inflicted",
+      "category": "combat",
+      "description": "Wet bubble, slight hiss",
+      "durationSec": 0.3,
+      "looping": false,
+      "filename": "sfx-cbt-08.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-CBT-09",
+      "name": "Buff applied",
+      "category": "combat",
+      "description": "Ascending warm tone, golden sparkle",
+      "durationSec": 0.4,
+      "looping": false,
+      "filename": "sfx-cbt-09.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-CBT-10",
+      "name": "Debuff applied",
+      "category": "combat",
+      "description": "Descending cold tone, slight dissonance",
+      "durationSec": 0.4,
+      "looping": false,
+      "filename": "sfx-cbt-10.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-CBT-11",
+      "name": "Enemy death",
+      "category": "combat",
+      "description": "Brief dissolve, amber mote scatter",
+      "durationSec": 0.5,
+      "looping": false,
+      "filename": "sfx-cbt-11.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-CBT-12",
+      "name": "Party member KO",
+      "category": "combat",
+      "description": "Dull thud + brief reverb, melancholic",
+      "durationSec": 0.4,
+      "looping": false,
+      "filename": "sfx-cbt-12.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-MEM-01",
+      "name": "Fragment collect",
+      "category": "memory",
+      "description": "Golden chime ascending, warm. Pitch rises with potency.",
+      "durationSec": 0.5,
+      "looping": false,
+      "filename": "sfx-mem-01.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-MEM-02",
+      "name": "Fragment remix",
+      "category": "memory",
+      "description": "Two tones swirl together, flash, resolve to new tone",
+      "durationSec": 0.8,
+      "looping": false,
+      "filename": "sfx-mem-02.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-MEM-03",
+      "name": "Broadcast (small)",
+      "category": "memory",
+      "description": "Gentle expanding ring tone, like a stone in still water",
+      "durationSec": 1,
+      "looping": false,
+      "filename": "sfx-mem-03.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-MEM-04",
+      "name": "Broadcast (large)",
+      "category": "memory",
+      "description": "Larger version, deeper tone, wave of warmth",
+      "durationSec": 1.5,
+      "looping": false,
+      "filename": "sfx-mem-04.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-MEM-05",
+      "name": "Vibrancy tier change",
+      "category": "memory",
+      "description": "Musical sting: 3-note ascending chord (zone instrument)",
+      "durationSec": 0.6,
+      "looping": false,
+      "filename": "sfx-mem-05.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-MEM-06",
+      "name": "Stagnation break",
+      "category": "memory",
+      "description": "Crystal shatter + warm flood. Dramatic.",
+      "durationSec": 1,
+      "looping": false,
+      "filename": "sfx-mem-06.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-UI-01",
+      "name": "Menu open",
+      "category": "ui",
+      "description": "Soft parchment unfurl, brief paper rustle",
+      "durationSec": 0.3,
+      "looping": false,
+      "filename": "sfx-ui-01.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-UI-02",
+      "name": "Menu close",
+      "category": "ui",
+      "description": "Reverse of open, soft thud",
+      "durationSec": 0.2,
+      "looping": false,
+      "filename": "sfx-ui-02.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-UI-03",
+      "name": "Cursor move",
+      "category": "ui",
+      "description": "Light tap, wooden button click",
+      "durationSec": 0.1,
+      "looping": false,
+      "filename": "sfx-ui-03.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-UI-04",
+      "name": "Confirm",
+      "category": "ui",
+      "description": "Warm chime, bell-like (G note)",
+      "durationSec": 0.3,
+      "looping": false,
+      "filename": "sfx-ui-04.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-UI-05",
+      "name": "Cancel",
+      "category": "ui",
+      "description": "Soft low thud, not harsh",
+      "durationSec": 0.2,
+      "looping": false,
+      "filename": "sfx-ui-05.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-UI-06",
+      "name": "Error/invalid",
+      "category": "ui",
+      "description": "Two quick low taps",
+      "durationSec": 0.2,
+      "looping": false,
+      "filename": "sfx-ui-06.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-UI-07",
+      "name": "Shop purchase",
+      "category": "ui",
+      "description": "Coin clink + register ding",
+      "durationSec": 0.4,
+      "looping": false,
+      "filename": "sfx-ui-07.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-UI-08",
+      "name": "Equip item",
+      "category": "ui",
+      "description": "Metallic slide + click",
+      "durationSec": 0.3,
+      "looping": false,
+      "filename": "sfx-ui-08.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-ENV-01",
+      "name": "Door open",
+      "category": "environment",
+      "description": "Wooden creak, soft",
+      "durationSec": 0.4,
+      "looping": false,
+      "filename": "sfx-env-01.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-ENV-02",
+      "name": "Chest open",
+      "category": "environment",
+      "description": "Lid creak + slight sparkle",
+      "durationSec": 0.5,
+      "looping": false,
+      "filename": "sfx-env-02.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-ENV-03",
+      "name": "NPC interact",
+      "category": "environment",
+      "description": "Soft chime, welcoming",
+      "durationSec": 0.2,
+      "looping": false,
+      "filename": "sfx-env-03.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-ENV-04",
+      "name": "Resonance Stone hum",
+      "category": "environment",
+      "description": "Deep sustained hum when player approaches. Loops while nearby.",
+      "durationSec": 2,
+      "looping": true,
+      "filename": "sfx-env-04.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-ENV-05",
+      "name": "Zone transition",
+      "category": "environment",
+      "description": "Brief whoosh, fade in new ambient",
+      "durationSec": 0.8,
+      "looping": false,
+      "filename": "sfx-env-05.ogg",
+      "status": "pending"
+    },
+    {
+      "id": "SFX-ENV-06",
+      "name": "Save point",
+      "category": "environment",
+      "description": "Warm ascending arpeggio + bell",
+      "durationSec": 0.6,
+      "looping": false,
+      "filename": "sfx-env-06.ogg",
+      "status": "pending"
+    }
+  ]
+}

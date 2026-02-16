@@ -1,0 +1,859 @@
+{
+  "schemaVersion": "1.0.0",
+  "description": "BGM generation manifest — multi-layer stems",
+  "updatedAt": "2026-02-14T15:11:53.969Z",
+  "assets": [
+    {
+      "id": "BGM-AG",
+      "name": "Dappled Paths",
+      "type": "zone",
+      "zone": "ambergrove",
+      "tempo": 80,
+      "key": "E minor",
+      "timeSignature": "6/8",
+      "mood": "mysterious",
+      "durationSec": 165,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "Harp (arpeggiated)",
+          "description": "Flowing broken chords, bell-like tone. Dappled light.",
+          "filename": "bgm-ag-layer1.ogg"
+        },
+        {
+          "layer": 2,
+          "instruments": "Clarinet + triangle",
+          "description": "Clarinet weaves melody through harp. Triangle sparkles.",
+          "filename": "bgm-ag-layer2.ogg"
+        },
+        {
+          "layer": 3,
+          "instruments": "French horn + string section",
+          "description": "Horn adds grandeur. Strings swell like forest canopy.",
+          "filename": "bgm-ag-layer3.ogg"
+        },
+        {
+          "layer": 4,
+          "instruments": "Choir (mixed, ooh)",
+          "description": "Ethereal, reverb-heavy. Forest's ancient memory.",
+          "filename": "bgm-ag-layer4.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "BGM-MB",
+      "name": "Brightwater Dance",
+      "type": "zone",
+      "zone": "millbrook",
+      "tempo": 104,
+      "key": "A major",
+      "timeSignature": "4/4",
+      "mood": "lively",
+      "durationSec": 120,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "Fiddle (folk style)",
+          "description": "Jaunty melody with slides and double-stops.",
+          "filename": "bgm-mb-layer1.ogg"
+        },
+        {
+          "layer": 2,
+          "instruments": "Tin whistle + bodhran",
+          "description": "Whistle harmonizes fiddle. Bodhran drives Celtic pulse.",
+          "filename": "bgm-mb-layer2.ogg"
+        },
+        {
+          "layer": 3,
+          "instruments": "Accordion + bass + percussion",
+          "description": "Accordion richness. Upright bass grounds rhythm.",
+          "filename": "bgm-mb-layer3.ogg"
+        },
+        {
+          "layer": 4,
+          "instruments": "Group vocals (call-and-response)",
+          "description": "Spirited hey! responses. Riverside festival.",
+          "filename": "bgm-mb-layer4.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "BGM-BTL",
+      "name": "Clash of Memories",
+      "type": "combat",
+      "tempo": 120,
+      "key": "E minor",
+      "timeSignature": "4/4",
+      "mood": "energetic",
+      "durationSec": 105,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "Snare + bass drum + electric bass",
+          "description": "Driving rhythm foundation.",
+          "filename": "bgm-btl-layer1.ogg"
+        },
+        {
+          "layer": 2,
+          "instruments": "Brass + rhythm guitar",
+          "description": "Melody and harmonic power. Main battle theme.",
+          "filename": "bgm-btl-layer2.ogg"
+        },
+        {
+          "layer": 3,
+          "instruments": "Full strings + wind section",
+          "description": "Orchestral weight and drama.",
+          "filename": "bgm-btl-layer3.ogg"
+        },
+        {
+          "layer": 4,
+          "instruments": "Choir + full percussion",
+          "description": "Maximum intensity. World fights with you.",
+          "filename": "bgm-btl-layer4.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "BGM-BOSS",
+      "name": "Remembered Promise",
+      "type": "combat",
+      "tempo": 140,
+      "key": "D minor",
+      "timeSignature": "7/8",
+      "mood": "epic",
+      "durationSec": 150,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "Timpani + bass drum + low brass",
+          "description": "Thunderous rhythmic foundation.",
+          "filename": "bgm-boss-layer1.ogg"
+        },
+        {
+          "layer": 2,
+          "instruments": "Full brass + full strings",
+          "description": "Heroic melody. Ascending tension phrases.",
+          "filename": "bgm-boss-layer2.ogg"
+        },
+        {
+          "layer": 3,
+          "instruments": "Choir + full percussion",
+          "description": "Voices add gravitas. Cymbal crashes.",
+          "filename": "bgm-boss-layer3.ogg"
+        },
+        {
+          "layer": 4,
+          "instruments": "Solo violin (soaring)",
+          "description": "Player's theme rising above the storm.",
+          "filename": "bgm-boss-layer4.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "BGM-PVB",
+      "name": "Crystallized Resistance",
+      "type": "combat",
+      "tempo": 100,
+      "key": "Db minor",
+      "timeSignature": "4/4",
+      "mood": "tense",
+      "durationSec": 120,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "Glass harmonica + crystal percussion",
+          "description": "Cold, precise rhythm.",
+          "filename": "bgm-pvb-layer1.ogg"
+        },
+        {
+          "layer": 2,
+          "instruments": "Distorted zone BGM foundation",
+          "description": "Preservers corrupt familiar sounds.",
+          "filename": "bgm-pvb-layer2.ogg"
+        },
+        {
+          "layer": 3,
+          "instruments": "Muted strings + damped bass drum",
+          "description": "Tension without warmth. Every note controlled.",
+          "filename": "bgm-pvb-layer3.ogg"
+        },
+        {
+          "layer": 4,
+          "instruments": "Single sustained choir note",
+          "description": "One frozen chord. Memory of music.",
+          "filename": "bgm-pvb-layer4.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "BGM-DEP",
+      "name": "Fossil Songs",
+      "type": "zone",
+      "zone": "depths-general",
+      "tempo": 60,
+      "key": "G minor",
+      "timeSignature": "4/4",
+      "mood": "ancient",
+      "durationSec": 150,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "Contrabass (arco)",
+          "description": "Deep cavernous tone. Heavy reverb for underground.",
+          "filename": "bgm-dep-layer1.ogg"
+        },
+        {
+          "layer": 2,
+          "instruments": "Vibraphone + dripping samples",
+          "description": "Light in the dark. Water drips as organic rhythm.",
+          "filename": "bgm-dep-layer2.ogg"
+        },
+        {
+          "layer": 3,
+          "instruments": "Muted strings + bass clarinet",
+          "description": "Intimate texture. Bass clarinet weaves through.",
+          "filename": "bgm-dep-layer3.ogg"
+        },
+        {
+          "layer": 4,
+          "instruments": "Low voices (humming)",
+          "description": "Ancient voices preserved in stone.",
+          "filename": "bgm-dep-layer4.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "BGM-SL4",
+      "name": "Final Verse",
+      "type": "zone",
+      "zone": "songline-l4",
+      "tempo": 72,
+      "key": "D major",
+      "timeSignature": "4/4",
+      "mood": "joyful",
+      "durationSec": 180,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "Solo flute (concert)",
+          "description": "Pure, clear melody. Dissolved civilization's voice.",
+          "filename": "bgm-sl4-layer1.ogg"
+        },
+        {
+          "layer": 2,
+          "instruments": "Harp + celesta",
+          "description": "Shimmering, crystalline support. Memory given sound.",
+          "filename": "bgm-sl4-layer2.ogg"
+        },
+        {
+          "layer": 3,
+          "instruments": "Full chamber orchestra",
+          "description": "Rich, warm, celebratory.",
+          "filename": "bgm-sl4-layer3.ogg"
+        },
+        {
+          "layer": 4,
+          "instruments": "Full mixed choir",
+          "description": "Civilization sings along. Wordless but human.",
+          "filename": "bgm-sl4-layer4.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "BGM-DM5",
+      "name": "Before the Beginning",
+      "type": "zone",
+      "zone": "deepest-memory",
+      "tempo": 44,
+      "key": "A Aeolian",
+      "timeSignature": "free",
+      "mood": "primordial",
+      "durationSec": 240,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "Harmonic overtone series (synth)",
+          "description": "Slowly evolving harmonic. World's first sound.",
+          "filename": "bgm-dm5-layer1.ogg"
+        },
+        {
+          "layer": 2,
+          "instruments": "Glass armonica + distant bell",
+          "description": "Otherworldly, ethereal. Bell at irregular intervals.",
+          "filename": "bgm-dm5-layer2.ogg"
+        },
+        {
+          "layer": 3,
+          "instruments": "Full orchestra (extremely slow)",
+          "description": "Grandest arrangement. 30+ sec to full volume.",
+          "filename": "bgm-dm5-layer3.ogg"
+        },
+        {
+          "layer": 4,
+          "instruments": "Full choir (silence to fortissimo)",
+          "description": "Pure emotional power. World remembering itself.",
+          "filename": "bgm-dm5-layer4.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "BGM-TITLE",
+      "name": "First Light",
+      "type": "event",
+      "tempo": 76,
+      "key": "C major",
+      "timeSignature": "4/4",
+      "mood": "gentle",
+      "durationSec": 90,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "Music box + piano + strings + choir",
+          "description": "Builds over 45 seconds. World waiting to begin.",
+          "filename": "bgm-title-layer1.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "BGM-GAMEOVER",
+      "name": "Fading Echo",
+      "type": "event",
+      "tempo": 40,
+      "key": "F minor",
+      "timeSignature": "4/4",
+      "mood": "melancholic",
+      "durationSec": 20,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "Solo cello",
+          "description": "Descending phrase. Final note sustained with reverb fade.",
+          "filename": "bgm-gameover-layer1.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "BGM-VICTORY",
+      "name": "Memory Claimed",
+      "type": "event",
+      "tempo": 120,
+      "key": "G major",
+      "timeSignature": "4/4",
+      "mood": "triumphant",
+      "durationSec": 8,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "Brass fanfare + cymbal + strings",
+          "description": "Classic JRPG victory jingle.",
+          "filename": "bgm-victory-layer1.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "BGM-LEVELUP",
+      "name": "Growing Brighter",
+      "type": "event",
+      "tempo": 100,
+      "key": "D major",
+      "timeSignature": "4/4",
+      "mood": "warm",
+      "durationSec": 5,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "Harp arpeggio + choir + bell",
+          "description": "Ascending warmth. Warm accomplishment.",
+          "filename": "bgm-levelup-layer1.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "BGM-RECALL",
+      "name": "Awakening",
+      "type": "event",
+      "tempo": 60,
+      "key": "varies",
+      "timeSignature": "4/4",
+      "mood": "transcendent",
+      "durationSec": 45,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "God's foundation + full orchestra + choir",
+          "description": "Most powerful audio moment. Builds 60-120 BPM.",
+          "filename": "bgm-recall-layer1.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "BGM-BLOOM",
+      "name": "World's New Dawn",
+      "type": "event",
+      "tempo": 44,
+      "key": "C major to A major",
+      "timeSignature": "4/4",
+      "mood": "transcendent",
+      "durationSec": 120,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "Music box to full orchestra to choir",
+          "description": "Entire game's audio arc in 2 minutes.",
+          "filename": "bgm-bloom-layer1.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "BGM-CREDITS",
+      "name": "What We Remember",
+      "type": "event",
+      "tempo": 80,
+      "key": "G major",
+      "timeSignature": "4/4",
+      "mood": "nostalgic",
+      "durationSec": 240,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "Guitar + zone instruments + orchestra",
+          "description": "Journey remembered. Guitar bookends.",
+          "filename": "bgm-credits-layer1.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "BGM-LW",
+      "name": "Unwritten Song",
+      "type": "zone",
+      "zone": "luminous-wastes",
+      "tempo": 60,
+      "key": "E major",
+      "timeSignature": "4/4",
+      "mood": "stark",
+      "durationSec": 180,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "Solo violin (high register)",
+          "description": "Thin, pure, exposed. Single voice in vast space.",
+          "filename": "bgm-lw-layer1.ogg"
+        },
+        {
+          "layer": 2,
+          "instruments": "Piano (sparse, sustain pedal)",
+          "description": "Widely spaced chords, lots of silence.",
+          "filename": "bgm-lw-layer2.ogg"
+        },
+        {
+          "layer": 3,
+          "instruments": "Chamber strings",
+          "description": "Restrained. Cello warmth below violin. Viola fills middle.",
+          "filename": "bgm-lw-layer3.ogg"
+        },
+        {
+          "layer": 4,
+          "instruments": "Solo soprano (wordless)",
+          "description": "One voice answering the violin. Achingly beautiful.",
+          "filename": "bgm-lw-layer4.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "BGM-UP",
+      "name": "The Wireframe Cathedral",
+      "type": "zone",
+      "zone": "undrawn-peaks",
+      "tempo": 52,
+      "key": "C minor",
+      "timeSignature": "4/4",
+      "mood": "austere",
+      "durationSec": 165,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "Solo cello (low register)",
+          "description": "Dark, resonant, meditative. Long bow strokes.",
+          "filename": "bgm-up-layer1.ogg"
+        },
+        {
+          "layer": 2,
+          "instruments": "Bassoon + tam-tam",
+          "description": "Bassoon doubles cello octave above. Tam-tam swells.",
+          "filename": "bgm-up-layer2.ogg"
+        },
+        {
+          "layer": 3,
+          "instruments": "Full orchestra (slow, heavy)",
+          "description": "Full strings, brass, woodwinds in massive chorale.",
+          "filename": "bgm-up-layer3.ogg"
+        },
+        {
+          "layer": 4,
+          "instruments": "Bass choir (low, rumbling om)",
+          "description": "Deep and grounding. Cathedral resonates.",
+          "filename": "bgm-up-layer4.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "BGM-HDF",
+      "name": "Sketched Lullaby",
+      "type": "zone",
+      "zone": "half-drawn-forest",
+      "tempo": 64,
+      "key": "F major",
+      "timeSignature": "3/4",
+      "mood": "tender",
+      "durationSec": 150,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "Music box",
+          "description": "Simple lullaby. Intentionally incomplete phrase endings.",
+          "filename": "bgm-hdf-layer1.ogg"
+        },
+        {
+          "layer": 2,
+          "instruments": "Acoustic guitar (nylon)",
+          "description": "Fills harmonic support, completing music box phrases.",
+          "filename": "bgm-hdf-layer2.ogg"
+        },
+        {
+          "layer": 3,
+          "instruments": "String quartet (pizzicato to arco)",
+          "description": "Starts playful pizzicato, transitions to filled-in arco.",
+          "filename": "bgm-hdf-layer3.ogg"
+        },
+        {
+          "layer": 4,
+          "instruments": "Children's choir (humming)",
+          "description": "Most emotionally vulnerable audio. Growth made audible.",
+          "filename": "bgm-hdf-layer4.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "BGM-SR",
+      "name": "Wind at the Threshold",
+      "type": "zone",
+      "zone": "sunridge",
+      "tempo": 68,
+      "key": "Bb major",
+      "timeSignature": "4/4",
+      "mood": "expansive",
+      "durationSec": 150,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "Pan pipes (breathy)",
+          "description": "Long sustained notes. Wind across highlands.",
+          "filename": "bgm-sr-layer1.ogg"
+        },
+        {
+          "layer": 2,
+          "instruments": "Cello + wind chime",
+          "description": "Cello slow bass. Wind chime random metallic sparkle.",
+          "filename": "bgm-sr-layer2.ogg"
+        },
+        {
+          "layer": 3,
+          "instruments": "French horn + full strings",
+          "description": "Horn melody soars. Strings swell like a vista.",
+          "filename": "bgm-sr-layer3.ogg"
+        },
+        {
+          "layer": 4,
+          "instruments": "Male choir (humming)",
+          "description": "Grounding, earthy, determined. Sound of endurance.",
+          "filename": "bgm-sr-layer4.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "BGM-HR",
+      "name": "Stone and Flame",
+      "type": "zone",
+      "zone": "hollow-ridge",
+      "tempo": 76,
+      "key": "D minor",
+      "timeSignature": "4/4",
+      "mood": "determined",
+      "durationSec": 150,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "French horn (solo)",
+          "description": "Bold, resolute melody. Mountain echo reverb.",
+          "filename": "bgm-hr-layer1.ogg"
+        },
+        {
+          "layer": 2,
+          "instruments": "Timpani + low strings",
+          "description": "Timpani on downbeats. Strings harmonic foundation.",
+          "filename": "bgm-hr-layer2.ogg"
+        },
+        {
+          "layer": 3,
+          "instruments": "Full brass + snare drum",
+          "description": "Trumpet and trombone join horn. Military precision.",
+          "filename": "bgm-hr-layer3.ogg"
+        },
+        {
+          "layer": 4,
+          "instruments": "Male choir (powerful)",
+          "description": "Driving, heroic. The mountains sing back.",
+          "filename": "bgm-hr-layer4.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "BGM-SM",
+      "name": "Twilight Reflections",
+      "type": "zone",
+      "zone": "shimmer-marsh",
+      "tempo": 56,
+      "key": "F# minor",
+      "timeSignature": "5/4",
+      "mood": "reflective",
+      "durationSec": 180,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "Oboe (solo, low register)",
+          "description": "Slow, mournful melody. The loneliest sound.",
+          "filename": "bgm-sm-layer1.ogg"
+        },
+        {
+          "layer": 2,
+          "instruments": "Harp + water samples",
+          "description": "Sparse harp chords. Water drips as rhythmic elements.",
+          "filename": "bgm-sm-layer2.ogg"
+        },
+        {
+          "layer": 3,
+          "instruments": "Muted strings + bass clarinet",
+          "description": "Shimmering wash. Bass clarinet dark undercurrent.",
+          "filename": "bgm-sm-layer3.ogg"
+        },
+        {
+          "layer": 4,
+          "instruments": "Soprano choir (distant)",
+          "description": "Singing heard from underwater. Ethereal and haunting.",
+          "filename": "bgm-sm-layer4.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "BGM-FV",
+      "name": "Between Worlds",
+      "type": "zone",
+      "zone": "flickerveil",
+      "tempo": 66,
+      "key": "Ab major",
+      "timeSignature": "3/4",
+      "mood": "ethereal",
+      "durationSec": 165,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "Celesta (music box timbre)",
+          "description": "Crystalline melody. Slightly detuned for uncanny effect.",
+          "filename": "bgm-fv-layer1.ogg"
+        },
+        {
+          "layer": 2,
+          "instruments": "Vibraphone + soft pad synth",
+          "description": "Bell-like sustain. Pad synth gentle warmth.",
+          "filename": "bgm-fv-layer2.ogg"
+        },
+        {
+          "layer": 3,
+          "instruments": "Tremolo strings + glockenspiel",
+          "description": "Strings shimmer. Glockenspiel punctuates phrases.",
+          "filename": "bgm-fv-layer3.ogg"
+        },
+        {
+          "layer": 4,
+          "instruments": "Child-like voices (wordless la)",
+          "description": "Small choir, pure. Reverb creates vast space.",
+          "filename": "bgm-fv-layer4.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "BGM-RF",
+      "name": "The Standing Stones",
+      "type": "zone",
+      "zone": "resonance-fields",
+      "tempo": 48,
+      "key": "C Lydian",
+      "timeSignature": "free",
+      "mood": "sacred",
+      "durationSec": 210,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "Singing bowl / drone",
+          "description": "Deep sustained harmonic. The stone itself singing.",
+          "filename": "bgm-rf-layer1.ogg"
+        },
+        {
+          "layer": 2,
+          "instruments": "Duduk + light bells",
+          "description": "Ancient melody. Bells ring at irregular intervals.",
+          "filename": "bgm-rf-layer2.ogg"
+        },
+        {
+          "layer": 3,
+          "instruments": "Full strings + low brass",
+          "description": "Massive slow chord progressions. Low brass rumbles.",
+          "filename": "bgm-rf-layer3.ogg"
+        },
+        {
+          "layer": 4,
+          "instruments": "Mixed choir (polyphonic)",
+          "description": "Overlapping Renaissance-style vocal lines.",
+          "filename": "bgm-rf-layer4.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "BGM-PF",
+      "name": "Frozen Perfection",
+      "type": "zone",
+      "zone": "preserver-fortress",
+      "tempo": 64,
+      "key": "Db major",
+      "timeSignature": "4/4",
+      "mood": "cold",
+      "durationSec": 180,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "Glass harmonica (sustained)",
+          "description": "Beautiful, eerie, inhuman. Crystal resonance.",
+          "filename": "bgm-pf-layer1.ogg"
+        },
+        {
+          "layer": 2,
+          "instruments": "Celesta + pizzicato strings",
+          "description": "Crystalline precision. Metronomically perfect.",
+          "filename": "bgm-pf-layer2.ogg"
+        },
+        {
+          "layer": 3,
+          "instruments": "Full strings (non-vibrato)",
+          "description": "Deliberately sterile perfection. Uncanny valley.",
+          "filename": "bgm-pf-layer3.ogg"
+        },
+        {
+          "layer": 4,
+          "instruments": "Soprano choir (perfect unison)",
+          "description": "All voices identical. Beautiful but mechanical.",
+          "filename": "bgm-pf-layer4.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "BGM-VH",
+      "name": "Hearth and Home",
+      "type": "zone",
+      "zone": "village-hub",
+      "tempo": 88,
+      "key": "G major",
+      "timeSignature": "3/4",
+      "mood": "warm",
+      "durationSec": 150,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "Acoustic guitar (fingerpicked)",
+          "description": "Simple arpeggio pattern. Warm, woody tone.",
+          "filename": "bgm-vh-layer1.ogg"
+        },
+        {
+          "layer": 2,
+          "instruments": "Wooden flute + hand drum",
+          "description": "Flute carries gentle melody. Hand drum on beats 1 and 3.",
+          "filename": "bgm-vh-layer2.ogg"
+        },
+        {
+          "layer": 3,
+          "instruments": "String quartet",
+          "description": "Strings double melody, add countermelody. Cello bass line.",
+          "filename": "bgm-vh-layer3.ogg"
+        },
+        {
+          "layer": 4,
+          "instruments": "Wordless choir",
+          "description": "Soft choral pad. Community singing together.",
+          "filename": "bgm-vh-layer4.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "BGM-HF",
+      "name": "Golden Afternoon",
+      "type": "zone",
+      "zone": "heartfield",
+      "tempo": 72,
+      "key": "D major",
+      "timeSignature": "4/4",
+      "mood": "pastoral",
+      "durationSec": 135,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "Wooden flute (recorder-like)",
+          "description": "Simple pastoral melody, leaping intervals.",
+          "filename": "bgm-hf-layer1.ogg"
+        },
+        {
+          "layer": 2,
+          "instruments": "Acoustic guitar + shaker",
+          "description": "Guitar chordal support. Shaker adds organic rhythm.",
+          "filename": "bgm-hf-layer2.ogg"
+        },
+        {
+          "layer": 3,
+          "instruments": "Oboe + string trio",
+          "description": "Oboe takes melody, strings provide warm bed.",
+          "filename": "bgm-hf-layer3.ogg"
+        },
+        {
+          "layer": 4,
+          "instruments": "Female solo voice (wordless)",
+          "description": "Intimate, one voice singing to the fields.",
+          "filename": "bgm-hf-layer4.ogg"
+        }
+      ],
+      "status": "pending"
+    }
+  ]
+}

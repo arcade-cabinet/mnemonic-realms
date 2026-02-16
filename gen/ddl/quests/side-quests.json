@@ -1,0 +1,181 @@
+[
+  {
+    "id": "SQ-01", "name": "The Memorial Garden", "category": "side", "act": "act1",
+    "levelRange": "2-4", "giver": "Khali", "giverLocation": "Village Hub — General Shop (18, 16)",
+    "triggerCondition": "MQ-02 complete",
+    "objectives": [
+      { "index": 0, "description": "Speak with Khali about the fading garden" },
+      { "index": 1, "description": "Broadcast 3 fragments into Memorial Garden stones" },
+      { "index": 2, "description": "Return to Khali" }
+    ],
+    "rewards": [
+      { "type": "gold", "name": "Gold", "amount": 120 },
+      { "type": "item", "id": "C-HP-01", "name": "Minor Potion x5" },
+      { "type": "item", "id": "C-SP-01", "name": "Mana Drop x3" }
+    ],
+    "completionDialogue": "Khali: The flowers are actually glowing! I haven't seen the garden like this since I was a girl.",
+    "failureConditions": "None", "unlocks": [], "dependencies": ["MQ-02"],
+    "targetPath": "main/server/quests/sq01-memorial-garden.ts"
+  },
+  {
+    "id": "SQ-02", "name": "The Windmill Mystery", "category": "side", "act": "act1",
+    "levelRange": "3-5", "giver": "Farmer Gale", "giverLocation": "Heartfield Hamlet (15, 15)",
+    "triggerCondition": "MQ-03 complete",
+    "objectives": [
+      { "index": 0, "description": "Speak with farmer at Heartfield Hamlet" },
+      { "index": 1, "description": "Travel to Old Windmill (30, 8)" },
+      { "index": 2, "description": "Defeat Dissolved Memory encounter" },
+      { "index": 3, "description": "Collect fragment from grinding stone" },
+      { "index": 4, "description": "Return to farmer" }
+    ],
+    "rewards": [
+      { "type": "gold", "name": "Gold", "amount": 100 },
+      { "type": "item", "id": "W-DG-03", "name": "Windmill Blade" },
+      { "type": "fragment", "name": "Awe/Wind Fragment (2-star)" }
+    ],
+    "completionDialogue": "Farmer: The groaning's stopped. That blade was stuck in the grinding stone — feels right you should have it.",
+    "failureConditions": "None", "unlocks": [], "dependencies": ["MQ-03"],
+    "targetPath": "main/server/quests/sq02-windmill-mystery.ts"
+  },
+  {
+    "id": "SQ-03", "name": "The Woodcutter's Dilemma", "category": "side", "act": "act1",
+    "levelRange": "4-6", "giver": "Lead Woodcutter", "giverLocation": "Ambergrove — Woodcutter's Camp (10, 30)",
+    "triggerCondition": "MQ-03 complete",
+    "objectives": [
+      { "index": 0, "description": "Speak with woodcutter" },
+      { "index": 1, "description": "Investigate 3 rapid-growth sites" },
+      { "index": 2, "description": "Broadcast fragments at each site" },
+      { "index": 3, "description": "Defeat Thornback Beetle nest" },
+      { "index": 4, "description": "Return to woodcutter" }
+    ],
+    "rewards": [
+      { "type": "gold", "name": "Gold", "amount": 150 },
+      { "type": "item", "id": "A-05", "name": "Forest Weave" },
+      { "type": "fragment", "name": "Calm/Earth Fragment (2-star)" }
+    ],
+    "completionDialogue": "Woodcutter: The forest's calmer now. Still growing, but peacefully.",
+    "failureConditions": "None", "unlocks": [], "dependencies": ["MQ-03"],
+    "targetPath": "main/server/quests/sq03-woodcutters-dilemma.ts"
+  },
+  {
+    "id": "SQ-04", "name": "Upstream Secrets", "category": "side", "act": "act1",
+    "levelRange": "5-7", "giver": "Fisher Tam", "giverLocation": "Millbrook — Fisher's Rest (30, 30)",
+    "triggerCondition": "MQ-03 complete",
+    "objectives": [
+      { "index": 0, "description": "Speak with fisher" },
+      { "index": 1, "description": "Travel to Upstream Falls (8, 5)" },
+      { "index": 2, "description": "Find hidden cave behind waterfall" },
+      { "index": 3, "description": "Navigate dissolved memory grotto" },
+      { "index": 4, "description": "Collect 2 high-potency fragments" },
+      { "index": 5, "description": "Return to fisher" }
+    ],
+    "rewards": [
+      { "type": "gold", "name": "Gold", "amount": 180 },
+      { "type": "fragment", "name": "Sorrow/Water Fragment (3-star)" },
+      { "type": "fragment", "name": "Awe/Water Fragment (3-star)" },
+      { "type": "item", "id": "W-ST-03", "name": "Hearthstone Staff" }
+    ],
+    "completionDialogue": "Fisher: You went behind the falls? And came back?",
+    "failureConditions": "None", "unlocks": [], "dependencies": ["MQ-03"],
+    "targetPath": "main/server/quests/sq04-upstream-secrets.ts"
+  },
+  {
+    "id": "SQ-05", "name": "Aric's Doubt", "category": "side", "act": "act1",
+    "levelRange": "8-12", "giver": "Aric", "giverLocation": "Sunridge — Preserver Outpost (32, 15)",
+    "triggerCondition": "MQ-04 complete",
+    "objectives": [
+      { "index": 0, "description": "Speak with Aric at Sunridge" },
+      { "index": 1, "description": "Listen to Aric's confession" },
+      { "index": 2, "description": "Collect 3 fragments of different emotions (potency 2+)" },
+      { "index": 3, "description": "Return after 1 in-game day" },
+      { "index": 4, "description": "Receive Preserver intelligence" }
+    ],
+    "rewards": [
+      { "type": "gold", "name": "Gold", "amount": 250 },
+      { "type": "item", "id": "C-SC-04", "name": "Stasis Breaker x5" },
+      { "type": "key-item", "id": "K-06", "name": "Curator's Manifesto" },
+      { "type": "fragment", "name": "Sorrow/Dark Fragment (3-star)" }
+    ],
+    "completionDialogue": "Aric: Watching that woman freeze... that wasn't preservation. That was theft.",
+    "failureConditions": "None",
+    "unlocks": ["MQ-07"], "dependencies": ["MQ-04"],
+    "targetPath": "main/server/quests/sq05-arics-doubt.ts"
+  },
+  {
+    "id": "SQ-06", "name": "The Marsh Hermit's Request", "category": "side", "act": "act2",
+    "levelRange": "11-14", "giver": "Wynn", "giverLocation": "Shimmer Marsh — Hermit's Hut (12, 15)",
+    "triggerCondition": "MQ-05 complete, enter Shimmer Marsh",
+    "objectives": [
+      { "index": 0, "description": "Speak with Wynn" },
+      { "index": 1, "description": "Collect 3 water-element fragments" },
+      { "index": 2, "description": "Broadcast into 3 marsh Resonance Stones" },
+      { "index": 3, "description": "Defeat Mire Crawler ambush" },
+      { "index": 4, "description": "Return to Wynn" }
+    ],
+    "rewards": [
+      { "type": "gold", "name": "Gold", "amount": 300 },
+      { "type": "item", "id": "A-07", "name": "Hermit's Robe" },
+      { "type": "item", "id": "W-ST-05", "name": "Marsh Hermit's Crook" }
+    ],
+    "completionDialogue": "Wynn: The vibrancy readings are exactly as I hypothesized.",
+    "failureConditions": "None", "unlocks": [], "dependencies": ["MQ-05"],
+    "targetPath": "main/server/quests/sq06-marsh-hermits-request.ts"
+  },
+  {
+    "id": "SQ-07", "name": "Petra's Ridgewalkers", "category": "side", "act": "act2",
+    "levelRange": "12-15", "giver": "Petra", "giverLocation": "Hollow Ridge — Ridgewalker Camp (15, 25)",
+    "triggerCondition": "MQ-05 complete, visit Ridgewalker Camp",
+    "objectives": [
+      { "index": 0, "description": "Speak with Petra" },
+      { "index": 1, "description": "Escort scouting party (3 patrol encounters)" },
+      { "index": 2, "description": "Reach Shattered Pass entrance (35, 30)" },
+      { "index": 3, "description": "Report to Petra" }
+    ],
+    "rewards": [
+      { "type": "gold", "name": "Gold", "amount": 350 },
+      { "type": "item", "id": "A-08", "name": "Ridgewalker's Coat" },
+      { "type": "key-item", "id": "K-05", "name": "Kinetic Boots" }
+    ],
+    "completionDialogue": "Petra: Now we know what we're dealing with. Take these boots.",
+    "failureConditions": "Escort NPCs defeated = quest resets to objective 2",
+    "unlocks": [], "dependencies": ["MQ-05"],
+    "targetPath": "main/server/quests/sq07-petras-ridgewalkers.ts"
+  },
+  {
+    "id": "SQ-08", "name": "Solen's Light Studies", "category": "side", "act": "act2",
+    "levelRange": "13-16", "giver": "Solen", "giverLocation": "Flickerveil — Flickering Village (35, 30)",
+    "triggerCondition": "MQ-05 complete, visit Flickerveil",
+    "objectives": [
+      { "index": 0, "description": "Speak with Solen" },
+      { "index": 1, "description": "Investigate 4 flickering anomalies" },
+      { "index": 2, "description": "Broadcast light-element fragment at archive" },
+      { "index": 3, "description": "Defeat Preserver patrol" },
+      { "index": 4, "description": "Return to Solen" }
+    ],
+    "rewards": [
+      { "type": "gold", "name": "Gold", "amount": 300 },
+      { "type": "key-item", "id": "K-04", "name": "Light Lens" },
+      { "type": "fragment", "name": "Awe/Light Fragment (3-star)" }
+    ],
+    "completionDialogue": "Solen: The flicker frequency has stabilized. Whatever you broadcast tuned the local resonance.",
+    "failureConditions": "None", "unlocks": [], "dependencies": ["MQ-05"],
+    "targetPath": "main/server/quests/sq08-solens-light-studies.ts"
+  },
+  {
+    "id": "SQ-09", "name": "Harmonize the Path", "category": "side", "act": "act2",
+    "levelRange": "12-14", "giver": "Audiomancer Vess", "giverLocation": "Resonance Fields — Listener's Camp (10, 35)",
+    "triggerCondition": "MQ-05 complete, visit Resonance Fields",
+    "objectives": [
+      { "index": 0, "description": "Speak with Vess" },
+      { "index": 1, "description": "Broadcast into 3 dissonant Resonance Stones" },
+      { "index": 2, "description": "Open path to amphitheater" }
+    ],
+    "rewards": [
+      { "type": "gold", "name": "Gold", "amount": 200 },
+      { "type": "fragment", "name": "Joy/Wind Fragment (2-star)" }
+    ],
+    "completionDialogue": "Vess: The dissonance resolved! The amphitheater is open.",
+    "failureConditions": "None", "unlocks": ["GQ-01"], "dependencies": ["MQ-05"],
+    "targetPath": "main/server/quests/sq09-harmonize-path.ts"
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "SK-RG-L1",
+    "name": "Shared Foresight",
+    "classId": "rogue",
+    "level": 1,
+    "spCost": 0,
+    "target": "AA",
+    "element": "none",
+    "formula": "Passive: Echo Dodge applies to allies at half rate. Max party 30%.",
+    "description": "Shares evasion with party at half rate.",
+    "isPassive": true,
+    "isSubclass": true,
+    "subclassPath": "luminary"
+  },
+  {
+    "id": "SK-RG-L2",
+    "name": "Memory Link",
+    "classId": "rogue",
+    "level": 1,
+    "spCost": 18,
+    "target": "S",
+    "element": "neutral",
+    "formula": "3 turns: each dodge triggers counter ATK*0.8.",
+    "description": "Turns evasion into counter-attacks.",
+    "isPassive": false,
+    "isSubclass": true,
+    "subclassPath": "luminary"
+  },
+  {
+    "id": "SK-RG-C1",
+    "name": "Time Scar",
+    "classId": "rogue",
+    "level": 1,
+    "spCost": 0,
+    "target": "S",
+    "element": "none",
+    "formula": "Passive: Foreshadow pre-enemy 2.2x. Enemies AGI -15% 2 turns.",
+    "description": "Amplifies Foreshadow Strike with AGI debuff.",
+    "isPassive": true,
+    "isSubclass": true,
+    "subclassPath": "crucible"
+  },
+  {
+    "id": "SK-RG-C2",
+    "name": "Infinite Ambush",
+    "classId": "rogue",
+    "level": 1,
+    "spCost": 55,
+    "target": "S",
+    "element": "none",
+    "formula": "Act THREE times. Same-target third action +50% bonus.",
+    "description": "Upgraded Temporal Ambush with three actions.",
+    "isPassive": false,
+    "isSubclass": true,
+    "subclassPath": "crucible"
+  }
+]

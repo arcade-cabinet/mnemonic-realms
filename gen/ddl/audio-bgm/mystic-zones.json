@@ -1,0 +1,53 @@
+[
+  {
+    "id": "BGM-SM",
+    "name": "Twilight Reflections",
+    "type": "zone",
+    "zone": "shimmer-marsh",
+    "tempo": 56,
+    "key": "F# minor",
+    "timeSignature": "5/4",
+    "mood": "reflective",
+    "durationSec": 180,
+    "stems": [
+      { "layer": 1, "instruments": "Oboe (solo, low register)", "description": "Slow, mournful melody. The loneliest sound." },
+      { "layer": 2, "instruments": "Harp + water samples", "description": "Sparse harp chords. Water drips as rhythmic elements." },
+      { "layer": 3, "instruments": "Muted strings + bass clarinet", "description": "Shimmering wash. Bass clarinet dark undercurrent." },
+      { "layer": 4, "instruments": "Soprano choir (distant)", "description": "Singing heard from underwater. Ethereal and haunting." }
+    ]
+  },
+  {
+    "id": "BGM-FV",
+    "name": "Between Worlds",
+    "type": "zone",
+    "zone": "flickerveil",
+    "tempo": 66,
+    "key": "Ab major",
+    "timeSignature": "3/4",
+    "mood": "ethereal",
+    "durationSec": 165,
+    "stems": [
+      { "layer": 1, "instruments": "Celesta (music box timbre)", "description": "Crystalline melody. Slightly detuned for uncanny effect." },
+      { "layer": 2, "instruments": "Vibraphone + soft pad synth", "description": "Bell-like sustain. Pad synth gentle warmth." },
+      { "layer": 3, "instruments": "Tremolo strings + glockenspiel", "description": "Strings shimmer. Glockenspiel punctuates phrases." },
+      { "layer": 4, "instruments": "Child-like voices (wordless la)", "description": "Small choir, pure. Reverb creates vast space." }
+    ]
+  },
+  {
+    "id": "BGM-RF",
+    "name": "The Standing Stones",
+    "type": "zone",
+    "zone": "resonance-fields",
+    "tempo": 48,
+    "key": "C Lydian",
+    "timeSignature": "free",
+    "mood": "sacred",
+    "durationSec": 210,
+    "stems": [
+      { "layer": 1, "instruments": "Singing bowl / drone", "description": "Deep sustained harmonic. The stone itself singing." },
+      { "layer": 2, "instruments": "Duduk + light bells", "description": "Ancient melody. Bells ring at irregular intervals." },
+      { "layer": 3, "instruments": "Full strings + low brass", "description": "Massive slow chord progressions. Low brass rumbles." },
+      { "layer": 4, "instruments": "Mixed choir (polyphonic)", "description": "Overlapping Renaissance-style vocal lines." }
+    ]
+  }
+]

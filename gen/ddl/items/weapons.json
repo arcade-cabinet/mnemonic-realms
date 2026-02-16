@@ -1,0 +1,26 @@
+[
+  {
+    "id": "W-SW-01",
+    "name": "Iron Sword",
+    "category": "weapon-sword",
+    "desc": "Simple iron sword with leather-wrapped grip. Basic starter weapon."
+  },
+  {
+    "id": "W-ST-01",
+    "name": "Oak Staff",
+    "category": "weapon-staff",
+    "desc": "Wooden staff topped with a small amber crystal. Mage starter weapon."
+  },
+  {
+    "id": "W-WD-01",
+    "name": "Willow Wand",
+    "category": "weapon-wand",
+    "desc": "Slender willow wand with a glowing amber tip. Cleric starter weapon."
+  },
+  {
+    "id": "W-DG-01",
+    "name": "Iron Dagger",
+    "category": "weapon-dagger",
+    "desc": "Short iron dagger, slightly curved. Rogue starter weapon."
+  }
+]

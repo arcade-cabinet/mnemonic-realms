@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0.0",
+  "description": "Character and enemy spritesheet manifest (image generation removed — using purchased assets)",
+  "updatedAt": "2026-02-14T01:54:49.362Z",
+  "styleGuide": "16-bit JRPG chibi (2-3 head-tall). Distinct silhouette readable at 32x32. Each class has a unique color accent visible even at small size. RPG Maker format: 3 columns (walk cycle) × 4 rows (down, left, right, up).",
+  "styleDocRefs": [
+    {
+      "path": "docs/design/visual-direction.md",
+      "heading": "Color Philosophy",
+      "purpose": "style"
+    },
+    {
+      "path": "docs/design/visual-direction.md",
+      "heading": "Sprite Style",
+      "purpose": "style"
+    },
+    {
+      "path": "docs/design/spritesheet-spec.md",
+      "heading": "Overview",
+      "purpose": "style"
+    }
+  ],
+  "assets": []
+}

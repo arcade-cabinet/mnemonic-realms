@@ -1,0 +1,26 @@
+[
+  {
+    "id": "resonance",
+    "name": "Resonance",
+    "appearance": "Ancient being of sound and vibration. Ethereal form of shimmering sound waves, no fixed shape.",
+    "type": "god"
+  },
+  {
+    "id": "verdance",
+    "name": "Verdance",
+    "appearance": "Ancient being of growth. Living plant matter forming a humanoid shape, flowers and vines.",
+    "type": "god"
+  },
+  {
+    "id": "luminos",
+    "name": "Luminos",
+    "appearance": "Ancient being of light. Radiant crystalline form, faceted like a prism, warm golden glow.",
+    "type": "god"
+  },
+  {
+    "id": "kinesis",
+    "name": "Kinesis",
+    "appearance": "Ancient being of motion. Blur of perpetual movement, streaks of color suggesting speed.",
+    "type": "god"
+  }
+]

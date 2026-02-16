@@ -1,0 +1,27 @@
+name = "Mnemonic Realms"
+
+modules = [
+    './main',
+    '@rpgjs/default-gui',
+    '@rpgjs/mobile-gui'
+]
+
+[compilerOptions.build]
+    pwaEnabled = false
+
+[vite]
+    publicDir = "assets"
+
+[vite.server]
+    host = "0.0.0.0"
+
+[vite.optimizeDeps]
+    include = [
+        "sat", "xml-js", "eventemitter3", "earcut", "url", "punycode", "howler",
+        "object-assign", "seedrandom", "sax",
+        # CJS deps of @rpgjs/client, @rpgjs/server, simple-room, simple-room-client
+        # Required because excluded @rpgjs/* modules load raw source that imports these
+        "lodash.get", "lodash.merge", "lodash.mergewith",
+        "msgpack-lite", "rxjs", "pixi-viewport",
+        "cors", "express", "socket.io", "pretty-error"
+    ]

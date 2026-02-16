@@ -1,0 +1,154 @@
+[
+  {
+    "id": "knight",
+    "name": "Knight",
+    "hp": {
+      "base": 45,
+      "growthRate": 14.5
+    },
+    "sp": {
+      "base": 15,
+      "growthRate": 3.2
+    },
+    "atk": {
+      "base": 12,
+      "growthRate": 3.3
+    },
+    "int": {
+      "base": 5,
+      "growthRate": 1
+    },
+    "def": {
+      "base": 10,
+      "growthRate": 3.1
+    },
+    "agi": {
+      "base": 7,
+      "growthRate": 1.5
+    },
+    "description": "Frontline tank and physical damage dealer. Highest HP and ATK. Lowest AGI and INT.",
+    "skillIds": [
+      "SK-KN-01",
+      "SK-KN-02",
+      "SK-KN-03",
+      "SK-KN-04",
+      "SK-KN-05",
+      "SK-KN-06",
+      "SK-KN-07"
+    ]
+  },
+  {
+    "id": "cleric",
+    "name": "Cleric",
+    "hp": {
+      "base": 35,
+      "growthRate": 10
+    },
+    "sp": {
+      "base": 25,
+      "growthRate": 5.5
+    },
+    "atk": {
+      "base": 7,
+      "growthRate": 1.5
+    },
+    "int": {
+      "base": 12,
+      "growthRate": 3.3
+    },
+    "def": {
+      "base": 9,
+      "growthRate": 2.5
+    },
+    "agi": {
+      "base": 6,
+      "growthRate": 1.3
+    },
+    "description": "Pure support and healer. Highest SP for sustained casting. Strong INT for heal power.",
+    "skillIds": [
+      "SK-CL-01",
+      "SK-CL-02",
+      "SK-CL-03",
+      "SK-CL-04",
+      "SK-CL-05",
+      "SK-CL-06",
+      "SK-CL-07"
+    ]
+  },
+  {
+    "id": "mage",
+    "name": "Mage",
+    "hp": {
+      "base": 28,
+      "growthRate": 7
+    },
+    "sp": {
+      "base": 30,
+      "growthRate": 6
+    },
+    "atk": {
+      "base": 5,
+      "growthRate": 1
+    },
+    "int": {
+      "base": 14,
+      "growthRate": 3.8
+    },
+    "def": {
+      "base": 5,
+      "growthRate": 1.3
+    },
+    "agi": {
+      "base": 10,
+      "growthRate": 2.5
+    },
+    "description": "Glass cannon with highest INT and SP. Devastating magical damage but lowest HP and DEF.",
+    "skillIds": [
+      "SK-MG-01",
+      "SK-MG-02",
+      "SK-MG-03",
+      "SK-MG-04",
+      "SK-MG-05",
+      "SK-MG-06",
+      "SK-MG-07"
+    ]
+  },
+  {
+    "id": "rogue",
+    "name": "Rogue",
+    "hp": {
+      "base": 32,
+      "growthRate": 8.5
+    },
+    "sp": {
+      "base": 20,
+      "growthRate": 4.5
+    },
+    "atk": {
+      "base": 10,
+      "growthRate": 2.5
+    },
+    "int": {
+      "base": 6,
+      "growthRate": 1.3
+    },
+    "def": {
+      "base": 7,
+      "growthRate": 1.5
+    },
+    "agi": {
+      "base": 13,
+      "growthRate": 3.3
+    },
+    "description": "Speed-based damage dealer. Highest AGI, always acts first. Evasion-based survival.",
+    "skillIds": [
+      "SK-RG-01",
+      "SK-RG-02",
+      "SK-RG-03",
+      "SK-RG-04",
+      "SK-RG-05",
+      "SK-RG-06",
+      "SK-RG-07"
+    ]
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "SK-MG-L1",
+    "name": "Chromatic Mastery",
+    "classId": "mage",
+    "level": 1,
+    "spCost": 0,
+    "target": "S",
+    "element": "none",
+    "formula": "Passive: Memory Wave element becomes player-chosen. Weakness 1.75x.",
+    "description": "Removes Memory Wave randomness.",
+    "isPassive": true,
+    "isSubclass": true,
+    "subclassPath": "luminary"
+  },
+  {
+    "id": "SK-MG-L2",
+    "name": "Spectrum Shield",
+    "classId": "mage",
+    "level": 1,
+    "spCost": 20,
+    "target": "SA",
+    "element": "adaptive",
+    "formula": "Shield INT*1.0 one ally. Universal 50% element resist. 2 turns.",
+    "description": "Strong ST shield with universal resistance.",
+    "isPassive": false,
+    "isSubclass": true,
+    "subclassPath": "luminary"
+  },
+  {
+    "id": "SK-MG-C1",
+    "name": "Volatile Inspiration",
+    "classId": "mage",
+    "level": 1,
+    "spCost": 0,
+    "target": "S",
+    "element": "none",
+    "formula": "Passive: Eureka always hits weakness. No weakness: +20%.",
+    "description": "Makes Eureka Moment a precision strike.",
+    "isPassive": true,
+    "isSubclass": true,
+    "subclassPath": "crucible"
+  },
+  {
+    "id": "SK-MG-C2",
+    "name": "Annihilation",
+    "classId": "mage",
+    "level": 1,
+    "spCost": 60,
+    "target": "SE",
+    "element": "neutral",
+    "formula": "floor(INT * 4.0) ignores DEF. 15% self-recoil.",
+    "description": "Highest ST damage. DEF-ignoring with recoil.",
+    "isPassive": false,
+    "isSubclass": true,
+    "subclassPath": "crucible"
+  }
+]

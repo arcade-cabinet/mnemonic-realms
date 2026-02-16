@@ -1,0 +1,61 @@
+[
+  {
+    "id": "hollow-ridge",
+    "name": "Hollow Ridge",
+    "filename": "hollow-ridge.tmx",
+    "width": 50,
+    "height": 50,
+    "tileSize": 32,
+    "biome": "mountain",
+    "tilesetRefs": ["tiles_mountain_{tier}"],
+    "startVibrancy": 20,
+    "category": "overworld",
+    "act": "II",
+    "connections": [
+      { "fromTile": "25,49", "direction": "south", "toMap": "sunridge", "toTile": "18,0", "condition": "always" },
+      { "fromTile": "49,25", "direction": "east", "toMap": "flickerveil", "toTile": "0,15", "condition": "MQ-05+" },
+      { "fromTile": "49,35", "direction": "southeast", "toMap": "shimmer-marsh", "toTile": "0,25", "condition": "MQ-05+" },
+      { "fromTile": "25,0", "direction": "north", "toMap": "undrawn-peaks", "toTile": "20,39", "condition": "MQ-07+" },
+      { "fromTile": "38,3", "direction": "down", "toMap": "depths-l3", "toTile": "10,0", "condition": "MQ-05+" }
+    ],
+    "npcSpawns": [
+      { "npcId": "petra", "name": "Petra", "position": "14,24", "graphic": "npc_petra", "movement": "Static", "condition": "patrols after GQ-04", "quests": ["MQ-05","SQ-07","GQ-04"] },
+      { "npcId": "ridgewalker-scout", "name": "Ridgewalker Scout", "position": "16,25", "graphic": "npc_ridgewalker_m1", "movement": "Patrol", "patrolRange": "10,20 -> 20,30" },
+      { "npcId": "ridgewalker-merchant", "name": "Ridgewalker Merchant", "position": "15,26", "graphic": "npc_merchant_m2", "movement": "Static" },
+      { "npcId": "ridgewalker-elder", "name": "Ridgewalker Elder", "position": "12,22", "graphic": "npc_elder_m2", "movement": "Static" },
+      { "npcId": "ridgewalker-guard-a", "name": "Ridgewalker Guard A", "position": "18,28", "graphic": "npc_ridgewalker_m2", "movement": "Patrol" },
+      { "npcId": "ridgewalker-guard-b", "name": "Ridgewalker Guard B", "position": "10,22", "graphic": "npc_ridgewalker_f1", "movement": "Patrol" }
+    ],
+    "enemyZones": [
+      { "zone": "Mountain Trails", "bounds": "5,10 -> 30,40", "enemies": ["Wind Elemental","Mountain Drake"], "levelRange": "12-16", "encounterRate": "Common: 1 Elemental; Standard: 1 Elemental + 1 Drake" },
+      { "zone": "Spire Approach", "bounds": "18,3 -> 30,15", "enemies": ["Wind Elemental","Crystal Sentinel"], "levelRange": "14-16", "encounterRate": "Standard: 2 Elementals; Rare: 1 Sentinel + 1 Elemental" },
+      { "zone": "Shattered Pass", "bounds": "30,25 -> 40,34", "enemies": ["Crystal Sentinel"], "levelRange": "15-17", "encounterRate": "Standard: 2 Sentinels" },
+      { "zone": "Echo Caverns Approach", "bounds": "35,2 -> 45,10", "enemies": ["Mountain Drake"], "levelRange": "14-16", "encounterRate": "Standard: 2 Drakes" }
+    ],
+    "eventTriggers": [
+      { "id": "EV-HR-001", "position": "14,24", "type": "action", "linkedQuest": "GQ-04", "repeat": "quest", "description": "Petra dormant gods intro" },
+      { "id": "EV-HR-002", "position": "15,26", "type": "action", "repeat": "repeat", "description": "Ridgewalker merchant shop" },
+      { "id": "EV-HR-003", "position": "24,10", "type": "auto", "linkedQuest": "GQ-04", "repeat": "once", "description": "Kinesis Spire recall vision" },
+      { "id": "EV-HR-004", "position": "24,10", "type": "action", "linkedQuest": "GQ-04", "repeat": "quest", "description": "4 emotion pedestals for Kinesis" },
+      { "id": "EV-HR-005", "position": "33,28", "type": "action", "repeat": "repeat", "description": "Shattered Pass stagnation puzzle" },
+      { "id": "EV-HR-006", "position": "38,3", "type": "touch", "repeat": "conditional", "description": "Echo Caverns -> Depths L3" },
+      { "id": "EV-HR-007", "position": "25,49", "type": "touch", "repeat": "repeat", "description": "South -> Sunridge" },
+      { "id": "EV-HR-008", "position": "49,25", "type": "touch", "repeat": "conditional", "description": "East -> Flickerveil" },
+      { "id": "EV-HR-009", "position": "49,35", "type": "touch", "repeat": "conditional", "description": "SE -> Shimmer Marsh" },
+      { "id": "EV-HR-010", "position": "25,0", "type": "touch", "repeat": "conditional", "description": "North -> Undrawn Peaks" },
+      { "id": "EV-HR-011", "position": "14,24", "type": "action", "linkedQuest": "SQ-07", "repeat": "quest", "description": "Petra escort quest" }
+    ],
+    "resonanceStones": [
+      { "id": "RS-HR-01", "position": "24,10", "fragments": "recall pedestal", "notes": "Kinesis Spire; 4 emotion pedestals" },
+      { "id": "RS-HR-02", "position": "14,24", "fragments": "fury/fire/2" },
+      { "id": "RS-HR-03", "position": "6,6", "fragments": "awe/wind/3" },
+      { "id": "RS-HR-04", "position": "35,30", "fragments": "sorrow/earth/2" },
+      { "id": "RS-HR-05", "position": "40,5", "fragments": "fury/earth/3" }
+    ],
+    "treasureChests": [
+      { "id": "CH-HR-01", "position": "5,7", "contents": "Ridgewalker Claymore note" },
+      { "id": "CH-HR-02", "position": "36,32", "contents": "Frontier Guard (A-09)", "condition": "After breaking stasis" },
+      { "id": "CH-HR-03", "position": "38,4", "contents": "Mana Draught (C-SP-02) x3" }
+    ]
+  }
+]

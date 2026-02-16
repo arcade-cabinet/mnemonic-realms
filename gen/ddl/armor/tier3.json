@@ -1,0 +1,56 @@
+[
+  {
+    "id": "A-09",
+    "name": "Frontier Guard",
+    "def": 25,
+    "price": 800,
+    "tier": 3,
+    "specialEffect": "+15% resistance to Stasis status.",
+    "acquisition": "Hollow Ridge (Shattered Pass loot)"
+  },
+  {
+    "id": "A-10",
+    "name": "Preserver's Crystal Mail",
+    "def": 30,
+    "price": 0,
+    "tier": 3,
+    "specialEffect": "+20% DEF. Immune to Stasis.",
+    "acquisition": "Drop from Preserver Captain"
+  },
+  {
+    "id": "A-11",
+    "name": "Luminary Vestment",
+    "def": 22,
+    "price": 1000,
+    "tier": 3,
+    "specialEffect": "All healing received +20%. Knight: oath bonuses +5%.",
+    "acquisition": "Torvan's Blacksmith (Vivid vibrancy)"
+  },
+  {
+    "id": "A-12",
+    "name": "Verdant Mantle",
+    "def": 28,
+    "price": 0,
+    "tier": 3,
+    "specialEffect": "Regenerate 2% max HP per turn in combat.",
+    "acquisition": "Verdance's Hollow (post-recall loot)"
+  },
+  {
+    "id": "A-13",
+    "name": "Sketchweave Cloak",
+    "def": 24,
+    "price": 0,
+    "tier": 3,
+    "specialEffect": "+20% evasion. In Sketch zones: +30% evasion.",
+    "acquisition": "The Half-Drawn Forest (Living Sketch reward)"
+  },
+  {
+    "id": "A-14",
+    "name": "Memory-Woven Plate",
+    "def": 35,
+    "price": 0,
+    "tier": 3,
+    "specialEffect": "DEF scales with fragments broadcast (+1 per 3, max +10).",
+    "acquisition": "Depths Level 5 treasure chest"
+  }
+]

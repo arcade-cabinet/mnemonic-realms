@@ -1,0 +1,59 @@
+[
+  {
+    "id": "shimmer-marsh",
+    "name": "Shimmer Marsh",
+    "filename": "shimmer-marsh.tmx",
+    "width": 50,
+    "height": 50,
+    "tileSize": 32,
+    "biome": "wetland",
+    "tilesetRefs": ["tiles_wetland_{tier}"],
+    "startVibrancy": 30,
+    "category": "overworld",
+    "act": "II",
+    "connections": [
+      { "fromTile": "20,0", "direction": "north", "toMap": "heartfield", "toTile": "20,38", "condition": "MQ-04+" },
+      { "fromTile": "49,25", "direction": "east", "toMap": "flickerveil", "toTile": "0,25", "condition": "MQ-05+" },
+      { "fromTile": "0,25", "direction": "west", "toMap": "hollow-ridge", "toTile": "49,35", "condition": "MQ-05+" },
+      { "fromTile": "25,49", "direction": "south", "toMap": "luminous-wastes", "toTile": "25,0", "condition": "MQ-07+" },
+      { "fromTile": "33,43", "direction": "down", "toMap": "depths-l2", "toTile": "10,0", "condition": "MQ-05+" }
+    ],
+    "npcSpawns": [
+      { "npcId": "wynn", "name": "Wynn", "position": "11,14", "graphic": "npc_wynn", "movement": "Static", "condition": "moves after GQ-02 (joy)", "quests": ["SQ-06","GQ-02"] },
+      { "npcId": "marsh-researcher", "name": "Marsh Researcher", "position": "12,15", "graphic": "npc_researcher_f1", "movement": "Patrol" },
+      { "npcId": "preserver-scout-a", "name": "Preserver Scout A", "position": "36,9", "graphic": "npc_preserver_scout", "movement": "Patrol", "patrolRange": "34,6 -> 42,14" },
+      { "npcId": "preserver-scout-b", "name": "Preserver Scout B", "position": "40,10", "graphic": "npc_preserver_scout", "movement": "Static" }
+    ],
+    "enemyZones": [
+      { "zone": "Outer Marsh", "bounds": "5,5 -> 30,20", "enemies": ["E-FR-01","E-FR-02"], "levelRange": "11-13", "encounterRate": "Common: 1 Crawler; Standard: 1 Crawler + 1 Toad" },
+      { "zone": "Deep Marsh", "bounds": "15,25 -> 40,45", "enemies": ["E-FR-01"], "levelRange": "12-14", "encounterRate": "Standard: 2 Crawlers; Rare: 2 Crawlers + Bog Wisp" },
+      { "zone": "Bog Perimeter", "bounds": "34,6 -> 44,16", "enemies": ["Preserver Scout","E-FR-01"], "levelRange": "12-14", "encounterRate": "Standard: 1 Scout + 1 Crawler" },
+      { "zone": "Hollow Approach", "bounds": "20,28 -> 28,38", "enemies": ["E-FR-02"], "levelRange": "13-15", "encounterRate": "Common: 1 Toad" }
+    ],
+    "eventTriggers": [
+      { "id": "EV-SM-001", "position": "11,14", "type": "action", "linkedQuest": "GQ-02", "repeat": "quest", "description": "Wynn marsh research dialogue" },
+      { "id": "EV-SM-002", "position": "18,28", "type": "action", "linkedQuest": "GQ-02", "repeat": "quest", "description": "Blocked root cluster broadcast" },
+      { "id": "EV-SM-003", "position": "25,35", "type": "auto", "linkedQuest": "GQ-02", "repeat": "once", "description": "Verdance recall vision" },
+      { "id": "EV-SM-004", "position": "25,35", "type": "action", "linkedQuest": "GQ-02", "repeat": "quest", "description": "4 emotion pedestals" },
+      { "id": "EV-SM-005", "position": "33,43", "type": "touch", "repeat": "conditional", "description": "Sinkhole -> Depths L2" },
+      { "id": "EV-SM-006", "position": "20,0", "type": "touch", "repeat": "conditional", "description": "North -> Heartfield" },
+      { "id": "EV-SM-007", "position": "49,25", "type": "touch", "repeat": "conditional", "description": "East -> Flickerveil" },
+      { "id": "EV-SM-008", "position": "0,25", "type": "touch", "repeat": "conditional", "description": "West -> Hollow Ridge" },
+      { "id": "EV-SM-009", "position": "25,49", "type": "touch", "repeat": "conditional", "description": "South -> Luminous Wastes" },
+      { "id": "EV-SM-011", "position": "38,8", "type": "action", "repeat": "repeat", "description": "Stagnation Bog break mechanic" }
+    ],
+    "resonanceStones": [
+      { "id": "RS-SM-01", "position": "11,14", "fragments": "sorrow/water/2" },
+      { "id": "RS-SM-02", "position": "25,35", "fragments": "recall pedestal", "notes": "Verdance's Hollow; 4 emotion pedestals" },
+      { "id": "RS-SM-03", "position": "40,12", "fragments": "fury/water/2", "notes": "Stagnation Bog edge (contested)" },
+      { "id": "RS-SM-04", "position": "20,25", "fragments": "calm/earth/2" },
+      { "id": "RS-SM-05", "position": "30,20", "fragments": "sorrow/water/3", "notes": "Partially submerged" },
+      { "id": "RS-SM-06", "position": "15,40", "fragments": "joy/earth/2" }
+    ],
+    "treasureChests": [
+      { "id": "CH-SM-01", "position": "12,16", "contents": "Antidote (C-SC-01) x5, Potion (C-HP-02) x2" },
+      { "id": "CH-SM-02", "position": "38,5", "contents": "Stasis Breaker (C-SC-04) x3" },
+      { "id": "CH-SM-03", "position": "24,36", "contents": "Verdant Mantle (A-12)", "condition": "Post-recall" }
+    ]
+  }
+]

@@ -1,0 +1,48 @@
+[
+  {
+    "id": "dlg-the-light", "npcId": "the-light", "npcName": "The Light",
+    "trigger": "The Light (Depths Level 5, Room 5)",
+    "location": "Depths Level 5 — The Deepest Memory",
+    "lines": [
+      { "speaker": "The Light", "text": "Why do things change?" },
+      { "speaker": "The Light", "text": "I am old. Older than the stone you stand on. I was the first question anyone ever asked." },
+      { "speaker": "The Light", "text": "The crystal-maker's answer is: 'Things shouldn't change.' That is the only answer that would silence the question forever." },
+      { "speaker": "The Light", "text": "You will need to offer your own answer. Not with words. With memory." }
+    ],
+    "linkedScene": "act3-scene4-deepest-memory",
+    "targetPath": "main/server/dialogue/the-light.ts"
+  },
+  {
+    "id": "dlg-first-dreamer", "npcId": "first-dreamer", "npcName": "The First Dreamer",
+    "trigger": "The First Dreamer (Depths Level 5, Room 8)",
+    "location": "Depths Level 5 — boss chamber",
+    "lines": [
+      { "speaker": "The First Dreamer", "text": "Will you carry this forward?" },
+      { "speaker": "The First Dreamer", "text": "The question was asked. You are the newest answer. Carry it well." }
+    ],
+    "linkedScene": "act3-scene4-deepest-memory",
+    "targetPath": "main/server/dialogue/first-dreamer.ts"
+  },
+  {
+    "id": "dlg-curators-right-hand", "npcId": "curators-right-hand", "npcName": "Curator's Right Hand",
+    "trigger": "Curator's Right Hand pre-combat (Scene 6)",
+    "location": "Preserver Fortress Floor 1",
+    "lines": [
+      { "speaker": "Curator's Right Hand", "text": "The Curator weeps for every battle. So do I. But these moments are worth protecting." },
+      { "speaker": "Curator's Right Hand", "text": "The Curator is below. They know you're coming. They've always known.", "emotion": "defeated" }
+    ],
+    "linkedScene": "act3-scene6-gallery-of-moments",
+    "targetPath": "main/server/dialogue/curators-right-hand.ts"
+  },
+  {
+    "id": "dlg-archive-keeper", "npcId": "archive-keeper", "npcName": "Archive Keeper",
+    "trigger": "Archive Keeper pre-combat (Scene 7)",
+    "location": "Preserver Fortress Floor 2",
+    "lines": [
+      { "speaker": "Archive Keeper", "text": "You do not understand what you are destroying. Each frozen moment is irreplaceable." },
+      { "speaker": "Archive Keeper", "text": "The Curator... will understand.", "emotion": "defeated" }
+    ],
+    "linkedScene": "act3-scene7-archive-of-perfection",
+    "targetPath": "main/server/dialogue/archive-keeper.ts"
+  }
+]

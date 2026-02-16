@@ -1,0 +1,1286 @@
+{
+  "schemaVersion": "1.0.0",
+  "description": "Skill database code generation manifest",
+  "updatedAt": "2026-02-14T15:11:55.052Z",
+  "category": "database-skills",
+  "systemPrompt": "You are an RPG-JS 4.3.0 TypeScript code generator.\nGenerate a single RPG-JS skill database file using @rpgjs/database decorators.\nOutput ONLY valid TypeScript code. No markdown fences. No explanatory text.\nThe file must export the skill class as the default export.\nImport from '@rpgjs/database'.\nInclude the damage formula as a comment in the class body.\n\n=== RPG-JS 4.3.0 @Skill API Reference ===\nimport { Skill } from '@rpgjs/database';\n\nValid @Skill decorator params (SkillOptions):\n  id?: string              — Unique ID. Defaults to lowercased class name.\n  name?: string            — Display name.\n  description?: string     — Skill description.\n  spCost?: number          — SP consumed on use.\n  power?: number           — Base power multiplier.\n  hitRate?: number         — Chance to hit (0 to 1). Default: 1.\n  variance?: number        — Damage variance (e.g. 20 means +/- 20 HP around calculated damage).\n  coefficient?: object     — Stat scaling: { [paramName]: multiplier }\n                             e.g. { int: 2 } means INT * 2 is added to damage.\n                             Default if omitted: { int: 1 }.\n                             Valid param names: 'str', 'int', 'dex', 'agi', 'maxhp', 'maxsp'\n  elements?: array         — Element affinities for the skill.\n  addStates?: array        — States to inflict: [StateClass] or [{ rate: number, state: StateClass }]\n  removeStates?: array     — States to cure: [StateClass] or [{ rate: number, state: StateClass }]\n\nINVALID properties (do NOT use): target, type, elementId, unlockLevel, passive, scope,\n  SkillTarget, SkillType (these enums do NOT exist in @rpgjs/database).\n\nExample (damage skill):\n@Skill({\n  id: 'SK-KN-01',\n  name: 'Oath Strike',\n  description: 'Basic attack scaling with active oaths.',\n  spCost: 0,\n  power: 120,\n  hitRate: 1,\n  coefficient: { str: 1 },\n})\nexport default class OathStrike {\n  // Formula: floor((ATK * 1.2 * (1 + 0.05 * active_oaths) - targetDEF * 0.8) * variance * elementMod)\n}\n\nExample (heal skill):\n@Skill({\n  id: 'SK-CL-01',\n  name: 'Joyful Mending',\n  description: 'ST heal scaling with joy charges.',\n  spCost: 6,\n  power: 120,\n  hitRate: 1,\n  coefficient: { int: 1 },\n})\nexport default class JoyfulMending {\n  // Formula: floor(INT * 1.2 * (1 + joy_charges * 0.03) * variance)\n}\n=== End API Reference ===",
+  "assets": [
+    {
+      "id": "SK-CL-01",
+      "name": "Joyful Mending",
+      "category": "database-skills",
+      "filename": "cleric/joyful-mending.ts",
+      "targetPath": "main/database/skills/cleric/joyful-mending.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Joyful Mending\" (ID: SK-CL-01).\n\nProperties:\n- Class: cleric\n- Unlock level: 1\n- SP cost: 6\n- Target type: SA\n- Element: none\n- Passive: false\n- Formula: floor(INT * 1.2 * (1 + joy_charges * 0.03) * variance)\n- Description: ST heal scaling with joy charges.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-CL-01: Joyful Mending",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "4cad07436dd525e5",
+        "outputHash": "6708e2e13440f8759191fab5de155896bbc0fe39d293ab9f9a9bfdbf9c49f5b6",
+        "generatedAt": "2026-02-13T13:27:15.596Z",
+        "generationTimeMs": 3522,
+        "fileSizeBytes": 405,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-CL-02",
+      "name": "Sorrowful Cleanse",
+      "category": "database-skills",
+      "filename": "cleric/sorrowful-cleanse.ts",
+      "targetPath": "main/database/skills/cleric/sorrowful-cleanse.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Sorrowful Cleanse\" (ID: SK-CL-02).\n\nProperties:\n- Class: cleric\n- Unlock level: 3\n- SP cost: 8\n- Target type: SA\n- Element: none\n- Passive: false\n- Formula: Remove debuff. No debuff: heal INT*0.5. Sorrow charges add 5%maxHP.\n- Description: Debuff removal with fallback heal.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-CL-02: Sorrowful Cleanse",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "c0d1a1b18abe4fd6",
+        "outputHash": "523a1901bc53d468d8c0986b57d0fa4983e35a438343856d7421c89cae6e006e",
+        "generatedAt": "2026-02-13T13:27:24.812Z",
+        "generationTimeMs": 7212,
+        "fileSizeBytes": 610,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-CL-03",
+      "name": "Awestruck Ward",
+      "category": "database-skills",
+      "filename": "cleric/awestruck-ward.ts",
+      "targetPath": "main/database/skills/cleric/awestruck-ward.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Awestruck Ward\" (ID: SK-CL-03).\n\nProperties:\n- Class: cleric\n- Unlock level: 7\n- SP cost: 14\n- Target type: SA\n- Element: none\n- Passive: false\n- Formula: Shield floor(INT * 0.8 * (1 + awe_charges * 0.03)). 3 turns.\n- Description: Damage absorption shield scaling with awe.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-CL-03: Awestruck Ward",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "7d0dea008fd98ba2",
+        "outputHash": "331d0c4e10f7516e06c0c2deebf202f217e3c9233e5efe2522e6b770c0e9a28f",
+        "generatedAt": "2026-02-13T13:27:32.902Z",
+        "generationTimeMs": 6086,
+        "fileSizeBytes": 455,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-CL-04",
+      "name": "Fury Blessing",
+      "category": "database-skills",
+      "filename": "cleric/fury-blessing.ts",
+      "targetPath": "main/database/skills/cleric/fury-blessing.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Fury Blessing\" (ID: SK-CL-04).\n\nProperties:\n- Class: cleric\n- Unlock level: 10\n- SP cost: 16\n- Target type: SA\n- Element: none\n- Passive: false\n- Formula: Target ATK+30% INT+30% 3 turns. Fury charges add 2% each.\n- Description: Offensive buff for an ally. Cannot self-cast.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-CL-04: Fury Blessing",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "631e92f52760c00c",
+        "outputHash": "c891d5f4135cc7b3bedab3075a8b5f61a51b965e584d5588af7ebd61eb8b3363",
+        "generatedAt": "2026-02-13T13:27:40.010Z",
+        "generationTimeMs": 5104,
+        "fileSizeBytes": 549,
+        "model": "gemini-2.5-flash"
+      },
+      "lastError": "Truncated output detected"
+    },
+    {
+      "id": "SK-CL-05",
+      "name": "Group Mending",
+      "category": "database-skills",
+      "filename": "cleric/group-mending.ts",
+      "targetPath": "main/database/skills/cleric/group-mending.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Group Mending\" (ID: SK-CL-05).\n\nProperties:\n- Class: cleric\n- Unlock level: 14\n- SP cost: 22\n- Target type: AA\n- Element: none\n- Passive: false\n- Formula: floor(INT * 0.7 * variance) HP to all allies\n- Description: Party-wide heal at reduced efficiency.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-CL-05: Group Mending",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "409939c7bd6ff61a",
+        "outputHash": "a21d0af51461fc9d0c3ce16336ad1b03314d8c1f791735923a5f7e0bb757c212",
+        "generatedAt": "2026-02-13T13:27:47.033Z",
+        "generationTimeMs": 5020,
+        "fileSizeBytes": 318,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-CL-06",
+      "name": "Emotional Cascade",
+      "category": "database-skills",
+      "filename": "cleric/emotional-cascade.ts",
+      "targetPath": "main/database/skills/cleric/emotional-cascade.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Emotional Cascade\" (ID: SK-CL-06).\n\nProperties:\n- Class: cleric\n- Unlock level: 19\n- SP cost: 28\n- Target type: AA\n- Element: none\n- Passive: false\n- Formula: Remove ALL debuffs all allies. Each removed heals INT*0.3.\n- Description: Party-wide cleanse with bonus healing.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-CL-06: Emotional Cascade",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "5133d0c847819c4a",
+        "outputHash": "675279cd84afb243e5ca6084c33fe420c11077b342e78cbad88758c491eed1c7",
+        "generatedAt": "2026-02-13T13:27:55.226Z",
+        "generationTimeMs": 6189,
+        "fileSizeBytes": 461,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-CL-07",
+      "name": "Emotional Resonance",
+      "category": "database-skills",
+      "filename": "cleric/emotional-resonance.ts",
+      "targetPath": "main/database/skills/cleric/emotional-resonance.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Emotional Resonance\" (ID: SK-CL-07).\n\nProperties:\n- Class: cleric\n- Unlock level: 24\n- SP cost: 50\n- Target type: AA\n- Element: none\n- Passive: false\n- Formula: Heal all INT*2.0. Grant Inspired (+20% all) 3 turns.\n- Description: Ultimate: massive heal plus strongest buff.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-CL-07: Emotional Resonance",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "92c3f8954d14b3e9",
+        "outputHash": "6755894a0536a80a6c44361cffd314ffa8d9e354941d74e3cc6bf5cdde2c75d3",
+        "generatedAt": "2026-02-13T13:28:03.813Z",
+        "generationTimeMs": 6585,
+        "fileSizeBytes": 389,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-CL-L1",
+      "name": "Radiant Aura",
+      "category": "database-skills",
+      "filename": "cleric/radiant-aura.ts",
+      "targetPath": "main/database/skills/cleric/subclass/radiant-aura.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Radiant Aura\" (ID: SK-CL-L1).\n\nProperties:\n- Class: cleric\n- Unlock level: 1\n- SP cost: 0\n- Target type: AA\n- Element: none\n- Passive: true\n- Formula: Passive: allies regen 3% max HP end of turn.\n- Description: Passive party-wide HP regeneration.\n- Subclass path: luminary\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-CL-L1: Radiant Aura (Passive)",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "61b412d4ca967c7e",
+        "outputHash": "9ce104ccd014bb69119e4b7a0c0dd5c168c9b812bf19dacd586b3fd1c8a0d096",
+        "generatedAt": "2026-02-13T13:28:12.941Z",
+        "generationTimeMs": 7124,
+        "fileSizeBytes": 1002,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-CL-L2",
+      "name": "Joyful Renewal",
+      "category": "database-skills",
+      "filename": "cleric/joyful-renewal.ts",
+      "targetPath": "main/database/skills/cleric/subclass/joyful-renewal.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Joyful Renewal\" (ID: SK-CL-L2).\n\nProperties:\n- Class: cleric\n- Unlock level: 1\n- SP cost: 30\n- Target type: A\n- Element: none\n- Passive: false\n- Formula: Auto when ally below 15% HP: heal to 50%. Once/battle.\n- Description: Emergency auto-heal for allies.\n- Subclass path: luminary\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-CL-L2: Joyful Renewal",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "7dbb85ea59666527",
+        "outputHash": "c10c368c61798a39382e46794ade13ea402ac446dd6bc1ccf45a02d0cdeefc31",
+        "generatedAt": "2026-02-13T13:28:21.342Z",
+        "generationTimeMs": 6398,
+        "fileSizeBytes": 635,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-CL-C1",
+      "name": "Sorrow's Edge",
+      "category": "database-skills",
+      "filename": "cleric/sorrow-s-edge.ts",
+      "targetPath": "main/database/skills/cleric/subclass/sorrow-s-edge.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Sorrow's Edge\" (ID: SK-CL-C1).\n\nProperties:\n- Class: cleric\n- Unlock level: 1\n- SP cost: 0\n- Target type: RE\n- Element: dark\n- Passive: true\n- Formula: Passive: heals deal 30% as dark damage to random enemy.\n- Description: Adds dark damage to every heal cast.\n- Subclass path: crucible\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-CL-C1: Sorrow's Edge (Passive)",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "ad325db7a6297eb5",
+        "outputHash": "858df787fc81430e6bdbaa3528c2c688d17369901bf9a87bf9a725b748c83239",
+        "generatedAt": "2026-02-13T13:28:37.928Z",
+        "generationTimeMs": 14583,
+        "fileSizeBytes": 635,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-CL-C2",
+      "name": "Martyrdom",
+      "category": "database-skills",
+      "filename": "cleric/martyrdom.ts",
+      "targetPath": "main/database/skills/cleric/subclass/martyrdom.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Martyrdom\" (ID: SK-CL-C2).\n\nProperties:\n- Class: cleric\n- Unlock level: 1\n- SP cost: 35\n- Target type: AA\n- Element: none\n- Passive: false\n- Formula: Sacrifice 40% HP. Allies healed 150% of sacrificed. Below 10% triggers Inspired.\n- Description: HP-to-healing conversion for the party.\n- Subclass path: crucible\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-CL-C2: Martyrdom",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "fab3b37ac108f655",
+        "outputHash": "5f469c4ef91d46c4790b91975ab22d1152df74d05029bde366e2c6dfdda26afd",
+        "generatedAt": "2026-02-13T13:28:47.552Z",
+        "generationTimeMs": 7621,
+        "fileSizeBytes": 523,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-KN-01",
+      "name": "Oath Strike",
+      "category": "database-skills",
+      "filename": "knight/oath-strike.ts",
+      "targetPath": "main/database/skills/knight/oath-strike.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Oath Strike\" (ID: SK-KN-01).\n\nProperties:\n- Class: knight\n- Unlock level: 1\n- SP cost: 0\n- Target type: SE\n- Element: neutral\n- Passive: false\n- Formula: floor((ATK * 1.2 * (1 + 0.05 * active_oaths) - targetDEF * 0.8) * variance * elementMod)\n- Description: Basic attack scaling with active oaths.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-KN-01: Oath Strike",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "6c90a700d2c43b40",
+        "outputHash": "1d8157de900c0920b46924df1e1e4075ade244994bdc72f0b47a41ce8f36eaac",
+        "generatedAt": "2026-02-13T13:28:53.798Z",
+        "generationTimeMs": 4242,
+        "fileSizeBytes": 417,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-KN-02",
+      "name": "Guardian's Shield",
+      "category": "database-skills",
+      "filename": "knight/guardian-s-shield.ts",
+      "targetPath": "main/database/skills/knight/guardian-s-shield.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Guardian's Shield\" (ID: SK-KN-02).\n\nProperties:\n- Class: knight\n- Unlock level: 3\n- SP cost: 8\n- Target type: SA\n- Element: none\n- Passive: false\n- Formula: Redirect 50% ST damage from ally to Knight. 1 turn.\n- Description: Tank skill redirecting damage from an ally.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-KN-02: Guardian's Shield",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "b000f9a8d6b3ba60",
+        "outputHash": "45d83228e2c5e67eeade57f530b6f1b75d24675ffebb716eefbe680aababb8ba",
+        "generatedAt": "2026-02-13T13:29:05.747Z",
+        "generationTimeMs": 9945,
+        "fileSizeBytes": 663,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-KN-03",
+      "name": "Vow of Steel",
+      "category": "database-skills",
+      "filename": "knight/vow-of-steel.ts",
+      "targetPath": "main/database/skills/knight/vow-of-steel.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Vow of Steel\" (ID: SK-KN-03).\n\nProperties:\n- Class: knight\n- Unlock level: 6\n- SP cost: 12\n- Target type: S\n- Element: none\n- Passive: false\n- Formula: Self DEF +40% for 3 turns. Cannot flee.\n- Description: Defensive stance with DEF boost. Disables flee.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-KN-03: Vow of Steel",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "5cc7120ab366ba79",
+        "outputHash": "c74c44c54fcb3bfeb96a2573d83d4124a8bb5d0e52f5394f08f22a5dd26f9df6",
+        "generatedAt": "2026-02-13T13:29:19.296Z",
+        "generationTimeMs": 11546,
+        "fileSizeBytes": 583,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-KN-04",
+      "name": "Remembered Valor",
+      "category": "database-skills",
+      "filename": "knight/remembered-valor.ts",
+      "targetPath": "main/database/skills/knight/remembered-valor.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Remembered Valor\" (ID: SK-KN-04).\n\nProperties:\n- Class: knight\n- Unlock level: 10\n- SP cost: 18\n- Target type: AA\n- Element: none\n- Passive: false\n- Formula: All allies ATK +20% 3 turns. 3+ oaths: also DEF +10%.\n- Description: Party ATK buff with conditional DEF from oaths.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-KN-04: Remembered Valor",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "0722045035bbd884",
+        "outputHash": "a8990af04f747da80cdff9c9b8d544707781b5d1ce8e830c985cf91e1adb6f99",
+        "generatedAt": "2026-02-13T13:29:26.438Z",
+        "generationTimeMs": 5139,
+        "fileSizeBytes": 341,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-KN-05",
+      "name": "Oathbreaker's Gambit",
+      "category": "database-skills",
+      "filename": "knight/oathbreaker-s-gambit.ts",
+      "targetPath": "main/database/skills/knight/oathbreaker-s-gambit.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Oathbreaker's Gambit\" (ID: SK-KN-05).\n\nProperties:\n- Class: knight\n- Unlock level: 15\n- SP cost: 25\n- Target type: SE\n- Element: neutral\n- Passive: false\n- Formula: floor((ATK * 3.0 - targetDEF * 0.8) * variance * elementMod)\n- Description: Sacrifice one oath for devastating ST strike.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-KN-05: Oathbreaker's Gambit",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "6c20821c956c3382",
+        "outputHash": "78285db021bde86893a5e1cd15bfa4c84cb8b82559951baae0c9a342c30110d0",
+        "generatedAt": "2026-02-13T13:29:31.891Z",
+        "generationTimeMs": 3448,
+        "fileSizeBytes": 399,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-KN-06",
+      "name": "Steadfast Wall",
+      "category": "database-skills",
+      "filename": "knight/steadfast-wall.ts",
+      "targetPath": "main/database/skills/knight/steadfast-wall.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Steadfast Wall\" (ID: SK-KN-06).\n\nProperties:\n- Class: knight\n- Unlock level: 20\n- SP cost: 30\n- Target type: S\n- Element: none\n- Passive: false\n- Formula: Absorb all ST physical for allies 1 turn. 70% damage to Knight.\n- Description: Party-wide physical absorption for 1 turn.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-KN-06: Steadfast Wall",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "bb9c90ab9ac656a4",
+        "outputHash": "dc53a13670dc96167f4b2abab37435cf23f066383babea22e1c434851832b6f1",
+        "generatedAt": "2026-02-13T13:29:42.915Z",
+        "generationTimeMs": 9020,
+        "fileSizeBytes": 633,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-KN-07",
+      "name": "Unbroken Promise",
+      "category": "database-skills",
+      "filename": "knight/unbroken-promise.ts",
+      "targetPath": "main/database/skills/knight/unbroken-promise.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Unbroken Promise\" (ID: SK-KN-07).\n\nProperties:\n- Class: knight\n- Unlock level: 25\n- SP cost: 40\n- Target type: A\n- Element: none\n- Passive: false\n- Formula: Auto below 20% HP: heal 35% max HP, ATK +30% 2 turns. Once/battle.\n- Description: Last stand auto-heal with ATK boost.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-KN-07: Unbroken Promise",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "e8ca67ade3d33fe4",
+        "outputHash": "045d1adfa99170c4db503e78aeb5f51165d51dc5da9447268aead450a3050dad",
+        "generatedAt": "2026-02-13T13:29:51.447Z",
+        "generationTimeMs": 6529,
+        "fileSizeBytes": 566,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-KN-L1",
+      "name": "Beacon of Oaths",
+      "category": "database-skills",
+      "filename": "knight/beacon-of-oaths.ts",
+      "targetPath": "main/database/skills/knight/subclass/beacon-of-oaths.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Beacon of Oaths\" (ID: SK-KN-L1).\n\nProperties:\n- Class: knight\n- Unlock level: 1\n- SP cost: 0\n- Target type: AA\n- Element: none\n- Passive: true\n- Formula: Passive: allies +10% DEF. 3+ oaths: +20% DEF.\n- Description: Passive party DEF aura scaling with oath count.\n- Subclass path: luminary\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-KN-L1: Beacon of Oaths (Passive)",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "e1de7f7e3a71b4da",
+        "outputHash": "a66f020e99540346039c7624ab726fbc5e2b2633cbd34f2c1496eca8ffa2f4e6",
+        "generatedAt": "2026-02-13T13:30:00.564Z",
+        "generationTimeMs": 7113,
+        "fileSizeBytes": 430,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-KN-L2",
+      "name": "Shared Valor",
+      "category": "database-skills",
+      "filename": "knight/shared-valor.ts",
+      "targetPath": "main/database/skills/knight/subclass/shared-valor.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Shared Valor\" (ID: SK-KN-L2).\n\nProperties:\n- Class: knight\n- Unlock level: 1\n- SP cost: 22\n- Target type: AA\n- Element: none\n- Passive: false\n- Formula: All allies ATK +20%, DEF +15% 3 turns. One ally gets oath bonus.\n- Description: Upgraded Remembered Valor with DEF buff and oath sharing.\n- Subclass path: luminary\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-KN-L2: Shared Valor",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "b8d0f3c565b5ebfb",
+        "outputHash": "5ed1343e07d46d9459f293ba588cd05ff6ccab34ed8f9633682c738d3572eb63",
+        "generatedAt": "2026-02-13T13:30:08.451Z",
+        "generationTimeMs": 5884,
+        "fileSizeBytes": 716,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-KN-C1",
+      "name": "Wrathful Oath",
+      "category": "database-skills",
+      "filename": "knight/wrathful-oath.ts",
+      "targetPath": "main/database/skills/knight/subclass/wrathful-oath.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Wrathful Oath\" (ID: SK-KN-C1).\n\nProperties:\n- Class: knight\n- Unlock level: 1\n- SP cost: 0\n- Target type: S\n- Element: none\n- Passive: true\n- Formula: Passive: Each fulfilled oath grants +3% ATK (stacking).\n- Description: Converts fulfilled oaths into permanent ATK.\n- Subclass path: crucible\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-KN-C1: Wrathful Oath (Passive)",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "d597ce70efcb7b2a",
+        "outputHash": "67c8efcf554fb78069e89441e7f5628bc62b25d07ad53a644b4906962094f293",
+        "generatedAt": "2026-02-13T13:30:19.303Z",
+        "generationTimeMs": 8848,
+        "fileSizeBytes": 333,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-KN-C2",
+      "name": "Oathbreaker's Fury",
+      "category": "database-skills",
+      "filename": "knight/oathbreaker-s-fury.ts",
+      "targetPath": "main/database/skills/knight/subclass/oathbreaker-s-fury.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Oathbreaker's Fury\" (ID: SK-KN-C2).\n\nProperties:\n- Class: knight\n- Unlock level: 1\n- SP cost: 35\n- Target type: AE\n- Element: neutral\n- Passive: false\n- Formula: floor((ATK * 2.5 - targetDEF * 0.8) * variance * elementMod) AoE\n- Description: AoE Oathbreaker's Gambit. Sacrifices one oath.\n- Subclass path: crucible\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-KN-C2: Oathbreaker's Fury",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "1938e2236b4bc089",
+        "outputHash": "afcaff81f531a77ff9f9a5789e13157a18e46e93dea3dede4dafb961640b626b",
+        "generatedAt": "2026-02-13T13:30:26.773Z",
+        "generationTimeMs": 5466,
+        "fileSizeBytes": 418,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-MG-01",
+      "name": "Elemental Bolt",
+      "category": "database-skills",
+      "filename": "mage/elemental-bolt.ts",
+      "targetPath": "main/database/skills/mage/elemental-bolt.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Elemental Bolt\" (ID: SK-MG-01).\n\nProperties:\n- Class: mage\n- Unlock level: 1\n- SP cost: 5\n- Target type: SE\n- Element: player-chosen\n- Passive: false\n- Formula: floor((INT * 1.8 - targetDEF * 0.4) * variance * elementMod)\n- Description: ST spell with player-chosen element.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-MG-01: Elemental Bolt",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "03679f6562bf6dc9",
+        "outputHash": "640d1b0cc50a2d421a903307a5d5099c551c36c81bbf164f1c078eaa506d61a5",
+        "generatedAt": "2026-02-13T13:30:46.029Z",
+        "generationTimeMs": 17252,
+        "fileSizeBytes": 334,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-MG-02",
+      "name": "Memory Wave",
+      "category": "database-skills",
+      "filename": "mage/memory-wave.ts",
+      "targetPath": "main/database/skills/mage/memory-wave.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Memory Wave\" (ID: SK-MG-02).\n\nProperties:\n- Class: mage\n- Unlock level: 4\n- SP cost: 10\n- Target type: AE\n- Element: last-collected\n- Passive: false\n- Formula: floor((INT * 1.2 - targetDEF * 0.4) * variance * elementMod) per target\n- Description: AoE using last fragment's element.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-MG-02: Memory Wave",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "bb25550c0a0d7498",
+        "outputHash": "6660f7d15bb0b2d26779d3d0af110fec1b7588d92a0cc454972ba63a46857a7e",
+        "generatedAt": "2026-02-13T13:30:52.378Z",
+        "generationTimeMs": 4343,
+        "fileSizeBytes": 339,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-MG-03",
+      "name": "Inspired Shield",
+      "category": "database-skills",
+      "filename": "mage/inspired-shield.ts",
+      "targetPath": "main/database/skills/mage/inspired-shield.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Inspired Shield\" (ID: SK-MG-03).\n\nProperties:\n- Class: mage\n- Unlock level: 8\n- SP cost: 12\n- Target type: S\n- Element: adaptive\n- Passive: false\n- Formula: Shield INT*0.6. 2 turns. Adapts element resistance.\n- Description: Self-barrier with adaptive element resistance.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-MG-03: Inspired Shield",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "ff7c3db4e34f73c6",
+        "outputHash": "11036695cdf823666115a7f0168e2c1c7f343e26ef7db53cfb41756e2d9a11d9",
+        "generatedAt": "2026-02-13T13:30:57.601Z",
+        "generationTimeMs": 3218,
+        "fileSizeBytes": 580,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-MG-04",
+      "name": "Eureka Moment",
+      "category": "database-skills",
+      "filename": "mage/eureka-moment.ts",
+      "targetPath": "main/database/skills/mage/eureka-moment.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Eureka Moment\" (ID: SK-MG-04).\n\nProperties:\n- Class: mage\n- Unlock level: 12\n- SP cost: 18\n- Target type: SE\n- Element: random\n- Passive: false\n- Formula: floor((INT * 2.5 - targetDEF * 0.4) * variance * elementMod). 30% weakness bonus.\n- Description: High-damage random-element spell.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-MG-04: Eureka Moment",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "3068884b16180fb3",
+        "outputHash": "c8ae05453f69ca16e74b806a18930f60bc33a17078c93d13a8827f37b05ae297",
+        "generatedAt": "2026-02-13T13:31:06.130Z",
+        "generationTimeMs": 6526,
+        "fileSizeBytes": 488,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-MG-05",
+      "name": "Elemental Storm",
+      "category": "database-skills",
+      "filename": "mage/elemental-storm.ts",
+      "targetPath": "main/database/skills/mage/elemental-storm.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Elemental Storm\" (ID: SK-MG-05).\n\nProperties:\n- Class: mage\n- Unlock level: 16\n- SP cost: 24\n- Target type: AE\n- Element: player-chosen\n- Passive: false\n- Formula: floor((INT * 1.5 - targetDEF * 0.4) * variance * elementMod). Weakness: 2.0x.\n- Description: Powerful AoE with element selection.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-MG-05: Elemental Storm",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "2ed77e8626c031dc",
+        "outputHash": "c67fdb5acd6d9e8b15bb8226c240dfbb1a7b9656a7b2ae3f7b2fbe44f8dd38f6",
+        "generatedAt": "2026-02-13T13:31:12.785Z",
+        "generationTimeMs": 4650,
+        "fileSizeBytes": 382,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-MG-06",
+      "name": "Arcane Barrier",
+      "category": "database-skills",
+      "filename": "mage/arcane-barrier.ts",
+      "targetPath": "main/database/skills/mage/arcane-barrier.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Arcane Barrier\" (ID: SK-MG-06).\n\nProperties:\n- Class: mage\n- Unlock level: 21\n- SP cost: 20\n- Target type: AA\n- Element: none\n- Passive: false\n- Formula: Each ally shield INT*0.5. 2 turns.\n- Description: Party-wide magic shield.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-MG-06: Arcane Barrier",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "064fc8dfdd20665e",
+        "outputHash": "f3f5ef13032b202c9a22e753016a3d7d64abe7cd9df9722c150829f805aa7df7",
+        "generatedAt": "2026-02-13T13:31:20.334Z",
+        "generationTimeMs": 5545,
+        "fileSizeBytes": 439,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-MG-07",
+      "name": "Grand Inspiration",
+      "category": "database-skills",
+      "filename": "mage/grand-inspiration.ts",
+      "targetPath": "main/database/skills/mage/grand-inspiration.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Grand Inspiration\" (ID: SK-MG-07).\n\nProperties:\n- Class: mage\n- Unlock level: 26\n- SP cost: 55\n- Target type: AE\n- Element: dual-chosen\n- Passive: false\n- Formula: floor((INT * 3.0 - targetDEF * 0.4) * variance * elementMod) AoE. Dual weakness.\n- Description: Ultimate: dual-element AoE.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-MG-07: Grand Inspiration",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "d7aab43beaedf499",
+        "outputHash": "4e8852c26ef610c3a2b1d9db0ef5d578b0b7d21c8f708d6e54ce58c874d7ead1",
+        "generatedAt": "2026-02-13T13:31:39.585Z",
+        "generationTimeMs": 17247,
+        "fileSizeBytes": 425,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-MG-L1",
+      "name": "Chromatic Mastery",
+      "category": "database-skills",
+      "filename": "mage/chromatic-mastery.ts",
+      "targetPath": "main/database/skills/mage/subclass/chromatic-mastery.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Chromatic Mastery\" (ID: SK-MG-L1).\n\nProperties:\n- Class: mage\n- Unlock level: 1\n- SP cost: 0\n- Target type: S\n- Element: none\n- Passive: true\n- Formula: Passive: Memory Wave element becomes player-chosen. Weakness 1.75x.\n- Description: Removes Memory Wave randomness.\n- Subclass path: luminary\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-MG-L1: Chromatic Mastery (Passive)",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "0186b041e5726211",
+        "outputHash": "df304ad5483c0c65eaa4d0c7ddae40c0a54abee16a344096eb3627f8bd1ff34c",
+        "generatedAt": "2026-02-13T13:31:47.675Z",
+        "generationTimeMs": 6087,
+        "fileSizeBytes": 611,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-MG-L2",
+      "name": "Spectrum Shield",
+      "category": "database-skills",
+      "filename": "mage/spectrum-shield.ts",
+      "targetPath": "main/database/skills/mage/subclass/spectrum-shield.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Spectrum Shield\" (ID: SK-MG-L2).\n\nProperties:\n- Class: mage\n- Unlock level: 1\n- SP cost: 20\n- Target type: SA\n- Element: adaptive\n- Passive: false\n- Formula: Shield INT*1.0 one ally. Universal 50% element resist. 2 turns.\n- Description: Strong ST shield with universal resistance.\n- Subclass path: luminary\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-MG-L2: Spectrum Shield",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "72f1d3022256c221",
+        "outputHash": "ec779f1c0dbc1c30db4cda5f81b80206539f91498acc86f330bb30db17eab775",
+        "generatedAt": "2026-02-13T13:31:53.464Z",
+        "generationTimeMs": 3786,
+        "fileSizeBytes": 568,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-MG-C1",
+      "name": "Volatile Inspiration",
+      "category": "database-skills",
+      "filename": "mage/volatile-inspiration.ts",
+      "targetPath": "main/database/skills/mage/subclass/volatile-inspiration.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Volatile Inspiration\" (ID: SK-MG-C1).\n\nProperties:\n- Class: mage\n- Unlock level: 1\n- SP cost: 0\n- Target type: S\n- Element: none\n- Passive: true\n- Formula: Passive: Eureka always hits weakness. No weakness: +20%.\n- Description: Makes Eureka Moment a precision strike.\n- Subclass path: crucible\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-MG-C1: Volatile Inspiration (Passive)",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "8613ec3964f350ad",
+        "outputHash": "5a6a253483c183c457affd77f609427d2b1b998fdc9dbc88aa7686755066e478",
+        "generatedAt": "2026-02-13T13:31:58.454Z",
+        "generationTimeMs": 2987,
+        "fileSizeBytes": 655,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-MG-C2",
+      "name": "Annihilation",
+      "category": "database-skills",
+      "filename": "mage/annihilation.ts",
+      "targetPath": "main/database/skills/mage/subclass/annihilation.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Annihilation\" (ID: SK-MG-C2).\n\nProperties:\n- Class: mage\n- Unlock level: 1\n- SP cost: 60\n- Target type: SE\n- Element: neutral\n- Passive: false\n- Formula: floor(INT * 4.0) ignores DEF. 15% self-recoil.\n- Description: Highest ST damage. DEF-ignoring with recoil.\n- Subclass path: crucible\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-MG-C2: Annihilation",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "f8fee96f23087055",
+        "outputHash": "252cb1fab424ea1d244bc65eea222ad762b60129db1c00e207c99b968527b691",
+        "generatedAt": "2026-02-13T13:32:05.700Z",
+        "generationTimeMs": 5242,
+        "fileSizeBytes": 347,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-RG-01",
+      "name": "Foreshadow Strike",
+      "category": "database-skills",
+      "filename": "rogue/foreshadow-strike.ts",
+      "targetPath": "main/database/skills/rogue/foreshadow-strike.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Foreshadow Strike\" (ID: SK-RG-01).\n\nProperties:\n- Class: rogue\n- Unlock level: 1\n- SP cost: 0\n- Target type: SE\n- Element: neutral\n- Passive: false\n- Formula: Pre-enemy: ATK*1.8. Post-enemy: ATK*1.3. Minus targetDEF*0.8.\n- Description: Basic attack with speed bonus damage.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-RG-01: Foreshadow Strike",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "6830c74f18cdbceb",
+        "outputHash": "1ddf272c76e7b6ad1ebe3218434fd949faa1c6560970755440b2a41712834e08",
+        "generatedAt": "2026-02-13T13:32:15.118Z",
+        "generationTimeMs": 7414,
+        "fileSizeBytes": 538,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-RG-02",
+      "name": "Echo Dodge",
+      "category": "database-skills",
+      "filename": "rogue/echo-dodge.ts",
+      "targetPath": "main/database/skills/rogue/echo-dodge.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Echo Dodge\" (ID: SK-RG-02).\n\nProperties:\n- Class: rogue\n- Unlock level: 3\n- SP cost: 0\n- Target type: S\n- Element: none\n- Passive: true\n- Formula: Passive: evasion = min(0.60, 0.15 + 0.02 * (level-1)) + memory_bonus\n- Description: Passive evasion scaling with level. Cap 60%.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-RG-02: Echo Dodge (Passive)",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "e11754d4d9d6588b",
+        "outputHash": "d5295c876002e855bd056b3f3efc7d6681a57cc75e209619e7b81c7944487ad5",
+        "generatedAt": "2026-02-13T13:32:28.225Z",
+        "generationTimeMs": 11105,
+        "fileSizeBytes": 542,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-RG-03",
+      "name": "Shadow Step",
+      "category": "database-skills",
+      "filename": "rogue/shadow-step.ts",
+      "targetPath": "main/database/skills/rogue/shadow-step.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Shadow Step\" (ID: SK-RG-03).\n\nProperties:\n- Class: rogue\n- Unlock level: 6\n- SP cost: 10\n- Target type: SE\n- Element: none\n- Passive: false\n- Formula: No damage. Next attack guaranteed hit +25% bonus.\n- Description: Setup skill for guaranteed next hit.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-RG-03: Shadow Step",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "50c119537cfbb505",
+        "outputHash": "2be261087cecce311ce61b90f7524f7955cb8e2af8f72792e51c3deadee7cce5",
+        "generatedAt": "2026-02-13T13:32:36.247Z",
+        "generationTimeMs": 6017,
+        "fileSizeBytes": 426,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-RG-04",
+      "name": "Memory Theft",
+      "category": "database-skills",
+      "filename": "rogue/memory-theft.ts",
+      "targetPath": "main/database/skills/rogue/memory-theft.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Memory Theft\" (ID: SK-RG-04).\n\nProperties:\n- Class: rogue\n- Unlock level: 10\n- SP cost: 14\n- Target type: SE\n- Element: neutral\n- Passive: false\n- Formula: ATK*1.0 + steal enemy highest stat -10% 3 turns. Rogue +10%.\n- Description: Damage plus stat theft. Bosses: 5%.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-RG-04: Memory Theft",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "8fed5103d2350055",
+        "outputHash": "f75cd4ec7e21f3e0043e0d8c15e8bd9aef332288a3d15a77da2dd999ddfb8f4f",
+        "generatedAt": "2026-02-13T13:32:48.296Z",
+        "generationTimeMs": 10046,
+        "fileSizeBytes": 607,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-RG-05",
+      "name": "Phantom Flurry",
+      "category": "database-skills",
+      "filename": "rogue/phantom-flurry.ts",
+      "targetPath": "main/database/skills/rogue/phantom-flurry.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Phantom Flurry\" (ID: SK-RG-05).\n\nProperties:\n- Class: rogue\n- Unlock level: 15\n- SP cost: 20\n- Target type: SE\n- Element: neutral\n- Passive: false\n- Formula: 3x ATK*0.6 hits. All connect: Weakness (-30% DEF 2 turns).\n- Description: Multi-hit with Weakness debuff.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-RG-05: Phantom Flurry",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "0b126266a061a0c1",
+        "outputHash": "01d50c00a32c933304d6543d7793961bcfa03426af23fa215e7ae0d34bd06d2f",
+        "generatedAt": "2026-02-13T13:32:58.946Z",
+        "generationTimeMs": 8647,
+        "fileSizeBytes": 537,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-RG-06",
+      "name": "Vanishing Act",
+      "category": "database-skills",
+      "filename": "rogue/vanishing-act.ts",
+      "targetPath": "main/database/skills/rogue/vanishing-act.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Vanishing Act\" (ID: SK-RG-06).\n\nProperties:\n- Class: rogue\n- Unlock level: 20\n- SP cost: 22\n- Target type: S\n- Element: none\n- Passive: false\n- Formula: Invisible 2 turns. Immune ST. Next attack 2.0x. AoE still hits.\n- Description: Stealth with double-damage break.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-RG-06: Vanishing Act",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "a7d8b418de437a4a",
+        "outputHash": "4d29fc3b6b727881c40442eadd82dad30f69fc6c0a4c7fac6befb63fa94f2194",
+        "generatedAt": "2026-02-13T13:33:08.161Z",
+        "generationTimeMs": 7212,
+        "fileSizeBytes": 431,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-RG-07",
+      "name": "Temporal Ambush",
+      "category": "database-skills",
+      "filename": "rogue/temporal-ambush.ts",
+      "targetPath": "main/database/skills/rogue/temporal-ambush.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Temporal Ambush\" (ID: SK-RG-07).\n\nProperties:\n- Class: rogue\n- Unlock level: 26\n- SP cost: 45\n- Target type: S\n- Element: none\n- Passive: false\n- Formula: Act twice this turn. Both consume SP independently.\n- Description: Ultimate: two actions in one turn.\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-RG-07: Temporal Ambush",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "d774f045ac7ec8ea",
+        "outputHash": "7f74dedffa5783c04176afd74efdb269fdbe4420acd49eefe3568c108dec5f85",
+        "generatedAt": "2026-02-13T13:33:14.812Z",
+        "generationTimeMs": 4649,
+        "fileSizeBytes": 393,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-RG-L1",
+      "name": "Shared Foresight",
+      "category": "database-skills",
+      "filename": "rogue/shared-foresight.ts",
+      "targetPath": "main/database/skills/rogue/subclass/shared-foresight.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Shared Foresight\" (ID: SK-RG-L1).\n\nProperties:\n- Class: rogue\n- Unlock level: 1\n- SP cost: 0\n- Target type: AA\n- Element: none\n- Passive: true\n- Formula: Passive: Echo Dodge applies to allies at half rate. Max party 30%.\n- Description: Shares evasion with party at half rate.\n- Subclass path: luminary\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-RG-L1: Shared Foresight (Passive)",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "b66365ed40291104",
+        "outputHash": "93385189a684dd5e7b4862a45f46efc67dea34f1583a7908df5d914b510c748f",
+        "generatedAt": "2026-02-13T13:33:24.132Z",
+        "generationTimeMs": 7316,
+        "fileSizeBytes": 719,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-RG-L2",
+      "name": "Memory Link",
+      "category": "database-skills",
+      "filename": "rogue/memory-link.ts",
+      "targetPath": "main/database/skills/rogue/subclass/memory-link.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Memory Link\" (ID: SK-RG-L2).\n\nProperties:\n- Class: rogue\n- Unlock level: 1\n- SP cost: 18\n- Target type: S\n- Element: neutral\n- Passive: false\n- Formula: 3 turns: each dodge triggers counter ATK*0.8.\n- Description: Turns evasion into counter-attacks.\n- Subclass path: luminary\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-RG-L2: Memory Link",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "353a25741352f9b2",
+        "outputHash": "3fdaab94812a0c480ffc62d3004fdba68e4cf01669c909c82219aecd023fb963",
+        "generatedAt": "2026-02-13T13:33:34.172Z",
+        "generationTimeMs": 8036,
+        "fileSizeBytes": 571,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-RG-C1",
+      "name": "Time Scar",
+      "category": "database-skills",
+      "filename": "rogue/time-scar.ts",
+      "targetPath": "main/database/skills/rogue/subclass/time-scar.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Time Scar\" (ID: SK-RG-C1).\n\nProperties:\n- Class: rogue\n- Unlock level: 1\n- SP cost: 0\n- Target type: S\n- Element: none\n- Passive: true\n- Formula: Passive: Foreshadow pre-enemy 2.2x. Enemies AGI -15% 2 turns.\n- Description: Amplifies Foreshadow Strike with AGI debuff.\n- Subclass path: crucible\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-RG-C1: Time Scar (Passive)",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "bd726fb1ff096d51",
+        "outputHash": "13f490660bf5f8031c1ed7a837494fd0db29bbf1ad9728d6cf34fdb3ca689794",
+        "generatedAt": "2026-02-13T13:33:44.058Z",
+        "generationTimeMs": 7884,
+        "fileSizeBytes": 592,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "SK-RG-C2",
+      "name": "Infinite Ambush",
+      "category": "database-skills",
+      "filename": "rogue/infinite-ambush.ts",
+      "targetPath": "main/database/skills/rogue/subclass/infinite-ambush.ts",
+      "prompt": "Generate an RPG-JS skill file for \"Infinite Ambush\" (ID: SK-RG-C2).\n\nProperties:\n- Class: rogue\n- Unlock level: 1\n- SP cost: 55\n- Target type: S\n- Element: none\n- Passive: false\n- Formula: Act THREE times. Same-target third action +50% bonus.\n- Description: Upgraded Temporal Ambush with three actions.\n- Subclass path: crucible\n\nUse the @Skill decorator from '@rpgjs/database'.\nSet id, name, description, spCost, power, hitRate, and coefficient.\nUse coefficient to indicate which stat scales the skill (e.g. { str: 1 } for physical, { int: 1 } for magical).\nDo NOT use: target, type, elementId, unlockLevel, passive, scope, SkillTarget, or SkillType — none of these exist.\nInclude the damage formula as a comment in the class body.\nOnly import { Skill } from '@rpgjs/database'. No other named imports.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/skills-catalog.md",
+          "heading": "SK-RG-C2: Infinite Ambush",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/combat.md",
+          "heading": "Damage Formula",
+          "purpose": "constraints"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "2a037974ca3279d3",
+        "outputHash": "4426a3e755a4edbb14e310de04d29ffc4a9f37ea04c7e819bac0465a03a8f843",
+        "generatedAt": "2026-02-13T13:33:53.427Z",
+        "generationTimeMs": 7365,
+        "fileSizeBytes": 712,
+        "model": "gemini-2.5-flash"
+      }
+    }
+  ]
+}
