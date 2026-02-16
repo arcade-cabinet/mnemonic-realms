@@ -1,461 +1,779 @@
 {
-  "name": "Mnemonic Realms — Tileset & TMX Complete Rework",
-  "description": "Regenerate all tilesets with Gemini Pro (no text artifacts), write authoritative tile catalog, and rewrite all 20 TMX maps with correct tile placement per overworld-layout.md. PBR reference: docs/pbr-tileset-tmx-quality.md",
-  "branchName": "ralph/tileset-tmx-rework",
+  "name": "Mnemonic Realms — Backterria Tileset & TMX Map Rework",
+  "description": "Replace all AI-generated tilesets and TMX maps with properly designed maps built from purchased Backterria CC0 asset packs (4,500+ tiles). Upscale 16px source tiles to 32px, create tile catalogs, build proper TSX definitions, and hand-design every TMX map aligned to bible specs. Kenney packs supplement ONLY for genuine gaps (Sketch biome, cliff edges). Asset catalog: assets/tilesets/backterria/CATALOG.md. Plan doc: tasks/ralph-plan-tileset-tmx-rework.md",
+  "branchName": "ralph/cc0-tileset-tmx-rework",
   "userStories": [
     {
       "id": "US-001",
-      "title": "Fix tileset builder prompts to prevent text artifacts",
-      "description": "As a developer, I need the tileset generation prompts fixed so regenerated tilesets don't have text labels burned into tile images.",
+      "title": "Build Backterria tileset upscale script (16px to 32px)",
+      "description": "As a developer, I need a build script that upscales all Backterria 16px tilesheets to 32px using nearest-neighbor so they match the existing TMX grid size.",
       "acceptanceCriteria": [
-        "gen/builders/tilesets.ts modified: all tile ID labels (VIL-GR-01, FOR-DE-03, etc.) removed from user prompts",
-        "Negative prompt added: 'No text, no letters, no labels, no words, no numbers, no watermarks' included in every tileset generation prompt",
-        "Prompt structure simplified: describe tile categories in bulk (e.g., 'Row 1-2: 16 ground tiles') instead of per-tile with IDs",
-        "Autotile rows 4-9 explicitly instructed as 'LEAVE EMPTY (transparent background)'",
-        "gen/generators/model-config.ts updated: CATEGORY_MODELS.tilesets changed from MODELS.gemini to MODELS.geminiPro",
-        "pnpm lint passes"
+        "Create gen/scripts/upscale-tilesets.ts",
+        "Script reads all PNG tilesheets from assets/tilesets/backterria/ (Overworld, Natural Tileset, Plants, Interiors, Signs 16, Items, Symbols)",
+        "2x nearest-neighbor upscale via sharp for all 16px tilesheets (sharp.resize with kernel: 'nearest')",
+        "Copy Signs 32 as-is to output (already at 32px)",
+        "Pack 101 Backterria Natural Props (from assets/tilesets/backterria/natural/Props/) into a single composite tilesheet (16 columns wide, grouped by type: bushes, flowers, plants, trees, rocks, fences, structures, crops) then upscale to 32px. Note: many props are already 32x32 — these go directly into the composite without upscaling",
+        "Also process post-apocalyptic tilesheets (Road Tiles, Building Tiles, Pavement Tiles) to 32px",
+        "Output to assets/tilesets/32px/ with descriptive names: backterria-overworld.png, backterria-natural.png, backterria-plants.png, backterria-interiors.png, backterria-items.png, backterria-signs.png, backterria-symbols.png, backterria-natural-props.png, backterria-postapoc-roads.png, backterria-postapoc-buildings.png, backterria-postapoc-pavement.png",
+        "Script is idempotent: re-running produces identical output",
+        "Add pnpm tileset:build script to package.json",
+        "pnpm tileset:build runs without errors",
+        "Output 32px PNGs are crisp with no interpolation blur",
+        "pnpm build passes"
       ],
       "priority": 1,
       "passes": false,
-      "notes": "CRITICAL GATE — nothing else can proceed until prompts are fixed. Read gen/builders/tilesets.ts, gen/generators/model-config.ts, and docs/design/tileset-spec.md for context. The tileset-spec.md defines the intended row layout: Ground (rows 1-2), Path (row 3), Autotile (rows 4-9), Decoration (rows 10-11), Obstacle (row 12), Animated (rows 13-14).",
+      "notes": "Use sharp library (already a project dependency). Nearest-neighbor = sharp.resize({ kernel: 'nearest' }). Key dimensions: Overworld 464x256 (29x16@16px → 928x512@32px), Natural 352x416 (22x26 → 704x832), Plants 320x608 (20x38 → 640x1216), Interiors 640x945 (→ 1280x1890). Natural Props at 32x32 are already 1 tile at 32px — don't upscale these, just pack them. Trees 05-08 at 64x64 are already 2x2 tiles at 32px. House/Tower at 64x95 are multi-tile at 32px scale. See CATALOG.md for full inventory.",
       "dependsOn": []
     },
     {
       "id": "US-002",
-      "title": "Regenerate Village tilesets (3 tiers) with visual QC",
-      "description": "As a developer, I need clean village tilesets regenerated with Gemini Pro so the starting map has usable tile art.",
+      "title": "Build vibrancy tier generator (muted/vivid variants)",
+      "description": "As a developer, I need automated muted and vivid variants of each Backterria tileset so the vibrancy system has 3 visual tiers without hand-drawing 27 separate tileset images.",
       "acceptanceCriteria": [
-        "Run: doppler run --project gha --config ci -- pnpm gen generate tilesets --force --filter village",
-        "Visually inspect each PNG (tiles_village_muted.png, tiles_village_normal.png, tiles_village_vivid.png) by reading them",
-        "No text or labels visible on any tile",
-        "Ground tiles (rows 1-2) look like cobblestone and grass variants",
-        "Path tiles (row 3) are recognizable as paths/roads",
-        "Rows 4-9 are empty/transparent",
-        "Decoration tiles (rows 10-11) show village objects: benches, barrels, lanterns, flower pots, wells",
-        "Obstacle tiles (row 12) show walls, roofs, fences, trees, doors",
-        "If QC fails on ANY check, adjust the prompt in gen/builders/tilesets.ts and regenerate until it passes"
+        "Extend gen/scripts/upscale-tilesets.ts to produce 3 variants per source",
+        "Normal: the base 32px upscaled image unchanged",
+        "Muted: saturation reduced by 40%, brightness reduced by 15% via sharp.modulate({ saturation: 0.6, brightness: 0.85 })",
+        "Vivid: saturation increased by 30%, brightness increased by 10% via sharp.modulate({ saturation: 1.3, brightness: 1.1 })",
+        "Output naming: {name}_normal.png, {name}_muted.png, {name}_vivid.png in assets/tilesets/32px/",
+        "All 3 variants have identical tile positions (same GID mapping)",
+        "Visual difference between tiers is clearly distinguishable when viewed side-by-side",
+        "pnpm tileset:build produces all 3 variants for every Backterria source sheet",
+        "pnpm build passes"
       ],
       "priority": 2,
       "passes": false,
-      "notes": "After generation, read each PNG file to visually verify. This is the most important tileset — it's the starting map. Iterate on prompts if needed.",
-      "dependsOn": [
-        "US-001"
-      ]
+      "notes": "This gives us 3 vibrancy tiers from 1 source with zero manual art work. Apply modulate() to the already-upscaled 32px images. The vibrancy system (main/server/systems/vibrancy.ts) uses per-zone scores 0-100 with 3 tiers: muted (0-33), normal (34-66), vivid (67-100). Runtime tile-swap will be a future story — for now just generate the variant PNGs.",
+      "dependsOn": ["US-001"]
     },
     {
       "id": "US-003",
-      "title": "Regenerate Forest tilesets (3 tiers) with visual QC",
-      "description": "As a developer, I need clean forest tilesets for Ambergrove and Flickerveil maps.",
+      "title": "Tile catalog: document all Backterria tilesheet GID mappings",
+      "description": "As a developer, I need a documented catalog of which tile GIDs in each upscaled Backterria sheet correspond to which game elements, so maps can be designed with correct tile references.",
       "acceptanceCriteria": [
-        "Run: doppler run --project gha --config ci -- pnpm gen generate tilesets --force --filter forest",
-        "Visually inspect all 3 PNGs by reading them",
-        "No text or labels visible",
-        "Ground tiles show forest floor, leaf litter, moss variants",
-        "Trees: deciduous and conifer variants visible in decoration/obstacle rows",
-        "Water/pond tiles present",
-        "Rows 4-9 empty/transparent"
+        "Create assets/tilesets/catalog/backterria-overworld.md — document every tile: grass variants (green/yellow/autumn/brown), terrain edges, water, bridges, buildings, farmland, characters",
+        "Create assets/tilesets/catalog/backterria-natural.md — document terrain sections: grass, water, river, soil, path, holes, trench, stone",
+        "Create assets/tilesets/catalog/backterria-natural-props.md — document the composite props sheet with tile indices for each prop (bushes 01-10, flowers 01-10, plants 01-10, trees 01-08, rocks 1-10, fences, structures, crops)",
+        "Create assets/tilesets/catalog/backterria-interiors.md — identify the 8 room templates, individual furniture and props with positions",
+        "Create assets/tilesets/catalog/backterria-extras.md — quick reference for Plants, Items, Signs, Symbols",
+        "For each tile, note: position (col, row), visual description, category (ground/path/water/building/decoration/obstacle/vegetation)",
+        "Reference the upscaled 32px PNGs from assets/tilesets/32px/",
+        "Identify any gaps: tiles needed for game biomes that Backterria doesn't provide",
+        "pnpm build passes"
       ],
       "priority": 3,
       "passes": false,
-      "notes": "Forest was the best quality in the original generation. Should need fewer prompt iterations.",
-      "dependsOn": [
-        "US-001"
-      ]
+      "notes": "Read the 32px PNG files with the Read tool to visually inspect tiles. The Backterria Overworld has 4 meadow color variants — document which rows/columns belong to which variant. Reference docs/design/tileset-spec.md for what tiles each biome requires. The CATALOG.md in assets/tilesets/backterria/ has the high-level inventory — this story creates the detailed GID-level mapping needed for TMX map design.",
+      "dependsOn": ["US-002"]
     },
     {
       "id": "US-004",
-      "title": "Regenerate Grassland tilesets (3 tiers) with visual QC",
-      "description": "As a developer, I need clean grassland tilesets for Heartfield and Sunridge maps.",
+      "title": "Create TSX definitions from Backterria 32px PNGs, remove old AI tilesets",
+      "description": "As a developer, I need proper TSX tileset definitions that reference the real Backterria 32px PNGs, replacing all old AI-generated tileset files.",
       "acceptanceCriteria": [
-        "Run: doppler run --project gha --config ci -- pnpm gen generate tilesets --force --filter grassland",
-        "Visually inspect all 3 PNGs",
-        "No text or labels visible",
-        "Ground tiles show grass, wheat field, tilled soil variants",
-        "Decoration/obstacle rows show farmstead elements: fences, hay bales, windmill, scarecrow, boulders, trees",
-        "Rows 4-9 empty/transparent"
+        "Generate TSX files in main/server/maps/tmx/ for each Backterria source: backterria-overworld.tsx, backterria-natural.tsx, backterria-natural-props.tsx, backterria-plants.tsx, backterria-interiors.tsx, backterria-items.tsx, backterria-signs.tsx, backterria-symbols.tsx, backterria-postapoc-buildings.tsx",
+        "Each TSX has tilewidth=32, tileheight=32, correct columns count, and references the 32px normal PNG from assets/tilesets/32px/",
+        "Create vibrancy variant TSX files for the 3 primary tilesheets: backterria-overworld_muted.tsx, backterria-overworld_vivid.tsx, backterria-natural_muted.tsx, backterria-natural_vivid.tsx, backterria-interiors_muted.tsx, backterria-interiors_vivid.tsx",
+        "Create TMX template file (main/server/maps/tmx/template.tmx) with standard layers: ground, ground2, objects, objects_upper, collision, events",
+        "Remove ALL old AI-generated TSX files (tiles_*.tsx, overlay_*.tsx) — there are 73+ of them",
+        "Remove ALL old AI-generated tileset PNGs (tiles_*.png) from main/server/maps/tmx/",
+        "pnpm build passes (TMX maps may temporarily break until rewritten in subsequent stories)",
+        "pnpm lint passes"
       ],
       "priority": 4,
       "passes": false,
-      "notes": "",
-      "dependsOn": [
-        "US-001"
-      ]
+      "notes": "There are currently 73+ TSX files (27 biome tilesets + 1 stagnation overlay + 45 transition overlays). All reference AI-generated PNGs that produce checkerboard gaps. Replace them all with clean Backterria TSX files. The TMX maps will need their tileset references updated to use the new names — this will be done per-map in subsequent stories.",
+      "dependsOn": ["US-003"]
     },
     {
       "id": "US-005",
-      "title": "Regenerate Mountain tilesets (3 tiers) with visual QC",
-      "description": "As a developer, I need clean mountain tilesets for Hollow Ridge and Undrawn Peaks.",
+      "title": "Copy and process Kenney supplementary tiles for gaps",
+      "description": "As a developer, I need the specific Kenney CC0 packs that fill genuine Backterria gaps copied into the project and processed to 32px.",
       "acceptanceCriteria": [
-        "Run: doppler run --project gha --config ci -- pnpm gen generate tilesets --force --filter mountain",
-        "Visually inspect all 3 PNGs",
-        "No text or labels visible",
-        "Ground tiles show rock face, alpine grass, gravel, snow/ice variants",
-        "Obstacle rows show cliff faces, boulders, cave entrances, pine trees",
-        "Rows 4-9 empty/transparent"
+        "Copy ONLY needed Kenney packs from /Volumes/home/assets/Kenney/2D assets/: Monochrome RPG (both Default and Monochrome variants), Roguelike Base Pack (for cliff edges)",
+        "Handle Kenney 1px margin format: extract individual 16px tiles, strip margin, upscale each to 32px, repack into 0-margin sheet",
+        "Output to assets/tilesets/32px/: kenney-monochrome-default.png, kenney-monochrome-mono.png, kenney-roguelike-base.png",
+        "Generate vibrancy variants for each Kenney sheet",
+        "Create TSX files: kenney-monochrome-default.tsx, kenney-monochrome-mono.tsx, kenney-roguelike-base.tsx",
+        "Create assets/tilesets/kenney/LICENSE.txt noting CC0 1.0 from kenney.nl",
+        "Document gap-fill mapping: which Kenney tiles fill which Backterria gaps",
+        "pnpm build passes"
       ],
       "priority": 5,
       "passes": false,
-      "notes": "",
-      "dependsOn": [
-        "US-001"
-      ]
+      "notes": "Kenney is SUPPLEMENTARY ONLY. Monochrome RPG: 136 tiles (17x8) with 1px margin for Sketch biome. Roguelike Base: ~1700 tiles (968x526 with 1px margin) for mountain cliff edges. Source: /Volumes/home/assets/Kenney/2D assets/. Do NOT copy Tiny Town, Tiny Dungeon, Sketch Town, or Roguelike Dungeon unless a specific gap is identified that only they can fill.",
+      "dependsOn": ["US-004"]
     },
     {
       "id": "US-006",
-      "title": "Regenerate Riverside tilesets (3 tiers) with visual QC",
-      "description": "As a developer, I need clean riverside tilesets for Millbrook map.",
+      "title": "Gap-fill tile catalog for Kenney supplements",
+      "description": "As a developer, I need documentation of which Kenney tiles fill which specific Backterria gaps so map designers know when to reference Kenney vs Backterria.",
       "acceptanceCriteria": [
-        "Run: doppler run --project gha --config ci -- pnpm gen generate tilesets --force --filter riverside",
-        "Visually inspect all 3 PNGs",
-        "No text or labels visible",
-        "Ground tiles show riverbank, water (shallow/deep), cobblestone variants",
-        "Decoration rows show reeds, boats, fishing gear, bridge elements, waterwheel",
-        "Rows 4-9 empty/transparent"
+        "Create assets/tilesets/catalog/kenney-supplements.md",
+        "Map Kenney Monochrome RPG tiles for Sketch biome: terrain, buildings, trees in muted palette",
+        "Map Kenney Monochrome RPG Default variant for Sketch 'solidified' areas (same GID positions, different colors)",
+        "Map Kenney Roguelike Base cliff edge tiles for mountain biome supplement",
+        "Document solidification approach: Monochrome tiles swap to Default tiles when player broadcasts memories",
+        "Identify any remaining biome gaps not covered by Backterria + Kenney combined",
+        "pnpm build passes"
       ],
       "priority": 6,
       "passes": false,
-      "notes": "",
-      "dependsOn": [
-        "US-001"
-      ]
+      "notes": "The Sketch biome is where Kenney Monochrome RPG is primary — its desaturated purple/grey palette represents 'unfinished, yet to be drawn' world. When solidified, tiles swap to Default variant (same positions, different colors). For everything else, Backterria is primary. Reference assets/tilesets/backterria/CATALOG.md gap analysis section.",
+      "dependsOn": ["US-005"]
     },
     {
       "id": "US-007",
-      "title": "Regenerate Wetland tilesets (3 tiers) with visual QC",
-      "description": "As a developer, I need clean wetland tilesets for Shimmer Marsh map.",
+      "title": "Village Hub — Ground layer design",
+      "description": "As a developer, I need the Village Hub TMX ground layer designed with real Backterria tiles to establish the base terrain of the player's starting map.",
       "acceptanceCriteria": [
-        "Run: doppler run --project gha --config ci -- pnpm gen generate tilesets --force --filter wetland",
-        "Visually inspect all 3 PNGs",
-        "No text or labels visible",
-        "Ground tiles show marsh ground, shallow pools, moss carpet, peat/bog",
-        "Decoration rows show reeds, lily pads, frogs, hanging moss, ruins",
-        "Obstacle rows show mangrove trunks, cattails, sunken ruins",
-        "Rows 4-9 empty/transparent"
+        "Rewrite village-hub.tmx ground layer (30x30 tiles) using backterria-overworld.tsx (Green Meadow variant) + backterria-natural.tsx (path tiles)",
+        "Central village square area (tiles ~12-18, 12-18) uses cobblestone/stone path tiles from Natural Tileset",
+        "Grass areas fill perimeter and open spaces with 2-3 tile variants from Overworld green meadow section",
+        "Dirt paths connect all building locations per docs/maps/overworld-layout.md layout diagram",
+        "Water tiles at fountain area (~14-16, 14-16) from Natural Tileset water section",
+        "Garden area near memorial (~10, 17) uses distinct ground tiles",
+        "Update TMX tileset references to new Backterria TSX files",
+        "TMX loads without errors",
+        "pnpm build passes"
       ],
       "priority": 7,
       "passes": false,
-      "notes": "",
-      "dependsOn": [
-        "US-001"
-      ]
+      "notes": "Read docs/maps/overworld-layout.md Map 1 section for layout. 30x30 tiles. Key locations: Lookout Hill (12,2), Training Ground (8,10), Elder's House (18,10), Central Square (12,14), Quest Board (8,14), Memorial Garden (8,16), Hana's Workshop (8,18), General Shop (18,16), Blacksmith (18,18), Inn (20,14). Use catalog/backterria-overworld.md and catalog/backterria-natural.md for tile GIDs. Green Meadow = rows 0-9, cols 0-6 in Overworld sheet.",
+      "dependsOn": ["US-004"]
     },
     {
       "id": "US-008",
-      "title": "Regenerate Plains, Dungeon, and Sketch tilesets with visual QC",
-      "description": "As a developer, I need the remaining 3 biome tilesets regenerated clean.",
+      "title": "Village Hub — Buildings and objects layers",
+      "description": "As a developer, I need buildings, structures, and decorative objects placed on the Village Hub map using Backterria tiles.",
       "acceptanceCriteria": [
-        "Run plains: doppler run --project gha --config ci -- pnpm gen generate tilesets --force --filter plains",
-        "Run dungeon: doppler run --project gha --config ci -- pnpm gen generate tilesets --force --filter dungeon",
-        "Run sketch: doppler run --project gha --config ci -- pnpm gen generate tilesets --force --filter sketch",
-        "Visually inspect all 9 PNGs (3 biomes x 3 tiers)",
-        "Plains: grass, resonance stones, tents, campfire visible, no text",
-        "Dungeon: stone floors, walls, torches, doors, chests, crystals visible, no text",
-        "Sketch: pencil-drawn aesthetic on parchment, appropriate content density per tier (muted sparse, vivid fuller), no text",
-        "All autotile rows 4-9 empty/transparent across all 3 biomes"
+        "Place building tiles on objects layer using Overworld building tiles: Elder's house (~19,11), Khali's shop (~19,17), Hark's smithy (~19,19), Nyro's inn (~21,15), Hana's house (~9,19)",
+        "Place roof/canopy tiles on objects_upper layer from Overworld roof tiles",
+        "Add generic houses/cottages for villager NPCs using Overworld building tiles",
+        "Place quest board object at ~8,14",
+        "Place fountain tiles at ~14,15 using Overworld water + Natural Tileset",
+        "Place telescope lookout structure at ~12,3",
+        "Add decorative objects from Natural Props: fences, wells, flowers, bushes, trees",
+        "Trees along perimeters using Natural Props Tree 05-08 (64x64, 2x2 tiles)",
+        "Smaller bushes and flowers from Natural Props for village garden areas",
+        "pnpm build passes"
       ],
       "priority": 8,
       "passes": false,
-      "notes": "Batching 3 biomes since they're lower priority (Act II/III maps). Still QC each individually.",
-      "dependsOn": [
-        "US-001"
-      ]
+      "notes": "The Natural Props at 32x32 and 64x64 are already at game resolution — use them directly from the backterria-natural-props composite sheet. Overworld bottom section has building components (walls, roofs, doors). Reference village-hub-events.ts for NPC positions. Objects_upper layer (roofs, tree canopies) renders above player for depth.",
+      "dependsOn": ["US-007"]
     },
     {
       "id": "US-009",
-      "title": "Integrate regenerated tilesets and repair edge pixels",
-      "description": "As a developer, I need regenerated tilesets integrated into the game and edge pixels repaired for seamless rendering.",
+      "title": "Village Hub — Collision, events, and gate transitions",
+      "description": "As a developer, I need collision, event markers, and gate transitions set up on the Village Hub map so gameplay works correctly.",
       "acceptanceCriteria": [
-        "Run: pnpm gen integrate images --filter tilesets",
-        "Run: pnpm exec tsx scripts/repair-tileset-edges.ts",
-        "All 27 tiles_*.png files in main/server/maps/tmx/ updated",
-        "Edge repair reports reasonable numbers (expect lower than 16k since new tilesets should have cleaner edges)",
-        "Run repair a second time — should report 0 pixels repaired (idempotent)",
-        "pnpm dev starts without errors"
+        "Collision tiles placed on all building walls, fence boundaries, and water edges",
+        "Player cannot walk through any building, fence, or water feature",
+        "All 4 gate positions have clear visual exit indicators: South (15,25) to Heartfield, East (29,14) to Ambergrove, West (0,14) to Millbrook, North (15,0) to Sunridge",
+        "Event tile positions match village-hub-events.ts coordinates exactly: all 16 events",
+        "Memorial Garden Resonance Stone event at 10,17 has a visible stone object",
+        "Hidden Depths entrance at 8,17 is visually subtle but present",
+        "Player can walk from spawn (15,15) to all 5 NPC positions, all 4 gates, and all event objects",
+        "pnpm build passes",
+        "Verify in browser: player spawns, walks to all areas, cannot walk through walls"
       ],
       "priority": 9,
       "passes": false,
-      "notes": "This integrates ALL regenerated tilesets from US-002 through US-008. Must wait for all biome regen stories to complete.",
-      "dependsOn": [
-        "US-002",
-        "US-003",
-        "US-004",
-        "US-005",
-        "US-006",
-        "US-007",
-        "US-008"
-      ]
+      "notes": "Read main/server/maps/events/village-hub-events.ts for all event coordinates. NPC positions: artun at 19*32,11*32; hana at 9*32,19*32; khali at 19*32,17*32; hark at 19*32,19*32; nyro at 21*32,15*32. Villagers at 14*32,15*32; 16*32,16*32; 10*32,22*32.",
+      "dependsOn": ["US-008"]
     },
     {
       "id": "US-010",
-      "title": "Regenerate dirty sprites and verify quality",
-      "description": "As a developer, I need the 43 dirty-flagged sprites regenerated without solid-line artifacts.",
+      "title": "Heartfield — Ground and terrain design",
+      "description": "As a developer, I need the Heartfield map ground layer designed with Backterria grassland tiles showing amber wheat fields and stone walls.",
       "acceptanceCriteria": [
-        "Run: doppler run --project gha --config ci -- pnpm gen generate sprites --dirty",
-        "Run: pnpm gen integrate images --filter sprites",
-        "Run: pnpm exec tsx scripts/verify-sprites.ts",
-        "Target: 0 warnings from verify-sprites.ts",
-        "If any sprites still fail, re-dirty them in gen/dirty.json and regenerate until all pass"
+        "Create or rewrite heartfield.tmx ground layer (40x40 tiles) using backterria-overworld.tsx",
+        "Lush green grassland base from Overworld green meadow with 2-3 grass tile variants",
+        "Wheat/farmland patches in south-central area using Overworld farmland/crop tiles",
+        "Stone wall borders along main paths using Natural Tileset stone section",
+        "River/stream through east side using Natural Tileset river tiles with proper edge transitions",
+        "Stagnation Clearing in northwest uses Overworld dead/brown meadow tiles for visual contrast",
+        "pnpm build passes"
       ],
       "priority": 10,
       "passes": false,
-      "notes": "43 sprites flagged in gen/dirty.json. Can run in parallel with tileset regen since sprites use different manifest.",
-      "dependsOn": [
-        "US-001"
-      ]
+      "notes": "Heartfield is Map 2A: South Settled Lands. 40x40 tiles. Grassland breadbasket. Use Overworld green + yellow meadow variants for fertile fields, brown/dead variant for Stagnation Clearing. Natural Tileset has river tiles with full edge-transition system. Read docs/maps/overworld-layout.md Heartfield section.",
+      "dependsOn": ["US-004"]
     },
     {
       "id": "US-011",
-      "title": "Write tile catalog for Village and Forest tilesets",
-      "description": "As a developer, I need an authoritative tile catalog documenting what's at every tile position in the Village and Forest tilesets so TMX maps can be written correctly.",
+      "title": "Heartfield — Objects, collision, and events",
+      "description": "As a developer, I need buildings, landmarks, collision, and events wired on the Heartfield map.",
       "acceptanceCriteria": [
-        "docs/design/tileset-catalog.md created",
-        "Village Normal section: every non-empty tile documented with Tile ID, Column, Row, Visual Description, Category (ground/path/decoration/obstacle/animated)",
-        "Forest Normal section: same format",
-        "Each tile description is specific enough to choose the right ID for TMX placement (e.g., 'tan cobblestone with mortar lines' not just 'ground')",
-        "Empty/transparent tiles noted as such",
-        "Muted and Vivid tiers noted as palette variants of Normal (same layout)"
+        "Place farmhouses and barns using Overworld building tiles",
+        "Stone walls and fences from Natural Props stone fence pieces",
+        "Bridge over east river using Overworld bridge tiles",
+        "Stagnation Clearing has resonance stone and withered tree landmarks",
+        "3 treasure chests placed per docs/maps/event-placement.md",
+        "Trees from Natural Props, flowers from Natural Props scattered in meadow",
+        "Collision on buildings, stone walls, river (except at bridge)",
+        "Gate to Village Hub at north (15,0)",
+        "All event positions from event-placement.md wired",
+        "Encounter zones marked for enemy spawns",
+        "pnpm build passes"
       ],
       "priority": 11,
       "passes": false,
-      "notes": "Read the regenerated PNG files to visually inspect each tile. Use the Normal tier as the reference. These are the two most-used biomes (village hub + ambergrove + flickerveil).",
-      "dependsOn": [
-        "US-009"
-      ]
+      "notes": "Read docs/maps/event-placement.md Heartfield section. Read heartfield-events.ts for TypeScript event coordinates. First combat area — encounter zones cover grassland areas away from paths.",
+      "dependsOn": ["US-010"]
     },
     {
       "id": "US-012",
-      "title": "Write tile catalog for Grassland, Mountain, Riverside, Wetland tilesets",
-      "description": "As a developer, I need tile catalogs for the remaining overworld biomes.",
+      "title": "Ambergrove — Ground and forest terrain design",
+      "description": "As a developer, I need the Ambergrove map designed as a dense forest with winding trails using Backterria Natural + Plants + Overworld autumn tiles.",
       "acceptanceCriteria": [
-        "docs/design/tileset-catalog.md updated with Grassland Normal, Mountain Normal, Riverside Normal, Wetland Normal sections",
-        "Every non-empty tile documented per same format as US-011",
-        "Empty tiles noted"
+        "Create or rewrite ambergrove.tmx ground layer (40x40 tiles)",
+        "Forest floor uses Natural Tileset dirt, soil, and grass sections for organic base",
+        "Winding trail system using Natural Tileset path tiles (organic, not grid-aligned)",
+        "Hearthstone Circle clearing in center (~20,20) uses distinct ground tiles",
+        "Mushroom grove area in southeast",
+        "Stream/creek through northwest using Natural Tileset river tiles",
+        "Overworld autumn meadow tiles for autumn-colored ground areas",
+        "pnpm build passes"
       ],
       "priority": 12,
       "passes": false,
-      "notes": "These cover Heartfield, Sunridge, Hollow Ridge, Millbrook, Shimmer Marsh maps.",
-      "dependsOn": [
-        "US-009"
-      ]
+      "notes": "Map 2B: East Settled Lands. 40x40 tiles. Dense forest with autumnal canopy. Use Natural Tileset for forest floor terrain, Overworld autumn variant for colored ground, Plants sheet for ground vegetation. Read docs/maps/overworld-layout.md Ambergrove section.",
+      "dependsOn": ["US-004"]
     },
     {
       "id": "US-013",
-      "title": "Write tile catalog for Plains, Dungeon, Sketch tilesets and cross-reference",
-      "description": "As a developer, I need tile catalogs for the remaining biomes plus a verification cross-reference against tileset-spec.md.",
+      "title": "Ambergrove — Canopy, objects, collision, and events",
+      "description": "As a developer, I need the forest canopy, objects, collision, and events wired on the Ambergrove map.",
       "acceptanceCriteria": [
-        "docs/design/tileset-catalog.md updated with Plains Normal, Dungeon Normal, Sketch Normal sections",
-        "Verification section added at end: for each biome, note which spec-defined tiles exist vs missing",
-        "Ground tiles verified as seamlessly tileable (note any that aren't)",
-        "Three tiers of each biome verified as same layout with different palette"
+        "Tree canopy on objects_upper using Overworld autumn tree canopy tiles for depth (player walks under)",
+        "Large trees from Natural Props (Tree 05-08, 64x64) placed throughout forest",
+        "5 resonance stones placed in circular arrangement in Hearthstone Circle",
+        "Mushroom objects, fallen logs, stumps from decorative tiles",
+        "NPC shelters/ranger outpost using Overworld building tiles",
+        "Dense tree trunks block movement, paths are clear",
+        "Gate to Village Hub at west (0,20)",
+        "All event positions from event-placement.md including 5 resonance stone events",
+        "Player can navigate from gate to Hearthstone Circle to all resonance stones",
+        "pnpm build passes"
       ],
       "priority": 13,
       "passes": false,
-      "notes": "Final catalog story. After this, all 9 biomes documented.",
-      "dependsOn": [
-        "US-009"
-      ]
+      "notes": "Hearthstone Circle with 5 resonance stones is the key landmark. Natural Props trees at 64x64 are 2x2 tiles at 32px — perfect for forest. Objects_upper tree canopy is critical for visual depth. Read ambergrove-events.ts.",
+      "dependsOn": ["US-012"]
     },
     {
       "id": "US-014",
-      "title": "Rewrite village-hub.tmx with correct tile placement",
-      "description": "As a developer, I need the starting village map rewritten with correct tile IDs matching the tile catalog and layout diagram.",
+      "title": "Millbrook — River terrain and ground design",
+      "description": "As a developer, I need the Millbrook map designed as a riverside village with a prominent river, bridge, and waterfall using Backterria water tiles.",
       "acceptanceCriteria": [
-        "main/server/maps/tmx/village-hub.tmx rewritten",
-        "Ground layer: cobblestone in village center, grass on edges, dirt paths connecting locations per layout diagram",
-        "Ground2 layer: sparse decorative overlay (flowers, puddles) at 10-20% coverage",
-        "Objects layer: building walls at spec positions (Elder's House, Inn, Shop, Blacksmith, Workshop), trees along N/S perimeter, benches/barrels/signs in Central Square",
-        "Objects_upper layer: roof tiles above each building, tree canopy above tree trunks",
-        "Collision layer: buildings blocked, trees blocked, water blocked, all paths and open ground passable, player spawn (15,15) guaranteed passable",
-        "Events layer: NPC objects at positions from overworld-layout.md Map 1, transition zones at N/S/E/W gates",
-        "Uses ONLY tile IDs documented in docs/design/tileset-catalog.md Village section",
-        "pnpm dev loads the map without errors"
+        "Create or rewrite millbrook.tmx ground layer (40x40 tiles)",
+        "Wide river running north-south through map center using Natural Tileset water + river tiles",
+        "Grassy riverbanks from Overworld green meadow with Natural dirt paths",
+        "Brightwater Bridge spanning the river using Overworld bridge tiles",
+        "Waterfall area in north with cliff edge + water cascade from Natural Tileset",
+        "Cave entrance near waterfall using Natural Tileset stone/hole tiles",
+        "Water tiles properly edge-transitioned to grass/dirt banks using Natural Tileset 16-direction edges",
+        "pnpm build passes"
       ],
       "priority": 14,
       "passes": false,
-      "notes": "HIGHEST PRIORITY TMX. Read docs/maps/overworld-layout.md Map 1 section for the complete layout diagram, NPC positions, and event placement. Read docs/design/tileset-catalog.md Village section for tile IDs. Size: 30x30 tiles.",
-      "dependsOn": [
-        "US-011"
-      ]
+      "notes": "Map 2C: West Settled Lands. 40x40 tiles. Natural Tileset has a complete water and river auto-tiling system with 16-direction edge transitions. River should be 3-5 tiles wide. Read docs/maps/overworld-layout.md Millbrook section.",
+      "dependsOn": ["US-004"]
     },
     {
       "id": "US-015",
-      "title": "Rewrite heartfield.tmx (South Settled Lands)",
-      "description": "As a developer, I need Heartfield map rewritten with correct grassland tile placement.",
+      "title": "Millbrook — Buildings, waterfront, collision, and events",
+      "description": "As a developer, I need buildings, waterfront features, collision, and events wired on the Millbrook map.",
       "acceptanceCriteria": [
-        "main/server/maps/tmx/heartfield.tmx rewritten with grassland tiles per catalog",
-        "Ground: grass, wheat fields, dirt roads per overworld-layout.md Map 2A",
-        "Objects: farmsteads, fences, trees, boulders at spec positions",
-        "Collision: matches feature placement",
-        "Events: NPCs, transitions, resonance stones per spec",
-        "pnpm dev loads map without errors"
+        "Mill building on river using Overworld building tiles",
+        "Riverside houses and dock structures",
+        "Fishing spots with decorative objects from Natural Props",
+        "Cave entrance structure near waterfall visually distinct",
+        "Trees and vegetation along riverbanks from Natural Props",
+        "River blocks movement except at bridge and docks",
+        "Cave entrance transition event wired",
+        "Gate to Village Hub at east (39,20)",
+        "All event positions from event-placement.md",
+        "pnpm build passes"
       ],
       "priority": 15,
       "passes": false,
-      "notes": "40x40 map. Read overworld-layout.md Map 2A. Tileset: grassland.",
-      "dependsOn": [
-        "US-012"
-      ]
+      "notes": "Read millbrook-events.ts. Mill is key visual landmark. Docks should be walkable platforms extending into river.",
+      "dependsOn": ["US-014"]
     },
     {
       "id": "US-016",
-      "title": "Rewrite ambergrove.tmx (East Settled Lands)",
-      "description": "As a developer, I need Ambergrove map rewritten with correct forest tile placement.",
+      "title": "Sunridge — Highland terrain and ground design",
+      "description": "As a developer, I need the Sunridge map designed as a highland plateau with rocky terrain using Backterria Natural stone tiles and Overworld dead/brown variant.",
       "acceptanceCriteria": [
-        "main/server/maps/tmx/ambergrove.tmx rewritten with forest tiles per catalog",
-        "Ground: forest floor, clearings, trails per overworld-layout.md Map 2B",
-        "Objects: trees (deciduous + conifer), mushrooms, logs, rocks at spec positions",
-        "Collision: dense forest blocked, trails passable",
-        "Events: NPCs, transitions per spec",
-        "pnpm dev loads map without errors"
+        "Create or rewrite sunridge.tmx ground layer (40x40 tiles)",
+        "Rocky highland base from Natural Tileset stone section",
+        "Elevated plateaus with grass patches from Overworld dead/brown variant",
+        "Sparse vegetation using Plants ground plants section",
+        "Path winding up elevation changes using Natural Tileset path tiles",
+        "Cliff overlook areas using Natural Tileset trench/hole tiles for elevation edges",
+        "pnpm build passes"
       ],
       "priority": 16,
       "passes": false,
-      "notes": "40x40 map. Read overworld-layout.md Map 2B. Tileset: forest.",
-      "dependsOn": [
-        "US-011"
-      ]
+      "notes": "Map 2D: North Settled Lands. 40x40 tiles. Conditional access — requires MQ-04 completion. Natural Tileset stone section has stone floor, cobblestone, stone edges — perfect for highland. Overworld dead/brown variant gives sparse grass for alpine feel. Read docs/maps/overworld-layout.md Sunridge section.",
+      "dependsOn": ["US-004"]
     },
     {
       "id": "US-017",
-      "title": "Rewrite millbrook.tmx (West Settled Lands)",
-      "description": "As a developer, I need Millbrook map rewritten with correct riverside tile placement.",
+      "title": "Sunridge — Structures, landmarks, collision, and events",
+      "description": "As a developer, I need Wind Shrine, Preserver Outpost, collision, and events wired on the Sunridge map.",
       "acceptanceCriteria": [
-        "main/server/maps/tmx/millbrook.tmx rewritten with riverside tiles per catalog",
-        "Ground: riverbanks, water, cobblestone town area per Map 2C",
-        "Objects: bridges, docks, town buildings, waterwheel, willow trees",
-        "Collision: water blocked (except bridges), buildings blocked",
-        "Events: NPCs, shop events, transitions per spec",
-        "pnpm dev loads map without errors"
+        "Wind Shrine structure placed (central/east) — prominent landmark using Overworld castle/temple tiles",
+        "Preserver Outpost with fortified walls using Overworld castle wall tiles + Post-Apoc building tiles",
+        "Rocky outcroppings from Natural Props rocks",
+        "Sparse highland vegetation from Plants + Natural Props",
+        "Cliff edges block movement",
+        "Wind Shrine and Preserver Outpost event triggers wired",
+        "Gate to Village Hub at south (20,39)",
+        "Encounter zones on exposed areas",
+        "All event positions from event-placement.md",
+        "pnpm build passes"
       ],
       "priority": 17,
       "passes": false,
-      "notes": "40x40 map. Read overworld-layout.md Map 2C. Tileset: riverside.",
-      "dependsOn": [
-        "US-012"
-      ]
+      "notes": "Read sunridge-events.ts. Preserver Outpost is key story location — should feel fortified and imposing. Post-Apoc building tiles (damaged walls, fortified structures) fit the Preserver geometric aesthetic.",
+      "dependsOn": ["US-016"]
     },
     {
       "id": "US-018",
-      "title": "Rewrite sunridge.tmx (North Settled Lands)",
-      "description": "As a developer, I need Sunridge map rewritten with correct grassland tile placement.",
+      "title": "Shimmer Marsh — Wetland terrain design",
+      "description": "As a developer, I need the Shimmer Marsh frontier map designed as a water-heavy wetland with islands using Backterria Natural water tiles.",
       "acceptanceCriteria": [
-        "main/server/maps/tmx/sunridge.tmx rewritten with grassland tiles per catalog",
-        "Ground: grass, hills, roads per Map 2D",
-        "Objects: farms, fences, elevated areas",
-        "Collision and events per spec",
-        "pnpm dev loads map without errors"
+        "Create or rewrite shimmer-marsh.tmx ground layer (50x50 tiles)",
+        "Shallow water base from Natural Tileset water section covering most of the map",
+        "Mud/dirt islands using Natural Tileset soil section",
+        "Mud paths connecting solid ground from Natural path tiles",
+        "Reed and vegetation decorations from Plants ground plants section",
+        "5-tile biome transition gradient at entry border from grassland",
+        "Deeper water areas in center/south using darker water tiles",
+        "Verdance god recall site area is a distinct island/platform",
+        "pnpm build passes"
       ],
       "priority": 18,
       "passes": false,
-      "notes": "40x40 map. Read overworld-layout.md Map 2D. Tileset: grassland.",
-      "dependsOn": [
-        "US-012"
-      ]
+      "notes": "50x50 tiles — largest map type. Natural Tileset has complete water tile system with edge transitions and varying depths. Plants sheet provides marsh vegetation. 5-tile gradient: first 5 rows/columns blend grassland + wetland tiles. Read docs/maps/overworld-layout.md Shimmer Marsh + docs/maps/frontier-zones.md.",
+      "dependsOn": ["US-006"]
     },
     {
       "id": "US-019",
-      "title": "Rewrite Frontier zone maps (resonance-fields, hollow-ridge, shimmer-marsh, flickerveil)",
-      "description": "As a developer, I need all 4 Frontier maps rewritten with correct tile placement per their biomes.",
+      "title": "Shimmer Marsh — Objects, Verdance site, collision, and events",
+      "description": "As a developer, I need the Verdance god recall site, floating platforms, collision, and events wired on the Shimmer Marsh map.",
       "acceptanceCriteria": [
-        "resonance-fields.tmx rewritten: plains tiles, 50x50, per Map 3A spec",
-        "hollow-ridge.tmx rewritten: mountain tiles, 50x50, per Map 3B spec",
-        "shimmer-marsh.tmx rewritten: wetland tiles, 50x50, per Map 3C spec",
-        "flickerveil.tmx rewritten: forest tiles, 50x50, per Map 3D spec",
-        "All 4 maps: ground, objects, collision, events layers correct per overworld-layout.md",
-        "pnpm dev loads all 4 maps without errors"
+        "Verdance recall altar/platform placed (central-south) — visually sacred",
+        "Floating wooden platforms and small bridges using Overworld bridge tiles",
+        "Marsh vegetation objects from Plants + Natural Props",
+        "Hidden treasure locations on remote islands",
+        "Deep water blocks movement, shallow water/platforms navigable",
+        "Verdance recall event trigger at altar",
+        "Transition events at biome borders",
+        "Encounter zones in marsh areas",
+        "All events from event-placement.md",
+        "pnpm build passes"
       ],
       "priority": 19,
       "passes": false,
-      "notes": "Batching 4 Frontier maps since they're Act II content and less immediately visible. All are 50x50 tiles. Read overworld-layout.md Maps 3A-3D.",
-      "dependsOn": [
-        "US-012",
-        "US-013"
-      ]
+      "notes": "Read shimmer-marsh-events.ts. Verdance = growth/nature god. Floating platforms = weathered wood over water. Overworld has bridge/platform tiles that work well for marsh walkways.",
+      "dependsOn": ["US-018"]
     },
     {
       "id": "US-020",
-      "title": "Rewrite Sketch zone maps (luminous-wastes, undrawn-peaks, half-drawn-forest)",
-      "description": "As a developer, I need all 3 Sketch zone maps rewritten with sketch tileset.",
+      "title": "Hollow Ridge — Mountain terrain design",
+      "description": "As a developer, I need the Hollow Ridge frontier map designed as a mountain fortress zone with cliff tiers using Backterria stone tiles.",
       "acceptanceCriteria": [
-        "luminous-wastes.tmx rewritten: sketch tiles, 40x40, per Map 4A spec",
-        "undrawn-peaks.tmx rewritten: sketch tiles, 40x40, per Map 4B spec",
-        "half-drawn-forest.tmx rewritten: sketch tiles, 40x40, per Map 4C spec",
-        "Sketch maps use sparser tile placement (more empty/void tiles) per the unfinished world aesthetic",
-        "pnpm dev loads all 3 maps without errors"
+        "Create or rewrite hollow-ridge.tmx ground layer (50x50 tiles)",
+        "Rocky mountain base from Natural Tileset stone section + Overworld dead/brown variant",
+        "Multiple cliff tier levels conveyed through tile color/shadow",
+        "Cave system entrances using Natural Tileset hole/trench tiles",
+        "Narrow paths along ridgelines using Natural path tiles",
+        "Crystal cave area using distinct decorative tiles",
+        "Kinesis Spire area — tall rock formation location",
+        "5-tile biome transition gradient at entry",
+        "pnpm build passes"
       ],
       "priority": 20,
       "passes": false,
-      "notes": "Act III content. Sketch biome is intentionally sparse. Read overworld-layout.md Maps 4A-4C.",
-      "dependsOn": [
-        "US-013"
-      ]
+      "notes": "50x50 tiles. Natural Tileset stone section + trench/hole tiles provide cliff edges and cave openings. If cliff edges need more variety, supplement with Kenney Roguelike Base cliff tiles (documented in catalog/kenney-supplements.md). Read docs/maps/overworld-layout.md Hollow Ridge + docs/maps/frontier-zones.md.",
+      "dependsOn": ["US-006"]
     },
     {
       "id": "US-021",
-      "title": "Rewrite Depths dungeon maps (depths-l1 through depths-l5)",
-      "description": "As a developer, I need all 5 Depths level maps rewritten with dungeon tileset.",
+      "title": "Hollow Ridge — Objects, Kinesis Spire, collision, and events",
+      "description": "As a developer, I need the Kinesis Spire, crystal formations, collision, and events wired on the Hollow Ridge map.",
       "acceptanceCriteria": [
-        "depths-l1.tmx through depths-l5.tmx rewritten: dungeon tiles, 20x25 each",
-        "Each level: stone floors, corridors, rooms, doors, torches per dungeon-depths.md",
-        "Collision: walls blocked, corridors passable",
-        "Events: stairways connecting levels, treasure chests, enemy spawn zones per spec",
-        "pnpm dev loads all 5 maps without errors"
+        "Kinesis Spire monument placed — visually imposing, using stone + Natural Props rocks",
+        "Cave interior decorations at entrances",
+        "Crystal formation objects in crystal cave area",
+        "Collision on cliff faces, cave walls, impassable terrain",
+        "Narrow ridgeline paths navigable",
+        "Kinesis god recall event trigger at Spire",
+        "All events from event-placement.md",
+        "pnpm build passes"
       ],
       "priority": 21,
       "passes": false,
-      "notes": "Read docs/maps/dungeon-depths.md for level layouts. 20x25 tiles each — smaller than overworld maps.",
-      "dependsOn": [
-        "US-013"
-      ]
+      "notes": "Read hollow-ridge-events.ts. Kinesis = motion/momentum god. Spire should feel like natural monument, not building.",
+      "dependsOn": ["US-020"]
     },
     {
       "id": "US-022",
-      "title": "Rewrite Fortress maps (fortress-f1 through fortress-f3)",
-      "description": "As a developer, I need all 3 Preserver Fortress floor maps rewritten with dungeon tileset.",
+      "title": "Flickerveil — Flickering forest terrain design",
+      "description": "As a developer, I need the Flickerveil frontier map designed as an unstable, eerie forest by mixing Backterria tile variants aggressively.",
       "acceptanceCriteria": [
-        "fortress-f1.tmx through fortress-f3.tmx rewritten: dungeon tiles, 20x25 each",
-        "Fortress floors: more ornate than Depths — carved walls, crystal formations, boss arena on f3",
-        "Collision and events per dungeon-depths.md fortress section",
-        "pnpm dev loads all 3 maps without errors"
+        "Create or rewrite flickerveil.tmx ground layer (50x50 tiles)",
+        "Dense forest base mixing Overworld autumn + green + Natural Tileset tiles unusually",
+        "Paths that twist and branch unexpectedly using Natural path tiles",
+        "Luminos Grove clearing in center — distinct open area",
+        "5-tile biome transition gradient at entry",
+        "'Unstable' areas using contrasting tile colors from different Overworld variants side-by-side",
+        "pnpm build passes"
       ],
       "priority": 22,
       "passes": false,
-      "notes": "Read docs/maps/dungeon-depths.md fortress section. End-game content.",
-      "dependsOn": [
-        "US-013"
-      ]
+      "notes": "50x50 tiles. Most visually unusual zone. Mix Overworld autumn + green + brown tile variants more aggressively than Ambergrove to create unsettling feel. Intentionally break the color consistency that makes other zones feel harmonious. Read docs/maps/overworld-layout.md Flickerveil + docs/maps/frontier-zones.md.",
+      "dependsOn": ["US-006"]
     },
     {
       "id": "US-023",
-      "title": "Full visual playthrough verification and fix remaining issues",
-      "description": "As a developer, I need to verify the entire game works visually by playing through it and fixing any remaining issues.",
+      "title": "Flickerveil — Objects, Luminos Grove, collision, and events",
+      "description": "As a developer, I need the Luminos Grove, flickering objects, collision, and events wired on the Flickerveil map.",
       "acceptanceCriteria": [
-        "Start pnpm dev, navigate title screen -> class select -> village hub",
-        "Walk around village hub — buildings, paths, trees visible and correct",
-        "Transition to at least 2 adjacent maps (Heartfield, Ambergrove)",
-        "Verify adjacent maps render correctly",
-        "Screenshot each visited map for visual record",
-        "Run pnpm exec tsx scripts/verify-sprites.ts — 0 warnings",
-        "Run pnpm build — clean build, no errors",
-        "Any issues found: fix in this iteration"
+        "Luminos Grove altar/monument placed — visually sacred clearing",
+        "Flickering light objects: decorative tiles from Symbols + Items sheets",
+        "Dense tree canopy on objects_upper from Overworld trees",
+        "Collision on dense forest areas",
+        "Forest navigation challenging but fair",
+        "Luminos god recall event trigger at Grove",
+        "All events from event-placement.md",
+        "pnpm build passes"
       ],
       "priority": 23,
       "passes": false,
-      "notes": "Final verification. If issues are found, fix them here rather than creating new stories.",
-      "dependsOn": [
-        "US-014",
-        "US-015",
-        "US-016",
-        "US-017",
-        "US-018",
-        "US-019",
-        "US-020",
-        "US-021",
-        "US-022"
-      ]
+      "notes": "Read flickerveil-events.ts. Luminos = light god. Grove should feel sacred within chaotic forest. Heavy objects_upper use for claustrophobic forest canopy.",
+      "dependsOn": ["US-022"]
+    },
+    {
+      "id": "US-024",
+      "title": "Resonance Fields — Sacred plains terrain design",
+      "description": "As a developer, I need the Resonance Fields frontier map designed as open sacred plains with the Amphitheater using Backterria Overworld yellow meadow.",
+      "acceptanceCriteria": [
+        "Create or rewrite resonance-fields.tmx ground layer (50x50 tiles)",
+        "Wide open grassland from Overworld yellow meadow variant",
+        "Amphitheater area in center — large circular structure using Natural Tileset stone tiles",
+        "Standing stone circle locations using stone tiles",
+        "Gentle paths connecting landmarks using Natural path tiles",
+        "5-tile biome transition gradient at entry",
+        "Open, sacred atmosphere — minimal clutter",
+        "pnpm build passes"
+      ],
+      "priority": 24,
+      "passes": false,
+      "notes": "50x50 tiles. Overworld yellow meadow for wide open feel. Amphitheater 8-10 tiles diameter using Natural Tileset stone floor + stone edge tiles. Read docs/maps/overworld-layout.md Resonance Fields + docs/maps/frontier-zones.md.",
+      "dependsOn": ["US-006"]
+    },
+    {
+      "id": "US-025",
+      "title": "Resonance Fields — Amphitheater, objects, collision, and events",
+      "description": "As a developer, I need the Amphitheater, standing stones, collision, and events wired on the Resonance Fields map.",
+      "acceptanceCriteria": [
+        "Amphitheater stone seating tiers on objects layer",
+        "Resonance god recall altar at amphitheater center",
+        "Standing stone monuments placed in arrangements",
+        "Sound puzzle interaction objects",
+        "Open terrain allows free movement outside landmarks",
+        "Resonance recall event trigger at altar",
+        "All events from event-placement.md",
+        "pnpm build passes"
+      ],
+      "priority": 25,
+      "passes": false,
+      "notes": "Read resonance-fields-events.ts. Resonance = sound/music god. Amphitheater dominates map center. Natural Props rocks for standing stones.",
+      "dependsOn": ["US-024"]
+    },
+    {
+      "id": "US-026",
+      "title": "Biome transition tile strips for all adjacent biome pairs",
+      "description": "As a developer, I need smooth visual transitions between adjacent biomes so map borders don't have jarring tile changes.",
+      "acceptanceCriteria": [
+        "Create transition zones for: Village-Grassland, Grassland-Forest, Grassland-Mountain, Forest-Mountain, Grassland-Marsh, Plains-Marsh",
+        "Each transition is a 5-tile-wide gradient blending tiles from both biomes",
+        "Transitions work by alternating tiles from adjacent biomes in increasing/decreasing density",
+        "At least one map border demonstrates the transition in TMX",
+        "pnpm build passes"
+      ],
+      "priority": 26,
+      "passes": false,
+      "notes": "5-tile gradient: tile 1 is 80% biome A / 20% biome B, tile 3 is 50/50, tile 5 is 20/80. Backterria Overworld has 4 meadow color variants that can blend naturally between zones. Reference docs/maps/frontier-zones.md Transition Gradients.",
+      "dependsOn": ["US-009", "US-011", "US-013", "US-015", "US-017", "US-019", "US-021", "US-023", "US-025"]
+    },
+    {
+      "id": "US-027",
+      "title": "Stagnation crystal corruption overlay tiles",
+      "description": "As a developer, I need stagnation corruption overlay tiles using Backterria dead/brown variant + Post-Apoc damaged tiles.",
+      "acceptanceCriteria": [
+        "Create stagnation overlay using Overworld dead/brown meadow tiles + Post-Apoc damaged wall/ground tiles",
+        "Progressive corruption stages: light (scattered brown tiles), medium (dead meadow terrain), heavy (Post-Apoc damaged + holes)",
+        "Applied to Heartfield Stagnation Clearing as demonstration",
+        "Corruption fits Preserver aesthetic: crystalline, orderly stagnation, not chaotic destruction",
+        "pnpm build passes"
+      ],
+      "priority": 27,
+      "passes": false,
+      "notes": "Preservers = stagnation, not destruction. Use Overworld brown/dead variant for terrain corruption. Post-Apoc holes + damaged tiles for heavy corruption. Post-Apoc foliage/dead grass for medium corruption. Reference docs/design/tileset-spec.md Stagnation section.",
+      "dependsOn": ["US-026"]
+    },
+    {
+      "id": "US-028",
+      "title": "Luminous Wastes — Sketch plains design",
+      "description": "As a developer, I need the Luminous Wastes sketch zone designed using Kenney Monochrome RPG tiles for an 'unfinished world' aesthetic.",
+      "acceptanceCriteria": [
+        "Create or rewrite luminous-wastes.tmx ground layer (40x40 tiles) using kenney-monochrome-mono.tsx",
+        "Sparse, incomplete terrain — lots of empty/flat tiles",
+        "Half-Built Village area with outline-only building tiles",
+        "Paths that fade in and out (sparse path tiles with gaps)",
+        "Documented solidification zones where kenney-monochrome-default.tsx tiles replace Monochrome tiles",
+        "Monochrome purple/grey palette dominates",
+        "pnpm build passes"
+      ],
+      "priority": 28,
+      "passes": false,
+      "notes": "40x40 tiles. Kenney Monochrome RPG Monochrome variant is the PRIMARY tileset here — the only zone where Kenney is primary. The 'unfinished' feel = few distinct tile types, large flat areas. Read docs/maps/overworld-layout.md Luminous Wastes. Reference catalog/kenney-supplements.md for tile GIDs.",
+      "dependsOn": ["US-006"]
+    },
+    {
+      "id": "US-029",
+      "title": "Undrawn Peaks — Sketch mountain design",
+      "description": "As a developer, I need the Undrawn Peaks sketch zone designed as outline-only mountain terrain with the Crystalline Fortress Gate.",
+      "acceptanceCriteria": [
+        "Create or rewrite undrawn-peaks.tmx ground layer (40x40 tiles) using kenney-monochrome-mono.tsx",
+        "Outline-only mountain terrain from Monochrome tiles",
+        "Crystalline Fortress Gate — imposing even in monochrome",
+        "Barely-visible paths and cliff edges",
+        "Progressive completeness: sparse at entry, more detailed toward fortress",
+        "pnpm build passes"
+      ],
+      "priority": 29,
+      "passes": false,
+      "notes": "40x40 tiles. Crystalline Fortress Gate = major Act III landmark, entrance to final dungeon. More tile variants near gate = more 'drawn'/solidified. Read docs/maps/overworld-layout.md Undrawn Peaks.",
+      "dependsOn": ["US-006"]
+    },
+    {
+      "id": "US-030",
+      "title": "Half-Drawn Forest + all 3 Sketch zone objects/collision/events",
+      "description": "As a developer, I need the Half-Drawn Forest terrain plus objects, collision, and events for all 3 sketch zone maps.",
+      "acceptanceCriteria": [
+        "Create half-drawn-forest.tmx ground (40x40) using kenney-monochrome-mono.tsx — incomplete trees, sparse paths",
+        "Living Sketch area in Half-Drawn Forest with mixed tile types",
+        "Luminous Wastes: Half-Built Village objects, collision, events wired",
+        "Undrawn Peaks: Fortress Gate objects, cliff collision, events wired",
+        "Half-Drawn Forest: Living Sketch objects, tree collision, events wired",
+        "All gate transitions between sketch zones work",
+        "Encounter zones in each sketch map",
+        "pnpm build passes"
+      ],
+      "priority": 30,
+      "passes": false,
+      "notes": "Sketch zones have fewer objects than normal zones — 'unfinished' aesthetic = less decoration. Read docs/maps/event-placement.md for sketch zone events.",
+      "dependsOn": ["US-028", "US-029"]
+    },
+    {
+      "id": "US-031",
+      "title": "Depths L1 — Entry cavern using Backterria Interiors",
+      "description": "As a developer, I need Depths Level 1 designed using Backterria Interiors dark dungeon templates.",
+      "acceptanceCriteria": [
+        "Create or rewrite depths-l1.tmx (30x30 tiles) using backterria-interiors.tsx",
+        "Use Interiors Dark Blue/Purple Dungeon template for primary floor/wall tiles",
+        "Cave entrance from surface clearly marked",
+        "Stone corridor system with rooms and chambers",
+        "Basic trap locations on event layer",
+        "First dungeon encounter zone",
+        "Stairs/passage to L2",
+        "Collision on all cave walls",
+        "Connection to Village Hub (Hidden Depths entrance)",
+        "pnpm build passes"
+      ],
+      "priority": 31,
+      "passes": false,
+      "notes": "Backterria Interiors has 8 room templates — Dark Blue/Purple Dungeon template is perfect for cave dungeon. Complete with floor tiles, wall tiles, furniture, doors, torches, chests. Read docs/maps/dungeon-depths.md Depths Level 1.",
+      "dependsOn": ["US-004"]
+    },
+    {
+      "id": "US-032",
+      "title": "Depths L2 — Crystal caves",
+      "description": "As a developer, I need Depths Level 2 designed as crystal caves with underground water using Backterria Interiors teal/green template.",
+      "acceptanceCriteria": [
+        "Create depths-l2.tmx (35x35 tiles) using backterria-interiors.tsx",
+        "Use Interiors Teal template for crystal cave aesthetic",
+        "Underground water features from Natural Tileset water tiles",
+        "Multiple branching paths (more complex than L1)",
+        "Hidden treasure rooms via side passages",
+        "Stairs to L1 (up) and L3 (down)",
+        "Collision on walls and deep water",
+        "Encounter zones in larger chambers",
+        "pnpm build passes"
+      ],
+      "priority": 32,
+      "passes": false,
+      "notes": "Teal/Green template in Interiors sheet has a crystalline feel. Read docs/maps/dungeon-depths.md Depths Level 2.",
+      "dependsOn": ["US-031"]
+    },
+    {
+      "id": "US-033",
+      "title": "Depths L3 — Forgotten ruins",
+      "description": "As a developer, I need Depths Level 3 designed as forgotten ruins blending Backterria Interiors cave and stone templates.",
+      "acceptanceCriteria": [
+        "Create depths-l3.tmx (35x35 tiles) using backterria-interiors.tsx",
+        "Mix Interiors Grey Stone + Dark Blue templates for ancient ruins feel",
+        "Puzzle rooms with switch/lever objects",
+        "Larger enemy encounter chambers",
+        "Lore-revealing inscription event objects",
+        "Stairs to L2 (up) and L4 (down)",
+        "Collision on ruins walls and pillars",
+        "pnpm build passes"
+      ],
+      "priority": 33,
+      "passes": false,
+      "notes": "Transition from natural cave to worked stone. Mix 2 Interiors templates. Read docs/maps/dungeon-depths.md Level 3.",
+      "dependsOn": ["US-032"]
+    },
+    {
+      "id": "US-034",
+      "title": "Depths L4-L5 — Deep dungeon and fortress transition",
+      "description": "As a developer, I need Depths Levels 4-5 showing transition from deep caverns to Crystalline Fortress architecture.",
+      "acceptanceCriteria": [
+        "Create depths-l4.tmx (40x40) — use Interiors Dark Stone template + Post-Apoc damaged tiles for hazardous area",
+        "Create depths-l5.tmx (40x40) — transition from cave to fortress using Interiors Grey Stone + Post-Apoc Building Tiles",
+        "L5 shows gradual shift from cave walls to worked stone/crystal architecture",
+        "Stairs connecting L4 to L3 (up) and L5 (down), L5 to Fortress F1",
+        "Collision on all walls and hazardous terrain",
+        "Each level has distinct visual identity",
+        "pnpm build passes"
+      ],
+      "priority": 34,
+      "passes": false,
+      "notes": "L4 = most dangerous dungeon level (could use Post-Apoc damaged/cracked tiles for hazards). L5 = transition zone where natural cave gives way to Crystalline Fortress. Post-Apoc Building Tiles (roofs, walls, doors in multiple styles) provide fortress architecture. Read docs/maps/dungeon-depths.md L4-L5.",
+      "dependsOn": ["US-033"]
+    },
+    {
+      "id": "US-035",
+      "title": "Fortress F1-F2 — Entry hall and inner sanctum",
+      "description": "As a developer, I need Fortress Floors 1-2 designed using Backterria Interiors grey stone + Post-Apoc building architecture.",
+      "acceptanceCriteria": [
+        "Create fortress-f1.tmx (40x40) — grand entry hall using Interiors Grey Stone template",
+        "F1: wide corridors, tall pillars, grand doorways for imposing scale",
+        "Create fortress-f2.tmx (40x40) — inner sanctum using Interiors Gold/Brown template for Preserver richness",
+        "Stagnation crystal corruption visible (brown/dead tiles mixed in)",
+        "Stairs connecting F1 to Depths L5 and F2",
+        "Collision on fortress walls",
+        "Events from event-placement.md",
+        "pnpm build passes"
+      ],
+      "priority": 35,
+      "passes": false,
+      "notes": "Fortress should feel distinctly different from dungeon — worked crystal and stone, symmetrical layouts, grand proportions. Interiors Grey Stone for F1 grandeur, Gold/Brown for F2 Preserver opulence. Read docs/maps/dungeon-depths.md Fortress F1-F2.",
+      "dependsOn": ["US-034"]
+    },
+    {
+      "id": "US-036",
+      "title": "Fortress F3 — Final arena",
+      "description": "As a developer, I need the final Fortress Floor 3 designed as the climactic encounter arena.",
+      "acceptanceCriteria": [
+        "Create fortress-f3.tmx (40x40) using Interiors Grey Stone + Gold/Brown templates",
+        "Large open combat arena in center — at least 15x15 clear tiles",
+        "Throne/altar area at far end",
+        "Stagnation crystal corruption prominently visible",
+        "Dramatic architectural features: pillars, platforms",
+        "Collision constraining arena area",
+        "Final boss event trigger wired",
+        "All end-game events from event-placement.md",
+        "pnpm build passes"
+      ],
+      "priority": 36,
+      "passes": false,
+      "notes": "FINAL MAP in the game — climactic encounter. Needs appropriate visual weight. Arena = large open space surrounded by dramatic architecture. Throne/altar = narrative focal point. Read docs/maps/dungeon-depths.md Fortress F3.",
+      "dependsOn": ["US-035"]
+    },
+    {
+      "id": "US-037",
+      "title": "Full playthrough verification — Act I maps",
+      "description": "As a developer, I need to verify all Act I maps work correctly in-game.",
+      "acceptanceCriteria": [
+        "Start dev server with pnpm dev",
+        "Complete class selection, spawn in Village Hub",
+        "Walk to every NPC — verify reachable",
+        "Walk to every gate — verify map transitions: VH→Heartfield, VH→Ambergrove, VH→Millbrook",
+        "Each map: no checkerboard gaps, no missing tiles",
+        "Each map: collision prevents walking through buildings/water",
+        "Each map: at least one event triggers correctly",
+        "Fix any issues found",
+        "pnpm build passes"
+      ],
+      "priority": 37,
+      "passes": false,
+      "notes": "Verification story. Play the game, check everything works. Start in Village Hub, walk to each adjacent map. If Sunridge requires MQ-04, test conditional gate.",
+      "dependsOn": ["US-009", "US-011", "US-013", "US-015", "US-017"]
+    },
+    {
+      "id": "US-038",
+      "title": "Full playthrough verification — Act II frontier maps",
+      "description": "As a developer, I need to verify all Act II frontier maps work correctly.",
+      "acceptanceCriteria": [
+        "Verify all 4 frontier maps: Shimmer Marsh, Hollow Ridge, Flickerveil, Resonance Fields",
+        "Each map: no missing tiles, no visual artifacts",
+        "Each map: collision prevents walking through walls/water/cliffs",
+        "Each map: god recall site is reachable and distinct",
+        "All biome transitions render correctly",
+        "Stagnation overlay applied correctly",
+        "Fix any issues found",
+        "pnpm build passes"
+      ],
+      "priority": 38,
+      "passes": false,
+      "notes": "Verify Act II. All 4 god recall sites should be reachable and visually distinct.",
+      "dependsOn": ["US-019", "US-021", "US-023", "US-025", "US-027"]
+    },
+    {
+      "id": "US-039",
+      "title": "Full playthrough verification — Act III + underground maps",
+      "description": "As a developer, I need to verify all Act III sketch zones and underground maps work correctly.",
+      "acceptanceCriteria": [
+        "Verify 3 sketch zone maps: Luminous Wastes, Undrawn Peaks, Half-Drawn Forest",
+        "Verify all dungeon maps: Depths L1-L5, Fortress F1-F3",
+        "Sketch zones have proper monochrome aesthetic",
+        "Dungeon maps use Backterria Interiors correctly",
+        "Fortress F3 final arena is appropriately dramatic",
+        "Fix any issues found",
+        "pnpm build passes"
+      ],
+      "priority": 39,
+      "passes": false,
+      "notes": "Verify Act III + underground. 3 sketch + 5 depths + 3 fortress = 11 maps.",
+      "dependsOn": ["US-030", "US-036"]
+    },
+    {
+      "id": "US-040",
+      "title": "Final build verification and cleanup",
+      "description": "As a developer, I need to verify the complete game builds cleanly with all new Backterria-based maps.",
+      "acceptanceCriteria": [
+        "pnpm build produces clean output with zero warnings",
+        "All 25 maps (17 surface + 8 underground) load correctly",
+        "No old AI-generated TSX or PNG files remain",
+        "All TSX files reference existing 32px PNGs",
+        "No checkerboard gaps or missing tiles in any map",
+        "pnpm lint passes",
+        "pnpm tileset:build is idempotent"
+      ],
+      "priority": 40,
+      "passes": false,
+      "notes": "Final cleanup. Definition of done: every map loads, displays real Backterria CC0 tiles with no artifacts, has working collision and events, and the game builds cleanly.",
+      "dependsOn": ["US-037", "US-038", "US-039"]
     }
-  ],
-  "metadata": {
-    "updatedAt": "2026-02-13T19:14:45.775Z"
-  }
+  ]
 }

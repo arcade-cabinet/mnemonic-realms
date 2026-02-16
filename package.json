@@ -19,7 +19,9 @@
     "gen:full": "tsx gen/cli.ts build all && tsx gen/cli.ts generate all && tsx gen/cli.ts integrate all",
     "audio:fetch-ambient": "tsx scripts/fetch-ambient-loops.ts",
     "audio:gen-bgm-placeholders": "tsx scripts/generate-placeholder-bgm.ts",
-    "verify:sprites": "tsx scripts/verify-sprites.ts"
+    "verify:sprites": "tsx scripts/verify-sprites.ts",
+    "tileset:build": "tsx gen/scripts/upscale-tilesets.ts",
+    "tileset:tsx": "tsx gen/scripts/generate-tsx.ts"
   },
   "dependencies": {
     "@rpgjs/client": "4.3.0",

@@ -1,355 +1,212 @@
-# Ralph Loop Plan: Tileset & TMX Complete Rework
+# Tileset & TMX Map Rework — Comprehensive Phased Plan
 
-> **PBR Reference**: `docs/pbr-tileset-tmx-quality.md`
-> **Dirty Manifest**: `gen/dirty.json` (70 entries — 27 tilesets + 43 sprites)
-> **Tileset Spec**: `docs/design/tileset-spec.md`
-> **Map Layout Spec**: `docs/maps/overworld-layout.md`
-> **Model Requirement**: Gemini Pro (NOT Flash) for tilesets due to complexity
-> **Max Iterations**: 40 (estimate)
+## Executive Summary
 
----
+Replace all AI-generated tilesets and TMX maps with properly designed maps built from **Backterria CC0 assets** (4,500+ tiles purchased for this game). Kenney packs are supplementary ONLY for genuine gaps (Sketch biome, dungeon extras).
 
-## Problem Statement
+**Problem**: Current AI-generated tilesets produce checkerboard gaps and reference tile GIDs that don't map to real tileset images. The game has 4,500+ purchased Backterria CC0 tiles that are not being used.
 
-The GenAI pipeline generated tilesets and TMX maps without visual quality verification. Every tileset has text labels burned in, nonfunctional autotile rows, and inconsistent tile layouts. Every TMX map has random tile placement that creates visual gibberish. The entire visual layer of the game is broken.
+**Solution**: Upscale Backterria tilesheets to 32px, create proper TSX tileset definitions, and hand-design every TMX map with real tiles aligned to bible specifications.
 
-## Execution Strategy
-
-**Three phases, strictly sequential** — each phase depends on the previous:
-
-1. **Phase 1: Regenerate Tilesets** — Fix prompts, regen with Gemini Pro, visual QC each output
-2. **Phase 2: Write Tile Catalog** — After regen, visually inspect every tile and document what's at each position
-3. **Phase 3: Rewrite TMX Maps** — Using the tile catalog + map layout specs, manually write correct TMX data
-
-Phase 1 must complete before Phase 2 starts (can't catalog tiles that don't exist yet).
-Phase 2 must complete before Phase 3 starts (can't place tiles without knowing what they are).
+**Asset Catalog**: See `assets/tilesets/backterria/CATALOG.md` for the complete inventory.
 
 ---
 
-## Phase 1: Regenerate Tilesets (Iterations 1-12)
+## Asset Strategy
 
-### Prompt Fixes Required
+### Backterria = THE Foundation
 
-The tileset builder (`gen/builders/tilesets.ts`) must be updated:
+The Backterria CC0 collection covers **every biome** in the game:
 
-1. **Remove tile ID labels from prompts** — strip all `VIL-GR-01`, `FOR-DE-03` etc. from the user prompt. These get rendered as text.
-2. **Add negative prompt**: "No text, no letters, no labels, no words, no numbers, no watermarks"
-3. **Switch to Gemini Pro model** for tileset generation (not Flash)
-4. **Simplify per-tile prompts** — instead of describing every tile with its ID, describe tile categories in bulk:
-   - "Row 1-2: 16 ground tiles — 8 variants of [biome ground type]. Seamlessly tileable, no visible edges."
-   - "Row 3: 6 path tiles — horizontal, vertical, corner, T-junction, crossroads, steps."
-   - "Rows 4-9: LEAVE EMPTY (transparent). These will be filled with autotile data later."
-   - "Row 10-11: 16 decoration tiles — [list of objects]."
-   - "Row 12: 8 obstacle tiles — [list of obstacles]."
-   - "Row 13-14: 16 cells for animated tile frames — [list of animations]."
-5. **One tileset per API call** — don't batch, each tileset is its own generation call for quality
-6. **Dimension enforcement**: Each biome's sheet dimensions per spec (512×448 for village/plains, 512×512 for others, 512×576 for forest)
+| Game Biome | Backterria Source | Coverage |
+|------------|------------------|----------|
+| Village | Overworld (Green Meadow) + Natural Props (fences, wells, trees) | **COMPLETE** |
+| Grassland | Overworld (Green + Yellow variants) + Natural (paths, farmland) | **COMPLETE** |
+| Forest | Overworld (Autumn variant) + Natural Tileset + Natural Props + Plants | **COMPLETE** |
+| Mountain | Natural Tileset (stone) + Overworld (Dead/Brown variant) + Natural Props (rocks) | **ADEQUATE** |
+| Riverside | Overworld (water) + Natural Tileset (river, water edges) | **COMPLETE** |
+| Wetland/Marsh | Natural Tileset (water) + Plants (vegetation) | **ADEQUATE** |
+| Plains | Overworld (Yellow Meadow) + Natural Tileset (paths) | **COMPLETE** |
+| Dungeon | Interiors (dungeon templates, 8 room styles) | **COMPLETE** |
+| Interiors | Interiors (all 8 templates) + Plants (potted) + Items | **COMPLETE** |
+| Stagnation | Overworld (Dead/Brown) + Post-Apoc (damaged tiles) | **ADEQUATE** |
+| Sketch | NOT in Backterria | **GAP** — use Kenney Monochrome RPG |
 
-### Iteration 1: Fix tileset builder prompts
-**Task**: Modify `gen/builders/tilesets.ts`
-- Strip tile ID labels from all prompts
-- Add "no text" negative prompt constraint
-- Simplify prompt structure (category descriptions, not per-tile)
-- Leave autotile rows (4-9) explicitly empty
-- Update model config to use Gemini Pro for tilesets
+### Kenney = Supplements ONLY
 
-### Iteration 2: Regenerate Village tilesets (3 tiers)
-**Task**: `doppler run --project gha --config ci -- pnpm gen generate tilesets --force --filter village`
-**QC**: Visually inspect each PNG. Verify:
-- [ ] No text/labels visible
-- [ ] Ground tiles (rows 1-2) look like cobblestone/grass
-- [ ] Path tiles (row 3) are recognizable paths
-- [ ] Rows 4-9 are empty/transparent
-- [ ] Decoration tiles (rows 10-11) show benches, barrels, lanterns, etc.
-- [ ] Obstacle tiles (row 12) show walls, roofs, fences, trees
-- [ ] Row 13-14 have animated tile frames
+Kenney packs are copied into the project **only** for these specific gaps:
+- **Kenney Monochrome RPG**: The Sketch biome's monochrome aesthetic
+- **Kenney Roguelike Base**: Mountain cliff edge tiles IF Backterria stone tiles prove insufficient
+- **Kenney Tiny Dungeon**: Supplementary dungeon variety IF Backterria Interiors needs variety
 
-If QC fails: adjust prompt, regenerate. Don't proceed until QC passes.
+### Tile Size
 
-### Iteration 3: Regenerate Forest tilesets (3 tiers)
-Same structure as Iteration 2. QC checks adapted for forest biome (dirt, trees, mushrooms, etc.)
+All Backterria tilesheets are 16px tiles. Existing TMX maps use 32px tiles.
 
-### Iteration 4: Regenerate Grassland tilesets (3 tiers)
-QC checks: grass, wheat, fences, farmsteads
+**Strategy**: 2x nearest-neighbor upscale preserving pixel art crispness.
 
-### Iteration 5: Regenerate Mountain tilesets (3 tiers)
-QC checks: rock, snow, alpine grass, cave entrance, cliffs
-
-### Iteration 6: Regenerate Riverside tilesets (3 tiers)
-QC checks: water, docks, bridges, waterfall, town buildings
-
-### Iteration 7: Regenerate Wetland tilesets (3 tiers)
-QC checks: swamp water, lily pads, reeds, mangroves, boardwalk
-
-### Iteration 8: Regenerate Plains tilesets (3 tiers)
-QC checks: open grass, resonance stones, tents, campfire
-
-### Iteration 9: Regenerate Dungeon tilesets (3 tiers)
-QC checks: stone floors, walls, torches, doors, chests, crystals
-
-### Iteration 10: Regenerate Sketch tilesets (3 tiers)
-QC checks: pencil-drawn aesthetic, parchment background, appropriate fill level per tier
-
-### Iteration 11: Integrate regenerated tilesets
-**Task**: `pnpm gen integrate images --filter tilesets`
-Then run edge repair: `pnpm exec tsx scripts/repair-tileset-edges.ts`
-Verify no regression.
-
-### Iteration 12: Regenerate dirty sprites (43 sprites)
-**Task**: `doppler run --project gha --config ci -- pnpm gen generate sprites --dirty`
-**QC**: Run `pnpm exec tsx scripts/verify-sprites.ts` — target 0 warnings
-If any sprites still have solid-line artifacts or identical direction rows, re-dirty and regenerate.
+**Exception**: Backterria Natural Props (individual PNGs) are already at 32px/64px — they don't need upscaling. Backterria Signs 32 is already at 32px.
 
 ---
 
-## Phase 2: Write Tile Catalog (Iterations 13-18)
+## Phase Structure
 
-After Phase 1, the tilesets should be clean. Now visually inspect each one and document what's at every tile position.
+### Phase 0: Foundation (6 iterations)
+Upscale Backterria assets, create TSX definitions, remove old AI tilesets.
 
-### Output: `docs/design/tileset-catalog.md`
+### Phase 1: Act I — Settled Lands (12 iterations)
+Village Hub + 4 surrounding maps using Backterria exclusively.
 
-For each biome (using the Normal tier as reference):
+### Phase 2: Act II — Frontier Zones (10 iterations)
+4 frontier maps using Backterria + minimal supplements.
 
-```
-## Village Normal
-
-### Row 1 (Tiles 1-16)
-| Tile ID | Col | Visual Description | Tiling | Category |
-|---------|-----|-------------------|--------|----------|
-| 1 | 0 | Light tan cobblestone | seamless | ground |
-| 2 | 1 | Cobblestone variant, offset pattern | seamless | ground |
-| ... | ... | ... | ... | ... |
-
-### Row 2 (Tiles 17-32)
-...
-```
-
-### Iteration 13: Catalog Village + Forest tilesets
-Read each PNG, document every non-empty tile with visual description and category.
-
-### Iteration 14: Catalog Grassland + Mountain tilesets
-Same process.
-
-### Iteration 15: Catalog Riverside + Wetland tilesets
-Same process.
-
-### Iteration 16: Catalog Plains + Dungeon tilesets
-Same process.
-
-### Iteration 17: Catalog Sketch tileset
-Same process. Note which tiles are intentionally empty per the sketch aesthetic.
-
-### Iteration 18: Cross-reference catalog against tileset-spec.md
-For each biome, verify:
-- [ ] All spec-defined tiles exist in the regenerated tileset
-- [ ] Tile positions match spec's row layout
-- [ ] Ground tiles are seamlessly tileable
-- [ ] Three tiers of same tile are recognizably the same object
-- [ ] Decoration/obstacle tiles are distinct from ground tiles
-
-Write a verification report at the end of tileset-catalog.md.
+### Phase 3: Act III — Sketch + Underground (12 iterations)
+Sketch zones (Kenney Monochrome), Depths (Backterria Interiors), Fortress.
 
 ---
 
-## Phase 3: Rewrite TMX Maps (Iterations 19-38)
+## Phase 0: Foundation
 
-Using the tile catalog + `docs/maps/overworld-layout.md`, rewrite every TMX map's layer data.
+### US-001: Backterria Tileset Upscale Script
+Build `gen/scripts/upscale-tilesets.ts`:
+- Reads all Backterria tilesheets from `assets/tilesets/backterria/`
+- 2x nearest-neighbor upscale via sharp for all 16px tilesheets
+- Packs 101 Natural Props into composite tilesheet (16 columns wide)
+- Copies Signs 32 and Natural Props as-is (already at 32px)
+- Outputs to `assets/tilesets/32px/`
+- `pnpm tileset:build` script in package.json
 
-### TMX Layer Writing Rules
+### US-002: Vibrancy Tier Generator
+Extend upscale script for muted/vivid variants:
+- Normal: base 32px upscaled image
+- Muted: saturation -40%, brightness -15%
+- Vivid: saturation +30%, brightness +10%
+- Output: `{name}_normal.png`, `{name}_muted.png`, `{name}_vivid.png`
 
-For each map, follow this process:
+### US-003: Tile Catalog — All Backterria Tilesheets
+Document tile GID mappings for every upscaled Backterria sheet:
+- Overworld: map every tile (grass variants, terrain edges, water, buildings, farmland, characters)
+- Natural: map terrain sections (grass, water, river, soil, path, stone)
+- Plants: categorize by type (ground plants, potted plants, flowers)
+- Interiors: identify room templates and individual furniture/props
+- Items, Signs, Symbols: quick reference lists
 
-1. **Read the map spec** in overworld-layout.md (layout diagram, NPC positions, events, transitions)
-2. **Identify the tileset** (biome + tier from map properties)
-3. **Open the tile catalog** for that tileset
-4. **Write ground layer**: Fill with appropriate ground tile IDs per the layout diagram
-   - Open areas: grass/ground tile IDs with variation (alternate between 2-3 similar tiles)
-   - Paths: path tile IDs connecting locations per the layout diagram
-   - Water: water tile IDs where the spec shows water
-5. **Write ground2 layer**: Detail overlay
-   - Flowers, cracks, puddles on top of ground
-   - Keep sparse — 10-20% coverage
-6. **Write objects layer**: Buildings, trees, features
-   - Building walls at spec positions
-   - Trees at perimeter and in groves per layout
-   - Props (benches, barrels, signs) at spec positions
-7. **Write objects_upper layer**: Above-player elements
-   - Roof tiles above buildings
-   - Tree canopy tiles above tree trunks
-8. **Write collision layer**: Based on objects
-   - Buildings: blocked
-   - Trees: blocked
-   - Water: blocked (unless bridge)
-   - Paths: passable
-   - Open ground: passable
-9. **Write events layer**: From the map spec
-   - NPC positions as event objects
-   - Transition zones at map edges
-   - Resonance stones, chests, trigger areas
+### US-004: TSX Definitions + Remove Old AI Tilesets
+- Generate TSX files from upscaled 32px Backterria PNGs
+- One primary TSX per Backterria source: `backterria-overworld.tsx`, `backterria-natural.tsx`, etc.
+- Vibrancy variant TSX files: `*_muted.tsx`, `*_vivid.tsx`
+- TMX template with standard layers: ground, ground2, objects, objects_upper, collision, events
+- **REMOVE all 73+ old AI-generated TSX and PNG files**
 
-### Iteration 19: Rewrite village-hub.tmx
-**Priority**: This is the starting map and the most visible.
-**Read**: overworld-layout.md Map 1 section
-**Tileset**: tiles_village_normal
-**Size**: 30x30
+### US-005: Copy Kenney Supplementary Tiles (gaps only)
+Copy ONLY the Kenney packs needed for genuine gaps:
+- Monochrome RPG (for Sketch biome)
+- Roguelike Base (for mountain cliff edges, if needed)
+- Handle 1px Kenney margin: strip, upscale each tile, repack as 0-margin 32px sheet
 
-The layout diagram shows:
-- Trees along north and south edges
-- Lookout Hill (12,2) 6x5 — elevated area with telescope
-- Training Ground (8,10) 6x5 — open sparring area
-- Elder's House (18,10) 5x5 — building with roof
-- Central Square (12,14) 6x6 — fountain at center
-- Quest Board (8,14) 3x3
-- Memorial Garden (8,16) 4x3
-- Lira's Workshop (8,18) 5x4
-- General Shop (18,16) 5x4
-- Blacksmith (18,18) 4x4
-- Inn Bright Hearth (20,14) 5x4
-- Paths connecting all locations
-- Gates at N/S/E/W edges
-
-### Iteration 20: Rewrite heartfield.tmx
-**Map 2A**: Heartfield (South Settled Lands)
-**Tileset**: tiles_grassland_normal
-**Size**: 40x40
-
-### Iteration 21: Rewrite ambergrove.tmx
-**Map 2B**: Ambergrove (East Settled Lands)
-**Tileset**: tiles_forest_normal
-**Size**: 40x40
-
-### Iteration 22: Rewrite millbrook.tmx
-**Map 2C**: Millbrook (West Settled Lands)
-**Tileset**: tiles_riverside_normal
-**Size**: 40x40
-
-### Iteration 23: Rewrite sunridge.tmx
-**Map 2D**: Sunridge (North Settled Lands)
-**Tileset**: tiles_grassland_normal
-**Size**: 40x40
-
-### Iteration 24: Rewrite resonance-fields.tmx
-**Map 3A**: Resonance Fields (South Frontier)
-**Tileset**: tiles_plains_normal
-**Size**: 50x50
-
-### Iteration 25: Rewrite hollow-ridge.tmx
-**Map 3B**: Hollow Ridge (East Frontier)
-**Tileset**: tiles_mountain_normal
-**Size**: 50x50
-
-### Iteration 26: Rewrite shimmer-marsh.tmx
-**Map 3C**: Shimmer Marsh (West Frontier)
-**Tileset**: tiles_wetland_normal
-**Size**: 50x50
-
-### Iteration 27: Rewrite flickerveil.tmx
-**Map 3D**: Flickerveil (North Frontier)
-**Tileset**: tiles_forest_normal
-**Size**: 50x50
-
-### Iteration 28: Rewrite luminous-wastes.tmx
-**Map 4A**: Luminous Wastes (Sketch zone)
-**Tileset**: tiles_sketch_normal
-**Size**: 40x40
-
-### Iteration 29: Rewrite undrawn-peaks.tmx
-**Map 4B**: Undrawn Peaks (Sketch zone)
-**Tileset**: tiles_sketch_normal
-**Size**: 40x40
-
-### Iteration 30: Rewrite half-drawn-forest.tmx
-**Map 4C**: Half-Drawn Forest (Sketch zone)
-**Tileset**: tiles_sketch_normal
-**Size**: 40x40
-
-### Iteration 31: Rewrite depths-l1.tmx
-**Depths Level 1**
-**Tileset**: tiles_dungeon_normal
-**Size**: 20x25
-
-### Iteration 32: Rewrite depths-l2.tmx
-**Depths Level 2**
-**Size**: 20x25
-
-### Iteration 33: Rewrite depths-l3.tmx
-**Depths Level 3**
-**Size**: 20x25
-
-### Iteration 34: Rewrite depths-l4.tmx
-**Depths Level 4**
-**Size**: 20x25
-
-### Iteration 35: Rewrite depths-l5.tmx
-**Depths Level 5**
-**Size**: 20x25
-
-### Iteration 36: Rewrite fortress-f1.tmx
-**Fortress Floor 1**
-**Size**: 20x25
-
-### Iteration 37: Rewrite fortress-f2.tmx
-**Fortress Floor 2**
-**Size**: 20x25
-
-### Iteration 38: Rewrite fortress-f3.tmx
-**Fortress Floor 3**
-**Size**: 20x25
+### US-006: Gap-Fill Tile Catalog
+Document which Kenney tiles fill which Backterria gaps:
+- Mountain cliff edges
+- Sketch biome terrain/buildings/trees
+- Any remaining holes identified in US-003
 
 ---
 
-## Phase 4: Visual Verification (Iterations 39-40)
+## Phase 1: Act I — Settled Lands (12 iterations)
 
-### Iteration 39: Full playthrough verification
-- Start dev server
-- Click through title screen → class selection → village hub
-- Walk to every building, every NPC, every gate
-- Transition to at least 2 adjacent maps
-- Screenshot each map for visual QC
-- Note any remaining issues
+All maps use Backterria tiles exclusively (Overworld, Natural, Plants, Natural Props).
 
-### Iteration 40: Fix remaining issues
-- Address any problems found in Iteration 39
-- Run `pnpm verify:sprites` — confirm 0 warnings
-- Run `pnpm build` — confirm clean build
-- Final screenshot walkthrough
+### US-007/008/009: Village Hub (3 stories)
+- Ground layer: Backterria Overworld green meadow + Natural path tiles
+- Buildings + objects: Backterria Overworld buildings + Natural Props (fences, wells, trees, flowers)
+- Collision + events + gates: Wire to village-hub-events.ts
 
----
+### US-010/011: Heartfield (2 stories)
+- Ground: Backterria Overworld green+yellow meadow, farmland, river
+- Objects/events: Farmhouses, wheat fields, Stagnation Clearing
 
-## QC Gate: Definition of Done
+### US-012/013: Ambergrove (2 stories)
+- Ground: Backterria Overworld autumn variant, Natural Tileset forest floor
+- Objects/events: Natural Props trees, Plants dense vegetation, 5 resonance stones
 
-- [ ] No text/labels visible on any tile in any tileset
-- [ ] Every map loads without errors
-- [ ] Every map has recognizable terrain (grass looks like grass, buildings look like buildings)
-- [ ] Paths connect locations per the layout diagrams
-- [ ] Buildings have walls AND roofs (objects + objects_upper layers)
-- [ ] Trees have trunks AND canopies
-- [ ] Collision layer matches feature placement (can't walk through buildings)
-- [ ] NPC events are at correct positions per overworld-layout.md
-- [ ] Map transitions work between adjacent maps
-- [ ] Tile seam gaps are minimized (no white lines between tiles)
-- [ ] 0 sprite quality warnings from verify-sprites.ts
-- [ ] Clean `pnpm build`
+### US-014/015: Millbrook (2 stories)
+- Ground: Natural Tileset water/river system, Overworld water
+- Objects/events: Bridge, mill, waterfall, cave entrance
+
+### US-016/017: Sunridge (2 stories)
+- Ground: Natural Tileset stone tiles, Overworld dead/brown variant
+- Objects/events: Wind Shrine, Preserver Outpost
 
 ---
 
-## Dependencies
+## Phase 2: Act II — Frontier Zones (10 iterations)
 
-| Dependency | Status | Notes |
-|------------|--------|-------|
-| `gen/builders/tilesets.ts` prompt fixes | NOT STARTED | Must be done before any regen |
-| `gen/generators/model-config.ts` Gemini Pro config | NOT STARTED | Need Pro model for tilesets |
-| Gemini API key (Doppler) | AVAILABLE | `doppler run --project gha --config ci --` |
-| tileset-spec.md | COMPLETE | Authoritative tile definitions |
-| overworld-layout.md | COMPLETE | Map layout diagrams and NPC positions |
-| dungeon-depths.md | COMPLETE | Underground level specs |
-| docs/design/tileset-catalog.md | NOT STARTED | Phase 2 output |
+### US-018/019: Shimmer Marsh (2 stories)
+- Primary: Natural Tileset water system + Plants vegetation
+- Objects/events: Verdance recall site, floating platforms
+
+### US-020/021: Hollow Ridge (2 stories)
+- Primary: Natural Tileset stone + Overworld dead/brown
+- Supplement: Kenney Roguelike cliff tiles IF needed
+- Objects/events: Kinesis Spire, crystal caves
+
+### US-022/023: Flickerveil (2 stories)
+- Primary: Natural Tileset + Plants + Overworld autumn (mixed aggressively)
+- Objects/events: Luminos Grove, flickering light objects
+
+### US-024/025: Resonance Fields (2 stories)
+- Primary: Overworld yellow meadow + Natural Tileset stone paths
+- Objects/events: Amphitheater, standing stones
+
+### US-026/027: Biome Transitions + Stagnation Overlay (2 stories)
+- 5-tile transition gradients between adjacent biomes
+- Stagnation crystal corruption overlay (Overworld dead variant + custom)
 
 ---
 
-## Risk Mitigations
+## Phase 3: Act III — Sketch + Underground (12 iterations)
 
-1. **Gemini Pro may still produce text**: Add multiple "no text" directives at different prompt positions. If Pro still adds text, try Gemini Ultra or switch to individual-tile generation instead of full-sheet.
-2. **Autotile generation is likely impossible for AI**: Leave autotile rows empty. Autotiles can be hand-authored or procedurally composed later. Focus on getting ground + decoration + obstacle tiles correct.
-3. **TMX rewriting is labor-intensive**: 20 maps × ~6 layers each = ~120 layer data arrays to write. Each layer for a 30x30 map is 900 integers. Larger maps (50x50) are 2,500 integers. Total: ~150,000+ tile IDs to specify. Consider writing a helper that takes a simplified room/zone definition and expands to full CSV.
-4. **Tile seam gaps may persist**: If PixiJS seams remain after clean tilesets, investigate RPG-JS source for tiling renderer patches or find a PixiJS 7 tilemap plugin that supports extrusion.
+### US-028/029/030: Sketch Zones (3 stories)
+- Luminous Wastes, Undrawn Peaks, Half-Drawn Forest
+- Primary: **Kenney Monochrome RPG** (only place Kenney is primary)
+- Objects/collision/events for all 3
+
+### US-031-036: Depths L1-L5 + Fortress F1-F3 (6 stories)
+- Primary: **Backterria Interiors** (8 room templates)
+- Supplement: Post-Apoc building tiles for Fortress architecture
+- L1-L3: Backterria Interiors dark dungeon templates
+- L4: Backterria + Post-Apoc for hazardous/damaged areas
+- L5: Transition to Fortress style
+- F1-F3: Backterria Interiors grey stone + Post-Apoc building tiles
+
+### US-037/038/039/040: Verification (3 stories)
+- Act I playthrough verification
+- Act II + III playthrough verification
+- Final build verification
+
+---
+
+## Quality Gates
+
+Every story must pass:
+- `pnpm build` — RPG-JS build compiles
+- TMX files load without warnings
+- All TSX files reference existing PNG images
+- No checkerboard gaps or missing tile artifacts
+
+Map stories also verify:
+- Player can navigate between connected maps via gate events
+- Event coordinates in TMX match TypeScript event files
+- Collision prevents walking through walls, water, cliffs
+
+---
+
+## Iteration Budget
+
+| Phase | Stories | Iterations |
+|-------|---------|------------|
+| Phase 0: Foundation | US-001 through US-006 | 6 |
+| Phase 1: Act I | US-007 through US-017 | 11 |
+| Phase 2: Act II | US-018 through US-027 | 10 |
+| Phase 3: Act III | US-028 through US-040 | 13 |
+| **Total** | **40 stories** | **40 iterations** |

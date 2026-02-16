@@ -1,105 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="20" height="25" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="100">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="100">
  <properties>
   <property name="category" value="dungeon"/>
   <property name="mapName" value="Memory Cellar"/>
   <property name="vibrancy" type="int" value="25"/>
  </properties>
- <tileset firstgid="1" source="tiles_dungeon_vivid.tsx"/>
- <layer id="1" name="ground" width="20" height="25">
+ <tileset firstgid="1" source="backterria-overworld.tsx"/>
+ <tileset firstgid="465" source="backterria-natural.tsx"/>
+ <tileset firstgid="1037" source="backterria-natural-props.tsx"/>
+ <tileset firstgid="1709" source="backterria-plants.tsx"/>
+ <tileset firstgid="2469" source="backterria-interiors.tsx"/>
+ <layer id="1" name="ground" width="20" height="20">
   <data encoding="csv">
-6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,
-8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
-8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
-8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
-8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
-8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
-8,8,8,8,8,8,8,8,6,8,8,8,8,8,8,8,8,8,8,8,
-8,8,8,8,8,8,8,8,3,6,6,6,6,6,6,6,6,6,6,6,
-8,8,8,8,8,8,8,8,6,8,8,8,8,6,6,6,8,8,8,8,
-8,8,8,8,8,8,8,8,6,8,8,8,8,6,6,6,8,8,8,8,
-8,8,8,8,8,8,8,8,6,8,8,8,8,6,6,6,8,8,8,8,
-6,6,6,6,6,6,6,6,6,8,8,8,8,8,8,8,8,8,8,8,
-6,6,6,6,6,6,6,6,6,8,8,8,8,8,8,8,8,8,8,8,
-6,6,6,6,6,6,6,6,6,8,8,8,8,8,8,8,8,8,8,8,
-3,3,3,3,3,3,3,3,3,6,6,6,6,6,6,6,6,6,6,6,
-6,6,6,6,6,6,6,6,6,8,8,8,8,8,8,8,8,8,8,8,
-6,6,6,6,6,6,6,6,6,8,8,8,8,8,8,8,8,8,8,8,
-6,6,6,6,6,6,6,6,6,3,3,3,3,3,3,3,3,3,3,3,
-6,6,6,6,6,6,6,6,6,3,3,3,3,3,3,3,3,3,3,3,
-6,6,6,6,6,6,6,6,6,3,3,3,3,3,3,3,3,3,3,3,
-6,6,6,6,6,6,6,6,6,3,3,3,3,3,3,3,3,3,3,3,
-3,3,3,3,3,3,3,3,3,6,6,6,6,6,6,6,6,6,6,6,
-6,6,6,6,6,6,6,6,6,3,3,3,3,3,3,3,3,3,3,3,
-6,6,6,6,6,6,6,6,6,3,3,3,3,3,3,3,3,3,3,3,
-6,6,6,6,6,6,6,6,6,3,3,3,3,3,3,3,3,3,3,3
+2869,2869,2869,2869,2869,2869,2869,2869,2869,2469,2469,2869,2869,2869,2869,2869,2869,2869,2869,2869,
+2869,2869,2869,2869,2869,2869,2869,2469,2469,2469,2469,2469,2469,2869,2869,2869,2869,2869,2869,2869,
+2869,2869,2869,2869,2869,2869,2869,2469,2469,2470,2470,2469,2469,2869,2869,2869,2869,2869,2869,2869,
+2869,2869,2869,2869,2869,2869,2869,2469,2469,2469,2469,2469,2469,2869,2869,2869,2869,2869,2869,2869,
+2869,2869,2869,2869,2869,2869,2869,2469,2469,2469,2469,2469,2469,2869,2869,2869,2869,2869,2869,2869,
+2869,2869,2869,2869,2869,2869,2869,2869,2869,2469,2469,2869,2869,2869,2869,2869,2869,2869,2869,2869,
+2869,2869,2869,2869,2869,2869,2869,2869,2869,2469,2469,2869,2869,2869,2869,2869,2869,2869,2869,2869,
+2869,2869,2469,2469,2469,2469,2469,2469,2469,2469,2469,2469,2469,2469,2469,2469,2469,2469,2869,2869,
+2869,2869,2469,2469,2470,2470,2469,2469,2469,2469,2469,2469,2469,2469,2470,2470,2469,2469,2869,2869,
+2869,2869,2469,2469,2469,2469,2469,2469,2469,2469,2469,2469,2469,2469,2469,2469,2469,2469,2869,2869,
+2869,2869,2469,2469,2469,2469,2469,2469,2469,2469,2469,2469,2469,2469,2469,2469,2469,2469,2869,2869,
+2869,2869,2869,2869,2869,2869,2869,2869,2869,2469,2469,2869,2869,2869,2869,2869,2869,2869,2869,2869,
+2869,2869,2869,2869,2869,2869,2869,2869,2869,2469,2469,2869,2869,2869,2869,2869,2869,2869,2869,2869,
+2869,2869,2869,2869,2869,2869,2869,2869,2869,2469,2469,2869,2869,2869,2869,2869,2869,2869,2869,2869,
+2869,2869,2869,2869,2869,2869,2869,2869,2869,2469,2469,2869,2869,2869,2869,2869,2869,2869,2869,2869,
+2869,2869,2869,2869,2869,2869,2469,2469,2469,2469,2469,2469,2469,2469,2869,2869,2869,2869,2869,2869,
+2869,2869,2869,2869,2869,2869,2469,2469,2469,2469,2469,2469,2469,2469,2869,2869,2869,2869,2869,2869,
+2869,2869,2869,2869,2869,2869,2469,2469,2469,2470,2470,2469,2469,2469,2869,2869,2869,2869,2869,2869,
+2869,2869,2869,2869,2869,2869,2469,2469,2469,2469,2469,2469,2469,2469,2869,2869,2869,2869,2869,2869,
+2869,2869,2869,2869,2869,2869,2869,2869,2869,2469,2469,2869,2869,2869,2869,2869,2869,2869,2869,2869
   </data>
  </layer>
- <layer id="2" name="ground2" width="20" height="25">
+ <layer id="2" name="ground2" width="20" height="20">
   <data encoding="csv">
-0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0
-  </data>
- </layer>
- <layer id="3" name="objects" width="20" height="25">
-  <data encoding="csv">
-178,178,178,178,178,178,178,178,178,0,0,178,178,178,178,178,178,178,178,178,
-178,0,0,0,0,146,0,0,0,0,0,0,0,0,146,0,0,0,0,178,
-178,0,153,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,178,
-178,0,0,151,0,0,0,0,0,0,0,0,0,0,0,151,0,0,0,178,
-178,0,0,0,0,0,0,0,0,0,0,151,0,0,0,0,0,0,0,178,
-178,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,178,
-178,178,178,178,184,178,178,178,178,0,178,178,178,178,178,178,178,178,178,178,
-178,151,0,0,0,0,0,0,178,0,149,0,0,0,0,0,0,0,146,178,
-178,0,0,153,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,178,
-178,0,0,0,0,0,0,0,178,0,0,0,0,0,0,0,0,0,0,178,
-178,0,0,0,0,0,0,0,178,0,0,0,0,0,0,0,0,0,0,178,
-178,178,178,178,178,178,178,178,178,0,178,178,178,178,178,178,178,178,178,178,
-178,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,178,
-178,0,0,0,0,0,0,0,0,0,0,0,0,0,153,0,0,0,0,178,
-178,0,0,0,0,0,0,0,0,0,0,151,0,0,148,0,0,0,0,178,
-178,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,178,
-178,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,178,
-178,178,178,178,178,178,178,178,178,0,178,178,178,178,178,178,178,178,178,178,
-178,0,0,0,0,0,0,0,0,0,0,0,146,0,0,0,0,0,0,178,
-178,0,0,0,0,0,0,0,0,0,0,153,0,0,0,0,0,0,0,178,
-178,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,178,
-178,0,0,0,0,0,0,0,0,0,0,0,0,0,38,0,0,0,0,178,
-178,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,178,
-178,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,178,
-178,178,178,178,178,178,178,178,178,178,178,178,178,178,178,178,178,178,178,178
-  </data>
- </layer>
- <layer id="4" name="objects_upper" width="20" height="25">
-  <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -122,175 +58,106 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
   </data>
  </layer>
- <layer id="5" name="collision" width="20" height="25">
+ <layer id="3" name="objects" width="20" height="20">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+  </data>
+ </layer>
+ <layer id="4" name="objects_upper" width="20" height="20">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+  </data>
+ </layer>
+ <layer id="5" name="collision" width="20" height="20">
   <data encoding="csv">
 1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,
-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-1,1,1,1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,
-1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,
-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,
-1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,
-1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,
-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,
-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+1,1,1,1,1,1,1,0,0,0,0,0,0,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,0,0,0,0,0,0,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,0,0,0,0,0,0,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,0,0,0,0,0,0,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,
+1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,
+1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,
+1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,
+1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,
+1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,
+1,1,1,1,1,1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,
+1,1,1,1,1,1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,
+1,1,1,1,1,1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1
   </data>
  </layer>
  <objectgroup id="6" name="events">
-  <object id="1" name="EV-D1-001" type="map-transition" x="320" y="0" width="32" height="32">
+  <object id="1" name="EV-D1-Up" type="map_transition" x="288" y="0" width="64" height="32">
    <properties>
     <property name="targetMap" value="village-hub"/>
-    <property name="targetX" value="8"/>
-    <property name="targetY" value="17"/>
+    <property name="targetX" type="int" value="8"/>
+    <property name="targetY" type="int" value="17"/>
     <property name="trigger" value="touch"/>
    </properties>
   </object>
-  <object id="2" name="EV-D1-002" type="dialogue" x="96" y="64" width="32" height="32">
-   <properties>
-    <property name="dialogueId" value="EV-D1-002"/>
-    <property name="questId" value="SQ-10"/>
-    <property name="trigger" value="action"/>
-   </properties>
-  </object>
-  <object id="3" name="EV-D1-003" type="item-pickup" x="544" y="128" width="32" height="32">
-   <properties>
-    <property name="fragmentElement" value="earth"/>
-    <property name="fragmentTier" value="1"/>
-    <property name="fragmentType" value="calm"/>
-    <property name="itemId" value="RS-D1-01"/>
-    <property name="itemType" value="resonance-fragment"/>
-    <property name="oneTime" value="true"/>
-    <property name="trigger" value="action"/>
-   </properties>
-  </object>
-  <object id="4" name="EV-D1-004" type="item-pickup" x="128" y="288" width="32" height="32">
-   <properties>
-    <property name="fragmentElement" value="neutral"/>
-    <property name="fragmentTier" value="2"/>
-    <property name="fragmentType" value="sorrow"/>
-    <property name="itemId" value="RS-D1-02"/>
-    <property name="itemType" value="resonance-fragment"/>
-    <property name="oneTime" value="true"/>
-    <property name="trigger" value="action"/>
-   </properties>
-  </object>
-  <object id="5" name="EV-D1-005" type="item-pickup" x="64" y="256" width="32" height="32">
-   <properties>
-    <property name="consumableId" value="C-HP-01"/>
-    <property name="itemId" value="CH-D1-01"/>
-    <property name="itemType" value="consumable"/>
-    <property name="oneTime" value="true"/>
-    <property name="quantity" value="3"/>
-    <property name="trigger" value="action"/>
-   </properties>
-  </object>
-  <object id="6" name="EV-D1-006" type="enemy-encounter" x="448" y="288" width="32" height="32">
-   <properties>
-    <property name="encounterId" value="EV-D1-006-encounter"/>
-    <property name="enemies" value="E-DP-01:2,E-DP-01:1.3"/>
-    <property name="oneTime" value="true"/>
-    <property name="questId" value="SQ-10"/>
-    <property name="questObjective" value="4"/>
-    <property name="trigger" value="touch"/>
-   </properties>
-  </object>
-  <object id="7" name="EV-D1-007" type="item-pickup" x="448" y="288" width="32" height="32">
-   <properties>
-    <property name="condition" value="quest:SQ-10:objective:4:completed"/>
-    <property name="fragmentElement" value="earth"/>
-    <property name="fragmentTier" value="2"/>
-    <property name="fragmentType" value="calm"/>
-    <property name="itemId" value="EV-D1-007-fragment"/>
-    <property name="itemType" value="resonance-fragment"/>
-    <property name="oneTime" value="true"/>
-    <property name="questId" value="SQ-10"/>
-    <property name="questObjective" value="5"/>
-    <property name="trigger" value="auto"/>
-   </properties>
-  </object>
-  <object id="8" name="EV-D1-008" type="item-pickup" x="480" y="448" width="32" height="32">
-   <properties>
-    <property name="fragmentElement" value="neutral"/>
-    <property name="fragmentTier" value="2"/>
-    <property name="fragmentType" value="joy"/>
-    <property name="itemId" value="RS-D1-03"/>
-    <property name="itemType" value="resonance-fragment"/>
-    <property name="oneTime" value="true"/>
-    <property name="trigger" value="action"/>
-   </properties>
-  </object>
-  <object id="9" name="EV-D1-009" type="item-pickup" x="384" y="480" width="32" height="32">
-   <properties>
-    <property name="consumableId" value="C-SP-01"/>
-    <property name="gold" value="50"/>
-    <property name="itemId" value="CH-D1-02"/>
-    <property name="itemType" value="consumable"/>
-    <property name="oneTime" value="true"/>
-    <property name="quantity" value="3"/>
-    <property name="trigger" value="action"/>
-   </properties>
-  </object>
-  <object id="10" name="EV-D1-010" type="dialogue" x="480" y="480" width="32" height="32">
-   <properties>
-    <property name="dialogueId" value="EV-D1-010"/>
-    <property name="oneTime" value="true"/>
-    <property name="trigger" value="auto"/>
-   </properties>
-  </object>
-  <object id="11" name="EV-D1-011" type="map-transition" x="384" y="640" width="32" height="32">
-   <properties>
-    <property name="condition" value="quest:SQ-10:objective:4:completed"/>
-    <property name="targetMap" value="village-hub"/>
-    <property name="targetX" value="8"/>
-    <property name="targetY" value="17"/>
-    <property name="trigger" value="action"/>
-   </properties>
-  </object>
-  <object id="12" name="EV-D1-012" type="map-transition" x="480" y="704" width="32" height="32">
+  <object id="2" name="EV-D1-Down" type="map_transition" x="288" y="608" width="64" height="32">
    <properties>
     <property name="targetMap" value="depths-l2"/>
-    <property name="targetX" value="10"/>
-    <property name="targetY" value="0"/>
+    <property name="targetX" type="int" value="9"/>
+    <property name="targetY" type="int" value="0"/>
     <property name="trigger" value="touch"/>
    </properties>
   </object>
-  <object id="13" name="EZ-D1-Alcove" type="enemy-zone" x="96" y="224" width="160" height="128">
+  <object id="3" name="RS-D1-01" type="resonance_stone" x="320" y="288" width="32" height="32">
    <properties>
-    <property name="encounterRate" value="common"/>
-    <property name="enemies" value="E-DP-01:1"/>
-    <property name="levelRange" value="4-5"/>
-    <property name="zoneId" value="EZ-D1-Alcove"/>
+    <property name="fragments" value="calm/earth/2"/>
+    <property name="id" value="RS-D1-01"/>
    </properties>
   </object>
-  <object id="14" name="EZ-D1-Chamber" type="enemy-zone" x="320" y="224" width="320" height="160">
+  <object id="4" name="Dungeon Zone" type="enemy_zone" x="32" y="32" width="576" height="576">
    <properties>
+    <property name="enemies" value="E-DP-01"/>
     <property name="encounterRate" value="standard"/>
-    <property name="enemies" value="E-DP-01:2"/>
-    <property name="levelRange" value="4-6"/>
-    <property name="zoneId" value="EZ-D1-Chamber"/>
-   </properties>
-  </object>
-  <object id="15" name="EZ-D1-Stairway" type="enemy-zone" x="352" y="576" width="288" height="192">
-   <properties>
-    <property name="encounterRate" value="common"/>
-    <property name="enemies" value="E-DP-01:1"/>
-    <property name="levelRange" value="4-6"/>
-    <property name="zoneId" value="EZ-D1-Stairway"/>
+    <property name="levelRange" value="6-8"/>
    </properties>
   </object>
  </objectgroup>
