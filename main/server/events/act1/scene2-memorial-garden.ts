@@ -1,4 +1,4 @@
-import { Direction, EventData, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { EventData, RpgEvent, type RpgPlayer } from '@rpgjs/server';
 import { addItem } from '../../systems/inventory';
 import { advanceObjective, isQuestActive } from '../../systems/quests';
 
@@ -56,7 +56,7 @@ export class MemorialGardenEvent extends RpgEvent {
     const stone3Id = 'RS-VH-01-dynamic'; // Joy/Neutral (from reference, but using the one from the script for the 3rd stone)
 
     // Resonance Stone 1: Calm/Neutral
-    const stone1 = await player.map.createDynamicEvent({
+    const _stone1 = await player.map.createDynamicEvent({
       x: 9,
       y: 16,
       name: 'Resonance Stone 1',
@@ -88,7 +88,7 @@ export class MemorialGardenEvent extends RpgEvent {
     });
 
     // Resonance Stone 2: Joy/Light
-    const stone2 = await player.map.createDynamicEvent({
+    const _stone2 = await player.map.createDynamicEvent({
       x: 10,
       y: 17,
       name: 'Resonance Stone 2',
@@ -113,7 +113,7 @@ export class MemorialGardenEvent extends RpgEvent {
     });
 
     // Resonance Stone 3: Awe/Wind (using the reference's fragment, not the RS-VH-01 from the table)
-    const stone3 = await player.map.createDynamicEvent({
+    const _stone3 = await player.map.createDynamicEvent({
       x: 11,
       y: 16, // Adjusted position to be distinct from others
       name: 'Resonance Stone 3',

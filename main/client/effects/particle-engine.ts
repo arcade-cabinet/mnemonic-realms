@@ -43,6 +43,7 @@ export function getEffectContainer(): Container | null {
 }
 
 function acquire(): Particle {
+  // biome-ignore lint/style/noNonNullAssertion: length check guarantees element exists
   if (pool.length) return pool.pop()!;
   return {
     gfx: new Graphics(),

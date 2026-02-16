@@ -1,11 +1,5 @@
 import { Direction } from '@rpgjs/common';
-import {
-  EventData,
-  RpgEvent,
-  type RpgMap,
-  type RpgPlayer,
-  RpgSceneMap,
-} from '@rpgjs/server';
+import { EventData, RpgEvent, type RpgMap, type RpgPlayer } from '@rpgjs/server';
 import { addItem } from '../../systems/inventory';
 
 @EventData({

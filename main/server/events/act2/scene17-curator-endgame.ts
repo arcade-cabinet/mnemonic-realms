@@ -1,10 +1,4 @@
-import {
-  EventData,
-  RpgEvent,
-  type RpgMap,
-  type RpgPlayer,
-  RpgSceneMap,
-} from '@rpgjs/server';
+import { EventData, RpgEvent, type RpgMap, type RpgPlayer } from '@rpgjs/server';
 import { getQuestStatus, isQuestComplete, startQuest } from '../../systems/quests';
 
 @EventData({
@@ -80,7 +74,7 @@ export class Act2Scene17CuratorEndgame extends RpgEvent {
         priority: 1,
         sync: true,
         // Add any specific event logic for Artun if needed, e.g., onAction
-        onAction(player: RpgPlayer) {
+        onAction(_player: RpgPlayer) {
           // This NPC is part of a cutscene, so direct interaction might be limited
           // or lead to a "wait" message.
         },
@@ -98,7 +92,7 @@ export class Act2Scene17CuratorEndgame extends RpgEvent {
         through: false,
         priority: 1,
         sync: true,
-        onAction(player: RpgPlayer) {
+        onAction(_player: RpgPlayer) {
           // Similar to Artun, direct interaction might be limited
         },
       });

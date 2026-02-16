@@ -1,10 +1,4 @@
-import {
-  EventData,
-  MapData,
-  RpgEvent,
-  RpgMap,
-  type RpgPlayer,
-} from '@rpgjs/server';
+import { EventData, RpgEvent, type RpgPlayer } from '@rpgjs/server';
 import { advanceObjective, startQuest } from '../../systems/quests';
 
 @EventData({
@@ -59,7 +53,7 @@ export class MillbrookSceneEvent extends RpgEvent {
     // Based on "Millbrook Town (15, 15)" and "Hana: Millbrook. More people here..."
     // Let's place her near the player's entry point or a central location.
     // Assuming player enters from (39, 20) from Village Hub, Hana could be at (35, 20) or (15, 15)
-    const hana = await player.map.createDynamicEvent({
+    const _hana = await player.map.createDynamicEvent({
       x: 15, // Central Millbrook location
       y: 15,
       event: HanaMillbrookEvent,
@@ -76,12 +70,12 @@ export class MillbrookSceneEvent extends RpgEvent {
     );
 
     await player.showText(
-      'The specialty shop here carries supplies you won\'t find in the village. Worth a look before we head further.',
+      "The specialty shop here carries supplies you won't find in the village. Worth a look before we head further.",
       { speaker: 'Hana' },
     );
 
     await player.showText(
-      'See the Brightwater Bridge? There\'s a Resonance Stone near the falls upstream. I can feel it from here.',
+      "See the Brightwater Bridge? There's a Resonance Stone near the falls upstream. I can feel it from here.",
       { speaker: 'Hana' },
     );
 
@@ -134,13 +128,13 @@ export class HanaMillbrookEvent extends RpgEvent {
           { speaker: 'Hana' },
         );
         await player.showText(
-          'And if a fragment\'s emotion matches the zone\'s natural resonance, broadcasting it there creates a harmonic bonus. The world responds more strongly.',
+          "And if a fragment's emotion matches the zone's natural resonance, broadcasting it there creates a harmonic bonus. The world responds more strongly.",
           { speaker: 'Hana' },
         );
         player.setVariable('lira_remix_tutorial_given', true);
       } else if (!player.getVariable('lira_remix_tutorial_given') && hasWaterFragments) {
         await player.showText(
-          'You\'ve collected some fragments. Let me teach you about remixing — combining fragments to create new memories.',
+          "You've collected some fragments. Let me teach you about remixing — combining fragments to create new memories.",
           { speaker: 'Hana' },
         );
         await player.showText(
@@ -148,7 +142,7 @@ export class HanaMillbrookEvent extends RpgEvent {
           { speaker: 'Hana' },
         );
         await player.showText(
-          'Match a fragment\'s emotion to the zone\'s resonance when broadcasting for a harmonic bonus.',
+          "Match a fragment's emotion to the zone's resonance when broadcasting for a harmonic bonus.",
           { speaker: 'Hana' },
         );
         player.setVariable('lira_remix_tutorial_given', true);

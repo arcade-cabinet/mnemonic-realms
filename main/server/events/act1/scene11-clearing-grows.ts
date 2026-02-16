@@ -1,11 +1,4 @@
-import {
-  EventData,
-  Move,
-  RpgEvent,
-  type RpgMap,
-  type RpgPlayer,
-  RpgSceneMap,
-} from '@rpgjs/server';
+import { EventData, Move, RpgEvent, type RpgMap, type RpgPlayer } from '@rpgjs/server';
 import { addItem } from '../../systems/inventory';
 import { advanceObjective } from '../../systems/quests';
 // Note: quest step/objective is tracked via player variable QUEST_<id>_OBJ
@@ -96,7 +89,7 @@ export class TheClearingGrowsEvent extends RpgEvent {
     await player.playCutscene('lira-freezing'); // This cutscene handles the visual expansion and Hana's initial actions
 
     // Dynamically spawn Hana (frozen) at the stagnation border
-    const liraFrozenEvent = await player.map.createDynamicEvent({
+    const _liraFrozenEvent = await player.map.createDynamicEvent({
       x: 34,
       y: 29,
       event: class HanaFrozenScene11 extends RpgEvent {

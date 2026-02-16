@@ -1,4 +1,4 @@
-import { EventData, MapData, RpgEvent, RpgMap, type RpgPlayer, RpgSceneMap } from '@rpgjs/server';
+import { EventData, MapData, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
 
 @EventData({
   id: 'act1-scene6-stagnation-clearing',
@@ -11,14 +11,14 @@ import { EventData, MapData, RpgEvent, RpgMap, type RpgPlayer, RpgSceneMap } fro
 export class StagnationClearingEvent extends RpgEvent {
   private hasTriggered = false; // Ensure the scene plays only once
 
-  async onInit(player: RpgPlayer) {
+  async onInit(_player: RpgPlayer) {
     // This event is meant to be triggered by an area-enter on the map,
     // not directly by onInit of an event placed on the map.
     // The logic below will be called by the map's onPlayerTouch event.
   }
 
   // This method will be called by the map's onPlayerTouch event when the player enters (35,30)
-  async onSceneTrigger(player: RpgPlayer, map: RpgMap) {
+  async onSceneTrigger(player: RpgPlayer, _map: RpgMap) {
     if (this.hasTriggered) {
       return;
     }
@@ -42,7 +42,7 @@ export class StagnationClearingEvent extends RpgEvent {
     });
 
     // Ensure Hana is spawned before dialogue
-    await new Promise(resolve => setTimeout(resolve, 16));
+    await new Promise((resolve) => setTimeout(resolve, 16));
 
     // 3. Dialogue sequences
     await player.showText('Wait. Do you feel that?', { speaker: 'Hana' });
@@ -85,7 +85,9 @@ export class StagnationClearingEvent extends RpgEvent {
     );
 
     // 5. System message
-    await player.showText("You've discovered a Stagnation Zone. The Preservers freeze the world to prevent change. Architects can break these zones by broadcasting memory fragments. You'll return here when you're ready.");
+    await player.showText(
+      "You've discovered a Stagnation Zone. The Preservers freeze the world to prevent change. Architects can break these zones by broadcasting memory fragments. You'll return here when you're ready.",
+    );
 
     // Clean up Hana after the scene
     if (hana) {
@@ -104,7 +106,7 @@ export class StagnationClearingEvent extends RpgEvent {
   id: 'heartfield',
 })
 export class HeartfieldMap extends RpgMap {
-  onPlayerTouch(player: RpgPlayer, event: RpgEvent) {
+  onPlayerTouch(player: RpgPlayer, _event: RpgEvent) {
     // Check if the player touches the specific tile (35,30)
     if (player.x === 35 && player.y === 30) {
       const stagnationClearingEvent = player.getVariable('stagnationClearingEvent');

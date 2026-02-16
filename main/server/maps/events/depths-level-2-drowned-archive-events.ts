@@ -4,8 +4,8 @@ export function spawnMapEvents(player: RpgPlayer) {
   const map = player.map as RpgMap;
 
   // Map-scoped variable helpers
-  const getVar = (key: string) => player.getVariable('D2_' + key);
-  const setVar = (key: string, value: unknown) => player.setVariable('D2_' + key, value);
+  const getVar = (key: string) => player.getVariable(`D2_${key}`);
+  const setVar = (key: string, value: unknown) => player.setVariable(`D2_${key}`, value);
 
   // Initialize valve puzzle state if not set
   if (getVar('VALVE_STATE') === undefined) {
@@ -200,9 +200,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
       if (getVar('ARCHIVIST_DEFEATED')) {
-        player.showText(
-          'You descend the ancient stairway into the deeper levels of the archive.',
-        );
+        player.showText('You descend the ancient stairway into the deeper levels of the archive.');
         player.changeMap('depths-l3', { x: 10, y: 0 });
       } else {
         player.showText(

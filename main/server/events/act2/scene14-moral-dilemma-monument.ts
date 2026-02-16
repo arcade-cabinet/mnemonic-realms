@@ -1,10 +1,4 @@
-import {
-  EventData,
-  RpgEvent,
-  RpgMap,
-  type RpgPlayer,
-  RpgSceneMap,
-} from '@rpgjs/server';
+import { EventData, RpgEvent, type RpgPlayer } from '@rpgjs/server';
 
 @EventData({
   name: 'act2-scene14-moral-dilemma-monument',
@@ -44,7 +38,7 @@ export default class MoralDilemmaMonument extends RpgEvent {
 
       // 1. Spawn NPCs
       // Artun (npc_artun)
-      const callumEvent = await player.map.createDynamicEvent({
+      const _callumEvent = await player.map.createDynamicEvent({
         x: 31, // Slightly offset from the monument for interaction
         y: 6,
         event: {

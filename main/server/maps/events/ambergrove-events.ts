@@ -43,9 +43,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     graphic: 'npc_woodcutter_m2',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      player.showText(
-        'Woodcutter B: "Hard work, but someone\'s gotta keep the village warm."',
-      );
+      player.showText('Woodcutter B: "Hard work, but someone\'s gotta keep the village warm."');
     },
   });
 
@@ -57,9 +55,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     graphic: 'npc_woodcutter_f1',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      player.showText(
-        'Woodcutter C: "The forest provides, but it demands respect."',
-      );
+      player.showText('Woodcutter C: "The forest provides, but it demands respect."');
     },
   });
 
@@ -85,10 +81,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     name: 'EV-AG-003',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      if (
-        player.getVariable('MQ_05_STARTED') ||
-        player.getVariable('MQ_05_COMPLETED')
-      ) {
+      if (player.getVariable('MQ_05_STARTED') || player.getVariable('MQ_05_COMPLETED')) {
         player.showText(
           "The submerged Resonance Stone pulses with a soft amber light. You feel a connection to the water's memory.",
         );
@@ -121,10 +114,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     name: 'EV-AG-006',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      if (
-        player.getVariable('MQ_04_STARTED') ||
-        player.getVariable('MQ_04_COMPLETED')
-      ) {
+      if (player.getVariable('MQ_04_STARTED') || player.getVariable('MQ_04_COMPLETED')) {
         player.changeMap('flickerveil', { x: 0, y: 30 });
       } else {
         player.showText(

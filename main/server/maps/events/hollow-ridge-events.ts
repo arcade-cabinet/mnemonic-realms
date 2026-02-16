@@ -13,26 +13,16 @@ export function spawnMapEvents(player: RpgPlayer) {
     graphic: 'npc_nel',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      if (
-        player.getVariable('MQ_05_STARTED') &&
-        !player.getVariable('GQ_04_STARTED')
-      ) {
+      if (player.getVariable('MQ_05_STARTED') && !player.getVariable('GQ_04_STARTED')) {
         player.showText(
           'Nel: "Welcome, traveler. The air here hums with ancient power, a dormant god stirs..."',
         );
         player.setVariable('GQ_04_STARTED', true);
-      } else if (
-        player.getVariable('SQ_07_STARTED') &&
-        !player.getVariable('SQ_07_COMPLETED')
-      ) {
-        player.showText(
-          'Nel: "Are you ready to escort me? The path ahead is treacherous."',
-        );
+      } else if (player.getVariable('SQ_07_STARTED') && !player.getVariable('SQ_07_COMPLETED')) {
+        player.showText('Nel: "Are you ready to escort me? The path ahead is treacherous."');
         // TODO: Implement escort quest mechanic
       } else {
-        player.showText(
-          'Nel: "The mountains hold many secrets. Be wary, and be strong."',
-        );
+        player.showText('Nel: "The mountains hold many secrets. Be wary, and be strong."');
       }
     },
   });
@@ -45,9 +35,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     graphic: 'npc_ridgewalker_m1',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      player.showText(
-        'Scout: "Keep your eyes peeled. The mountains are restless."',
-      );
+      player.showText('Scout: "Keep your eyes peeled. The mountains are restless."');
     },
   });
 
@@ -88,9 +76,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     graphic: 'npc_ridgewalker_m2',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      player.showText(
-        'Guard: "Stay vigilant. The wilds are unforgiving."',
-      );
+      player.showText('Guard: "Stay vigilant. The wilds are unforgiving."');
     },
   });
 
@@ -102,9 +88,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     graphic: 'npc_ridgewalker_f1',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      player.showText(
-        'Guard: "The path is clear, for now. Tread carefully."',
-      );
+      player.showText('Guard: "The path is clear, for now. Tread carefully."');
     },
   });
 
@@ -117,23 +101,16 @@ export function spawnMapEvents(player: RpgPlayer) {
     name: 'EV-HR-003',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      if (
-        player.getVariable('GQ_04_STARTED') &&
-        !player.getVariable('KINESIS_VISION_TRIGGERED')
-      ) {
+      if (player.getVariable('GQ_04_STARTED') && !player.getVariable('KINESIS_VISION_TRIGGERED')) {
         player.showText(
           'A blinding light erupts from the spire! Images of ancient power flash through your mind...',
         );
         player.setVariable('KINESIS_VISION_TRIGGERED', true);
         // TODO: Implement cinematic/vision sequence for Kinesis spire
       } else if (player.getVariable('KINESIS_VISION_TRIGGERED')) {
-        player.showText(
-          'The spire still hums with residual energy from the vision.',
-        );
+        player.showText('The spire still hums with residual energy from the vision.');
       } else {
-        player.showText(
-          'The spire hums with a faint energy, but nothing happens.',
-        );
+        player.showText('The spire hums with a faint energy, but nothing happens.');
       }
     },
   });
@@ -152,9 +129,7 @@ export function spawnMapEvents(player: RpgPlayer) {
         // TODO: Implement pedestal puzzle mechanic when showChoices is available
         // Options: Joy, Fury, Sorrow, Awe
       } else {
-        player.showText(
-          'The spire hums with a faint energy, but nothing happens.',
-        );
+        player.showText('The spire hums with a faint energy, but nothing happens.');
       }
     },
   });
@@ -211,9 +186,7 @@ export function spawnMapEvents(player: RpgPlayer) {
       if (player.getVariable('MQ_05_STARTED')) {
         player.changeMap('flickerveil', { x: 0, y: 15 });
       } else {
-        player.showText(
-          'A magical barrier blocks the path east. It seems impassable for now.',
-        );
+        player.showText('A magical barrier blocks the path east. It seems impassable for now.');
       }
     },
   });

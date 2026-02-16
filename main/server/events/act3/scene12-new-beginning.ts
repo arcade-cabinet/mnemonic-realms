@@ -1,10 +1,4 @@
-import {
-  EventData,
-  RpgEvent,
-  type RpgMap,
-  type RpgPlayer,
-  RpgSceneMap,
-} from '@rpgjs/server';
+import { EventData, RpgEvent, type RpgMap, type RpgPlayer } from '@rpgjs/server';
 
 @EventData({
   id: 'act3-scene12-new-beginning',
@@ -31,7 +25,7 @@ export class Act3Scene12NewBeginning extends RpgEvent {
     });
   }
 
-  async onPlayerTouch(player: RpgPlayer) {
+  async onPlayerTouch(_player: RpgPlayer) {
     // This event is designed to be triggered by an area-enter condition,
     // which is handled by the server's event system, not a direct touch.
     // However, if it were placed on the map and triggered by touch, this would fire.

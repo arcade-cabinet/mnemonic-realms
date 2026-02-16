@@ -27,7 +27,7 @@ function isXmlTruncated(content: string): boolean {
 
   // Basic tag balance check: count opening/closing tags
   const openTags = (xml.match(/<(?!\/|!|\?)[a-z][^>]*[^/]>/gi) || []).length;
-  const selfCloseTags = (xml.match(/<[a-z][^>]*\/>/gi) || []).length;
+  const _selfCloseTags = (xml.match(/<[a-z][^>]*\/>/gi) || []).length;
   const closeTags = (xml.match(/<\/[a-z][^>]*>/gi) || []).length;
   // Self-closing tags are balanced by definition; open tags need a close tag
   return openTags > closeTags + 2; // Allow small margin for XML declarations etc

@@ -6,7 +6,12 @@ const quest: QuestFileExport = {
   category: 'main',
   act: 'act1',
   objectives: [
-    { index: 0, description: 'Travel to Stagnation Clearing', location: 'Heartfield', position: '35,30' },
+    {
+      index: 0,
+      description: 'Travel to Stagnation Clearing',
+      location: 'Heartfield',
+      position: '35,30',
+    },
     { index: 1, description: 'Witness Hana investigating' },
     { index: 2, description: 'Survive Preserver patrol combat' },
     { index: 3, description: "Watch Hana's freezing cutscene" },

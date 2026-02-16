@@ -1,11 +1,4 @@
-import {
-  EventData,
-  MapData,
-  RpgEvent,
-  type RpgMap,
-  type RpgPlayer,
-  RpgSceneMap,
-} from '@rpgjs/server';
+import { EventData, RpgEvent, type RpgMap, type RpgPlayer } from '@rpgjs/server';
 
 @EventData({
   id: 'act2-scene5-weight-of-choice',
@@ -152,7 +145,7 @@ export class NpcArtun extends RpgEvent {
 }
 
 // Export the setup function as default
-export default async function onReady(map: RpgMap) {
+export default async function onReady(_map: RpgMap) {
   // This function is called when the map is ready.
   // We don't need to manually create the event here,
   // as it's defined with @EventData and will be automatically

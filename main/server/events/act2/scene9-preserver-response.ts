@@ -1,10 +1,5 @@
-import {
-  EventData,
-  MapData,
-  RpgEvent,
-  RpgMap,
-  type RpgPlayer,
-} from '@rpgjs/server';
+import { EventData, RpgEvent, type RpgPlayer } from '@rpgjs/server';
+
 // --- Inline NPC event classes (no database module) ---
 
 @EventData({
@@ -58,6 +53,7 @@ export class PreserverResponseEvent extends RpgEvent {
     }
   }
 
+  // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: cutscene orchestration requires sequential branching
   private async triggerScene(player: RpgPlayer) {
     // Prevent player movement during cutscene
     player.canMove = false;

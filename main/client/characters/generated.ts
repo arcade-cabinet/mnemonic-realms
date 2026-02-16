@@ -24,6 +24,7 @@ const dirRow = (dir: number, rowsPerDir: number): number =>
 // ---------------------------------------------------------------------------
 // Factory: 4-column walk/stand sprite (characters, NPCs, enemies)
 // ---------------------------------------------------------------------------
+// biome-ignore lint/suspicious/noExplicitAny: RPG-JS Spritesheet image param is untyped
 function makeWalkSprite(id: string, image: any, totalRows: number, rowsPerDir: number) {
   // Spritesheet() decorator returns void — must capture class ref separately
   class Sprite {}
@@ -57,6 +58,7 @@ function makeWalkSprite(id: string, image: any, totalRows: number, rowsPerDir: n
 // ---------------------------------------------------------------------------
 // Factory: boss horizontal strip (single row, 96x96 frames)
 // ---------------------------------------------------------------------------
+// biome-ignore lint/suspicious/noExplicitAny: RPG-JS Spritesheet image param is untyped
 function makeBossSprite(id: string, image: any, totalFrames: number) {
   const frames: { time: number; frameX?: number; frameY?: number }[] = [];
   for (let i = 0; i < totalFrames; i++) {

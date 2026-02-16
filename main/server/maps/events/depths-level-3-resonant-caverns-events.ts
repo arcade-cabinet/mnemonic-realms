@@ -38,8 +38,7 @@ export function spawnMapEvents(player: RpgPlayer) {
         player.showText('The puzzle resets.');
       }
     } else if (
-      currentSequence[currentSequence.length - 1] !==
-      correctSequence[currentSequence.length - 1]
+      currentSequence[currentSequence.length - 1] !== correctSequence[currentSequence.length - 1]
     ) {
       player.showText('A jarring dissonance! The pillars blast you with sound!');
       // TODO: Implement HP damage (40 HP) when stat manipulation API is verified

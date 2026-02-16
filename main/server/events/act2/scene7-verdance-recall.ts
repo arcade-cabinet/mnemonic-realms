@@ -1,10 +1,4 @@
-import {
-  EventData,
-  MapData,
-  RpgEvent,
-  RpgMap,
-  type RpgPlayer,
-} from '@rpgjs/server';
+import { EventData, RpgEvent, type RpgPlayer } from '@rpgjs/server';
 import { completeQuest, isQuestComplete } from '../../systems/quests';
 
 @EventData({
@@ -44,7 +38,7 @@ export default class VerdanceRecallEvent extends RpgEvent {
       this.setVisible(true); // Make the trigger visible/active
 
       // Spawn Artun and Vash
-      const artun = await player.map.createDynamicEvent({
+      const _artun = await player.map.createDynamicEvent({
         x: 23,
         y: 33,
         event: 'npc_artun', // Assuming 'npc_artun' is a registered RpgEvent class
@@ -55,7 +49,7 @@ export default class VerdanceRecallEvent extends RpgEvent {
         },
       });
 
-      const vash = await player.map.createDynamicEvent({
+      const _vash = await player.map.createDynamicEvent({
         x: 27,
         y: 33,
         event: 'npc_vash', // Assuming 'npc_vash' is a registered RpgEvent class

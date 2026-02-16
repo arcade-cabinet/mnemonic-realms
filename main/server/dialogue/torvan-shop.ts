@@ -1,6 +1,7 @@
 import type { RpgPlayer } from '@rpgjs/server';
 import { buyItem, getShopInventory } from '../systems/shop';
 
+// biome-ignore lint/complexity/noExcessiveCognitiveComplexity: shop dialogue flow requires sequential branching
 export default async function (player: RpgPlayer) {
   const shopId = 'village-weapons';
 

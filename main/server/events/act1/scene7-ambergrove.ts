@@ -1,4 +1,4 @@
-import { Direction, EventData, Move, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { Direction, EventData, Move, RpgEvent, type RpgPlayer } from '@rpgjs/server';
 import { advanceObjective } from '../../systems/quests';
 
 @EventData({

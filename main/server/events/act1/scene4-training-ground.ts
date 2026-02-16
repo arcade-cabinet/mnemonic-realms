@@ -1,10 +1,4 @@
-import {
-  createDynamicEvent,
-  EventData,
-  RpgEvent,
-  RpgMap,
-  type RpgPlayer,
-} from '@rpgjs/server';
+import { createDynamicEvent, EventData, RpgEvent, type RpgPlayer } from '@rpgjs/server';
 import { addItem, removeItem } from '../../systems/inventory';
 
 @EventData({

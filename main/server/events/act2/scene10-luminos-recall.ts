@@ -1,4 +1,4 @@
-import { Direction, EventData, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { Direction, EventData, RpgEvent, type RpgPlayer } from '@rpgjs/server';
 import { completeQuest, isQuestActive, isQuestComplete } from '../../systems/quests';
 
 @EventData({

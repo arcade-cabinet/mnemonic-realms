@@ -13,8 +13,7 @@ export default async function (player: RpgPlayer) {
   // Check if all conditions are met for this dialogue to trigger
   const questStatus = getQuestStatus(player, questId);
   const isQuestActiveAndStepMet =
-    questStatus === 'active' &&
-    player.getVariable(`QUEST_${questId}_STEP`) === requiredQuestStep;
+    questStatus === 'active' && player.getVariable(`QUEST_${questId}_STEP`) === requiredQuestStep;
   const isAtCorrectLocation = (player.map as { id?: string })?.id === requiredMapId;
 
   if (isQuestActiveAndStepMet && isAtCorrectLocation) {

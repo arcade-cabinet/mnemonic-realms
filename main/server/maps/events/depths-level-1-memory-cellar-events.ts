@@ -62,10 +62,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     name: 'EV-D1-006',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      if (
-        player.getVariable('SQ_10_STARTED') &&
-        !player.getVariable('SQ_10_OBJ_4_COMPLETE')
-      ) {
+      if (player.getVariable('SQ_10_STARTED') && !player.getVariable('SQ_10_OBJ_4_COMPLETE')) {
         player.showText(
           'As you step onto the platform, the air shimmers. Two Memory Shades materialize, and a larger, more menacing one looms behind them!',
         );
@@ -82,10 +79,7 @@ export function spawnMapEvents(player: RpgPlayer) {
   });
 
   // --- EV-D1-007: Dissolved fragment (appears after EV-D1-006 victory) ---
-  if (
-    player.getVariable('SQ_10_OBJ_4_COMPLETE') &&
-    !player.getVariable('EV_D1_007_COLLECTED')
-  ) {
+  if (player.getVariable('SQ_10_OBJ_4_COMPLETE') && !player.getVariable('EV_D1_007_COLLECTED')) {
     map.createDynamicEvent({
       x: 14,
       y: 9,
@@ -173,9 +167,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     graphic: 'DUN-PA-04',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      player.showText(
-        'The stairway descends into deeper darkness. Proceeding to Depths Level 2.',
-      );
+      player.showText('The stairway descends into deeper darkness. Proceeding to Depths Level 2.');
       player.changeMap('depths-l2', { x: 10, y: 0 });
     },
   });

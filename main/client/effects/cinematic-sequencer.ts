@@ -32,6 +32,7 @@ export function playCinematic(opts: CinematicOptions): Promise<void> {
     };
     activeCinematic = handle;
 
+    // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: cinematic tick loop has inherent branching
     const tick = () => {
       if (cancelled) return;
       const elapsed = performance.now() - start;

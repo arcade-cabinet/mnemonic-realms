@@ -1,10 +1,4 @@
-import {
-  EventData,
-  MapData,
-  RpgEvent,
-  type RpgMap,
-  type RpgPlayer,
-} from '@rpgjs/server';
+import { EventData, RpgEvent, type RpgMap, type RpgPlayer } from '@rpgjs/server';
 import { completeQuest, isQuestActive, startQuest } from '../../systems/quests';
 
 @EventData({
@@ -41,11 +35,7 @@ export default class FirstMemoryChamberEvent extends RpgEvent {
   async onChanges(player: RpgPlayer) {
     // This is a fallback for map-enter if onPlayerTouch doesn't fire immediately on map load
     // or if the player spawns directly on the event tile.
-    if (
-      !this.hasTriggered &&
-      player.map.id === 'fortress-f3' &&
-      isQuestActive(player, 'MQ-09')
-    ) {
+    if (!this.hasTriggered && player.map.id === 'fortress-f3' && isQuestActive(player, 'MQ-09')) {
       this.hasTriggered = true;
       await this.startConfrontation(player);
     }
@@ -234,7 +224,7 @@ export default class FirstMemoryChamberEvent extends RpgEvent {
             });
             break;
         }
-        await new Promise(resolve => setTimeout(resolve, 2000)); // Pause between god responses
+        await new Promise((resolve) => setTimeout(resolve, 2000)); // Pause between god responses
       }
     }
 

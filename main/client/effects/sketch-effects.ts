@@ -28,6 +28,7 @@ export function sketchSolidify(
   const maxRing = radiusTiles;
 
   for (let ring = 0; ring <= maxRing; ring++) {
+    // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: nested ring iteration is inherent to radial reveal
     setTimeout(() => {
       for (let dx = -ring; dx <= ring; dx++) {
         for (let dy = -ring; dy <= ring; dy++) {
@@ -68,6 +69,7 @@ export function livingSketch(cx: number, cy: number) {
 
   const lines: Array<{ points: Array<{ x: number; y: number }>; age: number; maxAge: number }> = [];
 
+  // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: sketch line animation loop has inherent branching
   const interval = setInterval(() => {
     // Spawn new line
     if (lines.length < 5) {

@@ -1,11 +1,10 @@
 import type { RpgMap, RpgPlayer } from '@rpgjs/server';
-import { addItem, addGold } from '../../systems/inventory';
 
 export function spawnMapEvents(player: RpgPlayer) {
   const map = player.map as RpgMap;
 
   // --- MQ-09 state checks ---
-  const isMq09Started = player.getVariable('MQ_09_STARTED');
+  const _isMq09Started = player.getVariable('MQ_09_STARTED');
 
   // --- EV-F2-001: Entry from F1 [MQ-09] ---
   map.createDynamicEvent({
@@ -31,9 +30,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
       if (player.getVariable('F2_DILEMMA1_FREED')) {
-        player.showText(
-          'The Musician is already free. Their story continues.',
-        );
+        player.showText('The Musician is already free. Their story continues.');
         return;
       }
       // TODO: Implement fragment check when item system is ready
@@ -60,9 +57,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
       if (player.getVariable('F2_DILEMMA2_FREED')) {
-        player.showText(
-          'The Lovers are already free. Their story continues.',
-        );
+        player.showText('The Lovers are already free. Their story continues.');
         return;
       }
       player.showText(
@@ -87,9 +82,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
       if (player.getVariable('F2_DILEMMA3_FREED')) {
-        player.showText(
-          'The Scholar is already free. Their story continues.',
-        );
+        player.showText('The Scholar is already free. Their story continues.');
         return;
       }
       player.showText(
@@ -113,9 +106,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
       if (player.getVariable('F2_CAPTAIN_DEFEATED')) {
-        player.showText(
-          'The area is clear. The Preserver Captain has been defeated.',
-        );
+        player.showText('The area is clear. The Preserver Captain has been defeated.');
         return;
       }
       if (player.getVariable('MQ_09_STARTED')) {
@@ -138,15 +129,10 @@ export function spawnMapEvents(player: RpgPlayer) {
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
       if (player.getVariable('F2_GRIEF_COLLECTED')) {
-        player.showText(
-          "The altar where the Curator's Grief once rested is now empty.",
-        );
+        player.showText("The altar where the Curator's Grief once rested is now empty.");
         return;
       }
-      if (
-        player.getVariable('MQ_09_STARTED') &&
-        player.getVariable('F2_CAPTAIN_DEFEATED')
-      ) {
+      if (player.getVariable('MQ_09_STARTED') && player.getVariable('F2_CAPTAIN_DEFEATED')) {
         player.showText(
           "You stand before the Curator's Grief, a deep blue crystal pulsing with sorrow. It is a memory of profound loss.",
         );
@@ -168,9 +154,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
       if (player.getVariable('F2_ARCHIVE_KEEPER_DEFEATED')) {
-        player.showText(
-          'The archive is silent. The Archive Keeper has been defeated.',
-        );
+        player.showText('The archive is silent. The Archive Keeper has been defeated.');
         return;
       }
       if (
@@ -189,9 +173,7 @@ export function spawnMapEvents(player: RpgPlayer) {
         player.getVariable('F2_ARCHIVE_KEEPER_DIALOGUE_DONE')
       ) {
         // EV-F2-017: Boss fight: Archive Keeper [MQ-09]
-        player.showText(
-          'The Archive Keeper prepares to fight!',
-        );
+        player.showText('The Archive Keeper prepares to fight!');
         // TODO: Implement Archive Keeper boss battle when battle system is ready
         // HP=900, ATK=25, INT=42, DEF=35, AGI=18, Level 26-28
         // On victory:
@@ -214,13 +196,8 @@ export function spawnMapEvents(player: RpgPlayer) {
     graphic: 'DUN-PA-04',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      if (
-        player.getVariable('MQ_09_STARTED') &&
-        player.getVariable('F2_ARCHIVE_KEEPER_DEFEATED')
-      ) {
-        player.showText(
-          'You found the stairway leading deeper into the Fortress.',
-        );
+      if (player.getVariable('MQ_09_STARTED') && player.getVariable('F2_ARCHIVE_KEEPER_DEFEATED')) {
+        player.showText('You found the stairway leading deeper into the Fortress.');
         player.changeMap('fortress-f3', { x: 10, y: 0 });
       } else if (player.getVariable('MQ_09_STARTED')) {
         player.showText(

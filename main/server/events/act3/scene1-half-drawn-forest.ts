@@ -1,10 +1,4 @@
-import {
-  EventData,
-  MapData,
-  RpgEvent,
-  RpgMap,
-  type RpgPlayer,
-} from '@rpgjs/server';
+import { EventData, RpgEvent, type RpgPlayer } from '@rpgjs/server';
 import { advanceObjective } from '../../systems/quests';
 
 @EventData({
@@ -24,7 +18,7 @@ export default class HalfDrawnForestEvent extends RpgEvent {
     });
   }
 
-  async onPlayerTouch(player: RpgPlayer) {
+  async onPlayerTouch(_player: RpgPlayer) {
     // This event is primarily for map-enter, but a touch trigger can be a fallback
     // or for specific points within the map.
     // For 'map-enter', we typically use onChanges with a check for first entry.
@@ -44,7 +38,7 @@ export default class HalfDrawnForestEvent extends RpgEvent {
 
       // 2. Spawn NPCs
       // Hana at (15, 10)
-      const hana = await player.map.createDynamicEvent({
+      const _hana = await player.map.createDynamicEvent({
         x: 15,
         y: 10,
         event: 'npc_hana', // Assuming 'npc_hana' is a defined RpgEvent class for Hana
@@ -56,7 +50,7 @@ export default class HalfDrawnForestEvent extends RpgEvent {
       });
 
       // Artun at (16, 10)
-      const artun = await player.map.createDynamicEvent({
+      const _artun = await player.map.createDynamicEvent({
         x: 16,
         y: 10,
         event: 'npc_artun', // Assuming 'npc_artun' is a defined RpgEvent class for Artun

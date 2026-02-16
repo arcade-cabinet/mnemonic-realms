@@ -4,8 +4,8 @@ export function spawnMapEvents(player: RpgPlayer) {
   const map = player.map as RpgMap;
 
   // Helper to read/write map-scoped variables
-  const getVar = (key: string) => player.getVariable('F1_' + key);
-  const setVar = (key: string, value: unknown) => player.setVariable('F1_' + key, value);
+  const getVar = (key: string) => player.getVariable(`F1_${key}`);
+  const setVar = (key: string, value: unknown) => player.setVariable(`F1_${key}`, value);
 
   // EV-F1-001: Entry from Undrawn Peaks [MQ-09]
   map.createDynamicEvent({
@@ -144,9 +144,7 @@ export function spawnMapEvents(player: RpgPlayer) {
           getVar('SorrowReceptacleFilled') &&
           getVar('FuryReceptacleFilled')
         ) {
-          player.showText(
-            'A deep hum resonates through the room as the inner door slides open!',
-          );
+          player.showText('A deep hum resonates through the room as the inner door slides open!');
           setVar('InnerDoorOpen', true);
         } else {
           player.showText(
@@ -165,9 +163,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     graphic: 'DUN-PA-06',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      player.showText(
-        'The Memory Lift hums to life. It can return you to the Undrawn Peaks.',
-      );
+      player.showText('The Memory Lift hums to life. It can return you to the Undrawn Peaks.');
       // TODO: Implement choice dialog when RPG-JS choice API is verified
       // For now, activate immediately
       player.changeMap('undrawn-peaks', { x: 19, y: 35 });

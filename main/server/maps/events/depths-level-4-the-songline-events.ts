@@ -46,16 +46,12 @@ export function spawnMapEvents(player: RpgPlayer) {
             'You found the final burdened Resonance Stone. It pulses with a deep sorrow.',
           );
           player.showText('Broadcasting a sorrow-type fragment to "compost" the stone...');
-          player.showText(
-            'The stone shimmers, yielding 2 fragments (potency 3, random emotions).',
-          );
+          player.showText('The stone shimmers, yielding 2 fragments (potency 3, random emotions).');
           player.setVariable('GQ_02_S1_BURDENED_STONE_D4_COMPOSTED', true);
           const count = (player.getVariable('GQ_02_S1_COUNT') as number) || 0;
           player.setVariable('GQ_02_S1_COUNT', count + 1);
           player.showText('Quest "The Composting" updated: 3/3 burdened stones found.');
-          player.showText(
-            'The stone now emanates a calming energy, becoming a rest point.',
-          );
+          player.showText('The stone now emanates a calming energy, becoming a rest point.');
           // TODO: Implement HP/SP heal when stat system is ready
         } else {
           player.showText(

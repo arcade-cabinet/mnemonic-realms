@@ -1,6 +1,4 @@
 import type { RpgMap, RpgPlayer } from '@rpgjs/server';
-import { addItem } from '../systems/inventory';
-import { advanceObjective } from '../systems/quests';
 
 export default async function (player: RpgPlayer) {
   const DIALOGUE_FLAG = 'dlg-callum-awakening-played';

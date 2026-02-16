@@ -1,10 +1,4 @@
-import {
-  EventData,
-  MapData,
-  RpgEvent,
-  RpgMap,
-  type RpgPlayer,
-} from '@rpgjs/server';
+import { EventData, RpgEvent, type RpgPlayer } from '@rpgjs/server';
 
 @EventData({
   id: 'act3-scene7-archive-of-perfection',
@@ -78,7 +72,7 @@ export class Floor2ArchiveOfPerfectionEvent extends RpgEvent {
     // Artun (optional, if he's with the party and has something to say)
     // For this scene, Artun isn't explicitly mentioned in dialogue, but if he were,
     // you'd spawn him similarly. Let's assume he's just present, not interactive for this scene.
-    const callumEvent = await player.map.createDynamicEvent({
+    const _callumEvent = await player.map.createDynamicEvent({
       x: 7 * 32, // Example position for Artun near Hana
       y: 10 * 32,
       id: 'EV-F2-CALLUM-PRESENT',

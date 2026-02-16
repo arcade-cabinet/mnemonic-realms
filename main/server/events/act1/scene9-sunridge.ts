@@ -1,4 +1,4 @@
-import { EventData, Move, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { EventData, Move, RpgEvent, type RpgPlayer } from '@rpgjs/server';
 import { completeQuest, startQuest } from '../../systems/quests';
 
 @EventData({
@@ -18,14 +18,14 @@ export default class SunridgeSceneEvent extends RpgEvent {
 
   async onInit(player: RpgPlayer) {
     // This event should only trigger once per player's first visit to Sunridge
-    const questState = (player.get = 'quests');
+    const questState = player.getVariable('quests') ?? {};
     if (player.map.id === 'sunridge' && !questState['MQ-03']?.completed && !this.hasTriggered) {
       this.hasTriggered = true;
       await this.startScene(player);
     }
   }
 
-  async onPlayerTouch(player: RpgPlayer) {
+  async onPlayerTouch(_player: RpgPlayer) {
     // This event is primarily for map-enter, but we can add a safeguard
     // or specific interactions if the player touches a specific spot later.
     // For now, it's handled by onInit with map-enter trigger.
@@ -58,7 +58,7 @@ export default class SunridgeSceneEvent extends RpgEvent {
     });
 
     // Wait for dynamic events to be created and accessible
-    await new Promise(resolve => setTimeout(resolve, 100));
+    await new Promise((resolve) => setTimeout(resolve, 100));
 
     // --- Wind Shrine (10, 8) ---
     await player.showText(

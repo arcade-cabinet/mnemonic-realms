@@ -1,5 +1,5 @@
 import { EventData, RpgEvent, type RpgMap, type RpgPlayer } from '@rpgjs/server';
-import { startQuest, advanceObjective } from '../../systems/quests';
+import { advanceObjective, startQuest } from '../../systems/quests';
 
 @EventData({
   id: 'act2-scene2-ridgewalker-camp',
@@ -48,7 +48,7 @@ export class RidgewalkerCampEvent extends RpgEvent {
       // For this scene, Artun is assumed to be with the player, then moves to a camp spot.
       // If Artun is a persistent NPC, he might be a static event on the map, and we just move him.
       // For dynamic placement:
-      const artun = await player.map.createDynamicEvent({
+      const _artun = await player.map.createDynamicEvent({
         x: 17,
         y: 24,
         graphic: 'npc_artun',
@@ -78,7 +78,7 @@ export class RidgewalkerCampEvent extends RpgEvent {
       });
 
       // Create Ridgewalker Merchant
-      const merchant = await player.map.createDynamicEvent({
+      const _merchant = await player.map.createDynamicEvent({
         x: 15,
         y: 26,
         graphic: 'npc_merchant_m2',
@@ -95,7 +95,7 @@ export class RidgewalkerCampEvent extends RpgEvent {
       });
 
       // Create Ridgewalker Scout Dain for side quest
-      const dain = await player.map.createDynamicEvent({
+      const _dain = await player.map.createDynamicEvent({
         x: 12,
         y: 26,
         graphic: 'npc_ridgewalker_scout', // Assuming a generic scout graphic

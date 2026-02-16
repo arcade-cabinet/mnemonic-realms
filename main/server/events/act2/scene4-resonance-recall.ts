@@ -1,10 +1,4 @@
-import {
-  EventData,
-  MapData,
-  RpgEvent,
-  type RpgMap,
-  type RpgPlayer,
-} from '@rpgjs/server';
+import { EventData, RpgEvent, type RpgMap, type RpgPlayer } from '@rpgjs/server';
 import { completeQuest, isQuestActive, isQuestComplete, startQuest } from '../../systems/quests';
 
 // Dialogue bank reference: docs/story/dialogue-bank.md

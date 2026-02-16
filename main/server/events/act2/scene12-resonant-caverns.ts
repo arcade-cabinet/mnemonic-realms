@@ -1,4 +1,4 @@
-import { EventData, MapData, RpgEvent, RpgMap, type RpgPlayer, RpgSceneMap } from '@rpgjs/server';
+import { EventData, RpgEvent, type RpgPlayer } from '@rpgjs/server';
 
 @EventData({
   id: 'act2-scene12-resonant-caverns',
@@ -21,7 +21,7 @@ export default class ResonantCavernsEvent extends RpgEvent {
     });
   }
 
-  async onPlayerTouch(player: RpgPlayer) {
+  async onPlayerTouch(_player: RpgPlayer) {
     // This event is primarily designed for 'map-enter' trigger,
     // but if a touch trigger is also desired for specific spots,
     // it would be handled here. For now, we'll focus on onPlayerJoin.
@@ -33,16 +33,16 @@ export default class ResonantCavernsEvent extends RpgEvent {
       // Check if this scene event has already been processed for this player
       // This prevents re-triggering on every map re-entry if it's a one-time intro.
       const sceneId = 'act2-scene12-resonant-caverns';
-      if (player.getVariable(sceneId + '_triggered')) {
+      if (player.getVariable(`${sceneId}_triggered`)) {
         return; // Already triggered, do nothing
       }
 
       // Set a flag to prevent re-triggering
-      player.setVariable(sceneId + '_triggered', true);
+      player.setVariable(`${sceneId}_triggered`, true);
 
       // 1. Spawn NPCs
       // Artun (npc_artun) at a specific position for dialogue
-      const callumEvent = player.map.createDynamicEvent({
+      const _callumEvent = player.map.createDynamicEvent({
         x: 10, // Example X coordinate
         y: 15, // Example Y coordinate
         id: 'npc_artun_resonant_caverns',

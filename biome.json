@@ -48,11 +48,14 @@
       }
     },
     {
-      "includes": ["gen/generators/**/*.ts"],
+      "includes": ["gen/**/*.ts"],
       "linter": {
         "rules": {
+          "complexity": {
+            "noExcessiveCognitiveComplexity": "off"
+          },
           "style": {
-            "noNonNullAssertion": "warn"
+            "noNonNullAssertion": "off"
           }
         }
       }

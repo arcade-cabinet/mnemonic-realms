@@ -74,8 +74,7 @@ const NPC_ROUTES: Record<string, DialogueRoute[]> = {
   hana: [
     {
       label: 'Workshop intro — after MQ-01 complete',
-      condition: (p) =>
-        isQuestComplete(p, 'MQ-01') && !p.getVariable('DIALOGUE_HANA_FIRST_VISIT'),
+      condition: (p) => isQuestComplete(p, 'MQ-01') && !p.getVariable('DIALOGUE_HANA_FIRST_VISIT'),
       run: async (p) => {
         const mod = await import('../dialogue/lira-workshop');
         await mod.default(p);
@@ -113,8 +112,7 @@ const NPC_ROUTES: Record<string, DialogueRoute[]> = {
     },
     {
       label: 'MQ-04+ stagnation awareness',
-      condition: (p) =>
-        isQuestActive(p, 'MQ-04') || isQuestComplete(p, 'MQ-04'),
+      condition: (p) => isQuestActive(p, 'MQ-04') || isQuestComplete(p, 'MQ-04'),
       run: async (p) => {
         await p.showText(
           'The Preservers are freezing more of the world. We need to keep broadcasting fragments to push back the stagnation.',
@@ -128,20 +126,18 @@ const NPC_ROUTES: Record<string, DialogueRoute[]> = {
       run: async (p) => {
         const v = getCurrentVibrancy(p);
         if (v >= 67) {
-          await p.showText(
-            'Can you feel it? The memories here are vivid — almost singing.',
-            { speaker: 'Hana' },
-          );
+          await p.showText('Can you feel it? The memories here are vivid — almost singing.', {
+            speaker: 'Hana',
+          });
         } else if (v <= 33) {
           await p.showText(
             'This place feels muted. We should find more fragments to brighten it.',
             { speaker: 'Hana' },
           );
         } else {
-          await p.showText(
-            'My workshop is always busy. Memories are a delicate craft.',
-            { speaker: 'Hana' },
-          );
+          await p.showText('My workshop is always busy. Memories are a delicate craft.', {
+            speaker: 'Hana',
+          });
         }
       },
     },
@@ -153,10 +149,9 @@ const NPC_ROUTES: Record<string, DialogueRoute[]> = {
       label: 'MQ-01 not started — first meeting',
       condition: (p) => getQuestStatus(p, 'MQ-01') === 'inactive',
       run: async (p) => {
-        await p.showText(
-          'A new face in the village. I am Artun, elder of this settlement.',
-          { speaker: 'Artun' },
-        );
+        await p.showText('A new face in the village. I am Artun, elder of this settlement.', {
+          speaker: 'Artun',
+        });
         await p.showText(
           'Something about you feels... different. The world responds to your presence.',
           { speaker: 'Artun' },
@@ -175,8 +170,7 @@ const NPC_ROUTES: Record<string, DialogueRoute[]> = {
     },
     {
       label: 'MQ-01 complete — acknowledgment',
-      condition: (p) =>
-        isQuestComplete(p, 'MQ-01') && getQuestStatus(p, 'MQ-03') === 'inactive',
+      condition: (p) => isQuestComplete(p, 'MQ-01') && getQuestStatus(p, 'MQ-03') === 'inactive',
       run: async (p) => {
         await p.showText(
           "The village thrives, thanks to the Architect's legacy. Keep an eye on the horizon.",
@@ -186,8 +180,7 @@ const NPC_ROUTES: Record<string, DialogueRoute[]> = {
     },
     {
       label: 'MQ-03+ — world-aware advice',
-      condition: (p) =>
-        isQuestActive(p, 'MQ-03') || isQuestComplete(p, 'MQ-03'),
+      condition: (p) => isQuestActive(p, 'MQ-03') || isQuestComplete(p, 'MQ-03'),
       run: async (p) => {
         await p.showText(
           'The Settled Lands hold many secrets. Travel carefully — not all paths are safe.',
@@ -206,10 +199,9 @@ const NPC_ROUTES: Record<string, DialogueRoute[]> = {
             { speaker: 'Artun' },
           );
         } else {
-          await p.showText(
-            'There is much yet to be remembered. The world waits for you.',
-            { speaker: 'Artun' },
-          );
+          await p.showText('There is much yet to be remembered. The world waits for you.', {
+            speaker: 'Artun',
+          });
         }
       },
     },
@@ -241,10 +233,7 @@ const NPC_ROUTES: Record<string, DialogueRoute[]> = {
       label: 'MQ-10 active — final act',
       condition: (p) => isQuestActive(p, 'MQ-10'),
       run: async (p) => {
-        await p.showText(
-          "You didn't destroy it. You... grew it.",
-          { speaker: 'The Curator' },
-        );
+        await p.showText("You didn't destroy it. You... grew it.", { speaker: 'The Curator' });
       },
     },
     {
@@ -268,8 +257,7 @@ const NPC_ROUTES: Record<string, DialogueRoute[]> = {
     },
     {
       label: 'SQ-01 available — herb quest hint',
-      condition: (p) =>
-        getQuestStatus(p, 'SQ-01') === 'inactive',
+      condition: (p) => getQuestStatus(p, 'SQ-01') === 'inactive',
       run: async (p) => {
         await p.showText(
           "Oh, and if you have a moment, I'm looking for some rare herbs for a special order. Interested?",
@@ -301,8 +289,7 @@ const NPC_ROUTES: Record<string, DialogueRoute[]> = {
     },
     {
       label: 'SQ-11 available — ore quest hint',
-      condition: (p) =>
-        getQuestStatus(p, 'SQ-11') === 'inactive',
+      condition: (p) => getQuestStatus(p, 'SQ-11') === 'inactive',
       run: async (p) => {
         await p.showText(
           "I've been meaning to try a new forging technique, but I need a rare ore. Perhaps you could help?",
@@ -334,9 +321,7 @@ const NPC_ROUTES: Record<string, DialogueRoute[]> = {
     },
     {
       label: 'SQ-12 dream hint',
-      condition: (p) =>
-        getQuestStatus(p, 'SQ-12') === 'inactive' ||
-        isQuestActive(p, 'SQ-12'),
+      condition: (p) => getQuestStatus(p, 'SQ-12') === 'inactive' || isQuestActive(p, 'SQ-12'),
       run: async (p) => {
         await p.showText(
           'Sometimes, a good rest brings more than just energy. Pay attention to your dreams...',

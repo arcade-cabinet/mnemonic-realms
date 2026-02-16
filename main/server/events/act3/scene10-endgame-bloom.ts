@@ -1,10 +1,4 @@
-import {
-  EventData,
-  RpgCommonMap,
-  RpgEvent,
-  RpgMap,
-  type RpgPlayer,
-} from '@rpgjs/server';
+import { EventData, RpgEvent, type RpgPlayer } from '@rpgjs/server';
 
 @EventData({
   id: 'act3-scene10-endgame-bloom',

@@ -38,9 +38,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     graphic: 'npc_guard_m2',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      player.showText(
-        'Keep an eye out for anything unusual. The highlands can be unpredictable.',
-      );
+      player.showText('Keep an eye out for anything unusual. The highlands can be unpredictable.');
     },
   });
 
@@ -57,14 +55,9 @@ export function spawnMapEvents(player: RpgPlayer) {
           player.showText(
             '...The Preservers. They claim to protect us, but their methods... I have my doubts.',
           );
-          player.showText(
-            "Perhaps you could help me investigate? It's about a missing artifact.",
-          );
+          player.showText("Perhaps you could help me investigate? It's about a missing artifact.");
           player.setVariable('SQ_05_STARTED', true);
-        } else if (
-          player.getVariable('SQ_05_STARTED') &&
-          !player.getVariable('SQ_05_COMPLETED')
-        ) {
+        } else if (player.getVariable('SQ_05_STARTED') && !player.getVariable('SQ_05_COMPLETED')) {
           player.showText(
             "Have you found anything about the artifact yet? I'm growing more concerned.",
           );

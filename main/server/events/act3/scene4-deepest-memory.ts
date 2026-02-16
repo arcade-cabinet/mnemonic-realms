@@ -1,10 +1,4 @@
-import {
-  EventData,
-  MapData,
-  RpgEvent,
-  type RpgMap,
-  type RpgPlayer,
-} from '@rpgjs/server';
+import { EventData, RpgEvent, type RpgMap, type RpgPlayer } from '@rpgjs/server';
 import { addItem } from '../../systems/inventory';
 
 @EventData({
@@ -23,13 +17,13 @@ export default class TheDeepestMemoryEvent extends RpgEvent {
     });
   }
 
-  async onPlayerTouch(player: RpgPlayer) {
+  async onPlayerTouch(_player: RpgPlayer) {
     // This event is designed to trigger on map-enter, so we'll use onInit for initial setup
     // and onPlayerTouch for specific room triggers if needed.
     // For the main scene trigger, we'll rely on the map-enter condition.
   }
 
-  async onChanges(player: RpgPlayer) {
+  async onChanges(_player: RpgPlayer) {
     // This event is primarily for map-enter, so onChanges might not be strictly necessary
     // unless there are continuous checks or parallel effects.
     // For this scene, we'll assume the main narrative flow happens once on entry.

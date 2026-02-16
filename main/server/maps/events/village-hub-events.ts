@@ -5,11 +5,7 @@ import { showDialogue } from '../../systems/npc-interaction';
  * Factory: creates an @EventData-decorated RpgEvent class with graphic + onAction.
  * RPG-JS createDynamicEvent requires { x, y, event: EventClass }.
  */
-function makeNpc(
-  id: string,
-  graphic: string,
-  action: (player: RpgPlayer) => void | Promise<void>,
-) {
+function makeNpc(id: string, graphic: string, action: (player: RpgPlayer) => void | Promise<void>) {
   @EventData({ name: id, hitbox: { width: 16, height: 16 } })
   class Npc extends RpgEvent {
     onInit() {
@@ -22,10 +18,7 @@ function makeNpc(
   return Npc;
 }
 
-function makeEvent(
-  id: string,
-  action: (player: RpgPlayer) => void | Promise<void>,
-) {
+function makeEvent(id: string, action: (player: RpgPlayer) => void | Promise<void>) {
   @EventData({ name: id, hitbox: { width: 16, height: 16 } })
   class Evt extends RpgEvent {
     async onAction(player: RpgPlayer) {
@@ -35,16 +28,24 @@ function makeEvent(
   return Evt;
 }
 
-export function spawnMapEvents(player: RpgPlayer, map: RpgMap) {
+export function spawnMapEvents(_player: RpgPlayer, map: RpgMap) {
   // --- NPCs (dialogue routed via npc-interaction system) ---
 
   map.createDynamicEvent([
     // Artun (Village Elder)
-    { x: 19 * 32, y: 11 * 32, event: makeNpc('artun', 'npc_artun', (p) => showDialogue(p, 'artun')) },
+    {
+      x: 19 * 32,
+      y: 11 * 32,
+      event: makeNpc('artun', 'npc_artun', (p) => showDialogue(p, 'artun')),
+    },
     // Hana (Mentor)
     { x: 9 * 32, y: 19 * 32, event: makeNpc('hana', 'npc_hana', (p) => showDialogue(p, 'hana')) },
     // Khali (Shopkeeper — village-general)
-    { x: 19 * 32, y: 17 * 32, event: makeNpc('khali', 'npc_khali', (p) => showDialogue(p, 'khali')) },
+    {
+      x: 19 * 32,
+      y: 17 * 32,
+      event: makeNpc('khali', 'npc_khali', (p) => showDialogue(p, 'khali')),
+    },
     // Hark (Blacksmith — village-weapons)
     { x: 19 * 32, y: 19 * 32, event: makeNpc('hark', 'npc_hark', (p) => showDialogue(p, 'hark')) },
     // Nyro (Innkeeper)

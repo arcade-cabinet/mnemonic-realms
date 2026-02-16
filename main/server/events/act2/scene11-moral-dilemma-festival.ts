@@ -1,4 +1,4 @@
-import { EventData, Move, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { EventData, Move, RpgEvent, type RpgPlayer } from '@rpgjs/server';
 import { addItem } from '../../systems/inventory';
 import { increaseVibrancy } from '../../systems/vibrancy';
 
@@ -14,7 +14,7 @@ class FrozenFestivalGoerEvent extends RpgEvent {
   private description: string = 'A frozen festival-goer.';
 
   onInit() {
-    this.setGraphic(this.getGraphic() + '_' + Math.floor(Math.random() * 4 + 1)); // Randomize graphic variant
+    this.setGraphic(`${this.getGraphic()}_${Math.floor(Math.random() * 4 + 1)}`); // Randomize graphic variant
   }
 
   onAction(player: RpgPlayer) {

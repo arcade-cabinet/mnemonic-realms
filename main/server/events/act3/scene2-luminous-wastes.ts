@@ -1,12 +1,6 @@
-import {
-  EventData,
-  Move,
-  RpgEvent,
-  type RpgMap,
-  type RpgPlayer,
-} from '@rpgjs/server';
+import { EventData, RpgEvent, type RpgMap, type RpgPlayer } from '@rpgjs/server';
 import { addItem } from '../../systems/inventory';
-import { advanceObjective, getQuestStatus, isQuestActive } from '../../systems/quests';
+import { advanceObjective, getQuestStatus } from '../../systems/quests';
 
 @EventData({
   id: 'act3-scene2-luminous-wastes',
@@ -63,7 +57,7 @@ export class LuminousWastesSceneEvent extends RpgEvent {
     if (!map) return;
 
     // Hana at (10, 20) for initial dialogue
-    const hana = await map.createDynamicEvent({
+    const _hana = await map.createDynamicEvent({
       x: 10,
       y: 20,
       event: HanaLuminousWastesEvent,
@@ -74,7 +68,7 @@ export class LuminousWastesSceneEvent extends RpgEvent {
     });
 
     // Artun at (12, 20) for initial dialogue
-    const artun = await map.createDynamicEvent({
+    const _artun = await map.createDynamicEvent({
       x: 12,
       y: 20,
       event: ArtunLuminousWastesEvent,

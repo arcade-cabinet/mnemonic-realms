@@ -100,26 +100,17 @@ export function spawnMapEvents(player: RpgPlayer) {
     name: 'EV-SM-003',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      if (
-        player.getVariable('GQ_02_STARTED') &&
-        !player.getVariable('VERDANCE_VISION_SEEN')
-      ) {
-        player.showText(
-          "As you step into Verdance's Hollow, a shimmering mist envelops you...",
-        );
+      if (player.getVariable('GQ_02_STARTED') && !player.getVariable('VERDANCE_VISION_SEEN')) {
+        player.showText("As you step into Verdance's Hollow, a shimmering mist envelops you...");
         // TODO: Implement cinematic/vision sequence
         player.setVariable('VERDANCE_VISION_SEEN', true);
         player.showText(
           'A vision of ancient power, a verdant god, flashes through your mind. You feel a pull towards the pedestals.',
         );
       } else if (player.getVariable('VERDANCE_VISION_SEEN')) {
-        player.showText(
-          "Verdance's Hollow hums with residual energy from the vision.",
-        );
+        player.showText("Verdance's Hollow hums with residual energy from the vision.");
       } else {
-        player.showText(
-          'This hollow feels significant, but nothing stirs at the moment.',
-        );
+        player.showText('This hollow feels significant, but nothing stirs at the moment.');
       }
     },
   });
@@ -131,10 +122,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     name: 'EV-SM-004',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      if (
-        player.getVariable('GQ_02_STARTED') &&
-        player.getVariable('VERDANCE_VISION_SEEN')
-      ) {
+      if (player.getVariable('GQ_02_STARTED') && player.getVariable('VERDANCE_VISION_SEEN')) {
         player.showText(
           'Four ancient pedestals stand before you, each etched with a symbol of emotion. They hum faintly, awaiting a resonance.',
         );
@@ -142,9 +130,7 @@ export function spawnMapEvents(player: RpgPlayer) {
         // Options: Joy, Sorrow, Fury, Calm, Do nothing
         // On choice: check inventory for potency 3+ fragments, update quest objectives
       } else {
-        player.showText(
-          'Four ancient pedestals stand here, silent and still.',
-        );
+        player.showText('Four ancient pedestals stand here, silent and still.');
       }
     },
   });
@@ -156,10 +142,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     name: 'EV-SM-005',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      if (
-        player.getVariable('MQ_05_STARTED') ||
-        player.getVariable('MQ_05_COMPLETED')
-      ) {
+      if (player.getVariable('MQ_05_STARTED') || player.getVariable('MQ_05_COMPLETED')) {
         player.changeMap('depths-l2', { x: 10, y: 0 });
       } else {
         player.showText(
@@ -176,15 +159,10 @@ export function spawnMapEvents(player: RpgPlayer) {
     name: 'EV-SM-006',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      if (
-        player.getVariable('MQ_04_STARTED') ||
-        player.getVariable('MQ_04_COMPLETED')
-      ) {
+      if (player.getVariable('MQ_04_STARTED') || player.getVariable('MQ_04_COMPLETED')) {
         player.changeMap('heartfield', { x: 20, y: 38 });
       } else {
-        player.showText(
-          'A dense fog blocks the path north. It seems impassable for now.',
-        );
+        player.showText('A dense fog blocks the path north. It seems impassable for now.');
       }
     },
   });
@@ -196,10 +174,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     name: 'EV-SM-007',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      if (
-        player.getVariable('MQ_05_STARTED') ||
-        player.getVariable('MQ_05_COMPLETED')
-      ) {
+      if (player.getVariable('MQ_05_STARTED') || player.getVariable('MQ_05_COMPLETED')) {
         player.changeMap('flickerveil', { x: 0, y: 25 });
       } else {
         player.showText(
@@ -216,10 +191,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     name: 'EV-SM-008',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      if (
-        player.getVariable('MQ_05_STARTED') ||
-        player.getVariable('MQ_05_COMPLETED')
-      ) {
+      if (player.getVariable('MQ_05_STARTED') || player.getVariable('MQ_05_COMPLETED')) {
         player.changeMap('hollow-ridge', { x: 49, y: 35 });
       } else {
         player.showText(
@@ -236,10 +208,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     name: 'EV-SM-009',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      if (
-        player.getVariable('MQ_07_STARTED') ||
-        player.getVariable('MQ_07_COMPLETED')
-      ) {
+      if (player.getVariable('MQ_07_STARTED') || player.getVariable('MQ_07_COMPLETED')) {
         player.changeMap('luminous-wastes', { x: 25, y: 0 });
       } else {
         player.showText(
@@ -257,9 +226,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
       if (player.getVariable('STAGNATION_BOG_BROKEN')) {
-        player.showText(
-          'The crystallized bog has been cleared, revealing a path.',
-        );
+        player.showText('The crystallized bog has been cleared, revealing a path.');
       } else {
         player.showText(
           'The marsh here is unnaturally crystallized. It seems to require a powerful combination of Water and Fury energy to break.',

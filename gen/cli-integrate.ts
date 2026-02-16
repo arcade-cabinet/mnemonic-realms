@@ -31,9 +31,7 @@ export async function runIntegrate(targets: string[], dryRun: boolean): Promise<
       ].includes(t),
     )
   ) {
-    const cats = code
-      ? ['all']
-      : targets.filter((t) => !['all', 'audio'].includes(t));
+    const cats = code ? ['all'] : targets.filter((t) => !['all', 'audio'].includes(t));
     await integrateCode(cats, dryRun);
   }
 

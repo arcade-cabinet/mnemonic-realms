@@ -1,4 +1,4 @@
-import { EventData, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { EventData, RpgEvent, type RpgPlayer } from '@rpgjs/server';
 
 const DLG_CALLUM_KINESIS_RECALL = [
   "The Peregrine Road — eternal travelers. They carved the world's first mountain passes and bridged its first rivers. They believed stillness was death.",

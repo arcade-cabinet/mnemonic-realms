@@ -1,12 +1,5 @@
-import {
-  Direction,
-  EventData,
-  Move,
-  RpgEvent,
-  RpgMap,
-  type RpgPlayer,
-} from '@rpgjs/server';
-import { addItem, addGold } from '../../systems/inventory';
+import { Direction, EventData, RpgEvent, type RpgPlayer } from '@rpgjs/server';
+import { addGold, addItem } from '../../systems/inventory';
 
 @EventData({
   id: 'act2-scene15-songline',
@@ -20,7 +13,7 @@ export class TheSonglineEvent extends RpgEvent {
     this.setGraphic(''); // Invisible event, acts as a scene manager
   }
 
-  async onChanges(player: RpgPlayer) {
+  async onChanges(_player: RpgPlayer) {
     // This event is primarily triggered by map-enter, but onChanges can handle
     // continuous checks or visual updates if needed for the dungeon.
     // For this scene, the main logic is in onMapEnter.

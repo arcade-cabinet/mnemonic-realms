@@ -100,7 +100,7 @@ export function remixSwirl(cx: number, cy: number, inputColors: number[], output
     g.drawCircle(0, 0, 5);
     g.endFill();
     g.zIndex = 9999;
-    scene.viewport!.addChild(g);
+    scene.viewport?.addChild(g);
     return g;
   });
 

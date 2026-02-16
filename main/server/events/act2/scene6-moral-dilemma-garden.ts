@@ -1,4 +1,4 @@
-import { EventData, Move, RpgEvent, RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { EventData, Move, RpgEvent, type RpgPlayer } from '@rpgjs/server';
 import { addItem } from '../../systems/inventory';
 import { increaseVibrancy } from '../../systems/vibrancy';
 

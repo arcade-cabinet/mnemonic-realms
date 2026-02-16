@@ -1,5 +1,4 @@
 import type { RpgMap, RpgPlayer } from '@rpgjs/server';
-import { addItem } from '../../systems/inventory';
 
 export function spawnMapEvents(player: RpgPlayer) {
   const map = player.map as RpgMap;
@@ -24,10 +23,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     name: 'EV-F3-002',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      if (
-        player.getVariable('MQ_09_STARTED') &&
-        !player.getVariable('F3_VIGNETTE_5_SEEN')
-      ) {
+      if (player.getVariable('MQ_09_STARTED') && !player.getVariable('F3_VIGNETTE_5_SEEN')) {
         player.showText(
           "A holographic projection flickers to life, showing the Curator, younger, but with a face hardened by resolve. 'Never again,' a voice echoes.",
         );
@@ -115,9 +111,7 @@ export function spawnMapEvents(player: RpgPlayer) {
         );
         player.setVariable('F3_ENDGAME_BLOOM_TRIGGERED', true);
       } else {
-        player.showText(
-          'The First Memory pulses gently. Nothing more to do here right now.',
-        );
+        player.showText('The First Memory pulses gently. Nothing more to do here right now.');
       }
     },
   });

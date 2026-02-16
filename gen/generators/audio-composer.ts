@@ -8,7 +8,6 @@
 import type { AmbientAsset } from '../schemas/audio-ambient';
 import type { BgmAsset, BgmStem } from '../schemas/audio-bgm';
 import {
-  type ADSRParams,
   applyFades,
   applyReverb,
   encodeWav,
@@ -16,16 +15,13 @@ import {
   type InstrumentConfig,
   LowPassFilter,
   midiToFreq,
-  mixInto,
   type NoteEvent,
   normalize,
   parseKey,
-  renderNote,
   renderNoteInto,
   SAMPLE_RATE,
   scaleNote,
   softLimit,
-  type WaveformType,
 } from './audio-synth';
 
 // ---------- Instrument Resolution ----------
@@ -40,62 +36,62 @@ function resolveInstrument(description: string): InstrumentConfig {
   }
 
   // Fuzzy matching
-  if (d.includes('violin') || d.includes('solo violin')) return { ...INSTRUMENT_PRESETS['violin'] };
-  if (d.includes('fiddle')) return { ...INSTRUMENT_PRESETS['fiddle'] };
-  if (d.includes('viola')) return { ...INSTRUMENT_PRESETS['viola'] };
-  if (d.includes('cello')) return { ...INSTRUMENT_PRESETS['cello'] };
+  if (d.includes('violin') || d.includes('solo violin')) return { ...INSTRUMENT_PRESETS.violin };
+  if (d.includes('fiddle')) return { ...INSTRUMENT_PRESETS.fiddle };
+  if (d.includes('viola')) return { ...INSTRUMENT_PRESETS.viola };
+  if (d.includes('cello')) return { ...INSTRUMENT_PRESETS.cello };
   if (d.includes('contrabass') || d.includes('double bass'))
-    return { ...INSTRUMENT_PRESETS['contrabass'] };
+    return { ...INSTRUMENT_PRESETS.contrabass };
   if (d.includes('pizzicato') || d.includes('pizz'))
     return { ...INSTRUMENT_PRESETS['strings-pizzicato'] };
-  if (d.includes('string')) return { ...INSTRUMENT_PRESETS['strings'] };
-  if (d.includes('flute') || d.includes('recorder')) return { ...INSTRUMENT_PRESETS['flute'] };
-  if (d.includes('clarinet')) return { ...INSTRUMENT_PRESETS['clarinet'] };
-  if (d.includes('oboe')) return { ...INSTRUMENT_PRESETS['oboe'] };
-  if (d.includes('bassoon')) return { ...INSTRUMENT_PRESETS['bassoon'] };
+  if (d.includes('string')) return { ...INSTRUMENT_PRESETS.strings };
+  if (d.includes('flute') || d.includes('recorder')) return { ...INSTRUMENT_PRESETS.flute };
+  if (d.includes('clarinet')) return { ...INSTRUMENT_PRESETS.clarinet };
+  if (d.includes('oboe')) return { ...INSTRUMENT_PRESETS.oboe };
+  if (d.includes('bassoon')) return { ...INSTRUMENT_PRESETS.bassoon };
   if (d.includes('pan pipe')) return { ...INSTRUMENT_PRESETS['pan-pipes'] };
-  if (d.includes('duduk')) return { ...INSTRUMENT_PRESETS['duduk'] };
+  if (d.includes('duduk')) return { ...INSTRUMENT_PRESETS.duduk };
   if (d.includes('tin whistle') || d.includes('whistle'))
     return { ...INSTRUMENT_PRESETS['tin-whistle'] };
-  if (d.includes('french horn') || d.includes('horn')) return { ...INSTRUMENT_PRESETS['horn'] };
-  if (d.includes('trumpet')) return { ...INSTRUMENT_PRESETS['trumpet'] };
-  if (d.includes('trombone')) return { ...INSTRUMENT_PRESETS['trombone'] };
+  if (d.includes('french horn') || d.includes('horn')) return { ...INSTRUMENT_PRESETS.horn };
+  if (d.includes('trumpet')) return { ...INSTRUMENT_PRESETS.trumpet };
+  if (d.includes('trombone')) return { ...INSTRUMENT_PRESETS.trombone };
   if (d.includes('low brass')) return { ...INSTRUMENT_PRESETS['low-brass'] };
-  if (d.includes('brass')) return { ...INSTRUMENT_PRESETS['brass'] };
-  if (d.includes('piano')) return { ...INSTRUMENT_PRESETS['piano'] };
-  if (d.includes('harp')) return { ...INSTRUMENT_PRESETS['harp'] };
-  if (d.includes('celesta') || d.includes('celestia')) return { ...INSTRUMENT_PRESETS['celesta'] };
+  if (d.includes('brass')) return { ...INSTRUMENT_PRESETS.brass };
+  if (d.includes('piano')) return { ...INSTRUMENT_PRESETS.piano };
+  if (d.includes('harp')) return { ...INSTRUMENT_PRESETS.harp };
+  if (d.includes('celesta') || d.includes('celestia')) return { ...INSTRUMENT_PRESETS.celesta };
   if (d.includes('music box')) return { ...INSTRUMENT_PRESETS['music-box'] };
-  if (d.includes('glockenspiel')) return { ...INSTRUMENT_PRESETS['glockenspiel'] };
-  if (d.includes('vibraphone')) return { ...INSTRUMENT_PRESETS['vibraphone'] };
-  if (d.includes('guitar') || d.includes('nylon')) return { ...INSTRUMENT_PRESETS['guitar'] };
-  if (d.includes('accordion')) return { ...INSTRUMENT_PRESETS['accordion'] };
-  if (d.includes('timpani')) return { ...INSTRUMENT_PRESETS['timpani'] };
+  if (d.includes('glockenspiel')) return { ...INSTRUMENT_PRESETS.glockenspiel };
+  if (d.includes('vibraphone')) return { ...INSTRUMENT_PRESETS.vibraphone };
+  if (d.includes('guitar') || d.includes('nylon')) return { ...INSTRUMENT_PRESETS.guitar };
+  if (d.includes('accordion')) return { ...INSTRUMENT_PRESETS.accordion };
+  if (d.includes('timpani')) return { ...INSTRUMENT_PRESETS.timpani };
   if (d.includes('bass drum')) return { ...INSTRUMENT_PRESETS['bass-drum'] };
-  if (d.includes('snare')) return { ...INSTRUMENT_PRESETS['snare'] };
-  if (d.includes('cymbal')) return { ...INSTRUMENT_PRESETS['cymbal'] };
+  if (d.includes('snare')) return { ...INSTRUMENT_PRESETS.snare };
+  if (d.includes('cymbal')) return { ...INSTRUMENT_PRESETS.cymbal };
   if (d.includes('tam-tam') || d.includes('tamtam')) return { ...INSTRUMENT_PRESETS['tam-tam'] };
   if (d.includes('triangle') && !d.includes('waveform'))
     return { ...INSTRUMENT_PRESETS['triangle-perc'] };
   if (d.includes('wind chime')) return { ...INSTRUMENT_PRESETS['wind-chime'] };
   if (d.includes('hand drum') || d.includes('bodhran'))
     return { ...INSTRUMENT_PRESETS['hand-drum'] };
-  if (d.includes('shaker')) return { ...INSTRUMENT_PRESETS['shaker'] };
-  if (d.includes('bell')) return { ...INSTRUMENT_PRESETS['bell'] };
+  if (d.includes('shaker')) return { ...INSTRUMENT_PRESETS.shaker };
+  if (d.includes('bell')) return { ...INSTRUMENT_PRESETS.bell };
   if (d.includes('choir') || d.includes('voices') || d.includes('vocal'))
-    return { ...INSTRUMENT_PRESETS['choir'] };
-  if (d.includes('soprano')) return { ...INSTRUMENT_PRESETS['soprano'] };
-  if (d.includes('humming')) return { ...INSTRUMENT_PRESETS['humming'] };
+    return { ...INSTRUMENT_PRESETS.choir };
+  if (d.includes('soprano')) return { ...INSTRUMENT_PRESETS.soprano };
+  if (d.includes('humming')) return { ...INSTRUMENT_PRESETS.humming };
   if (d.includes('glass harmonica') || d.includes('glass armonica'))
     return { ...INSTRUMENT_PRESETS['glass-harmonica'] };
   if (d.includes('singing bowl')) return { ...INSTRUMENT_PRESETS['singing-bowl'] };
-  if (d.includes('drone')) return { ...INSTRUMENT_PRESETS['drone'] };
-  if (d.includes('pad') || d.includes('synth')) return { ...INSTRUMENT_PRESETS['pad'] };
+  if (d.includes('drone')) return { ...INSTRUMENT_PRESETS.drone };
+  if (d.includes('pad') || d.includes('synth')) return { ...INSTRUMENT_PRESETS.pad };
   if (d.includes('electric bass') || d.includes('bass guitar'))
     return { ...INSTRUMENT_PRESETS['electric-bass'] };
 
   // Default
-  return { ...INSTRUMENT_PRESETS['pad'] };
+  return { ...INSTRUMENT_PRESETS.pad };
 }
 
 // ---------- Pattern Generators ----------
@@ -400,7 +396,7 @@ function generateChordPad(
 
 /** Generate a bass line. */
 function generateBassLine(
-  rng: SeededRng,
+  _rng: SeededRng,
   rootMidi: number,
   scale: number[],
   tempo: number,
@@ -450,7 +446,7 @@ function generatePercussionPattern(
   tempo: number,
   timeSig: { beatsPerMeasure: number; beatValue: number },
   durationSec: number,
-  instrument: InstrumentConfig,
+  _instrument: InstrumentConfig,
   baseFreq: number,
   velocity: number,
   density: number,
@@ -503,7 +499,7 @@ function generateDrone(
 
 /** Determine what kind of musical pattern to generate for a stem. */
 function categorizeRole(stemDesc: string, instruments: string): string {
-  const combined = (stemDesc + ' ' + instruments).toLowerCase();
+  const combined = `${stemDesc} ${instruments}`.toLowerCase();
 
   if (
     combined.includes('rhythm') ||
@@ -794,7 +790,7 @@ export function composeAmbientLoop(asset: AmbientAsset): Buffer {
 function addWindTexture(
   buffer: Float32Array,
   rng: SeededRng,
-  dur: number,
+  _dur: number,
   volume: number,
   cutoffHz: number,
 ): void {
@@ -841,7 +837,7 @@ function addBirdSounds(buffer: Float32Array, rng: SeededRng, dur: number, volume
   }
 }
 
-function addInsectBuzz(buffer: Float32Array, rng: SeededRng, dur: number, volume: number): void {
+function addInsectBuzz(buffer: Float32Array, rng: SeededRng, _dur: number, volume: number): void {
   // Continuous buzz with amplitude modulation
   const buzzFreq = 120 + rng.next() * 80;
   for (let i = 0; i < buffer.length; i++) {
@@ -854,7 +850,7 @@ function addInsectBuzz(buffer: Float32Array, rng: SeededRng, dur: number, volume
   }
 }
 
-function addWaterFlow(buffer: Float32Array, rng: SeededRng, dur: number, volume: number): void {
+function addWaterFlow(buffer: Float32Array, _rng: SeededRng, _dur: number, volume: number): void {
   // Filtered noise with slow modulation
   let prev1 = 0;
   let prev2 = 0;
@@ -935,7 +931,7 @@ function addFrogChorus(buffer: Float32Array, rng: SeededRng, dur: number, volume
   }
 }
 
-function addLowRumble(buffer: Float32Array, rng: SeededRng, dur: number, volume: number): void {
+function addLowRumble(buffer: Float32Array, _rng: SeededRng, _dur: number, volume: number): void {
   for (let i = 0; i < buffer.length; i++) {
     const t = i / SAMPLE_RATE;
     const mod = 0.3 + 0.7 * (0.5 + 0.5 * Math.sin(0.05 * Math.PI * t));

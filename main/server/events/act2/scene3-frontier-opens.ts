@@ -1,10 +1,4 @@
-import {
-  EventData,
-  MapData,
-  RpgEvent,
-  type RpgMap,
-  type RpgPlayer,
-} from '@rpgjs/server';
+import { EventData, RpgEvent, type RpgMap, type RpgPlayer } from '@rpgjs/server';
 import { addItem } from '../../systems/inventory';
 import { completeQuest, getQuestStatus, startQuest } from '../../systems/quests';
 
@@ -21,6 +15,7 @@ export class TheFrontierOpensEvent extends RpgEvent {
     });
   }
 
+  // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: cutscene orchestration requires sequential branching
   async onPlayerTouch(player: RpgPlayer) {
     // This event is designed to trigger on map-enter for specific frontier zones
     // and only if the 'post-ridgewalker' condition (MQ-05 started/completed) is met.
@@ -151,7 +146,7 @@ export class TheFrontierOpensEvent extends RpgEvent {
 
 // Helper function to set up dynamic NPCs if needed, though for this scene,
 // the NPCs are assumed to be static map elements.
-export async function setupFrontierNPCs(map: RpgMap) {
+export async function setupFrontierNPCs(_map: RpgMap) {
   // Example of creating Artun dynamically if he wasn't on the map
   // This is more for events that appear/disappear based on quest state.
   // For this scene, we assume Artun is a permanent fixture or handled by other events.

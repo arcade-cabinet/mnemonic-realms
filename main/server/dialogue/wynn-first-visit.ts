@@ -1,5 +1,4 @@
 import type { RpgPlayer } from '@rpgjs/server';
-import { startQuest } from '../systems/quests';
 
 export default async function dialogue(player: RpgPlayer) {
   // Vash's graphic is usually 'wynn' or similar, assuming it's registered in the game.

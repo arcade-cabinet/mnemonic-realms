@@ -1,11 +1,4 @@
-import {
-  EventData,
-  MapData,
-  Presets,
-  RpgEvent,
-  RpgMap,
-  type RpgPlayer,
-} from '@rpgjs/server';
+import { EventData, Presets, RpgEvent, type RpgPlayer } from '@rpgjs/server';
 import { addItem } from '../../systems/inventory';
 import { completeQuest, isQuestActive } from '../../systems/quests';
 
@@ -140,7 +133,7 @@ export class Act1Scene12NewResolve extends RpgEvent {
     await player.gui('NightOverlay', 'open'); // Assuming a GUI component for night effect
 
     // Wait for player to experience the vista
-    await new Promise(resolve => setTimeout(resolve, 5000)); // 5 seconds of stillness
+    await new Promise((resolve) => setTimeout(resolve, 5000)); // 5 seconds of stillness
 
     // Create a dynamic event for the telescope
     const telescope = await player.map.createDynamicEvent({

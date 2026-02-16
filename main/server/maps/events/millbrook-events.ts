@@ -19,14 +19,10 @@ export function spawnMapEvents(player: RpgPlayer) {
         );
         if (!player.getVariable('SQ_04_STARTED')) {
           player.setVariable('SQ_04_STARTED', true);
-          player.showText(
-            'Quest Updated: Strange Lights at the Falls (SQ-04) added to your log.',
-          );
+          player.showText('Quest Updated: Strange Lights at the Falls (SQ-04) added to your log.');
         }
       } else {
-        player.showText(
-          'Fisher Tam: "Just enjoying the quiet. The fish are biting well today."',
-        );
+        player.showText('Fisher Tam: "Just enjoying the quiet. The fish are biting well today."');
       }
     },
   });
@@ -86,9 +82,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     graphic: 'npc_villager_f2',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      player.showText(
-        'Townsfolk A: "It\'s a peaceful life here by the river."',
-      );
+      player.showText('Townsfolk A: "It\'s a peaceful life here by the river."');
     },
   });
 
@@ -100,9 +94,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     graphic: 'npc_villager_m3',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      player.showText(
-        'Townsfolk B: "Heard the fishing\'s good down by Fisher\'s Rest."',
-      );
+      player.showText('Townsfolk B: "Heard the fishing\'s good down by Fisher\'s Rest."');
     },
   });
 
@@ -119,9 +111,7 @@ export function spawnMapEvents(player: RpgPlayer) {
         player.showText('You found a hidden passage behind the waterfall!');
         player.changeMap('millbrook_falls_cave', { x: 5, y: 5 });
       } else {
-        player.showText(
-          "The waterfall's spray is refreshing, but there's nothing else here.",
-        );
+        player.showText("The waterfall's spray is refreshing, but there's nothing else here.");
       }
     },
   });
@@ -158,9 +148,7 @@ export function spawnMapEvents(player: RpgPlayer) {
       if (player.getVariable('MQ_04_STARTED') || player.getVariable('MQ_04_COMPLETED')) {
         player.changeMap('hollow_ridge', { x: 49, y: 35 });
       } else {
-        player.showText(
-          'A sturdy gate blocks the path west. It seems impassable for now.',
-        );
+        player.showText('A sturdy gate blocks the path west. It seems impassable for now.');
       }
     },
   });
@@ -178,9 +166,7 @@ export function spawnMapEvents(player: RpgPlayer) {
       );
       // TODO: Logic for collecting fragments, checking vibrancy
       // TODO: Client-side rainbow animation based on vibrancy
-      player.showText(
-        'The stone pulses softly. It seems to be in harmony with the river.',
-      );
+      player.showText('The stone pulses softly. It seems to be in harmony with the river.');
     },
   });
 

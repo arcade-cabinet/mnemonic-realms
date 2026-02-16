@@ -95,10 +95,7 @@ export function spawnMapEvents(player: RpgPlayer) {
       graphic: 'npc_elyn',
       hitbox: { width: 16, height: 16 },
       onAction(player: RpgPlayer) {
-        if (
-          player.getVariable('GQ_03_S1_STARTED') &&
-          !player.getVariable('ELYN_ESCORT_STARTED')
-        ) {
+        if (player.getVariable('GQ_03_S1_STARTED') && !player.getVariable('ELYN_ESCORT_STARTED')) {
           player.showText(
             'Elyn: "Thank the stars you\'re here! The Preservers are closing in. We need to move, now!"',
           );
@@ -123,10 +120,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     name: 'EV-FV-003',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      if (
-        player.getVariable('GQ_03_STARTED') &&
-        player.getVariable('HAS_LIGHT_LENS')
-      ) {
+      if (player.getVariable('GQ_03_STARTED') && player.getVariable('HAS_LIGHT_LENS')) {
         player.showText(
           'A blinding light emanates from the prism. Visions of ancient power flood your mind...',
         );
@@ -165,18 +159,13 @@ export function spawnMapEvents(player: RpgPlayer) {
     name: 'EV-FV-005',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      if (
-        player.getVariable('GQ_03_F1_STARTED') &&
-        !player.getVariable('ARCHIVE_CLEARED')
-      ) {
+      if (player.getVariable('GQ_03_F1_STARTED') && !player.getVariable('ARCHIVE_CLEARED')) {
         player.showText(
           'The air crackles with hostile energy. Preserver Agents emerge from the shadows!',
         );
         // TODO: Implement battle with 2x Preserver Agents when RPG-JS battle API is available
         // On victory:
-        player.showText(
-          "You've cleared the immediate threat. The Archive is now accessible.",
-        );
+        player.showText("You've cleared the immediate threat. The Archive is now accessible.");
         player.setVariable('ARCHIVE_CLEARED', true);
       } else if (player.getVariable('ARCHIVE_CLEARED')) {
         player.showText('The Archive is quiet now. The Preservers are gone.');

@@ -23,6 +23,7 @@ const dirRow = (dir: number, rowsPerDir: number): number =>
 const CHAR_ROWS = 31;
 const CHAR_ROWS_PER_DIR = 4;
 
+// biome-ignore lint/suspicious/noExplicitAny: RPG-JS Spritesheet image param is untyped
 function makeAliasSprite(id: string, image: any) {
   // Spritesheet() decorator returns void — must capture class ref separately
   class Sprite {}

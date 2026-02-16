@@ -34,8 +34,10 @@ settings.SCALE_MODE = SCALE_MODES.NEAREST;
 const TARGET_TILES_ACROSS = 14;
 
 function applyResponsiveZoom(scene: RpgSceneMap) {
+  // biome-ignore lint/suspicious/noExplicitAny: RPG-JS scene internals are untyped
   const viewport = (scene as any).viewport;
   if (!viewport) return;
+  // biome-ignore lint/suspicious/noExplicitAny: RPG-JS scene internals are untyped
   const tileWidth = (scene as any).tileWidth || 32;
   const rawZoom = viewport.screenWidth / (TARGET_TILES_ACROSS * tileWidth);
   const zoom = Math.max(1, Math.round(rawZoom));

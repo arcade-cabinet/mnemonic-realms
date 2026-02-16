@@ -1,9 +1,4 @@
-import {
-  EventData,
-  RpgEvent,
-  RpgMap,
-  type RpgPlayer,
-} from '@rpgjs/server';
+import { EventData, RpgEvent, type RpgPlayer } from '@rpgjs/server';
 import { addItem } from '../../systems/inventory';
 import { advanceObjective, isQuestActive } from '../../systems/quests';
 
@@ -76,14 +71,14 @@ export default class BreakingStagnationEvent extends RpgEvent {
       // For this event, we'll simulate the broadcast and proceed.
       // In a real game, this would involve player input, item selection, and a broadcast mechanic.
       // For the purpose of this event file, we'll assume the broadcast happens and then continue.
-      await new Promise(resolve => setTimeout(resolve, 5000)); // Simulate player action time
+      await new Promise((resolve) => setTimeout(resolve, 5000)); // Simulate player action time
 
       // Close the GUI overlay
       await player.gui('broadcast-target').close();
 
       // 4. Fire screen effects
       // TODO: screenEffect not available in RPG-JS 4.3.0
-      await new Promise(resolve => setTimeout(resolve, 2000)); // Wait for effect to play
+      await new Promise((resolve) => setTimeout(resolve, 2000)); // Wait for effect to play
 
       // 5. Update vibrancy
       // This would typically be a server-side call to a vibrancy system

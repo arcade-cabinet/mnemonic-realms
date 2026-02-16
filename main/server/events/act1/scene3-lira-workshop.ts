@@ -1,6 +1,6 @@
 import { EventData, Move, RpgEvent, type RpgMap, type RpgPlayer } from '@rpgjs/server';
-import { addItem, removeItem } from '../../systems/inventory';
-import { completeQuest, getQuestStatus, isQuestActive, startQuest } from '../../systems/quests';
+import { addItem } from '../../systems/inventory';
+import { completeQuest, getQuestStatus, startQuest } from '../../systems/quests';
 
 @EventData({
   id: 'act1-scene3-lira-workshop',
@@ -118,7 +118,7 @@ export class HanaWorkshopEvent extends RpgEvent {
   }
 }
 
-export default async function hanaWorkshopSetup(map: RpgMap) {
+export default async function hanaWorkshopSetup(_map: RpgMap) {
   // This function can be used to add the event to the map if it's not placed directly in Tiled.
   // For a map-enter trigger, it's often handled by the map's onReady hook or a global event manager.
   // If this event is placed in Tiled, this setup function might not be strictly necessary,

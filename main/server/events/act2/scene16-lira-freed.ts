@@ -1,13 +1,5 @@
-import {
-  EventData,
-  MapData,
-  Move,
-  RpgEvent,
-  RpgMap,
-  RpgMoveRoute,
-  type RpgPlayer,
-} from '@rpgjs/server';
-import { completeQuest, getQuestStatus, isQuestActive, isQuestComplete } from '../../systems/quests';
+import { EventData, RpgEvent, type RpgPlayer } from '@rpgjs/server';
+import { completeQuest, isQuestActive, isQuestComplete } from '../../systems/quests';
 
 @EventData({
   id: 'act2-scene16-lira-freed',

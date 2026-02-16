@@ -1,10 +1,4 @@
-import {
-  EventData,
-  RpgEvent,
-  type RpgMap,
-  type RpgPlayer,
-  RpgSceneMap,
-} from '@rpgjs/server';
+import { EventData, RpgEvent, type RpgMap, type RpgPlayer } from '@rpgjs/server';
 import { addItem } from '../../systems/inventory';
 import { advanceObjective } from '../../systems/quests';
 
@@ -133,7 +127,7 @@ export default class TheRemixEvent extends RpgEvent {
     );
 
     // TODO: screenEffect not available in RPG-JS 4.3.0
-    await new Promise(resolve => setTimeout(resolve, 2000)); // Wait for the effect to finish
+    await new Promise((resolve) => setTimeout(resolve, 2000)); // Wait for the effect to finish
 
     await player.showText(
       "The new memory forms: MF-11: World's New Dawn. It is not a sphere but a branching, growing shape — like a tree, like a river delta, like a network of roots. It is alive. It is asking a new question.",
