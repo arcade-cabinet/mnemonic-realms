@@ -10,6 +10,7 @@ modules = [
     pwaEnabled = false
 
 [vite]
+    base = "/mnemonic-realms/"
     publicDir = "assets"
 
 [vite.server]
