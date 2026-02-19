@@ -19,15 +19,14 @@ import { Enemy } from '@rpgjs/database';
 })
 export default class PreserverScout {
   // Context:
-  // - Zone: Sunridge (Preserver Outpost), Shimmer Marsh, all Frontier zones (rare)
-  // - Category: preserver
-  // - Element: Neutral
+  // - Zone: Sunridge (Preserver Outpost), Shimmer Marsh (Stagnation Bog perimeter), all Frontier zones (rare patrol)
   // - Fragment affinity: Calm / Neutral
   // Abilities:
-  // - Crystal Beam: ATK * 1.3, 20% chance to inflict Stasis
-  // - Preservation Protocol: DEF +30%, immunity to Weakness, 3 turns, used first turn
-  // - Warning: telegraphs next guaranteed Stasis (teaches player to prepare)
+  // - Crystal Beam: Physical attack. Deals ATK × 1.3 damage. 20% chance to inflict Stasis.
+  // - Preservation Protocol: Self-buff. DEF +30%, immunity to Weakness for 3 turns. Used on the Scout's first turn.
+  // - Warning: Non-damaging. The Scout announces: "This is your last warning." Inflicts no damage but grants the player a visible "Stasis incoming" indicator on the Scout's next turn (Crystal Beam guaranteed to inflict Stasis). This is the game teaching the player to prepare for Stasis.
   // Drop table:
-  // - C-SC-04 (Stasis Breaker): 30% chance
-  // - C-HP-02 (Potion): 15% chance
+  // - C-SC-04: 30% chance
+  // - C-HP-02: 15% chance
+  // - no drop: 55% chance
 }

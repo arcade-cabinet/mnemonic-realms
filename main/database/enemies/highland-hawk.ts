@@ -1,6 +1,4 @@
 import { Enemy } from '@rpgjs/database';
-import HasteCharm from '../items/haste-charm';
-import SmokeBomb from '../items/smoke-bomb';
 
 @Enemy({
   id: 'E-SL-07',
@@ -17,10 +15,6 @@ import SmokeBomb from '../items/smoke-bomb';
   gain: {
     exp: 40,
     gold: 18,
-    items: [
-      { nb: 1, item: HasteCharm, chance: 0.1 }, // 10% chance for Haste Charm
-      { nb: 1, item: SmokeBomb, chance: 0.15 }, // 15% chance for Smoke Bomb
-    ],
   },
 })
 export default class HighlandHawk {
@@ -28,6 +22,10 @@ export default class HighlandHawk {
   // - Zone: Sunridge
   // - Fragment affinity: Fury / Wind
   // Abilities:
-  // - Dive Strike: Physical attack. Deals ATK * 1.5 damage. If the Hawk acts first this turn, deals ATK * 1.8 instead (Speed-bonus physical attack).
+  // - Dive Strike: Physical attack. Deals ATK × 1.5 damage. If the Hawk acts first this turn, deals ATK × 1.8 instead (similar to the Rogue's Foreshadow mechanic — teaches the player how speed-based combat works).
   // - Evasive Climb: For 1 turn, the Hawk cannot be targeted by single-target physical attacks (it's circling out of range). AoE and magic still hit. Used every 3rd turn.
+  // Drop table:
+  // - C-SC-02: 10% chance
+  // - C-SP-05: 15% chance
+  // - no drop: 75% chance
 }

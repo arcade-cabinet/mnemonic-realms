@@ -20,12 +20,12 @@ import { Enemy } from '@rpgjs/database';
 export default class RiverNymph {
   // Context:
   // - Zone: Millbrook
-  // - Category: settled
   // - Fragment affinity: Joy / Water
   // Abilities:
-  // - Water Jet: INT * 1.6 (water) (Magic attack, water element)
-  // - Splash Guard: Reduce next fire attack by 50% (Party water shield, once per combat)
+  // - Water Jet: Magic attack. Deals INT × 1.6 water-element magical damage. Targets one player.
+  // - Splash Guard: Party-wide water shield. Reduces the next incoming fire-element attack by 50%. Used once per combat at the start.
   // Drop table:
-  // - C-SP-01 (Mana Drop): 20% chance
-  // - C-HP-01 (Minor Potion): 10% chance
+  // - C-SP-01: 20% chance
+  // - C-HP-01: 10% chance
+  // - no drop: 70% chance
 }

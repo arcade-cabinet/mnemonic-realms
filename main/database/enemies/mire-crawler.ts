@@ -20,14 +20,13 @@ import { Enemy } from '@rpgjs/database';
 export default class MireCrawler {
   // Context:
   // - Zone: Shimmer Marsh
-  // - Category: frontier
-  // - Element: Water
   // - Fragment affinity: Sorrow / Water
   // Abilities:
-  // - Toxic Lunge: ATK * 1.3 (25% chance to inflict Poison (5% max HP/turn, 3 turns))
-  // - Mire Grip: ATK * 1.0 + Slow (AGI halved, 2 turns), targets highest AGI
-  // - Burrow: untargetable 1 turn, emerges with guaranteed Toxic Lunge
+  // - Toxic Lunge: Physical attack. Deals ATK × 1.3 damage. 25% chance to inflict Poison (5% max HP per turn, 3 turns).
+  // - Mire Grip: Targeted attack. Deals ATK × 1.0 damage and inflicts Slow (AGI halved, 2 turns). Used when a party member has the highest AGI.
+  // - Burrow: The Crawler sinks into the ground for 1 turn, becoming untargetable. Emerges next turn with a guaranteed Toxic Lunge.
   // Drop table:
-  // - C-SC-01 (Antidote): 25% chance
-  // - C-HP-02 (Potion): 15% chance
+  // - C-SC-01: 25% chance
+  // - C-HP-02: 15% chance
+  // - no drop: 60% chance
 }

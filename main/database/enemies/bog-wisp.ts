@@ -20,13 +20,11 @@ import { Enemy } from '@rpgjs/database';
 export default class BogWisp {
   // Context:
   // - Zone: Shimmer Marsh
-  // - Category: frontier
-  // - Element: Dark
   // - Fragment affinity: Sorrow / Dark
   // Abilities:
-  // - Marsh Light: INT * 1.6 dark-element single target
-  // - SP Siphon: drains 15 SP, no damage, targets highest SP party member
-  // - Will-o'-Wisp (passive): 25% chance to evade physical attacks
+  // - Marsh Light: Magic attack. Deals INT × 1.6 dark-element damage. Single target.
+  // - SP Siphon: Drains 15 SP from one target. Deals no damage. Prioritizes the party member with the highest current SP.
   // Drop table:
-  // - C-SP-02 (Mana Draught): 25% chance
+  // - C-SP-02: 25% chance
+  // - no drop: 75% chance
 }

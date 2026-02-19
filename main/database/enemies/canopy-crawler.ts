@@ -20,14 +20,13 @@ import { Enemy } from '@rpgjs/database';
 export default class CanopyCrawler {
   // Context:
   // - Zone: Flickerveil
-  // - Category: frontier
-  // - Element: Dark
   // - Fragment affinity: Sorrow / Dark
   // Abilities:
-  // - Drop Attack: ATK * 1.6 first turn only (ambush), ATK * 1.2 after
-  // - Memory Web: inflict Slow (AGI halved, 2 turns), 80% accuracy, 3-turn CD
-  // - Cocoon: self-heal 20% max HP, once per combat below 30% HP
+  // - Drop Attack: Physical attack. Deals ATK × 1.6 damage on the first turn of combat only (ambush bonus from above). Subsequent attacks deal ATK × 1.2.
+  // - Memory Web: Targeted debuff. Inflicts Slow (AGI halved, 2 turns) on one target. 80% accuracy. 3-turn cooldown.
+  // - Cocoon: Self-heal. Recovers 20% max HP. Used once per combat when HP drops below 30%.
   // Drop table:
-  // - C-SC-02 (Haste Charm): 20% chance
-  // - C-HP-02 (Potion): 15% chance
+  // - C-SC-02: 20% chance
+  // - C-HP-02: 15% chance
+  // - no drop: 65% chance
 }

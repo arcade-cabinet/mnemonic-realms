@@ -1,4 +1,5 @@
 import type { Direction, RpgPlayer, RpgPlayerHooks } from '@rpgjs/server';
+import { triggerAwakeningIntro } from './events/awakening-intro';
 import type { CombatAction } from './systems/combat';
 import {
   CombatPhase,
@@ -158,6 +159,8 @@ function openTitleScreen(player: RpgPlayer) {
     player.gui('rpg-hud').open();
     openInventory(player);
     await player.changeMap('village-hub', { x: 480, y: 480 });
+    // Trigger awakening intro event for new game
+    await triggerAwakeningIntro(player);
   });
 
   gui.on('load-save', async (data: { slotId: SaveSlotId; saveData: SaveData }) => {

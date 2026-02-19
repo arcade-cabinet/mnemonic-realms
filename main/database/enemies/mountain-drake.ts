@@ -20,14 +20,13 @@ import { Enemy } from '@rpgjs/database';
 export default class MountainDrake {
   // Context:
   // - Zone: Hollow Ridge
-  // - Category: frontier
-  // - Element: Fire
   // - Fragment affinity: Fury / Fire
   // Abilities:
-  // - Flame Bite: ATK * 1.4 fire-element single target
-  // - Memory Breath: INT * 1.8 fire AoE (1-2 targets), 15% Weakness per target, 3-turn CD
-  // - Scale Harden: DEF +40% for 2 turns, used below 40% HP
+  // - Flame Bite: Physical attack. Deals ATK × 1.4 fire-element damage.
+  // - Memory Breath: Cone AoE magic attack. Deals INT × 1.8 fire-element damage to 1-2 targets (front row only in groups). 15% chance to inflict Weakness per target. 3-turn cooldown.
+  // - Scale Harden: Self-buff. DEF +40% for 2 turns. Used when HP drops below 40%.
   // Drop table:
-  // - C-HP-02 (Potion): 20% chance
-  // - C-BF-01 (Strength Seed): 10% chance
+  // - C-HP-02: 20% chance
+  // - C-BF-01: 10% chance
+  // - no drop: 70% chance
 }

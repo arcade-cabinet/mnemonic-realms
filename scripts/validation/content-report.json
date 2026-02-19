@@ -1,0 +1,692 @@
+{
+  "validator": "ContentValidator",
+  "timestamp": "2026-02-19T17:32:57.604Z",
+  "summary": {
+    "totalChecks": 113,
+    "passed": 0,
+    "failed": 12,
+    "warnings": 101
+  },
+  "issues": [
+    {
+      "severity": "error",
+      "category": "stat_mismatch",
+      "message": "Enemy E-FR-09: STR mismatch (catalog: NaN, impl: 0)",
+      "location": "main/database/enemies/sound-echo.ts"
+    },
+    {
+      "severity": "error",
+      "category": "stat_mismatch",
+      "message": "Enemy E-FR-09: INT mismatch (catalog: NaN, impl: 0)",
+      "location": "main/database/enemies/sound-echo.ts"
+    },
+    {
+      "severity": "error",
+      "category": "stat_mismatch",
+      "message": "Enemy E-FR-09: AGI mismatch (catalog: NaN, impl: 0)",
+      "location": "main/database/enemies/sound-echo.ts"
+    },
+    {
+      "severity": "error",
+      "category": "stat_mismatch",
+      "message": "Enemy B-01: HP mismatch (catalog: undefined, impl: 400)",
+      "location": "main/database/enemies/stagnation-heart.ts"
+    },
+    {
+      "severity": "error",
+      "category": "stat_mismatch",
+      "message": "Enemy B-01: STR mismatch (catalog: undefined, impl: 25)",
+      "location": "main/database/enemies/stagnation-heart.ts"
+    },
+    {
+      "severity": "error",
+      "category": "stat_mismatch",
+      "message": "Enemy B-01: INT mismatch (catalog: undefined, impl: 20)",
+      "location": "main/database/enemies/stagnation-heart.ts"
+    },
+    {
+      "severity": "error",
+      "category": "stat_mismatch",
+      "message": "Enemy B-01: DEX mismatch (catalog: undefined, impl: 30)",
+      "location": "main/database/enemies/stagnation-heart.ts"
+    },
+    {
+      "severity": "error",
+      "category": "stat_mismatch",
+      "message": "Enemy B-01: AGI mismatch (catalog: undefined, impl: 8)",
+      "location": "main/database/enemies/stagnation-heart.ts"
+    },
+    {
+      "severity": "error",
+      "category": "missing_content",
+      "message": "Enemy B-02 (Shrine Guardian — Dormant God Shrine Protector) is documented but not implemented",
+      "location": "docs/design/enemies-catalog.md"
+    },
+    {
+      "severity": "error",
+      "category": "missing_content",
+      "message": "Enemy B-03 (Depths Floor Bosses) is documented but not implemented",
+      "location": "docs/design/enemies-catalog.md"
+    },
+    {
+      "severity": "error",
+      "category": "missing_content",
+      "message": "Enemy B-04 (Preserver Fortress Bosses) is documented but not implemented",
+      "location": "docs/design/enemies-catalog.md"
+    },
+    {
+      "severity": "error",
+      "category": "missing_content",
+      "message": "Enemy B-05 (Grym — Final Confrontation) is documented but not implemented",
+      "location": "docs/design/enemies-catalog.md"
+    }
+  ],
+  "warnings": [
+    {
+      "severity": "warning",
+      "category": "stat_mismatch",
+      "message": "Enemy B-01: EXP mismatch (catalog: undefined, impl: 500)",
+      "location": "main/database/enemies/stagnation-heart.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "stat_mismatch",
+      "message": "Enemy B-01: Gold mismatch (catalog: undefined, impl: 150)",
+      "location": "main/database/enemies/stagnation-heart.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Enemy B-04a (Grym) is implemented but not documented in catalog",
+      "location": "main/database/enemies/gryms-right-hand.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-WD-02 (Amber Focus) is implemented but not documented in catalog",
+      "location": "main/database/weapons/amber-focus.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-WD-01 (Apprentice Wand) is implemented but not documented in catalog",
+      "location": "main/database/weapons/apprentice-wand.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-WD-06 (Arcane Catalyst) is implemented but not documented in catalog",
+      "location": "main/database/weapons/arcane-catalyst.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-SW-04 (Brightwater Saber) is implemented but not documented in catalog",
+      "location": "main/database/weapons/brightwater-saber.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-WD-08 (Dissolved Memory Lens) is implemented but not documented in catalog",
+      "location": "main/database/weapons/dissolved-memory-lens.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-DG-08 (Echo of Tomorrow) is implemented but not documented in catalog",
+      "location": "main/database/weapons/echo-of-tomorrow.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-ST-07 (Euphoric Wand) is implemented but not documented in catalog",
+      "location": "main/database/weapons/euphoric-wand.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-ST-08 (First Light) is implemented but not documented in catalog",
+      "location": "main/database/weapons/first-light.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-DG-05 (Flickerblade) is implemented but not documented in catalog",
+      "location": "main/database/weapons/flickerblade.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-SW-06 (Frontier Greatsword) is implemented but not documented in catalog",
+      "location": "main/database/weapons/frontier-greatsword.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-ST-03 (Hearthstone Staff) is implemented but not documented in catalog",
+      "location": "main/database/weapons/hearthstone-staff.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-WD-07 (Inspiration) is implemented but not documented in catalog",
+      "location": "main/database/weapons/inspiration-s-core.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-SW-02 (Iron Blade) is implemented but not documented in catalog",
+      "location": "main/database/weapons/iron-blade.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-ST-06 (Luminary) is implemented but not documented in catalog",
+      "location": "main/database/weapons/luminary-s-scepter.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-ST-02 (Maren) is implemented but not documented in catalog",
+      "location": "main/database/weapons/maren-s-blessing-rod.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-ST-05 (Marsh Hermit) is implemented but not documented in catalog",
+      "location": "main/database/weapons/marsh-hermit-s-crook.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-SW-08 (Memory) is implemented but not documented in catalog",
+      "location": "main/database/weapons/memory-s-edge.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-SW-07 (Oath-Forged Blade) is implemented but not documented in catalog",
+      "location": "main/database/weapons/oath-forged-blade.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-SW-03 (Oathkeeper) is implemented but not documented in catalog",
+      "location": "main/database/weapons/oathkeeper-s-edge.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-DG-06 (Phantom Edge) is implemented but not documented in catalog",
+      "location": "main/database/weapons/phantom-edge.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-WD-04 (Prism Wand) is implemented but not documented in catalog",
+      "location": "main/database/weapons/prism-wand.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-WD-05 (Resonance Tuner) is implemented but not documented in catalog",
+      "location": "main/database/weapons/resonance-tuner.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-SW-05 (Ridgewalker Claymore) is implemented but not documented in catalog",
+      "location": "main/database/weapons/ridgewalker-claymore.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-ST-04 (Riverside Crosier) is implemented but not documented in catalog",
+      "location": "main/database/weapons/riverside-crosier.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-DG-04 (Shadow Fang) is implemented but not documented in catalog",
+      "location": "main/database/weapons/shadow-fang.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-DG-02 (Steel Stiletto) is implemented but not documented in catalog",
+      "location": "main/database/weapons/steel-stiletto.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-DG-07 (Temporal Shard) is implemented but not documented in catalog",
+      "location": "main/database/weapons/temporal-shard.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-SW-01 (Training Sword) is implemented but not documented in catalog",
+      "location": "main/database/weapons/training-sword.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-WD-03 (Windcatcher Rod) is implemented but not documented in catalog",
+      "location": "main/database/weapons/windcatcher-rod.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-DG-03 (Windmill Blade) is implemented but not documented in catalog",
+      "location": "main/database/weapons/windmill-blade.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-ST-01 (Wooden Staff) is implemented but not documented in catalog",
+      "location": "main/database/weapons/wooden-staff.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment W-DG-01 (Worn Knife) is implemented but not documented in catalog",
+      "location": "main/database/weapons/worn-knife.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment A-04 (Chain Mail) is implemented but not documented in catalog",
+      "location": "main/database/armor/chain-mail.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment A-05 (Forest Weave) is implemented but not documented in catalog",
+      "location": "main/database/armor/forest-weave.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment A-09 (Frontier Guard) is implemented but not documented in catalog",
+      "location": "main/database/armor/frontier-guard.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment A-07 (Hermit) is implemented but not documented in catalog",
+      "location": "main/database/armor/hermit-s-robe.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment A-03 (Leather Armor) is implemented but not documented in catalog",
+      "location": "main/database/armor/leather-armor.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment A-11 (Luminary Vestment) is implemented but not documented in catalog",
+      "location": "main/database/armor/luminary-vestment.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment A-14 (Memory-Woven Plate) is implemented but not documented in catalog",
+      "location": "main/database/armor/memory-woven-plate.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment A-02 (Padded Vest) is implemented but not documented in catalog",
+      "location": "main/database/armor/padded-vest.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment A-10 (Preserver) is implemented but not documented in catalog",
+      "location": "main/database/armor/preserver-s-crystal-mail.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment A-08 (Ridgewalker) is implemented but not documented in catalog",
+      "location": "main/database/armor/ridgewalker-s-coat.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment A-06 (Riverstone Plate) is implemented but not documented in catalog",
+      "location": "main/database/armor/riverstone-plate.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment A-13 (Sketchweave Cloak) is implemented but not documented in catalog",
+      "location": "main/database/armor/sketchweave-cloak.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment A-01 (Traveler) is implemented but not documented in catalog",
+      "location": "main/database/armor/traveler-s-tunic.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment A-12 (Verdant Mantle) is implemented but not documented in catalog",
+      "location": "main/database/armor/verdant-mantle.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment S-DEF-BUFF-01 (Aegis Buff) is implemented but not documented in catalog",
+      "location": "main/database/items/aegis-seed.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment C-SC-01 (Antidote) is implemented but not documented in catalog",
+      "location": "main/database/items/antidote.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment C-SP-08 (Broadcast Amplifier) is implemented but not documented in catalog",
+      "location": "main/database/items/broadcast-amplifier.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment C-SP-06 (Crystal Dust) is implemented but not documented in catalog",
+      "location": "main/database/items/crystal-dust.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment C-SP-09 (Dissolved Essence) is implemented but not documented in catalog",
+      "location": "main/database/items/dissolved-essence.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment C-HP-04 (Elixir) is implemented but not documented in catalog",
+      "location": "main/database/items/elixir.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment C-SP-04 (Ether) is implemented but not documented in catalog",
+      "location": "main/database/items/ether.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment C-SC-03 (Fortify Tonic) is implemented but not documented in catalog",
+      "location": "main/database/items/fortify-tonic.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment C-SC-02 (Haste Charm) is implemented but not documented in catalog",
+      "location": "main/database/items/haste-charm.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment C-BF-04 (Haste Seed) is implemented but not documented in catalog",
+      "location": "main/database/items/haste-seed.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment C-HP-03 (High Potion) is implemented but not documented in catalog",
+      "location": "main/database/items/high-potion.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment C-SP-02 (Mana Draught) is implemented but not documented in catalog",
+      "location": "main/database/items/mana-draught.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment C-SP-01 (Mana Drop) is implemented but not documented in catalog",
+      "location": "main/database/items/mana-drop.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment C-SP-03 (Mana Surge) is implemented but not documented in catalog",
+      "location": "main/database/items/mana-surge.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment C-BF-05 (Memory Incense) is implemented but not documented in catalog",
+      "location": "main/database/items/memory-incense.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment C-HP-01 (Minor Potion) is implemented but not documented in catalog",
+      "location": "main/database/items/minor-potion.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment C-SC-05 (Panacea) is implemented but not documented in catalog",
+      "location": "main/database/items/panacea.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment C-SP-10 (Phoenix Feather) is implemented but not documented in catalog",
+      "location": "main/database/items/phoenix-feather.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment C-HP-02 (Potion) is implemented but not documented in catalog",
+      "location": "main/database/items/potion.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment C-SP-05 (Smoke Bomb) is implemented but not documented in catalog",
+      "location": "main/database/items/smoke-bomb.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment C-SC-04 (Stasis Breaker) is implemented but not documented in catalog",
+      "location": "main/database/items/stasis-breaker.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment C-SP-07 (Stasis Shard) is implemented but not documented in catalog",
+      "location": "main/database/items/stasis-shard.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment C-BF-01 (Strength Seed) is implemented but not documented in catalog",
+      "location": "main/database/items/strength-seed.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Equipment C-BF-02 (Wisdom Seed) is implemented but not documented in catalog",
+      "location": "main/database/items/wisdom-seed.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest GQ-01 (Recall Resonance) is implemented but not documented in catalog",
+      "location": "main/server/quests/gq01-recall-resonance.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest GQ-02 (Recall Verdance) is implemented but not documented in catalog",
+      "location": "main/server/quests/gq02-recall-verdance.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest GQ-03 (Recall Luminos) is implemented but not documented in catalog",
+      "location": "main/server/quests/gq03-recall-luminos.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest GQ-04 (Recall Kinesis) is implemented but not documented in catalog",
+      "location": "main/server/quests/gq04-recall-kinesis.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest MQ-01 (The Architect) is implemented but not documented in catalog",
+      "location": "main/server/quests/mq01-architects-awakening.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest MQ-02 (First Broadcast) is implemented but not documented in catalog",
+      "location": "main/server/quests/mq02-first-broadcast.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest MQ-03 (The Settled Lands) is implemented but not documented in catalog",
+      "location": "main/server/quests/mq03-settled-lands.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest MQ-04 (The Stagnation) is implemented but not documented in catalog",
+      "location": "main/server/quests/mq04-the-stagnation.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest MQ-05 (Into the Frontier) is implemented but not documented in catalog",
+      "location": "main/server/quests/mq05-into-frontier.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest MQ-06 (Recall the First God) is implemented but not documented in catalog",
+      "location": "main/server/quests/mq06-recall-first-god.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest MQ-07 (The Curator) is implemented but not documented in catalog",
+      "location": "main/server/quests/mq07-curators-endgame.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest MQ-08 (Through the Sketch) is implemented but not documented in catalog",
+      "location": "main/server/quests/mq08-through-sketch.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest MQ-09 (The Preserver Fortress) is implemented but not documented in catalog",
+      "location": "main/server/quests/mq09-preserver-fortress.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest MQ-10 (The First Memory Remix) is implemented but not documented in catalog",
+      "location": "main/server/quests/mq10-first-memory-remix.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest SQ-01 (The Memorial Garden) is implemented but not documented in catalog",
+      "location": "main/server/quests/sq01-memorial-garden.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest SQ-02 (The Windmill Mystery) is implemented but not documented in catalog",
+      "location": "main/server/quests/sq02-windmill-mystery.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest SQ-03 (The Woodcutter) is implemented but not documented in catalog",
+      "location": "main/server/quests/sq03-woodcutters-dilemma.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest SQ-04 (Upstream Secrets) is implemented but not documented in catalog",
+      "location": "main/server/quests/sq04-upstream-secrets.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest SQ-05 (Aric) is implemented but not documented in catalog",
+      "location": "main/server/quests/sq05-arics-doubt.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest SQ-06 (The Marsh Hermit) is implemented but not documented in catalog",
+      "location": "main/server/quests/sq06-marsh-hermits-request.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest SQ-07 (Nel) is implemented but not documented in catalog",
+      "location": "main/server/quests/sq07-petras-ridgewalkers.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest SQ-08 (Solen) is implemented but not documented in catalog",
+      "location": "main/server/quests/sq08-solens-light-studies.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest SQ-09 (Harmonize the Path) is implemented but not documented in catalog",
+      "location": "main/server/quests/sq09-harmonize-path.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest SQ-10 (The Depths Expedition) is implemented but not documented in catalog",
+      "location": "main/server/quests/sq10-depths-expedition.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest SQ-11 (Hark) is implemented but not documented in catalog",
+      "location": "main/server/quests/sq11-torvans-masterwork.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest SQ-12 (Nyro) is implemented but not documented in catalog",
+      "location": "main/server/quests/sq12-rens-dream-visions.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest SQ-13 (The Dissolved Choir) is implemented but not documented in catalog",
+      "location": "main/server/quests/sq13-dissolved-choir-instruments.ts"
+    },
+    {
+      "severity": "warning",
+      "category": "undocumented_content",
+      "message": "Quest SQ-14 (The Stagnation Breaker) is implemented but not documented in catalog",
+      "location": "main/server/quests/sq14-stagnation-breaker.ts"
+    }
+  ]
+}

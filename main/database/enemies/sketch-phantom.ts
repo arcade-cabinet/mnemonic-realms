@@ -4,7 +4,7 @@ import { Enemy } from '@rpgjs/database';
   id: 'E-SK-01',
   name: 'Sketch Phantom',
   description:
-    "Outline-only versions of enemies from earlier zones — a Meadow Sprite rendered as a single glowing line, a Mountain Drake as a wireframe. They flicker between different enemy silhouettes mid-combat, making them visually unpredictable. They're the world's attempt to populate the Sketch with something before it's finished.",
+    "Outline-only versions of enemies from earlier zones — a Meadow Sprite rendered as a single glowing line, a Mountain Drake as a wireframe. They flicker between different enemy silhouettes mid-combat, making them visually unpredictable. They're not hostile memories — they're the world's attempt to populate the Sketch with something, anything, before it's finished.",
   parameters: {
     maxhp: { start: 130, end: 130 },
     str: { start: 30, end: 30 },
@@ -20,14 +20,13 @@ import { Enemy } from '@rpgjs/database';
 export default class SketchPhantom {
   // Context:
   // - Zone: Luminous Wastes, The Undrawn Peaks, The Half-Drawn Forest
-  // - Category: sketch
-  // - Element: Random (changes each encounter)
-  // - Fragment affinity: Random
+  // - Fragment affinity: unknown / unknown
   // Abilities:
-  // - Form Shift: randomly physical (ATK * 1.4) or magical (INT * 1.5, random element) each turn
-  // - Outline Fade: 30% damage reduction for 1 turn, used below 60% HP
-  // - Memory Scatter: AoE 8% max HP fixed damage, 3-turn CD
+  // - Form Shift: At the start of each turn, the Phantom randomly shifts its attack type: physical (ATK × 1.4) or magical (INT × 1.5, random element). The player cannot predict which type is coming.
+  // - Outline Fade: The Phantom becomes semi-transparent for 1 turn. All damage against it is reduced by 30%. Used when HP drops below 60%.
+  // - Memory Scatter: AoE attack. Deals 8% of each target's max HP as fixed damage. 3-turn cooldown.
   // Drop table:
-  // - C-HP-03 (High Potion): 15% chance
-  // - C-SC-05 (Panacea): 8% chance
+  // - C-HP-03: 15% chance
+  // - C-SC-05: 8% chance
+  // - no drop: 77% chance
 }

@@ -14,18 +14,18 @@ import { Enemy } from '@rpgjs/database';
   },
   gain: {
     exp: 50,
-    gold: 22,
+    gold: 20,
   },
 })
 export default class CragGolem {
   // Context:
   // - Zone: Sunridge
-  // - Category: settled
-  // - Fragment affinity: Calm / Earth
+  // - Fragment affinity: Awe / Fire
   // Abilities:
-  // - Stone Fist: ATK * 1.5 (Heavy physical attack)
-  // - Quake Stomp: ATK * 0.8 (AE) (AoE physical, all party members)
+  // - Stone Fist: Basic attack. Deals ATK × 1.3 physical damage. 15% chance to inflict Stun (skip next turn, 1 turn).
   // Drop table:
-  // - C-HP-01: 20% chance
-  // - C-BF-01: 5% chance
+  // - C-BF-01: 8% chance
+  // - C-SC-03: 12% chance
+  // - C-HP-01: 15% chance
+  // - no drop: 65% chance
 }

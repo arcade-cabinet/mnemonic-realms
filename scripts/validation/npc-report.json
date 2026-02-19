@@ -1,0 +1,18 @@
+{
+  "validator": "NPC Validator",
+  "timestamp": "2026-02-19T19:30:45.500Z",
+  "totalChecked": 21,
+  "passed": 21,
+  "failed": 0,
+  "warnings": 3,
+  "errors": [],
+  "warningMessages": [
+    "EV-SR-001: NPC \"Janik\" not found at documented position (31, 14) on map sunridge",
+    "EV-SR-003: NPC \"Waystation Keeper\" not found at documented position (19, 19) on map sunridge",
+    "EV-SM-001: Could not validate NPC \"Vash\" on map shimmer-marsh (map file may not exist yet)"
+  ],
+  "metadata": {
+    "duration": 22,
+    "npcsChecked": 21
+  }
+}
