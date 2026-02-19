@@ -1,7 +1,7 @@
 /**
- * Village Hub TMX Generator (US-007/008/009)
+ * Everwick TMX Generator (US-007/008/009)
  *
- * Generates the Village Hub TMX map using Backterria CC0 tiles.
+ * Generates the Everwick TMX map using Backterria CC0 tiles.
  * 30x30 tile map with green meadow terrain, dirt paths, buildings,
  * memorial garden, and forest borders.
  *
@@ -15,7 +15,7 @@ import { writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 const ROOT = resolve(import.meta.dirname, '..', '..');
-const OUT = resolve(ROOT, 'main', 'server', 'maps', 'tmx', 'village-hub.tmx');
+const OUT = resolve(ROOT, 'main', 'server', 'maps', 'tmx', 'everwick.tmx');
 
 const W = 30;
 const H = 30;
@@ -587,7 +587,7 @@ function generateTMX(): string {
 <map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="${W}" height="${H}" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="100">
  <properties>
   <property name="category" value="overworld"/>
-  <property name="mapName" value="Village Hub"/>
+  <property name="mapName" value="Everwick"/>
   <property name="vibrancy" type="int" value="60"/>
  </properties>
  <tileset firstgid="1" source="backterria-overworld.tsx"/>
@@ -629,7 +629,7 @@ ${EVENTS_XML}
 
 const tmx = generateTMX();
 writeFileSync(OUT, tmx, 'utf-8');
-console.log(`Village Hub TMX generated: ${OUT}`);
+console.log(`Everwick TMX generated: ${OUT}`);
 console.log(`  Size: ${W}x${H} tiles (${W * 32}x${H * 32}px)`);
 console.log(
   '  Tilesets: backterria-overworld, backterria-natural, backterria-natural-props, backterria-plants',

@@ -116,14 +116,14 @@ export function spawnMapEvents(player: RpgPlayer) {
     },
   });
 
-  // ev-mb-004: East -> Village Hub
+  // ev-mb-004: East -> Everwick
   map.createDynamicEvent({
     x: 39,
     y: 20,
     name: 'ev-mb-004',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      player.changeMap('village_hub', { x: 0, y: 14 });
+      player.changeMap('everwick', { x: 0, y: 14 });
     },
   });
 

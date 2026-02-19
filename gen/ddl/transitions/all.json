@@ -1,7 +1,7 @@
 [
-  { "from": "village", "to": "grassland", "usedAt": "Village Hub -> Heartfield" },
-  { "from": "village", "to": "forest", "usedAt": "Village Hub -> Ambergrove" },
-  { "from": "village", "to": "riverside", "usedAt": "Village Hub -> Millbrook" },
+  { "from": "village", "to": "grassland", "usedAt": "Everwick -> Heartfield" },
+  { "from": "village", "to": "forest", "usedAt": "Everwick -> Ambergrove" },
+  { "from": "village", "to": "riverside", "usedAt": "Everwick -> Millbrook" },
   { "from": "grassland", "to": "forest", "usedAt": "Heartfield -> Ambergrove" },
   { "from": "grassland", "to": "mountain", "usedAt": "Sunridge -> Hollow Ridge" },
   { "from": "grassland", "to": "marsh", "usedAt": "Heartfield -> Shimmer Marsh" },

@@ -2,7 +2,7 @@
   {
     "id": "dlg-maren-first-visit", "npcId": "maren", "npcName": "Maren",
     "trigger": "First visit (Act I)",
-    "location": "Village Hub — General Shop (18, 16)",
+    "location": "Everwick — General Shop (18, 16)",
     "lines": [
       { "speaker": "Maren", "text": "Welcome, welcome! You must be the one Callum's been talking about — the new Architect!" }
     ],
@@ -11,7 +11,7 @@
   {
     "id": "dlg-maren-shop", "npcId": "maren", "npcName": "Maren",
     "trigger": "Shop interaction (all acts)",
-    "location": "Village Hub — General Shop (18, 16)",
+    "location": "Everwick — General Shop (18, 16)",
     "lines": [
       { "speaker": "Maren", "text": "Take a look! Potions, antidotes, and the odd curiosity.", "emotion": "browse" },
       { "speaker": "Maren", "text": "Excellent choice! That'll serve you well out there.", "emotion": "buy" },
@@ -24,7 +24,7 @@
   {
     "id": "dlg-torvan-first-visit", "npcId": "torvan", "npcName": "Torvan",
     "trigger": "First visit (Act I)",
-    "location": "Village Hub — Blacksmith (18, 18)",
+    "location": "Everwick — Blacksmith (18, 18)",
     "lines": [
       { "speaker": "Torvan", "text": "Mm. New Architect? Callum told me. I make weapons and armor — nothing fancy, but solid." }
     ],
@@ -33,7 +33,7 @@
   {
     "id": "dlg-torvan-shop", "npcId": "torvan", "npcName": "Torvan",
     "trigger": "Shop interaction",
-    "location": "Village Hub — Blacksmith (18, 18)",
+    "location": "Everwick — Blacksmith (18, 18)",
     "lines": [
       { "speaker": "Torvan", "text": "Steel, leather, and honest craft. No enchantments.", "emotion": "browse" },
       { "speaker": "Torvan", "text": "Good blade, that. Treat it right and it'll return the favor.", "emotion": "buy" },
@@ -46,7 +46,7 @@
   {
     "id": "dlg-ren-first-visit", "npcId": "ren", "npcName": "Ren",
     "trigger": "First visit (Act I)",
-    "location": "Village Hub — Inn: The Bright Hearth (20, 14)",
+    "location": "Everwick — Inn: The Bright Hearth (20, 14)",
     "lines": [
       { "speaker": "Ren", "text": "The Bright Hearth — best inn in the village! Well, only inn. Rest your feet, rest your mind." }
     ],
@@ -55,7 +55,7 @@
   {
     "id": "dlg-ren-inn", "npcId": "ren", "npcName": "Ren",
     "trigger": "Inn interaction",
-    "location": "Village Hub — Inn: The Bright Hearth (20, 14)",
+    "location": "Everwick — Inn: The Bright Hearth (20, 14)",
     "lines": [
       { "speaker": "Ren", "text": "Sweet dreams. The beds are soft and the walls keep out the worry.", "emotion": "rest" },
       { "speaker": "Ren", "text": "Rest well. You've earned it more than most.", "emotion": "rest-late" }

@@ -5,7 +5,7 @@ export default async function (player: RpgPlayer) {
   // Trigger conditions: After combat tutorial, player is in Hana's Workshop (8, 18)
   const hasCompletedCombatTutorial = isQuestComplete(player, 'act1-scene4a-combat-tutorial');
   const isInHanasWorkshop =
-    (player.map as { id?: string })?.id === 'village_hub' &&
+    (player.map as { id?: string })?.id === 'everwick' &&
     player.position.x === 8 &&
     player.position.y === 18;
 

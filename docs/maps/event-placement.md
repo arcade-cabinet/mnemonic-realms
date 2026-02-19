@@ -10,7 +10,7 @@ This document catalogs **every event across all maps** in Mnemonic Realms — ov
 
 | Prefix | Map |
 |--------|-----|
-| `EV-VH-xxx` | Village Hub |
+| `EV-VH-xxx` | Everwick |
 | `EV-HF-xxx` | Heartfield |
 | `EV-AG-xxx` | Ambergrove |
 | `EV-MB-xxx` | Millbrook |
@@ -55,7 +55,7 @@ This document catalogs **every event across all maps** in Mnemonic Realms — ov
 
 All NPC interactions. Sorted by map, then by NPC.
 
-### Village Hub NPCs
+### Everwick NPCs
 
 | Event ID | Position | Trigger | Repeat | Linked Quest | NPC | Graphic | Description |
 |----------|----------|---------|--------|--------------|-----|---------|-------------|
@@ -133,14 +133,14 @@ All NPC interactions. Sorted by map, then by NPC.
 
 | NPC | Map | Movement Type | Patrol Path / Range | Condition |
 |-----|-----|--------------|---------------------|-----------|
-| Artun | Village Hub | Patrol (60s cycle) | Elder's House (19, 11) ↔ Lookout Hill (12, 3) | Always |
-| Hana | Village Hub | Static → Roam | Static at (9, 19) until MQ-02; roams village after | MQ-02 flag |
-| Khali | Village Hub | Static | (19, 17) behind counter | Always |
-| Hark | Village Hub | Static | (19, 19) at anvil | Always |
-| Nyro | Village Hub | Static | (21, 15) behind bar | Always |
-| Villager A | Village Hub | Wander | Central Square (12-17, 14-19) | Always |
-| Villager B | Village Hub | Wander | Central Square (12-17, 14-19) | Always |
-| Villager C | Village Hub | Patrol | South Gate road | Always |
+| Artun | Everwick | Patrol (60s cycle) | Elder's House (19, 11) ↔ Lookout Hill (12, 3) | Always |
+| Hana | Everwick | Static → Roam | Static at (9, 19) until MQ-02; roams village after | MQ-02 flag |
+| Khali | Everwick | Static | (19, 17) behind counter | Always |
+| Hark | Everwick | Static | (19, 19) at anvil | Always |
+| Nyro | Everwick | Static | (21, 15) behind bar | Always |
+| Villager A | Everwick | Wander | Central Square (12-17, 14-19) | Always |
+| Villager B | Everwick | Wander | Central Square (12-17, 14-19) | Always |
+| Villager C | Everwick | Patrol | South Gate road | Always |
 | Farmer Gale | Heartfield | Patrol | Hamlet (13-22, 13-22) | Always |
 | Farmer Suri | Heartfield | Static | (17, 16) at farmstead | Always |
 | Farmer Edric | Heartfield | Patrol | Fields (10-20, 18-25) | Always |
@@ -192,8 +192,8 @@ All treasure chests. Sorted by map.
 
 | Event ID | Map | Position | Trigger | Contents | Condition | Repeat |
 |----------|-----|----------|---------|----------|-----------|--------|
-| CH-VH-01 | Village Hub | (13, 3) | action | Minor Potion (C-HP-01) ×2 | Always | once |
-| CH-VH-02 | Village Hub | (9, 11) | action | Mana Drop (C-SP-01) ×2 | After MQ-01 | once |
+| CH-VH-01 | Everwick | (13, 3) | action | Minor Potion (C-HP-01) ×2 | Always | once |
+| CH-VH-02 | Everwick | (9, 11) | action | Mana Drop (C-SP-01) ×2 | After MQ-01 | once |
 | CH-HF-01 | Heartfield | (32, 9) | action | Antidote (C-SC-01) ×3 | Always | once |
 | CH-HF-02 | Heartfield | (5, 10) | action | Minor Potion (C-HP-01) ×2 | Always | once |
 | CH-HF-03 | Heartfield | (36, 25) | action | Smoke Bomb (C-SP-05) ×2 | Always | once |
@@ -255,7 +255,7 @@ All treasure chests. Sorted by map.
 
 All map-to-map transitions. Sorted by source map.
 
-### Village Hub Transitions
+### Everwick Transitions
 
 | Event ID | Position | Type | Destination Map | Dest. Tile | Condition |
 |----------|----------|------|----------------|------------|-----------|
@@ -270,14 +270,14 @@ All map-to-map transitions. Sorted by source map.
 | Event ID | Position | Type | Destination Map | Dest. Tile | Condition |
 |----------|----------|------|----------------|------------|-----------|
 | EV-HF-005 | (20, 38) | touch | Shimmer Marsh | (20, 0) | After MQ-04 |
-| EV-HF-006 | (15, 0) | touch | Village Hub | (15, 25) | Always |
+| EV-HF-006 | (15, 0) | touch | Everwick | (15, 25) | Always |
 | EV-HF-007 | (39, 20) | touch | Ambergrove | (0, 20) | Always |
 
 ### Ambergrove Transitions
 
 | Event ID | Position | Type | Destination Map | Dest. Tile | Condition |
 |----------|----------|------|----------------|------------|-----------|
-| EV-AG-004 | (0, 20) | touch | Village Hub | (29, 14) | Always |
+| EV-AG-004 | (0, 20) | touch | Everwick | (29, 14) | Always |
 | EV-AG-006 | (38, 20) | touch | Flickerveil | (0, 30) | After MQ-04 |
 | EV-AG-007 | (10, 39) | touch | Heartfield | (39, 20) | Always |
 
@@ -285,7 +285,7 @@ All map-to-map transitions. Sorted by source map.
 
 | Event ID | Position | Type | Destination Map | Dest. Tile | Condition |
 |----------|----------|------|----------------|------------|-----------|
-| EV-MB-004 | (39, 20) | touch | Village Hub | (0, 14) | Always |
+| EV-MB-004 | (39, 20) | touch | Everwick | (0, 14) | Always |
 | EV-MB-005 | (20, 39) | touch | Heartfield | (5, 20) | Always |
 | EV-MB-006 | (0, 20) | touch | Hollow Ridge | (49, 35) | After MQ-04 |
 
@@ -293,7 +293,7 @@ All map-to-map transitions. Sorted by source map.
 
 | Event ID | Position | Type | Destination Map | Dest. Tile | Condition |
 |----------|----------|------|----------------|------------|-----------|
-| EV-SR-004 | (20, 39) | touch | Village Hub | (15, 0) | Always |
+| EV-SR-004 | (20, 39) | touch | Everwick | (15, 0) | Always |
 | EV-SR-005 | (18, 0) | touch | Hollow Ridge | (25, 49) | After MQ-04 |
 | EV-SR-006 | (39, 20) | touch | Ambergrove | (5, 0) | Always |
 
@@ -346,8 +346,8 @@ All map-to-map transitions. Sorted by source map.
 
 | Event ID | Source Map | Position | Destination Map | Dest. Tile | Condition |
 |----------|-----------|----------|----------------|------------|-----------|
-| EV-D1-001 | Depths L1 | (10, 0) | Village Hub | (8, 17) | Entry point |
-| EV-D1-011 | Depths L1 | (12, 20) | Village Hub | (8, 17) | Memory lift (after R3 clear) |
+| EV-D1-001 | Depths L1 | (10, 0) | Everwick | (8, 17) | Entry point |
+| EV-D1-011 | Depths L1 | (12, 20) | Everwick | (8, 17) | Memory lift (after R3 clear) |
 | EV-D1-012 | Depths L1 | (15, 22) | Depths L2 | (10, 0) | Always |
 | EV-D2-001 | Depths L2 | (10, 0) | Shimmer Marsh | (33, 43) | Entry point |
 | EV-D2-013 | Depths L2 | (15, 16) | Shimmer Marsh | (33, 43) | Memory lift (after water puzzle) |
@@ -379,9 +379,9 @@ Cutscene events and narrative cinematics, sorted by quest chain.
 
 | Event ID | Map | Position | Type | Trigger | Quest | Description | Repeat |
 |----------|-----|----------|------|---------|-------|-------------|--------|
-| EV-VH-016 | Village Hub | (0, 0) | auto | First load | MQ-01 | Opening cutscene (Act I opening) | once |
-| EV-VH-003 | Village Hub | (10, 17) | action | MQ-02 active | MQ-02 | Memorial Garden: first fragment collection (MF-01) | once |
-| EV-VH-004 | Village Hub | (10, 17) | action | MQ-02 active | MQ-02 | Remix Table tutorial; broadcast tutorial | once |
+| EV-VH-016 | Everwick | (0, 0) | auto | First load | MQ-01 | Opening cutscene (Act I opening) | once |
+| EV-VH-003 | Everwick | (10, 17) | action | MQ-02 active | MQ-02 | Memorial Garden: first fragment collection (MF-01) | once |
+| EV-VH-004 | Everwick | (10, 17) | action | MQ-02 active | MQ-02 | Remix Table tutorial; broadcast tutorial | once |
 | EV-HF-003 | Heartfield | (33, 28) | auto | MQ-04 active | MQ-04 | Stagnation Clearing cutscene: Hana's freezing | once |
 | EV-SM-003 | Shimmer Marsh | (25, 35) | auto | GQ-02 active | GQ-02 | Verdance recall vision (30-sec cinematic) | once |
 | EV-HR-003 | Hollow Ridge | (24, 10) | auto | GQ-04 active | GQ-04 | Kinesis Spire recall vision | once |
@@ -544,11 +544,11 @@ All Resonance Stone interactions across all maps.
 
 | Stone ID | Map | Position | Fragment | Emotion | Element | Potency | Condition |
 |----------|-----|----------|----------|---------|---------|---------|-----------|
-| RS-VH-01 | Village Hub | (14, 15) | Yes | Joy | Neutral | 1 | Always |
-| RS-VH-02 | Village Hub | (9, 16) | Yes | Calm | Earth | 1 | MQ-02 tutorial |
-| RS-VH-03 | Village Hub | (10, 17) | Yes | Joy | Light | 1 | MQ-02 tutorial |
-| RS-VH-04 | Village Hub | (11, 16) | Yes | Sorrow | Neutral | 1 | SQ-01 broadcast target |
-| RS-VH-05 | Village Hub | (21, 15) | Yes | Calm | Neutral | 2 | After SQ-12 dream 5 |
+| RS-VH-01 | Everwick | (14, 15) | Yes | Joy | Neutral | 1 | Always |
+| RS-VH-02 | Everwick | (9, 16) | Yes | Calm | Earth | 1 | MQ-02 tutorial |
+| RS-VH-03 | Everwick | (10, 17) | Yes | Joy | Light | 1 | MQ-02 tutorial |
+| RS-VH-04 | Everwick | (11, 16) | Yes | Sorrow | Neutral | 1 | SQ-01 broadcast target |
+| RS-VH-05 | Everwick | (21, 15) | Yes | Calm | Neutral | 2 | After SQ-12 dream 5 |
 | RS-HF-01 | Heartfield | (18, 14) | Yes | Joy | Earth | 1 | Always |
 | RS-HF-02 | Heartfield | (31, 9) | Yes | Awe | Wind | 2 | Always |
 | RS-HF-03 | Heartfield | (35, 30) | Yes | Sorrow | Dark | 1 | Always |
@@ -657,7 +657,7 @@ Events that run continuously while the player is on a map.
 
 | Event ID | Map | Position | Description |
 |----------|-----|----------|-------------|
-| EV-VH-015 | Village Hub | (14, 15) | Fountain vibrancy check: particle effects scale with zone vibrancy |
+| EV-VH-015 | Everwick | (14, 15) | Fountain vibrancy check: particle effects scale with zone vibrancy |
 | EV-FV-011 | Flickerveil | (20, 20) | Light column visual effect: intensity scales with vibrancy |
 | EV-RF-010 | Resonance Fields | (25, 25) | Amphitheater ambient hum: intensity scales with vibrancy |
 
@@ -736,7 +736,7 @@ Complete stagnation break event sequences. Full zone details in [stagnation-zone
 
 | Map | NPCs | Chests | Transitions | Cutscenes | Puzzles | Resonance Stones | Combat | Parallel | Total |
 |-----|------|--------|-------------|-----------|---------|-----------------|--------|----------|-------|
-| Village Hub | 7 | 2 | 5 | 2 | 0 | 5 | 0 | 1 | 16 |
+| Everwick | 7 | 2 | 5 | 2 | 0 | 5 | 0 | 1 | 16 |
 | Heartfield | 3 | 3 | 3 | 1 | 0 | 4 | 1 | 0 | 9 |
 | Ambergrove | 2 | 3 | 3 | 0 | 0 | 5 | 0 | 0 | 8 |
 | Millbrook | 2 | 3 | 3 | 0 | 0 | 4 | 0 | 0 | 7 |
@@ -776,8 +776,8 @@ Complete stagnation break event sequences. Full zone details in [stagnation-zone
 
 | Quest | Event IDs | Maps Touched |
 |-------|-----------|-------------|
-| MQ-01 | EV-VH-001, 002, 016 | Village Hub |
-| MQ-02 | EV-VH-002, 003, 004 | Village Hub |
+| MQ-01 | EV-VH-001, 002, 016 | Everwick |
+| MQ-02 | EV-VH-002, 003, 004 | Everwick |
 | MQ-03 | EV-HF-001, AG-001, MB-001 | Heartfield, Ambergrove, Millbrook |
 | MQ-04 | EV-HF-003, 004, 005 | Heartfield |
 | MQ-05 | EV-SM-001, HR-001 | Shimmer Marsh, Hollow Ridge |
@@ -786,7 +786,7 @@ Complete stagnation break event sequences. Full zone details in [stagnation-zone
 | MQ-08 | EV-UP-002, 003, LW-001, HDF-001, 007 | Undrawn Peaks, Luminous Wastes, Half-Drawn Forest |
 | MQ-09 | EV-F1-001 through F3-009 | Fortress F1-F3 |
 | MQ-10 | EV-F3-009, 010, 011, 012 | Fortress F3 |
-| SQ-01 | EV-VH-005 | Village Hub |
+| SQ-01 | EV-VH-005 | Everwick |
 | SQ-02 | EV-HF-001, 002 | Heartfield |
 | SQ-03 | EV-AG-001, 008 | Ambergrove |
 | SQ-04 | EV-MB-001, 002 | Millbrook |
@@ -796,8 +796,8 @@ Complete stagnation break event sequences. Full zone details in [stagnation-zone
 | SQ-08 | EV-FV-001, 012 | Flickerveil |
 | SQ-09 | EV-RF-001, 002 | Resonance Fields |
 | SQ-10 | EV-D1-002, 006, 007 | Depths L1 |
-| SQ-11 | EV-VH-006, D2-006 | Village Hub, Depths L2 |
-| SQ-12 | EV-VH-007 | Village Hub |
+| SQ-11 | EV-VH-006, D2-006 | Everwick, Depths L2 |
+| SQ-12 | EV-VH-007 | Everwick |
 | SQ-13 | EV-RF-001 | Resonance Fields |
 | SQ-14 | EV-HF-004, 009 | Heartfield |
 | GQ-01 | EV-RF-002, 003, 004, 005 | Resonance Fields |
@@ -1047,7 +1047,7 @@ All chest and memory stone events. Sorted by map.
 | EV-SR-005 | (18, 0) | action | repeat | Chest or stone |
 | EV-SR-006 | (39, 20) | action | repeat | Chest or stone |
 
-### Village Hub Chests and Stones
+### Everwick Chests and Stones
 
 | Event ID | Position | Trigger | Repeat | Description |
 |----------|----------|---------|--------|-------------|

@@ -158,7 +158,7 @@ function openTitleScreen(player: RpgPlayer) {
     player.removeGui('title-screen');
     player.gui('rpg-hud').open();
     openInventory(player);
-    await player.changeMap('village-hub', { x: 480, y: 480 });
+    await player.changeMap('everwick', { x: 480, y: 480 });
     // Trigger awakening intro event for new game
     await triggerAwakeningIntro(player);
   });

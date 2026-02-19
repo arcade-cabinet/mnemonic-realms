@@ -2,7 +2,7 @@
   {
     "id": "dlg-callum-awakening", "npcId": "callum", "npcName": "Callum",
     "trigger": "Game start — Scene 1",
-    "location": "Village Hub — Elder's House (18, 10)",
+    "location": "Everwick — Elder's House (18, 10)",
     "lines": [
       { "speaker": "Callum", "text": "There you are. Come in, come in — careful of the stack by the door." },
       { "speaker": "Callum", "text": "This passage describes a talent the Dissolved called 'Mnemonic Architecture.'" },
@@ -18,7 +18,7 @@
   {
     "id": "dlg-callum-after-freezing", "npcId": "callum", "npcName": "Callum",
     "trigger": "After Lira's freezing — Scene 11",
-    "location": "Village Hub — Elder's House (18, 10)",
+    "location": "Everwick — Elder's House (18, 10)",
     "condition": "MQ-04 complete",
     "lines": [
       { "speaker": "Callum", "text": "I heard. Lira..." },
@@ -134,8 +134,8 @@
   },
   {
     "id": "dlg-callum-resolution", "npcId": "callum", "npcName": "Callum",
-    "trigger": "Endgame Bloom — Village Hub (Scene 11)",
-    "location": "Village Hub",
+    "trigger": "Endgame Bloom — Everwick (Scene 11)",
+    "location": "Everwick",
     "lines": [
       { "speaker": "Callum", "text": "Forty years I spent studying the Dissolved." },
       { "speaker": "Callum", "text": "They let go because they were done. Their work was complete." },

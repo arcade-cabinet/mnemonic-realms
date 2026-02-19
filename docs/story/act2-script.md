@@ -1170,7 +1170,7 @@ The fourth and final god recall. Kinesis Spire is a towering natural rock pillar
 
 ## Scene 16: Freeing Hana
 
-**Location**: Heartfield — Expanded Stagnation Zone (35, 30), then Village Hub
+**Location**: Heartfield — Expanded Stagnation Zone (35, 30), then Everwick
 
 **Trigger**: Player returns to the Settled Lands after all 4 god recalls
 
@@ -1242,9 +1242,9 @@ The player returns to where it all began. The expanded stagnation zone that froz
 
 ## Scene 17: Grym's Revelation — Act II Climax
 
-**Location**: Village Hub — Artun's House (18, 10), then Lookout Hill (12, 2)
+**Location**: Everwick — Artun's House (18, 10), then Lookout Hill (12, 2)
 
-**Trigger**: The evening after Hana's rescue, upon returning to Village Hub
+**Trigger**: The evening after Hana's rescue, upon returning to Everwick
 
 **Characters**: Player, Artun, Hana, Grym (remote communication)
 
@@ -1420,7 +1420,7 @@ The final scene of Act II. The player stands at the boundary between the Frontie
 | Zones explored | All Settled Lands + all Frontier zones |
 | Depths cleared | Level 2 (Drowned Archive), Level 4 (Songline) |
 | Stagnation zones | Heartfield expanded zone broken (Hana freed). Cathedral broken. Moral dilemma zones: preserved or broken (player's choice). |
-| Vibrancy | Village Hub: 72+ (Vivid). Heartfield: 55-65 (Normal-Vivid). Frontier zones: 35-50 (Normal, raised by recalls). |
+| Vibrancy | Everwick: 72+ (Vivid). Heartfield: 55-65 (Normal-Vivid). Frontier zones: 35-50 (Normal, raised by recalls). |
 
 ### Foreshadowing Planted
 

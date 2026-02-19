@@ -2,7 +2,7 @@ import type { RpgMap, RpgPlayer } from '@rpgjs/server';
 
 export default async function (player: RpgPlayer) {
   const DIALOGUE_FLAG = 'dlg-callum-awakening-played';
-  const TARGET_MAP_ID = 'village-hub-elders-house'; // Assuming this is the map ID for Elder's House
+  const TARGET_MAP_ID = 'everwick-elders-house'; // Assuming this is the map ID for Elder's House
   const TARGET_X = 18;
   const TARGET_Y = 10;
   const COORD_TOLERANCE = 2; // Allow player to be within a small radius of the target coordinates

@@ -6,11 +6,11 @@ const quest: QuestFileExport = {
   category: 'main',
   act: 'act1',
   objectives: [
-    { index: 0, description: 'Speak with Artun for exploration guidance', location: 'Village Hub' },
+    { index: 0, description: 'Speak with Artun for exploration guidance', location: 'Everwick' },
     { index: 1, description: 'Visit Heartfield, Ambergrove, Millbrook, Sunridge' },
     { index: 2, description: 'Collect at least 5 memory fragments' },
     { index: 3, description: 'Defeat encounters in each zone' },
-    { index: 4, description: 'Return to Artun', location: 'Village Hub' },
+    { index: 4, description: 'Return to Artun', location: 'Everwick' },
   ],
   rewards: { gold: 200 },
   dependencies: ['MQ-02'],

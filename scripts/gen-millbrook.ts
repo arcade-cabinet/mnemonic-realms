@@ -48,7 +48,7 @@ pathH(g2, 18, 14, 22);
 // Path to Fisher's Rest
 pathH(g2, 24, 22, 28);
 g2[24][22] = T.PATH_T;
-// Path to east gate (Village Hub)
+// Path to east gate (Everwick)
 pathH(g2, 20, 22, 39);
 
 // ═══ OBJECTS ═══
@@ -63,7 +63,7 @@ for (let c = 0; c < W; c++) { obj[0][c] = T.TREE; obj[H - 1][c] = T.TREE; }
 for (let r = 1; r < H - 1; r++) { obj[r][0] = T.TREE; obj[r][W - 1] = T.TREE; }
 
 // Gate clearings
-obj[20][W - 1] = 0; // East → Village Hub
+obj[20][W - 1] = 0; // East → Everwick
 obj[H - 1][20] = 0; // South → Heartfield
 obj[20][0] = 0;      // West → Hollow Ridge
 

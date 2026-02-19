@@ -1,9 +1,9 @@
 import type { RpgPlayer } from '@rpgjs/server';
 
 export default async function (player: RpgPlayer) {
-  // Trigger: Endgame Bloom — Village Hub return (Scene 11)
-  // Location: Village Hub
-  // This dialogue assumes the player is in the Village Hub and the endgame bloom event has occurred.
+  // Trigger: Endgame Bloom — Everwick return (Scene 11)
+  // Location: Everwick
+  // This dialogue assumes the player is in the Everwick and the endgame bloom event has occurred.
   // Specific quest state or flags would be checked here if available.
   // For example:
   // if (!player.getQuest('endgameBloom').isCompleted()) {

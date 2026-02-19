@@ -24,7 +24,7 @@ export class MemorialGardenEvent extends RpgEvent {
   async onPlayerTouch(player: RpgPlayer) {
     // Check if the player is on the specific map and coordinates for the scene trigger
     if (
-      player.map.id === 'village-hub' &&
+      player.map.id === 'everwick' &&
       player.position.x === 8 * 16 &&
       player.position.y === 16 * 16
     ) {

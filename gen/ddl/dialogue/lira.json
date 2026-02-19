@@ -2,7 +2,7 @@
   {
     "id": "dlg-lira-workshop", "npcId": "lira", "npcName": "Lira",
     "trigger": "Player enters Lira's Workshop (Scene 3)",
-    "location": "Village Hub — Lira's Workshop (8, 18)",
+    "location": "Everwick — Lira's Workshop (8, 18)",
     "condition": "MQ-01 complete",
     "lines": [
       { "speaker": "Lira", "text": "You must be the one Callum keeps talking about. I'm Lira — Mnemonic Architect, freelance, currently between assignments." },
@@ -18,7 +18,7 @@
   {
     "id": "dlg-lira-combat-tutorial", "npcId": "lira", "npcName": "Lira",
     "trigger": "Training Ground combat tutorial (Scene 4A)",
-    "location": "Village Hub — Training Ground (8, 10)",
+    "location": "Everwick — Training Ground (8, 10)",
     "lines": [
       { "speaker": "Lira", "text": "See those practice dummies? They're enchanted with a bit of memory energy — enough to fight back." },
       { "speaker": "Lira", "text": "I'll keep you standing. Focus on the dummies — try your class skill when you have SP for it.", "emotion": "combat" },
@@ -32,7 +32,7 @@
   {
     "id": "dlg-lira-remix-tutorial", "npcId": "lira", "npcName": "Lira",
     "trigger": "Remix and Broadcast tutorial (Scene 4B)",
-    "location": "Village Hub — Lira's Workshop (8, 18)",
+    "location": "Everwick — Lira's Workshop (8, 18)",
     "lines": [
       { "speaker": "Lira", "text": "Now for the real work. Come back to the Workshop — I want to show you the Remix Table." },
       { "speaker": "Lira", "text": "Place two fragments on the table. Same emotion works best for your first try." },
@@ -45,7 +45,7 @@
   },
   {
     "id": "dlg-lira-settled-lands", "npcId": "lira", "npcName": "Lira",
-    "trigger": "Player exits Village Hub south (Scene 5)",
+    "trigger": "Player exits Everwick south (Scene 5)",
     "location": "Heartfield road",
     "lines": [
       { "speaker": "Lira", "text": "The Settled Lands. Everything south, east, and west of the village for a day's walk." },
@@ -174,8 +174,8 @@
   },
   {
     "id": "dlg-lira-resolution", "npcId": "lira", "npcName": "Lira",
-    "trigger": "Endgame Bloom — Village Hub return (Scene 11)",
-    "location": "Village Hub",
+    "trigger": "Endgame Bloom — Everwick return (Scene 11)",
+    "location": "Everwick",
     "lines": [
       { "speaker": "Lira", "text": "Don't speak for me, old man. I'm proud of myself too — I taught you everything you know." },
       { "speaker": "Lira", "text": "You taught the lectures. There's a difference." }

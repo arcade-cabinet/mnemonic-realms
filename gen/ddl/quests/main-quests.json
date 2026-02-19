@@ -1,13 +1,13 @@
 [
   {
     "id": "MQ-01", "name": "The Architect's Awakening", "category": "main", "act": "act1",
-    "levelRange": "1", "giver": "Callum", "giverLocation": "Village Hub — Elder's House (18, 10)",
+    "levelRange": "1", "giver": "Callum", "giverLocation": "Everwick — Elder's House (18, 10)",
     "triggerCondition": "Game start, after class selection",
     "objectives": [
-      { "index": 0, "description": "Speak with Callum at Elder's House", "location": "Village Hub", "position": "18,10" },
-      { "index": 1, "description": "Receive Architect's Signet from Lira", "location": "Village Hub", "position": "8,18" },
-      { "index": 2, "description": "Collect first fragment from Memorial Garden", "location": "Village Hub", "position": "8,16" },
-      { "index": 3, "description": "Return to Callum", "location": "Village Hub", "position": "18,10" }
+      { "index": 0, "description": "Speak with Callum at Elder's House", "location": "Everwick", "position": "18,10" },
+      { "index": 1, "description": "Receive Architect's Signet from Lira", "location": "Everwick", "position": "8,18" },
+      { "index": 2, "description": "Collect first fragment from Memorial Garden", "location": "Everwick", "position": "8,16" },
+      { "index": 3, "description": "Return to Callum", "location": "Everwick", "position": "18,10" }
     ],
     "rewards": [
       { "type": "key-item", "id": "K-01", "name": "Architect's Signet" },
@@ -21,13 +21,13 @@
   },
   {
     "id": "MQ-02", "name": "First Broadcast", "category": "main", "act": "act1",
-    "levelRange": "1-2", "giver": "Lira", "giverLocation": "Village Hub — Lira's Workshop (8, 18)",
+    "levelRange": "1-2", "giver": "Lira", "giverLocation": "Everwick — Lira's Workshop (8, 18)",
     "triggerCondition": "MQ-01 complete",
     "objectives": [
-      { "index": 0, "description": "Visit Lira and learn memory operations", "location": "Village Hub", "position": "8,18" },
-      { "index": 1, "description": "Collect 2 fragments from Memorial Garden", "location": "Village Hub", "position": "8,16" },
-      { "index": 2, "description": "Use the Remix Table", "location": "Village Hub" },
-      { "index": 3, "description": "Broadcast a remixed fragment", "location": "Village Hub" }
+      { "index": 0, "description": "Visit Lira and learn memory operations", "location": "Everwick", "position": "8,18" },
+      { "index": 1, "description": "Collect 2 fragments from Memorial Garden", "location": "Everwick", "position": "8,16" },
+      { "index": 2, "description": "Use the Remix Table", "location": "Everwick" },
+      { "index": 3, "description": "Broadcast a remixed fragment", "location": "Everwick" }
     ],
     "rewards": [
       { "type": "key-item", "id": "K-03", "name": "Remix Table Access" },
@@ -41,14 +41,14 @@
   },
   {
     "id": "MQ-03", "name": "The Settled Lands", "category": "main", "act": "act1",
-    "levelRange": "2-6", "giver": "Callum", "giverLocation": "Village Hub — Elder's House",
+    "levelRange": "2-6", "giver": "Callum", "giverLocation": "Everwick — Elder's House",
     "triggerCondition": "MQ-02 complete",
     "objectives": [
-      { "index": 0, "description": "Speak with Callum for exploration guidance", "location": "Village Hub" },
+      { "index": 0, "description": "Speak with Callum for exploration guidance", "location": "Everwick" },
       { "index": 1, "description": "Visit Heartfield, Ambergrove, Millbrook, Sunridge" },
       { "index": 2, "description": "Collect at least 5 memory fragments" },
       { "index": 3, "description": "Defeat encounters in each zone" },
-      { "index": 4, "description": "Return to Callum", "location": "Village Hub" }
+      { "index": 4, "description": "Return to Callum", "location": "Everwick" }
     ],
     "rewards": [
       { "type": "gold", "name": "Gold", "amount": 200 },
@@ -71,7 +71,7 @@
       { "index": 3, "description": "Watch Lira's freezing cutscene" },
       { "index": 4, "description": "Collect Lira's Scream (MF-04)" },
       { "index": 5, "description": "Broadcast potency 2+ fragment to halt expansion" },
-      { "index": 6, "description": "Return to Callum", "location": "Village Hub" }
+      { "index": 6, "description": "Return to Callum", "location": "Everwick" }
     ],
     "rewards": [
       { "type": "fragment", "id": "MF-04", "name": "Lira's Scream" },
@@ -85,7 +85,7 @@
   },
   {
     "id": "MQ-05", "name": "Into the Frontier", "category": "main", "act": "act2",
-    "levelRange": "10-12", "giver": "Callum", "giverLocation": "Village Hub — Lookout Hill",
+    "levelRange": "10-12", "giver": "Callum", "giverLocation": "Everwick — Lookout Hill",
     "triggerCondition": "MQ-04 complete",
     "objectives": [
       { "index": 0, "description": "Speak with Callum at Lookout Hill", "position": "12,2" },
@@ -125,10 +125,10 @@
   },
   {
     "id": "MQ-07", "name": "The Curator's Endgame", "category": "main", "act": "act2",
-    "levelRange": "16-20", "giver": "Callum", "giverLocation": "Village Hub — Elder's House",
+    "levelRange": "16-20", "giver": "Callum", "giverLocation": "Everwick — Elder's House",
     "triggerCondition": "1+ gods recalled AND SQ-05 complete",
     "objectives": [
-      { "index": 0, "description": "Return to Village Hub and speak with Callum" },
+      { "index": 0, "description": "Return to Everwick and speak with Callum" },
       { "index": 1, "description": "Learn about Curator's plan for First Memory" },
       { "index": 2, "description": "Speak with Aric" },
       { "index": 3, "description": "Recall at least 2 total gods" },

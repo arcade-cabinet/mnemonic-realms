@@ -132,8 +132,8 @@ export default async function setupAct3Scene12NewBeginning(player: RpgPlayer, ma
     // Change music back or to a post-game theme
     // TODO: changeMusic not available in RPG-JS 4.3.0
 
-    // Return player to Village Hub (example: 19, 11)
-    await player.changeMap('village-hub', { x: 19, y: 11 });
+    // Return player to Everwick (example: 19, 11)
+    await player.changeMap('everwick', { x: 19, y: 11 });
 
     // Unlock New Game+ (assuming a player variable or global state)
     player.setVariable('new-game-plus-unlocked', true);

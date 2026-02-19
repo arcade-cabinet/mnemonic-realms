@@ -15,7 +15,7 @@ assets/tilesets-organized/
 ├── sketch-realm/       # Sketch Realm zones (desert, winter)
 │   ├── fantasy-desert/
 │   └── fantasy-snow/
-├── village/            # Village Hub and interior spaces
+├── village/            # Everwick and interior spaces
 │   └── fantasy-interiors/
 ├── shared/             # Versatile tilesets usable across multiple zones
 │   ├── fantasy-free/
@@ -110,7 +110,7 @@ The following tilesets were NOT copied (low priority - no TMX/TSX files):
 - `grand-forests` - Forgotten Realm (no TMX/TSX)
 - `lonesome-forest` - Forgotten Realm (no TMX/TSX)
 - `natural-interiors` - Depths/Dungeons (no TMX/TSX)
-- `old-town-exteriors` - Village Hub (no TMX/TSX)
+- `old-town-exteriors` - Everwick (no TMX/TSX)
 - `old-town-interiors` - Village/Interiors (no TMX/TSX)
 - `pixel-dungeon` - Depths/Dungeons (no TMX/TSX)
 - `world-map` - Overworld Map (no TMX/TSX)

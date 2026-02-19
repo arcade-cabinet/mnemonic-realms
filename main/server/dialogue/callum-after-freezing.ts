@@ -9,7 +9,7 @@ export default async function dialogue(player: RpgPlayer) {
   // This dialogue is triggered *after* Scene 11, so the location check might be handled by the event system.
   // However, including it here makes the dialogue more robust if triggered manually.
   const _isInEldersHouse =
-    (player.map as { id?: string })?.id === 'village_hub' &&
+    (player.map as { id?: string })?.id === 'everwick' &&
     player.position.x === 18 &&
     player.position.y === 10;
 

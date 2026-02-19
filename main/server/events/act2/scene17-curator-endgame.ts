@@ -28,12 +28,12 @@ export class Act2Scene17CuratorEndgame extends RpgEvent {
   }
 
   async onChanges(player: RpgPlayer) {
-    // Trigger condition: quest-state, map: village-hub, condition: lira-freed-and-SQ05-complete
+    // Trigger condition: quest-state, map: everwick, condition: lira-freed-and-SQ05-complete
     const isHanaFreed = isQuestComplete(player, 'MQ-04'); // Assuming MQ-04 is "Hana Freed"
     const isSQ05Complete = isQuestComplete(player, 'SQ-05'); // "Janik's Doubt"
 
     if (
-      player.map.id === 'village-hub' &&
+      player.map.id === 'everwick' &&
       isHanaFreed &&
       isSQ05Complete &&
       getQuestStatus(player, 'MQ-07') === 'inactive'
@@ -52,7 +52,7 @@ export class Act2Scene17CuratorEndgame extends RpgEvent {
       player.fixDirection = true;
 
       // --- 1. Spawns NPCs at appropriate positions using createDynamicEvent() ---
-      // Assuming Elder's House is a specific room or area within Village Hub
+      // Assuming Elder's House is a specific room or area within Everwick
       // These positions are illustrative; adjust based on actual map layout for Elder's House
       const callumX = 19; // Example position in Elder's House
       const callumY = 11;

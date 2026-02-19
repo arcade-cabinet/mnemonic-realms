@@ -55,7 +55,7 @@
 
 | Task | Output File | Dimensions | Description |
 |------|-------------|------------|-------------|
-| 2a | `main/maps/village-hub.tmx` | 25×25 | Village Hub with all 15 buildings/landmarks |
+| 2a | `main/maps/everwick.tmx` | 25×25 | Everwick with all 15 buildings/landmarks |
 | 2b | `main/maps/heartfield.tmx` | 40×40 | Pastoral zone with hamlet, windmill, stagnation clearing |
 | 2c | `main/maps/ambergrove.tmx` | 40×40 | Forest zone with Hearthstone Circle, lake, woodcutter camp |
 | 2d | `main/maps/millbrook.tmx` | 35×35 | River town with bridge, falls, fishing area |
@@ -98,7 +98,7 @@
 | 4b | Equipment system: equip/unequip weapons and armor, stat recalculation |
 | 4c | Consumable use: HP/SP restore, status cure, buff application |
 | 4d | Shop system: buy/sell with gold, per-shop inventory lists from `overworld-layout.md` |
-| 4e | Khali's General Shop (Village Hub), Hark's Blacksmith, specialty shops |
+| 4e | Khali's General Shop (Everwick), Hark's Blacksmith, specialty shops |
 
 ---
 
@@ -110,7 +110,7 @@
 
 | Task | Description |
 |------|-------------|
-| 5a | Wire all Village Hub NPCs: Artun (EV-VH-001), Hana (EV-VH-002), Khali (EV-VH-005), Hark (EV-VH-006), Nyro (EV-VH-007), Quest Board (EV-VH-008) |
+| 5a | Wire all Everwick NPCs: Artun (EV-VH-001), Hana (EV-VH-002), Khali (EV-VH-005), Hark (EV-VH-006), Nyro (EV-VH-007), Quest Board (EV-VH-008) |
 | 5b | Wire Settled Lands NPCs: Farmer Gale, Lead Woodcutter, Fisher Tam, Waystation Keeper, Janik, Sera |
 | 5c | Dialogue system: conditional text based on quest state, vibrancy level, items carried |
 | 5d | Rest points: The Bright Hearth (inn), Ridgetop Waystation — full HP/SP restore |
@@ -257,7 +257,7 @@
 
 | Task | Description |
 |------|-------------|
-| 14a | Depths L1: Memory Cellar (5 rooms, Village Hub entrance) |
+| 14a | Depths L1: Memory Cellar (5 rooms, Everwick entrance) |
 | 14b | Depths L2: Drowned Archive (7 rooms, Deepwater Sinkhole entrance, B-03a The Archivist) |
 | 14c | Depths L3: Resonant Caverns (8 rooms, Echo Caverns entrance, B-03b The Resonant King) |
 | 14d | Depths L4: The Songline (5 rooms, Singing Stones entrance, B-03c The Conductor) |

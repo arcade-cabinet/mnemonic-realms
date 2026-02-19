@@ -3,14 +3,14 @@ import type { RpgMap, RpgPlayer } from '@rpgjs/server';
 export function spawnMapEvents(player: RpgPlayer) {
   const map = player.map as RpgMap;
 
-  // --- EV-D1-001: Entry from Village Hub ---
+  // --- EV-D1-001: Entry from Everwick ---
   map.createDynamicEvent({
     x: 10,
     y: 0,
     name: 'EV-D1-001',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      player.changeMap('village-hub', { x: 8, y: 17 });
+      player.changeMap('everwick', { x: 8, y: 17 });
     },
   });
 
@@ -140,7 +140,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     },
   });
 
-  // --- EV-D1-011: Memory lift -> Village Hub ---
+  // --- EV-D1-011: Memory lift -> Everwick ---
   map.createDynamicEvent({
     x: 12,
     y: 20,
@@ -149,8 +149,8 @@ export function spawnMapEvents(player: RpgPlayer) {
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
       if (player.getVariable('SQ_10_OBJ_4_COMPLETE')) {
-        player.showText('The Memory Lift hums to life. Returning to the Village Hub.');
-        player.changeMap('village-hub', { x: 8, y: 17 });
+        player.showText('The Memory Lift hums to life. Returning to the Everwick.');
+        player.changeMap('everwick', { x: 8, y: 17 });
       } else {
         player.showText(
           'The Memory Lift is inert. Perhaps it requires a surge of energy, or a specific condition to be met.',

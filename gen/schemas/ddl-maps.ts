@@ -53,7 +53,7 @@ export const TreasureChestSchema = z.object({
 });
 
 export const MapDdlSchema = z.object({
-  id: z.string().describe('Map identifier (e.g., "village-hub", "depths-l1")'),
+  id: z.string().describe('Map identifier (e.g., "everwick", "depths-l1")'),
   name: z.string().describe('Display name'),
   filename: z.string().describe('TMX filename'),
   width: z.number().int().positive(),

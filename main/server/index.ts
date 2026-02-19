@@ -19,13 +19,13 @@ import { ShimmerMarshMap } from './maps/shimmer-marsh';
 import { SunridgeMap } from './maps/sunridge';
 import { HalfDrawnForestMap } from './maps/the-half-drawn-forest';
 import { UndrawnPeaksMap } from './maps/the-undrawn-peaks';
-import { VillageHubMap } from './maps/village-hub';
+import { EverwickMap } from './maps/everwick';
 import { player } from './player';
 
 @RpgModule<RpgServer>({
   player,
   maps: [
-    VillageHubMap,
+    EverwickMap,
     HeartfieldMap,
     AmbergroveMap,
     MillbrookMap,

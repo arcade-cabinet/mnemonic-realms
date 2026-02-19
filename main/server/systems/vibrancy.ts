@@ -36,7 +36,7 @@ interface ZoneInfo {
  * type because each depth level tracks vibrancy independently (per docs).
  */
 export type VibrancyZone =
-  | 'village-hub'
+  | 'everwick'
   | 'heartfield'
   | 'millbrook'
   | 'ambergrove'
@@ -73,7 +73,7 @@ const VAR_PREFIX = 'VIBRANCY_';
  * These represent how "remembered" each zone already is at game start.
  */
 export const DEFAULT_VIBRANCY: Readonly<Record<VibrancyZone, number>> = {
-  'village-hub': 60,
+  'everwick': 60,
   heartfield: 55,
   millbrook: 50,
   ambergrove: 45,
@@ -98,7 +98,7 @@ export const VIBRANCY_ZONES = Object.keys(DEFAULT_VIBRANCY) as VibrancyZone[];
 
 /** Maps RPG-JS map IDs to their vibrancy zone and biome type. */
 const MAP_TO_ZONE: Readonly<Record<string, ZoneInfo>> = {
-  'village-hub': { zone: 'village-hub', biome: 'village' },
+  'everwick': { zone: 'everwick', biome: 'village' },
   heartfield: { zone: 'heartfield', biome: 'grassland' },
   millbrook: { zone: 'millbrook', biome: 'riverside' },
   ambergrove: { zone: 'ambergrove', biome: 'forest' },

@@ -16,7 +16,7 @@ vi.mock('../../main/server/systems/skills', () => ({
   checkSkillUnlocks: vi.fn(),
 }));
 vi.mock('../../main/server/systems/vibrancy', () => ({
-  VIBRANCY_ZONES: ['village-hub', 'heartfield', 'ambergrove'],
+  VIBRANCY_ZONES: ['everwick', 'heartfield', 'ambergrove'],
 }));
 
 import { checkSkillUnlocks } from '../../main/server/systems/skills';
@@ -52,7 +52,7 @@ function createMockPlayer(vars: Record<string, unknown> = {}) {
     // getAllVarsMap reads (player as any).variables
     variables: store,
     // getPlayerMapId reads (player as any).map
-    map: 'village-hub',
+    map: 'everwick',
   } as unknown as import('@rpgjs/server').RpgPlayer;
 }
 
@@ -65,7 +65,7 @@ function makeSaveData(overrides: Partial<SaveData> = {}): SaveData {
   return {
     version: 1,
     timestamp: Date.now(),
-    mapId: 'village-hub',
+    mapId: 'everwick',
     positionX: 100,
     positionY: 200,
     classId: 'knight',
@@ -79,7 +79,7 @@ function makeSaveData(overrides: Partial<SaveData> = {}): SaveData {
     equipBonuses: { atk: 5, def: 3, int: 0 },
     gold: 500,
     memoryFragments: ['fragment-echo-1', 'fragment-dawn-3'],
-    vibrancy: { 'village-hub': 70, heartfield: 55, ambergrove: 45 },
+    vibrancy: { 'everwick': 70, heartfield: 55, ambergrove: 45 },
     variables: { questProgress: 2, talkedToElder: true },
     playTimeMs: 3600000,
     ...overrides,
@@ -118,7 +118,7 @@ describe('serializePlayer', () => {
       MEMORY_FRAGMENTS: ['fragment-echo-1'],
       PLAY_TIME_MS: 3600000,
       VIBRANCY_heartfield: 55,
-      'VIBRANCY_village-hub': 70,
+      'VIBRANCY_everwick': 70,
       VIBRANCY_ambergrove: 45,
       questProgress: 2,
     });
@@ -127,7 +127,7 @@ describe('serializePlayer', () => {
 
     expect(data.version).toBe(1);
     expect(data.timestamp).toBeGreaterThan(0);
-    expect(data.mapId).toBe('village-hub');
+    expect(data.mapId).toBe('everwick');
     expect(data.positionX).toBe(100);
     expect(data.positionY).toBe(200);
     expect(data.classId).toBe('knight');
@@ -141,7 +141,7 @@ describe('serializePlayer', () => {
     expect(data.equipBonuses).toEqual({ atk: 5, def: 0, int: 0 });
     expect(data.gold).toBe(500);
     expect(data.memoryFragments).toEqual(['fragment-echo-1']);
-    expect(data.vibrancy).toEqual({ 'village-hub': 70, heartfield: 55, ambergrove: 45 });
+    expect(data.vibrancy).toEqual({ 'everwick': 70, heartfield: 55, ambergrove: 45 });
     expect(data.variables).toEqual({ questProgress: 2 });
     expect(data.playTimeMs).toBe(3600000);
   });
@@ -199,14 +199,14 @@ describe('extractGenericVars', () => {
 
   it('excludes system variables with VIBRANCY_ prefix', () => {
     const player = createMockPlayer({
-      'VIBRANCY_village-hub': 70,
+      'VIBRANCY_everwick': 70,
       VIBRANCY_heartfield: 55,
       myQuestFlag: 'done',
     });
 
     const data = serializePlayer(player);
     expect(data.variables).toEqual({ myQuestFlag: 'done' });
-    expect(data.variables).not.toHaveProperty('VIBRANCY_village-hub');
+    expect(data.variables).not.toHaveProperty('VIBRANCY_everwick');
   });
 
   it('excludes system variables with ACTIVE_QUEST_ prefix', () => {
@@ -273,7 +273,7 @@ describe('deserializePlayer', () => {
     expect(player.setVariable).toHaveBeenCalledWith('MEMORY_FRAGMENTS', data.memoryFragments);
     expect(player.setVariable).toHaveBeenCalledWith('PLAY_TIME_MS', 3600000);
     // Vibrancy zones
-    expect(player.setVariable).toHaveBeenCalledWith('VIBRANCY_village-hub', 70);
+    expect(player.setVariable).toHaveBeenCalledWith('VIBRANCY_everwick', 70);
     expect(player.setVariable).toHaveBeenCalledWith('VIBRANCY_heartfield', 55);
     expect(player.setVariable).toHaveBeenCalledWith('VIBRANCY_ambergrove', 45);
     // Generic variables
@@ -409,7 +409,7 @@ describe('round-trip', () => {
       GOLD: 1250,
       MEMORY_FRAGMENTS: ['fragment-echo-1', 'fragment-dawn-3', 'fragment-twilight-7'],
       PLAY_TIME_MS: 7200000,
-      'VIBRANCY_village-hub': 80,
+      'VIBRANCY_everwick': 80,
       VIBRANCY_heartfield: 60,
       VIBRANCY_ambergrove: 50,
       questTalkedToElder: true,
@@ -457,7 +457,7 @@ describe('round-trip', () => {
     ]);
 
     // Verify vibrancy
-    expect(restoredPlayer.setVariable).toHaveBeenCalledWith('VIBRANCY_village-hub', 80);
+    expect(restoredPlayer.setVariable).toHaveBeenCalledWith('VIBRANCY_everwick', 80);
     expect(restoredPlayer.setVariable).toHaveBeenCalledWith('VIBRANCY_heartfield', 60);
     expect(restoredPlayer.setVariable).toHaveBeenCalledWith('VIBRANCY_ambergrove', 50);
 
@@ -469,7 +469,7 @@ describe('round-trip', () => {
     expect(restoredPlayer.setVariable).toHaveBeenCalledWith('PLAY_TIME_MS', 7200000);
 
     // Verify map change
-    expect(restoredPlayer.changeMap).toHaveBeenCalledWith('village-hub', { x: 100, y: 200 });
+    expect(restoredPlayer.changeMap).toHaveBeenCalledWith('everwick', { x: 100, y: 200 });
   });
 });
 

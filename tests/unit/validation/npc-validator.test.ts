@@ -72,12 +72,12 @@ describe('NPCValidator', () => {
     expect(report.warningMessages.length).toBe(report.warnings);
   });
 
-  it('should validate Village Hub NPCs', () => {
+  it('should validate Everwick NPCs', () => {
     const validator = new NPCValidator();
     const report = validator.validate();
 
-    // Village Hub should have multiple NPCs validated (passed or warned)
-    // Total NPCs should be at least 21, so Village Hub should contribute some
+    // Everwick should have multiple NPCs validated (passed or warned)
+    // Total NPCs should be at least 21, so Everwick should contribute some
     expect(report.totalChecked).toBeGreaterThanOrEqual(5);
   });
 

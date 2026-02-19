@@ -48,7 +48,7 @@ describe('getFragmentDef', () => {
     expect(frag).toBeDefined();
     expect(frag!.name).toBe('Wildflower Offering');
     expect(frag!.emotion).toBe('joy');
-    expect(frag!.zone).toBe('village-hub');
+    expect(frag!.zone).toBe('everwick');
   });
 
   it('returns undefined for unknown ID', () => {
@@ -162,9 +162,9 @@ describe('getFragmentsByZone', () => {
     const player = createMockPlayer({
       MEMORY_FRAGMENTS: ['frag-vh-01', 'frag-vh-02', 'frag-hf-01'],
     });
-    const vhFrags = getFragmentsByZone(player, 'village-hub');
+    const vhFrags = getFragmentsByZone(player, 'everwick');
     expect(vhFrags).toHaveLength(2);
-    expect(vhFrags.every((f) => f.zone === 'village-hub')).toBe(true);
+    expect(vhFrags.every((f) => f.zone === 'everwick')).toBe(true);
   });
 });
 

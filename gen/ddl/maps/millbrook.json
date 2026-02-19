@@ -12,7 +12,7 @@
     "category": "overworld",
     "act": "I",
     "connections": [
-      { "fromTile": "39,20", "direction": "east", "toMap": "village-hub", "toTile": "0,14", "condition": "always" },
+      { "fromTile": "39,20", "direction": "east", "toMap": "everwick", "toTile": "0,14", "condition": "always" },
       { "fromTile": "20,39", "direction": "south", "toMap": "heartfield", "toTile": "5,20", "condition": "always" },
       { "fromTile": "0,20", "direction": "west", "toMap": "hollow-ridge", "toTile": "49,35", "condition": "MQ-04+" }
     ],
@@ -33,7 +33,7 @@
       { "id": "EV-MB-001", "position": "29,29", "type": "action", "linkedQuest": "SQ-04", "repeat": "quest", "description": "Fisher Tam strange lights dialogue" },
       { "id": "EV-MB-002", "position": "6,4", "type": "touch", "linkedQuest": "SQ-04", "repeat": "quest", "description": "Hidden cave behind waterfall" },
       { "id": "EV-MB-003", "position": "15,15", "type": "action", "repeat": "repeat", "description": "Specialty shop" },
-      { "id": "EV-MB-004", "position": "39,20", "type": "touch", "repeat": "repeat", "description": "East -> Village Hub" },
+      { "id": "EV-MB-004", "position": "39,20", "type": "touch", "repeat": "repeat", "description": "East -> Everwick" },
       { "id": "EV-MB-005", "position": "20,39", "type": "touch", "repeat": "repeat", "description": "South -> Heartfield" },
       { "id": "EV-MB-006", "position": "0,20", "type": "touch", "linkedQuest": "MQ-04", "repeat": "conditional", "description": "West -> Hollow Ridge" },
       { "id": "EV-MB-007", "position": "21,19", "type": "action", "repeat": "once", "description": "Bridge Resonance Stone + rainbow" }

@@ -23,7 +23,7 @@ The game is designed for a 15-20 hour playthrough. A player who fights most enco
 
 | Act | Level Range | Zone | Hours (approx.) |
 |-----|-------------|------|-----------------|
-| Act I: Awakening | 1-10 | Village Hub + Settled Lands | 4-6 hours |
+| Act I: Awakening | 1-10 | Everwick + Settled Lands | 4-6 hours |
 | Act II: Expansion | 11-20 | Frontier + Depths L1-L3 | 6-8 hours |
 | Act III: Renaissance | 21-30 | The Sketch + Depths L4-L5 + Preserver Fortress | 5-6 hours |
 
@@ -574,7 +574,7 @@ The game is not punishing. It's a JRPG about wonder and creation (see [core-them
 - **Act I**: Tutorial-level difficulty. Encounters teach mechanics. Death is rare.
 - **Act II**: Moderate difficulty. Preserver agents introduce Stasis status, requiring tactical adaptation. Party composition matters more.
 - **Act III**: Challenging but fair. Sketch enemies are unpredictable. Depths L5 and Preserver Fortress test mastery. The game wants the player to feel accomplished, not frustrated.
-- **Game Over**: Returns the player to the fight with full HP/SP or teleports them to the Village Hub. No lost progress (see [combat.md](combat.md)).
+- **Game Over**: Returns the player to the fight with full HP/SP or teleports them to the Everwick. No lost progress (see [combat.md](combat.md)).
 
 ### Gold Economy Baseline
 

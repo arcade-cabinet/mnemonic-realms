@@ -14,7 +14,7 @@ The world consists of **17 overworld maps** organized in concentric rings plus u
 
 | Ring | Maps | Tile Size | Total Tiles | Act |
 |------|------|-----------|-------------|-----|
-| Center | Village Hub (1) | 30x30 | 900 | I |
+| Center | Everwick (1) | 30x30 | 900 | I |
 | Inner | Settled Lands (4) | 40x40 each | 6,400 | I |
 | Middle | Frontier (4) | 50x50 each | 10,000 | II |
 | Outer | The Sketch (3) | 40x40 each | 4,800 | III |
@@ -47,9 +47,9 @@ Every map uses these standard layers:
 
 ---
 
-## Map 1: Village Hub
+## Map 1: Everwick
 
-**File**: `village-hub.tmx` | **Size**: 30x30 tiles (960x960 px) | **Tileset**: `tiles_village_{tier}.png`
+**File**: `everwick.tmx` | **Size**: 30x30 tiles (960x960 px) | **Tileset**: `tiles_village_{tier}.png`
 
 **Starting Vibrancy**: 50 (Normal tier)
 
@@ -130,7 +130,7 @@ Every map uses these standard layers:
 
 ### Enemy Spawns
 
-None. Village Hub is a safe zone with no combat encounters.
+None. Everwick is a safe zone with no combat encounters.
 
 ### Map Events
 
@@ -231,7 +231,7 @@ Rolling farmland with golden wheat fields, vegetable patches, and a small hamlet
 | EV-HF-003 | (33, 28) | auto | MQ-04 | MQ-04 | Stagnation Clearing cutscene: Hana's freezing |
 | EV-HF-004 | (34, 29) | action | MQ-04+ | MQ-04 | Hana's frozen form; broadcast target for SQ-14 |
 | EV-HF-005 | (20, 38) | touch | MQ-04+ | — | Southern Crossroads transition → Shimmer Marsh (20, 0) |
-| EV-HF-006 | (15, 0) | touch | always | — | North edge transition → Village Hub (15, 25) |
+| EV-HF-006 | (15, 0) | touch | always | — | North edge transition → Everwick (15, 25) |
 | EV-HF-007 | (39, 20) | touch | always | — | East edge transition → Ambergrove (0, 20) |
 | EV-HF-008 | (31, 9) | action | always | — | Windmill Resonance Stone; fragment collection |
 | EV-HF-009 | (34, 29) | action | SQ-14 | SQ-14 | Broadcast joy 4+ fragment into Hana; partial awakening |
@@ -240,7 +240,7 @@ Rolling farmland with golden wheat fields, vegetable patches, and a small hamlet
 
 | From | Direction | To Map | Destination Tile | Condition |
 |------|-----------|--------|-----------------|-----------|
-| (15, 0) | North | Village Hub | (15, 25) | Always |
+| (15, 0) | North | Everwick | (15, 25) | Always |
 | (39, 20) | East | Ambergrove | (0, 20) | Always |
 | (20, 38) | South | Shimmer Marsh | (20, 0) | After MQ-04 |
 
@@ -304,7 +304,7 @@ Rolling farmland with golden wheat fields, vegetable patches, and a small hamlet
 | EV-AG-001 | (9, 29) | action | MQ-03+ | SQ-03 | Lead Woodcutter: rapid-growth dialogue; SQ-03 trigger |
 | EV-AG-002 | (20, 10) | action | always | — | Hearthstone Circle center: fragment collection tutorial |
 | EV-AG-003 | (30, 27) | action | MQ-05+ | — | Amber Lake submerged stone: activates in Act II |
-| EV-AG-004 | (0, 20) | touch | always | — | West edge transition → Village Hub (29, 14) |
+| EV-AG-004 | (0, 20) | touch | always | — | West edge transition → Everwick (29, 14) |
 | EV-AG-005 | (0, 20) | touch | always | — | West edge alt → Heartfield (39, 20) |
 | EV-AG-006 | (38, 20) | touch | MQ-04+ | — | East edge (Canopy Path) transition → Shimmer Marsh via Flickerveil approach |
 | EV-AG-007 | (10, 39) | touch | always | — | South edge transition → Heartfield cross-country path |
@@ -314,7 +314,7 @@ Rolling farmland with golden wheat fields, vegetable patches, and a small hamlet
 
 | From | Direction | To Map | Destination Tile | Condition |
 |------|-----------|--------|-----------------|-----------|
-| (0, 20) | West | Village Hub | (29, 14) | Always |
+| (0, 20) | West | Everwick | (29, 14) | Always |
 | (38, 20) | East | Flickerveil | (0, 30) | After MQ-04 (Canopy Path) |
 | (10, 39) | South | Heartfield | (39, 20) | Always |
 
@@ -380,7 +380,7 @@ Rolling farmland with golden wheat fields, vegetable patches, and a small hamlet
 | EV-MB-001 | (29, 29) | action | MQ-03+ | SQ-04 | Fisher Tam: strange lights dialogue; SQ-04 trigger |
 | EV-MB-002 | (6, 4) | touch | SQ-04 | SQ-04 | Hidden cave entrance behind waterfall |
 | EV-MB-003 | (15, 15) | action | always | — | Specialty shop interface (Brightwater Saber, Riverside Crosier, etc.) |
-| EV-MB-004 | (39, 20) | touch | always | — | East edge transition → Village Hub (0, 14) |
+| EV-MB-004 | (39, 20) | touch | always | — | East edge transition → Everwick (0, 14) |
 | EV-MB-005 | (20, 39) | touch | always | — | South edge transition → Heartfield riverbank path |
 | EV-MB-006 | (0, 20) | touch | MQ-04+ | — | West edge transition → Hollow Ridge foothills |
 | EV-MB-007 | (21, 19) | action | always | — | Bridge Resonance Stone: fragment collection + rainbow effect |
@@ -389,7 +389,7 @@ Rolling farmland with golden wheat fields, vegetable patches, and a small hamlet
 
 | From | Direction | To Map | Destination Tile | Condition |
 |------|-----------|--------|-----------------|-----------|
-| (39, 20) | East | Village Hub | (0, 14) | Always |
+| (39, 20) | East | Everwick | (0, 14) | Always |
 | (20, 39) | South | Heartfield | (5, 20) | Always |
 | (0, 20) | West | Hollow Ridge | (49, 35) | After MQ-04 |
 
@@ -451,7 +451,7 @@ Rolling farmland with golden wheat fields, vegetable patches, and a small hamlet
 | EV-SR-001 | (31, 14) | action | MQ-04+ | SQ-05 | Janik dialogue: Preserver doubt; SQ-05 trigger |
 | EV-SR-002 | (9, 7) | action | always | — | Wind Shrine stone: vibrates, hints at Kinesis (Act II lore) |
 | EV-SR-003 | (19, 19) | action | always | — | Waystation rest point: full HP/SP restore |
-| EV-SR-004 | (20, 39) | touch | always | — | South edge transition → Village Hub (15, 0) |
+| EV-SR-004 | (20, 39) | touch | always | — | South edge transition → Everwick (15, 0) |
 | EV-SR-005 | (18, 0) | touch | MQ-04+ | — | North edge (Threshold) → Hollow Ridge (25, 49) |
 | EV-SR-006 | (39, 20) | touch | always | — | East edge → Ambergrove highland trail |
 
@@ -459,7 +459,7 @@ Rolling farmland with golden wheat fields, vegetable patches, and a small hamlet
 
 | From | Direction | To Map | Destination Tile | Condition |
 |------|-----------|--------|-----------------|-----------|
-| (20, 39) | South | Village Hub | (15, 0) | Always |
+| (20, 39) | South | Everwick | (15, 0) | Always |
 | (18, 0) | North | Hollow Ridge | (25, 49) | After MQ-04 |
 | (39, 20) | East | Ambergrove | (5, 0) | Always |
 
@@ -995,7 +995,7 @@ All Resonance Stones across the overworld, organized for quick reference:
 
 | Map | Count | Fragment-Bearing | Recall Pedestals | Quest Targets | Total |
 |-----|-------|-----------------|-----------------|---------------|-------|
-| Village Hub | 5 | 4 | 0 | 1 (SQ-12 hidden) | 5 |
+| Everwick | 5 | 4 | 0 | 1 (SQ-12 hidden) | 5 |
 | Heartfield | 4 | 4 | 0 | 0 | 4 |
 | Ambergrove | 5 | 5 | 0 | 0 | 5 |
 | Millbrook | 4 | 4 | 0 | 0 | 4 |
@@ -1015,7 +1015,7 @@ All Resonance Stones across the overworld, organized for quick reference:
 
 | Dungeon | Surface Map | Position | Entrance Type | Condition |
 |---------|-----------|----------|---------------|-----------|
-| Depths Level 1: Memory Cellar | Village Hub | (8, 17) | Hidden passage (Memorial Garden) | After MQ-05 |
+| Depths Level 1: Memory Cellar | Everwick | (8, 17) | Hidden passage (Memorial Garden) | After MQ-05 |
 | Depths Level 2: Drowned Archive | Shimmer Marsh | (33, 43) | Deepwater Sinkhole | After MQ-05 |
 | Depths Level 3: Resonant Caverns | Hollow Ridge | (38, 3) | Echo Caverns | After MQ-05 |
 | Depths Level 4: The Songline | Resonance Fields | (28, 44) | Singing Stones passage | After Singing Stones puzzle |
@@ -1033,7 +1033,7 @@ All Resonance Stones across the overworld, organized for quick reference:
                     / |    \           |        \
              [Sunridge]|  [Flickerveil]|     [Luminous Wastes]
                 |      |      /    \   |         /
-          [Village Hub]|  [Ambergrove] |        /
+          [Everwick]|  [Ambergrove] |        /
             / |    \   |     |         |       /
     [Millbrook]|  [Heartfield]         |      /
          \     |      /               |     /
@@ -1050,10 +1050,10 @@ All Resonance Stones across the overworld, organized for quick reference:
 
 | From | To | Direction | Act Available |
 |------|----|-----------|---------------|
-| Village Hub | Heartfield | South | I |
-| Village Hub | Ambergrove | East | I |
-| Village Hub | Millbrook | West | I |
-| Village Hub | Sunridge | North | II (MQ-04) |
+| Everwick | Heartfield | South | I |
+| Everwick | Ambergrove | East | I |
+| Everwick | Millbrook | West | I |
+| Everwick | Sunridge | North | II (MQ-04) |
 | Heartfield | Ambergrove | East | I |
 | Heartfield | Millbrook | SW (river) | I |
 | Heartfield | Shimmer Marsh | South | II (MQ-04) |

@@ -64,7 +64,7 @@ scatter(obj, 0, 35, W, 4, T.TREE, 0.3, 103);       // south trees
 scatter(obj, 14, 1, 12, 4, T.TREE, 0.15, 104);     // north of hamlet
 
 // Gate clearings
-obj[0][15] = 0; // North gate → Village Hub
+obj[0][15] = 0; // North gate → Everwick
 obj[H - 1][20] = 0; // South gate → Shimmer Marsh
 obj[20][W - 1] = 0; // East gate → Ambergrove
 

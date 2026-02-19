@@ -44,10 +44,10 @@ describe('initVibrancy', () => {
     }
   });
 
-  it('initializes village-hub to 60', () => {
+  it('initializes everwick to 60', () => {
     const player = createMockPlayer();
     initVibrancy(player);
-    expect(player.setVariable).toHaveBeenCalledWith('VIBRANCY_village-hub', 60);
+    expect(player.setVariable).toHaveBeenCalledWith('VIBRANCY_everwick', 60);
   });
 
   it('initializes fortress to 0', () => {
@@ -63,13 +63,13 @@ describe('initVibrancy', () => {
 
 describe('getVibrancy', () => {
   it('returns stored value when initialized', () => {
-    const player = createMockPlayer({ 'VIBRANCY_village-hub': 75 });
-    expect(getVibrancy(player, 'village-hub')).toBe(75);
+    const player = createMockPlayer({ 'VIBRANCY_everwick': 75 });
+    expect(getVibrancy(player, 'everwick')).toBe(75);
   });
 
   it('falls back to default when not initialized', () => {
     const player = createMockPlayer();
-    expect(getVibrancy(player, 'village-hub')).toBe(60);
+    expect(getVibrancy(player, 'everwick')).toBe(60);
     expect(getVibrancy(player, 'fortress')).toBe(0);
   });
 });
@@ -81,26 +81,26 @@ describe('getVibrancy', () => {
 describe('setVibrancy', () => {
   it('sets vibrancy value', () => {
     const player = createMockPlayer();
-    setVibrancy(player, 'village-hub', 80);
-    expect(player.setVariable).toHaveBeenCalledWith('VIBRANCY_village-hub', 80);
+    setVibrancy(player, 'everwick', 80);
+    expect(player.setVariable).toHaveBeenCalledWith('VIBRANCY_everwick', 80);
   });
 
   it('clamps to max 100', () => {
     const player = createMockPlayer();
-    setVibrancy(player, 'village-hub', 150);
-    expect(player.setVariable).toHaveBeenCalledWith('VIBRANCY_village-hub', 100);
+    setVibrancy(player, 'everwick', 150);
+    expect(player.setVariable).toHaveBeenCalledWith('VIBRANCY_everwick', 100);
   });
 
   it('clamps to min 0', () => {
     const player = createMockPlayer();
-    setVibrancy(player, 'village-hub', -10);
-    expect(player.setVariable).toHaveBeenCalledWith('VIBRANCY_village-hub', 0);
+    setVibrancy(player, 'everwick', -10);
+    expect(player.setVariable).toHaveBeenCalledWith('VIBRANCY_everwick', 0);
   });
 
   it('rounds fractional values', () => {
     const player = createMockPlayer();
-    setVibrancy(player, 'village-hub', 33.7);
-    expect(player.setVariable).toHaveBeenCalledWith('VIBRANCY_village-hub', 34);
+    setVibrancy(player, 'everwick', 33.7);
+    expect(player.setVariable).toHaveBeenCalledWith('VIBRANCY_everwick', 34);
   });
 });
 
@@ -152,17 +152,17 @@ describe('getVibrancyTier', () => {
   });
 
   it('returns vivid for 67-100', () => {
-    const player = createMockPlayer({ 'VIBRANCY_village-hub': 67 });
-    expect(getVibrancyTier(player, 'village-hub')).toBe('vivid');
+    const player = createMockPlayer({ 'VIBRANCY_everwick': 67 });
+    expect(getVibrancyTier(player, 'everwick')).toBe('vivid');
 
-    const player2 = createMockPlayer({ 'VIBRANCY_village-hub': 100 });
-    expect(getVibrancyTier(player2, 'village-hub')).toBe('vivid');
+    const player2 = createMockPlayer({ 'VIBRANCY_everwick': 100 });
+    expect(getVibrancyTier(player2, 'everwick')).toBe('vivid');
   });
 
   it('uses default vibrancy to determine tier', () => {
     const player = createMockPlayer();
-    // village-hub default = 60 -> normal
-    expect(getVibrancyTier(player, 'village-hub')).toBe('normal');
+    // everwick default = 60 -> normal
+    expect(getVibrancyTier(player, 'everwick')).toBe('normal');
     // fortress default = 0 -> muted
     expect(getVibrancyTier(player, 'fortress')).toBe('muted');
   });
@@ -173,9 +173,9 @@ describe('getVibrancyTier', () => {
 // ---------------------------------------------------------------------------
 
 describe('resolveMapZone', () => {
-  it('resolves village-hub map to zone and biome', () => {
-    const info = resolveMapZone('village-hub');
-    expect(info).toEqual({ zone: 'village-hub', biome: 'village' });
+  it('resolves everwick map to zone and biome', () => {
+    const info = resolveMapZone('everwick');
+    expect(info).toEqual({ zone: 'everwick', biome: 'village' });
   });
 
   it('resolves depths-l1 to depths-1 dungeon', () => {

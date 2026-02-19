@@ -305,9 +305,9 @@
    <object id="11" name="EV-MB-004" type="event" x="1248" y="640" width="32" height="32">
     <properties>
      <property name="condition" value="always"/>
-     <property name="destinationMap" value="village_hub"/>
+     <property name="destinationMap" value="everwick"/>
      <property name="destinationTile" value="0,14"/>
-     <property name="description" value="East gate to Village Hub"/>
+     <property name="description" value="East gate to Everwick"/>
      <property name="id" value="ev-mb-004"/>
      <property name="trigger" value="touch"/>
     </properties>

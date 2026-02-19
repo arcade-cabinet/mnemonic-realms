@@ -4,7 +4,7 @@ import { addItem } from '../../systems/inventory';
 @EventData({
   id: 'act1-scene1-familiar-place',
   name: 'A Familiar Place',
-  map: 'village-hub',
+  map: 'everwick',
   // The player spawns at (18, 10) in the Elder's House.
   // This event is an auto-trigger for the scene, so its position doesn't directly matter for player interaction,
   // but it's good practice to place it logically, e.g., at the player's spawn or a central point.

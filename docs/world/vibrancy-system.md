@@ -32,7 +32,7 @@ These values are set when the game begins and represent how "remembered" each zo
 
 | Zone | Starting Vibrancy | Starting Tier |
 |------|-------------------|---------------|
-| Village Hub | 60 | Normal |
+| Everwick | 60 | Normal |
 | Heartfield | 55 | Normal |
 | Millbrook | 50 | Normal |
 | Ambergrove | 45 | Normal |
@@ -79,7 +79,7 @@ Each zone responds most strongly to a specific emotion type. This creates strate
 
 | Zone | Resonant Emotion | Thematic Reason |
 |------|-----------------|-----------------|
-| Village Hub | Joy | Community warmth and celebration |
+| Everwick | Joy | Community warmth and celebration |
 | Heartfield | Calm | Pastoral contentment |
 | Ambergrove | Awe | Forest wonder and discovery |
 | Millbrook | Joy | Riverside prosperity |
@@ -102,7 +102,7 @@ Each zone responds most strongly to a specific emotion type. This creates strate
 
 | Biome Type | Element Affinity | Zones Using This Biome |
 |------------|-----------------|------------------------|
-| Village | Neutral | Village Hub |
+| Village | Neutral | Everwick |
 | Grassland/Farmland | Earth | Heartfield, Sunridge |
 | Forest | Wind | Ambergrove, Flickerveil, Half-Drawn Forest |
 | Riverside/Water | Water | Millbrook, Shimmer Marsh |
@@ -202,7 +202,7 @@ The swap is not gradual — it is instant, masked by a 2-second bloom transition
 
 ### Biome: Village
 
-**Used by**: Village Hub
+**Used by**: Everwick
 
 | Tile Type | Muted (0-33) | Normal (34-66) | Vivid (67-100) |
 |-----------|-------------|----------------|-----------------|
@@ -432,7 +432,7 @@ When vibrancy crosses a tier threshold:
 
 | Zone | Mood | Foundation Instrument | Thematic Feel |
 |------|------|----------------------|---------------|
-| Village Hub | Warm, welcoming | Acoustic guitar | Folk hearth, gentle community |
+| Everwick | Warm, welcoming | Acoustic guitar | Folk hearth, gentle community |
 | Heartfield | Pastoral, content | Wooden flute | Rolling fields, quiet joy |
 | Ambergrove | Mysterious, enchanted | Harp | Forest wonder, dappled light |
 | Millbrook | Lively, flowing | Fiddle | River dance, market bustle |
@@ -520,7 +520,7 @@ Each zone's vibrancy is stored as a single integer (0-100) in the save file. The
 
 ```
 vibrancy: {
-  "village_hub": 60,
+  "everwick": 60,
   "heartfield": 55,
   "ambergrove": 45,
   // ... one entry per zone
@@ -530,7 +530,7 @@ preserver_cleared: {
   "sunridge_outpost": false,
   // ... one entry per stagnation zone
 }
-zones_visited: ["village_hub", "heartfield", ...]
+zones_visited: ["everwick", "heartfield", ...]
 ```
 
 ### Tileset Loading Strategy
@@ -554,8 +554,8 @@ zones_visited: ["village_hub", "heartfield", ...]
 
 | Game Stage | Player Action | World State |
 |------------|---------------|-------------|
-| Early Act I | Learning to collect and broadcast | Village Hub nudges toward Vivid (60→70+). Settled Lands remain Normal. |
-| Late Act I | Cleared first stagnation zone, fragments stockpiled | Village Hub at Vivid. Heartfield/Ambergrove approaching 60+. |
+| Early Act I | Learning to collect and broadcast | Everwick nudges toward Vivid (60→70+). Settled Lands remain Normal. |
+| Late Act I | Cleared first stagnation zone, fragments stockpiled | Everwick at Vivid. Heartfield/Ambergrove approaching 60+. |
 | Early Act II | Entering Frontier, broadcasting into new zones | Frontier zones climbing from Muted toward Normal. Settled Lands solidly Normal/Vivid. |
 | Mid Act II | Clearing Preserver outposts, recalling gods | Multiple Frontier zones crossing into Normal. Some reaching Vivid near god shrines. |
 | Late Act II | Preserver Cathedral cleared, approaching Sketch | Most Frontier zones at Normal+. Global sky vibrancy around 45-55. |

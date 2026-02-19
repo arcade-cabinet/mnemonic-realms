@@ -61,7 +61,7 @@ export function spawnMapEvents(player: RpgPlayer) {
     graphic: 'DUN-PA-06',
     hitbox: { width: 16, height: 16 },
     onAction(player: RpgPlayer) {
-      player.showText('The Memory Lift hums. Return to the Village Hub?');
+      player.showText('The Memory Lift hums. Return to the Everwick?');
     },
   });
 }

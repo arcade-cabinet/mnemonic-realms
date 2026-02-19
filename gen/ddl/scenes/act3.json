@@ -1,264 +1,907 @@
 [
   {
-    "id": "act3-scene1-half-drawn-forest",
+    "id": "act3-scene1-the-half-drawn-forest",
     "act": "act3",
     "sceneNumber": 1,
     "name": "The Half-Drawn Forest",
-    "location": "Half-Drawn Forest (Sketch zone, 40x40)",
-    "trigger": { "type": "map-enter", "map": "half-drawn-forest" },
+    "summary": "The player's first steps into the Sketch. The Half-Drawn Forest is a forest rendered in elegant line-art — tree trunks are single curved lines, branches are delicate strokes, leaves are suggested by c",
+    "mapId": "half-drawn-forest",
+    "trigger": {
+      "type": "map-enter",
+      "map": "half-drawn-forest"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-half-drawn" },
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-half-drawn" }
+      {
+        "npcId": "hana",
+        "name": "Hana",
+        "graphic": "npc_hana",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-hana-scene1"
+      },
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene1"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "gui-show", "params": { "guiId": "sketch-solidification-tutorial" } },
-      { "type": "system-message", "params": { "text": "Sketch Solidification: broadcast fragments to create solid terrain." } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "> Broadcasting a memory fragment in the Sketch creates permanent solid terrain. The area solidified depends on the fragment's potency:"
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Broadcasting a memory fragment here will \"lock in\" a version of the clearing, creating a permanent rest point with a new Resonance Stone."
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Descend into the Depths Level 5: The Deepest Memory? The enemies here are the strongest in the Depths. Recommended level: 22+."
+        }
+      }
     ],
-    "questChanges": [
-      { "questId": "MQ-08", "action": "advance", "objectiveIndex": 0 }
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-hana-scene1",
+      "dlg-artun-scene1"
     ],
-    "targetPath": "main/server/events/act3/scene1-half-drawn-forest.ts",
-    "levelRange": "20-22",
-    "summary": "First Sketch zone. Solidification mechanic tutorial. Archive of Intentions (3 fragments)."
+    "playerInstructions": [
+      "Learn the Sketch solidification mechanic (first broadcast in the Sketch)",
+      "Choose: follow Grym's crystal path (combat) or make your own path (fragment cost)",
+      "Explore The Living Sketch (create a permanent rest point)",
+      "Visit the Archive of Intentions (collect 3 high-quality fragments)",
+      "Discover the Depths Level 5 entrance",
+      "Fight Sketch-tier enemies"
+    ],
+    "narrativeContext": "The player's first steps into the Sketch. The Half-Drawn Forest is a forest rendered in elegant line-art — tree trunks are single curved lines, branches are delicate strokes, leaves are suggested by clusters of dots. The ground glows with soft luminous parchment-light. The player's shadow is the most detailed thing on screen. It is hauntingly beautiful and deeply unsettling.",
+    "timeOfDay": "Indeterminate (the Sketch has no sun — light comes from the ground itself)",
+    "targetPath": "main/server/events/act3/scene1-the-half-drawn-forest.ts",
+    "levelRange": "20-22"
   },
   {
-    "id": "act3-scene2-luminous-wastes",
+    "id": "act3-scene2-luminous-wastes-the-worlds-edge",
     "act": "act3",
     "sceneNumber": 2,
     "name": "Luminous Wastes — The World's Edge",
-    "location": "Luminous Wastes (Sketch zone, 40x40)",
-    "trigger": { "type": "map-enter", "map": "luminous-wastes" },
+    "summary": "The Luminous Wastes is the world's flattest, emptiest zone — a vast expanse of soft glow with faint grid lines, like graph paper made of light. Occasional sketch-outlines of objects dot the landscape:",
+    "mapId": "luminous-wastes",
+    "trigger": {
+      "type": "map-enter",
+      "map": "luminous-wastes"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-luminous-wastes" },
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-luminous-wastes" }
+      {
+        "npcId": "hana",
+        "name": "Hana",
+        "graphic": "npc_hana",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-hana-scene2"
+      },
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene2"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "system-message", "params": { "text": "The world's absolute boundary. New lines still drawing themselves." } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Broadcasting memory fragments into the Half-Built Village will solidify it, creating a new settlement. Solidifying the central square (5x5 area, requires potency 3+ fragment) reveals a rest point, a Resonance Stone, and 3 dissolved memory fragments embedded in the foundations."
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "The Preserver Watchtower is cleared! Luminous Wastes vibrancy +10. The tower's crystal crumbles, and the Sketch-lines near it begin to animate more freely."
+        }
+      },
+      {
+        "type": "vibrancy-change",
+        "params": {
+          "description": "Luminous Wastes +10 (from Watchtower), additional from broadcasts"
+        }
+      }
     ],
-    "questChanges": [
-      { "questId": "MQ-08", "action": "advance", "objectiveIndex": 2 }
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-hana-scene2",
+      "dlg-artun-scene2"
     ],
-    "targetPath": "main/server/events/act3/scene2-luminous-wastes.ts",
-    "levelRange": "22-23",
-    "summary": "Half-Built Village solidification. The Edge narrative moment. Preserver Watchtower combat."
+    "prerequisites": {
+      "questFlags": [
+        "MQ-06"
+      ],
+      "level": 20
+    },
+    "playerInstructions": [
+      "Explore the Luminous Wastes (awe-inspiring emptiness)",
+      "Solidify the Half-Built Village (create a new settlement)",
+      "Visit The Edge (narrative moment — the world's boundary)",
+      "Clear the Preserver Watchtower (combat)",
+      "Fight Sketch Phantom and Void Wisp encounters"
+    ],
+    "narrativeContext": "The Luminous Wastes is the world's flattest, emptiest zone — a vast expanse of soft glow with faint grid lines, like graph paper made of light. Occasional sketch-outlines of objects dot the landscape: a fence post, a well, a tree — all incomplete. This is where the world simply... hasn't been thought of yet. It is awe-inspiring in its emptiness.",
+    "timeOfDay": "N/A (the Wastes glow from below)",
+    "targetPath": "main/server/events/act3/scene2-luminous-wastes-the-worlds-edge.ts",
+    "levelRange": "20-22"
   },
   {
-    "id": "act3-scene3-undrawn-peaks",
+    "id": "act3-scene3-the-undrawn-peaks-ascent-to-the-fortress",
     "act": "act3",
     "sceneNumber": 3,
-    "name": "The Undrawn Peaks",
-    "location": "Undrawn Peaks (Sketch zone, 40x40)",
-    "trigger": { "type": "map-enter", "map": "undrawn-peaks" },
+    "name": "The Undrawn Peaks — Ascent to the Fortress",
+    "summary": "The Undrawn Peaks are wireframe mountains — geometric shapes with visible construction lines, rendered as glowing line segments against the luminous sky. Climbing means solidifying handholds and ledge",
+    "mapId": "undrawn-peaks",
+    "trigger": {
+      "type": "map-enter",
+      "map": "undrawn-peaks"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-undrawn-peaks" },
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-undrawn-peaks" },
-      { "npcId": "aric", "name": "Aric", "graphic": "npc_aric", "dialogueKey": "dlg-aric-fortress-gate" }
+      {
+        "npcId": "hana",
+        "name": "Hana",
+        "graphic": "npc_hana",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-hana-scene3"
+      },
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene3"
+      },
+      {
+        "npcId": "janik",
+        "name": "Janik",
+        "graphic": "npc_janik",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-janik-scene3"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "system-message", "params": { "text": "The Preserver Fortress is visible — crystalline structure in the highest peak." } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "The Preserver Fortress is open. Three floors await. God recall effects create fractures in the Fortress walls — visual cracks that may provide tactical advantages."
+        }
+      }
     ],
-    "questChanges": [
-      { "questId": "MQ-08", "action": "complete" },
-      { "questId": "MQ-09", "action": "activate" }
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-hana-scene3",
+      "dlg-artun-scene3",
+      "dlg-janik-scene3"
     ],
-    "targetPath": "main/server/events/act3/scene3-undrawn-peaks.ts",
-    "levelRange": "23-24",
-    "summary": "Wireframe mountains. Apex panorama. Aric reveals Fortress layout. Fortress entrance."
+    "prerequisites": {
+      "questFlags": [
+        "MQ-06"
+      ],
+      "level": 20
+    },
+    "playerInstructions": [
+      "Explore the Undrawn Peaks (wireframe mountain traversal)",
+      "Climb to the Apex (highest point in the game — panoramic view)",
+      "Approach the Fortress Gate",
+      "Meet Janik (final Preserver encounter before the Fortress)",
+      "Enter the Preserver Fortress"
+    ],
+    "narrativeContext": "The Undrawn Peaks are wireframe mountains — geometric shapes with visible construction lines, rendered as glowing line segments against the luminous sky. Climbing means solidifying handholds and ledges as you go. The Preserver Fortress is visible from the first tile: a crystalline structure embedded in the highest peak, radiating cold blue-white light.",
+    "timeOfDay": "N/A (the peaks glow with ambient light)",
+    "targetPath": "main/server/events/act3/scene3-the-undrawn-peaks-ascent-to-the-fortress.ts",
+    "levelRange": "20-22"
   },
   {
-    "id": "act3-scene4-deepest-memory",
+    "id": "act3-scene4-the-deepest-memory",
     "act": "act3",
     "sceneNumber": 4,
     "name": "The Deepest Memory",
-    "location": "Depths Level 5 (Half-Drawn Forest entrance)",
-    "trigger": { "type": "map-enter", "map": "depths-l5" },
+    "summary": "The Deepest Memory is the world's oldest memory deposit — a surreal, non-Euclidean dungeon where the laws of space and time are suggestions rather than rules. The vibrancy here is paradoxically high (",
+    "mapId": "depths-l1",
+    "subLocation": "Level 5: The Deepest Memory",
+    "trigger": {
+      "type": "quest-state",
+      "map": "depths-l1"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-deepest" },
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-deepest" }
+      {
+        "npcId": "hana",
+        "name": "Hana",
+        "graphic": "npc_hana",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-hana-scene4"
+      },
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene4"
+      },
+      {
+        "npcId": "the-light",
+        "name": "The Light",
+        "graphic": "npc_the_light",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-the-light-scene4"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "combat-start", "params": { "encounter": "boss-first-dreamer", "enemies": "B-03d" } },
-      { "type": "item-give", "params": { "itemId": "frag-awe-neutral-5", "name": "World's Oldest Memory" } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "You received: Memory Fragment (Awe/Neutral/5★) — \"The world's oldest memory: the first moment of wonder.\""
+        }
+      }
     ],
     "questChanges": [],
-    "targetPath": "main/server/events/act3/scene4-deepest-memory.ts",
-    "levelRange": "22-26",
-    "summary": "Depths L5. First Memory is a question: 'Why do things change?' Boss: First Dreamer."
+    "dialogueRefs": [
+      "dlg-hana-scene4",
+      "dlg-artun-scene4",
+      "dlg-the-light-scene4"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-06"
+      ],
+      "level": 20
+    },
+    "playerInstructions": [
+      "Explore 8 rooms of the Deepest Memory (abstract, philosophical dungeon)",
+      "Learn that the First Memory is a question, not an artifact",
+      "Defeat the First Dreamer (boss, 2 phases)",
+      "Collect potency-5 fragment and Dissolved Essences"
+    ],
+    "narrativeContext": "The Deepest Memory is the world's oldest memory deposit — a surreal, non-Euclidean dungeon where the laws of space and time are suggestions rather than rules. The vibrancy here is paradoxically high (45, Normal tier) because the dissolved memories are so concentrated that reality is thick with inherited detail. The rooms don't follow logical spatial connections — stairs lead sideways, corridors loop, and the player's own memories occasionally manifest as environmental details.",
+    "timeOfDay": "N/A (underground)",
+    "targetPath": "main/server/events/act3/scene4-the-deepest-memory.ts",
+    "levelRange": "20-22"
   },
   {
-    "id": "act3-scene5-fortress-gate",
+    "id": "act3-scene5-the-fortress-gate-entering-the-final-dun",
     "act": "act3",
     "sceneNumber": 5,
-    "name": "The Fortress Gate",
-    "location": "Undrawn Peaks — Crystalline Fortress Gate (20, 35)",
-    "trigger": { "type": "area-enter", "map": "undrawn-peaks", "position": "20,35", "condition": "MQ-09-active" },
+    "name": "The Fortress Gate — Entering the Final Dungeon",
+    "summary": "The player enters the Preserver Fortress — the final dungeon. The crystal here is not the rough, angular stasis of surface stagnation zones. It is smooth, flowing, almost organic — and genuinely beaut",
+    "mapId": "undrawn-peaks",
+    "subLocation": "Crystalline Fortress Gate",
+    "spawnPosition": "20,35",
+    "trigger": {
+      "type": "area-enter",
+      "map": "undrawn-peaks",
+      "position": "20,35"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-fortress-entry" },
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-fortress-entry" }
+      {
+        "npcId": "hana",
+        "name": "Hana",
+        "graphic": "npc_hana",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-hana-scene5"
+      },
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene5"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "screen-effect", "params": { "effect": "crystal-chill-overlay" } },
-      { "type": "music-change", "params": { "track": "fortress-glass-harmonica" } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "The Preserver Fortress. Vibrancy: 0 (crystallized). Broadcasting is disabled — the crystal absorbs memory energy. However, god recall fractures create weak points that can be exploited. Three floors separate you from the First Memory."
+        }
+      }
     ],
-    "questChanges": [
-      { "questId": "MQ-09", "action": "advance", "objectiveIndex": 0 }
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-hana-scene5",
+      "dlg-artun-scene5"
     ],
-    "targetPath": "main/server/events/act3/scene5-fortress-gate.ts",
-    "levelRange": "24",
-    "summary": "Entering the Preserver Fortress. God recall fractures visible. Broadcasting disabled."
+    "prerequisites": {
+      "questFlags": [
+        "MQ-06"
+      ],
+      "level": 20
+    },
+    "playerInstructions": [
+      "Enter the Fortress (narrative scene)",
+      "Observe god recall fractures in the crystal walls (visual confirmation of Act II choices)",
+      "Hear Hana's perspective on being frozen (unique insight from her experience)"
+    ],
+    "narrativeContext": "The player enters the Preserver Fortress — the final dungeon. The crystal here is not the rough, angular stasis of surface stagnation zones. It is smooth, flowing, almost organic — and genuinely beautiful. The Fortress was built with love. Grym's love for the world, expressed as the desperate desire to keep it exactly as it is.",
+    "timeOfDay": "N/A (the Fortress has its own cold light)",
+    "targetPath": "main/server/events/act3/scene5-the-fortress-gate-entering-the-final-dun.ts",
+    "levelRange": "22-25"
   },
   {
-    "id": "act3-scene6-gallery-of-moments",
+    "id": "act3-scene6-floor-1-the-gallery-of-moments",
     "act": "act3",
     "sceneNumber": 6,
     "name": "Floor 1 — The Gallery of Moments",
-    "location": "Preserver Fortress — Floor 1 (20x25)",
-    "trigger": { "type": "map-enter", "map": "fortress-f1" },
+    "summary": "The Gallery is a crystalline museum. Each room is a \"gallery\" displaying a frozen moment of perfect beauty — a village festival, a child's first steps, a sunset over the sea. The frozen subjects are r",
+    "mapId": "fortress-f1",
+    "subLocation": "Floor 1: The Gallery of Moments",
+    "trigger": {
+      "type": "map-enter",
+      "map": "fortress-f1"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-gallery" },
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-gallery" }
+      {
+        "npcId": "hana",
+        "name": "Hana",
+        "graphic": "npc_hana",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-hana-scene6"
+      },
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene6"
+      }
     ],
-    "effects": [
-      { "type": "combat-start", "params": { "encounter": "boss-curators-right-hand", "enemies": "B-04a" } }
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
+    "effects": [],
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-hana-scene6",
+      "dlg-artun-scene6"
     ],
-    "questChanges": [
-      { "questId": "MQ-09", "action": "advance", "objectiveIndex": 1 }
+    "prerequisites": {
+      "questFlags": [
+        "MQ-06"
+      ],
+      "level": 20
+    },
+    "playerInstructions": [
+      "Navigate the Gallery of Moments (5 rooms with crystal barrier puzzles)",
+      "Exploit god-recall fractures to bypass barriers",
+      "Confront frozen perfect moments (narrative weight)",
+      "Defeat Grym's Right Hand (boss)",
+      "Encounter Preserver Agents and Archivists (2-3 random encounters)"
     ],
-    "targetPath": "main/server/events/act3/scene6-gallery-of-moments.ts",
-    "levelRange": "24-26",
-    "summary": "Frozen perfect moments museum. Crystal barrier puzzles. Boss: Curator's Right Hand."
+    "narrativeContext": "The Gallery is a crystalline museum. Each room is a \"gallery\" displaying a frozen moment of perfect beauty — a village festival, a child's first steps, a sunset over the sea. The frozen subjects are real people, crystallized at their happiest moments. The Gallery is hauntingly beautiful, and navigating it requires the player to confront the fact that these moments are genuinely worth preserving — the question is whether they're worth freezing the world over.",
+    "timeOfDay": "N/A",
+    "targetPath": "main/server/events/act3/scene6-floor-1-the-gallery-of-moments.ts",
+    "levelRange": "22-25"
   },
   {
-    "id": "act3-scene7-archive-of-perfection",
+    "id": "act3-scene7-floor-2-the-archive-of-perfection",
     "act": "act3",
     "sceneNumber": 7,
     "name": "Floor 2 — The Archive of Perfection",
-    "location": "Preserver Fortress — Floor 2 (20x25)",
-    "trigger": { "type": "map-enter", "map": "fortress-f2" },
+    "summary": "Grym's personal collection. This floor is smaller, more intimate, and more disturbing. Each room contains a frozen moment that Grym personally considered the world's most beautiful. The puzzle here is",
+    "mapId": "fortress-f1",
+    "subLocation": "Floor 2: The Archive of Perfection",
+    "trigger": {
+      "type": "map-enter",
+      "map": "fortress-f1"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-archive" },
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-archive" }
+      {
+        "npcId": "hana",
+        "name": "Hana",
+        "graphic": "npc_hana",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-hana-scene7"
+      },
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene7"
+      },
+      {
+        "npcId": "archive-keeper",
+        "name": "Archive Keeper",
+        "graphic": "npc_archive_keeper",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-archive-keeper-scene7"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "gui-show", "params": { "guiId": "moral-choice", "choices": ["free-musicians", "free-reunion", "free-painter"] } },
-      { "type": "combat-start", "params": { "encounter": "boss-archive-keeper", "enemies": "B-04b" } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Break 2 of 3 crystal pedestals to open the exit. Each broken pedestal frees the frozen subjects but destroys the preserved moment. Choose which 2 to free — and which 1 to leave."
+        }
+      }
     ],
-    "questChanges": [
-      { "questId": "MQ-09", "action": "advance", "objectiveIndex": 2 }
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-hana-scene7",
+      "dlg-artun-scene7",
+      "dlg-archive-keeper-scene7"
     ],
-    "targetPath": "main/server/events/act3/scene7-archive-of-perfection.ts",
-    "levelRange": "26-28",
-    "summary": "Moral puzzle: free 2 of 3 frozen scenes. Lira's insight on stasis. Boss: Archive Keeper."
+    "prerequisites": {
+      "questFlags": [
+        "MQ-06"
+      ],
+      "level": 20
+    },
+    "playerInstructions": [
+      "Navigate the Archive of Perfection (5 rooms)",
+      "Solve the moral puzzle (choose which 2 of 3 scenes to free)",
+      "Hear Hana's unique perspective on being frozen",
+      "Defeat the Archive Keeper (boss)",
+      "Encounter Preserver Archivists and Captains (2-3 random encounters)"
+    ],
+    "narrativeContext": "Grym's personal collection. This floor is smaller, more intimate, and more disturbing. Each room contains a frozen moment that Grym personally considered the world's most beautiful. The puzzle here is moral: the player must choose which frozen memories to free and which to leave preserved. Freeing memories weakens the crystal barriers but disturbs the archive's structure. Leaving them preserves the path but leaves people frozen.",
+    "timeOfDay": "N/A",
+    "targetPath": "main/server/events/act3/scene7-floor-2-the-archive-of-perfection.ts",
+    "levelRange": "22-25"
   },
   {
-    "id": "act3-scene8-first-memory-chamber",
+    "id": "act3-scene8-floor-3-the-first-memory-chamber",
     "act": "act3",
     "sceneNumber": 8,
     "name": "Floor 3 — The First Memory Chamber",
-    "location": "Preserver Fortress — Floor 3 (20x25)",
-    "trigger": { "type": "map-enter", "map": "fortress-f3" },
+    "summary": "The final floor is a single vast chamber. No puzzles. No random encounters. Just Grym, the First Memory, and the confrontation that determines the world's future.",
+    "mapId": "fortress-f1",
+    "subLocation": "Floor 3: The First Memory Chamber",
+    "trigger": {
+      "type": "map-enter",
+      "map": "fortress-f1"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-curator-confront" },
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-curator-confront" },
-      { "npcId": "curator", "name": "The Curator", "graphic": "npc_curator", "dialogueKey": "dlg-curator-confrontation" }
+      {
+        "npcId": "hana",
+        "name": "Hana",
+        "graphic": "npc_hana",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-hana-scene8"
+      },
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene8"
+      },
+      {
+        "npcId": "grym",
+        "name": "Grym",
+        "graphic": "npc_grym",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-grym-scene8"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "cutscene-play", "params": { "cutsceneId": "curator-confrontation" } },
-      { "type": "system-message", "params": { "text": "The Curator awaits. This is not a combat encounter." } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Your journey speaks for itself. The recalled gods respond:"
+        }
+      }
     ],
-    "questChanges": [
-      { "questId": "MQ-09", "action": "complete" },
-      { "questId": "MQ-10", "action": "activate" }
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-hana-scene8",
+      "dlg-artun-scene8",
+      "dlg-grym-scene8"
     ],
-    "targetPath": "main/server/events/act3/scene8-first-memory-chamber.ts",
-    "levelRange": "28",
-    "summary": "Curator confrontation — dialogue, not combat. God recall responses manifest visually."
+    "itemRefs": [
+      "B-05"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-06"
+      ],
+      "level": 20
+    },
+    "playerInstructions": [
+      "Enter the First Memory Chamber",
+      "Listen to Grym's argument",
+      "Witness the party's responses (Artun, Hana)",
+      "Watch the god recall responses manifest in the chamber",
+      "Approach the First Memory"
+    ],
+    "narrativeContext": "The final floor is a single vast chamber. No puzzles. No random encounters. Just Grym, the First Memory, and the confrontation that determines the world's future.\n\nThe First Memory sits at the chamber's center: a sphere of warm amber light, roughly human-sized, suspended above a crystal pedestal. It pulses slowly — like breathing. Like a question being asked, over and over: *Why do things change?*\n\nGrym stands before it, hands folded, calm. They have been waiting.",
+    "timeOfDay": "N/A",
+    "targetPath": "main/server/events/act3/scene8-floor-3-the-first-memory-chamber.ts",
+    "levelRange": "22-25"
   },
   {
     "id": "act3-scene9-the-remix",
     "act": "act3",
     "sceneNumber": 9,
     "name": "The Remix",
-    "location": "Preserver Fortress — First Memory pedestal",
-    "trigger": { "type": "quest-state", "map": "fortress-f3", "condition": "curator-dialogue-complete" },
+    "summary": "The game's mechanical and narrative climax. The player remixes the First Memory — not destroying it, not preserving it, but transforming it. The original question (\"Why do things change?\") is combined",
+    "mapId": "fortress-f1",
+    "subLocation": "Floor 3: The First Memory Chamber",
+    "trigger": {
+      "type": "area-enter",
+      "map": "fortress-f1"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-remix" },
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-remix" },
-      { "npcId": "curator", "name": "The Curator", "graphic": "npc_curator", "dialogueKey": "dlg-curator-watching" }
+      {
+        "npcId": "hana",
+        "name": "Hana",
+        "graphic": "npc_hana",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-hana-scene9"
+      },
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene9"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "gui-show", "params": { "guiId": "first-memory-remix" } },
-      { "type": "item-give", "params": { "itemId": "MF-11", "name": "World's New Dawn" } },
-      { "type": "screen-effect", "params": { "effect": "white-out" } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "The First Memory awaits. You carry within you the memories of your journey: fragments collected, gods recalled, moments preserved and freed, the dissolved civilizations' stories, and the world's ongoing growth."
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "> This is not a standard remix. You are not combining fragments. You are answering a question."
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Broadcast World's New Dawn from the First Memory Chamber. This will send a pulse of creative energy through every memory, every stone, every root and river in the world."
+        }
+      }
     ],
-    "questChanges": [
-      { "questId": "MQ-10", "action": "advance", "objectiveIndex": 2 }
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-hana-scene9",
+      "dlg-artun-scene9"
     ],
+    "itemRefs": [
+      "MF-11"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-06"
+      ],
+      "level": 20
+    },
+    "playerInstructions": [
+      "Approach the First Memory",
+      "Activate the First Memory Remix",
+      "Receive MF-11: World's New Dawn",
+      "Broadcast World's New Dawn"
+    ],
+    "narrativeContext": "The game's mechanical and narrative climax. The player remixes the First Memory — not destroying it, not preserving it, but transforming it. The original question (\"Why do things change?\") is combined with everything the player has collected, experienced, and chosen throughout the game, creating a new memory: the world's answer.",
+    "timeOfDay": "N/A",
     "targetPath": "main/server/events/act3/scene9-the-remix.ts",
-    "levelRange": "28-30",
-    "summary": "Game climax. Player remixes First Memory into World's New Dawn. Broadcasts it."
+    "levelRange": "25-30"
   },
   {
-    "id": "act3-scene10-endgame-bloom",
+    "id": "act3-scene10-the-endgame-bloom",
     "act": "act3",
     "sceneNumber": 10,
     "name": "The Endgame Bloom",
-    "location": "Everywhere — all zones simultaneously",
-    "trigger": { "type": "auto", "map": "fortress-f3", "condition": "worlds-new-dawn-broadcast" },
-    "npcs": [],
+    "summary": "The game's visual and audio climax. Every zone in the world simultaneously jumps to vibrancy 95 (see [vibrancy-system.md](../world/vibrancy-system.md) \"The Endgame Bloom\"). This triggers a 90-second c",
+    "mapId": "all-maps",
+    "subLocation": "every zone in the game simultaneously",
+    "trigger": {
+      "type": "map-enter",
+      "map": "all-maps"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
+    "npcs": [
+      {
+        "npcId": "hana",
+        "name": "Hana",
+        "graphic": "npc_hana",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-hana-scene10"
+      },
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene10"
+      },
+      {
+        "npcId": "grym",
+        "name": "Grym",
+        "graphic": "npc_grym",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-grym-scene10"
+      },
+      {
+        "npcId": "everwick",
+        "name": "Everwick",
+        "graphic": "npc_everwick",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-everwick-scene10"
+      },
+      {
+        "npcId": "heartfield",
+        "name": "Heartfield",
+        "graphic": "npc_heartfield",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-heartfield-scene10"
+      }
+    ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "cutscene-play", "params": { "cutsceneId": "endgame-bloom-cinematic" } },
-      { "type": "vibrancy-change", "params": { "zone": "all", "delta": 95 } },
-      { "type": "music-change", "params": { "track": "endgame-bloom-orchestral" } },
-      { "type": "screen-effect", "params": { "effect": "bloom-cascade" } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "The world blooms. Vibrancy 95 in every zone. The Endgame Bloom has transformed the Unfinished World into something new — not finished, but alive. Not perfect, but growing."
+        }
+      }
     ],
     "questChanges": [],
-    "targetPath": "main/server/events/act3/scene10-endgame-bloom.ts",
-    "levelRange": "28-30",
-    "summary": "90-second cinematic. All zones jump to vibrancy 95. World transforms. Gods fully awaken."
+    "dialogueRefs": [
+      "dlg-hana-scene10",
+      "dlg-artun-scene10",
+      "dlg-grym-scene10",
+      "dlg-everwick-scene10",
+      "dlg-heartfield-scene10"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-06"
+      ],
+      "level": 20
+    },
+    "playerInstructions": [
+      "Watch the Endgame Bloom cinematic (90 seconds, unskippable first time)",
+      "Regain control at the Fortress Gate"
+    ],
+    "narrativeContext": "The game's visual and audio climax. Every zone in the world simultaneously jumps to vibrancy 95 (see [vibrancy-system.md](../world/vibrancy-system.md) \"The Endgame Bloom\"). This triggers a 90-second cinematic sequence showing the world transforming.",
+    "timeOfDay": "Dawn (the world experiences its first true sunrise)",
+    "targetPath": "main/server/events/act3/scene10-the-endgame-bloom.ts",
+    "levelRange": "25-30"
   },
   {
-    "id": "act3-scene11-curators-choice",
+    "id": "act3-scene11-gryms-choice",
     "act": "act3",
     "sceneNumber": 11,
-    "name": "The Curator's Choice",
-    "location": "Preserver Fortress Gate → Village Hub",
-    "trigger": { "type": "auto", "map": "undrawn-peaks", "condition": "bloom-complete" },
+    "name": "Grym's Choice",
+    "summary": "The resolution. Grym is not defeated — they're transformed. The Preservers are not destroyed — they're given a new role. The world is not saved from destruction — it was never dying. It was always gro",
+    "mapId": "fortress-f1",
+    "trigger": {
+      "type": "area-enter",
+      "map": "fortress-f1"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-resolution" },
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-resolution" },
-      { "npcId": "curator", "name": "The Curator", "graphic": "npc_curator", "dialogueKey": "dlg-curator-redeemed" },
-      { "npcId": "aric", "name": "Aric", "graphic": "npc_aric", "dialogueKey": "dlg-aric-resolution" }
+      {
+        "npcId": "hana",
+        "name": "Hana",
+        "graphic": "npc_hana",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-hana-scene11"
+      },
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene11"
+      },
+      {
+        "npcId": "grym",
+        "name": "Grym",
+        "graphic": "npc_grym",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-grym-scene11"
+      },
+      {
+        "npcId": "janik",
+        "name": "Janik",
+        "graphic": "npc_janik",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-janik-scene11"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "system-message", "params": { "text": "The Preservers become archivists — keepers, not jailers." } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "The Preservers' role transforms. They are no longer enforcers of stasis — they become the world's archivists, memory keepers who record and share rather than freeze and guard."
+        }
+      }
     ],
-    "questChanges": [
-      { "questId": "MQ-10", "action": "complete" }
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-hana-scene11",
+      "dlg-artun-scene11",
+      "dlg-grym-scene11",
+      "dlg-janik-scene11"
     ],
-    "targetPath": "main/server/events/act3/scene11-curators-choice.ts",
-    "levelRange": "28-30",
-    "summary": "Curator redeemed. Preservers become archivists. Return to Village Hub. NPC reactions."
+    "prerequisites": {
+      "questFlags": [
+        "MQ-06"
+      ],
+      "level": 20
+    },
+    "playerInstructions": [
+      "Witness Grym's transformation (narrative scene)",
+      "Return to Everwick",
+      "Talk to NPCs who have unique Endgame Bloom dialogue",
+      "Freely explore the vivid world"
+    ],
+    "narrativeContext": "The resolution. Grym is not defeated — they're transformed. The Preservers are not destroyed — they're given a new role. The world is not saved from destruction — it was never dying. It was always growing. Now it grows faster.",
+    "timeOfDay": "Morning (the world's first real morning)",
+    "targetPath": "main/server/events/act3/scene11-gryms-choice.ts",
+    "levelRange": "25-30"
   },
   {
-    "id": "act3-scene12-new-beginning",
+    "id": "act3-scene12-a-new-beginning",
     "act": "act3",
     "sceneNumber": 12,
     "name": "A New Beginning",
-    "location": "Luminous Wastes — The Edge (5, 20)",
-    "trigger": { "type": "area-enter", "map": "luminous-wastes", "position": "5,20", "condition": "bloom-complete" },
+    "summary": "The final scene. The player returns to The Edge — the world's boundary — to see what has changed. Where there was once a luminous void with sketch-lines slowly forming, there is now a horizon. The wor",
+    "mapId": "luminous-wastes",
+    "subLocation": "Luminous Wastes",
+    "spawnPosition": "5,20",
+    "trigger": {
+      "type": "area-enter",
+      "map": "luminous-wastes",
+      "position": "5,20"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-ending" },
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-ending" }
+      {
+        "npcId": "hana",
+        "name": "Hana",
+        "graphic": "npc_hana",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-hana-scene12"
+      },
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene12"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "cutscene-play", "params": { "cutsceneId": "credits-sequence" } },
-      { "type": "music-change", "params": { "track": "credits-theme" } },
-      { "type": "system-message", "params": { "text": "Not an ending. A beginning." } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Not an ending. A beginning."
+        }
+      }
     ],
     "questChanges": [],
-    "targetPath": "main/server/events/act3/scene12-new-beginning.ts",
-    "levelRange": "28-30",
-    "summary": "Final scene. The Edge: world still growing. Credits roll. New Game+ unlocked."
+    "dialogueRefs": [
+      "dlg-hana-scene12",
+      "dlg-artun-scene12"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-06"
+      ],
+      "level": 20
+    },
+    "playerInstructions": [
+      "Visit The Edge (final narrative scene)",
+      "Watch the credits",
+      "Continue post-game exploration or start New Game+"
+    ],
+    "narrativeContext": "The final scene. The player returns to The Edge — the world's boundary — to see what has changed. Where there was once a luminous void with sketch-lines slowly forming, there is now a horizon. The world is growing faster. New land sketches itself into existence and immediately fills with detail. The cycle of creation has accelerated, not because of divine intervention or magical artifacts, but because a single person asked a better question.",
+    "timeOfDay": "Sunset",
+    "targetPath": "main/server/events/act3/scene12-a-new-beginning.ts",
+    "levelRange": "25-30"
   }
 ]

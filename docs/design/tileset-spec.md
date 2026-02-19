@@ -137,7 +137,7 @@ These appear in particle effects, UI, and memory-related tiles at the same value
 
 ## Biome 1: Village
 
-**Used by**: Village Hub (30x30 tiles)
+**Used by**: Everwick (30x30 tiles)
 **Sheet dimensions**: 16 x 14 tiles (512 x 448 pixels) per tier
 **Total unique tiles**: 52 per tier (156 across all three tiers)
 
@@ -855,9 +855,9 @@ Biome transitions occur at map edges and within maps where biomes meet. Each tra
 
 | File Name | From Biome | To Biome | Used At |
 |-----------|------------|----------|---------|
-| `overlay_transition_village_grassland.png` | Village | Grassland | Village Hub → Heartfield |
-| `overlay_transition_village_forest.png` | Village | Forest | Village Hub → Ambergrove |
-| `overlay_transition_village_riverside.png` | Village | Riverside | Village Hub → Millbrook |
+| `overlay_transition_village_grassland.png` | Village | Grassland | Everwick → Heartfield |
+| `overlay_transition_village_forest.png` | Village | Forest | Everwick → Ambergrove |
+| `overlay_transition_village_riverside.png` | Village | Riverside | Everwick → Millbrook |
 | `overlay_transition_grassland_forest.png` | Grassland | Forest | Heartfield → Ambergrove |
 | `overlay_transition_grassland_mountain.png` | Grassland | Mountain | Sunridge → Hollow Ridge |
 | `overlay_transition_grassland_marsh.png` | Grassland | Marsh | Heartfield → Shimmer Marsh |

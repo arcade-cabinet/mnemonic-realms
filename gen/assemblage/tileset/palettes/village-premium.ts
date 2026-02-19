@@ -5,7 +5,7 @@ const TMX_TO_TSX = '../../../assets/tilesets/exteriors/premium/Tiled/Tilesets';
 
 /**
  * Village Premium palette.
- * Uses the fantasy-premium exterior tileset pack for Village Hub,
+ * Uses the fantasy-premium exterior tileset pack for Everwick,
  * Heartfield, Ambergrove, Millbrook, and Sunridge maps.
  *
  * All TSX files from the premium pack are included and assigned
@@ -116,5 +116,91 @@ export const villagePremiumSpec: PaletteSpec = {
     // Beach/sand
     'sand': { tilesetName: 'Tileset_Sand', wangSetName: 'Beach', colorName: 'Sand' },
     'sea': { tilesetName: 'Tileset_Sand', wangSetName: 'Beach', colorName: 'Sea' },
+  },
+
+  // Object mappings (buildings, trees, props from collection tilesets)
+  objects: {
+    // --- Houses: BlueWood ---
+    'house.blue-small-1': { tilesetName: 'Objects_Buildings', localTileId: 341 },
+    'house.blue-small-2': { tilesetName: 'Objects_Buildings', localTileId: 342 },
+    'house.blue-medium-1': { tilesetName: 'Objects_Buildings', localTileId: 346 },
+    'house.blue-medium-2': { tilesetName: 'Objects_Buildings', localTileId: 347 },
+    'house.blue-medium-alt-1': { tilesetName: 'Objects_Buildings', localTileId: 349 },
+    'house.blue-large-1': { tilesetName: 'Objects_Buildings', localTileId: 352 },
+    'house.blue-large-2': { tilesetName: 'Objects_Buildings', localTileId: 353 },
+    'house.blue-large-3': { tilesetName: 'Objects_Buildings', localTileId: 354 },
+    'house.blue-large-4': { tilesetName: 'Objects_Buildings', localTileId: 355 },
+
+    // --- Houses: RedWood ---
+    'house.red-small-1': { tilesetName: 'Objects_Buildings', localTileId: 449 },
+    'house.red-small-2': { tilesetName: 'Objects_Buildings', localTileId: 450 },
+    'house.red-medium-1': { tilesetName: 'Objects_Buildings', localTileId: 454 },
+    'house.red-medium-2': { tilesetName: 'Objects_Buildings', localTileId: 455 },
+    'house.red-medium-alt-1': { tilesetName: 'Objects_Buildings', localTileId: 457 },
+    'house.red-large-1': { tilesetName: 'Objects_Buildings', localTileId: 460 },
+    'house.red-large-2': { tilesetName: 'Objects_Buildings', localTileId: 461 },
+
+    // --- Houses: GreenWood ---
+    'house.green-small-1': { tilesetName: 'Objects_Buildings', localTileId: 373 },
+    'house.green-small-2': { tilesetName: 'Objects_Buildings', localTileId: 374 },
+    'house.green-medium-1': { tilesetName: 'Objects_Buildings', localTileId: 378 },
+    'house.green-medium-2': { tilesetName: 'Objects_Buildings', localTileId: 379 },
+    'house.green-medium-alt-1': { tilesetName: 'Objects_Buildings', localTileId: 381 },
+    'house.green-large-1': { tilesetName: 'Objects_Buildings', localTileId: 384 },
+
+    // --- Houses: Hay ---
+    'house.hay-small-1': { tilesetName: 'Objects_Buildings', localTileId: 310 },
+    'house.hay-medium-1': { tilesetName: 'Objects_Buildings', localTileId: 315 },
+    'house.hay-large-1': { tilesetName: 'Objects_Buildings', localTileId: 321 },
+
+    // --- Wells ---
+    'well.generic': { tilesetName: 'Objects_Buildings', localTileId: 291 },
+    'well.blue': { tilesetName: 'Objects_Buildings', localTileId: 293 },
+    'well.green': { tilesetName: 'Objects_Buildings', localTileId: 294 },
+    'well.red': { tilesetName: 'Objects_Buildings', localTileId: 296 },
+
+    // --- Market Stands ---
+    'market.stand-1': { tilesetName: 'Objects_Buildings', localTileId: 285 },
+    'market.stand-2': { tilesetName: 'Objects_Buildings', localTileId: 286 },
+
+    // --- Shelters ---
+    'shelter.hay': { tilesetName: 'Objects_Buildings', localTileId: 304 },
+    'shelter.blue': { tilesetName: 'Objects_Buildings', localTileId: 305 },
+
+    // --- Trees: Emerald ---
+    'tree.emerald-1': { tilesetName: 'Objects_Trees', localTileId: 32 },   // 64x63
+    'tree.emerald-2': { tilesetName: 'Objects_Trees', localTileId: 0 },    // 46x63
+    'tree.emerald-3': { tilesetName: 'Objects_Trees', localTileId: 1 },    // 52x92
+    'tree.emerald-4': { tilesetName: 'Objects_Trees', localTileId: 2 },    // 48x93
+    'tree.emerald-5': { tilesetName: 'Objects_Trees', localTileId: 82 },   // 97x124 (large)
+    'tree.emerald-6': { tilesetName: 'Objects_Trees', localTileId: 103 },  // 80x110
+
+    // --- Trees: Light ---
+    'tree.light-1': { tilesetName: 'Objects_Trees', localTileId: 3 },
+    'tree.light-2': { tilesetName: 'Objects_Trees', localTileId: 4 },
+    'tree.light-3': { tilesetName: 'Objects_Trees', localTileId: 5 },
+
+    // --- Trees: Dark ---
+    'tree.dark-1': { tilesetName: 'Objects_Trees', localTileId: 28 },
+    'tree.dark-2': { tilesetName: 'Objects_Trees', localTileId: 29 },
+    'tree.dark-3': { tilesetName: 'Objects_Trees', localTileId: 30 },
+
+    // --- Bushes ---
+    'bush.emerald-1': { tilesetName: 'Objects_Trees', localTileId: 14 },   // 40x29
+    'bush.emerald-2': { tilesetName: 'Objects_Trees', localTileId: 15 },
+    'bush.emerald-3': { tilesetName: 'Objects_Trees', localTileId: 16 },
+    'bush.emerald-large': { tilesetName: 'Objects_Trees', localTileId: 52 },
+
+    // --- Props ---
+    'prop.bulletin-board-1': { tilesetName: 'Objects_Props', localTileId: 928 },  // 44x42
+    'prop.bulletin-board-2': { tilesetName: 'Objects_Props', localTileId: 929 },
+    'prop.sign-south': { tilesetName: 'Objects_Props', localTileId: 1029 },
+    'prop.sign-north': { tilesetName: 'Objects_Props', localTileId: 1030 },
+    'prop.board': { tilesetName: 'Objects_Props', localTileId: 911 },
+    'prop.lamppost-1': { tilesetName: 'Objects_Props', localTileId: 958 },
+    'prop.lamppost-2': { tilesetName: 'Objects_Props', localTileId: 959 },
+    'prop.crate-medium': { tilesetName: 'Objects_Props', localTileId: 420 },
+    'prop.barrel-empty': { tilesetName: 'Objects_Props', localTileId: 306 },
+    'prop.barrel-water': { tilesetName: 'Objects_Props', localTileId: 307 },
   },
 };

@@ -44,6 +44,21 @@ export function serializeToTmx(
     resolvedLayers.set(layerName, resolved);
   }
 
+  // Pre-resolve visual objects to track their tilesets
+  const resolvedVisuals: { gid: number; x: number; y: number; width: number; height: number }[] = [];
+  for (const vis of canvas.visuals) {
+    const objDef = resolveObject(palette, vis.objectRef);
+    trackUsedTileset(objDef.gid, palette, usedTilesetIndices);
+    resolvedVisuals.push({
+      gid: objDef.gid,
+      x: vis.x * canvas.tileWidth,
+      // TMX objects use bottom-left origin for gid objects
+      y: vis.y * canvas.tileHeight + objDef.height,
+      width: objDef.width,
+      height: objDef.height,
+    });
+  }
+
   // Build TMX XML
   const lines: string[] = [];
   lines.push('<?xml version="1.0" encoding="UTF-8"?>');
@@ -72,6 +87,21 @@ export function serializeToTmx(
     lines.push(encodeCsv(resolved, canvas.width));
     lines.push('  </data>');
     lines.push(' </layer>');
+    layerId++;
+  }
+
+  // Visual objects layer (buildings, trees, props with gids)
+  if (resolvedVisuals.length > 0) {
+    lines.push(` <objectgroup id="${layerId}" name="Objects">`);
+    let objId = 1;
+    for (const vis of resolvedVisuals) {
+      lines.push(
+        `  <object id="${objId}" gid="${vis.gid}" ` +
+        `x="${vis.x}" y="${vis.y}" width="${vis.width}" height="${vis.height}"/>`,
+      );
+      objId++;
+    }
+    lines.push(' </objectgroup>');
     layerId++;
   }
 

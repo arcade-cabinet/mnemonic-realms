@@ -33,6 +33,21 @@ export interface CollisionStamp {
   data: (0 | 1)[];
 }
 
+// --- Visual objects (buildings, trees, props) ---
+
+/**
+ * A visual object placed in a TMX object group.
+ * These are tileset images (buildings, trees, props) positioned at pixel coords.
+ * Unlike tile layers, these can be any size and aren't grid-aligned.
+ */
+export interface VisualObject {
+  /** Semantic name referencing a palette object (e.g., 'building.house-red-1') */
+  objectRef: string;
+  /** Position relative to assemblage origin (in tiles, converted to pixels at serialization) */
+  x: number;
+  y: number;
+}
+
 // --- Events and hooks ---
 
 /** A TMX object (NPC, chest, transition zone, trigger) */
@@ -91,6 +106,8 @@ export interface AssemblageDefinition {
   layers: Record<string, TileStamp>;
   /** Collision data for this assemblage */
   collision?: CollisionStamp;
+  /** Visual objects — buildings, trees, props placed in TMX object groups */
+  visuals?: VisualObject[];
   /** Event objects (NPCs, chests, transitions) */
   objects?: AssemblageObject[];
   /** Event hooks for generated TypeScript code */
@@ -124,7 +141,7 @@ export interface PathSegment {
 
 /** Complete map definition composed from assemblages, paths, and objects */
 export interface MapComposition {
-  /** Map ID (used for filenames, e.g., 'village-hub') */
+  /** Map ID (used for filenames, e.g., 'everwick') */
   id: string;
   /** Human-readable name */
   name: string;
@@ -144,6 +161,8 @@ export interface MapComposition {
   placements: PlacedAssemblage[];
   /** Paths connecting locations */
   paths?: PathSegment[];
+  /** Map-level visual objects (buildings, trees not in assemblages) */
+  visuals?: VisualObject[];
   /** Map-level objects not part of any assemblage (e.g., player spawn) */
   objects?: AssemblageObject[];
   /** Map-level event hooks */

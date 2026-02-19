@@ -63,7 +63,7 @@ for (let r = 0; r < H; r++)
     if (g2[r][c] !== 0) obj[r][c] = 0;
 
 // Gate clearings
-obj[H - 1][20] = 0; // South → Village Hub
+obj[H - 1][20] = 0; // South → Everwick
 obj[0][18] = 0; obj[0][19] = 0; obj[0][20] = 0; // North → Hollow Ridge (Threshold)
 obj[20][W - 1] = 0; // East → Ambergrove
 

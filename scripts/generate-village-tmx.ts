@@ -1,6 +1,6 @@
 #!/usr/bin/env npx tsx
 /**
- * Generate village-hub.tmx from spec + tile catalog.
+ * Generate everwick.tmx from spec + tile catalog.
  * Reads existing TMX to preserve events objectgroup, rewrites all tile layers.
  * Run: npx tsx scripts/generate-village-tmx.ts
  */
@@ -148,9 +148,9 @@ obj[17][22] = DOOR;
 // ── Memorial Garden (8,16) 4x3 — hedges + memorial stones ──
 obj[16][8] = HEDGE;
 obj[18][8] = HEDGE; obj[18][9] = HEDGE; obj[18][10] = HEDGE; obj[18][11] = HEDGE;
-obj[16][9] = MEMORIAL;  // RS-VH-02 position
-obj[17][10] = MEMORIAL; // RS-VH-03 position
-obj[16][11] = MEMORIAL; // RS-VH-04 position
+obj[16][9] = MEMORIAL;  // RS-EW-02 position
+obj[17][10] = MEMORIAL; // RS-EW-03 position
+obj[16][11] = MEMORIAL; // RS-EW-04 position
 
 // ── General Shop (18,16) 5x4 ──
 rect(obj, 18, 16, 5, 4, WALL_GRAY);
@@ -225,7 +225,7 @@ for (let r = 3; r <= 5; r++)
 // ═══════════════════════════════════════════
 
 // Extract events from existing TMX
-const tmxPath = resolve('main/server/maps/tmx/village-hub.tmx');
+const tmxPath = resolve('main/server/maps/tmx/everwick.tmx');
 const existingTmx = readFileSync(tmxPath, 'utf8');
 const eventsMatch = existingTmx.match(/<objectgroup[\s\S]*?<\/objectgroup>/);
 const eventsXml = eventsMatch?.[0] ?? '';
@@ -247,7 +247,7 @@ const tmx = `<?xml version="1.0" encoding="UTF-8"?>
 <map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="${W}" height="${H}" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="100">
  <properties>
   <property name="category" value="overworld"/>
-  <property name="mapName" value="Village Hub"/>
+  <property name="mapName" value="Everwick"/>
   <property name="vibrancy" type="int" value="60"/>
  </properties>
  <tileset firstgid="1" source="tiles_village_normal.tsx"/>

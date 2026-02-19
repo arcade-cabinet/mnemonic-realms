@@ -5,7 +5,7 @@ export default async function (player: RpgPlayer) {
   const endgameBloomTriggered = player.getVariable('endgameBloomTriggered');
   const hasPlayed = player.getVariable('dlg-callum-resolution-played');
 
-  if (!endgameBloomTriggered || currentMapId !== 'village_hub' || hasPlayed) {
+  if (!endgameBloomTriggered || currentMapId !== 'everwick' || hasPlayed) {
     return;
   }
   await player.showText('Forty years I spent studying the Dissolved.', {

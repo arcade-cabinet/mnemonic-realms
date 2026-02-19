@@ -1,8 +1,8 @@
 [
   {
-    "id": "village-hub",
-    "name": "Village Hub",
-    "filename": "village-hub.tmx",
+    "id": "everwick",
+    "name": "Everwick",
+    "filename": "everwick.tmx",
     "width": 30,
     "height": 30,
     "tileSize": 32,

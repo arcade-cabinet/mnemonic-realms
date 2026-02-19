@@ -89,7 +89,7 @@ export class EventVerifier {
     
     let currentMap = '';
     const mapLabelToName: Record<string, string> = {
-      'Village Hub': 'village-hub',
+      'Everwick': 'everwick',
       'Heartfield': 'heartfield',
       'Ambergrove': 'ambergrove',
       'Millbrook': 'millbrook',
@@ -188,7 +188,7 @@ export class EventVerifier {
         const hasMapColumn = !secondCol.match(/\(\d+,\s*\d+\)/);
         
         if (hasMapColumn) {
-          // Format 2: Map name in table (e.g., | EV-VH-016 | Village Hub | (0, 0) | ...)
+          // Format 2: Map name in table (e.g., | EV-VH-016 | Everwick | (0, 0) | ...)
           const eventId = parts[0];
           const mapLabel = parts[1];
           const mapName = mapLabelToName[mapLabel] || '';
@@ -213,7 +213,7 @@ export class EventVerifier {
             }
           }
         } else if (currentMap) {
-          // Format 1: Map name in section header (e.g., ### Village Hub NPCs)
+          // Format 1: Map name in section header (e.g., ### Everwick NPCs)
           const eventId = parts[0];
           const posMatch = parts[1].match(/\((\d+),\s*(\d+)\)/);
           if (posMatch) {

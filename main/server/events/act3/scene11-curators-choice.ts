@@ -79,7 +79,7 @@ export class Act3Scene11CuratorsChoice extends RpgEvent {
     if (curatorEvent) curatorEvent.remove();
     if (aricEvent) aricEvent.remove();
 
-    // --- Part 2: Return to Village Hub and NPC Reactions ---
+    // --- Part 2: Return to Everwick and NPC Reactions ---
     // Spawn Artun and Hana dynamically for this scene
     const callumEvent = await player.createDynamicEvent({
       x: 14,
@@ -123,7 +123,7 @@ export class Act3Scene11CuratorsChoice extends RpgEvent {
 
     // Allow free exploration
     await player.showText(
-      'The world is vivid. Explore the Village Hub and talk to its residents to hear their reactions to the bloom.',
+      'The world is vivid. Explore the Everwick and talk to its residents to hear their reactions to the bloom.',
     );
   }
 }

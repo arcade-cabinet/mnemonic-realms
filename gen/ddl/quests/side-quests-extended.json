@@ -1,7 +1,7 @@
 [
   {
     "id": "SQ-10", "name": "The Depths Expedition", "category": "side", "act": "act2",
-    "levelRange": "14-18", "giver": "Callum", "giverLocation": "Village Hub — Elder's House (18, 10)",
+    "levelRange": "14-18", "giver": "Callum", "giverLocation": "Everwick — Elder's House (18, 10)",
     "triggerCondition": "MQ-05 complete, player level 14+",
     "objectives": [
       { "index": 0, "description": "Speak with Callum about the Depths" },
@@ -24,8 +24,8 @@
   },
   {
     "id": "SQ-11", "name": "Hark's Masterwork", "category": "side", "act": "act2",
-    "levelRange": "15-20", "giver": "Hark", "giverLocation": "Village Hub — Blacksmith (18, 18)",
-    "triggerCondition": "Village Hub vibrancy reaches 70+",
+    "levelRange": "15-20", "giver": "Hark", "giverLocation": "Everwick — Blacksmith (18, 18)",
+    "triggerCondition": "Everwick vibrancy reaches 70+",
     "objectives": [
       { "index": 0, "description": "Speak with Hark at the Blacksmith" },
       { "index": 1, "description": "Collect Crag Golem core from Sunridge" },
@@ -45,7 +45,7 @@
   },
   {
     "id": "SQ-12", "name": "Nyro's Dream Visions", "category": "side", "act": "act2",
-    "levelRange": "16-22", "giver": "Nyro", "giverLocation": "Village Hub — Inn: The Bright Hearth (20, 14)",
+    "levelRange": "16-22", "giver": "Nyro", "giverLocation": "Everwick — Inn: The Bright Hearth (20, 14)",
     "triggerCondition": "MQ-05 complete, 3+ inn rests",
     "objectives": [
       { "index": 0, "description": "Speak with Nyro about dream visions" },
@@ -86,7 +86,7 @@
   },
   {
     "id": "SQ-14", "name": "The Stagnation Breaker", "category": "side", "act": "act3",
-    "levelRange": "22-26", "giver": "Callum", "giverLocation": "Village Hub — Elder's House (18, 10)",
+    "levelRange": "22-26", "giver": "Callum", "giverLocation": "Everwick — Elder's House (18, 10)",
     "triggerCondition": "MQ-07 complete",
     "objectives": [
       { "index": 0, "description": "Speak with Callum about freeing Lira" },

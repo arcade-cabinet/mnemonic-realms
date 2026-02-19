@@ -23,7 +23,7 @@ export class TheClearingGrowsEvent extends RpgEvent {
     this.set({
       name: 'The Clearing Grows Trigger',
       // This event is a global trigger, not tied to a specific map tile initially.
-      // It will be activated when the player enters Village Hub and MQ-04 is advanced.
+      // It will be activated when the player enters Everwick and MQ-04 is advanced.
       // We'll make it invisible and non-interactive by default.
       visible: false,
       // This event will be dynamically managed, so no graphic needed.
@@ -32,10 +32,10 @@ export class TheClearingGrowsEvent extends RpgEvent {
   }
 
   async onChanges(player: RpgPlayer) {
-    // Trigger condition: Player returns to Village Hub AND MQ-04 is advanced (obj 6)
+    // Trigger condition: Player returns to Everwick AND MQ-04 is advanced (obj 6)
     // This event should only fire once.
     if (
-      player.map.id === 'village-hub' &&
+      player.map.id === 'everwick' &&
       player.getVariable('QUEST_MQ-04_OBJ') === 6 &&
       !player.getVariable('ACT1_SCENE11_COMPLETED')
     ) {
@@ -49,7 +49,7 @@ export class TheClearingGrowsEvent extends RpgEvent {
     player.canMove = false;
     player.fixDirection();
 
-    // --- Part A: Artun's Warning (in Village Hub) ---
+    // --- Part A: Artun's Warning (in Everwick) ---
     // Dynamically spawn Artun in his house (18, 10)
     const callumEvent = await player.map.createDynamicEvent({
       x: 18,
@@ -62,7 +62,7 @@ export class TheClearingGrowsEvent extends RpgEvent {
       },
     });
 
-    await player.teleport('village-hub', 19, 11); // Player appears in Artun's house
+    await player.teleport('everwick', 19, 11); // Player appears in Artun's house
     await player.showText(
       'You broke the clearing. Good. Hana told me what you found — a Preserver scout, a frozen watchtower, the whole thing.',
     );

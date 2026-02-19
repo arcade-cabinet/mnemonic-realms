@@ -12,7 +12,7 @@
     "category": "overworld",
     "act": "I",
     "connections": [
-      { "fromTile": "15,0", "direction": "north", "toMap": "village-hub", "toTile": "15,25", "condition": "always" },
+      { "fromTile": "15,0", "direction": "north", "toMap": "everwick", "toTile": "15,25", "condition": "always" },
       { "fromTile": "39,20", "direction": "east", "toMap": "ambergrove", "toTile": "0,20", "condition": "always" },
       { "fromTile": "20,38", "direction": "south", "toMap": "shimmer-marsh", "toTile": "20,0", "condition": "MQ-04+" }
     ],
@@ -33,7 +33,7 @@
       { "id": "EV-HF-002", "position": "30,8", "type": "touch", "linkedQuest": "SQ-02", "repeat": "quest", "description": "Old Windmill entrance" },
       { "id": "EV-HF-003", "position": "33,28", "type": "auto", "linkedQuest": "MQ-04", "repeat": "once", "description": "Stagnation Clearing cutscene" },
       { "id": "EV-HF-005", "position": "20,38", "type": "touch", "repeat": "conditional", "description": "South -> Shimmer Marsh" },
-      { "id": "EV-HF-006", "position": "15,0", "type": "touch", "repeat": "repeat", "description": "North -> Village Hub" },
+      { "id": "EV-HF-006", "position": "15,0", "type": "touch", "repeat": "repeat", "description": "North -> Everwick" },
       { "id": "EV-HF-007", "position": "39,20", "type": "touch", "repeat": "repeat", "description": "East -> Ambergrove" },
       { "id": "EV-HF-008", "position": "31,9", "type": "action", "repeat": "once", "description": "Windmill Resonance Stone" },
       { "id": "EV-HF-009", "position": "34,29", "type": "action", "linkedQuest": "SQ-14", "repeat": "once", "description": "Broadcast joy into frozen Lira" }

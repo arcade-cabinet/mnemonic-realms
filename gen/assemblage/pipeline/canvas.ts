@@ -6,7 +6,15 @@ import type {
   PathSegment,
   PlacedAssemblage,
   SemanticTile,
+  VisualObject,
 } from '../types.ts';
+
+/** A visual object with absolute canvas position (in tiles) */
+export interface PlacedVisualObject {
+  objectRef: string;
+  x: number;
+  y: number;
+}
 
 /**
  * Multi-layer map canvas.
@@ -29,6 +37,8 @@ export class MapCanvas {
   readonly layerOrder: string[];
   /** Collision grid: 1 = blocked, 0 = passable */
   readonly collision: (0 | 1)[];
+  /** All visual objects (buildings, trees, props) */
+  readonly visuals: PlacedVisualObject[];
   /** All placed objects */
   readonly objects: AssemblageObject[];
   /** All event hooks */
@@ -42,6 +52,7 @@ export class MapCanvas {
     this.layerOrder = [...comp.layers];
     this.layers = new Map();
     this.collision = new Array(comp.width * comp.height).fill(0);
+    this.visuals = [];
     this.objects = [];
     this.hooks = [];
 
@@ -100,6 +111,17 @@ export class MapCanvas {
       }
     }
 
+    // Add visual objects (offset positions by placement)
+    if (assemblage.visuals) {
+      for (const vis of assemblage.visuals) {
+        this.visuals.push({
+          objectRef: vis.objectRef,
+          x: vis.x + x,
+          y: vis.y + y,
+        });
+      }
+    }
+
     // Add objects (offset positions by placement)
     if (assemblage.objects) {
       for (const obj of assemblage.objects) {
@@ -153,6 +175,11 @@ export class MapCanvas {
   /** Set collision at a position. */
   setCollision(x: number, y: number, blocked: boolean): void {
     this.collision[y * this.width + x] = blocked ? 1 : 0;
+  }
+
+  /** Add a standalone visual object. */
+  addVisual(vis: PlacedVisualObject): void {
+    this.visuals.push(vis);
   }
 
   /** Add a standalone object (not from an assemblage). */
@@ -238,6 +265,13 @@ export function composeMap(comp: MapComposition): MapCanvas {
   if (comp.paths) {
     for (const path of comp.paths) {
       canvas.drawPath(path);
+    }
+  }
+
+  // Add map-level visuals
+  if (comp.visuals) {
+    for (const vis of comp.visuals) {
+      canvas.addVisual(vis);
     }
   }
 
