@@ -28,12 +28,12 @@ import type { SceneDdl } from '../../schemas/ddl-scenes.ts';
 
 const MAP_NAME_TO_ID: Record<string, string> = {
   // Settled Lands
-  'everwick': 'everwick',
+  everwick: 'everwick',
   'village hub': 'everwick',
-  'heartfield': 'heartfield',
-  'ambergrove': 'ambergrove',
-  'millbrook': 'millbrook',
-  'sunridge': 'sunridge',
+  heartfield: 'heartfield',
+  ambergrove: 'ambergrove',
+  millbrook: 'millbrook',
+  sunridge: 'sunridge',
   // Depths
   'memory cellar': 'depths-l1',
   'depths l1': 'depths-l1',
@@ -41,14 +41,14 @@ const MAP_NAME_TO_ID: Record<string, string> = {
   'depths l3': 'depths-l3',
   'depths l4': 'depths-l4',
   'depths l5': 'depths-l5',
-  'depths': 'depths-l1',
+  depths: 'depths-l1',
   'the depths': 'depths-l1',
   'the deepest memory': 'depths-l5',
   'level 5': 'depths-l5',
   // Frontier
   'shimmer marsh': 'shimmer-marsh',
   'hollow ridge': 'hollow-ridge',
-  'flickerveil': 'flickerveil',
+  flickerveil: 'flickerveil',
   'resonance fields': 'resonance-fields',
   // Sketch Realm
   'luminous wastes': 'luminous-wastes',
@@ -69,7 +69,7 @@ const MAP_NAME_TO_ID: Record<string, string> = {
   "lira's workshop": 'lira-workshop',
   "hana's workshop": 'hana-workshop',
   // Special
-  'everywhere': 'all-maps',
+  everywhere: 'all-maps',
   'the edge': 'luminous-wastes',
 };
 
@@ -170,11 +170,11 @@ function parseLocation(raw: string): ParsedLocation {
 
 function resolveMapId(name: string): string {
   // Normalize: lowercase, strip leading articles, strip dimension info
-  let key = name
+  const key = name
     .toLowerCase()
     .trim()
-    .replace(/\s*\(.*?\)\s*$/, '')  // Strip parenthetical info like "(40x40 tiles)"
-    .replace(/\s*\d+x\d+.*$/, '')   // Strip dimension specs
+    .replace(/\s*\(.*?\)\s*$/, '') // Strip parenthetical info like "(40x40 tiles)"
+    .replace(/\s*\d+x\d+.*$/, '') // Strip dimension specs
     .trim();
 
   if (MAP_NAME_TO_ID[key]) return MAP_NAME_TO_ID[key];
@@ -196,7 +196,10 @@ function resolveMapId(name: string): string {
   if (MAP_NAME_TO_ID[hyphenated]) return MAP_NAME_TO_ID[hyphenated];
 
   // Kebab-case as fallback
-  return key.replace(/^the\s+/, '').replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+  return key
+    .replace(/^the\s+/, '')
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, '');
 }
 
 // ---------------------------------------------------------------------------
@@ -216,11 +219,18 @@ function parseTrigger(raw: string, mapId: string, position?: string): ParsedTrig
   if (lower.includes('game start') || lower.includes('opening')) {
     return { type: 'auto', map: mapId, condition: 'game-start' };
   }
-  if (lower.includes('enters') && lower.includes('tile') || lower.includes('approaches')) {
+  if ((lower.includes('enters') && lower.includes('tile')) || lower.includes('approaches')) {
     return { type: 'area-enter', map: mapId, position, condition: undefined };
   }
-  if (lower.includes('enters') && (lower.includes('map') || lower.includes('workshop') || lower.includes('house'))) {
-    return { type: 'map-enter', map: mapId, condition: lower.includes('first') ? 'first-visit' : undefined };
+  if (
+    lower.includes('enters') &&
+    (lower.includes('map') || lower.includes('workshop') || lower.includes('house'))
+  ) {
+    return {
+      type: 'map-enter',
+      map: mapId,
+      condition: lower.includes('first') ? 'first-visit' : undefined,
+    };
   }
   if (lower.includes('exits') || lower.includes('via')) {
     return { type: 'map-enter', map: mapId, condition: 'first-visit' };
@@ -329,19 +339,46 @@ function extractSubsection(body: string, heading: string): string | undefined {
 /** Known metadata labels and non-NPC bold patterns to exclude from NPC extraction */
 const METADATA_LABELS = new Set([
   // Markdown metadata fields
-  'location', 'trigger', 'characters', 'time of day', 'system',
-  'player', 'mechanic taught', 'mechanics taught', 'item received',
-  'item', 'companion gained', 'companion lost', 'vibrancy',
-  'vibrancy change', 'quest activated', 'quest completed',
-  'quest updated', 'level', 'xp gained', 'gold gained',
-  'fragment lost', 'key item', 'total fragments',
-  'emotional arc', 'estimated playtime', 'scenes',
-  'visual', 'music', 'text', 'duration',
+  'location',
+  'trigger',
+  'characters',
+  'time of day',
+  'system',
+  'player',
+  'mechanic taught',
+  'mechanics taught',
+  'item received',
+  'item',
+  'companion gained',
+  'companion lost',
+  'vibrancy',
+  'vibrancy change',
+  'quest activated',
+  'quest completed',
+  'quest updated',
+  'level',
+  'xp gained',
+  'gold gained',
+  'fragment lost',
+  'key item',
+  'total fragments',
+  'emotional arc',
+  'estimated playtime',
+  'scenes',
+  'visual',
+  'music',
+  'text',
+  'duration',
   // Conditional labels that appear in dialogue choices
-  'if broken', 'if preserved', 'either way',
+  'if broken',
+  'if preserved',
+  'either way',
   // Descriptive labels that aren't characters
-  'dissolved memory echoes', 'dissolved memory echo',
-  'frozen npcs', 'ridgewalker npcs', 'frontier settlement npcs',
+  'dissolved memory echoes',
+  'dissolved memory echo',
+  'frozen npcs',
+  'ridgewalker npcs',
+  'frontier settlement npcs',
   'frozen festival npcs',
 ]);
 
@@ -384,7 +421,10 @@ function extractNpcs(body: string, characters?: string): Array<{ npcId: string; 
         );
       });
     for (const name of names) {
-      const id = name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+      const id = name
+        .toLowerCase()
+        .replace(/\s+/g, '-')
+        .replace(/[^a-z0-9-]/g, '');
       npcs.set(id, name);
     }
   }
@@ -396,7 +436,10 @@ function extractNpcs(body: string, characters?: string): Array<{ npcId: string; 
     const name = m[1].trim();
     if (!isLikelyNpcName(name)) continue;
     if (name.length > 30) continue;
-    const id = name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+    const id = name
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^a-z0-9-]/g, '');
     if (!npcs.has(id)) {
       npcs.set(id, name);
     }
@@ -408,7 +451,7 @@ function extractNpcs(body: string, characters?: string): Array<{ npcId: string; 
 /** Extract system messages from > **SYSTEM**: lines */
 function extractSystemMessages(body: string): string[] {
   const messages: string[] = [];
-  const matches = body.matchAll(/>\s*\*\*SYSTEM(?:\s*[—–\-]\s*[A-Z\s]+)?\*\*\s*:\s*(.+)/g);
+  const matches = body.matchAll(/>\s*\*\*SYSTEM(?:\s*[—–-]\s*[A-Z\s]+)?\*\*\s*:\s*(.+)/g);
   for (const m of matches) {
     messages.push(m[1].trim());
   }
@@ -464,17 +507,13 @@ function extractEffects(body: string): Array<{ type: string; params: Record<stri
   }
 
   // Item received patterns
-  const itemGiveMatches = body.matchAll(
-    /\*\*(?:Item received|Item)\*\*\s*:\s*(.+)/gi,
-  );
+  const itemGiveMatches = body.matchAll(/\*\*(?:Item received|Item)\*\*\s*:\s*(.+)/gi);
   for (const m of itemGiveMatches) {
     effects.push({ type: 'item-give', params: { description: m[1].trim() } });
   }
 
   // Companion gained
-  const companionMatch = body.match(
-    /\*\*Companion gained\*\*\s*:\s*(.+)/i,
-  );
+  const companionMatch = body.match(/\*\*Companion gained\*\*\s*:\s*(.+)/i);
   if (companionMatch) {
     const desc = companionMatch[1].trim();
     const nameMatch = desc.match(/^(\w+)/);
@@ -485,9 +524,7 @@ function extractEffects(body: string): Array<{ type: string; params: Record<stri
   }
 
   // Companion lost
-  const companionLeave = body.match(
-    /\*\*Companion lost\*\*\s*:\s*(.+)/i,
-  );
+  const companionLeave = body.match(/\*\*Companion lost\*\*\s*:\s*(.+)/i);
   if (companionLeave) {
     effects.push({
       type: 'companion-leave',
@@ -496,9 +533,7 @@ function extractEffects(body: string): Array<{ type: string; params: Record<stri
   }
 
   // Vibrancy change
-  const vibrancyMatch = body.match(
-    /\*\*Vibrancy(?:\s+change)?\*\*\s*:\s*(.+)/i,
-  );
+  const vibrancyMatch = body.match(/\*\*Vibrancy(?:\s+change)?\*\*\s*:\s*(.+)/i);
   if (vibrancyMatch) {
     effects.push({
       type: 'vibrancy-change',
@@ -507,9 +542,7 @@ function extractEffects(body: string): Array<{ type: string; params: Record<stri
   }
 
   // Quest activated / completed / updated
-  const questMatches = body.matchAll(
-    /\*\*Quest (\w+)\*\*\s*:\s*(.+)/gi,
-  );
+  const questMatches = body.matchAll(/\*\*Quest (\w+)\*\*\s*:\s*(.+)/gi);
   for (const m of questMatches) {
     const action = m[1].toLowerCase();
     effects.push({
@@ -519,11 +552,13 @@ function extractEffects(body: string): Array<{ type: string; params: Record<stri
   }
 
   // Look for "joins the party" in dialogue
-  const joinMatches = body.matchAll(
-    /(\w+)\s+joins the party.*?(?:\(([^)]+)\))?/gi,
-  );
+  const joinMatches = body.matchAll(/(\w+)\s+joins the party.*?(?:\(([^)]+)\))?/gi);
   for (const m of joinMatches) {
-    if (!effects.some((e) => e.type === 'companion-join' && e.params.companionId === m[1].toLowerCase())) {
+    if (
+      !effects.some(
+        (e) => e.type === 'companion-join' && e.params.companionId === m[1].toLowerCase(),
+      )
+    ) {
       effects.push({
         type: 'companion-join',
         params: { companionId: m[1].toLowerCase(), class: m[2] ?? undefined },
@@ -540,7 +575,9 @@ function extractQuestChanges(body: string): Array<{ questId: string; action: str
   const seen = new Set<string>();
 
   // Quest activated
-  const activated = body.matchAll(/\*\*Quest activated\*\*\s*:\s*.*?"([^"]*)".*?\((MQ-\d+|SQ-\d+)\)/gi);
+  const activated = body.matchAll(
+    /\*\*Quest activated\*\*\s*:\s*.*?"([^"]*)".*?\((MQ-\d+|SQ-\d+)\)/gi,
+  );
   for (const m of activated) {
     const key = `${m[2]}-activate`;
     if (!seen.has(key)) {
@@ -550,7 +587,9 @@ function extractQuestChanges(body: string): Array<{ questId: string; action: str
   }
 
   // Quest completed
-  const completed = body.matchAll(/\*\*Quest completed\*\*\s*:\s*.*?"([^"]*)".*?\((MQ-\d+|SQ-\d+)\)/gi);
+  const completed = body.matchAll(
+    /\*\*Quest completed\*\*\s*:\s*.*?"([^"]*)".*?\((MQ-\d+|SQ-\d+)\)/gi,
+  );
   for (const m of completed) {
     const key = `${m[2]}-complete`;
     if (!seen.has(key)) {
@@ -608,7 +647,12 @@ export function parseActScript(markdownPath: string, actNumber: number): ParseRe
     // Parse location
     const location = locationRaw
       ? parseLocation(locationRaw)
-      : { mapId: 'unknown', subLocation: undefined, spawnPosition: undefined, rawMapName: 'unknown' };
+      : {
+          mapId: 'unknown',
+          subLocation: undefined,
+          spawnPosition: undefined,
+          rawMapName: 'unknown',
+        };
 
     if (location.mapId === 'unknown') {
       warnings.push(`Scene ${sceneNumber}: Could not resolve map ID from "${locationRaw}"`);
@@ -623,7 +667,7 @@ export function parseActScript(markdownPath: string, actNumber: number): ParseRe
     const narrativeContext = extractSubsection(body, 'Narrative Context');
     const playerActionsSection = extractSubsection(body, 'Player Actions');
     const tutorialSection = extractSubsection(body, 'Tutorial Integration');
-    const rewardsSection = extractSubsection(body, 'Rewards');
+    const _rewardsSection = extractSubsection(body, 'Rewards');
 
     // Extract NPCs
     const npcs = extractNpcs(body, charactersRaw).map((npc) => ({
@@ -661,7 +705,11 @@ export function parseActScript(markdownPath: string, actNumber: number): ParseRe
 
     // Build summary from narrative context (first sentence or paragraph)
     const summary = narrativeContext
-      ? narrativeContext.split('\n\n')[0].replace(/^#+.*\n/, '').trim().slice(0, 200)
+      ? narrativeContext
+          .split('\n\n')[0]
+          .replace(/^#+.*\n/, '')
+          .trim()
+          .slice(0, 200)
       : `Scene ${sceneNumber} of ${actId}: ${sceneName}`;
 
     // Level range from existing patterns or estimate

@@ -6,6 +6,7 @@ import { DepthsLevel2Map } from './maps/depths-level-2-drowned-archive';
 import { DepthsLevel3Map } from './maps/depths-level-3-resonant-caverns';
 import { DepthsLevel4Map } from './maps/depths-level-4-the-songline';
 import { DepthsLevel5Map } from './maps/depths-level-5-the-deepest-memory';
+import { EverwickMap } from './maps/everwick';
 import { FlickerveilMap } from './maps/flickerveil';
 import { FortressF1Map } from './maps/fortress-floor-1-gallery-of-moments';
 import { FortressF2Map } from './maps/fortress-floor-2-archive-of-perfection';
@@ -19,7 +20,6 @@ import { ShimmerMarshMap } from './maps/shimmer-marsh';
 import { SunridgeMap } from './maps/sunridge';
 import { HalfDrawnForestMap } from './maps/the-half-drawn-forest';
 import { UndrawnPeaksMap } from './maps/the-undrawn-peaks';
-import { EverwickMap } from './maps/everwick';
 import { player } from './player';
 
 @RpgModule<RpgServer>({

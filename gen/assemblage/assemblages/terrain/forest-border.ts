@@ -22,12 +22,12 @@ interface ForestBorderOptions {
 
 /** Tree palette refs with approximate sizes in tiles (at 16px/tile) */
 const TREE_TYPES = [
-  { ref: 'tree.emerald-5', tilesW: 6, tilesH: 8 },  // 97x124
-  { ref: 'tree.emerald-6', tilesW: 5, tilesH: 7 },  // 80x110
-  { ref: 'tree.emerald-3', tilesW: 3, tilesH: 6 },  // 52x92
-  { ref: 'tree.emerald-4', tilesW: 3, tilesH: 6 },  // 48x93
-  { ref: 'tree.emerald-1', tilesW: 4, tilesH: 4 },  // 64x63
-  { ref: 'tree.emerald-2', tilesW: 3, tilesH: 4 },  // 46x63
+  { ref: 'tree.emerald-5', tilesW: 6, tilesH: 8 }, // 97x124
+  { ref: 'tree.emerald-6', tilesW: 5, tilesH: 7 }, // 80x110
+  { ref: 'tree.emerald-3', tilesW: 3, tilesH: 6 }, // 52x92
+  { ref: 'tree.emerald-4', tilesW: 3, tilesH: 6 }, // 48x93
+  { ref: 'tree.emerald-1', tilesW: 4, tilesH: 4 }, // 64x63
+  { ref: 'tree.emerald-2', tilesW: 3, tilesH: 4 }, // 46x63
 ];
 
 const BUSH_TYPES = [

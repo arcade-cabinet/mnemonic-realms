@@ -53,14 +53,14 @@ export const SceneVisualRefSchema = z.object({
 
 export const SceneTriggerSchema = z.object({
   type: z.enum([
-    'auto',          // Fires automatically (e.g., game start, scene entry)
-    'map-enter',     // Player enters the map for the first time
-    'area-enter',    // Player enters a specific tile area
-    'npc-talk',      // Player talks to an NPC
-    'quest-state',   // A quest reaches a specific state
-    'item-pickup',   // Player picks up a specific item
-    'cutscene',      // Triggered by a cutscene system
-    'combat-end',    // After a combat encounter resolves
+    'auto', // Fires automatically (e.g., game start, scene entry)
+    'map-enter', // Player enters the map for the first time
+    'area-enter', // Player enters a specific tile area
+    'npc-talk', // Player talks to an NPC
+    'quest-state', // A quest reaches a specific state
+    'item-pickup', // Player picks up a specific item
+    'cutscene', // Triggered by a cutscene system
+    'combat-end', // After a combat encounter resolves
   ]),
   /** Map ID where this trigger fires */
   map: z.string(),
@@ -118,20 +118,20 @@ export const SceneEventTriggerSchema = z.object({
 
 export const SceneEffectSchema = z.object({
   type: z.enum([
-    'vibrancy-change',    // Zone vibrancy delta
-    'companion-join',     // NPC joins party
-    'companion-leave',    // NPC leaves party
-    'item-give',          // Player receives item
-    'item-remove',        // Item removed from inventory
-    'quest-update',       // Quest state change
-    'combat-start',       // Encounter triggers
-    'cutscene-play',      // Cutscene plays
-    'gui-show',           // GUI element appears (remix table, broadcast target, etc.)
-    'system-message',     // System text message
-    'music-change',       // BGM/ambient change
-    'screen-effect',      // Visual effect (desaturate, night, flash, etc.)
-    'teleport',           // Player teleported to new location
-    'map-transition',     // Transition to another map
+    'vibrancy-change', // Zone vibrancy delta
+    'companion-join', // NPC joins party
+    'companion-leave', // NPC leaves party
+    'item-give', // Player receives item
+    'item-remove', // Item removed from inventory
+    'quest-update', // Quest state change
+    'combat-start', // Encounter triggers
+    'cutscene-play', // Cutscene plays
+    'gui-show', // GUI element appears (remix table, broadcast target, etc.)
+    'system-message', // System text message
+    'music-change', // BGM/ambient change
+    'screen-effect', // Visual effect (desaturate, night, flash, etc.)
+    'teleport', // Player teleported to new location
+    'map-transition', // Transition to another map
   ]),
   /** Effect parameters — varies by type */
   params: z.record(z.string(), z.unknown()),

@@ -12,11 +12,11 @@
 
 import { existsSync, mkdirSync, readdirSync, writeFileSync } from 'node:fs';
 import { basename, resolve } from 'node:path';
+import { compileMap, getScenesForMap, listCompiledMaps } from './compiler/scene-compiler.ts';
+import { parseActScript } from './parser/act-script-parser.ts';
 import { composeMap } from './pipeline/canvas.ts';
 import { generateEventsFile, generateMapClass } from './pipeline/event-codegen.ts';
 import { serializeToTmx } from './pipeline/tmx-serializer.ts';
-import { parseActScript } from './parser/act-script-parser.ts';
-import { compileMap, listCompiledMaps, getScenesForMap } from './compiler/scene-compiler.ts';
 import { buildPalette, type TilesetPalette } from './tileset/palette-builder.ts';
 import type { MapComposition } from './types.ts';
 
@@ -83,7 +83,7 @@ async function runParse(target: string) {
 
     // Write scene DDL JSON
     const outPath = resolve(DDL_SCENES_DIR, `${act}.json`);
-    writeFileSync(outPath, JSON.stringify(result.scenes, null, 2) + '\n', 'utf-8');
+    writeFileSync(outPath, `${JSON.stringify(result.scenes, null, 2)}\n`, 'utf-8');
     console.log(`  Wrote ${result.scenes.length} scenes → ${outPath}`);
 
     // Report warnings
@@ -99,15 +99,15 @@ async function runParse(target: string) {
     const npcs = new Set(result.scenes.flatMap((s) => s.npcs.map((n) => n.npcId)));
     console.log(`  Maps: ${[...maps].join(', ')}`);
     console.log(`  NPCs: ${[...npcs].join(', ')}`);
-    console.log(`  Quest refs: ${[...new Set(result.scenes.flatMap((s) => s.questRefs ?? []))].join(', ')}`);
+    console.log(
+      `  Quest refs: ${[...new Set(result.scenes.flatMap((s) => s.questRefs ?? []))].join(', ')}`,
+    );
     console.log('');
   }
 }
 
 async function runCompile(target: string) {
-  const mapIds = target === 'all'
-    ? listCompiledMaps(ROOT)
-    : [target];
+  const mapIds = target === 'all' ? listCompiledMaps(ROOT) : [target];
 
   if (mapIds.length === 0) {
     console.log('No maps referenced in scene DDL. Run "pnpm assemblage parse all" first.');
@@ -134,7 +134,9 @@ async function runCompile(target: string) {
       const eventCount = (comp.objects ?? []).filter((o) => o.type === 'trigger').length;
       const chestCount = (comp.objects ?? []).filter((o) => o.type === 'chest').length;
       const transitionCount = (comp.objects ?? []).filter((o) => o.type === 'transition').length;
-      console.log(`  Objects: ${npcCount} NPCs, ${eventCount} events, ${chestCount} chests, ${transitionCount} transitions`);
+      console.log(
+        `  Objects: ${npcCount} NPCs, ${eventCount} events, ${chestCount} chests, ${transitionCount} transitions`,
+      );
       console.log(`  Assemblages: ${comp.placements.length}`);
       console.log(`  Canvas: ${comp.width}x${comp.height} @ ${comp.tileWidth}px`);
 
@@ -160,7 +162,9 @@ async function runCompile(target: string) {
         writeFileSync(resolve(TMX_OUT, `${comp.id}.tmx`), tmx, 'utf-8');
         console.log(`  TMX: ${comp.id}.tmx`);
       } else {
-        console.log('  (No assemblages — skipping TMX generation. Fill scene DDL assemblage refs first.)');
+        console.log(
+          '  (No assemblages — skipping TMX generation. Fill scene DDL assemblage refs first.)',
+        );
       }
 
       // Always generate events file (NPCs, transitions work without assemblages)
@@ -181,7 +185,7 @@ async function runCompile(target: string) {
       // Write scene metadata JSON (for test scaffolding)
       const metaPath = resolve(ROOT, `gen/ddl/compiled/${mapId}-scenes.json`);
       mkdirSync(resolve(ROOT, 'gen/ddl/compiled'), { recursive: true });
-      writeFileSync(metaPath, JSON.stringify(result.sceneMeta, null, 2) + '\n', 'utf-8');
+      writeFileSync(metaPath, `${JSON.stringify(result.sceneMeta, null, 2)}\n`, 'utf-8');
       console.log(`  Scene meta: ${metaPath}`);
     } catch (err) {
       console.error(`  ERROR: ${(err as Error).message}`);
@@ -347,7 +351,7 @@ async function runValidate(target: string) {
       if (p.x + a.width > comp.width || p.y + a.height > comp.height) {
         errors.push(
           `${a.id}: exceeds canvas at (${p.x}, ${p.y}) ` +
-          `size ${a.width}x${a.height} on ${comp.width}x${comp.height}`,
+            `size ${a.width}x${a.height} on ${comp.width}x${comp.height}`,
         );
       }
     }
@@ -360,7 +364,7 @@ async function runValidate(target: string) {
         if (rectsOverlap(a, b)) {
           errors.push(
             `Overlap: ${a.assemblage.id} at (${a.x},${a.y}) and ` +
-            `${b.assemblage.id} at (${b.x},${b.y})`,
+              `${b.assemblage.id} at (${b.x},${b.y})`,
           );
         }
       }
@@ -398,7 +402,8 @@ async function runValidate(target: string) {
     }
 
     // Check player spawn exists
-    const hasSpawn = allObjects.some((name) => name.includes('spawn')) ||
+    const hasSpawn =
+      allObjects.some((name) => name.includes('spawn')) ||
       (comp.objects ?? []).some((o) => o.type === 'spawn');
     if (!hasSpawn) {
       errors.push('No player spawn point defined');
@@ -454,7 +459,9 @@ async function runList() {
 
 function printUsage() {
   console.log('Usage:');
-  console.log('  pnpm assemblage build [mapId|all]          Generate TMX + events from TS compositions');
+  console.log(
+    '  pnpm assemblage build [mapId|all]          Generate TMX + events from TS compositions',
+  );
   console.log('  pnpm assemblage parse [act1|act2|act3|all] Parse act scripts → scene DDL JSON');
   console.log('  pnpm assemblage compile [mapId|all]        Compile scene DDL → TMX + events');
   console.log('  pnpm assemblage scenes [mapId|all]         List scenes per map');
@@ -509,9 +516,7 @@ async function loadPalette(name: string): Promise<TilesetPalette> {
     }
   }
 
-  throw new Error(
-    `Palette '${name}' not found. Available palette files: ${files.join(', ')}`,
-  );
+  throw new Error(`Palette '${name}' not found. Available palette files: ${files.join(', ')}`);
 }
 
 function rectsOverlap(

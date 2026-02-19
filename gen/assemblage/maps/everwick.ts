@@ -25,9 +25,10 @@
  * Gates: South (→ Heartfield), East (→ Ambergrove), West (→ Millbrook),
  *        North (→ Sunridge, locked until Act II)
  */
-import type { MapComposition } from '../types.ts';
+
 import { createHouse } from '../assemblages/buildings/house.ts';
 import { createForestBorder } from '../assemblages/terrain/forest-border.ts';
+import type { MapComposition } from '../types.ts';
 
 // Map constants
 const W = 60;
@@ -102,7 +103,7 @@ const innBrightHearth = createHouse({
 
 const generalShop = createHouse({
   id: 'general-shop',
-  name: "General Shop (Khali)",
+  name: 'General Shop (Khali)',
   objectRef: 'house.green-medium-1',
   width: 10,
   height: 8,
@@ -162,7 +163,7 @@ export const composition: MapComposition = {
     // Forest borders
     { assemblage: northBorder, x: 0, y: 0 },
     { assemblage: southBorder, x: 0, y: H - 4 },
-    { assemblage: westBorder, x: 0, y: 4 },    // Start after north corner
+    { assemblage: westBorder, x: 0, y: 4 }, // Start after north corner
     { assemblage: eastBorder, x: W - 4, y: 4 }, // Start after north corner
 
     // Buildings — spread out to avoid overlaps
@@ -182,11 +183,11 @@ export const composition: MapComposition = {
       layer: 'road',
       width: 3,
       points: [
-        { x: 30, y: 4 },   // North gate
-        { x: 30, y: 12 },  // Center approach
-        { x: 30, y: 28 },  // Central square
-        { x: 30, y: 50 },  // South gate approach
-        { x: 30, y: 56 },  // South gate
+        { x: 30, y: 4 }, // North gate
+        { x: 30, y: 12 }, // Center approach
+        { x: 30, y: 28 }, // Central square
+        { x: 30, y: 50 }, // South gate approach
+        { x: 30, y: 56 }, // South gate
       ],
     },
     // East-west road through central square
@@ -195,11 +196,11 @@ export const composition: MapComposition = {
       layer: 'road',
       width: 3,
       points: [
-        { x: 4, y: 29 },   // West gate
-        { x: 14, y: 29 },  // Workshop area
-        { x: 30, y: 29 },  // Central square
-        { x: 44, y: 29 },  // Shop area
-        { x: 56, y: 29 },  // East gate
+        { x: 4, y: 29 }, // West gate
+        { x: 14, y: 29 }, // Workshop area
+        { x: 30, y: 29 }, // Central square
+        { x: 44, y: 29 }, // Shop area
+        { x: 56, y: 29 }, // East gate
       ],
     },
     // Path to lookout hill
@@ -208,8 +209,8 @@ export const composition: MapComposition = {
       layer: 'road',
       width: 2,
       points: [
-        { x: 30, y: 12 },  // Main road junction
-        { x: 26, y: 8 },   // Lookout hill approach
+        { x: 30, y: 12 }, // Main road junction
+        { x: 26, y: 8 }, // Lookout hill approach
       ],
     },
     // Path to training ground
@@ -218,8 +219,8 @@ export const composition: MapComposition = {
       layer: 'road',
       width: 2,
       points: [
-        { x: 20, y: 29 },  // From main east-west road
-        { x: 20, y: 22 },  // Training ground
+        { x: 20, y: 29 }, // From main east-west road
+        { x: 20, y: 22 }, // Training ground
       ],
     },
     // Path from buildings to main road
@@ -228,8 +229,8 @@ export const composition: MapComposition = {
       layer: 'road',
       width: 2,
       points: [
-        { x: 34, y: 24 },  // Elder's house front
-        { x: 30, y: 24 },  // Main road
+        { x: 34, y: 24 }, // Elder's house front
+        { x: 30, y: 24 }, // Main road
       ],
     },
   ],

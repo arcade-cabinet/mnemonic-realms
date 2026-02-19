@@ -1,12 +1,10 @@
 import type {
-  AssemblageDefinition,
   AssemblageObject,
   EventHook,
   MapComposition,
   PathSegment,
   PlacedAssemblage,
   SemanticTile,
-  VisualObject,
 } from '../types.ts';
 
 /** A visual object with absolute canvas position (in tiles) */
@@ -44,7 +42,9 @@ export class MapCanvas {
   /** All event hooks */
   readonly hooks: EventHook[];
 
-  constructor(comp: Pick<MapComposition, 'width' | 'height' | 'tileWidth' | 'tileHeight' | 'layers'>) {
+  constructor(
+    comp: Pick<MapComposition, 'width' | 'height' | 'tileWidth' | 'tileHeight' | 'layers'>,
+  ) {
     this.width = comp.width;
     this.height = comp.height;
     this.tileWidth = comp.tileWidth;
@@ -76,10 +76,15 @@ export class MapCanvas {
     const { assemblage, x, y } = placement;
 
     // Validate bounds
-    if (x < 0 || y < 0 || x + assemblage.width > this.width || y + assemblage.height > this.height) {
+    if (
+      x < 0 ||
+      y < 0 ||
+      x + assemblage.width > this.width ||
+      y + assemblage.height > this.height
+    ) {
       throw new Error(
         `Assemblage '${assemblage.id}' at (${x},${y}) exceeds canvas bounds ` +
-        `(${assemblage.width}x${assemblage.height} on ${this.width}x${this.height})`,
+          `(${assemblage.width}x${assemblage.height} on ${this.width}x${this.height})`,
       );
     }
 

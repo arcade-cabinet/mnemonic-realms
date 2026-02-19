@@ -17,7 +17,7 @@
  * populated. NPCs and events work regardless.
  */
 
-import { readFileSync, existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { SceneDdl } from '../../schemas/ddl-scenes.ts';
 import type {
@@ -151,7 +151,7 @@ export function compileMap(
         } else {
           warnings.push(
             `Scene ${scene.id}: assemblage '${ref.assemblageId}' not found. ` +
-            `Create it in gen/assemblage/assemblages/ and register it.`,
+              `Create it in gen/assemblage/assemblages/ and register it.`,
           );
         }
       } else {

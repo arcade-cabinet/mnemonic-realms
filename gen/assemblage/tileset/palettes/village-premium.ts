@@ -76,46 +76,94 @@ export const villagePremiumSpec: PaletteSpec = {
   terrains: {
     // Ground terrains
     'ground.grass': { tilesetName: 'Tileset_Ground', wangSetName: 'Grounds', colorName: 'Grass' },
-    'ground.light-grass': { tilesetName: 'Tileset_Ground', wangSetName: 'Grounds', colorName: 'Light Grass' },
-    'ground.dark-grass': { tilesetName: 'Tileset_Ground', wangSetName: 'Grounds', colorName: 'Dark Grass' },
+    'ground.light-grass': {
+      tilesetName: 'Tileset_Ground',
+      wangSetName: 'Grounds',
+      colorName: 'Light Grass',
+    },
+    'ground.dark-grass': {
+      tilesetName: 'Tileset_Ground',
+      wangSetName: 'Grounds',
+      colorName: 'Dark Grass',
+    },
     'ground.dirt': { tilesetName: 'Tileset_Ground', wangSetName: 'Grounds', colorName: 'Dirt' },
-    'ground.autumn': { tilesetName: 'Tileset_Ground', wangSetName: 'Grounds', colorName: 'Autumns Grass' },
-    'ground.cherry': { tilesetName: 'Tileset_Ground', wangSetName: 'Grounds', colorName: 'Cherry Grass' },
+    'ground.autumn': {
+      tilesetName: 'Tileset_Ground',
+      wangSetName: 'Grounds',
+      colorName: 'Autumns Grass',
+    },
+    'ground.cherry': {
+      tilesetName: 'Tileset_Ground',
+      wangSetName: 'Grounds',
+      colorName: 'Cherry Grass',
+    },
 
     // Water
-    'water': { tilesetName: 'Tileset_Water', wangSetName: 'Water', colorName: 'Water' },
+    water: { tilesetName: 'Tileset_Water', wangSetName: 'Water', colorName: 'Water' },
 
     // Roads
-    'road': { tilesetName: 'Tileset_Road', wangSetName: 'Road', colorName: 'Road' },
+    road: { tilesetName: 'Tileset_Road', wangSetName: 'Road', colorName: 'Road' },
     'road.brick': { tilesetName: 'Tileset_Road', wangSetName: 'Road', colorName: 'Brick Road' },
-    'road.dark-brick': { tilesetName: 'Tileset_Road', wangSetName: 'Road', colorName: 'Dark Brick Road' },
+    'road.dark-brick': {
+      tilesetName: 'Tileset_Road',
+      wangSetName: 'Road',
+      colorName: 'Dark Brick Road',
+    },
 
     // Tall grass / vegetation
-    'tallgrass': { tilesetName: 'Tileset_TallGrass', wangSetName: 'Tall Grass', colorName: 'Tall Grass' },
-    'tallgrass.flower': { tilesetName: 'Tileset_TallGrass', wangSetName: 'Tall Grass', colorName: 'Flower Grass' },
-    'tallgrass.hay': { tilesetName: 'Tileset_TallGrass', wangSetName: 'Tall Grass', colorName: 'Hay' },
+    tallgrass: {
+      tilesetName: 'Tileset_TallGrass',
+      wangSetName: 'Tall Grass',
+      colorName: 'Tall Grass',
+    },
+    'tallgrass.flower': {
+      tilesetName: 'Tileset_TallGrass',
+      wangSetName: 'Tall Grass',
+      colorName: 'Flower Grass',
+    },
+    'tallgrass.hay': {
+      tilesetName: 'Tileset_TallGrass',
+      wangSetName: 'Tall Grass',
+      colorName: 'Hay',
+    },
 
     // Farm fields
-    'farm': { tilesetName: 'Tileset_FarmField', wangSetName: 'Farm Fields', colorName: 'Farm Field' },
+    farm: { tilesetName: 'Tileset_FarmField', wangSetName: 'Farm Fields', colorName: 'Farm Field' },
 
     // Shadows
-    'shadow.light': { tilesetName: 'Tileset_Shadow', wangSetName: 'Shadow', colorName: 'Shadow (25%)' },
-    'shadow.full': { tilesetName: 'Tileset_Shadow', wangSetName: 'Shadow', colorName: 'Shadow (100%)' },
+    'shadow.light': {
+      tilesetName: 'Tileset_Shadow',
+      wangSetName: 'Shadow',
+      colorName: 'Shadow (25%)',
+    },
+    'shadow.full': {
+      tilesetName: 'Tileset_Shadow',
+      wangSetName: 'Shadow',
+      colorName: 'Shadow (100%)',
+    },
 
     // Fences
-    'fence': { tilesetName: 'Tileset_Fence_1', wangSetName: 'Fence', colorName: 'Fence 1' },
+    fence: { tilesetName: 'Tileset_Fence_1', wangSetName: 'Fence', colorName: 'Fence 1' },
     'fence.2': { tilesetName: 'Tileset_Fence_2', wangSetName: 'Fence 2', colorName: 'Fence 2' },
 
     // Walls
-    'wall': { tilesetName: 'Tileset_Wall_1', wangSetName: 'Wall 1', colorName: 'Wall 1' },
+    wall: { tilesetName: 'Tileset_Wall_1', wangSetName: 'Wall 1', colorName: 'Wall 1' },
 
     // Rock slopes (cliffs/elevation)
-    'cliff.brown': { tilesetName: 'Tileset_RockSlope_1_Brown', wangSetName: 'Rock Slope 1', colorName: 'Rock Slope' },
-    'cliff.gray': { tilesetName: 'Tileset_RockSlope_1_Gray', wangSetName: 'Rock Slope 1', colorName: 'Rock Slope' },
+    'cliff.brown': {
+      tilesetName: 'Tileset_RockSlope_1_Brown',
+      wangSetName: 'Rock Slope 1',
+      colorName: 'Rock Slope',
+    },
+    'cliff.gray': {
+      tilesetName: 'Tileset_RockSlope_1_Gray',
+      wangSetName: 'Rock Slope 1',
+      colorName: 'Rock Slope',
+    },
 
     // Beach/sand
-    'sand': { tilesetName: 'Tileset_Sand', wangSetName: 'Beach', colorName: 'Sand' },
-    'sea': { tilesetName: 'Tileset_Sand', wangSetName: 'Beach', colorName: 'Sea' },
+    sand: { tilesetName: 'Tileset_Sand', wangSetName: 'Beach', colorName: 'Sand' },
+    sea: { tilesetName: 'Tileset_Sand', wangSetName: 'Beach', colorName: 'Sea' },
   },
 
   // Object mappings (buildings, trees, props from collection tilesets)
@@ -168,12 +216,12 @@ export const villagePremiumSpec: PaletteSpec = {
     'shelter.blue': { tilesetName: 'Objects_Buildings', localTileId: 305 },
 
     // --- Trees: Emerald ---
-    'tree.emerald-1': { tilesetName: 'Objects_Trees', localTileId: 32 },   // 64x63
-    'tree.emerald-2': { tilesetName: 'Objects_Trees', localTileId: 0 },    // 46x63
-    'tree.emerald-3': { tilesetName: 'Objects_Trees', localTileId: 1 },    // 52x92
-    'tree.emerald-4': { tilesetName: 'Objects_Trees', localTileId: 2 },    // 48x93
-    'tree.emerald-5': { tilesetName: 'Objects_Trees', localTileId: 82 },   // 97x124 (large)
-    'tree.emerald-6': { tilesetName: 'Objects_Trees', localTileId: 103 },  // 80x110
+    'tree.emerald-1': { tilesetName: 'Objects_Trees', localTileId: 32 }, // 64x63
+    'tree.emerald-2': { tilesetName: 'Objects_Trees', localTileId: 0 }, // 46x63
+    'tree.emerald-3': { tilesetName: 'Objects_Trees', localTileId: 1 }, // 52x92
+    'tree.emerald-4': { tilesetName: 'Objects_Trees', localTileId: 2 }, // 48x93
+    'tree.emerald-5': { tilesetName: 'Objects_Trees', localTileId: 82 }, // 97x124 (large)
+    'tree.emerald-6': { tilesetName: 'Objects_Trees', localTileId: 103 }, // 80x110
 
     // --- Trees: Light ---
     'tree.light-1': { tilesetName: 'Objects_Trees', localTileId: 3 },
@@ -186,13 +234,13 @@ export const villagePremiumSpec: PaletteSpec = {
     'tree.dark-3': { tilesetName: 'Objects_Trees', localTileId: 30 },
 
     // --- Bushes ---
-    'bush.emerald-1': { tilesetName: 'Objects_Trees', localTileId: 14 },   // 40x29
+    'bush.emerald-1': { tilesetName: 'Objects_Trees', localTileId: 14 }, // 40x29
     'bush.emerald-2': { tilesetName: 'Objects_Trees', localTileId: 15 },
     'bush.emerald-3': { tilesetName: 'Objects_Trees', localTileId: 16 },
     'bush.emerald-large': { tilesetName: 'Objects_Trees', localTileId: 52 },
 
     // --- Props ---
-    'prop.bulletin-board-1': { tilesetName: 'Objects_Props', localTileId: 928 },  // 44x42
+    'prop.bulletin-board-1': { tilesetName: 'Objects_Props', localTileId: 928 }, // 44x42
     'prop.bulletin-board-2': { tilesetName: 'Objects_Props', localTileId: 929 },
     'prop.sign-south': { tilesetName: 'Objects_Props', localTileId: 1029 },
     'prop.sign-north': { tilesetName: 'Objects_Props', localTileId: 1030 },
