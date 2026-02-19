@@ -1,3 +1,0 @@
-Rules\RockSlopes_2_Brown_Rules.tmx
-Rules\RockSlopes_2_Brown_Snow_Rules.tmx
-Rules\RockSlopes_2_Ice_Rules.tmx
