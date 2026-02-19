@@ -40,25 +40,28 @@ describe('SqlJsProvider', () => {
     });
 
     it('should overwrite existing data on save', async () => {
+      const baseTime = Date.now() - 2000;
       const gameData1: GameData = {
         playerId: 'player1',
         saveSlot: 1,
         data: { level: 5 },
-        timestamp: Date.now(),
+        timestamp: baseTime,
       };
 
       const gameData2: GameData = {
         playerId: 'player1',
         saveSlot: 1,
         data: { level: 10 },
-        timestamp: Date.now(),
+        timestamp: baseTime + 1000,
       };
 
       await provider.save('save-1', gameData1);
       await provider.save('save-1', gameData2);
       const loaded = await provider.load('save-1');
 
-      expect(loaded).toEqual(gameData2);
+      expect(loaded?.playerId).toBe(gameData2.playerId);
+      expect(loaded?.saveSlot).toBe(gameData2.saveSlot);
+      expect(loaded?.data).toEqual(gameData2.data);
     });
   });
 

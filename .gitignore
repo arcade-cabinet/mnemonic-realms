@@ -48,6 +48,21 @@ assets/audio/sfx/
 # Claude local config
 .claude/
 
+# Native platform builds (Capacitor-generated, committed at release only)
+ios/
+android/
+
+# Native build artifacts (always ignored)
+ios/App/Pods/
+ios/App/build/
+ios/DerivedData/
+android/app/build/
+android/.gradle/
+android/build/
+android/local.properties
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+
 # Screenshots (development artifacts)
 *.png
 !main/**/*.png
