@@ -11,6 +11,7 @@
     "lint:fix": "biome check --write .",
     "test": "playwright test",
     "test:unit": "vitest run",
+    "assemblage": "tsx gen/assemblage/cli.ts",
     "gen": "tsx gen/cli.ts",
     "gen:build": "tsx gen/cli.ts build",
     "gen:generate": "tsx gen/cli.ts generate",
