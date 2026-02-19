@@ -22,6 +22,7 @@ Read the following files to understand the project. Skip any that don't exist.
 6. `.kiro/specs/SPECS_NAME/tasks.md` — the task list to implement
 7. `.kiro/specs/SPECS_NAME/progress.md` — **read the top sections (Corrections and Codebase Patterns) FIRST and internalize them before doing anything else**, then review past progress entries
 8. `.kiro/specs/SPECS_NAME/gap-analysis.md` — gap analysis (if exists, for content spec)
+9. `.kiro/specs/master-orchestration/gap-analysis.md` — **CRITICAL: External monitor findings.** A parallel Claude session is performing runtime testing, build verification, and cross-cutting review. This file contains blockers, corrections, and architecture concerns that you cannot discover through static analysis alone. Read it EVERY iteration and address any items relevant to your current task.
 
 ## Tool Awareness
 
@@ -54,10 +55,11 @@ Before writing any code:
 
 1. Implement the task and all its subtasks in their specified order
 2. Follow the project's existing conventions and patterns
-3. After implementation, run typecheck and tests as applicable to the project:
+3. After implementation, run typecheck, tests, AND build verification:
    - TypeScript: `npm run test:unit` or `pnpm test:unit`
    - Linting: `npm run lint` or `pnpm lint`
    - Type checking: Check for TypeScript errors
+   - **Build verification: `pnpm build`** — confirm the production build still succeeds. If it fails, this is a blocker. Do not mark the task complete until the build passes.
 4. If a command fails or a test breaks:
    a. Fix the issue
    b. **Immediately ask yourself: "Could a future iteration hit this same problem?"** If yes, add it to the Corrections section at the top of `progress.md` RIGHT NOW, before continuing. Do not wait until the end.
@@ -71,6 +73,7 @@ Before marking the task complete:
 1. Re-read the exit criteria from `requirements.md` for this task and confirm each one is satisfied.
 2. Re-read the relevant design details from `design.md` and confirm the implementation conforms to the specified architecture, patterns, and constraints.
 3. If any exit criteria or design constraints are not met, go back and address them.
+4. **Honesty check:** If a validator or test reports failures/warnings, do NOT claim "100% completeness" or dismiss them as "expected" unless they genuinely are. Undocumented content (equipment, quests) because the catalog parser was never implemented is a real gap, not an "expected limitation." Missing events in TMX files are real missing content. Be honest about the state — it's better to report accurately than to inflate metrics.
 
 ## Phase 6: Update Tracking
 
