@@ -80,7 +80,7 @@ export class SqlJsProvider implements StorageDriver {
         playerId: row[1] as string,
         saveSlot: row[2] as number,
         data: JSON.parse(row[3] as string),
-        timestamp: row[5] as number,
+        timestamp: row[4] as number, // Use created_at (row[4]) instead of updated_at (row[5])
       };
     } catch (error) {
       throw new StorageReadError(

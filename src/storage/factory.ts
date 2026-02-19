@@ -1,10 +1,9 @@
-import { PlatformDetector } from '../platform/detector';
+import { platformDetector } from '../platform/detector';
 import type { StorageDriver } from './types';
 import { StorageInitializationError } from './types';
 
 export async function createStorageDriver(): Promise<StorageDriver> {
-  const detector = PlatformDetector.getInstance();
-  const platformInfo = await detector.getPlatformInfo();
+  const platformInfo = await platformDetector.getPlatformInfo();
 
   if (platformInfo.isNative) {
     // Route to SQLite provider on mobile platforms

@@ -29,7 +29,11 @@
     "validate:event": "tsx scripts/validation/cli.ts event",
     "validate:content": "tsx scripts/validation/cli.ts content",
     "validate:all": "tsx scripts/validation/cli.ts all",
-    "validate:strict": "tsx scripts/validation/cli.ts all --strict"
+    "validate:strict": "tsx scripts/validation/cli.ts all --strict",
+    "build:web": "./scripts/build-web.sh",
+    "build:ios": "./scripts/build-ios.sh",
+    "build:android": "./scripts/build-android.sh",
+    "cap:sync": "npx cap sync"
   },
   "dependencies": {
     "@capacitor-community/sqlite": "^8.0.0",
@@ -72,6 +76,7 @@
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "vitest": "^4.0.18",
+    "yaml": "^2.8.2",
     "zod": "^4.3.6"
   },
   "pnpm": {

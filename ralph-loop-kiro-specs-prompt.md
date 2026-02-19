@@ -28,6 +28,23 @@ Read the following files to understand the project. Skip any that don't exist.
 
 After loading context, take stock of what tools are available to you in this environment (e.g., MCP servers, CLI utilities, linters, formatters, test runners, build tools). You are not required to use any of them — but knowing what's available may inform better decisions during implementation and verification. Use your judgment: if a tool would genuinely help with the current task, use it. If not, don't force it.
 
+### Available MCP Servers (USE THESE)
+
+You have access to these MCP servers via kiro-cli. **You should actively use them**, especially for tasks requiring runtime verification:
+
+- **playwright** — Browser automation. Use this to verify game functionality at runtime:
+  - Start the dev server (`pnpm dev` in background), then navigate to `http://localhost:3000/mnemonic-realms/`
+  - Verify: maps load, events trigger, NPCs respond, transitions work, combat initiates
+  - Take screenshots to verify visual consistency
+  - This is the ONLY way to verify requirements that depend on runtime behavior (NPC dialogue states, puzzle mechanics, event triggers, combat encounters)
+- **github** — GitHub API. Use for checking issues, PRs, and CI status
+- **context7** — Library documentation lookup
+- **filesystem** — File system operations
+- **memory** — Persistent memory across iterations
+- **sequential-thinking** — Complex reasoning chains
+
+**When a task's exit criteria require runtime verification** (e.g., "verify NPCs respond correctly", "verify puzzle mechanics work", "verify map transitions"), you MUST use the Playwright MCP to actually test these in the running game. Static file analysis alone is insufficient.
+
 ## Phase 2: Pick ONE Task
 
 Capture the task start time by running these two shell commands and saving their output:

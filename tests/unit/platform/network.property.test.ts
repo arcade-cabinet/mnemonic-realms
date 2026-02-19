@@ -28,7 +28,7 @@ describe('Network Handling Property Tests', () => {
           fc.integer({ min: 1, max: 10 }), // maxRetries
           fc.integer({ min: 10, max: 1000 }), // initialDelay
           fc.integer({ min: 1000, max: 60000 }), // maxDelay
-          fc.float({ min: 1.5, max: 3 }), // backoffMultiplier
+          fc.float({ min: 1.5, max: 3, noNaN: true }), // backoffMultiplier
           (maxRetries, initialDelay, maxDelay, backoffMultiplier) => {
             const config: RetryConfig = {
               maxRetries,

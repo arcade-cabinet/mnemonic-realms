@@ -73,7 +73,7 @@ export class SQLiteProvider implements StorageDriver {
         playerId: row.player_id,
         saveSlot: row.save_slot,
         data: JSON.parse(row.data),
-        timestamp: row.updated_at,
+        timestamp: row.created_at, // Use created_at instead of updated_at to preserve original timestamp
       };
     } catch (error) {
       throw new StorageReadError(

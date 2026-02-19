@@ -48,6 +48,9 @@ assets/audio/sfx/
 # Claude local config
 .claude/
 
+# Git worktrees
+.worktrees/
+
 # Native platform builds (Capacitor-generated, committed at release only)
 ios/
 android/

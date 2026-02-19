@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-02-19T17:36:01.230Z",
-  "duration": 86,
+  "timestamp": "2026-02-19T20:04:47.264Z",
+  "duration": 90,
   "validators": {
     "visual": {
       "reportType": "visual",
-      "timestamp": "2026-02-19T17:36:01.163Z",
+      "timestamp": "2026-02-19T20:04:47.197Z",
       "summary": {
         "totalChecks": 20,
         "passed": 20,
@@ -15,12 +15,12 @@
       "metadata": {
         "validator": "VisualValidator",
         "version": "1.0.0",
-        "duration": 18
+        "duration": 22
       }
     },
     "sprite": {
       "category": "sprite-analysis",
-      "timestamp": "2026-02-19T17:36:01.230Z",
+      "timestamp": "2026-02-19T20:04:47.264Z",
       "summary": {
         "totalChecked": 148,
         "passed": 66,
@@ -98,7 +98,7 @@
     },
     "map": {
       "reportType": "map",
-      "timestamp": "2026-02-19T17:36:01.196Z",
+      "timestamp": "2026-02-19T20:04:47.225Z",
       "summary": {
         "totalChecks": 20,
         "passed": 0,
@@ -106,6 +106,19 @@
         "warnings": 0
       },
       "issues": [
+        {
+          "id": "ambergrove-boundary-9-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (9, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/ambergrove.tmx",
+            "coordinates": {
+              "x": 9,
+              "y": 39
+            }
+          }
+        },
         {
           "id": "ambergrove-boundary-10-39",
           "severity": "error",
@@ -116,6 +129,45 @@
             "coordinates": {
               "x": 10,
               "y": 39
+            }
+          }
+        },
+        {
+          "id": "ambergrove-boundary-11-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (11, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/ambergrove.tmx",
+            "coordinates": {
+              "x": 11,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "ambergrove-boundary-0-19",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 19) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/ambergrove.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 19
+            }
+          }
+        },
+        {
+          "id": "ambergrove-boundary-39-19",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 19) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/ambergrove.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 19
             }
           }
         },
@@ -146,6 +198,32 @@
           }
         },
         {
+          "id": "ambergrove-boundary-0-21",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 21) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/ambergrove.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 21
+            }
+          }
+        },
+        {
+          "id": "ambergrove-boundary-39-21",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 21) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/ambergrove.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 21
+            }
+          }
+        },
+        {
           "id": "depths-l1-boundary-9-0",
           "severity": "error",
           "category": "boundary",
@@ -159,6 +237,19 @@
           }
         },
         {
+          "id": "depths-l1-boundary-9-19",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (9, 19) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/depths-l1.tmx",
+            "coordinates": {
+              "x": 9,
+              "y": 19
+            }
+          }
+        },
+        {
           "id": "depths-l1-boundary-10-0",
           "severity": "error",
           "category": "boundary",
@@ -167,6 +258,32 @@
             "file": "dist/assets/depths-l1.tmx",
             "coordinates": {
               "x": 10,
+              "y": 0
+            }
+          }
+        },
+        {
+          "id": "depths-l1-boundary-10-19",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (10, 19) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/depths-l1.tmx",
+            "coordinates": {
+              "x": 10,
+              "y": 19
+            }
+          }
+        },
+        {
+          "id": "depths-l2-boundary-8-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (8, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/depths-l2.tmx",
+            "coordinates": {
+              "x": 8,
               "y": 0
             }
           }
@@ -185,6 +302,19 @@
           }
         },
         {
+          "id": "depths-l2-boundary-9-19",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (9, 19) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/depths-l2.tmx",
+            "coordinates": {
+              "x": 9,
+              "y": 19
+            }
+          }
+        },
+        {
           "id": "depths-l2-boundary-10-0",
           "severity": "error",
           "category": "boundary",
@@ -198,28 +328,80 @@
           }
         },
         {
-          "id": "depths-l3-boundary-9-0",
+          "id": "depths-l2-boundary-10-19",
           "severity": "error",
           "category": "boundary",
-          "description": "Top edge tile at (9, 0) is walkable - player could walk off map",
+          "description": "Bottom edge tile at (10, 19) is walkable - player could walk off map",
           "location": {
-            "file": "dist/assets/depths-l3.tmx",
+            "file": "dist/assets/depths-l2.tmx",
             "coordinates": {
-              "x": 9,
+              "x": 10,
+              "y": 19
+            }
+          }
+        },
+        {
+          "id": "depths-l2-boundary-11-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (11, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/depths-l2.tmx",
+            "coordinates": {
+              "x": 11,
               "y": 0
             }
           }
         },
         {
-          "id": "depths-l3-boundary-10-0",
+          "id": "depths-l3-boundary-3-0",
           "severity": "error",
           "category": "boundary",
-          "description": "Top edge tile at (10, 0) is walkable - player could walk off map",
+          "description": "Top edge tile at (3, 0) is walkable - player could walk off map",
           "location": {
             "file": "dist/assets/depths-l3.tmx",
             "coordinates": {
-              "x": 10,
+              "x": 3,
               "y": 0
+            }
+          }
+        },
+        {
+          "id": "depths-l3-boundary-4-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (4, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/depths-l3.tmx",
+            "coordinates": {
+              "x": 4,
+              "y": 0
+            }
+          }
+        },
+        {
+          "id": "depths-l3-boundary-8-19",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (8, 19) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/depths-l3.tmx",
+            "coordinates": {
+              "x": 8,
+              "y": 19
+            }
+          }
+        },
+        {
+          "id": "depths-l3-boundary-9-19",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (9, 19) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/depths-l3.tmx",
+            "coordinates": {
+              "x": 9,
+              "y": 19
             }
           }
         },
@@ -237,15 +419,15 @@
           }
         },
         {
-          "id": "depths-l4-boundary-9-24",
+          "id": "depths-l4-boundary-9-19",
           "severity": "error",
           "category": "boundary",
-          "description": "Bottom edge tile at (9, 24) is walkable - player could walk off map",
+          "description": "Bottom edge tile at (9, 19) is walkable - player could walk off map",
           "location": {
             "file": "dist/assets/depths-l4.tmx",
             "coordinates": {
               "x": 9,
-              "y": 24
+              "y": 19
             }
           }
         },
@@ -263,6 +445,19 @@
           }
         },
         {
+          "id": "depths-l4-boundary-10-19",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (10, 19) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/depths-l4.tmx",
+            "coordinates": {
+              "x": 10,
+              "y": 19
+            }
+          }
+        },
+        {
           "id": "depths-l5-boundary-9-0",
           "severity": "error",
           "category": "boundary",
@@ -272,6 +467,19 @@
             "coordinates": {
               "x": 9,
               "y": 0
+            }
+          }
+        },
+        {
+          "id": "depths-l5-boundary-9-19",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (9, 19) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/depths-l5.tmx",
+            "coordinates": {
+              "x": 9,
+              "y": 19
             }
           }
         },
@@ -289,6 +497,604 @@
           }
         },
         {
+          "id": "depths-l5-boundary-10-19",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (10, 19) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/depths-l5.tmx",
+            "coordinates": {
+              "x": 10,
+              "y": 19
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-5-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (5, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 5,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-6-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (6, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 6,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-7-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (7, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 7,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-8-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (8, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 8,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-9-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (9, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 9,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-10-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (10, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 10,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-11-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (11, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 11,
+              "y": 0
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-11-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (11, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 11,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-12-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (12, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 12,
+              "y": 0
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-12-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (12, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 12,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-13-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (13, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 13,
+              "y": 0
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-13-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (13, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 13,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-14-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (14, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 14,
+              "y": 0
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-14-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (14, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 14,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-15-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (15, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 15,
+              "y": 0
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-15-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (15, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 15,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-16-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (16, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 16,
+              "y": 0
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-16-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (16, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 16,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-17-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (17, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 17,
+              "y": 0
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-17-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (17, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 17,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-18-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (18, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 18,
+              "y": 0
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-18-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (18, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 18,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-19-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (19, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 19,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-20-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (20, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 20,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-21-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (21, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 21,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-22-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (22, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 22,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-23-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (23, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 23,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-24-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (24, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 24,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-25-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (25, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 25,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-26-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (26, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 26,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-4",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 4) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-5",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 5) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 5
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-6",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 6) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 6
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-7",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 7) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 7
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-8",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 8) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 8
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-9",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 9) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 9
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-10",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 10) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 10
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-11",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 11) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 11
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-29-11",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (29, 11) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 29,
+              "y": 11
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-12",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 12) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 12
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-29-12",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (29, 12) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 29,
+              "y": 12
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-13",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 13) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 13
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-29-13",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (29, 13) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 29,
+              "y": 13
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-14",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 14) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 14
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-29-14",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (29, 14) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 29,
+              "y": 14
+            }
+          }
+        },
+        {
           "id": "flickerveil-boundary-0-15",
           "severity": "error",
           "category": "boundary",
@@ -298,6 +1104,136 @@
             "coordinates": {
               "x": 0,
               "y": 15
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-16",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 16) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 16
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-17",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 17) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 17
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-18",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 18) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 18
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-19",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 19) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 19
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-20",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 20) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 20
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-21",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 21) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 21
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-22",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 22) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 22
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-23",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 23) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 23
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-24",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 24) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 24
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-29-24",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (29, 24) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 29,
+              "y": 24
             }
           }
         },
@@ -315,93 +1251,483 @@
           }
         },
         {
-          "id": "flickerveil-boundary-49-25",
+          "id": "flickerveil-boundary-29-25",
           "severity": "error",
           "category": "boundary",
-          "description": "Right edge tile at (49, 25) is walkable - player could walk off map",
+          "description": "Right edge tile at (29, 25) is walkable - player could walk off map",
           "location": {
             "file": "dist/assets/flickerveil.tmx",
             "coordinates": {
-              "x": 49,
+              "x": 29,
               "y": 25
             }
           }
         },
         {
-          "id": "flickerveil-boundary-0-38",
+          "id": "flickerveil-boundary-0-26",
           "severity": "error",
           "category": "boundary",
-          "description": "Left edge tile at (0, 38) is walkable - player could walk off map",
+          "description": "Left edge tile at (0, 26) is walkable - player could walk off map",
           "location": {
             "file": "dist/assets/flickerveil.tmx",
             "coordinates": {
               "x": 0,
-              "y": 38
+              "y": 26
             }
           }
         },
         {
-          "id": "fortress-f1-boundary-9-0",
+          "id": "flickerveil-boundary-29-26",
           "severity": "error",
           "category": "boundary",
-          "description": "Top edge tile at (9, 0) is walkable - player could walk off map",
+          "description": "Right edge tile at (29, 26) is walkable - player could walk off map",
           "location": {
-            "file": "dist/assets/fortress-f1.tmx",
+            "file": "dist/assets/flickerveil.tmx",
             "coordinates": {
-              "x": 9,
-              "y": 0
+              "x": 29,
+              "y": 26
             }
           }
         },
         {
-          "id": "fortress-f1-boundary-10-0",
+          "id": "flickerveil-boundary-0-27",
           "severity": "error",
           "category": "boundary",
-          "description": "Top edge tile at (10, 0) is walkable - player could walk off map",
+          "description": "Left edge tile at (0, 27) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 27
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-29-27",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (29, 27) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 29,
+              "y": 27
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-28",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 28) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 28
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-29-28",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (29, 28) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 29,
+              "y": 28
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-29",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 29) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 29
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-29-29",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (29, 29) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 29,
+              "y": 29
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-30",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 30) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 30
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-29-30",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (29, 30) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 29,
+              "y": 30
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-31",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 31) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 31
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-29-31",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (29, 31) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 29,
+              "y": 31
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-32",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 32) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 32
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-29-32",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (29, 32) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 29,
+              "y": 32
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-33",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 33) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 33
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-29-33",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (29, 33) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 29,
+              "y": 33
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-34",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 34) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 34
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-29-34",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (29, 34) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 29,
+              "y": 34
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-35",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 35) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 35
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-29-35",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (29, 35) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 29,
+              "y": 35
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-36",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 36) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 36
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-29-36",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (29, 36) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 29,
+              "y": 36
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-0-37",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 37) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 37
+            }
+          }
+        },
+        {
+          "id": "flickerveil-boundary-29-37",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (29, 37) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/flickerveil.tmx",
+            "coordinates": {
+              "x": 29,
+              "y": 37
+            }
+          }
+        },
+        {
+          "id": "fortress-f1-boundary-10-24",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (10, 24) is walkable - player could walk off map",
           "location": {
             "file": "dist/assets/fortress-f1.tmx",
             "coordinates": {
               "x": 10,
+              "y": 24
+            }
+          }
+        },
+        {
+          "id": "fortress-f1-boundary-11-24",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (11, 24) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/fortress-f1.tmx",
+            "coordinates": {
+              "x": 11,
+              "y": 24
+            }
+          }
+        },
+        {
+          "id": "fortress-f1-boundary-12-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (12, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/fortress-f1.tmx",
+            "coordinates": {
+              "x": 12,
               "y": 0
             }
           }
         },
         {
-          "id": "fortress-f2-boundary-9-0",
+          "id": "fortress-f1-boundary-12-24",
           "severity": "error",
           "category": "boundary",
-          "description": "Top edge tile at (9, 0) is walkable - player could walk off map",
+          "description": "Bottom edge tile at (12, 24) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/fortress-f1.tmx",
+            "coordinates": {
+              "x": 12,
+              "y": 24
+            }
+          }
+        },
+        {
+          "id": "fortress-f1-boundary-13-24",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (13, 24) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/fortress-f1.tmx",
+            "coordinates": {
+              "x": 13,
+              "y": 24
+            }
+          }
+        },
+        {
+          "id": "fortress-f1-boundary-14-24",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (14, 24) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/fortress-f1.tmx",
+            "coordinates": {
+              "x": 14,
+              "y": 24
+            }
+          }
+        },
+        {
+          "id": "fortress-f2-boundary-11-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (11, 0) is walkable - player could walk off map",
           "location": {
             "file": "dist/assets/fortress-f2.tmx",
             "coordinates": {
-              "x": 9,
+              "x": 11,
               "y": 0
             }
           }
         },
         {
-          "id": "fortress-f2-boundary-10-0",
+          "id": "fortress-f2-boundary-11-24",
           "severity": "error",
           "category": "boundary",
-          "description": "Top edge tile at (10, 0) is walkable - player could walk off map",
+          "description": "Bottom edge tile at (11, 24) is walkable - player could walk off map",
           "location": {
             "file": "dist/assets/fortress-f2.tmx",
             "coordinates": {
-              "x": 10,
+              "x": 11,
+              "y": 24
+            }
+          }
+        },
+        {
+          "id": "fortress-f2-boundary-12-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (12, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/fortress-f2.tmx",
+            "coordinates": {
+              "x": 12,
               "y": 0
             }
           }
         },
         {
-          "id": "fortress-f3-boundary-9-0",
+          "id": "fortress-f2-boundary-12-24",
           "severity": "error",
           "category": "boundary",
-          "description": "Top edge tile at (9, 0) is walkable - player could walk off map",
+          "description": "Bottom edge tile at (12, 24) is walkable - player could walk off map",
           "location": {
-            "file": "dist/assets/fortress-f3.tmx",
+            "file": "dist/assets/fortress-f2.tmx",
             "coordinates": {
-              "x": 9,
+              "x": 12,
+              "y": 24
+            }
+          }
+        },
+        {
+          "id": "fortress-f2-boundary-13-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (13, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/fortress-f2.tmx",
+            "coordinates": {
+              "x": 13,
               "y": 0
+            }
+          }
+        },
+        {
+          "id": "fortress-f2-boundary-13-24",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (13, 24) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/fortress-f2.tmx",
+            "coordinates": {
+              "x": 13,
+              "y": 24
             }
           }
         },
@@ -419,41 +1745,223 @@
           }
         },
         {
-          "id": "half-drawn-forest-boundary-20-39",
+          "id": "fortress-f3-boundary-10-24",
           "severity": "error",
           "category": "boundary",
-          "description": "Bottom edge tile at (20, 39) is walkable - player could walk off map",
+          "description": "Bottom edge tile at (10, 24) is walkable - player could walk off map",
           "location": {
-            "file": "dist/assets/half-drawn-forest.tmx",
+            "file": "dist/assets/fortress-f3.tmx",
             "coordinates": {
-              "x": 20,
-              "y": 39
+              "x": 10,
+              "y": 24
             }
           }
         },
         {
-          "id": "half-drawn-forest-boundary-0-10",
+          "id": "fortress-f3-boundary-11-0",
           "severity": "error",
           "category": "boundary",
-          "description": "Left edge tile at (0, 10) is walkable - player could walk off map",
+          "description": "Top edge tile at (11, 0) is walkable - player could walk off map",
           "location": {
-            "file": "dist/assets/half-drawn-forest.tmx",
+            "file": "dist/assets/fortress-f3.tmx",
             "coordinates": {
-              "x": 0,
-              "y": 10
+              "x": 11,
+              "y": 0
             }
           }
         },
         {
-          "id": "half-drawn-forest-boundary-0-20",
+          "id": "fortress-f3-boundary-11-24",
           "severity": "error",
           "category": "boundary",
-          "description": "Left edge tile at (0, 20) is walkable - player could walk off map",
+          "description": "Bottom edge tile at (11, 24) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/fortress-f3.tmx",
+            "coordinates": {
+              "x": 11,
+              "y": 24
+            }
+          }
+        },
+        {
+          "id": "fortress-f3-boundary-12-24",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (12, 24) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/fortress-f3.tmx",
+            "coordinates": {
+              "x": 12,
+              "y": 24
+            }
+          }
+        },
+        {
+          "id": "fortress-f3-boundary-13-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (13, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/fortress-f3.tmx",
+            "coordinates": {
+              "x": 13,
+              "y": 0
+            }
+          }
+        },
+        {
+          "id": "fortress-f3-boundary-13-24",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (13, 24) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/fortress-f3.tmx",
+            "coordinates": {
+              "x": 13,
+              "y": 24
+            }
+          }
+        },
+        {
+          "id": "fortress-f3-boundary-14-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (14, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/fortress-f3.tmx",
+            "coordinates": {
+              "x": 14,
+              "y": 0
+            }
+          }
+        },
+        {
+          "id": "fortress-f3-boundary-14-24",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (14, 24) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/fortress-f3.tmx",
+            "coordinates": {
+              "x": 14,
+              "y": 24
+            }
+          }
+        },
+        {
+          "id": "half-drawn-forest-boundary-14-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (14, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/half-drawn-forest.tmx",
+            "coordinates": {
+              "x": 14,
+              "y": 0
+            }
+          }
+        },
+        {
+          "id": "half-drawn-forest-boundary-14-29",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (14, 29) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/half-drawn-forest.tmx",
+            "coordinates": {
+              "x": 14,
+              "y": 29
+            }
+          }
+        },
+        {
+          "id": "half-drawn-forest-boundary-15-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (15, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/half-drawn-forest.tmx",
+            "coordinates": {
+              "x": 15,
+              "y": 0
+            }
+          }
+        },
+        {
+          "id": "half-drawn-forest-boundary-15-29",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (15, 29) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/half-drawn-forest.tmx",
+            "coordinates": {
+              "x": 15,
+              "y": 29
+            }
+          }
+        },
+        {
+          "id": "half-drawn-forest-boundary-16-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (16, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/half-drawn-forest.tmx",
+            "coordinates": {
+              "x": 16,
+              "y": 0
+            }
+          }
+        },
+        {
+          "id": "half-drawn-forest-boundary-16-29",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (16, 29) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/half-drawn-forest.tmx",
+            "coordinates": {
+              "x": 16,
+              "y": 29
+            }
+          }
+        },
+        {
+          "id": "half-drawn-forest-boundary-0-15",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 15) is walkable - player could walk off map",
           "location": {
             "file": "dist/assets/half-drawn-forest.tmx",
             "coordinates": {
               "x": 0,
-              "y": 20
+              "y": 15
+            }
+          }
+        },
+        {
+          "id": "half-drawn-forest-boundary-29-15",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (29, 15) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/half-drawn-forest.tmx",
+            "coordinates": {
+              "x": 29,
+              "y": 15
+            }
+          }
+        },
+        {
+          "id": "heartfield-boundary-14-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (14, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/heartfield.tmx",
+            "coordinates": {
+              "x": 14,
+              "y": 0
             }
           }
         },
@@ -471,6 +1979,32 @@
           }
         },
         {
+          "id": "heartfield-boundary-16-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (16, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/heartfield.tmx",
+            "coordinates": {
+              "x": 16,
+              "y": 0
+            }
+          }
+        },
+        {
+          "id": "heartfield-boundary-19-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (19, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/heartfield.tmx",
+            "coordinates": {
+              "x": 19,
+              "y": 39
+            }
+          }
+        },
+        {
           "id": "heartfield-boundary-20-39",
           "severity": "error",
           "category": "boundary",
@@ -480,6 +2014,32 @@
             "coordinates": {
               "x": 20,
               "y": 39
+            }
+          }
+        },
+        {
+          "id": "heartfield-boundary-21-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (21, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/heartfield.tmx",
+            "coordinates": {
+              "x": 21,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "heartfield-boundary-39-19",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 19) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/heartfield.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 19
             }
           }
         },
@@ -497,6 +2057,110 @@
           }
         },
         {
+          "id": "heartfield-boundary-39-21",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 21) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/heartfield.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 21
+            }
+          }
+        },
+        {
+          "id": "hollow-ridge-boundary-14-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (14, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/hollow-ridge.tmx",
+            "coordinates": {
+              "x": 14,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "hollow-ridge-boundary-15-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (15, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/hollow-ridge.tmx",
+            "coordinates": {
+              "x": 15,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "hollow-ridge-boundary-16-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (16, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/hollow-ridge.tmx",
+            "coordinates": {
+              "x": 16,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "hollow-ridge-boundary-17-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (17, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/hollow-ridge.tmx",
+            "coordinates": {
+              "x": 17,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "hollow-ridge-boundary-18-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (18, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/hollow-ridge.tmx",
+            "coordinates": {
+              "x": 18,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "hollow-ridge-boundary-19-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (19, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/hollow-ridge.tmx",
+            "coordinates": {
+              "x": 19,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "hollow-ridge-boundary-24-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (24, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/hollow-ridge.tmx",
+            "coordinates": {
+              "x": 24,
+              "y": 0
+            }
+          }
+        },
+        {
           "id": "hollow-ridge-boundary-25-0",
           "severity": "error",
           "category": "boundary",
@@ -510,41 +2174,301 @@
           }
         },
         {
-          "id": "hollow-ridge-boundary-25-49",
+          "id": "hollow-ridge-boundary-26-0",
           "severity": "error",
           "category": "boundary",
-          "description": "Bottom edge tile at (25, 49) is walkable - player could walk off map",
+          "description": "Top edge tile at (26, 0) is walkable - player could walk off map",
           "location": {
             "file": "dist/assets/hollow-ridge.tmx",
             "coordinates": {
-              "x": 25,
-              "y": 49
+              "x": 26,
+              "y": 0
             }
           }
         },
         {
-          "id": "hollow-ridge-boundary-49-25",
+          "id": "hollow-ridge-boundary-0-5",
           "severity": "error",
           "category": "boundary",
-          "description": "Right edge tile at (49, 25) is walkable - player could walk off map",
+          "description": "Left edge tile at (0, 5) is walkable - player could walk off map",
           "location": {
             "file": "dist/assets/hollow-ridge.tmx",
             "coordinates": {
-              "x": 49,
+              "x": 0,
+              "y": 5
+            }
+          }
+        },
+        {
+          "id": "hollow-ridge-boundary-0-6",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 6) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/hollow-ridge.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 6
+            }
+          }
+        },
+        {
+          "id": "hollow-ridge-boundary-0-7",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 7) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/hollow-ridge.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 7
+            }
+          }
+        },
+        {
+          "id": "hollow-ridge-boundary-0-8",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 8) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/hollow-ridge.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 8
+            }
+          }
+        },
+        {
+          "id": "hollow-ridge-boundary-0-9",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 9) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/hollow-ridge.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 9
+            }
+          }
+        },
+        {
+          "id": "hollow-ridge-boundary-0-10",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 10) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/hollow-ridge.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 10
+            }
+          }
+        },
+        {
+          "id": "hollow-ridge-boundary-0-11",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 11) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/hollow-ridge.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 11
+            }
+          }
+        },
+        {
+          "id": "hollow-ridge-boundary-0-12",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 12) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/hollow-ridge.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 12
+            }
+          }
+        },
+        {
+          "id": "hollow-ridge-boundary-39-14",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 14) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/hollow-ridge.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 14
+            }
+          }
+        },
+        {
+          "id": "hollow-ridge-boundary-39-15",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 15) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/hollow-ridge.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 15
+            }
+          }
+        },
+        {
+          "id": "hollow-ridge-boundary-39-16",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 16) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/hollow-ridge.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 16
+            }
+          }
+        },
+        {
+          "id": "hollow-ridge-boundary-39-17",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 17) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/hollow-ridge.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 17
+            }
+          }
+        },
+        {
+          "id": "hollow-ridge-boundary-39-18",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 18) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/hollow-ridge.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 18
+            }
+          }
+        },
+        {
+          "id": "hollow-ridge-boundary-0-20",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 20) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/hollow-ridge.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 20
+            }
+          }
+        },
+        {
+          "id": "hollow-ridge-boundary-0-21",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 21) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/hollow-ridge.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 21
+            }
+          }
+        },
+        {
+          "id": "hollow-ridge-boundary-0-22",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 22) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/hollow-ridge.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 22
+            }
+          }
+        },
+        {
+          "id": "hollow-ridge-boundary-0-23",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 23) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/hollow-ridge.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 23
+            }
+          }
+        },
+        {
+          "id": "hollow-ridge-boundary-0-24",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 24) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/hollow-ridge.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 24
+            }
+          }
+        },
+        {
+          "id": "hollow-ridge-boundary-0-25",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 25) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/hollow-ridge.tmx",
+            "coordinates": {
+              "x": 0,
               "y": 25
             }
           }
         },
         {
-          "id": "hollow-ridge-boundary-49-35",
+          "id": "hollow-ridge-boundary-0-26",
           "severity": "error",
           "category": "boundary",
-          "description": "Right edge tile at (49, 35) is walkable - player could walk off map",
+          "description": "Left edge tile at (0, 26) is walkable - player could walk off map",
           "location": {
             "file": "dist/assets/hollow-ridge.tmx",
             "coordinates": {
-              "x": 49,
-              "y": 35
+              "x": 0,
+              "y": 26
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-19-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (19, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 19,
+              "y": 0
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-19-29",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (19, 29) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 19,
+              "y": 29
             }
           }
         },
@@ -562,15 +2486,509 @@
           }
         },
         {
-          "id": "luminous-wastes-boundary-25-0",
+          "id": "luminous-wastes-boundary-20-29",
           "severity": "error",
           "category": "boundary",
-          "description": "Top edge tile at (25, 0) is walkable - player could walk off map",
+          "description": "Bottom edge tile at (20, 29) is walkable - player could walk off map",
           "location": {
             "file": "dist/assets/luminous-wastes.tmx",
             "coordinates": {
-              "x": 25,
+              "x": 20,
+              "y": 29
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-21-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (21, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 21,
               "y": 0
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-21-29",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (21, 29) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 21,
+              "y": 29
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-1",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 1) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 1
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-39-1",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 1) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 1
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-2",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 2) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 2
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-39-2",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 2) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 2
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-3",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 3) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 3
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-39-3",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 3) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 3
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-4",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 4) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-39-4",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 4) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-5",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 5) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 5
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-39-5",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 5) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 5
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-6",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 6) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 6
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-39-6",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 6) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 6
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-7",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 7) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 7
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-39-7",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 7) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 7
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-8",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 8) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 8
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-39-8",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 8) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 8
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-9",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 9) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 9
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-39-9",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 9) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 9
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-10",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 10) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 10
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-11",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 11) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 11
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-12",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 12) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 12
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-13",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 13) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 13
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-39-13",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 13) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 13
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-14",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 14) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 14
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-39-14",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 14) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 14
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-15",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 15) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 15
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-39-15",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 15) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 15
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-16",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 16) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 16
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-39-16",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 16) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 16
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-17",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 17) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 17
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-39-17",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 17) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 17
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-18",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 18) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 18
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-39-18",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 18) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 18
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-19",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 19) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 19
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-39-19",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 19) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 19
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-20",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 20) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 20
             }
           }
         },
@@ -588,6 +3006,227 @@
           }
         },
         {
+          "id": "luminous-wastes-boundary-0-21",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 21) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 21
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-39-21",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 21) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 21
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-22",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 22) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 22
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-39-22",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 22) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 22
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-23",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 23) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 23
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-39-23",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 23) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 23
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-24",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 24) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 24
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-39-24",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 24) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 24
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-25",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 25) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 25
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-39-25",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 25) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 25
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-26",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 26) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 26
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-39-26",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 26) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 26
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-27",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 27) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 27
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-39-27",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 27) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 27
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-0-28",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 28) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 28
+            }
+          }
+        },
+        {
+          "id": "luminous-wastes-boundary-39-28",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 28) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/luminous-wastes.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 28
+            }
+          }
+        },
+        {
+          "id": "millbrook-boundary-19-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (19, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/millbrook.tmx",
+            "coordinates": {
+              "x": 19,
+              "y": 39
+            }
+          }
+        },
+        {
           "id": "millbrook-boundary-20-39",
           "severity": "error",
           "category": "boundary",
@@ -597,6 +3236,45 @@
             "coordinates": {
               "x": 20,
               "y": 39
+            }
+          }
+        },
+        {
+          "id": "millbrook-boundary-21-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (21, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/millbrook.tmx",
+            "coordinates": {
+              "x": 21,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "millbrook-boundary-0-19",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 19) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/millbrook.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 19
+            }
+          }
+        },
+        {
+          "id": "millbrook-boundary-39-19",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 19) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/millbrook.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 19
             }
           }
         },
@@ -623,6 +3301,32 @@
             "coordinates": {
               "x": 39,
               "y": 20
+            }
+          }
+        },
+        {
+          "id": "millbrook-boundary-0-21",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 21) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/millbrook.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 21
+            }
+          }
+        },
+        {
+          "id": "millbrook-boundary-39-21",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 21) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/millbrook.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 21
             }
           }
         },
@@ -666,6 +3370,19 @@
           }
         },
         {
+          "id": "shimmer-marsh-boundary-19-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (19, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/shimmer-marsh.tmx",
+            "coordinates": {
+              "x": 19,
+              "y": 0
+            }
+          }
+        },
+        {
           "id": "shimmer-marsh-boundary-20-0",
           "severity": "error",
           "category": "boundary",
@@ -679,15 +3396,171 @@
           }
         },
         {
-          "id": "shimmer-marsh-boundary-25-49",
+          "id": "shimmer-marsh-boundary-21-0",
           "severity": "error",
           "category": "boundary",
-          "description": "Bottom edge tile at (25, 49) is walkable - player could walk off map",
+          "description": "Top edge tile at (21, 0) is walkable - player could walk off map",
           "location": {
             "file": "dist/assets/shimmer-marsh.tmx",
             "coordinates": {
-              "x": 25,
-              "y": 49
+              "x": 21,
+              "y": 0
+            }
+          }
+        },
+        {
+          "id": "shimmer-marsh-boundary-0-2",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 2) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/shimmer-marsh.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 2
+            }
+          }
+        },
+        {
+          "id": "shimmer-marsh-boundary-0-4",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 4) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/shimmer-marsh.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "shimmer-marsh-boundary-0-6",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 6) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/shimmer-marsh.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 6
+            }
+          }
+        },
+        {
+          "id": "shimmer-marsh-boundary-0-8",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 8) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/shimmer-marsh.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 8
+            }
+          }
+        },
+        {
+          "id": "shimmer-marsh-boundary-0-10",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 10) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/shimmer-marsh.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 10
+            }
+          }
+        },
+        {
+          "id": "shimmer-marsh-boundary-0-18",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 18) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/shimmer-marsh.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 18
+            }
+          }
+        },
+        {
+          "id": "shimmer-marsh-boundary-0-19",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 19) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/shimmer-marsh.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 19
+            }
+          }
+        },
+        {
+          "id": "shimmer-marsh-boundary-0-20",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 20) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/shimmer-marsh.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 20
+            }
+          }
+        },
+        {
+          "id": "shimmer-marsh-boundary-0-21",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 21) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/shimmer-marsh.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 21
+            }
+          }
+        },
+        {
+          "id": "shimmer-marsh-boundary-0-22",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 22) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/shimmer-marsh.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 22
+            }
+          }
+        },
+        {
+          "id": "shimmer-marsh-boundary-0-23",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 23) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/shimmer-marsh.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 23
+            }
+          }
+        },
+        {
+          "id": "shimmer-marsh-boundary-0-24",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 24) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/shimmer-marsh.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 24
             }
           }
         },
@@ -705,15 +3578,54 @@
           }
         },
         {
-          "id": "shimmer-marsh-boundary-49-25",
+          "id": "shimmer-marsh-boundary-0-26",
           "severity": "error",
           "category": "boundary",
-          "description": "Right edge tile at (49, 25) is walkable - player could walk off map",
+          "description": "Left edge tile at (0, 26) is walkable - player could walk off map",
           "location": {
             "file": "dist/assets/shimmer-marsh.tmx",
             "coordinates": {
-              "x": 49,
-              "y": 25
+              "x": 0,
+              "y": 26
+            }
+          }
+        },
+        {
+          "id": "shimmer-marsh-boundary-0-27",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 27) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/shimmer-marsh.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 27
+            }
+          }
+        },
+        {
+          "id": "shimmer-marsh-boundary-0-28",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 28) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/shimmer-marsh.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 28
+            }
+          }
+        },
+        {
+          "id": "sunridge-boundary-17-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (17, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/sunridge.tmx",
+            "coordinates": {
+              "x": 17,
+              "y": 0
             }
           }
         },
@@ -744,6 +3656,19 @@
           }
         },
         {
+          "id": "sunridge-boundary-19-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (19, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/sunridge.tmx",
+            "coordinates": {
+              "x": 19,
+              "y": 39
+            }
+          }
+        },
+        {
           "id": "sunridge-boundary-20-0",
           "severity": "error",
           "category": "boundary",
@@ -770,6 +3695,71 @@
           }
         },
         {
+          "id": "sunridge-boundary-21-0",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Top edge tile at (21, 0) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/sunridge.tmx",
+            "coordinates": {
+              "x": 21,
+              "y": 0
+            }
+          }
+        },
+        {
+          "id": "sunridge-boundary-21-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (21, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/sunridge.tmx",
+            "coordinates": {
+              "x": 21,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "sunridge-boundary-0-19",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 19) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/sunridge.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 19
+            }
+          }
+        },
+        {
+          "id": "sunridge-boundary-39-19",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 19) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/sunridge.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 19
+            }
+          }
+        },
+        {
+          "id": "sunridge-boundary-0-20",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 20) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/sunridge.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 20
+            }
+          }
+        },
+        {
           "id": "sunridge-boundary-39-20",
           "severity": "error",
           "category": "boundary",
@@ -783,28 +3773,80 @@
           }
         },
         {
-          "id": "undrawn-peaks-boundary-20-39",
+          "id": "sunridge-boundary-0-21",
           "severity": "error",
           "category": "boundary",
-          "description": "Bottom edge tile at (20, 39) is walkable - player could walk off map",
+          "description": "Left edge tile at (0, 21) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/sunridge.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 21
+            }
+          }
+        },
+        {
+          "id": "sunridge-boundary-39-21",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Right edge tile at (39, 21) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/sunridge.tmx",
+            "coordinates": {
+              "x": 39,
+              "y": 21
+            }
+          }
+        },
+        {
+          "id": "undrawn-peaks-boundary-14-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (14, 39) is walkable - player could walk off map",
           "location": {
             "file": "dist/assets/undrawn-peaks.tmx",
             "coordinates": {
-              "x": 20,
+              "x": 14,
               "y": 39
             }
           }
         },
         {
-          "id": "undrawn-peaks-boundary-39-25",
+          "id": "undrawn-peaks-boundary-15-39",
           "severity": "error",
           "category": "boundary",
-          "description": "Right edge tile at (39, 25) is walkable - player could walk off map",
+          "description": "Bottom edge tile at (15, 39) is walkable - player could walk off map",
           "location": {
             "file": "dist/assets/undrawn-peaks.tmx",
             "coordinates": {
-              "x": 39,
-              "y": 25
+              "x": 15,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "undrawn-peaks-boundary-16-39",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Bottom edge tile at (16, 39) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/undrawn-peaks.tmx",
+            "coordinates": {
+              "x": 16,
+              "y": 39
+            }
+          }
+        },
+        {
+          "id": "undrawn-peaks-boundary-0-20",
+          "severity": "error",
+          "category": "boundary",
+          "description": "Left edge tile at (0, 20) is walkable - player could walk off map",
+          "location": {
+            "file": "dist/assets/undrawn-peaks.tmx",
+            "coordinates": {
+              "x": 0,
+              "y": 20
             }
           }
         },
@@ -968,7 +4010,7 @@
       "metadata": {
         "validator": "MapValidator",
         "version": "1.0.0",
-        "duration": 32
+        "duration": 26
       },
       "maps": [
         {
@@ -979,10 +4021,42 @@
             {
               "type": "walkable_edge",
               "location": {
+                "x": 9,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (9, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
                 "x": 10,
                 "y": 39
               },
               "description": "Bottom edge tile at (10, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 11,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (11, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 19
+              },
+              "description": "Left edge tile at (0, 19) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 19
+              },
+              "description": "Right edge tile at (39, 19) is walkable - player could walk off map"
             },
             {
               "type": "walkable_edge",
@@ -999,6 +4073,22 @@
                 "y": 20
               },
               "description": "Right edge tile at (39, 20) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 21
+              },
+              "description": "Left edge tile at (0, 21) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 21
+              },
+              "description": "Right edge tile at (39, 21) is walkable - player could walk off map"
             }
           ],
           "transitionIssues": [],
@@ -1020,10 +4110,26 @@
             {
               "type": "walkable_edge",
               "location": {
+                "x": 9,
+                "y": 19
+              },
+              "description": "Bottom edge tile at (9, 19) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
                 "x": 10,
                 "y": 0
               },
               "description": "Top edge tile at (10, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 10,
+                "y": 19
+              },
+              "description": "Bottom edge tile at (10, 19) is walkable - player could walk off map"
             }
           ],
           "transitionIssues": [],
@@ -1037,6 +4143,14 @@
             {
               "type": "walkable_edge",
               "location": {
+                "x": 8,
+                "y": 0
+              },
+              "description": "Top edge tile at (8, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
                 "x": 9,
                 "y": 0
               },
@@ -1045,10 +4159,34 @@
             {
               "type": "walkable_edge",
               "location": {
+                "x": 9,
+                "y": 19
+              },
+              "description": "Bottom edge tile at (9, 19) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
                 "x": 10,
                 "y": 0
               },
               "description": "Top edge tile at (10, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 10,
+                "y": 19
+              },
+              "description": "Bottom edge tile at (10, 19) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 11,
+                "y": 0
+              },
+              "description": "Top edge tile at (11, 0) is walkable - player could walk off map"
             }
           ],
           "transitionIssues": [],
@@ -1062,18 +4200,34 @@
             {
               "type": "walkable_edge",
               "location": {
-                "x": 9,
+                "x": 3,
                 "y": 0
               },
-              "description": "Top edge tile at (9, 0) is walkable - player could walk off map"
+              "description": "Top edge tile at (3, 0) is walkable - player could walk off map"
             },
             {
               "type": "walkable_edge",
               "location": {
-                "x": 10,
+                "x": 4,
                 "y": 0
               },
-              "description": "Top edge tile at (10, 0) is walkable - player could walk off map"
+              "description": "Top edge tile at (4, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 8,
+                "y": 19
+              },
+              "description": "Bottom edge tile at (8, 19) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 9,
+                "y": 19
+              },
+              "description": "Bottom edge tile at (9, 19) is walkable - player could walk off map"
             }
           ],
           "transitionIssues": [],
@@ -1096,9 +4250,9 @@
               "type": "walkable_edge",
               "location": {
                 "x": 9,
-                "y": 24
+                "y": 19
               },
-              "description": "Bottom edge tile at (9, 24) is walkable - player could walk off map"
+              "description": "Bottom edge tile at (9, 19) is walkable - player could walk off map"
             },
             {
               "type": "walkable_edge",
@@ -1107,6 +4261,14 @@
                 "y": 0
               },
               "description": "Top edge tile at (10, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 10,
+                "y": 19
+              },
+              "description": "Bottom edge tile at (10, 19) is walkable - player could walk off map"
             }
           ],
           "transitionIssues": [],
@@ -1128,10 +4290,26 @@
             {
               "type": "walkable_edge",
               "location": {
+                "x": 9,
+                "y": 19
+              },
+              "description": "Bottom edge tile at (9, 19) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
                 "x": 10,
                 "y": 0
               },
               "description": "Top edge tile at (10, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 10,
+                "y": 19
+              },
+              "description": "Bottom edge tile at (10, 19) is walkable - player could walk off map"
             }
           ],
           "transitionIssues": [],
@@ -1145,119 +4323,187 @@
             {
               "type": "walkable_edge",
               "location": {
-                "x": 0,
-                "y": 15
+                "x": 5,
+                "y": 39
               },
-              "description": "Left edge tile at (0, 15) is walkable - player could walk off map"
+              "description": "Bottom edge tile at (5, 39) is walkable - player could walk off map"
             },
             {
               "type": "walkable_edge",
               "location": {
-                "x": 0,
-                "y": 25
+                "x": 6,
+                "y": 39
               },
-              "description": "Left edge tile at (0, 25) is walkable - player could walk off map"
+              "description": "Bottom edge tile at (6, 39) is walkable - player could walk off map"
             },
             {
               "type": "walkable_edge",
               "location": {
-                "x": 49,
-                "y": 25
+                "x": 7,
+                "y": 39
               },
-              "description": "Right edge tile at (49, 25) is walkable - player could walk off map"
+              "description": "Bottom edge tile at (7, 39) is walkable - player could walk off map"
             },
             {
               "type": "walkable_edge",
               "location": {
-                "x": 0,
-                "y": 38
+                "x": 8,
+                "y": 39
               },
-              "description": "Left edge tile at (0, 38) is walkable - player could walk off map"
-            }
-          ],
-          "transitionIssues": [],
-          "reachable": true
-        },
-        {
-          "mapName": "fortress-f1",
-          "mapPath": "dist/assets/fortress-f1.tmx",
-          "collisionIssues": [],
-          "boundaryIssues": [
+              "description": "Bottom edge tile at (8, 39) is walkable - player could walk off map"
+            },
             {
               "type": "walkable_edge",
               "location": {
                 "x": 9,
-                "y": 0
+                "y": 39
               },
-              "description": "Top edge tile at (9, 0) is walkable - player could walk off map"
+              "description": "Bottom edge tile at (9, 39) is walkable - player could walk off map"
             },
             {
               "type": "walkable_edge",
               "location": {
                 "x": 10,
-                "y": 0
+                "y": 39
               },
-              "description": "Top edge tile at (10, 0) is walkable - player could walk off map"
-            }
-          ],
-          "transitionIssues": [],
-          "reachable": true
-        },
-        {
-          "mapName": "fortress-f2",
-          "mapPath": "dist/assets/fortress-f2.tmx",
-          "collisionIssues": [],
-          "boundaryIssues": [
-            {
-              "type": "walkable_edge",
-              "location": {
-                "x": 9,
-                "y": 0
-              },
-              "description": "Top edge tile at (9, 0) is walkable - player could walk off map"
+              "description": "Bottom edge tile at (10, 39) is walkable - player could walk off map"
             },
             {
               "type": "walkable_edge",
               "location": {
-                "x": 10,
+                "x": 11,
                 "y": 0
               },
-              "description": "Top edge tile at (10, 0) is walkable - player could walk off map"
-            }
-          ],
-          "transitionIssues": [],
-          "reachable": true
-        },
-        {
-          "mapName": "fortress-f3",
-          "mapPath": "dist/assets/fortress-f3.tmx",
-          "collisionIssues": [],
-          "boundaryIssues": [
-            {
-              "type": "walkable_edge",
-              "location": {
-                "x": 9,
-                "y": 0
-              },
-              "description": "Top edge tile at (9, 0) is walkable - player could walk off map"
+              "description": "Top edge tile at (11, 0) is walkable - player could walk off map"
             },
             {
               "type": "walkable_edge",
               "location": {
-                "x": 10,
+                "x": 11,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (11, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 12,
                 "y": 0
               },
-              "description": "Top edge tile at (10, 0) is walkable - player could walk off map"
-            }
-          ],
-          "transitionIssues": [],
-          "reachable": true
-        },
-        {
-          "mapName": "half-drawn-forest",
-          "mapPath": "dist/assets/half-drawn-forest.tmx",
-          "collisionIssues": [],
-          "boundaryIssues": [
+              "description": "Top edge tile at (12, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 12,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (12, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 13,
+                "y": 0
+              },
+              "description": "Top edge tile at (13, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 13,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (13, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 14,
+                "y": 0
+              },
+              "description": "Top edge tile at (14, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 14,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (14, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 15,
+                "y": 0
+              },
+              "description": "Top edge tile at (15, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 15,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (15, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 16,
+                "y": 0
+              },
+              "description": "Top edge tile at (16, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 16,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (16, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 17,
+                "y": 0
+              },
+              "description": "Top edge tile at (17, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 17,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (17, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 18,
+                "y": 0
+              },
+              "description": "Top edge tile at (18, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 18,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (18, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 19,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (19, 39) is walkable - player could walk off map"
+            },
             {
               "type": "walkable_edge",
               "location": {
@@ -1265,6 +4511,102 @@
                 "y": 39
               },
               "description": "Bottom edge tile at (20, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 21,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (21, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 22,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (22, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 23,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (23, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 24,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (24, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 25,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (25, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 26,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (26, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 4
+              },
+              "description": "Left edge tile at (0, 4) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 5
+              },
+              "description": "Left edge tile at (0, 5) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 6
+              },
+              "description": "Left edge tile at (0, 6) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 7
+              },
+              "description": "Left edge tile at (0, 7) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 8
+              },
+              "description": "Left edge tile at (0, 8) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 9
+              },
+              "description": "Left edge tile at (0, 9) is walkable - player could walk off map"
             },
             {
               "type": "walkable_edge",
@@ -1278,9 +4620,629 @@
               "type": "walkable_edge",
               "location": {
                 "x": 0,
+                "y": 11
+              },
+              "description": "Left edge tile at (0, 11) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 29,
+                "y": 11
+              },
+              "description": "Right edge tile at (29, 11) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 12
+              },
+              "description": "Left edge tile at (0, 12) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 29,
+                "y": 12
+              },
+              "description": "Right edge tile at (29, 12) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 13
+              },
+              "description": "Left edge tile at (0, 13) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 29,
+                "y": 13
+              },
+              "description": "Right edge tile at (29, 13) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 14
+              },
+              "description": "Left edge tile at (0, 14) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 29,
+                "y": 14
+              },
+              "description": "Right edge tile at (29, 14) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 15
+              },
+              "description": "Left edge tile at (0, 15) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 16
+              },
+              "description": "Left edge tile at (0, 16) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 17
+              },
+              "description": "Left edge tile at (0, 17) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 18
+              },
+              "description": "Left edge tile at (0, 18) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 19
+              },
+              "description": "Left edge tile at (0, 19) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
                 "y": 20
               },
               "description": "Left edge tile at (0, 20) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 21
+              },
+              "description": "Left edge tile at (0, 21) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 22
+              },
+              "description": "Left edge tile at (0, 22) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 23
+              },
+              "description": "Left edge tile at (0, 23) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 24
+              },
+              "description": "Left edge tile at (0, 24) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 29,
+                "y": 24
+              },
+              "description": "Right edge tile at (29, 24) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 25
+              },
+              "description": "Left edge tile at (0, 25) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 29,
+                "y": 25
+              },
+              "description": "Right edge tile at (29, 25) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 26
+              },
+              "description": "Left edge tile at (0, 26) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 29,
+                "y": 26
+              },
+              "description": "Right edge tile at (29, 26) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 27
+              },
+              "description": "Left edge tile at (0, 27) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 29,
+                "y": 27
+              },
+              "description": "Right edge tile at (29, 27) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 28
+              },
+              "description": "Left edge tile at (0, 28) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 29,
+                "y": 28
+              },
+              "description": "Right edge tile at (29, 28) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 29
+              },
+              "description": "Left edge tile at (0, 29) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 29,
+                "y": 29
+              },
+              "description": "Right edge tile at (29, 29) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 30
+              },
+              "description": "Left edge tile at (0, 30) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 29,
+                "y": 30
+              },
+              "description": "Right edge tile at (29, 30) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 31
+              },
+              "description": "Left edge tile at (0, 31) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 29,
+                "y": 31
+              },
+              "description": "Right edge tile at (29, 31) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 32
+              },
+              "description": "Left edge tile at (0, 32) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 29,
+                "y": 32
+              },
+              "description": "Right edge tile at (29, 32) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 33
+              },
+              "description": "Left edge tile at (0, 33) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 29,
+                "y": 33
+              },
+              "description": "Right edge tile at (29, 33) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 34
+              },
+              "description": "Left edge tile at (0, 34) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 29,
+                "y": 34
+              },
+              "description": "Right edge tile at (29, 34) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 35
+              },
+              "description": "Left edge tile at (0, 35) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 29,
+                "y": 35
+              },
+              "description": "Right edge tile at (29, 35) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 36
+              },
+              "description": "Left edge tile at (0, 36) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 29,
+                "y": 36
+              },
+              "description": "Right edge tile at (29, 36) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 37
+              },
+              "description": "Left edge tile at (0, 37) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 29,
+                "y": 37
+              },
+              "description": "Right edge tile at (29, 37) is walkable - player could walk off map"
+            }
+          ],
+          "transitionIssues": [],
+          "reachable": true
+        },
+        {
+          "mapName": "fortress-f1",
+          "mapPath": "dist/assets/fortress-f1.tmx",
+          "collisionIssues": [],
+          "boundaryIssues": [
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 10,
+                "y": 24
+              },
+              "description": "Bottom edge tile at (10, 24) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 11,
+                "y": 24
+              },
+              "description": "Bottom edge tile at (11, 24) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 12,
+                "y": 0
+              },
+              "description": "Top edge tile at (12, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 12,
+                "y": 24
+              },
+              "description": "Bottom edge tile at (12, 24) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 13,
+                "y": 24
+              },
+              "description": "Bottom edge tile at (13, 24) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 14,
+                "y": 24
+              },
+              "description": "Bottom edge tile at (14, 24) is walkable - player could walk off map"
+            }
+          ],
+          "transitionIssues": [],
+          "reachable": true
+        },
+        {
+          "mapName": "fortress-f2",
+          "mapPath": "dist/assets/fortress-f2.tmx",
+          "collisionIssues": [],
+          "boundaryIssues": [
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 11,
+                "y": 0
+              },
+              "description": "Top edge tile at (11, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 11,
+                "y": 24
+              },
+              "description": "Bottom edge tile at (11, 24) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 12,
+                "y": 0
+              },
+              "description": "Top edge tile at (12, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 12,
+                "y": 24
+              },
+              "description": "Bottom edge tile at (12, 24) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 13,
+                "y": 0
+              },
+              "description": "Top edge tile at (13, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 13,
+                "y": 24
+              },
+              "description": "Bottom edge tile at (13, 24) is walkable - player could walk off map"
+            }
+          ],
+          "transitionIssues": [],
+          "reachable": true
+        },
+        {
+          "mapName": "fortress-f3",
+          "mapPath": "dist/assets/fortress-f3.tmx",
+          "collisionIssues": [],
+          "boundaryIssues": [
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 10,
+                "y": 0
+              },
+              "description": "Top edge tile at (10, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 10,
+                "y": 24
+              },
+              "description": "Bottom edge tile at (10, 24) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 11,
+                "y": 0
+              },
+              "description": "Top edge tile at (11, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 11,
+                "y": 24
+              },
+              "description": "Bottom edge tile at (11, 24) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 12,
+                "y": 24
+              },
+              "description": "Bottom edge tile at (12, 24) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 13,
+                "y": 0
+              },
+              "description": "Top edge tile at (13, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 13,
+                "y": 24
+              },
+              "description": "Bottom edge tile at (13, 24) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 14,
+                "y": 0
+              },
+              "description": "Top edge tile at (14, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 14,
+                "y": 24
+              },
+              "description": "Bottom edge tile at (14, 24) is walkable - player could walk off map"
+            }
+          ],
+          "transitionIssues": [],
+          "reachable": true
+        },
+        {
+          "mapName": "half-drawn-forest",
+          "mapPath": "dist/assets/half-drawn-forest.tmx",
+          "collisionIssues": [],
+          "boundaryIssues": [
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 14,
+                "y": 0
+              },
+              "description": "Top edge tile at (14, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 14,
+                "y": 29
+              },
+              "description": "Bottom edge tile at (14, 29) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 15,
+                "y": 0
+              },
+              "description": "Top edge tile at (15, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 15,
+                "y": 29
+              },
+              "description": "Bottom edge tile at (15, 29) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 16,
+                "y": 0
+              },
+              "description": "Top edge tile at (16, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 16,
+                "y": 29
+              },
+              "description": "Bottom edge tile at (16, 29) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 15
+              },
+              "description": "Left edge tile at (0, 15) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 29,
+                "y": 15
+              },
+              "description": "Right edge tile at (29, 15) is walkable - player could walk off map"
             }
           ],
           "transitionIssues": [],
@@ -1294,10 +5256,34 @@
             {
               "type": "walkable_edge",
               "location": {
+                "x": 14,
+                "y": 0
+              },
+              "description": "Top edge tile at (14, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
                 "x": 15,
                 "y": 0
               },
               "description": "Top edge tile at (15, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 16,
+                "y": 0
+              },
+              "description": "Top edge tile at (16, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 19,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (19, 39) is walkable - player could walk off map"
             },
             {
               "type": "walkable_edge",
@@ -1310,10 +5296,34 @@
             {
               "type": "walkable_edge",
               "location": {
+                "x": 21,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (21, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 19
+              },
+              "description": "Right edge tile at (39, 19) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
                 "x": 39,
                 "y": 20
               },
               "description": "Right edge tile at (39, 20) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 21
+              },
+              "description": "Right edge tile at (39, 21) is walkable - player could walk off map"
             }
           ],
           "transitionIssues": [],
@@ -1327,6 +5337,62 @@
             {
               "type": "walkable_edge",
               "location": {
+                "x": 14,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (14, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 15,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (15, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 16,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (16, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 17,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (17, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 18,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (18, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 19,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (19, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 24,
+                "y": 0
+              },
+              "description": "Top edge tile at (24, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
                 "x": 25,
                 "y": 0
               },
@@ -1335,26 +5401,170 @@
             {
               "type": "walkable_edge",
               "location": {
-                "x": 25,
-                "y": 49
+                "x": 26,
+                "y": 0
               },
-              "description": "Bottom edge tile at (25, 49) is walkable - player could walk off map"
+              "description": "Top edge tile at (26, 0) is walkable - player could walk off map"
             },
             {
               "type": "walkable_edge",
               "location": {
-                "x": 49,
+                "x": 0,
+                "y": 5
+              },
+              "description": "Left edge tile at (0, 5) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 6
+              },
+              "description": "Left edge tile at (0, 6) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 7
+              },
+              "description": "Left edge tile at (0, 7) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 8
+              },
+              "description": "Left edge tile at (0, 8) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 9
+              },
+              "description": "Left edge tile at (0, 9) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 10
+              },
+              "description": "Left edge tile at (0, 10) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 11
+              },
+              "description": "Left edge tile at (0, 11) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 12
+              },
+              "description": "Left edge tile at (0, 12) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 14
+              },
+              "description": "Right edge tile at (39, 14) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 15
+              },
+              "description": "Right edge tile at (39, 15) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 16
+              },
+              "description": "Right edge tile at (39, 16) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 17
+              },
+              "description": "Right edge tile at (39, 17) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 18
+              },
+              "description": "Right edge tile at (39, 18) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 20
+              },
+              "description": "Left edge tile at (0, 20) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 21
+              },
+              "description": "Left edge tile at (0, 21) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 22
+              },
+              "description": "Left edge tile at (0, 22) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 23
+              },
+              "description": "Left edge tile at (0, 23) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 24
+              },
+              "description": "Left edge tile at (0, 24) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
                 "y": 25
               },
-              "description": "Right edge tile at (49, 25) is walkable - player could walk off map"
+              "description": "Left edge tile at (0, 25) is walkable - player could walk off map"
             },
             {
               "type": "walkable_edge",
               "location": {
-                "x": 49,
-                "y": 35
+                "x": 0,
+                "y": 26
               },
-              "description": "Right edge tile at (49, 35) is walkable - player could walk off map"
+              "description": "Left edge tile at (0, 26) is walkable - player could walk off map"
             }
           ],
           "transitionIssues": [],
@@ -1368,6 +5578,22 @@
             {
               "type": "walkable_edge",
               "location": {
+                "x": 19,
+                "y": 0
+              },
+              "description": "Top edge tile at (19, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 19,
+                "y": 29
+              },
+              "description": "Bottom edge tile at (19, 29) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
                 "x": 20,
                 "y": 0
               },
@@ -1376,35 +5602,306 @@
             {
               "type": "walkable_edge",
               "location": {
-                "x": 25,
+                "x": 20,
+                "y": 29
+              },
+              "description": "Bottom edge tile at (20, 29) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 21,
                 "y": 0
               },
-              "description": "Top edge tile at (25, 0) is walkable - player could walk off map"
+              "description": "Top edge tile at (21, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 21,
+                "y": 29
+              },
+              "description": "Bottom edge tile at (21, 29) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 1
+              },
+              "description": "Left edge tile at (0, 1) is walkable - player could walk off map"
             },
             {
               "type": "walkable_edge",
               "location": {
                 "x": 39,
-                "y": 20
+                "y": 1
               },
-              "description": "Right edge tile at (39, 20) is walkable - player could walk off map"
-            }
-          ],
-          "transitionIssues": [],
-          "reachable": true
-        },
-        {
-          "mapName": "millbrook",
-          "mapPath": "dist/assets/millbrook.tmx",
-          "collisionIssues": [],
-          "boundaryIssues": [
+              "description": "Right edge tile at (39, 1) is walkable - player could walk off map"
+            },
             {
               "type": "walkable_edge",
               "location": {
-                "x": 20,
-                "y": 39
+                "x": 0,
+                "y": 2
               },
-              "description": "Bottom edge tile at (20, 39) is walkable - player could walk off map"
+              "description": "Left edge tile at (0, 2) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 2
+              },
+              "description": "Right edge tile at (39, 2) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 3
+              },
+              "description": "Left edge tile at (0, 3) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 3
+              },
+              "description": "Right edge tile at (39, 3) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 4
+              },
+              "description": "Left edge tile at (0, 4) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 4
+              },
+              "description": "Right edge tile at (39, 4) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 5
+              },
+              "description": "Left edge tile at (0, 5) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 5
+              },
+              "description": "Right edge tile at (39, 5) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 6
+              },
+              "description": "Left edge tile at (0, 6) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 6
+              },
+              "description": "Right edge tile at (39, 6) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 7
+              },
+              "description": "Left edge tile at (0, 7) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 7
+              },
+              "description": "Right edge tile at (39, 7) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 8
+              },
+              "description": "Left edge tile at (0, 8) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 8
+              },
+              "description": "Right edge tile at (39, 8) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 9
+              },
+              "description": "Left edge tile at (0, 9) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 9
+              },
+              "description": "Right edge tile at (39, 9) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 10
+              },
+              "description": "Left edge tile at (0, 10) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 11
+              },
+              "description": "Left edge tile at (0, 11) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 12
+              },
+              "description": "Left edge tile at (0, 12) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 13
+              },
+              "description": "Left edge tile at (0, 13) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 13
+              },
+              "description": "Right edge tile at (39, 13) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 14
+              },
+              "description": "Left edge tile at (0, 14) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 14
+              },
+              "description": "Right edge tile at (39, 14) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 15
+              },
+              "description": "Left edge tile at (0, 15) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 15
+              },
+              "description": "Right edge tile at (39, 15) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 16
+              },
+              "description": "Left edge tile at (0, 16) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 16
+              },
+              "description": "Right edge tile at (39, 16) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 17
+              },
+              "description": "Left edge tile at (0, 17) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 17
+              },
+              "description": "Right edge tile at (39, 17) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 18
+              },
+              "description": "Left edge tile at (0, 18) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 18
+              },
+              "description": "Right edge tile at (39, 18) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 19
+              },
+              "description": "Left edge tile at (0, 19) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 19
+              },
+              "description": "Right edge tile at (39, 19) is walkable - player could walk off map"
             },
             {
               "type": "walkable_edge",
@@ -1421,6 +5918,215 @@
                 "y": 20
               },
               "description": "Right edge tile at (39, 20) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 21
+              },
+              "description": "Left edge tile at (0, 21) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 21
+              },
+              "description": "Right edge tile at (39, 21) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 22
+              },
+              "description": "Left edge tile at (0, 22) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 22
+              },
+              "description": "Right edge tile at (39, 22) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 23
+              },
+              "description": "Left edge tile at (0, 23) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 23
+              },
+              "description": "Right edge tile at (39, 23) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 24
+              },
+              "description": "Left edge tile at (0, 24) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 24
+              },
+              "description": "Right edge tile at (39, 24) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 25
+              },
+              "description": "Left edge tile at (0, 25) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 25
+              },
+              "description": "Right edge tile at (39, 25) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 26
+              },
+              "description": "Left edge tile at (0, 26) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 26
+              },
+              "description": "Right edge tile at (39, 26) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 27
+              },
+              "description": "Left edge tile at (0, 27) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 27
+              },
+              "description": "Right edge tile at (39, 27) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 28
+              },
+              "description": "Left edge tile at (0, 28) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 28
+              },
+              "description": "Right edge tile at (39, 28) is walkable - player could walk off map"
+            }
+          ],
+          "transitionIssues": [],
+          "reachable": true
+        },
+        {
+          "mapName": "millbrook",
+          "mapPath": "dist/assets/millbrook.tmx",
+          "collisionIssues": [],
+          "boundaryIssues": [
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 19,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (19, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 20,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (20, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 21,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (21, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 19
+              },
+              "description": "Left edge tile at (0, 19) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 19
+              },
+              "description": "Right edge tile at (39, 19) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 20
+              },
+              "description": "Left edge tile at (0, 20) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 20
+              },
+              "description": "Right edge tile at (39, 20) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 21
+              },
+              "description": "Left edge tile at (0, 21) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 21
+              },
+              "description": "Right edge tile at (39, 21) is walkable - player could walk off map"
             }
           ],
           "transitionIssues": [],
@@ -1467,6 +6173,14 @@
             {
               "type": "walkable_edge",
               "location": {
+                "x": 19,
+                "y": 0
+              },
+              "description": "Top edge tile at (19, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
                 "x": 20,
                 "y": 0
               },
@@ -1475,10 +6189,106 @@
             {
               "type": "walkable_edge",
               "location": {
-                "x": 25,
-                "y": 49
+                "x": 21,
+                "y": 0
               },
-              "description": "Bottom edge tile at (25, 49) is walkable - player could walk off map"
+              "description": "Top edge tile at (21, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 2
+              },
+              "description": "Left edge tile at (0, 2) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 4
+              },
+              "description": "Left edge tile at (0, 4) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 6
+              },
+              "description": "Left edge tile at (0, 6) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 8
+              },
+              "description": "Left edge tile at (0, 8) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 10
+              },
+              "description": "Left edge tile at (0, 10) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 18
+              },
+              "description": "Left edge tile at (0, 18) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 19
+              },
+              "description": "Left edge tile at (0, 19) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 20
+              },
+              "description": "Left edge tile at (0, 20) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 21
+              },
+              "description": "Left edge tile at (0, 21) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 22
+              },
+              "description": "Left edge tile at (0, 22) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 23
+              },
+              "description": "Left edge tile at (0, 23) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 24
+              },
+              "description": "Left edge tile at (0, 24) is walkable - player could walk off map"
             },
             {
               "type": "walkable_edge",
@@ -1491,10 +6301,26 @@
             {
               "type": "walkable_edge",
               "location": {
-                "x": 49,
-                "y": 25
+                "x": 0,
+                "y": 26
               },
-              "description": "Right edge tile at (49, 25) is walkable - player could walk off map"
+              "description": "Left edge tile at (0, 26) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 27
+              },
+              "description": "Left edge tile at (0, 27) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 28
+              },
+              "description": "Left edge tile at (0, 28) is walkable - player could walk off map"
             }
           ],
           "transitionIssues": [],
@@ -1505,6 +6331,14 @@
           "mapPath": "dist/assets/sunridge.tmx",
           "collisionIssues": [],
           "boundaryIssues": [
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 17,
+                "y": 0
+              },
+              "description": "Top edge tile at (17, 0) is walkable - player could walk off map"
+            },
             {
               "type": "walkable_edge",
               "location": {
@@ -1524,6 +6358,14 @@
             {
               "type": "walkable_edge",
               "location": {
+                "x": 19,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (19, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
                 "x": 20,
                 "y": 0
               },
@@ -1540,10 +6382,66 @@
             {
               "type": "walkable_edge",
               "location": {
+                "x": 21,
+                "y": 0
+              },
+              "description": "Top edge tile at (21, 0) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 21,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (21, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 19
+              },
+              "description": "Left edge tile at (0, 19) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 19
+              },
+              "description": "Right edge tile at (39, 19) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 20
+              },
+              "description": "Left edge tile at (0, 20) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
                 "x": 39,
                 "y": 20
               },
               "description": "Right edge tile at (39, 20) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 21
+              },
+              "description": "Left edge tile at (0, 21) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 39,
+                "y": 21
+              },
+              "description": "Right edge tile at (39, 21) is walkable - player could walk off map"
             }
           ],
           "transitionIssues": [],
@@ -1557,18 +6455,34 @@
             {
               "type": "walkable_edge",
               "location": {
-                "x": 20,
+                "x": 14,
                 "y": 39
               },
-              "description": "Bottom edge tile at (20, 39) is walkable - player could walk off map"
+              "description": "Bottom edge tile at (14, 39) is walkable - player could walk off map"
             },
             {
               "type": "walkable_edge",
               "location": {
-                "x": 39,
-                "y": 25
+                "x": 15,
+                "y": 39
               },
-              "description": "Right edge tile at (39, 25) is walkable - player could walk off map"
+              "description": "Bottom edge tile at (15, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 16,
+                "y": 39
+              },
+              "description": "Bottom edge tile at (16, 39) is walkable - player could walk off map"
+            },
+            {
+              "type": "walkable_edge",
+              "location": {
+                "x": 0,
+                "y": 20
+              },
+              "description": "Left edge tile at (0, 20) is walkable - player could walk off map"
             }
           ],
           "transitionIssues": [],
@@ -1686,7 +6600,7 @@
     },
     "event": {
       "reportType": "event",
-      "timestamp": "2026-02-19T17:36:01.174Z",
+      "timestamp": "2026-02-19T20:04:47.210Z",
       "summary": {
         "totalChecks": 265,
         "passed": 159,
@@ -4444,12 +9358,12 @@
       "metadata": {
         "validator": "EventVerifier",
         "version": "1.0.0",
-        "duration": 8
+        "duration": 10
       }
     },
     "content": {
       "validator": "ContentValidator",
-      "timestamp": "2026-02-19T17:36:01.180Z",
+      "timestamp": "2026-02-19T20:04:47.217Z",
       "summary": {
         "totalChecks": 113,
         "passed": 0,

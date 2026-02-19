@@ -1,8 +1,8 @@
 # Validation Orchestrator Report
 
-**Generated:** 2026-02-19T17:36:01.230Z
+**Generated:** 2026-02-19T20:04:47.264Z
 
-**Duration:** 86ms
+**Duration:** 90ms
 
 ## Summary
 
@@ -20,7 +20,7 @@
 - Passed: 20
 - Failed: 0
 - Warnings: 0
-- Duration: 18ms
+- Duration: 22ms
 
 ### Sprite Validator
 
@@ -36,7 +36,7 @@
 - Passed: 0
 - Failed: 20
 - Warnings: 0
-- Duration: 32ms
+- Duration: 26ms
 
 ### Event Validator
 
@@ -44,7 +44,7 @@
 - Passed: 159
 - Failed: 106
 - Warnings: 0
-- Duration: 8ms
+- Duration: 10ms
 
 ### Content Validator
 

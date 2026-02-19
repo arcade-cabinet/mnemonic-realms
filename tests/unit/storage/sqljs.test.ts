@@ -196,11 +196,12 @@ describe('SqlJsProvider', () => {
 
   describe('IndexedDB persistence', () => {
     it('should persist data to IndexedDB on save', async () => {
+      const fixedTimestamp = Date.now() - 1000; // Use a fixed timestamp to avoid race conditions
       const gameData: GameData = {
         playerId: 'player1',
         saveSlot: 1,
         data: { level: 5 },
-        timestamp: Date.now(),
+        timestamp: fixedTimestamp,
       };
 
       await provider.save('save-1', gameData);

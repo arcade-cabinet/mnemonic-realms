@@ -20,5 +20,7 @@ export { retryWithExponentialBackoff, DEFAULT_RETRY_CONFIG } from './retry';
 export type { RetryConfig } from './retry';
 export { touchController } from './touch';
 export type { TouchConfig, TouchController, TouchEvent } from './touch';
+export { platformAdapter, PlatformAdapter } from './adapter';
+export type { PlatformAdapterConfig } from './adapter';
 
 
