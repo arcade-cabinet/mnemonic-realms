@@ -20,12 +20,11 @@ import { Enemy } from '@rpgjs/database';
 export default class ThornbackBeetle {
   // Context:
   // - Zone: Ambergrove
-  // - Category: settled
   // - Fragment affinity: Fury / Earth
   // Abilities:
-  // - Mandible Crush: ATK * 1.3 (Basic physical attack)
-  // - Thorn Shell: 15% chance 5 fixed recoil (Passive: physical attacks may recoil)
+  // - Mandible Crush: Basic attack. Deals ATK × 1.3 physical damage.
   // Drop table:
   // - C-SC-01: 15% chance
   // - C-HP-01: 15% chance
+  // - no drop: 70% chance
 }

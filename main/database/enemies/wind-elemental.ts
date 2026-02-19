@@ -20,14 +20,13 @@ import { Enemy } from '@rpgjs/database';
 export default class WindElemental {
   // Context:
   // - Zone: Hollow Ridge
-  // - Category: frontier
-  // - Element: Wind
   // - Fragment affinity: Fury / Wind
   // Abilities:
-  // - Gust Slash: ATK * 1.3 wind-element single target
-  // - Crosswind: INT * 1.0 wind AoE (all party), only when 2+ Wind Elementals present
-  // - Updraft: buff ally AGI +30% for 2 turns, targets slowest ally
+  // - Gust Slash: Physical attack. Deals ATK × 1.3 wind-element damage to one target.
+  // - Crosswind: AoE magic attack. Deals INT × 1.0 wind-element damage to all party members. Only used when 2+ Wind Elementals are in the encounter (they combine their wind).
+  // - Updraft: Buff one ally. Target gains AGI +30% for 2 turns. Used on the slowest ally in the encounter.
   // Drop table:
-  // - C-SC-02 (Haste Charm): 15% chance
-  // - C-BF-04 (Haste Seed): 10% chance
+  // - C-SC-02: 15% chance
+  // - C-BF-04: 10% chance
+  // - no drop: 75% chance
 }

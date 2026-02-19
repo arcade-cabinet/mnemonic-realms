@@ -15,17 +15,16 @@ import { Enemy } from '@rpgjs/database';
   gain: {
     exp: 30,
     gold: 14,
-    // items: [{ nb: 1, item: C_SP_01, chance: 0.20 }] // Uncomment and import C_SP_01 if available
   },
 })
 export default class ForestWisp {
   // Context:
   // - Zone: Ambergrove
-  // - Category: settled
   // - Fragment affinity: Awe / Wind
   // Abilities:
-  // - Wisp Bolt: INT * 1.5 (wind) (Magic attack, wind element)
-  // - Flicker: 30% dodge next physical (Evasion buff, auto at combat start)
+  // - Wisp Bolt: Magic attack. Deals INT × 1.5 magical damage (wind element). Targets one player.
+  // - Flicker: Evasion buff. 30% chance to dodge the next physical attack. Auto-activates at start of combat.
   // Drop table:
   // - C-SP-01: 20% chance
+  // - no drop: 80% chance
 }

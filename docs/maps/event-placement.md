@@ -116,7 +116,6 @@ All NPC interactions. Sorted by map, then by NPC.
 |----------|----------|---------|--------|--------------|-----|---------|-------------|
 | EV-FV-001 | (35, 30) | action | quest | SQ-08, GQ-03 | Reza | `npc_solen` | Light Lens (K-04), light studies (MQ-05+) |
 | EV-FV-002 | (36, 29) | action | repeat | — | Village Shopkeeper | `npc_shopkeep_f2` | Shop (Prism Wand, Flickerblade, Stasis Breaker) |
-| EV-FV-006 | (30, 26) | action | quest | GQ-03-S1 | Julz | `npc_elyn` | Defector escort quest (after Vesperis recall) |
 
 ### Resonance Fields NPCs
 
@@ -302,20 +301,14 @@ All map-to-map transitions. Sorted by source map.
 
 | Event ID | Position | Type | Destination Map | Dest. Tile | Condition |
 |----------|----------|------|----------------|------------|-----------|
-| EV-SM-005 | (33, 43) | touch | Depths L2 | (10, 0) | After MQ-05 |
 | EV-SM-006 | (20, 0) | touch | Heartfield | (20, 38) | After MQ-04 |
-| EV-SM-007 | (49, 25) | touch | Flickerveil | (0, 25) | After MQ-05 |
 | EV-SM-008 | (0, 25) | touch | Hollow Ridge | (49, 35) | After MQ-05 |
-| EV-SM-009 | (25, 49) | touch | Luminous Wastes | (25, 0) | After MQ-07 |
 
 ### Hollow Ridge Transitions
 
 | Event ID | Position | Type | Destination Map | Dest. Tile | Condition |
 |----------|----------|------|----------------|------------|-----------|
 | EV-HR-006 | (38, 3) | touch | Depths L3 | (10, 0) | After MQ-05 |
-| EV-HR-007 | (25, 49) | touch | Sunridge | (18, 0) | Always |
-| EV-HR-008 | (49, 25) | touch | Flickerveil | (0, 15) | After MQ-05 |
-| EV-HR-009 | (49, 35) | touch | Shimmer Marsh | (0, 25) | After MQ-05 |
 | EV-HR-010 | (25, 0) | touch | Undrawn Peaks | (20, 39) | After MQ-07 |
 
 ### Flickerveil Transitions
@@ -325,7 +318,6 @@ All map-to-map transitions. Sorted by source map.
 | EV-FV-007 | (0, 25) | touch | Shimmer Marsh | (49, 25) | After MQ-05 |
 | EV-FV-008 | (0, 15) | touch | Hollow Ridge | (49, 25) | After MQ-05 |
 | EV-FV-009 | (0, 38) | touch | Ambergrove | (38, 20) | Always |
-| EV-FV-010 | (48, 25) | touch | Half-Drawn Forest | (0, 20) | After MQ-07 |
 
 ### Resonance Fields Transitions
 
@@ -339,26 +331,16 @@ All map-to-map transitions. Sorted by source map.
 
 | Event ID | Position | Type | Destination Map | Dest. Tile | Condition |
 |----------|----------|------|----------------|------------|-----------|
-| EV-LW-003 | (25, 0) | touch | Shimmer Marsh | (25, 49) | After MQ-07 |
-| EV-LW-004 | (39, 20) | touch | Resonance Fields | (0, 25) | After MQ-07 |
-| EV-LW-005 | (20, 0) | touch | Half-Drawn Forest | (20, 39) | After MQ-08 |
 
 ### Undrawn Peaks Transitions
 
 | Event ID | Position | Type | Destination Map | Dest. Tile | Condition |
 |----------|----------|------|----------------|------------|-----------|
-| EV-UP-004 | (19, 35) | touch | Fortress F1 | (10, 0) | After MQ-08 (gate solidified) |
-| EV-UP-005 | (20, 39) | touch | Hollow Ridge | (25, 0) | After MQ-07 |
-| EV-UP-006 | (39, 25) | touch | Half-Drawn Forest | (0, 10) | After MQ-08 |
 
 ### Half-Drawn Forest Transitions
 
 | Event ID | Position | Type | Destination Map | Dest. Tile | Condition |
 |----------|----------|------|----------------|------------|-----------|
-| EV-HDF-003 | (13, 36) | touch | Depths L5 | (10, 0) | After MQ-08 |
-| EV-HDF-004 | (0, 20) | touch | Flickerveil | (48, 25) | After MQ-07 |
-| EV-HDF-005 | (0, 10) | touch | Undrawn Peaks | (39, 25) | After MQ-08 |
-| EV-HDF-006 | (20, 39) | touch | Luminous Wastes | (20, 0) | After MQ-08 |
 
 ### Dungeon Transitions (Between Floors)
 
@@ -868,3 +850,235 @@ Stagnation zone events have a specific lifecycle that requires careful state man
 ### Resonance Stone Fragment Depletion
 
 Fragment-bearing Resonance Stones are one-time collection events. After collection, the stone remains visible but dims (no glow) and triggers a "This stone has no more memories to share" dialogue. Rest-point stones remain functional indefinitely.
+
+
+## Section 2: Map Transitions
+
+All map transition events. Sorted by map.
+
+
+
+
+### Depths L1 Transitions
+
+| Event ID | Position | Trigger | Repeat | Description |
+|----------|----------|---------|--------|-------------|
+| EV-D1-Up | (9, 0) | touch | repeat | Map transition |
+| EV-D1-Down | (9, 19) | touch | repeat | Map transition |
+
+### Depths L2 Transitions
+
+| Event ID | Position | Trigger | Repeat | Description |
+|----------|----------|---------|--------|-------------|
+| EV-D2-Up | (9, 0) | touch | repeat | Map transition |
+| EV-D2-Down | (9, 19) | touch | repeat | Map transition |
+
+### Depths L3 Transitions
+
+| Event ID | Position | Trigger | Repeat | Description |
+|----------|----------|---------|--------|-------------|
+| EV-D3-Up | (9, 0) | touch | repeat | Map transition |
+| EV-D3-Down | (9, 19) | touch | repeat | Map transition |
+
+### Depths L4 Transitions
+
+| Event ID | Position | Trigger | Repeat | Description |
+|----------|----------|---------|--------|-------------|
+| EV-D4-Up | (9, 0) | touch | repeat | Map transition |
+| EV-D4-Down | (9, 19) | touch | repeat | Map transition |
+
+### Depths L5 Transitions
+
+| Event ID | Position | Trigger | Repeat | Description |
+|----------|----------|---------|--------|-------------|
+| EV-D5-Up | (9, 0) | touch | repeat | Map transition |
+| EV-D5-Down | (9, 19) | touch | repeat | Map transition |
+
+### Fortress F1 Transitions
+
+| Event ID | Position | Trigger | Repeat | Description |
+|----------|----------|---------|--------|-------------|
+| EV-F1-South | (12, 24) | touch | repeat | Map transition |
+| EV-F1-North | (12, 0) | touch | repeat | Map transition |
+
+### Fortress F1 Boss Encounters
+
+| Event ID | Position | Trigger | Repeat | Description |
+|----------|----------|---------|--------|-------------|
+| EV-F1-Boss | (12, 6) | touch | once | Boss encounter trigger |
+
+### Fortress F2 Transitions
+
+| Event ID | Position | Trigger | Repeat | Description |
+|----------|----------|---------|--------|-------------|
+| EV-F2-South | (12, 24) | touch | repeat | Map transition |
+| EV-F2-North | (12, 0) | touch | repeat | Map transition |
+
+### Fortress F2 Boss Encounters
+
+| Event ID | Position | Trigger | Repeat | Description |
+|----------|----------|---------|--------|-------------|
+| EV-F2-Boss | (12, 11) | touch | once | Boss encounter trigger |
+
+### Fortress F3 Transitions
+
+| Event ID | Position | Trigger | Repeat | Description |
+|----------|----------|---------|--------|-------------|
+| EV-F3-South | (12, 24) | touch | repeat | Map transition |
+
+### Fortress F3 Boss Encounters
+
+| Event ID | Position | Trigger | Repeat | Description |
+|----------|----------|---------|--------|-------------|
+| EV-F3-Climax | (12, 17) | touch | once | Boss encounter trigger |
+| EV-F3-Return | (12, 17) | touch | once | Boss encounter trigger |
+
+### Half Drawn Forest Transitions
+
+| Event ID | Position | Trigger | Repeat | Description |
+|----------|----------|---------|--------|-------------|
+| EV-HDF-West | (0, 15) | touch | repeat | Map transition |
+| EV-HDF-South | (14, 29) | touch | repeat | Map transition |
+
+### Luminous Wastes Transitions
+
+| Event ID | Position | Trigger | Repeat | Description |
+|----------|----------|---------|--------|-------------|
+| EV-LW-West | (19, 0) | touch | repeat | Map transition |
+| EV-LW-East | (19, 29) | touch | repeat | Map transition |
+
+### Undrawn Peaks Transitions
+
+| Event ID | Position | Trigger | Repeat | Description |
+|----------|----------|---------|--------|-------------|
+| EV-UP-South | (14, 39) | touch | repeat | Map transition |
+| EV-UP-West | (0, 20) | touch | repeat | Map transition |
+| EV-UP-Fortress | (14, 0) | touch | repeat | Fortress entrance |
+## Section 3: Chests and Stones
+
+All chest and memory stone events. Sorted by map.
+
+
+### Ambergrove Chests and Stones
+
+| Event ID | Position | Trigger | Repeat | Description |
+|----------|----------|---------|--------|-------------|
+| EV-AG-002 | (20, 10) | action | repeat | Chest or stone |
+| EV-AG-003 | (30, 27) | action | repeat | Chest or stone |
+| EV-AG-004 | (0, 20) | action | repeat | Chest or stone |
+| EV-AG-006 | (38, 20) | action | repeat | Chest or stone |
+| EV-AG-007 | (10, 39) | action | repeat | Chest or stone |
+
+### Flickerveil Chests and Stones
+
+| Event ID | Position | Trigger | Repeat | Description |
+|----------|----------|---------|--------|-------------|
+| EV-FV-003 | (20, 20) | action | repeat | Chest or stone |
+| EV-FV-004 | (20, 20) | action | repeat | Chest or stone |
+| EV-FV-005 | (8, 8) | action | repeat | Chest or stone |
+| EV-FV-007 | (0, 25) | action | repeat | Chest or stone |
+| EV-FV-008 | (0, 15) | action | repeat | Chest or stone |
+| EV-FV-009 | (0, 38) | action | repeat | Chest or stone |
+
+### Heartfield Chests and Stones
+
+| Event ID | Position | Trigger | Repeat | Description |
+|----------|----------|---------|--------|-------------|
+| EV-HF-002 | (30, 8) | action | repeat | Chest or stone |
+| EV-HF-003 | (33, 28) | action | repeat | Chest or stone |
+| EV-HF-005 | (20, 38) | action | repeat | Chest or stone |
+| EV-HF-006 | (15, 0) | action | repeat | Chest or stone |
+| EV-HF-007 | (39, 20) | action | repeat | Chest or stone |
+| EV-HF-008 | (31, 9) | action | repeat | Chest or stone |
+
+### Hollow Ridge Chests and Stones
+
+| Event ID | Position | Trigger | Repeat | Description |
+|----------|----------|---------|--------|-------------|
+| EV-HR-003 | (24, 10) | action | repeat | Chest or stone |
+| EV-HR-004 | (24, 10) | action | repeat | Chest or stone |
+| EV-HR-005 | (33, 28) | action | repeat | Chest or stone |
+| EV-HR-006 | (38, 3) | action | repeat | Chest or stone |
+| EV-HR-010 | (25, 0) | action | repeat | Chest or stone |
+
+### Millbrook Chests and Stones
+
+| Event ID | Position | Trigger | Repeat | Description |
+|----------|----------|---------|--------|-------------|
+| EV-MB-002 | (6, 4) | action | repeat | Chest or stone |
+| EV-MB-004 | (39, 20) | action | repeat | Chest or stone |
+| EV-MB-005 | (20, 39) | action | repeat | Chest or stone |
+| EV-MB-006 | (0, 20) | action | repeat | Chest or stone |
+| EV-MB-007 | (21, 19) | action | repeat | Chest or stone |
+
+### Resonance Fields Chests and Stones
+
+| Event ID | Position | Trigger | Repeat | Description |
+|----------|----------|---------|--------|-------------|
+| EV-RF-002_S1 | (18, 28) | action | repeat | Chest or stone |
+| EV-RF-002_S2 | (22, 20) | action | repeat | Chest or stone |
+| EV-RF-002_S3 | (28, 22) | action | repeat | Chest or stone |
+| EV-RF-003 | (25, 25) | action | repeat | Chest or stone |
+| EV-RF-004 | (25, 25) | action | repeat | Chest or stone |
+| EV-RF-005 | (38, 13) | action | repeat | Chest or stone |
+| EV-RF-006 | (28, 43) | action | repeat | Chest or stone |
+| EV-RF-007 | (49, 25) | action | repeat | Chest or stone |
+| EV-RF-008 | (25, 0) | action | repeat | Chest or stone |
+| EV-RF-009 | (0, 25) | action | repeat | Chest or stone |
+| EV-RF-010 | (25, 25) | action | repeat | Chest or stone |
+
+### Shimmer Marsh Chests and Stones
+
+| Event ID | Position | Trigger | Repeat | Description |
+|----------|----------|---------|--------|-------------|
+| EV-SM-002 | (18, 28) | action | repeat | Chest or stone |
+| EV-SM-003 | (25, 18) | action | repeat | Chest or stone |
+| EV-SM-004 | (25, 18) | action | repeat | Chest or stone |
+| EV-SM-006 | (20, 0) | action | repeat | Chest or stone |
+| EV-SM-008 | (0, 25) | action | repeat | Chest or stone |
+| EV-SM-011 | (38, 8) | action | repeat | Chest or stone |
+
+### Sunridge Chests and Stones
+
+| Event ID | Position | Trigger | Repeat | Description |
+|----------|----------|---------|--------|-------------|
+| EV-SR-002 | (9, 7) | action | repeat | Chest or stone |
+| EV-SR-004 | (20, 39) | action | repeat | Chest or stone |
+| EV-SR-005 | (18, 0) | action | repeat | Chest or stone |
+| EV-SR-006 | (39, 20) | action | repeat | Chest or stone |
+
+### Village Hub Chests and Stones
+
+| Event ID | Position | Trigger | Repeat | Description |
+|----------|----------|---------|--------|-------------|
+| EV-VH-003 | (10, 17) | action | repeat | Chest or stone |
+| EV-VH-004 | (10, 17) | action | repeat | Chest or stone |
+| EV-VH-009 | (15, 25) | action | repeat | Chest or stone |
+| EV-VH-010 | (29, 14) | action | repeat | Chest or stone |
+| EV-VH-011 | (0, 14) | action | repeat | Chest or stone |
+| EV-VH-012 | (15, 0) | action | repeat | Chest or stone |
+| EV-VH-014 | (8, 17) | action | repeat | Chest or stone |
+| EV-VH-015 | (14, 15) | action | repeat | Chest or stone |
+| EV-VH-016 | (0, 0) | action | repeat | Chest or stone |
+
+### Flickerveil Chests and Stones
+
+| Event ID | Position | Trigger | Repeat | Description |
+|----------|----------|---------|--------|-------------|
+| EV-FV-010 | (29, 25) | action | repeat | Chest or stone |
+
+### Hollow Ridge Chests and Stones
+
+| Event ID | Position | Trigger | Repeat | Description |
+|----------|----------|---------|--------|-------------|
+| EV-HR-007 | (25, 39) | action | repeat | Chest or stone |
+| EV-HR-008 | (39, 25) | action | repeat | Chest or stone |
+| EV-HR-009 | (39, 35) | action | repeat | Chest or stone |
+
+### Shimmer Marsh Chests and Stones
+
+| Event ID | Position | Trigger | Repeat | Description |
+|----------|----------|---------|--------|-------------|
+| EV-SM-005 | (33, 26) | action | repeat | Chest or stone |
+| EV-SM-007 | (39, 25) | action | repeat | Chest or stone |
+| EV-SM-009 | (25, 29) | action | repeat | Chest or stone |

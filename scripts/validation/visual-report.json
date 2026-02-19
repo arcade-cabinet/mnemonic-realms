@@ -1,0 +1,16 @@
+{
+  "reportType": "visual",
+  "timestamp": "2026-02-19T20:04:47.197Z",
+  "summary": {
+    "totalChecks": 20,
+    "passed": 20,
+    "failed": 0,
+    "warnings": 0
+  },
+  "issues": [],
+  "metadata": {
+    "validator": "VisualValidator",
+    "version": "1.0.0",
+    "duration": 22
+  }
+}

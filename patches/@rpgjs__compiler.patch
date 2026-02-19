@@ -7,7 +7,7 @@ index e32e75ac515191b96c2759b28126f83a07fe896c..de95eb19bc818c5ae557c5ed76698878
  export const globFiles = (extension) => {
      return [
 -        ...glob.sync('**/*.' + extension, { nodir: true, ignore: ['node_modules/**', 'dist/**'] }),
-+        ...glob.sync('**/*.' + extension, { nodir: true, ignore: ['node_modules/**', 'dist/**', 'assets/tilesets/**', 'gen/**'] }),
++        ...glob.sync('**/*.' + extension, { nodir: true, ignore: ['node_modules/**', 'dist/**', 'assets/tilesets/**', 'assets/tilesets-organized/**', 'gen/**', 'scripts/**'] }),
          ...glob.sync('node_modules/rpgjs-*/*.' + extension, { nodir: true }),
          ...glob.sync('node_modules/@rpgjs/**/*.' + extension, { nodir: true })
      ];

@@ -1,0 +1,17 @@
+{
+  "totalChecked": 38,
+  "passed": 37,
+  "failed": 0,
+  "warnings": [
+    {
+      "type": "missing_entrance_condition",
+      "message": "Depths Level 4: The Songline entrance condition unclear",
+      "location": "Depths Level 4: The Songline"
+    }
+  ],
+  "errors": [],
+  "metadata": {
+    "validator": "DungeonValidator",
+    "timestamp": "2026-02-19T19:35:10.502Z"
+  }
+}

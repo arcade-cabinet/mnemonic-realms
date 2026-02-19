@@ -15,18 +15,15 @@ import { Enemy } from '@rpgjs/database';
   gain: {
     exp: 18,
     gold: 8,
-    // items: [ // Example of how to add drops if needed, but requested as comment
-    //   { item: MinorPotion, nb: 1, chance: 0.15 }
-    // ]
   },
 })
 export default class MeadowSprite {
   // Context:
   // - Zone: Heartfield
-  // - Category: settled
   // - Fragment affinity: Joy / Earth
   // Abilities:
-  // - Pollen Puff: ATK * 1.0 (10% chance to inflict Slow (AGI halved, 2 turns))
+  // - Pollen Puff: Basic attack. Deals ATK × 1.0 physical damage. 10% chance to inflict Slow (AGI halved, 2 turns).
   // Drop table:
   // - C-HP-01: 15% chance
+  // - no drop: 85% chance
 }

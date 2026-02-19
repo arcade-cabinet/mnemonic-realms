@@ -20,14 +20,13 @@ import { Enemy } from '@rpgjs/database';
 export default class WireframeDrake {
   // Context:
   // - Zone: The Undrawn Peaks
-  // - Category: sketch
-  // - Element: Fire
   // - Fragment affinity: Fury / Fire
   // Abilities:
-  // - Vector Flame: ATK * 1.5 fire-element single target
-  // - Void Breath: INT * 1.6 fire+dark AoE (1-2 targets), 20% Weakness per target, 3-turn CD
-  // - Geometric Shift: DEF +30% for 2 turns, once per combat below 50% HP
+  // - Vector Flame: Physical attack. Deals ATK × 1.5 fire-element damage.
+  // - Void Breath: Cone AoE. Deals INT × 1.6 mixed fire+dark damage to 1-2 targets. 20% chance to inflict Weakness per target. 3-turn cooldown.
+  // - Geometric Shift: Self-buff. The Drake rearranges its wireframe, gaining +30% DEF for 2 turns. Used once per combat when HP drops below 50%.
   // Drop table:
-  // - C-HP-03 (High Potion): 20% chance
-  // - C-BF-01 (Strength Seed): 10% chance
+  // - C-HP-03: 20% chance
+  // - C-BF-01: 10% chance
+  // - no drop: 70% chance
 }

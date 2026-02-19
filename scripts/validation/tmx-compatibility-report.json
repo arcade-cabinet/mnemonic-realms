@@ -1,0 +1,2554 @@
+[
+  {
+    "tmxFile": "assets/tilesets-organized/village/fantasy-interiors/Tiled/Tilemaps/Castle_1.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [
+      "TSX ../Tileset/Objects_Props_Interiors.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tileset/Tileset_Floor_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Walls and Floors/Floor_Interiors.png"
+      },
+      {
+        "source": "../Tileset/Tileset_Walls_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Walls and Floors/Walls_Interiors.png"
+      },
+      {
+        "source": "../Tileset/Objects_Props_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/village/fantasy-interiors/Tiled/Tilemaps/Huntmaster_1.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [
+      "TSX ../Tileset/Objects_Props_Interiors.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tileset/Tileset_Floor_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Walls and Floors/Floor_Interiors.png"
+      },
+      {
+        "source": "../Tileset/Tileset_Walls_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Walls and Floors/Walls_Interiors.png"
+      },
+      {
+        "source": "../Tileset/Objects_Props_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/village/fantasy-interiors/Tiled/Tilemaps/Cartographer_1.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [
+      "TSX ../Tileset/Objects_Props_Interiors.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tileset/Tileset_Floor_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Walls and Floors/Floor_Interiors.png"
+      },
+      {
+        "source": "../Tileset/Tileset_Walls_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Walls and Floors/Walls_Interiors.png"
+      },
+      {
+        "source": "../Tileset/Objects_Props_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/village/fantasy-interiors/Tiled/Tilemaps/WeaponSeller_1.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [
+      "TSX ../Tileset/Objects_Props_Interiors.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tileset/Tileset_Floor_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Walls and Floors/Floor_Interiors.png"
+      },
+      {
+        "source": "../Tileset/Tileset_Walls_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Walls and Floors/Walls_Interiors.png"
+      },
+      {
+        "source": "../Tileset/Objects_Props_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/village/fantasy-interiors/Tiled/Tilemaps/Library_1.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [
+      "TSX ../Tileset/Objects_Props_Interiors.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tileset/Tileset_Floor_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Walls and Floors/Floor_Interiors.png"
+      },
+      {
+        "source": "../Tileset/Tileset_Walls_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Walls and Floors/Walls_Interiors.png"
+      },
+      {
+        "source": "../Tileset/Objects_Props_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/village/fantasy-interiors/Tiled/Tilemaps/Tavern_1.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [
+      "TSX ../Tileset/Objects_Props_Interiors.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tileset/Tileset_Floor_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Walls and Floors/Floor_Interiors.png"
+      },
+      {
+        "source": "../Tileset/Tileset_Walls_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Walls and Floors/Walls_Interiors.png"
+      },
+      {
+        "source": "../Tileset/Objects_Props_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/village/fantasy-interiors/Tiled/Tilemaps/TailorShop_1.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [
+      "TSX ../Tileset/Objects_Props_Interiors.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tileset/Tileset_Floor_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Walls and Floors/Floor_Interiors.png"
+      },
+      {
+        "source": "../Tileset/Tileset_Walls_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Walls and Floors/Walls_Interiors.png"
+      },
+      {
+        "source": "../Tileset/Objects_Props_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/village/fantasy-interiors/Tiled/Tilemaps/Butchery_1.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [
+      "TSX ../Tileset/Objects_Props_Interiors.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tileset/Tileset_Walls_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Walls and Floors/Walls_Interiors.png"
+      },
+      {
+        "source": "../Tileset/Objects_Props_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tileset/Tileset_Floor_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Walls and Floors/Floor_Interiors.png"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/village/fantasy-interiors/Tiled/Tilemaps/FishermanHut_1.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [
+      "TSX ../Tileset/Objects_Props_Interiors.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tileset/Tileset_Walls_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Walls and Floors/Walls_Interiors.png"
+      },
+      {
+        "source": "../Tileset/Objects_Props_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tileset/Tileset_Floor_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Walls and Floors/Floor_Interiors.png"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/village/fantasy-interiors/Tiled/Tilemaps/House_2.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [
+      "TSX ../Tileset/Objects_Props_Interiors.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tileset/Tileset_Floor_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Walls and Floors/Floor_Interiors.png"
+      },
+      {
+        "source": "../Tileset/Tileset_Walls_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Walls and Floors/Walls_Interiors.png"
+      },
+      {
+        "source": "../Tileset/Objects_Props_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tileset/Atlas_Props_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Atlas/Props_Interiors.png"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/village/fantasy-interiors/Tiled/Tilemaps/House_1.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [
+      "TSX ../Tileset/Objects_Props_Interiors.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tileset/Tileset_Walls_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Walls and Floors/Walls_Interiors.png"
+      },
+      {
+        "source": "../Tileset/Atlas_Props_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Atlas/Props_Interiors.png"
+      },
+      {
+        "source": "../Tileset/Objects_Props_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tileset/Tileset_Floor_Interiors.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Walls and Floors/Floor_Interiors.png"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/shared/fantasy-seasons/Tiled/Tilemaps/Cherry Hill.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [
+      "TSX ../Tilesets/Objects_Buildings_Seasons.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Trees_Seasons.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Props_Seasons.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Rocks_Seasons.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Shadows.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tilesets/Tileset_Ground_Seasons.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Atlas_Tileset_Ground_Seasons.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_RockSlope_2_Gray.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope_2_Gray.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Buildings_Seasons.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Tileset_Road.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_Road.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Water.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Water and Sand/Tileset_Water.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Trees_Seasons.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Props_Seasons.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Animation_Flowers.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Flowers.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Rocks_Seasons.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Tileset_Shadow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Shadows/Atlas/Tileset_Shadow.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Shadows.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Animation_Banner_1.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Banner_1.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Campfire.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Campfire.png"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/shared/fantasy-seasons/Tiled/Tilemaps/Seasons Shore.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [
+      "TSX ../Tilesets/Objects_Buildings_Seasons.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Rocks_Seasons.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Trees_Seasons.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Props_Seasons.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Shadows.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tilesets/Tileset_Ground_Seasons.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Atlas_Tileset_Ground_Seasons.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_RockSlope_2_Gray.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope_2_Gray.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Buildings_Seasons.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Tileset_Water.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Water and Sand/Tileset_Water.png"
+      },
+      {
+        "source": "../Tilesets/Atlas_Buildings_Bridges.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Buildings/Atlas/Buildings_Bridges.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Road.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_Road.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Rocks_Seasons.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Trees_Seasons.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Props_Seasons.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Tileset_Sand.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Water and Sand/Tileset_Sand.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Waterfall.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Water and Sand/Waterfall.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Flowers.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Flowers.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Banner_1.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Banner_1.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Shadow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Shadows/Atlas/Tileset_Shadow.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Shadows.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/shared/fantasy-seasons/Tiled/Tilemaps/Autumn Fields.tmx",
+    "success": false,
+    "errors": [
+      "TSX file not found: ../../../The Fan-tasy Tileset (Premium)/Tiled/Tilesets/Tileset_Road.tsx",
+      "TSX file not found: ../../../The Fan-tasy Tileset (Premium)/Tiled/Tilesets/Tileset_Fence_1.tsx"
+    ],
+    "warnings": [
+      "TSX ../Tilesets/Objects_Buildings_Seasons.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Props_Seasons.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Trees_Seasons.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Shadows.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tilesets/Tileset_Ground_Seasons.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Atlas_Tileset_Ground_Seasons.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_RockSlope_1_Brown.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope_1_Brown.png"
+      },
+      {
+        "source": "../../../The Fan-tasy Tileset (Premium)/Tiled/Tilesets/Tileset_Road.tsx",
+        "exists": false,
+        "pngExists": false
+      },
+      {
+        "source": "../Tilesets/Objects_Buildings_Seasons.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Tileset_Fence_1.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Fences and Walls/Atlas/Tileset_Fence_1.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_RockSlope_2_Gray.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope_2_Gray.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_TallGrass.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Tall Grass Tilesets/Tileset_TallGrass.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_FarmField.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_FarmField.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Leaves_Seasons.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_Leaves_Seasons.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Props_Seasons.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Trees_Seasons.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Tileset_Shadow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Shadows/Atlas/Tileset_Shadow.png"
+      },
+      {
+        "source": "../../../The Fan-tasy Tileset (Premium)/Tiled/Tilesets/Tileset_Fence_1.tsx",
+        "exists": false,
+        "pngExists": false
+      },
+      {
+        "source": "../Tilesets/Animation_Banner_1.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Banner_1.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Shadows.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/shared/fantasy-seasons/Tiled/Tilemaps/Rules/RockSlopes_1_Brown_Rules.tmx",
+    "success": false,
+    "errors": [
+      "TSX file not found: :/automap-tiles.tsx"
+    ],
+    "warnings": [],
+    "tilesets": [
+      {
+        "source": "../../Tilesets/Tileset_RockSlope_1_Brown.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope_1_Brown.png"
+      },
+      {
+        "source": ":/automap-tiles.tsx",
+        "exists": false,
+        "pngExists": false
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": true
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/shared/fantasy-seasons/Tiled/Tilemaps/Rules/RockSlopes_2_Gray_Rules.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [],
+    "tilesets": [
+      {
+        "source": "../../Tilesets/Tileset_RockSlope_2_Gray.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope_2_Gray.png"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": true
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/shared/fantasy-free/Tiled/Tilemaps/Beginning Fields.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [
+      "TSX ../Tilesets/Objects_Buildings.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Props.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Rocks.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Trees.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tilesets/Atlas_Buildings.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Buildings/Atlas/Buildings.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Buildings.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Props.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Rocks.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Trees.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Atlas_Props.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Atlas/Props.png"
+      },
+      {
+        "source": "../Tilesets/Atlas_Rocks.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rocks/Atlas/Rocks.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Ground.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tileset/Tileset_Ground.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_RockSlope.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_RockSlope_Simple.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope_Simple.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Water.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Water and Sand/Tileset_Water.png"
+      },
+      {
+        "source": "../Tilesets/Tilesets_Road.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tileset/Tileset_Road.png"
+      },
+      {
+        "source": "../Tilesets/Atlas_Trees_Bushes.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Trees and Bushes/Atlas/Trees_Bushes.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Flowers_Red.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animation/Flowers_Red.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Flowers_White.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animation/Flowers_White.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Campfire.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animation/Campfire.png"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/shared/fantasy-free/Tiled/Tilemaps/Rules/RockSlopes_Rules.tmx",
+    "success": false,
+    "errors": [
+      "TSX file not found: :/automap-tiles.tsx"
+    ],
+    "warnings": [],
+    "tilesets": [
+      {
+        "source": "../../Tilesets/Tileset_RockSlope.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope.png"
+      },
+      {
+        "source": ":/automap-tiles.tsx",
+        "exists": false,
+        "pngExists": false
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": true
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/shared/fantasy-premium/Tiled/Tilemaps/Test map.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [
+      "TSX ../Tilesets/Objects_Buildings.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Props.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Trees.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Rocks.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_CityWalls.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Shadows.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tilesets/Tileset_Road.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_Road.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_RockSlope_1_Brown.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope_1_Brown.png"
+      },
+      {
+        "source": "../Tilesets/Atlas_Rocks.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rocks/Atlas/Atlas_Rocks.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Fence_1.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Fences and Walls/Atlas/Tileset_Fence_1.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_FarmField.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_FarmField.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Waterfall.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Water and Sand/Tileset_Waterfall.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Buildings.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Props.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Trees.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Rocks.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Tileset_Ground.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_Ground.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Water.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Water and Sand/Tileset_Water.png"
+      },
+      {
+        "source": "../Tilesets/Objects_CityWalls.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Tileset_Shadow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Shadows/Atlas/Tileset_Shadow.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_RockSlope_2_Gray.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope_2_Gray.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Flowers.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Animation_Flowers.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Banner_1.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Animation_Banner_1.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Shadows.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/shared/fantasy-premium/Tiled/Tilemaps/Farm Shore.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [
+      "TSX ../Tilesets/Objects_Buildings.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_CityWalls.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Props.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Rocks.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Trees.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Shadows.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tilesets/Tileset_FarmField.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_FarmField.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Fence_1.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Fences and Walls/Atlas/Tileset_Fence_1.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Ground.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_Ground.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Road.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_Road.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_RockSlope_1_Brown.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope_1_Brown.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Sand.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Water and Sand/Tileset_Sand.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Shadow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Shadows/Atlas/Tileset_Shadow.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_TallGrass.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Tall Grass Tilesets/Tileset_TallGrass.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Water.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Water and Sand/Tileset_Water.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Waterfall.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Water and Sand/Tileset_Waterfall.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Flowers.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Animation_Flowers.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Buildings.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_CityWalls.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Props.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Rocks.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Trees.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Atlas_Buildings_Bridges.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Buildings/Atlas/Atlas_Buildings_Bridges.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Campfire.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Animation_Campfire.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Banner_1.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Animation_Banner_1.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Shadows.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/shared/fantasy-premium/Tiled/Tilemaps/Mage Tower.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [
+      "TSX ../Tilesets/Objects_Buildings.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Props.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Rocks.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Trees.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Shadows.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tilesets/Objects_Buildings.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Props.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Rocks.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Trees.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Tileset_Ground.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_Ground.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Road.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_Road.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_RockSlope_1_Brown.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope_1_Brown.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Shadow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Shadows/Atlas/Tileset_Shadow.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Flowers.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Animation_Flowers.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Campfire.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Animation_Campfire.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Banner_1.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Animation_Banner_1.png"
+      },
+      {
+        "source": "../Tilesets/Animation_MagicCrystal.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Animation_MagicCrystal.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Shadows.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/shared/fantasy-premium/Tiled/Tilemaps/Village Bridge.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [
+      "TSX ../Tilesets/Objects_Buildings.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Props.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Trees.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Rocks.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Shadows.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tilesets/Objects_Buildings.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Props.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Tileset_RockSlope_1_Brown.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope_1_Brown.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Ground.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_Ground.png"
+      },
+      {
+        "source": "../Tilesets/Atlas_Buildings_Bridges.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Buildings/Atlas/Atlas_Buildings_Bridges.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Water.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Water and Sand/Tileset_Water.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Road.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_Road.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Trees.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Rocks.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Tileset_Shadow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Shadows/Atlas/Tileset_Shadow.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Shadows.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/shared/fantasy-premium/Tiled/Tilemaps/Rules/RockSlopes_1_Brown_Rules.tmx",
+    "success": false,
+    "errors": [
+      "TSX file not found: :/automap-tiles.tsx"
+    ],
+    "warnings": [],
+    "tilesets": [
+      {
+        "source": "../../Tilesets/Tileset_RockSlope_1_Brown.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope_1_Brown.png"
+      },
+      {
+        "source": ":/automap-tiles.tsx",
+        "exists": false,
+        "pngExists": false
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": true
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/shared/fantasy-premium/Tiled/Tilemaps/Rules/RockSlopes_2_Gray_Rules.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [],
+    "tilesets": [
+      {
+        "source": "../../Tilesets/Tileset_RockSlope_2_Gray.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope_2_Gray.png"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": true
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/shared/fantasy-premium/Tiled/Tilemaps/Rules/RockSlopes_1_Gray_Rules.tmx",
+    "success": false,
+    "errors": [
+      "TSX file not found: :/automap-tiles.tsx"
+    ],
+    "warnings": [],
+    "tilesets": [
+      {
+        "source": "../../Tilesets/Tileset_RockSlope_1_Gray.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope_1_Gray.png"
+      },
+      {
+        "source": ":/automap-tiles.tsx",
+        "exists": false,
+        "pngExists": false
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": true
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/shared/fantasy-premium/Tiled/Tilemaps/Rules/RockSlopes_2_Brown_Rules.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [],
+    "tilesets": [
+      {
+        "source": "../../Tilesets/Tileset_RockSlope_2_Brown.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope_2_Brown.png"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": true
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/shared/fantasy-premium/Tiled/Tilemaps/Rules/CityWalls_Rules.tmx",
+    "success": false,
+    "errors": [
+      "TSX file not found: ../../Tilesets/Tileset_BrickWalls.tsx",
+      "TSX file not found: :/automap-tiles.tsx"
+    ],
+    "warnings": [],
+    "tilesets": [
+      {
+        "source": "../../Tilesets/Tileset_BrickWalls.tsx",
+        "exists": false,
+        "pngExists": false
+      },
+      {
+        "source": ":/automap-tiles.tsx",
+        "exists": false,
+        "pngExists": false
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": true
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/fortress/fantasy-castles/Tiled/Tilemaps/Farmer Hold.tmx",
+    "success": false,
+    "errors": [
+      "PNG file not found: ../../../The Fan-tasy Tileset - Castles and Fortresses/Art/Buildings/Animations/MarketStand_1.png (referenced by ../Tilesets/Animation_MarketStand_1.tsx)"
+    ],
+    "warnings": [
+      "TSX ../Tilesets/Objects_Buildings.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Props_Castle.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Trees_Castle.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tilesets/Animation_MarketStand_2.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Buildings/Animations/MarketStand_2.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Torch_1.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Torch_1.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Waterfall.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Water and Sand/Waterfall.png"
+      },
+      {
+        "source": "../Tilesets/Atlas_Props_Castle.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Atlas/Props.png"
+      },
+      {
+        "source": "../Tilesets/Atlas_Trees_Bushes_Castle.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Trees and Bushes/Atlas/Trees_Bushes_Castle.png"
+      },
+      {
+        "source": "../Tilesets/Castle_Building.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Buildings/Atlas/Atlas_Castle_Building.png"
+      },
+      {
+        "source": "../Tilesets/Castle_Details.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Buildings/Atlas/Atlas_Castle_Details.png"
+      },
+      {
+        "source": "../Tilesets/Castle_Floor.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Castle_Floor.png"
+      },
+      {
+        "source": "../Tilesets/Character.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Character/Character/Character_Idle.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Buildings.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Props_Castle.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Trees_Castle.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Tileset_Castle_Grass.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Castle_Grass.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Ground_Castle.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Atlas_Tileset_Ground.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Road.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_Road.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_RockSlope.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Shadow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Tileset_Shadow.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Water.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Water and Sand/Tileset_Water.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Banner_1.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Banner_1.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Banner_2.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Banner_2.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Banner_3.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Banner_3.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Flowers.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Flowers.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Fountain_1.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Fountain_1.png"
+      },
+      {
+        "source": "../Tilesets/Animation_MarketStand_1.tsx",
+        "exists": true,
+        "pngExists": false,
+        "pngPath": "../../../The Fan-tasy Tileset - Castles and Fortresses/Art/Buildings/Animations/MarketStand_1.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_FarmField.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_FarmField.png"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/fortress/fantasy-castles/Tiled/Tilemaps/Forest Keep.tmx",
+    "success": false,
+    "errors": [
+      "PNG file not found: ../../../The Fan-tasy Tileset - Castles and Fortresses/Art/Buildings/Animations/MarketStand_1.png (referenced by ../Tilesets/Animation_MarketStand_1.tsx)"
+    ],
+    "warnings": [
+      "TSX ../Tilesets/Objects_Trees_Castle.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Buildings.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Props_Castle.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tilesets/Castle_Floor.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Castle_Floor.png"
+      },
+      {
+        "source": "../Tilesets/Castle_Building.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Buildings/Atlas/Atlas_Castle_Building.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Castle_Grass.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Castle_Grass.png"
+      },
+      {
+        "source": "../Tilesets/Atlas_Trees_Bushes_Castle.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Trees and Bushes/Atlas/Trees_Bushes_Castle.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Trees_Castle.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Character.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Character/Character/Character_Idle.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Fountain_1.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Fountain_1.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Buildings.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Castle_Details.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Buildings/Atlas/Atlas_Castle_Details.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Ground_Castle.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Atlas_Tileset_Ground.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Road.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_Road.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Water.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Water and Sand/Tileset_Water.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Props_Castle.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Animation_Banner_2.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Banner_2.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Banner_3.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Banner_3.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Banner_1.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Banner_1.png"
+      },
+      {
+        "source": "../Tilesets/Animation_MarketStand_1.tsx",
+        "exists": true,
+        "pngExists": false,
+        "pngPath": "../../../The Fan-tasy Tileset - Castles and Fortresses/Art/Buildings/Animations/MarketStand_1.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Torch_1.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Torch_1.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Shadow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Tileset_Shadow.png"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/fortress/fantasy-castles/Tiled/Tilemaps/Rules/RockSlopes_Rules.tmx",
+    "success": false,
+    "errors": [
+      "TSX file not found: :/automap-tiles.tsx"
+    ],
+    "warnings": [],
+    "tilesets": [
+      {
+        "source": "../../Tilesets/Tileset_RockSlope.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope.png"
+      },
+      {
+        "source": ":/automap-tiles.tsx",
+        "exists": false,
+        "pngExists": false
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": true
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/sketch-realm/fantasy-snow/Tiled/Tilemaps/Mountain Village.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [
+      "TSX ../Tilesets/Objects_Trees_Snow.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Buildings_Snow.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Rocks_Snow.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Props_Snow.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Shadows.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tilesets/Tileset_Ground_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_Ground_Snow.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Trees_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Tileset_Road.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_Road.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Buildings_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Tileset_RockSlope_2_Brown.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope_2_Brown.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Water.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Water and Sand/Tileset_Water.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Waterfall.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Water and Sand/Waterfall.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Rocks_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Props_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Tileset_Shadow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Shadows/Atlas/Tileset_Shadow.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Campfire.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Campfire.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Banner_1.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Banner_1.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_Snow.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Shadows.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/sketch-realm/fantasy-snow/Tiled/Tilemaps/Winter Pass.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [
+      "TSX ../Tilesets/Objects_Buildings_Snow.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Props_Snow.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Rocks_Snow.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Trees_Snow.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Shadows.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tilesets/Animation_Flowers.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Flowers.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Buildings_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Props_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Rocks_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Trees_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Tileset_Fence_1_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Fences and Walls/Atlas/Tileset_Fence_1_Snow.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Ground_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_Ground_Snow.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Road.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_Road.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_RockSlope_2_Brown.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope_2_Brown.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Shadow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Shadows/Atlas/Tileset_Shadow.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Water.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Water and Sand/Tileset_Water.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Waterfall.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Water and Sand/Waterfall.png"
+      },
+      {
+        "source": "../Tilesets/Atlas_Buildings_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Buildings/Atlas/Buildings_Snow.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Campfire.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Campfire.png"
+      },
+      {
+        "source": "../Tilesets/Atlas_Buildings_Bridges_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Buildings/Atlas/Buildings_Bridges_Snow.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Banner_1.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Banner_1.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_Snow.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Shadows.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/sketch-realm/fantasy-snow/Tiled/Tilemaps/Snowy Heights.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [
+      "TSX ../Tilesets/Objects_Buildings_Snow.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Props_Snow.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Rocks_Snow.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Trees_Snow.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Shadows.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tilesets/Animation_Flowers.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Flowers.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Buildings_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Props_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Rocks_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Trees_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Tileset_Fence_1_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Fences and Walls/Atlas/Tileset_Fence_1_Snow.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Ground_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_Ground_Snow.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Road.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_Road.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Shadow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Shadows/Atlas/Tileset_Shadow.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Water.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Water and Sand/Tileset_Water.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Waterfall.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Water and Sand/Waterfall.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_RockSlope_2_Brown_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope_2_Brown_Snow.png"
+      },
+      {
+        "source": "../Tilesets/Atlas_Props_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Atlas/Props_Snow.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Banner_1.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Banner_1.png"
+      },
+      {
+        "source": "../Tilesets/Animation_MagicCrystal_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Animation_MagicCrystal_Snow.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_Snow.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_RockSlope_2_Brown.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope_2_Brown.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Shadows.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Animation_Campfire.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Campfire.png"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/sketch-realm/fantasy-snow/Tiled/Tilemaps/Rules/RockSlopes_2_Ice_Rules.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [],
+    "tilesets": [
+      {
+        "source": "../../Tilesets/Tileset_RockSlope_2_Ice.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope_2_Ice.png"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": true
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/sketch-realm/fantasy-snow/Tiled/Tilemaps/Rules/RockSlopes_2_Brown_Snow_Rules.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [],
+    "tilesets": [
+      {
+        "source": "../../Tilesets/Tileset_RockSlope_2_Brown_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope_2_Brown_Snow.png"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": true
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/sketch-realm/fantasy-snow/Tiled/Tilemaps/Rules/RockSlopes_2_Brown_Rules.tmx",
+    "success": false,
+    "errors": [
+      "TSX file not found: :/automap-tiles.tsx"
+    ],
+    "warnings": [],
+    "tilesets": [
+      {
+        "source": "../../Tilesets/Tileset_RockSlope_2_Brown.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope_2_Brown.png"
+      },
+      {
+        "source": ":/automap-tiles.tsx",
+        "exists": false,
+        "pngExists": false
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": true
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/sketch-realm/fantasy-snow/Tiled/Tilemaps/Frost Peak.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [
+      "TSX ../Tilesets/Objects_Buildings_Snow.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Props_Snow.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Rocks_Snow.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Trees_Snow.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Shadows.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tilesets/Tileset_Ground_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_Ground_Snow.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_RockSlope_2_Ice.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope_2_Ice.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Buildings_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Animation_MagicCrystal_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Animation_MagicCrystal_Snow.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Props_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Animation_Banner_1.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Banner_1.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Torch_1.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Torch_1.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Rocks_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Trees_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Tileset_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tilesets/Tileset_Snow.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Banner_3.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Banner_3.png"
+      },
+      {
+        "source": "../Tilesets/Atlas_MapBackgrounds_Snow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Map Backgrounds/Atlas/Atlas_MapBackgrounds_Snow.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Shadow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Shadows/Atlas/Tileset_Shadow.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Shadows.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/sketch-realm/fantasy-desert/Tiled/Tilemaps/Hidden Oasis.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [
+      "TSX ../Tilesets/Objects_Rocks_Desert.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Trees_Desert.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Buildings_Desert.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Props_Desert.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tilesets/Objects_Rocks_Desert.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Trees_Desert.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Atlas_Props_Desert.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Atlas/Props_Desert.png"
+      },
+      {
+        "source": "../Tilesets/Atlas_Rocks_Desert.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rocks/Atlas/Rocks_Desert.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Fence.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Fences and Walls/Tileset_Fence.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Ground.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tileset/Tileset_Ground.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Road.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tileset/Tileset_Road.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_RockSlope_Sand.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope_Sand.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_RockSlope2.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope2.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Sand.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Water and Sand/Tileset_Sand.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Shadow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Tileset_Shadow.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_TallGrass_Desert.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Tall Grass Tilesets/Tileset_TallGrass_Desert.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Wall.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Fences and Walls/Tileset_Wall.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Water.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Water and Sand/Tileset_Water.png"
+      },
+      {
+        "source": "../Tilesets/Atlas_Trees_Bushes_Desert.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Trees and Bushes/Atlas/Trees_Bushes_Desert.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Waterfall.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Water and Sand/Waterfall.png"
+      },
+      {
+        "source": "../Tilesets/Atlas_Building_Props_Desert.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Buildings/Atlas/Building_Props_Desert.png"
+      },
+      {
+        "source": "../Tilesets/Atlas_Buildings_Desert.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Buildings/Atlas/Buildings_Desert.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Flowers.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Flowers.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Buildings_Desert.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Props_Desert.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Animation_Magic_Crystal_Purple.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Magic_Crystal_Purple.png"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/sketch-realm/fantasy-desert/Tiled/Tilemaps/Desert Town.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [
+      "TSX ../Tilesets/Objects_Buildings_Desert.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Props_Desert.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Rocks_Desert.tsx is a collection tileset (individual tile images)",
+      "TSX ../Tilesets/Objects_Trees_Desert.tsx is a collection tileset (individual tile images)",
+      "No collision layers detected (expected layer name with collision/collide/block)"
+    ],
+    "tilesets": [
+      {
+        "source": "../Tilesets/Tileset_Fence.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Fences and Walls/Tileset_Fence.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Ground.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tileset/Tileset_Ground.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Road.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Ground Tileset/Tileset_Road.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Sand.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Water and Sand/Tileset_Sand.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Shadow.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Tileset_Shadow.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_TallGrass_Desert.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Tall Grass Tilesets/Tileset_TallGrass_Desert.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Water.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Water and Sand/Tileset_Water.png"
+      },
+      {
+        "source": "../Tilesets/Atlas_Trees_Bushes_Desert.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Trees and Bushes/Atlas/Trees_Bushes_Desert.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Waterfall.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Water and Sand/Waterfall.png"
+      },
+      {
+        "source": "../Tilesets/Atlas_Building_Props_Desert.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Buildings/Atlas/Building_Props_Desert.png"
+      },
+      {
+        "source": "../Tilesets/Atlas_Buildings_Desert.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Buildings/Atlas/Buildings_Desert.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Door.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Buildings/Animations/Door_2.png"
+      },
+      {
+        "source": "../Tilesets/Animation_Flowers.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Animations/Flowers.png"
+      },
+      {
+        "source": "../Tilesets/Objects_Buildings_Desert.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Props_Desert.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Rocks_Desert.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Objects_Trees_Desert.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "collection"
+      },
+      {
+        "source": "../Tilesets/Atlas_Props_Desert.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Props/Atlas/Props_Desert.png"
+      },
+      {
+        "source": "../Tilesets/Atlas_Rocks_Desert.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rocks/Atlas/Rocks_Desert.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_RockSlope2.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope2.png"
+      },
+      {
+        "source": "../Tilesets/Tileset_Wall.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Fences and Walls/Tileset_Wall.png"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": false
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/sketch-realm/fantasy-desert/Tiled/Tilemaps/Rules/RockSlopes_Sand_Rules.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [],
+    "tilesets": [
+      {
+        "source": "../../Tilesets/Tileset_RockSlope_Sand.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope_Sand.png"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": true
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/sketch-realm/fantasy-desert/Tiled/Tilemaps/Rules/RockSlopes_Rules_Old.tmx",
+    "success": false,
+    "errors": [
+      "TSX file not found: ../../Tilesets/Tileset_RockSlopes_Old.tsx"
+    ],
+    "warnings": [],
+    "tilesets": [
+      {
+        "source": "../../Tilesets/Tileset_RockSlopes_Old.tsx",
+        "exists": false,
+        "pngExists": false
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": true
+  },
+  {
+    "tmxFile": "assets/tilesets-organized/sketch-realm/fantasy-desert/Tiled/Tilemaps/Rules/RockSlopes2_Rules.tmx",
+    "success": true,
+    "errors": [],
+    "warnings": [],
+    "tilesets": [
+      {
+        "source": "../../Tilesets/Tileset_RockSlope2.tsx",
+        "exists": true,
+        "pngExists": true,
+        "pngPath": "../../Art/Rock Slopes/Tileset_RockSlope2.png"
+      }
+    ],
+    "collisionLayers": [],
+    "isRulesFile": true
+  }
+]

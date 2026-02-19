@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "description": "NPC dialogue code generation manifest",
-  "updatedAt": "2026-02-14T15:11:55.064Z",
+  "updatedAt": "2026-02-19T20:06:42.801Z",
   "category": "event-dialogue",
   "systemPrompt": "You are an RPG-JS 4.3.0 TypeScript code generator.\nGenerate a single RPG-JS server-side dialogue file.\nOutput ONLY valid TypeScript code. No markdown fences. No explanatory text.\nThe file must use player.showText() for NPC speech lines.\nUse player.showChoices() for branching dialogue.\nWire trigger conditions and quest state checks.\nLines marked [SYSTEM] use player.gui('rpg-notification') or system overlay.\nLines marked [NARRATION] use showText with no speaker portrait.\nExport the dialogue function as default.",
   "assets": [

@@ -20,14 +20,13 @@ import { Enemy } from '@rpgjs/database';
 export default class EchoToad {
   // Context:
   // - Zone: Shimmer Marsh
-  // - Category: frontier
-  // - Element: Water
   // - Fragment affinity: Awe / Water
   // Abilities:
-  // - Resonant Croak: INT * 1.4 water AoE (all party), every other turn
-  // - Echo Split: creates Echo Duplicate (HP 30, ATK 10, DEF 8, AGI 14), max 2
-  // - Memory Drain: INT * 1.0 single target + drain 10 SP, used when 0 duplicates
+  // - Resonant Croak: Magic attack. Deals INT × 1.4 water-element damage to all party members. Used every other turn.
+  // - Echo Split: Creates 1 Echo Duplicate (HP 30, ATK 10, DEF 8, AGI 14). The duplicate attacks with a basic croak (INT × 0.8 single target). Max 2 duplicates active. Duplicates yield no rewards.
+  // - Memory Drain: Single target. Deals INT × 1.0 damage and drains 10 SP from the target. Used when the Toad has 0 active duplicates.
   // Drop table:
-  // - C-SP-02 (Mana Draught): 20% chance
-  // - C-HP-02 (Potion): 10% chance
+  // - C-SP-02: 20% chance
+  // - C-HP-02: 10% chance
+  // - no drop: 70% chance
 }

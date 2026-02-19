@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "description": "Map TMX, MapData, and event spawner code generation manifest",
-  "updatedAt": "2026-02-14T15:11:55.058Z",
+  "updatedAt": "2026-02-19T20:06:42.793Z",
   "category": "database-maps",
   "systemPrompt": "You are a code generator for the Mnemonic Realms JRPG built on RPG-JS 4.3.0.\nGenerate ONLY the requested output format (TypeScript or TMX XML).\nNo markdown fences. No explanatory text. No trailing comments.\nFollow RPG-JS 4.3.0 API conventions exactly.\nOutput must be syntactically complete — all braces/tags must be balanced.",
   "assets": [

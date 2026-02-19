@@ -20,14 +20,13 @@ import { Enemy } from '@rpgjs/database';
 export default class PhantomFox {
   // Context:
   // - Zone: Flickerveil
-  // - Category: frontier
-  // - Element: Wind
   // - Fragment affinity: Calm / Wind
   // Abilities:
-  // - Phase Strike: ATK * 1.5 (ignores 50% DEF when phased)
-  // - Flicker Phase: toggle visible/phased each turn; phased = 40% physical miss chance
-  // - Pack Howl: ATK +15% all Phantom Foxes for 2 turns, first turn if 2+ present
+  // - Phase Strike: Physical attack. Deals ATK × 1.5 damage. If the Fox is in "phased" state, this attack ignores 50% of target's DEF.
+  // - Flicker Phase: Toggle ability. The Fox alternates between visible and phased state each turn. While phased: physical attacks against it have 40% chance to miss. Magic attacks are unaffected.
+  // - Pack Howl: Buff all Phantom Foxes in the encounter: ATK +15% for 2 turns. Used on the Fox's first turn if 2+ Foxes are present.
   // Drop table:
-  // - C-SP-05 (Smoke Bomb): 20% chance
-  // - C-SC-02 (Haste Charm): 10% chance
+  // - C-SP-05: 20% chance
+  // - C-SC-02: 10% chance
+  // - no drop: 70% chance
 }

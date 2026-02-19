@@ -1,0 +1,16 @@
+{
+  "validator": "PuzzleValidator",
+  "timestamp": "2026-02-19T19:26:55.711Z",
+  "totalChecked": 19,
+  "passed": 19,
+  "failed": 0,
+  "warnings": 0,
+  "errors": [],
+  "warningMessages": [],
+  "metadata": {
+    "duration": 0,
+    "dungeonPuzzles": 7,
+    "stagnationPuzzles": 7,
+    "overworldPuzzles": 5
+  }
+}

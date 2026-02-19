@@ -1,5 +1,7 @@
 import { type RpgClient, RpgModule, type RpgSceneMap, type RpgSceneMapHooks } from '@rpgjs/client';
 import { SCALE_MODES, settings } from 'pixi.js';
+import { platformAdapter } from '../../src/platform/adapter.js';
+import { registerServiceWorker } from '../../src/pwa/register.js';
 import BattleUi from '../gui/battle-ui.vue';
 import CreditsScreen from '../gui/credits.vue';
 import DialogueBox from '../gui/dialogue-box.vue';
@@ -86,3 +88,13 @@ const sceneMap: RpgSceneMapHooks = {
   },
 })
 export default class RpgClientModule {}
+
+// Initialize platform adapter for cross-platform support
+platformAdapter.initialize().catch((error) => {
+  console.error('Platform adapter initialization failed:', error);
+});
+
+// Register service worker for PWA offline support
+registerServiceWorker().catch((error) => {
+  console.warn('Service worker registration failed:', error);
+});

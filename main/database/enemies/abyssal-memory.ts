@@ -4,7 +4,7 @@ import { Enemy } from '@rpgjs/database';
   id: 'E-DP-05',
   name: 'Abyssal Memory',
   description:
-    "The most ancient dissolved memories, given form by the sheer density of the Deepest Memory deposit. They appear as shifting, surreal forms — a face that becomes a landscape that becomes a hand reaching upward. They're the world's oldest memories, predating every civilization, and they're powerful beyond anything the player has faced in the Depths.",
+    "The most ancient dissolved memories, given form by the sheer density of the Deepest Memory deposit. They appear as shifting, surreal forms — a face that becomes a landscape that becomes a hand reaching upward. They're the world's oldest memories, predating every civilization, and they're powerful beyond anything the player has faced in the Depths. Fighting them feels like arguing with the concept of time itself.",
   parameters: {
     maxhp: { start: 250, end: 250 },
     str: { start: 35, end: 35 },
@@ -20,16 +20,14 @@ import { Enemy } from '@rpgjs/database';
 export default class AbyssalMemory {
   // Context:
   // - Zone: Depths Level 5 (The Deepest Memory)
-  // - Category: depths
-  // - Element: Neutral
   // - Fragment affinity: Awe / Neutral
   // Abilities:
-  // - Primal Surge: INT * 1.8 random element, single target
-  // - Time Fold: AoE 12% max HP fixed damage, ignores DEF, 3-turn CD
-  // - Dissolution: self-destruct below 15% HP, INT * 2.0 AoE (preventable with one-shot kill)
-  // - Ancient Aura (passive): all status effects last 1 turn shorter
+  // - Primal Surge: Magic attack. Deals INT × 1.8 damage, random element. Targets one party member.
+  // - Time Fold: AoE attack. Deals 12% of each target's max HP as fixed damage. Ignores DEF. 3-turn cooldown.
+  // - Dissolution: Self-destruct when HP drops below 15%. Deals INT × 2.0 damage to all party members. Can be prevented by killing the Abyssal Memory in a single hit that takes it from above 15% to 0.
   // Drop table:
-  // - C-HP-04 (Elixir): 10% chance
-  // - C-SP-04 (Ether): 10% chance
-  // - C-SP-09 (Dissolved Essence): 5% chance
+  // - C-HP-04: 10% chance
+  // - C-SP-04: 10% chance
+  // - C-SP-09: 5% chance
+  // - no drop: 75% chance
 }

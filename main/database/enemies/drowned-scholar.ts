@@ -20,14 +20,13 @@ import { Enemy } from '@rpgjs/database';
 export default class DrownedScholar {
   // Context:
   // - Zone: Depths Level 2 (Drowned Archive)
-  // - Category: depths
-  // - Element: Water
   // - Fragment affinity: Sorrow / Water
   // Abilities:
-  // - Archive Torrent: INT * 1.7 water-element single target
-  // - Knowledge Drain: target INT -20% for 3 turns, targets highest INT
-  // - Lore Shield: barrier of floating pages, absorbs INT * 0.5 damage, 2 turns
+  // - Archive Torrent: Magic attack. Deals INT × 1.7 water-element damage to one target.
+  // - Knowledge Drain: Targeted debuff. Reduces target's INT by 20% for 3 turns. No damage. Used against Mages/Clerics (highest INT target).
+  // - Lore Shield: Creates a barrier of floating pages around one ally. Absorbs INT × 0.5 damage. Lasts 2 turns.
   // Drop table:
-  // - C-SP-02 (Mana Draught): 20% chance
-  // - C-BF-02 (Wisdom Seed): 10% chance
+  // - C-SP-02: 20% chance
+  // - C-BF-02: 10% chance
+  // - no drop: 70% chance
 }
