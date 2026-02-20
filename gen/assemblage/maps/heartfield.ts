@@ -59,9 +59,10 @@ const eastBorder = createForestBorder({
 });
 
 // Wheat fields — the golden rolling farmland
+// Sized to NOT overlap hamlet buildings (x 24-44, y 24-44) or windmill (x 56, y 12)
 const wheatWest = createWheatField({
   id: 'wheat-west',
-  width: 24,
+  width: 18,
   height: 30,
   border: true,
   hayBales: true,
@@ -69,13 +70,13 @@ const wheatWest = createWheatField({
 
 const wheatEast = createWheatField({
   id: 'wheat-east',
-  width: 20,
-  height: 24,
+  width: 8,
+  height: 14,
   border: true,
   hayBales: true,
 });
 
-// Small wheat patch near hamlet
+// Small wheat patch south of hamlet
 const wheatHamlet = createWheatField({
   id: 'wheat-hamlet',
   width: 10,
@@ -218,17 +219,17 @@ export const composition: MapComposition = {
     { assemblage: northBorder, x: 0, y: 0 },
     { assemblage: eastBorder, x: W - 3, y: 4 },
 
-    // Wheat fields — the dominant terrain feature
-    { assemblage: wheatWest, x: 4, y: 10 },
-    { assemblage: wheatEast, x: 44, y: 10 },
-    { assemblage: wheatHamlet, x: 20, y: 42 },
+    // Wheat fields — sized/positioned to avoid hamlet (24-44,24-44) and windmill (56,12)
+    { assemblage: wheatWest, x: 4, y: 10 },   // 4-22, 10-40 (clears house-1 at x=26)
+    { assemblage: wheatEast, x: 46, y: 6 },    // 46-54, 6-20 (clears windmill at x=56)
+    { assemblage: wheatHamlet, x: 14, y: 46 }, // 14-24, 46-54 (SW of hamlet)
 
-    // Heartfield Hamlet — cluster of farming houses
-    { assemblage: hamletHouse1, x: 26, y: 26 },
-    { assemblage: hamletHouse2, x: 38, y: 28 },
-    { assemblage: hamletHouse3, x: 24, y: 36 },
-    { assemblage: hamletHouse4, x: 36, y: 36 },
-    { assemblage: hamletShelter, x: 32, y: 32 },
+    // Heartfield Hamlet — cluster of farming houses around well at ~(32,32)
+    { assemblage: hamletHouse1, x: 26, y: 24 },  // Farmer Gale, NW of well
+    { assemblage: hamletHouse2, x: 38, y: 24 },  // Farmer Suri, NE of well
+    { assemblage: hamletHouse3, x: 24, y: 36 },  // Farmer Edric, SW of well
+    { assemblage: hamletHouse4, x: 36, y: 36 },  // Hamlet Elder, SE of well
+    { assemblage: hamletShelter, x: 30, y: 44 }, // Hay shelter, south of ring
 
     // Old Windmill on northeast hilltop
     { assemblage: oldWindmill, x: 56, y: 12 },
