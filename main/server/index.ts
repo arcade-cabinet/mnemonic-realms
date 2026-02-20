@@ -1,5 +1,10 @@
 import { RpgModule, type RpgServer } from '@rpgjs/server';
 import { database } from '../database';
+// --- Region maps (DDL-generated overworld) ---
+import { FrontierMap } from './maps/frontier';
+import { SettledLandsMap } from './maps/settled-lands';
+import { SketchRealmMap } from './maps/sketch-realm';
+// --- Legacy zone maps (kept as child worlds / interiors) ---
 import { AmbergroveMap } from './maps/ambergrove';
 import { DepthsLevel1Map } from './maps/depths-level-1-memory-cellar';
 import { DepthsLevel2Map } from './maps/depths-level-2-drowned-archive';
@@ -25,6 +30,11 @@ import { player } from './player';
 @RpgModule<RpgServer>({
   player,
   maps: [
+    // Region overworlds (DDL pipeline)
+    SettledLandsMap,
+    FrontierMap,
+    SketchRealmMap,
+    // Legacy zone maps (child worlds / interiors)
     EverwickMap,
     HeartfieldMap,
     AmbergroveMap,
