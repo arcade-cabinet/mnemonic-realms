@@ -1,7 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 
 const useDevServer = !!process.env.E2E_DEV;
-const port = useDevServer ? 3000 : 4173;
+// Expo Metro dev server runs on 8081; static preview on 8080
+const port = useDevServer ? 8081 : 8080;
 
 export default defineConfig({
   testDir: './tests/e2e',
@@ -41,10 +42,11 @@ export default defineConfig({
   ],
   webServer: {
     command: useDevServer
-      ? 'pnpm dev'
-      : 'python3 -m http.server 4173 -d dist',
+      ? 'pnpm web' // expo start --web (Metro bundler)
+      : 'npx serve dist -l 8080 -s', // SPA fallback for Expo Router
     url: `http://localhost:${port}`,
     reuseExistingServer: !process.env.CI,
-    timeout: useDevServer ? 60_000 : 30_000,
+    // Metro bundling is slow on first run; static serve is near-instant
+    timeout: useDevServer ? 120_000 : 30_000,
   },
 });
