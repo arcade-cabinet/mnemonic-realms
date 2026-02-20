@@ -351,28 +351,109 @@
     "name": "Heartfield — The Open World",
     "summary": "The player leaves the village for the first time. Heartfield is rolling golden farmland — safe, warm, and visually inviting at its starting vibrancy of 55 (Normal tier). This scene is not a scripted e",
     "mapId": "heartfield",
-    "subLocation": "south of Everwick)",
+    "subLocation": "Settled Lands — south of Everwick",
+    "spawnPosition": "30,4",
     "trigger": {
       "type": "map-enter",
       "map": "heartfield",
       "condition": "first-visit"
     },
-    "assemblages": [],
-    "paths": [],
-    "visuals": [],
+    "assemblages": [
+      { "assemblageId": "wheat-west", "x": 4, "y": 10 },
+      { "assemblageId": "wheat-east", "x": 44, "y": 10 },
+      { "assemblageId": "wheat-hamlet", "x": 20, "y": 42 },
+      { "assemblageId": "hamlet-house-1", "x": 26, "y": 26 },
+      { "assemblageId": "hamlet-house-2", "x": 38, "y": 28 },
+      { "assemblageId": "hamlet-house-3", "x": 24, "y": 36 },
+      { "assemblageId": "hamlet-house-4", "x": 36, "y": 36 },
+      { "assemblageId": "hamlet-shelter", "x": 32, "y": 32 },
+      { "assemblageId": "old-windmill", "x": 56, "y": 12 },
+      { "assemblageId": "forest-border-north", "x": 0, "y": 0 },
+      { "assemblageId": "forest-border-east", "x": 77, "y": 4 }
+    ],
+    "paths": [
+      { "terrain": "road", "layer": "road", "width": 3, "points": [{"x":30,"y":4},{"x":30,"y":16},{"x":30,"y":28},{"x":30,"y":48},{"x":30,"y":70}] },
+      { "terrain": "road", "layer": "road", "width": 2, "points": [{"x":30,"y":20},{"x":42,"y":18},{"x":56,"y":16}] },
+      { "terrain": "road", "layer": "road", "width": 2, "points": [{"x":22,"y":32},{"x":30,"y":32},{"x":40,"y":32}] },
+      { "terrain": "fence", "layer": "objects", "width": 1, "points": [{"x":3,"y":10},{"x":28,"y":10}] },
+      { "terrain": "fence", "layer": "objects", "width": 1, "points": [{"x":44,"y":10},{"x":64,"y":10}] }
+    ],
+    "visuals": [
+      { "objectRef": "well.generic", "x": 32, "y": 30 },
+      { "objectRef": "prop.bulletin-board-1", "x": 28, "y": 34 },
+      { "objectRef": "prop.sign-south", "x": 30, "y": 8 },
+      { "objectRef": "tree.emerald-3", "x": 16, "y": 50 },
+      { "objectRef": "tree.emerald-1", "x": 50, "y": 46 },
+      { "objectRef": "tree.light-1", "x": 8, "y": 60 },
+      { "objectRef": "prop.lamppost-1", "x": 28, "y": 26 },
+      { "objectRef": "prop.lamppost-1", "x": 32, "y": 26 }
+    ],
     "npcs": [
       {
         "npcId": "hana",
         "name": "Hana",
         "graphic": "npc_hana",
-        "position": "0,0",
-        "movement": "static",
+        "position": "30,6",
+        "movement": "follow",
         "dialogueRef": "dlg-hana-scene5"
+      },
+      {
+        "npcId": "farmer-gale",
+        "name": "Farmer Gale",
+        "graphic": "npc_farmer_m1",
+        "position": "30,28",
+        "movement": "patrol",
+        "patrolRange": "26,26->44,44",
+        "dialogueRef": "dlg-farmer-gale"
+      },
+      {
+        "npcId": "farmer-suri",
+        "name": "Farmer Suri",
+        "graphic": "npc_farmer_f1",
+        "position": "34,32",
+        "movement": "static",
+        "dialogueRef": "dlg-farmer-suri"
+      },
+      {
+        "npcId": "farmer-edric",
+        "name": "Farmer Edric",
+        "graphic": "npc_farmer_m2",
+        "position": "28,36",
+        "movement": "patrol",
+        "patrolRange": "20,36->40,50",
+        "dialogueRef": "dlg-farmer-edric"
+      },
+      {
+        "npcId": "hamlet-elder",
+        "name": "Hamlet Elder",
+        "graphic": "npc_elder_f1",
+        "position": "36,28",
+        "movement": "static",
+        "dialogueRef": "dlg-hamlet-elder"
+      },
+      {
+        "npcId": "traveling-merchant",
+        "name": "Traveling Merchant",
+        "graphic": "npc_merchant",
+        "position": "34,28",
+        "movement": "static",
+        "dialogueRef": "dlg-traveling-merchant"
       }
     ],
-    "events": [],
-    "resonanceStones": [],
-    "treasureChests": [],
+    "events": [
+      { "id": "EV-HF-001", "position": "30,28", "type": "action", "linkedQuest": "SQ-02", "repeat": "quest", "description": "Farmer Gale windmill dialogue" },
+      { "id": "EV-HF-002", "position": "60,16", "type": "touch", "linkedQuest": "SQ-02", "repeat": "quest", "description": "Old Windmill entrance" }
+    ],
+    "resonanceStones": [
+      { "id": "RS-HF-01", "position": "36,28", "fragments": "joy/earth/1" },
+      { "id": "RS-HF-02", "position": "62,18", "fragments": "awe/wind/2" },
+      { "id": "RS-HF-04", "position": "16,60", "fragments": "calm/earth/1", "notes": "Hidden behind tree" }
+    ],
+    "treasureChests": [
+      { "id": "CH-HF-01", "position": "64,18", "contents": "Antidote (C-SC-01) x3" },
+      { "id": "CH-HF-02", "position": "10,20", "contents": "Minor Potion (C-HP-01) x2" },
+      { "id": "CH-HF-03", "position": "72,50", "contents": "Smoke Bomb (C-SP-05) x2" }
+    ],
     "effects": [
       {
         "type": "system-message",
@@ -417,27 +498,35 @@
     "summary": "The Stagnation Clearing is a 5x5 patch of crystallized grass and frozen butterflies at Heartfield's southeast corner. It is hauntingly beautiful — everything is preserved in perfect detail, but nothin",
     "mapId": "heartfield",
     "subLocation": "Stagnation Clearing",
-    "spawnPosition": "35,30",
+    "spawnPosition": "66,56",
     "trigger": {
       "type": "area-enter",
       "map": "heartfield",
-      "position": "35,30"
+      "position": "64,54"
     },
-    "assemblages": [],
-    "paths": [],
+    "assemblages": [
+      { "assemblageId": "stagnation-clearing", "x": 64, "y": 54 }
+    ],
+    "paths": [
+      { "terrain": "road", "layer": "road", "width": 2, "points": [{"x":38,"y":32},{"x":50,"y":44},{"x":62,"y":54}] }
+    ],
     "visuals": [],
     "npcs": [
       {
         "npcId": "hana",
         "name": "Hana",
         "graphic": "npc_hana",
-        "position": "0,0",
-        "movement": "static",
+        "position": "66,52",
+        "movement": "follow",
         "dialogueRef": "dlg-hana-scene6"
       }
     ],
-    "events": [],
-    "resonanceStones": [],
+    "events": [
+      { "id": "EV-HF-003", "position": "64,54", "type": "auto", "linkedQuest": "MQ-04", "repeat": "once", "description": "Stagnation Clearing cutscene" }
+    ],
+    "resonanceStones": [
+      { "id": "RS-HF-03", "position": "69,59", "fragments": "sorrow/dark/1", "notes": "Frozen — cannot interact until Scene 10" }
+    ],
     "treasureChests": [],
     "effects": [
       {
@@ -756,13 +845,15 @@
     "summary": "The player returns to the clearing they first saw in Scene 6. Now they have the tools and understanding to break it. This is the first active use of broadcast as a weapon against stagnation.",
     "mapId": "heartfield",
     "subLocation": "Stagnation Clearing",
-    "spawnPosition": "35,30",
+    "spawnPosition": "66,56",
     "trigger": {
       "type": "quest-state",
       "map": "heartfield",
-      "position": "35,30"
+      "position": "64,54"
     },
-    "assemblages": [],
+    "assemblages": [
+      { "assemblageId": "stagnation-clearing", "x": 64, "y": 54 }
+    ],
     "paths": [],
     "visuals": [],
     "npcs": [
@@ -770,13 +861,17 @@
         "npcId": "hana",
         "name": "Hana",
         "graphic": "npc_hana",
-        "position": "0,0",
-        "movement": "static",
+        "position": "66,52",
+        "movement": "follow",
         "dialogueRef": "dlg-hana-scene10"
       }
     ],
-    "events": [],
-    "resonanceStones": [],
+    "events": [
+      { "id": "EV-HF-010", "position": "69,59", "type": "action", "linkedQuest": "MQ-04", "repeat": "once", "description": "Broadcast fragment to break Stagnation Zone" }
+    ],
+    "resonanceStones": [
+      { "id": "RS-HF-03", "position": "69,59", "fragments": "sorrow/dark/1", "notes": "Now unfrozen — player can broadcast to break stagnation" }
+    ],
     "treasureChests": [],
     "effects": [
       {

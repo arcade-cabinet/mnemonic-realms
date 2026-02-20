@@ -1,0 +1,16 @@
+{
+  "id": "depths-l1-f1",
+  "name": "Memory Cellar — Floor 1",
+  "archetype": "dungeon-room",
+  "parentAnchor": "depths-l1",
+  "floor": 1,
+  "theme": "crystal",
+  "npcs": [],
+  "objects": ["crystal-formation", "memory-pedestal", "chest-locked"],
+  "enemies": ["E-DG-01", "E-DG-02"],
+  "boss": "memory-guardian",
+  "transitions": {
+    "entrance": { "to": "settled-lands", "type": "stairs-down" },
+    "exit": { "to": "settled-lands", "type": "stairs-up" }
+  }
+}

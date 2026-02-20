@@ -1,0 +1,13 @@
+{
+  "id": "everwick-hark",
+  "name": "Hark's Forge",
+  "archetype": "weapon-shop",
+  "parentAnchor": "everwick",
+  "npcs": [
+    { "id": "hark", "role": "shopkeeper", "placement": "center" }
+  ],
+  "objects": ["forge", "anvil", "weapon-rack", "armor-display"],
+  "transitions": {
+    "exit": { "to": "everwick", "type": "door" }
+  }
+}

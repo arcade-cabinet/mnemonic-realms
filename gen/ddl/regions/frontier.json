@@ -1,0 +1,95 @@
+{
+  "id": "frontier",
+  "name": "The Frontier",
+  "biome": "forest",
+  "acts": [2],
+  "playTimeMinutes": 300,
+  "difficulty": "medium",
+  "ambientMusic": "bgm-overworld-frontier",
+  "startVibrancy": 40,
+  "weather": { "default": "fog", "dynamic": true },
+  "encounters": {
+    "enemies": ["E-FR-01", "E-FR-02", "E-FR-03"],
+    "levelRange": [8, 15],
+    "averageStepsBetweenEncounters": 150
+  },
+  "anchors": [
+    {
+      "id": "shimmer-marsh",
+      "name": "Shimmer Marsh",
+      "type": "town",
+      "position": "start",
+      "importance": "major",
+      "town": {
+        "size": "hamlet",
+        "services": [
+          { "type": "general-store", "buildingName": "Marsh Wares" },
+          { "type": "inn", "buildingName": "The Firefly Rest" }
+        ],
+        "houses": 3,
+        "centralFeature": "boardwalk-crossing"
+      },
+      "quests": ["MQ-08"],
+      "interiors": ["shimmer-marsh-store", "shimmer-marsh-inn"]
+    },
+    {
+      "id": "hollow-ridge",
+      "name": "Hollow Ridge",
+      "type": "camp",
+      "position": "middle",
+      "importance": "major",
+      "quests": ["MQ-09"]
+    },
+    {
+      "id": "flickerveil",
+      "name": "Flickerveil",
+      "type": "town",
+      "position": "middle",
+      "importance": "major",
+      "town": {
+        "size": "village",
+        "services": [
+          { "type": "general-store", "buildingName": "Veil Essentials" },
+          { "type": "inn", "buildingName": "The Luminos Lodge" },
+          { "type": "library", "buildingName": "Archive of Echoes" }
+        ],
+        "houses": 5,
+        "centralFeature": "luminos-grove"
+      },
+      "quests": ["MQ-10"],
+      "interiors": ["flickerveil-store", "flickerveil-inn", "flickerveil-library"]
+    },
+    {
+      "id": "resonance-fields",
+      "name": "Resonance Fields",
+      "type": "shrine",
+      "position": "end",
+      "importance": "major",
+      "quests": ["MQ-11"]
+    },
+    {
+      "id": "depths-l2-l5",
+      "name": "The Depths (L2-L5)",
+      "type": "dungeon",
+      "position": "side",
+      "importance": "major",
+      "dungeon": {
+        "floors": 4,
+        "theme": "deep-crystal",
+        "boss": "archive-keeper",
+        "reward": "memory-key",
+        "interiors": ["depths-l2-f1", "depths-l3-f1", "depths-l4-f1", "depths-l5-f1"]
+      }
+    }
+  ],
+  "connectiveTissue": {
+    "pathDensity": "sparse",
+    "safeZoneInterval": 45,
+    "safePathRatio": 0.4,
+    "wildFeatures": [
+      { "type": "resonance-stone", "count": 8, "placement": "off-path" },
+      { "type": "hidden-chest", "count": 5, "placement": "hidden" },
+      { "type": "mini-shrine", "count": 3, "placement": "off-path" }
+    ]
+  }
+}

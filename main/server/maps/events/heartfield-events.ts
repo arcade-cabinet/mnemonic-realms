@@ -1,233 +1,184 @@
-import type { RpgMap, RpgPlayer } from '@rpgjs/server';
+import { EventData, RpgEvent, type RpgMap, type RpgPlayer } from '@rpgjs/server';
+import { showDialogue } from '../../systems/npc-interaction';
 
-export function spawnMapEvents(player: RpgPlayer) {
-  const map = player.map as RpgMap;
-
-  // --- NPCs ---
-
-  // Farmer Gale (farmer-gale)
-  map.createDynamicEvent({
-    x: 15,
-    y: 14,
-    name: 'farmer-gale',
-    graphic: 'npc_farmer_m1',
-    hitbox: { width: 16, height: 16 },
-    onAction(player: RpgPlayer) {
-      const sq02Started = player.getVariable('SQ_02_STARTED');
-      const sq02Completed = player.getVariable('SQ_02_COMPLETED');
-      const mq03Started = player.getVariable('MQ_03_STARTED');
-      const mq03Completed = player.getVariable('MQ_03_COMPLETED');
-
-      if (sq02Started && !sq02Completed) {
-        player.showText(
-          'Farmer Gale: "The old windmill... it groans more than usual. Something\'s not right with it. Could you take a look?"',
-        );
-      } else if (mq03Started && !mq03Completed) {
-        player.showText(
-          'Farmer Gale: "The crops are struggling. I fear the blight is spreading from the east."',
-        );
-      } else {
-        player.showText('Farmer Gale: "A good harvest makes a happy farmer."');
-      }
-    },
-  });
-
-  // Farmer Suri (farmer-suri)
-  map.createDynamicEvent({
-    x: 17,
-    y: 16,
-    name: 'farmer-suri',
-    graphic: 'npc_farmer_f1',
-    hitbox: { width: 16, height: 16 },
-    onAction(player: RpgPlayer) {
-      const mq03Started = player.getVariable('MQ_03_STARTED');
-      const mq03Completed = player.getVariable('MQ_03_COMPLETED');
-      if (mq03Started && !mq03Completed) {
-        player.showText(
-          'Farmer Suri: "Have you seen the fields to the east? They look... different, almost frozen."',
-        );
-      } else {
-        player.showText(
-          'Farmer Suri: "Welcome to Heartfield. We work hard here to keep the land vibrant."',
-        );
-      }
-    },
-  });
-
-  // Farmer Edric (farmer-edric)
-  map.createDynamicEvent({
-    x: 14,
-    y: 18,
-    name: 'farmer-edric',
-    graphic: 'npc_farmer_m2',
-    hitbox: { width: 16, height: 16 },
-    onAction(player: RpgPlayer) {
-      player.showText(
-        'Farmer Edric: "The soil is good, but the air feels heavy sometimes. I worry for the future."',
-      );
-    },
-  });
-
-  // Hamlet Elder (hamlet-elder)
-  map.createDynamicEvent({
-    x: 18,
-    y: 14,
-    name: 'hamlet-elder',
-    graphic: 'npc_elder_f1',
-    hitbox: { width: 16, height: 16 },
-    onAction(player: RpgPlayer) {
-      player.showText(
-        'Hamlet Elder: "The Heartfield has sustained us for generations. We must protect its vibrancy, for it is our lifeblood."',
-      );
-    },
-  });
-
-  // Child NPC (child-npc) - Appears after Solara recall
-  if (player.getVariable('SOLARA_RECALLED')) {
-    map.createDynamicEvent({
-      x: 16,
-      y: 15,
-      name: 'child-npc',
-      graphic: 'npc_child_01',
-      hitbox: { width: 16, height: 16 },
-      onAction(player: RpgPlayer) {
-        player.showText(
-          'Child: "Whee! Playing in the fields is the best! The butterflies are so pretty!"',
-        );
-      },
-    });
+function makeNpc(id: string, graphic: string, action: (player: RpgPlayer) => void | Promise<void>) {
+  @EventData({ name: id, hitbox: { width: 16, height: 16 } })
+  class Npc extends RpgEvent {
+    onInit() {
+      this.setGraphic(graphic);
+    }
+    async onAction(player: RpgPlayer) {
+      await action(player);
+    }
   }
+  return Npc;
+}
 
-  // --- Standard Events ---
+function makeEvent(id: string, action: (player: RpgPlayer) => void | Promise<void>) {
+  @EventData({ name: id, hitbox: { width: 16, height: 16 } })
+  class Evt extends RpgEvent {
+    onInit() {}
+    async onAction(player: RpgPlayer) {
+      await action(player);
+    }
+  }
+  return Evt;
+}
 
-  // EV-HF-002: Old Windmill entrance
-  map.createDynamicEvent({
-    x: 30,
-    y: 8,
-    name: 'EV-HF-002',
-    hitbox: { width: 16, height: 16 },
-    onAction(player: RpgPlayer) {
-      const sq02Started = player.getVariable('SQ_02_STARTED');
-      const sq02Completed = player.getVariable('SQ_02_COMPLETED');
-      if (sq02Started && !sq02Completed) {
-        player.changeMap('windmill_interior', { x: 10, y: 10 });
-      } else {
-        player.showText(
-          'The old windmill stands silent. Its sails are still, and the entrance is locked from the inside.',
-        );
-      }
+export function spawnMapEvents(_player: RpgPlayer, map: RpgMap) {
+  // --- NPCs ---
+  map.createDynamicEvent([
+    {
+      x: 480,
+      y: 96,
+      event: makeNpc('hana', 'npc_hana', (p) => showDialogue(p, 'dlg-hana-scene5')),
     },
-  });
-
-  // EV-HF-003: Stagnation Clearing cutscene
-  map.createDynamicEvent({
-    x: 33,
-    y: 28,
-    name: 'EV-HF-003',
-    hitbox: { width: 16, height: 16 },
-    onAction(player: RpgPlayer) {
-      const mq04Started = player.getVariable('MQ_04_STARTED');
-      const mq04Completed = player.getVariable('MQ_04_COMPLETED');
-      const alreadyTriggered = player.getVariable('EV_HF_003_TRIGGERED');
-
-      if (mq04Started && !mq04Completed && !alreadyTriggered) {
-        player.setVariable('EV_HF_003_TRIGGERED', true);
-        player.showText(
-          'A chilling stillness permeates the air. The grass here is frozen, crystallized.',
-        );
-        player.showText('A faint, sorrowful hum resonates from the clearing ahead...');
-      } else if (!alreadyTriggered) {
-        player.showText('The clearing ahead feels unnaturally still.');
-      }
+    {
+      x: 480,
+      y: 448,
+      event: makeNpc('farmer-gale', 'npc_farmer_m1', (p) => showDialogue(p, 'dlg-farmer-gale')),
     },
-  });
-
-  // EV-HF-005: South -> Shimmer Marsh (conditional MQ_04_COMPLETED)
-  map.createDynamicEvent({
-    x: 20,
-    y: 38,
-    name: 'EV-HF-005',
-    hitbox: { width: 16, height: 16 },
-    onAction(player: RpgPlayer) {
-      if (player.getVariable('MQ_04_COMPLETED')) {
-        player.changeMap('shimmer_marsh', { x: 20, y: 0 });
-      } else {
-        player.showText(
-          'The path south is overgrown and seems impassable for now. Perhaps later, when the way is clearer.',
-        );
-      }
+    {
+      x: 544,
+      y: 512,
+      event: makeNpc('farmer-suri', 'npc_farmer_f1', (p) => showDialogue(p, 'dlg-farmer-suri')),
     },
-  });
-
-  // EV-HF-006: North -> Everwick
-  map.createDynamicEvent({
-    x: 15,
-    y: 0,
-    name: 'EV-HF-006',
-    hitbox: { width: 16, height: 16 },
-    onAction(player: RpgPlayer) {
-      player.changeMap('everwick', { x: 15, y: 25 });
+    {
+      x: 448,
+      y: 576,
+      event: makeNpc('farmer-edric', 'npc_farmer_m2', (p) => showDialogue(p, 'dlg-farmer-edric')),
     },
-  });
-
-  // EV-HF-007: East -> Ambergrove
-  map.createDynamicEvent({
-    x: 39,
-    y: 20,
-    name: 'EV-HF-007',
-    hitbox: { width: 16, height: 16 },
-    onAction(player: RpgPlayer) {
-      player.changeMap('ambergrove', { x: 0, y: 20 });
+    {
+      x: 576,
+      y: 448,
+      event: makeNpc('hamlet-elder', 'npc_elder_f1', (p) => showDialogue(p, 'dlg-hamlet-elder')),
     },
-  });
-
-  // EV-HF-008: Windmill Resonance Stone
-  map.createDynamicEvent({
-    x: 31,
-    y: 9,
-    name: 'EV-HF-008',
-    hitbox: { width: 16, height: 16 },
-    onAction(player: RpgPlayer) {
-      player.showText(
-        'You touch the Resonance Stone. It hums with a faint, awe-inspiring energy. (Awe/Wind Fragment)',
-      );
-      // TODO: Add logic to collect fragment, check if already collected
+    {
+      x: 544,
+      y: 448,
+      event: makeNpc('traveling-merchant', 'npc_merchant', (p) => showDialogue(p, 'dlg-traveling-merchant')),
     },
-  });
-
-  // EV-HF-009: Broadcast joy into frozen Hana (conditional SQ_14)
-  map.createDynamicEvent({
-    x: 34,
-    y: 29,
-    name: 'EV-HF-009',
-    hitbox: { width: 16, height: 16 },
-    onAction(player: RpgPlayer) {
-      const sq14Started = player.getVariable('SQ_14_STARTED');
-      const sq14Completed = player.getVariable('SQ_14_COMPLETED');
-      if (sq14Started && !sq14Completed) {
-        const joyFragments = player.getVariable('JOY_FRAGMENTS_COLLECTED') || 0;
-        if (joyFragments >= 4) {
-          player.showText(
-            'You focus your collected joy fragments into the frozen form. A faint warmth spreads, and a single tear thaws on her cheek.',
-          );
-          // TODO: Advance SQ-14, potentially trigger a cutscene or state change
-        } else {
-          player.showText(
-            'The frozen form of Hana radiates immense sorrow. You feel a pull to broadcast joy, but lack sufficient fragments.',
-          );
-        }
-      } else {
-        player.showText(
-          'A figure, frozen in time, lies here. A profound sadness emanates from her.',
-        );
-      }
+    {
+      x: 1056,
+      y: 832,
+      event: makeNpc('hana', 'npc_hana', (p) => showDialogue(p, 'dlg-hana-scene6')),
     },
-  });
+    {
+      x: 1056,
+      y: 832,
+      event: makeNpc('hana', 'npc_hana', (p) => showDialogue(p, 'dlg-hana-scene10')),
+    },
+    {
+      x: 0,
+      y: 0,
+      event: makeNpc('artun', 'npc_artun', (p) => showDialogue(p, 'dlg-artun-scene16')),
+    },
+    {
+      x: 0,
+      y: 0,
+      event: makeNpc('hana', 'npc_hana', (p) => showDialogue(p, 'dlg-hana-scene16')),
+    },
+  ]);
 
-  // --- Enemy Zones ---
-  // Encounter zones defined in systems/encounters.ts (HEARTFIELD_ZONES).
-  // Random encounters triggered via player.ts onInput hook -> checkEncounter().
-  //
-  // Wheat Fields West: bounds=(2,5) to (14,20), rate=3%
-  // Wheat Fields East: bounds=(22,5) to (32,17), rate=4%
+  // --- Events ---
+  map.createDynamicEvent([
+    {
+      x: 480,
+      y: 448,
+      event: makeEvent('EV-HF-001', (p) => {
+        p.showText('You examine the EV-HF-001.');
+      }),
+    },
+    {
+      x: 960,
+      y: 256,
+      event: makeEvent('EV-HF-002', (p) => {
+        p.showText('You examine the EV-HF-002.');
+      }),
+    },
+    {
+      x: 1024,
+      y: 864,
+      event: makeEvent('EV-HF-003', (p) => {
+        p.showText('You examine the EV-HF-003.');
+      }),
+    },
+    {
+      x: 1104,
+      y: 944,
+      event: makeEvent('EV-HF-010', (p) => {
+        p.showText('You examine the EV-HF-010.');
+      }),
+    },
+    {
+      x: 576,
+      y: 448,
+      event: makeEvent('RS-HF-01', (p) => {
+        p.showText('You examine the RS-HF-01.');
+      }),
+    },
+    {
+      x: 992,
+      y: 288,
+      event: makeEvent('RS-HF-02', (p) => {
+        p.showText('You examine the RS-HF-02.');
+      }),
+    },
+    {
+      x: 256,
+      y: 960,
+      event: makeEvent('RS-HF-04', (p) => {
+        p.showText('You examine the RS-HF-04.');
+      }),
+    },
+    {
+      x: 1104,
+      y: 944,
+      event: makeEvent('RS-HF-03', (p) => {
+        p.showText('You examine the RS-HF-03.');
+      }),
+    },
+    {
+      x: 1024,
+      y: 288,
+      event: makeEvent('CH-HF-01', (p) => {
+        p.showText('You examine the CH-HF-01.');
+      }),
+    },
+    {
+      x: 160,
+      y: 320,
+      event: makeEvent('CH-HF-02', (p) => {
+        p.showText('You examine the CH-HF-02.');
+      }),
+    },
+    {
+      x: 1152,
+      y: 800,
+      event: makeEvent('CH-HF-03', (p) => {
+        p.showText('You examine the CH-HF-03.');
+      }),
+    },
+    {
+      x: 480,
+      y: 0,
+      event: makeEvent('transition-north-everwick', (p) => {
+        p.changeMap('everwick', { x: 480, y: 896 });
+      }),
+    },
+    {
+      x: 1248,
+      y: 640,
+      event: makeEvent('transition-east-ambergrove', (p) => {
+        p.changeMap('ambergrove', { x: 0, y: 640 });
+      }),
+    },
+    {
+      x: 640,
+      y: 1248,
+      event: makeEvent('transition-south-shimmer-marsh', (p) => {
+        p.changeMap('shimmer-marsh', { x: 640, y: 0 });
+      }),
+    },
+  ]);
 }

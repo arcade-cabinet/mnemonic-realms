@@ -1,0 +1,25 @@
+{
+  "name": "Mnemonic Realms",
+  "properties": {
+    "startRegion": "settled-lands",
+    "startAnchor": "everwick",
+    "vibrancySystem": true
+  },
+  "regions": ["settled-lands", "frontier", "sketch-realm"],
+  "regionConnections": [
+    {
+      "from": "settled-lands",
+      "to": "frontier",
+      "connectionType": "gate",
+      "condition": "MQ-07+",
+      "direction": "south"
+    },
+    {
+      "from": "frontier",
+      "to": "sketch-realm",
+      "connectionType": "portal",
+      "condition": "MQ-11+",
+      "direction": "west"
+    }
+  ]
+}

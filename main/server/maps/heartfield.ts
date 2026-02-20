@@ -7,6 +7,6 @@ import { spawnMapEvents } from './events/heartfield-events';
 })
 export class HeartfieldMap extends RpgMap {
   override onJoin(player: RpgPlayer) {
-    spawnMapEvents(player);
+    spawnMapEvents(player, this);
   }
 }

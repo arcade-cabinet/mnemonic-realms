@@ -1,0 +1,75 @@
+{
+  "id": "sketch-realm",
+  "name": "The Sketch Realm",
+  "biome": "sketch",
+  "acts": [3],
+  "playTimeMinutes": 240,
+  "difficulty": "hard",
+  "ambientMusic": "bgm-overworld-sketch",
+  "startVibrancy": 20,
+  "weather": { "default": "clear", "dynamic": false },
+  "encounters": {
+    "enemies": ["E-SK-01", "E-SK-02", "E-SK-03"],
+    "levelRange": [15, 22],
+    "averageStepsBetweenEncounters": 120
+  },
+  "anchors": [
+    {
+      "id": "luminous-wastes",
+      "name": "Luminous Wastes",
+      "type": "landmark",
+      "position": "start",
+      "importance": "major",
+      "quests": ["MQ-12"]
+    },
+    {
+      "id": "undrawn-peaks",
+      "name": "Undrawn Peaks",
+      "type": "landmark",
+      "position": "middle",
+      "importance": "major",
+      "quests": ["MQ-13"]
+    },
+    {
+      "id": "half-drawn-forest",
+      "name": "Half-Drawn Forest",
+      "type": "town",
+      "position": "middle",
+      "importance": "major",
+      "town": {
+        "size": "hamlet",
+        "services": [
+          { "type": "general-store", "buildingName": "The Sketch Vendor" }
+        ],
+        "houses": 3,
+        "centralFeature": "solidification-zone"
+      },
+      "quests": ["MQ-14"],
+      "interiors": ["half-drawn-store"]
+    },
+    {
+      "id": "preserver-fortress",
+      "name": "Preserver Fortress",
+      "type": "fortress",
+      "position": "end",
+      "importance": "major",
+      "dungeon": {
+        "floors": 3,
+        "theme": "crystal-fortress",
+        "boss": "grym",
+        "reward": "world-restoration",
+        "interiors": ["fortress-f1", "fortress-f2", "fortress-f3"]
+      },
+      "quests": ["MQ-15", "MQ-16"]
+    }
+  ],
+  "connectiveTissue": {
+    "pathDensity": "sparse",
+    "safeZoneInterval": 60,
+    "safePathRatio": 0.3,
+    "wildFeatures": [
+      { "type": "resonance-stone", "count": 6, "placement": "off-path" },
+      { "type": "hidden-chest", "count": 4, "placement": "hidden" }
+    ]
+  }
+}

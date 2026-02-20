@@ -1,0 +1,165 @@
+{
+  "id": "settled-lands",
+  "name": "The Settled Lands",
+  "biome": "farmland",
+  "acts": [1],
+  "playTimeMinutes": 180,
+  "difficulty": "easy",
+  "ambientMusic": "bgm-overworld-settled",
+  "startVibrancy": 55,
+  "weather": { "default": "clear", "dynamic": false },
+  "encounters": {
+    "enemies": ["E-SL-01", "E-SL-02"],
+    "levelRange": [1, 5],
+    "averageStepsBetweenEncounters": 200
+  },
+  "anchors": [
+    {
+      "id": "everwick",
+      "name": "Everwick",
+      "type": "town",
+      "position": "start",
+      "importance": "major",
+      "town": {
+        "size": "village",
+        "mapSize": [60, 60],
+        "services": [
+          { "type": "general-store", "keeperNpc": "khali", "buildingName": "Khali's Curios", "quests": ["SQ-01"] },
+          { "type": "blacksmith", "keeperNpc": "hark", "buildingName": "Hark's Forge" },
+          { "type": "inn", "keeperNpc": "nyro", "buildingName": "The Bright Hearth" },
+          { "type": "elder-house", "keeperNpc": "artun", "buildingName": "Elder Artun's Home" }
+        ],
+        "houses": 4,
+        "centralFeature": "memorial-garden",
+        "walled": false
+      },
+      "quests": ["MQ-01", "MQ-02", "SQ-01"],
+      "npcs": [
+        { "id": "artun", "role": "quest-giver", "placement": "elder-house" },
+        { "id": "khali", "role": "shopkeeper", "placement": "shop" },
+        { "id": "hark", "role": "shopkeeper", "placement": "shop" },
+        { "id": "nyro", "role": "innkeeper", "placement": "shop" },
+        { "id": "solara", "role": "story", "placement": "memorial-garden" }
+      ],
+      "events": [
+        { "id": "EV-EW-001", "trigger": "auto", "quest": "MQ-01", "repeat": "once", "description": "Artun awakening dialogue" },
+        { "id": "EV-EW-002", "trigger": "action", "quest": "MQ-02", "repeat": "once", "description": "Memorial Garden first visit" }
+      ],
+      "interiors": ["everwick-khali", "everwick-hark", "everwick-inn", "everwick-artun"]
+    },
+    {
+      "id": "heartfield",
+      "name": "Heartfield",
+      "type": "town",
+      "position": "middle",
+      "importance": "major",
+      "town": {
+        "size": "hamlet",
+        "mapSize": [80, 80],
+        "services": [],
+        "houses": 5,
+        "centralFeature": "well",
+        "walled": false
+      },
+      "quests": ["MQ-03", "SQ-02"],
+      "npcs": [
+        { "id": "farmer-gale", "role": "quest-giver", "placement": "entrance" },
+        { "id": "farmer-suri", "role": "npc", "placement": "center" },
+        { "id": "farmer-edric", "role": "npc", "placement": "patrol" },
+        { "id": "hamlet-elder", "role": "npc", "placement": "center" },
+        { "id": "child-npc", "role": "npc", "placement": "center" }
+      ],
+      "events": [
+        { "id": "EV-HF-001", "trigger": "action", "quest": "SQ-02", "repeat": "quest", "description": "Farmer Gale windmill dialogue" },
+        { "id": "EV-HF-003", "trigger": "auto", "quest": "MQ-04", "repeat": "once", "description": "Stagnation Clearing cutscene" }
+      ]
+    },
+    {
+      "id": "old-windmill",
+      "name": "Old Windmill Hill",
+      "type": "landmark",
+      "position": [60, 16],
+      "importance": "minor",
+      "quests": ["SQ-02"],
+      "events": [
+        { "id": "EV-HF-002", "trigger": "touch", "quest": "SQ-02", "repeat": "quest", "description": "Old Windmill entrance" },
+        { "id": "EV-HF-008", "trigger": "action", "repeat": "once", "description": "Windmill Resonance Stone" }
+      ]
+    },
+    {
+      "id": "stagnation-clearing-hf",
+      "name": "Heartfield Stagnation Clearing",
+      "type": "landmark",
+      "position": [66, 56],
+      "importance": "minor",
+      "quests": ["MQ-04", "SQ-14"],
+      "events": [
+        { "id": "EV-HF-003", "trigger": "auto", "quest": "MQ-04", "repeat": "once", "description": "Stagnation Clearing cutscene" },
+        { "id": "EV-HF-009", "trigger": "action", "quest": "SQ-14", "repeat": "once", "description": "Broadcast joy into frozen Lira" }
+      ]
+    },
+    {
+      "id": "ambergrove",
+      "name": "Ambergrove",
+      "type": "landmark",
+      "position": "middle",
+      "importance": "major",
+      "quests": ["MQ-05"]
+    },
+    {
+      "id": "millbrook",
+      "name": "Millbrook",
+      "type": "town",
+      "position": "middle",
+      "importance": "major",
+      "town": {
+        "size": "town",
+        "mapSize": [80, 80],
+        "services": [
+          { "type": "general-store", "buildingName": "Brightwater Provisions" },
+          { "type": "blacksmith", "buildingName": "River Iron Works" },
+          { "type": "inn", "buildingName": "The Millstone Inn" },
+          { "type": "fishmonger", "buildingName": "Fresh Catch" }
+        ],
+        "houses": 6,
+        "centralFeature": "watermill",
+        "walled": false
+      },
+      "quests": ["SQ-03", "SQ-04"],
+      "interiors": ["millbrook-provisions", "millbrook-forge", "millbrook-inn", "millbrook-fish"]
+    },
+    {
+      "id": "sunridge",
+      "name": "Sunridge",
+      "type": "camp",
+      "position": "end",
+      "importance": "major",
+      "quests": ["MQ-06"]
+    },
+    {
+      "id": "depths-l1",
+      "name": "Memory Cellar",
+      "type": "dungeon",
+      "position": "side",
+      "importance": "major",
+      "dungeon": {
+        "floors": 1,
+        "theme": "crystal",
+        "boss": "memory-guardian",
+        "reward": "echo-shard-1",
+        "interiors": ["depths-l1-f1"]
+      },
+      "quests": ["MQ-07"]
+    }
+  ],
+  "connectiveTissue": {
+    "pathDensity": "moderate",
+    "safeZoneInterval": 30,
+    "safePathRatio": 0.6,
+    "wildFeatures": [
+      { "type": "resonance-stone", "count": 4, "placement": "off-path" },
+      { "type": "hidden-chest", "count": 3, "placement": "hidden" },
+      { "type": "camp-spot", "count": 2, "placement": "near-path" }
+    ]
+  }
+}

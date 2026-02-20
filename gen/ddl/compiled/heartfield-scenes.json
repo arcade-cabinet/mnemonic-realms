@@ -1,0 +1,87 @@
+[
+  {
+    "sceneId": "act1-scene5-heartfield-the-open-world",
+    "act": "act1",
+    "sceneNumber": 5,
+    "name": "Heartfield — The Open World",
+    "summary": "The player leaves the village for the first time. Heartfield is rolling golden farmland — safe, warm, and visually inviting at its starting vibrancy of 55 (Normal tier). This scene is not a scripted e",
+    "narrativeContext": "The player leaves the village for the first time. Heartfield is rolling golden farmland — safe, warm, and visually inviting at its starting vibrancy of 55 (Normal tier). This scene is not a scripted encounter but a structured exploration segment with ambient dialogue and optional interactions.",
+    "playerInstructions": [
+      "Explore Heartfield freely (open-world exploration)",
+      "Talk to NPCs for flavor dialogue and micro-quest hooks",
+      "Collect Dissolved fragment at the Old Windmill",
+      "Fight 4-6 random encounters (reaching level 3-4)",
+      "Discover the Stagnation Clearing (leads to Scene 6)"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-01"
+      ],
+      "party": [
+        "hana"
+      ]
+    }
+  },
+  {
+    "sceneId": "act1-scene6-the-stagnation-clearing",
+    "act": "act1",
+    "sceneNumber": 6,
+    "name": "The Stagnation Clearing",
+    "summary": "The Stagnation Clearing is a 5x5 patch of crystallized grass and frozen butterflies at Heartfield's southeast corner. It is hauntingly beautiful — everything is preserved in perfect detail, but nothin",
+    "narrativeContext": "The Stagnation Clearing is a 5x5 patch of crystallized grass and frozen butterflies at Heartfield's southeast corner. It is hauntingly beautiful — everything is preserved in perfect detail, but nothing moves. This is the player's first encounter with the Preservers' work.",
+    "playerInstructions": [
+      "Enter the Stagnation Clearing (observation only — cannot interact with the frozen stone yet)",
+      "Listen to Hana's explanation of Preservers and stagnation",
+      "Leave the clearing (the player can return anytime but the stone remains locked until Scene 10)"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-01"
+      ],
+      "party": [
+        "hana"
+      ]
+    }
+  },
+  {
+    "sceneId": "act1-scene10-breaking-the-stagnation",
+    "act": "act1",
+    "sceneNumber": 10,
+    "name": "Breaking the Stagnation",
+    "summary": "The player returns to the clearing they first saw in Scene 6. Now they have the tools and understanding to break it. This is the first active use of broadcast as a weapon against stagnation.",
+    "narrativeContext": "The player returns to the clearing they first saw in Scene 6. Now they have the tools and understanding to break it. This is the first active use of broadcast as a weapon against stagnation.",
+    "playerInstructions": [
+      "Approach crystallized Resonance Stone",
+      "Select and broadcast a fragment (any, potency 1+)",
+      "Watch the stagnation-breaking animation",
+      "Receive MF-03: Echo of the Stagnation"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-01"
+      ],
+      "party": [
+        "hana"
+      ]
+    }
+  },
+  {
+    "sceneId": "act2-scene16-freeing-hana",
+    "act": "act2",
+    "sceneNumber": 16,
+    "name": "Freeing Hana",
+    "summary": "The player returns to where it all began. The expanded stagnation zone that froze Hana in Act I Scene 11 has been pulsing weakly — the four god recalls have sent shockwaves of vibrancy through the ent",
+    "narrativeContext": "The player returns to where it all began. The expanded stagnation zone that froze Hana in Act I Scene 11 has been pulsing weakly — the four god recalls have sent shockwaves of vibrancy through the entire world, and even the Preservers' strongest crystal is straining. Now the player has the power to shatter it.",
+    "playerInstructions": [
+      "Return to Heartfield's expanded stagnation zone",
+      "Broadcast a potency 4+ fragment to shatter the zone",
+      "Free Hana"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-04"
+      ],
+      "level": 10
+    }
+  }
+]
