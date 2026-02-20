@@ -18,35 +18,35 @@ export function spawnMapEvents(_player: RpgPlayer, map: RpgMap) {
       x: 624,
       y: 528,
       event: makeEvent('door-shimmer-marsh-store', (p) => {
-        p.changeMap('unknown', { x: 0, y: 0 });
+        p.changeMap('shimmer-marsh-store', { x: 0, y: 0 });
       }),
     },
     {
       x: 480,
       y: 672,
       event: makeEvent('door-shimmer-marsh-inn', (p) => {
-        p.changeMap('unknown', { x: 0, y: 0 });
+        p.changeMap('shimmer-marsh-inn', { x: 0, y: 0 });
       }),
     },
     {
       x: 2784,
       y: 592,
       event: makeEvent('door-flickerveil-store', (p) => {
-        p.changeMap('unknown', { x: 0, y: 0 });
+        p.changeMap('flickerveil-store', { x: 0, y: 0 });
       }),
     },
     {
       x: 2656,
       y: 768,
       event: makeEvent('door-flickerveil-inn', (p) => {
-        p.changeMap('unknown', { x: 0, y: 0 });
+        p.changeMap('flickerveil-inn', { x: 0, y: 0 });
       }),
     },
     {
       x: 2448,
       y: 848,
       event: makeEvent('door-flickerveil-library', (p) => {
-        p.changeMap('unknown', { x: 0, y: 0 });
+        p.changeMap('flickerveil-library', { x: 0, y: 0 });
       }),
     },
   ]);

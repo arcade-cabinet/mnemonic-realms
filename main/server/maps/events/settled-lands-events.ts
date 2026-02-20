@@ -86,56 +86,56 @@ export function spawnMapEvents(_player: RpgPlayer, map: RpgMap) {
       x: 816,
       y: 560,
       event: makeEvent('door-everwick-khali', (p) => {
-        p.changeMap('unknown', { x: 0, y: 0 });
+        p.changeMap('everwick-khali', { x: 0, y: 0 });
       }),
     },
     {
       x: 704,
       y: 752,
       event: makeEvent('door-everwick-hark', (p) => {
-        p.changeMap('unknown', { x: 0, y: 0 });
+        p.changeMap('everwick-hark', { x: 0, y: 0 });
       }),
     },
     {
       x: 496,
       y: 864,
       event: makeEvent('door-everwick-inn', (p) => {
-        p.changeMap('unknown', { x: 0, y: 0 });
+        p.changeMap('everwick-inn', { x: 0, y: 0 });
       }),
     },
     {
       x: 272,
       y: 720,
       event: makeEvent('door-everwick-artun', (p) => {
-        p.changeMap('unknown', { x: 0, y: 0 });
+        p.changeMap('everwick-artun', { x: 0, y: 0 });
       }),
     },
     {
       x: 2928,
       y: 1616,
       event: makeEvent('door-millbrook-provisions', (p) => {
-        p.changeMap('unknown', { x: 0, y: 0 });
+        p.changeMap('millbrook-provisions', { x: 0, y: 0 });
       }),
     },
     {
       x: 2800,
       y: 1856,
       event: makeEvent('door-millbrook-forge', (p) => {
-        p.changeMap('unknown', { x: 0, y: 0 });
+        p.changeMap('millbrook-forge', { x: 0, y: 0 });
       }),
     },
     {
       x: 2576,
       y: 2000,
       event: makeEvent('door-millbrook-inn', (p) => {
-        p.changeMap('unknown', { x: 0, y: 0 });
+        p.changeMap('millbrook-inn', { x: 0, y: 0 });
       }),
     },
     {
       x: 2352,
       y: 1904,
       event: makeEvent('door-millbrook-fish', (p) => {
-        p.changeMap('unknown', { x: 0, y: 0 });
+        p.changeMap('millbrook-fish', { x: 0, y: 0 });
       }),
     },
   ]);

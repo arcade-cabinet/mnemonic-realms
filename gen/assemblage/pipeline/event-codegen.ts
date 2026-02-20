@@ -123,7 +123,12 @@ export function generateEventsFile(_mapId: string, canvas: MapCanvas, tileSize: 
       lines.push(`      y: ${py},`);
 
       if (evt.type === 'transition') {
-        const targetMap = evt.properties?.map ?? evt.properties?.targetMap ?? 'unknown';
+        const targetMap =
+          evt.properties?.map ??
+          evt.properties?.targetMap ??
+          evt.properties?.targetWorld ??
+          evt.properties?.targetRegion ??
+          'unknown';
         const targetX = evt.properties?.x ?? evt.properties?.targetX ?? 0;
         const targetY = evt.properties?.y ?? evt.properties?.targetY ?? 0;
         lines.push(`      event: makeEvent('${evt.name}', (p) => {`);

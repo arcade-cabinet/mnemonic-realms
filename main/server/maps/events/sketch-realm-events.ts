@@ -18,7 +18,7 @@ export function spawnMapEvents(_player: RpgPlayer, map: RpgMap) {
       x: 864,
       y: 1920,
       event: makeEvent('door-half-drawn-store', (p) => {
-        p.changeMap('unknown', { x: 0, y: 0 });
+        p.changeMap('half-drawn-store', { x: 0, y: 0 });
       }),
     },
   ]);
