@@ -36,7 +36,8 @@
     "validate:event": "tsx scripts/validation/cli.ts event",
     "validate:content": "tsx scripts/validation/cli.ts content",
     "validate:all": "tsx scripts/validation/cli.ts all",
-    "validate:strict": "tsx scripts/validation/cli.ts all --strict"
+    "validate:strict": "tsx scripts/validation/cli.ts all --strict",
+    "generate:report": "tsx scripts/generate-playtest-report.ts"
   },
   "dependencies": {
     "@gluestack-ui/nativewind": "^0.0.2",
