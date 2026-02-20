@@ -3,15 +3,20 @@
  * Assemblage System CLI.
  *
  * Usage:
- *   pnpm assemblage build [mapId|all]     # Generate TMX + events TS from compositions
- *   pnpm assemblage parse [act1|act2|act3|all]  # Parse act scripts → scene DDL JSON
- *   pnpm assemblage preview [mapId]       # ASCII rendering for quick check
- *   pnpm assemblage validate [mapId|all]  # Check overlaps, gaps, missing hooks
- *   pnpm assemblage list                  # List available map compositions
+ *   pnpm assemblage build [mapId|all]          # Generate TMX + events from compositions
+ *   pnpm assemblage parse [act|all]            # Parse act scripts → scene DDL JSON
+ *   pnpm assemblage compile [mapId|all]        # Compile scene DDL → TMX + events
+ *   pnpm assemblage scenes [mapId|all]         # List scenes per map
+ *   pnpm assemblage preview [mapId]            # ASCII rendering for quick check
+ *   pnpm assemblage validate [mapId|all]       # Check overlaps, gaps, missing hooks
+ *   pnpm assemblage list                       # List available map compositions
+ *   pnpm assemblage test [all|ddl|organisms|region|world]  # Run assemblage tests
+ *   pnpm assemblage snapshot [regionId|all]    # Generate visual PNG snapshots
  */
 
+import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readdirSync, writeFileSync } from 'node:fs';
-import { basename, resolve } from 'node:path';
+import { basename, join, resolve } from 'node:path';
 import { compileMap, getScenesForMap, listCompiledMaps } from './compiler/scene-compiler.ts';
 import { parseActScript } from './parser/act-script-parser.ts';
 import { composeMap } from './pipeline/canvas.ts';
@@ -56,6 +61,12 @@ async function main() {
       break;
     case 'list':
       await runList();
+      break;
+    case 'test':
+      await runTest(target);
+      break;
+    case 'snapshot':
+      await runSnapshot(target);
       break;
     default:
       printUsage();
@@ -457,6 +468,103 @@ async function runList() {
   }
 }
 
+async function runTest(target: string) {
+  const testDir = 'gen/assemblage/testing';
+  let testPath = testDir;
+
+  if (target !== 'all') {
+    const fileMap: Record<string, string> = {
+      ddl: 'ddl-integrity.test.ts',
+      organisms: 'organisms.test.ts',
+      region: 'region-composer.test.ts',
+      world: 'world-composer.test.ts',
+    };
+    const file = fileMap[target];
+    if (file) {
+      testPath = join(testDir, file);
+    } else {
+      console.log(`Unknown test target: ${target}`);
+      console.log(`Available: all, ddl, organisms, region, world`);
+      return;
+    }
+  }
+
+  console.log(`Running assemblage tests${target !== 'all' ? ` (${target})` : ''}...`);
+  console.log(`> npx vitest run ${testPath}\n`);
+
+  try {
+    execFileSync('npx', ['vitest', 'run', testPath], { stdio: 'inherit', cwd: ROOT });
+  } catch {
+    process.exit(1);
+  }
+}
+
+async function runSnapshot(target: string) {
+  const { ArchetypeRegistry } = await import('./composer/archetypes.ts');
+  const { composeRegion } = await import('./composer/region-composer.ts');
+  const { loadWorldDDL } = await import('./composer/world-loader.ts');
+  const { saveSnapshot } = await import('./testing/visual-renderer.ts');
+  const { formatDDLReport, validateDDL } = await import('./testing/ddl-validator.ts');
+
+  const ddlRoot = join(ROOT, 'gen', 'ddl');
+  const loaded = loadWorldDDL(ddlRoot);
+  const registry = new ArchetypeRegistry(ROOT);
+
+  const regions = target === 'all'
+    ? loaded.world.regions
+    : loaded.world.regions.filter((r) => r.id === target);
+
+  if (regions.length === 0) {
+    console.log(`Region '${target}' not found. Available: ${loaded.world.regions.map((r) => r.id).join(', ')}`);
+    return;
+  }
+
+  // DDL validation first
+  console.log('Validating DDL integrity...');
+  const ddlReport = validateDDL(ddlRoot);
+  console.log(formatDDLReport(ddlReport));
+  console.log('');
+
+  // Compose each region and save snapshots
+  const seed = 42;
+  for (const region of regions) {
+    console.log(`Composing ${region.id}...`);
+    const regionMap = await composeRegion(region, registry, { seed });
+
+    const overlays = [
+      ...regionMap.placedAnchors.flatMap((a) =>
+        a.entryAnchors.map((p) => ({
+          position: p,
+          color: 'entry' as const,
+          size: 3,
+        })),
+      ),
+      ...Array.from(regionMap.doorTransitions.values()).map((p) => ({
+        position: p,
+        color: 'door' as const,
+        size: 2,
+      })),
+      ...Array.from(regionMap.npcPositions.values()).map((p) => ({
+        position: p,
+        color: 'npc' as const,
+      })),
+    ];
+
+    const path = saveSnapshot(regionMap.collisionGrid, 'region', region.id, {
+      overlays,
+    });
+    console.log(`  Snapshot: ${path}`);
+    console.log(`  Size: ${regionMap.width}x${regionMap.height} tiles`);
+    console.log(`  Anchors: ${regionMap.placedAnchors.length}`);
+    console.log(`  Paths: ${regionMap.routedPaths.length}`);
+    console.log(`  Doors: ${regionMap.doorTransitions.size}`);
+    console.log(`  NPCs: ${regionMap.npcPositions.size}`);
+    console.log('');
+  }
+
+  console.log(`Generated ${regions.length} snapshot(s).`);
+}
+
 function printUsage() {
   console.log('Usage:');
   console.log(
@@ -468,6 +576,9 @@ function printUsage() {
   console.log('  pnpm assemblage preview [mapId]             ASCII rendering for quick check');
   console.log('  pnpm assemblage validate [mapId|all]        Check overlaps, gaps, missing hooks');
   console.log('  pnpm assemblage list                        List available TS compositions');
+  console.log('  pnpm assemblage test [all|ddl|organisms|region|world]');
+  console.log('                                              Run assemblage system tests');
+  console.log('  pnpm assemblage snapshot [regionId|all]     Generate visual PNG snapshots');
 }
 
 // --- Helpers ---
