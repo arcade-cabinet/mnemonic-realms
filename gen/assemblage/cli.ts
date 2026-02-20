@@ -15,6 +15,7 @@
  *   pnpm assemblage build-region [regionId|all] # DDL → region compose → TMX (the real pipeline)
  *   pnpm assemblage compile-world              # Markdown → JSON DDL (docs/world/ → gen/ddl/)
  *   pnpm assemblage pacing [regionId|all]      # Print pacing/distance metrics per region
+ *   pnpm assemblage emit-runtime [regionId|all] # Generate runtime JSON for MnemonicEngine
  */
 
 import { execFileSync } from 'node:child_process';
@@ -26,6 +27,7 @@ import { loadWorldDDL } from './composer/world-loader.ts';
 import { parseActScript } from './parser/act-script-parser.ts';
 import { composeMap } from './pipeline/canvas.ts';
 import { generateEventsFile, generateMapClass } from './pipeline/event-codegen.ts';
+import { serializeToRuntime } from './pipeline/runtime-serializer.ts';
 import { serializeToTmx } from './pipeline/tmx-serializer.ts';
 import { buildPalette, type TilesetPalette } from './tileset/palette-builder.ts';
 import type { MapComposition } from './types.ts';
@@ -37,6 +39,7 @@ const DDL_SCENES_DIR = resolve(ROOT, 'gen/ddl/scenes');
 const TMX_OUT = resolve(ROOT, 'main/server/maps/tmx');
 const EVENTS_OUT = resolve(ROOT, 'main/server/maps/events');
 const MAP_CLASS_OUT = resolve(ROOT, 'main/server/maps');
+const RUNTIME_OUT = resolve(ROOT, 'data/maps');
 
 const args = process.argv.slice(2);
 const command = args[0];
@@ -81,6 +84,9 @@ async function main() {
       break;
     case 'pacing':
       await runPacing(target);
+      break;
+    case 'emit-runtime':
+      await runEmitRuntime(target);
       break;
     default:
       printUsage();
@@ -569,12 +575,13 @@ async function runSnapshot(target: string) {
   const loaded = loadWorldDDL(ddlRoot);
   const registry = new ArchetypeRegistry(ROOT);
 
-  const regions = target === 'all'
-    ? loaded.world.regions
-    : loaded.world.regions.filter((r) => r.id === target);
+  const regions =
+    target === 'all' ? loaded.world.regions : loaded.world.regions.filter((r) => r.id === target);
 
   if (regions.length === 0) {
-    console.log(`Region '${target}' not found. Available: ${loaded.world.regions.map((r) => r.id).join(', ')}`);
+    console.log(
+      `Region '${target}' not found. Available: ${loaded.world.regions.map((r) => r.id).join(', ')}`,
+    );
     return;
   }
 
@@ -635,12 +642,13 @@ async function runBuildRegion(target: string) {
   const loaded = loadWorldDDL(ddlRoot);
   const registry = new ArchetypeRegistry(ROOT);
 
-  const regions = target === 'all'
-    ? loaded.world.regions
-    : loaded.world.regions.filter((r) => r.id === target);
+  const regions =
+    target === 'all' ? loaded.world.regions : loaded.world.regions.filter((r) => r.id === target);
 
   if (regions.length === 0) {
-    console.log(`Region '${target}' not found. Available: ${loaded.world.regions.map((r) => r.id).join(', ')}`);
+    console.log(
+      `Region '${target}' not found. Available: ${loaded.world.regions.map((r) => r.id).join(', ')}`,
+    );
     return;
   }
 
@@ -660,7 +668,9 @@ async function runBuildRegion(target: string) {
 
     // Step 2: RegionMap → MapCanvas (semantic tiles on layers)
     const canvas = regionToCanvas(regionMap);
-    console.log(`  Canvas: ${canvas.layerOrder.length} layers, ${canvas.visuals.length} visuals, ${canvas.objects.length} objects`);
+    console.log(
+      `  Canvas: ${canvas.layerOrder.length} layers, ${canvas.visuals.length} visuals, ${canvas.objects.length} objects`,
+    );
 
     // Step 3: MapCanvas → TMX (via palette)
     try {
@@ -671,7 +681,9 @@ async function runBuildRegion(target: string) {
       console.log(`  TMX: ${region.id}.tmx`);
     } catch (err) {
       console.log(`  TMX: SKIPPED — palette error: ${(err as Error).message}`);
-      console.log('  (TMX generation requires palette with tile GID mappings. Collision snapshots still generated.)');
+      console.log(
+        '  (TMX generation requires palette with tile GID mappings. Collision snapshots still generated.)',
+      );
     }
 
     // Step 4: Generate events file
@@ -767,9 +779,7 @@ async function runPacing(target: string) {
   const loaded = loadWorldDDL(ddlRoot);
 
   const regions =
-    target === 'all'
-      ? loaded.world.regions
-      : loaded.world.regions.filter((r) => r.id === target);
+    target === 'all' ? loaded.world.regions : loaded.world.regions.filter((r) => r.id === target);
 
   if (regions.length === 0) {
     console.log(
@@ -814,25 +824,39 @@ async function runPacing(target: string) {
     console.log(`\n${'='.repeat(60)}`);
     console.log(`  Region: ${region.name} (${region.id})`);
     console.log(`${'='.repeat(60)}`);
-    console.log(`  Biome: ${region.biome}  |  Difficulty: ${region.difficulty}  |  Acts: ${region.acts.join(', ')}`);
-    console.log(`  Dimensions: ${mapWidth} x ${mapHeight} tiles (${mapWidth * 16}x${mapHeight * 16} px)`);
+    console.log(
+      `  Biome: ${region.biome}  |  Difficulty: ${region.difficulty}  |  Acts: ${region.acts.join(', ')}`,
+    );
+    console.log(
+      `  Dimensions: ${mapWidth} x ${mapHeight} tiles (${mapWidth * 16}x${mapHeight * 16} px)`,
+    );
     console.log(`  Walkable tiles (est.): ${walkableEstimate}`);
     console.log(`  Walking speed: ${WALK_SPEED_TPS} tiles/sec`);
 
     console.log(`\n  --- Time Budget ---`);
     console.log(`  Total play time: ${region.playTimeMinutes} min (${totalSeconds} sec)`);
-    console.log(`  Combat:      ${(combatPercent * 100).toFixed(0)}% (${Math.round(totalSeconds * combatPercent)} sec)`);
-    console.log(`  Dialogue:    ${(dialoguePercent * 100).toFixed(0)}% (${Math.round(totalSeconds * dialoguePercent)} sec)`);
-    console.log(`  Exploration: ${(explorationPercent * 100).toFixed(0)}% (${Math.round(totalSeconds * explorationPercent)} sec)`);
+    console.log(
+      `  Combat:      ${(combatPercent * 100).toFixed(0)}% (${Math.round(totalSeconds * combatPercent)} sec)`,
+    );
+    console.log(
+      `  Dialogue:    ${(dialoguePercent * 100).toFixed(0)}% (${Math.round(totalSeconds * dialoguePercent)} sec)`,
+    );
+    console.log(
+      `  Exploration: ${(explorationPercent * 100).toFixed(0)}% (${Math.round(totalSeconds * explorationPercent)} sec)`,
+    );
 
     console.log(`\n  --- Traversal Metrics ---`);
     console.log(`  Total walking tiles: ${metrics.totalWalkingTiles}`);
     console.log(`  Outdoor screens: ${metrics.outdoorScreens}`);
     console.log(`  Estimated encounters: ${metrics.estimatedEncounters}`);
     if (region.encounters) {
-      console.log(`  Encounter rate: 1 per ${region.encounters.averageStepsBetweenEncounters} steps`);
+      console.log(
+        `  Encounter rate: 1 per ${region.encounters.averageStepsBetweenEncounters} steps`,
+      );
       console.log(`  Enemy pool: ${region.encounters.enemies.join(', ')}`);
-      console.log(`  Level range: ${region.encounters.levelRange[0]}-${region.encounters.levelRange[1]}`);
+      console.log(
+        `  Level range: ${region.encounters.levelRange[0]}-${region.encounters.levelRange[1]}`,
+      );
     }
 
     console.log(`\n  --- Anchors (${region.anchors.length}) ---`);
@@ -849,8 +873,12 @@ async function runPacing(target: string) {
     // Per-anchor-pair distances
     if (region.anchors.length > 1) {
       console.log(`\n  --- Anchor-Pair Distances ---`);
-      console.log(`  ${'From'.padEnd(20)} ${'To'.padEnd(20)} ${'Dist'.padStart(6)} ${'Walk'.padStart(8)} ${'Encounters'.padStart(10)}`);
-      console.log(`  ${'─'.repeat(20)} ${'─'.repeat(20)} ${'─'.repeat(6)} ${'─'.repeat(8)} ${'─'.repeat(10)}`);
+      console.log(
+        `  ${'From'.padEnd(20)} ${'To'.padEnd(20)} ${'Dist'.padStart(6)} ${'Walk'.padStart(8)} ${'Encounters'.padStart(10)}`,
+      );
+      console.log(
+        `  ${'─'.repeat(20)} ${'─'.repeat(20)} ${'─'.repeat(6)} ${'─'.repeat(8)} ${'─'.repeat(10)}`,
+      );
 
       const encounterSteps = region.encounters?.averageStepsBetweenEncounters ?? 200;
 
@@ -943,6 +971,67 @@ function resolveAnchorPositions(
   return result;
 }
 
+async function runEmitRuntime(target: string) {
+  await emitRuntime(target, RUNTIME_OUT);
+}
+
+/**
+ * Generate runtime JSON for MnemonicEngine.
+ *
+ * Composes regions from DDL, converts to MapCanvas, then serializes
+ * to RuntimeMapData JSON. Output goes to the specified directory.
+ *
+ * Exported for testing.
+ */
+export async function emitRuntime(target: string, outputDir: string): Promise<void> {
+  const { ArchetypeRegistry } = await import('./composer/archetypes.ts');
+  const { composeRegion } = await import('./composer/region-composer.ts');
+  const { loadWorldDDL } = await import('./composer/world-loader.ts');
+  const { regionToCanvas } = await import('./pipeline/region-renderer.ts');
+
+  const ddlRoot = join(ROOT, 'gen', 'ddl');
+  const loaded = loadWorldDDL(ddlRoot);
+
+  const regions =
+    target === 'all' ? loaded.world.regions : loaded.world.regions.filter((r) => r.id === target);
+
+  if (regions.length === 0) {
+    console.log(
+      `Region '${target}' not found. Available: ${loaded.world.regions.map((r) => r.id).join(', ')}`,
+    );
+    return;
+  }
+
+  const seed = 42;
+  mkdirSync(outputDir, { recursive: true });
+
+  for (const region of regions) {
+    console.log(`\n=== Emitting runtime JSON: ${region.id} ===`);
+    console.log(`Composing from DDL (${region.anchors.length} anchors)...`);
+
+    // Step 1: DDL → RegionMap
+    const registry = new ArchetypeRegistry(ROOT);
+    const regionMap = await composeRegion(region, registry, { seed });
+    console.log(`  Composed: ${regionMap.width}x${regionMap.height} tiles`);
+
+    // Step 2: RegionMap → MapCanvas
+    const canvas = regionToCanvas(regionMap);
+    console.log(
+      `  Canvas: ${canvas.layerOrder.length} layers, ` +
+        `${canvas.visuals.length} visuals, ${canvas.objects.length} objects`,
+    );
+
+    // Step 3: MapCanvas → RuntimeMapData JSON
+    const runtimeData = serializeToRuntime(canvas, region.id);
+    const jsonPath = resolve(outputDir, `${region.id}.json`);
+    writeFileSync(jsonPath, JSON.stringify(runtimeData, null, 2), 'utf-8');
+    console.log(`  Runtime JSON: ${jsonPath}`);
+    console.log(`  Size: ${(Buffer.byteLength(JSON.stringify(runtimeData)) / 1024).toFixed(1)} KB`);
+  }
+
+  console.log(`\nDone. Emitted ${regions.length} runtime JSON file(s).`);
+}
+
 function printUsage() {
   console.log('Usage:');
   console.log(
@@ -957,9 +1046,18 @@ function printUsage() {
   console.log('  pnpm assemblage test [all|ddl|organisms|region|world]');
   console.log('                                              Run assemblage system tests');
   console.log('  pnpm assemblage snapshot [regionId|all]     Generate visual PNG snapshots');
-  console.log('  pnpm assemblage build-region [regionId|all] DDL → compose → TMX + events (the real pipeline)');
-  console.log('  pnpm assemblage compile-world              Markdown → JSON DDL (docs/world/ → gen/ddl/)');
-  console.log('  pnpm assemblage pacing [regionId|all]      Print pacing/distance metrics per region');
+  console.log(
+    '  pnpm assemblage build-region [regionId|all] DDL → compose → TMX + events (the real pipeline)',
+  );
+  console.log(
+    '  pnpm assemblage compile-world              Markdown → JSON DDL (docs/world/ → gen/ddl/)',
+  );
+  console.log(
+    '  pnpm assemblage pacing [regionId|all]      Print pacing/distance metrics per region',
+  );
+  console.log(
+    '  pnpm assemblage emit-runtime [regionId|all] Generate runtime JSON for MnemonicEngine',
+  );
 }
 
 // --- Helpers ---
