@@ -22,14 +22,14 @@ export default class GalleryOfMomentsEvent extends RpgEvent {
     if (!currentMap) return;
 
     // Spawn Hana
-    const liraEvent = await currentMap.createDynamicEvent({
+    const hanaEvent = await currentMap.createDynamicEvent({
       x: 5,
       y: 5,
       graphic: 'npc_hana',
     });
 
     // Spawn Artun
-    const callumEvent = await currentMap.createDynamicEvent({
+    const artunEvent = await currentMap.createDynamicEvent({
       x: 15,
       y: 10,
       graphic: 'npc_artun',
@@ -65,7 +65,7 @@ export default class GalleryOfMomentsEvent extends RpgEvent {
     );
 
     // Clean up NPCs
-    if (liraEvent) liraEvent.remove();
-    if (callumEvent) callumEvent.remove();
+    if (hanaEvent) hanaEvent.remove();
+    if (artunEvent) artunEvent.remove();
   }
 }

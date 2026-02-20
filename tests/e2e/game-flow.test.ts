@@ -58,14 +58,14 @@ test.describe('Core Game Flow', () => {
     }
   });
 
-  test('selecting a class transitions to village-hub map', async ({ page }) => {
+  test('selecting a class transitions to everwick map', async ({ page }) => {
     await startGame(page);
 
     // Title screen should be gone
     const titleScreen = page.locator('.title-screen');
     expect(await titleScreen.count()).toBe(0);
 
-    // Canvas still rendering — we're on village-hub now
+    // Canvas still rendering — we're on everwick now
     const canvas = page.locator('#rpg > canvas');
     await expect(canvas).toBeAttached();
     const box = await canvas.boundingBox();

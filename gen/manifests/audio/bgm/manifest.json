@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "description": "BGM generation manifest — multi-layer stems",
-  "updatedAt": "2026-02-19T20:06:40.764Z",
+  "updatedAt": "2026-02-20T05:44:44.614Z",
   "assets": [
     {
       "id": "BGM-AG",
@@ -438,6 +438,82 @@
       "status": "pending"
     },
     {
+      "id": "BGM-VH",
+      "name": "Hearth and Home",
+      "type": "zone",
+      "zone": "everwick",
+      "tempo": 88,
+      "key": "G major",
+      "timeSignature": "3/4",
+      "mood": "warm",
+      "durationSec": 150,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "Acoustic guitar (fingerpicked)",
+          "description": "Simple arpeggio pattern. Warm, woody tone.",
+          "filename": "bgm-vh-layer1.ogg"
+        },
+        {
+          "layer": 2,
+          "instruments": "Wooden flute + hand drum",
+          "description": "Flute carries gentle melody. Hand drum on beats 1 and 3.",
+          "filename": "bgm-vh-layer2.ogg"
+        },
+        {
+          "layer": 3,
+          "instruments": "String quartet",
+          "description": "Strings double melody, add countermelody. Cello bass line.",
+          "filename": "bgm-vh-layer3.ogg"
+        },
+        {
+          "layer": 4,
+          "instruments": "Wordless choir",
+          "description": "Soft choral pad. Community singing together.",
+          "filename": "bgm-vh-layer4.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "BGM-HF",
+      "name": "Golden Afternoon",
+      "type": "zone",
+      "zone": "heartfield",
+      "tempo": 72,
+      "key": "D major",
+      "timeSignature": "4/4",
+      "mood": "pastoral",
+      "durationSec": 135,
+      "stems": [
+        {
+          "layer": 1,
+          "instruments": "Wooden flute (recorder-like)",
+          "description": "Simple pastoral melody, leaping intervals.",
+          "filename": "bgm-hf-layer1.ogg"
+        },
+        {
+          "layer": 2,
+          "instruments": "Acoustic guitar + shaker",
+          "description": "Guitar chordal support. Shaker adds organic rhythm.",
+          "filename": "bgm-hf-layer2.ogg"
+        },
+        {
+          "layer": 3,
+          "instruments": "Oboe + string trio",
+          "description": "Oboe takes melody, strings provide warm bed.",
+          "filename": "bgm-hf-layer3.ogg"
+        },
+        {
+          "layer": 4,
+          "instruments": "Female solo voice (wordless)",
+          "description": "Intimate, one voice singing to the fields.",
+          "filename": "bgm-hf-layer4.ogg"
+        }
+      ],
+      "status": "pending"
+    },
+    {
       "id": "BGM-LW",
       "name": "Unwritten Song",
       "type": "zone",
@@ -775,82 +851,6 @@
           "instruments": "Soprano choir (perfect unison)",
           "description": "All voices identical. Beautiful but mechanical.",
           "filename": "bgm-pf-layer4.ogg"
-        }
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "BGM-VH",
-      "name": "Hearth and Home",
-      "type": "zone",
-      "zone": "village-hub",
-      "tempo": 88,
-      "key": "G major",
-      "timeSignature": "3/4",
-      "mood": "warm",
-      "durationSec": 150,
-      "stems": [
-        {
-          "layer": 1,
-          "instruments": "Acoustic guitar (fingerpicked)",
-          "description": "Simple arpeggio pattern. Warm, woody tone.",
-          "filename": "bgm-vh-layer1.ogg"
-        },
-        {
-          "layer": 2,
-          "instruments": "Wooden flute + hand drum",
-          "description": "Flute carries gentle melody. Hand drum on beats 1 and 3.",
-          "filename": "bgm-vh-layer2.ogg"
-        },
-        {
-          "layer": 3,
-          "instruments": "String quartet",
-          "description": "Strings double melody, add countermelody. Cello bass line.",
-          "filename": "bgm-vh-layer3.ogg"
-        },
-        {
-          "layer": 4,
-          "instruments": "Wordless choir",
-          "description": "Soft choral pad. Community singing together.",
-          "filename": "bgm-vh-layer4.ogg"
-        }
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "BGM-HF",
-      "name": "Golden Afternoon",
-      "type": "zone",
-      "zone": "heartfield",
-      "tempo": 72,
-      "key": "D major",
-      "timeSignature": "4/4",
-      "mood": "pastoral",
-      "durationSec": 135,
-      "stems": [
-        {
-          "layer": 1,
-          "instruments": "Wooden flute (recorder-like)",
-          "description": "Simple pastoral melody, leaping intervals.",
-          "filename": "bgm-hf-layer1.ogg"
-        },
-        {
-          "layer": 2,
-          "instruments": "Acoustic guitar + shaker",
-          "description": "Guitar chordal support. Shaker adds organic rhythm.",
-          "filename": "bgm-hf-layer2.ogg"
-        },
-        {
-          "layer": 3,
-          "instruments": "Oboe + string trio",
-          "description": "Oboe takes melody, strings provide warm bed.",
-          "filename": "bgm-hf-layer3.ogg"
-        },
-        {
-          "layer": 4,
-          "instruments": "Female solo voice (wordless)",
-          "description": "Intimate, one voice singing to the fields.",
-          "filename": "bgm-hf-layer4.ogg"
         }
       ],
       "status": "pending"

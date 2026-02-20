@@ -17,7 +17,7 @@ const quest: QuestFileExport = {
     { index: 3, description: "Watch Hana's freezing cutscene" },
     { index: 4, description: "Collect Hana's Scream (MF-04)" },
     { index: 5, description: 'Broadcast potency 2+ fragment to halt expansion' },
-    { index: 6, description: 'Return to Artun', location: 'Village Hub' },
+    { index: 6, description: 'Return to Artun', location: 'Everwick' },
   ],
   rewards: { gold: 150 },
   dependencies: ['MQ-03'],

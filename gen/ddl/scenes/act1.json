@@ -1,322 +1,1104 @@
 [
   {
-    "id": "act1-scene1-familiar-place",
+    "id": "act1-scene1-a-familiar-place",
     "act": "act1",
     "sceneNumber": 1,
     "name": "A Familiar Place",
-    "location": "Village Hub — Elder's House (18, 10)",
+    "summary": "The player character has lived in this village their whole life. They are not a stranger or a newcomer. This morning is different because Artun has asked them to come to his house — he has something t",
+    "mapId": "everwick",
+    "subLocation": "Elder's House",
+    "spawnPosition": "18,10",
     "trigger": {
       "type": "auto",
-      "map": "village-hub",
+      "map": "everwick",
       "condition": "game-start"
     },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-scene1" }
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene1"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "item-give", "params": { "itemId": "MF-01", "name": "Callum's First Lesson" } },
-      { "type": "quest-update", "params": { "questId": "MQ-01", "action": "activate" } },
-      { "type": "system-message", "params": { "text": "You received a Memory Fragment: \"Callum's First Lesson\" (Joy, Neutral, 2)" } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "You received a Memory Fragment: \"Artun's First Lesson\" (Joy, Neutral, ★★)"
+        }
+      },
+      {
+        "type": "item-give",
+        "params": {
+          "description": "MF-01: Artun's First Lesson"
+        }
+      },
+      {
+        "type": "quest-update",
+        "params": {
+          "action": "activated",
+          "description": "\"Find Hana\" (main quest marker on Hana's Workshop)"
+        }
+      }
     ],
-    "questChanges": [
-      { "questId": "MQ-01", "action": "activate" }
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-artun-scene1"
     ],
-    "targetPath": "main/server/events/act1/scene1-familiar-place.ts",
-    "levelRange": "1",
-    "summary": "Player spawns in Elder's House. Callum reveals Mnemonic Architecture talent, gives MF-01."
+    "itemRefs": [
+      "MF-01"
+    ],
+    "playerInstructions": [
+      "Move through Elder's House (teaches basic movement)",
+      "Exit to Everwick exterior (teaches door/transition interaction)",
+      "Walk south through Central Square (teaches map navigation)"
+    ],
+    "narrativeContext": "The player character has lived in this village their whole life. They are not a stranger or a newcomer. This morning is different because Artun has asked them to come to his house — he has something to show them.",
+    "timeOfDay": "Morning",
+    "targetPath": "main/server/events/act1/scene1-a-familiar-place.ts",
+    "levelRange": "1"
   },
   {
-    "id": "act1-scene2-memorial-garden",
+    "id": "act1-scene2-the-memorial-garden",
     "act": "act1",
     "sceneNumber": 2,
     "name": "The Memorial Garden",
-    "location": "Village Hub — Memorial Garden (8, 16)",
+    "summary": "The Memorial Garden is a small green space with three Resonance Stones — pillars of ancient amber-gold stone that hum when touched. The garden is tended but modest. Flowers grow in clusters between th",
+    "mapId": "everwick",
+    "subLocation": "Memorial Garden",
+    "spawnPosition": "8,16",
     "trigger": {
       "type": "area-enter",
-      "map": "village-hub",
+      "map": "everwick",
       "position": "8,16"
     },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "item-give", "params": { "itemId": "frag-joy-earth-1", "name": "Joy/Earth Fragment" } },
-      { "type": "item-give", "params": { "itemId": "frag-calm-neutral-1", "name": "Calm/Neutral Fragment" } },
-      { "type": "item-give", "params": { "itemId": "frag-awe-wind-2", "name": "Awe/Wind Fragment" } },
-      { "type": "system-message", "params": { "text": "You now carry 4 memory fragments." } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "The Resonance Stone pulses with warmth. Something lingers here — a memory, waiting to be noticed."
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "You reach toward the stone. A faint image surfaces: a child placing wildflowers between the stones, humming a wordless tune. The memory crystallizes in your hand."
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "You collected a Memory Fragment! (Joy, Earth, ★)"
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Another memory: an old woman sitting beside this stone in the rain, speaking to it like a friend. Her words are too faint to hear, but the feeling is clear."
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "This stone holds something deeper. A brief flash: a group of people, hands joined around these very stones, singing a song that makes the garden bloom. You feel the song more than hear it."
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "You now carry 4 memory fragments. Artun mentioned Hana's Workshop — she can teach you what to do with them."
+        }
+      }
     ],
-    "questChanges": [
-      { "questId": "MQ-01", "action": "advance", "objectiveIndex": 2 }
+    "questChanges": [],
+    "dialogueRefs": [],
+    "itemRefs": [
+      "MF-01"
     ],
-    "targetPath": "main/server/events/act1/scene2-memorial-garden.ts",
-    "levelRange": "1",
-    "summary": "Player collects 3 fragments from Resonance Stones. Teaches memory collection."
+    "playerInstructions": [
+      "Interact with three Resonance Stones (teaches collection mechanic)",
+      "Each stone produces a brief narrated vision and a fragment",
+      "Player can examine fragments in the Memory menu (teaches menu navigation)"
+    ],
+    "narrativeContext": "The Memorial Garden is a small green space with three Resonance Stones — pillars of ancient amber-gold stone that hum when touched. The garden is tended but modest. Flowers grow in clusters between the stones. This is where the player learns to **collect** memory fragments from the environment.",
+    "timeOfDay": "Morning",
+    "mechanicTaught": "Memory collection. The player learns that Resonance Stones and memory-rich objects yield fragments when touched. Each fragment has an emotion, element, and potency. The system messages introduce the vocabulary without overwhelming.",
+    "targetPath": "main/server/events/act1/scene2-the-memorial-garden.ts",
+    "levelRange": "1"
   },
   {
-    "id": "act1-scene3-lira-workshop",
+    "id": "act1-scene3-hanas-workshop",
     "act": "act1",
     "sceneNumber": 3,
-    "name": "Lira's Workshop",
-    "location": "Village Hub — Lira's Workshop (8, 18)",
+    "name": "Hana's Workshop",
+    "summary": "Hana has been waiting. Her workshop is cluttered with Resonance Stone fragments, half-finished instruments, journals, and a large amber table in the center — the Remix Table. Hana is mid-30s, practica",
+    "mapId": "everwick",
+    "subLocation": "Hana's Workshop",
+    "spawnPosition": "8,18",
     "trigger": {
       "type": "map-enter",
-      "map": "lira-workshop"
+      "map": "everwick"
     },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-scene3" }
+      {
+        "npcId": "hana",
+        "name": "Hana",
+        "graphic": "npc_hana",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-hana-scene3"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "companion-join", "params": { "companionId": "lira", "class": "cleric" } },
-      { "type": "item-give", "params": { "itemId": "K-01", "name": "Architect's Signet" } },
-      { "type": "quest-update", "params": { "questId": "MQ-01", "action": "complete" } },
-      { "type": "quest-update", "params": { "questId": "MQ-02", "action": "activate" } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Hana joins the party! (Cleric — simplified moveset: Joyful Mending, Sorrowful Cleanse, Awestruck Ward)"
+        }
+      },
+      {
+        "type": "item-give",
+        "params": {
+          "description": "Architect's Signet (K-01) — Hana gives it offhandedly: \"Almost forgot. This marks you as one of us. You'll need it to interact with Resonance Stones properly.\" See [items-catalog.md](../design/items-catalog.md)."
+        }
+      },
+      {
+        "type": "companion-join",
+        "params": {
+          "companionId": "hana",
+          "description": "Hana (Cleric, simplified)"
+        }
+      },
+      {
+        "type": "quest-update",
+        "params": {
+          "action": "updated",
+          "description": "\"Learn to fight\" (main quest marker on Training Ground)"
+        }
+      }
     ],
-    "questChanges": [
-      { "questId": "MQ-01", "action": "complete" },
-      { "questId": "MQ-02", "action": "activate" }
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-hana-scene3"
     ],
-    "targetPath": "main/server/events/act1/scene3-lira-workshop.ts",
-    "levelRange": "1-2",
-    "summary": "Lira joins the party (Cleric). Player receives Architect's Signet (K-01)."
+    "itemRefs": [
+      "K-01"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-01"
+      ]
+    },
+    "playerInstructions": [
+      "Enter Hana's Workshop (dialogue auto-triggers)",
+      "View fragment inventory during the conversation (teaches Memory menu)",
+      "Hana joins the party (teaches party system)"
+    ],
+    "narrativeContext": "Hana has been waiting. Her workshop is cluttered with Resonance Stone fragments, half-finished instruments, journals, and a large amber table in the center — the Remix Table. Hana is mid-30s, practical, warm. She speaks like someone who enjoys her work and is pleased to share it.",
+    "timeOfDay": "Late morning",
+    "mechanicTaught": "Party system. Hana joins as a companion (Cleric class, simplified). The player sees the party UI for the first time. Hana has 3 skills and stats that follow the Cleric growth formula at player level - 1 (see [progression.md](../design/progression.md)).",
+    "targetPath": "main/server/events/act1/scene3-hanas-workshop.ts",
+    "levelRange": "1-2"
   },
   {
-    "id": "act1-scene4-training-ground",
+    "id": "act1-scene4-the-training-ground",
     "act": "act1",
     "sceneNumber": 4,
     "name": "The Training Ground",
-    "location": "Village Hub — Training Ground (8, 10)",
+    "summary": "The Training Ground is an open dirt area with chalk markings and practice dummies. Hana runs the player through two training fights, then teaches remix and broadcast at the Workshop afterward.",
+    "mapId": "everwick",
+    "subLocation": "Training Ground",
+    "spawnPosition": "8,10",
     "trigger": {
       "type": "area-enter",
-      "map": "village-hub",
-      "position": "8,10",
-      "condition": "lira-in-party"
+      "map": "everwick",
+      "position": "8,10"
     },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-scene4" }
+      {
+        "npcId": "hana",
+        "name": "Hana",
+        "graphic": "npc_hana",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-hana-scene4"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "combat-start", "params": { "encounter": "tutorial-dummies", "enemies": "2x Training Dummy" } },
-      { "type": "combat-start", "params": { "encounter": "tutorial-sprite", "enemies": "1x Meadow Sprite" } },
-      { "type": "gui-show", "params": { "guiId": "remix-tutorial" } },
-      { "type": "vibrancy-change", "params": { "zone": "village-hub", "delta": 12 } },
-      { "type": "item-give", "params": { "itemId": "K-03", "name": "Remix Table Access" } },
-      { "type": "item-remove", "params": { "itemId": "MF-02", "name": "Lira's Warmth (broadcast)" } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "> - **Attack**: Strike with your weapon. Damage depends on your ATK stat."
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Some enemies carry trace memories. Defeating them can release these as fragments. (Boss enemies always drop fragments.)"
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Select 2 fragments of the same emotion to Remix. (The two Joy/Earth/1★ fragments are highlighted as a suggested combination.)"
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Remix complete! Two fragments combined into a stronger one. Remixing consumes the input fragments — choose carefully."
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Unlock: Remix Table Access (K-03). You can now use any Remix Table in the game."
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "You broadcast \"Hana's Warmth\" into the workshop. Vibrancy in Everwick increased by +12! (potency 3 × 3 = 9, +3 emotion match [Joy resonates with Everwick])"
+        }
+      },
+      {
+        "type": "item-give",
+        "params": {
+          "description": "Use a consumable from your inventory."
+        }
+      },
+      {
+        "type": "vibrancy-change",
+        "params": {
+          "description": "Everwick 60→72 (crosses into Vivid at 67 — the player's first tier transition, triggering a brief visual bloom across the village. Flowers cascade, fountain sparkles, lanterns brighten.)"
+        }
+      },
+      {
+        "type": "quest-update",
+        "params": {
+          "action": "completed",
+          "description": "\"Learn to fight\""
+        }
+      },
+      {
+        "type": "quest-update",
+        "params": {
+          "action": "activated",
+          "description": "\"Explore the Settled Lands\" (markers on Heartfield, Ambergrove, Millbrook exits)"
+        }
+      }
     ],
-    "questChanges": [
-      { "questId": "MQ-02", "action": "advance", "objectiveIndex": 3 },
-      { "questId": "MQ-02", "action": "complete" }
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-hana-scene4"
     ],
-    "targetPath": "main/server/events/act1/scene4-training-ground.ts",
-    "levelRange": "1-2",
-    "summary": "Combat tutorial (dummies + sprite). Remix and broadcast tutorial. Village Hub vibrancy +12."
+    "itemRefs": [
+      "K-03",
+      "MF-02"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-01"
+      ],
+      "party": [
+        "hana"
+      ]
+    },
+    "playerInstructions": [
+      "Fight 2 tutorial combats (teaches Attack, Skill, Item, Defend)",
+      "Observe Hana's healing in combat (teaches party AI)",
+      "Remix 2 fragments at the Remix Table (teaches Remix)",
+      "Broadcast MF-02 into the workshop (teaches Broadcast)"
+    ],
+    "narrativeContext": "The Training Ground is an open dirt area with chalk markings and practice dummies. Hana runs the player through two training fights, then teaches remix and broadcast at the Workshop afterward.",
+    "timeOfDay": "Midday",
+    "mechanicTaught": "Full combat system (Attack, Skill, Item, Defend, turn order, victory rewards). Remix (combining fragments, potency increase, input consumption). Broadcast (targeting, vibrancy gain, visual bloom). This is the scene where all three core memory operations are understood.",
+    "targetPath": "main/server/events/act1/scene4-the-training-ground.ts",
+    "levelRange": "1-2"
   },
   {
-    "id": "act1-scene5-heartfield",
+    "id": "act1-scene5-heartfield-the-open-world",
     "act": "act1",
     "sceneNumber": 5,
     "name": "Heartfield — The Open World",
-    "location": "Heartfield (south of Village Hub)",
+    "summary": "The player leaves the village for the first time. Heartfield is rolling golden farmland — safe, warm, and visually inviting at its starting vibrancy of 55 (Normal tier). This scene is not a scripted e",
+    "mapId": "heartfield",
+    "subLocation": "Settled Lands — south of Everwick",
+    "spawnPosition": "30,4",
     "trigger": {
       "type": "map-enter",
       "map": "heartfield",
       "condition": "first-visit"
     },
+    "assemblages": [
+      { "assemblageId": "wheat-west", "x": 4, "y": 10 },
+      { "assemblageId": "wheat-east", "x": 44, "y": 10 },
+      { "assemblageId": "wheat-hamlet", "x": 20, "y": 42 },
+      { "assemblageId": "hamlet-house-1", "x": 26, "y": 26 },
+      { "assemblageId": "hamlet-house-2", "x": 38, "y": 28 },
+      { "assemblageId": "hamlet-house-3", "x": 24, "y": 36 },
+      { "assemblageId": "hamlet-house-4", "x": 36, "y": 36 },
+      { "assemblageId": "hamlet-shelter", "x": 32, "y": 32 },
+      { "assemblageId": "old-windmill", "x": 56, "y": 12 },
+      { "assemblageId": "forest-border-north", "x": 0, "y": 0 },
+      { "assemblageId": "forest-border-east", "x": 77, "y": 4 }
+    ],
+    "paths": [
+      { "terrain": "road", "layer": "road", "width": 3, "points": [{"x":30,"y":4},{"x":30,"y":16},{"x":30,"y":28},{"x":30,"y":48},{"x":30,"y":70}] },
+      { "terrain": "road", "layer": "road", "width": 2, "points": [{"x":30,"y":20},{"x":42,"y":18},{"x":56,"y":16}] },
+      { "terrain": "road", "layer": "road", "width": 2, "points": [{"x":22,"y":32},{"x":30,"y":32},{"x":40,"y":32}] },
+      { "terrain": "fence", "layer": "objects", "width": 1, "points": [{"x":3,"y":10},{"x":28,"y":10}] },
+      { "terrain": "fence", "layer": "objects", "width": 1, "points": [{"x":44,"y":10},{"x":64,"y":10}] }
+    ],
+    "visuals": [
+      { "objectRef": "well.generic", "x": 32, "y": 30 },
+      { "objectRef": "prop.bulletin-board-1", "x": 28, "y": 34 },
+      { "objectRef": "prop.sign-south", "x": 30, "y": 8 },
+      { "objectRef": "tree.emerald-3", "x": 16, "y": 50 },
+      { "objectRef": "tree.emerald-1", "x": 50, "y": 46 },
+      { "objectRef": "tree.light-1", "x": 8, "y": 60 },
+      { "objectRef": "prop.lamppost-1", "x": 28, "y": 26 },
+      { "objectRef": "prop.lamppost-1", "x": 32, "y": 26 }
+    ],
     "npcs": [
-      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-scene5" }
+      {
+        "npcId": "hana",
+        "name": "Hana",
+        "graphic": "npc_hana",
+        "position": "30,6",
+        "movement": "follow",
+        "dialogueRef": "dlg-hana-scene5"
+      },
+      {
+        "npcId": "farmer-gale",
+        "name": "Farmer Gale",
+        "graphic": "npc_farmer_m1",
+        "position": "30,28",
+        "movement": "patrol",
+        "patrolRange": "26,26->44,44",
+        "dialogueRef": "dlg-farmer-gale"
+      },
+      {
+        "npcId": "farmer-suri",
+        "name": "Farmer Suri",
+        "graphic": "npc_farmer_f1",
+        "position": "34,32",
+        "movement": "static",
+        "dialogueRef": "dlg-farmer-suri"
+      },
+      {
+        "npcId": "farmer-edric",
+        "name": "Farmer Edric",
+        "graphic": "npc_farmer_m2",
+        "position": "28,36",
+        "movement": "patrol",
+        "patrolRange": "20,36->40,50",
+        "dialogueRef": "dlg-farmer-edric"
+      },
+      {
+        "npcId": "hamlet-elder",
+        "name": "Hamlet Elder",
+        "graphic": "npc_elder_f1",
+        "position": "36,28",
+        "movement": "static",
+        "dialogueRef": "dlg-hamlet-elder"
+      },
+      {
+        "npcId": "traveling-merchant",
+        "name": "Traveling Merchant",
+        "graphic": "npc_merchant",
+        "position": "34,28",
+        "movement": "static",
+        "dialogueRef": "dlg-traveling-merchant"
+      }
+    ],
+    "events": [
+      { "id": "EV-HF-001", "position": "30,28", "type": "action", "linkedQuest": "SQ-02", "repeat": "quest", "description": "Farmer Gale windmill dialogue" },
+      { "id": "EV-HF-002", "position": "60,16", "type": "touch", "linkedQuest": "SQ-02", "repeat": "quest", "description": "Old Windmill entrance" }
+    ],
+    "resonanceStones": [
+      { "id": "RS-HF-01", "position": "36,28", "fragments": "joy/earth/1" },
+      { "id": "RS-HF-02", "position": "62,18", "fragments": "awe/wind/2" },
+      { "id": "RS-HF-04", "position": "16,60", "fragments": "calm/earth/1", "notes": "Hidden behind tree" }
+    ],
+    "treasureChests": [
+      { "id": "CH-HF-01", "position": "64,18", "contents": "Antidote (C-SC-01) x3" },
+      { "id": "CH-HF-02", "position": "10,20", "contents": "Minor Potion (C-HP-01) x2" },
+      { "id": "CH-HF-03", "position": "72,50", "contents": "Smoke Bomb (C-SP-05) x2" }
     ],
     "effects": [
-      { "type": "system-message", "params": { "text": "You've entered the Settled Lands." } },
-      { "type": "quest-update", "params": { "questId": "MQ-03", "action": "activate" } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "You found a Dissolved memory deposit. These contain memories from civilizations that chose to dissolve into the land."
+        }
+      }
     ],
-    "questChanges": [
-      { "questId": "MQ-03", "action": "activate" }
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-hana-scene5"
     ],
-    "targetPath": "main/server/events/act1/scene5-heartfield.ts",
-    "levelRange": "2-4",
-    "summary": "First open-world exploration. Heartfield farms, Old Windmill, random encounters."
+    "itemRefs": [
+      "W-DG-03"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-01"
+      ],
+      "party": [
+        "hana"
+      ]
+    },
+    "playerInstructions": [
+      "Explore Heartfield freely (open-world exploration)",
+      "Talk to NPCs for flavor dialogue and micro-quest hooks",
+      "Collect Dissolved fragment at the Old Windmill",
+      "Fight 4-6 random encounters (reaching level 3-4)",
+      "Discover the Stagnation Clearing (leads to Scene 6)"
+    ],
+    "narrativeContext": "The player leaves the village for the first time. Heartfield is rolling golden farmland — safe, warm, and visually inviting at its starting vibrancy of 55 (Normal tier). This scene is not a scripted encounter but a structured exploration segment with ambient dialogue and optional interactions.",
+    "timeOfDay": "Afternoon",
+    "mechanicTaught": "Open-world exploration. The player discovers that the world has secrets, Dissolved deposits, ambient NPC interactions, and optional loot. There are no quest markers for most of this — the world rewards curiosity.",
+    "targetPath": "main/server/events/act1/scene5-heartfield-the-open-world.ts",
+    "levelRange": "2-5"
   },
   {
-    "id": "act1-scene6-stagnation-clearing",
+    "id": "act1-scene6-the-stagnation-clearing",
     "act": "act1",
     "sceneNumber": 6,
     "name": "The Stagnation Clearing",
-    "location": "Heartfield — Stagnation Clearing (35, 30)",
+    "summary": "The Stagnation Clearing is a 5x5 patch of crystallized grass and frozen butterflies at Heartfield's southeast corner. It is hauntingly beautiful — everything is preserved in perfect detail, but nothin",
+    "mapId": "heartfield",
+    "subLocation": "Stagnation Clearing",
+    "spawnPosition": "66,56",
     "trigger": {
       "type": "area-enter",
       "map": "heartfield",
-      "position": "35,30"
+      "position": "64,54"
     },
-    "npcs": [
-      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-scene6" }
+    "assemblages": [
+      { "assemblageId": "stagnation-clearing", "x": 64, "y": 54 }
     ],
+    "paths": [
+      { "terrain": "road", "layer": "road", "width": 2, "points": [{"x":38,"y":32},{"x":50,"y":44},{"x":62,"y":54}] }
+    ],
+    "visuals": [],
+    "npcs": [
+      {
+        "npcId": "hana",
+        "name": "Hana",
+        "graphic": "npc_hana",
+        "position": "66,52",
+        "movement": "follow",
+        "dialogueRef": "dlg-hana-scene6"
+      }
+    ],
+    "events": [
+      { "id": "EV-HF-003", "position": "64,54", "type": "auto", "linkedQuest": "MQ-04", "repeat": "once", "description": "Stagnation Clearing cutscene" }
+    ],
+    "resonanceStones": [
+      { "id": "RS-HF-03", "position": "69,59", "fragments": "sorrow/dark/1", "notes": "Frozen — cannot interact until Scene 10" }
+    ],
+    "treasureChests": [],
     "effects": [
-      { "type": "music-change", "params": { "track": "stagnation-ambient" } },
-      { "type": "screen-effect", "params": { "effect": "desaturate", "intensity": 0.4 } },
-      { "type": "system-message", "params": { "text": "You've discovered a Stagnation Zone." } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "You've discovered a Stagnation Zone. The Preservers freeze the world to prevent change. Architects can break these zones by broadcasting memory fragments. You'll return here when you're ready."
+        }
+      }
     ],
     "questChanges": [],
-    "targetPath": "main/server/events/act1/scene6-stagnation-clearing.ts",
-    "levelRange": "3-5",
-    "summary": "First encounter with Preservers' stagnation. Observation only — no interaction yet."
+    "dialogueRefs": [
+      "dlg-hana-scene6"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-01"
+      ],
+      "party": [
+        "hana"
+      ]
+    },
+    "playerInstructions": [
+      "Enter the Stagnation Clearing (observation only — cannot interact with the frozen stone yet)",
+      "Listen to Hana's explanation of Preservers and stagnation",
+      "Leave the clearing (the player can return anytime but the stone remains locked until Scene 10)"
+    ],
+    "narrativeContext": "The Stagnation Clearing is a 5x5 patch of crystallized grass and frozen butterflies at Heartfield's southeast corner. It is hauntingly beautiful — everything is preserved in perfect detail, but nothing moves. This is the player's first encounter with the Preservers' work.",
+    "timeOfDay": "Afternoon (same session as Scene 5)",
+    "mechanicTaught": "Stagnation zone awareness. The player sees what the Preservers do before understanding how to counter it. The delay between seeing the problem (Scene 6) and solving it (Scene 10) is intentional — it gives the discovery weight and builds anticipation.",
+    "targetPath": "main/server/events/act1/scene6-the-stagnation-clearing.ts",
+    "levelRange": "2-5"
   },
   {
-    "id": "act1-scene7-ambergrove",
+    "id": "act1-scene7-ambergrove-forest-of-echoes",
     "act": "act1",
     "sceneNumber": 7,
     "name": "Ambergrove — Forest of Echoes",
-    "location": "Ambergrove (east of Village Hub)",
+    "summary": "Ambergrove is a dense deciduous forest with canopy-filtered light, winding paths, and a sense of old, quiet wonder. Starting vibrancy 45 (Normal). The player explores more dangerous enemies, finds the",
+    "mapId": "ambergrove",
+    "subLocation": "east of Everwick)",
     "trigger": {
       "type": "map-enter",
       "map": "ambergrove",
       "condition": "first-visit"
     },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-scene7" }
+      {
+        "npcId": "hana",
+        "name": "Hana",
+        "graphic": "npc_hana",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-hana-scene7"
+      },
+      {
+        "npcId": "woodcutter-bren",
+        "name": "Woodcutter Bren",
+        "graphic": "npc_woodcutter_bren",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-woodcutter-bren-scene7"
+      },
+      {
+        "npcId": "woodcutter-mirren",
+        "name": "Woodcutter Mirren",
+        "graphic": "npc_woodcutter_mirren",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-woodcutter-mirren-scene7"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "system-message", "params": { "text": "Ambergrove: dense forest with ancient Hearthstone Circle." } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "The submerged Resonance Stone hums with immense memory energy. It cannot be activated until Act II."
+        }
+      },
+      {
+        "type": "quest-update",
+        "params": {
+          "action": "completed",
+          "description": "\"Mirren's Marking Axe\""
+        }
+      }
     ],
-    "questChanges": [
-      { "questId": "MQ-03", "action": "advance", "objectiveIndex": 1 }
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-hana-scene7",
+      "dlg-woodcutter-bren-scene7",
+      "dlg-woodcutter-mirren-scene7"
     ],
-    "targetPath": "main/server/events/act1/scene7-ambergrove.ts",
-    "levelRange": "4-6",
-    "summary": "Hearthstone Circle (3 fragments), Amber Lake (foreshadowing), Woodcutter's Camp (SQ-03)."
+    "itemRefs": [
+      "W-ST-03",
+      "A-05"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-01"
+      ],
+      "party": [
+        "hana"
+      ]
+    },
+    "playerInstructions": [
+      "Explore Ambergrove (forest exploration, tighter paths than Heartfield's open fields)",
+      "Collect 3 fragments from Hearthstone Circle",
+      "Observe Amber Lake dormant stone (foreshadowing Act II)",
+      "Accept side quest from Woodcutter's Camp",
+      "Complete \"Mirren's Marking Axe\" (find the axe near Canopy Path, fight 2-3 Thornback Beetles)",
+      "Fight 6-8 random encounters"
+    ],
+    "narrativeContext": "Ambergrove is a dense deciduous forest with canopy-filtered light, winding paths, and a sense of old, quiet wonder. Starting vibrancy 45 (Normal). The player explores more dangerous enemies, finds the Hearthstone Circle (a major Dissolved memory site), and begins the NPC side quest system.",
+    "timeOfDay": "Player-driven (no time restriction)",
+    "mechanicTaught": "Side quests and NPC relationships. The woodcutters introduce the idea that NPCs have problems the player can solve. Completing quests rewards items (not XP — quests give gold, items, and fragments, while XP comes from combat; see [progression.md](../design/progression.md)).",
+    "targetPath": "main/server/events/act1/scene7-ambergrove-forest-of-echoes.ts",
+    "levelRange": "5-7"
   },
   {
-    "id": "act1-scene8-millbrook",
+    "id": "act1-scene8-millbrook-river-of-memory",
     "act": "act1",
     "sceneNumber": 8,
     "name": "Millbrook — River of Memory",
-    "location": "Millbrook (west of Village Hub)",
+    "summary": "Millbrook is the largest Settled Lands settlement — a proper riverside town with bridges, shops, and ~20 NPCs. Starting vibrancy 50 (Normal). The player encounters a more complex remix puzzle, a speci",
+    "mapId": "millbrook",
+    "subLocation": "west of Everwick)",
     "trigger": {
       "type": "map-enter",
       "map": "millbrook",
       "condition": "first-visit"
     },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-scene8" }
+      {
+        "npcId": "hana",
+        "name": "Hana",
+        "graphic": "npc_hana",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-hana-scene8"
+      },
+      {
+        "npcId": "shopkeeper-orin",
+        "name": "Shopkeeper Orin",
+        "graphic": "npc_shopkeeper_orin",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-shopkeeper-orin-scene8"
+      },
+      {
+        "npcId": "fisher-lane",
+        "name": "Fisher Lane",
+        "graphic": "npc_fisher_lane",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-fisher-lane-scene8"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "system-message", "params": { "text": "Millbrook: riverside town with specialty shops and hidden grotto." } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "You found a hidden passage behind the waterfall!"
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Remix tip: match the fragment's emotion to the zone's resonant emotion for a bonus when broadcasting. See the Memory menu for zone emotion details."
+        }
+      }
     ],
-    "questChanges": [
-      { "questId": "MQ-03", "action": "advance", "objectiveIndex": 2 }
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-hana-scene8",
+      "dlg-shopkeeper-orin-scene8",
+      "dlg-fisher-lane-scene8"
     ],
-    "targetPath": "main/server/events/act1/scene8-millbrook.ts",
-    "levelRange": "5-7",
-    "summary": "Remix strategy tutorial. Brightwater Bridge, Upstream Falls grotto, fishing minigame."
+    "itemRefs": [
+      "W-SW-04",
+      "W-ST-04",
+      "A-06",
+      "C-BF-04"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-01"
+      ],
+      "party": [
+        "hana"
+      ]
+    },
+    "playerInstructions": [
+      "Explore Millbrook town (market, shops, NPC dialogue)",
+      "Collect fragments from the Brightwater Bridge and Upstream Falls",
+      "Practice remix strategy with Hana's guidance",
+      "Discover and explore the hidden grotto behind the waterfall",
+      "Try the fishing minigame (optional)",
+      "Fight 4-6 encounters"
+    ],
+    "narrativeContext": "Millbrook is the largest Settled Lands settlement — a proper riverside town with bridges, shops, and ~20 NPCs. Starting vibrancy 50 (Normal). The player encounters a more complex remix puzzle, a specialty shop, and the Upstream Falls secret area.",
+    "timeOfDay": "Player-driven",
+    "mechanicTaught": "Remix strategy. The player learns about emotion-matching zones, compound emotions, and fragment conservation. The Millbrook specialty shop teaches economic awareness — items exist that the player can't yet afford, incentivizing return visits.",
+    "targetPath": "main/server/events/act1/scene8-millbrook-river-of-memory.ts",
+    "levelRange": "5-7"
   },
   {
-    "id": "act1-scene9-sunridge",
+    "id": "act1-scene9-sunridge-the-worlds-edge",
     "act": "act1",
     "sceneNumber": 9,
     "name": "Sunridge — The World's Edge",
-    "location": "Sunridge (north of Village Hub)",
+    "summary": "Sunridge is the transition zone — wind-blown highlands where the player can see the Frontier's shimmer on the horizon. Starting vibrancy 40 (Normal, but lower than other Settled Lands). The enemies ar",
+    "mapId": "sunridge",
+    "subLocation": "north of Everwick, unlocks after returning to Village from Millbrook/Ambergrove)",
     "trigger": {
       "type": "map-enter",
-      "map": "sunridge",
-      "condition": "first-visit"
+      "map": "sunridge"
     },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-scene9" },
-      { "npcId": "preserver-scout", "name": "Preserver Scout", "graphic": "npc_preserver_scout", "dialogueKey": "dlg-preserver-scout-scene9" }
+      {
+        "npcId": "hana",
+        "name": "Hana",
+        "graphic": "npc_hana",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-hana-scene9"
+      },
+      {
+        "npcId": "waystation-keeper-holt",
+        "name": "Waystation Keeper Holt",
+        "graphic": "npc_waystation_keeper_holt",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-waystation-keeper-holt-scene9"
+      },
+      {
+        "npcId": "preserver-scout",
+        "name": "Preserver Scout",
+        "graphic": "npc_preserver_scout",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-preserver-scout-scene9"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "quest-update", "params": { "questId": "MQ-03", "action": "complete" } },
-      { "type": "quest-update", "params": { "questId": "MQ-04", "action": "activate" } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "The Resonance Stone vibrates with overwhelming energy. Something immense sleeps here — a memory too large for you to hold. Not yet."
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Beyond this point lies the Frontier — the world's unfinished middle. The path north is blocked by a mountain pass that requires permission to traverse."
+        }
+      },
+      {
+        "type": "quest-update",
+        "params": {
+          "action": "activated",
+          "description": "\"Break the Stagnation Clearing\""
+        }
+      }
     ],
-    "questChanges": [
-      { "questId": "MQ-03", "action": "complete" },
-      { "questId": "MQ-04", "action": "activate" }
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-hana-scene9",
+      "dlg-waystation-keeper-holt-scene9",
+      "dlg-preserver-scout-scene9"
     ],
-    "targetPath": "main/server/events/act1/scene9-sunridge.ts",
-    "levelRange": "7-9",
-    "summary": "Wind Shrine (dormant god hint), Preserver Outpost confrontation, advanced combat."
+    "prerequisites": {
+      "questFlags": [
+        "MQ-01"
+      ],
+      "party": [
+        "hana"
+      ]
+    },
+    "playerInstructions": [
+      "Explore Sunridge (elevated terrain, limited paths, windy)",
+      "Visit Ridgetop Waystation (rest stop, merchant)",
+      "Discover Wind Shrine (foreshadowing dormant gods / Kinesis)",
+      "Confront Preserver Scout at the Outpost (dialogue only, no combat)",
+      "Receive quest to return to Heartfield for stagnation breaking",
+      "Fight 4-8 encounters against harder enemies"
+    ],
+    "narrativeContext": "Sunridge is the transition zone — wind-blown highlands where the player can see the Frontier's shimmer on the horizon. Starting vibrancy 40 (Normal, but lower than other Settled Lands). The enemies are harder, the Preserver Outpost introduces the antagonist faction directly, and the Wind Shrine hints at dormant gods.",
+    "timeOfDay": "Player-driven",
+    "mechanicTaught": "Advanced combat against tougher enemies (Highland Hawks test AGI; Crag Golems test DEF-piercing strategies). Introduction to the Preserver faction through direct dialogue — they are polite, principled, and wrong.",
+    "targetPath": "main/server/events/act1/scene9-sunridge-the-worlds-edge.ts",
+    "levelRange": "7-9"
   },
   {
-    "id": "act1-scene10-breaking-stagnation",
+    "id": "act1-scene10-breaking-the-stagnation",
     "act": "act1",
     "sceneNumber": 10,
     "name": "Breaking the Stagnation",
-    "location": "Heartfield — Stagnation Clearing (35, 30)",
+    "summary": "The player returns to the clearing they first saw in Scene 6. Now they have the tools and understanding to break it. This is the first active use of broadcast as a weapon against stagnation.",
+    "mapId": "heartfield",
+    "subLocation": "Stagnation Clearing",
+    "spawnPosition": "66,56",
     "trigger": {
       "type": "quest-state",
       "map": "heartfield",
-      "position": "35,30",
-      "condition": "MQ-04-active"
+      "position": "64,54"
     },
+    "assemblages": [
+      { "assemblageId": "stagnation-clearing", "x": 64, "y": 54 }
+    ],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-scene10" }
+      {
+        "npcId": "hana",
+        "name": "Hana",
+        "graphic": "npc_hana",
+        "position": "66,52",
+        "movement": "follow",
+        "dialogueRef": "dlg-hana-scene10"
+      }
     ],
+    "events": [
+      { "id": "EV-HF-010", "position": "69,59", "type": "action", "linkedQuest": "MQ-04", "repeat": "once", "description": "Broadcast fragment to break Stagnation Zone" }
+    ],
+    "resonanceStones": [
+      { "id": "RS-HF-03", "position": "69,59", "fragments": "sorrow/dark/1", "notes": "Now unfrozen — player can broadcast to break stagnation" }
+    ],
+    "treasureChests": [],
     "effects": [
-      { "type": "gui-show", "params": { "guiId": "broadcast-target", "target": "stagnation-stone" } },
-      { "type": "screen-effect", "params": { "effect": "stagnation-shatter" } },
-      { "type": "vibrancy-change", "params": { "zone": "heartfield", "delta": 10 } },
-      { "type": "item-give", "params": { "itemId": "MF-03", "name": "Echo of the Stagnation" } },
-      { "type": "system-message", "params": { "text": "Stagnation Zone broken! Heartfield vibrancy +10!" } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Approach the crystallized Resonance Stone and broadcast a memory fragment to break the Stagnation Zone. (Any fragment, potency 1+.)"
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Stagnation Zone broken! Heartfield vibrancy +10!"
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "You received a Memory Fragment: \"Echo of the Stagnation\" (Sorrow, Dark, ★★) — a frozen butterfly's last moment before crystallization."
+        }
+      },
+      {
+        "type": "vibrancy-change",
+        "params": {
+          "description": "Heartfield +10 (55→65, approaching Vivid)"
+        }
+      },
+      {
+        "type": "quest-update",
+        "params": {
+          "action": "completed",
+          "description": "\"Break the Stagnation Clearing\""
+        }
+      },
+      {
+        "type": "quest-update",
+        "params": {
+          "action": "activated",
+          "description": "\"Report to Artun\" (return to Everwick)"
+        }
+      }
     ],
-    "questChanges": [
-      { "questId": "MQ-04", "action": "advance", "objectiveIndex": 5 }
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-hana-scene10"
     ],
-    "targetPath": "main/server/events/act1/scene10-breaking-stagnation.ts",
-    "levelRange": "8-9",
-    "summary": "First active stagnation breaking. Player broadcasts fragment to shatter crystal zone."
+    "itemRefs": [
+      "MF-03"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-01"
+      ],
+      "party": [
+        "hana"
+      ]
+    },
+    "playerInstructions": [
+      "Approach crystallized Resonance Stone",
+      "Select and broadcast a fragment (any, potency 1+)",
+      "Watch the stagnation-breaking animation",
+      "Receive MF-03: Echo of the Stagnation"
+    ],
+    "narrativeContext": "The player returns to the clearing they first saw in Scene 6. Now they have the tools and understanding to break it. This is the first active use of broadcast as a weapon against stagnation.",
+    "timeOfDay": "Late afternoon",
+    "mechanicTaught": "Stagnation breaking. The player learns the full loop: find a stagnation zone → identify the focal point → broadcast an appropriate fragment → zone shatters. Future stagnation zones have stricter requirements (specific emotions, elements, potency thresholds — see [vibrancy-system.md](../world/vibrancy-system.md)).",
+    "targetPath": "main/server/events/act1/scene10-breaking-the-stagnation.ts",
+    "levelRange": "7-9"
   },
   {
-    "id": "act1-scene11-clearing-grows",
+    "id": "act1-scene11-the-clearing-grows-act-i-climax-setup",
     "act": "act1",
     "sceneNumber": 11,
-    "name": "The Clearing Grows",
-    "location": "Village Hub → Heartfield",
+    "name": "The Clearing Grows — Act I Climax Setup",
+    "summary": "Scene 11 of act1: The Clearing Grows — Act I Climax Setup",
+    "mapId": "everwick",
+    "subLocation": "Elder's House",
+    "spawnPosition": "18,10",
     "trigger": {
       "type": "quest-state",
-      "map": "village-hub",
-      "condition": "MQ-04-stagnation-broken"
+      "map": "everwick",
+      "position": "18,10"
     },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-scene11" },
-      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-scene11" }
+      {
+        "npcId": "hana",
+        "name": "Hana",
+        "graphic": "npc_hana",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-hana-scene11"
+      },
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene11"
+      },
+      {
+        "npcId": "grym",
+        "name": "Grym",
+        "graphic": "npc_grym",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-grym-scene11"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "cutscene-play", "params": { "cutsceneId": "lira-freezing" } },
-      { "type": "companion-leave", "params": { "companionId": "lira", "reason": "frozen" } },
-      { "type": "vibrancy-change", "params": { "zone": "heartfield", "delta": -25 } },
-      { "type": "item-give", "params": { "itemId": "MF-04", "name": "Lira's Scream" } },
-      { "type": "system-message", "params": { "text": "Lira has been frozen by the Stagnation Zone." } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Hana has been frozen by the Stagnation Zone."
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "You received a Memory Fragment: \"Hana's Scream\" (Fury, Light, ★★★★) — the emotional shockwave of Hana's freezing. The player's most potent fragment yet — and the most painful."
+        }
+      },
+      {
+        "type": "companion-leave",
+        "params": {
+          "description": "Hana is frozen. She is removed from the party."
+        }
+      }
     ],
-    "questChanges": [
-      { "questId": "MQ-04", "action": "advance", "objectiveIndex": 6 }
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-hana-scene11",
+      "dlg-artun-scene11",
+      "dlg-grym-scene11"
     ],
-    "targetPath": "main/server/events/act1/scene11-clearing-grows.ts",
-    "levelRange": "9-10",
-    "summary": "Act I climax. Stagnation expands, Lira is frozen. Player receives MF-04 (Fury/Light/4)."
+    "itemRefs": [
+      "MF-04"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-01"
+      ],
+      "party": [
+        "hana"
+      ]
+    },
+    "playerInstructions": [
+      "Return to Artun (triggers Part A)",
+      "Run to Heartfield (automatic cutscene transition for Part B)",
+      "Witness the stagnation expansion",
+      "Witness Hana's freezing (cutscene — no player agency during the freeze itself)",
+      "Receive MF-04: Hana's Scream"
+    ],
+    "timeOfDay": "Evening",
+    "targetPath": "main/server/events/act1/scene11-the-clearing-grows-act-i-climax-setup.ts",
+    "levelRange": "9-10"
   },
   {
-    "id": "act1-scene12-new-resolve",
+    "id": "act1-scene12-a-new-resolve",
     "act": "act1",
     "sceneNumber": 12,
     "name": "A New Resolve",
-    "location": "Village Hub — Elder's House → Lookout Hill (12, 2)",
+    "summary": "Scene 12 of act1: A New Resolve",
+    "mapId": "everwick",
+    "subLocation": "Elder's House",
     "trigger": {
-      "type": "auto",
-      "map": "village-hub",
-      "condition": "lira-frozen"
+      "type": "quest-state",
+      "map": "everwick"
     },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-scene12" }
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene12"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "item-give", "params": { "itemId": "K-02", "name": "Callum's Letters" } },
-      { "type": "item-give", "params": { "itemId": "frag-awe-neutral-3", "name": "Callum's Favorite Memory" } },
-      { "type": "music-change", "params": { "track": "village-night" } },
-      { "type": "screen-effect", "params": { "effect": "night-transition" } },
-      { "type": "quest-update", "params": { "questId": "MQ-04", "action": "complete" } },
-      { "type": "system-message", "params": { "text": "The mountain pass to the Frontier is now open. Act II begins." } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "The mountain pass to the Frontier is now open. Act II: Expansion begins."
+        }
+      }
     ],
-    "questChanges": [
-      { "questId": "MQ-04", "action": "complete" }
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-artun-scene12"
     ],
-    "targetPath": "main/server/events/act1/scene12-new-resolve.ts",
-    "levelRange": "9-10",
-    "summary": "Callum gives Letters (K-02) + 3-star fragment. Night vista. Act II unlocked."
+    "itemRefs": [
+      "K-02",
+      "MF-01",
+      "MF-03",
+      "MF-04",
+      "K-01",
+      "K-03",
+      "II-III"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-01"
+      ],
+      "party": [
+        "hana"
+      ]
+    },
+    "playerInstructions": [
+      "Talk to Artun (receive K-02 and a 3★ fragment)",
+      "Climb to Lookout Hill (night vista — narrative moment)",
+      "Look through telescope (optional — survey the world)",
+      "Leave the hill to unlock Act II"
+    ],
+    "timeOfDay": "Night (first time the player sees the village at night — amber lanterns, softer lighting, quieter atmosphere)",
+    "targetPath": "main/server/events/act1/scene12-a-new-resolve.ts",
+    "levelRange": "9-10"
   }
 ]

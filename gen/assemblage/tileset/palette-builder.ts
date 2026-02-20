@@ -1,5 +1,5 @@
 import { resolve } from 'node:path';
-import { type ParsedTsx, type WangSet, type WangTile, parseTsx } from './tsx-parser.ts';
+import { type ParsedTsx, parseTsx, type WangSet } from './tsx-parser.ts';
 
 // --- Palette types ---
 
@@ -67,7 +67,7 @@ export interface PaletteSpec {
   /**
    * Relative path from where the TMX will be output to the TSX base dir.
    * Used for the TSX source references in generated TMX files.
-   * Example: '../../../assets/tilesets/exteriors/premium/Tiled/Tilesets'
+   * Example: '../../../assets/tilesets/village/exteriors/Tiled/Tilesets'
    */
   tmxToTsxRelDir: string;
   /**
@@ -106,7 +106,7 @@ export async function buildPalette(spec: PaletteSpec): Promise<TilesetPalette> {
     const entry: PaletteTileset = {
       firstGid: nextGid,
       tsx,
-      tsxRelPath: spec.tmxToTsxRelDir + '/' + tsxFile,
+      tsxRelPath: `${spec.tmxToTsxRelDir}/${tsxFile}`,
     };
     tilesets.push(entry);
     tilesetsByName.set(tsx.name, entry);
@@ -188,9 +188,14 @@ export async function buildPalette(spec: PaletteSpec): Promise<TilesetPalette> {
  * Order: top-left, top, top-right, left, right, bottom-left, bottom, bottom-right
  */
 export type NeighborContext = [
-  boolean, boolean, boolean,
-  boolean,         boolean,
-  boolean, boolean, boolean,
+  boolean,
+  boolean,
+  boolean,
+  boolean,
+  boolean,
+  boolean,
+  boolean,
+  boolean,
 ];
 
 /**
@@ -220,13 +225,13 @@ export function resolveAutoTile(
   // Corners only count if both adjacent edges are same terrain
   const wangId = [
     t && r && tr ? c : 0, // TR corner
-    r ? c : 0,            // R edge
+    r ? c : 0, // R edge
     b && r && br ? c : 0, // BR corner
-    b ? c : 0,            // B edge
+    b ? c : 0, // B edge
     b && l && bl ? c : 0, // BL corner
-    l ? c : 0,            // L edge
+    l ? c : 0, // L edge
     t && l && tl ? c : 0, // TL corner
-    t ? c : 0,            // T edge
+    t ? c : 0, // T edge
   ];
 
   // Find matching wangtile
@@ -244,21 +249,14 @@ export function resolveAutoTile(
   }
 
   // Last resort: first wangtile for this color
-  const anyTile = terrain.wangSet.tiles.find((wt) =>
-    wt.wangId.some((v) => v === c),
-  );
-  return anyTile
-    ? terrain.tileset.firstGid + anyTile.tileId
-    : terrain.tileset.firstGid;
+  const anyTile = terrain.wangSet.tiles.find((wt) => wt.wangId.some((v) => v === c));
+  return anyTile ? terrain.tileset.firstGid + anyTile.tileId : terrain.tileset.firstGid;
 }
 
 /**
  * Resolve a fixed (non-auto-tiled) semantic tile to its global ID.
  */
-export function resolveFixedTile(
-  palette: TilesetPalette,
-  name: string,
-): number {
+export function resolveFixedTile(palette: TilesetPalette, name: string): number {
   const gid = palette.fixedTiles.get(name);
   if (gid === undefined) {
     throw new Error(`Unknown fixed tile '${name}' in palette '${palette.name}'`);
@@ -269,10 +267,7 @@ export function resolveFixedTile(
 /**
  * Resolve an object tile to its ObjectDef.
  */
-export function resolveObject(
-  palette: TilesetPalette,
-  name: string,
-): ObjectDef {
+export function resolveObject(palette: TilesetPalette, name: string): ObjectDef {
   const obj = palette.objects.get(name);
   if (!obj) {
     throw new Error(`Unknown object '${name}' in palette '${palette.name}'`);

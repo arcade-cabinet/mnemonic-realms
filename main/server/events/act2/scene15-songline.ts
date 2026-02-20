@@ -96,7 +96,7 @@ export class TheSonglineEvent extends RpgEvent {
     await player.showText('The last chorister dissolves into pure sound.');
 
     // Spawn Artun dynamically
-    const callumEvent = await player.map.createDynamicEvent({
+    const artunEvent = await player.map.createDynamicEvent({
       x: player.x,
       y: player.y + 1, // Spawn near player
       graphic: 'npc_artun',
@@ -146,7 +146,7 @@ export class TheSonglineEvent extends RpgEvent {
 
     // --- Boss Encounter: The Conductor ---
     await player.showText('A dissonant chord rings through the chamber. The Conductor appears!');
-    await player.map.removeEvent(callumEvent.id); // Artun disappears before combat
+    await player.map.removeEvent(artunEvent.id); // Artun disappears before combat
     // TODO: changeMusic not available in RPG-JS 4.3.0
     await player.battle('boss-conductor', ['B-03c']); // Trigger boss combat
 

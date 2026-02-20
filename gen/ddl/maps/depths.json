@@ -12,9 +12,9 @@
     "category": "depths",
     "act": "I-II",
     "connections": [
-      { "fromTile": "10,0", "direction": "up", "toMap": "village-hub", "toTile": "8,17", "condition": "always" },
+      { "fromTile": "10,0", "direction": "up", "toMap": "everwick", "toTile": "8,17", "condition": "always" },
       { "fromTile": "15,22", "direction": "down", "toMap": "depths-l2", "toTile": "10,0", "condition": "always" },
-      { "fromTile": "12,20", "direction": "up", "toMap": "village-hub", "toTile": "8,17", "condition": "Memory lift (after Room 3)" }
+      { "fromTile": "12,20", "direction": "up", "toMap": "everwick", "toTile": "8,17", "condition": "Memory lift (after Room 3)" }
     ],
     "npcSpawns": [],
     "enemyZones": [
@@ -23,13 +23,13 @@
       { "zone": "Stairway guard", "bounds": "11,18 -> 19,23", "enemies": ["E-DP-01"], "levelRange": "4-6", "encounterRate": "Common: 1 Shade; Standard: 2 Shades" }
     ],
     "eventTriggers": [
-      { "id": "EV-D1-001", "position": "10,0", "type": "touch", "repeat": "repeat", "description": "Entry from Village Hub" },
+      { "id": "EV-D1-001", "position": "10,0", "type": "touch", "repeat": "repeat", "description": "Entry from Everwick" },
       { "id": "EV-D1-002", "position": "3,2", "type": "action", "linkedQuest": "SQ-10", "repeat": "once", "description": "Wall inscription lore" },
       { "id": "EV-D1-003", "position": "17,4", "type": "action", "repeat": "once", "description": "Cracked RS: calm/earth/1" },
       { "id": "EV-D1-006", "position": "14,9", "type": "touch", "linkedQuest": "SQ-10", "repeat": "once", "description": "Forced encounter: 2+1 Shades" },
       { "id": "EV-D1-008", "position": "15,14", "type": "action", "repeat": "once", "description": "RS: joy/neutral/2" },
       { "id": "EV-D1-010", "position": "15,15", "type": "auto", "repeat": "once", "description": "Memory fog vision" },
-      { "id": "EV-D1-011", "position": "12,20", "type": "action", "repeat": "repeat", "description": "Memory lift -> Village Hub" },
+      { "id": "EV-D1-011", "position": "12,20", "type": "action", "repeat": "repeat", "description": "Memory lift -> Everwick" },
       { "id": "EV-D1-012", "position": "15,22", "type": "touch", "repeat": "repeat", "description": "Stairway -> Depths L2" }
     ],
     "resonanceStones": [

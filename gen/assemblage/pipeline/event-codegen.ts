@@ -1,14 +1,13 @@
-import type { AssemblageObject, EventHook } from '../types.ts';
 import type { MapCanvas } from './canvas.ts';
 
 /**
  * Generate TypeScript event files from a composed MapCanvas.
  *
  * Produces two files matching the existing RPG-JS pattern:
- * 1. Map class file (e.g., village-hub.ts) — minimal, references TMX + events
- * 2. Events file (e.g., village-hub-events.ts) — spawnMapEvents() with all NPCs and events
+ * 1. Map class file (e.g., everwick.ts) — minimal, references TMX + events
+ * 2. Events file (e.g., everwick-events.ts) — spawnMapEvents() with all NPCs and events
  */
-export function generateMapClass(mapId: string, tileSize: number): string {
+export function generateMapClass(mapId: string, _tileSize: number): string {
   const className = toClassName(mapId);
   return `import { MapData, RpgMap, type RpgPlayer } from '@rpgjs/server';
 import { spawnMapEvents } from './events/${mapId}-events';
@@ -28,11 +27,7 @@ export class ${className}Map extends RpgMap {
 /**
  * Generate the events file from canvas objects and hooks.
  */
-export function generateEventsFile(
-  mapId: string,
-  canvas: MapCanvas,
-  tileSize: number,
-): string {
+export function generateEventsFile(_mapId: string, canvas: MapCanvas, tileSize: number): string {
   const lines: string[] = [];
 
   // Collect imports from hooks
@@ -41,7 +36,7 @@ export function generateEventsFile(
 
   // Check if any NPC uses the dialogue system
   const hasDialogueNpcs = canvas.objects.some(
-    (o) => o.type === 'npc' && o.properties?.dialogueId,
+    (o) => o.type === 'npc' && (o.properties?.dialogueId || o.properties?.dialogue),
   );
   if (hasDialogueNpcs) {
     imports.set('../../systems/npc-interaction', new Set(['showDialogue']));
@@ -89,18 +84,23 @@ export function generateEventsFile(
     for (const npc of npcs) {
       const px = npc.x * tileSize;
       const py = npc.y * tileSize;
-      const graphic = npc.properties?.graphic ?? `npc_${npc.name.replace(/-/g, '_')}`;
-      const dialogueId = npc.properties?.dialogueId;
+      const graphic =
+        npc.properties?.sprite ?? npc.properties?.graphic ?? `npc_${npc.name.replace(/-/g, '_')}`;
+      const dialogueId = npc.properties?.dialogueId ?? npc.properties?.dialogue;
 
       lines.push(`    {`);
       lines.push(`      x: ${px},`);
       lines.push(`      y: ${py},`);
 
       if (dialogueId) {
-        lines.push(`      event: makeNpc('${npc.name}', '${graphic}', (p) => showDialogue(p, '${dialogueId}')),`);
+        lines.push(
+          `      event: makeNpc('${npc.name}', '${graphic}', (p) => showDialogue(p, '${dialogueId}')),`,
+        );
       } else {
         const text = npc.properties?.text ?? `${npc.name} has nothing to say.`;
-        lines.push(`      event: makeNpc('${npc.name}', '${graphic}', (p) => p.showText('${escapeTs(String(text))}')),`);
+        lines.push(
+          `      event: makeNpc('${npc.name}', '${graphic}', (p) => p.showText('${escapeTs(String(text))}')),`,
+        );
       }
 
       lines.push(`    },`);
@@ -123,11 +123,18 @@ export function generateEventsFile(
       lines.push(`      y: ${py},`);
 
       if (evt.type === 'transition') {
-        const targetMap = evt.properties?.targetMap ?? 'unknown';
-        const targetX = evt.properties?.targetX ?? 0;
-        const targetY = evt.properties?.targetY ?? 0;
+        const targetMap =
+          evt.properties?.map ??
+          evt.properties?.targetMap ??
+          evt.properties?.targetWorld ??
+          evt.properties?.targetRegion ??
+          'unknown';
+        const targetX = evt.properties?.x ?? evt.properties?.targetX ?? 0;
+        const targetY = evt.properties?.y ?? evt.properties?.targetY ?? 0;
         lines.push(`      event: makeEvent('${evt.name}', (p) => {`);
-        lines.push(`        p.changeMap('${targetMap}', { x: ${Number(targetX) * tileSize}, y: ${Number(targetY) * tileSize} });`);
+        lines.push(
+          `        p.changeMap('${targetMap}', { x: ${Number(targetX) * tileSize}, y: ${Number(targetY) * tileSize} });`,
+        );
         lines.push(`      }),`);
       } else if (hookDef?.importPath) {
         // Use imported event class

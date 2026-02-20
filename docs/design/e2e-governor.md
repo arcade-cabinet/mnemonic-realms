@@ -347,7 +347,7 @@ The governor uses a pre-loaded zone connectivity graph (from `overworld-layout.m
 
 ```typescript
 const ZONE_GRAPH: Record<string, { exits: Array<{ direction: string; toZone: string; condition?: string }> }> = {
-  'village-hub': {
+  'everwick': {
     exits: [
       { direction: 'south', toZone: 'heartfield' },
       { direction: 'east', toZone: 'ambergrove' },

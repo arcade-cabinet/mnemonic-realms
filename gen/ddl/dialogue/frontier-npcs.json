@@ -1,6 +1,6 @@
 [
   {
-    "id": "dlg-wynn-first-visit", "npcId": "wynn", "npcName": "Wynn",
+    "id": "dlg-vash-first-visit", "npcId": "vash", "npcName": "Vash",
     "trigger": "First visit",
     "location": "Shimmer Marsh — Marsh Hermit's Hut (12, 15)",
     "lines": [
@@ -9,10 +9,10 @@
       { "speaker": "Wynn", "text": "There's a glade south of here. Verdance's Hollow. The tree there has been pulsing stronger this past month." }
     ],
     "linkedQuest": "SQ-06",
-    "targetPath": "main/server/dialogue/wynn-first-visit.ts"
+    "targetPath": "main/server/dialogue/vash-first-visit.ts"
   },
   {
-    "id": "dlg-petra-first-visit", "npcId": "petra", "npcName": "Petra",
+    "id": "dlg-nel-first-visit", "npcId": "nel", "npcName": "Nel",
     "trigger": "First visit",
     "location": "Hollow Ridge — Ridgewalker Camp (15, 25)",
     "lines": [
@@ -21,10 +21,10 @@
       { "speaker": "Petra", "text": "Need supplies? Rest? Directions?" }
     ],
     "linkedQuest": "SQ-07",
-    "targetPath": "main/server/dialogue/petra-first-visit.ts"
+    "targetPath": "main/server/dialogue/nel-first-visit.ts"
   },
   {
-    "id": "dlg-solen-first-visit", "npcId": "solen", "npcName": "Solen",
+    "id": "dlg-reza-first-visit", "npcId": "reza", "npcName": "Reza",
     "trigger": "First visit",
     "location": "Flickerveil — The Flickering Village (35, 30)",
     "lines": [
@@ -32,7 +32,7 @@
       { "speaker": "Solen", "text": "Take this. A Light Lens — without it, the light is too bright to approach." }
     ],
     "linkedQuest": "SQ-08",
-    "targetPath": "main/server/dialogue/solen-first-visit.ts"
+    "targetPath": "main/server/dialogue/reza-first-visit.ts"
   },
   {
     "id": "dlg-preserver-scout", "npcId": "preserver-scout", "npcName": "Preserver Scout",

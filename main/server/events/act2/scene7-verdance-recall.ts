@@ -89,10 +89,10 @@ export default class VerdanceRecallEvent extends RpgEvent {
       // Optionally remove NPCs if they are dynamic and no longer needed
       // (This depends on whether they have post-recall dialogue)
       // TODO: getEventByName not available in RPG-JS 4.3.0
-      // const callumEvent = player.map.getEventByName('Artun');
-      // if (callumEvent) player.map.removeEvent(callumEvent.id);
-      // const wynnEvent = player.map.getEventByName('Vash');
-      // if (wynnEvent) player.map.removeEvent(wynnEvent.id);
+      // const artunEvent = player.map.getEventByName('Artun');
+      // if (artunEvent) player.map.removeEvent(artunEvent.id);
+      // const vashEvent = player.map.getEventByName('Vash');
+      // if (vashEvent) player.map.removeEvent(vashEvent.id);
     }
   }
 
@@ -170,10 +170,10 @@ export default class VerdanceRecallEvent extends RpgEvent {
     await player.showText(wynnReaction);
 
     // TODO: getEventByName not available in RPG-JS 4.3.0
-    // const callumEvent = player.map.getEventByName('Artun');
-    // if (callumEvent) player.map.removeEvent(callumEvent.id);
-    // const wynnEvent = player.map.getEventByName('Vash');
-    // if (wynnEvent) player.map.removeEvent(wynnEvent.id);
+    // const artunEvent = player.map.getEventByName('Artun');
+    // if (artunEvent) player.map.removeEvent(artunEvent.id);
+    // const vashEvent = player.map.getEventByName('Vash');
+    // if (vashEvent) player.map.removeEvent(vashEvent.id);
 
     this.setVisible(false); // Hide the trigger event
   }

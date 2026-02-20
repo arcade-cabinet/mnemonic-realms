@@ -1,6 +1,6 @@
-import { XMLParser } from 'fast-xml-parser';
 import { readFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
+import { XMLParser } from 'fast-xml-parser';
 
 // --- Parsed TSX types ---
 
@@ -84,14 +84,7 @@ const xmlParser = new XMLParser({
   attributeNamePrefix: '@_',
   isArray: (name) => {
     // These elements can appear multiple times under their parent
-    return [
-      'tile',
-      'wangset',
-      'wangcolor',
-      'wangtile',
-      'frame',
-      'object',
-    ].includes(name);
+    return ['tile', 'wangset', 'wangcolor', 'wangtile', 'frame', 'object'].includes(name);
   },
 });
 
@@ -199,9 +192,7 @@ export async function parseTsx(tsxPath: string): Promise<ParsedTsx> {
  * Parse all TSX files in a directory tree.
  * Returns a map of tileset name -> ParsedTsx.
  */
-export async function parseTsxDirectory(
-  dir: string,
-): Promise<Map<string, ParsedTsx>> {
+export async function parseTsxDirectory(dir: string): Promise<Map<string, ParsedTsx>> {
   const { glob } = await import('node:fs');
   const { promisify } = await import('node:util');
   const globP = promisify(glob);

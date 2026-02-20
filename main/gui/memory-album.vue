@@ -169,7 +169,7 @@ import { defineComponent, inject, ref, computed, onMounted, onUnmounted } from '
 type Emotion = 'joy' | 'fury' | 'sorrow' | 'awe' | 'calm';
 
 type Zone =
-  | 'village-hub'
+  | 'everwick'
   | 'heartfield'
   | 'ambergrove'
   | 'millbrook'
@@ -203,13 +203,13 @@ interface DisplayFragment extends FragmentDef {
 // ── Fragment Catalog (mirrors server memory.ts) ───────────────────────────────
 
 const FRAGMENT_CATALOG: readonly FragmentDef[] = [
-  // Village Hub (6)
-  { id: 'frag-vh-01', name: 'Wildflower Offering', description: 'A warm memory of placing wildflowers at the village shrine, petals catching the morning light.', category: 'exploration', emotion: 'joy', zone: 'village-hub', potency: 1 },
-  { id: 'frag-vh-02', name: 'Rainy Vigil', description: 'The quiet patience of watching rain fall over still rooftops, waiting for nothing in particular.', category: 'exploration', emotion: 'calm', zone: 'village-hub', potency: 1 },
-  { id: 'frag-vh-03', name: 'Communal Song', description: 'Voices rising together in an old song whose words nobody quite remembers but everyone feels.', category: 'exploration', emotion: 'awe', zone: 'village-hub', potency: 2 },
-  { id: 'frag-vh-04', name: "Artun's First Memory", description: "The architect's earliest recollection — a hand drawing shapes in soft earth, imagining worlds.", category: 'npc', emotion: 'joy', zone: 'village-hub', potency: 2 },
-  { id: 'frag-vh-05', name: "Hana's Spark", description: 'The fierce determination that ignited when someone said the forge fires would never burn again.', category: 'npc', emotion: 'fury', zone: 'village-hub', potency: 2 },
-  { id: 'frag-vh-06', name: "Elder Torin's Regret", description: 'A weight carried for years — the memory of a choice that silenced a friend forever.', category: 'npc', emotion: 'sorrow', zone: 'village-hub', potency: 2 },
+  // Everwick (6)
+  { id: 'frag-vh-01', name: 'Wildflower Offering', description: 'A warm memory of placing wildflowers at the village shrine, petals catching the morning light.', category: 'exploration', emotion: 'joy', zone: 'everwick', potency: 1 },
+  { id: 'frag-vh-02', name: 'Rainy Vigil', description: 'The quiet patience of watching rain fall over still rooftops, waiting for nothing in particular.', category: 'exploration', emotion: 'calm', zone: 'everwick', potency: 1 },
+  { id: 'frag-vh-03', name: 'Communal Song', description: 'Voices rising together in an old song whose words nobody quite remembers but everyone feels.', category: 'exploration', emotion: 'awe', zone: 'everwick', potency: 2 },
+  { id: 'frag-vh-04', name: "Artun's First Memory", description: "The architect's earliest recollection — a hand drawing shapes in soft earth, imagining worlds.", category: 'npc', emotion: 'joy', zone: 'everwick', potency: 2 },
+  { id: 'frag-vh-05', name: "Hana's Spark", description: 'The fierce determination that ignited when someone said the forge fires would never burn again.', category: 'npc', emotion: 'fury', zone: 'everwick', potency: 2 },
+  { id: 'frag-vh-06', name: "Elder Torin's Regret", description: 'A weight carried for years — the memory of a choice that silenced a friend forever.', category: 'npc', emotion: 'sorrow', zone: 'everwick', potency: 2 },
   // Heartfield (5)
   { id: 'frag-hf-01', name: 'Meadow Lullaby', description: 'Tall grass swaying in rhythm with a half-remembered melody that soothes the restless mind.', category: 'exploration', emotion: 'calm', zone: 'heartfield', potency: 1 },
   { id: 'frag-hf-02', name: 'Harvest Dance', description: 'Bare feet on warm earth, spinning with strangers who feel like family under an amber sky.', category: 'exploration', emotion: 'joy', zone: 'heartfield', potency: 1 },
@@ -272,7 +272,7 @@ const fragmentById = new Map(FRAGMENT_CATALOG.map((f) => [f.id, f]));
 // ── Zone & God Labels ─────────────────────────────────────────────────────────
 
 const ZONE_LABELS: readonly { id: Zone; label: string }[] = [
-  { id: 'village-hub', label: 'Village Hub' },
+  { id: 'everwick', label: 'Everwick' },
   { id: 'heartfield', label: 'Heartfield' },
   { id: 'ambergrove', label: 'Ambergrove' },
   { id: 'millbrook', label: 'Millbrook' },

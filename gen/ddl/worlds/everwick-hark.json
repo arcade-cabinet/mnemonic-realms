@@ -1,0 +1,14 @@
+{
+  "id": "everwick-hark",
+  "name": "Hark's Forge",
+  "templateId": "shop-single",
+  "parentAnchor": "everwick",
+  "slotValues": {
+    "keeper": "hark",
+    "shop-type": "weapons",
+    "theme": "forge"
+  },
+  "properties": {
+    "description": "The rhythmic clang of hammer on steel echoes from this open-fronted forge. Hark works with quiet intensity, each weapon bearing the mark of his deliberate craft."
+  }
+}

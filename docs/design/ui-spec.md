@@ -864,7 +864,7 @@ The ending is a **multi-phase sequence**, not a single screen:
 - Player sprite walks rightward along a slowly brightening path at the bottom of the screen
 
 **Phase 4: Post-Credits**
-- Returns to the game world at the Village Hub with all zones at 95+ vibrancy
+- Returns to the game world at the Everwick with all zones at 95+ vibrancy
 - "The world continues..." message
 - Player can freely explore the vivid world, talk to post-game NPCs, complete remaining side quests
 - No new game+ (this is a single playthrough game with replay via different class/god choices)

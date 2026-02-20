@@ -1,5 +1,4 @@
 import type {
-  AssemblageDefinition,
   AssemblageObject,
   EventHook,
   MapComposition,
@@ -7,6 +6,13 @@ import type {
   PlacedAssemblage,
   SemanticTile,
 } from '../types.ts';
+
+/** A visual object with absolute canvas position (in tiles) */
+export interface PlacedVisualObject {
+  objectRef: string;
+  x: number;
+  y: number;
+}
 
 /**
  * Multi-layer map canvas.
@@ -29,12 +35,16 @@ export class MapCanvas {
   readonly layerOrder: string[];
   /** Collision grid: 1 = blocked, 0 = passable */
   readonly collision: (0 | 1)[];
+  /** All visual objects (buildings, trees, props) */
+  readonly visuals: PlacedVisualObject[];
   /** All placed objects */
   readonly objects: AssemblageObject[];
   /** All event hooks */
   readonly hooks: EventHook[];
 
-  constructor(comp: Pick<MapComposition, 'width' | 'height' | 'tileWidth' | 'tileHeight' | 'layers'>) {
+  constructor(
+    comp: Pick<MapComposition, 'width' | 'height' | 'tileWidth' | 'tileHeight' | 'layers'>,
+  ) {
     this.width = comp.width;
     this.height = comp.height;
     this.tileWidth = comp.tileWidth;
@@ -42,6 +52,7 @@ export class MapCanvas {
     this.layerOrder = [...comp.layers];
     this.layers = new Map();
     this.collision = new Array(comp.width * comp.height).fill(0);
+    this.visuals = [];
     this.objects = [];
     this.hooks = [];
 
@@ -65,10 +76,15 @@ export class MapCanvas {
     const { assemblage, x, y } = placement;
 
     // Validate bounds
-    if (x < 0 || y < 0 || x + assemblage.width > this.width || y + assemblage.height > this.height) {
+    if (
+      x < 0 ||
+      y < 0 ||
+      x + assemblage.width > this.width ||
+      y + assemblage.height > this.height
+    ) {
       throw new Error(
         `Assemblage '${assemblage.id}' at (${x},${y}) exceeds canvas bounds ` +
-        `(${assemblage.width}x${assemblage.height} on ${this.width}x${this.height})`,
+          `(${assemblage.width}x${assemblage.height} on ${this.width}x${this.height})`,
       );
     }
 
@@ -97,6 +113,17 @@ export class MapCanvas {
             this.collision[canvasIdx] = 1;
           }
         }
+      }
+    }
+
+    // Add visual objects (offset positions by placement)
+    if (assemblage.visuals) {
+      for (const vis of assemblage.visuals) {
+        this.visuals.push({
+          objectRef: vis.objectRef,
+          x: vis.x + x,
+          y: vis.y + y,
+        });
       }
     }
 
@@ -153,6 +180,11 @@ export class MapCanvas {
   /** Set collision at a position. */
   setCollision(x: number, y: number, blocked: boolean): void {
     this.collision[y * this.width + x] = blocked ? 1 : 0;
+  }
+
+  /** Add a standalone visual object. */
+  addVisual(vis: PlacedVisualObject): void {
+    this.visuals.push(vis);
   }
 
   /** Add a standalone object (not from an assemblage). */
@@ -238,6 +270,13 @@ export function composeMap(comp: MapComposition): MapCanvas {
   if (comp.paths) {
     for (const path of comp.paths) {
       canvas.drawPath(path);
+    }
+  }
+
+  // Add map-level visuals
+  if (comp.visuals) {
+    for (const vis of comp.visuals) {
+      canvas.addVisual(vis);
     }
   }
 

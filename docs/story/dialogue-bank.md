@@ -44,7 +44,7 @@ Hana is a traveling Mnemonic Architect, mid-30s, practical and warm. She is the 
 ### Act I Dialogue
 
 #### Trigger: Player enters Hana's Workshop (Scene 3)
-Location: Village Hub — Hana's Workshop (8, 18)
+Location: Everwick — Hana's Workshop (8, 18)
 Context: Player has collected 4 fragments from Artun and the Memorial Garden.
 
 **Hana**: You must be the one Artun keeps talking about. I'm Hana — Mnemonic Architect, freelance, currently between assignments.
@@ -58,7 +58,7 @@ Context: Player has collected 4 fragments from Artun and the Memorial Garden.
 **Hana**: I want to travel with you for a while, if that's all right. Artun tells me you're curious about the world beyond the village, and there are things I can teach you better in the field than in a workshop.
 
 #### Trigger: Training Ground combat tutorial (Scene 4A)
-Location: Village Hub — Training Ground (8, 10)
+Location: Everwick — Training Ground (8, 10)
 Context: Hana has joined the party.
 
 **Hana**: See those practice dummies? They're enchanted with a bit of memory energy — enough to fight back. Don't worry, they can't actually hurt you much.
@@ -72,7 +72,7 @@ Context: Hana has joined the party.
 **Hana** *(after Sprite victory)*: Well done! You earned that. Sprites drop a little gold and sometimes... yes, there it is.
 
 #### Trigger: Remix and Broadcast tutorial (Scene 4B)
-Location: Village Hub — Hana's Workshop (8, 18)
+Location: Everwick — Hana's Workshop (8, 18)
 Context: After combat tutorial.
 
 **Hana**: Now for the real work. Come back to the Workshop — I want to show you the Remix Table.
@@ -93,7 +93,7 @@ Context: After combat tutorial.
 
 **Hana**: That's what we do. Collect. Remix. Broadcast. The world gets brighter. Ready to see what's beyond the village?
 
-#### Trigger: Player exits Village Hub south (Scene 5)
+#### Trigger: Player exits Everwick south (Scene 5)
 Location: Heartfield road
 Context: First time leaving the village.
 
@@ -322,8 +322,8 @@ Location: First Memory Chamber
 
 **Hana**: "What will we create next?"
 
-#### Trigger: Endgame Bloom — Village Hub return (Scene 11)
-Location: Village Hub
+#### Trigger: Endgame Bloom — Everwick return (Scene 11)
+Location: Everwick
 
 **Hana** *(standing nearby, arms crossed, smiling)*: Don't speak for me, old man. I'm proud of myself too — I taught you everything you know.
 
@@ -344,7 +344,7 @@ These lines trigger when the player talks to Hana outside of scripted scenes.
 
 #### Act I Ambient (before freezing)
 
-**Hana** *(Village Hub)*: The village feels brighter every time we come back. That's you — your broadcasts are seeping into the stones.
+**Hana** *(Everwick)*: The village feels brighter every time we come back. That's you — your broadcasts are seeping into the stones.
 
 **Hana** *(Heartfield)*: Farmland. Peaceful, warm, full of small memories. This is what we're protecting.
 
@@ -372,12 +372,12 @@ These lines trigger when the player talks to Hana outside of scripted scenes.
 
 ## Part 2: Named NPC Dialogue — Artun
 
-Artun is the Village Hub's elder, old, kind, deeply knowledgeable about dissolved civilizations. He is the player's lore anchor in Act I, joins as a Scholar companion in Act II, and provides philosophical depth through Act III. ~25 unique dialogue entries.
+Artun is the Everwick's elder, old, kind, deeply knowledgeable about dissolved civilizations. He is the player's lore anchor in Act I, joins as a Scholar companion in Act II, and provides philosophical depth through Act III. ~25 unique dialogue entries.
 
 ### Act I Dialogue
 
 #### Trigger: Game start — Scene 1
-Location: Village Hub — Elder's House (18, 10)
+Location: Everwick — Elder's House (18, 10)
 
 **Artun**: There you are. Come in, come in — careful of the stack by the door, I haven't shelved those yet.
 
@@ -404,7 +404,7 @@ Location: Village Hub — Elder's House (18, 10)
 **Artun**: Oh — and take the scenic route through the Memorial Garden, would you? I have a feeling the stones there have something to show you.
 
 #### Trigger: After Hana's freezing — Scene 11
-Location: Village Hub — Elder's House (18, 10)
+Location: Everwick — Elder's House (18, 10)
 
 **Artun**: I heard. Hana...
 
@@ -542,8 +542,8 @@ Location: First Memory Chamber
 
 **Artun**: One that includes everything this Architect has experienced. Every god recalled, every fragment collected, every moment preserved or freed.
 
-#### Trigger: Endgame Bloom — Village Hub (Scene 11)
-Location: Village Hub
+#### Trigger: Endgame Bloom — Everwick (Scene 11)
+Location: Everwick
 
 **Artun** *(sitting on fountain's edge)*: Forty years I spent studying the Dissolved. Reading their journals, tracing their memories, trying to understand why they chose to let go.
 
@@ -785,12 +785,12 @@ Location: Preserver Fortress entrance (post-bloom)
 
 ---
 
-## Part 5: Village Hub NPCs
+## Part 5: Everwick NPCs
 
 ### Khali (General Shop)
 
 #### Trigger: First visit (Act I)
-Location: Village Hub — General Shop (18, 16)
+Location: Everwick — General Shop (18, 16)
 
 **Khali**: Welcome, welcome! You must be the one Artun's been talking about — the new Architect! I'm Khali. I sell a little of everything and know a little of everything. What can I get you?
 
@@ -819,7 +819,7 @@ Location: Village Hub — General Shop (18, 16)
 ### Hark (Blacksmith)
 
 #### Trigger: First visit (Act I)
-Location: Village Hub — Blacksmith (18, 18)
+Location: Everwick — Blacksmith (18, 18)
 
 **Hark**: Mm. New Architect? Artun told me. I make weapons and armor — nothing fancy, but solid. If the world's going to test you, at least you'll be properly equipped.
 
@@ -846,7 +846,7 @@ Location: Village Hub — Blacksmith (18, 18)
 ### Nyro (Innkeeper)
 
 #### Trigger: First visit (Act I)
-Location: Village Hub — Inn: The Bright Hearth (20, 14)
+Location: Everwick — Inn: The Bright Hearth (20, 14)
 
 **Nyro**: The Bright Hearth — best inn in the village! Well, only inn. Rest your feet, rest your mind. I hear the most interesting things from travelers, and I'm happy to share.
 

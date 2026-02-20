@@ -48,7 +48,7 @@ Fragment drops from normal enemies are always unnamed, with emotion/element matc
 
 ## Settled Lands Enemies (Act I)
 
-These enemies inhabit the Village Hub surroundings and the four Settled Lands sub-maps. They are the player's first opponents and teach basic combat.
+These enemies inhabit the Everwick surroundings and the four Settled Lands sub-maps. They are the player's first opponents and teach basic combat.
 
 ### E-SL-01: Meadow Sprite
 

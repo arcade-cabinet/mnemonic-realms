@@ -18,7 +18,7 @@ export default class UndrawnPeaksScene3Event extends RpgEvent {
     // Hana and Artun will be removed after the dialogue, but need to exist for their lines.
     // Janik will remain on the map as per the story.
 
-    const liraEvent = map.createDynamicEvent({
+    const hanaEvent = map.createDynamicEvent({
       x: player.x + 1, // Place Hana near the player's entry point
       y: player.y,
       event: {
@@ -30,7 +30,7 @@ export default class UndrawnPeaksScene3Event extends RpgEvent {
       },
     });
 
-    const callumEvent = map.createDynamicEvent({
+    const artunEvent = map.createDynamicEvent({
       x: player.x - 1, // Place Artun near the player's entry point
       y: player.y,
       event: {
@@ -42,7 +42,7 @@ export default class UndrawnPeaksScene3Event extends RpgEvent {
       },
     });
 
-    const aricEvent = map.createDynamicEvent({
+    const janikEvent = map.createDynamicEvent({
       x: 20, // Janik's fixed position at the Crystalline Fortress Gate
       y: 35,
       event: {
@@ -57,14 +57,14 @@ export default class UndrawnPeaksScene3Event extends RpgEvent {
     // --- Dialogue Sequence ---
 
     // Initial dialogue with Hana and Artun upon entering the peaks
-    await player.showText('The Fortress. There.', { speaker: 'Hana', talkWith: liraEvent.id });
+    await player.showText('The Fortress. There.', { speaker: 'Hana', talkWith: hanaEvent.id });
     await player.showText(
       'The Preserver Fortress. Three floors of crystallized perfection — everything the Curator considers worth preserving, frozen forever in a museum no one asked for.',
-      { speaker: 'Artun', talkWith: callumEvent.id },
+      { speaker: 'Artun', talkWith: artunEvent.id },
     );
     await player.showText(
       'The First Memory is on the lowest floor. We need to go through the Fortress to reach it.',
-      { speaker: 'Artun', talkWith: callumEvent.id },
+      { speaker: 'Artun', talkWith: artunEvent.id },
     );
 
     // Effect: System message about the Fortress becoming visible
@@ -76,34 +76,34 @@ export default class UndrawnPeaksScene3Event extends RpgEvent {
     // Janik's encounter at the Fortress Gate (simulated as part of the intro sequence)
     await player.showText('Architect. I expected you.', {
       speaker: 'Janik',
-      talkWith: aricEvent.id,
+      talkWith: janikEvent.id,
     });
-    await player.showText('Step aside, Janik.', { speaker: 'Hana', talkWith: liraEvent.id });
+    await player.showText('Step aside, Janik.', { speaker: 'Hana', talkWith: hanaEvent.id });
     await player.showText("I'm not here to fight. Not this time.", {
       speaker: 'Janik',
-      talkWith: aricEvent.id,
+      talkWith: janikEvent.id,
     });
     await player.showText(
       "I've been thinking about what I asked you in the Frontier. \"Does being stronger make you right?\" I still don't know the answer. But I know this: the Curator is wrong about the First Memory. Crystallizing it won't preserve the world — it will kill it.",
-      { speaker: 'Janik', talkWith: aricEvent.id },
+      { speaker: 'Janik', talkWith: janikEvent.id },
     );
     await player.showText(
       "I can't fight the Curator directly — the crystal armor binds me to their will. But I can tell you what's inside.",
-      { speaker: 'Janik', talkWith: aricEvent.id },
+      { speaker: 'Janik', talkWith: janikEvent.id },
     );
 
     // Janik describes Fortress layout (narrative, implies map data update)
     await player.showText(
       "Three floors. The Gallery of Moments — frozen scenes the Curator considers perfect. The Archive of Perfection — the Curator's personal collection, the most beautiful things they've ever frozen. And the First Memory Chamber.",
-      { speaker: 'Janik', talkWith: aricEvent.id },
+      { speaker: 'Janik', talkWith: janikEvent.id },
     );
     await player.showText(
       "The Gallery is guarded by the Curator's Right Hand — their most loyal lieutenant. The Archive is guarded by the Archive Keeper — a construct of pure crystal intelligence. The Curator waits on the third floor.",
-      { speaker: 'Janik', talkWith: aricEvent.id },
+      { speaker: 'Janik', talkWith: janikEvent.id },
     );
     await player.showText(
       "One more thing. The Fortress is crystallized at vibrancy 0. Your broadcasts won't work inside — the crystal absorbs memory energy. But the crystal has fractures. Everywhere a god's influence has touched the world, the Fortress walls crack. Your four recalled gods are weakening the crystal from outside.",
-      { speaker: 'Janik', talkWith: aricEvent.id },
+      { speaker: 'Janik', talkWith: janikEvent.id },
     );
 
     // Janik steps aside (narrative, implies the path to the Fortress is now open)
@@ -127,10 +127,10 @@ export default class UndrawnPeaksScene3Event extends RpgEvent {
 
     // --- Cleanup ---
     // Remove Hana and Artun events as they are not persistent for this scene after the intro.
-    map.removeEvent(liraEvent.id);
-    map.removeEvent(callumEvent.id);
+    map.removeEvent(hanaEvent.id);
+    map.removeEvent(artunEvent.id);
 
     // Janik's event remains on the map as per the story: "He remains at the gate."
-    // So aricEvent is NOT removed.
+    // So janikEvent is NOT removed.
   }
 }

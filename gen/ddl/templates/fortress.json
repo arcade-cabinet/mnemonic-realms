@@ -1,0 +1,28 @@
+{
+  "id": "fortress",
+  "category": "Fortress",
+  "description": "Branching fortress — named areas connected by corridors, some gated by keys/puzzles",
+  "layout": {
+    "type": "branching",
+    "regions": [
+      { "id": "entrance", "name": "Entrance Hall", "archetype": "castle-room" },
+      { "id": "gallery", "name": "Gallery", "archetype": "castle-room" },
+      { "id": "archive", "name": "Archive", "archetype": "library" },
+      { "id": "throne", "name": "Throne Room", "archetype": "castle-room" },
+      { "id": "arena", "name": "Boss Arena", "archetype": "castle-room" }
+    ],
+    "connections": [
+      { "from": "entrance", "to": "gallery", "type": "corridor" },
+      { "from": "entrance", "to": "archive", "type": "corridor" },
+      { "from": "gallery", "to": "throne", "type": "gate", "condition": "gallery-key" },
+      { "from": "archive", "to": "throne", "type": "gate", "condition": "archive-key" },
+      { "from": "throne", "to": "arena", "type": "door", "condition": "throne-cleared" }
+    ]
+  },
+  "slots": [
+    { "id": "theme", "name": "Fortress Theme", "type": "theme", "required": true },
+    { "id": "boss", "name": "Final Boss", "type": "boss", "required": true },
+    { "id": "guards", "name": "Guard Set", "type": "enemy-set", "required": false }
+  ],
+  "defaults": {}
+}

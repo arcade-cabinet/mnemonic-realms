@@ -1,371 +1,1326 @@
 [
   {
-    "id": "act2-scene1-mountain-pass",
+    "id": "act2-scene1-the-mountain-pass",
     "act": "act2",
     "sceneNumber": 1,
     "name": "The Mountain Pass",
-    "location": "Sunridge — The Threshold (20, 2) → Hollow Ridge",
-    "trigger": { "type": "area-enter", "map": "sunridge", "position": "20,2", "condition": "act2-unlocked" },
+    "summary": "The mountain pass between the Settled Lands and the Frontier has been closed for as long as anyone remembers — not by a gate or a wall, but by the land itself. The path simply... stopped. Now, after H",
+    "mapId": "sunridge",
+    "subLocation": "The Threshold",
+    "spawnPosition": "20,2",
+    "trigger": {
+      "type": "area-enter",
+      "map": "sunridge",
+      "position": "20,2"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-act2-scene1" }
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene1"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "companion-join", "params": { "companionId": "callum", "class": "scholar" } },
-      { "type": "system-message", "params": { "text": "Callum joins the party! (Scholar)" } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Artun joins the party! (Scholar — support moveset: Dissolved Insight, Memory Ward, Lore Pulse)"
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Before you stretches a vast, shimmering expanse. Mountains, marshes, forests, and plains — but all of it softer than the Settled Lands. Colors are muted. Edges shimmer. The sky fades from blue to pale luminous white at the horizon. This is the Frontier — where the world is still being written."
+        }
+      },
+      {
+        "type": "companion-join",
+        "params": {
+          "companionId": "artun",
+          "description": "Artun (Scholar, support)"
+        }
+      }
     ],
-    "questChanges": [
-      { "questId": "MQ-05", "action": "activate" }
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-artun-scene1"
     ],
-    "targetPath": "main/server/events/act2/scene1-mountain-pass.ts",
-    "levelRange": "10-11",
-    "summary": "Mountain pass opens. Callum joins as Scholar companion. First Frontier vista."
+    "playerInstructions": [
+      "Enter the mountain pass (automatic transition from Sunridge)",
+      "View the Frontier panorama (narrative moment)",
+      "Proceed north into Hollow Ridge"
+    ],
+    "narrativeContext": "The mountain pass between the Settled Lands and the Frontier has been closed for as long as anyone remembers — not by a gate or a wall, but by the land itself. The path simply... stopped. Now, after Hana's freezing and the player's resolve, the world has responded. The mountain pass has remembered itself into existence overnight — fresh stone, newly carved switchbacks, morning fog curling through a gap that wasn't there yesterday.",
+    "timeOfDay": "Dawn",
+    "targetPath": "main/server/events/act2/scene1-the-mountain-pass.ts",
+    "levelRange": "10-12"
   },
   {
     "id": "act2-scene2-ridgewalker-camp",
     "act": "act2",
     "sceneNumber": 2,
     "name": "Ridgewalker Camp",
-    "location": "Hollow Ridge — Ridgewalker Camp (15, 25)",
-    "trigger": { "type": "area-enter", "map": "hollow-ridge", "position": "15,25", "condition": "first-visit" },
+    "summary": "Ridgewalker Camp is a frontier settlement of hardy explorers who live at the edge of the unfinished world because they enjoy watching new land form. It's a cluster of tents and stone shelters on a win",
+    "mapId": "hollow-ridge",
+    "subLocation": "Ridgewalker Camp",
+    "spawnPosition": "15,25",
+    "trigger": {
+      "type": "area-enter",
+      "map": "hollow-ridge",
+      "position": "15,25"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-act2-scene2" },
-      { "npcId": "petra", "name": "Petra", "graphic": "npc_petra", "dialogueKey": "dlg-petra-scene2" }
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene2"
+      },
+      {
+        "npcId": "nel",
+        "name": "Nel",
+        "graphic": "npc_nel",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-nel-scene2"
+      },
+      {
+        "npcId": "ridgewalker-scout-dain",
+        "name": "Ridgewalker Scout Dain",
+        "graphic": "npc_ridgewalker_scout_dain",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-ridgewalker-scout-dain-scene2"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "system-message", "params": { "text": "All four dormant god locations revealed." } }
+      {
+        "type": "quest-update",
+        "params": {
+          "action": "activated",
+          "description": "\"Dain's Markers\" (optional)"
+        }
+      }
     ],
-    "questChanges": [
-      { "questId": "MQ-05", "action": "advance", "objectiveIndex": 2 }
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-artun-scene2",
+      "dlg-nel-scene2",
+      "dlg-ridgewalker-scout-dain-scene2"
     ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-04"
+      ],
+      "level": 10
+    },
+    "playerInstructions": [
+      "Arrive at Ridgewalker Camp (first Frontier rest point)",
+      "Meet Nel and learn about the Frontier situation",
+      "Learn about all four dormant god locations",
+      "Accept optional side quest from Dain",
+      "Rest, resupply (merchant available with rotating Frontier-tier stock)"
+    ],
+    "narrativeContext": "Ridgewalker Camp is a frontier settlement of hardy explorers who live at the edge of the unfinished world because they enjoy watching new land form. It's a cluster of tents and stone shelters on a wind-swept plateau. The people here are rough, practical, and fiercely independent. They're the closest thing the Frontier has to a community.",
+    "timeOfDay": "Morning",
+    "mechanicTaught": "Frontier navigation and scale. The player learns that the Frontier is larger than the Settled Lands (50x50 vs 40x40 per zone), more dangerous, and less populated. Artun's Letters provide lore on first entry to each zone. The Ridgewalker Camp is the \"hub\" of the Frontier — a safe base to return to.",
     "targetPath": "main/server/events/act2/scene2-ridgewalker-camp.ts",
-    "levelRange": "10-12",
-    "summary": "Meet Petra, learn dormant god locations. Frontier hub with merchant and rest."
+    "levelRange": "10-12"
   },
   {
-    "id": "act2-scene3-frontier-opens",
+    "id": "act2-scene3-the-frontier-opens",
     "act": "act2",
     "sceneNumber": 3,
     "name": "The Frontier Opens",
-    "location": "Multiple — Shimmer Marsh, Flickerveil, Resonance Fields",
-    "trigger": { "type": "map-enter", "map": "frontier-zones", "condition": "post-ridgewalker" },
+    "summary": "This is Act II's open exploration phase. The player can visit the remaining three Frontier zones in any order. Each zone has a Artun Letter, a settlement, ambient encounters, and the dormant god shrin",
+    "mapId": "multiple",
+    "subLocation": "Shimmer Marsh, Flickerveil, Resonance Fields",
+    "trigger": {
+      "type": "map-enter",
+      "map": "multiple",
+      "condition": "first-visit"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-letters" },
-      { "npcId": "wynn", "name": "Wynn", "graphic": "npc_wynn", "dialogueKey": "dlg-wynn-intro" },
-      { "npcId": "solen", "name": "Solen", "graphic": "npc_solen", "dialogueKey": "dlg-solen-intro" }
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene3"
+      },
+      {
+        "npcId": "vash",
+        "name": "Vash",
+        "graphic": "npc_vash",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-vash-scene3"
+      },
+      {
+        "npcId": "reza",
+        "name": "Reza",
+        "graphic": "npc_reza",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-reza-scene3"
+      },
+      {
+        "npcId": "vess",
+        "name": "Vess",
+        "graphic": "npc_vess",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-vess-scene3"
+      }
     ],
-    "effects": [
-      { "type": "item-give", "params": { "itemId": "K-04", "name": "Light Lens" } },
-      { "type": "quest-update", "params": { "questId": "MQ-05", "action": "complete" } }
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
+    "effects": [],
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-artun-scene3",
+      "dlg-vash-scene3",
+      "dlg-reza-scene3",
+      "dlg-vess-scene3"
     ],
-    "questChanges": [
-      { "questId": "MQ-05", "action": "complete" }
+    "prerequisites": {
+      "questFlags": [
+        "MQ-04"
+      ],
+      "level": 10
+    },
+    "playerInstructions": [
+      "Explore all four Frontier zones (player-order flexible)",
+      "Hear Artun's Letters for each zone",
+      "Visit three Frontier settlements (Vash's Hut, Flickering Village, Listener's Camp)",
+      "Accept settlement quests (optional)",
+      "Receive key items (Light Lens from Reza, Kinetic Boots from Nel — Scene 2)",
+      "Fight Frontier-tier enemies (reaching level 12-14)",
+      "Collect stronger fragments from Frontier Resonance Stones (2-3★)"
     ],
-    "targetPath": "main/server/events/act2/scene3-frontier-opens.ts",
-    "levelRange": "10-14",
-    "summary": "Open exploration of all Frontier zones. Callum's Letters, settlements, key items."
+    "narrativeContext": "This is Act II's open exploration phase. The player can visit the remaining three Frontier zones in any order. Each zone has a Artun Letter, a settlement, ambient encounters, and the dormant god shrine (visible but not yet activated). This scene covers the **non-recall** content of each zone — settlements, NPCs, and environmental storytelling.",
+    "timeOfDay": "Player-driven",
+    "targetPath": "main/server/events/act2/scene3-the-frontier-opens.ts",
+    "levelRange": "10-12"
   },
   {
-    "id": "act2-scene4-resonance-recall",
+    "id": "act2-scene4-the-first-recall-resonances-amphitheater",
     "act": "act2",
     "sceneNumber": 4,
     "name": "The First Recall — Resonance's Amphitheater",
-    "location": "Resonance Fields — Amphitheater (25, 25)",
-    "trigger": { "type": "quest-state", "map": "resonance-fields", "position": "25,25", "condition": "harmonize-path-complete" },
+    "summary": "This is the first god recall — the most significant single choice in the game. The emotion the player uses here permanently determines their subclass branch (Joy/Awe = Luminary, Fury/Sorrow = Crucible",
+    "mapId": "resonance-fields",
+    "subLocation": "Resonance's Amphitheater",
+    "spawnPosition": "25,25",
+    "trigger": {
+      "type": "area-enter",
+      "map": "resonance-fields",
+      "position": "25,25"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-resonance-recall" }
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene4"
+      },
+      {
+        "npcId": "cantara",
+        "name": "Cantara",
+        "graphic": "npc_cantara",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-cantara-scene4"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "cutscene-play", "params": { "cutsceneId": "resonance-recall-vision" } },
-      { "type": "gui-show", "params": { "guiId": "god-recall-pedestal", "god": "resonance" } },
-      { "type": "vibrancy-change", "params": { "zone": "resonance-fields", "delta": 15 } },
-      { "type": "system-message", "params": { "text": "Resonance recalled! Subclass unlocked." } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Four pedestals surround the dormant god. Each bears an emotion glyph:"
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Place a memory fragment on one of the four pedestals to recall Resonance. The fragment must be **potency 3 or higher** and match the pedestal's emotion type."
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Your choice has awakened something within you. The emotion you channeled resonates with your own abilities."
+        }
+      },
+      {
+        "type": "vibrancy-change",
+        "params": {
+          "description": "Resonance Fields +15 (15→30, entering Normal tier)"
+        }
+      }
     ],
-    "questChanges": [
-      { "questId": "GQ-01", "action": "complete" },
-      { "questId": "MQ-06", "action": "activate" }
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-artun-scene4",
+      "dlg-cantara-scene4"
     ],
-    "targetPath": "main/server/events/act2/scene4-resonance-recall.ts",
-    "levelRange": "12-16",
-    "summary": "First god recall. 4-emotion choice. Subclass branch determination. Vibrancy +15."
+    "prerequisites": {
+      "questFlags": [
+        "MQ-04"
+      ],
+      "level": 10
+    },
+    "playerInstructions": [
+      "Enter the amphitheater (after harmonizing the path stones)",
+      "Watch the recall vision",
+      "Choose an emotion and place a potency 3+ fragment",
+      "Watch the transformation",
+      "Receive subclass branch (if first recall)"
+    ],
+    "narrativeContext": "This is the first god recall — the most significant single choice in the game. The emotion the player uses here permanently determines their subclass branch (Joy/Awe = Luminary, Fury/Sorrow = Crucible). The script presents Resonance as the canonical first recall, but any god can be first.",
+    "timeOfDay": "Dusk (the amphitheater is most resonant at sunset)",
+    "targetPath": "main/server/events/act2/scene4-the-first-recall-resonances-amphitheater.ts",
+    "levelRange": "12-15"
   },
   {
-    "id": "act2-scene5-weight-of-choice",
+    "id": "act2-scene5-the-weight-of-choice",
     "act": "act2",
     "sceneNumber": 5,
     "name": "The Weight of Choice",
-    "location": "Resonance Fields — Amphitheater (post-recall)",
-    "trigger": { "type": "auto", "map": "resonance-fields", "condition": "first-recall-complete" },
+    "summary": "The aftermath of the first recall. The player has just made the most significant choice in the game. Artun reflects on what happened, foreshadows the consequences, and frames the three remaining recal",
+    "mapId": "resonance-fields",
+    "subLocation": "Resonance's Amphitheater",
+    "trigger": {
+      "type": "map-enter",
+      "map": "resonance-fields"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-weight" }
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene5"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [],
     "questChanges": [],
-    "targetPath": "main/server/events/act2/scene5-weight-of-choice.ts",
-    "levelRange": "12-16",
-    "summary": "Callum reflects on permanence of recall choice. Foreshadows remaining gods."
+    "dialogueRefs": [
+      "dlg-artun-scene5"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-04"
+      ],
+      "level": 10
+    },
+    "playerInstructions": [
+      "Listen to Artun's reflection (narrative scene)",
+      "Optional: explore the transformed Resonance Fields",
+      "Optional: pursue god recall side quests (unlocked by the specific recall)"
+    ],
+    "narrativeContext": "The aftermath of the first recall. The player has just made the most significant choice in the game. Artun reflects on what happened, foreshadows the consequences, and frames the three remaining recalls.",
+    "timeOfDay": "Night (the recall takes time — dusk has become full dark)",
+    "targetPath": "main/server/events/act2/scene5-the-weight-of-choice.ts",
+    "levelRange": "12-15"
   },
   {
-    "id": "act2-scene6-moral-dilemma-garden",
+    "id": "act2-scene6-moral-dilemma-i-the-rootwalkers-last-gar",
     "act": "act2",
     "sceneNumber": 6,
     "name": "Moral Dilemma I — The Rootwalker's Last Garden",
-    "location": "Shimmer Marsh — east of Verdance's Hollow (28, 32)",
-    "trigger": { "type": "area-enter", "map": "shimmer-marsh", "position": "28,32", "condition": "post-first-recall" },
+    "summary": "This is the first scene where **preservation is the right call**. The player encounters a small crystallized garden — a Preserver stagnation zone — that contains a dissolved gardener's final work. Unl",
+    "mapId": "shimmer-marsh",
+    "subLocation": "east of Verdance's Hollow",
+    "spawnPosition": "28,32",
+    "trigger": {
+      "type": "quest-state",
+      "map": "shimmer-marsh",
+      "position": "28,32"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-garden-dilemma" }
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene6"
+      },
+      {
+        "npcId": "rootwalker-gardener",
+        "name": "Rootwalker Gardener",
+        "graphic": "npc_rootwalker_gardener",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-rootwalker-gardener-scene6"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "gui-show", "params": { "guiId": "moral-choice", "choices": ["break-crystal", "leave-preserved"] } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "The crystallized garden pulses gently. You can broadcast a fragment to break the stagnation, or leave it preserved."
+        }
+      }
     ],
     "questChanges": [],
-    "targetPath": "main/server/events/act2/scene6-moral-dilemma-garden.ts",
-    "levelRange": "12-14",
-    "summary": "Crystallized garden — Rootwalker asked for preservation. Player chooses: break or preserve."
+    "dialogueRefs": [
+      "dlg-artun-scene6",
+      "dlg-rootwalker-gardener-scene6"
+    ],
+    "itemRefs": [
+      "MF-05"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-04"
+      ],
+      "level": 10
+    },
+    "playerInstructions": [
+      "Discover the crystallized garden",
+      "Speak with the Rootwalker's dissolved echo",
+      "Choose: break the crystal or leave it preserved"
+    ],
+    "narrativeContext": "This is the first scene where **preservation is the right call**. The player encounters a small crystallized garden — a Preserver stagnation zone — that contains a dissolved gardener's final work. Unlike the Stagnation Clearing in Heartfield (which was an act of control), this garden was crystallized **at the gardener's request**. The Preservers, for once, did what someone asked them to.",
+    "timeOfDay": "Player-driven",
+    "targetPath": "main/server/events/act2/scene6-moral-dilemma-i-the-rootwalkers-last-gar.ts",
+    "levelRange": "12-15"
   },
   {
-    "id": "act2-scene7-verdance-recall",
+    "id": "act2-scene7-verdance-the-dormant-god-of-growth",
     "act": "act2",
     "sceneNumber": 7,
     "name": "Verdance — The Dormant God of Growth",
-    "location": "Shimmer Marsh — Verdance's Hollow (25, 35)",
-    "trigger": { "type": "quest-state", "map": "shimmer-marsh", "position": "25,35", "condition": "hermit-path-complete" },
+    "summary": "The second god recall (in canonical order). Verdance is a massive, half-formed tree trunk pulsing with vivid green light, surrounded by muted marsh. The contrast is striking — this one spot of impossi",
+    "mapId": "shimmer-marsh",
+    "subLocation": "Verdance's Hollow",
+    "spawnPosition": "25,35",
+    "trigger": {
+      "type": "quest-state",
+      "map": "shimmer-marsh",
+      "position": "25,35"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-verdance-recall" },
-      { "npcId": "wynn", "name": "Wynn", "graphic": "npc_wynn", "dialogueKey": "dlg-wynn-verdance" }
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene7"
+      },
+      {
+        "npcId": "vash",
+        "name": "Vash",
+        "graphic": "npc_vash",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-vash-scene7"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "cutscene-play", "params": { "cutsceneId": "verdance-recall-vision" } },
-      { "type": "gui-show", "params": { "guiId": "god-recall-pedestal", "god": "verdance" } },
-      { "type": "vibrancy-change", "params": { "zone": "shimmer-marsh", "delta": 15 } }
-    ],
-    "questChanges": [
-      { "questId": "GQ-02", "action": "complete" }
-    ],
-    "targetPath": "main/server/events/act2/scene7-verdance-recall.ts",
-    "levelRange": "12-16",
-    "summary": "Verdance recall. Root puzzle, vision, 4-emotion choice. Shimmer Marsh vibrancy +15."
-  },
-  {
-    "id": "act2-scene8-drowned-archive",
-    "act": "act2",
-    "sceneNumber": 8,
-    "name": "The Drowned Archive",
-    "location": "Depths Level 2 (Shimmer Marsh sinkhole)",
-    "trigger": { "type": "map-enter", "map": "depths-l2" },
-    "npcs": [
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-drowned-archive" }
-    ],
-    "effects": [
-      { "type": "item-give", "params": { "itemId": "MF-06", "name": "Dissolution Is a Choice" } },
-      { "type": "combat-start", "params": { "encounter": "boss-drowned-archivist", "enemies": "B-03a" } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "The root cluster blocks the path to Verdance's shrine. Broadcast a fragment with an earth or water element into the root cluster to convince the roots to retract."
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Place a memory fragment (potency 3+, matching emotion) on a pedestal to recall Verdance."
+        }
+      },
+      {
+        "type": "vibrancy-change",
+        "params": {
+          "description": "Shimmer Marsh +15 (30→45)"
+        }
+      }
     ],
     "questChanges": [],
-    "targetPath": "main/server/events/act2/scene8-drowned-archive.ts",
-    "levelRange": "14-16",
-    "summary": "Depths L2 dungeon. Core lore: dissolution is choice, not tragedy. Boss: Drowned Archivist."
+    "dialogueRefs": [
+      "dlg-artun-scene7",
+      "dlg-vash-scene7"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-04"
+      ],
+      "level": 10
+    },
+    "playerInstructions": [
+      "Follow Vash to Verdance's Hollow",
+      "Solve the root puzzle (broadcast earth/water fragment)",
+      "Watch the recall vision",
+      "Choose an emotion and recall Verdance"
+    ],
+    "narrativeContext": "The second god recall (in canonical order). Verdance is a massive, half-formed tree trunk pulsing with vivid green light, surrounded by muted marsh. The contrast is striking — this one spot of impossible greenery in a washed-out landscape.",
+    "timeOfDay": "Player-driven",
+    "targetPath": "main/server/events/act2/scene7-verdance-the-dormant-god-of-growth.ts",
+    "levelRange": "12-15"
   },
   {
-    "id": "act2-scene9-preserver-response",
+    "id": "act2-scene8-the-drowned-archive-why-civilizations-di",
+    "act": "act2",
+    "sceneNumber": 8,
+    "name": "The Drowned Archive — Why Civilizations Dissolve",
+    "summary": "The first Depths dungeon dive of Act II. The Drowned Archive is a submerged library built by a dissolved civilization. It's here that the player learns the most important lore in the game: **civilizat",
+    "mapId": "depths-l1",
+    "subLocation": "Level 2: Drowned Archive",
+    "trigger": {
+      "type": "quest-state",
+      "map": "depths-l1"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
+    "npcs": [
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene8"
+      },
+      {
+        "npcId": "dissolved-librarian",
+        "name": "Dissolved Librarian",
+        "graphic": "npc_dissolved_librarian",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-dissolved-librarian-scene8"
+      }
+    ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
+    "effects": [
+      {
+        "type": "system-message",
+        "params": {
+          "text": "The Archive's deepest memory surfaces: an image of every dissolved civilization, at the moment of their choice. Hundreds of groups — musicians, gardeners, explorers, scholars, artists — all making the same decision at different times, in different places, for different reasons. All choosing to become something larger."
+        }
+      }
+    ],
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-artun-scene8",
+      "dlg-dissolved-librarian-scene8"
+    ],
+    "itemRefs": [
+      "MF-06",
+      "K-05"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-04"
+      ],
+      "level": 10
+    },
+    "playerInstructions": [
+      "Descend into the Drowned Archive (Depths Level 2)",
+      "Navigate 6 rooms with water puzzles and combat encounters",
+      "Learn core lore: dissolution is a choice, not a tragedy",
+      "Defeat the Drowned Archivist (boss)",
+      "Collect high-potency fragments"
+    ],
+    "narrativeContext": "The first Depths dungeon dive of Act II. The Drowned Archive is a submerged library built by a dissolved civilization. It's here that the player learns the most important lore in the game: **civilizations dissolve by choice, not by failure**. This reframes everything — the Preservers aren't protecting civilizations from tragedy. They're trying to prevent a choice that civilizations make willingly.",
+    "timeOfDay": "N/A (underground)",
+    "targetPath": "main/server/events/act2/scene8-the-drowned-archive-why-civilizations-di.ts",
+    "levelRange": "12-15"
+  },
+  {
+    "id": "act2-scene9-the-preserver-response",
     "act": "act2",
     "sceneNumber": 9,
     "name": "The Preserver Response",
-    "location": "Hollow Ridge — near Ridgewalker Camp",
-    "trigger": { "type": "auto", "map": "hollow-ridge", "condition": "2-gods-recalled" },
+    "summary": "After two god recalls, the Preservers escalate. A Preserver Captain — a named character — confronts the player directly. Unlike the polite scout from Act I Scene 9, this is a military officer who genu",
+    "mapId": "hollow-ridge",
+    "subLocation": "near Ridgewalker Camp",
+    "trigger": {
+      "type": "map-enter",
+      "map": "hollow-ridge"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-preserver-response" },
-      { "npcId": "aric", "name": "Preserver Captain Aric", "graphic": "npc_aric", "dialogueKey": "dlg-aric-confrontation" }
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene9"
+      },
+      {
+        "npcId": "preserver-captain-janik",
+        "name": "Preserver Captain Janik",
+        "graphic": "npc_preserver_captain_janik",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-preserver-captain-janik-scene9"
+      },
+      {
+        "npcId": "janik",
+        "name": "Janik",
+        "graphic": "npc_janik",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-janik-scene9"
+      }
     ],
-    "effects": [
-      { "type": "screen-effect", "params": { "effect": "crystal-wall-appear" } }
-    ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
+    "effects": [],
     "questChanges": [],
-    "targetPath": "main/server/events/act2/scene9-preserver-response.ts",
-    "levelRange": "14-16",
-    "summary": "Aric confronts player about recall consequences. Debate, not combat. Moral questioning."
+    "dialogueRefs": [
+      "dlg-artun-scene9",
+      "dlg-preserver-captain-janik-scene9",
+      "dlg-janik-scene9"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-04"
+      ],
+      "level": 10
+    },
+    "playerInstructions": [
+      "Encounter Preserver Captain Janik (automatic, triggered by zone travel)",
+      "Listen to Janik's argument (no combat, no chase — purely dialogue)",
+      "Hear Artun's uncertainty",
+      "Continue with full freedom (Janik does not restrict movement)"
+    ],
+    "narrativeContext": "After two god recalls, the Preservers escalate. A Preserver Captain — a named character — confronts the player directly. Unlike the polite scout from Act I Scene 9, this is a military officer who genuinely believes the player is causing irreversible harm. The conversation is not a fight — it's a debate.",
+    "timeOfDay": "Player-driven",
+    "targetPath": "main/server/events/act2/scene9-the-preserver-response.ts",
+    "levelRange": "15-18"
   },
   {
-    "id": "act2-scene10-luminos-recall",
+    "id": "act2-scene10-luminos-the-dormant-god-of-light",
     "act": "act2",
     "sceneNumber": 10,
     "name": "Luminos — The Dormant God of Light",
-    "location": "Flickerveil — Luminos Grove (20, 20)",
-    "trigger": { "type": "quest-state", "map": "flickerveil", "position": "20,20", "condition": "light-lens-equipped" },
+    "summary": "The third god recall (canonical order). Luminos Grove is a clearing where the canopy opens to reveal a column of pure white light descending from a gap in the sky — as if the heavens have a hole and a",
+    "mapId": "flickerveil",
+    "subLocation": "Luminos Grove",
+    "spawnPosition": "20,20",
+    "trigger": {
+      "type": "area-enter",
+      "map": "flickerveil",
+      "position": "20,20"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-luminos-recall" }
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene10"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "cutscene-play", "params": { "cutsceneId": "luminos-recall-vision" } },
-      { "type": "gui-show", "params": { "guiId": "god-recall-pedestal", "god": "luminos" } },
-      { "type": "vibrancy-change", "params": { "zone": "flickerveil", "delta": 15 } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "The light column is overwhelming. Use the Light Lens to focus the scattered beams."
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Place a memory fragment (potency 3+, matching emotion) on a pedestal to recall Luminos."
+        }
+      },
+      {
+        "type": "vibrancy-change",
+        "params": {
+          "description": "Flickerveil +15 (25→40)"
+        }
+      }
     ],
-    "questChanges": [
-      { "questId": "GQ-03", "action": "complete" }
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-artun-scene10"
     ],
-    "targetPath": "main/server/events/act2/scene10-luminos-recall.ts",
-    "levelRange": "14-18",
-    "summary": "Luminos recall. Light Lens puzzle, vision, 4-emotion choice. Flickerveil vibrancy +15."
+    "prerequisites": {
+      "questFlags": [
+        "MQ-04"
+      ],
+      "level": 10
+    },
+    "playerInstructions": [
+      "Navigate Luminos Grove using the Light Lens",
+      "Watch the recall vision",
+      "Choose an emotion and recall Luminos"
+    ],
+    "narrativeContext": "The third god recall (canonical order). Luminos Grove is a clearing where the canopy opens to reveal a column of pure white light descending from a gap in the sky — as if the heavens have a hole and are pouring concentrated daylight into this single spot. At its center, a human-sized geometric prism rotates slowly, splitting light into faint rainbow patterns.",
+    "timeOfDay": "Midday (the light column is strongest at noon)",
+    "targetPath": "main/server/events/act2/scene10-luminos-the-dormant-god-of-light.ts",
+    "levelRange": "15-18"
   },
   {
-    "id": "act2-scene11-moral-dilemma-festival",
+    "id": "act2-scene11-moral-dilemma-ii-the-frozen-festival",
     "act": "act2",
     "sceneNumber": 11,
     "name": "Moral Dilemma II — The Frozen Festival",
-    "location": "Resonance Fields — Festival Clearing (35, 35)",
-    "trigger": { "type": "area-enter", "map": "resonance-fields", "position": "35,35", "condition": "post-second-recall" },
+    "summary": "The second scene where **preservation is the right call**. A small group of Frontier settlers was holding a festival — music, dancing, shared food — when the Preservers crystallized the entire gatheri",
+    "mapId": "resonance-fields",
+    "subLocation": "northeast of the Listener's Camp",
+    "spawnPosition": "18,28",
+    "trigger": {
+      "type": "quest-state",
+      "map": "resonance-fields",
+      "position": "18,28"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-frozen-festival" }
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene11"
+      },
+      {
+        "npcId": "preserver-scout",
+        "name": "Preserver Scout",
+        "graphic": "npc_preserver_scout",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-preserver-scout-scene11"
+      },
+      {
+        "npcId": "preserver-scout-miel",
+        "name": "Preserver Scout Miel",
+        "graphic": "npc_preserver_scout_miel",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-preserver-scout-miel-scene11"
+      },
+      {
+        "npcId": "miel",
+        "name": "Miel",
+        "graphic": "npc_miel",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-miel-scene11"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "gui-show", "params": { "guiId": "moral-choice", "choices": ["break-festival", "preserve-festival"] } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "The crystallized festival pulses gently. You can broadcast a fragment to break the stagnation, or leave it preserved."
+        }
+      }
     ],
     "questChanges": [],
-    "targetPath": "main/server/events/act2/scene11-moral-dilemma-festival.ts",
-    "levelRange": "14-16",
-    "summary": "Frozen festival: 8 people crystallized mid-celebration. Break or preserve?"
+    "dialogueRefs": [
+      "dlg-artun-scene11",
+      "dlg-preserver-scout-scene11",
+      "dlg-preserver-scout-miel-scene11",
+      "dlg-miel-scene11"
+    ],
+    "itemRefs": [
+      "MF-07"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-04"
+      ],
+      "level": 10
+    },
+    "playerInstructions": [
+      "Discover the frozen festival",
+      "Examine the frozen NPCs",
+      "Listen to Miel's argument",
+      "Choose: break the crystal or leave it preserved"
+    ],
+    "narrativeContext": "The second scene where **preservation is the right call**. A small group of Frontier settlers was holding a festival — music, dancing, shared food — when the Preservers crystallized the entire gathering at its joyous peak. Everyone is frozen mid-dance, mid-laugh, mid-embrace. The crystal captures perfect happiness.",
+    "timeOfDay": "Player-driven",
+    "targetPath": "main/server/events/act2/scene11-moral-dilemma-ii-the-frozen-festival.ts",
+    "levelRange": "15-18"
   },
   {
-    "id": "act2-scene12-resonant-caverns",
+    "id": "act2-scene12-the-preserver-cathedral",
     "act": "act2",
     "sceneNumber": 12,
-    "name": "The Resonant Caverns",
-    "location": "Depths Level 3 (Hollow Ridge entrance)",
-    "trigger": { "type": "map-enter", "map": "depths-l3" },
+    "name": "The Preserver Cathedral",
+    "summary": "The Preserver Cathedral is the Preservers' largest Frontier installation — a massive structure built from crystallized Resonance Stones. It silences all memory-sound within a 10-tile radius, creating ",
+    "mapId": "resonance-fields",
+    "subLocation": "Preserver Cathedral",
+    "spawnPosition": "40,15",
+    "trigger": {
+      "type": "area-enter",
+      "map": "resonance-fields",
+      "position": "40,15"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-resonant-caverns" }
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene12"
+      },
+      {
+        "npcId": "preserver-captain-voss",
+        "name": "Preserver Captain Voss",
+        "graphic": "npc_preserver_captain_voss",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-preserver-captain-voss-scene12"
+      },
+      {
+        "npcId": "voss",
+        "name": "Voss",
+        "graphic": "npc_voss",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-voss-scene12"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "combat-start", "params": { "encounter": "boss-resonant-king", "enemies": "B-03b" } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "The Cathedral's anchor stone is coated in Preserver crystal. Broadcasting a potency 3+ fragment into the stone will shatter the Cathedral's silence field."
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "The Preserver Cathedral is broken! The silence field dissipates. Resonance Fields gains +10 vibrancy. Memory collection is restored throughout the zone."
+        }
+      },
+      {
+        "type": "vibrancy-change",
+        "params": {
+          "description": "Resonance Fields +10"
+        }
+      }
     ],
     "questChanges": [],
-    "targetPath": "main/server/events/act2/scene12-resonant-caverns.ts",
-    "levelRange": "16-18",
-    "summary": "Depths L3. Sound puzzles, crystal formations. Boss: The Resonant King."
+    "dialogueRefs": [
+      "dlg-artun-scene12",
+      "dlg-preserver-captain-voss-scene12",
+      "dlg-voss-scene12"
+    ],
+    "itemRefs": [
+      "A-09"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-04"
+      ],
+      "level": 10
+    },
+    "playerInstructions": [
+      "Enter the Cathedral's silence zone",
+      "Fight the Preserver garrison (3 Agents + Captain Voss)",
+      "Broadcast a fragment to shatter the Cathedral"
+    ],
+    "narrativeContext": "The Preserver Cathedral is the Preservers' largest Frontier installation — a massive structure built from crystallized Resonance Stones. It silences all memory-sound within a 10-tile radius, creating a dead zone where no fragment can be collected and no broadcast can be performed. Breaking the Cathedral is a major Act II milestone that weakens Preserver control across the Frontier.",
+    "timeOfDay": "Player-driven",
+    "targetPath": "main/server/events/act2/scene12-the-preserver-cathedral.ts",
+    "levelRange": "15-18"
   },
   {
-    "id": "act2-scene13-kinesis-recall",
+    "id": "act2-scene13-the-songline-the-dissolveds-final-days",
     "act": "act2",
     "sceneNumber": 13,
-    "name": "Kinesis — The Dormant God of Motion",
-    "location": "Hollow Ridge — Kinesis Spire (24, 10)",
-    "trigger": { "type": "quest-state", "map": "hollow-ridge", "position": "24,10", "condition": "kinetic-boots-equipped" },
+    "name": "The Songline — The Dissolved's Final Days",
+    "summary": "The Songline is the most emotionally intense Depths experience. It's a linear memory-corridor — 5 rooms, each a \"verse\" of the Choir of the First Dawn's final song. The player doesn't just observe the",
+    "mapId": "depths-l1",
+    "subLocation": "Level 4: The Songline",
+    "trigger": {
+      "type": "map-enter",
+      "map": "depths-l1"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-kinesis-recall" },
-      { "npcId": "petra", "name": "Petra", "graphic": "npc_petra", "dialogueKey": "dlg-petra-kinesis" }
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene13"
+      },
+      {
+        "npcId": "dissolved-elder",
+        "name": "Dissolved Elder",
+        "graphic": "npc_dissolved_elder",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-dissolved-elder-scene13"
+      }
     ],
-    "effects": [
-      { "type": "cutscene-play", "params": { "cutsceneId": "kinesis-recall-vision" } },
-      { "type": "gui-show", "params": { "guiId": "god-recall-pedestal", "god": "kinesis" } },
-      { "type": "vibrancy-change", "params": { "zone": "hollow-ridge", "delta": 15 } }
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
+    "effects": [],
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-artun-scene13",
+      "dlg-dissolved-elder-scene13"
     ],
-    "questChanges": [
-      { "questId": "GQ-04", "action": "complete" }
+    "prerequisites": {
+      "questFlags": [
+        "MQ-04"
+      ],
+      "level": 10
+    },
+    "playerInstructions": [
+      "Descend into the Songline (Depths Level 4)",
+      "Walk through 5 rooms / 5 verses of the Choir's story",
+      "Experience the dissolution firsthand",
+      "Collect high-potency fragments"
     ],
-    "targetPath": "main/server/events/act2/scene13-kinesis-recall.ts",
-    "levelRange": "14-18",
-    "summary": "Kinesis recall. Spire climb, vision, 4-emotion choice. Hollow Ridge vibrancy +15."
+    "narrativeContext": "The Songline is the most emotionally intense Depths experience. It's a linear memory-corridor — 5 rooms, each a \"verse\" of the Choir of the First Dawn's final song. The player doesn't just observe the dissolution — they experience it, walking through the Choir's last days in sequence. This is the scene that transforms \"moral questioning\" into \"determination.\"",
+    "timeOfDay": "N/A (underground)",
+    "targetPath": "main/server/events/act2/scene13-the-songline-the-dissolveds-final-days.ts",
+    "levelRange": "15-18"
   },
   {
-    "id": "act2-scene14-moral-dilemma-monument",
+    "id": "act2-scene14-the-preserver-ambush",
     "act": "act2",
     "sceneNumber": 14,
-    "name": "Moral Dilemma III — The Monument",
-    "location": "Hollow Ridge — Crystal Monument (30, 5)",
-    "trigger": { "type": "area-enter", "map": "hollow-ridge", "position": "30,5", "condition": "post-third-recall" },
+    "name": "The Preserver Ambush",
+    "summary": "Janik returns. After 3 god recalls, the Preservers are desperate. Janik was diplomatic before — now he's urgent. This is the only Preserver encounter in Act II where combat is initiated by the Preserv",
+    "mapId": "hollow-ridge",
+    "subLocation": "between Ridgewalker Camp and Kinesis Spire",
+    "trigger": {
+      "type": "quest-state",
+      "map": "hollow-ridge"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-monument" }
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene14"
+      },
+      {
+        "npcId": "janik",
+        "name": "Janik",
+        "graphic": "npc_janik",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-janik-scene14"
+      }
     ],
-    "effects": [
-      { "type": "gui-show", "params": { "guiId": "moral-choice", "choices": ["break-monument", "preserve-monument"] } }
-    ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
+    "effects": [],
     "questChanges": [],
-    "targetPath": "main/server/events/act2/scene14-moral-dilemma-monument.ts",
-    "levelRange": "16-18",
-    "summary": "Crystallized monument to a fallen Ridgewalker. Break or preserve?"
+    "dialogueRefs": [
+      "dlg-artun-scene14",
+      "dlg-janik-scene14"
+    ],
+    "itemRefs": [
+      "W-SP-07"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-04"
+      ],
+      "level": 10
+    },
+    "playerInstructions": [
+      "Encounter Janik's ambush (automatic, triggered by zone travel)",
+      "Fight Janik + 2 Agents",
+      "Hear Janik's final words"
+    ],
+    "narrativeContext": "Janik returns. After 3 god recalls, the Preservers are desperate. Janik was diplomatic before — now he's urgent. This is the only Preserver encounter in Act II where combat is initiated by the Preservers rather than the player.",
+    "timeOfDay": "Player-driven",
+    "targetPath": "main/server/events/act2/scene14-the-preserver-ambush.ts",
+    "levelRange": "15-18"
   },
   {
-    "id": "act2-scene15-songline",
+    "id": "act2-scene15-kinesis-the-dormant-god-of-motion",
     "act": "act2",
     "sceneNumber": 15,
-    "name": "The Songline",
-    "location": "Depths Level 4 (Resonance Fields entrance)",
-    "trigger": { "type": "map-enter", "map": "depths-l4" },
+    "name": "Kinesis — The Dormant God of Motion",
+    "summary": "The fourth and final god recall. Kinesis Spire is a towering natural rock pillar that vibrates constantly. Small rocks orbit its peak. The ground shakes rhythmically. This is the god of motion — every",
+    "mapId": "hollow-ridge",
+    "subLocation": "Kinesis Spire",
+    "spawnPosition": "25,10",
+    "trigger": {
+      "type": "area-enter",
+      "map": "hollow-ridge",
+      "position": "25,10"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-songline" }
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene15"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "combat-start", "params": { "encounter": "boss-conductor", "enemies": "B-03c" } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "The Kinetic Boots absorb the seismic energy. You can approach the Spire."
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Place a memory fragment (potency 3+, matching emotion) on a pedestal to recall Kinesis."
+        }
+      },
+      {
+        "type": "vibrancy-change",
+        "params": {
+          "description": "Hollow Ridge +15 (20→35)"
+        }
+      }
     ],
     "questChanges": [],
-    "targetPath": "main/server/events/act2/scene15-songline.ts",
-    "levelRange": "19-21",
-    "summary": "Depths L4. Musical dungeon, performer visions. Boss: The Conductor."
+    "dialogueRefs": [
+      "dlg-artun-scene15"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-04"
+      ],
+      "level": 10
+    },
+    "playerInstructions": [
+      "Navigate to Kinesis Spire using Kinetic Boots",
+      "Watch the recall vision",
+      "Choose an emotion and recall Kinesis"
+    ],
+    "narrativeContext": "The fourth and final god recall. Kinesis Spire is a towering natural rock pillar that vibrates constantly. Small rocks orbit its peak. The ground shakes rhythmically. This is the god of motion — everything here moves.",
+    "timeOfDay": "Player-driven",
+    "targetPath": "main/server/events/act2/scene15-kinesis-the-dormant-god-of-motion.ts",
+    "levelRange": "18-20"
   },
   {
-    "id": "act2-scene16-lira-freed",
+    "id": "act2-scene16-freeing-hana",
     "act": "act2",
     "sceneNumber": 16,
-    "name": "Freeing Lira",
-    "location": "Heartfield — Expanded Stagnation Zone (35, 30)",
-    "trigger": { "type": "quest-state", "map": "heartfield", "position": "35,30", "condition": "4-gods-recalled" },
+    "name": "Freeing Hana",
+    "summary": "The player returns to where it all began. The expanded stagnation zone that froze Hana in Act I Scene 11 has been pulsing weakly — the four god recalls have sent shockwaves of vibrancy through the ent",
+    "mapId": "heartfield",
+    "subLocation": "Expanded Stagnation Zone",
+    "spawnPosition": "35,30",
+    "trigger": {
+      "type": "quest-state",
+      "map": "heartfield",
+      "position": "35,30"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-lira-freed" },
-      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-freed" }
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene16"
+      },
+      {
+        "npcId": "hana",
+        "name": "Hana",
+        "graphic": "npc_hana",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-hana-scene16"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "screen-effect", "params": { "effect": "stagnation-mega-shatter" } },
-      { "type": "companion-join", "params": { "companionId": "lira", "class": "cleric" } },
-      { "type": "vibrancy-change", "params": { "zone": "heartfield", "delta": 25 } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "The expanded stagnation zone's crystal is fractured and weakened. Broadcasting a **potency 4+ fragment** into the focal point will shatter the zone and free Hana."
+        }
+      },
+      {
+        "type": "system-message",
+        "params": {
+          "text": "Hana rejoins the party! (Cleric — full moveset restored, leveled to match player)"
+        }
+      },
+      {
+        "type": "vibrancy-change",
+        "params": {
+          "description": "Heartfield +15 (stagnation zone completely cleared)"
+        }
+      }
     ],
-    "questChanges": [
-      { "questId": "SQ-14", "action": "complete" }
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-artun-scene16",
+      "dlg-hana-scene16"
     ],
-    "targetPath": "main/server/events/act2/scene16-lira-freed.ts",
-    "levelRange": "18-20",
-    "summary": "Player uses god power to break expanded stagnation. Lira rejoins the party."
+    "itemRefs": [
+      "MF-04"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-04"
+      ],
+      "level": 10
+    },
+    "playerInstructions": [
+      "Return to Heartfield's expanded stagnation zone",
+      "Broadcast a potency 4+ fragment to shatter the zone",
+      "Free Hana"
+    ],
+    "narrativeContext": "The player returns to where it all began. The expanded stagnation zone that froze Hana in Act I Scene 11 has been pulsing weakly — the four god recalls have sent shockwaves of vibrancy through the entire world, and even the Preservers' strongest crystal is straining. Now the player has the power to shatter it.",
+    "timeOfDay": "Dawn",
+    "targetPath": "main/server/events/act2/scene16-freeing-hana.ts",
+    "levelRange": "18-20"
   },
   {
-    "id": "act2-scene17-curator-endgame",
+    "id": "act2-scene17-gryms-revelation-act-ii-climax",
     "act": "act2",
     "sceneNumber": 17,
-    "name": "The Curator's Endgame",
-    "location": "Village Hub — Elder's House",
-    "trigger": { "type": "quest-state", "map": "village-hub", "condition": "lira-freed-and-SQ05-complete" },
+    "name": "Grym's Revelation — Act II Climax",
+    "summary": "Scene 17 of act2: Grym's Revelation — Act II Climax",
+    "mapId": "everwick",
+    "subLocation": "Artun's House",
+    "spawnPosition": "18,10",
+    "trigger": {
+      "type": "quest-state",
+      "map": "everwick",
+      "position": "18,10"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-curator-endgame" },
-      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-curator-endgame" }
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene17"
+      },
+      {
+        "npcId": "hana",
+        "name": "Hana",
+        "graphic": "npc_hana",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-hana-scene17"
+      },
+      {
+        "npcId": "grym",
+        "name": "Grym",
+        "graphic": "npc_grym",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-grym-scene17"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "system-message", "params": { "text": "The Curator has found the First Memory." } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "The path to the Sketch is open. Grym races toward the First Memory. Act III: Renaissance begins."
+        }
+      }
     ],
-    "questChanges": [
-      { "questId": "MQ-07", "action": "activate" }
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-artun-scene17",
+      "dlg-hana-scene17",
+      "dlg-grym-scene17"
     ],
-    "targetPath": "main/server/events/act2/scene17-curator-endgame.ts",
-    "levelRange": "18-20",
-    "summary": "Callum reveals Curator's plan to crystallize the First Memory. Act III setup."
+    "prerequisites": {
+      "questFlags": [
+        "MQ-04"
+      ],
+      "level": 10
+    },
+    "playerInstructions": [
+      "Listen to Grym's endgame reveal",
+      "Hear Hana and Artun's resolve",
+      "Climb Lookout Hill (narrative bookend — mirrors Act I Scene 12)"
+    ],
+    "timeOfDay": "Night",
+    "targetPath": "main/server/events/act2/scene17-gryms-revelation-act-ii-climax.ts",
+    "levelRange": "18-20"
   },
   {
-    "id": "act2-scene18-into-sketch",
+    "id": "act2-scene18-the-threshold-of-the-sketch",
     "act": "act2",
     "sceneNumber": 18,
-    "name": "Into the Sketch",
-    "location": "Frontier zone edge → Sketch boundary",
-    "trigger": { "type": "quest-state", "map": "frontier-edge", "condition": "MQ-07-complete" },
+    "name": "The Threshold of the Sketch",
+    "summary": "The final scene of Act II. The player stands at the boundary between the Frontier (now brightened by four god recalls) and the Sketch (the world's unfinished edge). This is the emotional transition fr",
+    "mapId": "flickerveil",
+    "subLocation": "Veil's Edge",
+    "spawnPosition": "48,25",
+    "trigger": {
+      "type": "area-enter",
+      "map": "flickerveil",
+      "position": "48,25"
+    },
+    "assemblages": [],
+    "paths": [],
+    "visuals": [],
     "npcs": [
-      { "npcId": "callum", "name": "Callum", "graphic": "npc_callum", "dialogueKey": "dlg-callum-sketch-entry" },
-      { "npcId": "lira", "name": "Lira", "graphic": "npc_lira", "dialogueKey": "dlg-lira-sketch-entry" }
+      {
+        "npcId": "hana",
+        "name": "Hana",
+        "graphic": "npc_hana",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-hana-scene18"
+      },
+      {
+        "npcId": "artun",
+        "name": "Artun",
+        "graphic": "npc_artun",
+        "position": "0,0",
+        "movement": "static",
+        "dialogueRef": "dlg-artun-scene18"
+      }
     ],
+    "events": [],
+    "resonanceStones": [],
+    "treasureChests": [],
     "effects": [
-      { "type": "screen-effect", "params": { "effect": "sketch-transition" } },
-      { "type": "music-change", "params": { "track": "sketch-ambient" } },
-      { "type": "system-message", "params": { "text": "You've entered the Sketch — the world's unfinished edge." } }
+      {
+        "type": "system-message",
+        "params": {
+          "text": "You have entered the Sketch. The world is unfinished here. Broadcasting memory fragments will paint detail into existence, creating solid ground where only outlines exist. Grym is building a crystallized path toward the First Memory. Race to reach it first."
+        }
+      }
     ],
-    "questChanges": [
-      { "questId": "MQ-07", "action": "complete" },
-      { "questId": "MQ-08", "action": "activate" }
+    "questChanges": [],
+    "dialogueRefs": [
+      "dlg-hana-scene18",
+      "dlg-artun-scene18"
     ],
-    "targetPath": "main/server/events/act2/scene18-into-sketch.ts",
-    "levelRange": "20",
-    "summary": "Transition to the Sketch. World desaturates to line-art. Act II ends."
+    "itemRefs": [
+      "MF-04",
+      "MF-05",
+      "MF-06",
+      "MF-07",
+      "K-01",
+      "K-02",
+      "K-03",
+      "K-05"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-04"
+      ],
+      "level": 10
+    },
+    "playerInstructions": [
+      "Cross the Veil's Edge into the Sketch (first Sketch zone)",
+      "Hear Hana and Artun's final Act II dialogue"
+    ],
+    "narrativeContext": "The final scene of Act II. The player stands at the boundary between the Frontier (now brightened by four god recalls) and the Sketch (the world's unfinished edge). This is the emotional transition from Act II to Act III — from determination to the awe of the unknown.",
+    "timeOfDay": "Dawn",
+    "targetPath": "main/server/events/act2/scene18-the-threshold-of-the-sketch.ts",
+    "levelRange": "18-20"
   }
 ]

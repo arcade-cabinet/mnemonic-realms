@@ -125,7 +125,7 @@ Every zone defined in `geography.md` has a corresponding map section in `overwor
 
 | Geography Zone | Overworld Map | Tile Dimensions | Match? |
 |----------------|--------------|-----------------|--------|
-| Village Hub | Village Hub (25×25) | 25×25 | Yes |
+| Everwick | Everwick (25×25) | 25×25 | Yes |
 | Heartfield | Heartfield (40×40) | 40×40 | Yes |
 | Ambergrove | Ambergrove (40×40) | 40×40 | Yes |
 | Millbrook | Millbrook (35×35) | 35×35 | Yes |
@@ -239,7 +239,7 @@ Verified: Each quest's prerequisites match in `quest-chains.md`, act scripts, an
 
 | Zone | Starting Vibrancy | In geography? | In frontier-zones? | In vibrancy-system? |
 |------|-------------------|---------------|--------------------|--------------------|
-| Village Hub | 50 | Yes | N/A | Yes |
+| Everwick | 50 | Yes | N/A | Yes |
 | Heartfield | 40 | Yes | N/A | Yes |
 | Ambergrove | 40 | Yes | N/A | Yes |
 | Millbrook | 45 | Yes | N/A | Yes |

@@ -257,7 +257,7 @@
 
 | Floor | Name | Entrance From | Rooms | Refs |
 |-------|------|---------------|-------|------|
-| L1 | Memory Cellar | Village Hub | 5 | dungeon-depths, geography, event-placement |
+| L1 | Memory Cellar | Everwick | 5 | dungeon-depths, geography, event-placement |
 | L2 | Drowned Archive | Shimmer Marsh (Deepwater Sinkhole) | 7 | dungeon-depths, geography, event-placement |
 | L3 | Resonant Caverns | Hollow Ridge (Echo Caverns) | 8 | dungeon-depths, geography, event-placement |
 | L4 | The Songline | Resonance Fields (Singing Stones) | 5 | dungeon-depths, geography, event-placement |
@@ -285,7 +285,7 @@
 
 | Zone | Biome | Key Landmarks | Refs |
 |------|-------|---------------|------|
-| Village Hub | Settlement | Central Square, General Shop, Elder's House, Quest Board, The Bright Hearth (Inn), Hana's Workshop, Blacksmith, Training Ground, Memorial Garden, Lookout Hill / Artun's Observatory | geography, overworld-layout, event-placement |
+| Everwick | Settlement | Central Square, General Shop, Elder's House, Quest Board, The Bright Hearth (Inn), Hana's Workshop, Blacksmith, Training Ground, Memorial Garden, Lookout Hill / Artun's Observatory | geography, overworld-layout, event-placement |
 | Heartfield | Pastoral Wheat | Heartfield Hamlet, The Old Windmill, Stagnation Clearing, Southern Crossroads | geography, overworld-layout, stagnation-zones, event-placement |
 | Ambergrove | Amber Forest | Hearthstone Circle, Amber Lake, Woodcutter's Camp, Eastern Canopy Path | geography, overworld-layout, event-placement |
 | Millbrook | Riverside Town | Millbrook Town, Brightwater Bridge, Upstream Falls, Fisher's Rest | geography, overworld-layout, event-placement |

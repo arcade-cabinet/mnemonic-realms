@@ -59,7 +59,7 @@ for (let c = 0; c < W; c++) { obj[0][c] = T.TREE; obj[H - 1][c] = T.TREE; }
 for (let r = 0; r < H; r++) { obj[r][0] = T.TREE; obj[r][W - 1] = T.TREE; }
 
 // Gate clearings
-obj[20][0] = 0; // West gate → Village Hub
+obj[20][0] = 0; // West gate → Everwick
 obj[20][W - 1] = 0; // East (Canopy)
 obj[H - 1][10] = 0; // South gate
 

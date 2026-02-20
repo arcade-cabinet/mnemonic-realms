@@ -319,7 +319,7 @@ The Frontier zones open in a staged progression tied to the main quest:
 
 | Quest | Unlock | Frontier Access |
 |-------|--------|----------------|
-| MQ-04 (Act I climax) | Mountain pass north of Village Hub opens | Sunridge → Hollow Ridge border visible, Heartfield → Shimmer Marsh road opens |
+| MQ-04 (Act I climax) | Mountain pass north of Everwick opens | Sunridge → Hollow Ridge border visible, Heartfield → Shimmer Marsh road opens |
 | MQ-05 (Enter the Frontier) | All Frontier zones accessible | Shimmer Marsh, Hollow Ridge, Flickerveil, Resonance Fields all reachable |
 | GQ-01–04 (God recalls) | God shrine areas activate | Each shrine's approach challenge becomes solvable |
 | MQ-07 (Grym's Endgame) | Sketch borders open | Frontier → Sketch transitions traversable (Shimmer → Luminous, Hollow → Undrawn, Flickerveil → Half-Drawn, Resonance → Luminous) |

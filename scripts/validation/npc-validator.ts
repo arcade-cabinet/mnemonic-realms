@@ -113,7 +113,7 @@ export class NPCValidator {
 
   private normalizeMapName(name: string): string {
     const mapNames: Record<string, string> = {
-      'Village Hub': 'village-hub',
+      'Everwick': 'everwick',
       Heartfield: 'heartfield',
       Ambergrove: 'ambergrove',
       Millbrook: 'millbrook',

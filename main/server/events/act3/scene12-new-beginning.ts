@@ -63,7 +63,7 @@ export default async function setupAct3Scene12NewBeginning(player: RpgPlayer, ma
 
     // 2. Spawn NPCs at appropriate positions using createDynamicEvent()
     // Hana at (6, 20)
-    const liraEvent = await player.createDynamicEvent({
+    const hanaEvent = await player.createDynamicEvent({
       x: 6,
       y: 20,
       graphic: 'npc_hana',
@@ -78,7 +78,7 @@ export default async function setupAct3Scene12NewBeginning(player: RpgPlayer, ma
     });
 
     // Artun at (4, 20)
-    const callumEvent = await player.createDynamicEvent({
+    const artunEvent = await player.createDynamicEvent({
       x: 4,
       y: 20,
       graphic: 'npc_artun',
@@ -123,8 +123,8 @@ export default async function setupAct3Scene12NewBeginning(player: RpgPlayer, ma
 
     // Post-credits actions:
     // Remove NPCs
-    if (liraEvent) await liraEvent.remove();
-    if (callumEvent) await callumEvent.remove();
+    if (hanaEvent) await hanaEvent.remove();
+    if (artunEvent) await artunEvent.remove();
 
     // Stop credits GUI
     await player.gui('credits-sequence', false);
@@ -132,8 +132,8 @@ export default async function setupAct3Scene12NewBeginning(player: RpgPlayer, ma
     // Change music back or to a post-game theme
     // TODO: changeMusic not available in RPG-JS 4.3.0
 
-    // Return player to Village Hub (example: 19, 11)
-    await player.changeMap('village-hub', { x: 19, y: 11 });
+    // Return player to Everwick (example: 19, 11)
+    await player.changeMap('everwick', { x: 19, y: 11 });
 
     // Unlock New Game+ (assuming a player variable or global state)
     player.setVariable('new-game-plus-unlocked', true);

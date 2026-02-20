@@ -12,7 +12,7 @@ This is not a political boundary system — it's a gradient of completion. The w
 
 | Zone | Ring | Biome Types | Starting Vibrancy | Tile Dimensions | Act |
 |------|------|-------------|-------------------|-----------------|-----|
-| Village Hub | Center | Village | 60 (Normal) | 30x30 | I |
+| Everwick | Center | Village | 60 (Normal) | 30x30 | I |
 | Settled Lands | Inner Ring | Grassland, Forest, Farmland | 40-55 (Normal) | 4 sub-maps, 40x40 each | I |
 | Frontier | Middle Ring | Mixed (Forest, Mountain, Wetland) | 15-35 (Muted → Normal) | 4 sub-maps, 50x50 each | II |
 | The Sketch | Outer Ring | Sketch (abstract, unfinished) | 0-15 (Muted) | 3 sub-maps, 40x40 each | III |
@@ -22,7 +22,7 @@ All maps use **32x32 pixel tiles** (see [visual-direction.md](../design/visual-d
 
 ---
 
-## Zone 1: The Village Hub
+## Zone 1: The Everwick
 
 **Size**: 30 tiles wide x 30 tiles tall (960x960 pixels)
 
@@ -66,7 +66,7 @@ The village is organized around a central square with paths radiating outward li
 | Memorial Garden | (8, 16) | 4x3 | Small garden with three Resonance Stones. First memory collection tutorial location. Flowers bloom from Muted to Vivid as vibrancy rises. |
 | Lookout Hill | (12, 2) | 6x5 | Elevated area at the village's north edge. Artun's telescope is here. Provides a narrative lookout over the Settled Lands and distant Frontier shimmer. |
 
-### Key NPCs (Village Hub)
+### Key NPCs (Everwick)
 
 | NPC | Default Position | Role |
 |-----|-----------------|------|
@@ -95,7 +95,7 @@ The village is organized around a central square with paths radiating outward li
 
 ## Zone 2: The Settled Lands
 
-**Ring**: Inner ring surrounding the Village Hub.
+**Ring**: Inner ring surrounding the Everwick.
 
 **Starting Vibrancy**: 40-55 (Normal tier, lower near the edges).
 
@@ -115,7 +115,7 @@ Rolling farmland south of the village. Golden wheat fields, vegetable patches, i
 - **Stagnation Clearing** (35, 30) — Act I's first Stagnation Zone. A 5x5 patch of crystallized grass and frozen butterflies. Tutorial for understanding the Preserver threat. This is where Hana gets frozen during the Act I climax.
 - **Southern Crossroads** (20, 38) — Road junction leading further south toward the Frontier (locked until Act II).
 
-**Connections**: North → Village Hub (South Gate). South → Frontier: Shimmer Marsh (Act II). East → Ambergrove (forest path).
+**Connections**: North → Everwick (South Gate). South → Frontier: Shimmer Marsh (Act II). East → Ambergrove (forest path).
 
 **Enemies**: Meadow Sprites (passive, provoked only), Grass Serpents (ambush from tall wheat). Difficulty: tutorial-level.
 
@@ -131,7 +131,7 @@ Dense deciduous forest east of the village. Canopy filters light into dappled go
 - **Woodcutter's Camp** (10, 30) — Small NPC settlement (3 woodcutters). They report the forest is "growing faster than we can map it." Side quest hub.
 - **Eastern Canopy Path** (38, 20) — Elevated tree-bridge path that leads toward the Frontier. Partially dissolved — sections shimmer and reform.
 
-**Connections**: West → Village Hub (East Gate). South → Heartfield (cross-country path). East → Frontier: Shimmer Marsh (Act II, via Canopy Path).
+**Connections**: West → Everwick (East Gate). South → Heartfield (cross-country path). East → Frontier: Shimmer Marsh (Act II, via Canopy Path).
 
 **Enemies**: Forest Wisps (float between trees, magic attacks), Thornback Beetles (ground-based, armored). Difficulty: early game.
 
@@ -147,7 +147,7 @@ A river town built along both banks of the Brightwater River. Bridges, watermill
 - **Upstream Falls** (8, 5) — Waterfall at the map's northwest. Behind the falls is a shallow cave containing a dissolved memory grotto (2 high-potency fragments, accessible from late Act I).
 - **Fisher's Rest** (30, 30) — Fishing dock area. Fishing minigame available (catch memory-infused fish for minor fragments).
 
-**Connections**: East → Village Hub (West Gate). West → Frontier: Hollow Ridge foothills (Act II). South → Heartfield (road along riverbank).
+**Connections**: East → Everwick (West Gate). West → Frontier: Hollow Ridge foothills (Act II). South → Heartfield (road along riverbank).
 
 **Enemies**: River Nymphs (water magic, spawn near water tiles), Stone Crabs (armored, near riverbanks). Difficulty: early-mid game.
 
@@ -155,7 +155,7 @@ A river town built along both banks of the Brightwater River. Bridges, watermill
 
 **Size**: 40x40 tiles | **Biome**: Hills/Highland Grassland | **Starting Vibrancy**: 40
 
-Rolling highlands north of the village. The grass here is shorter, wind-blown. Visibility is excellent — on clear tiles, the player can see the Frontier's shimmer on the horizon. This zone opens when the mountain pass north of the Village Hub unlocks after Hana's freezing.
+Rolling highlands north of the village. The grass here is shorter, wind-blown. Visibility is excellent — on clear tiles, the player can see the Frontier's shimmer on the horizon. This zone opens when the mountain pass north of the Everwick unlocks after Hana's freezing.
 
 **Key Landmarks**:
 - **Ridgetop Waystation** (20, 20) — A small traveler's outpost with 3 NPCs. Serves as a rest stop and transition point to the Frontier. A traveling merchant visits here with rotating stock.
@@ -163,7 +163,7 @@ Rolling highlands north of the village. The grass here is shorter, wind-blown. V
 - **Preserver Outpost** (32, 15) — A crystallized watchtower where Preserver scouts monitor the Frontier border. First non-tutorial encounter with Preserver agents. Cannot be cleared until Act II.
 - **The Threshold** (20, 2) — Northern map edge. The land visibly transitions here: grass becomes shorter, colors soften, shapes blur slightly. This is the boundary between Settled Lands and Frontier.
 
-**Connections**: South → Village Hub (North Gate). North → Frontier: Hollow Ridge (mountain pass, Act II). East → Ambergrove (highland trail).
+**Connections**: South → Everwick (North Gate). North → Frontier: Hollow Ridge (mountain pass, Act II). East → Ambergrove (highland trail).
 
 **Enemies**: Highland Hawks (fast, evasive), Crag Golems (slow, high DEF, near rocky outcrops). Difficulty: mid game.
 
@@ -349,7 +349,7 @@ A forest rendered in elegant line-art. Tree trunks are single curved lines. Bran
 
 | Floor | Entrance Location | Theme | Difficulty | Key Content |
 |-------|-------------------|-------|------------|-------------|
-| Level 1: Memory Cellar | Village Hub (hidden entrance beneath Memorial Garden) | Tutorial dungeon, village ruins | Low | Teaching dungeon mechanics. 3 rooms. First dissolved memory encounter. |
+| Level 1: Memory Cellar | Everwick (hidden entrance beneath Memorial Garden) | Tutorial dungeon, village ruins | Low | Teaching dungeon mechanics. 3 rooms. First dissolved memory encounter. |
 | Level 2: Drowned Archive | Shimmer Marsh (Deepwater Sinkhole) | Submerged library of a dissolved civilization | Mid | Water puzzles. 6 rooms. Contains lore about why civilizations dissolve. |
 | Level 3: Resonant Caverns | Hollow Ridge (Echo Caverns) | Sound-themed caves with crystalline formations | Mid-High | Audio puzzles (activate Resonance Stones in sequences). 7 rooms. Dense fragment deposits. |
 | Level 4: The Songline | Resonance Fields (Singing Stones passage) | Linear memory-corridor, each room a "verse" of a dissolved song | High | 5 rooms, each replaying a scene from the dissolved civilization's final days. |
@@ -379,7 +379,7 @@ A forest rendered in elegant line-art. Tree trunks are single curved lines. Bran
                      /    |                      |
               [Sunridge]  |                [Flickerveil]
                 |         |                  /        \
-         [Village Hub]    |         [Ambergrove]   [Veil's Edge]
+         [Everwick]    |         [Ambergrove]   [Veil's Edge]
            /    |    \    |              |
    [Millbrook] [|] [Heartfield]    [Canopy Path]
         |       |        |
@@ -388,7 +388,7 @@ A forest rendered in elegant line-art. Tree trunks are single curved lines. Bran
         +---[Luminous Wastes]---------+
 
         Depths entrances:
-        - Village Hub → Level 1
+        - Everwick → Level 1
         - Shimmer Marsh → Level 2
         - Hollow Ridge → Level 3
         - Resonance Fields → Level 4
@@ -400,7 +400,7 @@ A forest rendered in elegant line-art. Tree trunks are single curved lines. Bran
 
 | Zone | Maps | Total Tiles | Act | Biomes | Depths Entrances |
 |------|------|-------------|-----|--------|-----------------|
-| Village Hub | 1 | 30x30 = 900 | I | Village | Level 1 |
+| Everwick | 1 | 30x30 = 900 | I | Village | Level 1 |
 | Settled Lands | 4 | 4 x 40x40 = 6,400 | I | Grassland, Forest, Riverside, Highland | — |
 | Frontier | 4 | 4 x 50x50 = 10,000 | II | Marsh, Mountain, Forest, Plains | Level 2, 3, 4 |
 | The Sketch | 3 | 3 x 40x40 = 4,800 | III | Sketch-plains, Sketch-mountain, Sketch-forest | Level 5, Fortress |
@@ -409,7 +409,7 @@ A forest rendered in elegant line-art. Tree trunks are single curved lines. Bran
 
 ## Travel and Pacing
 
-- **Act I** (Village Hub + Settled Lands): ~7,300 tiles. Intimate, well-remembered spaces. Player learns mechanics in safety.
+- **Act I** (Everwick + Settled Lands): ~7,300 tiles. Intimate, well-remembered spaces. Player learns mechanics in safety.
 - **Act II** (Frontier): ~10,000 tiles. Vast, varied, and increasingly unfinished. The world opens up. Multiple quest lines run concurrently.
 - **Act III** (The Sketch + Depths endgame): ~8,800 tiles. Stark, challenging, narratively intense. Linear progression toward the finale.
 

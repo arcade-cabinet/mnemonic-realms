@@ -29,12 +29,12 @@ export class DungeonValidator {
     this.depthsFloors = [
       {
         name: 'Depths Level 1: Memory Cellar',
-        entrance: 'Village Hub',
+        entrance: 'Everwick',
         entrancePosition: '(8, 17)',
         entranceCondition: 'After MQ-05',
         boss: 'None (tutorial floor)',
         stairway: 'Room 5 → Depths L2',
-        memoryLift: 'Room 5 → Village Hub',
+        memoryLift: 'Room 5 → Everwick',
       },
       {
         name: 'Depths Level 2: Drowned Archive',

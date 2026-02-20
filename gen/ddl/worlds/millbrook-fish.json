@@ -1,0 +1,15 @@
+{
+  "id": "millbrook-fish",
+  "name": "River's Bounty",
+  "templateId": "shop-single",
+  "parentAnchor": "millbrook",
+  "slotValues": {
+    "keeper": "lissa",
+    "shop-type": "fish",
+    "archetype-override": "fisherman-hut",
+    "theme": "riverside"
+  },
+  "properties": {
+    "description": "Nets dry on racks outside while fresh catch glistens on the counter inside. Lissa knows every stretch of the river and what swims beneath."
+  }
+}

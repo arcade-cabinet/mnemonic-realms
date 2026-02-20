@@ -133,7 +133,7 @@
  <objectgroup id="6" name="events">
   <object id="1" name="EV-D1-Up" type="map_transition" x="288" y="0" width="64" height="32">
    <properties>
-    <property name="targetMap" value="village-hub"/>
+    <property name="targetMap" value="everwick"/>
     <property name="targetX" type="int" value="8"/>
     <property name="targetY" type="int" value="17"/>
     <property name="trigger" value="touch"/>

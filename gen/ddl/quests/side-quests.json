@@ -1,7 +1,7 @@
 [
   {
     "id": "SQ-01", "name": "The Memorial Garden", "category": "side", "act": "act1",
-    "levelRange": "2-4", "giver": "Khali", "giverLocation": "Village Hub — General Shop (18, 16)",
+    "levelRange": "2-4", "giver": "Khali", "giverLocation": "Everwick — General Shop (18, 16)",
     "triggerCondition": "MQ-02 complete",
     "objectives": [
       { "index": 0, "description": "Speak with Khali about the fading garden" },

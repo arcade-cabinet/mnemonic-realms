@@ -1,0 +1,15 @@
+{
+  "id": "memory-cellar",
+  "name": "Memory Cellar",
+  "templateId": "dungeon",
+  "parentAnchor": "depths-l1",
+  "slotValues": {
+    "floor-count": 1,
+    "theme": "crystal",
+    "boss": "memory-guardian",
+    "encounters": ["E-SL-01", "E-SL-02"]
+  },
+  "properties": {
+    "description": "The first layer beneath the world's surface, where crystallized memories form strange geometries in the darkness."
+  }
+}

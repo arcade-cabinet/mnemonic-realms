@@ -19,13 +19,13 @@ export class Act1Scene12NewResolve extends RpgEvent {
   }
 
   async onChanges(player: RpgPlayer) {
-    // Trigger condition: auto, map: village-hub, condition: lira-frozen
+    // Trigger condition: auto, map: everwick, condition: lira-frozen
     // Note: there is no 'frozen' quest state — treat as active (Hana is frozen while MQ-04 is active)
     const isHanaFrozen = isQuestActive(player, 'MQ-04');
-    const isOnVillageHub = player.map.id === 'village-hub';
+    const isOnEverwick = player.map.id === 'everwick';
     const hasNotTriggered = !(await player.getVariable('ACT1_SCENE12_TRIGGERED'));
 
-    if (isOnVillageHub && isHanaFrozen && hasNotTriggered) {
+    if (isOnEverwick && isHanaFrozen && hasNotTriggered) {
       await player.setVariable('ACT1_SCENE12_TRIGGERED', true);
       await this.triggerScene(player);
     }
@@ -39,8 +39,8 @@ export class Act1Scene12NewResolve extends RpgEvent {
     // or the event is triggered when they enter it.
     // The script says "The player enters Artun's house."
     // Let's move the player to Artun's house if they are not there.
-    if (player.map.id !== 'village-hub' || player.position.x !== 19 || player.position.y !== 11) {
-      await player.changeMap('village-hub', { x: 19, y: 11, direction: 0 }); // Move to Artun's house
+    if (player.map.id !== 'everwick' || player.position.x !== 19 || player.position.y !== 11) {
+      await player.changeMap('everwick', { x: 19, y: 11, direction: 0 }); // Move to Artun's house
     }
 
     // 1. Spawn Artun
@@ -122,7 +122,7 @@ export class Act1Scene12NewResolve extends RpgEvent {
 
     // Part B: The Lookout
     // Move player to Lookout Hill (12, 2)
-    await player.changeMap('village-hub', { x: 12, y: 2, direction: 0 });
+    await player.changeMap('everwick', { x: 12, y: 2, direction: 0 });
 
     // Effects: music-change: {"track":"village-night"}
     await player.call('changeMusic', { track: 'village-night', volume: 0.7, loop: true });
@@ -163,13 +163,13 @@ export class Act1Scene12NewResolve extends RpgEvent {
 
     // Player can leave the hill at any time.
     // We'll use a map change event to trigger the final message.
-    // The mountain pass transition (EV-VH-012) is now open.
+    // The mountain pass transition (EV-EW-012) is now open.
     // This event will be handled by the map transition itself.
 
     // Set a variable to indicate the scene is complete and Act II is unlocked.
     await player.setVariable('ACT2_UNLOCKED', true);
 
-    // The final system message will be triggered by the map transition to Sunridge (EV-VH-012)
+    // The final system message will be triggered by the map transition to Sunridge (EV-EW-012)
     // or when the player leaves the hill and returns to the main village area.
     // For now, let's add it here as a direct effect.
     await player.showText('The mountain pass to the Frontier is now open. Act II begins.', {

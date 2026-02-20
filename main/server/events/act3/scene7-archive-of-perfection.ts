@@ -37,7 +37,7 @@ export class Floor2ArchiveOfPerfectionEvent extends RpgEvent {
 
     // 2. Spawns NPCs at appropriate positions using createDynamicEvent()
     // Hana's Insight (Room 4)
-    const liraEvent = await player.map.createDynamicEvent({
+    const hanaEvent = await player.map.createDynamicEvent({
       x: 8 * 32, // Example position for Hana in Room 4
       y: 10 * 32,
       id: 'EV-F2-LIRA-INSIGHT',
@@ -63,16 +63,16 @@ export class Floor2ArchiveOfPerfectionEvent extends RpgEvent {
           { speaker: 'Hana' },
         );
         // Mark dialogue as complete to prevent repeat on action
-        liraEvent.setVariable('dialogue_complete', true);
-        liraEvent.setGraphic(''); // Hana disappears after dialogue, or moves
+        hanaEvent.setVariable('dialogue_complete', true);
+        hanaEvent.setGraphic(''); // Hana disappears after dialogue, or moves
       },
     });
-    liraEvent.setVariable('dialogue_complete', false); // Initialize variable
+    hanaEvent.setVariable('dialogue_complete', false); // Initialize variable
 
     // Artun (optional, if he's with the party and has something to say)
     // For this scene, Artun isn't explicitly mentioned in dialogue, but if he were,
     // you'd spawn him similarly. Let's assume he's just present, not interactive for this scene.
-    const _callumEvent = await player.map.createDynamicEvent({
+    const _artunEvent = await player.map.createDynamicEvent({
       x: 7 * 32, // Example position for Artun near Hana
       y: 10 * 32,
       id: 'EV-F2-CALLUM-PRESENT',

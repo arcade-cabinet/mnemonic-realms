@@ -9,7 +9,7 @@ import { addItem, removeItem } from '../../systems/inventory';
   // It's a conceptual event that fires when the player enters the designated area.
   // We'll use onChanges to check the player's position and conditions.
   // For a scene event, it's often better to manage its lifecycle explicitly rather than relying on a static map event.
-  // However, if we were to place it, it would be at (8,10) on village-hub.
+  // However, if we were to place it, it would be at (8,10) on everwick.
 })
 export class TrainingGroundEvent extends RpgEvent {
   private hasTriggered = false; // Ensure the scene only plays once
@@ -32,13 +32,13 @@ export class TrainingGroundEvent extends RpgEvent {
       return;
     }
 
-    // Trigger condition: map: village-hub, pos: 8,10, condition: lira-in-party
+    // Trigger condition: map: everwick, pos: 8,10, condition: lira-in-party
     const playerMap = player.map;
     const playerX = player.position.x;
     const playerY = player.position.y;
 
-    const isAtTrainingGround = playerMap?.id === 'village-hub' && playerX === 8 && playerY === 10;
-    const liraInParty = player.getVariable('LIRA_IN_PARTY') === true; // Assuming a global variable for party status
+    const isAtTrainingGround = playerMap?.id === 'everwick' && playerX === 8 && playerY === 10;
+    const liraInParty = player.getVariable('HANA_IN_PARTY') === true; // Assuming a global variable for party status
 
     if (isAtTrainingGround && liraInParty) {
       this.hasTriggered = true;
@@ -133,10 +133,10 @@ export class TrainingGroundEvent extends RpgEvent {
       { speaker: 'Hana' },
     );
 
-    // Teleport player and Hana to the workshop (assuming workshop is at 9,19 in Village Hub)
-    await player.changeMap('village-hub', { x: 9, y: 19 });
+    // Teleport player and Hana to the workshop (assuming workshop is at 9,19 in Everwick)
+    await player.changeMap('everwick', { x: 9, y: 19 });
     if (hanaEvent) {
-      await hanaEvent.event.changeMap('village-hub', { x: 10, y: 19 }); // Hana next to player in workshop
+      await hanaEvent.event.changeMap('everwick', { x: 10, y: 19 }); // Hana next to player in workshop
     }
 
     await player.showText(
@@ -188,9 +188,9 @@ export class TrainingGroundEvent extends RpgEvent {
     // This would involve a player action, likely via a GUI or specific interaction.
     // For the tutorial, we can script it.
     removeItem(player, 'MF-02', 1); // Consume Hana's Warmth fragment
-    await player.call('vibrancy-change', { zone: 'village-hub', delta: 12 }); // Apply vibrancy change
+    await player.call('vibrancy-change', { zone: 'everwick', delta: 12 }); // Apply vibrancy change
     await player.showText(
-      'SYSTEM: You broadcast "Hana\'s Warmth" into the workshop. Vibrancy in Village Hub increased by +12! (potency 3 × 3 = 9, +3 emotion match [Joy resonates with Village Hub]) The world remembers what you shared.',
+      'SYSTEM: You broadcast "Hana\'s Warmth" into the workshop. Vibrancy in Everwick increased by +12! (potency 3 × 3 = 9, +3 emotion match [Joy resonates with Everwick]) The world remembers what you shared.',
       { speaker: 'SYSTEM', type: 'dialog' },
     );
     await player.showText(

@@ -4,7 +4,7 @@
 
 ## Overview
 
-Act I spans the **Village Hub** and **Settled Lands** (see [geography.md](../world/geography.md)). The player arrives as a newly recognized Mnemonic Architect, learns all core mechanics, explores four surrounding zones, builds relationships with key NPCs, and faces the Act I climax when the Stagnation Clearing expands and freezes Hana.
+Act I spans the **Everwick** and **Settled Lands** (see [geography.md](../world/geography.md)). The player arrives as a newly recognized Mnemonic Architect, learns all core mechanics, explores four surrounding zones, builds relationships with key NPCs, and faces the Act I climax when the Stagnation Clearing expands and freezes Hana.
 
 **Emotional arc**: Wonder → Learning → Growing confidence → Shock
 
@@ -18,10 +18,10 @@ Act I spans the **Village Hub** and **Settled Lands** (see [geography.md](../wor
 
 | Scene | Mechanic Taught | Location |
 |-------|----------------|----------|
-| Scene 1 | Movement, interaction, dialogue | Village Hub (Elder's House) |
-| Scene 2 | Memory fragments, collection | Village Hub (Memorial Garden) |
-| Scene 3 | Combat basics, party system | Village Hub (Training Ground) |
-| Scene 4 | Remix, broadcast | Village Hub (Hana's Workshop) |
+| Scene 1 | Movement, interaction, dialogue | Everwick (Elder's House) |
+| Scene 2 | Memory fragments, collection | Everwick (Memorial Garden) |
+| Scene 3 | Combat basics, party system | Everwick (Training Ground) |
+| Scene 4 | Remix, broadcast | Everwick (Hana's Workshop) |
 | Scene 5 | Exploration, environmental storytelling | Heartfield |
 | Scene 6 | Stagnation zones (observation only) | Heartfield (Stagnation Clearing) |
 | Scene 7 | Side quests, shops, NPC relationships | Ambergrove |
@@ -29,13 +29,13 @@ Act I spans the **Village Hub** and **Settled Lands** (see [geography.md](../wor
 | Scene 9 | Advanced combat, party tactics | Sunridge |
 | Scene 10 | Stagnation breaking (first active break) | Heartfield |
 | Scene 11 | Preserver encounter, stakes escalation | Heartfield |
-| Scene 12 | Crisis response, solo action | Heartfield → Village Hub |
+| Scene 12 | Crisis response, solo action | Heartfield → Everwick |
 
 ---
 
 ## Scene 1: A Familiar Place
 
-**Location**: Village Hub — Elder's House (18, 10), then Central Square (12, 14)
+**Location**: Everwick — Elder's House (18, 10), then Central Square (12, 14)
 
 **Trigger**: Game start, after class selection screen
 
@@ -88,20 +88,20 @@ The player character has lived in this village their whole life. They are not a 
 ### Player Actions
 
 - Move through Elder's House (teaches basic movement)
-- Exit to Village Hub exterior (teaches door/transition interaction)
+- Exit to Everwick exterior (teaches door/transition interaction)
 - Walk south through Central Square (teaches map navigation)
 
 ### Rewards / Consequences
 
 - **Item received**: MF-01: Artun's First Lesson
 - **Quest activated**: "Find Hana" (main quest marker on Hana's Workshop)
-- **Optional**: Player can explore Village Hub freely. Talking to Khali, Hark, Nyro triggers brief intro lines but no quests yet.
+- **Optional**: Player can explore Everwick freely. Talking to Khali, Hark, Nyro triggers brief intro lines but no quests yet.
 
 ---
 
 ## Scene 2: The Memorial Garden
 
-**Location**: Village Hub — Memorial Garden (8, 16)
+**Location**: Everwick — Memorial Garden (8, 16)
 
 **Trigger**: Player enters the Memorial Garden tile area
 
@@ -162,7 +162,7 @@ The Memorial Garden is a small green space with three Resonance Stones — pilla
 
 ## Scene 3: Hana's Workshop
 
-**Location**: Village Hub — Hana's Workshop (8, 18)
+**Location**: Everwick — Hana's Workshop (8, 18)
 
 **Trigger**: Player enters Hana's Workshop
 
@@ -214,7 +214,7 @@ Hana has been waiting. Her workshop is cluttered with Resonance Stone fragments,
 
 ## Scene 4: The Training Ground
 
-**Location**: Village Hub — Training Ground (8, 10)
+**Location**: Everwick — Training Ground (8, 10)
 
 **Trigger**: Player enters the Training Ground with Hana in the party
 
@@ -289,7 +289,7 @@ The Training Ground is an open dirt area with chalk markings and practice dummie
 
 *[The player selects MF-02: Hana's Warmth (Joy / Light / Potency 3) from inventory and broadcasts it at the potted plant. A warm amber wave pulses outward from the plant. It straightens, colors deepen, and small flowers bloom along its stem.]*
 
-> **SYSTEM**: You broadcast "Hana's Warmth" into the workshop. Vibrancy in Village Hub increased by +12! (potency 3 × 3 = 9, +3 emotion match [Joy resonates with Village Hub])
+> **SYSTEM**: You broadcast "Hana's Warmth" into the workshop. Vibrancy in Everwick increased by +12! (potency 3 × 3 = 9, +3 emotion match [Joy resonates with Everwick])
 > The world remembers what you shared.
 
 **Hana** *(softly)*: That was my memory — the first time I ever did this, years ago. And now you've given it back to the world. Better than it was.
@@ -312,7 +312,7 @@ The Training Ground is an open dirt area with chalk markings and practice dummie
 - **XP gained**: ~30 (from the two tutorial encounters)
 - **Gold gained**: ~8
 - **Fragment lost**: MF-02 (consumed by broadcast)
-- **Vibrancy change**: Village Hub 60→72 (crosses into Vivid at 67 — the player's first tier transition, triggering a brief visual bloom across the village. Flowers cascade, fountain sparkles, lanterns brighten.)
+- **Vibrancy change**: Everwick 60→72 (crosses into Vivid at 67 — the player's first tier transition, triggering a brief visual bloom across the village. Flowers cascade, fountain sparkles, lanterns brighten.)
 - **Key item**: K-03 Remix Table Access
 - **Quest completed**: "Learn to fight"
 - **Quest activated**: "Explore the Settled Lands" (markers on Heartfield, Ambergrove, Millbrook exits)
@@ -321,9 +321,9 @@ The Training Ground is an open dirt area with chalk markings and practice dummie
 
 ## Scene 5: Heartfield — The Open World
 
-**Location**: Heartfield (Settled Lands — south of Village Hub)
+**Location**: Heartfield (Settled Lands — south of Everwick)
 
-**Trigger**: Player exits Village Hub via the South Gate
+**Trigger**: Player exits Everwick via the South Gate
 
 **Characters**: Player, Hana, Heartfield NPCs (procedural farmers)
 
@@ -459,9 +459,9 @@ The Stagnation Clearing is a 5x5 patch of crystallized grass and frozen butterfl
 
 ## Scene 7: Ambergrove — Forest of Echoes
 
-**Location**: Ambergrove (Settled Lands — east of Village Hub)
+**Location**: Ambergrove (Settled Lands — east of Everwick)
 
-**Trigger**: Player exits Village Hub via the East Gate (or arrives from Heartfield's cross-country path)
+**Trigger**: Player exits Everwick via the East Gate (or arrives from Heartfield's cross-country path)
 
 **Characters**: Player, Hana, Ambergrove NPCs (Woodcutter's Camp)
 
@@ -542,9 +542,9 @@ Enemies: Forest Wisps (float between trees, magic attacks), Thornback Beetles (g
 
 ## Scene 8: Millbrook — River of Memory
 
-**Location**: Millbrook (Settled Lands — west of Village Hub)
+**Location**: Millbrook (Settled Lands — west of Everwick)
 
-**Trigger**: Player exits Village Hub via the West Gate (bridge crossing)
+**Trigger**: Player exits Everwick via the West Gate (bridge crossing)
 
 **Characters**: Player, Hana, Millbrook NPCs (town residents)
 
@@ -643,9 +643,9 @@ Enemies: River Nymphs (water magic, spawn near water tiles), Stone Crabs (armore
 
 ## Scene 9: Sunridge — The World's Edge
 
-**Location**: Sunridge (Settled Lands — north of Village Hub, unlocks after returning to Village from Millbrook/Ambergrove)
+**Location**: Sunridge (Settled Lands — north of Everwick, unlocks after returning to Village from Millbrook/Ambergrove)
 
-**Trigger**: Player enters Sunridge from the Village Hub north exit. Sunridge is accessible from the start of Act I but Hana recommends visiting last.
+**Trigger**: Player enters Sunridge from the Everwick north exit. Sunridge is accessible from the start of Act I but Hana recommends visiting last.
 
 **Characters**: Player, Hana, Sunridge NPCs (Ridgetop Waystation), Preserver Scout (non-combat)
 
@@ -811,13 +811,13 @@ The player returns to the clearing they first saw in Scene 6. Now they have the 
 - **Heartfield state change**: Stagnation Clearing is permanently clear. The butterflies now fly freely. Flowers bloom where crystal was.
 - **Preserver presence**: The Heartfield Preserver scout (1 scout) becomes hostile upon the zone breaking, but does not engage yet — they retreat. Heartfield's vibrancy decay stops (the Preserver is pushed back permanently).
 - **Quest completed**: "Break the Stagnation Clearing"
-- **Quest activated**: "Report to Artun" (return to Village Hub)
+- **Quest activated**: "Report to Artun" (return to Everwick)
 
 ---
 
 ## Scene 11: The Clearing Grows — Act I Climax Setup
 
-**Location**: Village Hub — Elder's House (18, 10), then Heartfield — Stagnation Clearing (35, 30)
+**Location**: Everwick — Elder's House (18, 10), then Heartfield — Stagnation Clearing (35, 30)
 
 **Trigger**: Player returns to Artun after breaking the stagnation zone
 
@@ -841,7 +841,7 @@ The player returns to the clearing they first saw in Scene 6. Now they have the 
 
 ### Part B: The Expansion
 
-*[The scene cuts to Heartfield. The player and Hana run south from the Village Hub, arriving to find the Stagnation Clearing has REGROWN — not just to its original size, but expanded. The 5x5 patch is now a 12x12 zone, engulfing part of the farmland. Crystal formations are growing in real time.]*
+*[The scene cuts to Heartfield. The player and Hana run south from the Everwick, arriving to find the Stagnation Clearing has REGROWN — not just to its original size, but expanded. The 5x5 patch is now a 12x12 zone, engulfing part of the farmland. Crystal formations are growing in real time.]*
 
 **Hana**: No. No, no — it's bigger. Much bigger. They're reinforcing it.
 
@@ -915,7 +915,7 @@ The player returns to the clearing they first saw in Scene 6. Now they have the 
 
 ## Scene 12: A New Resolve
 
-**Location**: Village Hub — Elder's House, then Lookout Hill (12, 2)
+**Location**: Everwick — Elder's House, then Lookout Hill (12, 2)
 
 **Trigger**: Immediately after Scene 11 (player returns to village automatically)
 
@@ -959,7 +959,7 @@ The player returns to the clearing they first saw in Scene 6. Now they have the 
 
 ### Part B: The Lookout
 
-*[The player climbs to Lookout Hill (12, 2). Night sky. Stars. The Village Hub stretches below — amber lanterns glowing warm. Beyond the village, the Settled Lands roll southward in the dark. To the north, the Frontier is a faint shimmer on the horizon, barely visible against the starfield.]*
+*[The player climbs to Lookout Hill (12, 2). Night sky. Stars. The Everwick stretches below — amber lanterns glowing warm. Beyond the village, the Settled Lands roll southward in the dark. To the north, the Frontier is a faint shimmer on the horizon, barely visible against the starfield.]*
 
 *[No dialogue. No system messages. Just the player standing on the hill, looking out. The village music plays its foundation layer only — a single acoustic guitar, soft and slow.]*
 
@@ -984,7 +984,7 @@ The player returns to the clearing they first saw in Scene 6. Now they have the 
 
 - **Items received**: K-02: Artun's Letters, Artun's 3★ fragment (Awe/Neutral)
 - **Act II unlocked**: The mountain pass between Sunridge and Hollow Ridge is now open
-- **Village Hub state**: Night mode — lanterns lit, fewer NPCs outdoors, fireflies near Memorial Garden
+- **Everwick state**: Night mode — lanterns lit, fewer NPCs outdoors, fireflies near Memorial Garden
 - **Player level**: Should be ~9-10 at this point
 - **Player inventory**: ~4-7 fragments, ~600-900g, Tier 1-2 weapon, Tier 1 armor, and various consumables
 - **Party**: Solo (Hana frozen). Artun will join as a companion in Act II, Scene 2.
@@ -1028,9 +1028,9 @@ The player returns to the clearing they first saw in Scene 6. Now they have the 
 | Key items | K-01 (Architect's Signet), K-02 (Artun's Letters), K-03 (Remix Table Access) |
 | Party | Solo (Hana frozen). Artun joins early Act II. |
 | Quests completed | ~4-6 (main quest line + 1-2 side quests) |
-| Zones explored | Village Hub, Heartfield, Ambergrove, Millbrook, Sunridge |
+| Zones explored | Everwick, Heartfield, Ambergrove, Millbrook, Sunridge |
 | Stagnation zones | 1 broken (original clearing), 1 active (expanded clearing — cannot be broken until Act II) |
-| Vibrancy | Village Hub: ~72+ (Vivid). Heartfield: 40-50 (Normal, reduced by expansion). Ambergrove: 45-55 (Normal). Millbrook: 50-55 (Normal). Sunridge: 40-42 (Normal). |
+| Vibrancy | Everwick: ~72+ (Vivid). Heartfield: 40-50 (Normal, reduced by expansion). Ambergrove: 45-55 (Normal). Millbrook: 50-55 (Normal). Sunridge: 40-42 (Normal). |
 
 ### Foreshadowing Planted
 

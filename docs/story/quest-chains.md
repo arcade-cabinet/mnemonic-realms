@@ -28,7 +28,7 @@ The main quest chain spans all three acts and represents the player's journey fr
 
 ### MQ-01: The Architect's Awakening
 
-**Act**: I (Tutorial) | **Level**: 1 | **Giver**: Artun | **Location**: Village Hub — Elder's House
+**Act**: I (Tutorial) | **Level**: 1 | **Giver**: Artun | **Location**: Everwick — Elder's House
 
 **Trigger**: Automatic upon starting a new game and completing the opening cutscene.
 
@@ -53,7 +53,7 @@ The main quest chain spans all three acts and represents the player's journey fr
 
 ### MQ-02: First Broadcast
 
-**Act**: I (Tutorial) | **Level**: 1-2 | **Giver**: Hana | **Location**: Village Hub — Hana's Workshop
+**Act**: I (Tutorial) | **Level**: 1-2 | **Giver**: Hana | **Location**: Everwick — Hana's Workshop
 
 **Trigger**: Completing MQ-01.
 
@@ -79,7 +79,7 @@ The main quest chain spans all three acts and represents the player's journey fr
 
 ### MQ-03: The Settled Lands
 
-**Act**: I | **Level**: 2-6 | **Giver**: Artun | **Location**: Village Hub — Elder's House
+**Act**: I | **Level**: 2-6 | **Giver**: Artun | **Location**: Everwick — Elder's House
 
 **Trigger**: Completing MQ-02.
 
@@ -116,7 +116,7 @@ The main quest chain spans all three acts and represents the player's journey fr
 4. Watch the climax cutscene: Hana is caught at the stagnation zone's edge and frozen mid-sentence
 5. Collect Hana's Scream (MF-04, fury/light/4) from the ground where she was frozen
 6. Broadcast a potency 2+ fragment into the Stagnation Clearing's edge to halt the expansion (any emotion/element)
-7. Return to Artun at the Village Hub
+7. Return to Artun at the Everwick
 
 **Rewards**: Hana's Scream (MF-04, fury/light/4), Echo of the Stagnation (MF-03, sorrow/dark/2), 150 gold
 
@@ -125,7 +125,7 @@ The main quest chain spans all three acts and represents the player's journey fr
 
 **Failure Conditions**: None (the combat encounter auto-resolves if the player is defeated).
 
-**Unlocks**: MQ-05, SQ-05 (mountain pass north of Village Hub opens, granting access to the Frontier)
+**Unlocks**: MQ-05, SQ-05 (mountain pass north of Everwick opens, granting access to the Frontier)
 
 **Dependencies**: MQ-03
 
@@ -133,9 +133,9 @@ The main quest chain spans all three acts and represents the player's journey fr
 
 ### MQ-05: Into the Frontier
 
-**Act**: II | **Level**: 10-12 | **Giver**: Artun | **Location**: Village Hub — Lookout Hill
+**Act**: II | **Level**: 10-12 | **Giver**: Artun | **Location**: Everwick — Lookout Hill
 
-**Trigger**: Completing MQ-04. The mountain pass north of Village Hub is now open.
+**Trigger**: Completing MQ-04. The mountain pass north of Everwick is now open.
 
 **Objectives**:
 1. Speak with Artun at the Lookout Hill (12, 2) to receive Frontier briefing
@@ -183,12 +183,12 @@ The main quest chain spans all three acts and represents the player's journey fr
 
 ### MQ-07: Grym's Endgame
 
-**Act**: II (Climax) | **Level**: 16-20 | **Giver**: Artun (automatic event) | **Location**: Village Hub — Elder's House
+**Act**: II (Climax) | **Level**: 16-20 | **Giver**: Artun (automatic event) | **Location**: Everwick — Elder's House
 
 **Trigger**: After recalling at least 1 god AND completing SQ-05, Artun sends word that he's discovered the Preservers' true plan.
 
 **Objectives**:
-1. Return to the Village Hub and speak with Artun at the Elder's House
+1. Return to the Everwick and speak with Artun at the Elder's House
 2. Learn that Grym has found the First Memory and intends to crystallize it (freezing the world permanently)
 3. Speak with Janik (Preserver scout encountered during the conversation) who confirms the plan and reveals the Preserver Fortress location in the Undrawn Peaks
 4. Recall at least 2 total gods (if only 1 recalled, must recall a second before proceeding)
@@ -316,7 +316,7 @@ Side quests are optional content tied to NPC relationships, exploration, and mem
 
 ### SQ-01: The Memorial Garden
 
-**Act**: I | **Level**: 2-4 | **Giver**: Khali (shopkeeper) | **Location**: Village Hub — General Shop
+**Act**: I | **Level**: 2-4 | **Giver**: Khali (shopkeeper) | **Location**: Everwick — General Shop
 
 **Trigger**: Completing MQ-02. Khali mentions the Memorial Garden looks "dimmer than it used to."
 
@@ -534,13 +534,13 @@ Side quests are optional content tied to NPC relationships, exploration, and mem
 
 ### SQ-10: The Depths Expedition
 
-**Act**: II | **Level**: 14-18 | **Giver**: Artun | **Location**: Village Hub — Elder's House (via letter after MQ-05)
+**Act**: II | **Level**: 14-18 | **Giver**: Artun | **Location**: Everwick — Elder's House (via letter after MQ-05)
 
 **Trigger**: After completing MQ-05 and reaching level 14+. Artun sends a letter about the Depths entrance he's discovered.
 
 **Objectives**:
 1. Speak with Artun at the Elder's House about the Depths
-2. Travel to the Depths entrance in the Village Hub Memorial Garden (hidden passage at (8, 17), revealed after MQ-05)
+2. Travel to the Depths entrance in the Everwick Memorial Garden (hidden passage at (8, 17), revealed after MQ-05)
 3. Navigate Depths Level 1 (5 rooms, see [dungeon-depths.md](../maps/dungeon-depths.md) when authored)
 4. Defeat the Depths L1 floor guardian boss
 5. Collect the dissolved memory fragment from the guardian's chamber
@@ -559,9 +559,9 @@ Side quests are optional content tied to NPC relationships, exploration, and mem
 
 ### SQ-11: Hark's Masterwork
 
-**Act**: II-III | **Level**: 15-20 | **Giver**: Hark (blacksmith) | **Location**: Village Hub — Blacksmith (18, 18)
+**Act**: II-III | **Level**: 15-20 | **Giver**: Hark (blacksmith) | **Location**: Everwick — Blacksmith (18, 18)
 
-**Trigger**: Village Hub vibrancy reaches 70+ (Vivid tier). Hark mentions he's ready to forge "something worthy."
+**Trigger**: Everwick vibrancy reaches 70+ (Vivid tier). Hark mentions he's ready to forge "something worthy."
 
 **Objectives**:
 1. Speak with Hark at the Blacksmith (18, 18)
@@ -584,13 +584,13 @@ Side quests are optional content tied to NPC relationships, exploration, and mem
 
 **Failure Conditions**: None (materials are farmable).
 
-**Dependencies**: Village Hub vibrancy 70+
+**Dependencies**: Everwick vibrancy 70+
 
 ---
 
 ### SQ-12: Nyro's Dream Visions
 
-**Act**: II-III | **Level**: 16-22 | **Giver**: Nyro (innkeeper) | **Location**: Village Hub — Inn: The Bright Hearth (20, 14)
+**Act**: II-III | **Level**: 16-22 | **Giver**: Nyro (innkeeper) | **Location**: Everwick — Inn: The Bright Hearth (20, 14)
 
 **Trigger**: After completing MQ-05, resting at the inn triggers Dissolved dream sequences. After the 3rd rest, Nyro comments on the player's restless sleep.
 
@@ -621,7 +621,7 @@ Side quests are optional content tied to NPC relationships, exploration, and mem
 **Objectives**:
 1. Return to the Listener's Camp after Resonance's recall
 2. The lead audiomancer reports that the recalled god's energy has awakened hidden instruments in the Resonance Stones
-3. Find 5 Choir Instruments scattered across the game world (hidden Resonance Stones in: Heartfield Old Windmill, Ambergrove Hearthstone Circle, Millbrook Upstream Falls, Sunridge Wind Shrine, Village Hub Central Square Fountain)
+3. Find 5 Choir Instruments scattered across the game world (hidden Resonance Stones in: Heartfield Old Windmill, Ambergrove Hearthstone Circle, Millbrook Upstream Falls, Sunridge Wind Shrine, Everwick Central Square Fountain)
 4. At each location, interact with the activated Resonance Stone to collect the instrument (no combat required, but reaching some requires navigating enemies)
 5. Bring all 5 instruments to the Amphitheater (25, 25)
 
@@ -638,7 +638,7 @@ Side quests are optional content tied to NPC relationships, exploration, and mem
 
 ### SQ-14: The Stagnation Breaker
 
-**Act**: III | **Level**: 22-26 | **Giver**: Artun | **Location**: Village Hub — Elder's House
+**Act**: III | **Level**: 22-26 | **Giver**: Artun | **Location**: Everwick — Elder's House
 
 **Trigger**: After completing MQ-07. Artun has been researching a way to free Hana.
 
@@ -725,7 +725,7 @@ All god recall quests become available after MQ-05. The player can complete them
 
 *GQ-01-J1: The Unfinished Symphony*
 - **Giver**: Cantara | **Level**: 14-18
-- **Objectives**: Find 5 musical memory fragments in specific Resonance Stone locations (1 per Settled Lands sub-map + 1 in Village Hub). Return all 5 to the Amphitheater.
+- **Objectives**: Find 5 musical memory fragments in specific Resonance Stone locations (1 per Settled Lands sub-map + 1 in Everwick). Return all 5 to the Amphitheater.
 - **Rewards**: 500 gold, 1 fragment (joy/wind/5), Cantara's Baton (K-07, broadcast vibrancy +2)
 
 *GQ-01-J2: Cantara's Troubadours*
@@ -762,7 +762,7 @@ All god recall quests become available after MQ-05. The player can complete them
 
 *GQ-01-A1: The Harmonist's Attunement*
 - **Giver**: Harmonia | **Level**: 14-18
-- **Objectives**: Tune 7 Resonance Stones across the world (Village Hub fountain, Heartfield Windmill, Ambergrove Hearthstone Circle, Millbrook Bridge, Shimmer Marsh Verdance's Hollow, Hollow Ridge Wind Shrine, Flickerveil Archive). Each requires a biome-matched element fragment.
+- **Objectives**: Tune 7 Resonance Stones across the world (Everwick fountain, Heartfield Windmill, Ambergrove Hearthstone Circle, Millbrook Bridge, Shimmer Marsh Verdance's Hollow, Hollow Ridge Wind Shrine, Flickerveil Archive). Each requires a biome-matched element fragment.
 - **Rewards**: 500 gold, 1 fragment (awe/neutral/5), Harmonia's Tuning Fork (K-08, doubles broadcast radius), global +5 vibrancy pulse
 
 *GQ-01-A2: The Accord*
@@ -811,8 +811,8 @@ All god recall quests become available after MQ-05. The player can complete them
 
 *GQ-02-J2: Floriana's Feast*
 - **Giver**: Floriana | **Level**: 16-20
-- **Objectives**: Broadcast 3 earth + 2 joy fragments into Village Hub locations. Convince 5 NPCs from different settlements to attend. Witness the harvest festival cinematic.
-- **Rewards**: 400 gold, 1 fragment (joy/earth/5), Village Hub +5 vibrancy, Festival Trader NPC, all shops gain 1 rare restock
+- **Objectives**: Broadcast 3 earth + 2 joy fragments into Everwick locations. Convince 5 NPCs from different settlements to attend. Witness the harvest festival cinematic.
+- **Rewards**: 400 gold, 1 fragment (joy/earth/5), Everwick +5 vibrancy, Festival Trader NPC, all shops gain 1 rare restock
 
 **Fury → "The Reclamation" + "The Living Wall"**
 
@@ -842,7 +842,7 @@ All god recall quests become available after MQ-05. The player can complete them
 
 *GQ-02-A1: The Mycorrhizal Map*
 - **Giver**: Sylvanos | **Level**: 14-18
-- **Objectives**: Activate root nodes at 6 locations (Village Hub Memorial Garden, Heartfield Windmill, Ambergrove Hearthstone Circle, Millbrook Upstream Falls, Shimmer Marsh Verdance's Hollow, Flickerveil Resonance Archive). Earth-type fragment at each.
+- **Objectives**: Activate root nodes at 6 locations (Everwick Memorial Garden, Heartfield Windmill, Ambergrove Hearthstone Circle, Millbrook Upstream Falls, Shimmer Marsh Verdance's Hollow, Flickerveil Resonance Archive). Earth-type fragment at each.
 - **Rewards**: 500 gold, 1 fragment (awe/earth/5), Rootmap Pendant (ACC-06, +15% gold), permanent root network on world map, vibrancy pulse ability (+1 all zones per game-hour)
 
 *GQ-02-A2: The Patient Cure*
@@ -892,7 +892,7 @@ All god recall quests become available after MQ-05. The player can complete them
 
 *GQ-03-J2: Solara's Lanterns*
 - **Giver**: Solara | **Level**: 16-20
-- **Objectives**: Light lanterns in 5 settlements (Village Hub, Heartfield, Millbrook, Ridgewalker Camp, Flickering Village) by broadcasting light-element fragments.
+- **Objectives**: Light lanterns in 5 settlements (Everwick, Heartfield, Millbrook, Ridgewalker Camp, Flickering Village) by broadcasting light-element fragments.
 - **Rewards**: 400 gold, 5 light-element fragments (potency 2), Lantern Keeper's Cloak (ACC-09, DEF +12, immune to Blind), each shop gains 1 new rare item
 
 **Fury → "The Burning Archive" + "Shadows of Grym"**
@@ -968,7 +968,7 @@ All god recall quests become available after MQ-05. The player can complete them
 
 *GQ-04-J1: The Peregrine Circuit*
 - **Giver**: Jubila | **Level**: 14-18
-- **Objectives**: Run a circuit visiting 1 landmark in every zone (9 total: Village Hub → Heartfield → Ambergrove → Millbrook → Sunridge → Hollow Ridge → Shimmer Marsh → Flickerveil → Resonance Fields) without resting or fast travel.
+- **Objectives**: Run a circuit visiting 1 landmark in every zone (9 total: Everwick → Heartfield → Ambergrove → Millbrook → Sunridge → Hollow Ridge → Shimmer Marsh → Flickerveil → Resonance Fields) without resting or fast travel.
 - **Rewards**: 600 gold, 1 fragment (joy/fire/5), Peregrine Boots (ACC-10, +20 AGI, +25% move speed, immune to Slow)
 - **Failure Conditions**: Using a rest point or fast travel resets progress. Can retry immediately.
 
@@ -994,7 +994,7 @@ All god recall quests become available after MQ-05. The player can complete them
 
 *GQ-04-S1: The Footprints of the Peregrine*
 - **Giver**: Errantis | **Level**: 14-18
-- **Objectives**: Follow the memory trail of the Peregrine Road's last explorer through 6 zones (Village Hub → Sunridge → Hollow Ridge → Resonance Fields → Shimmer Marsh → Luminous Wastes). Collect Peregrine Fragments at each stop.
+- **Objectives**: Follow the memory trail of the Peregrine Road's last explorer through 6 zones (Everwick → Sunridge → Hollow Ridge → Resonance Fields → Shimmer Marsh → Luminous Wastes). Collect Peregrine Fragments at each stop.
 - **Rewards**: 6 fragments (5x potency-4 sorrow + 1x potency-5 sorrow), 500 gold, Peregrine's Journal (K-11, reveals hidden items/passages in visited zones)
 
 *GQ-04-S2: The Rest Stop*

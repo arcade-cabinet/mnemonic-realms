@@ -33,7 +33,7 @@ Shop inventories are gated by the local zone's vibrancy tier (see [vibrancy-syst
 | ID | Name | ATK | Price | Special Effect | Acquisition | Tier |
 |----|------|-----|-------|----------------|-------------|------|
 | W-SW-01 | Training Sword | +5 | — | None | Starting equipment | 1 |
-| W-SW-02 | Iron Blade | +10 | 80g | None | Hark's Blacksmith (Village Hub) | 1 |
+| W-SW-02 | Iron Blade | +10 | 80g | None | Hark's Blacksmith (Everwick) | 1 |
 | W-SW-03 | Oathkeeper's Edge | +16 | 250g | +5% Oath Strike damage | Hark's Blacksmith (Normal vibrancy) | 2 |
 | W-SW-04 | Brightwater Saber | +22 | 400g | Water element on basic attacks | Millbrook specialty shop | 2 |
 | W-SW-05 | Ridgewalker Claymore | +28 | 600g | +10% ATK when HP above 75% | Ridgewalker Camp merchant | 2 |
@@ -46,7 +46,7 @@ Shop inventories are gated by the local zone's vibrancy tier (see [vibrancy-syst
 | ID | Name | INT | Price | Special Effect | Acquisition | Tier |
 |----|------|-----|-------|----------------|-------------|------|
 | W-ST-01 | Wooden Staff | +4 | — | None | Starting equipment | 1 |
-| W-ST-02 | Khali's Blessing Rod | +8 | 70g | +5% healing power | Khali's General Shop (Village Hub) | 1 |
+| W-ST-02 | Khali's Blessing Rod | +8 | 70g | +5% healing power | Khali's General Shop (Everwick) | 1 |
 | W-ST-03 | Hearthstone Staff | +14 | 220g | Sorrowful Cleanse also heals INT × 0.3 | Ambergrove (Hearthstone Circle loot) | 2 |
 | W-ST-04 | Riverside Crosier | +20 | 380g | +10% shield strength (Awestruck Ward) | Millbrook specialty shop | 2 |
 | W-ST-05 | Marsh Hermit's Crook | +26 | — | SP cost of all heals reduced by 15% | Quest reward from Vash (Shimmer Marsh) | 2 |
@@ -59,7 +59,7 @@ Shop inventories are gated by the local zone's vibrancy tier (see [vibrancy-syst
 | ID | Name | INT | Price | Special Effect | Acquisition | Tier |
 |----|------|-----|-------|----------------|-------------|------|
 | W-WD-01 | Apprentice Wand | +5 | — | None | Starting equipment | 1 |
-| W-WD-02 | Amber Focus | +9 | 90g | +5% spell damage | Khali's General Shop (Village Hub) | 1 |
+| W-WD-02 | Amber Focus | +9 | 90g | +5% spell damage | Khali's General Shop (Everwick) | 1 |
 | W-WD-03 | Windcatcher Rod | +15 | 240g | Wind-element spells deal +15% damage | Ambergrove (Canopy Path treasure) | 2 |
 | W-WD-04 | Prism Wand | +21 | 420g | Eureka Moment always hits weakness if one exists | Flickerveil (Flickering Village shop) | 2 |
 | W-WD-05 | Resonance Tuner | +27 | 650g | Memory Wave AoE radius includes back-row enemies | Resonance Fields (Listener's Camp) | 2 |
@@ -72,7 +72,7 @@ Shop inventories are gated by the local zone's vibrancy tier (see [vibrancy-syst
 | ID | Name | ATK | Price | Special Effect | Acquisition | Tier |
 |----|------|-----|-------|----------------|-------------|------|
 | W-DG-01 | Worn Knife | +4 | — | None | Starting equipment | 1 |
-| W-DG-02 | Steel Stiletto | +8 | 75g | None | Hark's Blacksmith (Village Hub) | 1 |
+| W-DG-02 | Steel Stiletto | +8 | 75g | None | Hark's Blacksmith (Everwick) | 1 |
 | W-DG-03 | Windmill Blade | +13 | 200g | +10% critical hit chance | Heartfield (Old Windmill loot) | 2 |
 | W-DG-04 | Shadow Fang | +19 | 350g | Foreshadow Strike pre-enemy bonus increased by +10% | Ridgewalker Camp merchant | 2 |
 | W-DG-05 | Flickerblade | +25 | 550g | 20% chance to act twice (basic attack only, not skills) | Flickerveil (Flickering Village shop) | 2 |
@@ -97,8 +97,8 @@ Armor provides flat DEF. Each class can equip any armor piece, but some have cla
 | ID | Name | DEF | Price | Special Effect | Acquisition | Tier |
 |----|------|-----|-------|----------------|-------------|------|
 | A-01 | Traveler's Tunic | +3 | — | None | Starting equipment (all classes) | 1 |
-| A-02 | Padded Vest | +6 | 60g | None | Khali's General Shop (Village Hub) | 1 |
-| A-03 | Leather Armor | +10 | 120g | +5% HP | Hark's Blacksmith (Village Hub) | 1 |
+| A-02 | Padded Vest | +6 | 60g | None | Khali's General Shop (Everwick) | 1 |
+| A-03 | Leather Armor | +10 | 120g | +5% HP | Hark's Blacksmith (Everwick) | 1 |
 | A-04 | Chain Mail | +15 | 300g | Knight: +8 DEF instead of +15. Others: AGI -3. | Hark's Blacksmith (Normal vibrancy) | 2 |
 | A-05 | Forest Weave | +12 | 250g | +10% evasion. Rogue: +15% evasion instead. | Ambergrove (Woodcutter's Camp quest reward) | 2 |
 | A-06 | Riverstone Plate | +18 | 450g | +10% water resistance. Immune to Poison. | Millbrook specialty shop | 2 |
@@ -267,7 +267,7 @@ Note: Not all players will have access to all accessories. Each is tied to a spe
 
 ## Acquisition Summary by Location
 
-### Village Hub Shops
+### Everwick Shops
 
 **Khali's General Shop** (consumables + basic gear):
 

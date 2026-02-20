@@ -197,10 +197,10 @@ Line 84: "Stat Focus: AGI, DEX" (Rogue) -- DEX does not exist; AGI is already li
 
 ---
 
-### C5: Village Hub Starting Vibrancy -- 50 vs 60
+### C5: Everwick Starting Vibrancy -- 50 vs 60
 
-`geography.md` and `vibrancy-system.md` list Village Hub starting vibrancy as **50**.
-`overworld-layout.md` line 54 lists Village Hub starting vibrancy as **60**.
+`geography.md` and `vibrancy-system.md` list Everwick starting vibrancy as **50**.
+`overworld-layout.md` line 54 lists Everwick starting vibrancy as **60**.
 
 Both cannot be correct.
 
@@ -305,7 +305,7 @@ All of the following are missing and expected to be built in Phase 2 (per `imple
 
 4. [FIXED] **Fix `combat.md` Inspired duration** (C2/A4) -- Change 2 turns to 3 turns.
 
-5. [FIXED] **Fix `overworld-layout.md` Village Hub vibrancy** (C5) -- Change 60 to 50.
+5. [FIXED] **Fix `overworld-layout.md` Everwick vibrancy** (C5) -- Change 60 to 50.
 
 ### Priority 2: Editorial Cleanup (Can Be Done Alongside Phase 2)
 

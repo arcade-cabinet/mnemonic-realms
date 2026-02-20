@@ -62,8 +62,8 @@ Unlike surface zones, the Depths have **fixed vibrancy per floor** that does not
 
 ## Depths Level 1: Memory Cellar
 
-**Entrance**: Village Hub, Memorial Garden hidden passage at (8, 17) — revealed after MQ-05
-**Surface exit**: Memory lift in Room 3 returns to Village Hub (8, 17)
+**Entrance**: Everwick, Memorial Garden hidden passage at (8, 17) — revealed after MQ-05
+**Surface exit**: Memory lift in Room 3 returns to Everwick (8, 17)
 **Size**: 20 × 25 tiles (640 × 800 px)
 **Theme**: Tutorial dungeon. Ancient village ruins beneath the Memorial Garden. Warm stone walls, amber lantern brackets (some still lit), root systems piercing the ceiling, wooden support beams. Feels like an old root cellar that extends far deeper than it should.
 **Difficulty**: Low (Level 4–8). Designed to teach dungeon mechanics.
@@ -113,7 +113,7 @@ Unlike surface zones, the Depths have **fixed vibrancy per floor** that does not
 
 | ID | Position | Trigger | Quest | Description |
 |----|----------|---------|-------|-------------|
-| EV-D1-001 | (10, 0) | touch | — | Entry from surface. Transition from Village Hub (8, 17). |
+| EV-D1-001 | (10, 0) | touch | — | Entry from surface. Transition from Everwick (8, 17). |
 | EV-D1-002 | (3, 2) | action | SQ-10 | Inscription on wall: "The Memorial Garden was built atop our resting place. We chose this." Artun comments if SQ-10 active. |
 | EV-D1-003 | (17, 4) | action | — | Cracked Resonance Stone. Gives 1 unnamed fragment (calm/earth/1). One-time. |
 
@@ -199,7 +199,7 @@ Unlike surface zones, the Depths have **fixed vibrancy per floor** that does not
 
 | ID | Position | Trigger | Quest | Description |
 |----|----------|---------|-------|-------------|
-| EV-D1-011 | (12, 20) | action | — | Memory lift: fast-travel to Village Hub (8, 17). Activated after clearing Room 3 encounter. |
+| EV-D1-011 | (12, 20) | action | — | Memory lift: fast-travel to Everwick (8, 17). Activated after clearing Room 3 encounter. |
 | EV-D1-012 | (15, 22) | touch | — | Stairway descent → Depths Level 2 (10, 0). Always available. |
 
 **Enemy spawns**:
@@ -219,7 +219,7 @@ Unlike surface zones, the Depths have **fixed vibrancy per floor** that does not
 | Boss | None (tutorial floor — Room 3 is a forced encounter, not a formal boss) |
 | Unique fragments | 3 unnamed fragments |
 | Loot highlights | Minor Potions, Mana Drops, 50 gold |
-| Memory lift | Room 5 → Village Hub |
+| Memory lift | Room 5 → Everwick |
 | Stairway | Room 5 → Depths L2 |
 | Quest link | SQ-10 objectives 3–5 |
 
@@ -879,7 +879,7 @@ Unlike surface zones, the Depths have **fixed vibrancy per floor** that does not
 #### Room 3: Timeline Fracture (Tiles: 6,4 → 9,8)
 
 **Dimensions**: 4 × 5 tiles
-**Description**: A room split down the middle — the left half shows a lush, vivid version of the Village Hub (Vivid tier), while the right half shows the same space as a Muted ruin. Walking between the halves produces a disorienting visual transition. Contains a treasure chest visible in the Vivid half.
+**Description**: A room split down the middle — the left half shows a lush, vivid version of the Everwick (Vivid tier), while the right half shows the same space as a Muted ruin. Walking between the halves produces a disorienting visual transition. Contains a treasure chest visible in the Vivid half.
 
 **Events**:
 
@@ -1096,14 +1096,14 @@ Unlike surface zones, the Depths have **fixed vibrancy per floor** that does not
 #### Room 1: Entry Gallery (Tiles: 1,1 → 20,4)
 
 **Dimensions**: 20 × 4 tiles
-**Description**: A wide, pristine crystal corridor lined with frozen dioramas. Each diorama shows a perfect moment: a family dinner in the Village Hub, children playing in Heartfield, a sunset over Millbrook's bridge. The crystal cases are warm to the touch — the moments inside are still alive, just frozen. Two Preserver Agents patrol the corridor.
+**Description**: A wide, pristine crystal corridor lined with frozen dioramas. Each diorama shows a perfect moment: a family dinner in the Everwick, children playing in Heartfield, a sunset over Millbrook's bridge. The crystal cases are warm to the touch — the moments inside are still alive, just frozen. Two Preserver Agents patrol the corridor.
 
 **Events**:
 
 | ID | Position | Trigger | Quest | Description |
 |----|----------|---------|-------|-------------|
 | EV-F1-001 | (10, 0) | touch | MQ-09 | Entry from Undrawn Peaks (19, 35). MQ-09 objective 1 begins. |
-| EV-F1-002 | (5, 2) | action | — | Frozen diorama: Village Hub family dinner. "They were so happy. We wanted them to stay this way forever." |
+| EV-F1-002 | (5, 2) | action | — | Frozen diorama: Everwick family dinner. "They were so happy. We wanted them to stay this way forever." |
 | EV-F1-003 | (15, 2) | action | — | Frozen diorama: children in Heartfield. Player recognizes NPC children from Act I. |
 
 **Enemy spawns**:
@@ -1550,7 +1550,7 @@ Full shrine locations, recall mechanics, and 16 transformation outcomes are deta
 
 | Dungeon | Surface Map | Position | Entrance Type | Condition |
 |---------|------------|----------|---------------|-----------|
-| Depths L1: Memory Cellar | Village Hub | (8, 17) | Hidden passage (Memorial Garden) | After MQ-05 |
+| Depths L1: Memory Cellar | Everwick | (8, 17) | Hidden passage (Memorial Garden) | After MQ-05 |
 | Depths L2: Drowned Archive | Shimmer Marsh | (33, 43) | Deepwater Sinkhole | After MQ-05 |
 | Depths L3: Resonant Caverns | Hollow Ridge | (38, 3) | Echo Caverns | After MQ-05 |
 | Depths L4: The Songline | Resonance Fields | (28, 44) | Singing Stones passage | After Singing Stones puzzle |
@@ -1612,7 +1612,7 @@ Full shrine locations, recall mechanics, and 16 transformation outcomes are deta
 ### Floor-to-Floor Connections
 
 ```
-Village Hub (8,17) → Depths L1 (10,0)
+Everwick (8,17) → Depths L1 (10,0)
                         ↓ Room 5 stairway
 Shimmer Marsh (33,43) → Depths L2 (10,0)
                         ↓ Room 7 stairway

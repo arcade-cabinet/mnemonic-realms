@@ -1,0 +1,14 @@
+{
+  "id": "millbrook-provisions",
+  "name": "Theron's Provisions",
+  "templateId": "shop-single",
+  "parentAnchor": "millbrook",
+  "slotValues": {
+    "keeper": "theron",
+    "shop-type": "general",
+    "theme": "riverside"
+  },
+  "properties": {
+    "description": "Crates of goods arrive by river barge weekly. Theron catalogs everything with meticulous care, knowing exactly which supplies the settlements upstream need most."
+  }
+}

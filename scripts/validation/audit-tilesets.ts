@@ -32,7 +32,7 @@ function suggestZone(tilesetName: string): string {
     return 'Village / Interiors';
   }
   if (name.includes('town') || name.includes('village')) {
-    return 'Village Hub';
+    return 'Everwick';
   }
   if (name.includes('forest') || name.includes('lonesome')) {
     return 'Forgotten Realm';

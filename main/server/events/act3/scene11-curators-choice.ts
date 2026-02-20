@@ -38,7 +38,7 @@ export class Act3Scene11CuratorsChoice extends RpgEvent {
       name: 'The Curator',
     });
 
-    const aricEvent = await player.createDynamicEvent({
+    const janikEvent = await player.createDynamicEvent({
       x: 17,
       y: 35,
       graphic: 'npc_janik',
@@ -77,18 +77,18 @@ export class Act3Scene11CuratorsChoice extends RpgEvent {
 
     // Clean up dynamic events
     if (curatorEvent) curatorEvent.remove();
-    if (aricEvent) aricEvent.remove();
+    if (janikEvent) janikEvent.remove();
 
-    // --- Part 2: Return to Village Hub and NPC Reactions ---
+    // --- Part 2: Return to Everwick and NPC Reactions ---
     // Spawn Artun and Hana dynamically for this scene
-    const callumEvent = await player.createDynamicEvent({
+    const artunEvent = await player.createDynamicEvent({
       x: 14,
       y: 16,
       graphic: 'npc_artun',
       name: 'Artun',
     });
 
-    const liraEvent = await player.createDynamicEvent({
+    const hanaEvent = await player.createDynamicEvent({
       x: 16,
       y: 16,
       graphic: 'npc_hana',
@@ -115,15 +115,15 @@ export class Act3Scene11CuratorsChoice extends RpgEvent {
     await player.showText("Hana: You taught the lectures. There's a difference.");
 
     // Clean up dynamic events
-    if (callumEvent) callumEvent.remove();
-    if (liraEvent) liraEvent.remove();
+    if (artunEvent) artunEvent.remove();
+    if (hanaEvent) hanaEvent.remove();
 
     // Update quest state
     player.setVariable('MQ-10_STATE', 'COMPLETED');
 
     // Allow free exploration
     await player.showText(
-      'The world is vivid. Explore the Village Hub and talk to its residents to hear their reactions to the bloom.',
+      'The world is vivid. Explore the Everwick and talk to its residents to hear their reactions to the bloom.',
     );
   }
 }

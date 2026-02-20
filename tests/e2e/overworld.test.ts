@@ -26,7 +26,7 @@ test.describe('Overworld', () => {
     await waitForGameReady(page);
   });
 
-  test('player spawns on village-hub after class selection', async ({ page }) => {
+  test('player spawns on everwick after class selection', async ({ page }) => {
     await startGame(page);
 
     // Title screen should be gone

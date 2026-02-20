@@ -829,7 +829,7 @@ The game's visual and audio climax. Every zone in the world simultaneously jumps
 
 *[The camera arrives at the Settled Lands:]*
 
-**Village Hub**: The fountain throws prismatic light. Flowers cascade over every fence. Banners appear on every building. NPCs emerge from houses, looking up at the sky in wonder. Khali steps out of her shop. Hark drops his hammer. Nyro opens the inn's shutters wide.
+**Everwick**: The fountain throws prismatic light. Flowers cascade over every fence. Banners appear on every building. NPCs emerge from houses, looking up at the sky in wonder. Khali steps out of her shop. Hark drops his hammer. Nyro opens the inn's shutters wide.
 
 **Heartfield**: The expanded stagnation zone is gone (freed in Act II). The farmland is vivid gold. The Old Windmill's sails spin freely for the first time.
 
@@ -859,7 +859,7 @@ The game's visual and audio climax. Every zone in the world simultaneously jumps
 
 ## Scene 11: Grym's Choice
 
-**Location**: Preserver Fortress Gate (exterior), then Village Hub
+**Location**: Preserver Fortress Gate (exterior), then Everwick
 
 **Trigger**: After the Endgame Bloom, Grym approaches the party
 
@@ -895,9 +895,9 @@ The resolution. Grym is not defeated — they're transformed. The Preservers are
 
 > **SYSTEM**: The Preservers' role transforms. They are no longer enforcers of stasis — they become the world's archivists, memory keepers who record and share rather than freeze and guard.
 
-### Dialogue — Return to Village Hub
+### Dialogue — Return to Everwick
 
-*[The party returns to the Village Hub. The village is vivid — more vivid than the player has ever seen it. The Central Square fountain throws prismatic light. Every building is decorated with flowering vines. NPCs gather in the square, looking up at the sky, touching walls, laughing at the sheer detail of the world.]*
+*[The party returns to the Everwick. The village is vivid — more vivid than the player has ever seen it. The Central Square fountain throws prismatic light. Every building is decorated with flowering vines. NPCs gather in the square, looking up at the sky, touching walls, laughing at the sheer detail of the world.]*
 
 **Artun** *(sitting on the fountain's edge, looking at the village)*: Forty years I spent studying the Dissolved. Reading their journals, tracing their memories, trying to understand why they chose to let go.
 
@@ -932,7 +932,7 @@ The resolution. Grym is not defeated — they're transformed. The Preservers are
 ### Player Actions
 
 - Witness Grym's transformation (narrative scene)
-- Return to Village Hub
+- Return to Everwick
 - Talk to NPCs who have unique Endgame Bloom dialogue
 - Freely explore the vivid world
 
@@ -974,7 +974,7 @@ The final scene. The player returns to The Edge — the world's boundary — to 
 
 **Hana**: What will YOU create next?
 
-*[No dialogue option. No system message. Just the player standing at the world's edge, watching new land sketch itself into existence and immediately bloom with vivid detail. The music swells — the credits theme, building from a solo acoustic guitar (the Village Hub's foundation instrument) through all four layers, incorporating motifs from every zone the player visited, culminating in the full ensemble.]*
+*[No dialogue option. No system message. Just the player standing at the world's edge, watching new land sketch itself into existence and immediately bloom with vivid detail. The music swells — the credits theme, building from a solo acoustic guitar (the Everwick's foundation instrument) through all four layers, incorporating motifs from every zone the player visited, culminating in the full ensemble.]*
 
 *[The camera slowly pulls back. The player, Hana, and Artun become small figures against the vast, bright, growing world. The sunset deepens. The new terrain keeps forming. The music crescendos, then softens.]*
 
@@ -988,7 +988,7 @@ The final scene. The player returns to The Edge — the world's boundary — to 
 
 **Visual**: The world continues to grow during credits. New terrain forms beyond The Edge in real-time. Occasionally, tiny NPC figures appear on the new terrain — settlers, explorers, children — the next generation beginning their own story.
 
-**Music**: Credits theme (see [audio-direction.md](../design/audio-direction.md)). Begins with the Village Hub's acoustic guitar, then adds each zone's foundation instrument in the order the player first visited them. Builds to the full 4-layer ensemble. Final 30 seconds: all instruments fade except the acoustic guitar, which plays the opening melody one last time.
+**Music**: Credits theme (see [audio-direction.md](../design/audio-direction.md)). Begins with the Everwick's acoustic guitar, then adds each zone's foundation instrument in the order the player first visited them. Builds to the full 4-layer ensemble. Final 30 seconds: all instruments fade except the acoustic guitar, which plays the opening melody one last time.
 
 **Text**: Standard credits roll. Final credit:
 > *The world was young. It is still young. It will always be young.*
@@ -996,7 +996,7 @@ The final scene. The player returns to The Edge — the world's boundary — to 
 
 ### Post-Credits
 
-*[After credits, the player is returned to the Village Hub. The game saves automatically. The player can continue exploring the vivid world freely:]*
+*[After credits, the player is returned to the Everwick. The game saves automatically. The player can continue exploring the vivid world freely:]*
 
 - All zones are at vibrancy 95
 - All NPCs have unique post-bloom dialogue

@@ -1,0 +1,129 @@
+[
+  {
+    "sceneId": "act1-scene1-a-familiar-place",
+    "act": "act1",
+    "sceneNumber": 1,
+    "name": "A Familiar Place",
+    "summary": "The player character has lived in this village their whole life. They are not a stranger or a newcomer. This morning is different because Artun has asked them to come to his house — he has something t",
+    "narrativeContext": "The player character has lived in this village their whole life. They are not a stranger or a newcomer. This morning is different because Artun has asked them to come to his house — he has something to show them.",
+    "playerInstructions": [
+      "Move through Elder's House (teaches basic movement)",
+      "Exit to Everwick exterior (teaches door/transition interaction)",
+      "Walk south through Central Square (teaches map navigation)"
+    ]
+  },
+  {
+    "sceneId": "act1-scene2-the-memorial-garden",
+    "act": "act1",
+    "sceneNumber": 2,
+    "name": "The Memorial Garden",
+    "summary": "The Memorial Garden is a small green space with three Resonance Stones — pillars of ancient amber-gold stone that hum when touched. The garden is tended but modest. Flowers grow in clusters between th",
+    "narrativeContext": "The Memorial Garden is a small green space with three Resonance Stones — pillars of ancient amber-gold stone that hum when touched. The garden is tended but modest. Flowers grow in clusters between the stones. This is where the player learns to **collect** memory fragments from the environment.",
+    "playerInstructions": [
+      "Interact with three Resonance Stones (teaches collection mechanic)",
+      "Each stone produces a brief narrated vision and a fragment",
+      "Player can examine fragments in the Memory menu (teaches menu navigation)"
+    ]
+  },
+  {
+    "sceneId": "act1-scene3-hanas-workshop",
+    "act": "act1",
+    "sceneNumber": 3,
+    "name": "Hana's Workshop",
+    "summary": "Hana has been waiting. Her workshop is cluttered with Resonance Stone fragments, half-finished instruments, journals, and a large amber table in the center — the Remix Table. Hana is mid-30s, practica",
+    "narrativeContext": "Hana has been waiting. Her workshop is cluttered with Resonance Stone fragments, half-finished instruments, journals, and a large amber table in the center — the Remix Table. Hana is mid-30s, practical, warm. She speaks like someone who enjoys her work and is pleased to share it.",
+    "playerInstructions": [
+      "Enter Hana's Workshop (dialogue auto-triggers)",
+      "View fragment inventory during the conversation (teaches Memory menu)",
+      "Hana joins the party (teaches party system)"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-01"
+      ]
+    }
+  },
+  {
+    "sceneId": "act1-scene4-the-training-ground",
+    "act": "act1",
+    "sceneNumber": 4,
+    "name": "The Training Ground",
+    "summary": "The Training Ground is an open dirt area with chalk markings and practice dummies. Hana runs the player through two training fights, then teaches remix and broadcast at the Workshop afterward.",
+    "narrativeContext": "The Training Ground is an open dirt area with chalk markings and practice dummies. Hana runs the player through two training fights, then teaches remix and broadcast at the Workshop afterward.",
+    "playerInstructions": [
+      "Fight 2 tutorial combats (teaches Attack, Skill, Item, Defend)",
+      "Observe Hana's healing in combat (teaches party AI)",
+      "Remix 2 fragments at the Remix Table (teaches Remix)",
+      "Broadcast MF-02 into the workshop (teaches Broadcast)"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-01"
+      ],
+      "party": [
+        "hana"
+      ]
+    }
+  },
+  {
+    "sceneId": "act1-scene11-the-clearing-grows-act-i-climax-setup",
+    "act": "act1",
+    "sceneNumber": 11,
+    "name": "The Clearing Grows — Act I Climax Setup",
+    "summary": "Scene 11 of act1: The Clearing Grows — Act I Climax Setup",
+    "playerInstructions": [
+      "Return to Artun (triggers Part A)",
+      "Run to Heartfield (automatic cutscene transition for Part B)",
+      "Witness the stagnation expansion",
+      "Witness Hana's freezing (cutscene — no player agency during the freeze itself)",
+      "Receive MF-04: Hana's Scream"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-01"
+      ],
+      "party": [
+        "hana"
+      ]
+    }
+  },
+  {
+    "sceneId": "act1-scene12-a-new-resolve",
+    "act": "act1",
+    "sceneNumber": 12,
+    "name": "A New Resolve",
+    "summary": "Scene 12 of act1: A New Resolve",
+    "playerInstructions": [
+      "Talk to Artun (receive K-02 and a 3★ fragment)",
+      "Climb to Lookout Hill (night vista — narrative moment)",
+      "Look through telescope (optional — survey the world)",
+      "Leave the hill to unlock Act II"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-01"
+      ],
+      "party": [
+        "hana"
+      ]
+    }
+  },
+  {
+    "sceneId": "act2-scene17-gryms-revelation-act-ii-climax",
+    "act": "act2",
+    "sceneNumber": 17,
+    "name": "Grym's Revelation — Act II Climax",
+    "summary": "Scene 17 of act2: Grym's Revelation — Act II Climax",
+    "playerInstructions": [
+      "Listen to Grym's endgame reveal",
+      "Hear Hana and Artun's resolve",
+      "Climb Lookout Hill (narrative bookend — mirrors Act I Scene 12)"
+    ],
+    "prerequisites": {
+      "questFlags": [
+        "MQ-04"
+      ],
+      "level": 10
+    }
+  }
+]

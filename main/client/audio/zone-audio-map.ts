@@ -17,7 +17,7 @@ const BGM_BASE = 'audio/bgm';
 const AMB_BASE = 'audio/ambient';
 
 export const ZONE_AUDIO: Record<string, ZoneAudio> = {
-  'village-hub': { bgmId: 'bgm-vh', stemCount: 4, ambientBiome: 'village', ambientVolume: 0.3 },
+  everwick: { bgmId: 'bgm-vh', stemCount: 4, ambientBiome: 'village', ambientVolume: 0.3 },
   heartfield: { bgmId: 'bgm-hf', stemCount: 4, ambientBiome: 'grassland', ambientVolume: 0.25 },
   ambergrove: { bgmId: 'bgm-ag', stemCount: 4, ambientBiome: 'forest', ambientVolume: 0.3 },
   millbrook: { bgmId: 'bgm-mb', stemCount: 4, ambientBiome: 'riverside', ambientVolume: 0.35 },

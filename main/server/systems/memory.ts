@@ -8,7 +8,7 @@ import { increaseVibrancy, type VibrancyZone } from './vibrancy';
 export type Emotion = 'joy' | 'fury' | 'sorrow' | 'awe' | 'calm';
 
 export type Zone =
-  | 'village-hub'
+  | 'everwick'
   | 'heartfield'
   | 'ambergrove'
   | 'millbrook'
@@ -40,13 +40,13 @@ const COLLECTED_KEY = 'MEMORY_FRAGMENTS';
 // ---------------------------------------------------------------------------
 
 export const MEMORY_FRAGMENTS: readonly MemoryFragment[] = [
-  // --- Village Hub (6) ---
+  // --- Everwick (6) ---
   {
     id: 'frag-vh-01',
     name: 'Wildflower Offering',
     category: 'exploration',
     emotion: 'joy',
-    zone: 'village-hub',
+    zone: 'everwick',
     potency: 1,
   },
   {
@@ -54,7 +54,7 @@ export const MEMORY_FRAGMENTS: readonly MemoryFragment[] = [
     name: 'Rainy Vigil',
     category: 'exploration',
     emotion: 'calm',
-    zone: 'village-hub',
+    zone: 'everwick',
     potency: 1,
   },
   {
@@ -62,7 +62,7 @@ export const MEMORY_FRAGMENTS: readonly MemoryFragment[] = [
     name: 'Communal Song',
     category: 'exploration',
     emotion: 'awe',
-    zone: 'village-hub',
+    zone: 'everwick',
     potency: 2,
   },
   {
@@ -70,7 +70,7 @@ export const MEMORY_FRAGMENTS: readonly MemoryFragment[] = [
     name: "Artun's First Memory",
     category: 'npc',
     emotion: 'joy',
-    zone: 'village-hub',
+    zone: 'everwick',
     potency: 2,
   },
   {
@@ -78,7 +78,7 @@ export const MEMORY_FRAGMENTS: readonly MemoryFragment[] = [
     name: "Hana's Spark",
     category: 'npc',
     emotion: 'fury',
-    zone: 'village-hub',
+    zone: 'everwick',
     potency: 2,
   },
   {
@@ -86,7 +86,7 @@ export const MEMORY_FRAGMENTS: readonly MemoryFragment[] = [
     name: "Elder Torin's Regret",
     category: 'npc',
     emotion: 'sorrow',
-    zone: 'village-hub',
+    zone: 'everwick',
     potency: 2,
   },
 

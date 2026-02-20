@@ -1,11 +1,17 @@
 import { RpgModule, type RpgServer } from '@rpgjs/server';
 import { database } from '../database';
+// --- Region maps (DDL-generated overworld) ---
+import { FrontierMap } from './maps/frontier';
+import { SettledLandsMap } from './maps/settled-lands';
+import { SketchRealmMap } from './maps/sketch-realm';
+// --- Legacy zone maps (kept as child worlds) ---
 import { AmbergroveMap } from './maps/ambergrove';
 import { DepthsLevel1Map } from './maps/depths-level-1-memory-cellar';
 import { DepthsLevel2Map } from './maps/depths-level-2-drowned-archive';
 import { DepthsLevel3Map } from './maps/depths-level-3-resonant-caverns';
 import { DepthsLevel4Map } from './maps/depths-level-4-the-songline';
 import { DepthsLevel5Map } from './maps/depths-level-5-the-deepest-memory';
+import { EverwickMap } from './maps/everwick';
 import { FlickerveilMap } from './maps/flickerveil';
 import { FortressF1Map } from './maps/fortress-floor-1-gallery-of-moments';
 import { FortressF2Map } from './maps/fortress-floor-2-archive-of-perfection';
@@ -19,13 +25,17 @@ import { ShimmerMarshMap } from './maps/shimmer-marsh';
 import { SunridgeMap } from './maps/sunridge';
 import { HalfDrawnForestMap } from './maps/the-half-drawn-forest';
 import { UndrawnPeaksMap } from './maps/the-undrawn-peaks';
-import { VillageHubMap } from './maps/village-hub';
 import { player } from './player';
 
 @RpgModule<RpgServer>({
   player,
   maps: [
-    VillageHubMap,
+    // Region overworlds (DDL pipeline)
+    SettledLandsMap,
+    FrontierMap,
+    SketchRealmMap,
+    // Legacy zone maps (child worlds)
+    EverwickMap,
     HeartfieldMap,
     AmbergroveMap,
     MillbrookMap,

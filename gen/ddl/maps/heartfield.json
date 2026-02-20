@@ -3,51 +3,51 @@
     "id": "heartfield",
     "name": "Heartfield",
     "filename": "heartfield.tmx",
-    "width": 40,
-    "height": 40,
-    "tileSize": 32,
-    "biome": "grassland",
-    "tilesetRefs": ["tiles_grassland_{tier}"],
+    "width": 80,
+    "height": 80,
+    "tileSize": 16,
+    "biome": "farmland",
+    "tilesetRefs": ["village-premium"],
     "startVibrancy": 55,
     "category": "overworld",
     "act": "I",
     "connections": [
-      { "fromTile": "15,0", "direction": "north", "toMap": "village-hub", "toTile": "15,25", "condition": "always" },
-      { "fromTile": "39,20", "direction": "east", "toMap": "ambergrove", "toTile": "0,20", "condition": "always" },
-      { "fromTile": "20,38", "direction": "south", "toMap": "shimmer-marsh", "toTile": "20,0", "condition": "MQ-04+" }
+      { "fromTile": "30,0", "direction": "north", "toMap": "everwick", "toTile": "30,56", "condition": "always" },
+      { "fromTile": "78,40", "direction": "east", "toMap": "ambergrove", "toTile": "0,40", "condition": "always" },
+      { "fromTile": "40,78", "direction": "south", "toMap": "shimmer-marsh", "toTile": "40,0", "condition": "MQ-04+" }
     ],
     "npcSpawns": [
-      { "npcId": "farmer-gale", "name": "Farmer Gale", "position": "15,14", "graphic": "npc_farmer_m1", "movement": "Patrol", "patrolRange": "13,13 -> 22,22", "quests": ["SQ-02","MQ-03"] },
-      { "npcId": "farmer-suri", "name": "Farmer Suri", "position": "17,16", "graphic": "npc_farmer_f1", "movement": "Static", "quests": ["MQ-03"] },
-      { "npcId": "farmer-edric", "name": "Farmer Edric", "position": "14,18", "graphic": "npc_farmer_m2", "movement": "Patrol", "patrolRange": "10,18 -> 20,25" },
-      { "npcId": "hamlet-elder", "name": "Hamlet Elder", "position": "18,14", "graphic": "npc_elder_f1", "movement": "Static" },
-      { "npcId": "child-npc", "name": "Child NPC", "position": "16,15", "graphic": "npc_child_01", "movement": "Wander", "condition": "after Solara recall" }
+      { "npcId": "farmer-gale", "name": "Farmer Gale", "position": "30,28", "graphic": "npc_farmer_m1", "movement": "Patrol", "patrolRange": "26,26 -> 44,44", "quests": ["SQ-02","MQ-03"] },
+      { "npcId": "farmer-suri", "name": "Farmer Suri", "position": "34,32", "graphic": "npc_farmer_f1", "movement": "Static", "quests": ["MQ-03"] },
+      { "npcId": "farmer-edric", "name": "Farmer Edric", "position": "28,36", "graphic": "npc_farmer_m2", "movement": "Patrol", "patrolRange": "20,36 -> 40,50" },
+      { "npcId": "hamlet-elder", "name": "Hamlet Elder", "position": "36,28", "graphic": "npc_elder_f1", "movement": "Static" },
+      { "npcId": "child-npc", "name": "Child NPC", "position": "32,30", "graphic": "npc_child_01", "movement": "Wander", "condition": "after Solara recall" }
     ],
     "enemyZones": [
-      { "zone": "Wheat Fields West", "bounds": "2,5 -> 14,20", "enemies": ["E-SL-01","E-SL-02"], "levelRange": "1-3", "encounterRate": "Common: 1 Sprite; Standard: 1 Sprite + 1 Serpent" },
-      { "zone": "Wheat Fields East", "bounds": "22,5 -> 32,17", "enemies": ["E-SL-02"], "levelRange": "2-3", "encounterRate": "Common: 1 Serpent; Standard: 2 Serpents" },
-      { "zone": "Stagnation Approach", "bounds": "28,25 -> 38,33", "enemies": ["Preserver Scout"], "levelRange": "8-10", "encounterRate": "Rare: 1 Scout (MQ-04 only)" }
+      { "zone": "Wheat Fields West", "bounds": "4,10 -> 28,40", "enemies": ["E-SL-01","E-SL-02"], "levelRange": "1-3", "encounterRate": "Common: 1 Sprite; Standard: 1 Sprite + 1 Serpent" },
+      { "zone": "Wheat Fields East", "bounds": "44,10 -> 64,34", "enemies": ["E-SL-02"], "levelRange": "2-3", "encounterRate": "Common: 1 Serpent; Standard: 2 Serpents" },
+      { "zone": "Stagnation Approach", "bounds": "56,50 -> 76,66", "enemies": ["Preserver Scout"], "levelRange": "8-10", "encounterRate": "Rare: 1 Scout (MQ-04 only)" }
     ],
     "eventTriggers": [
-      { "id": "EV-HF-001", "position": "15,14", "type": "action", "linkedQuest": "SQ-02", "repeat": "quest", "description": "Farmer Gale windmill dialogue" },
-      { "id": "EV-HF-002", "position": "30,8", "type": "touch", "linkedQuest": "SQ-02", "repeat": "quest", "description": "Old Windmill entrance" },
-      { "id": "EV-HF-003", "position": "33,28", "type": "auto", "linkedQuest": "MQ-04", "repeat": "once", "description": "Stagnation Clearing cutscene" },
-      { "id": "EV-HF-005", "position": "20,38", "type": "touch", "repeat": "conditional", "description": "South -> Shimmer Marsh" },
-      { "id": "EV-HF-006", "position": "15,0", "type": "touch", "repeat": "repeat", "description": "North -> Village Hub" },
-      { "id": "EV-HF-007", "position": "39,20", "type": "touch", "repeat": "repeat", "description": "East -> Ambergrove" },
-      { "id": "EV-HF-008", "position": "31,9", "type": "action", "repeat": "once", "description": "Windmill Resonance Stone" },
-      { "id": "EV-HF-009", "position": "34,29", "type": "action", "linkedQuest": "SQ-14", "repeat": "once", "description": "Broadcast joy into frozen Lira" }
+      { "id": "EV-HF-001", "position": "30,28", "type": "action", "linkedQuest": "SQ-02", "repeat": "quest", "description": "Farmer Gale windmill dialogue" },
+      { "id": "EV-HF-002", "position": "60,16", "type": "touch", "linkedQuest": "SQ-02", "repeat": "quest", "description": "Old Windmill entrance" },
+      { "id": "EV-HF-003", "position": "66,56", "type": "auto", "linkedQuest": "MQ-04", "repeat": "once", "description": "Stagnation Clearing cutscene" },
+      { "id": "EV-HF-005", "position": "40,78", "type": "touch", "repeat": "conditional", "description": "South -> Shimmer Marsh" },
+      { "id": "EV-HF-006", "position": "30,0", "type": "touch", "repeat": "repeat", "description": "North -> Everwick" },
+      { "id": "EV-HF-007", "position": "78,40", "type": "touch", "repeat": "repeat", "description": "East -> Ambergrove" },
+      { "id": "EV-HF-008", "position": "62,18", "type": "action", "repeat": "once", "description": "Windmill Resonance Stone" },
+      { "id": "EV-HF-009", "position": "68,58", "type": "action", "linkedQuest": "SQ-14", "repeat": "once", "description": "Broadcast joy into frozen Lira" }
     ],
     "resonanceStones": [
-      { "id": "RS-HF-01", "position": "18,14", "fragments": "joy/earth/1" },
-      { "id": "RS-HF-02", "position": "31,9", "fragments": "awe/wind/2" },
-      { "id": "RS-HF-03", "position": "35,30", "fragments": "sorrow/dark/1" },
-      { "id": "RS-HF-04", "position": "8,30", "fragments": "calm/earth/1", "notes": "Hidden behind tree" }
+      { "id": "RS-HF-01", "position": "36,28", "fragments": "joy/earth/1" },
+      { "id": "RS-HF-02", "position": "62,18", "fragments": "awe/wind/2" },
+      { "id": "RS-HF-03", "position": "70,60", "fragments": "sorrow/dark/1" },
+      { "id": "RS-HF-04", "position": "16,60", "fragments": "calm/earth/1", "notes": "Hidden behind tree" }
     ],
     "treasureChests": [
-      { "id": "CH-HF-01", "position": "32,9", "contents": "Antidote (C-SC-01) x3" },
-      { "id": "CH-HF-02", "position": "5,10", "contents": "Minor Potion (C-HP-01) x2" },
-      { "id": "CH-HF-03", "position": "36,25", "contents": "Smoke Bomb (C-SP-05) x2" }
+      { "id": "CH-HF-01", "position": "64,18", "contents": "Antidote (C-SC-01) x3" },
+      { "id": "CH-HF-02", "position": "10,20", "contents": "Minor Potion (C-HP-01) x2" },
+      { "id": "CH-HF-03", "position": "72,50", "contents": "Smoke Bomb (C-SP-05) x2" }
     ]
   }
 ]

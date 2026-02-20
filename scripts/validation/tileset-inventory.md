@@ -98,7 +98,7 @@ Generated: 2026-02-19T16:13:26.567Z
 
 #### dungeons
 
-- **Path:** `assets/tilesets/dungeons`
+- **Path:** `assets/tilesets/depths`
 - **Suggested Zone:** Depths / Dungeons
 - **TMX Files:** 0
 - **TSX Files:** 0
@@ -131,7 +131,7 @@ Generated: 2026-02-19T16:13:26.567Z
 #### old-town-exteriors
 
 - **Path:** `assets/tilesets/old-town-exteriors`
-- **Suggested Zone:** Village Hub
+- **Suggested Zone:** Everwick
 - **TMX Files:** 0
 - **TSX Files:** 0
 - **Rules Files:** 0
@@ -205,7 +205,7 @@ Generated: 2026-02-19T16:13:26.567Z
 - **fantasy-interiors** (medium priority)
 - **old-town-interiors** (low priority)
 
-### Village Hub
+### Everwick
 
 - **old-town-exteriors** (low priority)
 

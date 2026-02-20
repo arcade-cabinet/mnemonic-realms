@@ -1,0 +1,22 @@
+[
+  {
+    "id": "everwick",
+    "name": "Everwick",
+    "filename": "everwick.tmx",
+    "width": 60,
+    "height": 60,
+    "tileSize": 16,
+    "biome": "village",
+    "tilesetRefs": ["village-premium"],
+    "startVibrancy": 60,
+    "category": "overworld",
+    "act": "I",
+    "connections": [
+      { "fromTile": "28,56", "direction": "south", "toMap": "heartfield", "toTile": "30,0", "condition": "always" },
+      { "fromTile": "56,27", "direction": "east", "toMap": "ambergrove", "toTile": "0,40", "condition": "always" },
+      { "fromTile": "3,27", "direction": "west", "toMap": "millbrook", "toTile": "78,40", "condition": "always" },
+      { "fromTile": "28,3", "direction": "north", "toMap": "sunridge", "toTile": "40,78", "condition": "MQ-04+" },
+      { "fromTile": "16,34", "direction": "down", "toMap": "depths-l1", "toTile": "20,0", "condition": "MQ-05+" }
+    ]
+  }
+]

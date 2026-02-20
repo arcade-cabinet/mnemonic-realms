@@ -12,7 +12,7 @@
     "category": "overworld",
     "act": "I-II",
     "connections": [
-      { "fromTile": "20,39", "direction": "south", "toMap": "village-hub", "toTile": "15,0", "condition": "always" },
+      { "fromTile": "20,39", "direction": "south", "toMap": "everwick", "toTile": "15,0", "condition": "always" },
       { "fromTile": "18,0", "direction": "north", "toMap": "hollow-ridge", "toTile": "25,49", "condition": "MQ-04+" },
       { "fromTile": "39,20", "direction": "east", "toMap": "ambergrove", "toTile": "5,0", "condition": "always" }
     ],
@@ -31,7 +31,7 @@
       { "id": "EV-SR-001", "position": "31,14", "type": "action", "linkedQuest": "SQ-05", "repeat": "quest", "description": "Aric Preserver doubt dialogue" },
       { "id": "EV-SR-002", "position": "9,7", "type": "action", "repeat": "repeat", "description": "Wind Shrine vibrating stone" },
       { "id": "EV-SR-003", "position": "19,19", "type": "action", "repeat": "repeat", "description": "Waystation rest point" },
-      { "id": "EV-SR-004", "position": "20,39", "type": "touch", "repeat": "repeat", "description": "South -> Village Hub" },
+      { "id": "EV-SR-004", "position": "20,39", "type": "touch", "repeat": "repeat", "description": "South -> Everwick" },
       { "id": "EV-SR-005", "position": "18,0", "type": "touch", "linkedQuest": "MQ-04", "repeat": "conditional", "description": "North -> Hollow Ridge" },
       { "id": "EV-SR-006", "position": "39,20", "type": "touch", "repeat": "repeat", "description": "East -> Ambergrove" }
     ],

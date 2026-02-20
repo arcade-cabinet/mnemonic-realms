@@ -60,11 +60,15 @@
     "vue": "^3.5.0"
   },
   "devDependencies": {
+    "@anthropic-ai/sdk": "^0.78.0",
     "@biomejs/biome": "~2.3.15",
     "@google/genai": "^1.41.0",
+    "@modelcontextprotocol/sdk": "^1.26.0",
     "@playwright/test": "^1.58.2",
     "@rpgjs/compiler": "4.3.0",
+    "@types/better-sqlite3": "^7.6.13",
     "@types/sharp": "^0.32.0",
+    "better-sqlite3": "^12.6.2",
     "dotenv": "^17.3.1",
     "fake-indexeddb": "^6.2.5",
     "fast-check": "^4.5.3",
@@ -73,6 +77,7 @@
     "remark-gfm": "^4.0.1",
     "remark-parse": "^11.0.0",
     "sharp": "^0.34.5",
+    "sqlite-vec": "0.1.7-alpha.2",
     "tmx-parser": "^1.5.0",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
@@ -85,7 +90,8 @@
       "@parcel/watcher",
       "esbuild",
       "protobufjs",
-      "sharp"
+      "sharp",
+      "better-sqlite3"
     ],
     "overrides": {
       "@babel/parser": "7.26.10",

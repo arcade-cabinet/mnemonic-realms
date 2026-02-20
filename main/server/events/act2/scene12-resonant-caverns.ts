@@ -42,7 +42,7 @@ export default class ResonantCavernsEvent extends RpgEvent {
 
       // 1. Spawn NPCs
       // Artun (npc_artun) at a specific position for dialogue
-      const _callumEvent = player.map.createDynamicEvent({
+      const _artunEvent = player.map.createDynamicEvent({
         x: 10, // Example X coordinate
         y: 15, // Example Y coordinate
         id: 'npc_artun_resonant_caverns',

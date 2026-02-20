@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mnemonic Realms — Act 1, Scene 1: A Familiar Place (No RPG-JS POC)</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0a0f;
+    color: #e8dcc8;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  #game-container {
+    position: relative;
+    width: 960px;
+    height: 640px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 60px rgba(196, 162, 101, 0.08), 0 0 120px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(196, 162, 101, 0.15);
+  }
+  canvas {
+    display: block;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    width: 100%;
+    height: 100%;
+  }
+  #zone-placard {
+    position: absolute; top: 32px; left: 50%; transform: translateX(-50%);
+    background: linear-gradient(135deg, rgba(15, 12, 8, 0.92), rgba(30, 24, 16, 0.88));
+    border: 1px solid rgba(196, 162, 101, 0.35);
+    border-radius: 6px;
+    padding: 10px 40px;
+    color: #c4a265;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 30px rgba(196, 162, 101, 0.12), inset 0 1px 0 rgba(255,255,255,0.04);
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    z-index: 20;
+    pointer-events: none;
+  }
+  #zone-placard.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+  #zone-placard.hidden { opacity: 0; transform: translateX(-50%) translateY(-12px); }
+  #vibrancy-hud {
+    position: absolute; top: 14px; right: 14px;
+    display: flex; align-items: center; gap: 10px; z-index: 10;
+  }
+  #vibrancy-label { color: #c4a265; font-size: 11px; opacity: 0.7; letter-spacing: 0.1em; }
+  #vibrancy-bar-outer {
+    width: 120px; height: 10px;
+    background: rgba(15, 12, 8, 0.85);
+    border-radius: 5px;
+    border: 1px solid rgba(196, 162, 101, 0.25);
+    overflow: hidden;
+  }
+  #vibrancy-bar-inner {
+    height: 100%;
+    background: linear-gradient(90deg, #8a6b30, #c4a265, #e8c97a);
+    border-radius: 5px;
+    transition: width 1s ease;
+    box-shadow: 0 0 10px rgba(196, 162, 101, 0.4);
+    animation: vibrancy-pulse 3s ease-in-out infinite;
+  }
+  @keyframes vibrancy-pulse {
+    0%, 100% { box-shadow: 0 0 8px rgba(196, 162, 101, 0.3); }
+    50% { box-shadow: 0 0 16px rgba(196, 162, 101, 0.6); }
+  }
+  #vibrancy-value { color: #c4a265; font-size: 12px; font-weight: 600; min-width: 28px; }
+  #dialogue-box {
+    position: absolute; bottom: 16px; left: 16px; right: 16px;
+    background: linear-gradient(135deg, rgba(12, 10, 6, 0.96), rgba(22, 18, 12, 0.94));
+    border: 1px solid rgba(196, 162, 101, 0.25);
+    border-radius: 8px;
+    padding: 20px 24px 16px;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.03);
+    z-index: 30;
+    display: none;
+    max-height: 180px;
+  }
+  #dialogue-box.visible { display: block; }
+  #dialogue-speaker {
+    color: #c4a265; font-size: 13px; font-weight: 600;
+    letter-spacing: 0.08em; margin-bottom: 8px; text-transform: uppercase;
+  }
+  #dialogue-text { color: #e8dcc8; font-size: 15px; line-height: 1.65; }
+  #dialogue-cursor {
+    display: inline-block; width: 8px; height: 2px;
+    background: #c4a265; vertical-align: middle; margin-left: 2px;
+    animation: blink 0.6s infinite;
+  }
+  #dialogue-hint {
+    margin-top: 10px; text-align: right;
+    color: rgba(196, 162, 101, 0.35); font-size: 10px;
+  }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  #controls-hint {
+    position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%);
+    color: rgba(196, 162, 101, 0.3); font-size: 10px; z-index: 5; pointer-events: none;
+  }
+  #loading {
+    position: absolute; inset: 0; background: #0a0a0f;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 16px; z-index: 100;
+    transition: opacity 0.8s ease;
+  }
+  #loading.done { opacity: 0; pointer-events: none; }
+  #loading-text { color: #c4a265; font-size: 14px; letter-spacing: 0.15em; }
+  #loading-bar { width: 200px; height: 3px; background: rgba(196,162,101,0.15); border-radius: 2px; }
+  #loading-fill { height: 100%; background: #c4a265; border-radius: 2px; transition: width 0.3s; }
+  #vibrancy-overlay {
+    position: absolute; inset: 0; pointer-events: none; z-index: 5;
+    mix-blend-mode: overlay; opacity: 0; transition: opacity 2s ease;
+  }
+  #minimap {
+    position: absolute; top: 36px; right: 14px;
+    width: 120px; height: 90px;
+    background: rgba(10, 8, 5, 0.85);
+    border: 1px solid rgba(196, 162, 101, 0.2);
+    border-radius: 4px;
+    overflow: hidden; z-index: 10;
+    image-rendering: pixelated;
+  }
+  #minimap canvas { width: 100%; height: 100%; }
+</style>
+</head>
+<body>
+
+<div id="game-container">
+  <canvas id="game-canvas"></canvas>
+  <div id="zone-placard">Everwick</div>
+  <div id="vibrancy-hud">
+    <span id="vibrancy-label">VIBRANCY</span>
+    <div id="vibrancy-bar-outer">
+      <div id="vibrancy-bar-inner" style="width: 55%"></div>
+    </div>
+    <span id="vibrancy-value">55</span>
+  </div>
+  <div id="minimap"><canvas id="minimap-canvas" width="120" height="90"></canvas></div>
+  <div id="dialogue-box">
+    <div id="dialogue-speaker"></div>
+    <div id="dialogue-text"></div>
+    <div id="dialogue-hint"></div>
+  </div>
+  <div id="controls-hint">WASD / Arrow Keys to move | SPACE to interact | ESC to close dialogue</div>
+  <canvas id="vibrancy-overlay" width="960" height="640"></canvas>
+  <div id="loading">
+    <div id="loading-text">REMEMBERING...</div>
+    <div id="loading-bar"><div id="loading-fill" style="width: 0%"></div></div>
+  </div>
+</div>
+
+<script>
+// =============================================================================
+// MNEMONIC REALMS — CUSTOM ENGINE POC
+// Zero dependencies. Zero game framework. Just Canvas + tileset PNGs.
+// Replaces RPG-JS entirely. Proves open-world rendering from instruction sets.
+// =============================================================================
+
+const TILE = 16;
+const SCALE = 3;
+const RT = TILE * SCALE;
+const CANVAS_W = 960;
+const CANVAS_H = 640;
+
+const SHEETS = {
+  ground: 'https://raw.githubusercontent.com/arcade-cabinet/mnemonic-realms/main/assets/tilesets/village/exteriors/Art/Ground%20Tilesets/Tileset_Ground.png',
+  road: 'https://raw.githubusercontent.com/arcade-cabinet/mnemonic-realms/main/assets/tilesets/village/exteriors/Art/Ground%20Tilesets/Tileset_Road.png',
+  water: 'https://raw.githubusercontent.com/arcade-cabinet/mnemonic-realms/main/assets/tilesets/village/exteriors/Art/Water%20and%20Sand/Tileset_Water.png',
+  sand: 'https://raw.githubusercontent.com/arcade-cabinet/mnemonic-realms/main/assets/tilesets/village/exteriors/Art/Water%20and%20Sand/Tileset_Sand.png',
+  trees: 'https://raw.githubusercontent.com/arcade-cabinet/mnemonic-realms/main/assets/tilesets/village/exteriors/Art/Trees%20and%20Bushes/Atlas/Atlas_Trees_Bushes.png',
+  props: 'https://raw.githubusercontent.com/arcade-cabinet/mnemonic-realms/main/assets/tilesets/village/exteriors/Art/Props/Atlas/Atlas_Props.png',
+  rocks: 'https://raw.githubusercontent.com/arcade-cabinet/mnemonic-realms/main/assets/tilesets/village/exteriors/Art/Rocks/Atlas/Atlas_Rocks.png',
+};
+
+const images = {};
+let loadCount = 0;
+const totalImages = Object.keys(SHEETS).length;
+
+function loadImages() {
+  return new Promise((resolve) => {
+    for (const [key, url] of Object.entries(SHEETS)) {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => {
+        images[key] = img;
+        loadCount++;
+        document.getElementById('loading-fill').style.width =
+          ((loadCount / totalImages) * 100) + '%';
+        if (loadCount === totalImages) {
+          setTimeout(() => {
+            document.getElementById('loading').classList.add('done');
+            resolve();
+          }, 400);
+        }
+      };
+      img.onerror = () => {
+        console.warn('Failed to load: ' + key);
+        loadCount++;
+        if (loadCount === totalImages) resolve();
+      };
+      img.src = url;
+    }
+  });
+}
+
+// Seeded RNG — deterministic, same as gen/ pipeline
+function lcg(seed) {
+  let s = seed;
+  return () => { s = (s * 1664525 + 1013904223) & 0xFFFFFFFF; return (s >>> 0) / 0xFFFFFFFF; };
+}
+
+// =============================================================================
+// WORLD BUILDER — This is what the assemblage system outputs.
+// In production: markdown -> assemblage -> palette -> this data structure.
+// No TMX. No intermediate files. Deterministic.
+// =============================================================================
+function buildEverwick() {
+  const W = 24, H = 18;
+  const rng = lcg(42);
+
+  const ground = [];
+  const collision = [];
+
+  for (let r = 0; r < H; r++) {
+    ground[r] = [];
+    collision[r] = [];
+    for (let c = 0; c < W; c++) {
+      const v = Math.floor(rng() * 6);
+      ground[r][c] = ['ground', v % 3, Math.floor(v / 3)];
+      collision[r][c] = 0;
+    }
+  }
+
+  // Roads
+  for (let c = 0; c < W; c++) {
+    ground[8][c] = ['road', 0, 0]; ground[9][c] = ['road', 1, 0];
+    collision[8][c] = 2; collision[9][c] = 2;
+  }
+  for (let r = 0; r < H; r++) {
+    ground[r][11] = ['road', 0, 1]; ground[r][12] = ['road', 1, 1];
+    collision[r][11] = 2; collision[r][12] = 2;
+  }
+
+  // Pond
+  for (let r = 1; r <= 3; r++) {
+    for (let c = 1; c <= 4; c++) {
+      ground[r][c] = ['water', (c - 1) % 3, (r - 1) % 3];
+      collision[r][c] = 1;
+    }
+  }
+  for (let r = 0; r <= 4; r++) {
+    for (let c = 0; c <= 5; c++) {
+      if (collision[r] && collision[r][c] !== 1 && r <= 4 && r >= 0 && r < H && c >= 0 && c < W) {
+        if (r === 0 || r === 4 || c === 0 || c === 5)
+          ground[r][c] = ['sand', c % 2, r % 2];
+      }
+    }
+  }
+
+  // Border trees
+  for (let c = 0; c < W; c++) { collision[0][c] = 1; collision[H-1][c] = 1; }
+  for (let r = 0; r < H; r++) { collision[r][0] = 1; collision[r][W-1] = 1; }
+
+  // Interior trees
+  const trees = [
+    [2,7],[3,7],[2,8],[5,15],[5,16],[6,15],
+    [13,3],[13,4],[14,3],[12,18],[12,19],[13,18],
+    [5,20],[6,20],[6,21],[15,8],[15,9],[16,8],
+  ];
+  for (const [r,c] of trees) { if (r < H && c < W) collision[r][c] = 1; }
+
+  const npcs = [
+    { id:'artun', name:'Elder Artun', x:13, y:5, color:'#c4a265', dialogue:[
+      "You're awake. Good. I wasn't sure you would be, this time.",
+      "The world is thinner than it was. Can you feel it? The stones remember less each day.",
+      "I need you to visit the Memorial Garden. Something happened there overnight."
+    ]},
+    { id:'khali', name:'Khali', x:15, y:10, color:'#6ba3c4', dialogue:[
+      "Welcome to my curios! Potions, blades, and a few things from before the Dissolving.",
+      "That Flickerblade? Found it in a wall that couldn't decide whether it existed."
+    ]},
+    { id:'hark', name:'Hark', x:8, y:11, color:'#c46b6b', dialogue:[
+      "The forge burns low today. Hard to keep a fire when the wood keeps forgetting it's solid.",
+      "Bring me iron and I'll make you something worth carrying."
+    ]},
+    { id:'nyro', name:'Nyro', x:18, y:7, color:'#7bc46b', dialogue:[
+      "The Bright Hearth is always open. Rest, eat, remember.",
+      "Travelers say the southern fields are growing strange."
+    ]},
+    { id:'hana', name:'Hana', x:6, y:6, color:'#c49b6b', dialogue:[
+      "I've been studying the resonance stones. They pulse differently now.",
+      "Here, take this prism. Hold it near a stone and you might see what it remembers."
+    ]},
+  ];
+
+  const resonanceStones = [
+    { id:'rs-ew-01', x:11, y:4, fragments:'joy/neutral/1' },
+    { id:'rs-ew-02', x:19, y:13, fragments:'calm/neutral/1' },
+  ];
+  const chests = [
+    { id:'ch-ew-01', x:3, y:13, contents:'Potion of Clarity x2' },
+    { id:'ch-ew-02', x:20, y:3, contents:'Memory Shard (Warm Amber)' },
+  ];
+  const exits = [
+    { id:'exit-south', x:12, y:17, target:'heartfield', label:'To Heartfield' },
+    { id:'exit-east', x:23, y:9, target:'ambergrove', label:'To Ambergrove' },
+  ];
+
+  return { W, H, ground, collision, npcs, resonanceStones, chests, exits };
+}
+
+// =============================================================================
+// GAME STATE
+// =============================================================================
+const zone = buildEverwick();
+const state = {
+  player: { x: 11 * RT, y: 7 * RT, facing: 'down', frame: 0, speed: 2.5 },
+  vibrancy: 55,
+  dialogue: null,
+  keys: new Set(),
+  time: 0,
+  interactCooldown: 0,
+  ambientParticles: [],
+};
+
+for (let i = 0; i < 15; i++) {
+  state.ambientParticles.push({
+    x: Math.random() * zone.W * RT,
+    y: Math.random() * zone.H * RT,
+    vx: (Math.random() - 0.5) * 0.4,
+    vy: -Math.random() * 0.3 - 0.1,
+    life: Math.random() * 200 + 100,
+    maxLife: 300,
+    size: Math.random() * 3 + 1,
+    alpha: 0,
+  });
+}
+
+// =============================================================================
+// INPUT
+// =============================================================================
+document.addEventListener('keydown', function(e) {
+  state.keys.add(e.key);
+  if ((e.key === ' ' || e.key === 'Enter') && state.interactCooldown <= 0) {
+    if (state.dialogue) {
+      if (!state.dialogue.done) {
+        state.dialogue.charIndex = state.dialogue.lines[state.dialogue.lineIndex].length;
+        state.dialogue.done = true;
+      } else if (state.dialogue.lineIndex < state.dialogue.lines.length - 1) {
+        state.dialogue.lineIndex++;
+        state.dialogue.charIndex = 0;
+        state.dialogue.done = false;
+      } else {
+        state.dialogue = null;
+        state.interactCooldown = 15;
+      }
+    } else {
+      tryInteract();
+    }
+    e.preventDefault();
+  }
+  if (e.key === 'Escape') {
+    state.dialogue = null;
+    state.interactCooldown = 15;
+  }
+});
+document.addEventListener('keyup', function(e) { state.keys.delete(e.key); });
+
+function tryInteract() {
+  var p = state.player;
+  var tx = Math.round(p.x / RT);
+  var ty = Math.round(p.y / RT);
+  var dx = p.facing === 'left' ? -1 : p.facing === 'right' ? 1 : 0;
+  var dy = p.facing === 'up' ? -1 : p.facing === 'down' ? 1 : 0;
+  var fx = tx + dx, fy = ty + dy;
+
+  for (var i = 0; i < zone.npcs.length; i++) {
+    var npc = zone.npcs[i];
+    if (npc.x === fx && npc.y === fy) {
+      state.dialogue = {
+        speaker: npc.name, lines: npc.dialogue,
+        lineIndex: 0, charIndex: 0, done: false,
+      };
+      state.interactCooldown = 15;
+      return;
+    }
+  }
+
+  for (var i = 0; i < zone.resonanceStones.length; i++) {
+    var rs = zone.resonanceStones[i];
+    if (rs.x === fx && rs.y === fy) {
+      state.dialogue = {
+        speaker: 'Resonance Stone',
+        lines: [
+          'The stone hums beneath your fingertips, warm as sunlit amber.',
+          'A fragment surfaces: ' + rs.fragments + '. The memory is brief but vivid.',
+          'The world around you brightens, just slightly. The stone remembers.',
+        ],
+        lineIndex: 0, charIndex: 0, done: false,
+      };
+      state.vibrancy = Math.min(100, state.vibrancy + 5);
+      for (var j = 0; j < 20; j++) {
+        state.ambientParticles.push({
+          x: rs.x * RT + RT/2, y: rs.y * RT + RT/2,
+          vx: (Math.random() - 0.5) * 3, vy: (Math.random() - 0.5) * 3 - 1,
+          life: 60 + Math.random() * 60, maxLife: 120,
+          size: Math.random() * 4 + 2, alpha: 1,
+        });
+      }
+      state.interactCooldown = 15;
+      return;
+    }
+  }
+
+  for (var i = 0; i < zone.chests.length; i++) {
+    var ch = zone.chests[i];
+    if (ch.x === fx && ch.y === fy) {
+      state.dialogue = {
+        speaker: 'Treasure',
+        lines: ['You found: ' + ch.contents + '!'],
+        lineIndex: 0, charIndex: 0, done: false,
+      };
+      state.interactCooldown = 15;
+      return;
+    }
+  }
+}
+
+// =============================================================================
+// GAME LOOP
+// =============================================================================
+var canvas = document.getElementById('game-canvas');
+canvas.width = CANVAS_W;
+canvas.height = CANVAS_H;
+var ctx = canvas.getContext('2d');
+ctx.imageSmoothingEnabled = false;
+
+var minimapCanvas = document.getElementById('minimap-canvas');
+var mctx = minimapCanvas.getContext('2d');
+
+async function main() {
+  await loadImages();
+  var placard = document.getElementById('zone-placard');
+  placard.classList.add('visible');
+  setTimeout(function() { placard.classList.remove('visible'); }, 3000);
+  requestAnimationFrame(gameLoop);
+}
+
+function gameLoop() {
+  update();
+  render();
+  renderMinimap();
+  updateUI();
+  requestAnimationFrame(gameLoop);
+}
+
+function update() {
+  state.time++;
+  if (state.interactCooldown > 0) state.interactCooldown--;
+
+  if (!state.dialogue) {
+    var p = state.player;
+    var dx = 0, dy = 0;
+    if (state.keys.has('ArrowUp') || state.keys.has('w') || state.keys.has('W')) { dy = -p.speed; p.facing = 'up'; }
+    if (state.keys.has('ArrowDown') || state.keys.has('s') || state.keys.has('S')) { dy = p.speed; p.facing = 'down'; }
+    if (state.keys.has('ArrowLeft') || state.keys.has('a') || state.keys.has('A')) { dx = -p.speed; p.facing = 'left'; }
+    if (state.keys.has('ArrowRight') || state.keys.has('d') || state.keys.has('D')) { dx = p.speed; p.facing = 'right'; }
+
+    if (dx !== 0 || dy !== 0) {
+      if (dx !== 0 && dy !== 0) { dx *= 0.707; dy *= 0.707; }
+      var nx = p.x + dx;
+      var ny = p.y + dy;
+      var hitW = RT * 0.5, hitH = RT * 0.4;
+      var hitOx = (RT - hitW) / 2, hitOy = RT - hitH;
+      var corners = [
+        [nx + hitOx, ny + hitOy], [nx + hitOx + hitW, ny + hitOy],
+        [nx + hitOx, ny + hitOy + hitH], [nx + hitOx + hitW, ny + hitOy + hitH],
+      ];
+      var blocked = false;
+      for (var i = 0; i < corners.length; i++) {
+        var tc = Math.floor(corners[i][0] / RT);
+        var tr = Math.floor(corners[i][1] / RT);
+        if (tr < 0 || tr >= zone.H || tc < 0 || tc >= zone.W || zone.collision[tr][tc] === 1) {
+          blocked = true; break;
+        }
+      }
+      if (!blocked) { p.x = nx; p.y = ny; }
+      p.frame++;
+    }
+  }
+
+  if (state.dialogue && !state.dialogue.done) {
+    state.dialogue.charIndex += 0.6;
+    var line = state.dialogue.lines[state.dialogue.lineIndex];
+    if (state.dialogue.charIndex >= line.length) {
+      state.dialogue.charIndex = line.length;
+      state.dialogue.done = true;
+    }
+  }
+
+  for (var i = 0; i < state.ambientParticles.length; i++) {
+    var pt = state.ambientParticles[i];
+    pt.x += pt.vx; pt.y += pt.vy; pt.life--;
+    if (pt.life > pt.maxLife * 0.7) pt.alpha = Math.min(1, pt.alpha + 0.03);
+    else pt.alpha = Math.max(0, pt.life / (pt.maxLife * 0.7));
+    if (pt.life <= 0) {
+      pt.x = Math.random() * zone.W * RT; pt.y = Math.random() * zone.H * RT;
+      pt.vx = (Math.random() - 0.5) * 0.4; pt.vy = -Math.random() * 0.3 - 0.1;
+      pt.life = Math.random() * 200 + 100; pt.alpha = 0;
+    }
+  }
+}
+
+function render() {
+  var p = state.player;
+  var camX = Math.max(0, Math.min(zone.W * RT - CANVAS_W, p.x - CANVAS_W / 2 + RT / 2));
+  var camY = Math.max(0, Math.min(zone.H * RT - CANVAS_H, p.y - CANVAS_H / 2 + RT / 2));
+
+  ctx.fillStyle = '#1a1a24';
+  ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
+
+  // Ground
+  for (var r = 0; r < zone.H; r++) {
+    for (var c = 0; c < zone.W; c++) {
+      var tile = zone.ground[r][c];
+      if (!tile) continue;
+      var dx = c * RT - camX, dy = r * RT - camY;
+      if (dx + RT < 0 || dx > CANVAS_W || dy + RT < 0 || dy > CANVAS_H) continue;
+      var img = images[tile[0]];
+      if (img) ctx.drawImage(img, tile[1] * TILE, tile[2] * TILE, TILE, TILE, dx, dy, RT, RT);
+    }
+  }
+
+  // Trees (collision=1, not water)
+  for (var r = 0; r < zone.H; r++) {
+    for (var c = 0; c < zone.W; c++) {
+      if (zone.collision[r][c] !== 1) continue;
+      if (zone.ground[r][c] && zone.ground[r][c][0] === 'water') continue;
+      var dx = c * RT - camX, dy = r * RT - camY;
+      if (dx + RT < 0 || dx > CANVAS_W || dy + RT < 0 || dy > CANVAS_H) continue;
+      if (images.trees) {
+        var tv = ((c * 7 + r * 13) % 4);
+        ctx.drawImage(images.trees, tv * 16, 0, TILE, TILE * 2, dx, dy - RT * 0.5, RT, RT * 1.5);
+      } else {
+        ctx.fillStyle = 'hsl(' + (120 + (c + r) % 30) + ', 40%, ' + (25 + (c * r) % 15) + '%)';
+        ctx.beginPath();
+        ctx.arc(dx + RT/2, dy + RT * 0.3, RT * 0.45, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#3d2817';
+        ctx.fillRect(dx + RT * 0.4, dy + RT * 0.5, RT * 0.2, RT * 0.5);
+      }
+    }
+  }
+
+  // Resonance Stones
+  for (var i = 0; i < zone.resonanceStones.length; i++) {
+    var rs = zone.resonanceStones[i];
+    var dx = rs.x * RT - camX, dy = rs.y * RT - camY;
+    if (dx + RT < 0 || dx > CANVAS_W || dy + RT < 0 || dy > CANVAS_H) continue;
+    var pulse = Math.sin(state.time * 0.05) * 0.3 + 0.7;
+    ctx.save();
+    ctx.shadowColor = 'rgba(196, 162, 101, ' + (pulse * 0.5) + ')';
+    ctx.shadowBlur = Math.sin(state.time * 0.03) * 4 + 8;
+    ctx.fillStyle = 'rgba(180, 150, 90, ' + pulse + ')';
+    ctx.beginPath();
+    ctx.moveTo(dx + RT * 0.3, dy + RT * 0.8);
+    ctx.lineTo(dx + RT * 0.5, dy + RT * 0.15);
+    ctx.lineTo(dx + RT * 0.7, dy + RT * 0.8);
+    ctx.closePath();
+    ctx.fill();
+    ctx.fillStyle = 'rgba(232, 201, 122, ' + (pulse * 0.6) + ')';
+    ctx.beginPath();
+    ctx.arc(dx + RT * 0.5, dy + RT * 0.5, RT * 0.12, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  // Chests
+  for (var i = 0; i < zone.chests.length; i++) {
+    var ch = zone.chests[i];
+    var dx = ch.x * RT - camX, dy = ch.y * RT - camY;
+    if (dx + RT < 0 || dx > CANVAS_W || dy + RT < 0 || dy > CANVAS_H) continue;
+    ctx.fillStyle = '#5a3a10';
+    ctx.fillRect(dx + 6, dy + 14, RT - 12, RT - 20);
+    ctx.fillStyle = '#8B6914';
+    ctx.fillRect(dx + 6, dy + 10, RT - 12, 8);
+    ctx.fillStyle = '#D4A017';
+    ctx.fillRect(dx + RT/2 - 3, dy + 12, 6, 4);
+  }
+
+  // Exits
+  for (var i = 0; i < zone.exits.length; i++) {
+    var ex = zone.exits[i];
+    var dx = ex.x * RT - camX, dy = ex.y * RT - camY;
+    if (dx + RT < 0 || dx > CANVAS_W || dy + RT < 0 || dy > CANVAS_H) continue;
+    var alpha = Math.sin(state.time * 0.04) * 0.15 + 0.25;
+    ctx.fillStyle = 'rgba(100, 200, 255, ' + alpha + ')';
+    ctx.fillRect(dx, dy, RT, RT);
+    ctx.fillStyle = 'rgba(100, 200, 255, 0.6)';
+    ctx.font = '10px monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText(ex.label, dx + RT/2, dy + RT/2 + 3);
+  }
+
+  // NPCs (sorted by Y)
+  var sorted = zone.npcs.slice().sort(function(a, b) { return a.y - b.y; });
+  for (var i = 0; i < sorted.length; i++) {
+    var npc = sorted[i];
+    var dx = npc.x * RT - camX, dy = npc.y * RT - camY;
+    if (dx + RT < 0 || dx > CANVAS_W || dy + RT < 0 || dy > CANVAS_H) continue;
+    var bob = Math.sin(state.time * 0.03 + npc.x) * 1.5;
+    ctx.fillStyle = 'rgba(0,0,0,0.2)';
+    ctx.beginPath();
+    ctx.ellipse(dx + RT/2, dy + RT - 4, RT * 0.3, RT * 0.1, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = npc.color;
+    ctx.fillRect(dx + 12, dy + 16 + bob, RT - 24, RT - 22);
+    ctx.fillStyle = '#f0d9b5';
+    ctx.beginPath();
+    ctx.arc(dx + RT/2, dy + 13 + bob, 10, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = npc.color;
+    ctx.beginPath();
+    ctx.arc(dx + RT/2, dy + 9 + bob, 8, Math.PI, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = 'rgba(255,255,255,0.85)';
+    ctx.font = 'bold 10px system-ui';
+    ctx.textAlign = 'center';
+    ctx.fillText(npc.name, dx + RT/2, dy - 2);
+  }
+
+  // Player
+  var px = p.x - camX, py = p.y - camY;
+  var wb = (state.keys.size > 0 && !state.dialogue) ? Math.sin(p.frame * 0.3) * 2 : 0;
+  ctx.fillStyle = 'rgba(0,0,0,0.25)';
+  ctx.beginPath();
+  ctx.ellipse(px + RT/2, py + RT - 2, RT * 0.35, RT * 0.1, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = '#3a6b8f';
+  ctx.fillRect(px + 10, py + 14 + wb, RT - 20, RT - 18);
+  ctx.fillStyle = '#2a5070';
+  ctx.fillRect(px + 10, py + 14 + wb, 4, RT - 18);
+  ctx.fillRect(px + RT - 14, py + 14 + wb, 4, RT - 18);
+  ctx.fillStyle = '#f5e0c0';
+  ctx.beginPath();
+  ctx.arc(px + RT/2, py + 11 + wb, 10, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = '#5a3520';
+  ctx.beginPath();
+  ctx.arc(px + RT/2, py + 7 + wb, 9, Math.PI * 0.8, Math.PI * 2.2);
+  ctx.fill();
+  var ed = p.facing === 'left' ? -3 : p.facing === 'right' ? 3 : 0;
+  var ey = p.facing === 'up' ? -2 : p.facing === 'down' ? 2 : 0;
+  ctx.fillStyle = '#2a3a4a';
+  ctx.fillRect(px + RT/2 + ed - 4, py + 11 + ey + wb - 1, 3, 2);
+  ctx.fillRect(px + RT/2 + ed + 1, py + 11 + ey + wb - 1, 3, 2);
+
+  // Ambient particles
+  for (var i = 0; i < state.ambientParticles.length; i++) {
+    var pt = state.ambientParticles[i];
+    var ptx = pt.x - camX, pty = pt.y - camY;
+    if (ptx < -20 || ptx > CANVAS_W + 20 || pty < -20 || pty > CANVAS_H + 20) continue;
+    ctx.save();
+    ctx.globalAlpha = pt.alpha * 0.6;
+    ctx.shadowColor = 'rgba(232, 201, 122, 0.8)';
+    ctx.shadowBlur = 6;
+    ctx.fillStyle = '#e8c97a';
+    ctx.beginPath();
+    ctx.arc(ptx, pty, pt.size, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+}
+
+function renderMinimap() {
+  mctx.fillStyle = '#0f0d08';
+  mctx.fillRect(0, 0, 120, 90);
+  var sx = 120 / zone.W, sy = 90 / zone.H;
+  for (var r = 0; r < zone.H; r++) {
+    for (var c = 0; c < zone.W; c++) {
+      var t = zone.ground[r][c];
+      if (!t) continue;
+      mctx.fillStyle = t[0] === 'water' ? '#2a4a6a' : t[0] === 'road' ? '#6a5a40' : t[0] === 'sand' ? '#8a7a50' : '#2a4a2a';
+      mctx.fillRect(c * sx, r * sy, sx + 0.5, sy + 0.5);
+    }
+  }
+  for (var r = 0; r < zone.H; r++) {
+    for (var c = 0; c < zone.W; c++) {
+      if (zone.collision[r][c] === 1 && !(zone.ground[r][c] && zone.ground[r][c][0] === 'water')) {
+        mctx.fillStyle = '#1a3a1a';
+        mctx.fillRect(c * sx, r * sy, sx + 0.5, sy + 0.5);
+      }
+    }
+  }
+  for (var i = 0; i < zone.npcs.length; i++) {
+    var npc = zone.npcs[i];
+    mctx.fillStyle = '#c4a265';
+    mctx.fillRect(npc.x * sx - 1, npc.y * sy - 1, 3, 3);
+  }
+  var ptx = Math.round(state.player.x / RT);
+  var pty = Math.round(state.player.y / RT);
+  mctx.fillStyle = '#4a9bff';
+  mctx.fillRect(ptx * sx - 1.5, pty * sy - 1.5, 4, 4);
+}
+
+function updateUI() {
+  document.getElementById('vibrancy-bar-inner').style.width = state.vibrancy + '%';
+  document.getElementById('vibrancy-value').textContent = String(state.vibrancy);
+
+  var box = document.getElementById('dialogue-box');
+  if (state.dialogue) {
+    box.classList.add('visible');
+    document.getElementById('dialogue-speaker').textContent = state.dialogue.speaker;
+    var line = state.dialogue.lines[state.dialogue.lineIndex];
+    var shown = line.substring(0, Math.floor(state.dialogue.charIndex));
+
+    // Safe DOM update — no innerHTML
+    var textEl = document.getElementById('dialogue-text');
+    textEl.textContent = '';
+    textEl.appendChild(document.createTextNode(shown));
+    if (!state.dialogue.done) {
+      var cursor = document.createElement('span');
+      cursor.id = 'dialogue-cursor';
+      textEl.appendChild(cursor);
+    }
+
+    var remaining = state.dialogue.lines.length - state.dialogue.lineIndex - 1;
+    document.getElementById('dialogue-hint').textContent =
+      state.dialogue.done
+        ? (remaining > 0 ? '[SPACE] next (' + remaining + ' more)' : '[SPACE] close')
+        : '[SPACE] skip';
+  } else {
+    box.classList.remove('visible');
+  }
+}
+
+// Vibrancy overlay
+function updateVibrancyOverlay() {
+  var overlay = document.getElementById('vibrancy-overlay');
+  var octx = overlay.getContext('2d');
+  var intensity = state.vibrancy / 100;
+  octx.clearRect(0, 0, CANVAS_W, CANVAS_H);
+  var grad = octx.createRadialGradient(CANVAS_W/2, CANVAS_H/2, CANVAS_W*0.2, CANVAS_W/2, CANVAS_H/2, CANVAS_W*0.7);
+  grad.addColorStop(0, 'rgba(196, 162, 101, ' + (intensity * 0.05) + ')');
+  grad.addColorStop(1, 'rgba(0, 0, 0, ' + ((1 - intensity) * 0.15) + ')');
+  octx.fillStyle = grad;
+  octx.fillRect(0, 0, CANVAS_W, CANVAS_H);
+  overlay.style.opacity = '1';
+}
+setInterval(updateVibrancyOverlay, 500);
+
+main();
+</script>
+</body>
+</html>

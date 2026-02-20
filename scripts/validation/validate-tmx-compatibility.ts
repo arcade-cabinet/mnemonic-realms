@@ -253,7 +253,7 @@ function generateReport(results: ValidationResult[]): string {
 }
 
 function main() {
-  const tmxFiles = execSync('find assets/tilesets-organized -name "*.tmx"', { encoding: 'utf-8' })
+  const tmxFiles = execSync('find assets/tilesets -name "*.tmx"', { encoding: 'utf-8' })
     .trim()
     .split('\n')
     .filter((f: string) => f.length > 0);

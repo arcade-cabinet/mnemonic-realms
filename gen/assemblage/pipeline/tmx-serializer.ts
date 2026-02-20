@@ -1,11 +1,11 @@
-import type { SemanticTile } from '../types.ts';
 import {
   type NeighborContext,
-  type TilesetPalette,
   resolveAutoTile,
   resolveFixedTile,
   resolveObject,
+  type TilesetPalette,
 } from '../tileset/palette-builder.ts';
+import type { SemanticTile } from '../types.ts';
 import type { MapCanvas } from './canvas.ts';
 
 /**
@@ -16,11 +16,7 @@ import type { MapCanvas } from './canvas.ts';
  * 3. Emits only used tileset references
  * 4. Generates CSV layer data, collision layer, and object groups
  */
-export function serializeToTmx(
-  canvas: MapCanvas,
-  palette: TilesetPalette,
-  mapId: string,
-): string {
+export function serializeToTmx(canvas: MapCanvas, palette: TilesetPalette, _mapId: string): string {
   // Resolve all semantic tiles to global IDs across all layers
   const resolvedLayers = new Map<string, number[]>();
   const usedTilesetIndices = new Set<number>();
@@ -44,20 +40,47 @@ export function serializeToTmx(
     resolvedLayers.set(layerName, resolved);
   }
 
+  // Pre-resolve visual objects to track their tilesets (skip unknown objects)
+  const resolvedVisuals: { gid: number; x: number; y: number; width: number; height: number }[] =
+    [];
+  const skippedObjects = new Set<string>();
+  for (const vis of canvas.visuals) {
+    const objDef = palette.objects.get(vis.objectRef);
+    if (!objDef) {
+      skippedObjects.add(vis.objectRef);
+      continue;
+    }
+    trackUsedTileset(objDef.gid, palette, usedTilesetIndices);
+    resolvedVisuals.push({
+      gid: objDef.gid,
+      x: vis.x * canvas.tileWidth,
+      // TMX objects use bottom-left origin for gid objects
+      y: vis.y * canvas.tileHeight + objDef.height,
+      width: objDef.width,
+      height: objDef.height,
+    });
+  }
+  if (skippedObjects.size > 0) {
+    console.warn(
+      `  TMX: skipped ${skippedObjects.size} unmapped objects: ${[...skippedObjects].join(', ')}`,
+    );
+  }
+
   // Build TMX XML
   const lines: string[] = [];
   lines.push('<?xml version="1.0" encoding="UTF-8"?>');
   lines.push(
     `<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" ` +
-    `renderorder="right-down" width="${canvas.width}" height="${canvas.height}" ` +
-    `tilewidth="${canvas.tileWidth}" tileheight="${canvas.tileHeight}" ` +
-    `infinite="0" nextlayerid="${canvas.layerOrder.length + 2}" ` +
-    `nextobjectid="${canvas.objects.length + 1}">`,
+      `renderorder="right-down" width="${canvas.width}" height="${canvas.height}" ` +
+      `tilewidth="${canvas.tileWidth}" tileheight="${canvas.tileHeight}" ` +
+      `infinite="0" nextlayerid="${canvas.layerOrder.length + 2}" ` +
+      `nextobjectid="${canvas.objects.length + 1}">`,
   );
 
   // Tileset references (only used ones)
-  const sortedTilesets = [...usedTilesetIndices]
-    .sort((a, b) => palette.tilesets[a].firstGid - palette.tilesets[b].firstGid);
+  const sortedTilesets = [...usedTilesetIndices].sort(
+    (a, b) => palette.tilesets[a].firstGid - palette.tilesets[b].firstGid,
+  );
   for (const idx of sortedTilesets) {
     const ts = palette.tilesets[idx];
     lines.push(` <tileset firstgid="${ts.firstGid}" source="${ts.tsxRelPath}"/>`);
@@ -67,11 +90,28 @@ export function serializeToTmx(
   let layerId = 1;
   for (const layerName of canvas.layerOrder) {
     const resolved = resolvedLayers.get(layerName)!;
-    lines.push(` <layer id="${layerId}" name="${layerName}" width="${canvas.width}" height="${canvas.height}">`);
+    lines.push(
+      ` <layer id="${layerId}" name="${layerName}" width="${canvas.width}" height="${canvas.height}">`,
+    );
     lines.push('  <data encoding="csv">');
     lines.push(encodeCsv(resolved, canvas.width));
     lines.push('  </data>');
     lines.push(' </layer>');
+    layerId++;
+  }
+
+  // Visual objects layer (buildings, trees, props with gids)
+  if (resolvedVisuals.length > 0) {
+    lines.push(` <objectgroup id="${layerId}" name="Objects">`);
+    let objId = 1;
+    for (const vis of resolvedVisuals) {
+      lines.push(
+        `  <object id="${objId}" gid="${vis.gid}" ` +
+          `x="${vis.x}" y="${vis.y}" width="${vis.width}" height="${vis.height}"/>`,
+      );
+      objId++;
+    }
+    lines.push(' </objectgroup>');
     layerId++;
   }
 
@@ -85,8 +125,8 @@ export function serializeToTmx(
     for (const rect of rects) {
       lines.push(
         `  <object id="${objId}" x="${rect.x * canvas.tileWidth}" ` +
-        `y="${rect.y * canvas.tileHeight}" ` +
-        `width="${rect.w * canvas.tileWidth}" height="${rect.h * canvas.tileHeight}"/>`,
+          `y="${rect.y * canvas.tileHeight}" ` +
+          `width="${rect.w * canvas.tileWidth}" height="${rect.h * canvas.tileHeight}"/>`,
       );
       objId++;
     }
@@ -107,13 +147,16 @@ export function serializeToTmx(
 
       lines.push(
         `  <object id="${objId}" name="${escapeXml(obj.name)}" ` +
-        `type="${obj.type}" x="${px}" y="${py}" width="${pw}" height="${ph}">`,
+          `type="${obj.type}" x="${px}" y="${py}" width="${pw}" height="${ph}">`,
       );
       if (Object.keys(props).length > 0) {
         lines.push('   <properties>');
         for (const [key, val] of Object.entries(props)) {
-          const type = typeof val === 'boolean' ? 'bool' : typeof val === 'number' ? 'int' : 'string';
-          lines.push(`    <property name="${escapeXml(key)}" type="${type}" value="${escapeXml(String(val))}"/>`);
+          const type =
+            typeof val === 'boolean' ? 'bool' : typeof val === 'number' ? 'int' : 'string';
+          lines.push(
+            `    <property name="${escapeXml(key)}" type="${type}" value="${escapeXml(String(val))}"/>`,
+          );
         }
         lines.push('   </properties>');
       }
@@ -182,9 +225,14 @@ function getNeighborContext(
   };
 
   return [
-    check(-1, -1), check(0, -1), check(1, -1),
-    check(-1, 0),                check(1, 0),
-    check(-1, 1),  check(0, 1),  check(1, 1),
+    check(-1, -1),
+    check(0, -1),
+    check(1, -1),
+    check(-1, 0),
+    check(1, 0),
+    check(-1, 1),
+    check(0, 1),
+    check(1, 1),
   ];
 }
 
@@ -232,11 +280,7 @@ interface Rect {
   h: number;
 }
 
-function mergeCollisionRects(
-  collision: (0 | 1)[],
-  width: number,
-  height: number,
-): Rect[] {
+function mergeCollisionRects(collision: (0 | 1)[], width: number, height: number): Rect[] {
   // Greedy row-based rectangle merging
   const visited = new Uint8Array(collision.length);
   const rects: Rect[] = [];

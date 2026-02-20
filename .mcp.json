@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "mnemonic-realms": {
+      "command": "pnpm",
+      "args": ["tsx", "gen/mcp/server.ts"],
+      "env": {}
+    }
+  }
+}

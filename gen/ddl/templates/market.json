@@ -1,0 +1,18 @@
+{
+  "id": "market",
+  "category": "Commerce",
+  "description": "Multi-wing market hall — central hub + N shop wings, each a different vendor",
+  "layout": {
+    "type": "hub-and-spoke",
+    "hubArchetype": "house-medium",
+    "spokeArchetype": "weapon-shop",
+    "connectionType": "archway",
+    "spokeCount": { "min": 2, "max": 8 }
+  },
+  "slots": [
+    { "id": "greeter", "name": "Market Greeter", "type": "npc", "required": false },
+    { "id": "wings", "name": "Market Wings", "type": "feature", "required": true,
+      "options": ["armorer", "herbalist", "tailor", "jeweler", "bookshop", "enchanter", "alchemist", "weaponsmith"] }
+  ],
+  "defaults": {}
+}

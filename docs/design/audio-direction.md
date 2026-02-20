@@ -51,7 +51,7 @@ All four layers are composed as stems of the same piece and must be harmonically
 
 Each zone has one BGM track with 4 layers. Tracks are identified by `BGM-{zone code}`.
 
-### BGM-VH: Village Hub — "Hearth and Home"
+### BGM-VH: Everwick — "Hearth and Home"
 
 | Property | Value |
 |----------|-------|
@@ -457,9 +457,9 @@ Combat music overrides zone BGM. Vibrancy influences layer count in normal battl
 | Property | Value |
 |----------|-------|
 | Tempo | 80 BPM |
-| Key | G major (same as Village Hub) |
+| Key | G major (same as Everwick) |
 | Duration | 4:00 (full credits length) |
-| Instruments | Acoustic guitar (Village Hub theme) → adds each zone's foundation instrument one by one → builds to full orchestra → final section is just guitar again |
+| Instruments | Acoustic guitar (Everwick theme) → adds each zone's foundation instrument one by one → builds to full orchestra → final section is just guitar again |
 | Mood | Nostalgic, complete, grateful. A journey remembered. |
 
 ---

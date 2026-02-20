@@ -1,0 +1,13 @@
+{
+  "id": "everwick-artun",
+  "name": "Elder Artun's Home",
+  "templateId": "residence",
+  "parentAnchor": "everwick",
+  "slotValues": {
+    "resident": "artun",
+    "theme": "scholarly"
+  },
+  "properties": {
+    "description": "Books and star-charts cover every surface. Elder Artun has spent decades mapping the connections between memory and the world's unfinished edges."
+  }
+}

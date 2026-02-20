@@ -1,0 +1,625 @@
+{
+  "id": "sketch-realm",
+  "name": "The Sketch Realm",
+  "biome": "sketch-plains",
+  "acts": [
+    3
+  ],
+  "playTimeMinutes": 300,
+  "difficulty": "hard",
+  "ambientMusic": "bgm-overworld-sketch-realm",
+  "startVibrancy": 10,
+  "weather": {
+    "default": "clear",
+    "dynamic": false
+  },
+  "encounters": {
+    "enemies": [
+      "Sketch Phantom",
+      "Void Wisp",
+      "Wireframe Drake",
+      "Apex Guardian",
+      "Sketch Wolf",
+      "Unfinished Treant",
+      "Memory Echo"
+    ],
+    "levelRange": [
+      21,
+      28
+    ],
+    "averageStepsBetweenEncounters": 200
+  },
+  "anchors": [
+    {
+      "id": "luminous-wastes",
+      "name": "Luminous Wastes",
+      "type": "town",
+      "position": "middle",
+      "importance": "minor",
+      "town": {
+        "size": "town",
+        "mapSize": [
+          80,
+          80
+        ],
+        "services": [],
+        "houses": 1
+      },
+      "quests": [
+        "-- (lore)"
+      ],
+      "npcs": [
+        {
+          "id": "preserver-archivist",
+          "role": "ambient",
+          "placement": "center"
+        },
+        {
+          "id": "solidified-village-npcs",
+          "role": "quest-giver",
+          "placement": "patrol"
+        }
+      ],
+      "events": [
+        {
+          "id": "EV-LW-001",
+          "trigger": "action",
+          "quest": "MQ-08",
+          "repeat": "once",
+          "description": "Half-Built Village: broadcast to solidify (3 broadcasts needed)"
+        },
+        {
+          "id": "EV-LW-002",
+          "trigger": "action",
+          "repeat": "once",
+          "description": "The Edge: narrative beat (world still growing)"
+        },
+        {
+          "id": "EV-LW-003",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "North edge -> Shimmer Marsh (25, 49) / Resonance Fields"
+        },
+        {
+          "id": "EV-LW-004",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "East edge -> Resonance Fields (0, 25)"
+        },
+        {
+          "id": "EV-LW-005",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "North edge -> Half-Drawn Forest (20, 39)"
+        }
+      ],
+      "mapLayout": {
+        "biome": "sketch-plains",
+        "palette": "desert-sketch",
+        "defaultGround": "ground.grass",
+        "music": "bgm-luminous-wastes",
+        "tileSize": 16,
+        "mapSize": [
+          80,
+          80
+        ],
+        "areas": [
+          {
+            "id": "half-built-village",
+            "name": "Half-Built Village",
+            "x": 36,
+            "y": 36,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "void-border",
+            "name": "The Edge",
+            "x": 6,
+            "y": 36,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "outline-structure",
+            "name": "Preserver Watchtower",
+            "x": 66,
+            "y": 16,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          }
+        ],
+        "npcSpawns": [
+          {
+            "id": "preserver-archivist",
+            "sprite": "npc_preserver_elite",
+            "x": 34,
+            "y": 9,
+            "dialogue": "preserver-archivist"
+          },
+          {
+            "id": "solidified-village-npcs",
+            "sprite": "various",
+            "x": 25,
+            "y": 18,
+            "dialogue": "solidified-village-npcs"
+          }
+        ],
+        "transitions": [
+          {
+            "id": "luminous-wastes-north-gate",
+            "x": 25,
+            "y": 0,
+            "targetMap": "shimmer-marsh",
+            "targetX": 25,
+            "targetY": 49,
+            "condition": "After MQ-07"
+          },
+          {
+            "id": "luminous-wastes-east-gate",
+            "x": 39,
+            "y": 20,
+            "targetMap": "resonance-fields",
+            "targetX": 0,
+            "targetY": 25,
+            "condition": "After MQ-07"
+          },
+          {
+            "id": "luminous-wastes-ne-gate",
+            "x": 20,
+            "y": 0,
+            "targetMap": "half-drawn-forest",
+            "targetX": 20,
+            "targetY": 39,
+            "condition": "After MQ-08"
+          }
+        ],
+        "resonanceStones": [
+          {
+            "id": "RS-LW-01",
+            "x": 20,
+            "y": 20,
+            "fragment": "3 fragments (various/3-4)"
+          },
+          {
+            "id": "RS-LW-02",
+            "x": 4,
+            "y": 18,
+            "fragment": "1 fragment (calm/neutral/4)"
+          },
+          {
+            "id": "RS-LW-03",
+            "x": 30,
+            "y": 35,
+            "fragment": "1 fragment (sorrow/neutral/3)"
+          }
+        ],
+        "playerSpawn": {
+          "x": 40,
+          "y": 40
+        }
+      }
+    },
+    {
+      "id": "undrawn-peaks",
+      "name": "Undrawn Peaks",
+      "type": "town",
+      "position": "end",
+      "importance": "major",
+      "town": {
+        "size": "town",
+        "mapSize": [
+          80,
+          80
+        ],
+        "services": [
+          {
+            "type": "general-store"
+          }
+        ],
+        "houses": 1
+      },
+      "quests": [
+        "MQ-08"
+      ],
+      "npcs": [
+        {
+          "id": "preserver-captain-a",
+          "role": "quest-giver",
+          "placement": "center"
+        },
+        {
+          "id": "preserver-captain-b",
+          "role": "quest-giver",
+          "placement": "center"
+        }
+      ],
+      "events": [
+        {
+          "id": "EV-UP-001",
+          "trigger": "action",
+          "quest": "GQ-03-J1",
+          "repeat": "once",
+          "description": "Apex: broadcast joy fragment for sunrise beacon (Solara quest)"
+        },
+        {
+          "id": "EV-UP-002",
+          "trigger": "action",
+          "quest": "MQ-08",
+          "repeat": "once",
+          "description": "Sketch Bridge: broadcast to solidify crossing"
+        },
+        {
+          "id": "EV-UP-003",
+          "trigger": "action",
+          "quest": "MQ-08",
+          "repeat": "once",
+          "description": "Fortress Gate: broadcast potency 3+ to enter"
+        },
+        {
+          "id": "EV-UP-004",
+          "trigger": "touch",
+          "quest": "MQ-09",
+          "repeat": "once",
+          "description": "Fortress Gate entrance -> Preserver Fortress F1"
+        },
+        {
+          "id": "EV-UP-005",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "South edge -> Hollow Ridge (25, 0)"
+        },
+        {
+          "id": "EV-UP-006",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "East edge -> Half-Drawn Forest (0, 10)"
+        }
+      ],
+      "worldSlots": [
+        {
+          "instanceId": "preserver-fortress",
+          "transitionType": "door"
+        }
+      ],
+      "mapLayout": {
+        "biome": "sketch-mountain",
+        "palette": "desert-sketch",
+        "defaultGround": "ground.grass",
+        "music": "bgm-undrawn-peaks",
+        "tileSize": 16,
+        "mapSize": [
+          80,
+          80
+        ],
+        "areas": [
+          {
+            "id": "undrawn-peak",
+            "name": "The Apex",
+            "x": 36,
+            "y": 6,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "outline-structure",
+            "name": "Crystalline Fortress Gate",
+            "x": 36,
+            "y": 66,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "sketch-bridge",
+            "name": "Sketch Bridge",
+            "x": 40,
+            "y": 40,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          }
+        ],
+        "npcSpawns": [
+          {
+            "id": "preserver-captain-a",
+            "sprite": "npc_preserver_captain",
+            "x": 17,
+            "y": 34,
+            "dialogue": "preserver-captain-a"
+          },
+          {
+            "id": "preserver-captain-b",
+            "sprite": "npc_preserver_captain",
+            "x": 22,
+            "y": 34,
+            "dialogue": "preserver-captain-b"
+          }
+        ],
+        "transitions": [
+          {
+            "id": "undrawn-peaks-south-gate",
+            "x": 20,
+            "y": 39,
+            "targetMap": "hollow-ridge",
+            "targetX": 25,
+            "targetY": 0,
+            "condition": "After MQ-07"
+          },
+          {
+            "id": "undrawn-peaks-east-gate",
+            "x": 39,
+            "y": 25,
+            "targetMap": "half-drawn-forest",
+            "targetX": 0,
+            "targetY": 10,
+            "condition": "After MQ-08"
+          },
+          {
+            "id": "undrawn-peaks-down-gate",
+            "x": 19,
+            "y": 35,
+            "targetMap": "preserver-fortress-f1",
+            "targetX": 10,
+            "targetY": 0,
+            "condition": "After MQ-08 (gate solidified)"
+          }
+        ],
+        "resonanceStones": [
+          {
+            "id": "RS-UP-01",
+            "x": 19,
+            "y": 4,
+            "fragment": "1 fragment (awe/wind/4)"
+          },
+          {
+            "id": "RS-UP-02",
+            "x": 19,
+            "y": 34,
+            "fragment": "Broadcast target"
+          },
+          {
+            "id": "RS-UP-03",
+            "x": 10,
+            "y": 15,
+            "fragment": "1 fragment (fury/fire/3)"
+          },
+          {
+            "id": "RS-UP-04",
+            "x": 30,
+            "y": 25,
+            "fragment": "1 fragment (sorrow/earth/3)"
+          },
+          {
+            "id": "RS-UP-05",
+            "x": 20,
+            "y": 20,
+            "fragment": "Broadcast target"
+          }
+        ],
+        "playerSpawn": {
+          "x": 40,
+          "y": 40
+        }
+      }
+    },
+    {
+      "id": "half-drawn-forest",
+      "name": "Half-Drawn Forest",
+      "type": "town",
+      "position": "side",
+      "importance": "minor",
+      "town": {
+        "size": "town",
+        "mapSize": [
+          80,
+          80
+        ],
+        "services": [],
+        "houses": 1
+      },
+      "quests": [],
+      "npcs": [],
+      "events": [
+        {
+          "id": "EV-HDF-001",
+          "trigger": "action",
+          "quest": "MQ-08",
+          "repeat": "once",
+          "description": "Living Sketch: broadcast to solidify forest section"
+        },
+        {
+          "id": "EV-HDF-002",
+          "trigger": "action",
+          "repeat": "once",
+          "description": "Archive of Intentions: dissolved memory lore"
+        },
+        {
+          "id": "EV-HDF-003",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "Sketch Passage -> Depths Level 5"
+        },
+        {
+          "id": "EV-HDF-004",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "West edge -> Flickerveil (48, 25)"
+        },
+        {
+          "id": "EV-HDF-005",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "NW edge -> Undrawn Peaks (39, 25)"
+        },
+        {
+          "id": "EV-HDF-006",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "South edge -> Luminous Wastes (20, 0)"
+        },
+        {
+          "id": "EV-HDF-007",
+          "trigger": "action",
+          "quest": "MQ-08",
+          "repeat": "once",
+          "description": "5 Resonance Stones activated in sequence to navigate"
+        }
+      ],
+      "mapLayout": {
+        "biome": "sketch-forest",
+        "palette": "desert-sketch",
+        "defaultGround": "ground.grass",
+        "music": "bgm-half-drawn-forest",
+        "tileSize": 16,
+        "mapSize": [
+          80,
+          80
+        ],
+        "areas": [
+          {
+            "id": "outline-structure",
+            "name": "The Living Sketch",
+            "x": 36,
+            "y": 46,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "desert-ruins",
+            "name": "Archive of Intentions",
+            "x": 56,
+            "y": 16,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-entrance",
+            "name": "Sketch Passage",
+            "x": 26,
+            "y": 72,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          }
+        ],
+        "transitions": [
+          {
+            "id": "half-drawn-forest-west-gate",
+            "x": 0,
+            "y": 20,
+            "targetMap": "flickerveil",
+            "targetX": 48,
+            "targetY": 25,
+            "condition": "After MQ-07"
+          },
+          {
+            "id": "half-drawn-forest-nw-gate",
+            "x": 0,
+            "y": 10,
+            "targetMap": "undrawn-peaks",
+            "targetX": 39,
+            "targetY": 25,
+            "condition": "After MQ-08"
+          },
+          {
+            "id": "half-drawn-forest-south-gate",
+            "x": 20,
+            "y": 39,
+            "targetMap": "luminous-wastes",
+            "targetX": 20,
+            "targetY": 0,
+            "condition": "After MQ-08"
+          },
+          {
+            "id": "half-drawn-forest-down-gate",
+            "x": 13,
+            "y": 36,
+            "targetMap": "depths-level-5",
+            "targetX": 10,
+            "targetY": 0,
+            "condition": "After MQ-08"
+          }
+        ],
+        "resonanceStones": [
+          {
+            "id": "RS-HF2-01",
+            "x": 20,
+            "y": 25,
+            "fragment": "1 fragment (created by broadcasting)"
+          },
+          {
+            "id": "RS-HF2-02",
+            "x": 28,
+            "y": 9,
+            "fragment": "2 fragments (awe/neutral/3 each)"
+          },
+          {
+            "id": "RS-HF2-03",
+            "x": 29,
+            "y": 10,
+            "fragment": "1 fragment (sorrow/light/3)"
+          },
+          {
+            "id": "RS-HF2-04",
+            "x": 10,
+            "y": 15,
+            "fragment": "1 fragment (calm/earth/3)"
+          },
+          {
+            "id": "RS-HF2-05",
+            "x": 35,
+            "y": 30,
+            "fragment": "1 fragment (fury/wind/3)"
+          },
+          {
+            "id": "MQ-08 trail stones",
+            "x": 5,
+            "y": 20,
+            "fragment": "Trail markers"
+          }
+        ],
+        "treasureChests": [
+          {
+            "id": "CH-HF2-01",
+            "x": 20,
+            "y": 24,
+            "item": "A-13",
+            "quantity": 1,
+            "condition": "Living Sketch reward (after solidification)"
+          },
+          {
+            "id": "CH-HF2-02",
+            "x": 30,
+            "y": 10,
+            "item": "C-SP-09",
+            "quantity": 1,
+            "condition": "Archive of Intentions"
+          },
+          {
+            "id": "CH-HF2-03",
+            "x": 14,
+            "y": 37,
+            "item": "C-SP-03",
+            "quantity": 2,
+            "condition": "Near Depths L5 entrance"
+          }
+        ],
+        "playerSpawn": {
+          "x": 40,
+          "y": 40
+        }
+      }
+    }
+  ],
+  "connectiveTissue": {
+    "pathDensity": "moderate",
+    "safePathRatio": 0.2
+  }
+}
