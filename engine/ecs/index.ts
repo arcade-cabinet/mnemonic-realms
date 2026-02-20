@@ -26,6 +26,17 @@ export type {
 } from './systems/interaction.js';
 export { findInteractable, triggerInteraction } from './systems/interaction.js';
 export { npcAiSystem } from './systems/npc-ai.js';
+export type { MoteType, ParticlePool } from './systems/particles.js';
+export {
+  createParticlePool,
+  getMoteTypeForArea,
+  MOTE_TYPE_NONE,
+  MOTE_TYPE_SPARKLE,
+  MOTE_TYPE_WISP,
+  spawnAreaMotes,
+  spawnMote,
+  updateParticles,
+} from './systems/particles.js';
 export type {
   ForgottenDamageResult,
   VibrancyArea,
