@@ -19,6 +19,10 @@ pnpm lint:fix         # Biome auto-fix
 pnpm test             # Playwright E2E tests
 pnpm test:unit        # Vitest unit tests
 
+# Runtime Content Generation
+pnpm generate:content   # Generate all runtime JSON (maps + encounters)
+pnpm validate:runtime   # Validate generated runtime data
+
 # Assemblage System (gen/ pipeline — still active)
 pnpm assemblage compile-world            # Compile docs/world/ hierarchy -> DDL + maps
 pnpm assemblage emit-runtime [id|all]    # Generate runtime JSON for new engine
@@ -134,22 +138,37 @@ Data-oriented ECS with SoA (struct-of-arrays) storage. Chosen for:
 
 Koota ECS + pure systems + Skia renderers.
 
-- `engine/ecs/` — World, traits, queries
-- `engine/ecs/systems/` — Pure functions: movement, collision, camera, interaction, npc-ai, vibrancy, particles, encounter
-- `engine/renderer/` — Skia Atlas tile/sprite/particle renderers, camera, fog-of-war shader
-- `engine/world/` — Map loader, entity spawner, world transitions
-- `engine/encounters/` — Encounter world system, combat engine, chain executor
-- `engine/audio/` — BGM + SFX with BiquadFilterNode low-pass vibrancy sweep
-- `engine/save/` — Serialization to AsyncStorage/localStorage
-- `engine/inventory/` — Item management, equipment, shop transactions
-- `engine/input.ts` — Platform-agnostic input (keyboard + touch)
+- `engine/ecs/traits.ts` — 19 ECS traits (Position, Velocity, Sprite, Collision, NpcAi, Vibrancy, etc.)
+- `engine/ecs/world.ts` — `createGameWorld()` factory with Koota world
+- `engine/ecs/queries.ts` — 15+ cached queries for system iteration
+- `engine/ecs/systems/` — Pure functions: movement, collision, camera, interaction, npc-ai, vibrancy, particles
+- `engine/renderer/tile-renderer.tsx` — Skia Atlas GPU tile rendering
+- `engine/renderer/sprite-renderer.tsx` — Skia Atlas sprite rendering
+- `engine/renderer/particle-renderer.tsx` — Skia particle effects
+- `engine/renderer/camera.tsx` — Camera tracking + viewport culling
+- `engine/renderer/shader/` — Fog-of-war shader (vibrancy spatial effect)
+- `engine/world/loader.ts` — Runtime map JSON loader
+- `engine/world/spawner.ts` — Entity spawner (NPCs, objects, triggers)
+- `engine/world/transition.ts` — World transition state machine
+- `engine/encounters/types.ts` — Encounter, enemy, combat action types
+- `engine/encounters/combat-engine.ts` — Turn-based combat (pure functions)
+- `engine/encounters/chain.ts` — Encounter chain executor (combat → dialogue → surprise → combat)
+- `engine/audio/music.ts` — BGM state machine with crossfade
+- `engine/audio/sfx.ts` — SFX registry and playback
+- `engine/audio/vibrancy-filter.ts` — BiquadFilterNode low-pass sweep (2000Hz muffled → 20000Hz vivid)
+- `engine/save/quest-tracker.ts` — Quest state management
+- `engine/save/serializer.ts` — Save/load serialization
+- `engine/save/storage.ts` — AsyncStorage/localStorage adapter
+- `engine/inventory/inventory.ts` — Item management and equipment slots
+- `engine/inventory/shop.ts` — Buy/sell transaction logic
+- `engine/input.ts` — Platform-agnostic input (keyboard + touch, action/cancel keys)
 - `engine/game-loop.ts` — 60fps via Reanimated `useFrameCallback`
 
 ### App (`app/`)
 
 Expo Router pages.
 
-- `app/_layout.tsx` — Root layout
+- `app/_layout.tsx` — Root layout with providers
 - `app/index.tsx` — Title screen route
 - `app/game.tsx` — Game canvas route
 
@@ -158,29 +177,40 @@ Expo Router pages.
 React Native components (NOT Skia) overlaying the game canvas.
 
 - `ui/dialogue-box.tsx` — Typewriter text, portraits, choices
-- `ui/combat-ui.tsx` — Split-screen encounter UI
-- `ui/hud.tsx` — Zone placard, HP bar, vibrancy meter
-- `ui/inventory-screen.tsx` — Parchment grid, equipment
+- `ui/combat-ui.tsx` — Split-screen encounter UI (enemies top, commands bottom)
+- `ui/hud/` — HUD components: HP bar, vibrancy meter, zone placard
+- `ui/inventory-screen.tsx` — Parchment grid, equipment slots
 - `ui/shop-screen.tsx` — Buy/sell with keeper personality
 - `ui/quest-log.tsx` — Callum's journal style
-- `ui/title-screen.tsx` — Class selection, logo animation
-- `ui/theme/` — Gluestack UI theme tokens
+- `ui/title-screen/` — Logo animation, menu, class selection
+- `ui/touch-controls.tsx` — Virtual d-pad + action buttons
+- `ui/touch-intent.ts` — Touch input intent mapping
+- `ui/hooks/` — Shared UI hooks (e.g., `use-typewriter.ts`)
+- `ui/theme/` — Gluestack UI theme with warm amber tokens
 
 ### GenAI Pipeline (`gen/`)
 
 - `gen/assemblage/` — Composable map building system
-- `gen/assemblage/pipeline/` — Canvas, TMX serializer, **runtime JSON serializer**, event codegen
+- `gen/assemblage/pipeline/runtime-serializer.ts` — Map JSON serializer
+- `gen/assemblage/pipeline/encounter-serializer.ts` — Encounter JSON serializer
+- `gen/assemblage/pipeline/` — Canvas, TMX serializer, event codegen, region renderer
 - `gen/assemblage/compiler/` — Markdown world compiler, scene compiler
-- `gen/assemblage/catalog/` — Markdown assemblage definitions (atoms -> molecules -> organisms)
-- `gen/ddl/` — Data Definition Layer (scenes, maps, encounters, enemies, items)
-- `gen/schemas/` — Zod schemas for all DDL types
+- `gen/assemblage/catalog/` — Markdown assemblage definitions (atoms → molecules → organisms)
+- `gen/ddl/` — Data Definition Layer (scenes, maps, encounters, enemies, items, skills, quests, regions, etc.)
+- `gen/schemas/` — Zod schemas for all DDL types (including `ddl-encounters.ts`, `ddl-enemies.ts`, `ddl-items.ts`, `ddl-skills.ts`, `ddl-quests.ts`)
 - `gen/manifests/` — Generation status tracking
+
+### Scripts (`scripts/`)
+
+- `scripts/generate-runtime-content.ts` — Generates all runtime JSON (maps + encounters)
+- `scripts/validate-runtime-content.ts` — Validates generated runtime data against schemas
+- `scripts/validation/` — Comprehensive validation suite (maps, sprites, content, events, NPCs, dungeons, puzzles)
 
 ### Data (`data/`)
 
-Runtime JSON output consumed by the engine at load time.
+Runtime JSON output consumed by the engine at load time. Generated by `pnpm generate:content`.
 
-- `data/maps/` — Runtime map JSON (generated by `pnpm assemblage emit-runtime`)
+- `data/maps/` — Runtime map JSON
 - `data/encounters/` — Runtime encounter JSON
 
 ### Bible Docs (`docs/`)
@@ -199,15 +229,19 @@ Runtime JSON output consumed by the engine at load time.
 - **DDL-driven everything**: Maps, encounters, quests, dialogue — all Zod-validated JSON from DDL
 - **Runtime JSON**: Engine loads `data/maps/*.json` directly. No TMX at runtime.
 - **Fog-of-war vibrancy**: Per-area spatial effect, not global shader. Quest-driven.
-- **Audio vibrancy**: BiquadFilterNode low-pass sweep (2000Hz muffled -> 20000Hz vivid)
+- **Audio vibrancy**: BiquadFilterNode low-pass sweep (2000Hz muffled → 20000Hz vivid)
+- **Encounter chaining**: Combat → dialogue → surprise → combat sequences via chain executor
+- **Touch input**: Virtual d-pad + action buttons with intent mapping for mobile play
 
 ### Config Files
 
 - `app.json` — Expo app config
 - `biome.json` — Biome 2.3: 2-space indent, single quotes, semicolons, 100 char width
 - `tsconfig.json` — TypeScript config (excludes `docs/rpgjs-archive/`)
-- `metro.config.js` — Metro bundler (excludes `docs/rpgjs-archive/`)
+- `metro.config.cjs` — Metro bundler (excludes `docs/rpgjs-archive/`)
 - `tailwind.config.js` — NativeWind / Tailwind config
+- `vitest.config.ts` — Vitest unit test config
+- `playwright.config.ts` — Playwright E2E test config
 - `package.json` — Expo + Skia + Koota + Reanimated deps
 
 ### CI

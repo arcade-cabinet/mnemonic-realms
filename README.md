@@ -1,65 +1,53 @@
 # Mnemonic Realms
 
-A single-player 16-bit JRPG about memory as creative vitality. The world is young and unfinished, growing more vivid as players discover and recall memory fragments.
+A single-player 16-bit JRPG about memory as creative vitality. The world is young and unfinished, growing more vivid as players discover and recall memory fragments. Vibrancy manifests as spatial fog-of-war: forgotten areas are dark, partially remembered areas glow through colored haze, and fully remembered areas are crystal clear.
 
-Built with [RPG-JS 4.3.0](https://rpgjs.dev) in standalone mode — runs entirely in the browser.
+Built with **MnemonicEngine** — Expo (React Native) + React Native Skia + Koota ECS. Web-first via Expo web, with iOS/Android architecture ready.
 
-## Development
+> **Note:** RPG-JS has been archived to `docs/rpgjs-archive/`. All active development uses MnemonicEngine.
+
+## Quick Start
 
 ```bash
 pnpm install
-pnpm dev
-# Open http://localhost:3000
+pnpm expo start --web
 ```
 
 ## Commands
 
 ```bash
-pnpm dev              # RPG-JS dev server with hot reload
-pnpm build            # Production build -> dist/
-pnpm lint             # Biome linter
-pnpm test             # Playwright E2E tests
-
-# GenAI pipeline
-pnpm gen build all    # Rebuild manifests from bible docs + DDL
-pnpm gen generate all # Generate assets/code via Gemini
-pnpm gen integrate all # Post-process into main/
-pnpm gen status       # Show generation status
+pnpm expo start --web   # Expo dev server (web)
+pnpm build:web          # Production build -> dist/
+pnpm lint               # Biome linter
+pnpm test               # Playwright E2E tests
+pnpm test:unit          # Vitest unit tests
+pnpm generate:content   # Generate all runtime JSON (maps + encounters)
+pnpm validate:runtime   # Validate generated runtime data
 ```
 
 ## Architecture
 
-**`main/`** — Single RPG-JS module:
-- `main/server/` — Server module: maps, player hooks, database
-- `main/client/` — Client module: spritesheets, GUI components (Vue)
+- **`engine/`** — Koota ECS traits, pure systems, Skia renderers, game loop
+- **`app/`** — Expo Router pages
+- **`ui/`** — React Native overlay components (dialogue, HUD, combat, menus, touch controls)
+- **`gen/`** — Assemblage compiler, DDL schemas, GenAI pipeline, runtime JSON serializer
+- **`data/`** — Generated runtime JSON (maps, encounters) — never hand-edit
+- **`docs/`** — Story bible, world geography, design docs, archived RPG-JS reference
 
-**`gen/`** — GenAI pipeline (manifest-driven asset + code generation):
-- `gen/builders/` — Manifest builders for images and code (7 categories)
-- `gen/config/` — Art direction constants, palette, dimensions
-- `gen/ddl/` — Data Definition Layer: structured game data with Zod validation
-- `gen/generators/` — Gemini API runners for image and code generation
-- `gen/integrators/` — Post-processing: sharp downscale, WebP conversion, code copy
-- `gen/manifests/` — JSON manifests tracking generation status (committed to git)
-- `gen/output/` — Generated assets (gitignored, regenerated from manifests)
-- `gen/schemas/` — Zod schemas for all pipeline data types
-- `gen/scripts/` — Standalone pipeline scripts
-
-**`docs/`** — Authored game bible (source of truth for all content):
-- `docs/design/` — Visual direction, combat, classes, items, enemies, skills, UI specs
-- `docs/story/` — Characters, act scripts, dialogue, quest chains
-- `docs/world/` — Theme, setting, factions, geography, vibrancy system
-- `docs/maps/` — Overworld layout, dungeons, frontier/stagnation zones
-- `docs/bible/` — Master index, implementation order, consistency checks
+See [CLAUDE.md](./CLAUDE.md) for full architecture documentation, critical rules, and development patterns.
 
 ## Tech Stack
 
-- **RPG-JS 4.3.0** — 2D RPG framework (PixiJS rendering, Tiled maps, Vue GUI)
-- **@rpgjs/standalone** — In-process socket mock for single-player browser deployment
-- **Google Gemini** — Image and code generation via `@google/genai`
+- **Expo** — React Native cross-platform framework
+- **React Native Skia** — GPU-accelerated Atlas tile/sprite rendering
+- **Koota** — Data-oriented ECS with SoA storage
+- **Reanimated** — 60fps game loop via `useFrameCallback`
+- **NativeWind / Tailwind** — Utility-first styling
+- **Gluestack UI** — Theme tokens
 - **Zod** — Schema validation for DDL and pipeline data
-- **sharp** — Image post-processing (downscale, format conversion)
 - **TypeScript** — Full type safety
 - **Biome** — Linter and formatter
+- **Vitest** — Unit testing
 - **Playwright** — E2E testing
 - **GitHub Actions** — CI/CD to GitHub Pages
 
