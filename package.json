@@ -4,9 +4,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "RPG_TYPE=rpg rpgjs dev",
-    "build": "RPG_TYPE=rpg rpgjs build",
-    "start": "node dist/server/main.mjs",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "test": "playwright test",
@@ -30,34 +27,11 @@
     "validate:event": "tsx scripts/validation/cli.ts event",
     "validate:content": "tsx scripts/validation/cli.ts content",
     "validate:all": "tsx scripts/validation/cli.ts all",
-    "validate:strict": "tsx scripts/validation/cli.ts all --strict",
-    "build:web": "./scripts/build-web.sh",
-    "build:ios": "./scripts/build-ios.sh",
-    "build:android": "./scripts/build-android.sh",
-    "cap:sync": "npx cap sync"
+    "validate:strict": "tsx scripts/validation/cli.ts all --strict"
   },
   "dependencies": {
-    "@capacitor-community/sqlite": "^8.0.0",
-    "@capacitor/android": "^8.1.0",
-    "@capacitor/app": "^8.0.1",
-    "@capacitor/cli": "^8.1.0",
-    "@capacitor/core": "^8.1.0",
-    "@capacitor/device": "^8.0.1",
-    "@capacitor/haptics": "^8.0.0",
-    "@capacitor/ios": "^8.1.0",
-    "@capacitor/network": "^8.0.1",
-    "@rpgjs/client": "4.3.0",
-    "@rpgjs/database": "^4.3.0",
-    "@rpgjs/default-gui": "^4.3.0",
-    "@rpgjs/gamepad": "^4.3.0",
-    "@rpgjs/mobile-gui": "4.3.0",
-    "@rpgjs/server": "4.3.0",
-    "@rpgjs/standalone": "4.3.0",
-    "@rpgjs/types": "4.0.5",
     "fast-xml-parser": "^5.3.6",
-    "socket.io-client": "4.7.4",
-    "sql.js": "^1.14.0",
-    "vue": "^3.5.0"
+    "sql.js": "^1.14.0"
   },
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.78.0",
@@ -65,7 +39,6 @@
     "@google/genai": "^1.41.0",
     "@modelcontextprotocol/sdk": "^1.26.0",
     "@playwright/test": "^1.58.2",
-    "@rpgjs/compiler": "4.3.0",
     "@types/better-sqlite3": "^7.6.13",
     "@types/sharp": "^0.32.0",
     "better-sqlite3": "^12.6.2",
@@ -100,8 +73,6 @@
       "@babel/traverse": "7.26.10",
       "@babel/types": "7.26.10"
     },
-    "patchedDependencies": {
-      "@rpgjs/compiler": "patches/@rpgjs__compiler.patch"
-    }
+    "patchedDependencies": {}
   }
 }
