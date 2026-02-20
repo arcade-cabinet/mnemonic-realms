@@ -1,78 +1,74 @@
 import { test, expect, type Page } from '@playwright/test';
 
-async function waitForGameReady(page: Page) {
-  await page.locator('#rpg > canvas').waitFor({ state: 'attached', timeout: 15_000 });
-  await page.waitForTimeout(2000);
+/**
+ * Wait for the title screen menu to be ready.
+ * The logo phase types "MNEMONIC REALMS" letter-by-letter, then fades to menu.
+ */
+async function waitForTitleMenu(page: Page) {
+  await expect(page.getByText('New Journey')).toBeVisible({ timeout: 15_000 });
 }
 
 test.describe('Title Screen', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
-    await waitForGameReady(page);
   });
 
-  test('title screen GUI is visible', async ({ page }) => {
-    const titleScreen = page.locator('.title-screen');
-    await expect(titleScreen.first()).toBeVisible({ timeout: 5_000 });
+  test('title text animates in', async ({ page }) => {
+    // The logo phase renders "MNEMONIC REALMS" via letter-by-letter animation
+    await expect(page.getByText('MNEMONIC REALMS')).toBeVisible({ timeout: 10_000 });
   });
 
-  test('shows all four class options', async ({ page }) => {
-    // Open the New Quest modal to access class selection
-    const newQuestBtn = page.locator('.menu-btn').first();
-    await expect(newQuestBtn).toBeVisible({ timeout: 5_000 });
-    await newQuestBtn.click();
+  test('menu shows New Journey and Settings', async ({ page }) => {
+    await waitForTitleMenu(page);
+
+    await expect(page.getByText('New Journey')).toBeVisible();
+    await expect(page.getByText('Settings')).toBeVisible();
+  });
+
+  test('shows all four class options after clicking New Journey', async ({ page }) => {
+    await waitForTitleMenu(page);
+
+    // Click "New Journey" to enter class selection
+    await page.getByText('New Journey').click();
     await page.waitForTimeout(500);
 
-    // The carousel shows one class at a time — verify all 4 by cycling through pips
-    const pips = page.locator('.pip');
-    await expect(pips).toHaveCount(4, { timeout: 5_000 });
+    // "Choose Your Path" heading should appear
+    await expect(page.getByText('Choose Your Path')).toBeVisible({ timeout: 5_000 });
 
-    const classNames: string[] = [];
-    for (let i = 0; i < 4; i++) {
-      await pips.nth(i).click();
-      await page.waitForTimeout(200);
-      const name = await page.locator('.class-name').innerText();
-      classNames.push(name.toLowerCase());
-    }
-
-    for (const cls of ['knight', 'mage', 'rogue', 'cleric']) {
-      expect(
-        classNames.some((n) => n.includes(cls)),
-        `Missing class: ${cls}`,
-      ).toBe(true);
+    // All four class names should be visible
+    for (const cls of ['Knight', 'Mage', 'Rogue', 'Cleric']) {
+      await expect(page.getByText(cls, { exact: true })).toBeVisible({ timeout: 5_000 });
     }
   });
 
-  test('class selection buttons are interactive', async ({ page }) => {
-    // Open New Quest modal
-    const newQuestBtn = page.locator('.menu-btn').first();
-    await expect(newQuestBtn).toBeVisible({ timeout: 5_000 });
-    await newQuestBtn.click();
+  test('class selection has Back and Begin buttons', async ({ page }) => {
+    await waitForTitleMenu(page);
+
+    await page.getByText('New Journey').click();
     await page.waitForTimeout(500);
 
-    // Carousel arrows are the class navigation buttons
-    const nextArrow = page.locator('.carousel-next');
-    await expect(nextArrow).toBeVisible({ timeout: 5_000 });
-    await nextArrow.click();
-
-    // Verify class changed (second class should now be active)
-    const activePip = page.locator('.pip.active');
-    await expect(activePip).toBeVisible();
+    await expect(page.getByText('Back')).toBeVisible({ timeout: 5_000 });
+    await expect(page.getByText('Begin')).toBeVisible({ timeout: 5_000 });
   });
 
-  test('"Embark" button exists', async ({ page }) => {
-    // Open New Quest modal
-    const newQuestBtn = page.locator('.menu-btn').first();
-    await expect(newQuestBtn).toBeVisible({ timeout: 5_000 });
-    await newQuestBtn.click();
+  test('Back button returns to menu from class selection', async ({ page }) => {
+    await waitForTitleMenu(page);
+
+    await page.getByText('New Journey').click();
     await page.waitForTimeout(500);
 
-    const embarkBtn = page.locator('.embark-btn');
-    await expect(embarkBtn).toBeVisible({ timeout: 5_000 });
+    // Click Back to return to menu
+    await page.getByText('Back').click();
+    await page.waitForTimeout(500);
+
+    // Menu options should be visible again
+    await expect(page.getByText('New Journey')).toBeVisible({ timeout: 5_000 });
   });
 
   test('no seed input is shown to the player', async ({ page }) => {
-    // Seed is buried internally (v2 creative direction). No seed UI allowed.
+    await waitForTitleMenu(page);
+
+    // Seed is buried internally (creative direction). No seed UI allowed.
     const seedInput = page.locator('input[type="text"]');
     expect(await seedInput.count()).toBe(0);
   });

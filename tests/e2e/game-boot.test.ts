@@ -13,20 +13,17 @@ test.describe('Game Boot', () => {
     expect(critical).toEqual([]);
   });
 
-  test('RPG container exists', async ({ page }) => {
+  test('Expo web root container exists', async ({ page }) => {
     await page.goto('/');
-    await expect(page.locator('#rpg')).toBeAttached();
+    // Expo web renders into a root <div id="root"> container
+    await expect(page.locator('#root')).toBeAttached({ timeout: 10_000 });
   });
 
-  test('PixiJS canvas renders with non-zero dimensions', async ({ page }) => {
+  test('title screen renders visible content', async ({ page }) => {
     await page.goto('/');
-    const canvas = page.locator('#rpg > canvas');
-    await expect(canvas).toBeAttached({ timeout: 15_000 });
-
-    const box = await canvas.boundingBox();
-    expect(box).not.toBeNull();
-    expect(box!.width).toBeGreaterThan(0);
-    expect(box!.height).toBeGreaterThan(0);
+    // The title screen renders "MNEMONIC REALMS" via letter-by-letter animation.
+    // Wait for the text to appear (logo phase completes within ~2s).
+    await expect(page.getByText('MNEMONIC REALMS')).toBeVisible({ timeout: 10_000 });
   });
 
   test('no asset 404s on load', async ({ page }) => {
@@ -57,22 +54,5 @@ test.describe('Game Boot', () => {
     await page.goto('/');
     await page.waitForTimeout(5000);
     expect(errors).toEqual([]);
-  });
-
-  test('Vue GUI layer mounts alongside canvas', async ({ page }) => {
-    await page.goto('/');
-    await page.locator('#rpg > canvas').waitFor({ state: 'attached', timeout: 15_000 });
-
-    const guiLayerCount = await page.evaluate(() => {
-      const rpg = document.querySelector('#rpg');
-      if (!rpg) return 0;
-      let count = 0;
-      for (const child of rpg.children) {
-        if (child.tagName !== 'CANVAS') count++;
-      }
-      return count;
-    });
-
-    expect(guiLayerCount).toBeGreaterThan(0);
   });
 });

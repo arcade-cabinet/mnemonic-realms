@@ -1,44 +1,42 @@
 import { test, expect, type Page } from '@playwright/test';
 
-async function waitForGameReady(page: Page) {
-  await page.locator('#rpg > canvas').waitFor({ state: 'attached', timeout: 15_000 });
-  await page.waitForTimeout(2000);
+/**
+ * Wait for the title screen menu to be ready.
+ */
+async function waitForTitleMenu(page: Page) {
+  await expect(page.getByText('New Journey')).toBeVisible({ timeout: 15_000 });
 }
 
-/** Open New Quest modal, then click Embark on Your Quest. */
+/**
+ * Navigate from title screen → class selection → game start.
+ */
 async function startGame(page: Page) {
-  // Click "New Quest" — first enabled menu button
-  const newQuestBtn = page.locator('.menu-btn').first();
-  await expect(newQuestBtn).toBeVisible({ timeout: 5_000 });
-  await newQuestBtn.click();
+  await waitForTitleMenu(page);
+
+  // Click "New Journey" to enter class selection
+  await page.getByText('New Journey').click();
   await page.waitForTimeout(500);
 
-  // Click "Embark on Your Quest"
-  const embarkBtn = page.locator('.embark-btn');
-  await expect(embarkBtn).toBeVisible({ timeout: 5_000 });
-  await embarkBtn.click();
-  await page.waitForTimeout(3000);
+  // Click "Begin" to start the game
+  await expect(page.getByText('Begin')).toBeVisible({ timeout: 5_000 });
+  await page.getByText('Begin').click();
+  await page.waitForTimeout(1000);
 }
 
 test.describe('Overworld', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
-    await waitForGameReady(page);
   });
 
-  test('player spawns on everwick after class selection', async ({ page }) => {
+  test('game page loads after class selection', async ({ page }) => {
     await startGame(page);
 
-    // Title screen should be gone
-    const titleScreen = page.locator('.title-screen');
-    expect(await titleScreen.count()).toBe(0);
+    // After starting, Expo Router navigates to /game
+    // The game page shows "Game Canvas — MnemonicEngine" placeholder
+    await expect(page.getByText('Game Canvas')).toBeVisible({ timeout: 10_000 });
 
-    // Canvas still rendering
-    const canvas = page.locator('#rpg > canvas');
-    await expect(canvas).toBeAttached();
-    const box = await canvas.boundingBox();
-    expect(box).not.toBeNull();
-    expect(box!.width).toBeGreaterThan(0);
+    // Title screen text should no longer be visible
+    await expect(page.getByText('MNEMONIC REALMS')).not.toBeVisible();
   });
 
   test('no errors during game start', async ({ page }) => {
@@ -54,25 +52,30 @@ test.describe('Overworld', () => {
     });
 
     await startGame(page);
-    expect(errors).toEqual([]);
+    await page.waitForTimeout(2000);
+
+    const critical = errors.filter((msg) => !msg.includes('ResizeObserver'));
+    expect(critical).toEqual([]);
   });
 
-  test('movement keys work without errors', async ({ page }) => {
+  test('movement keys do not crash the game page', async ({ page }) => {
     await startGame(page);
 
     const errors: string[] = [];
     page.on('pageerror', (error) => errors.push(error.message));
 
+    // Press arrow keys on the game page — should not cause errors
     for (const key of ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight']) {
       await page.keyboard.press(key);
       await page.waitForTimeout(200);
     }
 
-    await expect(page.locator('#rpg > canvas')).toBeAttached();
+    // Game page should still be rendered
+    await expect(page.getByText('Game Canvas')).toBeVisible();
     expect(errors).toEqual([]);
   });
 
-  test('held movement is stable', async ({ page }) => {
+  test('held movement keys are stable on game page', async ({ page }) => {
     await startGame(page);
 
     const errors: string[] = [];
@@ -86,16 +89,18 @@ test.describe('Overworld', () => {
     await page.waitForTimeout(1000);
     await page.keyboard.up('ArrowRight');
 
-    await expect(page.locator('#rpg > canvas')).toBeAttached();
+    // Game page should still be rendered
+    await expect(page.getByText('Game Canvas')).toBeVisible();
     expect(errors).toEqual([]);
   });
 
   test('title screen is dismissed after starting', async ({ page }) => {
-    const initialText = await page.locator('#rpg').innerText();
+    // Capture initial page content
+    const initialContent = await page.locator('#root').innerText();
     await startGame(page);
-    const currentText = await page.locator('#rpg').innerText();
+    const gameContent = await page.locator('#root').innerText();
 
     // UI must have changed — we're no longer on the title screen
-    expect(currentText).not.toBe(initialText);
+    expect(gameContent).not.toBe(initialContent);
   });
 });
