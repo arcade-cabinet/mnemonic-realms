@@ -11,7 +11,7 @@ import { increaseVibrancy } from '../../systems/vibrancy';
 })
 export default class MoralDilemmaGardenEvent extends RpgEvent {
   private hasTriggered = false;
-  private callumEventId: string | null = null;
+  private artunEventId: string | null = null;
 
   onInit() {
     this.set({
@@ -39,7 +39,7 @@ export default class MoralDilemmaGardenEvent extends RpgEvent {
   async triggerScene(player: RpgPlayer) {
     // 1. Spawn Artun
     // NOTE: getEvent not available in RPG-JS 4.3.0 — use createDynamicEvent return value directly
-    const callumEvent = await player.map.createDynamicEvent({
+    const artunEvent = await player.map.createDynamicEvent({
       x: 27, // Position Artun near the garden
       y: 32,
       id: 'callum_garden_dilemma_npc',
@@ -48,10 +48,10 @@ export default class MoralDilemmaGardenEvent extends RpgEvent {
       speed: 0,
       // Artun is static for this scene
     });
-    this.callumEventId = callumEvent?.id ?? null;
+    this.artunEventId = artunEvent?.id ?? null;
 
-    if (callumEvent) {
-      await callumEvent.moveRoutes([
+    if (artunEvent) {
+      await artunEvent.moveRoutes([
         Move.tile(27, 32), // Ensure Artun is at the correct spot
       ]);
     }
@@ -176,8 +176,8 @@ export default class MoralDilemmaGardenEvent extends RpgEvent {
     }
 
     // 8. Clean up Artun
-    if (callumEvent) {
-      await callumEvent.remove();
+    if (artunEvent) {
+      await artunEvent.remove();
     }
 
     // Ensure this event doesn't trigger again

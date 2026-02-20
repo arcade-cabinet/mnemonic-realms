@@ -4,7 +4,7 @@ import { database } from '../database';
 import { FrontierMap } from './maps/frontier';
 import { SettledLandsMap } from './maps/settled-lands';
 import { SketchRealmMap } from './maps/sketch-realm';
-// --- Legacy zone maps (kept as child worlds / interiors) ---
+// --- Legacy zone maps (kept as child worlds) ---
 import { AmbergroveMap } from './maps/ambergrove';
 import { DepthsLevel1Map } from './maps/depths-level-1-memory-cellar';
 import { DepthsLevel2Map } from './maps/depths-level-2-drowned-archive';
@@ -34,7 +34,7 @@ import { player } from './player';
     SettledLandsMap,
     FrontierMap,
     SketchRealmMap,
-    // Legacy zone maps (child worlds / interiors)
+    // Legacy zone maps (child worlds)
     EverwickMap,
     HeartfieldMap,
     AmbergroveMap,

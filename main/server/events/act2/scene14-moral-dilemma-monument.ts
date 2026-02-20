@@ -38,7 +38,7 @@ export default class MoralDilemmaMonument extends RpgEvent {
 
       // 1. Spawn NPCs
       // Artun (npc_artun)
-      const _callumEvent = await player.map.createDynamicEvent({
+      const _artunEvent = await player.map.createDynamicEvent({
         x: 31, // Slightly offset from the monument for interaction
         y: 6,
         event: {
@@ -86,7 +86,7 @@ export default class MoralDilemmaMonument extends RpgEvent {
       //     }
       //     player.gui('moral-choice').close();
       //     // Remove Artun after the choice is made
-      //     player.map.removeEvent(callumEvent.id);
+      //     player.map.removeEvent(artunEvent.id);
       // });
 
       // 5. Update quest state (handled by GUI choice)

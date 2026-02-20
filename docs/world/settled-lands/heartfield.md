@@ -6,6 +6,39 @@ size: [80, 80]
 vibrancy: 55
 palette: village-premium
 music: bgm-heartfield
+assemblages:
+  - ref: house-hay-small
+    position: [13, 13]
+    meta: {name: "Gale's Farmstead"}
+  - ref: house-hay-small
+    position: [17, 13]
+    meta: {name: "Suri's Farmstead"}
+  - ref: house-hay-small
+    position: [15, 17]
+    meta: {name: "Edric's Farmstead"}
+  - ref: house-hay-small
+    position: [19, 16]
+    meta: {name: "Hamlet Well House"}
+  - ref: house-hay-small
+    position: [21, 14]
+    meta: {name: "Elder's Cottage"}
+  - ref: watermill
+    position: [30, 8]
+    meta: {name: "The Old Windmill"}
+  - ref: forest-clearing
+    position: [33, 28]
+    meta: {name: "Stagnation Clearing"}
+  - ref: road-intersection
+    position: [20, 38]
+    meta: {name: "Southern Crossroads"}
+  - ref: farm-field
+    position: [2, 5]
+    meta: {name: "Western Wheat Fields"}
+  - ref: farm-field
+    position: [22, 5]
+    meta: {name: "Eastern Wheat Fields"}
+  - ref: forest-border
+    edge: north
 ---
 
 # Heartfield
@@ -18,15 +51,15 @@ Starting vibrancy 55 (Normal tier).
 
 ## Key Areas
 
-| Area | Position | Size | Description |
-|------|----------|------|-------------|
-| Heartfield Hamlet | (13, 13) | 10x10 | 5 farmsteads, well, cart path. NPC cluster. |
-| The Old Windmill | (30, 8) | 4x5 | Hilltop windmill. SQ-02 dungeon entrance. Sails turn at vibrancy 50+. |
-| Stagnation Clearing | (33, 28) | 5x5 | Crystallized grass, frozen butterflies. MQ-04 climax location. |
-| Southern Crossroads | (20, 38) | 3x3 | Road junction. Locked transition to Frontier (Act II). |
-| Wheat Fields (west) | (2, 5) | 12x15 | Dense wheat; Meadow Sprite + Grass Serpent spawn zone |
-| Wheat Fields (east) | (22, 5) | 10x12 | Sparser wheat; Grass Serpent spawn zone |
-| Stream | (5, 20) -> (5, 35) | 2-wide | Irrigation stream running N-S on west side |
+| Area | Position | Size | Assemblage | Description |
+|------|----------|------|------------|-------------|
+| Heartfield Hamlet | (13, 13) | 10x10 | [house-hay-small](../../../gen/assemblage/catalog/organisms/buildings/house-hay-small.md) x5 | 5 farmsteads, well, cart path. NPC cluster. |
+| The Old Windmill | (30, 8) | 4x5 | [watermill](../../../gen/assemblage/catalog/organisms/terrain/watermill.md) | Hilltop windmill. SQ-02 dungeon entrance. Sails turn at vibrancy 50+. |
+| Stagnation Clearing | (33, 28) | 5x5 | [forest-clearing](../../../gen/assemblage/catalog/organisms/terrain/forest-clearing.md) | Crystallized grass, frozen butterflies. MQ-04 climax location. |
+| Southern Crossroads | (20, 38) | 3x3 | [road-intersection](../../../gen/assemblage/catalog/organisms/terrain/road-intersection.md) | Road junction. Locked transition to Frontier (Act II). |
+| Wheat Fields (west) | (2, 5) | 12x15 | [farm-field](../../../gen/assemblage/catalog/organisms/terrain/farm-field.md) | Dense wheat; Meadow Sprite + Grass Serpent spawn zone |
+| Wheat Fields (east) | (22, 5) | 10x12 | [farm-field](../../../gen/assemblage/catalog/organisms/terrain/farm-field.md) | Sparser wheat; Grass Serpent spawn zone |
+| Stream | (5, 20) -> (5, 35) | 2-wide | -- | Irrigation stream running N-S on west side |
 
 ## NPCs
 

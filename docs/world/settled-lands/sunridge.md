@@ -6,6 +6,19 @@ size: [80, 80]
 vibrancy: 40
 palette: village-premium
 music: bgm-sunridge
+assemblages:
+  - ref: house-hay-large
+    position: [18, 18]
+    meta: {name: "Ridgetop Waystation"}
+  - ref: mountain-shrine
+    position: [8, 6]
+    meta: {name: "Wind Shrine"}
+  - ref: sunridge-lookout
+    position: [30, 13]
+    meta: {name: "Preserver Outpost"}
+  - ref: mountain-path
+    position: [18, 0]
+    meta: {name: "The Threshold"}
 ---
 
 # Sunridge
@@ -18,13 +31,13 @@ Starting vibrancy 40 (Normal tier).
 
 ## Key Areas
 
-| Area | Position | Size | Description |
-|------|----------|------|-------------|
-| Ridgetop Waystation | (18, 18) | 5x5 | Traveler's outpost, 3 NPCs, rotating merchant. Rest point. |
-| Wind Shrine | (8, 6) | 4x4 | Ruined shrine on highest point. Kinesis hint. Vibrating Resonance Stone. |
-| Preserver Outpost | (30, 13) | 5x4 | Crystallized watchtower. SQ-05 location (Janik). |
-| The Threshold | (18, 0) | 6x2 | Northern map edge. Visual transition to Frontier shimmer. |
-| Highland Grass | (5, 10) -> (35, 35) | -- | Primary enemy spawn zone (hawks, golems) |
+| Area | Position | Size | Assemblage | Description |
+|------|----------|------|------------|-------------|
+| Ridgetop Waystation | (18, 18) | 5x5 | [house-hay-large](../../../gen/assemblage/catalog/organisms/buildings/house-hay-large.md) | Traveler's outpost, 3 NPCs, rotating merchant. Rest point. |
+| Wind Shrine | (8, 6) | 4x4 | [mountain-shrine](../../../gen/assemblage/catalog/organisms/terrain/mountain/mountain-shrine.md) | Ruined shrine on highest point. Kinesis hint. Vibrating Resonance Stone. |
+| Preserver Outpost | (30, 13) | 5x4 | [sunridge-lookout](../../../gen/assemblage/catalog/organisms/terrain/mountain/sunridge-lookout.md) | Crystallized watchtower. SQ-05 location (Janik). |
+| The Threshold | (18, 0) | 6x2 | [mountain-path](../../../gen/assemblage/catalog/organisms/terrain/mountain/mountain-path.md) | Northern map edge. Visual transition to Frontier shimmer. |
+| Highland Grass | (5, 10) -> (35, 35) | -- | -- | Primary enemy spawn zone (hawks, golems) |
 
 ## NPCs
 
@@ -33,7 +46,7 @@ Starting vibrancy 40 (Normal tier).
 | Waystation Keeper | (19, 19) | Static | `npc_keeper_f1` | -- (rest dialogue, rumors) |
 | Traveling Merchant | (20, 20) | Appears on rotation (visits every 3 game-hours) | `npc_merchant_m1` | -- |
 | Waystation Guard | (17, 18) | Patrols waystation perimeter | `npc_guard_m2` | -- |
-| Janik | (31, 14) | Static at Preserver Outpost perimeter (appears after MQ-04) | `npc_aric` | SQ-05 |
+| Janik | (31, 14) | Static at Preserver Outpost perimeter (appears after MQ-04) | `npc_janik` | SQ-05 |
 
 ## Events
 

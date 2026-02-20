@@ -6,6 +6,19 @@ size: [100, 100]
 vibrancy: 15
 palette: frontier-seasons
 music: bgm-resonance-fields
+assemblages:
+  - ref: resonance-point
+    position: [23, 23]
+    meta: {name: "Resonance's Amphitheater"}
+  - ref: ridge-camp
+    position: [8, 33]
+    meta: {name: "Listener's Camp"}
+  - ref: frontier-gate
+    position: [38, 13]
+    meta: {name: "Preserver Cathedral"}
+  - ref: resonance-point
+    position: [28, 43]
+    meta: {name: "Singing Stones"}
 ---
 
 # Resonance Fields
@@ -18,13 +31,13 @@ Starting vibrancy 15 (Muted tier). Resonant emotion: Awe. Element affinity: Wind
 
 ## Key Areas
 
-| Area | Position | Size | Description |
-|------|----------|------|-------------|
-| Resonance's Amphitheater | (23, 23) | 8x8 | Natural bowl. Dormant god Resonance. Massive stone ring. |
-| Listener's Camp | (8, 33) | 6x5 | 4 audiomancer NPCs. SQ-09 and SQ-13 quest hub. |
-| Preserver Cathedral | (38, 13) | 8x6 | Largest Preserver installation. Silences all memory within 10 tiles. |
-| Singing Stones | (28, 43) | 6x3 | Line of Resonance Stones. Sequential activation -> Depths L4 entrance. |
-| Standing Stone Forest | throughout | -- | Scattered Resonance Stones across the plains |
+| Area | Position | Size | Assemblage | Description |
+|------|----------|------|------------|-------------|
+| Resonance's Amphitheater | (23, 23) | 8x8 | [resonance-point](../../../gen/assemblage/catalog/organisms/terrain/frontier/resonance-point.md) | Natural bowl. Dormant god Resonance. Massive stone ring. |
+| Listener's Camp | (8, 33) | 6x5 | [ridge-camp](../../../gen/assemblage/catalog/organisms/terrain/frontier/ridge-camp.md) | 4 audiomancer NPCs. SQ-09 and SQ-13 quest hub. |
+| Preserver Cathedral | (38, 13) | 8x6 | [frontier-gate](../../../gen/assemblage/catalog/organisms/terrain/frontier/frontier-gate.md) | Largest Preserver installation. Silences all memory within 10 tiles. |
+| Singing Stones | (28, 43) | 6x3 | [resonance-point](../../../gen/assemblage/catalog/organisms/terrain/frontier/resonance-point.md) | Line of Resonance Stones. Sequential activation -> Depths L4 entrance. |
+| Standing Stone Forest | throughout | -- | -- | Scattered Resonance Stones across the plains |
 
 ## NPCs
 

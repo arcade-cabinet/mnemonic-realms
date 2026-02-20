@@ -51,7 +51,7 @@ export class TheClearingGrowsEvent extends RpgEvent {
 
     // --- Part A: Artun's Warning (in Everwick) ---
     // Dynamically spawn Artun in his house (18, 10)
-    const callumEvent = await player.map.createDynamicEvent({
+    const artunEvent = await player.map.createDynamicEvent({
       x: 18,
       y: 10,
       event: class ArtunScene11 extends RpgEvent {
@@ -80,16 +80,16 @@ export class TheClearingGrowsEvent extends RpgEvent {
     await player.showText("...they're pushing back.");
 
     // Remove Artun's dynamic event
-    await player.map.removeEvent(callumEvent.id);
+    await player.map.removeEvent(artunEvent.id);
 
     // --- Part B: The Expansion (Transition to Heartfield) ---
     await player.teleport('heartfield', 35, 30); // Player and Hana run to Heartfield
 
     // Play cutscene: Hana freezing
-    await player.playCutscene('lira-freezing'); // This cutscene handles the visual expansion and Hana's initial actions
+    await player.playCutscene('hana-freezing'); // This cutscene handles the visual expansion and Hana's initial actions
 
     // Dynamically spawn Hana (frozen) at the stagnation border
-    const _liraFrozenEvent = await player.map.createDynamicEvent({
+    const _hanaFrozenEvent = await player.map.createDynamicEvent({
       x: 34,
       y: 29,
       event: class HanaFrozenScene11 extends RpgEvent {
@@ -101,11 +101,11 @@ export class TheClearingGrowsEvent extends RpgEvent {
         }
 
         async onAction(player: RpgPlayer) {
-          if (!player.getVariable('LIRA_FROZEN_HAMMERED')) {
+          if (!player.getVariable('HANA_FROZEN_HAMMERED')) {
             await player.showText(
               "You hammer against the crystal. It doesn't break. It doesn't even crack.",
             );
-            player.setVariable('LIRA_FROZEN_HAMMERED', true);
+            player.setVariable('HANA_FROZEN_HAMMERED', true);
           } else {
             await player.showText('The crystal remains unyielding.');
           }

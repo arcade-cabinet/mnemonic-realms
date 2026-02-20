@@ -6,6 +6,25 @@ size: [100, 100]
 vibrancy: 20
 palette: snow-mountain
 music: bgm-hollow-ridge
+assemblages:
+  - ref: resonance-point
+    position: [23, 8]
+    meta: {name: "Kinesis Spire"}
+  - ref: ridge-camp
+    position: [13, 23]
+    meta: {name: "Ridgewalker Camp"}
+  - ref: mountain-path
+    position: [33, 28]
+    meta: {name: "Shattered Pass"}
+  - ref: dungeon-entrance
+    position: [38, 3]
+    meta: {name: "Echo Caverns", target: depths-l3}
+  - ref: cliff-face
+    position: [5, 5]
+    meta: {name: "Ridge Overlook"}
+  - ref: mountain-path
+    position: [25, 40]
+    meta: {name: "Mountain Trail"}
 ---
 
 # Hollow Ridge
@@ -18,20 +37,20 @@ Starting vibrancy 20 (Muted tier). Resonant emotion: Fury. Element affinity: Fir
 
 ## Key Areas
 
-| Area | Position | Size | Description |
-|------|----------|------|-------------|
-| Kinesis Spire | (23, 8) | 3x8 | Vibrating rock pillar. Dormant god Kinesis. Recall location. |
-| Ridgewalker Camp | (13, 23) | 8x8 | Frontier settlement. 6 NPCs, merchant, quest hub. |
-| Shattered Pass | (33, 28) | 8x6 | Partially crystallized mountain pass. Stagnation puzzle. |
-| Echo Caverns | (38, 3) | 3x3 | Depths Level 3 entrance. |
-| Mountain Trail (south) | (25, 40) -> (25, 49) | -- | Approach from Sunridge |
-| Ridge Overlook | (5, 5) | 4x4 | Scenic viewpoint. Narrative beat. |
+| Area | Position | Size | Assemblage | Description |
+|------|----------|------|------------|-------------|
+| Kinesis Spire | (23, 8) | 3x8 | [resonance-point](../../../gen/assemblage/catalog/organisms/terrain/frontier/resonance-point.md) | Vibrating rock pillar. Dormant god Kinesis. Recall location. |
+| Ridgewalker Camp | (13, 23) | 8x8 | [ridge-camp](../../../gen/assemblage/catalog/organisms/terrain/frontier/ridge-camp.md) | Frontier settlement. 6 NPCs, merchant, quest hub. |
+| Shattered Pass | (33, 28) | 8x6 | [mountain-path](../../../gen/assemblage/catalog/organisms/terrain/mountain/mountain-path.md) | Partially crystallized mountain pass. Stagnation puzzle. |
+| Echo Caverns | (38, 3) | 3x3 | [dungeon-entrance](../../../gen/assemblage/catalog/organisms/terrain/dungeon/dungeon-entrance.md) | Depths Level 3 entrance. |
+| Mountain Trail (south) | (25, 40) -> (25, 49) | -- | [mountain-path](../../../gen/assemblage/catalog/organisms/terrain/mountain/mountain-path.md) | Approach from Sunridge |
+| Ridge Overlook | (5, 5) | 4x4 | [cliff-face](../../../gen/assemblage/catalog/organisms/terrain/mountain/cliff-face.md) | Scenic viewpoint. Narrative beat. |
 
 ## NPCs
 
 | NPC | Position | Movement | Graphic | Linked Quests |
 |-----|----------|----------|---------|---------------|
-| Nel | (14, 24) | Static at camp center; patrols camp after GQ-04 | `npc_petra` | MQ-05, SQ-07, GQ-04 |
+| Nel | (14, 24) | Static at camp center; patrols camp after GQ-04 | `npc_nel` | MQ-05, SQ-07, GQ-04 |
 | Ridgewalker Scout | (16, 25) | Patrols camp perimeter (10-20, 20-30) | `npc_ridgewalker_m1` | -- |
 | Ridgewalker Merchant | (15, 26) | Static at camp market stall | `npc_merchant_m2` | -- |
 | Ridgewalker Elder | (12, 22) | Static at campfire | `npc_elder_m2` | -- (lore, Autumnus dialogue post-recall) |

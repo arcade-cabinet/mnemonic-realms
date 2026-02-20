@@ -93,11 +93,11 @@ function stampHamletOnGrid(
 
 describe('Town Organism', () => {
   const bounds = { x: 10, y: 10, width: 45, height: 45 };
-  const interiorIds = ['everwick-khali', 'everwick-hark', 'everwick-inn', 'everwick-artun'];
+  const worldSlotIds = ['everwick-khali', 'everwick-hark', 'everwick-inn', 'everwick-artun'];
 
   it('deterministic: same seed produces identical layout', () => {
-    const layout1 = layoutTown(bounds, EVERWICK_TOWN, interiorIds, SEED);
-    const layout2 = layoutTown(bounds, EVERWICK_TOWN, interiorIds, SEED);
+    const layout1 = layoutTown(bounds, EVERWICK_TOWN, worldSlotIds, SEED);
+    const layout2 = layoutTown(bounds, EVERWICK_TOWN, worldSlotIds, SEED);
 
     expect(layout1.buildings.length).toBe(layout2.buildings.length);
     for (let i = 0; i < layout1.buildings.length; i++) {
@@ -108,7 +108,7 @@ describe('Town Organism', () => {
   });
 
   it('places all service buildings + residential houses', () => {
-    const layout = layoutTown(bounds, EVERWICK_TOWN, interiorIds, SEED);
+    const layout = layoutTown(bounds, EVERWICK_TOWN, worldSlotIds, SEED);
 
     // 4 services + 3 houses = 7 buildings
     expect(layout.buildings.length).toBe(
@@ -120,17 +120,17 @@ describe('Town Organism', () => {
     expect(serviceBuildings.length).toBe(EVERWICK_TOWN.services.length);
   });
 
-  it('every door is assigned an interior ID', () => {
-    const layout = layoutTown(bounds, EVERWICK_TOWN, interiorIds, SEED);
+  it('every door is assigned a world slot ID', () => {
+    const layout = layoutTown(bounds, EVERWICK_TOWN, worldSlotIds, SEED);
 
-    // All provided interior IDs should be mapped to doors
-    for (const intId of interiorIds) {
+    // All provided world slot IDs should be mapped to doors
+    for (const intId of worldSlotIds) {
       expect(layout.doorPositions.has(intId)).toBe(true);
     }
   });
 
   it('central feature is placed at town center', () => {
-    const layout = layoutTown(bounds, EVERWICK_TOWN, interiorIds, SEED);
+    const layout = layoutTown(bounds, EVERWICK_TOWN, worldSlotIds, SEED);
 
     expect(layout.centralFeature).toBeDefined();
     expect(layout.centralFeature!.type).toBe('well');
@@ -141,12 +141,12 @@ describe('Town Organism', () => {
   });
 
   it('has 4 entry anchors (N, S, E, W)', () => {
-    const layout = layoutTown(bounds, EVERWICK_TOWN, interiorIds, SEED);
+    const layout = layoutTown(bounds, EVERWICK_TOWN, worldSlotIds, SEED);
     expect(layout.entryAnchors.length).toBe(4);
   });
 
   it('every door position is NOT inside a building footprint', () => {
-    const layout = layoutTown(bounds, EVERWICK_TOWN, interiorIds, SEED);
+    const layout = layoutTown(bounds, EVERWICK_TOWN, worldSlotIds, SEED);
 
     for (const building of layout.buildings) {
       // Door should be at bottom-center, outside the footprint
@@ -159,7 +159,7 @@ describe('Town Organism', () => {
   });
 
   it('no two buildings overlap', () => {
-    const layout = layoutTown(bounds, EVERWICK_TOWN, interiorIds, SEED);
+    const layout = layoutTown(bounds, EVERWICK_TOWN, worldSlotIds, SEED);
 
     for (let i = 0; i < layout.buildings.length; i++) {
       for (let j = i + 1; j < layout.buildings.length; j++) {
@@ -182,7 +182,7 @@ describe('Town Organism', () => {
   });
 
   it('every entry anchor can reach at least one door (traversal)', () => {
-    const layout = layoutTown(bounds, EVERWICK_TOWN, interiorIds, SEED);
+    const layout = layoutTown(bounds, EVERWICK_TOWN, worldSlotIds, SEED);
     const grid = stampTownOnGrid(layout, 120, 120);
 
     const doorTargets = Array.from(layout.doorPositions.entries()).map(
@@ -215,7 +215,7 @@ describe('Town Organism', () => {
   });
 
   it('NPC positions are on walkable tiles', () => {
-    const layout = layoutTown(bounds, EVERWICK_TOWN, interiorIds, SEED);
+    const layout = layoutTown(bounds, EVERWICK_TOWN, worldSlotIds, SEED);
     const grid = stampTownOnGrid(layout, 120, 120);
 
     for (const [npcId, pos] of Array.from(layout.npcPositions.entries())) {
@@ -226,7 +226,7 @@ describe('Town Organism', () => {
   });
 
   it('produces readable ASCII representation', () => {
-    const layout = layoutTown(bounds, EVERWICK_TOWN, interiorIds, SEED);
+    const layout = layoutTown(bounds, EVERWICK_TOWN, worldSlotIds, SEED);
     const grid = stampTownOnGrid(layout, 120, 120);
 
     const ascii = renderASCII(grid, {

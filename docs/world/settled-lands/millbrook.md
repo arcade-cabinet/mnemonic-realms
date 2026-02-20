@@ -6,7 +6,7 @@ size: [80, 80]
 vibrancy: 50
 palette: village-premium
 music: bgm-millbrook
-interiors:
+worldSlots:
   - id: millbrook-provisions
     template: shop-single
     keeper: theron
@@ -22,6 +22,43 @@ interiors:
     template: shop-single
     keeper: lissa
     shopType: fish
+assemblages:
+  - ref: house-blue-small
+    position: [12, 12]
+    meta: {name: "Millbrook Townhouse", worldSlot: millbrook-provisions}
+  - ref: house-blue-small
+    position: [14, 14]
+    meta: {name: "Riverside Goods"}
+  - ref: house-blue-small
+    position: [16, 13]
+    meta: {name: "Town Hall"}
+  - ref: house-blue-small
+    position: [22, 14]
+    meta: {name: "Fisher's Lodge"}
+  - ref: house-blue-small
+    position: [13, 18]
+    meta: {name: "River Cottage"}
+  - ref: house-blue-small
+    position: [20, 12]
+    meta: {name: "Dalla's Forge", worldSlot: millbrook-forge}
+  - ref: house-blue-small
+    position: [18, 16]
+    meta: {name: "Oram's Rest", worldSlot: millbrook-inn}
+  - ref: house-blue-small
+    position: [24, 16]
+    meta: {name: "Lissa's Fish Market", worldSlot: millbrook-fish}
+  - ref: bridge
+    position: [18, 18]
+    meta: {name: "Brightwater Bridge"}
+  - ref: watermill
+    position: [6, 3]
+    meta: {name: "Upstream Falls"}
+  - ref: dock
+    position: [28, 28]
+    meta: {name: "Fisher's Rest"}
+  - ref: house-green-medium
+    position: [14, 14]
+    meta: {name: "Specialty Shop"}
 ---
 
 # Millbrook
@@ -34,14 +71,14 @@ Starting vibrancy 50 (Normal tier).
 
 ## Key Areas
 
-| Area | Position | Size | Description |
-|------|----------|------|-------------|
-| Millbrook Town | (12, 12) | 12x12 | 8-10 buildings, bridge, shops. Main settlement area. |
-| Brightwater Bridge | (18, 18) | 6x3 | Large stone bridge. Resonance Stone built into keystone (21, 19). |
-| Upstream Falls | (6, 3) | 5x5 | Waterfall. Hidden cave behind at (6, 4). SQ-04 dungeon. |
-| Fisher's Rest | (28, 28) | 5x5 | Fishing dock area. Fisher NPC. |
-| Brightwater River | (18, 0) -> (18, 39) | 3-wide | River runs N-S through center of map |
-| Specialty Shop | (14, 14) | 4x3 | Water/riverside themed items |
+| Area | Position | Size | Assemblage | Description |
+|------|----------|------|------------|-------------|
+| Millbrook Town | (12, 12) | 12x12 | [house-blue-small](../../../gen/assemblage/catalog/organisms/buildings/house-blue-small.md) x8 | 8-10 buildings, bridge, shops. Main settlement area. |
+| Brightwater Bridge | (18, 18) | 6x3 | [bridge](../../../gen/assemblage/catalog/organisms/terrain/bridge.md) | Large stone bridge. Resonance Stone built into keystone (21, 19). |
+| Upstream Falls | (6, 3) | 5x5 | [watermill](../../../gen/assemblage/catalog/organisms/terrain/watermill.md) | Waterfall. Hidden cave behind at (6, 4). SQ-04 dungeon. |
+| Fisher's Rest | (28, 28) | 5x5 | [dock](../../../gen/assemblage/catalog/organisms/terrain/dock.md) | Fishing dock area. Fisher NPC. |
+| Brightwater River | (18, 0) -> (18, 39) | 3-wide | -- | River runs N-S through center of map |
+| Specialty Shop | (14, 14) | 4x3 | [house-green-medium](../../../gen/assemblage/catalog/organisms/buildings/house-green-medium.md) | Water/riverside themed items |
 
 ## NPCs
 

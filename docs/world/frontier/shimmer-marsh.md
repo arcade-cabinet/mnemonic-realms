@@ -6,7 +6,7 @@ size: [100, 100]
 vibrancy: 30
 palette: frontier-seasons
 music: bgm-shimmer-marsh
-interiors:
+worldSlots:
   - id: shimmer-marsh-store
     template: shop-single
     keeper: vash-assistant
@@ -14,6 +14,22 @@ interiors:
   - id: shimmer-marsh-inn
     template: inn
     keeper: marsh-keeper
+assemblages:
+  - ref: resonance-point
+    position: [23, 33]
+    meta: {name: "Verdance's Hollow"}
+  - ref: marsh-hut
+    position: [10, 13]
+    meta: {name: "Marsh Hermit's Hut"}
+  - ref: marsh-terrain
+    position: [38, 8]
+    meta: {name: "Stagnation Bog"}
+  - ref: dungeon-entrance
+    position: [33, 43]
+    meta: {name: "Deepwater Sinkhole", target: depths-l2}
+  - ref: marsh-bridge
+    position: [18, 28]
+    meta: {name: "Blocked Root Cluster"}
 ---
 
 # Shimmer Marsh
@@ -26,20 +42,20 @@ Starting vibrancy 30 (Muted tier). Resonant emotion: Sorrow. Element affinity: W
 
 ## Key Areas
 
-| Area | Position | Size | Description |
-|------|----------|------|-------------|
-| Verdance's Hollow | (23, 33) | 6x6 | Sunken glade. Dormant god Verdance shrine. Impossibly green. |
-| Marsh Hermit's Hut | (10, 13) | 3x3 | Vash's stilted hut. SQ-06 and GQ-02 quest hub. |
-| Stagnation Bog | (38, 8) | 8x6 | Preserver-controlled crystallized marsh. Break requires water+fury. |
-| Deepwater Sinkhole | (33, 43) | 4x4 | Depths Level 2 entrance. Water spirals downward. |
-| Blocked Root Cluster | (18, 28) | 3x3 | GQ-02 approach barrier. Broadcast earth/water to retract roots. |
-| Marsh Pools | throughout | -- | Scattered water tiles with memory-reflective surfaces |
+| Area | Position | Size | Assemblage | Description |
+|------|----------|------|------------|-------------|
+| Verdance's Hollow | (23, 33) | 6x6 | [resonance-point](../../../gen/assemblage/catalog/organisms/terrain/frontier/resonance-point.md) | Sunken glade. Dormant god Verdance shrine. Impossibly green. |
+| Marsh Hermit's Hut | (10, 13) | 3x3 | [marsh-hut](../../../gen/assemblage/catalog/organisms/terrain/frontier/marsh-hut.md) | Vash's stilted hut. SQ-06 and GQ-02 quest hub. |
+| Stagnation Bog | (38, 8) | 8x6 | [marsh-terrain](../../../gen/assemblage/catalog/organisms/terrain/frontier/marsh-terrain.md) | Preserver-controlled crystallized marsh. Break requires water+fury. |
+| Deepwater Sinkhole | (33, 43) | 4x4 | [dungeon-entrance](../../../gen/assemblage/catalog/organisms/terrain/dungeon/dungeon-entrance.md) | Depths Level 2 entrance. Water spirals downward. |
+| Blocked Root Cluster | (18, 28) | 3x3 | -- | GQ-02 approach barrier. Broadcast earth/water to retract roots. |
+| Marsh Pools | throughout | -- | [marsh-terrain](../../../gen/assemblage/catalog/organisms/terrain/frontier/marsh-terrain.md) | Scattered water tiles with memory-reflective surfaces |
 
 ## NPCs
 
 | NPC | Position | Movement | Graphic | Linked Quests |
 |-----|----------|----------|---------|---------------|
-| Vash (Marsh Hermit) | (11, 14) | Static at hut; moves to Verdance's Hollow after GQ-02 (joy) | `npc_wynn` | SQ-06, GQ-02 |
+| Vash (Marsh Hermit) | (11, 14) | Static at hut; moves to Verdance's Hollow after GQ-02 (joy) | `npc_vash` | SQ-06, GQ-02 |
 | Marsh Researcher | (12, 15) | Patrols hut vicinity | `npc_researcher_f1` | -- (lore) |
 | Preserver Scout A | (36, 9) | Patrols Stagnation Bog perimeter (34-42, 6-14) | `npc_preserver_scout` | -- |
 | Preserver Scout B | (40, 10) | Static at bog center | `npc_preserver_scout` | -- |

@@ -2,13 +2,13 @@ import { EventData, RpgEvent, type RpgPlayer } from '@rpgjs/server';
 import { completeQuest, isQuestComplete, startQuest } from '../../systems/quests';
 
 // Placeholder dialogue content for NPCs
-const DLG_CALLUM_SKETCH_ENTRY = [
+const DLG_ARTUN_SKETCH_ENTRY = [
   "Artun: The air... it's different here. Like a breath held for too long.",
   "Artun: This is it, then. The edge of what is, and what isn't yet.",
   'Artun: Are you ready, [player_name]? The Sketch awaits.',
 ];
 
-const DLG_LIRA_SKETCH_ENTRY = [
+const DLG_HANA_SKETCH_ENTRY = [
   "Hana: Incredible. The world... it's a canvas, waiting for its final strokes.",
   'Hana: Every line, every shade... it tells a story of what could be.',
   'Hana: We must be careful. This place is fragile, yet full of potential.',
@@ -57,7 +57,7 @@ export class Act2Scene18IntoSketch extends RpgEvent {
     // 3. Spawn NPCs at appropriate positions on the new map
     // NPCs are created as dynamic events on the player's current map ('half-drawn-forest')
     const _artun = await player.createDynamicEvent(RpgEvent, {
-      eventId: 'callum_sketch_entry_npc', // Unique ID for the dynamic NPC event
+      eventId: 'artun_sketch_entry_npc', // Unique ID for the dynamic NPC event
       x: 18, // Position relative to player's landing spot
       y: 20,
       graphic: 'npc_artun',
@@ -65,7 +65,7 @@ export class Act2Scene18IntoSketch extends RpgEvent {
     });
 
     const _hana = await player.createDynamicEvent(RpgEvent, {
-      eventId: 'lira_sketch_entry_npc', // Unique ID for the dynamic NPC event
+      eventId: 'hana_sketch_entry_npc', // Unique ID for the dynamic NPC event
       x: 22, // Position relative to player's landing spot
       y: 20,
       graphic: 'npc_hana',
@@ -73,8 +73,8 @@ export class Act2Scene18IntoSketch extends RpgEvent {
     });
 
     // 4. Play dialogue sequences
-    await player.showText(DLG_CALLUM_SKETCH_ENTRY);
-    await player.showText(DLG_LIRA_SKETCH_ENTRY);
+    await player.showText(DLG_ARTUN_SKETCH_ENTRY);
+    await player.showText(DLG_HANA_SKETCH_ENTRY);
 
     // 5. Update quest state
     completeQuest(player, 'MQ-07'); // Explicitly mark as completed
@@ -84,8 +84,8 @@ export class Act2Scene18IntoSketch extends RpgEvent {
     // If they are meant to persist for further interaction, keep them.
     // For a major scene transition, they might persist.
     // If removal is desired:
-    // callum.remove();
-    // lira.remove();
+    // artun.remove();
+    // hana.remove();
   }
 }
 

@@ -11,7 +11,7 @@
  * The fractal pattern:
  *   World = composition of Regions
  *   Region = outdoor map with Town organisms + connective tissue
- *   Town = exterior building cluster organism (NOT a separate map)
+ *   Town = outdoor building cluster organism (NOT a separate map)
  *   WorldInstance = child world from template (shop, dungeon, fortress, etc.)
  *     Each child world has its own regions (floors, rooms, wings)
  *     Same algebra recursively

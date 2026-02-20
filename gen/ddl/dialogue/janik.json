@@ -1,0 +1,61 @@
+[
+  {
+    "id": "dlg-janik-first-encounter", "npcId": "janik", "npcName": "Janik",
+    "trigger": "First encounter — Frontier border",
+    "location": "Hollow Ridge area (early Act II)",
+    "lines": [
+      { "speaker": "Aric", "text": "Halt. You're entering Preserver-monitored territory. State your purpose." },
+      { "speaker": "Aric", "text": "A Mnemonic Architect. The Curator warned us one might come." },
+      { "speaker": "Aric", "text": "A word of advice: the Frontier is not the Settled Lands. Be careful what you remember into existence." }
+    ],
+    "targetPath": "main/server/dialogue/janik-first-encounter.ts"
+  },
+  {
+    "id": "dlg-janik-second-encounter", "npcId": "janik", "npcName": "Janik",
+    "trigger": "Second encounter — after first god recall",
+    "location": "Any Frontier zone (ambient trigger, post-first recall)",
+    "condition": "1+ god recall complete",
+    "lines": [
+      { "speaker": "Aric", "text": "You recalled a god. I felt it — we all did." },
+      { "speaker": "Aric", "text": "Does being stronger make you right? Honest question." }
+    ],
+    "targetPath": "main/server/dialogue/janik-second-encounter.ts"
+  },
+  {
+    "id": "dlg-janik-ambush", "npcId": "janik", "npcName": "Janik",
+    "trigger": "After 3 recalls — Aric's ambush",
+    "location": "Frontier zone (scripted encounter)",
+    "condition": "3+ god recalls complete",
+    "lines": [
+      { "speaker": "Aric", "text": "Architect. I need to talk to you. Not fight — talk." },
+      { "speaker": "Aric", "text": "I was given orders to stop you. These are those orders." },
+      { "speaker": "NARRATION", "text": "Aric sets his crystal gauntlet on the ground." },
+      { "speaker": "Aric", "text": "I'm choosing not to follow them." }
+    ],
+    "linkedScene": "act2-scene17-curators-reveal",
+    "targetPath": "main/server/dialogue/janik-ambush.ts"
+  },
+  {
+    "id": "dlg-janik-fortress-gate", "npcId": "janik", "npcName": "Janik",
+    "trigger": "Fortress Gate — Aric's intelligence briefing (Scene 3)",
+    "location": "The Undrawn Peaks — Crystalline Fortress Gate (20, 35)",
+    "lines": [
+      { "speaker": "Aric", "text": "Architect. I expected you." },
+      { "speaker": "Aric", "text": "The Curator is wrong about the First Memory. Crystallizing it won't preserve the world — it will kill it." },
+      { "speaker": "Aric", "text": "Three floors. The Gallery of Moments. The Archive of Perfection. The First Memory Chamber." },
+      { "speaker": "Aric", "text": "Your four recalled gods are weakening the crystal from outside." }
+    ],
+    "linkedScene": "act3-scene3-undrawn-peaks",
+    "targetPath": "main/server/dialogue/janik-fortress-gate.ts"
+  },
+  {
+    "id": "dlg-janik-resolution", "npcId": "janik", "npcName": "Janik",
+    "trigger": "Endgame Bloom — Aric at Fortress Gate (Scene 11)",
+    "location": "Preserver Fortress Gate (exterior)",
+    "lines": [
+      { "speaker": "Aric", "text": "Curator. The Gallery subjects are waking up. They're confused but alive. Someone needs to help them adjust." }
+    ],
+    "linkedScene": "act3-scene11-curators-choice",
+    "targetPath": "main/server/dialogue/janik-resolution.ts"
+  }
+]

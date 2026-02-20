@@ -82,7 +82,7 @@ export class LuminosRecallEvent extends RpgEvent {
 
     // Part A: Discovery (dialogue with Artun)
     // Spawn Artun dynamically for this scene
-    const callumEvent = await player.map.createDynamicEvent({
+    const artunEvent = await player.map.createDynamicEvent({
       x: playerPosition.x - 3, // Position Artun near the player
       y: playerPosition.y + 2,
       event: 'npc_artun', // Assuming 'npc_artun' is a registered RpgEvent class
@@ -167,8 +167,8 @@ export class LuminosRecallEvent extends RpgEvent {
     completeQuest(player, 'GQ-03');
 
     // Clean up dynamic NPC
-    if (callumEvent) {
-      player.map.removeEvent(callumEvent.id);
+    if (artunEvent) {
+      player.map.removeEvent(artunEvent.id);
     }
 
     await player.showText('The grove shimmers with renewed light. Luminos has been recalled!', {

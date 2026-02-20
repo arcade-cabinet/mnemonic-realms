@@ -48,8 +48,8 @@ export class TheFrontierOpensEvent extends RpgEvent {
       // --- 3. Plays dialogue sequences via player.showText() ---
 
       // Dialogue for Shimmer Marsh (Vash) - EV-SM-001
-      if (currentMap.id === 'shimmer_marsh' && !player.getVariable('SM_WYNN_INTRO_DONE')) {
-        player.setVariable('SM_WYNN_INTRO_DONE', true);
+      if (currentMap.id === 'shimmer_marsh' && !player.getVariable('SM_VASH_INTRO_DONE')) {
+        player.setVariable('SM_VASH_INTRO_DONE', true);
         await player.showText('The air here feels heavy. Not with moisture — with memory.', {
           speaker: 'Artun',
         });
@@ -72,8 +72,8 @@ export class TheFrontierOpensEvent extends RpgEvent {
       }
 
       // Dialogue for Flickerveil (Reza) - EV-FV-001
-      if (currentMap.id === 'flickerveil' && !player.getVariable('FV_SOLEN_INTRO_DONE')) {
-        player.setVariable('FV_SOLEN_INTRO_DONE', true);
+      if (currentMap.id === 'flickerveil' && !player.getVariable('FV_REZA_INTRO_DONE')) {
+        player.setVariable('FV_REZA_INTRO_DONE', true);
         await player.showText(
           'Flickerveil. A vast forest where the trees flicker between fully rendered and sketch-like outlines. The Radiant Lens — astronomers and light-weavers — dissolved their memories into the light itself. Their dormant god, a prototype of light, sleeps in a clearing as a suspended prism of concentrated luminance. A frontier settlement exists here where the buildings shimmer between complete and outline. The residents broadcast memories into their homes daily just to keep them solid.',
           { speaker: 'Artun', type: 'read' },
@@ -134,8 +134,8 @@ export class TheFrontierOpensEvent extends RpgEvent {
       // and interacted with the key NPCs. This event marks the *start* of the open exploration.
       // We'll complete MQ-05 once all initial dialogues are triggered and the Light Lens is given.
       if (
-        player.getVariable('SM_WYNN_INTRO_DONE') &&
-        player.getVariable('FV_SOLEN_INTRO_DONE') &&
+        player.getVariable('SM_VASH_INTRO_DONE') &&
+        player.getVariable('FV_REZA_INTRO_DONE') &&
         player.getVariable('RF_AUDIOMANCER_INTRO_DONE')
       ) {
         completeQuest(player, 'MQ-05');
@@ -156,7 +156,7 @@ export async function setupFrontierNPCs(_map: RpgMap) {
             x: 12,
             y: 14,
             event: 'npc_artun', // Assuming 'npc_artun' is a registered RpgEvent class
-            id: 'callum_shimmer_marsh'
+            id: 'artun_shimmer_marsh'
         });
     }
     */

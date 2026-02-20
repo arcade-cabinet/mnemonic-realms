@@ -64,12 +64,12 @@ export const MapDdlSchema = z.object({
   startVibrancy: z.number().int().min(0).max(100),
   category: z.enum(['overworld', 'depths', 'fortress']),
   act: z.string(),
-  connections: z.array(MapConnectionSchema),
-  npcSpawns: z.array(NpcSpawnSchema),
-  enemyZones: z.array(EnemyZoneSchema),
-  eventTriggers: z.array(EventTriggerSchema),
-  resonanceStones: z.array(ResonanceStoneSchema),
-  treasureChests: z.array(TreasureChestSchema),
+  connections: z.array(MapConnectionSchema).default([]),
+  npcSpawns: z.array(NpcSpawnSchema).default([]),
+  enemyZones: z.array(EnemyZoneSchema).default([]),
+  eventTriggers: z.array(EventTriggerSchema).default([]),
+  resonanceStones: z.array(ResonanceStoneSchema).default([]),
+  treasureChests: z.array(TreasureChestSchema).default([]),
 });
 
 export type MapConnection = z.infer<typeof MapConnectionSchema>;

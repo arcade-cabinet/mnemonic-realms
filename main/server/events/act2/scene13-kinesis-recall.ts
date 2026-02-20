@@ -1,12 +1,12 @@
 import { EventData, RpgEvent, type RpgPlayer } from '@rpgjs/server';
 
-const DLG_CALLUM_KINESIS_RECALL = [
+const DLG_ARTUN_KINESIS_RECALL = [
   "The Peregrine Road — eternal travelers. They carved the world's first mountain passes and bridged its first rivers. They believed stillness was death.",
   "When they'd mapped every route, they dissolved into the kinetic forces of the world — wind, water, tectonic shifts.",
   'This Spire is their final monument. A single vibrating moment, sustained for centuries.',
 ];
 
-const DLG_PETRA_KINESIS = [
+const DLG_NEL_KINESIS = [
   "The Spire pulses with raw motion. It's beautiful, but dangerous without the Kinetic Boots.",
   'Are you ready to face Kinesis? The final god awaits your choice.',
 ];
@@ -21,8 +21,8 @@ const DLG_PETRA_KINESIS = [
   action: true,
 })
 export class KinesisRecallEvent extends RpgEvent {
-  private callumEventId: string | null = null;
-  private petraEventId: string | null = null;
+  private artunEventId: string | null = null;
+  private nelEventId: string | null = null;
 
   async onInit(player: RpgPlayer) {
     if (
@@ -32,7 +32,7 @@ export class KinesisRecallEvent extends RpgEvent {
     ) {
       player.setVariable('kinesis_recall_vision_seen', true);
 
-      this.callumEventId = await player.createDynamicEvent({
+      this.artunEventId = await player.createDynamicEvent({
         x: 23,
         y: 11,
         graphic: 'npc_artun',
@@ -41,7 +41,7 @@ export class KinesisRecallEvent extends RpgEvent {
           isTemporary: true,
         },
       });
-      this.petraEventId = await player.createDynamicEvent({
+      this.nelEventId = await player.createDynamicEvent({
         x: 25,
         y: 11,
         graphic: 'npc_nel',
@@ -51,8 +51,8 @@ export class KinesisRecallEvent extends RpgEvent {
         },
       });
 
-      await player.showText(DLG_CALLUM_KINESIS_RECALL);
-      await player.showText(DLG_PETRA_KINESIS);
+      await player.showText(DLG_ARTUN_KINESIS_RECALL);
+      await player.showText(DLG_NEL_KINESIS);
 
       await player.callScene('cutscene-play', { cutsceneId: 'kinesis-recall-vision' });
     }
@@ -78,13 +78,13 @@ export class KinesisRecallEvent extends RpgEvent {
           'The Kinesis Spire pulses with new energy. Hollow Ridge feels more vibrant!',
         );
 
-        if (this.callumEventId) {
-          player.map.removeEvent(this.callumEventId);
-          this.callumEventId = null;
+        if (this.artunEventId) {
+          player.map.removeEvent(this.artunEventId);
+          this.artunEventId = null;
         }
-        if (this.petraEventId) {
-          player.map.removeEvent(this.petraEventId);
-          this.petraEventId = null;
+        if (this.nelEventId) {
+          player.map.removeEvent(this.nelEventId);
+          this.nelEventId = null;
         }
       } else {
         await player.showText('You decided not to recall Kinesis yet, or the ritual failed.');

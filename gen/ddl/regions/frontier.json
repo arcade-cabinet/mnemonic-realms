@@ -1,107 +1,1486 @@
 {
   "id": "frontier",
   "name": "The Frontier",
-  "biome": "forest",
-  "acts": [2],
-  "playTimeMinutes": 300,
+  "biome": "marsh",
+  "acts": [
+    2
+  ],
+  "playTimeMinutes": 240,
   "difficulty": "medium",
   "ambientMusic": "bgm-overworld-frontier",
-  "startVibrancy": 40,
-  "weather": { "default": "fog", "dynamic": true },
+  "startVibrancy": 35,
+  "weather": {
+    "default": "clear",
+    "dynamic": false
+  },
   "encounters": {
-    "enemies": ["E-FR-01", "E-FR-02", "E-FR-03"],
-    "levelRange": [8, 15],
-    "averageStepsBetweenEncounters": 150
+    "enemies": [
+      "E-FR-01",
+      "E-FR-02",
+      "E-FR-03"
+    ],
+    "levelRange": [
+      11,
+      17
+    ],
+    "averageStepsBetweenEncounters": 200
   },
   "anchors": [
     {
       "id": "shimmer-marsh",
       "name": "Shimmer Marsh",
       "type": "town",
-      "position": "start",
+      "position": "middle",
       "importance": "major",
       "town": {
-        "size": "hamlet",
-        "services": [
-          { "type": "general-store", "buildingName": "Marsh Wares" },
-          { "type": "inn", "buildingName": "The Firefly Rest" }
+        "size": "city",
+        "mapSize": [
+          100,
+          100
         ],
-        "houses": 3,
-        "centralFeature": "boardwalk-crossing"
+        "services": [
+          {
+            "type": "general-store",
+            "keeperNpc": "vash-assistant"
+          },
+          {
+            "type": "inn",
+            "keeperNpc": "marsh-keeper"
+          }
+        ],
+        "houses": 1
       },
-      "quests": ["MQ-08"],
+      "quests": [
+        "SQ-06",
+        "GQ-02",
+        "-- (lore)"
+      ],
+      "npcs": [
+        {
+          "id": "vash-marsh-hermit",
+          "role": "quest-giver",
+          "placement": "center"
+        },
+        {
+          "id": "marsh-researcher",
+          "role": "quest-giver",
+          "placement": "patrol"
+        },
+        {
+          "id": "preserver-scout-a",
+          "role": "ambient",
+          "placement": "patrol"
+        },
+        {
+          "id": "preserver-scout-b",
+          "role": "ambient",
+          "placement": "center"
+        }
+      ],
+      "events": [
+        {
+          "id": "EV-SM-001",
+          "trigger": "action",
+          "quest": "SQ-06, GQ-02",
+          "repeat": "once",
+          "description": "Vash dialogue: marsh research + Verdance's Hollow info"
+        },
+        {
+          "id": "EV-SM-002",
+          "trigger": "action",
+          "quest": "GQ-02",
+          "repeat": "once",
+          "description": "Blocked root cluster: broadcast earth/water to clear path"
+        },
+        {
+          "id": "EV-SM-003",
+          "trigger": "auto",
+          "quest": "GQ-02",
+          "repeat": "once",
+          "description": "Verdance recall vision (30-sec cinematic)"
+        },
+        {
+          "id": "EV-SM-004",
+          "trigger": "action",
+          "quest": "GQ-02",
+          "repeat": "once",
+          "description": "4 emotion pedestals: place potency 3+ fragment"
+        },
+        {
+          "id": "EV-SM-005",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "Deepwater Sinkhole -> Depths Level 2"
+        },
+        {
+          "id": "EV-SM-006",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "North edge transition -> Heartfield (20, 38)"
+        },
+        {
+          "id": "EV-SM-007",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "East edge transition -> Flickerveil (0, 25)"
+        },
+        {
+          "id": "EV-SM-008",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "West edge transition -> Hollow Ridge (49, 35)"
+        },
+        {
+          "id": "EV-SM-009",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "South edge -> Luminous Wastes (25, 0)"
+        },
+        {
+          "id": "EV-SM-010",
+          "trigger": "action",
+          "quest": "SQ-06",
+          "repeat": "once",
+          "description": "3 dormant Resonance Stone broadcast targets"
+        },
+        {
+          "id": "EV-SM-011",
+          "trigger": "action",
+          "repeat": "once",
+          "description": "Stagnation Bog: crystallized zone with break mechanic"
+        }
+      ],
       "worldSlots": [
-        { "instanceId": "shimmer-marsh-store", "transitionType": "door" },
-        { "instanceId": "shimmer-marsh-inn", "transitionType": "door" }
-      ]
+        {
+          "instanceId": "shimmer-marsh-store",
+          "transitionType": "door"
+        },
+        {
+          "instanceId": "shimmer-marsh-inn",
+          "transitionType": "door"
+        }
+      ],
+      "mapLayout": {
+        "biome": "marsh",
+        "palette": "frontier-seasons",
+        "defaultGround": "ground.grass",
+        "music": "bgm-shimmer-marsh",
+        "tileSize": 16,
+        "mapSize": [
+          100,
+          100
+        ],
+        "areas": [
+          {
+            "id": "resonance-point",
+            "name": "Verdance's Hollow",
+            "x": 46,
+            "y": 66,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "marsh-hut",
+            "name": "Marsh Hermit's Hut",
+            "x": 20,
+            "y": 26,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "marsh-terrain",
+            "name": "Stagnation Bog",
+            "x": 76,
+            "y": 16,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-entrance",
+            "name": "Deepwater Sinkhole",
+            "x": 66,
+            "y": 86,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "marsh-bridge",
+            "name": "Blocked Root Cluster",
+            "x": 36,
+            "y": 56,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          }
+        ],
+        "npcSpawns": [
+          {
+            "id": "vash-marsh-hermit",
+            "sprite": "npc_vash",
+            "x": 11,
+            "y": 14,
+            "dialogue": "vash-marsh-hermit"
+          },
+          {
+            "id": "marsh-researcher",
+            "sprite": "npc_researcher_f1",
+            "x": 12,
+            "y": 15,
+            "dialogue": "marsh-researcher"
+          },
+          {
+            "id": "preserver-scout-a",
+            "sprite": "npc_preserver_scout",
+            "x": 36,
+            "y": 9,
+            "dialogue": "preserver-scout-a"
+          },
+          {
+            "id": "preserver-scout-b",
+            "sprite": "npc_preserver_scout",
+            "x": 40,
+            "y": 10,
+            "dialogue": "preserver-scout-b"
+          }
+        ],
+        "transitions": [
+          {
+            "id": "shimmer-marsh-north-gate",
+            "x": 20,
+            "y": 0,
+            "targetMap": "heartfield",
+            "targetX": 20,
+            "targetY": 38,
+            "condition": "After MQ-04"
+          },
+          {
+            "id": "shimmer-marsh-east-gate",
+            "x": 49,
+            "y": 25,
+            "targetMap": "flickerveil",
+            "targetX": 0,
+            "targetY": 25,
+            "condition": "After MQ-05"
+          },
+          {
+            "id": "shimmer-marsh-west-gate",
+            "x": 0,
+            "y": 25,
+            "targetMap": "hollow-ridge",
+            "targetX": 49,
+            "targetY": 35,
+            "condition": "After MQ-05"
+          },
+          {
+            "id": "shimmer-marsh-south-gate",
+            "x": 25,
+            "y": 49,
+            "targetMap": "luminous-wastes",
+            "targetX": 25,
+            "targetY": 0,
+            "condition": "After MQ-07"
+          },
+          {
+            "id": "shimmer-marsh-down-gate",
+            "x": 33,
+            "y": 43,
+            "targetMap": "depths-level-2",
+            "targetX": 10,
+            "targetY": 0,
+            "condition": "After MQ-05"
+          }
+        ],
+        "resonanceStones": [
+          {
+            "id": "RS-SM-01",
+            "x": 11,
+            "y": 14,
+            "fragment": "1 fragment (sorrow/water/2)"
+          },
+          {
+            "id": "RS-SM-02",
+            "x": 25,
+            "y": 35,
+            "fragment": "Special: recall pedestal"
+          },
+          {
+            "id": "RS-SM-03",
+            "x": 40,
+            "y": 12,
+            "fragment": "1 fragment (fury/water/2)"
+          },
+          {
+            "id": "RS-SM-04",
+            "x": 20,
+            "y": 25,
+            "fragment": "1 fragment (calm/earth/2)"
+          },
+          {
+            "id": "RS-SM-05",
+            "x": 30,
+            "y": 20,
+            "fragment": "1 fragment (sorrow/water/3)"
+          },
+          {
+            "id": "RS-SM-06",
+            "x": 15,
+            "y": 40,
+            "fragment": "1 fragment (joy/earth/2)"
+          },
+          {
+            "id": "SQ-06 target A",
+            "x": 20,
+            "y": 10,
+            "fragment": "Dormant"
+          },
+          {
+            "id": "SQ-06 target B",
+            "x": 35,
+            "y": 25,
+            "fragment": "Dormant"
+          },
+          {
+            "id": "SQ-06 target C",
+            "x": 25,
+            "y": 42,
+            "fragment": "Dormant"
+          }
+        ],
+        "treasureChests": [
+          {
+            "id": "CH-SM-01",
+            "x": 12,
+            "y": 16,
+            "item": "C-SC-01) x5, Potion (C-HP-02",
+            "quantity": 2,
+            "condition": "Near Vash's hut"
+          },
+          {
+            "id": "CH-SM-02",
+            "x": 38,
+            "y": 5,
+            "item": "C-SC-04",
+            "quantity": 3,
+            "condition": "Behind Stagnation Bog (requires breaking or Silent Path)"
+          },
+          {
+            "id": "CH-SM-03",
+            "x": 24,
+            "y": 36,
+            "item": "A-12",
+            "quantity": 1,
+            "condition": "Verdance's Hollow (post-recall)"
+          }
+        ],
+        "playerSpawn": {
+          "x": 50,
+          "y": 50
+        }
+      }
     },
     {
       "id": "hollow-ridge",
       "name": "Hollow Ridge",
-      "type": "camp",
-      "position": "middle",
-      "importance": "major",
-      "quests": ["MQ-09"]
+      "type": "town",
+      "position": "end",
+      "importance": "minor",
+      "town": {
+        "size": "city",
+        "mapSize": [
+          100,
+          100
+        ],
+        "services": [],
+        "houses": 1
+      },
+      "quests": [
+        "MQ-05",
+        "SQ-07",
+        "GQ-04",
+        "-- (lore",
+        "Autumnus dialogue post-recall)"
+      ],
+      "npcs": [
+        {
+          "id": "nel",
+          "role": "quest-giver",
+          "placement": "center"
+        },
+        {
+          "id": "ridgewalker-scout",
+          "role": "ambient",
+          "placement": "patrol"
+        },
+        {
+          "id": "ridgewalker-merchant",
+          "role": "ambient",
+          "placement": "center"
+        },
+        {
+          "id": "ridgewalker-elder",
+          "role": "quest-giver",
+          "placement": "center"
+        },
+        {
+          "id": "ridgewalker-guard-a",
+          "role": "ambient",
+          "placement": "patrol"
+        },
+        {
+          "id": "ridgewalker-guard-b",
+          "role": "ambient",
+          "placement": "patrol"
+        }
+      ],
+      "events": [
+        {
+          "id": "EV-HR-001",
+          "trigger": "action",
+          "quest": "MQ-05, SQ-07, GQ-04",
+          "repeat": "once",
+          "description": "Nel dialogue: dormant gods intro, Kinetic Boots (K-05)"
+        },
+        {
+          "id": "EV-HR-002",
+          "trigger": "action",
+          "repeat": "always",
+          "description": "Ridgewalker merchant shop (Ridgewalker Claymore, Shadow Fang, etc.)"
+        },
+        {
+          "id": "EV-HR-003",
+          "trigger": "auto",
+          "quest": "GQ-04",
+          "repeat": "once",
+          "description": "Kinesis Spire recall vision"
+        },
+        {
+          "id": "EV-HR-004",
+          "trigger": "action",
+          "quest": "GQ-04",
+          "repeat": "once",
+          "description": "4 emotion pedestals for Kinesis recall"
+        },
+        {
+          "id": "EV-HR-005",
+          "trigger": "action",
+          "repeat": "once",
+          "description": "Shattered Pass stagnation puzzle"
+        },
+        {
+          "id": "EV-HR-006",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "Echo Caverns -> Depths Level 3"
+        },
+        {
+          "id": "EV-HR-007",
+          "trigger": "touch",
+          "repeat": "always",
+          "description": "South edge -> Sunridge (18, 0)"
+        },
+        {
+          "id": "EV-HR-008",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "East edge -> Flickerveil (0, 15)"
+        },
+        {
+          "id": "EV-HR-009",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "SE edge -> Shimmer Marsh (0, 25)"
+        },
+        {
+          "id": "EV-HR-010",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "North edge -> Undrawn Peaks (20, 39)"
+        },
+        {
+          "id": "EV-HR-011",
+          "trigger": "action",
+          "quest": "SQ-07",
+          "repeat": "once",
+          "description": "Nel: escort quest trigger"
+        }
+      ],
+      "mapLayout": {
+        "biome": "mountain",
+        "palette": "snow-mountain",
+        "defaultGround": "ground.rock",
+        "music": "bgm-hollow-ridge",
+        "tileSize": 16,
+        "mapSize": [
+          100,
+          100
+        ],
+        "areas": [
+          {
+            "id": "resonance-point",
+            "name": "Kinesis Spire",
+            "x": 46,
+            "y": 16,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "ridge-camp",
+            "name": "Ridgewalker Camp",
+            "x": 26,
+            "y": 46,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "mountain-path",
+            "name": "Shattered Pass",
+            "x": 66,
+            "y": 56,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-entrance",
+            "name": "Echo Caverns",
+            "x": 76,
+            "y": 6,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "cliff-face",
+            "name": "Ridge Overlook",
+            "x": 10,
+            "y": 10,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "mountain-path",
+            "name": "Mountain Trail",
+            "x": 50,
+            "y": 80,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          }
+        ],
+        "npcSpawns": [
+          {
+            "id": "nel",
+            "sprite": "npc_nel",
+            "x": 14,
+            "y": 24,
+            "dialogue": "nel"
+          },
+          {
+            "id": "ridgewalker-scout",
+            "sprite": "npc_ridgewalker_m1",
+            "x": 16,
+            "y": 25,
+            "dialogue": "ridgewalker-scout"
+          },
+          {
+            "id": "ridgewalker-merchant",
+            "sprite": "npc_merchant_m2",
+            "x": 15,
+            "y": 26,
+            "dialogue": "ridgewalker-merchant"
+          },
+          {
+            "id": "ridgewalker-elder",
+            "sprite": "npc_elder_m2",
+            "x": 12,
+            "y": 22,
+            "dialogue": "ridgewalker-elder"
+          },
+          {
+            "id": "ridgewalker-guard-a",
+            "sprite": "npc_ridgewalker_m2",
+            "x": 18,
+            "y": 28,
+            "dialogue": "ridgewalker-guard-a"
+          },
+          {
+            "id": "ridgewalker-guard-b",
+            "sprite": "npc_ridgewalker_f1",
+            "x": 10,
+            "y": 22,
+            "dialogue": "ridgewalker-guard-b"
+          }
+        ],
+        "transitions": [
+          {
+            "id": "hollow-ridge-south-gate",
+            "x": 25,
+            "y": 49,
+            "targetMap": "sunridge",
+            "targetX": 18,
+            "targetY": 0
+          },
+          {
+            "id": "hollow-ridge-east-gate",
+            "x": 49,
+            "y": 25,
+            "targetMap": "flickerveil",
+            "targetX": 0,
+            "targetY": 15,
+            "condition": "After MQ-05"
+          },
+          {
+            "id": "hollow-ridge-se-gate",
+            "x": 49,
+            "y": 35,
+            "targetMap": "shimmer-marsh",
+            "targetX": 0,
+            "targetY": 25,
+            "condition": "After MQ-05"
+          },
+          {
+            "id": "hollow-ridge-north-gate",
+            "x": 25,
+            "y": 0,
+            "targetMap": "undrawn-peaks",
+            "targetX": 20,
+            "targetY": 39,
+            "condition": "After MQ-07"
+          },
+          {
+            "id": "hollow-ridge-down-gate",
+            "x": 38,
+            "y": 3,
+            "targetMap": "depths-level-3",
+            "targetX": 10,
+            "targetY": 0,
+            "condition": "After MQ-05"
+          }
+        ],
+        "resonanceStones": [
+          {
+            "id": "RS-HR-01",
+            "x": 24,
+            "y": 10,
+            "fragment": "Special: recall pedestal"
+          },
+          {
+            "id": "RS-HR-02",
+            "x": 14,
+            "y": 24,
+            "fragment": "1 fragment (fury/fire/2)"
+          },
+          {
+            "id": "RS-HR-03",
+            "x": 6,
+            "y": 6,
+            "fragment": "1 fragment (awe/wind/3)"
+          },
+          {
+            "id": "RS-HR-04",
+            "x": 35,
+            "y": 30,
+            "fragment": "1 fragment (sorrow/earth/2)"
+          },
+          {
+            "id": "RS-HR-05",
+            "x": 40,
+            "y": 5,
+            "fragment": "1 fragment (fury/earth/3)"
+          }
+        ],
+        "treasureChests": [
+          {
+            "id": "CH-HR-01",
+            "x": 5,
+            "y": 7,
+            "item": "Ridgewalker Claymore (W-SW-05) variant note: available at merchant",
+            "quantity": 1,
+            "condition": "Ridge Overlook"
+          },
+          {
+            "id": "CH-HR-02",
+            "x": 36,
+            "y": 32,
+            "item": "A-09",
+            "quantity": 1,
+            "condition": "Shattered Pass (after breaking stasis)"
+          },
+          {
+            "id": "CH-HR-03",
+            "x": 38,
+            "y": 4,
+            "item": "C-SP-02",
+            "quantity": 3,
+            "condition": "Echo Caverns entrance"
+          }
+        ],
+        "playerSpawn": {
+          "x": 50,
+          "y": 50
+        }
+      }
     },
     {
       "id": "flickerveil",
       "name": "Flickerveil",
       "type": "town",
-      "position": "middle",
+      "position": "side",
       "importance": "major",
       "town": {
-        "size": "village",
-        "services": [
-          { "type": "general-store", "buildingName": "Veil Essentials" },
-          { "type": "inn", "buildingName": "The Luminos Lodge" },
-          { "type": "library", "buildingName": "Archive of Echoes" }
+        "size": "city",
+        "mapSize": [
+          100,
+          100
         ],
-        "houses": 5,
-        "centralFeature": "luminos-grove"
+        "services": [
+          {
+            "type": "general-store",
+            "keeperNpc": "village-shopkeeper-fv"
+          },
+          {
+            "type": "inn",
+            "keeperNpc": "village-innkeeper-fv"
+          },
+          {
+            "type": "general-store",
+            "keeperNpc": "archive-keeper"
+          }
+        ],
+        "houses": 1
       },
-      "quests": ["MQ-10"],
+      "quests": [
+        "SQ-08",
+        "GQ-03",
+        "GQ-03-F1 (Burning Archive)",
+        "GQ-03-S1 (The Defector)"
+      ],
+      "npcs": [
+        {
+          "id": "reza-village-elder",
+          "role": "quest-giver",
+          "placement": "center"
+        },
+        {
+          "id": "village-shopkeeper",
+          "role": "ambient",
+          "placement": "center"
+        },
+        {
+          "id": "village-innkeeper",
+          "role": "ambient",
+          "placement": "center"
+        },
+        {
+          "id": "flickering-guard-a",
+          "role": "ambient",
+          "placement": "patrol"
+        },
+        {
+          "id": "preserver-agent-archive",
+          "role": "quest-giver",
+          "placement": "center"
+        },
+        {
+          "id": "preserver-agent-b",
+          "role": "ambient",
+          "placement": "patrol"
+        },
+        {
+          "id": "preserver-agent-c",
+          "role": "ambient",
+          "placement": "patrol"
+        },
+        {
+          "id": "julz-preserver-defector",
+          "role": "quest-giver",
+          "placement": "patrol"
+        }
+      ],
+      "events": [
+        {
+          "id": "EV-FV-001",
+          "trigger": "action",
+          "quest": "SQ-08, GQ-03",
+          "repeat": "once",
+          "description": "Reza dialogue: Light Lens (K-04), light studies"
+        },
+        {
+          "id": "EV-FV-002",
+          "trigger": "action",
+          "repeat": "always",
+          "description": "Village shop (Prism Wand, Flickerblade, Stasis Breaker)"
+        },
+        {
+          "id": "EV-FV-003",
+          "trigger": "auto",
+          "quest": "GQ-03",
+          "repeat": "once",
+          "description": "Luminos recall vision (requires Light Lens K-04 equipped)"
+        },
+        {
+          "id": "EV-FV-004",
+          "trigger": "action",
+          "quest": "GQ-03",
+          "repeat": "once",
+          "description": "4 emotion pedestals for Luminos recall"
+        },
+        {
+          "id": "EV-FV-005",
+          "trigger": "action",
+          "quest": "GQ-03-F1",
+          "repeat": "once",
+          "description": "Archive: Burning Archive assault trigger"
+        },
+        {
+          "id": "EV-FV-006",
+          "trigger": "action",
+          "quest": "GQ-03-S1",
+          "repeat": "once",
+          "description": "Julz: defector escort quest trigger (after Vesperis recall)"
+        },
+        {
+          "id": "EV-FV-007",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "West edge -> Shimmer Marsh (49, 25)"
+        },
+        {
+          "id": "EV-FV-008",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "NW edge -> Hollow Ridge (49, 25)"
+        },
+        {
+          "id": "EV-FV-009",
+          "trigger": "touch",
+          "repeat": "always",
+          "description": "SW edge -> Ambergrove (38, 20) via Canopy Path"
+        },
+        {
+          "id": "EV-FV-010",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "East edge -> Half-Drawn Forest (0, 20)"
+        },
+        {
+          "id": "EV-FV-011",
+          "trigger": "action",
+          "repeat": "always",
+          "description": "Light column visual effect; intensity scales with vibrancy"
+        },
+        {
+          "id": "EV-FV-012",
+          "trigger": "action",
+          "quest": "SQ-08",
+          "repeat": "once",
+          "description": "4 flicker anomaly observation points"
+        }
+      ],
       "worldSlots": [
-        { "instanceId": "flickerveil-store", "transitionType": "door" },
-        { "instanceId": "flickerveil-inn", "transitionType": "door" },
-        { "instanceId": "flickerveil-library", "transitionType": "door" }
-      ]
+        {
+          "instanceId": "flickerveil-store",
+          "transitionType": "door"
+        },
+        {
+          "instanceId": "flickerveil-inn",
+          "transitionType": "door"
+        },
+        {
+          "instanceId": "flickerveil-library",
+          "transitionType": "door"
+        }
+      ],
+      "mapLayout": {
+        "biome": "forest",
+        "palette": "frontier-seasons",
+        "defaultGround": "ground.dark-grass",
+        "music": "bgm-flickerveil",
+        "tileSize": 16,
+        "mapSize": [
+          100,
+          100
+        ],
+        "areas": [
+          {
+            "id": "resonance-point",
+            "name": "Luminos Grove",
+            "x": 36,
+            "y": 36,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "flickering-structure",
+            "name": "Flickering Village",
+            "x": 66,
+            "y": 56,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "resonance-point",
+            "name": "Resonance Archive",
+            "x": 16,
+            "y": 16,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "frontier-gate",
+            "name": "Veil's Edge",
+            "x": 92,
+            "y": 46,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          }
+        ],
+        "npcSpawns": [
+          {
+            "id": "reza-village-elder",
+            "sprite": "npc_reza",
+            "x": 35,
+            "y": 30,
+            "dialogue": "reza-village-elder"
+          },
+          {
+            "id": "village-shopkeeper",
+            "sprite": "npc_shopkeep_f2",
+            "x": 36,
+            "y": 29,
+            "dialogue": "village-shopkeeper"
+          },
+          {
+            "id": "village-innkeeper",
+            "sprite": "npc_innkeeper_f1",
+            "x": 34,
+            "y": 32,
+            "dialogue": "village-innkeeper"
+          },
+          {
+            "id": "flickering-guard-a",
+            "sprite": "npc_villager_m4",
+            "x": 31,
+            "y": 28,
+            "dialogue": "flickering-guard-a"
+          },
+          {
+            "id": "preserver-agent-archive",
+            "sprite": "npc_preserver_agent",
+            "x": 9,
+            "y": 9,
+            "dialogue": "preserver-agent-archive"
+          },
+          {
+            "id": "preserver-agent-b",
+            "sprite": "npc_preserver_agent",
+            "x": 7,
+            "y": 10,
+            "dialogue": "preserver-agent-b"
+          },
+          {
+            "id": "preserver-agent-c",
+            "sprite": "npc_preserver_agent",
+            "x": 10,
+            "y": 7,
+            "dialogue": "preserver-agent-c"
+          },
+          {
+            "id": "julz-preserver-defector",
+            "sprite": "npc_julz",
+            "x": 30,
+            "y": 26,
+            "dialogue": "julz-preserver-defector"
+          }
+        ],
+        "transitions": [
+          {
+            "id": "flickerveil-west-gate",
+            "x": 0,
+            "y": 25,
+            "targetMap": "shimmer-marsh",
+            "targetX": 49,
+            "targetY": 25,
+            "condition": "After MQ-05"
+          },
+          {
+            "id": "flickerveil-nw-gate",
+            "x": 0,
+            "y": 15,
+            "targetMap": "hollow-ridge",
+            "targetX": 49,
+            "targetY": 25,
+            "condition": "After MQ-05"
+          },
+          {
+            "id": "flickerveil-sw-gate",
+            "x": 0,
+            "y": 38,
+            "targetMap": "ambergrove",
+            "targetX": 38,
+            "targetY": 20
+          },
+          {
+            "id": "flickerveil-east-gate",
+            "x": 48,
+            "y": 25,
+            "targetMap": "half-drawn-forest",
+            "targetX": 0,
+            "targetY": 20,
+            "condition": "After MQ-07"
+          }
+        ],
+        "resonanceStones": [
+          {
+            "id": "RS-FV-01",
+            "x": 20,
+            "y": 20,
+            "fragment": "Special: recall pedestal"
+          },
+          {
+            "id": "RS-FV-02",
+            "x": 8,
+            "y": 8,
+            "fragment": "1 fragment (awe/light/3)"
+          },
+          {
+            "id": "RS-FV-03",
+            "x": 9,
+            "y": 10,
+            "fragment": "1 fragment (sorrow/light/3)"
+          },
+          {
+            "id": "RS-FV-04",
+            "x": 10,
+            "y": 9,
+            "fragment": "1 fragment (joy/light/2)"
+          },
+          {
+            "id": "RS-FV-05",
+            "x": 7,
+            "y": 9,
+            "fragment": "1 fragment (fury/light/3)"
+          },
+          {
+            "id": "RS-FV-06",
+            "x": 9,
+            "y": 7,
+            "fragment": "1 fragment (calm/light/3)"
+          },
+          {
+            "id": "RS-FV-07",
+            "x": 35,
+            "y": 30,
+            "fragment": "1 fragment (calm/neutral/2)"
+          },
+          {
+            "id": "RS-FV-08",
+            "x": 45,
+            "y": 24,
+            "fragment": "1 fragment (awe/wind/2)"
+          }
+        ],
+        "treasureChests": [
+          {
+            "id": "CH-FV-01",
+            "x": 10,
+            "y": 10,
+            "item": "W-DG-05",
+            "quantity": 1,
+            "condition": "Archive center (after clearing garrison via GQ-03-F1)"
+          },
+          {
+            "id": "CH-FV-02",
+            "x": 34,
+            "y": 28,
+            "item": "C-SC-04",
+            "quantity": 3,
+            "condition": "Village shop backroom"
+          },
+          {
+            "id": "CH-FV-03",
+            "x": 47,
+            "y": 25,
+            "item": "C-HP-02",
+            "quantity": 3,
+            "condition": "Veil's Edge supply cache"
+          }
+        ],
+        "playerSpawn": {
+          "x": 50,
+          "y": 50
+        }
+      }
     },
     {
       "id": "resonance-fields",
       "name": "Resonance Fields",
-      "type": "shrine",
-      "position": "end",
-      "importance": "major",
-      "quests": ["MQ-11"]
-    },
-    {
-      "id": "depths-l2-l5",
-      "name": "The Depths (L2-L5)",
-      "type": "dungeon",
+      "type": "town",
       "position": "side",
-      "importance": "major",
-      "dungeon": {
-        "floors": 4,
-        "theme": "deep-crystal",
-        "boss": "archive-keeper",
-        "reward": "memory-key",
-        "worldSlots": [
-          { "instanceId": "depths-l2-f1", "transitionType": "stairs" },
-          { "instanceId": "depths-l3-f1", "transitionType": "stairs" },
-          { "instanceId": "depths-l4-f1", "transitionType": "stairs" },
-          { "instanceId": "depths-l5-f1", "transitionType": "stairs" }
-        ]
+      "importance": "minor",
+      "town": {
+        "size": "city",
+        "mapSize": [
+          100,
+          100
+        ],
+        "services": [],
+        "houses": 1
+      },
+      "quests": [
+        "SQ-09",
+        "SQ-13",
+        "GQ-01-F2 (Shattered Silence)"
+      ],
+      "npcs": [
+        {
+          "id": "lead-audiomancer",
+          "role": "quest-giver",
+          "placement": "center"
+        },
+        {
+          "id": "audiomancer-b",
+          "role": "ambient",
+          "placement": "patrol"
+        },
+        {
+          "id": "audiomancer-c",
+          "role": "ambient",
+          "placement": "center"
+        },
+        {
+          "id": "audiomancer-d",
+          "role": "ambient",
+          "placement": "center"
+        },
+        {
+          "id": "preserver-captain",
+          "role": "quest-giver",
+          "placement": "center"
+        },
+        {
+          "id": "preserver-agent-a",
+          "role": "ambient",
+          "placement": "patrol"
+        },
+        {
+          "id": "preserver-agent-b",
+          "role": "ambient",
+          "placement": "patrol"
+        },
+        {
+          "id": "preserver-agent-c",
+          "role": "ambient",
+          "placement": "center"
+        }
+      ],
+      "events": [
+        {
+          "id": "EV-RF-001",
+          "trigger": "action",
+          "quest": "SQ-09, SQ-13",
+          "repeat": "once",
+          "description": "Lead Audiomancer: Amphitheater humming, SQ-09 trigger"
+        },
+        {
+          "id": "EV-RF-002",
+          "trigger": "action",
+          "quest": "SQ-09",
+          "repeat": "once",
+          "description": "3 approach stones harmonization"
+        },
+        {
+          "id": "EV-RF-003",
+          "trigger": "auto",
+          "quest": "GQ-01",
+          "repeat": "once",
+          "description": "Resonance recall vision"
+        },
+        {
+          "id": "EV-RF-004",
+          "trigger": "action",
+          "quest": "GQ-01",
+          "repeat": "once",
+          "description": "4 emotion pedestals for Resonance recall"
+        },
+        {
+          "id": "EV-RF-005",
+          "trigger": "action",
+          "quest": "GQ-01-F2",
+          "repeat": "once",
+          "description": "Cathedral assault (Thunderstone K-15 required)"
+        },
+        {
+          "id": "EV-RF-006",
+          "trigger": "action",
+          "repeat": "once",
+          "description": "Singing Stones sequential puzzle -> Depths L4"
+        },
+        {
+          "id": "EV-RF-007",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "East edge -> Shimmer Marsh (0, 25)"
+        },
+        {
+          "id": "EV-RF-008",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "North edge -> Hollow Ridge mountain-to-plains"
+        },
+        {
+          "id": "EV-RF-009",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "West/South edge -> Luminous Wastes (39, 20)"
+        },
+        {
+          "id": "EV-RF-010",
+          "trigger": "action",
+          "repeat": "always",
+          "description": "Amphitheater ambient hum; intensity scales with vibrancy"
+        }
+      ],
+      "mapLayout": {
+        "biome": "plains",
+        "palette": "frontier-seasons",
+        "defaultGround": "ground.grass",
+        "music": "bgm-resonance-fields",
+        "tileSize": 16,
+        "mapSize": [
+          100,
+          100
+        ],
+        "areas": [
+          {
+            "id": "resonance-point",
+            "name": "Resonance's Amphitheater",
+            "x": 46,
+            "y": 46,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "ridge-camp",
+            "name": "Listener's Camp",
+            "x": 16,
+            "y": 66,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "frontier-gate",
+            "name": "Preserver Cathedral",
+            "x": 76,
+            "y": 26,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "resonance-point",
+            "name": "Singing Stones",
+            "x": 56,
+            "y": 86,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          }
+        ],
+        "npcSpawns": [
+          {
+            "id": "lead-audiomancer",
+            "sprite": "npc_audiomancer_m1",
+            "x": 9,
+            "y": 34,
+            "dialogue": "lead-audiomancer"
+          },
+          {
+            "id": "audiomancer-b",
+            "sprite": "npc_audiomancer_f1",
+            "x": 10,
+            "y": 36,
+            "dialogue": "audiomancer-b"
+          },
+          {
+            "id": "audiomancer-c",
+            "sprite": "npc_audiomancer_m2",
+            "x": 8,
+            "y": 35,
+            "dialogue": "audiomancer-c"
+          },
+          {
+            "id": "audiomancer-d",
+            "sprite": "npc_audiomancer_f2",
+            "x": 11,
+            "y": 34,
+            "dialogue": "audiomancer-d"
+          },
+          {
+            "id": "preserver-captain",
+            "sprite": "npc_preserver_captain",
+            "x": 40,
+            "y": 14,
+            "dialogue": "preserver-captain"
+          },
+          {
+            "id": "preserver-agent-a",
+            "sprite": "npc_preserver_agent",
+            "x": 37,
+            "y": 13,
+            "dialogue": "preserver-agent-a"
+          },
+          {
+            "id": "preserver-agent-b",
+            "sprite": "npc_preserver_agent",
+            "x": 41,
+            "y": 15,
+            "dialogue": "preserver-agent-b"
+          },
+          {
+            "id": "preserver-agent-c",
+            "sprite": "npc_preserver_agent",
+            "x": 39,
+            "y": 12,
+            "dialogue": "preserver-agent-c"
+          }
+        ],
+        "transitions": [
+          {
+            "id": "resonance-fields-east-gate",
+            "x": 49,
+            "y": 25,
+            "targetMap": "shimmer-marsh",
+            "targetX": 0,
+            "targetY": 25,
+            "condition": "After MQ-05"
+          },
+          {
+            "id": "resonance-fields-north-gate",
+            "x": 25,
+            "y": 0,
+            "targetMap": "hollow-ridge",
+            "targetX": 25,
+            "targetY": 49,
+            "condition": "After MQ-05"
+          },
+          {
+            "id": "resonance-fields-west-gate",
+            "x": 0,
+            "y": 25,
+            "targetMap": "luminous-wastes",
+            "targetX": 39,
+            "targetY": 20,
+            "condition": "After MQ-07"
+          },
+          {
+            "id": "resonance-fields-down-gate",
+            "x": 28,
+            "y": 44,
+            "targetMap": "depths-level-4",
+            "targetX": 10,
+            "targetY": 0,
+            "condition": "After Singing Stones puzzle"
+          }
+        ],
+        "resonanceStones": [
+          {
+            "id": "RS-RF-01",
+            "x": 25,
+            "y": 25,
+            "fragment": "Special: recall pedestal"
+          },
+          {
+            "id": "RS-RF-02",
+            "x": 10,
+            "y": 10,
+            "fragment": "1 fragment (awe/wind/2)"
+          },
+          {
+            "id": "RS-RF-03",
+            "x": 35,
+            "y": 8,
+            "fragment": "1 fragment (fury/wind/2)"
+          },
+          {
+            "id": "RS-RF-04",
+            "x": 15,
+            "y": 45,
+            "fragment": "1 fragment (calm/earth/2)"
+          },
+          {
+            "id": "RS-RF-05",
+            "x": 45,
+            "y": 40,
+            "fragment": "1 fragment (sorrow/wind/3)"
+          },
+          {
+            "id": "RS-RF-06",
+            "x": 8,
+            "y": 34,
+            "fragment": "1 fragment (joy/wind/2)"
+          },
+          {
+            "id": "RS-RF-07-11",
+            "x": 33,
+            "y": 43,
+            "fragment": "Singing Stones x5"
+          },
+          {
+            "id": "SQ-09 approach stones",
+            "x": 18,
+            "y": 28,
+            "fragment": "Dormant"
+          }
+        ],
+        "treasureChests": [
+          {
+            "id": "CH-RF-01",
+            "x": 25,
+            "y": 26,
+            "item": "MF-05",
+            "quantity": 1,
+            "condition": "Amphitheater (GQ-01 recall vision)"
+          },
+          {
+            "id": "CH-RF-02",
+            "x": 40,
+            "y": 16,
+            "item": "A-10",
+            "quantity": 1,
+            "condition": "Cathedral interior (after clearing via GQ-01-F2)"
+          },
+          {
+            "id": "CH-RF-03",
+            "x": 10,
+            "y": 45,
+            "item": "C-SP-02",
+            "quantity": 3,
+            "condition": "SW plains hidden"
+          }
+        ],
+        "playerSpawn": {
+          "x": 50,
+          "y": 50
+        }
       }
     }
   ],
   "connectiveTissue": {
-    "pathDensity": "sparse",
-    "safeZoneInterval": 45,
-    "safePathRatio": 0.4,
-    "wildFeatures": [
-      { "type": "resonance-stone", "count": 8, "placement": "off-path" },
-      { "type": "hidden-chest", "count": 5, "placement": "hidden" },
-      { "type": "mini-shrine", "count": 3, "placement": "off-path" }
-    ]
+    "pathDensity": "moderate",
+    "safePathRatio": 0.4
   }
 }

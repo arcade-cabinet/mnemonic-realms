@@ -67,7 +67,7 @@ export interface PaletteSpec {
   /**
    * Relative path from where the TMX will be output to the TSX base dir.
    * Used for the TSX source references in generated TMX files.
-   * Example: '../../../assets/tilesets/exteriors/premium/Tiled/Tilesets'
+   * Example: '../../../assets/tilesets/village/exteriors/Tiled/Tilesets'
    */
   tmxToTsxRelDir: string;
   /**

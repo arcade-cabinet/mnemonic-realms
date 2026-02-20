@@ -1,9 +1,8 @@
 /**
  * World Templates — Worlds All The Way Down
  *
- * THE CORE INSIGHT: There is no such thing as "interiors" and "exteriors."
- * There are only WORLDS. A shop is a world. A dungeon is a world. A fortress
- * is a world. The outdoor game map is also a world.
+ * THE CORE INSIGHT: There are only WORLDS. A shop is a world. A dungeon
+ * is a world. A fortress is a world. The outdoor game map is also a world.
  *
  * Every world follows the same fractal algebra:
  *   World = { regions[], connections[], properties }

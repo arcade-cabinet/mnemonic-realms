@@ -62,7 +62,7 @@ export class Act2Scene17CuratorEndgame extends RpgEvent {
       const map = player.map as RpgMap;
 
       // Create Artun
-      const callumEvent = await map.createDynamicEvent({
+      const artunEvent = await map.createDynamicEvent({
         x: callumX,
         y: callumY,
         id: 'npc_artun_scene', // Unique ID for this scene's NPC
@@ -81,7 +81,7 @@ export class Act2Scene17CuratorEndgame extends RpgEvent {
       });
 
       // Create Hana
-      const liraEvent = await map.createDynamicEvent({
+      const hanaEvent = await map.createDynamicEvent({
         x: liraX,
         y: liraY,
         id: 'npc_hana_scene', // Unique ID for this scene's NPC
@@ -135,8 +135,8 @@ export class Act2Scene17CuratorEndgame extends RpgEvent {
       startQuest(player, 'MQ-07'); // Activate Main Quest 07: "The Fortress Approach"
 
       // Clean up dynamic NPCs
-      map.removeEvent(callumEvent.id);
-      map.removeEvent(liraEvent.id);
+      map.removeEvent(artunEvent.id);
+      map.removeEvent(hanaEvent.id);
 
       // Resume player movement and interaction
       player.canMove = true;

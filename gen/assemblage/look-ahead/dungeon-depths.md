@@ -352,7 +352,7 @@ Dungeons differ from overworld maps in several fundamental ways that affect asse
 
 ## Tileset Palette: `dungeon-depths`
 
-**Source**: `assets/tilesets/dungeons/` (16 PNG files, no TSX yet)
+**Source**: `assets/tilesets/depths/` (16 PNG files, no TSX yet)
 
 ### Available Tileset Assets
 
@@ -810,7 +810,7 @@ Puzzle assemblages need:
 
 ### TSX Prerequisite
 
-Before any dungeon map can be built, the `assets/tilesets/dungeons/` PNGs need TSX files created via the tsx-parser. This is a blocking dependency. The TSX files should define:
+Before any dungeon map can be built, the `assets/tilesets/depths/` PNGs need TSX files created via the tsx-parser. This is a blocking dependency. The TSX files should define:
 - Wang sets for stone floor auto-tiling
 - Wang sets for wall edge auto-tiling
 - Wang sets for water edge auto-tiling

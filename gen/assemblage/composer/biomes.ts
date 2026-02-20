@@ -321,6 +321,69 @@ export const BIOMES: Record<string, BiomeDefinition> = {
     ],
     defaultEdge: { type: 'void', depth: 3, gapForConnections: true },
   },
+
+  'sketch-plains': {
+    id: 'sketch-plains',
+    name: 'Sketch Plains',
+    buildingColor: 'orange',
+    buildingAtlas: 'Atlas_Buildings_Wood_Orange',
+    baseGround: 'ground.sand',
+    groundVariants: [
+      { terrain: 'void', frequency: 0.15, clusterSize: [3, 8] },
+      { terrain: 'ground.light-sand', frequency: 0.1, clusterSize: [3, 5] },
+    ],
+    roadTerrain: 'road.faint',
+    roadWidth: 2,
+    pathDress: [],
+    scatter: [
+      { objectRef: 'outline.tree-1', frequency: 1, exclusionRadius: 5 },
+      { objectRef: 'outline.rock-1', frequency: 2, exclusionRadius: 4 },
+      { objectRef: 'sketch.fragment-1', frequency: 2, exclusionRadius: 4 },
+    ],
+    defaultEdge: { type: 'void', depth: 3, gapForConnections: true },
+  },
+
+  'sketch-mountain': {
+    id: 'sketch-mountain',
+    name: 'Sketch Mountain',
+    buildingColor: 'orange',
+    buildingAtlas: 'Atlas_Buildings_Wood_Orange',
+    baseGround: 'ground.light-sand',
+    groundVariants: [
+      { terrain: 'void', frequency: 0.08, clusterSize: [2, 5] },
+      { terrain: 'ground.sand', frequency: 0.15, clusterSize: [3, 6] },
+    ],
+    roadTerrain: 'road.faint',
+    roadWidth: 2,
+    pathDress: [],
+    scatter: [
+      { objectRef: 'outline.rock-1', frequency: 5, exclusionRadius: 3 },
+      { objectRef: 'outline.tree-1', frequency: 1, exclusionRadius: 5 },
+      { objectRef: 'sketch.fragment-1', frequency: 1, exclusionRadius: 5 },
+    ],
+    defaultEdge: { type: 'cliff', depth: 4, gapForConnections: true },
+  },
+
+  'sketch-forest': {
+    id: 'sketch-forest',
+    name: 'Sketch Forest',
+    buildingColor: 'orange',
+    buildingAtlas: 'Atlas_Buildings_Wood_Orange',
+    baseGround: 'ground.sand',
+    groundVariants: [
+      { terrain: 'void', frequency: 0.05, clusterSize: [2, 4] },
+      { terrain: 'ground.light-sand', frequency: 0.15, clusterSize: [3, 6] },
+    ],
+    roadTerrain: 'road.faint',
+    roadWidth: 2,
+    pathDress: [],
+    scatter: [
+      { objectRef: 'outline.tree-1', frequency: 8, exclusionRadius: 2 },
+      { objectRef: 'outline.rock-1', frequency: 2, exclusionRadius: 3 },
+      { objectRef: 'sketch.fragment-1', frequency: 1, exclusionRadius: 5 },
+    ],
+    defaultEdge: { type: 'void', depth: 4, gapForConnections: true },
+  },
 };
 
 /**

@@ -6,6 +6,20 @@ size: [80, 80]
 vibrancy: 10
 palette: desert-sketch
 music: bgm-undrawn-peaks
+worldSlots:
+  - id: preserver-fortress
+    template: fortress
+    name: "Preserver Fortress"
+assemblages:
+  - ref: undrawn-peak
+    position: [18, 3]
+    meta: {name: "The Apex"}
+  - ref: outline-structure
+    position: [18, 33]
+    meta: {name: "Crystalline Fortress Gate"}
+  - ref: sketch-bridge
+    position: [20, 20]
+    meta: {name: "Sketch Bridge"}
 ---
 
 # The Undrawn Peaks
@@ -18,12 +32,12 @@ Starting vibrancy 10 (Muted tier).
 
 ## Key Areas
 
-| Area | Position | Size | Description |
-|------|----------|------|-------------|
-| The Apex | (18, 3) | 4x4 | Highest point in game. Panoramic view. GQ-03-J1 target (Solara). |
-| Crystalline Fortress Gate | (18, 33) | 6x4 | Final dungeon entrance. Two crystallized pillars. Preserver Captains guard. |
-| Wireframe Ridges | throughout | -- | Geometric line-art mountains. Must solidify handholds to traverse. |
-| Sketch Bridge | (20, 20) | 6x2 | Outline bridge over chasm. Requires broadcast to solidify. |
+| Area | Position | Size | Assemblage | Description |
+|------|----------|------|------------|-------------|
+| The Apex | (18, 3) | 4x4 | [undrawn-peak](../../../gen/assemblage/catalog/organisms/terrain/sketch/undrawn-peak.md) | Highest point in game. Panoramic view. GQ-03-J1 target (Solara). |
+| Crystalline Fortress Gate | (18, 33) | 6x4 | [outline-structure](../../../gen/assemblage/catalog/organisms/terrain/sketch/outline-structure.md) | Final dungeon entrance. Two crystallized pillars. Preserver Captains guard. |
+| Wireframe Ridges | throughout | -- | [undrawn-peak](../../../gen/assemblage/catalog/organisms/terrain/sketch/undrawn-peak.md) | Geometric line-art mountains. Must solidify handholds to traverse. |
+| Sketch Bridge | (20, 20) | 6x2 | [sketch-bridge](../../../gen/assemblage/catalog/organisms/terrain/sketch/sketch-bridge.md) | Outline bridge over chasm. Requires broadcast to solidify. |
 
 ## NPCs
 

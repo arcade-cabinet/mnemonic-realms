@@ -2,7 +2,7 @@
   "id": "preserver-fortress",
   "name": "Preserver Fortress",
   "templateId": "fortress",
-  "parentAnchor": "preserver-fortress",
+  "parentAnchor": "undrawn-peaks",
   "slotValues": {
     "theme": "preserver",
     "boss": "sovereign",

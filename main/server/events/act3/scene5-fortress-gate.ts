@@ -33,7 +33,7 @@ export default class TheFortressGateEvent extends RpgEvent {
 
     // 2. Spawns NPCs at appropriate positions using createDynamicEvent()
     // Hana (npc_hana)
-    const liraEvent = await player.map.createDynamicEvent({
+    const hanaEvent = await player.map.createDynamicEvent({
       x: player.x - 1, // Position relative to player
       y: player.y + 1,
       event: {
@@ -50,7 +50,7 @@ export default class TheFortressGateEvent extends RpgEvent {
     });
 
     // Artun (npc_artun)
-    const callumEvent = await player.map.createDynamicEvent({
+    const artunEvent = await player.map.createDynamicEvent({
       x: player.x + 1, // Position relative to player
       y: player.y + 1,
       event: {
@@ -83,7 +83,7 @@ export default class TheFortressGateEvent extends RpgEvent {
       `I recognize this feeling. The crystal. The cold. The way everything is perfectly still.`,
       {
         type: 'dialog',
-        talkWith: liraEvent,
+        talkWith: hanaEvent,
       },
     );
 
@@ -91,18 +91,18 @@ export default class TheFortressGateEvent extends RpgEvent {
       `I was frozen in crystal like this. For weeks. From my perspective, it was a single moment — one heartbeat between consciousness and nothing. But I remember the nothing. A perfect, silent, beautiful nothing.`,
       {
         type: 'dialog',
-        talkWith: liraEvent,
+        talkWith: hanaEvent,
       },
     );
 
     await player.showText(`I don't want the world to feel that.`, {
       type: 'dialog',
-      talkWith: liraEvent,
+      talkWith: hanaEvent,
     });
 
     await player.showText(`The god recall fractures — look.`, {
       type: 'dialog',
-      talkWith: callumEvent,
+      talkWith: artunEvent,
     });
 
     // NOTE: Visual effects for god recall fractures would be handled by map design or parallel events
@@ -114,7 +114,7 @@ export default class TheFortressGateEvent extends RpgEvent {
       `The gods are here. Not physically — but their influence has been eroding this crystal since the moment you recalled them. The Curator built this fortress to resist change, but the world keeps pushing.`,
       {
         type: 'dialog',
-        talkWith: callumEvent,
+        talkWith: artunEvent,
       },
     );
 
@@ -125,8 +125,8 @@ export default class TheFortressGateEvent extends RpgEvent {
     player.canMove = true;
 
     // Remove dynamic NPCs
-    player.map.removeEvent(liraEvent.id);
-    player.map.removeEvent(callumEvent.id);
+    player.map.removeEvent(hanaEvent.id);
+    player.map.removeEvent(artunEvent.id);
 
     // The player is now considered "inside" the fortress gate,
     // so we can move them to the next map or a safe spot.

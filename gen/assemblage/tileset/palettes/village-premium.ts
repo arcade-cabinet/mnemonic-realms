@@ -1,11 +1,11 @@
 import type { PaletteSpec } from '../palette-builder.ts';
 
-const TSX_BASE = 'assets/tilesets/exteriors/premium/Tiled/Tilesets';
-const TMX_TO_TSX = '../../../../assets/tilesets/exteriors/premium/Tiled/Tilesets';
+const TSX_BASE = 'assets/tilesets/village/exteriors/Tiled/Tilesets';
+const TMX_TO_TSX = '../../../../assets/tilesets/village/exteriors/Tiled/Tilesets';
 
 /**
  * Village Premium palette.
- * Uses the fantasy-premium exterior tileset pack for Everwick,
+ * Uses the fantasy-premium outdoor tileset pack for Everwick,
  * Heartfield, Ambergrove, Millbrook, and Sunridge maps.
  *
  * All TSX files from the premium pack are included and assigned

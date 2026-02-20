@@ -4,9 +4,8 @@
  * The world is the LARGEST compositional unit. Not scenes, not acts —
  * the world. Everything decomposes downward from here.
  *
- * THE CORE INSIGHT: There is no such thing as "interiors" and "exteriors."
- * There are only WORLDS. A shop is a world. A dungeon is a world. A fortress
- * is a world. The outdoor game map is also a world.
+ * THE CORE INSIGHT: There are only WORLDS. A shop is a world. A dungeon
+ * is a world. A fortress is a world. The outdoor game map is also a world.
  *
  * The fractal algebra:
  *

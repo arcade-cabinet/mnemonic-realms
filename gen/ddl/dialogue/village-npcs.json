@@ -1,15 +1,15 @@
 [
   {
-    "id": "dlg-maren-first-visit", "npcId": "maren", "npcName": "Maren",
+    "id": "dlg-khali-first-visit", "npcId": "khali", "npcName": "Khali",
     "trigger": "First visit (Act I)",
     "location": "Everwick — General Shop (18, 16)",
     "lines": [
       { "speaker": "Maren", "text": "Welcome, welcome! You must be the one Callum's been talking about — the new Architect!" }
     ],
-    "targetPath": "main/server/dialogue/maren-first-visit.ts"
+    "targetPath": "main/server/dialogue/khali-first-visit.ts"
   },
   {
-    "id": "dlg-maren-shop", "npcId": "maren", "npcName": "Maren",
+    "id": "dlg-khali-shop", "npcId": "khali", "npcName": "Khali",
     "trigger": "Shop interaction (all acts)",
     "location": "Everwick — General Shop (18, 16)",
     "lines": [
@@ -19,19 +19,19 @@
       { "speaker": "Maren", "text": "Not quite enough gold for that one.", "emotion": "insufficient" },
       { "speaker": "Maren", "text": "Safe travels! Come back anytime.", "emotion": "farewell" }
     ],
-    "targetPath": "main/server/dialogue/maren-shop.ts"
+    "targetPath": "main/server/dialogue/khali-shop.ts"
   },
   {
-    "id": "dlg-torvan-first-visit", "npcId": "torvan", "npcName": "Torvan",
+    "id": "dlg-hark-first-visit", "npcId": "hark", "npcName": "Hark",
     "trigger": "First visit (Act I)",
     "location": "Everwick — Blacksmith (18, 18)",
     "lines": [
       { "speaker": "Torvan", "text": "Mm. New Architect? Callum told me. I make weapons and armor — nothing fancy, but solid." }
     ],
-    "targetPath": "main/server/dialogue/torvan-first-visit.ts"
+    "targetPath": "main/server/dialogue/hark-first-visit.ts"
   },
   {
-    "id": "dlg-torvan-shop", "npcId": "torvan", "npcName": "Torvan",
+    "id": "dlg-hark-shop", "npcId": "hark", "npcName": "Hark",
     "trigger": "Shop interaction",
     "location": "Everwick — Blacksmith (18, 18)",
     "lines": [
@@ -41,25 +41,25 @@
       { "speaker": "Torvan", "text": "Can't give it away, friend. Gold talks.", "emotion": "insufficient" },
       { "speaker": "Torvan", "text": "Keep your guard up.", "emotion": "farewell" }
     ],
-    "targetPath": "main/server/dialogue/torvan-shop.ts"
+    "targetPath": "main/server/dialogue/hark-shop.ts"
   },
   {
-    "id": "dlg-ren-first-visit", "npcId": "ren", "npcName": "Ren",
+    "id": "dlg-nyro-first-visit", "npcId": "nyro", "npcName": "Nyro",
     "trigger": "First visit (Act I)",
     "location": "Everwick — Inn: The Bright Hearth (20, 14)",
     "lines": [
       { "speaker": "Ren", "text": "The Bright Hearth — best inn in the village! Well, only inn. Rest your feet, rest your mind." }
     ],
-    "targetPath": "main/server/dialogue/ren-first-visit.ts"
+    "targetPath": "main/server/dialogue/nyro-first-visit.ts"
   },
   {
-    "id": "dlg-ren-inn", "npcId": "ren", "npcName": "Ren",
+    "id": "dlg-nyro-inn", "npcId": "nyro", "npcName": "Nyro",
     "trigger": "Inn interaction",
     "location": "Everwick — Inn: The Bright Hearth (20, 14)",
     "lines": [
       { "speaker": "Ren", "text": "Sweet dreams. The beds are soft and the walls keep out the worry.", "emotion": "rest" },
       { "speaker": "Ren", "text": "Rest well. You've earned it more than most.", "emotion": "rest-late" }
     ],
-    "targetPath": "main/server/dialogue/ren-inn.ts"
+    "targetPath": "main/server/dialogue/nyro-inn.ts"
   }
 ]

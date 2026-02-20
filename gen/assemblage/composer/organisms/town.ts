@@ -1,9 +1,9 @@
 /**
- * Town Organism — Exterior Building Cluster
+ * Town Organism — Outdoor Building Cluster
  *
  * A town is NOT a separate map. It's an outdoor organism — a cluster of
  * buildings placed within the region's continuous outdoor space. The only
- * transitions are through building doors into interior maps.
+ * transitions are through building doors into child world maps.
  *
  * In Pokemon, you walk from route into town seamlessly. The "town" is just
  * buildings, NPCs, and signposts on the same outdoor tilemap. That's what
@@ -43,7 +43,7 @@ export interface TownLayout {
   entryAnchors: Point[];
   /** NPC spawn positions (keyed by NPC ID) */
   npcPositions: Map<string, Point>;
-  /** Door positions that transition to interiors (keyed by interior ID) */
+  /** Door positions that transition to child worlds (keyed by child world ID) */
   doorPositions: Map<string, Point>;
 }
 
@@ -54,12 +54,12 @@ export interface BuildingPlacement {
   position: Point;
   /** Building footprint in tiles */
   footprint: { width: number; height: number };
-  /** Door position (where the interior transition triggers) */
+  /** Door position (where the child world transition triggers) */
   doorAnchor: Point;
   /** Service info (null for residential houses) */
   service?: TownService;
-  /** Interior ID this building transitions to (if any) */
-  interiorId?: string;
+  /** Child world ID this building transitions to (if any) */
+  worldSlotId?: string;
 }
 
 // --- Size estimates per town size ---
@@ -89,7 +89,7 @@ const SERVICE_ARCHETYPES: Record<string, string> = {
   'elder-house': 'house-small',
 };
 
-// Exterior footprints (bird's-eye rooftop on the outdoor map, not interior dimensions)
+// Outdoor footprints (bird's-eye rooftop on the outdoor map, not child world dimensions)
 // A 16px tile building seen from above is ~6-8 tiles wide, like classic 16-bit JRPGs.
 const FOOTPRINTS: Record<string, { width: number; height: number }> = {
   'weapon-shop': { width: 8, height: 7 },
@@ -102,14 +102,14 @@ const FOOTPRINTS: Record<string, { width: number; height: number }> = {
 /**
  * Layout a town within the given bounds.
  *
- * Towns are exterior organisms: building clusters on the outdoor map.
+ * Towns are outdoor organisms: building clusters on the outdoor map.
  * The composer stamps these buildings into the region's collision grid
  * and connects them with roads.
  */
 export function layoutTown(
   bounds: { x: number; y: number; width: number; height: number },
   town: TownDefinition,
-  interiorIds: string[],
+  worldSlotIds: string[],
   seed: number,
 ): TownLayout {
   const rng = new SeededRNG(seed);
@@ -133,7 +133,7 @@ export function layoutTown(
   // Ring radius must be large enough that the biggest building footprint
   // doesn't overlap neighbors at the narrowest angular gap.
   // Minimum: largest footprint diagonal + 2-tile gap between buildings.
-  const maxFootprint = 8; // weapon-shop/tavern at 8 tiles wide (exterior footprint)
+  const maxFootprint = 8; // weapon-shop/tavern at 8 tiles wide (outdoor footprint)
   const angularGap = (2 * Math.PI) / totalBuildings;
   const minRadiusForSpacing = Math.ceil(
     (maxFootprint + 4) / (2 * Math.sin(angularGap / 2)),
@@ -147,7 +147,7 @@ export function layoutTown(
     ),
   );
 
-  let interiorIndex = 0;
+  let slotIndex = 0;
 
   /** Check if a new building overlaps any existing building (with 2-tile gap) */
   function wouldOverlap(
@@ -207,8 +207,8 @@ export function layoutTown(
     const doorX = bx + Math.floor(footprint.width / 2);
     const doorY = by + footprint.height;
 
-    const intId = interiorIndex < interiorIds.length ? interiorIds[interiorIndex] : undefined;
-    if (intId) interiorIndex++;
+    const wsId = slotIndex < worldSlotIds.length ? worldSlotIds[slotIndex] : undefined;
+    if (wsId) slotIndex++;
 
     buildings.push({
       archetype,
@@ -216,7 +216,7 @@ export function layoutTown(
       footprint,
       doorAnchor: { x: doorX, y: doorY },
       service,
-      interiorId: intId,
+      worldSlotId: wsId,
     });
 
     // Internal road from door to center
@@ -226,8 +226,8 @@ export function layoutTown(
     });
 
     // Door position for transition
-    if (intId) {
-      doorPositions.set(intId, { x: doorX, y: doorY });
+    if (wsId) {
+      doorPositions.set(wsId, { x: doorX, y: doorY });
     }
 
     // NPC position near their building — outside footprint, near door

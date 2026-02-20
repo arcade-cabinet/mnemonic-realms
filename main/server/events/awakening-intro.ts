@@ -4,57 +4,48 @@ import { startQuest } from '../systems/quests';
 /**
  * Awakening Intro Event
  *
- * Triggers automatically when a new game starts. Provides:
- * - Clear initial objectives
- * - Introduction to core mechanics (movement, interaction, memory collection)
- * - Activation of the first main quest (MQ-01)
+ * Triggers automatically when a new game starts. The player wakes in
+ * Artun's study — they've lived in Everwick their whole life, and this
+ * morning the village elder asked them to come by. This is not a stranger
+ * arriving; this is a local kid learning something extraordinary about
+ * themselves.
  *
- * Requirements: 8.1, 8.2, 8.3, 8.4, 8.5
+ * Per Act 1 Script, Scene 1: "The player spawns inside Elder's House.
+ * Artun stands by his desk, a leather-bound journal open before him."
  */
 export async function triggerAwakeningIntro(player: RpgPlayer): Promise<void> {
   const AWAKENING_FLAG = 'awakening-intro-played';
 
-  // Check if awakening has already been played
   if (player.getVariable(AWAKENING_FLAG)) {
     return;
   }
 
-  // Mark awakening as played
   player.setVariable(AWAKENING_FLAG, true);
 
-  // Awakening dialogue sequence
+  // The player wakes in a familiar place — not disoriented, but expectant.
+  // Morning light. Bookshelves. The smell of old paper and cedar.
   await player.showText(
-    'You wake in the village square. The world feels... incomplete. Muted. Like a sketch waiting for color.',
+    "Morning light streams through Artun's window. The elder's study is warm — bookshelves floor to ceiling, journals stacked on every surface, the faint scent of cedar ink.",
     { talkWith: player },
   );
 
   await player.showText(
-    'A memory stirs — someone mentioned your name. Artun, the village elder. He wanted to see you.',
+    "You've been here a hundred times before, but today something feels different. The air hums faintly, like a tuning fork struck just below hearing. The Resonance Stones outside are louder than usual.",
     { talkWith: player },
   );
 
   await player.showText(
-    'His house is to the north, past the fountain. You should find him there.',
+    'Artun asked you to come by this morning. He said he found something in his journals — something about you.',
     { talkWith: player },
   );
 
-  // Tutorial hints for core mechanics
-  await player.showText(
-    '[Tutorial] Use arrow keys or WASD to move. Press SPACE or ENTER to interact with people and objects.',
-    { talkWith: player },
-  );
-
-  await player.showText(
-    '[Tutorial] Memory fragments are scattered throughout the world. Collecting them will restore vibrancy and unlock new abilities.',
-    { talkWith: player },
-  );
-
-  // Start the first main quest
+  // Start the quest. The notification should feel like an in-world moment,
+  // not a design doc header.
   const questStarted = startQuest(player, 'MQ-01');
 
   if (questStarted) {
     await player.showText(
-      "Quest Started: The Architect's Awakening — Speak with Artun at Elder's House",
+      "Something stirs at the edge of your awareness — a pull, gentle but persistent, toward the old man's desk and the journal lying open upon it. Whatever he's found, it's been waiting for you.",
       { talkWith: player },
     );
   }

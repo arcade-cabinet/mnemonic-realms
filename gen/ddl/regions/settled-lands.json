@@ -1,16 +1,33 @@
 {
   "id": "settled-lands",
   "name": "The Settled Lands",
-  "biome": "farmland",
-  "acts": [1],
+  "biome": "village",
+  "acts": [
+    1
+  ],
   "playTimeMinutes": 180,
   "difficulty": "easy",
-  "ambientMusic": "bgm-overworld-settled",
+  "ambientMusic": "bgm-overworld-settled-lands",
   "startVibrancy": 55,
-  "weather": { "default": "clear", "dynamic": false },
+  "weather": {
+    "default": "clear",
+    "dynamic": false
+  },
   "encounters": {
-    "enemies": ["E-SL-01", "E-SL-02"],
-    "levelRange": [1, 5],
+    "enemies": [
+      "E-SL-01",
+      "E-SL-02",
+      "E-SL-03",
+      "E-SL-04",
+      "E-SL-05",
+      "E-SL-06",
+      "E-SL-07",
+      "E-SL-08"
+    ],
+    "levelRange": [
+      1,
+      8
+    ],
     "averageStepsBetweenEncounters": 200
   },
   "anchors": [
@@ -22,154 +39,1779 @@
       "importance": "major",
       "town": {
         "size": "village",
-        "mapSize": [60, 60],
-        "services": [
-          { "type": "general-store", "keeperNpc": "khali", "buildingName": "Khali's Curios", "quests": ["SQ-01"] },
-          { "type": "blacksmith", "keeperNpc": "hark", "buildingName": "Hark's Forge" },
-          { "type": "inn", "keeperNpc": "nyro", "buildingName": "The Bright Hearth" },
-          { "type": "elder-house", "keeperNpc": "artun", "buildingName": "Elder Artun's Home" }
+        "mapSize": [
+          60,
+          60
         ],
-        "houses": 4,
-        "centralFeature": "memorial-garden",
-        "walled": false
+        "services": [
+          {
+            "type": "general-store",
+            "keeperNpc": "khali"
+          },
+          {
+            "type": "blacksmith",
+            "keeperNpc": "hark"
+          },
+          {
+            "type": "inn",
+            "keeperNpc": "nyro"
+          }
+        ],
+        "houses": 1,
+        "centralFeature": "Central Square"
       },
-      "quests": ["MQ-01", "MQ-02", "SQ-01"],
+      "quests": [
+        "MQ-01",
+        "MQ-03",
+        "MQ-05",
+        "MQ-07",
+        "SQ-10",
+        "SQ-14",
+        "MQ-02",
+        "SQ-01",
+        "SQ-11",
+        "SQ-12"
+      ],
       "npcs": [
-        { "id": "artun", "role": "quest-giver", "placement": "elder-house" },
-        { "id": "khali", "role": "shopkeeper", "placement": "shop" },
-        { "id": "hark", "role": "shopkeeper", "placement": "shop" },
-        { "id": "nyro", "role": "innkeeper", "placement": "shop" },
-        { "id": "solara", "role": "story", "placement": "memorial-garden" }
+        {
+          "id": "artun",
+          "role": "quest-giver",
+          "placement": "patrol"
+        },
+        {
+          "id": "hana",
+          "role": "quest-giver",
+          "placement": "center"
+        },
+        {
+          "id": "khali-shopkeeper",
+          "role": "quest-giver",
+          "placement": "center"
+        },
+        {
+          "id": "hark-blacksmith",
+          "role": "quest-giver",
+          "placement": "center"
+        },
+        {
+          "id": "nyro-innkeeper",
+          "role": "quest-giver",
+          "placement": "center"
+        },
+        {
+          "id": "villager-a",
+          "role": "ambient",
+          "placement": "patrol"
+        },
+        {
+          "id": "villager-b",
+          "role": "ambient",
+          "placement": "patrol"
+        },
+        {
+          "id": "villager-c",
+          "role": "ambient",
+          "placement": "patrol"
+        }
       ],
       "events": [
-        { "id": "EV-EW-001", "trigger": "auto", "quest": "MQ-01", "repeat": "once", "description": "Artun awakening dialogue" },
-        { "id": "EV-EW-002", "trigger": "action", "quest": "MQ-02", "repeat": "once", "description": "Memorial Garden first visit" }
+        {
+          "id": "EV-EW-001",
+          "trigger": "action",
+          "quest": "MQ-01",
+          "repeat": "once",
+          "description": "Artun intro dialogue; gives Architect's Signet direction"
+        },
+        {
+          "id": "EV-EW-002",
+          "trigger": "action",
+          "quest": "MQ-01, MQ-02",
+          "repeat": "once",
+          "description": "Hana gives Architect's Signet (K-01); teaches memory ops"
+        },
+        {
+          "id": "EV-EW-003",
+          "trigger": "action",
+          "quest": "MQ-02",
+          "repeat": "once",
+          "description": "Memorial Garden Resonance Stone; first fragment collection (MF-01)"
+        },
+        {
+          "id": "EV-EW-004",
+          "trigger": "action",
+          "quest": "MQ-02",
+          "repeat": "once",
+          "description": "Remix Table tutorial; broadcast tutorial"
+        },
+        {
+          "id": "EV-EW-005",
+          "trigger": "action",
+          "quest": "SQ-01",
+          "repeat": "always",
+          "description": "Khali shop interface + SQ-01 dialogue trigger"
+        },
+        {
+          "id": "EV-EW-006",
+          "trigger": "action",
+          "quest": "SQ-11",
+          "repeat": "always",
+          "description": "Hark shop interface + SQ-11 trigger (vibrancy 70+)"
+        },
+        {
+          "id": "EV-EW-007",
+          "trigger": "action",
+          "quest": "SQ-12",
+          "repeat": "always",
+          "description": "Nyro inn: rest + dream sequence trigger"
+        },
+        {
+          "id": "EV-EW-008",
+          "trigger": "action",
+          "repeat": "once",
+          "description": "Quest Board: displays available side quests"
+        },
+        {
+          "id": "EV-EW-009",
+          "trigger": "touch",
+          "repeat": "always",
+          "description": "South Gate transition -> Heartfield (15, 0)"
+        },
+        {
+          "id": "EV-EW-010",
+          "trigger": "touch",
+          "repeat": "always",
+          "description": "East Gate transition -> Ambergrove (0, 20)"
+        },
+        {
+          "id": "EV-EW-011",
+          "trigger": "touch",
+          "repeat": "always",
+          "description": "West Gate transition -> Millbrook (39, 20)"
+        },
+        {
+          "id": "EV-EW-012",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "North Gate transition -> Sunridge (20, 39); locked until Act II"
+        },
+        {
+          "id": "EV-EW-013",
+          "trigger": "action",
+          "repeat": "always",
+          "description": "Artun's telescope: narrative lookout over Settled Lands"
+        },
+        {
+          "id": "EV-EW-014",
+          "trigger": "touch",
+          "quest": "SQ-10",
+          "repeat": "once",
+          "description": "Hidden Depths entrance under Memorial Garden -> Depths L1"
+        },
+        {
+          "id": "EV-EW-015",
+          "trigger": "action",
+          "repeat": "always",
+          "description": "Fountain vibrancy check: particle effects scale with zone vibrancy"
+        },
+        {
+          "id": "EV-EW-016",
+          "trigger": "auto",
+          "quest": "MQ-01",
+          "repeat": "once",
+          "description": "Opening cutscene trigger on first map load"
+        }
       ],
       "worldSlots": [
-        { "instanceId": "everwick-khali", "transitionType": "door" },
-        { "instanceId": "everwick-hark", "transitionType": "door" },
-        { "instanceId": "everwick-inn", "transitionType": "door" },
-        { "instanceId": "everwick-artun", "transitionType": "door" }
-      ]
+        {
+          "instanceId": "everwick-khali",
+          "transitionType": "door"
+        },
+        {
+          "instanceId": "everwick-hark",
+          "transitionType": "door"
+        },
+        {
+          "instanceId": "everwick-inn",
+          "transitionType": "door"
+        },
+        {
+          "instanceId": "everwick-artun",
+          "transitionType": "door"
+        }
+      ],
+      "mapLayout": {
+        "biome": "village",
+        "palette": "village-premium",
+        "defaultGround": "ground.grass",
+        "music": "bgm-vh",
+        "tileSize": 16,
+        "mapSize": [
+          60,
+          60
+        ],
+        "forestBorder": {
+          "depth": 4,
+          "gates": {
+            "north": {
+              "start": 27,
+              "end": 33
+            },
+            "south": {
+              "start": 27,
+              "end": 33
+            },
+            "east": {
+              "start": 27,
+              "end": 33
+            },
+            "west": {
+              "start": 27,
+              "end": 33
+            }
+          }
+        },
+        "buildings": [
+          {
+            "id": "everwick-house-red-small-18",
+            "name": "Khali's Curios",
+            "objectRef": "house.red-small-1",
+            "x": 36,
+            "y": 32,
+            "width": 8,
+            "height": 6,
+            "door": {
+              "x": 4,
+              "y": 5,
+              "targetWorld": "everwick-khali"
+            },
+            "keeperNpc": "khali",
+            "keeperSprite": "npc_khali",
+            "keeperDialogue": "khali-general-store"
+          },
+          {
+            "id": "everwick-house-blue-medium-18",
+            "name": "Elder's House",
+            "objectRef": "house.blue-medium-1",
+            "x": 36,
+            "y": 20,
+            "width": 10,
+            "height": 8,
+            "door": {
+              "x": 5,
+              "y": 7,
+              "targetWorld": "everwick-artun"
+            }
+          },
+          {
+            "id": "everwick-house-red-large-20",
+            "name": "The Bright Hearth",
+            "objectRef": "house.red-large-1",
+            "x": 40,
+            "y": 28,
+            "width": 12,
+            "height": 9,
+            "door": {
+              "x": 6,
+              "y": 8,
+              "targetWorld": "everwick-inn"
+            },
+            "keeperNpc": "nyro",
+            "keeperSprite": "npc_nyro",
+            "keeperDialogue": "nyro-inn"
+          },
+          {
+            "id": "everwick-house-green-small-8",
+            "name": "Hana's Workshop",
+            "objectRef": "house.green-small-1",
+            "x": 16,
+            "y": 36,
+            "width": 8,
+            "height": 6
+          },
+          {
+            "id": "everwick-house-hay-medium-18",
+            "name": "Hark's Forge",
+            "objectRef": "house.hay-medium-1",
+            "x": 36,
+            "y": 36,
+            "width": 10,
+            "height": 8,
+            "door": {
+              "x": 5,
+              "y": 7,
+              "targetWorld": "everwick-hark"
+            },
+            "keeperNpc": "hark",
+            "keeperSprite": "npc_hark",
+            "keeperDialogue": "hark-blacksmith"
+          }
+        ],
+        "areas": [
+          {
+            "id": "fountain-base",
+            "name": "Resonance Fountain",
+            "x": 24,
+            "y": 28,
+            "width": 4,
+            "height": 4,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "training-ground",
+            "name": "training-ground",
+            "x": 16,
+            "y": 20,
+            "width": 10,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "memorial-garden",
+            "name": "memorial-garden",
+            "x": 16,
+            "y": 32,
+            "width": 8,
+            "height": 6,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "lookout-hill",
+            "name": "lookout-hill",
+            "x": 24,
+            "y": 4,
+            "width": 12,
+            "height": 10,
+            "terrain": "ground.light-grass"
+          }
+        ],
+        "npcSpawns": [
+          {
+            "id": "artun",
+            "sprite": "npc_artun",
+            "x": 19,
+            "y": 11,
+            "dialogue": "artun"
+          },
+          {
+            "id": "hana",
+            "sprite": "npc_hana",
+            "x": 9,
+            "y": 19,
+            "dialogue": "hana"
+          },
+          {
+            "id": "khali-shopkeeper",
+            "sprite": "npc_khali",
+            "x": 19,
+            "y": 17,
+            "dialogue": "khali-shopkeeper"
+          },
+          {
+            "id": "hark-blacksmith",
+            "sprite": "npc_hark",
+            "x": 19,
+            "y": 19,
+            "dialogue": "hark-blacksmith"
+          },
+          {
+            "id": "nyro-innkeeper",
+            "sprite": "npc_nyro",
+            "x": 21,
+            "y": 15,
+            "dialogue": "nyro-innkeeper"
+          },
+          {
+            "id": "villager-a",
+            "sprite": "npc_villager_m1",
+            "x": 14,
+            "y": 15,
+            "dialogue": "villager-a"
+          },
+          {
+            "id": "villager-b",
+            "sprite": "npc_villager_f1",
+            "x": 16,
+            "y": 16,
+            "dialogue": "villager-b"
+          },
+          {
+            "id": "villager-c",
+            "sprite": "npc_villager_m2",
+            "x": 10,
+            "y": 22,
+            "dialogue": "villager-c"
+          }
+        ],
+        "transitions": [
+          {
+            "id": "everwick-south-gate",
+            "x": 15,
+            "y": 25,
+            "targetMap": "heartfield",
+            "targetX": 15,
+            "targetY": 0
+          },
+          {
+            "id": "everwick-east-gate",
+            "x": 29,
+            "y": 14,
+            "targetMap": "ambergrove",
+            "targetX": 0,
+            "targetY": 20
+          },
+          {
+            "id": "everwick-west-gate",
+            "x": 0,
+            "y": 14,
+            "targetMap": "millbrook",
+            "targetX": 39,
+            "targetY": 20
+          },
+          {
+            "id": "everwick-north-gate",
+            "x": 15,
+            "y": 0,
+            "targetMap": "sunridge",
+            "targetX": 20,
+            "targetY": 39,
+            "condition": "After MQ-04 (mountain pass opens)"
+          },
+          {
+            "id": "everwick-down-gate",
+            "x": 8,
+            "y": 17,
+            "targetMap": "depths-level-1",
+            "targetX": 10,
+            "targetY": 0,
+            "condition": "After MQ-05 (hidden entrance revealed)"
+          }
+        ],
+        "resonanceStones": [
+          {
+            "id": "RS-EW-01",
+            "x": 14,
+            "y": 15,
+            "fragment": "1 environmental fragment (joy/neutral/1)"
+          },
+          {
+            "id": "RS-EW-02",
+            "x": 9,
+            "y": 16,
+            "fragment": "1 fragment (calm/earth/1)"
+          },
+          {
+            "id": "RS-EW-03",
+            "x": 10,
+            "y": 17,
+            "fragment": "1 fragment (joy/light/1)"
+          },
+          {
+            "id": "RS-EW-04",
+            "x": 11,
+            "y": 16,
+            "fragment": "1 fragment (sorrow/neutral/1)"
+          },
+          {
+            "id": "RS-EW-05",
+            "x": 21,
+            "y": 15,
+            "fragment": "1 fragment (calm/neutral/2)"
+          }
+        ],
+        "treasureChests": [
+          {
+            "id": "CH-EW-01",
+            "x": 13,
+            "y": 3,
+            "item": "C-HP-01",
+            "quantity": 2,
+            "condition": "Lookout Hill, always available"
+          },
+          {
+            "id": "CH-EW-02",
+            "x": 9,
+            "y": 11,
+            "item": "C-SP-01",
+            "quantity": 2,
+            "condition": "Training Ground, after MQ-01"
+          }
+        ],
+        "playerSpawn": {
+          "x": 30,
+          "y": 30
+        }
+      }
     },
     {
       "id": "heartfield",
       "name": "Heartfield",
       "type": "town",
       "position": "middle",
-      "importance": "major",
+      "importance": "minor",
       "town": {
-        "size": "hamlet",
-        "mapSize": [80, 80],
+        "size": "town",
+        "mapSize": [
+          80,
+          80
+        ],
         "services": [],
-        "houses": 5,
-        "centralFeature": "well",
-        "walled": false
+        "houses": 5
       },
-      "quests": ["MQ-03", "SQ-02"],
+      "quests": [
+        "SQ-02",
+        "MQ-03",
+        "MQ-03 (exploration confirmation)",
+        "-- (lore dialogue)",
+        "-- (appears after Solara recall)"
+      ],
       "npcs": [
-        { "id": "farmer-gale", "role": "quest-giver", "placement": "entrance" },
-        { "id": "farmer-suri", "role": "npc", "placement": "center" },
-        { "id": "farmer-edric", "role": "npc", "placement": "patrol" },
-        { "id": "hamlet-elder", "role": "npc", "placement": "center" },
-        { "id": "child-npc", "role": "npc", "placement": "center" }
+        {
+          "id": "farmer-gale",
+          "role": "quest-giver",
+          "placement": "patrol"
+        },
+        {
+          "id": "farmer-suri",
+          "role": "quest-giver",
+          "placement": "center"
+        },
+        {
+          "id": "farmer-edric",
+          "role": "ambient",
+          "placement": "patrol"
+        },
+        {
+          "id": "hamlet-elder",
+          "role": "quest-giver",
+          "placement": "center"
+        },
+        {
+          "id": "child-npc",
+          "role": "quest-giver",
+          "placement": "patrol"
+        }
       ],
       "events": [
-        { "id": "EV-HF-001", "trigger": "action", "quest": "SQ-02", "repeat": "quest", "description": "Farmer Gale windmill dialogue" },
-        { "id": "EV-HF-003", "trigger": "auto", "quest": "MQ-04", "repeat": "once", "description": "Stagnation Clearing cutscene" }
-      ]
-    },
-    {
-      "id": "old-windmill",
-      "name": "Old Windmill Hill",
-      "type": "landmark",
-      "position": [60, 16],
-      "importance": "minor",
-      "quests": ["SQ-02"],
-      "events": [
-        { "id": "EV-HF-002", "trigger": "touch", "quest": "SQ-02", "repeat": "quest", "description": "Old Windmill entrance" },
-        { "id": "EV-HF-008", "trigger": "action", "repeat": "once", "description": "Windmill Resonance Stone" }
-      ]
-    },
-    {
-      "id": "stagnation-clearing-hf",
-      "name": "Heartfield Stagnation Clearing",
-      "type": "landmark",
-      "position": [66, 56],
-      "importance": "minor",
-      "quests": ["MQ-04", "SQ-14"],
-      "events": [
-        { "id": "EV-HF-003", "trigger": "auto", "quest": "MQ-04", "repeat": "once", "description": "Stagnation Clearing cutscene" },
-        { "id": "EV-HF-009", "trigger": "action", "quest": "SQ-14", "repeat": "once", "description": "Broadcast joy into frozen Lira" }
-      ]
+        {
+          "id": "EV-HF-001",
+          "trigger": "action",
+          "quest": "SQ-02",
+          "repeat": "once",
+          "description": "Farmer Gale: windmill groaning dialogue; SQ-02 trigger"
+        },
+        {
+          "id": "EV-HF-002",
+          "trigger": "touch",
+          "quest": "SQ-02",
+          "repeat": "once",
+          "description": "Old Windmill entrance; Dissolved Memory encounter inside"
+        },
+        {
+          "id": "EV-HF-003",
+          "trigger": "auto",
+          "quest": "MQ-04",
+          "repeat": "once",
+          "description": "Stagnation Clearing cutscene: Hana's freezing"
+        },
+        {
+          "id": "EV-HF-004",
+          "trigger": "action",
+          "quest": "MQ-04",
+          "repeat": "once",
+          "description": "Hana's frozen form; broadcast target for SQ-14"
+        },
+        {
+          "id": "EV-HF-005",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "Southern Crossroads transition -> Shimmer Marsh (20, 0)"
+        },
+        {
+          "id": "EV-HF-006",
+          "trigger": "touch",
+          "repeat": "always",
+          "description": "North edge transition -> Everwick (15, 25)"
+        },
+        {
+          "id": "EV-HF-007",
+          "trigger": "touch",
+          "repeat": "always",
+          "description": "East edge transition -> Ambergrove (0, 20)"
+        },
+        {
+          "id": "EV-HF-008",
+          "trigger": "action",
+          "repeat": "always",
+          "description": "Windmill Resonance Stone; fragment collection"
+        },
+        {
+          "id": "EV-HF-009",
+          "trigger": "action",
+          "quest": "SQ-14",
+          "repeat": "once",
+          "description": "Broadcast joy 4+ fragment into Hana; partial awakening"
+        }
+      ],
+      "mapLayout": {
+        "biome": "grassland",
+        "palette": "village-premium",
+        "defaultGround": "ground.grass",
+        "music": "bgm-heartfield",
+        "tileSize": 16,
+        "mapSize": [
+          80,
+          80
+        ],
+        "forestBorder": {
+          "depth": 4,
+          "gates": {
+            "north": {
+              "start": 37,
+              "end": 43
+            },
+            "south": {
+              "start": 37,
+              "end": 43
+            },
+            "east": {
+              "start": 37,
+              "end": 43
+            },
+            "west": {
+              "start": 37,
+              "end": 43
+            }
+          }
+        },
+        "buildings": [
+          {
+            "id": "heartfield-house-hay-small-13",
+            "name": "Gale's Farmstead",
+            "objectRef": "house.hay-small-1",
+            "x": 26,
+            "y": 26,
+            "width": 8,
+            "height": 6
+          },
+          {
+            "id": "heartfield-house-hay-small-17",
+            "name": "Suri's Farmstead",
+            "objectRef": "house.hay-small-1",
+            "x": 34,
+            "y": 26,
+            "width": 8,
+            "height": 6
+          },
+          {
+            "id": "heartfield-house-hay-small-15",
+            "name": "Edric's Farmstead",
+            "objectRef": "house.hay-small-1",
+            "x": 30,
+            "y": 34,
+            "width": 8,
+            "height": 6
+          },
+          {
+            "id": "heartfield-house-hay-small-19",
+            "name": "Hamlet Well House",
+            "objectRef": "house.hay-small-1",
+            "x": 38,
+            "y": 32,
+            "width": 8,
+            "height": 6
+          },
+          {
+            "id": "heartfield-house-hay-small-21",
+            "name": "Elder's Cottage",
+            "objectRef": "house.hay-small-1",
+            "x": 42,
+            "y": 28,
+            "width": 8,
+            "height": 6
+          }
+        ],
+        "areas": [
+          {
+            "id": "watermill",
+            "name": "The Old Windmill",
+            "x": 60,
+            "y": 16,
+            "width": 8,
+            "height": 10,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "road-intersection",
+            "name": "Southern Crossroads",
+            "x": 40,
+            "y": 76,
+            "width": 6,
+            "height": 6,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "farm-field",
+            "name": "Western Wheat Fields",
+            "x": 4,
+            "y": 10,
+            "width": 12,
+            "height": 15,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "farm-field",
+            "name": "Eastern Wheat Fields",
+            "x": 44,
+            "y": 10,
+            "width": 12,
+            "height": 15,
+            "terrain": "ground.light-grass"
+          }
+        ],
+        "npcSpawns": [
+          {
+            "id": "farmer-gale",
+            "sprite": "npc_farmer_m1",
+            "x": 15,
+            "y": 14,
+            "dialogue": "farmer-gale"
+          },
+          {
+            "id": "farmer-suri",
+            "sprite": "npc_farmer_f1",
+            "x": 17,
+            "y": 16,
+            "dialogue": "farmer-suri"
+          },
+          {
+            "id": "farmer-edric",
+            "sprite": "npc_farmer_m2",
+            "x": 14,
+            "y": 18,
+            "dialogue": "farmer-edric"
+          },
+          {
+            "id": "hamlet-elder",
+            "sprite": "npc_elder_f1",
+            "x": 18,
+            "y": 14,
+            "dialogue": "hamlet-elder"
+          },
+          {
+            "id": "child-npc",
+            "sprite": "npc_child_01",
+            "x": 16,
+            "y": 15,
+            "dialogue": "child-npc"
+          }
+        ],
+        "transitions": [
+          {
+            "id": "heartfield-north-gate",
+            "x": 15,
+            "y": 0,
+            "targetMap": "everwick",
+            "targetX": 15,
+            "targetY": 25
+          },
+          {
+            "id": "heartfield-east-gate",
+            "x": 39,
+            "y": 20,
+            "targetMap": "ambergrove",
+            "targetX": 0,
+            "targetY": 20
+          },
+          {
+            "id": "heartfield-south-gate",
+            "x": 20,
+            "y": 38,
+            "targetMap": "shimmer-marsh",
+            "targetX": 20,
+            "targetY": 0,
+            "condition": "After MQ-04"
+          }
+        ],
+        "resonanceStones": [
+          {
+            "id": "RS-HF-01",
+            "x": 18,
+            "y": 14,
+            "fragment": "1 fragment (joy/earth/1)"
+          },
+          {
+            "id": "RS-HF-02",
+            "x": 31,
+            "y": 9,
+            "fragment": "1 fragment (awe/wind/2)"
+          },
+          {
+            "id": "RS-HF-03",
+            "x": 35,
+            "y": 30,
+            "fragment": "1 fragment (sorrow/dark/1)"
+          },
+          {
+            "id": "RS-HF-04",
+            "x": 8,
+            "y": 30,
+            "fragment": "1 fragment (calm/earth/1)",
+            "hidden": true
+          }
+        ],
+        "treasureChests": [
+          {
+            "id": "CH-HF-01",
+            "x": 32,
+            "y": 9,
+            "item": "C-SC-01",
+            "quantity": 3,
+            "condition": "Inside windmill ground floor"
+          },
+          {
+            "id": "CH-HF-02",
+            "x": 5,
+            "y": 10,
+            "item": "C-HP-01",
+            "quantity": 2,
+            "condition": "Hidden in wheat field"
+          },
+          {
+            "id": "CH-HF-03",
+            "x": 36,
+            "y": 25,
+            "item": "C-SP-05",
+            "quantity": 2,
+            "condition": "Near stagnation clearing approach"
+          }
+        ],
+        "playerSpawn": {
+          "x": 40,
+          "y": 40
+        }
+      }
     },
     {
       "id": "ambergrove",
       "name": "Ambergrove",
-      "type": "landmark",
-      "position": "middle",
-      "importance": "major",
-      "quests": ["MQ-05"]
+      "type": "town",
+      "position": "side",
+      "importance": "minor",
+      "town": {
+        "size": "town",
+        "mapSize": [
+          80,
+          80
+        ],
+        "services": [],
+        "houses": 1
+      },
+      "quests": [
+        "SQ-03"
+      ],
+      "npcs": [
+        {
+          "id": "lead-woodcutter",
+          "role": "quest-giver",
+          "placement": "center"
+        },
+        {
+          "id": "woodcutter-b",
+          "role": "ambient",
+          "placement": "patrol"
+        },
+        {
+          "id": "woodcutter-c",
+          "role": "ambient",
+          "placement": "center"
+        }
+      ],
+      "events": [
+        {
+          "id": "EV-AG-001",
+          "trigger": "action",
+          "quest": "SQ-03",
+          "repeat": "once",
+          "description": "Lead Woodcutter: rapid-growth dialogue; SQ-03 trigger"
+        },
+        {
+          "id": "EV-AG-002",
+          "trigger": "action",
+          "repeat": "always",
+          "description": "Hearthstone Circle center: fragment collection tutorial"
+        },
+        {
+          "id": "EV-AG-003",
+          "trigger": "action",
+          "repeat": "once",
+          "description": "Amber Lake submerged stone: activates in Act II"
+        },
+        {
+          "id": "EV-AG-004",
+          "trigger": "touch",
+          "repeat": "always",
+          "description": "West edge transition -> Everwick (29, 14)"
+        },
+        {
+          "id": "EV-AG-005",
+          "trigger": "touch",
+          "repeat": "always",
+          "description": "West edge alt -> Heartfield (39, 20)"
+        },
+        {
+          "id": "EV-AG-006",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "East edge (Canopy Path) transition -> Shimmer Marsh via Flickerveil approach"
+        },
+        {
+          "id": "EV-AG-007",
+          "trigger": "touch",
+          "repeat": "always",
+          "description": "South edge transition -> Heartfield cross-country path"
+        },
+        {
+          "id": "EV-AG-008",
+          "trigger": "action",
+          "quest": "SQ-03",
+          "repeat": "once",
+          "description": "3 rapid-growth investigation sites + beetle nest combat"
+        }
+      ],
+      "mapLayout": {
+        "biome": "forest",
+        "palette": "village-premium",
+        "defaultGround": "ground.dark-grass",
+        "music": "bgm-ambergrove",
+        "tileSize": 16,
+        "mapSize": [
+          80,
+          80
+        ],
+        "forestBorder": {
+          "depth": 4,
+          "gates": {
+            "north": {
+              "start": 37,
+              "end": 43
+            },
+            "south": {
+              "start": 37,
+              "end": 43
+            },
+            "east": {
+              "start": 37,
+              "end": 43
+            },
+            "west": {
+              "start": 37,
+              "end": 43
+            }
+          }
+        },
+        "areas": [
+          {
+            "id": "lake",
+            "name": "Amber Lake",
+            "x": 56,
+            "y": 46,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "garden",
+            "name": "Woodcutter's Camp",
+            "x": 16,
+            "y": 56,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "bridge",
+            "name": "Eastern Canopy Path",
+            "x": 72,
+            "y": 36,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          }
+        ],
+        "npcSpawns": [
+          {
+            "id": "lead-woodcutter",
+            "sprite": "npc_woodcutter_m1",
+            "x": 9,
+            "y": 29,
+            "dialogue": "lead-woodcutter"
+          },
+          {
+            "id": "woodcutter-b",
+            "sprite": "npc_woodcutter_m2",
+            "x": 10,
+            "y": 31,
+            "dialogue": "woodcutter-b"
+          },
+          {
+            "id": "woodcutter-c",
+            "sprite": "npc_woodcutter_f1",
+            "x": 11,
+            "y": 30,
+            "dialogue": "woodcutter-c"
+          }
+        ],
+        "transitions": [
+          {
+            "id": "ambergrove-west-gate",
+            "x": 0,
+            "y": 20,
+            "targetMap": "everwick",
+            "targetX": 29,
+            "targetY": 14
+          },
+          {
+            "id": "ambergrove-east-gate",
+            "x": 38,
+            "y": 20,
+            "targetMap": "flickerveil",
+            "targetX": 0,
+            "targetY": 30,
+            "condition": "After MQ-04 (Canopy Path)"
+          },
+          {
+            "id": "ambergrove-south-gate",
+            "x": 10,
+            "y": 39,
+            "targetMap": "heartfield",
+            "targetX": 39,
+            "targetY": 20
+          }
+        ],
+        "resonanceStones": [
+          {
+            "id": "RS-AG-01",
+            "x": 18,
+            "y": 8,
+            "fragment": "1 fragment (awe/earth/2)"
+          },
+          {
+            "id": "RS-AG-02",
+            "x": 22,
+            "y": 8,
+            "fragment": "1 fragment (joy/earth/2)"
+          },
+          {
+            "id": "RS-AG-03",
+            "x": 20,
+            "y": 12,
+            "fragment": "1 fragment (calm/wind/2)"
+          },
+          {
+            "id": "RS-AG-04",
+            "x": 30,
+            "y": 27,
+            "fragment": "1 fragment (awe/water/2)"
+          },
+          {
+            "id": "RS-AG-05",
+            "x": 15,
+            "y": 5,
+            "fragment": "1 fragment (fury/earth/1)",
+            "hidden": true
+          }
+        ],
+        "treasureChests": [
+          {
+            "id": "CH-AG-01",
+            "x": 21,
+            "y": 10,
+            "item": "W-ST-03",
+            "quantity": 1,
+            "condition": "Hearthstone Circle center"
+          },
+          {
+            "id": "CH-AG-02",
+            "x": 37,
+            "y": 20,
+            "item": "W-WD-03",
+            "quantity": 1,
+            "condition": "Canopy Path treasure, accessible after climb"
+          },
+          {
+            "id": "CH-AG-03",
+            "x": 30,
+            "y": 5,
+            "item": "C-HP-01",
+            "quantity": 3,
+            "condition": "Deep forest clearing"
+          }
+        ],
+        "playerSpawn": {
+          "x": 40,
+          "y": 40
+        }
+      }
     },
     {
       "id": "millbrook",
       "name": "Millbrook",
       "type": "town",
-      "position": "middle",
+      "position": "side",
       "importance": "major",
       "town": {
         "size": "town",
-        "mapSize": [80, 80],
-        "services": [
-          { "type": "general-store", "buildingName": "Brightwater Provisions" },
-          { "type": "blacksmith", "buildingName": "River Iron Works" },
-          { "type": "inn", "buildingName": "The Millstone Inn" },
-          { "type": "fishmonger", "buildingName": "Fresh Catch" }
+        "mapSize": [
+          80,
+          80
         ],
-        "houses": 6,
-        "centralFeature": "watermill",
-        "walled": false
+        "services": [
+          {
+            "type": "general-store",
+            "keeperNpc": "theron"
+          },
+          {
+            "type": "blacksmith",
+            "keeperNpc": "dalla"
+          },
+          {
+            "type": "inn",
+            "keeperNpc": "oram"
+          },
+          {
+            "type": "general-store",
+            "keeperNpc": "lissa"
+          }
+        ],
+        "houses": 5
       },
-      "quests": ["SQ-03", "SQ-04"],
+      "quests": [
+        "SQ-04",
+        "-- (lore)"
+      ],
+      "npcs": [
+        {
+          "id": "fisher-tam",
+          "role": "quest-giver",
+          "placement": "center"
+        },
+        {
+          "id": "specialty-shopkeeper",
+          "role": "ambient",
+          "placement": "center"
+        },
+        {
+          "id": "millbrook-elder",
+          "role": "quest-giver",
+          "placement": "patrol"
+        },
+        {
+          "id": "bridge-guard",
+          "role": "ambient",
+          "placement": "center"
+        },
+        {
+          "id": "townsfolk-a",
+          "role": "ambient",
+          "placement": "patrol"
+        },
+        {
+          "id": "townsfolk-b",
+          "role": "ambient",
+          "placement": "patrol"
+        }
+      ],
+      "events": [
+        {
+          "id": "EV-MB-001",
+          "trigger": "action",
+          "quest": "SQ-04",
+          "repeat": "once",
+          "description": "Fisher Tam: strange lights dialogue; SQ-04 trigger"
+        },
+        {
+          "id": "EV-MB-002",
+          "trigger": "touch",
+          "quest": "SQ-04",
+          "repeat": "once",
+          "description": "Hidden cave entrance behind waterfall"
+        },
+        {
+          "id": "EV-MB-003",
+          "trigger": "action",
+          "repeat": "always",
+          "description": "Specialty shop interface (Brightwater Saber, Riverside Crosier, etc.)"
+        },
+        {
+          "id": "EV-MB-004",
+          "trigger": "touch",
+          "repeat": "always",
+          "description": "East edge transition -> Everwick (0, 14)"
+        },
+        {
+          "id": "EV-MB-005",
+          "trigger": "touch",
+          "repeat": "always",
+          "description": "South edge transition -> Heartfield riverbank path"
+        },
+        {
+          "id": "EV-MB-006",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "West edge transition -> Hollow Ridge foothills"
+        },
+        {
+          "id": "EV-MB-007",
+          "trigger": "action",
+          "repeat": "always",
+          "description": "Bridge Resonance Stone: fragment collection + rainbow effect"
+        }
+      ],
       "worldSlots": [
-        { "instanceId": "millbrook-provisions", "transitionType": "door" },
-        { "instanceId": "millbrook-forge", "transitionType": "door" },
-        { "instanceId": "millbrook-inn", "transitionType": "door" },
-        { "instanceId": "millbrook-fish", "transitionType": "door" }
-      ]
+        {
+          "instanceId": "millbrook-provisions",
+          "transitionType": "door"
+        },
+        {
+          "instanceId": "millbrook-forge",
+          "transitionType": "door"
+        },
+        {
+          "instanceId": "millbrook-inn",
+          "transitionType": "door"
+        },
+        {
+          "instanceId": "millbrook-fish",
+          "transitionType": "door"
+        }
+      ],
+      "mapLayout": {
+        "biome": "riverside",
+        "palette": "village-premium",
+        "defaultGround": "ground.grass",
+        "music": "bgm-millbrook",
+        "tileSize": 16,
+        "mapSize": [
+          80,
+          80
+        ],
+        "buildings": [
+          {
+            "id": "millbrook-house-blue-small-12",
+            "name": "Millbrook Townhouse",
+            "objectRef": "house.blue-small-1",
+            "x": 24,
+            "y": 24,
+            "width": 8,
+            "height": 6,
+            "door": {
+              "x": 4,
+              "y": 5,
+              "targetWorld": "millbrook-provisions"
+            },
+            "keeperNpc": "theron",
+            "keeperSprite": "npc_theron",
+            "keeperDialogue": "theron-general-store"
+          },
+          {
+            "id": "millbrook-house-blue-small-14",
+            "name": "Riverside Goods",
+            "objectRef": "house.blue-small-1",
+            "x": 28,
+            "y": 28,
+            "width": 8,
+            "height": 6
+          },
+          {
+            "id": "millbrook-house-blue-small-16",
+            "name": "Town Hall",
+            "objectRef": "house.blue-small-1",
+            "x": 32,
+            "y": 26,
+            "width": 8,
+            "height": 6
+          },
+          {
+            "id": "millbrook-house-blue-small-22",
+            "name": "Fisher's Lodge",
+            "objectRef": "house.blue-small-1",
+            "x": 44,
+            "y": 28,
+            "width": 8,
+            "height": 6
+          },
+          {
+            "id": "millbrook-house-blue-small-13",
+            "name": "River Cottage",
+            "objectRef": "house.blue-small-1",
+            "x": 26,
+            "y": 36,
+            "width": 8,
+            "height": 6
+          },
+          {
+            "id": "millbrook-house-blue-small-20",
+            "name": "Dalla's Forge",
+            "objectRef": "house.blue-small-1",
+            "x": 40,
+            "y": 24,
+            "width": 8,
+            "height": 6,
+            "door": {
+              "x": 4,
+              "y": 5,
+              "targetWorld": "millbrook-forge"
+            },
+            "keeperNpc": "dalla",
+            "keeperSprite": "npc_dalla",
+            "keeperDialogue": "dalla-blacksmith"
+          },
+          {
+            "id": "millbrook-house-blue-small-18",
+            "name": "Oram's Rest",
+            "objectRef": "house.blue-small-1",
+            "x": 36,
+            "y": 32,
+            "width": 8,
+            "height": 6,
+            "door": {
+              "x": 4,
+              "y": 5,
+              "targetWorld": "millbrook-inn"
+            },
+            "keeperNpc": "oram",
+            "keeperSprite": "npc_oram",
+            "keeperDialogue": "oram-inn"
+          },
+          {
+            "id": "millbrook-house-blue-small-24",
+            "name": "Lissa's Fish Market",
+            "objectRef": "house.blue-small-1",
+            "x": 48,
+            "y": 32,
+            "width": 8,
+            "height": 6,
+            "door": {
+              "x": 4,
+              "y": 5,
+              "targetWorld": "millbrook-fish"
+            },
+            "keeperNpc": "lissa",
+            "keeperSprite": "npc_lissa",
+            "keeperDialogue": "lissa-general-store"
+          },
+          {
+            "id": "millbrook-house-green-medium-14",
+            "name": "Specialty Shop",
+            "objectRef": "house.green-medium-1",
+            "x": 28,
+            "y": 28,
+            "width": 10,
+            "height": 8
+          }
+        ],
+        "areas": [
+          {
+            "id": "bridge",
+            "name": "Brightwater Bridge",
+            "x": 36,
+            "y": 36,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "watermill",
+            "name": "Upstream Falls",
+            "x": 12,
+            "y": 6,
+            "width": 8,
+            "height": 10,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dock",
+            "name": "Fisher's Rest",
+            "x": 56,
+            "y": 56,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          }
+        ],
+        "npcSpawns": [
+          {
+            "id": "fisher-tam",
+            "sprite": "npc_fisher_m1",
+            "x": 29,
+            "y": 29,
+            "dialogue": "fisher-tam"
+          },
+          {
+            "id": "specialty-shopkeeper",
+            "sprite": "npc_shopkeep_f1",
+            "x": 15,
+            "y": 15,
+            "dialogue": "specialty-shopkeeper"
+          },
+          {
+            "id": "millbrook-elder",
+            "sprite": "npc_elder_m1",
+            "x": 16,
+            "y": 13,
+            "dialogue": "millbrook-elder"
+          },
+          {
+            "id": "bridge-guard",
+            "sprite": "npc_guard_m1",
+            "x": 20,
+            "y": 19,
+            "dialogue": "bridge-guard"
+          },
+          {
+            "id": "townsfolk-a",
+            "sprite": "npc_villager_f2",
+            "x": 14,
+            "y": 17,
+            "dialogue": "townsfolk-a"
+          },
+          {
+            "id": "townsfolk-b",
+            "sprite": "npc_villager_m3",
+            "x": 22,
+            "y": 14,
+            "dialogue": "townsfolk-b"
+          }
+        ],
+        "transitions": [
+          {
+            "id": "millbrook-east-gate",
+            "x": 39,
+            "y": 20,
+            "targetMap": "everwick",
+            "targetX": 0,
+            "targetY": 14
+          },
+          {
+            "id": "millbrook-south-gate",
+            "x": 20,
+            "y": 39,
+            "targetMap": "heartfield",
+            "targetX": 5,
+            "targetY": 20
+          },
+          {
+            "id": "millbrook-west-gate",
+            "x": 0,
+            "y": 20,
+            "targetMap": "hollow-ridge",
+            "targetX": 49,
+            "targetY": 35,
+            "condition": "After MQ-04"
+          }
+        ],
+        "resonanceStones": [
+          {
+            "id": "RS-MB-01",
+            "x": 21,
+            "y": 19,
+            "fragment": "1 fragment (joy/water/2)"
+          },
+          {
+            "id": "RS-MB-02",
+            "x": 7,
+            "y": 4,
+            "fragment": "1 fragment (awe/water/3)",
+            "hidden": true
+          },
+          {
+            "id": "RS-MB-03",
+            "x": 30,
+            "y": 30,
+            "fragment": "1 fragment (calm/water/1)"
+          },
+          {
+            "id": "RS-MB-04",
+            "x": 8,
+            "y": 5,
+            "fragment": "1 fragment (sorrow/water/3)"
+          }
+        ],
+        "treasureChests": [
+          {
+            "id": "CH-MB-01",
+            "x": 7,
+            "y": 5,
+            "item": "sorrow/water/3 + awe/water/3",
+            "quantity": 1,
+            "condition": "Inside falls cave (SQ-04)"
+          },
+          {
+            "id": "CH-MB-02",
+            "x": 25,
+            "y": 10,
+            "item": "C-BF-04",
+            "quantity": 2,
+            "condition": "North riverbank, hidden"
+          },
+          {
+            "id": "CH-MB-03",
+            "x": 32,
+            "y": 32,
+            "item": "C-HP-01",
+            "quantity": 3,
+            "condition": "Fisher's Rest storage"
+          }
+        ],
+        "playerSpawn": {
+          "x": 40,
+          "y": 40
+        }
+      }
     },
     {
       "id": "sunridge",
       "name": "Sunridge",
-      "type": "camp",
+      "type": "town",
       "position": "end",
-      "importance": "major",
-      "quests": ["MQ-06"]
-    },
-    {
-      "id": "depths-l1",
-      "name": "Memory Cellar",
-      "type": "dungeon",
-      "position": "side",
-      "importance": "major",
-      "dungeon": {
-        "floors": 1,
-        "theme": "crystal",
-        "boss": "memory-guardian",
-        "reward": "echo-shard-1",
-        "worldSlots": [{ "instanceId": "depths-l1-f1", "transitionType": "stairs" }]
+      "importance": "minor",
+      "town": {
+        "size": "town",
+        "mapSize": [
+          80,
+          80
+        ],
+        "services": [],
+        "houses": 1
       },
-      "quests": ["MQ-07"]
+      "quests": [
+        "-- (rest dialogue",
+        "rumors)",
+        "SQ-05"
+      ],
+      "npcs": [
+        {
+          "id": "waystation-keeper",
+          "role": "quest-giver",
+          "placement": "center"
+        },
+        {
+          "id": "traveling-merchant",
+          "role": "ambient",
+          "placement": "patrol"
+        },
+        {
+          "id": "waystation-guard",
+          "role": "ambient",
+          "placement": "patrol"
+        },
+        {
+          "id": "janik",
+          "role": "quest-giver",
+          "placement": "center"
+        }
+      ],
+      "events": [
+        {
+          "id": "EV-SR-001",
+          "trigger": "action",
+          "quest": "SQ-05",
+          "repeat": "once",
+          "description": "Janik dialogue: Preserver doubt; SQ-05 trigger"
+        },
+        {
+          "id": "EV-SR-002",
+          "trigger": "action",
+          "repeat": "always",
+          "description": "Wind Shrine stone: vibrates, hints at Kinesis (Act II lore)"
+        },
+        {
+          "id": "EV-SR-003",
+          "trigger": "action",
+          "repeat": "always",
+          "description": "Waystation rest point: full HP/SP restore"
+        },
+        {
+          "id": "EV-SR-004",
+          "trigger": "touch",
+          "repeat": "always",
+          "description": "South edge transition -> Everwick (15, 0)"
+        },
+        {
+          "id": "EV-SR-005",
+          "trigger": "touch",
+          "repeat": "once",
+          "description": "North edge (Threshold) -> Hollow Ridge (25, 49)"
+        },
+        {
+          "id": "EV-SR-006",
+          "trigger": "touch",
+          "repeat": "always",
+          "description": "East edge -> Ambergrove highland trail"
+        }
+      ],
+      "mapLayout": {
+        "biome": "highland",
+        "palette": "village-premium",
+        "defaultGround": "ground.grass",
+        "music": "bgm-sunridge",
+        "tileSize": 16,
+        "mapSize": [
+          80,
+          80
+        ],
+        "buildings": [
+          {
+            "id": "sunridge-house-hay-large-18",
+            "name": "Ridgetop Waystation",
+            "objectRef": "house.hay-large-1",
+            "x": 36,
+            "y": 36,
+            "width": 12,
+            "height": 9
+          }
+        ],
+        "areas": [
+          {
+            "id": "mountain-shrine",
+            "name": "Wind Shrine",
+            "x": 16,
+            "y": 12,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "sunridge-lookout",
+            "name": "Preserver Outpost",
+            "x": 60,
+            "y": 26,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "mountain-path",
+            "name": "The Threshold",
+            "x": 36,
+            "y": 0,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          }
+        ],
+        "npcSpawns": [
+          {
+            "id": "waystation-keeper",
+            "sprite": "npc_keeper_f1",
+            "x": 19,
+            "y": 19,
+            "dialogue": "waystation-keeper"
+          },
+          {
+            "id": "traveling-merchant",
+            "sprite": "npc_merchant_m1",
+            "x": 20,
+            "y": 20,
+            "dialogue": "traveling-merchant"
+          },
+          {
+            "id": "waystation-guard",
+            "sprite": "npc_guard_m2",
+            "x": 17,
+            "y": 18,
+            "dialogue": "waystation-guard"
+          },
+          {
+            "id": "janik",
+            "sprite": "npc_janik",
+            "x": 31,
+            "y": 14,
+            "dialogue": "janik"
+          }
+        ],
+        "transitions": [
+          {
+            "id": "sunridge-south-gate",
+            "x": 20,
+            "y": 39,
+            "targetMap": "everwick",
+            "targetX": 15,
+            "targetY": 0
+          },
+          {
+            "id": "sunridge-north-gate",
+            "x": 18,
+            "y": 0,
+            "targetMap": "hollow-ridge",
+            "targetX": 25,
+            "targetY": 49,
+            "condition": "After MQ-04"
+          },
+          {
+            "id": "sunridge-east-gate",
+            "x": 39,
+            "y": 20,
+            "targetMap": "ambergrove",
+            "targetX": 5,
+            "targetY": 0
+          }
+        ],
+        "resonanceStones": [
+          {
+            "id": "RS-SR-01",
+            "x": 9,
+            "y": 7,
+            "fragment": "1 fragment (fury/wind/2)"
+          },
+          {
+            "id": "RS-SR-02",
+            "x": 20,
+            "y": 20,
+            "fragment": "1 fragment (calm/earth/1)"
+          },
+          {
+            "id": "RS-SR-03",
+            "x": 35,
+            "y": 5,
+            "fragment": "1 fragment (awe/wind/2)"
+          }
+        ],
+        "treasureChests": [
+          {
+            "id": "CH-SR-01",
+            "x": 9,
+            "y": 8,
+            "item": "C-BF-01",
+            "quantity": 2,
+            "condition": "Wind Shrine interior"
+          },
+          {
+            "id": "CH-SR-02",
+            "x": 25,
+            "y": 30,
+            "item": "C-SP-05",
+            "quantity": 3,
+            "condition": "Hidden in rock formation"
+          },
+          {
+            "id": "CH-SR-03",
+            "x": 32,
+            "y": 14,
+            "item": "C-SC-03",
+            "quantity": 2,
+            "condition": "Preserver Outpost perimeter (after SQ-05)"
+          }
+        ],
+        "playerSpawn": {
+          "x": 40,
+          "y": 40
+        }
+      }
     }
   ],
   "connectiveTissue": {
     "pathDensity": "moderate",
-    "safeZoneInterval": 30,
-    "safePathRatio": 0.6,
-    "wildFeatures": [
-      { "type": "resonance-stone", "count": 4, "placement": "off-path" },
-      { "type": "hidden-chest", "count": 3, "placement": "hidden" },
-      { "type": "camp-spot", "count": 2, "placement": "near-path" }
-    ]
+    "safePathRatio": 0.6
   }
 }

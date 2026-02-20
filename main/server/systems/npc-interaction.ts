@@ -76,7 +76,7 @@ const NPC_ROUTES: Record<string, DialogueRoute[]> = {
       label: 'Workshop intro — after MQ-01 complete',
       condition: (p) => isQuestComplete(p, 'MQ-01') && !p.getVariable('DIALOGUE_HANA_FIRST_VISIT'),
       run: async (p) => {
-        const mod = await import('../dialogue/lira-workshop');
+        const mod = await import('../dialogue/hana-workshop');
         await mod.default(p);
       },
     },
@@ -251,7 +251,7 @@ const NPC_ROUTES: Record<string, DialogueRoute[]> = {
       label: 'First visit — intro + shop',
       condition: (p) => !p.getVariable('DIALOGUE_KHALI_FIRST_VISIT'),
       run: async (p) => {
-        const mod = await import('../dialogue/maren-first-visit');
+        const mod = await import('../dialogue/khali-first-visit');
         await mod.default(p);
       },
     },
@@ -263,7 +263,7 @@ const NPC_ROUTES: Record<string, DialogueRoute[]> = {
           "Oh, and if you have a moment, I'm looking for some rare herbs for a special order. Interested?",
           { speaker: 'Khali' },
         );
-        const mod = await import('../dialogue/maren-shop');
+        const mod = await import('../dialogue/khali-shop');
         await mod.default(p);
       },
     },
@@ -271,7 +271,7 @@ const NPC_ROUTES: Record<string, DialogueRoute[]> = {
       label: 'Default — shop',
       condition: () => true,
       run: async (p) => {
-        const mod = await import('../dialogue/maren-shop');
+        const mod = await import('../dialogue/khali-shop');
         await mod.default(p);
       },
     },
@@ -283,7 +283,7 @@ const NPC_ROUTES: Record<string, DialogueRoute[]> = {
       label: 'First visit — intro',
       condition: (p) => !p.getVariable('DIALOGUE_HARK_FIRST_VISIT'),
       run: async (p) => {
-        const mod = await import('../dialogue/torvan-first-visit');
+        const mod = await import('../dialogue/hark-first-visit');
         await mod.default(p);
       },
     },
@@ -295,7 +295,7 @@ const NPC_ROUTES: Record<string, DialogueRoute[]> = {
           "I've been meaning to try a new forging technique, but I need a rare ore. Perhaps you could help?",
           { speaker: 'Hark' },
         );
-        const mod = await import('../dialogue/torvan-shop');
+        const mod = await import('../dialogue/hark-shop');
         await mod.default(p);
       },
     },
@@ -303,7 +303,7 @@ const NPC_ROUTES: Record<string, DialogueRoute[]> = {
       label: 'Default — shop',
       condition: () => true,
       run: async (p) => {
-        const mod = await import('../dialogue/torvan-shop');
+        const mod = await import('../dialogue/hark-shop');
         await mod.default(p);
       },
     },
@@ -315,7 +315,7 @@ const NPC_ROUTES: Record<string, DialogueRoute[]> = {
       label: 'First visit — inn intro',
       condition: (p) => !p.getVariable('DIALOGUE_NYRO_FIRST_VISIT'),
       run: async (p) => {
-        const mod = await import('../dialogue/ren-first-visit');
+        const mod = await import('../dialogue/nyro-first-visit');
         await mod.default(p);
       },
     },
@@ -327,7 +327,7 @@ const NPC_ROUTES: Record<string, DialogueRoute[]> = {
           'Sometimes, a good rest brings more than just energy. Pay attention to your dreams...',
           { speaker: 'Nyro' },
         );
-        const mod = await import('../dialogue/ren-inn');
+        const mod = await import('../dialogue/nyro-inn');
         await mod.default(p);
       },
     },
@@ -335,7 +335,7 @@ const NPC_ROUTES: Record<string, DialogueRoute[]> = {
       label: 'Default — inn',
       condition: () => true,
       run: async (p) => {
-        const mod = await import('../dialogue/ren-inn');
+        const mod = await import('../dialogue/nyro-inn');
         await mod.default(p);
       },
     },

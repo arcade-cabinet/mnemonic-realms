@@ -2,10 +2,15 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { z } from 'zod';
 
 // Mock node:fs before importing the module under test
-vi.mock('node:fs', () => ({
-  readdirSync: vi.fn(),
-  readFileSync: vi.fn(),
-}));
+vi.mock('node:fs', () => {
+  const readdirSync = vi.fn();
+  const readFileSync = vi.fn();
+  return {
+    default: { readdirSync, readFileSync },
+    readdirSync,
+    readFileSync,
+  };
+});
 
 // Mock manifest-io to avoid import.meta.dirname issues
 vi.mock('./manifest-io', () => ({

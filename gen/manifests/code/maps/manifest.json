@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "description": "Map TMX, MapData, and event spawner code generation manifest",
-  "updatedAt": "2026-02-19T20:06:42.793Z",
+  "updatedAt": "2026-02-20T05:44:47.176Z",
   "category": "database-maps",
   "systemPrompt": "You are a code generator for the Mnemonic Realms JRPG built on RPG-JS 4.3.0.\nGenerate ONLY the requested output format (TypeScript or TMX XML).\nNo markdown fences. No explanatory text. No trailing comments.\nFollow RPG-JS 4.3.0 API conventions exactly.\nOutput must be syntactically complete — all braces/tags must be balanced.",
   "assets": [
@@ -11,7 +11,7 @@
       "category": "database-maps",
       "filename": "ambergrove.tmx",
       "targetPath": "main/server/maps/tmx/ambergrove.tmx",
-      "prompt": "You are generating a Tiled TMX XML map file.\nOutput ONLY valid XML starting with <?xml ...?> and ending with </map>.\nUse 6 layers: ground, ground2, objects, objects_upper, collision, events.\nTile GIDs reference the tileset in firstgid order.\nObject layer entries use Tiled object format for NPC spawns and event triggers.\nMark collision tiles on the collision layer for walls, water, and obstacles.\nPlace event triggers on the events layer as point objects with type and properties.\n\nGenerate a Tiled TMX map for \"Ambergrove\" (ambergrove.tmx).\n\nDimensions: 40x40 tiles, 32px per tile.\nBiome: forest | Vibrancy: 45 | Category: overworld\n\nTilesets:\n  - tiles_forest_{tier} (firstgid: 1)\n\nLayers (6 total): ground, ground2, objects, objects_upper, collision, events.\n\nConnections:\n  - west: tile 0,20 -> everwick at 29,14 (always)\n  - east: tile 38,20 -> flickerveil at 0,30 (MQ-04+)\n  - south: tile 10,39 -> heartfield at 39,20 (always)\n\nNPC spawn positions: Lead Woodcutter at (9,29), Woodcutter B at (10,31), Woodcutter C at (11,30)\n\nEnemy zones: Dense Forest: 5,2 -> 35,15; Lake Shore: 24,20 -> 35,30; Canopy Path: 36,15 -> 39,28\n\nResonance Stones: RS-AG-01 at (18,8), RS-AG-02 at (22,8), RS-AG-03 at (20,12), RS-AG-04 at (30,27), RS-AG-05 at (15,5)\n\nChests: CH-AG-01 at (21,10), CH-AG-02 at (37,20), CH-AG-03 at (30,5)\n\nFill ground layer with appropriate biome base tiles.\nPlace collision on map edges, building walls, water boundaries, and obstacle tiles.\nPlace objects (trees, rocks, buildings, furniture) per the map layout doc.\nMark event trigger positions on events layer as Tiled point objects.",
+      "prompt": "You are generating a Tiled TMX XML map file.\nOutput ONLY valid XML starting with <?xml ...?> and ending with </map>.\nUse 6 layers: ground, ground2, objects, objects_upper, collision, events.\nTile GIDs reference the tileset in firstgid order.\nObject layer entries use Tiled object format for NPC spawns and event triggers.\nMark collision tiles on the collision layer for walls, water, and obstacles.\nPlace event triggers on the events layer as point objects with type and properties.\n\nGenerate a Tiled TMX map for \"Ambergrove\" (ambergrove.tmx).\n\nDimensions: 80x80 tiles, 16px per tile.\nBiome: forest | Vibrancy: 45 | Category: overworld\n\nTilesets:\n  - village-premium (firstgid: 1)\n\nLayers (6 total): ground, ground2, objects, objects_upper, collision, events.\n\nConnections:\n  - west: tile 0,20 -> everwick at 29,14 (always)\n  - east: tile 38,20 -> flickerveil at 0,30 (MQ-04+)\n  - south: tile 10,39 -> heartfield at 39,20 (always)\n\nNPC spawn positions: Lead Woodcutter at (9,29), Woodcutter B at (10,31), Woodcutter C at (11,30)\n\nEnemy zones: Dense Forest: 5,2 -> 35,15; Lake Shore: 24,20 -> 35,30; Canopy Path: 36,15 -> 39,28\n\nResonance Stones: RS-AG-01 at (18,8), RS-AG-02 at (22,8), RS-AG-03 at (20,12), RS-AG-04 at (30,27), RS-AG-05 at (15,5)\n\nChests: CH-AG-01 at (21,10), CH-AG-02 at (37,20), CH-AG-03 at (30,5)\n\nFill ground layer with appropriate biome base tiles.\nPlace collision on map edges, building walls, water boundaries, and obstacle tiles.\nPlace objects (trees, rocks, buildings, furniture) per the map layout doc.\nMark event trigger positions on events layer as Tiled point objects.",
       "docRefs": [
         {
           "path": "docs/maps/overworld-layout.md",
@@ -40,7 +40,7 @@
       "category": "database-maps",
       "filename": "ambergrove.ts",
       "targetPath": "main/server/maps/ambergrove.ts",
-      "prompt": "You are generating an RPG-JS 4.3.0 TypeScript module file.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nUse @MapData decorator. Import from '@rpgjs/server'.\nUse the exact map ID and file path provided.\nInclude onInit, onJoin hooks for event spawning.\nUse createDynamicEvent for NPCs and enemies per the spawn data.\n\nGenerate an RPG-JS @MapData class for \"Ambergrove\".\n\nMap ID: \"ambergrove\"\nTMX file: \"./tmx/ambergrove.tmx\"\nDimensions: 40x40\nBiome: forest\n\nTransitions:\n  - From (0,20) west to \"everwick\" at (29,14), condition: always\n  - From (38,20) east to \"flickerveil\" at (0,30), condition: MQ-04+\n  - From (10,39) south to \"heartfield\" at (39,20), condition: always\n\nNPC count: 3\nEnemy zones: 3\nEvent triggers: 6\n\nUse @MapData decorator with id and file properties.\nImport event spawner from './events/ambergrove-events' if NPCs/events exist.\nCall spawnMapEvents(player) in onJoin hook.\nSet up map transitions in onInit using player.changeMap().",
+      "prompt": "You are generating an RPG-JS 4.3.0 TypeScript module file.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nUse @MapData decorator. Import from '@rpgjs/server'.\nUse the exact map ID and file path provided.\nInclude onInit, onJoin hooks for event spawning.\nUse createDynamicEvent for NPCs and enemies per the spawn data.\n\nGenerate an RPG-JS @MapData class for \"Ambergrove\".\n\nMap ID: \"ambergrove\"\nTMX file: \"./tmx/ambergrove.tmx\"\nDimensions: 80x80\nBiome: forest\n\nTransitions:\n  - From (0,20) west to \"everwick\" at (29,14), condition: always\n  - From (38,20) east to \"flickerveil\" at (0,30), condition: MQ-04+\n  - From (10,39) south to \"heartfield\" at (39,20), condition: always\n\nNPC count: 3\nEnemy zones: 3\nEvent triggers: 6\n\nUse @MapData decorator with id and file properties.\nImport event spawner from './events/ambergrove-events' if NPCs/events exist.\nCall spawnMapEvents(player) in onJoin hook.\nSet up map transitions in onInit using player.changeMap().",
       "docRefs": [
         {
           "path": "docs/maps/overworld-layout.md",
@@ -530,6 +530,64 @@
       }
     },
     {
+      "id": "tmx-everwick",
+      "name": "Everwick TMX",
+      "category": "database-maps",
+      "filename": "everwick.tmx",
+      "targetPath": "main/server/maps/tmx/everwick.tmx",
+      "prompt": "You are generating a Tiled TMX XML map file.\nOutput ONLY valid XML starting with <?xml ...?> and ending with </map>.\nUse 6 layers: ground, ground2, objects, objects_upper, collision, events.\nTile GIDs reference the tileset in firstgid order.\nObject layer entries use Tiled object format for NPC spawns and event triggers.\nMark collision tiles on the collision layer for walls, water, and obstacles.\nPlace event triggers on the events layer as point objects with type and properties.\n\nGenerate a Tiled TMX map for \"Everwick\" (everwick.tmx).\n\nDimensions: 60x60 tiles, 16px per tile.\nBiome: village | Vibrancy: 60 | Category: overworld\n\nTilesets:\n  - village-premium (firstgid: 1)\n\nLayers (6 total): ground, ground2, objects, objects_upper, collision, events.\n\nConnections:\n  - south: tile 28,56 -> heartfield at 30,0 (always)\n  - east: tile 56,27 -> ambergrove at 0,40 (always)\n  - west: tile 3,27 -> millbrook at 78,40 (always)\n  - north: tile 28,3 -> sunridge at 40,78 (MQ-04+)\n  - down: tile 16,34 -> depths-l1 at 20,0 (MQ-05+)\n\nNPC spawn positions: none\n\nEnemy zones: none\n\nResonance Stones: none\n\nChests: none\n\nFill ground layer with appropriate biome base tiles.\nPlace collision on map edges, building walls, water boundaries, and obstacle tiles.\nPlace objects (trees, rocks, buildings, furniture) per the map layout doc.\nMark event trigger positions on events layer as Tiled point objects.",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Everwick",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: village",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "440d0205c8a71b45",
+        "outputHash": "2c7e736ecbfe659f3cb7adbaebb5e4f6bc7e767d06b4ee858935f88ca50e120f",
+        "generatedAt": "2026-02-13T16:28:31.099Z",
+        "generationTimeMs": 141562,
+        "fileSizeBytes": 23017,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
+      "id": "mapdata-everwick",
+      "name": "Everwick MapData",
+      "category": "database-maps",
+      "filename": "everwick.ts",
+      "targetPath": "main/server/maps/everwick.ts",
+      "prompt": "You are generating an RPG-JS 4.3.0 TypeScript module file.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nUse @MapData decorator. Import from '@rpgjs/server'.\nUse the exact map ID and file path provided.\nInclude onInit, onJoin hooks for event spawning.\nUse createDynamicEvent for NPCs and enemies per the spawn data.\n\nGenerate an RPG-JS @MapData class for \"Everwick\".\n\nMap ID: \"everwick\"\nTMX file: \"./tmx/everwick.tmx\"\nDimensions: 60x60\nBiome: village\n\nTransitions:\n  - From (28,56) south to \"heartfield\" at (30,0), condition: always\n  - From (56,27) east to \"ambergrove\" at (0,40), condition: always\n  - From (3,27) west to \"millbrook\" at (78,40), condition: always\n  - From (28,3) north to \"sunridge\" at (40,78), condition: MQ-04+\n  - From (16,34) down to \"depths-l1\" at (20,0), condition: MQ-05+\n\nNPC count: 0\nEnemy zones: 0\nEvent triggers: 0\n\nUse @MapData decorator with id and file properties.\nImport event spawner from './events/everwick-events' if NPCs/events exist.\nCall spawnMapEvents(player) in onJoin hook.\nSet up map transitions in onInit using player.changeMap().",
+      "docRefs": [
+        {
+          "path": "docs/maps/overworld-layout.md",
+          "heading": "Everwick",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/design/tileset-spec.md",
+          "heading": "Biome: village",
+          "purpose": "style"
+        }
+      ],
+      "status": "generated",
+      "metadata": {
+        "promptHash": "60b41e726ef517e1",
+        "outputHash": "ad34b850ad6b6bb4f5140ab3e84ccacd7336d850514a53fdf6157b1938e72311",
+        "generatedAt": "2026-02-13T16:28:42.058Z",
+        "generationTimeMs": 8956,
+        "fileSizeBytes": 1750,
+        "model": "gemini-2.5-flash"
+      }
+    },
+    {
       "id": "tmx-flickerveil",
       "name": "Flickerveil TMX",
       "category": "database-maps",
@@ -973,7 +1031,7 @@
       "category": "database-maps",
       "filename": "heartfield.tmx",
       "targetPath": "main/server/maps/tmx/heartfield.tmx",
-      "prompt": "You are generating a Tiled TMX XML map file.\nOutput ONLY valid XML starting with <?xml ...?> and ending with </map>.\nUse 6 layers: ground, ground2, objects, objects_upper, collision, events.\nTile GIDs reference the tileset in firstgid order.\nObject layer entries use Tiled object format for NPC spawns and event triggers.\nMark collision tiles on the collision layer for walls, water, and obstacles.\nPlace event triggers on the events layer as point objects with type and properties.\n\nGenerate a Tiled TMX map for \"Heartfield\" (heartfield.tmx).\n\nDimensions: 40x40 tiles, 32px per tile.\nBiome: grassland | Vibrancy: 55 | Category: overworld\n\nTilesets:\n  - tiles_grassland_{tier} (firstgid: 1)\n\nLayers (6 total): ground, ground2, objects, objects_upper, collision, events.\n\nConnections:\n  - north: tile 15,0 -> everwick at 15,25 (always)\n  - east: tile 39,20 -> ambergrove at 0,20 (always)\n  - south: tile 20,38 -> shimmer-marsh at 20,0 (MQ-04+)\n\nNPC spawn positions: Farmer Gale at (15,14), Farmer Suri at (17,16), Farmer Edric at (14,18), Hamlet Elder at (18,14), Child NPC at (16,15)\n\nEnemy zones: Wheat Fields West: 2,5 -> 14,20; Wheat Fields East: 22,5 -> 32,17; Stagnation Approach: 28,25 -> 38,33\n\nResonance Stones: RS-HF-01 at (18,14), RS-HF-02 at (31,9), RS-HF-03 at (35,30), RS-HF-04 at (8,30)\n\nChests: CH-HF-01 at (32,9), CH-HF-02 at (5,10), CH-HF-03 at (36,25)\n\nFill ground layer with appropriate biome base tiles.\nPlace collision on map edges, building walls, water boundaries, and obstacle tiles.\nPlace objects (trees, rocks, buildings, furniture) per the map layout doc.\nMark event trigger positions on events layer as Tiled point objects.",
+      "prompt": "You are generating a Tiled TMX XML map file.\nOutput ONLY valid XML starting with <?xml ...?> and ending with </map>.\nUse 6 layers: ground, ground2, objects, objects_upper, collision, events.\nTile GIDs reference the tileset in firstgid order.\nObject layer entries use Tiled object format for NPC spawns and event triggers.\nMark collision tiles on the collision layer for walls, water, and obstacles.\nPlace event triggers on the events layer as point objects with type and properties.\n\nGenerate a Tiled TMX map for \"Heartfield\" (heartfield.tmx).\n\nDimensions: 80x80 tiles, 16px per tile.\nBiome: farmland | Vibrancy: 55 | Category: overworld\n\nTilesets:\n  - village-premium (firstgid: 1)\n\nLayers (6 total): ground, ground2, objects, objects_upper, collision, events.\n\nConnections:\n  - north: tile 30,0 -> everwick at 30,56 (always)\n  - east: tile 78,40 -> ambergrove at 0,40 (always)\n  - south: tile 40,78 -> shimmer-marsh at 40,0 (MQ-04+)\n\nNPC spawn positions: Farmer Gale at (30,28), Farmer Suri at (34,32), Farmer Edric at (28,36), Hamlet Elder at (36,28), Child NPC at (32,30)\n\nEnemy zones: Wheat Fields West: 4,10 -> 28,40; Wheat Fields East: 44,10 -> 64,34; Stagnation Approach: 56,50 -> 76,66\n\nResonance Stones: RS-HF-01 at (36,28), RS-HF-02 at (62,18), RS-HF-03 at (70,60), RS-HF-04 at (16,60)\n\nChests: CH-HF-01 at (64,18), CH-HF-02 at (10,20), CH-HF-03 at (72,50)\n\nFill ground layer with appropriate biome base tiles.\nPlace collision on map edges, building walls, water boundaries, and obstacle tiles.\nPlace objects (trees, rocks, buildings, furniture) per the map layout doc.\nMark event trigger positions on events layer as Tiled point objects.",
       "docRefs": [
         {
           "path": "docs/maps/overworld-layout.md",
@@ -982,7 +1040,7 @@
         },
         {
           "path": "docs/design/tileset-spec.md",
-          "heading": "Biome: grassland",
+          "heading": "Biome: farmland",
           "purpose": "style"
         }
       ],
@@ -1002,7 +1060,7 @@
       "category": "database-maps",
       "filename": "heartfield.ts",
       "targetPath": "main/server/maps/heartfield.ts",
-      "prompt": "You are generating an RPG-JS 4.3.0 TypeScript module file.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nUse @MapData decorator. Import from '@rpgjs/server'.\nUse the exact map ID and file path provided.\nInclude onInit, onJoin hooks for event spawning.\nUse createDynamicEvent for NPCs and enemies per the spawn data.\n\nGenerate an RPG-JS @MapData class for \"Heartfield\".\n\nMap ID: \"heartfield\"\nTMX file: \"./tmx/heartfield.tmx\"\nDimensions: 40x40\nBiome: grassland\n\nTransitions:\n  - From (15,0) north to \"everwick\" at (15,25), condition: always\n  - From (39,20) east to \"ambergrove\" at (0,20), condition: always\n  - From (20,38) south to \"shimmer-marsh\" at (20,0), condition: MQ-04+\n\nNPC count: 5\nEnemy zones: 3\nEvent triggers: 8\n\nUse @MapData decorator with id and file properties.\nImport event spawner from './events/heartfield-events' if NPCs/events exist.\nCall spawnMapEvents(player) in onJoin hook.\nSet up map transitions in onInit using player.changeMap().",
+      "prompt": "You are generating an RPG-JS 4.3.0 TypeScript module file.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nUse @MapData decorator. Import from '@rpgjs/server'.\nUse the exact map ID and file path provided.\nInclude onInit, onJoin hooks for event spawning.\nUse createDynamicEvent for NPCs and enemies per the spawn data.\n\nGenerate an RPG-JS @MapData class for \"Heartfield\".\n\nMap ID: \"heartfield\"\nTMX file: \"./tmx/heartfield.tmx\"\nDimensions: 80x80\nBiome: farmland\n\nTransitions:\n  - From (30,0) north to \"everwick\" at (30,56), condition: always\n  - From (78,40) east to \"ambergrove\" at (0,40), condition: always\n  - From (40,78) south to \"shimmer-marsh\" at (40,0), condition: MQ-04+\n\nNPC count: 5\nEnemy zones: 3\nEvent triggers: 8\n\nUse @MapData decorator with id and file properties.\nImport event spawner from './events/heartfield-events' if NPCs/events exist.\nCall spawnMapEvents(player) in onJoin hook.\nSet up map transitions in onInit using player.changeMap().",
       "docRefs": [
         {
           "path": "docs/maps/overworld-layout.md",
@@ -1011,7 +1069,7 @@
         },
         {
           "path": "docs/design/tileset-spec.md",
-          "heading": "Biome: grassland",
+          "heading": "Biome: farmland",
           "purpose": "style"
         }
       ],
@@ -1031,7 +1089,7 @@
       "category": "database-maps",
       "filename": "heartfield-events.ts",
       "targetPath": "main/server/maps/events/heartfield-events.ts",
-      "prompt": "You are generating RPG-JS 4.3.0 TypeScript event spawner functions.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nEach event gets a createDynamicEvent call with proper position, graphics, and hooks.\nNPC events use onAction for dialogue. Transition events use onPlayerInput.\nEnemy zone events use onChanges with random encounter checks.\n\nGenerate event spawner functions for map \"Heartfield\" (heartfield).\n\nNPCs:\n  - Farmer Gale (farmer-gale): pos=15,14, graphic=npc_farmer_m1, move=Patrol, quests=[SQ-02,MQ-03]\n  - Farmer Suri (farmer-suri): pos=17,16, graphic=npc_farmer_f1, move=Static, quests=[MQ-03]\n  - Farmer Edric (farmer-edric): pos=14,18, graphic=npc_farmer_m2, move=Patrol\n  - Hamlet Elder (hamlet-elder): pos=18,14, graphic=npc_elder_f1, move=Static\n  - Child NPC (child-npc): pos=16,15, graphic=npc_child_01, move=Wander\n\nEvents:\n  - EV-HF-001: pos=15,14, type=action, Farmer Gale windmill dialogue [SQ-02]\n  - EV-HF-002: pos=30,8, type=touch, Old Windmill entrance [SQ-02]\n  - EV-HF-003: pos=33,28, type=auto, Stagnation Clearing cutscene [MQ-04]\n  - EV-HF-005: pos=20,38, type=touch, South -> Shimmer Marsh\n  - EV-HF-006: pos=15,0, type=touch, North -> Everwick\n  - EV-HF-007: pos=39,20, type=touch, East -> Ambergrove\n  - EV-HF-008: pos=31,9, type=action, Windmill Resonance Stone\n  - EV-HF-009: pos=34,29, type=action, Broadcast joy into frozen Lira [SQ-14]\n\nEnemy Zones:\n  - Wheat Fields West: bounds=2,5 -> 14,20, enemies=[E-SL-01,E-SL-02], levels=1-3\n  - Wheat Fields East: bounds=22,5 -> 32,17, enemies=[E-SL-02], levels=2-3\n  - Stagnation Approach: bounds=28,25 -> 38,33, enemies=[Preserver Scout], levels=8-10\n\nExport a function spawnMapEvents(player: RpgPlayer) that:\n1. Creates NPC events via createDynamicEvent with graphics and movement\n2. Sets up touch/action event triggers at specified positions\n3. Registers enemy encounter zones with random encounter checks\n4. Handles map transitions via player.changeMap()\n5. Checks quest flags before spawning conditional events",
+      "prompt": "You are generating RPG-JS 4.3.0 TypeScript event spawner functions.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nEach event gets a createDynamicEvent call with proper position, graphics, and hooks.\nNPC events use onAction for dialogue. Transition events use onPlayerInput.\nEnemy zone events use onChanges with random encounter checks.\n\nGenerate event spawner functions for map \"Heartfield\" (heartfield).\n\nNPCs:\n  - Farmer Gale (farmer-gale): pos=30,28, graphic=npc_farmer_m1, move=Patrol, quests=[SQ-02,MQ-03]\n  - Farmer Suri (farmer-suri): pos=34,32, graphic=npc_farmer_f1, move=Static, quests=[MQ-03]\n  - Farmer Edric (farmer-edric): pos=28,36, graphic=npc_farmer_m2, move=Patrol\n  - Hamlet Elder (hamlet-elder): pos=36,28, graphic=npc_elder_f1, move=Static\n  - Child NPC (child-npc): pos=32,30, graphic=npc_child_01, move=Wander\n\nEvents:\n  - EV-HF-001: pos=30,28, type=action, Farmer Gale windmill dialogue [SQ-02]\n  - EV-HF-002: pos=60,16, type=touch, Old Windmill entrance [SQ-02]\n  - EV-HF-003: pos=66,56, type=auto, Stagnation Clearing cutscene [MQ-04]\n  - EV-HF-005: pos=40,78, type=touch, South -> Shimmer Marsh\n  - EV-HF-006: pos=30,0, type=touch, North -> Everwick\n  - EV-HF-007: pos=78,40, type=touch, East -> Ambergrove\n  - EV-HF-008: pos=62,18, type=action, Windmill Resonance Stone\n  - EV-HF-009: pos=68,58, type=action, Broadcast joy into frozen Lira [SQ-14]\n\nEnemy Zones:\n  - Wheat Fields West: bounds=4,10 -> 28,40, enemies=[E-SL-01,E-SL-02], levels=1-3\n  - Wheat Fields East: bounds=44,10 -> 64,34, enemies=[E-SL-02], levels=2-3\n  - Stagnation Approach: bounds=56,50 -> 76,66, enemies=[Preserver Scout], levels=8-10\n\nExport a function spawnMapEvents(player: RpgPlayer) that:\n1. Creates NPC events via createDynamicEvent with graphics and movement\n2. Sets up touch/action event triggers at specified positions\n3. Registers enemy encounter zones with random encounter checks\n4. Handles map transitions via player.changeMap()\n5. Checks quest flags before spawning conditional events",
       "docRefs": [
         {
           "path": "docs/maps/overworld-layout.md",
@@ -1040,7 +1098,7 @@
         },
         {
           "path": "docs/design/tileset-spec.md",
-          "heading": "Biome: grassland",
+          "heading": "Biome: farmland",
           "purpose": "style"
         }
       ],
@@ -1662,93 +1720,6 @@
         "generatedAt": "2026-02-13T16:26:07.534Z",
         "generationTimeMs": 24724,
         "fileSizeBytes": 5925,
-        "model": "gemini-2.5-flash"
-      }
-    },
-    {
-      "id": "tmx-everwick",
-      "name": "Everwick TMX",
-      "category": "database-maps",
-      "filename": "everwick.tmx",
-      "targetPath": "main/server/maps/tmx/everwick.tmx",
-      "prompt": "You are generating a Tiled TMX XML map file.\nOutput ONLY valid XML starting with <?xml ...?> and ending with </map>.\nUse 6 layers: ground, ground2, objects, objects_upper, collision, events.\nTile GIDs reference the tileset in firstgid order.\nObject layer entries use Tiled object format for NPC spawns and event triggers.\nMark collision tiles on the collision layer for walls, water, and obstacles.\nPlace event triggers on the events layer as point objects with type and properties.\n\nGenerate a Tiled TMX map for \"Everwick\" (everwick.tmx).\n\nDimensions: 30x30 tiles, 32px per tile.\nBiome: village | Vibrancy: 60 | Category: overworld\n\nTilesets:\n  - tiles_village_{tier} (firstgid: 1)\n\nLayers (6 total): ground, ground2, objects, objects_upper, collision, events.\n\nConnections:\n  - south: tile 15,25 -> heartfield at 15,0 (always)\n  - east: tile 29,14 -> ambergrove at 0,20 (always)\n  - west: tile 0,14 -> millbrook at 39,20 (always)\n  - north: tile 15,0 -> sunridge at 20,39 (MQ-04+)\n  - down: tile 8,17 -> depths-l1 at 10,0 (MQ-05+)\n\nNPC spawn positions: Callum at (19,11), Lira at (9,19), Maren at (19,17), Torvan at (19,19), Ren at (21,15), Villager A at (14,15), Villager B at (16,16), Villager C at (10,22)\n\nEnemy zones: none\n\nResonance Stones: RS-VH-01 at (14,15), RS-VH-02 at (9,16), RS-VH-03 at (10,17), RS-VH-04 at (11,16), RS-VH-05 at (21,15)\n\nChests: CH-VH-01 at (13,3), CH-VH-02 at (9,11)\n\nFill ground layer with appropriate biome base tiles.\nPlace collision on map edges, building walls, water boundaries, and obstacle tiles.\nPlace objects (trees, rocks, buildings, furniture) per the map layout doc.\nMark event trigger positions on events layer as Tiled point objects.",
-      "docRefs": [
-        {
-          "path": "docs/maps/overworld-layout.md",
-          "heading": "Everwick",
-          "purpose": "content"
-        },
-        {
-          "path": "docs/design/tileset-spec.md",
-          "heading": "Biome: village",
-          "purpose": "style"
-        }
-      ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "440d0205c8a71b45",
-        "outputHash": "2c7e736ecbfe659f3cb7adbaebb5e4f6bc7e767d06b4ee858935f88ca50e120f",
-        "generatedAt": "2026-02-13T16:28:31.099Z",
-        "generationTimeMs": 141562,
-        "fileSizeBytes": 23017,
-        "model": "gemini-2.5-flash"
-      }
-    },
-    {
-      "id": "mapdata-everwick",
-      "name": "Everwick MapData",
-      "category": "database-maps",
-      "filename": "everwick.ts",
-      "targetPath": "main/server/maps/everwick.ts",
-      "prompt": "You are generating an RPG-JS 4.3.0 TypeScript module file.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nUse @MapData decorator. Import from '@rpgjs/server'.\nUse the exact map ID and file path provided.\nInclude onInit, onJoin hooks for event spawning.\nUse createDynamicEvent for NPCs and enemies per the spawn data.\n\nGenerate an RPG-JS @MapData class for \"Everwick\".\n\nMap ID: \"everwick\"\nTMX file: \"./tmx/everwick.tmx\"\nDimensions: 30x30\nBiome: village\n\nTransitions:\n  - From (15,25) south to \"heartfield\" at (15,0), condition: always\n  - From (29,14) east to \"ambergrove\" at (0,20), condition: always\n  - From (0,14) west to \"millbrook\" at (39,20), condition: always\n  - From (15,0) north to \"sunridge\" at (20,39), condition: MQ-04+\n  - From (8,17) down to \"depths-l1\" at (10,0), condition: MQ-05+\n\nNPC count: 8\nEnemy zones: 0\nEvent triggers: 15\n\nUse @MapData decorator with id and file properties.\nImport event spawner from './events/everwick-events' if NPCs/events exist.\nCall spawnMapEvents(player) in onJoin hook.\nSet up map transitions in onInit using player.changeMap().",
-      "docRefs": [
-        {
-          "path": "docs/maps/overworld-layout.md",
-          "heading": "Everwick",
-          "purpose": "content"
-        },
-        {
-          "path": "docs/design/tileset-spec.md",
-          "heading": "Biome: village",
-          "purpose": "style"
-        }
-      ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "60b41e726ef517e1",
-        "outputHash": "ad34b850ad6b6bb4f5140ab3e84ccacd7336d850514a53fdf6157b1938e72311",
-        "generatedAt": "2026-02-13T16:28:42.058Z",
-        "generationTimeMs": 8956,
-        "fileSizeBytes": 1750,
-        "model": "gemini-2.5-flash"
-      }
-    },
-    {
-      "id": "events-everwick",
-      "name": "Everwick Events",
-      "category": "database-maps",
-      "filename": "everwick-events.ts",
-      "targetPath": "main/server/maps/events/everwick-events.ts",
-      "prompt": "You are generating RPG-JS 4.3.0 TypeScript event spawner functions.\nOutput ONLY valid TypeScript code starting with import statements and ending with a closing brace.\nEach event gets a createDynamicEvent call with proper position, graphics, and hooks.\nNPC events use onAction for dialogue. Transition events use onPlayerInput.\nEnemy zone events use onChanges with random encounter checks.\n\nGenerate event spawner functions for map \"Everwick\" (everwick).\n\nNPCs:\n  - Callum (callum): pos=19,11, graphic=npc_callum, move=Patrol, quests=[MQ-01,MQ-03,MQ-05,MQ-07]\n  - Lira (lira): pos=9,19, graphic=npc_lira, move=Static, quests=[MQ-01,MQ-02]\n  - Maren (maren): pos=19,17, graphic=npc_maren, move=Static, quests=[SQ-01]\n  - Torvan (torvan): pos=19,19, graphic=npc_torvan, move=Static, quests=[SQ-11]\n  - Ren (ren): pos=21,15, graphic=npc_ren, move=Static, quests=[SQ-12]\n  - Villager A (villager-a): pos=14,15, graphic=npc_villager_m1, move=Wander\n  - Villager B (villager-b): pos=16,16, graphic=npc_villager_f1, move=Wander\n  - Villager C (villager-c): pos=10,22, graphic=npc_villager_m2, move=Patrol\n\nEvents:\n  - EV-VH-001: pos=19,11, type=action, Callum intro dialogue [MQ-01]\n  - EV-VH-002: pos=9,19, type=action, Lira gives Architect's Signet [MQ-01]\n  - EV-VH-003: pos=10,17, type=action, Memorial Garden Resonance Stone [MQ-02]\n  - EV-VH-005: pos=19,17, type=action, Maren shop + SQ-01\n  - EV-VH-006: pos=19,19, type=action, Torvan shop (vibrancy 70+) [SQ-11]\n  - EV-VH-007: pos=21,15, type=action, Ren inn rest + dreams [SQ-12]\n  - EV-VH-008: pos=8,14, type=action, Quest Board\n  - EV-VH-009: pos=15,25, type=touch, South Gate -> Heartfield\n  - EV-VH-010: pos=29,14, type=touch, East Gate -> Ambergrove\n  - EV-VH-011: pos=0,14, type=touch, West Gate -> Millbrook\n  - EV-VH-012: pos=15,0, type=touch, North Gate -> Sunridge [MQ-04]\n  - EV-VH-013: pos=12,3, type=action, Callum telescope lookout\n  - EV-VH-014: pos=8,17, type=touch, Hidden Depths entrance [MQ-05]\n  - EV-VH-015: pos=14,15, type=parallel, Fountain vibrancy particles\n  - EV-VH-016: pos=0,0, type=auto, Opening cutscene [MQ-01]\n\nEnemy Zones:\n  - None\n\nExport a function spawnMapEvents(player: RpgPlayer) that:\n1. Creates NPC events via createDynamicEvent with graphics and movement\n2. Sets up touch/action event triggers at specified positions\n3. Registers enemy encounter zones with random encounter checks\n4. Handles map transitions via player.changeMap()\n5. Checks quest flags before spawning conditional events",
-      "docRefs": [
-        {
-          "path": "docs/maps/overworld-layout.md",
-          "heading": "Everwick",
-          "purpose": "content"
-        },
-        {
-          "path": "docs/design/tileset-spec.md",
-          "heading": "Biome: village",
-          "purpose": "style"
-        }
-      ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "ab5e785513a45ed8",
-        "outputHash": "9db0d434f702568f124ceee04752acfc25cff1c9c7fb6a90304f944de3774538",
-        "generatedAt": "2026-02-13T16:29:43.530Z",
-        "generationTimeMs": 59469,
-        "fileSizeBytes": 11594,
         "model": "gemini-2.5-flash"
       }
     }

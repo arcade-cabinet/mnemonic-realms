@@ -6,6 +6,16 @@ size: [80, 80]
 vibrancy: 5
 palette: desert-sketch
 music: bgm-luminous-wastes
+assemblages:
+  - ref: half-built-village
+    position: [18, 18]
+    meta: {name: "Half-Built Village"}
+  - ref: void-border
+    position: [3, 18]
+    meta: {name: "The Edge"}
+  - ref: outline-structure
+    position: [33, 8]
+    meta: {name: "Preserver Watchtower"}
 ---
 
 # Luminous Wastes
@@ -18,12 +28,12 @@ Starting vibrancy 5 (Muted tier, near-zero).
 
 ## Key Areas
 
-| Area | Position | Size | Description |
-|------|----------|------|-------------|
-| Half-Built Village | (18, 18) | 8x8 | Sketch outlines of an entire village. Broadcasting solidifies it. |
-| The Edge | (3, 18) | 3x3 | World's absolute western boundary. White void beyond. |
-| Preserver Watchtower | (33, 8) | 4x4 | Crystallized tower at Sketch border. Elite Preserver agents. |
-| Grid-line Plains | throughout | -- | Faint grid lines on luminous ground |
+| Area | Position | Size | Assemblage | Description |
+|------|----------|------|------------|-------------|
+| Half-Built Village | (18, 18) | 8x8 | [half-built-village](../../../gen/assemblage/catalog/organisms/terrain/sketch/half-built-village.md) | Sketch outlines of an entire village. Broadcasting solidifies it. |
+| The Edge | (3, 18) | 3x3 | [void-border](../../../gen/assemblage/catalog/organisms/terrain/sketch/void-border.md) | World's absolute western boundary. White void beyond. |
+| Preserver Watchtower | (33, 8) | 4x4 | [outline-structure](../../../gen/assemblage/catalog/organisms/terrain/sketch/outline-structure.md) | Crystallized tower at Sketch border. Elite Preserver agents. |
+| Grid-line Plains | throughout | -- | [sand-dune](../../../gen/assemblage/catalog/organisms/terrain/sketch/sand-dune.md) | Faint grid lines on luminous ground |
 
 ## NPCs
 

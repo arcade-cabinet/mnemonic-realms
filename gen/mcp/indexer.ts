@@ -259,7 +259,16 @@ export class ContentIndexer {
 
   private parseMarkdownDoc(relPath: string, content: string, type: string): IndexedDocument {
     const { frontmatter, body } = this.extractFrontmatter(content);
-    const parsed = frontmatter ? parseYaml(frontmatter) : null;
+    let parsed: Record<string, unknown> | null = null;
+    if (frontmatter) {
+      try {
+        const result = parseYaml(frontmatter);
+        parsed = result && typeof result === 'object' ? result as Record<string, unknown> : null;
+      } catch {
+        // Some markdown files have YAML-incompatible frontmatter (e.g., markdown links)
+        parsed = null;
+      }
+    }
     const title = this.extractTitle(body) ?? path.basename(relPath, '.md');
     const id = parsed?.id ?? this.pathToId(relPath);
     const sections = this.extractSections(body);

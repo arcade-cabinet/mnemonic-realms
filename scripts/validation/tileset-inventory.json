@@ -376,7 +376,7 @@
     },
     {
       "name": "dungeons",
-      "path": "assets/tilesets/dungeons",
+      "path": "assets/tilesets/depths",
       "hasTMX": false,
       "hasTSX": false,
       "hasRules": false,

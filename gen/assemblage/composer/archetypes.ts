@@ -39,8 +39,8 @@ export type BuildingRole =
   | 'castle-room'
   | 'elder-house';
 
-/** Category of archetype */
-export type ArchetypeCategory = 'interior' | 'exterior' | 'terrain';
+/** Category of archetype: child-world (rooms/shops), outdoor (scene templates), terrain */
+export type ArchetypeCategory = 'child-world' | 'outdoor' | 'terrain';
 
 /** Tileset pack the archetype belongs to */
 export type TilesetPack = 'premium' | 'castles' | 'desert' | 'seasons' | 'snow';
@@ -52,7 +52,7 @@ export interface ArchetypeDefinition {
   name: string;
   /** Building role for town composition */
   role: BuildingRole | 'scene-template';
-  /** Interior vs exterior vs terrain */
+  /** child-world (room/shop), outdoor (scene template), or terrain */
   category: ArchetypeCategory;
   /** Which tileset pack */
   pack: TilesetPack;
@@ -75,7 +75,7 @@ const ASSETS_ROOT = 'assets/tilesets';
 /**
  * All known archetypes extracted from reference TMX maps.
  *
- * Interior archetypes are complete room layouts:
+ * Child-world archetypes are complete room layouts (accessed via world slot doors):
  * - WeaponSeller_1 → weapon-shop (counter, weapon racks, anvil area)
  * - House_1 → house-small (2-room cottage with furniture)
  * - House_2 → house-medium (larger house variant)
@@ -88,7 +88,7 @@ const ASSETS_ROOT = 'assets/tilesets';
  * - Huntmaster_1 → huntmaster (trophies, weapons, pelts)
  * - Castle_1 → castle-room (throne room / great hall)
  *
- * Exterior archetypes are scene templates:
+ * Outdoor archetypes are scene templates (region-level layouts):
  * - Farm Shore → farmland scene (fields, fences, shore, roads)
  * - Village Bridge → village scene (houses, bridge, river, roads)
  * - Mage Tower → tower scene (isolated building, terrain)
@@ -97,135 +97,135 @@ const ASSETS_ROOT = 'assets/tilesets';
  * - Forest Keep → fortified forest outpost
  */
 const ARCHETYPE_DEFINITIONS: ArchetypeDefinition[] = [
-  // --- Interior archetypes ---
+  // --- Child-world archetypes ---
   {
     id: 'weapon-shop',
     name: 'Weapon Shop',
     role: 'weapon-shop',
-    category: 'interior',
+    category: 'child-world',
     pack: 'premium',
     tmxPath: 'interiors/premium/Tiled/Tilemaps/WeaponSeller_1.tmx',
     approxSize: { width: 25, height: 22 },
     description: 'A weapon shop with counter, display racks, forge area, and two connected rooms',
-    tags: ['shop', 'combat', 'town-service', 'interior'],
+    tags: ['shop', 'combat', 'town-service', 'child-world'],
   },
   {
     id: 'house-small',
     name: 'Small House',
     role: 'house-small',
-    category: 'interior',
+    category: 'child-world',
     pack: 'premium',
     tmxPath: 'interiors/premium/Tiled/Tilemaps/House_1.tmx',
     approxSize: { width: 20, height: 19 },
     description: 'A cozy 2-room cottage with bedroom, living area, and fireplace',
-    tags: ['house', 'residential', 'npc-home', 'interior'],
+    tags: ['house', 'residential', 'npc-home', 'child-world'],
   },
   {
     id: 'house-medium',
     name: 'Medium House',
     role: 'house-medium',
-    category: 'interior',
+    category: 'child-world',
     pack: 'premium',
     tmxPath: 'interiors/premium/Tiled/Tilemaps/House_2.tmx',
     approxSize: { width: 22, height: 20 },
     description: 'A larger house with multiple rooms, suitable for NPCs with families',
-    tags: ['house', 'residential', 'npc-home', 'interior'],
+    tags: ['house', 'residential', 'npc-home', 'child-world'],
   },
   {
     id: 'tavern',
     name: 'Tavern',
     role: 'tavern',
-    category: 'interior',
+    category: 'child-world',
     pack: 'premium',
     tmxPath: 'interiors/premium/Tiled/Tilemaps/Tavern_1.tmx',
     approxSize: { width: 25, height: 22 },
     description: 'A lively tavern with bar, seating area, kitchen, and upstairs rooms',
-    tags: ['shop', 'inn', 'social', 'town-service', 'interior'],
+    tags: ['shop', 'inn', 'social', 'town-service', 'child-world'],
   },
   {
     id: 'library',
     name: 'Library',
     role: 'library',
-    category: 'interior',
+    category: 'child-world',
     pack: 'premium',
     tmxPath: 'interiors/premium/Tiled/Tilemaps/Library_1.tmx',
     approxSize: { width: 22, height: 20 },
     description: 'A library with bookshelves, reading tables, and scroll storage',
-    tags: ['knowledge', 'lore', 'town-service', 'interior'],
+    tags: ['knowledge', 'lore', 'town-service', 'child-world'],
   },
   {
     id: 'butchery',
     name: 'Butchery',
     role: 'butchery',
-    category: 'interior',
+    category: 'child-world',
     pack: 'premium',
     tmxPath: 'interiors/premium/Tiled/Tilemaps/Butchery_1.tmx',
     approxSize: { width: 20, height: 18 },
     description: 'A butcher shop with meat counter and cold storage',
-    tags: ['shop', 'food', 'town-service', 'interior'],
+    tags: ['shop', 'food', 'town-service', 'child-world'],
   },
   {
     id: 'tailor',
     name: 'Tailor Shop',
     role: 'tailor',
-    category: 'interior',
+    category: 'child-world',
     pack: 'premium',
     tmxPath: 'interiors/premium/Tiled/Tilemaps/TailorShop_1.tmx',
     approxSize: { width: 22, height: 20 },
     description: 'A tailor shop with fabric rolls, mannequins, and sewing area',
-    tags: ['shop', 'armor', 'town-service', 'interior'],
+    tags: ['shop', 'armor', 'town-service', 'child-world'],
   },
   {
     id: 'cartographer',
     name: 'Cartographer',
     role: 'cartographer',
-    category: 'interior',
+    category: 'child-world',
     pack: 'premium',
     tmxPath: 'interiors/premium/Tiled/Tilemaps/Cartographer_1.tmx',
     approxSize: { width: 22, height: 20 },
     description: 'A map-maker workshop with drafting tables and scroll racks',
-    tags: ['knowledge', 'maps', 'town-service', 'interior'],
+    tags: ['knowledge', 'maps', 'town-service', 'child-world'],
   },
   {
     id: 'fisherman-hut',
     name: 'Fisherman Hut',
     role: 'fisherman-hut',
-    category: 'interior',
+    category: 'child-world',
     pack: 'premium',
     tmxPath: 'interiors/premium/Tiled/Tilemaps/FishermanHut_1.tmx',
     approxSize: { width: 18, height: 16 },
     description: 'A small fishing hut with nets, tackle, and a sleeping area',
-    tags: ['house', 'fishing', 'coastal', 'interior'],
+    tags: ['house', 'fishing', 'coastal', 'child-world'],
   },
   {
     id: 'huntmaster',
     name: 'Huntmaster Lodge',
     role: 'huntmaster',
-    category: 'interior',
+    category: 'child-world',
     pack: 'premium',
     tmxPath: 'interiors/premium/Tiled/Tilemaps/Huntmaster_1.tmx',
     approxSize: { width: 22, height: 20 },
     description: 'A hunting lodge with trophies, weapon racks, and pelts',
-    tags: ['combat', 'hunting', 'guild', 'interior'],
+    tags: ['combat', 'hunting', 'guild', 'child-world'],
   },
   {
     id: 'castle-room',
     name: 'Castle Great Hall',
     role: 'castle-room',
-    category: 'interior',
+    category: 'child-world',
     pack: 'premium',
     tmxPath: 'interiors/premium/Tiled/Tilemaps/Castle_1.tmx',
     approxSize: { width: 30, height: 25 },
     description: 'A grand castle hall with throne, banquet tables, and tapestries',
-    tags: ['castle', 'throne', 'boss', 'interior'],
+    tags: ['castle', 'throne', 'boss', 'child-world'],
   },
 
-  // --- Exterior scene archetypes ---
+  // --- Outdoor scene archetypes ---
   {
     id: 'farm-shore',
     name: 'Farm Shore',
     role: 'scene-template',
-    category: 'exterior',
+    category: 'outdoor',
     pack: 'premium',
     tmxPath: 'exteriors/premium/Tiled/Tilemaps/Farm Shore.tmx',
     approxSize: { width: 40, height: 45 },
@@ -237,7 +237,7 @@ const ARCHETYPE_DEFINITIONS: ArchetypeDefinition[] = [
     id: 'village-bridge',
     name: 'Village Bridge',
     role: 'scene-template',
-    category: 'exterior',
+    category: 'outdoor',
     pack: 'premium',
     tmxPath: 'exteriors/premium/Tiled/Tilemaps/Village Bridge.tmx',
     approxSize: { width: 60, height: 36 },
@@ -249,7 +249,7 @@ const ARCHETYPE_DEFINITIONS: ArchetypeDefinition[] = [
     id: 'mage-tower',
     name: 'Mage Tower',
     role: 'scene-template',
-    category: 'exterior',
+    category: 'outdoor',
     pack: 'premium',
     tmxPath: 'exteriors/premium/Tiled/Tilemaps/Mage Tower.tmx',
     approxSize: { width: 40, height: 40 },
@@ -260,7 +260,7 @@ const ARCHETYPE_DEFINITIONS: ArchetypeDefinition[] = [
     id: 'desert-town',
     name: 'Desert Town',
     role: 'scene-template',
-    category: 'exterior',
+    category: 'outdoor',
     pack: 'desert',
     tmxPath: 'exteriors/desert/Tiled/Tilemaps/Desert Town.tmx',
     approxSize: { width: 50, height: 40 },
@@ -271,7 +271,7 @@ const ARCHETYPE_DEFINITIONS: ArchetypeDefinition[] = [
     id: 'hidden-oasis',
     name: 'Hidden Oasis',
     role: 'scene-template',
-    category: 'exterior',
+    category: 'outdoor',
     pack: 'desert',
     tmxPath: 'exteriors/desert/Tiled/Tilemaps/Hidden Oasis.tmx',
     approxSize: { width: 40, height: 40 },
@@ -282,7 +282,7 @@ const ARCHETYPE_DEFINITIONS: ArchetypeDefinition[] = [
     id: 'mountain-village',
     name: 'Mountain Village',
     role: 'scene-template',
-    category: 'exterior',
+    category: 'outdoor',
     pack: 'snow',
     tmxPath: 'exteriors/snow/Tiled/Tilemaps/Mountain Village.tmx',
     approxSize: { width: 50, height: 40 },
@@ -293,7 +293,7 @@ const ARCHETYPE_DEFINITIONS: ArchetypeDefinition[] = [
     id: 'frost-peak',
     name: 'Frost Peak',
     role: 'scene-template',
-    category: 'exterior',
+    category: 'outdoor',
     pack: 'snow',
     tmxPath: 'exteriors/snow/Tiled/Tilemaps/Frost Peak.tmx',
     approxSize: { width: 40, height: 40 },
@@ -304,7 +304,7 @@ const ARCHETYPE_DEFINITIONS: ArchetypeDefinition[] = [
     id: 'farmer-hold',
     name: 'Farmer Hold',
     role: 'scene-template',
-    category: 'exterior',
+    category: 'outdoor',
     pack: 'castles',
     tmxPath: 'exteriors/castles/Tiled/Tilemaps/Farmer Hold.tmx',
     approxSize: { width: 50, height: 40 },
@@ -315,7 +315,7 @@ const ARCHETYPE_DEFINITIONS: ArchetypeDefinition[] = [
     id: 'forest-keep',
     name: 'Forest Keep',
     role: 'scene-template',
-    category: 'exterior',
+    category: 'outdoor',
     pack: 'castles',
     tmxPath: 'exteriors/castles/Tiled/Tilemaps/Forest Keep.tmx',
     approxSize: { width: 50, height: 40 },
@@ -326,7 +326,7 @@ const ARCHETYPE_DEFINITIONS: ArchetypeDefinition[] = [
     id: 'autumn-fields',
     name: 'Autumn Fields',
     role: 'scene-template',
-    category: 'exterior',
+    category: 'outdoor',
     pack: 'seasons',
     tmxPath: 'exteriors/seasons/Tiled/Tilemaps/Autumn Fields.tmx',
     approxSize: { width: 50, height: 40 },
@@ -337,7 +337,7 @@ const ARCHETYPE_DEFINITIONS: ArchetypeDefinition[] = [
     id: 'cherry-hill',
     name: 'Cherry Hill',
     role: 'scene-template',
-    category: 'exterior',
+    category: 'outdoor',
     pack: 'seasons',
     tmxPath: 'exteriors/seasons/Tiled/Tilemaps/Cherry Hill.tmx',
     approxSize: { width: 50, height: 40 },
@@ -424,7 +424,7 @@ export class ArchetypeRegistry {
   summary(): string {
     const lines: string[] = [`Archetype Registry: ${this.archetypes.size} archetypes`, ''];
 
-    const categories = ['interior', 'exterior', 'terrain'] as const;
+    const categories = ['child-world', 'outdoor', 'terrain'] as const;
     for (const cat of categories) {
       const items = this.byCategory(cat);
       if (items.length === 0) continue;

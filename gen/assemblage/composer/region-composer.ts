@@ -37,7 +37,7 @@ import {
   type RoutedPath,
   routeAll,
 } from './path-router';
-import type { AnchorDefinition, RegionDefinition } from './world-ddl';
+import type { AnchorDefinition, RegionDefinition, WildFeature } from './world-ddl';
 import { calculateRegionMetrics } from './world-ddl';
 
 // --- Output types ---
@@ -64,6 +64,26 @@ export interface RegionMap {
   npcPositions: Map<string, Point>;
   /** Region connections to other regions */
   regionExits: RegionExit[];
+  /** Placed wild features (hidden chests, shrines, etc.) */
+  wildFeatureObjects: PlacedWildFeature[];
+  /** Placed safe zones (roadside camps for rest) */
+  safeZones: PlacedSafeZone[];
+}
+
+export interface PlacedWildFeature {
+  /** Feature type */
+  type: WildFeature['type'];
+  /** Position in map tiles */
+  position: Point;
+  /** Placement strategy used */
+  placement: WildFeature['placement'];
+}
+
+export interface PlacedSafeZone {
+  /** Camp center position in map tiles */
+  position: Point;
+  /** Walking distance from start of path in tiles */
+  distanceAlongPath: number;
 }
 
 export interface PlacedAnchor {
@@ -166,7 +186,7 @@ export async function composeRegion(
         markClearance(grid, house.position.x, house.position.y, 8, 8, 2);
       }
     } else if (placed.anchor.type === 'town' && placed.anchor.town) {
-      // Town/Village = exterior building cluster organism
+      // Town/Village = outdoor building cluster organism
       const worldSlotIds = getWorldSlotIds(placed.anchor);
       const townLayout = layoutTown(
         placed.bounds,
@@ -251,7 +271,31 @@ export async function composeRegion(
   const pathRequests = buildRegionPaths(placedAnchors, biome, options?.exits ?? []);
   const routedPaths = routeAll(grid, pathRequests);
 
-  // --- 5. Fill ---
+  // --- 6. Place wild features ---
+  const wildFeatureObjects = placeWildFeatures(
+    region.connectiveTissue.wildFeatures ?? [],
+    grid,
+    mapWidth,
+    mapHeight,
+    rng,
+  );
+
+  // Mark wild features on collision grid (small 2x2 blocked area)
+  for (const feat of wildFeatureObjects) {
+    markArea(grid, feat.position.x, feat.position.y, 2, 2, 1);
+  }
+
+  // --- 7. Place safe zones along paths ---
+  const safeZones = placeSafeZones(
+    region.connectiveTissue.safeZoneInterval,
+    routedPaths,
+    grid,
+    mapWidth,
+    mapHeight,
+    rng,
+  );
+
+  // --- 8. Fill ---
   const connectionTiles = (options?.exits ?? []).map((e) => e.position);
   const fill = runFillEngine({
     mapWidth,
@@ -274,6 +318,8 @@ export async function composeRegion(
     doorTransitions,
     npcPositions,
     regionExits: options?.exits ?? [],
+    wildFeatureObjects,
+    safeZones,
   };
 }
 
@@ -431,6 +477,286 @@ function buildRegionPaths(
   }
 
   return requests;
+}
+
+// --- Wild features placement ---
+
+/**
+ * Place wild features in the region based on connective tissue rules.
+ *
+ * Placement strategies:
+ * - near-path: Within 5-8 tiles of a routed path (cell 2), not on the path itself
+ * - off-path: 15+ tiles from any path, in empty ground (cell 0)
+ * - hidden: Map corners or edges, behind scatter objects
+ */
+function placeWildFeatures(
+  features: WildFeature[],
+  grid: CollisionGrid,
+  mapWidth: number,
+  mapHeight: number,
+  rng: SeededRNG,
+): PlacedWildFeature[] {
+  const placed: PlacedWildFeature[] = [];
+
+  // Build a distance-to-path map for efficient placement queries
+  const pathDistances = computePathDistances(grid, mapWidth, mapHeight);
+
+  for (const feature of features) {
+    let remaining = feature.count;
+    let attempts = 0;
+    const maxAttempts = feature.count * 50;
+
+    while (remaining > 0 && attempts < maxAttempts) {
+      attempts++;
+
+      const x = rng.nextInt(2, mapWidth - 3);
+      const y = rng.nextInt(2, mapHeight - 3);
+
+      // Must be on empty ground (cell 0) and not blocked
+      const idx = y * mapWidth + x;
+      if (grid.data[idx] !== 0) continue;
+
+      // Check 2x2 area is clear
+      if (!isAreaClear(grid, x, y, 2, 2, mapWidth, mapHeight)) continue;
+
+      // Check distance-to-nearest-path constraint
+      const dist = pathDistances[idx];
+
+      let valid = false;
+      switch (feature.placement) {
+        case 'near-path':
+          valid = dist >= 5 && dist <= 8;
+          break;
+        case 'off-path':
+          valid = dist >= 15;
+          break;
+        case 'hidden':
+          // Prefer corners and edges of the map
+          valid = isHiddenPosition(x, y, mapWidth, mapHeight, dist);
+          break;
+      }
+
+      if (!valid) continue;
+
+      // Check minimum distance from other placed features (at least 10 tiles apart)
+      const tooClose = placed.some(
+        (p) =>
+          Math.abs(p.position.x - x) + Math.abs(p.position.y - y) < 10,
+      );
+      if (tooClose) continue;
+
+      placed.push({
+        type: feature.type,
+        position: { x, y },
+        placement: feature.placement,
+      });
+      remaining--;
+    }
+  }
+
+  return placed;
+}
+
+/**
+ * Compute Manhattan distance from each tile to the nearest path tile (cell 2).
+ * Returns a flat array indexed by (y * width + x).
+ * Uses BFS flood-fill from all path tiles.
+ */
+function computePathDistances(
+  grid: CollisionGrid,
+  width: number,
+  height: number,
+): Uint16Array {
+  const dist = new Uint16Array(width * height).fill(0xffff);
+  const queue: number[] = [];
+
+  // Seed BFS from all path tiles
+  for (let i = 0; i < width * height; i++) {
+    if (grid.data[i] === 2) {
+      dist[i] = 0;
+      queue.push(i);
+    }
+  }
+
+  const dirs = [-1, 1, -width, width];
+  let head = 0;
+
+  while (head < queue.length) {
+    const idx = queue[head++];
+    const d = dist[idx];
+    const x = idx % width;
+
+    for (const dir of dirs) {
+      const ni = idx + dir;
+      if (ni < 0 || ni >= width * height) continue;
+
+      // Prevent wrapping at horizontal edges
+      const nx = ni % width;
+      if (dir === -1 && x === 0) continue;
+      if (dir === 1 && x === width - 1) continue;
+
+      if (d + 1 < dist[ni]) {
+        dist[ni] = d + 1;
+        queue.push(ni);
+      }
+    }
+  }
+
+  return dist;
+}
+
+/**
+ * Check if a position qualifies as "hidden" for feature placement.
+ * Hidden positions are in map corners, dead ends, or behind edge walls.
+ */
+function isHiddenPosition(
+  x: number,
+  y: number,
+  mapWidth: number,
+  mapHeight: number,
+  distToPath: number,
+): boolean {
+  const cornerMargin = Math.min(mapWidth, mapHeight) * 0.15;
+  const isNearCorner =
+    (x < cornerMargin && y < cornerMargin) ||
+    (x < cornerMargin && y > mapHeight - cornerMargin) ||
+    (x > mapWidth - cornerMargin && y < cornerMargin) ||
+    (x > mapWidth - cornerMargin && y > mapHeight - cornerMargin);
+
+  const isNearEdge =
+    x < 6 || y < 6 || x > mapWidth - 7 || y > mapHeight - 7;
+
+  // Hidden = near a corner, or near edge and at least somewhat off-path
+  return isNearCorner || (isNearEdge && distToPath >= 8);
+}
+
+/**
+ * Check if a rectangular area is entirely empty ground (cell 0).
+ */
+function isAreaClear(
+  grid: CollisionGrid,
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  mapWidth: number,
+  mapHeight: number,
+): boolean {
+  for (let dy = 0; dy < h; dy++) {
+    for (let dx = 0; dx < w; dx++) {
+      const gx = x + dx;
+      const gy = y + dy;
+      if (gx < 0 || gx >= mapWidth || gy < 0 || gy >= mapHeight) return false;
+      if (grid.data[gy * mapWidth + gx] !== 0) return false;
+    }
+  }
+  return true;
+}
+
+// --- Safe zone placement ---
+
+/**
+ * Place roadside camp/rest spots at regular intervals along main paths.
+ *
+ * Safe zones are 5x5 blocked areas adjacent to the path with a campfire
+ * object and a bench. They provide rest points every N minutes of walk time.
+ */
+function placeSafeZones(
+  safeZoneInterval: number | undefined,
+  routedPaths: RoutedPath[],
+  grid: CollisionGrid,
+  mapWidth: number,
+  mapHeight: number,
+  rng: SeededRNG,
+): PlacedSafeZone[] {
+  if (!safeZoneInterval || safeZoneInterval <= 0) return [];
+
+  const WALK_SPEED_TPS = 4; // tiles per second
+  const intervalTiles = safeZoneInterval * 60 * WALK_SPEED_TPS;
+
+  const zones: PlacedSafeZone[] = [];
+
+  // Walk along each main routed path
+  const mainPaths = routedPaths.filter((p) => p.request.priority === 'main');
+
+  for (const routedPath of mainPaths) {
+    const waypoints = routedPath.waypoints;
+    if (waypoints.length === 0) continue;
+
+    let tilesSinceLastZone = 0;
+
+    for (let i = 1; i < waypoints.length; i++) {
+      tilesSinceLastZone++;
+
+      if (tilesSinceLastZone >= intervalTiles) {
+        const wp = waypoints[i];
+
+        // Find a valid 5x5 camp position adjacent to the path
+        const campPos = findCampPosition(
+          grid,
+          wp,
+          mapWidth,
+          mapHeight,
+          rng,
+        );
+
+        if (campPos) {
+          // Mark 5x5 camp area as blocked
+          markArea(grid, campPos.x, campPos.y, 5, 5, 1);
+
+          zones.push({
+            position: campPos,
+            distanceAlongPath: i,
+          });
+
+          tilesSinceLastZone = 0;
+        }
+      }
+    }
+  }
+
+  return zones;
+}
+
+/**
+ * Find a valid position for a 5x5 camp adjacent to a path waypoint.
+ * Tries all four directions from the waypoint, picking the first clear spot.
+ */
+function findCampPosition(
+  grid: CollisionGrid,
+  pathPoint: Point,
+  mapWidth: number,
+  mapHeight: number,
+  rng: SeededRNG,
+): Point | null {
+  // Try offsets: camp placed adjacent to path in randomized cardinal order
+  const offsets = [
+    { x: 3, y: -2 },  // East of path
+    { x: -8, y: -2 }, // West of path
+    { x: -2, y: 3 },  // South of path
+    { x: -2, y: -8 }, // North of path
+  ];
+
+  // Shuffle offsets for variety
+  for (let i = offsets.length - 1; i > 0; i--) {
+    const j = rng.nextInt(0, i);
+    [offsets[i], offsets[j]] = [offsets[j], offsets[i]];
+  }
+
+  for (const offset of offsets) {
+    const cx = pathPoint.x + offset.x;
+    const cy = pathPoint.y + offset.y;
+
+    // Check bounds
+    if (cx < 0 || cy < 0 || cx + 5 > mapWidth || cy + 5 > mapHeight) continue;
+
+    // Check 5x5 area is clear
+    if (isAreaClear(grid, cx, cy, 5, 5, mapWidth, mapHeight)) {
+      return { x: cx, y: cy };
+    }
+  }
+
+  return null;
 }
 
 // --- Map sizing ---

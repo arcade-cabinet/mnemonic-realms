@@ -6,6 +6,26 @@ size: [80, 80]
 vibrancy: 45
 palette: village-premium
 music: bgm-ambergrove
+assemblages:
+  - ref: forest-clearing
+    position: [18, 8]
+    meta: {name: "Hearthstone Circle"}
+  - ref: lake
+    position: [28, 23]
+    meta: {name: "Amber Lake"}
+  - ref: garden
+    position: [8, 28]
+    meta: {name: "Woodcutter's Camp"}
+  - ref: bridge
+    position: [36, 18]
+    meta: {name: "Eastern Canopy Path"}
+  - ref: forest-border
+    edge: north
+  - ref: forest-border
+    edge: west
+  - ref: forest-clearing
+    position: [20, 20]
+    meta: {name: "Mossy Clearing"}
 ---
 
 # Ambergrove
@@ -18,14 +38,14 @@ Starting vibrancy 45 (Normal tier).
 
 ## Key Areas
 
-| Area | Position | Size | Description |
-|------|----------|------|-------------|
-| Hearthstone Circle | (18, 8) | 6x6 | Ring of standing Resonance Stones in a clearing. Rich fragment source. |
-| Amber Lake | (28, 23) | 8x8 | Forest lake with submerged Resonance Stone at center (30, 27). |
-| Woodcutter's Camp | (8, 28) | 6x5 | 3 NPCs, woodworking tools, tents. SQ-03 quest hub. |
-| Eastern Canopy Path | (36, 18) | 4x10 | Elevated tree-bridge. Partially dissolved sections shimmer. |
-| Dense Forest (north) | (5, 2) -> (35, 15) | -- | Primary enemy spawn zone |
-| Mossy Clearing | (20, 20) | 4x4 | Open clearing with fallen log. Rest spot (ambient heal). |
+| Area | Position | Size | Assemblage | Description |
+|------|----------|------|------------|-------------|
+| Hearthstone Circle | (18, 8) | 6x6 | [forest-clearing](../../../gen/assemblage/catalog/organisms/terrain/forest-clearing.md) | Ring of standing Resonance Stones in a clearing. Rich fragment source. |
+| Amber Lake | (28, 23) | 8x8 | [lake](../../../gen/assemblage/catalog/organisms/terrain/lake.md) | Forest lake with submerged Resonance Stone at center (30, 27). |
+| Woodcutter's Camp | (8, 28) | 6x5 | [garden](../../../gen/assemblage/catalog/organisms/terrain/garden.md) | 3 NPCs, woodworking tools, tents. SQ-03 quest hub. |
+| Eastern Canopy Path | (36, 18) | 4x10 | [bridge](../../../gen/assemblage/catalog/organisms/terrain/bridge.md) | Elevated tree-bridge. Partially dissolved sections shimmer. |
+| Dense Forest (north) | (5, 2) -> (35, 15) | -- | [forest-border](../../../gen/assemblage/catalog/organisms/terrain/forest-border.md) | Primary enemy spawn zone |
+| Mossy Clearing | (20, 20) | 4x4 | [forest-clearing](../../../gen/assemblage/catalog/organisms/terrain/forest-clearing.md) | Open clearing with fallen log. Rest spot (ambient heal). |
 
 ## NPCs
 

@@ -1,531 +1,282 @@
 {
   "schemaVersion": "1.0.0",
   "description": "NPC dialogue code generation manifest",
-  "updatedAt": "2026-02-19T20:06:42.801Z",
+  "updatedAt": "2026-02-20T05:44:47.212Z",
   "category": "event-dialogue",
   "systemPrompt": "You are an RPG-JS 4.3.0 TypeScript code generator.\nGenerate a single RPG-JS server-side dialogue file.\nOutput ONLY valid TypeScript code. No markdown fences. No explanatory text.\nThe file must use player.showText() for NPC speech lines.\nUse player.showChoices() for branching dialogue.\nWire trigger conditions and quest state checks.\nLines marked [SYSTEM] use player.gui('rpg-notification') or system overlay.\nLines marked [NARRATION] use showText with no speaker portrait.\nExport the dialogue function as default.",
   "assets": [
     {
-      "id": "dlg-aric-first-encounter",
-      "name": "Aric: First encounter — Frontier border",
+      "id": "dlg-artun-awakening",
+      "name": "Artun: Game start — Scene 1",
       "category": "event-dialogue",
-      "filename": "aric-aric-first-encounter.ts",
-      "targetPath": "main/server/dialogue/aric-first-encounter.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Aric\" (ID: dlg-aric-first-encounter).\n\nTrigger: First encounter — Frontier border\nLocation: Hollow Ridge area (early Act II)\n\n\nLines:\n- Aric: \"Halt. You're entering Preserver-monitored territory. State your purpose.\"\n- Aric: \"A Mnemonic Architect. The Curator warned us one might come.\"\n- Aric: \"A word of advice: the Frontier is not the Settled Lands. Be careful what you remember into existence.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "artun-artun-awakening.ts",
+      "targetPath": "main/server/dialogue/artun-awakening.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Artun\" (ID: dlg-artun-awakening).\n\nTrigger: Game start — Scene 1\nLocation: Everwick — Elder's House (18, 10)\nReferences: Scene: act1-scene1-familiar-place | Quest: MQ-01\n\nLines:\n- Callum: \"There you are. Come in, come in — careful of the stack by the door.\"\n- Callum: \"This passage describes a talent the Dissolved called 'Mnemonic Architecture.'\"\n- Callum: \"You're a Mnemonic Architect, and we just didn't have a word for it until now.\"\n- Callum: \"A traveler came through last month — a woman named Lira. She recognized it in you immediately.\"\n- Callum: \"This is a memory fragment. My first lesson. It's a joyful memory. I'd like you to have it.\"\n- Callum: \"Now go find Lira. Her workshop is south of the square.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Aric",
+          "heading": "Artun",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Aric",
+          "heading": "Artun",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "4bc184eccbb00725",
-        "outputHash": "7ae42f836814bac6e762ce4f819328d71d448ec5409150d5ffd08beb58ea0f73",
-        "generatedAt": "2026-02-13T14:46:42.537Z",
-        "generationTimeMs": 7931,
-        "fileSizeBytes": 1639,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-aric-second-encounter",
-      "name": "Aric: Second encounter — after first god recall",
+      "id": "dlg-artun-after-freezing",
+      "name": "Artun: After Lira's freezing — Scene 11",
       "category": "event-dialogue",
-      "filename": "aric-aric-second-encounter.ts",
-      "targetPath": "main/server/dialogue/aric-second-encounter.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Aric\" (ID: dlg-aric-second-encounter).\n\nTrigger: Second encounter — after first god recall\nLocation: Any Frontier zone (ambient trigger, post-first recall)\nReferences: Condition: 1+ god recall complete\n\nLines:\n- Aric: \"You recalled a god. I felt it — we all did.\"\n- Aric: \"Does being stronger make you right? Honest question.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "artun-artun-after-freezing.ts",
+      "targetPath": "main/server/dialogue/artun-after-freezing.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Artun\" (ID: dlg-artun-after-freezing).\n\nTrigger: After Lira's freezing — Scene 11\nLocation: Everwick — Elder's House (18, 10)\nReferences: Scene: act1-scene12-new-resolve | Quest: MQ-05 | Condition: MQ-04 complete\n\nLines:\n- Callum: \"I heard. Lira...\"\n- Callum: \"She's alive. The crystal doesn't kill.\"\n- Callum: \"You'll need to go north. Into the Frontier — where the dormant gods sleep.\"\n- Callum: \"The mountain pass north of here — it's been closed for as long as I can remember. But I don't think anything's stopping you anymore.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Aric",
+          "heading": "Artun",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Aric",
+          "heading": "Artun",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "cbb16374f855cabf",
-        "outputHash": "f45c6ae2c2a5a3d506aa5cc599aa65f173729b058bf5eb35fb2c7ca599e648f4",
-        "generatedAt": "2026-02-13T14:46:51.334Z",
-        "generationTimeMs": 6795,
-        "fileSizeBytes": 1147,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-aric-ambush",
-      "name": "Aric: After 3 recalls — Aric's ambush",
+      "id": "dlg-artun-ridgewalker",
+      "name": "Artun: Callum joins party at Ridgewalker Camp (Scene 2)",
       "category": "event-dialogue",
-      "filename": "aric-aric-ambush.ts",
-      "targetPath": "main/server/dialogue/aric-ambush.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Aric\" (ID: dlg-aric-ambush).\n\nTrigger: After 3 recalls — Aric's ambush\nLocation: Frontier zone (scripted encounter)\nReferences: Scene: act2-scene17-curators-reveal | Condition: 3+ god recalls complete\n\nLines:\n- Aric: \"Architect. I need to talk to you. Not fight — talk.\"\n- Aric: \"I was given orders to stop you. These are those orders.\"\n- NARRATION: \"Aric sets his crystal gauntlet on the ground.\"\n- Aric: \"I'm choosing not to follow them.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "artun-artun-ridgewalker.ts",
+      "targetPath": "main/server/dialogue/artun-ridgewalker.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Artun\" (ID: dlg-artun-ridgewalker).\n\nTrigger: Callum joins party at Ridgewalker Camp (Scene 2)\nLocation: Hollow Ridge — Ridgewalker Camp (15, 25)\nReferences: Scene: act2-scene2-ridgewalker-camp\n\nLines:\n- Callum: \"I'm too old to stay behind and too curious to let you go alone.\"\n- Callum: \"I won't be much use in a fight — my knees aren't what they were. But I know things about the Dissolved that might save your life.\"\n- Callum: \"Lead on. I'll try to keep up.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Aric",
+          "heading": "Artun",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Aric",
+          "heading": "Artun",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "1a80389e5890f5c2",
-        "outputHash": "6c8691d3ff2169f2d5a4a7e9e2745a186194be7a8f3ea2f32ac2f5930019c107",
-        "generatedAt": "2026-02-13T14:46:56.656Z",
-        "generationTimeMs": 3320,
-        "fileSizeBytes": 1111,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-aric-fortress-gate",
-      "name": "Aric: Fortress Gate — Aric's intelligence briefing (Scene 3)",
+      "id": "dlg-artun-first-recall",
+      "name": "Artun: First god recall (any god)",
       "category": "event-dialogue",
-      "filename": "aric-aric-fortress-gate.ts",
-      "targetPath": "main/server/dialogue/aric-fortress-gate.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Aric\" (ID: dlg-aric-fortress-gate).\n\nTrigger: Fortress Gate — Aric's intelligence briefing (Scene 3)\nLocation: The Undrawn Peaks — Crystalline Fortress Gate (20, 35)\nReferences: Scene: act3-scene3-undrawn-peaks\n\nLines:\n- Aric: \"Architect. I expected you.\"\n- Aric: \"The Curator is wrong about the First Memory. Crystallizing it won't preserve the world — it will kill it.\"\n- Aric: \"Three floors. The Gallery of Moments. The Archive of Perfection. The First Memory Chamber.\"\n- Aric: \"Your four recalled gods are weakening the crystal from outside.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "artun-artun-first-recall.ts",
+      "targetPath": "main/server/dialogue/artun-first-recall.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Artun\" (ID: dlg-artun-first-recall).\n\nTrigger: First god recall (any god)\nLocation: Any shrine\nReferences: Quest: MQ-06\n\nLines:\n- Callum: \"Forty years of study. And now I'm watching one wake up.\"\n- Callum: \"I thought I'd cry. I'm not crying. I'm too amazed to cry.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Aric",
+          "heading": "Artun",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Aric",
+          "heading": "Artun",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "398c6d8d9936ffd6",
-        "outputHash": "8718f208fde3f9eb82f78aedd8b56492cfaef2735c775d9ba02b7e4d87e00f26",
-        "generatedAt": "2026-02-13T14:47:03.007Z",
-        "generationTimeMs": 4348,
-        "fileSizeBytes": 1059,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-aric-resolution",
-      "name": "Aric: Endgame Bloom — Aric at Fortress Gate (Scene 11)",
+      "id": "dlg-artun-half-drawn",
+      "name": "Artun: Half-Drawn Forest entry (Scene 1)",
       "category": "event-dialogue",
-      "filename": "aric-aric-resolution.ts",
-      "targetPath": "main/server/dialogue/aric-resolution.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Aric\" (ID: dlg-aric-resolution).\n\nTrigger: Endgame Bloom — Aric at Fortress Gate (Scene 11)\nLocation: Preserver Fortress Gate (exterior)\nReferences: Scene: act3-scene11-curators-choice\n\nLines:\n- Aric: \"Curator. The Gallery subjects are waking up. They're confused but alive. Someone needs to help them adjust.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "artun-artun-half-drawn.ts",
+      "targetPath": "main/server/dialogue/artun-half-drawn.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Artun\" (ID: dlg-artun-half-drawn).\n\nTrigger: Half-Drawn Forest entry (Scene 1)\nLocation: The Half-Drawn Forest\nReferences: Scene: act3-scene1-half-drawn-forest\n\nLines:\n- Callum: \"Not walked away. Chose not to finish. The Dissolved trusted that future generations would complete it.\"\n- Callum: \"Broadcasting here is different. You're painting reality into existence.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Aric",
+          "heading": "Artun",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Aric",
+          "heading": "Artun",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "3fb5d3677b2f879c",
-        "outputHash": "992e5c94b7a908807f4fb2143c0827f34528d1f8aa7174ae53766ba731e85e52",
-        "generatedAt": "2026-02-13T14:47:07.016Z",
-        "generationTimeMs": 2006,
-        "fileSizeBytes": 710,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-callum-awakening",
-      "name": "Callum: Game start — Scene 1",
+      "id": "dlg-artun-luminous-wastes",
+      "name": "Artun: Luminous Wastes — The Edge (Scene 2)",
       "category": "event-dialogue",
-      "filename": "callum-callum-awakening.ts",
-      "targetPath": "main/server/dialogue/callum-awakening.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Callum\" (ID: dlg-callum-awakening).\n\nTrigger: Game start — Scene 1\nLocation: Everwick — Elder's House (18, 10)\nReferences: Scene: act1-scene1-familiar-place | Quest: MQ-01\n\nLines:\n- Callum: \"There you are. Come in, come in — careful of the stack by the door.\"\n- Callum: \"This passage describes a talent the Dissolved called 'Mnemonic Architecture.'\"\n- Callum: \"You're a Mnemonic Architect, and we just didn't have a word for it until now.\"\n- Callum: \"A traveler came through last month — a woman named Lira. She recognized it in you immediately.\"\n- Callum: \"This is a memory fragment. My first lesson. It's a joyful memory. I'd like you to have it.\"\n- Callum: \"Now go find Lira. Her workshop is south of the square.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "artun-artun-luminous-wastes.ts",
+      "targetPath": "main/server/dialogue/artun-luminous-wastes.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Artun\" (ID: dlg-artun-luminous-wastes).\n\nTrigger: Luminous Wastes — The Edge (Scene 2)\nLocation: Luminous Wastes (5, 20)\nReferences: Scene: act3-scene2-luminous-wastes\n\nLines:\n- Callum: \"No. This is where the world is still beginning.\"\n- Callum: \"If the Curator succeeds... these lines stop. The drawing ends mid-stroke.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Callum",
+          "heading": "Artun",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Callum",
+          "heading": "Artun",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "369a5cea64753f4e",
-        "outputHash": "2011263c361daee6c663326ad592f66ed7c06ea6a72f7b72bde7cd4913cecdbb",
-        "generatedAt": "2026-02-13T14:47:20.928Z",
-        "generationTimeMs": 11911,
-        "fileSizeBytes": 2597,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-callum-after-freezing",
-      "name": "Callum: After Lira's freezing — Scene 11",
+      "id": "dlg-artun-undrawn-peaks",
+      "name": "Artun: Undrawn Peaks — Fortress layout (Scene 3)",
       "category": "event-dialogue",
-      "filename": "callum-callum-after-freezing.ts",
-      "targetPath": "main/server/dialogue/callum-after-freezing.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Callum\" (ID: dlg-callum-after-freezing).\n\nTrigger: After Lira's freezing — Scene 11\nLocation: Everwick — Elder's House (18, 10)\nReferences: Scene: act1-scene12-new-resolve | Quest: MQ-05 | Condition: MQ-04 complete\n\nLines:\n- Callum: \"I heard. Lira...\"\n- Callum: \"She's alive. The crystal doesn't kill.\"\n- Callum: \"You'll need to go north. Into the Frontier — where the dormant gods sleep.\"\n- Callum: \"The mountain pass north of here — it's been closed for as long as I can remember. But I don't think anything's stopping you anymore.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "artun-artun-undrawn-peaks.ts",
+      "targetPath": "main/server/dialogue/artun-undrawn-peaks.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Artun\" (ID: dlg-artun-undrawn-peaks).\n\nTrigger: Undrawn Peaks — Fortress layout (Scene 3)\nLocation: The Undrawn Peaks\nReferences: Scene: act3-scene3-undrawn-peaks\n\nLines:\n- Callum: \"The Preserver Fortress. Three floors of crystallized perfection.\"\n- Callum: \"The First Memory is on the lowest floor. We need to go through the Fortress to reach it.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Callum",
+          "heading": "Artun",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Callum",
+          "heading": "Artun",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "6b7784752c01cf8b",
-        "outputHash": "dd34fe50572a55aaa298ccf794bb7a4fd997484ef2741a127d7a736bca53f16b",
-        "generatedAt": "2026-02-13T14:47:27.270Z",
-        "generationTimeMs": 4340,
-        "fileSizeBytes": 1792,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-callum-ridgewalker",
-      "name": "Callum: Callum joins party at Ridgewalker Camp (Scene 2)",
+      "id": "dlg-artun-fortress-entry",
+      "name": "Artun: Fortress entry — god recall fractures (Scene 5)",
       "category": "event-dialogue",
-      "filename": "callum-callum-ridgewalker.ts",
-      "targetPath": "main/server/dialogue/callum-ridgewalker.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Callum\" (ID: dlg-callum-ridgewalker).\n\nTrigger: Callum joins party at Ridgewalker Camp (Scene 2)\nLocation: Hollow Ridge — Ridgewalker Camp (15, 25)\nReferences: Scene: act2-scene2-ridgewalker-camp\n\nLines:\n- Callum: \"I'm too old to stay behind and too curious to let you go alone.\"\n- Callum: \"I won't be much use in a fight — my knees aren't what they were. But I know things about the Dissolved that might save your life.\"\n- Callum: \"Lead on. I'll try to keep up.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "artun-artun-fortress-entry.ts",
+      "targetPath": "main/server/dialogue/artun-fortress-entry.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Artun\" (ID: dlg-artun-fortress-entry).\n\nTrigger: Fortress entry — god recall fractures (Scene 5)\nLocation: Preserver Fortress entrance\nReferences: Scene: act3-scene5-fortress-gate\n\nLines:\n- Callum: \"The god recall fractures — look.\"\n- Callum: \"The gods are here. Their influence has been eroding this crystal since the moment you recalled them.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Callum",
+          "heading": "Artun",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Callum",
+          "heading": "Artun",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "85d9c50663421e36",
-        "outputHash": "b164ac45e03694a3baa34c2b313aef2670579bedd12cebeb9cbaef3f653df976",
-        "generatedAt": "2026-02-13T14:47:41.326Z",
-        "generationTimeMs": 12059,
-        "fileSizeBytes": 2513,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-callum-first-recall",
-      "name": "Callum: First god recall (any god)",
+      "id": "dlg-artun-gallery",
+      "name": "Artun: Gallery — Child's First Steps (Scene 6)",
       "category": "event-dialogue",
-      "filename": "callum-callum-first-recall.ts",
-      "targetPath": "main/server/dialogue/callum-first-recall.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Callum\" (ID: dlg-callum-first-recall).\n\nTrigger: First god recall (any god)\nLocation: Any shrine\nReferences: Quest: MQ-06\n\nLines:\n- Callum: \"Forty years of study. And now I'm watching one wake up.\"\n- Callum: \"I thought I'd cry. I'm not crying. I'm too amazed to cry.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "artun-artun-gallery.ts",
+      "targetPath": "main/server/dialogue/artun-gallery.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Artun\" (ID: dlg-artun-gallery).\n\nTrigger: Gallery — Child's First Steps (Scene 6)\nLocation: Preserver Fortress Floor 1, Room 3\nReferences: Scene: act3-scene6-gallery-of-moments\n\nLines:\n- Callum: \"This one... this one is hard.\"\n- Callum: \"That child learned to walk. And the Curator froze it because it was the most perfect moment.\"\n- Callum: \"Perfect moments aren't meant to last. They're meant to lead somewhere.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Callum",
+          "heading": "Artun",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Callum",
+          "heading": "Artun",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "844da444f5c35244",
-        "outputHash": "b79d6ff8902aa129b99b6484ab70eb0cebdef4411d8f97a71b070bb60ea37364",
-        "generatedAt": "2026-02-13T14:47:54.892Z",
-        "generationTimeMs": 11564,
-        "fileSizeBytes": 677,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-callum-half-drawn",
-      "name": "Callum: Half-Drawn Forest entry (Scene 1)",
+      "id": "dlg-artun-curator-confront",
+      "name": "Artun: Curator confrontation (Scene 8)",
       "category": "event-dialogue",
-      "filename": "callum-callum-half-drawn.ts",
-      "targetPath": "main/server/dialogue/callum-half-drawn.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Callum\" (ID: dlg-callum-half-drawn).\n\nTrigger: Half-Drawn Forest entry (Scene 1)\nLocation: The Half-Drawn Forest\nReferences: Scene: act3-scene1-half-drawn-forest\n\nLines:\n- Callum: \"Not walked away. Chose not to finish. The Dissolved trusted that future generations would complete it.\"\n- Callum: \"Broadcasting here is different. You're painting reality into existence.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "artun-artun-curator-confront.ts",
+      "targetPath": "main/server/dialogue/artun-curator-confront.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Artun\" (ID: dlg-artun-curator-confront).\n\nTrigger: Curator confrontation (Scene 8)\nLocation: Preserver Fortress Floor 3\nReferences: Scene: act3-scene8-first-memory-chamber | Quest: MQ-09\n\nLines:\n- Callum: \"You want to silence the question. But the question IS the world.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Callum",
+          "heading": "Artun",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Callum",
+          "heading": "Artun",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "8a86e03d8a6e7093",
-        "outputHash": "6135be2df72124901addd1cb10ef32ffc34fd77dff89da936082cfba10eb463c",
-        "generatedAt": "2026-02-13T14:48:04.514Z",
-        "generationTimeMs": 7620,
-        "fileSizeBytes": 1437,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-callum-luminous-wastes",
-      "name": "Callum: Luminous Wastes — The Edge (Scene 2)",
+      "id": "dlg-artun-remix",
+      "name": "Artun: First Memory Remix (Scene 9)",
       "category": "event-dialogue",
-      "filename": "callum-callum-luminous-wastes.ts",
-      "targetPath": "main/server/dialogue/callum-luminous-wastes.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Callum\" (ID: dlg-callum-luminous-wastes).\n\nTrigger: Luminous Wastes — The Edge (Scene 2)\nLocation: Luminous Wastes (5, 20)\nReferences: Scene: act3-scene2-luminous-wastes\n\nLines:\n- Callum: \"No. This is where the world is still beginning.\"\n- Callum: \"If the Curator succeeds... these lines stop. The drawing ends mid-stroke.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "artun-artun-remix.ts",
+      "targetPath": "main/server/dialogue/artun-remix.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Artun\" (ID: dlg-artun-remix).\n\nTrigger: First Memory Remix (Scene 9)\nLocation: First Memory Chamber\nReferences: Scene: act3-scene9-the-remix | Quest: MQ-10\n\nLines:\n- Callum: \"The question changed. It's not 'Why do things change?' anymore.\"\n- Callum: \"The world has grown beyond that question. It needs a new one.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Callum",
+          "heading": "Artun",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Callum",
+          "heading": "Artun",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "1748b8044cb23cf0",
-        "outputHash": "4dcdc8026853ce9248fdb1616e445163f4c52d16c74bd145271f47aba65523bb",
-        "generatedAt": "2026-02-13T14:48:08.594Z",
-        "generationTimeMs": 2077,
-        "fileSizeBytes": 400,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-callum-undrawn-peaks",
-      "name": "Callum: Undrawn Peaks — Fortress layout (Scene 3)",
+      "id": "dlg-artun-resolution",
+      "name": "Artun: Endgame Bloom — Everwick (Scene 11)",
       "category": "event-dialogue",
-      "filename": "callum-callum-undrawn-peaks.ts",
-      "targetPath": "main/server/dialogue/callum-undrawn-peaks.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Callum\" (ID: dlg-callum-undrawn-peaks).\n\nTrigger: Undrawn Peaks — Fortress layout (Scene 3)\nLocation: The Undrawn Peaks\nReferences: Scene: act3-scene3-undrawn-peaks\n\nLines:\n- Callum: \"The Preserver Fortress. Three floors of crystallized perfection.\"\n- Callum: \"The First Memory is on the lowest floor. We need to go through the Fortress to reach it.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "artun-artun-resolution.ts",
+      "targetPath": "main/server/dialogue/artun-resolution.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Artun\" (ID: dlg-artun-resolution).\n\nTrigger: Endgame Bloom — Everwick (Scene 11)\nLocation: Everwick\nReferences: Scene: act3-scene11-curators-choice\n\nLines:\n- Callum: \"Forty years I spent studying the Dissolved.\"\n- Callum: \"They let go because they were done. Their work was complete.\"\n- Callum: \"I'm proud of you. Lira and I both are.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Callum",
+          "heading": "Artun",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Callum",
+          "heading": "Artun",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "1f37e6b8480ababe",
-        "outputHash": "66a5bf4e75eb88587e6cb1a3e7aaf4a4c3d4d69e15bcfe3729af131d7d521e49",
-        "generatedAt": "2026-02-13T14:48:17.311Z",
-        "generationTimeMs": 6714,
-        "fileSizeBytes": 911,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-callum-fortress-entry",
-      "name": "Callum: Fortress entry — god recall fractures (Scene 5)",
+      "id": "dlg-artun-ending",
+      "name": "Artun: The Edge — final scene (Scene 12)",
       "category": "event-dialogue",
-      "filename": "callum-callum-fortress-entry.ts",
-      "targetPath": "main/server/dialogue/callum-fortress-entry.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Callum\" (ID: dlg-callum-fortress-entry).\n\nTrigger: Fortress entry — god recall fractures (Scene 5)\nLocation: Preserver Fortress entrance\nReferences: Scene: act3-scene5-fortress-gate\n\nLines:\n- Callum: \"The god recall fractures — look.\"\n- Callum: \"The gods are here. Their influence has been eroding this crystal since the moment you recalled them.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "artun-artun-ending.ts",
+      "targetPath": "main/server/dialogue/artun-ending.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Artun\" (ID: dlg-artun-ending).\n\nTrigger: The Edge — final scene (Scene 12)\nLocation: Luminous Wastes — The Edge (5, 20)\nReferences: Scene: act3-scene12-new-beginning\n\nLines:\n- Callum: \"Of course it is. The new question is 'What will we create next?' That's a question with infinite answers.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Callum",
+          "heading": "Artun",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Callum",
+          "heading": "Artun",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "7e84d00b615f17dd",
-        "outputHash": "891784748bc684cf3fa854adaf21c60f26702cba50f6fc9cc87eb8f6d14260cf",
-        "generatedAt": "2026-02-13T14:48:22.565Z",
-        "generationTimeMs": 3252,
-        "fileSizeBytes": 887,
-        "model": "gemini-2.5-flash"
-      }
-    },
-    {
-      "id": "dlg-callum-gallery",
-      "name": "Callum: Gallery — Child's First Steps (Scene 6)",
-      "category": "event-dialogue",
-      "filename": "callum-callum-gallery.ts",
-      "targetPath": "main/server/dialogue/callum-gallery.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Callum\" (ID: dlg-callum-gallery).\n\nTrigger: Gallery — Child's First Steps (Scene 6)\nLocation: Preserver Fortress Floor 1, Room 3\nReferences: Scene: act3-scene6-gallery-of-moments\n\nLines:\n- Callum: \"This one... this one is hard.\"\n- Callum: \"That child learned to walk. And the Curator froze it because it was the most perfect moment.\"\n- Callum: \"Perfect moments aren't meant to last. They're meant to lead somewhere.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
-      "docRefs": [
-        {
-          "path": "docs/story/dialogue-bank.md",
-          "heading": "Callum",
-          "purpose": "content"
-        },
-        {
-          "path": "docs/story/characters.md",
-          "heading": "Callum",
-          "purpose": "content"
-        }
-      ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "603361cf547c9de1",
-        "outputHash": "03241192972433701cf1c879011eaf712792cda069bc26bf045100464a505365",
-        "generatedAt": "2026-02-13T14:48:31.142Z",
-        "generationTimeMs": 6575,
-        "fileSizeBytes": 973,
-        "model": "gemini-2.5-flash"
-      }
-    },
-    {
-      "id": "dlg-callum-curator-confront",
-      "name": "Callum: Curator confrontation (Scene 8)",
-      "category": "event-dialogue",
-      "filename": "callum-callum-curator-confront.ts",
-      "targetPath": "main/server/dialogue/callum-curator-confront.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Callum\" (ID: dlg-callum-curator-confront).\n\nTrigger: Curator confrontation (Scene 8)\nLocation: Preserver Fortress Floor 3\nReferences: Scene: act3-scene8-first-memory-chamber | Quest: MQ-09\n\nLines:\n- Callum: \"You want to silence the question. But the question IS the world.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
-      "docRefs": [
-        {
-          "path": "docs/story/dialogue-bank.md",
-          "heading": "Callum",
-          "purpose": "content"
-        },
-        {
-          "path": "docs/story/characters.md",
-          "heading": "Callum",
-          "purpose": "content"
-        }
-      ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "73853d55b5a5195c",
-        "outputHash": "ace5969aeec436717656ffe0e9f1c2f87a9400c6dd9929fffb4e06484de9bfc6",
-        "generatedAt": "2026-02-13T14:48:41.271Z",
-        "generationTimeMs": 8127,
-        "fileSizeBytes": 1068,
-        "model": "gemini-2.5-flash"
-      }
-    },
-    {
-      "id": "dlg-callum-remix",
-      "name": "Callum: First Memory Remix (Scene 9)",
-      "category": "event-dialogue",
-      "filename": "callum-callum-remix.ts",
-      "targetPath": "main/server/dialogue/callum-remix.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Callum\" (ID: dlg-callum-remix).\n\nTrigger: First Memory Remix (Scene 9)\nLocation: First Memory Chamber\nReferences: Scene: act3-scene9-the-remix | Quest: MQ-10\n\nLines:\n- Callum: \"The question changed. It's not 'Why do things change?' anymore.\"\n- Callum: \"The world has grown beyond that question. It needs a new one.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
-      "docRefs": [
-        {
-          "path": "docs/story/dialogue-bank.md",
-          "heading": "Callum",
-          "purpose": "content"
-        },
-        {
-          "path": "docs/story/characters.md",
-          "heading": "Callum",
-          "purpose": "content"
-        }
-      ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "9b171720c391a08c",
-        "outputHash": "25f76aa9dae20f41877e4b218f6455ebfb898a0040bd2addadfaafae4aeeff2c",
-        "generatedAt": "2026-02-13T14:48:51.408Z",
-        "generationTimeMs": 8136,
-        "fileSizeBytes": 1004,
-        "model": "gemini-2.5-flash"
-      }
-    },
-    {
-      "id": "dlg-callum-resolution",
-      "name": "Callum: Endgame Bloom — Everwick (Scene 11)",
-      "category": "event-dialogue",
-      "filename": "callum-callum-resolution.ts",
-      "targetPath": "main/server/dialogue/callum-resolution.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Callum\" (ID: dlg-callum-resolution).\n\nTrigger: Endgame Bloom — Everwick (Scene 11)\nLocation: Everwick\nReferences: Scene: act3-scene11-curators-choice\n\nLines:\n- Callum: \"Forty years I spent studying the Dissolved.\"\n- Callum: \"They let go because they were done. Their work was complete.\"\n- Callum: \"I'm proud of you. Lira and I both are.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
-      "docRefs": [
-        {
-          "path": "docs/story/dialogue-bank.md",
-          "heading": "Callum",
-          "purpose": "content"
-        },
-        {
-          "path": "docs/story/characters.md",
-          "heading": "Callum",
-          "purpose": "content"
-        }
-      ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "1f48174a6adcdc2a",
-        "outputHash": "4bd319c4fd15a001638b2830d736a0500998b0d598e772684656f48792e2315d",
-        "generatedAt": "2026-02-13T14:49:02.982Z",
-        "generationTimeMs": 9571,
-        "fileSizeBytes": 918,
-        "model": "gemini-2.5-flash"
-      }
-    },
-    {
-      "id": "dlg-callum-ending",
-      "name": "Callum: The Edge — final scene (Scene 12)",
-      "category": "event-dialogue",
-      "filename": "callum-callum-ending.ts",
-      "targetPath": "main/server/dialogue/callum-ending.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Callum\" (ID: dlg-callum-ending).\n\nTrigger: The Edge — final scene (Scene 12)\nLocation: Luminous Wastes — The Edge (5, 20)\nReferences: Scene: act3-scene12-new-beginning\n\nLines:\n- Callum: \"Of course it is. The new question is 'What will we create next?' That's a question with infinite answers.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
-      "docRefs": [
-        {
-          "path": "docs/story/dialogue-bank.md",
-          "heading": "Callum",
-          "purpose": "content"
-        },
-        {
-          "path": "docs/story/characters.md",
-          "heading": "Callum",
-          "purpose": "content"
-        }
-      ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "a043012991dd89b8",
-        "outputHash": "77fb6011c27c327d62153fc9a55af3b4e85628ec8fd000d163330d848c41b3e7",
-        "generatedAt": "2026-02-13T14:49:08.508Z",
-        "generationTimeMs": 3523,
-        "fileSizeBytes": 1029,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
       "id": "dlg-curator-freezing",
@@ -818,91 +569,67 @@
       }
     },
     {
-      "id": "dlg-wynn-first-visit",
-      "name": "Wynn: First visit",
+      "id": "dlg-vash-first-visit",
+      "name": "Vash: First visit",
       "category": "event-dialogue",
-      "filename": "wynn-wynn-first-visit.ts",
-      "targetPath": "main/server/dialogue/wynn-first-visit.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Wynn\" (ID: dlg-wynn-first-visit).\n\nTrigger: First visit\nLocation: Shimmer Marsh — Marsh Hermit's Hut (12, 15)\nReferences: Quest: SQ-06\n\nLines:\n- Wynn: \"Ah. A visitor. Unusual. I'm Wynn — I study the Dissolved from this hut.\"\n- Wynn: \"You're an Architect, aren't you? I can tell by the way you look at the water.\"\n- Wynn: \"There's a glade south of here. Verdance's Hollow. The tree there has been pulsing stronger this past month.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "vash-vash-first-visit.ts",
+      "targetPath": "main/server/dialogue/vash-first-visit.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Vash\" (ID: dlg-vash-first-visit).\n\nTrigger: First visit\nLocation: Shimmer Marsh — Marsh Hermit's Hut (12, 15)\nReferences: Quest: SQ-06\n\nLines:\n- Wynn: \"Ah. A visitor. Unusual. I'm Wynn — I study the Dissolved from this hut.\"\n- Wynn: \"You're an Architect, aren't you? I can tell by the way you look at the water.\"\n- Wynn: \"There's a glade south of here. Verdance's Hollow. The tree there has been pulsing stronger this past month.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Wynn",
+          "heading": "Vash",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Wynn",
+          "heading": "Vash",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "479080873b397097",
-        "outputHash": "6f4d51244c64f9e1dd62955f1d80dd4b20a37b724b9bcaa602c597aab3f73329",
-        "generatedAt": "2026-02-13T14:51:13.161Z",
-        "generationTimeMs": 3016,
-        "fileSizeBytes": 1227,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-petra-first-visit",
-      "name": "Petra: First visit",
+      "id": "dlg-nel-first-visit",
+      "name": "Nel: First visit",
       "category": "event-dialogue",
-      "filename": "petra-petra-first-visit.ts",
-      "targetPath": "main/server/dialogue/petra-first-visit.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Petra\" (ID: dlg-petra-first-visit).\n\nTrigger: First visit\nLocation: Hollow Ridge — Ridgewalker Camp (15, 25)\nReferences: Quest: SQ-07\n\nLines:\n- Petra: \"Welcome to the edge of the map! I'm Petra — we Ridgewalkers live here because we like watching new land form.\"\n- Petra: \"You're the Architect from the village? Callum sent a letter ahead.\"\n- Petra: \"Need supplies? Rest? Directions?\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "nel-nel-first-visit.ts",
+      "targetPath": "main/server/dialogue/nel-first-visit.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Nel\" (ID: dlg-nel-first-visit).\n\nTrigger: First visit\nLocation: Hollow Ridge — Ridgewalker Camp (15, 25)\nReferences: Quest: SQ-07\n\nLines:\n- Petra: \"Welcome to the edge of the map! I'm Petra — we Ridgewalkers live here because we like watching new land form.\"\n- Petra: \"You're the Architect from the village? Callum sent a letter ahead.\"\n- Petra: \"Need supplies? Rest? Directions?\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Petra",
+          "heading": "Nel",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Petra",
+          "heading": "Nel",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "7dfb1d7c5e6c9ca9",
-        "outputHash": "2e94be3b677d36efcd0b98bcc2daf8a675f9041d96335334adbe5c4877a4bc76",
-        "generatedAt": "2026-02-13T14:51:23.550Z",
-        "generationTimeMs": 8386,
-        "fileSizeBytes": 960,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-solen-first-visit",
-      "name": "Solen: First visit",
+      "id": "dlg-reza-first-visit",
+      "name": "Reza: First visit",
       "category": "event-dialogue",
-      "filename": "solen-solen-first-visit.ts",
-      "targetPath": "main/server/dialogue/solen-first-visit.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Solen\" (ID: dlg-solen-first-visit).\n\nTrigger: First visit\nLocation: Flickerveil — The Flickering Village (35, 30)\nReferences: Quest: SQ-08\n\nLines:\n- Solen: \"Hello, dear. I'm Solen. I've been studying the grove since I was a girl.\"\n- Solen: \"Take this. A Light Lens — without it, the light is too bright to approach.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "reza-reza-first-visit.ts",
+      "targetPath": "main/server/dialogue/reza-first-visit.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Reza\" (ID: dlg-reza-first-visit).\n\nTrigger: First visit\nLocation: Flickerveil — The Flickering Village (35, 30)\nReferences: Quest: SQ-08\n\nLines:\n- Solen: \"Hello, dear. I'm Solen. I've been studying the grove since I was a girl.\"\n- Solen: \"Take this. A Light Lens — without it, the light is too bright to approach.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Solen",
+          "heading": "Reza",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Solen",
+          "heading": "Reza",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "04ff5053c8763aa9",
-        "outputHash": "eab6bd01f2f4a1bca103f3e91c8de83cbaa1dd7a39bd685dea6db9df7956a00c",
-        "generatedAt": "2026-02-13T14:51:38.949Z",
-        "generationTimeMs": 13396,
-        "fileSizeBytes": 2016,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
       "id": "dlg-preserver-scout",
@@ -1427,613 +1154,550 @@
       }
     },
     {
-      "id": "dlg-lira-workshop",
-      "name": "Lira: Player enters Lira's Workshop (Scene 3)",
+      "id": "dlg-hana-workshop",
+      "name": "Hana: Player enters Lira's Workshop (Scene 3)",
       "category": "event-dialogue",
-      "filename": "lira-lira-workshop.ts",
-      "targetPath": "main/server/dialogue/lira-workshop.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Lira\" (ID: dlg-lira-workshop).\n\nTrigger: Player enters Lira's Workshop (Scene 3)\nLocation: Everwick — Lira's Workshop (8, 18)\nReferences: Scene: act1-scene3-liras-workshop | Quest: MQ-01 | Condition: MQ-01 complete\n\nLines:\n- Lira: \"You must be the one Callum keeps talking about. I'm Lira — Mnemonic Architect, freelance, currently between assignments.\"\n- Lira: \"He told me you can see the shimmer around Resonance Stones. Most people can't. That's the first sign of the talent.\"\n- Lira: \"Show me what you've collected.\"\n- Lira: \"Four fragments already? From the garden stones? Good instincts. You didn't force them — you just... noticed. That's exactly right.\"\n- Lira: \"I want to travel with you for a while, if that's all right.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "hana-hana-workshop.ts",
+      "targetPath": "main/server/dialogue/hana-workshop.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Hana\" (ID: dlg-hana-workshop).\n\nTrigger: Player enters Lira's Workshop (Scene 3)\nLocation: Everwick — Lira's Workshop (8, 18)\nReferences: Scene: act1-scene3-liras-workshop | Quest: MQ-01 | Condition: MQ-01 complete\n\nLines:\n- Lira: \"You must be the one Callum keeps talking about. I'm Lira — Mnemonic Architect, freelance, currently between assignments.\"\n- Lira: \"He told me you can see the shimmer around Resonance Stones. Most people can't. That's the first sign of the talent.\"\n- Lira: \"Show me what you've collected.\"\n- Lira: \"Four fragments already? From the garden stones? Good instincts. You didn't force them — you just... noticed. That's exactly right.\"\n- Lira: \"I want to travel with you for a while, if that's all right.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "6cd1fcff04ad23b4",
-        "outputHash": "b5976a6cb0816d538ba9a3ae72006a8ffc8a293d02476942c3a01d3280bfc7df",
-        "generatedAt": "2026-02-13T14:53:24.714Z",
-        "generationTimeMs": 9690,
-        "fileSizeBytes": 2256,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-lira-combat-tutorial",
-      "name": "Lira: Training Ground combat tutorial (Scene 4A)",
+      "id": "dlg-hana-combat-tutorial",
+      "name": "Hana: Training Ground combat tutorial (Scene 4A)",
       "category": "event-dialogue",
-      "filename": "lira-lira-combat-tutorial.ts",
-      "targetPath": "main/server/dialogue/lira-combat-tutorial.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Lira\" (ID: dlg-lira-combat-tutorial).\n\nTrigger: Training Ground combat tutorial (Scene 4A)\nLocation: Everwick — Training Ground (8, 10)\nReferences: Scene: act1-scene4a-combat-tutorial\n\nLines:\n- Lira: \"See those practice dummies? They're enchanted with a bit of memory energy — enough to fight back.\"\n- Lira: \"I'll keep you standing. Focus on the dummies — try your class skill when you have SP for it.\" [combat]\n- Lira: \"Not bad at all. You're a natural.\" [combat]\n- Lira: \"Now a real one. This little sprite wandered in from the fields.\" [combat]\n- Lira: \"Well done! You earned that.\" [combat]\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "hana-hana-combat-tutorial.ts",
+      "targetPath": "main/server/dialogue/hana-combat-tutorial.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Hana\" (ID: dlg-hana-combat-tutorial).\n\nTrigger: Training Ground combat tutorial (Scene 4A)\nLocation: Everwick — Training Ground (8, 10)\nReferences: Scene: act1-scene4a-combat-tutorial\n\nLines:\n- Lira: \"See those practice dummies? They're enchanted with a bit of memory energy — enough to fight back.\"\n- Lira: \"I'll keep you standing. Focus on the dummies — try your class skill when you have SP for it.\" [combat]\n- Lira: \"Not bad at all. You're a natural.\" [combat]\n- Lira: \"Now a real one. This little sprite wandered in from the fields.\" [combat]\n- Lira: \"Well done! You earned that.\" [combat]\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "e16786c85241930b",
-        "outputHash": "5e60a065b30d05549ecf2df4a99fb5cb5cc0d21a809810f9b18f97c4ceefde7c",
-        "generatedAt": "2026-02-13T14:53:40.482Z",
-        "generationTimeMs": 13765,
-        "fileSizeBytes": 1002,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-lira-remix-tutorial",
-      "name": "Lira: Remix and Broadcast tutorial (Scene 4B)",
+      "id": "dlg-hana-remix-tutorial",
+      "name": "Hana: Remix and Broadcast tutorial (Scene 4B)",
       "category": "event-dialogue",
-      "filename": "lira-lira-remix-tutorial.ts",
-      "targetPath": "main/server/dialogue/lira-remix-tutorial.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Lira\" (ID: dlg-lira-remix-tutorial).\n\nTrigger: Remix and Broadcast tutorial (Scene 4B)\nLocation: Everwick — Lira's Workshop (8, 18)\nReferences: Scene: act1-scene4b-remix-broadcast\n\nLines:\n- Lira: \"Now for the real work. Come back to the Workshop — I want to show you the Remix Table.\"\n- Lira: \"Place two fragments on the table. Same emotion works best for your first try.\"\n- Lira: \"Beautiful. Feel the difference? That fragment has weight to it now.\"\n- Lira: \"Broadcasting. This is how Architects change the world.\"\n- Lira: \"That's what we do. Collect. Remix. Broadcast. The world gets brighter. Ready to see what's beyond the village?\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "hana-hana-remix-tutorial.ts",
+      "targetPath": "main/server/dialogue/hana-remix-tutorial.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Hana\" (ID: dlg-hana-remix-tutorial).\n\nTrigger: Remix and Broadcast tutorial (Scene 4B)\nLocation: Everwick — Lira's Workshop (8, 18)\nReferences: Scene: act1-scene4b-remix-broadcast\n\nLines:\n- Lira: \"Now for the real work. Come back to the Workshop — I want to show you the Remix Table.\"\n- Lira: \"Place two fragments on the table. Same emotion works best for your first try.\"\n- Lira: \"Beautiful. Feel the difference? That fragment has weight to it now.\"\n- Lira: \"Broadcasting. This is how Architects change the world.\"\n- Lira: \"That's what we do. Collect. Remix. Broadcast. The world gets brighter. Ready to see what's beyond the village?\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "f8ff311007d85fd8",
-        "outputHash": "fc40bae3fb0cc83b61236763deca650634f0a492dc575c530311520fc14fb443",
-        "generatedAt": "2026-02-13T14:53:45.602Z",
-        "generationTimeMs": 3117,
-        "fileSizeBytes": 2084,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-lira-settled-lands",
-      "name": "Lira: Player exits Everwick south (Scene 5)",
+      "id": "dlg-hana-settled-lands",
+      "name": "Hana: Player exits Everwick south (Scene 5)",
       "category": "event-dialogue",
-      "filename": "lira-lira-settled-lands.ts",
-      "targetPath": "main/server/dialogue/lira-settled-lands.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Lira\" (ID: dlg-lira-settled-lands).\n\nTrigger: Player exits Everwick south (Scene 5)\nLocation: Heartfield road\nReferences: Scene: act1-scene5-settled-lands\n\nLines:\n- Lira: \"The Settled Lands. Everything south, east, and west of the village for a day's walk.\"\n- Lira: \"But look at the edges. See how the fence line over there just... stops? Like someone forgot to finish it?\"\n- Lira: \"The world's young. It's still being built.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "hana-hana-settled-lands.ts",
+      "targetPath": "main/server/dialogue/hana-settled-lands.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Hana\" (ID: dlg-hana-settled-lands).\n\nTrigger: Player exits Everwick south (Scene 5)\nLocation: Heartfield road\nReferences: Scene: act1-scene5-settled-lands\n\nLines:\n- Lira: \"The Settled Lands. Everything south, east, and west of the village for a day's walk.\"\n- Lira: \"But look at the edges. See how the fence line over there just... stops? Like someone forgot to finish it?\"\n- Lira: \"The world's young. It's still being built.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "b2cc9d52d5e634b3",
-        "outputHash": "20c74e5068b3de2d8fae9d0456b2f5a79dc795cece102695e15a6b69bd448bcd",
-        "generatedAt": "2026-02-13T14:53:51.047Z",
-        "generationTimeMs": 3443,
-        "fileSizeBytes": 1014,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-lira-stagnation-discovery",
-      "name": "Lira: Player approaches Stagnation Clearing (Scene 6)",
+      "id": "dlg-hana-stagnation-discovery",
+      "name": "Hana: Player approaches Stagnation Clearing (Scene 6)",
       "category": "event-dialogue",
-      "filename": "lira-lira-stagnation-discovery.ts",
-      "targetPath": "main/server/dialogue/lira-stagnation-discovery.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Lira\" (ID: dlg-lira-stagnation-discovery).\n\nTrigger: Player approaches Stagnation Clearing (Scene 6)\nLocation: Heartfield — Stagnation Clearing (35, 30)\nReferences: Scene: act1-scene6-stagnation-clearing | Quest: MQ-04\n\nLines:\n- Lira: \"Wait. Do you feel that?\"\n- Lira: \"This is a Stagnation Zone. Something — someone — froze this patch of the world.\"\n- Lira: \"Look at the butterflies. Perfect. Every wing-scale, every spot of color. Beautiful, isn't it?\"\n- Lira: \"But they'll never land. They'll never fly anywhere new. They're just... frozen. Forever.\"\n- Lira: \"Not yet. I want to show you more of the Settled Lands first.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "hana-hana-stagnation-discovery.ts",
+      "targetPath": "main/server/dialogue/hana-stagnation-discovery.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Hana\" (ID: dlg-hana-stagnation-discovery).\n\nTrigger: Player approaches Stagnation Clearing (Scene 6)\nLocation: Heartfield — Stagnation Clearing (35, 30)\nReferences: Scene: act1-scene6-stagnation-clearing | Quest: MQ-04\n\nLines:\n- Lira: \"Wait. Do you feel that?\"\n- Lira: \"This is a Stagnation Zone. Something — someone — froze this patch of the world.\"\n- Lira: \"Look at the butterflies. Perfect. Every wing-scale, every spot of color. Beautiful, isn't it?\"\n- Lira: \"But they'll never land. They'll never fly anywhere new. They're just... frozen. Forever.\"\n- Lira: \"Not yet. I want to show you more of the Settled Lands first.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "594a68c2ce23db26",
-        "outputHash": "392438c204b6c2948d7fb566c27bb18f52b2747785fd410c8d2ed93329d54336",
-        "generatedAt": "2026-02-13T14:53:57.993Z",
-        "generationTimeMs": 4943,
-        "fileSizeBytes": 4297,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-lira-hearthstone",
-      "name": "Lira: Hearthstone Circle (Scene 7)",
+      "id": "dlg-hana-hearthstone",
+      "name": "Hana: Hearthstone Circle (Scene 7)",
       "category": "event-dialogue",
-      "filename": "lira-lira-hearthstone.ts",
-      "targetPath": "main/server/dialogue/lira-hearthstone.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Lira\" (ID: dlg-lira-hearthstone).\n\nTrigger: Hearthstone Circle (Scene 7)\nLocation: Ambergrove — Hearthstone Circle (20, 10)\nReferences: Scene: act1-scene7-hearthstone-circle\n\nLines:\n- Lira: \"This is a Hearthstone Circle. Before the Dissolved chose to let go, they gathered in places like this.\"\n- Lira: \"Three fragments from a single site — that's a rich deposit.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "hana-hana-hearthstone.ts",
+      "targetPath": "main/server/dialogue/hana-hearthstone.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Hana\" (ID: dlg-hana-hearthstone).\n\nTrigger: Hearthstone Circle (Scene 7)\nLocation: Ambergrove — Hearthstone Circle (20, 10)\nReferences: Scene: act1-scene7-hearthstone-circle\n\nLines:\n- Lira: \"This is a Hearthstone Circle. Before the Dissolved chose to let go, they gathered in places like this.\"\n- Lira: \"Three fragments from a single site — that's a rich deposit.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "19ba4e610a75c800",
-        "outputHash": "0fd0ff14d25e6fbfe7aea5caebaf0df96df150d48ad17098ff3ea5c6f44d2116",
-        "generatedAt": "2026-02-13T14:54:02.294Z",
-        "generationTimeMs": 2299,
-        "fileSizeBytes": 1534,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-lira-stagnation-break",
-      "name": "Lira: Breaking the Stagnation Clearing (Scene 10)",
+      "id": "dlg-hana-stagnation-break",
+      "name": "Hana: Breaking the Stagnation Clearing (Scene 10)",
       "category": "event-dialogue",
-      "filename": "lira-lira-stagnation-break.ts",
-      "targetPath": "main/server/dialogue/lira-stagnation-break.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Lira\" (ID: dlg-lira-stagnation-break).\n\nTrigger: Breaking the Stagnation Clearing (Scene 10)\nLocation: Heartfield — Stagnation Clearing (35, 30)\nReferences: Scene: act1-scene10-stagnation-break | Quest: MQ-04 | Condition: MQ-04 active\n\nLines:\n- Lira: \"Here we are. The Stagnation Clearing. Same as when we left it.\"\n- Lira: \"Broadcasting a memory into that stone will overwhelm the stasis energy and shatter the crystal.\"\n- Lira: \"There. That's what it looks like when the world starts breathing again.\"\n- Lira: \"We should head back to the village. Callum will want to hear about the Preservers.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "hana-hana-stagnation-break.ts",
+      "targetPath": "main/server/dialogue/hana-stagnation-break.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Hana\" (ID: dlg-hana-stagnation-break).\n\nTrigger: Breaking the Stagnation Clearing (Scene 10)\nLocation: Heartfield — Stagnation Clearing (35, 30)\nReferences: Scene: act1-scene10-stagnation-break | Quest: MQ-04 | Condition: MQ-04 active\n\nLines:\n- Lira: \"Here we are. The Stagnation Clearing. Same as when we left it.\"\n- Lira: \"Broadcasting a memory into that stone will overwhelm the stasis energy and shatter the crystal.\"\n- Lira: \"There. That's what it looks like when the world starts breathing again.\"\n- Lira: \"We should head back to the village. Callum will want to hear about the Preservers.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "bbf636817da3979a",
-        "outputHash": "3ebf49ae81b1b338c85cf617fac7b4937f76a47ff56e85a867777986674d051a",
-        "generatedAt": "2026-02-13T14:54:07.437Z",
-        "generationTimeMs": 3141,
-        "fileSizeBytes": 1911,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-lira-freezing",
-      "name": "Lira: Stagnation expansion — Lira rescues farmer (Scene 11)",
+      "id": "dlg-hana-freezing",
+      "name": "Hana: Stagnation expansion — Lira rescues farmer (Scene 11)",
       "category": "event-dialogue",
-      "filename": "lira-lira-freezing.ts",
-      "targetPath": "main/server/dialogue/lira-freezing.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Lira\" (ID: dlg-lira-freezing).\n\nTrigger: Stagnation expansion — Lira rescues farmer (Scene 11)\nLocation: Heartfield — Stagnation Clearing (expanded)\nReferences: Scene: act1-scene11-liras-freezing | Quest: MQ-04\n\nLines:\n- Lira: \"No. No, no — it's bigger. Much bigger. They're reinforcing it.\"\n- Lira: \"I'll get her. You — stay back.\"\n- Lira: \"Run. Get to the village. Everyone, GO.\"\n- Lira: \"I'm going to break through. Stay here and —\"\n- SYSTEM: \"Lira is frozen mid-stride.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "hana-hana-freezing.ts",
+      "targetPath": "main/server/dialogue/hana-freezing.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Hana\" (ID: dlg-hana-freezing).\n\nTrigger: Stagnation expansion — Lira rescues farmer (Scene 11)\nLocation: Heartfield — Stagnation Clearing (expanded)\nReferences: Scene: act1-scene11-liras-freezing | Quest: MQ-04\n\nLines:\n- Lira: \"No. No, no — it's bigger. Much bigger. They're reinforcing it.\"\n- Lira: \"I'll get her. You — stay back.\"\n- Lira: \"Run. Get to the village. Everyone, GO.\"\n- Lira: \"I'm going to break through. Stay here and —\"\n- SYSTEM: \"Lira is frozen mid-stride.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "5a9820b854063a39",
-        "outputHash": "1dbf00e31b35ad07f18bcfedd850b67f0643c6a31fb2ea3c25dd12eb7d350ce2",
-        "generatedAt": "2026-02-13T14:54:12.741Z",
-        "generationTimeMs": 3301,
-        "fileSizeBytes": 2186,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-lira-freed",
-      "name": "Lira: Lira freed from expanded Stagnation Zone",
+      "id": "dlg-hana-freed",
+      "name": "Hana: Lira freed from expanded Stagnation Zone",
       "category": "event-dialogue",
-      "filename": "lira-lira-freed.ts",
-      "targetPath": "main/server/dialogue/lira-freed.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Lira\" (ID: dlg-lira-freed).\n\nTrigger: Lira freed from expanded Stagnation Zone\nLocation: Heartfield — Stagnation Clearing\nReferences: Scene: act2-scene16-liras-freedom | Condition: all 4 god recalls complete, potency 4+ broadcast\n\nLines:\n- Lira: \"I... how long?\"\n- Lira: \"I remember the crystal closing. I remember reaching for the anchor stone. And then... nothing.\"\n- Lira: \"It wasn't terrible. That's the worst part.\"\n- Lira: \"Thank you. Now tell me everything I missed — and then let's go finish what we started.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "hana-hana-freed.ts",
+      "targetPath": "main/server/dialogue/hana-freed.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Hana\" (ID: dlg-hana-freed).\n\nTrigger: Lira freed from expanded Stagnation Zone\nLocation: Heartfield — Stagnation Clearing\nReferences: Scene: act2-scene16-liras-freedom | Condition: all 4 god recalls complete, potency 4+ broadcast\n\nLines:\n- Lira: \"I... how long?\"\n- Lira: \"I remember the crystal closing. I remember reaching for the anchor stone. And then... nothing.\"\n- Lira: \"It wasn't terrible. That's the worst part.\"\n- Lira: \"Thank you. Now tell me everything I missed — and then let's go finish what we started.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "7a4dcb05b2b3f1e2",
-        "outputHash": "45c64170a88e7e54d52d20082d4dfeb9935a8d53dbf01354f113db5831303edf",
-        "generatedAt": "2026-02-13T14:54:17.555Z",
-        "generationTimeMs": 2811,
-        "fileSizeBytes": 1911,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-lira-half-drawn",
-      "name": "Lira: Entering the Half-Drawn Forest (Scene 1)",
+      "id": "dlg-hana-half-drawn",
+      "name": "Hana: Entering the Half-Drawn Forest (Scene 1)",
       "category": "event-dialogue",
-      "filename": "lira-lira-half-drawn.ts",
-      "targetPath": "main/server/dialogue/lira-half-drawn.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Lira\" (ID: dlg-lira-half-drawn).\n\nTrigger: Entering the Half-Drawn Forest (Scene 1)\nLocation: The Half-Drawn Forest (Sketch zone)\nReferences: Scene: act3-scene1-half-drawn-forest\n\nLines:\n- Lira: \"It's... incomplete. Like someone started drawing a forest and walked away.\"\n- Lira: \"The world wants to be finished. It's reaching toward detail and just... can't quite hold it.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "hana-hana-half-drawn.ts",
+      "targetPath": "main/server/dialogue/hana-half-drawn.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Hana\" (ID: dlg-hana-half-drawn).\n\nTrigger: Entering the Half-Drawn Forest (Scene 1)\nLocation: The Half-Drawn Forest (Sketch zone)\nReferences: Scene: act3-scene1-half-drawn-forest\n\nLines:\n- Lira: \"It's... incomplete. Like someone started drawing a forest and walked away.\"\n- Lira: \"The world wants to be finished. It's reaching toward detail and just... can't quite hold it.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "825b3cb6497aed7b",
-        "outputHash": "3e8436d6e9a22f89ab19de3d02d933c55ecda0b0e5841e27cbf5e2bede0075d0",
-        "generatedAt": "2026-02-13T14:54:21.335Z",
-        "generationTimeMs": 1779,
-        "fileSizeBytes": 945,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-lira-fortress-entry",
-      "name": "Lira: Entering the Fortress (Scene 5)",
+      "id": "dlg-hana-fortress-entry",
+      "name": "Hana: Entering the Fortress (Scene 5)",
       "category": "event-dialogue",
-      "filename": "lira-lira-fortress-entry.ts",
-      "targetPath": "main/server/dialogue/lira-fortress-entry.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Lira\" (ID: dlg-lira-fortress-entry).\n\nTrigger: Entering the Fortress (Scene 5)\nLocation: Preserver Fortress entrance\nReferences: Scene: act3-scene5-fortress-gate\n\nLines:\n- Lira: \"I recognize this feeling. The crystal. The cold. The way everything is perfectly still.\"\n- Lira: \"I was frozen in crystal like this. For weeks.\"\n- Lira: \"I don't want the world to feel that.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "hana-hana-fortress-entry.ts",
+      "targetPath": "main/server/dialogue/hana-fortress-entry.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Hana\" (ID: dlg-hana-fortress-entry).\n\nTrigger: Entering the Fortress (Scene 5)\nLocation: Preserver Fortress entrance\nReferences: Scene: act3-scene5-fortress-gate\n\nLines:\n- Lira: \"I recognize this feeling. The crystal. The cold. The way everything is perfectly still.\"\n- Lira: \"I was frozen in crystal like this. For weeks.\"\n- Lira: \"I don't want the world to feel that.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "c53744a81d7f567f",
-        "outputHash": "9e55999337edf99ccdfcac1f0a55a85adc3b16548d735fdf6d4285e3831128c8",
-        "generatedAt": "2026-02-13T14:54:25.510Z",
-        "generationTimeMs": 2172,
-        "fileSizeBytes": 1492,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-lira-curator-confront",
-      "name": "Lira: Curator confrontation (Scene 8)",
+      "id": "dlg-hana-curator-confront",
+      "name": "Hana: Curator confrontation (Scene 8)",
       "category": "event-dialogue",
-      "filename": "lira-lira-curator-confront.ts",
-      "targetPath": "main/server/dialogue/lira-curator-confront.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Lira\" (ID: dlg-lira-curator-confront).\n\nTrigger: Curator confrontation (Scene 8)\nLocation: Preserver Fortress Floor 3 — First Memory Chamber\nReferences: Scene: act3-scene8-first-memory-chamber | Quest: MQ-09\n\nLines:\n- Lira: \"I was frozen. I was inside the crystal, in the silence you're describing. It wasn't terrible. But it wasn't alive, either.\"\n- Lira: \"I couldn't choose.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "hana-hana-curator-confront.ts",
+      "targetPath": "main/server/dialogue/hana-curator-confront.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Hana\" (ID: dlg-hana-curator-confront).\n\nTrigger: Curator confrontation (Scene 8)\nLocation: Preserver Fortress Floor 3 — First Memory Chamber\nReferences: Scene: act3-scene8-first-memory-chamber | Quest: MQ-09\n\nLines:\n- Lira: \"I was frozen. I was inside the crystal, in the silence you're describing. It wasn't terrible. But it wasn't alive, either.\"\n- Lira: \"I couldn't choose.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "00c1e2f940d46c89",
-        "outputHash": "6a889f612ef72734956f0d1cc9f4b8767022a9dc7b324fe2a4e1055be0cf121f",
-        "generatedAt": "2026-02-13T14:54:29.020Z",
-        "generationTimeMs": 1507,
-        "fileSizeBytes": 721,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-lira-remix",
-      "name": "Lira: First Memory Remix (Scene 9)",
+      "id": "dlg-hana-remix",
+      "name": "Hana: First Memory Remix (Scene 9)",
       "category": "event-dialogue",
-      "filename": "lira-lira-remix.ts",
-      "targetPath": "main/server/dialogue/lira-remix.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Lira\" (ID: dlg-lira-remix).\n\nTrigger: First Memory Remix (Scene 9)\nLocation: First Memory Chamber\nReferences: Scene: act3-scene9-the-remix | Quest: MQ-10\n\nLines:\n- Lira: \"This is it. The first question. 'Why do things change?'\"\n- Lira: \"What do you mean?\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "hana-hana-remix.ts",
+      "targetPath": "main/server/dialogue/hana-remix.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Hana\" (ID: dlg-hana-remix).\n\nTrigger: First Memory Remix (Scene 9)\nLocation: First Memory Chamber\nReferences: Scene: act3-scene9-the-remix | Quest: MQ-10\n\nLines:\n- Lira: \"This is it. The first question. 'Why do things change?'\"\n- Lira: \"What do you mean?\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "95ca0c6eccb99784",
-        "outputHash": "f0e9e0a34f08d9e7a0570a5ec67040f49a8322baf7e1e0dc35d7b8e180e71707",
-        "generatedAt": "2026-02-13T14:54:33.629Z",
-        "generationTimeMs": 2606,
-        "fileSizeBytes": 1505,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-lira-resolution",
-      "name": "Lira: Endgame Bloom — Everwick return (Scene 11)",
+      "id": "dlg-hana-resolution",
+      "name": "Hana: Endgame Bloom — Everwick return (Scene 11)",
       "category": "event-dialogue",
-      "filename": "lira-lira-resolution.ts",
-      "targetPath": "main/server/dialogue/lira-resolution.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Lira\" (ID: dlg-lira-resolution).\n\nTrigger: Endgame Bloom — Everwick return (Scene 11)\nLocation: Everwick\nReferences: Scene: act3-scene11-curators-choice\n\nLines:\n- Lira: \"Don't speak for me, old man. I'm proud of myself too — I taught you everything you know.\"\n- Lira: \"You taught the lectures. There's a difference.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "hana-hana-resolution.ts",
+      "targetPath": "main/server/dialogue/hana-resolution.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Hana\" (ID: dlg-hana-resolution).\n\nTrigger: Endgame Bloom — Everwick return (Scene 11)\nLocation: Everwick\nReferences: Scene: act3-scene11-curators-choice\n\nLines:\n- Lira: \"Don't speak for me, old man. I'm proud of myself too — I taught you everything you know.\"\n- Lira: \"You taught the lectures. There's a difference.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "5c7fbba994e6d91d",
-        "outputHash": "3c148c797d70aa60732fa2ab0509adae579a25a85d24404127c03704574c2d2e",
-        "generatedAt": "2026-02-13T14:54:37.294Z",
-        "generationTimeMs": 1662,
-        "fileSizeBytes": 1085,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-lira-ending",
-      "name": "Lira: The Edge — final scene (Scene 12)",
+      "id": "dlg-hana-ending",
+      "name": "Hana: The Edge — final scene (Scene 12)",
       "category": "event-dialogue",
-      "filename": "lira-lira-ending.ts",
-      "targetPath": "main/server/dialogue/lira-ending.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Lira\" (ID: dlg-lira-ending).\n\nTrigger: The Edge — final scene (Scene 12)\nLocation: Luminous Wastes — The Edge (5, 20)\nReferences: Scene: act3-scene12-new-beginning\n\nLines:\n- Lira: \"It's not stopping. It's still growing.\"\n- Lira: \"What will YOU create next?\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "hana-hana-ending.ts",
+      "targetPath": "main/server/dialogue/hana-ending.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Hana\" (ID: dlg-hana-ending).\n\nTrigger: The Edge — final scene (Scene 12)\nLocation: Luminous Wastes — The Edge (5, 20)\nReferences: Scene: act3-scene12-new-beginning\n\nLines:\n- Lira: \"It's not stopping. It's still growing.\"\n- Lira: \"What will YOU create next?\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Lira",
+          "heading": "Hana",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "48b52bd97c30506f",
-        "outputHash": "365a0a5adb288c7355f06849ee26f87bf296062254b68fdd27f87a6e598cb988",
-        "generatedAt": "2026-02-13T14:54:43.970Z",
-        "generationTimeMs": 4674,
-        "fileSizeBytes": 1122,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-maren-first-visit",
-      "name": "Maren: First visit (Act I)",
+      "id": "dlg-janik-first-encounter",
+      "name": "Janik: First encounter — Frontier border",
       "category": "event-dialogue",
-      "filename": "maren-maren-first-visit.ts",
-      "targetPath": "main/server/dialogue/maren-first-visit.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Maren\" (ID: dlg-maren-first-visit).\n\nTrigger: First visit (Act I)\nLocation: Everwick — General Shop (18, 16)\n\n\nLines:\n- Maren: \"Welcome, welcome! You must be the one Callum's been talking about — the new Architect!\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "janik-janik-first-encounter.ts",
+      "targetPath": "main/server/dialogue/janik-first-encounter.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Janik\" (ID: dlg-janik-first-encounter).\n\nTrigger: First encounter — Frontier border\nLocation: Hollow Ridge area (early Act II)\n\n\nLines:\n- Aric: \"Halt. You're entering Preserver-monitored territory. State your purpose.\"\n- Aric: \"A Mnemonic Architect. The Curator warned us one might come.\"\n- Aric: \"A word of advice: the Frontier is not the Settled Lands. Be careful what you remember into existence.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Maren",
+          "heading": "Janik",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Maren",
+          "heading": "Janik",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "2bdbfcc31984a6c7",
-        "outputHash": "c76fa22eca4616ab7d3bc119ec47e1219334e97f3dc11afdb817081906a3d31d",
-        "generatedAt": "2026-02-13T14:54:55.746Z",
-        "generationTimeMs": 9774,
-        "fileSizeBytes": 1119,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-maren-shop",
-      "name": "Maren: Shop interaction (all acts)",
+      "id": "dlg-janik-second-encounter",
+      "name": "Janik: Second encounter — after first god recall",
       "category": "event-dialogue",
-      "filename": "maren-maren-shop.ts",
-      "targetPath": "main/server/dialogue/maren-shop.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Maren\" (ID: dlg-maren-shop).\n\nTrigger: Shop interaction (all acts)\nLocation: Everwick — General Shop (18, 16)\n\n\nLines:\n- Maren: \"Take a look! Potions, antidotes, and the odd curiosity.\" [browse]\n- Maren: \"Excellent choice! That'll serve you well out there.\" [buy]\n- Maren: \"I can take that off your hands. Fair price, always.\" [sell]\n- Maren: \"Not quite enough gold for that one.\" [insufficient]\n- Maren: \"Safe travels! Come back anytime.\" [farewell]\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "janik-janik-second-encounter.ts",
+      "targetPath": "main/server/dialogue/janik-second-encounter.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Janik\" (ID: dlg-janik-second-encounter).\n\nTrigger: Second encounter — after first god recall\nLocation: Any Frontier zone (ambient trigger, post-first recall)\nReferences: Condition: 1+ god recall complete\n\nLines:\n- Aric: \"You recalled a god. I felt it — we all did.\"\n- Aric: \"Does being stronger make you right? Honest question.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Maren",
+          "heading": "Janik",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Maren",
+          "heading": "Janik",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "6a303612eee865b2",
-        "outputHash": "cfcad26665c694c8f2a35aed4f651ae19d8819b71e9277095df0d5c060875716",
-        "generatedAt": "2026-02-13T14:55:14.178Z",
-        "generationTimeMs": 16429,
-        "fileSizeBytes": 2898,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-torvan-first-visit",
-      "name": "Torvan: First visit (Act I)",
+      "id": "dlg-janik-ambush",
+      "name": "Janik: After 3 recalls — Aric's ambush",
       "category": "event-dialogue",
-      "filename": "torvan-torvan-first-visit.ts",
-      "targetPath": "main/server/dialogue/torvan-first-visit.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Torvan\" (ID: dlg-torvan-first-visit).\n\nTrigger: First visit (Act I)\nLocation: Everwick — Blacksmith (18, 18)\n\n\nLines:\n- Torvan: \"Mm. New Architect? Callum told me. I make weapons and armor — nothing fancy, but solid.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "janik-janik-ambush.ts",
+      "targetPath": "main/server/dialogue/janik-ambush.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Janik\" (ID: dlg-janik-ambush).\n\nTrigger: After 3 recalls — Aric's ambush\nLocation: Frontier zone (scripted encounter)\nReferences: Scene: act2-scene17-curators-reveal | Condition: 3+ god recalls complete\n\nLines:\n- Aric: \"Architect. I need to talk to you. Not fight — talk.\"\n- Aric: \"I was given orders to stop you. These are those orders.\"\n- NARRATION: \"Aric sets his crystal gauntlet on the ground.\"\n- Aric: \"I'm choosing not to follow them.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Torvan",
+          "heading": "Janik",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Torvan",
+          "heading": "Janik",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "9692fc2c6611abad",
-        "outputHash": "5c0c1a4893e571556277700f912aead51aba177b828c2344d8464bd9b69021d2",
-        "generatedAt": "2026-02-13T14:55:19.973Z",
-        "generationTimeMs": 3794,
-        "fileSizeBytes": 537,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-torvan-shop",
-      "name": "Torvan: Shop interaction",
+      "id": "dlg-janik-fortress-gate",
+      "name": "Janik: Fortress Gate — Aric's intelligence briefing (Scene 3)",
       "category": "event-dialogue",
-      "filename": "torvan-torvan-shop.ts",
-      "targetPath": "main/server/dialogue/torvan-shop.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Torvan\" (ID: dlg-torvan-shop).\n\nTrigger: Shop interaction\nLocation: Everwick — Blacksmith (18, 18)\n\n\nLines:\n- Torvan: \"Steel, leather, and honest craft. No enchantments.\" [browse]\n- Torvan: \"Good blade, that. Treat it right and it'll return the favor.\" [buy]\n- Torvan: \"I'll melt it down and make something better.\" [sell]\n- Torvan: \"Can't give it away, friend. Gold talks.\" [insufficient]\n- Torvan: \"Keep your guard up.\" [farewell]\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "janik-janik-fortress-gate.ts",
+      "targetPath": "main/server/dialogue/janik-fortress-gate.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Janik\" (ID: dlg-janik-fortress-gate).\n\nTrigger: Fortress Gate — Aric's intelligence briefing (Scene 3)\nLocation: The Undrawn Peaks — Crystalline Fortress Gate (20, 35)\nReferences: Scene: act3-scene3-undrawn-peaks\n\nLines:\n- Aric: \"Architect. I expected you.\"\n- Aric: \"The Curator is wrong about the First Memory. Crystallizing it won't preserve the world — it will kill it.\"\n- Aric: \"Three floors. The Gallery of Moments. The Archive of Perfection. The First Memory Chamber.\"\n- Aric: \"Your four recalled gods are weakening the crystal from outside.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Torvan",
+          "heading": "Janik",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Torvan",
+          "heading": "Janik",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "8d65415fe9ab4182",
-        "outputHash": "d09dc60af0c8734ad74cf53c3821832cf2e1ec84168f13025b774f1fb566d815",
-        "generatedAt": "2026-02-13T14:55:46.640Z",
-        "generationTimeMs": 24664,
-        "fileSizeBytes": 1873,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-ren-first-visit",
-      "name": "Ren: First visit (Act I)",
+      "id": "dlg-janik-resolution",
+      "name": "Janik: Endgame Bloom — Aric at Fortress Gate (Scene 11)",
       "category": "event-dialogue",
-      "filename": "ren-ren-first-visit.ts",
-      "targetPath": "main/server/dialogue/ren-first-visit.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Ren\" (ID: dlg-ren-first-visit).\n\nTrigger: First visit (Act I)\nLocation: Everwick — Inn: The Bright Hearth (20, 14)\n\n\nLines:\n- Ren: \"The Bright Hearth — best inn in the village! Well, only inn. Rest your feet, rest your mind.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "janik-janik-resolution.ts",
+      "targetPath": "main/server/dialogue/janik-resolution.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Janik\" (ID: dlg-janik-resolution).\n\nTrigger: Endgame Bloom — Aric at Fortress Gate (Scene 11)\nLocation: Preserver Fortress Gate (exterior)\nReferences: Scene: act3-scene11-curators-choice\n\nLines:\n- Aric: \"Curator. The Gallery subjects are waking up. They're confused but alive. Someone needs to help them adjust.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Ren",
+          "heading": "Janik",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Ren",
+          "heading": "Janik",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "97b75d6500188e19",
-        "outputHash": "b51595b161f3175a657d954868c724ba27062cf93361b0e22e59caa5507d5d2d",
-        "generatedAt": "2026-02-13T14:55:51.433Z",
-        "generationTimeMs": 2791,
-        "fileSizeBytes": 739,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
     },
     {
-      "id": "dlg-ren-inn",
-      "name": "Ren: Inn interaction",
+      "id": "dlg-khali-first-visit",
+      "name": "Khali: First visit (Act I)",
       "category": "event-dialogue",
-      "filename": "ren-ren-inn.ts",
-      "targetPath": "main/server/dialogue/ren-inn.ts",
-      "prompt": "Generate an RPG-JS dialogue file for \"Ren\" (ID: dlg-ren-inn).\n\nTrigger: Inn interaction\nLocation: Everwick — Inn: The Bright Hearth (20, 14)\n\n\nLines:\n- Ren: \"Sweet dreams. The beds are soft and the walls keep out the worry.\" [rest]\n- Ren: \"Rest well. You've earned it more than most.\" [rest-late]\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "filename": "khali-khali-first-visit.ts",
+      "targetPath": "main/server/dialogue/khali-first-visit.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Khali\" (ID: dlg-khali-first-visit).\n\nTrigger: First visit (Act I)\nLocation: Everwick — General Shop (18, 16)\n\n\nLines:\n- Maren: \"Welcome, welcome! You must be the one Callum's been talking about — the new Architect!\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
       "docRefs": [
         {
           "path": "docs/story/dialogue-bank.md",
-          "heading": "Ren",
+          "heading": "Khali",
           "purpose": "content"
         },
         {
           "path": "docs/story/characters.md",
-          "heading": "Ren",
+          "heading": "Khali",
           "purpose": "content"
         }
       ],
-      "status": "generated",
-      "metadata": {
-        "promptHash": "431021643458eb5f",
-        "outputHash": "f0ef9c8dd6036fed29e789de426a6105df7be2ef9bbaa4efb91305da5e3dd107",
-        "generatedAt": "2026-02-13T14:55:58.792Z",
-        "generationTimeMs": 5357,
-        "fileSizeBytes": 838,
-        "model": "gemini-2.5-flash"
-      }
+      "status": "pending"
+    },
+    {
+      "id": "dlg-khali-shop",
+      "name": "Khali: Shop interaction (all acts)",
+      "category": "event-dialogue",
+      "filename": "khali-khali-shop.ts",
+      "targetPath": "main/server/dialogue/khali-shop.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Khali\" (ID: dlg-khali-shop).\n\nTrigger: Shop interaction (all acts)\nLocation: Everwick — General Shop (18, 16)\n\n\nLines:\n- Maren: \"Take a look! Potions, antidotes, and the odd curiosity.\" [browse]\n- Maren: \"Excellent choice! That'll serve you well out there.\" [buy]\n- Maren: \"I can take that off your hands. Fair price, always.\" [sell]\n- Maren: \"Not quite enough gold for that one.\" [insufficient]\n- Maren: \"Safe travels! Come back anytime.\" [farewell]\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/dialogue-bank.md",
+          "heading": "Khali",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/story/characters.md",
+          "heading": "Khali",
+          "purpose": "content"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "dlg-hark-first-visit",
+      "name": "Hark: First visit (Act I)",
+      "category": "event-dialogue",
+      "filename": "hark-hark-first-visit.ts",
+      "targetPath": "main/server/dialogue/hark-first-visit.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Hark\" (ID: dlg-hark-first-visit).\n\nTrigger: First visit (Act I)\nLocation: Everwick — Blacksmith (18, 18)\n\n\nLines:\n- Torvan: \"Mm. New Architect? Callum told me. I make weapons and armor — nothing fancy, but solid.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/dialogue-bank.md",
+          "heading": "Hark",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/story/characters.md",
+          "heading": "Hark",
+          "purpose": "content"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "dlg-hark-shop",
+      "name": "Hark: Shop interaction",
+      "category": "event-dialogue",
+      "filename": "hark-hark-shop.ts",
+      "targetPath": "main/server/dialogue/hark-shop.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Hark\" (ID: dlg-hark-shop).\n\nTrigger: Shop interaction\nLocation: Everwick — Blacksmith (18, 18)\n\n\nLines:\n- Torvan: \"Steel, leather, and honest craft. No enchantments.\" [browse]\n- Torvan: \"Good blade, that. Treat it right and it'll return the favor.\" [buy]\n- Torvan: \"I'll melt it down and make something better.\" [sell]\n- Torvan: \"Can't give it away, friend. Gold talks.\" [insufficient]\n- Torvan: \"Keep your guard up.\" [farewell]\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/dialogue-bank.md",
+          "heading": "Hark",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/story/characters.md",
+          "heading": "Hark",
+          "purpose": "content"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "dlg-nyro-first-visit",
+      "name": "Nyro: First visit (Act I)",
+      "category": "event-dialogue",
+      "filename": "nyro-nyro-first-visit.ts",
+      "targetPath": "main/server/dialogue/nyro-first-visit.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Nyro\" (ID: dlg-nyro-first-visit).\n\nTrigger: First visit (Act I)\nLocation: Everwick — Inn: The Bright Hearth (20, 14)\n\n\nLines:\n- Ren: \"The Bright Hearth — best inn in the village! Well, only inn. Rest your feet, rest your mind.\"\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/dialogue-bank.md",
+          "heading": "Nyro",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/story/characters.md",
+          "heading": "Nyro",
+          "purpose": "content"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "dlg-nyro-inn",
+      "name": "Nyro: Inn interaction",
+      "category": "event-dialogue",
+      "filename": "nyro-nyro-inn.ts",
+      "targetPath": "main/server/dialogue/nyro-inn.ts",
+      "prompt": "Generate an RPG-JS dialogue file for \"Nyro\" (ID: dlg-nyro-inn).\n\nTrigger: Inn interaction\nLocation: Everwick — Inn: The Bright Hearth (20, 14)\n\n\nLines:\n- Ren: \"Sweet dreams. The beds are soft and the walls keep out the worry.\" [rest]\n- Ren: \"Rest well. You've earned it more than most.\" [rest-late]\n\nCreate a dialogue function that:\n1. Checks any trigger conditions (quest state, location, flags)\n2. Plays each line in sequence via player.showText()\n3. Uses the NPC's graphic as speaker portrait\n4. For [SYSTEM] speakers, use system overlay instead of showText\n5. For [NARRATION], use showText with no portrait\nExport the dialogue function as default.",
+      "docRefs": [
+        {
+          "path": "docs/story/dialogue-bank.md",
+          "heading": "Nyro",
+          "purpose": "content"
+        },
+        {
+          "path": "docs/story/characters.md",
+          "heading": "Nyro",
+          "purpose": "content"
+        }
+      ],
+      "status": "pending"
     }
   ]
 }

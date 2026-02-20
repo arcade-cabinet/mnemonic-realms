@@ -1,0 +1,531 @@
+{
+  "id": "depths",
+  "name": "The Depths",
+  "biome": "farmland",
+  "acts": [
+    1
+  ],
+  "playTimeMinutes": 180,
+  "difficulty": "easy",
+  "ambientMusic": "bgm-overworld-depths",
+  "startVibrancy": 50,
+  "weather": {
+    "default": "clear",
+    "dynamic": false
+  },
+  "encounters": {
+    "enemies": [
+      "E-DP-01",
+      "E-DP-02",
+      "E-DP-03",
+      "E-DP-04",
+      "E-DP-05"
+    ],
+    "levelRange": [
+      4,
+      27
+    ],
+    "averageStepsBetweenEncounters": 200
+  },
+  "anchors": [
+    {
+      "id": "depths-l1",
+      "name": "depths-l1",
+      "type": "dungeon",
+      "position": "start",
+      "importance": "minor",
+      "quests": [],
+      "npcs": [],
+      "events": [],
+      "mapLayout": {
+        "biome": "grassland",
+        "palette": "dungeon-depths",
+        "defaultGround": "ground.grass",
+        "music": "bgm-depths-l1",
+        "tileSize": 16,
+        "mapSize": [
+          20,
+          25
+        ],
+        "areas": [
+          {
+            "id": "dungeon-entrance",
+            "name": "Cellar Entry",
+            "x": 20,
+            "y": 0,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-room-small",
+            "name": "Memory Alcove",
+            "x": 2,
+            "y": 14,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-room-large",
+            "name": "Guardian Chamber",
+            "x": 20,
+            "y": 14,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-room-large",
+            "name": "Dissolved Memory Cache",
+            "x": 20,
+            "y": 24,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-stairway",
+            "name": "Stairway Chamber",
+            "x": 20,
+            "y": 36,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          }
+        ],
+        "playerSpawn": {
+          "x": 10,
+          "y": 12
+        }
+      }
+    },
+    {
+      "id": "depths-l2",
+      "name": "depths-l2",
+      "type": "dungeon",
+      "position": "start",
+      "importance": "minor",
+      "quests": [],
+      "npcs": [],
+      "events": [],
+      "mapLayout": {
+        "biome": "grassland",
+        "palette": "dungeon-depths",
+        "defaultGround": "ground.grass",
+        "music": "bgm-depths-l2",
+        "tileSize": 16,
+        "mapSize": [
+          20,
+          25
+        ],
+        "areas": [
+          {
+            "id": "dungeon-entrance",
+            "name": "Entry Pool",
+            "x": 20,
+            "y": 0,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-room-large",
+            "name": "Reading Hall",
+            "x": 2,
+            "y": 10,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-room-large",
+            "name": "Burdened Stone Chamber",
+            "x": 22,
+            "y": 10,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-corridor",
+            "name": "Flood Hall",
+            "x": 2,
+            "y": 20,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-room-small",
+            "name": "Water Puzzle Chamber",
+            "x": 2,
+            "y": 28,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "memory-well",
+            "name": "Memory Lift Chamber",
+            "x": 22,
+            "y": 28,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "boss-arena",
+            "name": "The Archivist's Arena",
+            "x": 2,
+            "y": 38,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-stairway",
+            "name": "Descent to L3",
+            "x": 20,
+            "y": 48,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          }
+        ],
+        "playerSpawn": {
+          "x": 10,
+          "y": 12
+        }
+      }
+    },
+    {
+      "id": "depths-l3",
+      "name": "depths-l3",
+      "type": "dungeon",
+      "position": "start",
+      "importance": "minor",
+      "quests": [],
+      "npcs": [],
+      "events": [],
+      "mapLayout": {
+        "biome": "grassland",
+        "palette": "dungeon-depths",
+        "defaultGround": "ground.grass",
+        "music": "bgm-depths-l3",
+        "tileSize": 16,
+        "mapSize": [
+          20,
+          25
+        ],
+        "areas": [
+          {
+            "id": "dungeon-entrance",
+            "name": "Crystal Entry",
+            "x": 20,
+            "y": 0,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-room-small",
+            "name": "Echo Chamber",
+            "x": 2,
+            "y": 8,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-room-small",
+            "name": "Burdened Stone Alcove",
+            "x": 12,
+            "y": 8,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-room-large",
+            "name": "Sound Puzzle Hall",
+            "x": 22,
+            "y": 8,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-corridor",
+            "name": "Crystal Nexus",
+            "x": 2,
+            "y": 18,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "underground-lake",
+            "name": "Crystal Grotto",
+            "x": 2,
+            "y": 26,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-corridor",
+            "name": "Harmonic Bridge",
+            "x": 20,
+            "y": 26,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "boss-arena",
+            "name": "The Resonant King's Throne",
+            "x": 2,
+            "y": 36,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-stairway",
+            "name": "Descent to L4",
+            "x": 20,
+            "y": 48,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          }
+        ],
+        "playerSpawn": {
+          "x": 10,
+          "y": 12
+        }
+      }
+    },
+    {
+      "id": "depths-l4",
+      "name": "depths-l4",
+      "type": "dungeon",
+      "position": "start",
+      "importance": "minor",
+      "quests": [],
+      "npcs": [],
+      "events": [],
+      "mapLayout": {
+        "biome": "grassland",
+        "palette": "dungeon-depths",
+        "defaultGround": "ground.grass",
+        "music": "bgm-depths-l4",
+        "tileSize": 16,
+        "mapSize": [
+          20,
+          25
+        ],
+        "areas": [
+          {
+            "id": "dungeon-entrance",
+            "name": "First Verse - Prelude",
+            "x": 20,
+            "y": 0,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-room-large",
+            "name": "Second Verse - Rising",
+            "x": 20,
+            "y": 10,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "memory-well",
+            "name": "Memory Lift / Interlude",
+            "x": 2,
+            "y": 10,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-corridor",
+            "name": "Third Verse - Crescendo",
+            "x": 2,
+            "y": 20,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-room-large",
+            "name": "Fourth Verse - The Dissolution",
+            "x": 20,
+            "y": 30,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "treasure-room",
+            "name": "Treasure Alcove",
+            "x": 2,
+            "y": 30,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "boss-arena",
+            "name": "The Conductor's Stage",
+            "x": 2,
+            "y": 40,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-stairway",
+            "name": "Descent to L5",
+            "x": 20,
+            "y": 48,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          }
+        ],
+        "playerSpawn": {
+          "x": 10,
+          "y": 12
+        }
+      }
+    },
+    {
+      "id": "depths-l5",
+      "name": "depths-l5",
+      "type": "dungeon",
+      "position": "start",
+      "importance": "minor",
+      "quests": [],
+      "npcs": [],
+      "events": [],
+      "mapLayout": {
+        "biome": "grassland",
+        "palette": "dungeon-depths",
+        "defaultGround": "ground.grass",
+        "music": "bgm-depths-l5",
+        "tileSize": 16,
+        "mapSize": [
+          20,
+          25
+        ],
+        "areas": [
+          {
+            "id": "dungeon-entrance",
+            "name": "The Threshold",
+            "x": 20,
+            "y": 0,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-room-small",
+            "name": "Inverted Chamber",
+            "x": 2,
+            "y": 8,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-room-small",
+            "name": "Timeline Fracture",
+            "x": 12,
+            "y": 8,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "collapsed-passage",
+            "name": "Paradox Corridor",
+            "x": 22,
+            "y": 8,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "memory-well",
+            "name": "Memory Nexus",
+            "x": 2,
+            "y": 18,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-room-small",
+            "name": "Echo Gallery",
+            "x": 2,
+            "y": 26,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-room-small",
+            "name": "Civilization's End",
+            "x": 12,
+            "y": 26,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "treasure-room",
+            "name": "Fragment Vault",
+            "x": 22,
+            "y": 26,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "dungeon-room-small",
+            "name": "Lore Archive",
+            "x": 32,
+            "y": 26,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          },
+          {
+            "id": "boss-arena",
+            "name": "The First Dreamer's Chamber",
+            "x": 2,
+            "y": 36,
+            "width": 8,
+            "height": 8,
+            "terrain": "ground.light-grass"
+          }
+        ],
+        "playerSpawn": {
+          "x": 10,
+          "y": 12
+        }
+      }
+    }
+  ],
+  "connectiveTissue": {
+    "pathDensity": "moderate",
+    "safePathRatio": 0.6
+  }
+}

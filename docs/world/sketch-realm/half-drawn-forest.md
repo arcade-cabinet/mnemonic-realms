@@ -6,6 +6,16 @@ size: [80, 80]
 vibrancy: 8
 palette: desert-sketch
 music: bgm-half-drawn-forest
+assemblages:
+  - ref: outline-structure
+    position: [18, 23]
+    meta: {name: "The Living Sketch"}
+  - ref: desert-ruins
+    position: [28, 8]
+    meta: {name: "Archive of Intentions"}
+  - ref: dungeon-entrance
+    position: [13, 36]
+    meta: {name: "Sketch Passage", target: depths-l5}
 ---
 
 # The Half-Drawn Forest
@@ -18,12 +28,12 @@ Starting vibrancy 8 (Muted tier).
 
 ## Key Areas
 
-| Area | Position | Size | Description |
-|------|----------|------|-------------|
-| The Living Sketch | (18, 23) | 6x6 | Area actively drawing itself. Broadcasting locks in a version. |
-| Archive of Intentions | (28, 8) | 5x5 | Resonance Stone grove. Dissolved memory of forest planners. |
-| Sketch Passage | (13, 36) | 3x3 | Hidden entrance to Depths Level 5. |
-| Line-Art Canopy | throughout | -- | Elegant sketch trees. Single curved lines for trunks. |
+| Area | Position | Size | Assemblage | Description |
+|------|----------|------|------------|-------------|
+| The Living Sketch | (18, 23) | 6x6 | [outline-structure](../../../gen/assemblage/catalog/organisms/terrain/sketch/outline-structure.md) | Area actively drawing itself. Broadcasting locks in a version. |
+| Archive of Intentions | (28, 8) | 5x5 | [desert-ruins](../../../gen/assemblage/catalog/organisms/terrain/sketch/desert-ruins.md) | Resonance Stone grove. Dissolved memory of forest planners. |
+| Sketch Passage | (13, 36) | 3x3 | [dungeon-entrance](../../../gen/assemblage/catalog/organisms/terrain/dungeon/dungeon-entrance.md) | Hidden entrance to Depths Level 5. |
+| Line-Art Canopy | throughout | -- | -- | Elegant sketch trees. Single curved lines for trunks. |
 
 ## NPCs
 

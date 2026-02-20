@@ -41,7 +41,7 @@ export function createStagnationClearing(
   const w = opts.width;
   const h = opts.height;
 
-  // Ground: sand (crystallized) interior with light-grass transition border
+  // Ground: sand (crystallized) inner area with light-grass transition border
   const groundTiles: (string | 0)[] = [];
   for (let y = 0; y < h; y++) {
     for (let x = 0; x < w; x++) {

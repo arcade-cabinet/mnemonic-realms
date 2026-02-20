@@ -27,10 +27,10 @@ export class LuminousWastesSceneEvent extends RpgEvent {
       // through the dynamic event references stored from createDynamicEvent
       // const mq08State = getQuestStatus(player, 'MQ-08');
       // const isMq08Active = mq08State === 'active' || mq08State === 'completed';
-      // const liraEvent = map.getEvent('npc_hana_luminous_wastes');
-      // if (liraEvent) { liraEvent.setVisible(isMq08Active); }
-      // const callumEvent = map.getEvent('npc_artun_luminous_wastes');
-      // if (callumEvent) { callumEvent.setVisible(isMq08Active); }
+      // const hanaEvent = map.getEvent('npc_hana_luminous_wastes');
+      // if (hanaEvent) { hanaEvent.setVisible(isMq08Active); }
+      // const artunEvent = map.getEvent('npc_artun_luminous_wastes');
+      // if (artunEvent) { artunEvent.setVisible(isMq08Active); }
     });
   }
 

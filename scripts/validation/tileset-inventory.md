@@ -98,7 +98,7 @@ Generated: 2026-02-19T16:13:26.567Z
 
 #### dungeons
 
-- **Path:** `assets/tilesets/dungeons`
+- **Path:** `assets/tilesets/depths`
 - **Suggested Zone:** Depths / Dungeons
 - **TMX Files:** 0
 - **TSX Files:** 0

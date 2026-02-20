@@ -38,7 +38,7 @@ export class TrainingGroundEvent extends RpgEvent {
     const playerY = player.position.y;
 
     const isAtTrainingGround = playerMap?.id === 'everwick' && playerX === 8 && playerY === 10;
-    const liraInParty = player.getVariable('LIRA_IN_PARTY') === true; // Assuming a global variable for party status
+    const liraInParty = player.getVariable('HANA_IN_PARTY') === true; // Assuming a global variable for party status
 
     if (isAtTrainingGround && liraInParty) {
       this.hasTriggered = true;

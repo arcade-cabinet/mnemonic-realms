@@ -276,7 +276,7 @@ export const composition: MapComposition = {
         { x: 77, y: 40 }, // East gate
       ],
     },
-    // Hamlet interior path (cross-road)
+    // Hamlet inner path (cross-road)
     {
       terrain: 'road',
       layer: 'road',

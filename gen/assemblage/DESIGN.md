@@ -27,11 +27,11 @@ WORLD (the whole game — or any child world)
 
 The fractal recursion: **World -> Region -> Anchor -> WorldSlot -> child WorldInstance -> (its own regions, anchors, world slots...)**. A shop is a world. A dungeon is a world. A dungeon room that contains a hidden cellar? That cellar is a world too.
 
-### Towns Are Exterior Organisms
+### Towns Are Outdoor Organisms
 
 This is the critical insight: **towns are NOT separate maps.** A town is a cluster of buildings placed directly on the region's outdoor map. When you walk from the countryside into Everwick, there is no transition. You just walk past the signpost and between the buildings.
 
-The only transitions happen when you walk through a building door into a child world map (Khali's Curios, The Bright Hearth, Elder Artun's Home). Each of those is a WorldInstance that references a world template (shop-single, inn, residence).
+The only transitions happen when you walk through a building door into a child world (Khali's Curios, The Bright Hearth, Elder Artun's Home). Each of those is a WorldInstance that references a world template (shop-single, inn, residence).
 
 ### Dungeons Are Child Worlds
 
@@ -167,7 +167,7 @@ Output: RegionMap (outdoor map with towns embedded as organisms)
 
 1. Calculate map dimensions from time budget (chronometer)
 2. Position anchors on map grid
-3. Layout town organisms (exterior building clusters)
+3. Layout town organisms (outdoor building clusters)
 4. Route main road through all anchors (A*)
 5. Add branch paths and shortcuts
 6. Fill all empty space with biome fill tile
@@ -176,7 +176,7 @@ Output: RegionMap (outdoor map with towns embedded as organisms)
 
 ### Town Organism (`organisms/town.ts`)
 
-Exterior building cluster — NOT a separate map.
+Outdoor building cluster — NOT a separate map.
 
 ```
 Input:  TownDefinition (services, houses, central feature, size)
@@ -215,7 +215,7 @@ The professional TMX maps are our building blocks:
 | huntmaster | HuntMasterHut_1.tmx | 18×16 | Huntmasters |
 | castle-room | CastleRoom_1.tmx | 25×25 | Fortress rooms |
 
-### Exterior Templates (10)
+### Outdoor Templates (10)
 
 | ID | Source TMX | Size | Use |
 |----|-----------|------|-----|

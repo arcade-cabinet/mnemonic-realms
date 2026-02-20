@@ -84,7 +84,7 @@ export const SceneNpcSchema = z.object({
   /** Tile position on map (format: "x,y") */
   position: z.string(),
   /** Movement behavior */
-  movement: z.enum(['static', 'patrol', 'wander']).default('static'),
+  movement: z.enum(['static', 'patrol', 'wander', 'follow']).default('static'),
   /** Patrol/wander bounds (format: "x1,y1 -> x2,y2") */
   patrolRange: z.string().optional(),
   /** Pointer to dialogue DDL entry ID */
@@ -322,3 +322,9 @@ export type SceneTestCriteria = z.infer<typeof SceneTestCriteriaSchema>;
 export type SceneResonanceStone = z.infer<typeof SceneResonanceStoneSchema>;
 export type SceneTreasureChest = z.infer<typeof SceneTreasureChestSchema>;
 export type SceneDdl = z.infer<typeof SceneDdlSchema>;
+
+// Aliases for codegen pipeline (uses SceneEvent* naming convention)
+export const SceneEventDdlSchema = SceneDdlSchema;
+export const SceneEventsDdlSchema = ActDdlSchema;
+export type SceneEventDdl = SceneDdl;
+export type SceneEventsDdl = z.infer<typeof ActDdlSchema>;

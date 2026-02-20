@@ -11,7 +11,7 @@
  *               Each child world has its own regions (floors, rooms, wings)
  *               Same algebra recursively
  *
- * Towns are exterior organisms, NOT separate maps.
+ * Towns are outdoor organisms, NOT separate maps.
  * Everything else (shops, dungeons, fortresses, markets) are child worlds.
  * Same compositional algebra all the way down.
  *

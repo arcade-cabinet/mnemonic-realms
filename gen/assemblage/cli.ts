@@ -13,12 +13,16 @@
  *   pnpm assemblage test [all|ddl|organisms|region|world]  # Run assemblage tests
  *   pnpm assemblage snapshot [regionId|all]    # Generate visual PNG snapshots
  *   pnpm assemblage build-region [regionId|all] # DDL → region compose → TMX (the real pipeline)
+ *   pnpm assemblage compile-world              # Markdown → JSON DDL (docs/world/ → gen/ddl/)
+ *   pnpm assemblage pacing [regionId|all]      # Print pacing/distance metrics per region
  */
 
 import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readdirSync, writeFileSync } from 'node:fs';
 import { basename, join, resolve } from 'node:path';
 import { compileMap, getScenesForMap, listCompiledMaps } from './compiler/scene-compiler.ts';
+import { composeAnchorMap, findAnchorInRegions } from './composer/anchor-composer.ts';
+import { loadWorldDDL } from './composer/world-loader.ts';
 import { parseActScript } from './parser/act-script-parser.ts';
 import { composeMap } from './pipeline/canvas.ts';
 import { generateEventsFile, generateMapClass } from './pipeline/event-codegen.ts';
@@ -71,6 +75,12 @@ async function main() {
       break;
     case 'build-region':
       await runBuildRegion(target);
+      break;
+    case 'compile-world':
+      await runCompileWorld();
+      break;
+    case 'pacing':
+      await runPacing(target);
       break;
     default:
       printUsage();
@@ -249,51 +259,94 @@ async function runScenes(target: string) {
 }
 
 async function runBuild(target: string) {
+  // Try DDL-driven anchor composition first (preferred pipeline)
+  const ddlComp = tryLoadFromDDL(target);
+  if (ddlComp) {
+    await buildComposition(ddlComp);
+    console.log('Built 1 map from DDL anchor data successfully.');
+    return;
+  }
+
+  // Fallback: legacy TypeScript map composition files
   const maps = await loadMaps(target);
   const paletteCache = new Map<string, TilesetPalette>();
 
   for (const comp of maps) {
-    console.log(`Building ${comp.id}...`);
-
-    // Get or build palette
-    let palette = paletteCache.get(comp.paletteName);
-    if (!palette) {
-      palette = await loadPalette(comp.paletteName);
-      paletteCache.set(comp.paletteName, palette);
-    }
-
-    // Compose map
-    const canvas = composeMap(comp);
-
-    // Generate TMX
-    const tmx = serializeToTmx(canvas, palette, comp.id);
-    mkdirSync(TMX_OUT, { recursive: true });
-    const tmxPath = resolve(TMX_OUT, `${comp.id}.tmx`);
-    writeFileSync(tmxPath, tmx, 'utf-8');
-    console.log(`  TMX: ${tmxPath}`);
-
-    // Generate events file
-    mkdirSync(EVENTS_OUT, { recursive: true });
-    const eventsCode = generateEventsFile(comp.id, canvas, comp.tileWidth);
-    const eventsPath = resolve(EVENTS_OUT, `${comp.id}-events.ts`);
-    writeFileSync(eventsPath, eventsCode, 'utf-8');
-    console.log(`  Events: ${eventsPath}`);
-
-    // Generate map class
-    const mapClass = generateMapClass(comp.id, comp.tileWidth);
-    const mapClassPath = resolve(MAP_CLASS_OUT, `${comp.id}.ts`);
-    writeFileSync(mapClassPath, mapClass, 'utf-8');
-    console.log(`  Map class: ${mapClassPath}`);
-
-    console.log(`  Done: ${comp.width}x${comp.height} tiles, ${canvas.objects.length} objects`);
-    console.log('');
+    await buildComposition(comp);
   }
 
   console.log(`Built ${maps.length} map(s) successfully.`);
 }
 
+async function buildComposition(comp: MapComposition) {
+  const paletteCache = new Map<string, TilesetPalette>();
+
+  console.log(`Building ${comp.id}...`);
+
+  // Get or build palette
+  let palette = paletteCache.get(comp.paletteName);
+  if (!palette) {
+    palette = await loadPalette(comp.paletteName);
+    paletteCache.set(comp.paletteName, palette);
+  }
+
+  // Compose map
+  const canvas = composeMap(comp);
+
+  // Generate TMX
+  const tmx = serializeToTmx(canvas, palette, comp.id);
+  mkdirSync(TMX_OUT, { recursive: true });
+  const tmxPath = resolve(TMX_OUT, `${comp.id}.tmx`);
+  writeFileSync(tmxPath, tmx, 'utf-8');
+  console.log(`  TMX: ${tmxPath}`);
+
+  // Generate events file
+  mkdirSync(EVENTS_OUT, { recursive: true });
+  const eventsCode = generateEventsFile(comp.id, canvas, comp.tileWidth);
+  const eventsPath = resolve(EVENTS_OUT, `${comp.id}-events.ts`);
+  writeFileSync(eventsPath, eventsCode, 'utf-8');
+  console.log(`  Events: ${eventsPath}`);
+
+  // Generate map class
+  const mapClass = generateMapClass(comp.id, comp.tileWidth);
+  const mapClassPath = resolve(MAP_CLASS_OUT, `${comp.id}.ts`);
+  writeFileSync(mapClassPath, mapClass, 'utf-8');
+  console.log(`  Map class: ${mapClassPath}`);
+
+  console.log(`  Done: ${comp.width}x${comp.height} tiles, ${canvas.objects.length} objects`);
+  console.log('');
+}
+
+/**
+ * Try to load a MapComposition from DDL anchor data.
+ * Searches all regions for an anchor matching the target ID
+ * that has a mapLayout defined.
+ */
+function tryLoadFromDDL(target: string): MapComposition | null {
+  if (target === 'all') return null; // DDL build doesn't support 'all' (use build-region)
+
+  try {
+    const ddlRoot = resolve(ROOT, 'gen/ddl');
+    const loaded = loadWorldDDL(ddlRoot);
+
+    const result = findAnchorInRegions(loaded.world.regions, target);
+    if (!result) return null;
+
+    // Check if the anchor has a mapLayout
+    const anchor = result.anchor as typeof result.anchor & { mapLayout?: unknown };
+    if (!anchor.mapLayout) return null;
+
+    console.log(`Found DDL anchor '${target}' in region '${result.regionId}'`);
+    return composeAnchorMap(result.anchor);
+  } catch {
+    return null;
+  }
+}
+
 async function runPreview(target: string) {
-  const maps = await loadMaps(target);
+  // Try DDL first
+  const ddlComp = tryLoadFromDDL(target);
+  const maps = ddlComp ? [ddlComp] : await loadMaps(target);
 
   for (const comp of maps) {
     console.log(`Preview: ${comp.id} (${comp.width}x${comp.height})\n`);
@@ -345,7 +398,9 @@ async function runPreview(target: string) {
 }
 
 async function runValidate(target: string) {
-  const maps = await loadMaps(target);
+  // Try DDL first
+  const ddlComp = tryLoadFromDDL(target);
+  const maps = ddlComp ? [ddlComp] : await loadMaps(target);
   let totalErrors = 0;
 
   for (const comp of maps) {
@@ -658,6 +713,236 @@ async function runBuildRegion(target: string) {
   console.log(`\nBuilt ${regions.length} region(s) from DDL.`);
 }
 
+async function runCompileWorld() {
+  const { compileAndWriteWorld, validateCompilation } = await import(
+    './compiler/world-markdown-compiler.ts'
+  );
+
+  const worldRoot = join(ROOT, 'docs', 'world');
+  const ddlRoot = join(ROOT, 'gen', 'ddl');
+
+  console.log('Compiling world from docs/world/ hierarchy...\n');
+
+  const result = compileAndWriteWorld(worldRoot, ddlRoot);
+
+  // Print stats
+  console.log(`  Regions: ${result.stats.regionsCompiled}`);
+  console.log(`  Locations: ${result.stats.locationsCompiled}`);
+  console.log(`  Anchors: ${result.stats.totalAnchors}`);
+  console.log(`  NPCs: ${result.stats.totalNpcs}`);
+  console.log(`  Events: ${result.stats.totalEvents}`);
+  console.log(`  Transitions: ${result.stats.totalTransitions}`);
+
+  // Print warnings
+  if (result.warnings.length > 0) {
+    console.log(`\n  Warnings (${result.warnings.length}):`);
+    for (const w of result.warnings) {
+      console.log(`    ⚠ ${w}`);
+    }
+  }
+
+  // Run validation
+  const errors = validateCompilation(result);
+  if (errors.length > 0) {
+    console.log(`\n  Validation errors (${errors.length}):`);
+    for (const e of errors) {
+      console.log(`    ✗ ${e}`);
+    }
+  }
+
+  console.log('\n  Output:');
+  console.log(`    gen/ddl/world.json`);
+  for (const region of result.regions) {
+    console.log(`    gen/ddl/regions/${region.id}.json (${region.anchors.length} anchors)`);
+  }
+
+  console.log(`\nDone. Compiled ${result.stats.locationsCompiled} locations from markdown.`);
+}
+
+async function runPacing(target: string) {
+  const { calculateRegionMetrics } = await import('./composer/world-ddl.ts');
+  const { loadWorldDDL } = await import('./composer/world-loader.ts');
+
+  const ddlRoot = join(ROOT, 'gen', 'ddl');
+  const loaded = loadWorldDDL(ddlRoot);
+
+  const regions =
+    target === 'all'
+      ? loaded.world.regions
+      : loaded.world.regions.filter((r) => r.id === target);
+
+  if (regions.length === 0) {
+    console.log(
+      `Region '${target}' not found. Available: ${loaded.world.regions.map((r) => r.id).join(', ')}`,
+    );
+    return;
+  }
+
+  const WALK_SPEED_TPS = 4;
+  const SECONDS_PER_MINUTE = 60;
+
+  for (const region of regions) {
+    const metrics = calculateRegionMetrics(region);
+
+    // Time allocation
+    const totalSeconds = region.playTimeMinutes * SECONDS_PER_MINUTE;
+    const combatPercent =
+      region.difficulty === 'easy'
+        ? 0.2
+        : region.difficulty === 'medium'
+          ? 0.3
+          : region.difficulty === 'hard'
+            ? 0.4
+            : 0.5;
+    const dialoguePercent = 0.15;
+    const explorationPercent = 1 - combatPercent - dialoguePercent;
+
+    // Calculate map size from metrics
+    const screens = Math.max(1, metrics.outdoorScreens);
+    const cols = Math.ceil(Math.sqrt(screens));
+    const rows = Math.ceil(screens / cols);
+    const mapWidth = Math.min(200, cols * 80);
+    const mapHeight = Math.min(200, rows * 80);
+    const totalTiles = mapWidth * mapHeight;
+
+    // Walkable tiles estimate (non-blocked, non-edge)
+    const edgeDepth = 3;
+    const innerWidth = mapWidth - edgeDepth * 2;
+    const innerHeight = mapHeight - edgeDepth * 2;
+    const walkableEstimate = Math.round(innerWidth * innerHeight * 0.7); // ~70% walkable after buildings/scatter
+
+    console.log(`\n${'='.repeat(60)}`);
+    console.log(`  Region: ${region.name} (${region.id})`);
+    console.log(`${'='.repeat(60)}`);
+    console.log(`  Biome: ${region.biome}  |  Difficulty: ${region.difficulty}  |  Acts: ${region.acts.join(', ')}`);
+    console.log(`  Dimensions: ${mapWidth} x ${mapHeight} tiles (${mapWidth * 16}x${mapHeight * 16} px)`);
+    console.log(`  Walkable tiles (est.): ${walkableEstimate}`);
+    console.log(`  Walking speed: ${WALK_SPEED_TPS} tiles/sec`);
+
+    console.log(`\n  --- Time Budget ---`);
+    console.log(`  Total play time: ${region.playTimeMinutes} min (${totalSeconds} sec)`);
+    console.log(`  Combat:      ${(combatPercent * 100).toFixed(0)}% (${Math.round(totalSeconds * combatPercent)} sec)`);
+    console.log(`  Dialogue:    ${(dialoguePercent * 100).toFixed(0)}% (${Math.round(totalSeconds * dialoguePercent)} sec)`);
+    console.log(`  Exploration: ${(explorationPercent * 100).toFixed(0)}% (${Math.round(totalSeconds * explorationPercent)} sec)`);
+
+    console.log(`\n  --- Traversal Metrics ---`);
+    console.log(`  Total walking tiles: ${metrics.totalWalkingTiles}`);
+    console.log(`  Outdoor screens: ${metrics.outdoorScreens}`);
+    console.log(`  Estimated encounters: ${metrics.estimatedEncounters}`);
+    if (region.encounters) {
+      console.log(`  Encounter rate: 1 per ${region.encounters.averageStepsBetweenEncounters} steps`);
+      console.log(`  Enemy pool: ${region.encounters.enemies.join(', ')}`);
+      console.log(`  Level range: ${region.encounters.levelRange[0]}-${region.encounters.levelRange[1]}`);
+    }
+
+    console.log(`\n  --- Anchors (${region.anchors.length}) ---`);
+
+    // Resolve anchor positions for distance calculation
+    const anchorPositions = resolveAnchorPositions(region.anchors, mapWidth, mapHeight);
+
+    for (const anchor of region.anchors) {
+      const pos = anchorPositions.get(anchor.id);
+      const posStr = pos ? `(${pos.x}, ${pos.y})` : '(?)';
+      console.log(`  ${anchor.name} [${anchor.type}] at ${posStr}`);
+    }
+
+    // Per-anchor-pair distances
+    if (region.anchors.length > 1) {
+      console.log(`\n  --- Anchor-Pair Distances ---`);
+      console.log(`  ${'From'.padEnd(20)} ${'To'.padEnd(20)} ${'Dist'.padStart(6)} ${'Walk'.padStart(8)} ${'Encounters'.padStart(10)}`);
+      console.log(`  ${'─'.repeat(20)} ${'─'.repeat(20)} ${'─'.repeat(6)} ${'─'.repeat(8)} ${'─'.repeat(10)}`);
+
+      const encounterSteps = region.encounters?.averageStepsBetweenEncounters ?? 200;
+
+      for (let i = 0; i < region.anchors.length; i++) {
+        for (let j = i + 1; j < region.anchors.length; j++) {
+          const a = region.anchors[i];
+          const b = region.anchors[j];
+          const posA = anchorPositions.get(a.id);
+          const posB = anchorPositions.get(b.id);
+
+          if (posA && posB) {
+            const manhattan = Math.abs(posA.x - posB.x) + Math.abs(posA.y - posB.y);
+            const walkSec = manhattan / WALK_SPEED_TPS;
+            const encounters = Math.round(manhattan / encounterSteps);
+
+            console.log(
+              `  ${a.name.padEnd(20)} ${b.name.padEnd(20)} ${String(manhattan).padStart(6)} ${(walkSec.toFixed(1) + 's').padStart(8)} ${String(encounters).padStart(10)}`,
+            );
+          }
+        }
+      }
+    }
+
+    // Safe zones
+    const safeZoneCount = metrics.safeZoneCount;
+    if (region.connectiveTissue.safeZoneInterval) {
+      console.log(
+        `\n  Safe zones: ${safeZoneCount} (every ${region.connectiveTissue.safeZoneInterval} min)`,
+      );
+    } else {
+      console.log(`\n  Safe zones: none (no interval set)`);
+    }
+
+    // Wild features
+    if (region.connectiveTissue.wildFeatures?.length) {
+      console.log(`\n  --- Wild Features ---`);
+      for (const feat of region.connectiveTissue.wildFeatures) {
+        console.log(`  ${feat.type}: ${feat.count}x (${feat.placement})`);
+      }
+    }
+
+    console.log('');
+  }
+}
+
+/**
+ * Resolve anchor positions from their declared position strings.
+ * Uses the same layout logic as positionAnchors but returns a map.
+ */
+function resolveAnchorPositions(
+  anchors: { id: string; position: 'start' | 'middle' | 'end' | 'side' | [number, number] }[],
+  mapWidth: number,
+  mapHeight: number,
+): Map<string, { x: number; y: number }> {
+  const result = new Map<string, { x: number; y: number }>();
+  const padding = 8;
+
+  const positionOrder: Record<string, number> = {
+    start: 0,
+    middle: 1,
+    end: 2,
+    side: 3,
+  };
+
+  const sorted = [...anchors].sort((a, b) => {
+    const aOrder = Array.isArray(a.position) ? 1 : (positionOrder[a.position] ?? 1);
+    const bOrder = Array.isArray(b.position) ? 1 : (positionOrder[b.position] ?? 1);
+    return aOrder - bOrder;
+  });
+
+  const cols = Math.ceil(Math.sqrt(sorted.length));
+  const rows = Math.ceil(sorted.length / cols);
+  const cellW = Math.floor((mapWidth - padding * 2) / cols);
+  const cellH = Math.floor((mapHeight - padding * 2) / rows);
+
+  for (let i = 0; i < sorted.length; i++) {
+    const anchor = sorted[i];
+
+    if (Array.isArray(anchor.position)) {
+      result.set(anchor.id, { x: anchor.position[0], y: anchor.position[1] });
+    } else {
+      const col = i % cols;
+      const row = Math.floor(i / cols);
+      const x = padding + col * cellW + Math.floor(cellW / 2);
+      const y = padding + row * cellH + Math.floor(cellH / 2);
+      result.set(anchor.id, { x, y });
+    }
+  }
+
+  return result;
+}
+
 function printUsage() {
   console.log('Usage:');
   console.log(
@@ -673,6 +958,8 @@ function printUsage() {
   console.log('                                              Run assemblage system tests');
   console.log('  pnpm assemblage snapshot [regionId|all]     Generate visual PNG snapshots');
   console.log('  pnpm assemblage build-region [regionId|all] DDL → compose → TMX + events (the real pipeline)');
+  console.log('  pnpm assemblage compile-world              Markdown → JSON DDL (docs/world/ → gen/ddl/)');
+  console.log('  pnpm assemblage pacing [regionId|all]      Print pacing/distance metrics per region');
 }
 
 // --- Helpers ---

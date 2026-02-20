@@ -1,11 +1,16 @@
 {
-  "name": "Mnemonic Realms",
+  "name": "World of Mnemonic Realms",
   "properties": {
     "startRegion": "settled-lands",
     "startAnchor": "everwick",
     "vibrancySystem": true
   },
-  "regions": ["settled-lands", "frontier", "sketch-realm"],
+  "regions": [
+    "settled-lands",
+    "frontier",
+    "sketch-realm",
+    "depths"
+  ],
   "regionConnections": [
     {
       "from": "settled-lands",
@@ -17,9 +22,16 @@
     {
       "from": "frontier",
       "to": "sketch-realm",
-      "connectionType": "portal",
+      "connectionType": "gate",
       "condition": "MQ-11+",
-      "direction": "west"
+      "direction": "south"
+    },
+    {
+      "from": "sketch-realm",
+      "to": "depths",
+      "connectionType": "gate",
+      "condition": "MQ-11+",
+      "direction": "south"
     }
   ]
 }

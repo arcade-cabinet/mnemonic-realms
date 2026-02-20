@@ -6,7 +6,7 @@ size: [100, 100]
 vibrancy: 25
 palette: frontier-seasons
 music: bgm-flickerveil
-interiors:
+worldSlots:
   - id: flickerveil-store
     template: shop-single
     keeper: village-shopkeeper-fv
@@ -18,6 +18,21 @@ interiors:
     template: shop-single
     keeper: archive-keeper
     shopType: library
+assemblages:
+  - ref: resonance-point
+    position: [18, 18]
+    meta: {name: "Luminos Grove"}
+  - ref: flickering-structure
+    position: [33, 28]
+    meta: {name: "Flickering Village"}
+  - ref: resonance-point
+    position: [8, 8]
+    meta: {name: "Resonance Archive"}
+  - ref: frontier-gate
+    position: [46, 23]
+    meta: {name: "Veil's Edge"}
+  - ref: seasonal-forest-patch
+    edge: all
 ---
 
 # Flickerveil
@@ -30,26 +45,26 @@ Starting vibrancy 25 (Muted tier). Resonant emotion: Awe. Element affinity: Wind
 
 ## Key Areas
 
-| Area | Position | Size | Description |
-|------|----------|------|-------------|
-| Luminos Grove | (18, 18) | 6x6 | Clearing with light column. Dormant god Luminos. Prism at center. |
-| Flickering Village | (33, 28) | 10x8 | Frontier settlement. Buildings shimmer. 8 NPCs. |
-| Resonance Archive | (8, 8) | 6x6 | Spiral of ancient Resonance Stones. 5 collectible fragments. Preserver garrison. |
-| Veil's Edge | (46, 23) | 4x6 | Eastern boundary. Transition to Sketch (Half-Drawn Forest). |
-| Flickering Canopy | throughout | -- | Trees oscillate between rendered and sketch-outline |
+| Area | Position | Size | Assemblage | Description |
+|------|----------|------|------------|-------------|
+| Luminos Grove | (18, 18) | 6x6 | [resonance-point](../../../gen/assemblage/catalog/organisms/terrain/frontier/resonance-point.md) | Clearing with light column. Dormant god Luminos. Prism at center. |
+| Flickering Village | (33, 28) | 10x8 | [flickering-structure](../../../gen/assemblage/catalog/organisms/terrain/frontier/flickering-structure.md) | Frontier settlement. Buildings shimmer. 8 NPCs. |
+| Resonance Archive | (8, 8) | 6x6 | [resonance-point](../../../gen/assemblage/catalog/organisms/terrain/frontier/resonance-point.md) | Spiral of ancient Resonance Stones. 5 collectible fragments. Preserver garrison. |
+| Veil's Edge | (46, 23) | 4x6 | [frontier-gate](../../../gen/assemblage/catalog/organisms/terrain/frontier/frontier-gate.md) | Eastern boundary. Transition to Sketch (Half-Drawn Forest). |
+| Flickering Canopy | throughout | -- | [seasonal-forest-patch](../../../gen/assemblage/catalog/organisms/terrain/frontier/seasonal-forest-patch.md) | Trees oscillate between rendered and sketch-outline |
 
 ## NPCs
 
 | NPC | Position | Movement | Graphic | Linked Quests |
 |-----|----------|----------|---------|---------------|
-| Reza (village elder) | (35, 30) | Static at village center | `npc_solen` | SQ-08, GQ-03 |
+| Reza (village elder) | (35, 30) | Static at village center | `npc_reza` | SQ-08, GQ-03 |
 | Village Shopkeeper | (36, 29) | Static in shop | `npc_shopkeep_f2` | -- |
 | Village Innkeeper | (34, 32) | Static in inn | `npc_innkeeper_f1` | -- |
 | Flickering Guard A | (31, 28) | Patrols village perimeter | `npc_villager_m4` | -- |
 | Preserver Agent (archive) | (9, 9) | Static at archive center | `npc_preserver_agent` | GQ-03-F1 (Burning Archive) |
 | Preserver Agent B | (7, 10) | Patrols archive perimeter | `npc_preserver_agent` | -- |
 | Preserver Agent C | (10, 7) | Patrols archive perimeter | `npc_preserver_agent` | -- |
-| Julz (Preserver defector) | (30, 26) | Appears after Vesperis recall | `npc_elyn` | GQ-03-S1 (The Defector) |
+| Julz (Preserver defector) | (30, 26) | Appears after Vesperis recall | `npc_julz` | GQ-03-S1 (The Defector) |
 
 ## Events
 

@@ -65,7 +65,7 @@ const MAP_NAME_TO_ID: Record<string, string> = {
   'first memory chamber': 'fortress-f3',
   'throne of memory': 'fortress-f3',
   'preserver fortress gate': 'fortress-f1',
-  // Interiors
+  // Child worlds
   "lira's workshop": 'lira-workshop',
   "hana's workshop": 'hana-workshop',
   // Special
@@ -98,7 +98,8 @@ function parseLocation(raw: string): ParsedLocation {
   let cleaned = raw.replace(/,\s*then\s+.+$/, '').trim();
   // Strip dimension specs like "(40x40 tiles)" or "(20x25 tiles, single room)"
   cleaned = cleaned.replace(/\(\s*\d+x\d+\s*tiles?[^)]*\)/gi, '').trim();
-  // Strip descriptive parens like "(Sketch zone)" "(accessed via ...)"
+  // Strip descriptive parens like "(Sketch zone)" "(accessed via ...)" "(exterior)"
+  // NOTE: "exterior"/"interior" appear in source markdown act scripts, not our code terminology
   cleaned = cleaned.replace(/\(\s*(?:Sketch|accessed|at|exterior|interior)[^)]*\)/gi, '').trim();
   // Separator: em-dash (—), en-dash (–), or spaced double-hyphen ( -- )
   // NOT a single hyphen, which can appear in names like "Half-Drawn"

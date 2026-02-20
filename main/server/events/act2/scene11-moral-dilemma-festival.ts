@@ -59,7 +59,7 @@ class MielFrozenFestivalEvent extends RpgEvent {}
 })
 export default class Act2Scene11MoralDilemmaFestivalEvent extends RpgEvent {
   private frozenNpcIds: string[] = [];
-  private callumEventId: string | null = null;
+  private artunEventId: string | null = null;
   private mielEventId: string | null = null;
 
   async onPlayerTouch(player: RpgPlayer) {
@@ -82,13 +82,13 @@ export default class Act2Scene11MoralDilemmaFestivalEvent extends RpgEvent {
     const map = player.map;
 
     // Artun
-    const callumEvent = await map.createDynamicEvent({
+    const artunEvent = await map.createDynamicEvent({
       x: 33,
       y: 36,
       event: ArtunFrozenFestivalEvent,
       direction: Move.up,
     });
-    this.callumEventId = callumEvent.id;
+    this.artunEventId = artunEvent.id;
 
     // Preserver Scout Miel
     const mielEvent = await map.createDynamicEvent({
@@ -318,7 +318,7 @@ export default class Act2Scene11MoralDilemmaFestivalEvent extends RpgEvent {
     // TODO: setCamera not available in RPG-JS 4.3.0
 
     // Remove dynamic NPCs
-    if (this.callumEventId) map.removeEvent(this.callumEventId);
+    if (this.artunEventId) map.removeEvent(this.artunEventId);
     if (this.mielEventId) map.removeEvent(this.mielEventId);
     for (const id of this.frozenNpcIds) {
       map.removeEvent(id); // Ensure any remaining frozen NPCs are removed

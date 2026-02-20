@@ -150,6 +150,15 @@ export function regionToCanvas(regionMap: RegionMap): MapCanvas {
     });
   }
 
+  // Path dressing objects (lampposts, fences, signposts along roads)
+  for (const dress of fill.pathDressObjects) {
+    canvas.visuals.push({
+      objectRef: dress.objectRef,
+      x: dress.x,
+      y: dress.y,
+    });
+  }
+
   // Edge treatment visuals — map edge type to appropriate tree/rock objects
   const EDGE_TYPE_OBJECTS: Record<string, string[]> = {
     forest: ['tree.emerald-3', 'tree.emerald-4', 'tree.emerald-2'],
@@ -169,6 +178,87 @@ export function regionToCanvas(regionMap: RegionMap): MapCanvas {
       x: edge.x,
       y: edge.y,
     });
+  }
+
+  // --- Wild features as objects ---
+  for (const feat of regionMap.wildFeatureObjects) {
+    const objType = wildFeatureToObjectType(feat.type);
+    canvas.objects.push({
+      name: `wild-${feat.type}-${feat.position.x}-${feat.position.y}`,
+      type: objType,
+      x: feat.position.x,
+      y: feat.position.y,
+      width: 2,
+      height: 2,
+      properties: {
+        featureType: feat.type,
+        placement: feat.placement,
+      },
+    });
+
+    // Add a visual for the feature
+    canvas.visuals.push({
+      objectRef: wildFeatureToVisual(feat.type),
+      x: feat.position.x,
+      y: feat.position.y,
+    });
+  }
+
+  // --- Safe zones (roadside camps) ---
+  for (let i = 0; i < regionMap.safeZones.length; i++) {
+    const zone = regionMap.safeZones[i];
+
+    // Campfire object at center of 5x5 camp
+    canvas.objects.push({
+      name: `camp-${i}-fire`,
+      type: 'trigger',
+      x: zone.position.x + 2,
+      y: zone.position.y + 2,
+      width: 1,
+      height: 1,
+      properties: {
+        featureType: 'campfire',
+        canRest: 'true',
+      },
+    });
+
+    // Bench object near campfire
+    canvas.objects.push({
+      name: `camp-${i}-bench`,
+      type: 'trigger',
+      x: zone.position.x + 1,
+      y: zone.position.y + 3,
+      width: 2,
+      height: 1,
+      properties: {
+        featureType: 'bench',
+      },
+    });
+
+    // Campfire visual
+    canvas.visuals.push({
+      objectRef: 'prop.campfire-1',
+      x: zone.position.x + 2,
+      y: zone.position.y + 2,
+    });
+
+    // Bench visual
+    canvas.visuals.push({
+      objectRef: 'prop.bench-1',
+      x: zone.position.x + 1,
+      y: zone.position.y + 3,
+    });
+
+    // Dirt ground under the camp
+    stampRect(
+      ground2Layer,
+      width,
+      zone.position.x,
+      zone.position.y,
+      5,
+      5,
+      'terrain:ground.dirt',
+    );
   }
 
   // --- Objects: NPCs, doors, spawn ---
@@ -297,6 +387,48 @@ function propToPaletteObject(propType: string, color: BuildingColor): string {
     return 'well.generic';
   }
   return PROP_MAP[propType] ?? 'prop.bulletin-board-1';
+}
+
+/**
+ * Map a wild feature type to its TMX object type.
+ */
+function wildFeatureToObjectType(
+  featureType: string,
+): 'chest' | 'trigger' | 'npc' | 'spawn' | 'transition' {
+  switch (featureType) {
+    case 'hidden-chest':
+      return 'chest';
+    case 'resonance-stone':
+      return 'trigger';
+    case 'mini-shrine':
+      return 'trigger';
+    case 'camp-spot':
+      return 'trigger';
+    case 'fishing-spot':
+      return 'trigger';
+    default:
+      return 'trigger';
+  }
+}
+
+/**
+ * Map a wild feature type to a palette visual reference.
+ */
+function wildFeatureToVisual(featureType: string): string {
+  switch (featureType) {
+    case 'hidden-chest':
+      return 'prop.chest-1';
+    case 'resonance-stone':
+      return 'prop.crystal-1';
+    case 'mini-shrine':
+      return 'prop.shrine-1';
+    case 'camp-spot':
+      return 'prop.campfire-1';
+    case 'fishing-spot':
+      return 'prop.sign-south';
+    default:
+      return 'prop.bulletin-board-1';
+  }
 }
 
 /** Stamp a rectangle of semantic tiles onto a flat layer array. */

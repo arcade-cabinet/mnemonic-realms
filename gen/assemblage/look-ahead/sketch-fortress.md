@@ -555,7 +555,7 @@ interface FracturePoint {
 
 ### `desert-sketch` Palette
 
-**Source**: `assets/tilesets/exteriors/desert/Tiled/Tilesets/` (29 TSX)
+**Source**: `assets/tilesets/sketch-realm/Tiled/Tilesets/` (29 TSX)
 
 **Terrain mappings** (Wang set auto-tiling):
 
@@ -586,7 +586,7 @@ interface FracturePoint {
 
 ### `fortress-castles` Palette
 
-**Source**: `assets/tilesets/exteriors/castles/Tiled/Tilesets/` (25 TSX)
+**Source**: `assets/tilesets/fortress/Tiled/Tilesets/` (25 TSX)
 
 **Terrain mappings**:
 
