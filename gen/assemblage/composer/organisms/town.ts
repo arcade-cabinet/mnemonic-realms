@@ -89,13 +89,14 @@ const SERVICE_ARCHETYPES: Record<string, string> = {
   'elder-house': 'house-small',
 };
 
-// Archetype footprints (from reference TMX dimensions at 16px tiles)
+// Exterior footprints (bird's-eye rooftop on the outdoor map, not interior dimensions)
+// A 16px tile building seen from above is ~6-8 tiles wide, like classic 16-bit JRPGs.
 const FOOTPRINTS: Record<string, { width: number; height: number }> = {
-  'weapon-shop': { width: 25, height: 22 },
-  tavern: { width: 25, height: 22 },
-  library: { width: 25, height: 22 },
-  'house-small': { width: 20, height: 19 },
-  'house-medium': { width: 25, height: 22 },
+  'weapon-shop': { width: 8, height: 7 },
+  tavern: { width: 8, height: 7 },
+  library: { width: 8, height: 7 },
+  'house-small': { width: 6, height: 5 },
+  'house-medium': { width: 8, height: 7 },
 };
 
 /**
@@ -132,7 +133,7 @@ export function layoutTown(
   // Ring radius must be large enough that the biggest building footprint
   // doesn't overlap neighbors at the narrowest angular gap.
   // Minimum: largest footprint diagonal + 2-tile gap between buildings.
-  const maxFootprint = 25; // weapon-shop/tavern at 25 tiles wide
+  const maxFootprint = 8; // weapon-shop/tavern at 8 tiles wide (exterior footprint)
   const angularGap = (2 * Math.PI) / totalBuildings;
   const minRadiusForSpacing = Math.ceil(
     (maxFootprint + 4) / (2 * Math.sin(angularGap / 2)),

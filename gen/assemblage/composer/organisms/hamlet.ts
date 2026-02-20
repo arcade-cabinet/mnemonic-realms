@@ -114,8 +114,13 @@ export function layoutHamlet(
   // Well at center
   const wellPosition = config.well ? { x: cx, y: cy } : undefined;
 
-  // External anchor: south of the hamlet (toward map center by default)
-  const externalAnchors: Point[] = [{ x: cx, y: cy + radius + 4 }];
+  // External anchors at bounds edges (N, S, E, W) — well outside the building ring
+  const externalAnchors: Point[] = [
+    { x: cx, y: bounds.y }, // North
+    { x: cx, y: bounds.y + bounds.height - 1 }, // South
+    { x: bounds.x + bounds.width - 1, y: cy }, // East
+    { x: bounds.x, y: cy }, // West
+  ];
 
   return {
     bounds,

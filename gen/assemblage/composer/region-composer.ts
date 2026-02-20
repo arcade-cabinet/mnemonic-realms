@@ -128,8 +128,45 @@ export async function composeRegion(
   const npcPositions = new Map<string, Point>();
 
   for (const placed of placedAnchors) {
-    if (placed.anchor.type === 'town' && placed.anchor.town) {
-      // Town = exterior building cluster organism
+    if (placed.anchor.type === 'town' && placed.anchor.town?.size === 'hamlet') {
+      // Hamlet — small buildings, compact layout
+      const worldSlotIds = getWorldSlotIds(placed.anchor);
+      const totalHouses = (placed.anchor.town.houses ?? 3) + worldSlotIds.length;
+      const hamletLayout = layoutHamlet(
+        placed.bounds,
+        {
+          houses: totalHouses,
+          well: true,
+          houseStyle: 'mixed',
+        },
+        Math.floor(rng.next() * 100000),
+      );
+      placed.hamletLayout = hamletLayout;
+      placed.entryAnchors = hamletLayout.externalAnchors;
+
+      // Map worldSlot instance IDs to house door anchors
+      for (let i = 0; i < worldSlotIds.length && i < hamletLayout.housePlacements.length; i++) {
+        doorTransitions.set(worldSlotIds[i], hamletLayout.housePlacements[i].doorAnchor);
+      }
+
+      // Position service NPCs near their building doors
+      if (placed.anchor.town.services) {
+        for (let i = 0; i < placed.anchor.town.services.length && i < hamletLayout.housePlacements.length; i++) {
+          const service = placed.anchor.town.services[i];
+          if (service.keeperNpc) {
+            const door = hamletLayout.housePlacements[i].doorAnchor;
+            npcPositions.set(service.keeperNpc, { x: door.x + 1, y: door.y + 1 });
+          }
+        }
+      }
+
+      // Mark house footprints
+      for (const house of hamletLayout.housePlacements) {
+        markArea(grid, house.position.x, house.position.y, 8, 8, 1);
+        markClearance(grid, house.position.x, house.position.y, 8, 8, 2);
+      }
+    } else if (placed.anchor.type === 'town' && placed.anchor.town) {
+      // Town/Village = exterior building cluster organism
       const worldSlotIds = getWorldSlotIds(placed.anchor);
       const townLayout = layoutTown(
         placed.bounds,
@@ -169,34 +206,22 @@ export async function composeRegion(
           2, // clearance
         );
       }
-    } else if (placed.anchor.type === 'town' && placed.anchor.town?.size === 'hamlet') {
-      // Small hamlet — use the hamlet organism
-      const hamletLayout = layoutHamlet(
-        placed.bounds,
-        {
-          houses: placed.anchor.town?.houses ?? 3,
-          well: true,
-          houseStyle: 'mixed',
-        },
-        Math.floor(rng.next() * 100000),
-      );
-      placed.hamletLayout = hamletLayout;
-      placed.entryAnchors = hamletLayout.externalAnchors;
-
-      // Mark house footprints
-      for (const house of hamletLayout.housePlacements) {
-        markArea(grid, house.position.x, house.position.y, 8, 8, 1);
-        markClearance(grid, house.position.x, house.position.y, 8, 8, 2);
-      }
     } else {
       // Landmark, camp, shrine, dungeon entrance — small footprint
       const cx = placed.bounds.x + Math.floor(placed.bounds.width / 2);
       const cy = placed.bounds.y + Math.floor(placed.bounds.height / 2);
-      placed.entryAnchors = [{ x: cx, y: cy }];
 
       // Small blocked area for the feature
       markArea(grid, cx - 2, cy - 2, 5, 5, 1);
       markClearance(grid, cx - 2, cy - 2, 5, 5, 2);
+
+      // Entry anchors at cardinal directions, outside the blocked+clearance zone
+      placed.entryAnchors = [
+        { x: cx, y: cy - 5 }, // North
+        { x: cx, y: cy + 5 }, // South
+        { x: cx + 5, y: cy }, // East
+        { x: cx - 5, y: cy }, // West
+      ];
     }
 
     // Add NPCs from anchor definition
@@ -212,7 +237,17 @@ export async function composeRegion(
     }
   }
 
-  // --- 4. Route paths between anchors ---
+  // --- 4. Nudge entry anchors off blocked tiles ---
+  // Buildings are placed before entry anchors are finalized, so an anchor
+  // at a bounds edge can land on a building footprint. Walk outward in a
+  // spiral until we find a tile passable for the road width.
+  for (const placed of placedAnchors) {
+    for (let i = 0; i < placed.entryAnchors.length; i++) {
+      placed.entryAnchors[i] = nudgeToPassable(grid, placed.entryAnchors[i], biome.roadWidth);
+    }
+  }
+
+  // --- 5. Route paths between anchors ---
   const pathRequests = buildRegionPaths(placedAnchors, biome, options?.exits ?? []);
   const routedPaths = routeAll(grid, pathRequests);
 
@@ -441,4 +476,47 @@ function hashString(s: string): number {
     hash = (hash * 31 + s.charCodeAt(i)) | 0;
   }
   return Math.abs(hash);
+}
+
+/**
+ * Nudge a point to the nearest tile passable for a given road width.
+ * Searches outward in concentric rings. Returns the original point
+ * if already passable or no passable tile found within 20 tiles.
+ */
+function nudgeToPassable(
+  grid: CollisionGrid,
+  point: Point,
+  roadWidth: number,
+): Point {
+  const halfW = Math.floor(roadWidth / 2);
+
+  const isPassable = (x: number, y: number): boolean => {
+    for (let dy = -halfW; dy <= halfW; dy++) {
+      for (let dx = -halfW; dx <= halfW; dx++) {
+        const nx = x + dx;
+        const ny = y + dy;
+        if (nx < 0 || nx >= grid.width || ny < 0 || ny >= grid.height) return false;
+        if (grid.data[ny * grid.width + nx] === 1) return false;
+      }
+    }
+    return true;
+  };
+
+  if (isPassable(point.x, point.y)) return point;
+
+  // Spiral outward to find nearest passable tile
+  for (let r = 1; r < 20; r++) {
+    for (let dy = -r; dy <= r; dy++) {
+      for (let dx = -r; dx <= r; dx++) {
+        if (Math.abs(dx) !== r && Math.abs(dy) !== r) continue;
+        const nx = point.x + dx;
+        const ny = point.y + dy;
+        if (nx >= 0 && nx < grid.width && ny >= 0 && ny < grid.height) {
+          if (isPassable(nx, ny)) return { x: nx, y: ny };
+        }
+      }
+    }
+  }
+
+  return point;
 }

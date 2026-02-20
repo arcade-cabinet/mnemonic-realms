@@ -267,6 +267,6 @@ describe('Region Composer', () => {
     });
 
     expect(regionMap.fill).toBeDefined();
-    expect(regionMap.fill.groundTiles.length).toBeGreaterThan(0);
+    expect(regionMap.fill.groundTerrain.length).toBeGreaterThan(0);
   });
 });
