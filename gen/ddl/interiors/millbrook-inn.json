@@ -1,0 +1,13 @@
+{
+  "id": "millbrook-inn",
+  "name": "The Millstone",
+  "archetype": "tavern",
+  "parentAnchor": "millbrook",
+  "npcs": [
+    { "id": "oram", "role": "innkeeper", "placement": "center" }
+  ],
+  "objects": ["tables", "hearth", "beds-upstairs"],
+  "transitions": {
+    "exit": { "to": "settled-lands", "type": "door" }
+  }
+}

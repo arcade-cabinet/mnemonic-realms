@@ -1,0 +1,13 @@
+{
+  "id": "millbrook-fish",
+  "name": "River's Bounty",
+  "archetype": "fisherman-hut",
+  "parentAnchor": "millbrook",
+  "npcs": [
+    { "id": "lissa", "role": "shopkeeper", "placement": "center" }
+  ],
+  "objects": ["fish-barrels", "nets", "drying-racks"],
+  "transitions": {
+    "exit": { "to": "settled-lands", "type": "door" }
+  }
+}

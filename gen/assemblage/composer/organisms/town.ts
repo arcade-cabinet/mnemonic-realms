@@ -128,24 +128,79 @@ export function layoutTown(
   // --- 2. Place service buildings in a ring around center ---
   const allSlots = [...town.services];
   const totalBuildings = allSlots.length + town.houses;
+
+  // Ring radius must be large enough that the biggest building footprint
+  // doesn't overlap neighbors at the narrowest angular gap.
+  // Minimum: largest footprint diagonal + 2-tile gap between buildings.
+  const maxFootprint = 25; // weapon-shop/tavern at 25 tiles wide
+  const angularGap = (2 * Math.PI) / totalBuildings;
+  const minRadiusForSpacing = Math.ceil(
+    (maxFootprint + 4) / (2 * Math.sin(angularGap / 2)),
+  );
   const ringRadius = Math.max(
-    12,
-    Math.min(Math.floor(Math.min(bounds.width, bounds.height) / 2) - 8, 10 + totalBuildings * 2),
+    minRadiusForSpacing,
+    14,
+    Math.min(
+      Math.floor(Math.min(bounds.width, bounds.height) / 2) - 4,
+      10 + totalBuildings * 3,
+    ),
   );
 
   let interiorIndex = 0;
+
+  /** Check if a new building overlaps any existing building (with 2-tile gap) */
+  function wouldOverlap(
+    bx: number,
+    by: number,
+    fw: number,
+    fh: number,
+  ): boolean {
+    const gap = 2;
+    for (const existing of buildings) {
+      const ox = existing.position.x < bx + fw + gap &&
+        existing.position.x + existing.footprint.width + gap > bx;
+      const oy = existing.position.y < by + fh + gap &&
+        existing.position.y + existing.footprint.height + gap > by;
+      if (ox && oy) return true;
+    }
+    return false;
+  }
+
+  /** Place a building on the ring, retrying with jitter if overlap detected */
+  function placeOnRing(
+    baseAngle: number,
+    archetype: string,
+  ): { bx: number; by: number; footprint: { width: number; height: number } } {
+    const footprint = FOOTPRINTS[archetype] || FOOTPRINTS['house-small'];
+
+    for (let attempt = 0; attempt < 8; attempt++) {
+      const jitter = attempt === 0 ? 0 : rng.next() * 0.5 - 0.25;
+      const angle = baseAngle + jitter;
+      const r = ringRadius + rng.nextInt(-2, 2) + attempt;
+
+      const bx = cx + Math.round(Math.cos(angle) * r) - Math.floor(footprint.width / 2);
+      const by = cy + Math.round(Math.sin(angle) * r) - Math.floor(footprint.height / 2);
+
+      if (!wouldOverlap(bx, by, footprint.width, footprint.height)) {
+        return { bx, by, footprint };
+      }
+    }
+
+    // Fallback: push further out
+    const angle = baseAngle;
+    const r = ringRadius + totalBuildings * 2;
+    const bx = cx + Math.round(Math.cos(angle) * r) - Math.floor(footprint.width / 2);
+    const by = cy + Math.round(Math.sin(angle) * r) - Math.floor(footprint.height / 2);
+    return { bx, by, footprint };
+  }
 
   // Place services first (they get priority positions)
   for (let i = 0; i < allSlots.length; i++) {
     const service = allSlots[i];
     const archetype = SERVICE_ARCHETYPES[service.type] || 'house-small';
-    const footprint = FOOTPRINTS[archetype] || FOOTPRINTS['house-small'];
+    const baseAngle = (i / totalBuildings) * Math.PI * 2 + rng.next() * 0.2;
 
-    const angle = (i / totalBuildings) * Math.PI * 2 + rng.next() * 0.2;
-    const r = ringRadius + rng.nextInt(-2, 2);
-
-    const bx = cx + Math.round(Math.cos(angle) * r) - Math.floor(footprint.width / 2);
-    const by = cy + Math.round(Math.sin(angle) * r) - Math.floor(footprint.height / 2);
+    const { bx, by, footprint } = placeOnRing(baseAngle, archetype);
 
     // Door at bottom-center of building
     const doorX = bx + Math.floor(footprint.width / 2);
@@ -174,7 +229,7 @@ export function layoutTown(
       doorPositions.set(intId, { x: doorX, y: doorY });
     }
 
-    // NPC position near their building
+    // NPC position near their building — outside footprint, near door
     if (service.keeperNpc) {
       npcPositions.set(service.keeperNpc, { x: doorX + 1, y: doorY + 1 });
     }
@@ -184,13 +239,9 @@ export function layoutTown(
   for (let h = 0; h < town.houses; h++) {
     const slotIndex = allSlots.length + h;
     const archetype = rng.chance(0.3) ? 'house-medium' : 'house-small';
-    const footprint = FOOTPRINTS[archetype] || FOOTPRINTS['house-small'];
+    const baseAngle = (slotIndex / totalBuildings) * Math.PI * 2 + rng.next() * 0.2;
 
-    const angle = (slotIndex / totalBuildings) * Math.PI * 2 + rng.next() * 0.2;
-    const r = ringRadius + rng.nextInt(-2, 3);
-
-    const bx = cx + Math.round(Math.cos(angle) * r) - Math.floor(footprint.width / 2);
-    const by = cy + Math.round(Math.sin(angle) * r) - Math.floor(footprint.height / 2);
+    const { bx, by, footprint } = placeOnRing(baseAngle, archetype);
 
     const doorX = bx + Math.floor(footprint.width / 2);
     const doorY = by + footprint.height;

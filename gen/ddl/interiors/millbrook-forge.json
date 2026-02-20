@@ -1,0 +1,13 @@
+{
+  "id": "millbrook-forge",
+  "name": "The River Forge",
+  "archetype": "weapon-shop",
+  "parentAnchor": "millbrook",
+  "npcs": [
+    { "id": "dalla", "role": "shopkeeper", "placement": "center" }
+  ],
+  "objects": ["anvil", "forge", "weapon-racks"],
+  "transitions": {
+    "exit": { "to": "settled-lands", "type": "door" }
+  }
+}
