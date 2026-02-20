@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "scheme": "mnemonic-realms",
+    "web": { "output": "static" },
+    "plugins": ["expo-router"],
+    "name": "Mnemonic Realms",
+    "slug": "mnemonic-realms"
+  }
+}
+

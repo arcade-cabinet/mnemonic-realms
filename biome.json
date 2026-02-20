@@ -7,8 +7,17 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "includes": ["engine/**/*.ts", "engine/**/*.tsx", "app/**/*.ts", "app/**/*.tsx", "ui/**/*.ts", "ui/**/*.tsx", "gen/**/*.ts"],
-    "ignore": ["docs/rpgjs-archive/**"]
+    "includes": [
+      "engine/**/*.ts",
+      "engine/**/*.tsx",
+      "app/**/*.ts",
+      "app/**/*.tsx",
+      "ui/**/*.ts",
+      "ui/**/*.tsx",
+      "gen/**/*.ts",
+      "components/**/*.ts",
+      "components/**/*.tsx"
+    ]
   },
   "formatter": {
     "enabled": true,
