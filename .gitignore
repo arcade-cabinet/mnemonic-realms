@@ -48,6 +48,11 @@ assets/audio/sfx/
 # Claude local config
 .claude/
 
+# MCP index database (regenerated on server start)
+.mcp-index.db
+.mcp-index.db-wal
+.mcp-index.db-shm
+
 # Git worktrees
 .worktrees/
 

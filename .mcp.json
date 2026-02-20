@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "mnemonic-realms": {
+      "command": "npx",
+      "args": ["tsx", "gen/mcp/server.ts"],
+      "env": {}
+    }
+  }
+}
