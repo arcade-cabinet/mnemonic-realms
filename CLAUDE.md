@@ -94,6 +94,10 @@ ALL 20 existing maps are being **completely rebuilt** using premium 16x16 tilese
 
 5. **Every scene gets a Playwright E2E test.** Not just maps — scenes. Each test injects the required game state and validates the scene plays correctly.
 
+6. **NEVER hand-craft individual map compositions.** The DDL-driven region composer generates all maps from `gen/ddl/regions/*.json`. Do NOT create `gen/assemblage/maps/{mapId}.ts` files manually. The pipeline is: `DDL → region composer → RegionMap → MapCanvas → TMX`. If the automation pipeline has gaps, BUILD THE MISSING BRIDGE — do not bypass the system with manual work. The existing `gen/assemblage/maps/everwick.ts` and `gen/assemblage/maps/heartfield.ts` are legacy and will be replaced by the DDL pipeline.
+
+7. **Build automation, not artifacts.** When the next step requires manual repetition, STOP. Build the tool that automates it. One converter function > ten hand-crafted files. The whole point of the DDL system is that maps, events, and tests are GENERATED from data.
+
 ---
 
 ## Narrative-First Architecture

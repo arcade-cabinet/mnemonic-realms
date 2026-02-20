@@ -98,17 +98,53 @@ export const villagePremiumSpec: PaletteSpec = {
       colorName: 'Cherry Grass',
     },
 
-    // Water
-    water: { tilesetName: 'Tileset_Water', wangSetName: 'Water', colorName: 'Water' },
+    // Ground: biome fallback terrains (map to closest available Wang color)
+    'ground.mud': { tilesetName: 'Tileset_Ground', wangSetName: 'Grounds', colorName: 'Dirt' },
+    'ground.stone': { tilesetName: 'Tileset_Ground', wangSetName: 'Grounds', colorName: 'Dirt' },
+    'ground.dark-stone': {
+      tilesetName: 'Tileset_Ground',
+      wangSetName: 'Grounds',
+      colorName: 'Dark Grass',
+    },
+    'ground.snow': {
+      tilesetName: 'Tileset_Ground',
+      wangSetName: 'Grounds',
+      colorName: 'Winter Grass',
+    },
+    'ground.ice': {
+      tilesetName: 'Tileset_Ground',
+      wangSetName: 'Grounds',
+      colorName: 'Winter Grass',
+    },
+    'ground.snow-light': {
+      tilesetName: 'Tileset_Ground',
+      wangSetName: 'Grounds',
+      colorName: 'Light Grass',
+    },
 
-    // Roads
+    // Water — biomes reference 'water.shallow', 'water.deep'
+    water: { tilesetName: 'Tileset_Water', wangSetName: 'Water', colorName: 'Water' },
+    'water.shallow': { tilesetName: 'Tileset_Water', wangSetName: 'Water', colorName: 'Water' },
+    'water.deep': { tilesetName: 'Tileset_Water', wangSetName: 'Water', colorName: 'Water' },
+
+    // Roads — Wang set has 3 colors: Road (dirt/earth), Brick Road, Dark Brick Road
     road: { tilesetName: 'Tileset_Road', wangSetName: 'Road', colorName: 'Road' },
+    'road.dirt': { tilesetName: 'Tileset_Road', wangSetName: 'Road', colorName: 'Road' },
     'road.brick': { tilesetName: 'Tileset_Road', wangSetName: 'Road', colorName: 'Brick Road' },
     'road.dark-brick': {
       tilesetName: 'Tileset_Road',
       wangSetName: 'Road',
       colorName: 'Dark Brick Road',
     },
+    'road.stone': {
+      tilesetName: 'Tileset_Road',
+      wangSetName: 'Road',
+      colorName: 'Dark Brick Road',
+    },
+    // Biome fallback roads (map to closest available)
+    'road.faint': { tilesetName: 'Tileset_Road', wangSetName: 'Road', colorName: 'Road' },
+    'road.plank': { tilesetName: 'Tileset_Road', wangSetName: 'Road', colorName: 'Road' },
+    'road.sand': { tilesetName: 'Tileset_Road', wangSetName: 'Road', colorName: 'Road' },
 
     // Tall grass / vegetation
     tallgrass: {
@@ -161,8 +197,10 @@ export const villagePremiumSpec: PaletteSpec = {
       colorName: 'Rock Slope',
     },
 
-    // Beach/sand
+    // Beach/sand — biomes reference 'ground.sand', 'ground.light-sand', etc.
     sand: { tilesetName: 'Tileset_Sand', wangSetName: 'Beach', colorName: 'Sand' },
+    'ground.sand': { tilesetName: 'Tileset_Sand', wangSetName: 'Beach', colorName: 'Sand' },
+    'ground.light-sand': { tilesetName: 'Tileset_Sand', wangSetName: 'Beach', colorName: 'Sand' },
     sea: { tilesetName: 'Tileset_Sand', wangSetName: 'Beach', colorName: 'Sea' },
   },
 
@@ -239,6 +277,26 @@ export const villagePremiumSpec: PaletteSpec = {
     'bush.emerald-3': { tilesetName: 'Objects_Trees', localTileId: 16 },
     'bush.emerald-large': { tilesetName: 'Objects_Trees', localTileId: 52 },
 
+    // --- Rocks: Gray ---
+    'rock.gray-1': { tilesetName: 'Objects_Rocks', localTileId: 20 }, // 33x27
+    'rock.gray-2': { tilesetName: 'Objects_Rocks', localTileId: 21 }, // 15x29
+    'rock.gray-3': { tilesetName: 'Objects_Rocks', localTileId: 22 }, // 30x28
+    'rock.gray-4': { tilesetName: 'Objects_Rocks', localTileId: 23 }, // 27x27
+
+    // --- Rocks: Brown ---
+    'rock.brown-1': { tilesetName: 'Objects_Rocks', localTileId: 0 }, // 28x13
+    'rock.brown-2': { tilesetName: 'Objects_Rocks', localTileId: 1 }, // 15x29
+    'rock.brown-3': { tilesetName: 'Objects_Rocks', localTileId: 2 }, // 30x28
+
+    // --- Rocks: Moss ---
+    'rock.moss-1': { tilesetName: 'Objects_Rocks', localTileId: 9 }, // 38x27
+    'rock.moss-2': { tilesetName: 'Objects_Rocks', localTileId: 10 }, // 16x29
+
+    // --- Flowers ---
+    'flower.wild-1': { tilesetName: 'Objects_Props', localTileId: 427 }, // Crate flowers (closest)
+    'flower.garden-1': { tilesetName: 'Objects_Props', localTileId: 428 }, // Red flowers
+    'flower.lotus-1': { tilesetName: 'Objects_Props', localTileId: 974 }, // Blue lotus
+
     // --- Props ---
     'prop.bulletin-board-1': { tilesetName: 'Objects_Props', localTileId: 928 }, // 44x42
     'prop.bulletin-board-2': { tilesetName: 'Objects_Props', localTileId: 929 },
@@ -250,5 +308,8 @@ export const villagePremiumSpec: PaletteSpec = {
     'prop.crate-medium': { tilesetName: 'Objects_Props', localTileId: 420 },
     'prop.barrel-empty': { tilesetName: 'Objects_Props', localTileId: 306 },
     'prop.barrel-water': { tilesetName: 'Objects_Props', localTileId: 307 },
+
+    // --- Fences (scatter path dress) ---
+    'fence.wood-1': { tilesetName: 'Objects_Props', localTileId: 911 }, // board fence (closest)
   },
 };

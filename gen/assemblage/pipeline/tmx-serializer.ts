@@ -40,11 +40,16 @@ export function serializeToTmx(canvas: MapCanvas, palette: TilesetPalette, _mapI
     resolvedLayers.set(layerName, resolved);
   }
 
-  // Pre-resolve visual objects to track their tilesets
+  // Pre-resolve visual objects to track their tilesets (skip unknown objects)
   const resolvedVisuals: { gid: number; x: number; y: number; width: number; height: number }[] =
     [];
+  const skippedObjects = new Set<string>();
   for (const vis of canvas.visuals) {
-    const objDef = resolveObject(palette, vis.objectRef);
+    const objDef = palette.objects.get(vis.objectRef);
+    if (!objDef) {
+      skippedObjects.add(vis.objectRef);
+      continue;
+    }
     trackUsedTileset(objDef.gid, palette, usedTilesetIndices);
     resolvedVisuals.push({
       gid: objDef.gid,
@@ -54,6 +59,11 @@ export function serializeToTmx(canvas: MapCanvas, palette: TilesetPalette, _mapI
       width: objDef.width,
       height: objDef.height,
     });
+  }
+  if (skippedObjects.size > 0) {
+    console.warn(
+      `  TMX: skipped ${skippedObjects.size} unmapped objects: ${[...skippedObjects].join(', ')}`,
+    );
   }
 
   // Build TMX XML

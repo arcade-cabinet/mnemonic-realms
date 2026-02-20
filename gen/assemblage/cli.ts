@@ -12,6 +12,7 @@
  *   pnpm assemblage list                       # List available map compositions
  *   pnpm assemblage test [all|ddl|organisms|region|world]  # Run assemblage tests
  *   pnpm assemblage snapshot [regionId|all]    # Generate visual PNG snapshots
+ *   pnpm assemblage build-region [regionId|all] # DDL → region compose → TMX (the real pipeline)
  */
 
 import { execFileSync } from 'node:child_process';
@@ -67,6 +68,9 @@ async function main() {
       break;
     case 'snapshot':
       await runSnapshot(target);
+      break;
+    case 'build-region':
+      await runBuildRegion(target);
       break;
     default:
       printUsage();
@@ -565,6 +569,95 @@ async function runSnapshot(target: string) {
   console.log(`Generated ${regions.length} snapshot(s).`);
 }
 
+async function runBuildRegion(target: string) {
+  const { ArchetypeRegistry } = await import('./composer/archetypes.ts');
+  const { composeRegion } = await import('./composer/region-composer.ts');
+  const { loadWorldDDL } = await import('./composer/world-loader.ts');
+  const { regionToCanvas } = await import('./pipeline/region-renderer.ts');
+  const { saveSnapshot } = await import('./testing/visual-renderer.ts');
+
+  const ddlRoot = join(ROOT, 'gen', 'ddl');
+  const loaded = loadWorldDDL(ddlRoot);
+  const registry = new ArchetypeRegistry(ROOT);
+
+  const regions = target === 'all'
+    ? loaded.world.regions
+    : loaded.world.regions.filter((r) => r.id === target);
+
+  if (regions.length === 0) {
+    console.log(`Region '${target}' not found. Available: ${loaded.world.regions.map((r) => r.id).join(', ')}`);
+    return;
+  }
+
+  const seed = 42;
+
+  for (const region of regions) {
+    console.log(`\n=== Building region: ${region.id} ===`);
+    console.log(`Composing from DDL (${region.anchors.length} anchors)...`);
+
+    // Step 1: DDL → RegionMap (collision grid, placed anchors, paths, NPCs, doors)
+    const regionMap = await composeRegion(region, registry, { seed });
+    console.log(`  Composed: ${regionMap.width}x${regionMap.height} tiles`);
+    console.log(`  Anchors: ${regionMap.placedAnchors.length}`);
+    console.log(`  Paths: ${regionMap.routedPaths.length}`);
+    console.log(`  Doors: ${regionMap.doorTransitions.size}`);
+    console.log(`  NPCs: ${regionMap.npcPositions.size}`);
+
+    // Step 2: RegionMap → MapCanvas (semantic tiles on layers)
+    const canvas = regionToCanvas(regionMap);
+    console.log(`  Canvas: ${canvas.layerOrder.length} layers, ${canvas.visuals.length} visuals, ${canvas.objects.length} objects`);
+
+    // Step 3: MapCanvas → TMX (via palette)
+    try {
+      const palette = await loadPalette('village-premium');
+      const tmx = serializeToTmx(canvas, palette, region.id);
+      mkdirSync(TMX_OUT, { recursive: true });
+      writeFileSync(resolve(TMX_OUT, `${region.id}.tmx`), tmx, 'utf-8');
+      console.log(`  TMX: ${region.id}.tmx`);
+    } catch (err) {
+      console.log(`  TMX: SKIPPED — palette error: ${(err as Error).message}`);
+      console.log('  (TMX generation requires palette with tile GID mappings. Collision snapshots still generated.)');
+    }
+
+    // Step 4: Generate events file
+    const eventsCode = generateEventsFile(region.id, canvas, 16);
+    mkdirSync(EVENTS_OUT, { recursive: true });
+    writeFileSync(resolve(EVENTS_OUT, `${region.id}-events.ts`), eventsCode, 'utf-8');
+    console.log(`  Events: ${region.id}-events.ts`);
+
+    // Step 5: Generate map class
+    const mapClass = generateMapClass(region.id, 16);
+    mkdirSync(MAP_CLASS_OUT, { recursive: true });
+    writeFileSync(resolve(MAP_CLASS_OUT, `${region.id}.ts`), mapClass, 'utf-8');
+    console.log(`  Map class: ${region.id}.ts`);
+
+    // Step 6: Visual snapshot (always works — no palette needed)
+    const overlays = [
+      ...regionMap.placedAnchors.flatMap((a) =>
+        a.entryAnchors.map((p) => ({
+          position: p,
+          color: 'entry' as const,
+          size: 3,
+        })),
+      ),
+      ...Array.from(regionMap.doorTransitions.values()).map((p) => ({
+        position: p,
+        color: 'door' as const,
+        size: 2,
+      })),
+      ...Array.from(regionMap.npcPositions.values()).map((p) => ({
+        position: p,
+        color: 'npc' as const,
+      })),
+    ];
+
+    const snapshotPath = saveSnapshot(regionMap.collisionGrid, 'region', region.id, { overlays });
+    console.log(`  Snapshot: ${snapshotPath}`);
+  }
+
+  console.log(`\nBuilt ${regions.length} region(s) from DDL.`);
+}
+
 function printUsage() {
   console.log('Usage:');
   console.log(
@@ -579,6 +672,7 @@ function printUsage() {
   console.log('  pnpm assemblage test [all|ddl|organisms|region|world]');
   console.log('                                              Run assemblage system tests');
   console.log('  pnpm assemblage snapshot [regionId|all]     Generate visual PNG snapshots');
+  console.log('  pnpm assemblage build-region [regionId|all] DDL → compose → TMX + events (the real pipeline)');
 }
 
 // --- Helpers ---
