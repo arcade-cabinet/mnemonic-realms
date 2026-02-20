@@ -9,9 +9,9 @@
  */
 
 import Database from 'better-sqlite3';
-import * as sqliteVec from 'sqlite-vec';
 import * as fs from 'fs';
 import * as path from 'path';
+import * as sqliteVec from 'sqlite-vec';
 import { parse as parseYaml } from 'yaml';
 
 export interface IndexedDocument {
@@ -163,10 +163,7 @@ export class ContentIndexer {
     return { count, elapsed };
   }
 
-  private indexDirectory(
-    relDir: string,
-    typeClassifier: (relPath: string) => string,
-  ): number {
+  private indexDirectory(relDir: string, typeClassifier: (relPath: string) => string): number {
     const absDir = path.join(this.projectRoot, relDir);
     if (!fs.existsSync(absDir)) return 0;
 
@@ -199,7 +196,13 @@ export class ContentIndexer {
           insertSection.run(doc.id, section.heading, section.level, section.content);
         }
         for (const link of this.extractLinks(doc.id, doc.body, doc.path)) {
-          insertLink.run(link.source_id, link.target_path, link.target_anchor, link.link_text, link.context);
+          insertLink.run(
+            link.source_id,
+            link.target_path,
+            link.target_anchor,
+            link.link_text,
+            link.context,
+          );
         }
       }
     });
@@ -232,11 +235,13 @@ export class ContentIndexer {
       VALUES (?, ?, ?, ?, ?, ?)
     `);
 
-    const insertBatch = this.db.transaction((items: { id: string; path: string; title: string; data: string }[]) => {
-      for (const item of items) {
-        insertDoc.run(item.id, item.path, 'ddl', item.title, item.data, item.data);
-      }
-    });
+    const insertBatch = this.db.transaction(
+      (items: { id: string; path: string; title: string; data: string }[]) => {
+        for (const item of items) {
+          insertDoc.run(item.id, item.path, 'ddl', item.title, item.data, item.data);
+        }
+      },
+    );
 
     const batch: { id: string; path: string; title: string; data: string }[] = [];
     for (const absPath of files) {
@@ -263,7 +268,7 @@ export class ContentIndexer {
     if (frontmatter) {
       try {
         const result = parseYaml(frontmatter);
-        parsed = result && typeof result === 'object' ? result as Record<string, unknown> : null;
+        parsed = result && typeof result === 'object' ? (result as Record<string, unknown>) : null;
       } catch {
         // Some markdown files have YAML-incompatible frontmatter (e.g., markdown links)
         parsed = null;
@@ -278,7 +283,8 @@ export class ContentIndexer {
       path: relPath,
       type: type as IndexedDocument['type'],
       title,
-      frontmatter: parsed && typeof parsed === 'object' ? parsed as Record<string, unknown> : null,
+      frontmatter:
+        parsed && typeof parsed === 'object' ? (parsed as Record<string, unknown>) : null,
       body,
       sections,
       outgoing_links: [],
@@ -327,9 +333,9 @@ export class ContentIndexer {
   private extractLinks(sourceId: string, body: string, sourcePath: string): LinkEdge[] {
     const links: LinkEdge[] = [];
     const regex = /\[([^\]]+)\]\(([^)]+)\)/g;
-    let match: RegExpExecArray | null;
+    let match: RegExpExecArray | null = regex.exec(body);
 
-    while ((match = regex.exec(body)) !== null) {
+    while (match !== null) {
       const linkText = match[1];
       const href = match[2];
 
@@ -342,7 +348,9 @@ export class ContentIndexer {
 
       // Resolve relative path
       const sourceDir = path.dirname(sourcePath);
-      const resolvedPath = targetPath ? path.normalize(path.join(sourceDir, targetPath)) : sourcePath;
+      const resolvedPath = targetPath
+        ? path.normalize(path.join(sourceDir, targetPath))
+        : sourcePath;
 
       // Get surrounding context (40 chars each side)
       const contextStart = Math.max(0, match.index - 40);
@@ -356,6 +364,7 @@ export class ContentIndexer {
         link_text: linkText,
         context,
       });
+      match = regex.exec(body);
     }
 
     return links;
@@ -426,7 +435,9 @@ export class ContentIndexer {
   /**
    * Find all documents that link TO a given path or ID.
    */
-  findReferences(targetIdOrPath: string): { source_id: string; link_text: string; context: string }[] {
+  findReferences(
+    targetIdOrPath: string,
+  ): { source_id: string; link_text: string; context: string }[] {
     return this.db
       .prepare(
         `SELECT DISTINCT l.source_id, l.link_text, l.context
@@ -441,9 +452,7 @@ export class ContentIndexer {
    * Find outgoing links from a document.
    */
   findOutgoingLinks(sourceId: string): LinkEdge[] {
-    return this.db
-      .prepare('SELECT * FROM links WHERE source_id = ?')
-      .all(sourceId) as LinkEdge[];
+    return this.db.prepare('SELECT * FROM links WHERE source_id = ?').all(sourceId) as LinkEdge[];
   }
 
   /**
@@ -451,9 +460,10 @@ export class ContentIndexer {
    */
   getLinkGraph(): Map<string, string[]> {
     const graph = new Map<string, string[]>();
-    const rows = this.db
-      .prepare('SELECT source_id, target_path FROM links')
-      .all() as { source_id: string; target_path: string }[];
+    const rows = this.db.prepare('SELECT source_id, target_path FROM links').all() as {
+      source_id: string;
+      target_path: string;
+    }[];
 
     for (const row of rows) {
       const existing = graph.get(row.source_id) ?? [];
@@ -466,7 +476,12 @@ export class ContentIndexer {
   /**
    * Get index statistics.
    */
-  getStats(): { documents: number; sections: number; links: number; byType: Record<string, number> } {
+  getStats(): {
+    documents: number;
+    sections: number;
+    links: number;
+    byType: Record<string, number>;
+  } {
     const documents = (this.db.prepare('SELECT COUNT(*) as c FROM documents').get() as any).c;
     const sections = (this.db.prepare('SELECT COUNT(*) as c FROM sections').get() as any).c;
     const links = (this.db.prepare('SELECT COUNT(*) as c FROM links').get() as any).c;
@@ -488,7 +503,9 @@ export class ContentIndexer {
       .all() as { source_id: string; target_path: string; link_text: string }[];
 
     const allPaths = new Set(
-      (this.db.prepare('SELECT path FROM documents').all() as { path: string }[]).map((r) => r.path),
+      (this.db.prepare('SELECT path FROM documents').all() as { path: string }[]).map(
+        (r) => r.path,
+      ),
     );
 
     const broken: { source: string; target: string; text: string }[] = [];

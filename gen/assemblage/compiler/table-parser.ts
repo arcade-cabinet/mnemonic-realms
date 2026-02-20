@@ -11,9 +11,9 @@
  * Used by the markdown world compiler and assemblage parser.
  */
 
+import type { Heading, TableRow as MdastTableRow, Root, Table, TableCell, Text } from 'mdast';
 import { remark } from 'remark';
 import remarkGfm from 'remark-gfm';
-import type { Heading, Root, Table, TableCell, TableRow as MdastTableRow, Text } from 'mdast';
 import { parse as parseYaml } from 'yaml';
 
 // --- Parsed value types ---
@@ -103,9 +103,7 @@ export function parseTableUnderHeading(markdown: string, heading: string): Table
  */
 export function parseTables(markdown: string): TableRow[][] {
   const ast = parseAst(markdown);
-  return ast.children
-    .filter((n): n is Table => n.type === 'table')
-    .map(tableToRows);
+  return ast.children.filter((n): n is Table => n.type === 'table').map(tableToRows);
 }
 
 // --- Section extraction ---
@@ -196,9 +194,9 @@ export function parseLink(value: string): MarkdownLink | null {
 export function parseLinks(value: string): MarkdownLink[] {
   const links: MarkdownLink[] = [];
   const regex = /\[([^\]]+)\]\(([^)]+)\)/g;
-  let match: RegExpExecArray | null;
+  let match: RegExpExecArray | null = regex.exec(value);
 
-  while ((match = regex.exec(value)) !== null) {
+  while (match !== null) {
     const path = match[2];
     const anchorIdx = path.indexOf('#');
 
@@ -211,6 +209,7 @@ export function parseLinks(value: string): MarkdownLink[] {
     } else {
       links.push({ text: match[1], path });
     }
+    match = regex.exec(value);
   }
 
   return links;
