@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   directionsToIntent,
+  keyToAction,
   keyToDirection,
 } from '../../../engine/input.js';
 
@@ -73,3 +74,33 @@ describe('directionsToIntent', () => {
   });
 });
 
+describe('keyToAction', () => {
+  it('maps Space/Enter/Z to action', () => {
+    expect(keyToAction(' ')).toBe('action');
+    expect(keyToAction('Enter')).toBe('action');
+    expect(keyToAction('z')).toBe('action');
+    expect(keyToAction('Z')).toBe('action');
+  });
+
+  it('maps Escape/X/Backspace to cancel', () => {
+    expect(keyToAction('Escape')).toBe('cancel');
+    expect(keyToAction('x')).toBe('cancel');
+    expect(keyToAction('X')).toBe('cancel');
+    expect(keyToAction('Backspace')).toBe('cancel');
+  });
+
+  it('returns null for movement keys', () => {
+    expect(keyToAction('ArrowUp')).toBeNull();
+    expect(keyToAction('ArrowDown')).toBeNull();
+    expect(keyToAction('w')).toBeNull();
+    expect(keyToAction('a')).toBeNull();
+    expect(keyToAction('s')).toBeNull();
+    expect(keyToAction('d')).toBeNull();
+  });
+
+  it('returns null for unknown keys', () => {
+    expect(keyToAction('q')).toBeNull();
+    expect(keyToAction('Tab')).toBeNull();
+    expect(keyToAction('1')).toBeNull();
+  });
+});
