@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="60" height="60" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="23">
- <tileset firstgid="1" source="../../../assets/tilesets/exteriors/premium/Tiled/Tilesets/Objects_Buildings.tsx"/>
- <tileset firstgid="705" source="../../../assets/tilesets/exteriors/premium/Tiled/Tilesets/Objects_Props.tsx"/>
- <tileset firstgid="1403" source="../../../assets/tilesets/exteriors/premium/Tiled/Tilesets/Objects_Trees.tsx"/>
- <tileset firstgid="1481" source="../../../assets/tilesets/exteriors/premium/Tiled/Tilesets/Objects_Rocks.tsx"/>
- <tileset firstgid="1622" source="../../../assets/tilesets/exteriors/premium/Tiled/Tilesets/Objects_CityWalls.tsx"/>
- <tileset firstgid="1653" source="../../../assets/tilesets/exteriors/premium/Tiled/Tilesets/Atlas_Buildings_Bridges.tsx"/>
- <tileset firstgid="220038" source="../../../assets/tilesets/exteriors/premium/Tiled/Tilesets/Tileset_Ground.tsx"/>
- <tileset firstgid="224910" source="../../../assets/tilesets/exteriors/premium/Tiled/Tilesets/Tileset_Road.tsx"/>
+ <tileset firstgid="1" source="../../../../assets/tilesets/exteriors/premium/Tiled/Tilesets/Objects_Buildings.tsx"/>
+ <tileset firstgid="705" source="../../../../assets/tilesets/exteriors/premium/Tiled/Tilesets/Objects_Props.tsx"/>
+ <tileset firstgid="1403" source="../../../../assets/tilesets/exteriors/premium/Tiled/Tilesets/Objects_Trees.tsx"/>
+ <tileset firstgid="1481" source="../../../../assets/tilesets/exteriors/premium/Tiled/Tilesets/Objects_Rocks.tsx"/>
+ <tileset firstgid="1622" source="../../../../assets/tilesets/exteriors/premium/Tiled/Tilesets/Objects_CityWalls.tsx"/>
+ <tileset firstgid="1653" source="../../../../assets/tilesets/exteriors/premium/Tiled/Tilesets/Atlas_Buildings_Bridges.tsx"/>
+ <tileset firstgid="220038" source="../../../../assets/tilesets/exteriors/premium/Tiled/Tilesets/Tileset_Ground.tsx"/>
+ <tileset firstgid="224910" source="../../../../assets/tilesets/exteriors/premium/Tiled/Tilesets/Tileset_Road.tsx"/>
  <layer id="1" name="ground" width="60" height="60">
   <data encoding="csv">
 221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,220088,220088,220088,220088,220088,220088,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,221432,

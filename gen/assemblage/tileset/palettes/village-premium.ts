@@ -1,7 +1,7 @@
 import type { PaletteSpec } from '../palette-builder.ts';
 
 const TSX_BASE = 'assets/tilesets/exteriors/premium/Tiled/Tilesets';
-const TMX_TO_TSX = '../../../assets/tilesets/exteriors/premium/Tiled/Tilesets';
+const TMX_TO_TSX = '../../../../assets/tilesets/exteriors/premium/Tiled/Tilesets';
 
 /**
  * Village Premium palette.
