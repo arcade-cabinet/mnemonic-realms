@@ -7,7 +7,8 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "includes": ["main/**/*.ts", "gen/**/*.ts"]
+    "includes": ["engine/**/*.ts", "engine/**/*.tsx", "app/**/*.ts", "app/**/*.tsx", "ui/**/*.ts", "ui/**/*.tsx", "gen/**/*.ts"],
+    "ignore": ["docs/rpgjs-archive/**"]
   },
   "formatter": {
     "enabled": true,

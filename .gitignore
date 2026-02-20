@@ -73,7 +73,10 @@ android/local.properties
 
 # Screenshots (development artifacts)
 *.png
-!main/**/*.png
+!engine/**/*.png
+!app/**/*.png
+!ui/**/*.png
+!docs/rpgjs-archive/**/*.png
 !gen/**/*.png
 !assets/**/*.png
 !public/**/*.png
