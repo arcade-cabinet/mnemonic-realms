@@ -1,0 +1,108 @@
+{
+  "encounters": [
+    {
+      "id": "ENC-SL-01",
+      "name": "Meadow Sprites",
+      "region": "settled-lands",
+      "type": "random",
+      "enemies": [
+        { "enemyId": "E-SL-01", "count": 3, "position": "front" }
+      ],
+      "background": "bg-heartfield-meadow",
+      "music": "bgm-combat-settled",
+      "rewards": { "xp": 54, "gold": 24 },
+      "escapeAllowed": true
+    },
+    {
+      "id": "ENC-SL-02",
+      "name": "Serpent Ambush",
+      "region": "settled-lands",
+      "type": "ambush",
+      "enemies": [
+        { "enemyId": "E-SL-02", "count": 2, "position": "front" },
+        { "enemyId": "E-SL-01", "count": 1, "position": "back" }
+      ],
+      "background": "bg-heartfield-meadow",
+      "music": "bgm-combat-settled",
+      "rewards": { "xp": 68, "gold": 32 },
+      "escapeAllowed": true
+    },
+    {
+      "id": "ENC-SL-03",
+      "name": "Forest Patrol",
+      "region": "settled-lands",
+      "type": "random",
+      "enemies": [
+        { "enemyId": "E-SL-03", "count": 2, "position": "front" },
+        { "enemyId": "E-SL-04", "count": 1, "position": "front" }
+      ],
+      "background": "bg-ambergrove-canopy",
+      "music": "bgm-combat-settled",
+      "rewards": { "xp": 95, "gold": 43 },
+      "escapeAllowed": true
+    },
+    {
+      "id": "ENC-SL-04",
+      "name": "Riverside Skirmish",
+      "region": "settled-lands",
+      "type": "random",
+      "enemies": [
+        { "enemyId": "E-SL-05", "count": 2, "position": "front" },
+        { "enemyId": "E-SL-06", "count": 1, "position": "front" }
+      ],
+      "background": "bg-millbrook-river",
+      "music": "bgm-combat-settled",
+      "rewards": { "xp": 110, "gold": 50 },
+      "escapeAllowed": true
+    },
+    {
+      "id": "ENC-SL-05",
+      "name": "Highland Assault",
+      "region": "settled-lands",
+      "type": "random",
+      "enemies": [
+        { "enemyId": "E-SL-07", "count": 2, "position": "front" },
+        { "enemyId": "E-SL-08", "count": 1, "position": "back" }
+      ],
+      "background": "bg-sunridge-cliffs",
+      "music": "bgm-combat-settled",
+      "rewards": { "xp": 130, "gold": 58 },
+      "escapeAllowed": true
+    },
+    {
+      "id": "ENC-SL-06",
+      "name": "Beetle Swarm",
+      "region": "settled-lands",
+      "type": "random",
+      "enemies": [
+        { "enemyId": "E-SL-04", "count": 3, "position": "front" },
+        { "enemyId": "E-SL-03", "count": 1, "position": "back" }
+      ],
+      "background": "bg-ambergrove-canopy",
+      "music": "bgm-combat-settled",
+      "chain": { "next": "ENC-SL-03" },
+      "rewards": {
+        "xp": 140,
+        "gold": 60,
+        "items": [{ "itemId": "C-HP-01", "chance": 0.3 }]
+      },
+      "escapeAllowed": true
+    }
+  ],
+  "pools": [
+    {
+      "regionId": "settled-lands",
+      "encounters": [
+        "ENC-SL-01",
+        "ENC-SL-02",
+        "ENC-SL-03",
+        "ENC-SL-04",
+        "ENC-SL-05",
+        "ENC-SL-06"
+      ],
+      "stepsBetween": 200,
+      "levelRange": [1, 8]
+    }
+  ]
+}
+

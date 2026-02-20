@@ -1,0 +1,59 @@
+{
+  "encounters": [
+    {
+      "id": "ENC-BOSS-stagnation-guardian",
+      "name": "Stagnation Guardian",
+      "region": "settled-lands",
+      "type": "boss",
+      "enemies": [
+        { "enemyId": "E-SL-08", "count": 1, "position": "front" },
+        { "enemyId": "E-SL-06", "count": 2, "position": "front" }
+      ],
+      "background": "bg-stagnation-clearing",
+      "music": "bgm-combat-boss",
+      "rewards": {
+        "xp": 500,
+        "gold": 200,
+        "items": [{ "itemId": "C-BF-01", "chance": 1.0 }]
+      },
+      "escapeAllowed": false
+    },
+    {
+      "id": "ENC-BOSS-preserver-patrol",
+      "name": "Preserver Patrol",
+      "region": "settled-lands",
+      "type": "scripted",
+      "enemies": [
+        { "enemyId": "E-SL-07", "count": 2, "position": "front" },
+        { "enemyId": "E-SL-08", "count": 1, "position": "back" }
+      ],
+      "background": "bg-stagnation-clearing",
+      "music": "bgm-combat-boss",
+      "chain": { "next": "ENC-BOSS-stagnation-guardian", "condition": "MQ-04-active" },
+      "rewards": {
+        "xp": 300,
+        "gold": 120
+      },
+      "escapeAllowed": false
+    },
+    {
+      "id": "ENC-BOSS-windmill-shade",
+      "name": "Windmill Shade",
+      "region": "settled-lands",
+      "type": "boss",
+      "enemies": [
+        { "enemyId": "E-SL-02", "count": 2, "position": "front" },
+        { "enemyId": "E-SL-03", "count": 2, "position": "back" }
+      ],
+      "background": "bg-heartfield-windmill",
+      "music": "bgm-combat-boss",
+      "rewards": {
+        "xp": 250,
+        "gold": 100,
+        "items": [{ "itemId": "C-SC-01", "chance": 0.5 }]
+      },
+      "escapeAllowed": false
+    }
+  ]
+}
+

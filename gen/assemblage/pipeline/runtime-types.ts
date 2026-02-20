@@ -69,6 +69,56 @@ export interface RuntimeVibrancyArea {
   unlockQuest?: string;
 }
 
+// --- Encounter runtime types ---
+
+/** An enemy entry in a runtime encounter. */
+export interface RuntimeEncounterEnemy {
+  /** Enemy DDL ID (e.g., 'E-SL-01') */
+  enemyId: string;
+  /** Number of this enemy in the encounter */
+  count: number;
+  /** Position on the battle field */
+  position: string;
+}
+
+/** A single runtime encounter definition. */
+export interface RuntimeEncounter {
+  /** Encounter ID (e.g., 'ENC-SL-01') */
+  id: string;
+  /** Display name */
+  name: string;
+  /** Encounter type */
+  type: 'random' | 'boss' | 'scripted' | 'ambush';
+  /** Enemy composition */
+  enemies: RuntimeEncounterEnemy[];
+  /** Battle background image ref */
+  background?: string;
+  /** Battle BGM ref */
+  music?: string;
+  /** Next encounter in a chain (if any) */
+  chainNext?: string;
+  /** Rewards for winning */
+  rewards: {
+    xp: number;
+    gold: number;
+    items?: { itemId: string; chance: number }[];
+  };
+  /** Whether the player can flee */
+  escapeAllowed: boolean;
+}
+
+/** A pool of encounters for a region (random encounter table). */
+export interface RuntimeEncounterPool {
+  /** Region ID (e.g., 'settled-lands') */
+  regionId: string;
+  /** Encounter IDs in this pool */
+  encounters: string[];
+  /** Average steps between random encounters */
+  stepsBetween: number;
+  /** Level range [min, max] */
+  levelRange: [number, number];
+}
+
 // --- Main runtime map data ---
 
 /** Runtime map data consumed by the MnemonicEngine at load time. */
