@@ -1,0 +1,15 @@
+{
+  "id": "millbrook-forge",
+  "name": "The River Forge",
+  "templateId": "shop-single",
+  "parentAnchor": "millbrook",
+  "slotValues": {
+    "keeper": "dalla",
+    "shop-type": "weapons",
+    "archetype-override": "weapon-shop",
+    "theme": "waterpower"
+  },
+  "properties": {
+    "description": "The watermill drives the bellows, giving Dalla's forge a constant, rhythmic breath. She came from the mountains seeking a better way to work metal."
+  }
+}

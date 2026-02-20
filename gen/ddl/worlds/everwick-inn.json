@@ -1,0 +1,14 @@
+{
+  "id": "everwick-inn",
+  "name": "The Bright Hearth",
+  "templateId": "inn",
+  "parentAnchor": "everwick",
+  "slotValues": {
+    "innkeeper": "nyro",
+    "rooms": 4,
+    "style": "cozy"
+  },
+  "properties": {
+    "description": "Warm light spills from every window. Nyro keeps the hearth burning day and night, insisting that warmth is the first memory a weary traveler should carry."
+  }
+}

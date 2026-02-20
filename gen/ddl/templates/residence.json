@@ -1,0 +1,15 @@
+{
+  "id": "residence",
+  "category": "Residential",
+  "description": "Private home — one or two rooms, personal belongings, dialogue triggers",
+  "layout": {
+    "type": "single",
+    "archetype": "house-small",
+    "size": "small"
+  },
+  "slots": [
+    { "id": "resident", "name": "Resident", "type": "npc", "required": true },
+    { "id": "theme", "name": "Home Style", "type": "theme", "required": false, "default": "humble" }
+  ],
+  "defaults": {}
+}

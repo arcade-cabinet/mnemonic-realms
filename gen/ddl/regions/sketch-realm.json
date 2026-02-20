@@ -45,7 +45,7 @@
         "centralFeature": "solidification-zone"
       },
       "quests": ["MQ-14"],
-      "interiors": ["half-drawn-store"]
+      "worldSlots": [{ "instanceId": "half-drawn-store", "transitionType": "door" }]
     },
     {
       "id": "preserver-fortress",
@@ -58,7 +58,11 @@
         "theme": "crystal-fortress",
         "boss": "grym",
         "reward": "world-restoration",
-        "interiors": ["fortress-f1", "fortress-f2", "fortress-f3"]
+        "worldSlots": [
+          { "instanceId": "fortress-f1", "transitionType": "gate" },
+          { "instanceId": "fortress-f2", "transitionType": "gate" },
+          { "instanceId": "fortress-f3", "transitionType": "gate" }
+        ]
       },
       "quests": ["MQ-15", "MQ-16"]
     }

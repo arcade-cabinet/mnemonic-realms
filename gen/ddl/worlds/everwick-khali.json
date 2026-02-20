@@ -1,0 +1,14 @@
+{
+  "id": "everwick-khali",
+  "name": "Khali's Curios",
+  "templateId": "shop-single",
+  "parentAnchor": "everwick",
+  "slotValues": {
+    "keeper": "khali",
+    "shop-type": "general",
+    "theme": "curiosity"
+  },
+  "properties": {
+    "description": "A cluttered shop of oddities and practical goods. Khali knows the name and story behind every item on her shelves — and has opinions about most of them."
+  }
+}

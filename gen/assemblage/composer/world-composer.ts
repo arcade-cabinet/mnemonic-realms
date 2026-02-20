@@ -1,10 +1,10 @@
 /**
  * World Composer — Orchestrates Everything
  *
- * The world is the LARGEST compositional unit. The World Composer:
- * 1. Loads the split DDL (world.json + region JSONs + interior JSONs)
+ * Worlds all the way down. The World Composer:
+ * 1. Loads the split DDL (world.json + region JSONs + world instance JSONs)
  * 2. Composes each region as outdoor maps with towns embedded
- * 3. Generates interior maps from archetype TMX stamps
+ * 3. Resolves world instances from templates + slot config
  * 4. Wires up all transitions (building doors, dungeon entries, region gates)
  * 5. Produces the complete game world
  *
@@ -12,9 +12,9 @@
  *   World = composition of Regions
  *   Region = outdoor map with Town organisms + connective tissue
  *   Town = exterior building cluster organism (NOT a separate map)
- *   Interior = separate map from archetype TMX (building inside, dungeon floor)
- *   Dungeon = nested mini-world (floors = regions, rooms = anchors)
- *   Fortress = same as dungeon, different theme
+ *   WorldInstance = child world from template (shop, dungeon, fortress, etc.)
+ *     Each child world has its own regions (floors, rooms, wings)
+ *     Same algebra recursively
  *
  * Architecture level: WORLD (the outermost onion)
  */
@@ -22,7 +22,8 @@
 import type { ArchetypeRegistry } from './archetypes';
 import { composeRegion, type RegionExit, type RegionMap } from './region-composer';
 import type { RegionConnection, RegionDefinition } from './world-ddl';
-import { type InteriorFile, loadWorldDDL } from './world-loader';
+import type { WorldInstance, WorldTemplate } from './world-template';
+import { loadWorldDDL } from './world-loader';
 
 // --- Output types ---
 
@@ -35,31 +36,27 @@ export interface ComposedWorld {
   startAnchor: string;
   /** All composed region outdoor maps */
   regionMaps: Map<string, RegionMap>;
-  /** All interior maps (building insides, dungeon floors) */
-  interiorMaps: Map<string, ComposedInterior>;
+  /** All resolved world instances (shops, dungeons, etc.) */
+  worldInstances: Map<string, ComposedWorldInstance>;
   /** Region connections with resolved positions */
   connections: ResolvedConnection[];
 }
 
-export interface ComposedInterior {
-  /** Interior ID */
+export interface ComposedWorldInstance {
+  /** Instance ID */
   id: string;
   /** Display name */
   name: string;
-  /** Reference TMX archetype to stamp */
-  archetype: string;
-  /** Parent anchor (what outdoor location this belongs to) */
+  /** Template this was created from */
+  templateId: string;
+  /** Parent anchor (what outdoor location connects to this world) */
   parentAnchor: string;
-  /** Floor number (for dungeons) */
-  floor?: number;
-  /** Theme override */
-  theme?: string;
-  /** NPCs inside */
-  npcs: Array<{ id: string; role: string; placement: string }>;
-  /** Objects to place */
-  objects: string[];
-  /** Transition definitions */
-  transitions: Record<string, { to: string; type: string }>;
+  /** Slot values applied to the template */
+  slotValues: Record<string, unknown>;
+  /** Additional properties */
+  properties: Record<string, unknown>;
+  /** Resolved template (if available) */
+  template?: WorldTemplate;
 }
 
 export interface ResolvedConnection {
@@ -97,7 +94,7 @@ export async function composeWorld(
 ): Promise<ComposedWorld> {
   // --- 1. Load DDL ---
   const loaded = loadWorldDDL(ddlRoot);
-  const { world, interiors } = loaded;
+  const { world, worldInstances, templates } = loaded;
 
   // --- 2. Determine which regions to compose ---
   const regionsToCompose = options?.regions
@@ -119,11 +116,11 @@ export async function composeWorld(
     regionMaps.set(region.id, regionMap);
   }
 
-  // --- 5. Build interior maps ---
-  const interiorMaps = new Map<string, ComposedInterior>();
+  // --- 5. Build composed world instances ---
+  const composedInstances = new Map<string, ComposedWorldInstance>();
 
-  for (const [id, interior] of Array.from(interiors.entries())) {
-    interiorMaps.set(id, interiorFileToComposed(interior));
+  for (const [id, instance] of Array.from(worldInstances.entries())) {
+    composedInstances.set(id, worldInstanceToComposed(instance, templates));
   }
 
   // --- 6. Resolve connections ---
@@ -134,7 +131,7 @@ export async function composeWorld(
     startRegion: world.properties.startRegion,
     startAnchor: world.properties.startAnchor,
     regionMaps,
-    interiorMaps,
+    worldInstances: composedInstances,
     connections,
   };
 }
@@ -235,17 +232,18 @@ function resolveConnections(
   return resolved;
 }
 
-function interiorFileToComposed(interior: InteriorFile): ComposedInterior {
+function worldInstanceToComposed(
+  instance: WorldInstance,
+  templates: Map<string, WorldTemplate>,
+): ComposedWorldInstance {
   return {
-    id: interior.id,
-    name: interior.name,
-    archetype: interior.archetype,
-    parentAnchor: interior.parentAnchor,
-    floor: interior.floor,
-    theme: interior.theme,
-    npcs: interior.npcs ?? [],
-    objects: interior.objects ?? [],
-    transitions: interior.transitions ?? {},
+    id: instance.id,
+    name: instance.name,
+    templateId: instance.templateId,
+    parentAnchor: instance.parentAnchor,
+    slotValues: instance.slotValues,
+    properties: instance.properties ?? {},
+    template: templates.get(instance.templateId),
   };
 }
 

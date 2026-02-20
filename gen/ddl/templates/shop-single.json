@@ -1,0 +1,18 @@
+{
+  "id": "shop-single",
+  "category": "Commerce",
+  "description": "Single-room shop — one keeper, one inventory, one door",
+  "layout": {
+    "type": "single",
+    "archetype": "weapon-shop",
+    "size": "small"
+  },
+  "slots": [
+    { "id": "keeper", "name": "Shopkeeper", "type": "npc", "required": true },
+    { "id": "shop-type", "name": "Shop Type", "type": "inventory", "required": true,
+      "options": ["weapons", "armor", "general", "magic", "fish", "herbs", "tailor", "cartographer", "huntmaster"] },
+    { "id": "archetype-override", "name": "Archetype Override", "type": "theme", "required": false },
+    { "id": "theme", "name": "Decor Theme", "type": "theme", "required": false, "default": "standard" }
+  ],
+  "defaults": {}
+}

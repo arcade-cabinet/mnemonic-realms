@@ -1,0 +1,17 @@
+{
+  "id": "inn",
+  "category": "Hospitality",
+  "description": "Inn/tavern — ground floor (tavern) + optional upper floor (rooms)",
+  "layout": {
+    "type": "linear",
+    "archetype": "tavern",
+    "connectionType": "stairs",
+    "regionCount": { "min": 1, "max": 2 }
+  },
+  "slots": [
+    { "id": "innkeeper", "name": "Innkeeper", "type": "npc", "required": true },
+    { "id": "rooms", "name": "Room Count", "type": "count", "required": false, "default": 3 },
+    { "id": "style", "name": "Tavern Style", "type": "theme", "required": false, "default": "rustic" }
+  ],
+  "defaults": {}
+}

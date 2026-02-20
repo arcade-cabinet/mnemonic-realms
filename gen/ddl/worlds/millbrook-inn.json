@@ -1,0 +1,14 @@
+{
+  "id": "millbrook-inn",
+  "name": "The Millstone",
+  "templateId": "inn",
+  "parentAnchor": "millbrook",
+  "slotValues": {
+    "innkeeper": "oram",
+    "rooms": 3,
+    "style": "rustic"
+  },
+  "properties": {
+    "description": "Named for the ancient millstone set into the tavern wall. Oram collects river legends the way others collect coins — he'll trade one for a drink."
+  }
+}

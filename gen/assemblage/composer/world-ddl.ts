@@ -1,32 +1,39 @@
 /**
- * World DDL — Top-Down Compositional Hierarchy
+ * World DDL — Worlds All The Way Down
  *
  * The world is the LARGEST compositional unit. Not scenes, not acts —
  * the world. Everything decomposes downward from here.
  *
- * In Pokemon, you never "transition" between outdoor areas. The world
- * is one continuous composition. You only transition exterior ↔ interior
- * or into random encounters. That means:
+ * THE CORE INSIGHT: There is no such thing as "interiors" and "exteriors."
+ * There are only WORLDS. A shop is a world. A dungeon is a world. A fortress
+ * is a world. The outdoor game map is also a world.
+ *
+ * The fractal algebra:
  *
  *   WORLD
  *     └── REGIONS (biome zones — theme, weather, ambient, fills, encounters)
  *          ├── ANCHORS (towns, dungeons, special features — give region purpose)
+ *          │    └── WORLD SLOTS → child WorldInstances (shops, dungeons, etc.)
  *          ├── CONNECTIVE TISSUE (paths, wild areas, roadside stops between anchors)
  *          └── TIME BUDGET (play hours → map tiles → encounter count → step count)
  *               └── TOWNS (services + NPCs + quest triggers → composer generates layout)
- *                    └── INTERIORS (archetype + theme — THE ONLY REAL TRANSITIONS)
  *
- * The scene/act narrative model maps ONTO this structure:
- * - Acts correspond to region unlocks (Act 1 = Settled Lands, Act 2 = Frontier, etc.)
- * - Scenes correspond to quest progressions within regions
- * - But the COMPOSITION is geographic, not narrative
+ * When the player walks through a door, they transition from a region
+ * in the parent world to a region in the child world. Same algebra at
+ * every level — a dungeon is a world with floors as regions, a shop is
+ * a world with a single region, a market is a hub-and-spoke world.
+ *
+ * WorldTemplates define the SHAPE (layout, slots, connections).
+ * WorldInstances fill the slots with specifics (NPCs, inventory, theme).
+ * See world-template.ts for template and instance types.
  *
  * Working backwards from the world:
  * 1. World defines regions and their connections
  * 2. Each region defines anchors, connective tissue, and time budget
- * 3. The composer generates outdoor maps from region specs
- * 4. Towns generate from anchor specs
- * 5. Interiors stamp from reference TMX archetypes
+ * 3. Anchors have worldSlots connecting to child WorldInstances
+ * 4. The composer generates outdoor maps from region specs
+ * 5. Towns generate from anchor specs
+ * 6. Child worlds generate from templates + instance config
  */
 
 // ─────────────────────────────────────────────────────
@@ -125,6 +132,8 @@ export interface EncounterConfig {
 // ANCHOR — Things that give a region purpose
 // ─────────────────────────────────────────────────────
 
+import type { WorldSlot } from './world-template';
+
 export type AnchorType = 'town' | 'dungeon' | 'shrine' | 'fortress' | 'camp' | 'landmark' | 'gate';
 
 export interface AnchorDefinition {
@@ -153,9 +162,9 @@ export interface AnchorDefinition {
   /** Story events triggered at this anchor */
   events?: AnchorEvent[];
 
-  // --- Interiors ---
-  /** Interior map IDs accessible from this anchor (string refs in split DDL) */
-  interiors?: string[];
+  // --- World Slots (child worlds accessible from this anchor) ---
+  /** Child worlds connected to this anchor (shops, dungeons, etc.) */
+  worldSlots?: WorldSlot[];
 }
 
 // ─────────────────────────────────────────────────────
@@ -207,8 +216,11 @@ export interface TownService {
 }
 
 // ─────────────────────────────────────────────────────
-// DUNGEON — Self-contained interior complex
+// DUNGEON — Inline dungeon config (convenience for anchors)
 // ─────────────────────────────────────────────────────
+// NOTE: Dungeons are just WorldInstances of the "dungeon" template.
+// This inline config exists for backwards compatibility with region DDL.
+// The worldSlots on the parent anchor point to the actual WorldInstance.
 
 export interface DungeonDefinition {
   /** Number of floors */
@@ -219,25 +231,8 @@ export interface DungeonDefinition {
   boss?: string;
   /** Key item or unlock at the end */
   reward?: string;
-  /** Interior map IDs for each floor (string refs in split DDL) */
-  interiors?: string[];
-}
-
-// ─────────────────────────────────────────────────────
-// INTERIOR — The only real transitions
-// ─────────────────────────────────────────────────────
-
-export interface InteriorDefinition {
-  /** Interior map ID */
-  id: string;
-  /** Building archetype (from ArchetypeRegistry) */
-  archetype: string;
-  /** Custom name */
-  name?: string;
-  /** NPCs inside */
-  npcs?: AnchorNpc[];
-  /** Items/objects of interest */
-  objects?: string[];
+  /** World instance IDs for each floor */
+  worldSlots?: WorldSlot[];
 }
 
 // ─────────────────────────────────────────────────────

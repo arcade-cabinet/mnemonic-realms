@@ -2,22 +2,23 @@
  * DDL Integrity Validator — Zod Schemas + Referential Integrity
  *
  * Validates the split DDL files at two levels:
- * 1. Schema: Each JSON file matches its Zod schema (structural correctness)
- * 2. Referential: Every pointer (region ref, interior ref, anchor ref)
+ * 1. Schema: Each JSON file matches its expected shape (structural correctness)
+ * 2. Referential: Every pointer (region ref, world instance ref, anchor ref)
  *    resolves to an actual file/object (relational correctness)
  *
  * This catches the most common DDL errors:
  * - Typo in a region ID that doesn't match any file
- * - Interior ref that points to a non-existent JSON
- * - Anchor's parentAnchor that doesn't exist in any region
- * - Dungeon floor transitions that create dead ends
+ * - WorldSlot instanceId that points to a non-existent world instance
+ * - World instance's parentAnchor that doesn't exist in any region
+ * - World instance's templateId that doesn't match any template
+ * - Region connections that reference non-existent regions
  *
  * Architecture level: TESTING (DDL verification)
  */
 
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import type { InteriorFile } from '../composer/world-loader';
+import type { WorldInstance, WorldTemplate } from '../composer/world-template';
 
 // --- Result Types ---
 
@@ -69,11 +70,12 @@ interface RegionFileShape {
  * 1. world.json exists and has required fields
  * 2. Every region ref in world.json has a matching regions/{id}.json
  * 3. Every region JSON has required fields (id, name, biome, anchors)
- * 4. Every interior ref in anchors has a matching interiors/{id}.json
- * 5. Every interior JSON has required fields (id, name, archetype)
- * 6. Every interior's parentAnchor matches an anchor in some region
- * 7. Dungeon interior transitions point to existing interiors
+ * 4. Every worldSlot instanceId in anchors has a matching worlds/{id}.json
+ * 5. Every world instance has required fields (id, name, templateId, parentAnchor)
+ * 6. Every world instance's templateId matches a template in templates/
+ * 7. Every world instance's parentAnchor matches an anchor in some region
  * 8. Region connections reference existing region IDs
+ * 9. Every world instance file is referenced by some anchor's worldSlots
  */
 export function validateDDL(ddlRoot: string): DDLValidationReport {
   const checks: DDLCheck[] = [];
@@ -182,32 +184,32 @@ export function validateDDL(ddlRoot: string): DDLValidationReport {
     }
   }
 
-  // --- 3. Interior files ---
-  const interiorsDir = join(ddlRoot, 'interiors');
-  const interiorData = new Map<string, InteriorFile>();
+  // --- 3. World instance files ---
+  const worldsDir = join(ddlRoot, 'worlds');
+  const worldInstanceData = new Map<string, WorldInstance>();
 
-  let interiorFiles: string[] = [];
+  let worldFiles: string[] = [];
   try {
-    interiorFiles = readdirSync(interiorsDir).filter((f) =>
+    worldFiles = readdirSync(worldsDir).filter((f) =>
       f.endsWith('.json'),
     );
   } catch {
-    // interiors dir may not exist yet
+    // worlds dir may not exist yet
   }
 
-  for (const file of interiorFiles) {
+  for (const file of worldFiles) {
     try {
-      const data: InteriorFile = JSON.parse(
-        readFileSync(join(interiorsDir, file), 'utf-8'),
+      const data: WorldInstance = JSON.parse(
+        readFileSync(join(worldsDir, file), 'utf-8'),
       );
-      interiorData.set(data.id, data);
+      worldInstanceData.set(data.id, data);
 
       // Required fields
-      for (const field of ['id', 'name', 'archetype']) {
+      for (const field of ['id', 'name', 'templateId', 'parentAnchor']) {
         const has =
-          data[field as keyof InteriorFile] !== undefined;
+          data[field as keyof WorldInstance] !== undefined;
         checks.push({
-          description: `Interior ${data.id} has "${field}" field`,
+          description: `World instance ${data.id} has "${field}" field`,
           category: 'schema',
           passed: has,
           detail: has
@@ -225,98 +227,113 @@ export function validateDDL(ddlRoot: string): DDLValidationReport {
     }
   }
 
-  // --- 4. Interior refs in anchors resolve ---
+  // --- 4. Template files ---
+  const templatesDir = join(ddlRoot, 'templates');
+  const templateData = new Map<string, WorldTemplate>();
+
+  let templateFiles: string[] = [];
+  try {
+    templateFiles = readdirSync(templatesDir).filter((f) =>
+      f.endsWith('.json'),
+    );
+  } catch {
+    // templates dir may not exist yet
+  }
+
+  for (const file of templateFiles) {
+    try {
+      const data: WorldTemplate = JSON.parse(
+        readFileSync(join(templatesDir, file), 'utf-8'),
+      );
+      templateData.set(data.id, data);
+    } catch (e) {
+      checks.push({
+        description: `Template ${file} is valid JSON`,
+        category: 'schema',
+        passed: false,
+        detail: `Parse error: ${e instanceof Error ? e.message : String(e)}`,
+      });
+    }
+  }
+
+  // --- 5. WorldSlot refs in anchors resolve to world instances ---
   const allAnchorIds = new Set<string>();
 
   for (const [regionId, region] of Array.from(regionData.entries())) {
     const anchors = Array.isArray(region.anchors)
       ? (region.anchors as Array<{
           id?: string;
-          interiors?: string[];
-          dungeon?: { interiors?: string[] };
+          worldSlots?: Array<{ instanceId: string; transitionType: string }>;
+          dungeon?: { worldSlots?: Array<{ instanceId: string; transitionType: string }> };
         }>)
       : [];
 
     for (const anchor of anchors) {
       if (anchor.id) allAnchorIds.add(anchor.id);
 
-      // Direct interiors
-      if (Array.isArray(anchor.interiors)) {
-        for (const intId of anchor.interiors) {
-          const exists = interiorData.has(intId);
+      // Direct world slots
+      if (Array.isArray(anchor.worldSlots)) {
+        for (const slot of anchor.worldSlots) {
+          const exists = worldInstanceData.has(slot.instanceId);
           checks.push({
-            description: `Interior ref "${intId}" in ${regionId}/${anchor.id ?? '?'} exists`,
+            description: `World slot "${slot.instanceId}" in ${regionId}/${anchor.id ?? '?'} exists`,
             category: 'referential',
             passed: exists,
             detail: exists
               ? undefined
-              : `No interiors/${intId}.json found`,
+              : `No worlds/${slot.instanceId}.json found`,
           });
         }
       }
 
-      // Dungeon interiors
-      if (anchor.dungeon?.interiors) {
-        for (const intId of anchor.dungeon.interiors) {
-          const exists = interiorData.has(intId);
+      // Dungeon world slots
+      if (anchor.dungeon?.worldSlots) {
+        for (const slot of anchor.dungeon.worldSlots) {
+          const exists = worldInstanceData.has(slot.instanceId);
           checks.push({
-            description: `Dungeon interior ref "${intId}" in ${regionId}/${anchor.id ?? '?'} exists`,
+            description: `Dungeon world slot "${slot.instanceId}" in ${regionId}/${anchor.id ?? '?'} exists`,
             category: 'referential',
             passed: exists,
             detail: exists
               ? undefined
-              : `No interiors/${intId}.json found`,
+              : `No worlds/${slot.instanceId}.json found`,
           });
         }
       }
     }
   }
 
-  // --- 5. Interior parentAnchor refs resolve ---
-  for (const [intId, interior] of Array.from(interiorData.entries())) {
-    if (interior.parentAnchor) {
-      const exists = allAnchorIds.has(interior.parentAnchor);
+  // --- 6. World instance parentAnchor refs resolve ---
+  for (const [instId, instance] of Array.from(worldInstanceData.entries())) {
+    if (instance.parentAnchor) {
+      const exists = allAnchorIds.has(instance.parentAnchor);
       checks.push({
-        description: `Interior "${intId}" parentAnchor "${interior.parentAnchor}" exists`,
+        description: `World instance "${instId}" parentAnchor "${instance.parentAnchor}" exists`,
         category: 'referential',
         passed: exists,
         detail: exists
           ? undefined
-          : `No anchor with id "${interior.parentAnchor}" found in any region`,
+          : `No anchor with id "${instance.parentAnchor}" found in any region`,
       });
     }
   }
 
-  // --- 6. Interior transitions resolve ---
-  // Transitions can target:
-  //   - Other interiors (door between rooms, dungeon stairs)
-  //   - Region IDs (exit back to outdoor map)
-  //   - Anchor IDs (exit to a specific outdoor location)
-  for (const [intId, interior] of Array.from(interiorData.entries())) {
-    if (interior.transitions) {
-      for (const [direction, transition] of Object.entries(
-        interior.transitions,
-      )) {
-        if (transition.to) {
-          const isInterior = interiorData.has(transition.to);
-          const isRegion = regionIds.includes(transition.to);
-          const isAnchor = allAnchorIds.has(transition.to);
-          const targetExists = isInterior || isRegion || isAnchor;
-
-          checks.push({
-            description: `Interior "${intId}" transition ${direction} → "${transition.to}" resolves`,
-            category: 'referential',
-            passed: targetExists,
-            detail: targetExists
-              ? undefined
-              : `Transition target "${transition.to}" not found in interiors, regions, or anchors`,
-          });
-        }
-      }
+  // --- 7. World instance templateId refs resolve ---
+  for (const [instId, instance] of Array.from(worldInstanceData.entries())) {
+    if (instance.templateId) {
+      const exists = templateData.has(instance.templateId);
+      checks.push({
+        description: `World instance "${instId}" templateId "${instance.templateId}" resolves`,
+        category: 'referential',
+        passed: exists,
+        detail: exists
+          ? undefined
+          : `No templates/${instance.templateId}.json found`,
+      });
     }
   }
 
-  // --- 7. Region connections resolve ---
+  // --- 8. Region connections resolve ---
   if (Array.isArray(worldData.regionConnections)) {
     for (const conn of worldData.regionConnections as Array<{
       from?: string;
@@ -347,29 +364,39 @@ export function validateDDL(ddlRoot: string): DDLValidationReport {
     }
   }
 
-  // --- 8. Completeness: every interior file is referenced by some anchor ---
-  for (const intId of Array.from(interiorData.keys())) {
+  // --- 9. Completeness: every world instance file is referenced by some anchor ---
+  // A world instance is "referenced" if:
+  //   (a) Some anchor's worldSlots or dungeon.worldSlots points to it, OR
+  //   (b) Its parentAnchor matches an anchor ID (it's the anchor's own world, e.g., a dungeon)
+  for (const instId of Array.from(worldInstanceData.keys())) {
     let referenced = false;
+    const instance = worldInstanceData.get(instId)!;
+
+    // Check if parentAnchor links to a known anchor
+    if (instance.parentAnchor && allAnchorIds.has(instance.parentAnchor)) {
+      referenced = true;
+    }
+
     for (const region of Array.from(regionData.values())) {
       const anchors = Array.isArray(region.anchors)
         ? (region.anchors as Array<{
-            interiors?: string[];
-            dungeon?: { interiors?: string[] };
+            worldSlots?: Array<{ instanceId: string }>;
+            dungeon?: { worldSlots?: Array<{ instanceId: string }> };
           }>)
         : [];
       for (const anchor of anchors) {
-        if (anchor.interiors?.includes(intId)) referenced = true;
-        if (anchor.dungeon?.interiors?.includes(intId)) referenced = true;
+        if (anchor.worldSlots?.some((s) => s.instanceId === instId)) referenced = true;
+        if (anchor.dungeon?.worldSlots?.some((s) => s.instanceId === instId)) referenced = true;
       }
     }
 
     checks.push({
-      description: `Interior "${intId}" is referenced by at least one anchor`,
+      description: `World instance "${instId}" is referenced by at least one anchor`,
       category: 'completeness',
       passed: referenced,
       detail: referenced
         ? undefined
-        : `Orphan interior: ${intId} not referenced by any anchor`,
+        : `Orphan world instance: ${instId} not referenced by any anchor's worldSlots`,
     });
   }
 

@@ -4,13 +4,13 @@
  * Validates the split DDL files in gen/ddl/:
  * - world.json has required fields
  * - Every region ref resolves to a file
- * - Every interior ref resolves to a file
- * - Every parentAnchor matches a real anchor
- * - Every transition target exists
- * - No orphan interiors
+ * - Every worldSlot ref resolves to a world instance file
+ * - Every world instance's parentAnchor matches a real anchor
+ * - Every world instance's templateId matches a real template
+ * - No orphan world instances
  *
  * The "settled-lands" region (Act 1) must be fully complete.
- * Frontier and sketch-realm interiors are validated when present.
+ * Frontier and sketch-realm world instances are validated when present.
  */
 
 import { join } from 'node:path';
@@ -43,22 +43,22 @@ describe('DDL Integrity', () => {
     }
   });
 
-  it('settled-lands interiors all exist (Act 1 must be complete)', () => {
+  it('settled-lands world slots all exist (Act 1 must be complete)', () => {
     const report = validateDDL(DDL_ROOT);
-    const settledIntChecks = report.checks.filter(
+    const settledSlotChecks = report.checks.filter(
       (c) =>
-        (c.description.includes('Interior ref') ||
-          c.description.includes('Dungeon interior ref')) &&
+        (c.description.includes('World slot') ||
+          c.description.includes('Dungeon world slot')) &&
         c.description.includes('settled-lands/'),
     );
 
-    expect(settledIntChecks.length).toBeGreaterThan(0);
-    for (const check of settledIntChecks) {
+    expect(settledSlotChecks.length).toBeGreaterThan(0);
+    for (const check of settledSlotChecks) {
       expect(check.passed, check.detail ?? check.description).toBe(true);
     }
   });
 
-  it('reports missing frontier/sketch interiors as warnings', () => {
+  it('reports missing frontier/sketch world instances as warnings', () => {
     const report = validateDDL(DDL_ROOT);
 
     // These are expected to fail until Acts 2-3 are built.
@@ -72,12 +72,12 @@ describe('DDL Integrity', () => {
 
     if (futureChecks.length > 0) {
       console.log(
-        `[INFO] ${futureChecks.length} future-act interior refs not yet created (expected)`,
+        `[INFO] ${futureChecks.length} future-act world instance refs not yet created (expected)`,
       );
     }
   });
 
-  it('no orphan interiors', () => {
+  it('no orphan world instances', () => {
     const report = validateDDL(DDL_ROOT);
     const orphanChecks = report.checks.filter(
       (c) => c.category === 'completeness',
@@ -99,13 +99,13 @@ describe('DDL Integrity', () => {
     }
   });
 
-  it('all interior transitions resolve', () => {
+  it('all world instance templates resolve', () => {
     const report = validateDDL(DDL_ROOT);
-    const transChecks = report.checks.filter(
-      (c) => c.description.includes('transition'),
+    const templateChecks = report.checks.filter(
+      (c) => c.description.includes('templateId'),
     );
 
-    for (const check of transChecks) {
+    for (const check of templateChecks) {
       expect(check.passed, check.detail ?? check.description).toBe(true);
     }
   });

@@ -4,7 +4,7 @@
  * A region is the outdoor continuous space the player walks through.
  * Towns are NOT separate maps — they're building clusters (organisms)
  * embedded in the region's outdoor map. The only transitions happen
- * when the player walks through a building door into an interior.
+ * when the player walks through a building door into a child world.
  *
  * What the Region Composer produces:
  * 1. One or more outdoor maps sized by the region's time budget
@@ -12,7 +12,7 @@
  * 3. Connective tissue (paths, wild areas) between anchors
  * 4. Scatter fill on all empty space
  * 5. Edge treatment at map borders
- * 6. Transition points for building doors → interior maps
+ * 6. Transition points for building doors → child world instances
  * 7. NPC spawn positions
  * 8. Event trigger zones
  *
@@ -58,7 +58,7 @@ export interface RegionMap {
   fill: FillResult;
   /** Final collision grid */
   collisionGrid: CollisionGrid;
-  /** All door transitions (interior ID → position) */
+  /** All door transitions (world instance ID → position) */
   doorTransitions: Map<string, Point>;
   /** All NPC positions (NPC ID → position) */
   npcPositions: Map<string, Point>;
@@ -130,11 +130,11 @@ export async function composeRegion(
   for (const placed of placedAnchors) {
     if (placed.anchor.type === 'town' && placed.anchor.town) {
       // Town = exterior building cluster organism
-      const interiorIds = getInteriorIds(placed.anchor);
+      const worldSlotIds = getWorldSlotIds(placed.anchor);
       const townLayout = layoutTown(
         placed.bounds,
         placed.anchor.town,
-        interiorIds,
+        worldSlotIds,
         Math.floor(rng.next() * 100000),
       );
       placed.townLayout = townLayout;
@@ -419,17 +419,17 @@ function calculateMapSize(
 
 // --- Helpers ---
 
-function getInteriorIds(anchor: AnchorDefinition): string[] {
+function getWorldSlotIds(anchor: AnchorDefinition): string[] {
   const ids: string[] = [];
 
-  // Direct interiors on the anchor (building doors)
-  if (anchor.interiors) {
-    ids.push(...anchor.interiors);
+  // Direct world slots on the anchor (building doors → child worlds)
+  if (anchor.worldSlots) {
+    ids.push(...anchor.worldSlots.map((s) => s.instanceId));
   }
 
-  // Dungeon floor interiors
-  if (anchor.dungeon?.interiors) {
-    ids.push(...anchor.dungeon.interiors);
+  // Dungeon floor world slots
+  if (anchor.dungeon?.worldSlots) {
+    ids.push(...anchor.dungeon.worldSlots.map((s) => s.instanceId));
   }
 
   return ids;

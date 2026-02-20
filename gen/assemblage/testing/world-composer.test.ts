@@ -1,10 +1,10 @@
 /**
- * World Composer Tests — Region Connectivity + Interior Reachability
+ * World Composer Tests — Region Connectivity + World Instance Reachability
  *
  * The outermost layer of the fractal onion:
  * - All regions are connected per regionConnections
- * - Every interior is reachable from world start via region traversal + doors
- * - Dungeon floors are sequential
+ * - Every world instance is reachable from world start via region traversal + doors
+ * - World instances have valid templates
  * - Start region/anchor exists and is walkable
  *
  * Uses the real DDL files (gen/ddl/) for full integration verification.
@@ -30,6 +30,21 @@ describe('World Composer', { timeout: 30000 }, () => {
     expect(loaded.world.regions.length).toBeGreaterThan(0);
     expect(loaded.world.properties.startRegion).toBeDefined();
     expect(loaded.world.properties.startAnchor).toBeDefined();
+  });
+
+  it('loads world instances and templates', () => {
+    const loaded = loadWorldDDL(DDL_ROOT);
+
+    expect(loaded.worldInstances.size).toBeGreaterThan(0);
+    expect(loaded.templates.size).toBeGreaterThan(0);
+
+    // Every instance should have a valid templateId
+    for (const [id, instance] of Array.from(loaded.worldInstances.entries())) {
+      expect(
+        loaded.templates.has(instance.templateId),
+        `World instance ${id} references unknown template: ${instance.templateId}`,
+      ).toBe(true);
+    }
   });
 
   it('composes all regions', async () => {
@@ -65,12 +80,12 @@ describe('World Composer', { timeout: 30000 }, () => {
     ).toBeDefined();
   });
 
-  it('all interiors are loaded', async () => {
+  it('all world instances are loaded', async () => {
     const registry = new ArchetypeRegistry(PROJECT_ROOT);
     const world = await composeWorld(DDL_ROOT, registry, { seed: SEED });
 
     const loaded = loadWorldDDL(DDL_ROOT);
-    expect(world.interiorMaps.size).toBe(loaded.interiors.size);
+    expect(world.worldInstances.size).toBe(loaded.worldInstances.size);
   });
 
   it('region connections are resolved', async () => {
@@ -141,7 +156,7 @@ describe('World Composer', { timeout: 30000 }, () => {
     }
   });
 
-  it('settled-lands door transitions all reference known interiors', async () => {
+  it('settled-lands door transitions all reference known world instances', async () => {
     const registry = new ArchetypeRegistry(PROJECT_ROOT);
     const world = await composeWorld(DDL_ROOT, registry, {
       seed: SEED,
@@ -151,46 +166,34 @@ describe('World Composer', { timeout: 30000 }, () => {
     const regionMap = world.regionMaps.get('settled-lands');
     expect(regionMap).toBeDefined();
 
-    for (const intId of Array.from(regionMap!.doorTransitions.keys())) {
+    for (const instId of Array.from(regionMap!.doorTransitions.keys())) {
       expect(
-        world.interiorMaps.has(intId),
-        `settled-lands door → ${intId} not found in interiors`,
+        world.worldInstances.has(instId),
+        `settled-lands door → ${instId} not found in world instances`,
       ).toBe(true);
     }
   });
 
-  it('dungeon floor interiors have sequential transitions', async () => {
+  it('world instances have valid templates with slot values', async () => {
     const registry = new ArchetypeRegistry(PROJECT_ROOT);
     const world = await composeWorld(DDL_ROOT, registry, { seed: SEED });
 
-    // Find all dungeon interiors (they have floor numbers)
-    const dungeonInteriors = Array.from(world.interiorMaps.values()).filter(
-      (int) => int.floor !== undefined,
-    );
+    for (const [id, instance] of Array.from(world.worldInstances.entries())) {
+      expect(
+        instance.templateId,
+        `World instance ${id} has no templateId`,
+      ).toBeDefined();
 
-    for (const interior of dungeonInteriors) {
-      // If it has a "stairs-down" transition, the target should exist
-      if (interior.transitions['stairs-down']) {
-        const targetId = interior.transitions['stairs-down'].to;
-        expect(
-          world.interiorMaps.has(targetId),
-          `Dungeon ${interior.id} stairs-down → ${targetId} not found`,
-        ).toBe(true);
-      }
-
-      // If it has a "stairs-up" transition, the target should exist
-      if (interior.transitions['stairs-up']) {
-        const targetId = interior.transitions['stairs-up'].to;
-        // stairs-up might go to an exterior (not interior), so check both
-        const existsInInteriors = world.interiorMaps.has(targetId);
-        const existsAsAnchor = Array.from(world.regionMaps.values()).some(
-          (rm) => rm.placedAnchors.some((a) => a.anchor.id === targetId),
-        );
-
-        expect(
-          existsInInteriors || existsAsAnchor,
-          `Dungeon ${interior.id} stairs-up → ${targetId} not found anywhere`,
-        ).toBe(true);
+      // If template was resolved, check required slots
+      if (instance.template) {
+        for (const slot of instance.template.slots) {
+          if (slot.required) {
+            expect(
+              slot.id in instance.slotValues,
+              `World instance ${id} missing required slot "${slot.id}" from template "${instance.templateId}"`,
+            ).toBe(true);
+          }
+        }
       }
     }
   });

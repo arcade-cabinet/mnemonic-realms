@@ -45,7 +45,12 @@
         { "id": "EV-EW-001", "trigger": "auto", "quest": "MQ-01", "repeat": "once", "description": "Artun awakening dialogue" },
         { "id": "EV-EW-002", "trigger": "action", "quest": "MQ-02", "repeat": "once", "description": "Memorial Garden first visit" }
       ],
-      "interiors": ["everwick-khali", "everwick-hark", "everwick-inn", "everwick-artun"]
+      "worldSlots": [
+        { "instanceId": "everwick-khali", "transitionType": "door" },
+        { "instanceId": "everwick-hark", "transitionType": "door" },
+        { "instanceId": "everwick-inn", "transitionType": "door" },
+        { "instanceId": "everwick-artun", "transitionType": "door" }
+      ]
     },
     {
       "id": "heartfield",
@@ -126,7 +131,12 @@
         "walled": false
       },
       "quests": ["SQ-03", "SQ-04"],
-      "interiors": ["millbrook-provisions", "millbrook-forge", "millbrook-inn", "millbrook-fish"]
+      "worldSlots": [
+        { "instanceId": "millbrook-provisions", "transitionType": "door" },
+        { "instanceId": "millbrook-forge", "transitionType": "door" },
+        { "instanceId": "millbrook-inn", "transitionType": "door" },
+        { "instanceId": "millbrook-fish", "transitionType": "door" }
+      ]
     },
     {
       "id": "sunridge",
@@ -147,7 +157,7 @@
         "theme": "crystal",
         "boss": "memory-guardian",
         "reward": "echo-shard-1",
-        "interiors": ["depths-l1-f1"]
+        "worldSlots": [{ "instanceId": "depths-l1-f1", "transitionType": "stairs" }]
       },
       "quests": ["MQ-07"]
     }

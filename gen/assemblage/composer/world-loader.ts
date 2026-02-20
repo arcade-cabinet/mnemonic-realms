@@ -1,13 +1,14 @@
 /**
  * World DDL Loader — Assembles Split JSON Files
  *
- * The world DDL is split across multiple files for DRY:
+ * The world DDL is split across multiple files:
  *   gen/ddl/world.json           — Top-level (name, properties, region refs, connections)
  *   gen/ddl/regions/*.json       — One per region (biome, anchors, tissue, time budget)
- *   gen/ddl/interiors/*.json     — One per interior (archetype, NPCs, objects, transitions)
+ *   gen/ddl/worlds/*.json        — One per world instance (template + slot config)
+ *   gen/ddl/templates/*.json     — World templates (layout shape definitions)
  *
  * This loader reads world.json, resolves all region refs to full RegionDefinitions,
- * and resolves all interior refs to full InteriorDefinitions.
+ * and loads all world instances from the worlds/ directory.
  *
  * Architecture level: DDL I/O
  */
@@ -19,6 +20,7 @@ import type {
   RegionDefinition,
   WorldDefinition,
 } from './world-ddl';
+import type { WorldInstance, WorldSlot, WorldTemplate } from './world-template';
 
 // --- File-level types (match the JSON shape) ---
 
@@ -34,28 +36,15 @@ interface WorldFile {
   regionConnections: RegionConnection[];
 }
 
-/** Interior JSON with transition info */
-export interface InteriorFile {
-  id: string;
-  name: string;
-  archetype: string;
-  parentAnchor: string;
-  floor?: number;
-  theme?: string;
-  npcs?: Array<{ id: string; role: string; placement: string }>;
-  objects?: string[];
-  enemies?: string[];
-  boss?: string;
-  transitions?: Record<string, { to: string; type: string }>;
-}
-
 // --- Loaded world (fully resolved) ---
 
 export interface LoadedWorld {
   /** Fully resolved world definition */
   world: WorldDefinition;
-  /** All interior definitions keyed by ID */
-  interiors: Map<string, InteriorFile>;
+  /** All world instances keyed by ID */
+  worldInstances: Map<string, WorldInstance>;
+  /** All world templates keyed by ID */
+  templates: Map<string, WorldTemplate>;
 }
 
 /**
@@ -78,23 +67,39 @@ export function loadWorldDDL(ddlRoot: string): LoadedWorld {
     regions.push(regionData);
   }
 
-  // --- 3. Load all interior JSONs ---
-  const interiorsDir = join(ddlRoot, 'interiors');
-  const interiors = new Map<string, InteriorFile>();
+  // --- 3. Load all world instance JSONs ---
+  const worldsDir = join(ddlRoot, 'worlds');
+  const worldInstances = new Map<string, WorldInstance>();
 
-  let files: string[];
+  let worldFiles: string[];
   try {
-    files = readdirSync(interiorsDir).filter((f) => f.endsWith('.json'));
+    worldFiles = readdirSync(worldsDir).filter((f) => f.endsWith('.json'));
   } catch {
-    files = [];
+    worldFiles = [];
   }
 
-  for (const file of files) {
-    const interiorData: InteriorFile = JSON.parse(readFileSync(join(interiorsDir, file), 'utf-8'));
-    interiors.set(interiorData.id, interiorData);
+  for (const file of worldFiles) {
+    const instanceData: WorldInstance = JSON.parse(readFileSync(join(worldsDir, file), 'utf-8'));
+    worldInstances.set(instanceData.id, instanceData);
   }
 
-  // --- 4. Assemble WorldDefinition ---
+  // --- 4. Load all template JSONs ---
+  const templatesDir = join(ddlRoot, 'templates');
+  const templates = new Map<string, WorldTemplate>();
+
+  let templateFiles: string[];
+  try {
+    templateFiles = readdirSync(templatesDir).filter((f) => f.endsWith('.json'));
+  } catch {
+    templateFiles = [];
+  }
+
+  for (const file of templateFiles) {
+    const templateData: WorldTemplate = JSON.parse(readFileSync(join(templatesDir, file), 'utf-8'));
+    templates.set(templateData.id, templateData);
+  }
+
+  // --- 5. Assemble WorldDefinition ---
   const world: WorldDefinition = {
     name: worldFile.name,
     properties: worldFile.properties,
@@ -102,23 +107,23 @@ export function loadWorldDDL(ddlRoot: string): LoadedWorld {
     regionConnections: worldFile.regionConnections,
   };
 
-  return { world, interiors };
+  return { world, worldInstances, templates };
 }
 
 /**
- * Get all interior IDs referenced by an anchor.
+ * Get all world slot instance IDs referenced by an anchor.
  */
-export function getAnchorInteriorIds(anchor: AnchorDefinition): string[] {
+export function getAnchorWorldSlotIds(anchor: AnchorDefinition): string[] {
   const ids: string[] = [];
 
-  // Direct interiors on the anchor
-  if (Array.isArray(anchor.interiors)) {
-    ids.push(...anchor.interiors);
+  // Direct world slots on the anchor
+  if (Array.isArray(anchor.worldSlots)) {
+    ids.push(...anchor.worldSlots.map((s: WorldSlot) => s.instanceId));
   }
 
-  // Dungeon floors
-  if (anchor.dungeon?.interiors) {
-    ids.push(...anchor.dungeon.interiors);
+  // Dungeon floor world slots
+  if (anchor.dungeon?.worldSlots) {
+    ids.push(...anchor.dungeon.worldSlots.map((s: WorldSlot) => s.instanceId));
   }
 
   return ids;

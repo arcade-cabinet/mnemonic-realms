@@ -1,0 +1,19 @@
+{
+  "id": "dungeon",
+  "category": "Dungeon",
+  "description": "Linear dungeon — N floors connected by stairs, progressive difficulty",
+  "layout": {
+    "type": "linear",
+    "archetype": "dungeon-room",
+    "connectionType": "stairs",
+    "regionCount": { "min": 1, "max": 10 }
+  },
+  "slots": [
+    { "id": "floor-count", "name": "Number of Floors", "type": "count", "required": true },
+    { "id": "theme", "name": "Dungeon Theme", "type": "theme", "required": true,
+      "options": ["crystal", "water", "shadow", "fire", "void"] },
+    { "id": "boss", "name": "Boss Enemy", "type": "boss", "required": false },
+    { "id": "encounters", "name": "Encounter Set", "type": "enemy-set", "required": false }
+  ],
+  "defaults": {}
+}

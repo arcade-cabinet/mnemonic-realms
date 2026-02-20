@@ -1,0 +1,14 @@
+{
+  "id": "preserver-fortress",
+  "name": "Preserver Fortress",
+  "templateId": "fortress",
+  "parentAnchor": "preserver-fortress",
+  "slotValues": {
+    "theme": "preserver",
+    "boss": "sovereign",
+    "guards": ["fortress-sentinel", "memory-warden"]
+  },
+  "properties": {
+    "description": "An ancient stronghold where the Preservers hoarded memories they deemed too dangerous to remain in the living world."
+  }
+}

@@ -30,7 +30,10 @@
         "centralFeature": "boardwalk-crossing"
       },
       "quests": ["MQ-08"],
-      "interiors": ["shimmer-marsh-store", "shimmer-marsh-inn"]
+      "worldSlots": [
+        { "instanceId": "shimmer-marsh-store", "transitionType": "door" },
+        { "instanceId": "shimmer-marsh-inn", "transitionType": "door" }
+      ]
     },
     {
       "id": "hollow-ridge",
@@ -57,7 +60,11 @@
         "centralFeature": "luminos-grove"
       },
       "quests": ["MQ-10"],
-      "interiors": ["flickerveil-store", "flickerveil-inn", "flickerveil-library"]
+      "worldSlots": [
+        { "instanceId": "flickerveil-store", "transitionType": "door" },
+        { "instanceId": "flickerveil-inn", "transitionType": "door" },
+        { "instanceId": "flickerveil-library", "transitionType": "door" }
+      ]
     },
     {
       "id": "resonance-fields",
@@ -78,7 +85,12 @@
         "theme": "deep-crystal",
         "boss": "archive-keeper",
         "reward": "memory-key",
-        "interiors": ["depths-l2-f1", "depths-l3-f1", "depths-l4-f1", "depths-l5-f1"]
+        "worldSlots": [
+          { "instanceId": "depths-l2-f1", "transitionType": "stairs" },
+          { "instanceId": "depths-l3-f1", "transitionType": "stairs" },
+          { "instanceId": "depths-l4-f1", "transitionType": "stairs" },
+          { "instanceId": "depths-l5-f1", "transitionType": "stairs" }
+        ]
       }
     }
   ],

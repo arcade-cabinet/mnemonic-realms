@@ -1,17 +1,18 @@
 /**
  * Smart Compositional Map Generation — Public API
  *
- * World-first composition inspired by Pokemon/FF:
+ * Worlds all the way down — fractal composition:
  *
  *   WORLD (the whole game — one continuous outdoor composition)
  *     └── REGIONS (biome zones: theme, weather, fills, encounters, time budget)
  *          ├── TOWN ORGANISMS (building clusters embedded in outdoor map)
  *          ├── CONNECTIVE TISSUE (paths, wild areas between anchors)
- *          └── INTERIORS (the ONLY transitions — building doors, dungeon entries)
- *               └── DUNGEONS/FORTRESSES (nested mini-worlds: floors = regions)
+ *          └── WORLD SLOTS → child WorldInstances (shops, dungeons, etc.)
+ *               Each child world has its own regions (floors, rooms, wings)
+ *               Same algebra recursively
  *
  * Towns are exterior organisms, NOT separate maps.
- * Dungeons are nested worlds with their own floors-as-regions.
+ * Everything else (shops, dungeons, fortresses, markets) are child worlds.
  * Same compositional algebra all the way down.
  *
  * Usage:
@@ -86,7 +87,7 @@ export type {
 // TMX parser
 export { getLayerBounds, parseTmx, resolveGid, tmxSummary } from './tmx-parser';
 export type {
-  ComposedInterior,
+  ComposedWorldInstance,
   ComposedWorld,
   ResolvedConnection,
 } from './world-composer';
@@ -96,7 +97,6 @@ export type {
   AnchorDefinition,
   ConnectiveTissueRules,
   DungeonDefinition,
-  InteriorDefinition,
   RegionConnection,
   RegionDefinition,
   RegionMetrics,
@@ -105,6 +105,15 @@ export type {
 } from './world-ddl';
 // World DDL types
 export { calculateRegionMetrics } from './world-ddl';
-export type { InteriorFile, LoadedWorld } from './world-loader';
+export type { LoadedWorld } from './world-loader';
 // World DDL loader
-export { loadWorldDDL } from './world-loader';
+export { getAnchorWorldSlotIds, loadWorldDDL } from './world-loader';
+// World template types
+export type {
+  WorldTemplate,
+  WorldInstance,
+  WorldSlot,
+  TemplateLayout,
+  TemplateSlot,
+} from './world-template';
+export { getWorldTemplate, validateWorldInstance, WORLD_TEMPLATES } from './world-template';

@@ -1,0 +1,16 @@
+{
+  "id": "depths-l1-f1",
+  "name": "Memory Cellar — Floor 1",
+  "templateId": "dungeon",
+  "parentAnchor": "depths-l1",
+  "slotValues": {
+    "floor-count": 1,
+    "theme": "crystal",
+    "boss": "memory-guardian",
+    "encounters": ["E-DC-01", "E-DC-02"]
+  },
+  "properties": {
+    "description": "The first level of the Memory Cellar. Crystalline formations pulse with trapped memories, casting prismatic light across rough-hewn walls.",
+    "floor": 1
+  }
+}

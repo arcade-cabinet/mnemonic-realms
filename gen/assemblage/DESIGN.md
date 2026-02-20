@@ -5,46 +5,48 @@
 **The world is a fractal.** Every compositional level uses the same algebra:
 - A **container** holds **features** connected by **tissue**
 - Features can themselves be containers (nesting)
-- The only "real" boundaries are **transitions** (exterior ↔ interior)
+- The only "real" boundaries are **transitions** (world ↔ child world)
 
-Pokemon proved this in 1996. You walk from Route 1 into Viridian City — no transition. You walk into the Poke Mart — transition. Every town is the same building archetypes in different colors. Every route is the same grass/trees with different encounter tables.
+Pokemon proved this in 1996. You walk from Route 1 into Viridian City — no transition. You walk into the Poke Mart — transition into a child world. Every town is the same building archetypes in different colors. Every route is the same grass/trees with different encounter tables. And a dungeon? That's just another world inside the world — worlds all the way down.
 
 ## The Hierarchy
 
 ```
-WORLD (the whole game)
+WORLD (the whole game — or any child world)
  └── REGIONS (biome zones — outdoor continuous space)
       ├── TOWN ORGANISMS (building clusters ON the outdoor map)
-      │    └── BUILDING DOORS → INTERIORS (the only exterior transitions)
+      │    └── WORLD SLOTS → child WorldInstances (shops, inns, residences, etc.)
       ├── CONNECTIVE TISSUE (auto-generated paths, wild areas between towns)
-      ├── DUNGEON ENTRIES → DUNGEON WORLDS (nested mini-worlds)
+      ├── DUNGEON ENTRIES → child WorldInstances (template: dungeon)
       │    └── FLOORS (the dungeon's "regions")
       │         └── ROOMS (the floor's "anchors")
       │              └── CORRIDORS (the floor's "connective tissue")
-      └── FORTRESS ENTRIES → FORTRESS WORLDS (same pattern as dungeons)
+      └── FORTRESS ENTRIES → child WorldInstances (template: fortress)
            └── LEVELS (galleries, archives, throne rooms, boss arenas)
 ```
+
+The fractal recursion: **World -> Region -> Anchor -> WorldSlot -> child WorldInstance -> (its own regions, anchors, world slots...)**. A shop is a world. A dungeon is a world. A dungeon room that contains a hidden cellar? That cellar is a world too.
 
 ### Towns Are Exterior Organisms
 
 This is the critical insight: **towns are NOT separate maps.** A town is a cluster of buildings placed directly on the region's outdoor map. When you walk from the countryside into Everwick, there is no transition. You just walk past the signpost and between the buildings.
 
-The only transitions happen when you walk through a building door into an interior map (Khali's Curios, The Bright Hearth, Elder Artun's Home).
+The only transitions happen when you walk through a building door into a child world map (Khali's Curios, The Bright Hearth, Elder Artun's Home). Each of those is a WorldInstance that references a world template (shop-single, inn, residence).
 
-### Dungeons Are Nested Worlds
+### Dungeons Are Child Worlds
 
-A dungeon is its own fractal onion:
-- The dungeon = a mini-world
+A dungeon is a WorldInstance (template: `dungeon`) — its own fractal onion:
+- The dungeon = a child world
 - Floors = the dungeon's "regions"
 - Rooms = the floor's "anchors"
 - Corridors = the floor's "connective tissue"
 
-Same compositional algebra. Same DDL shape. Just nested inside the outer world.
+Same compositional algebra. Same DDL shape. Just a child world inside the parent world. And if a dungeon room has a hidden cellar, that cellar is yet another child world.
 
 ### Fortresses Are The Same Pattern
 
-A fortress (Preserver Fortress) uses the exact same nesting:
-- Fortress = mini-world with a different biome theme
+A fortress (Preserver Fortress) is a WorldInstance (template: `fortress`) using the exact same nesting:
+- Fortress = child world with a different biome theme
 - Levels = regions (Gallery, Archive, Throne Room, Boss Arena)
 - Rooms = anchors
 - Hallways = connective tissue
@@ -62,12 +64,19 @@ gen/ddl/
     settled-lands.json          ← Region: biome, anchors, connective tissue, time budget
     frontier.json
     sketch-realm.json
-  interiors/
-    everwick-khali.json         ← Interior: archetype, NPCs, objects, transitions
+  templates/
+    shop-single.json            ← World template: layout, slot definitions, archetype TMX
+    inn.json
+    residence.json
+    dungeon.json
+    fortress.json
+    market.json
+  worlds/
+    everwick-khali.json         ← World instance: template ref + slot config + NPCs + objects
     everwick-hark.json
     everwick-inn.json
     everwick-artun.json
-    depths-l1-f1.json           ← Dungeon floor (it's just an interior)
+    depths-l1-f1.json           ← Dungeon floor (it's just a child world)
     fortress-f1.json
     fortress-f2.json
     fortress-f3.json
@@ -77,10 +86,31 @@ gen/ddl/
 
 Files reference each other by string ID:
 - `world.json` → `"regions": ["settled-lands", "frontier", "sketch-realm"]`
-- `settled-lands.json` → anchor.interiors: `["everwick-khali", "everwick-hark", ...]`
-- `depths-l1` anchor → dungeon.interiors: `["depths-l1-f1"]`
+- `settled-lands.json` → anchor.worldSlots: `[{instanceId: "everwick-khali", transitionType: "door"}, ...]`
+- `depths-l1` anchor → dungeon.worldSlots: `[{instanceId: "depths-l1-f1", transitionType: "stairs-down"}]`
+- `everwick-khali.json` → `"template": "shop-single"` (references `templates/shop-single.json`)
 
 The **world-loader** resolves all IDs to full objects at read time. No data duplication.
+
+### World Templates
+
+Templates define the structural blueprint for a category of child world. They specify layout, slot positions, and the archetype TMX to stamp from. World instances reference a template and fill its slots with specific content.
+
+| Template | Archetype TMX | Use |
+|----------|--------------|-----|
+| `shop-single` | WeaponSeller_1.tmx / Butchery_1.tmx / etc. | Single-room shops (Khali's, Hark's, specialty stores) |
+| `inn` | Tavern_1.tmx | Inns and taverns (The Bright Hearth) |
+| `residence` | House_1.tmx / House_2.tmx | Homes (Elder Artun's, NPC houses) |
+| `dungeon` | (procedural) | Multi-floor dungeon worlds (Memory Depths) |
+| `fortress` | CastleRoom_1.tmx | Multi-level fortress worlds (Preserver Fortress) |
+| `market` | (multi-stamp) | Open-air markets with multiple vendor stalls |
+
+A world instance file (e.g., `worlds/everwick-khali.json`) contains:
+- `template`: which template to use (`"shop-single"`)
+- `templateVariant`: which archetype TMX to stamp (e.g., `"weapon-shop"`)
+- `npcs`: NPCs placed in this world
+- `objects`: interactable objects
+- `worldSlots`: optional nested child worlds (a shop with a back room, a dungeon room with a hidden cellar)
 
 ---
 
@@ -115,15 +145,16 @@ Same archetype shape. Different biome color. Each biome also defines:
 Entry point. Reads split DDL, orchestrates everything.
 
 ```
-Input:  gen/ddl/world.json + regions/*.json + interiors/*.json
-Output: Complete game world (all region maps + all interior maps + transitions)
+Input:  gen/ddl/world.json + regions/*.json + templates/*.json + worlds/*.json
+Output: Complete game world (all region maps + all child world maps + transitions)
 ```
 
-1. Load world DDL (world-loader resolves all refs)
+1. Load world DDL (world-loader resolves all refs, including template + instance resolution)
 2. For each region: call Region Composer
-3. Build interior maps from archetype TMX stamps
-4. Wire up all transitions (building doors, dungeon entries, region gates)
-5. Validate: all regions accessible per quest progression
+3. Build child world maps from template archetypes + instance slot configs
+4. Wire up all transitions (building doors, dungeon entries, region gates, nested world slots)
+5. Recurse: if any child world has its own worldSlots, compose those too
+6. Validate: all regions accessible per quest progression
 
 ### Region Composer (`region-composer.ts`)
 
@@ -168,7 +199,7 @@ The original composer — still works for individual map declarations. Used for 
 
 The professional TMX maps are our building blocks:
 
-### Interior Archetypes (11)
+### World Template Archetypes (11)
 
 | ID | Source TMX | Size | Use |
 |----|-----------|------|-----|
@@ -276,19 +307,21 @@ The composer uses this to size the region map and space out anchors.
 The entire game world — every outdoor map, every town layout, every road, every fill tile — generates from the split DDL:
 
 ```
-gen/ddl/world.json + regions/*.json + interiors/*.json
+gen/ddl/world.json + regions/*.json + templates/*.json + worlds/*.json
     ↓ World Composer
-Region Maps (outdoor, towns embedded) + Interior Maps (archetype-stamped)
+Region Maps (outdoor, towns embedded) + Child World Maps (template-stamped)
     ↓ TMX Serializer
 .tmx files + event .ts files + transition metadata
     ↓ RPG-JS
 Playable game
 ```
 
-**Adding a new town** = add an anchor to a region JSON + create interior JSONs for its buildings.
+**Adding a new town** = add an anchor to a region JSON + create world instance JSONs for its buildings (each referencing a template like `shop-single` or `inn`).
 
 **Changing a biome** = change one string. Every building recolors, every fill retiles.
 
-**Adding a dungeon** = add a dungeon anchor to a region + create interior JSONs for each floor.
+**Adding a dungeon** = add a dungeon anchor to a region + create a world instance JSON (template: `dungeon`) with worldSlots for each floor.
+
+**Nesting deeper** = give any world instance its own worldSlots. A dungeon room with a hidden cellar? Add a worldSlot to the room's instance. Worlds all the way down.
 
 No hand-placing tiles. No manual coordinates. Just intent.

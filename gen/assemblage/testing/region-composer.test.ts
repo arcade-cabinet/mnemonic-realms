@@ -3,7 +3,7 @@
  *
  * Verifies that composed regions have clean traversal:
  * - All anchors are connected by routed paths
- * - All door transitions point to valid interior IDs
+ * - All door transitions point to valid world instance IDs
  * - All NPC positions are on walkable tiles
  * - No isolated walkable zones
  * - Map dimensions match chronometer calculation
@@ -43,7 +43,7 @@ const MINI_REGION: RegionDefinition = {
           { type: 'weapon-shop', keeperNpc: 'shopkeeper-a' },
         ],
       },
-      interiors: ['shop-a'],
+      worldSlots: [{ instanceId: 'shop-a', transitionType: 'door' }],
     },
     {
       id: 'landmark-b',
@@ -64,7 +64,7 @@ const MINI_REGION: RegionDefinition = {
           { type: 'inn', keeperNpc: 'innkeeper-c' },
         ],
       },
-      interiors: ['inn-c'],
+      worldSlots: [{ instanceId: 'inn-c', transitionType: 'door' }],
     },
   ],
   timeBudget: {
@@ -221,20 +221,20 @@ describe('Region Composer', () => {
     }
   });
 
-  it('door transitions reference valid interior IDs', async () => {
+  it('door transitions reference valid world instance IDs', async () => {
     const registry = new ArchetypeRegistry(PROJECT_ROOT);
     const regionMap = await composeRegion(MINI_REGION, registry, {
       seed: SEED,
       mapSize: [80, 80],
     });
 
-    // All interior IDs from the definition should have door positions
+    // All world slot instance IDs from the definition should have door positions
     for (const anchor of MINI_REGION.anchors) {
-      if (anchor.interiors) {
-        for (const intId of anchor.interiors) {
+      if (anchor.worldSlots) {
+        for (const slot of anchor.worldSlots) {
           expect(
-            regionMap.doorTransitions.has(intId),
-            `Interior ${intId} should have a door transition`,
+            regionMap.doorTransitions.has(slot.instanceId),
+            `World instance ${slot.instanceId} should have a door transition`,
           ).toBe(true);
         }
       }
