@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 /**
  * Mnemonic Realms MCP Server
  *
@@ -24,11 +25,11 @@
  * Configure: .claude/mcps.json
  */
 
+import * as fs from 'node:fs';
+import * as path from 'node:path';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { z } from 'zod';
-import * as fs from 'fs';
-import * as path from 'path';
 import { ContentIndexer } from './indexer.js';
 
 const PROJECT_ROOT = path.resolve(import.meta.dirname, '../..');
@@ -56,9 +57,14 @@ server.tool(
   'search',
   'Full-text search across all game content (docs, DDL, assemblages). Returns BM25-ranked results with snippets.',
   {
-    query: z.string().describe('Search query (supports FTS5 syntax: AND, OR, NOT, "exact phrase", prefix*)'),
+    query: z
+      .string()
+      .describe('Search query (supports FTS5 syntax: AND, OR, NOT, "exact phrase", prefix*)'),
     limit: z.number().optional().default(20).describe('Maximum results to return'),
-    type: z.string().optional().describe('Filter by document type: location, region, assemblage, story, design, ddl'),
+    type: z
+      .string()
+      .optional()
+      .describe('Filter by document type: location, region, assemblage, story, design, ddl'),
   },
   async ({ query, limit, type }) => {
     let results = indexer.search(query, limit);
@@ -80,7 +86,9 @@ server.tool(
   'get_document',
   'Get a document by ID. Returns frontmatter (parsed YAML), body, and sections. Use for locations (everwick), regions (settled-lands), assemblages, story docs, DDL data.',
   {
-    id: z.string().describe('Document ID (e.g., "everwick", "settled-lands", "ddl:regions/settled-lands")'),
+    id: z
+      .string()
+      .describe('Document ID (e.g., "everwick", "settled-lands", "ddl:regions/settled-lands")'),
   },
   async ({ id }) => {
     const doc = indexer.getDocument(id);
@@ -122,7 +130,9 @@ server.tool(
   'Get a specific section from a document by heading name. Returns the full content under that heading.',
   {
     id: z.string().describe('Document ID'),
-    heading: z.string().describe('Section heading to extract (e.g., "Buildings", "NPCs", "Events")'),
+    heading: z
+      .string()
+      .describe('Section heading to extract (e.g., "Buildings", "NPCs", "Events")'),
   },
   async ({ id, heading }) => {
     const doc = indexer.getDocument(id);
@@ -130,9 +140,16 @@ server.tool(
       return { content: [{ type: 'text', text: `Document not found: ${id}` }], isError: true };
     }
 
-    const normalizedTarget = heading.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim();
+    const normalizedTarget = heading
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, '')
+      .trim();
     const section = doc.sections.find(
-      (s) => s.heading.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim() === normalizedTarget,
+      (s) =>
+        s.heading
+          .toLowerCase()
+          .replace(/[^a-z0-9\s]/g, '')
+          .trim() === normalizedTarget,
     );
 
     if (!section) {
@@ -165,7 +182,9 @@ server.tool(
       return { content: [{ type: 'text', text: `Document not found: ${id}` }], isError: true };
     }
 
-    const frontmatterStr = doc.frontmatter ? `---\n${JSON.stringify(doc.frontmatter, null, 2)}\n---\n\n` : '';
+    const frontmatterStr = doc.frontmatter
+      ? `---\n${JSON.stringify(doc.frontmatter, null, 2)}\n---\n\n`
+      : '';
     return {
       content: [{ type: 'text', text: frontmatterStr + doc.body }],
     };
@@ -190,7 +209,9 @@ server.tool(
   'find_references',
   'Find all documents that link TO a given document (reverse lookup). Answers: "what references this assemblage/NPC/location?"',
   {
-    target: z.string().describe('Target document ID or path fragment to search for in link targets'),
+    target: z
+      .string()
+      .describe('Target document ID or path fragment to search for in link targets'),
   },
   async ({ target }) => {
     const refs = indexer.findReferences(target);
@@ -198,9 +219,8 @@ server.tool(
       content: [
         {
           type: 'text',
-          text: refs.length > 0
-            ? JSON.stringify(refs, null, 2)
-            : `No references found for: ${target}`,
+          text:
+            refs.length > 0 ? JSON.stringify(refs, null, 2) : `No references found for: ${target}`,
         },
       ],
     };
