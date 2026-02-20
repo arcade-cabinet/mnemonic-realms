@@ -1,3 +1,5 @@
+export type { CameraViewProps } from './camera.js';
+export { CameraView } from './camera.js';
 export { getTileSourceRect, getVisibleTileRange, getVisibleTiles } from './culling.js';
 export { TileRenderer } from './tile-renderer.js';
 export type {

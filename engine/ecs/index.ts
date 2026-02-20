@@ -15,6 +15,7 @@ export {
   transitionQuery,
   triggerQuery,
 } from './queries.js';
+export { computeCameraPosition, lerpCamera } from './systems/camera.js';
 
 export {
   AiState,
