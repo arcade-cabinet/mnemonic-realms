@@ -1,9 +1,17 @@
 /**
  * Mnemonic Realms — Encounters Module
  *
- * Barrel exports for the combat engine.
+ * Barrel exports for the combat engine and chain executor.
  */
 
+export type { ChainPhase, ChainState, ChainStep, ChainStepType } from './chain.js';
+export {
+  advanceChain,
+  createChainFromEncounter,
+  createRandomEncounterCheck,
+  getCurrentStep,
+  isChainComplete,
+} from './chain.js';
 export {
   calculateDamage,
   calculateRewards,
