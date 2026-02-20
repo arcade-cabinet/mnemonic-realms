@@ -96,10 +96,17 @@ export function InventoryScreen({
       >
         {/* Header */}
         <View style={styles.header}>
-          <Text style={[styles.title, { color: colors.primary[400], fontSize: typography.fontSizes.xl }]}>
+          <Text
+            style={[
+              styles.title,
+              { color: colors.primary[400], fontSize: typography.fontSizes.xl },
+            ]}
+          >
             Inventory
           </Text>
-          <Text style={[styles.gold, { color: colors.accent.gold, fontSize: typography.fontSizes.md }]}>
+          <Text
+            style={[styles.gold, { color: colors.accent.gold, fontSize: typography.fontSizes.md }]}
+          >
             {inventory.gold} G
           </Text>
           <Pressable onPress={onClose} style={styles.closeBtn}>
@@ -108,16 +115,28 @@ export function InventoryScreen({
         </View>
 
         {/* Equipment Panel */}
-        <View style={[styles.equipPanel, { borderColor: colors.primary[700], borderRadius: radii.md }]}>
+        <View
+          style={[styles.equipPanel, { borderColor: colors.primary[700], borderRadius: radii.md }]}
+        >
           {(['weapon', 'armor', 'accessory'] as const).map((slot) => {
             const equippedId = inventory.equipment[slot];
             const equippedItem = equippedId ? items.get(equippedId) : undefined;
             return (
               <View key={slot} style={[styles.equipSlot, { borderColor: colors.background.light }]}>
-                <Text style={[styles.slotLabel, { color: colors.text.muted, fontSize: typography.fontSizes.xs }]}>
+                <Text
+                  style={[
+                    styles.slotLabel,
+                    { color: colors.text.muted, fontSize: typography.fontSizes.xs },
+                  ]}
+                >
                   {slot.toUpperCase()}
                 </Text>
-                <Text style={[styles.slotValue, { color: colors.text.primary, fontSize: typography.fontSizes.sm }]}>
+                <Text
+                  style={[
+                    styles.slotValue,
+                    { color: colors.text.primary, fontSize: typography.fontSizes.sm },
+                  ]}
+                >
                   {equippedItem?.name ?? '—'}
                 </Text>
               </View>
@@ -140,13 +159,18 @@ export function InventoryScreen({
                 style={[
                   styles.itemCell,
                   {
-                    backgroundColor: isSelected ? colors.background.light : colors.background.DEFAULT,
+                    backgroundColor: isSelected
+                      ? colors.background.light
+                      : colors.background.DEFAULT,
                     borderColor: isSelected ? colors.primary[500] : colors.background.light,
                     borderRadius: radii.sm,
                   },
                 ]}
               >
-                <Text style={{ color: colors.text.primary, fontSize: typography.fontSizes.sm }} numberOfLines={1}>
+                <Text
+                  style={{ color: colors.text.primary, fontSize: typography.fontSizes.sm }}
+                  numberOfLines={1}
+                >
                   {entry.item?.name ?? entry.itemId}
                 </Text>
                 <Text style={{ color: colors.text.muted, fontSize: typography.fontSizes.xs }}>
@@ -293,4 +317,3 @@ const styles = StyleSheet.create({
   actionRow: { flexDirection: 'row', gap: 8 },
   actionBtn: { alignItems: 'center' },
 });
-

@@ -10,14 +10,10 @@
 
 import { describe, expect, it } from 'vitest';
 import { SeededRNG } from '../composer/fill-engine';
-import {
-  type CollisionGrid,
-  createCollisionGrid,
-  markArea,
-} from '../composer/path-router';
-import type { TownDefinition, TownService } from '../composer/world-ddl';
-import { layoutHamlet, type HamletConfig } from '../composer/organisms/hamlet';
+import { type HamletConfig, layoutHamlet } from '../composer/organisms/hamlet';
 import { layoutTown } from '../composer/organisms/town';
+import { type CollisionGrid, createCollisionGrid, markArea } from '../composer/path-router';
+import type { TownDefinition, TownService } from '../composer/world-ddl';
 import { bfsFloodFill, verifyTraversal } from './traversal-verifier';
 import { renderASCII, saveSnapshot } from './visual-renderer';
 
@@ -80,9 +76,8 @@ function stampHamletOnGrid(
   const grid = createCollisionGrid(gridWidth, gridHeight);
 
   for (const house of hamlet.housePlacements) {
-    const size = house.archetype === 'house-medium'
-      ? { width: 8, height: 7 }
-      : { width: 6, height: 6 };
+    const size =
+      house.archetype === 'house-medium' ? { width: 8, height: 7 } : { width: 6, height: 6 };
     markArea(grid, house.position.x, house.position.y, size.width, size.height, 1);
   }
 
@@ -111,9 +106,7 @@ describe('Town Organism', () => {
     const layout = layoutTown(bounds, EVERWICK_TOWN, worldSlotIds, SEED);
 
     // 4 services + 3 houses = 7 buildings
-    expect(layout.buildings.length).toBe(
-      EVERWICK_TOWN.services.length + EVERWICK_TOWN.houses,
-    );
+    expect(layout.buildings.length).toBe(EVERWICK_TOWN.services.length + EVERWICK_TOWN.houses);
 
     // Service buildings have service info
     const serviceBuildings = layout.buildings.filter((b) => b.service);
@@ -173,10 +166,7 @@ describe('Town Organism', () => {
           a.position.y < b.position.y + b.footprint.height &&
           a.position.y + a.footprint.height > b.position.y;
 
-        expect(
-          overlapX && overlapY,
-          `Buildings ${i} and ${j} overlap`,
-        ).toBe(false);
+        expect(overlapX && overlapY, `Buildings ${i} and ${j} overlap`).toBe(false);
       }
     }
   });
@@ -185,9 +175,10 @@ describe('Town Organism', () => {
     const layout = layoutTown(bounds, EVERWICK_TOWN, worldSlotIds, SEED);
     const grid = stampTownOnGrid(layout, 120, 120);
 
-    const doorTargets = Array.from(layout.doorPositions.entries()).map(
-      ([id, pos]) => ({ id, position: pos }),
-    );
+    const doorTargets = Array.from(layout.doorPositions.entries()).map(([id, pos]) => ({
+      id,
+      position: pos,
+    }));
 
     const report = verifyTraversal(grid, layout.entryAnchors, doorTargets, {
       level: 'organism',
@@ -254,9 +245,7 @@ describe('Hamlet Organism', () => {
 
     expect(layout1.housePlacements.length).toBe(layout2.housePlacements.length);
     for (let i = 0; i < layout1.housePlacements.length; i++) {
-      expect(layout1.housePlacements[i].position).toEqual(
-        layout2.housePlacements[i].position,
-      );
+      expect(layout1.housePlacements[i].position).toEqual(layout2.housePlacements[i].position);
     }
   });
 
@@ -321,19 +310,15 @@ describe('Hamlet Organism', () => {
       for (let j = i + 1; j < layout.housePlacements.length; j++) {
         const a = layout.housePlacements[i];
         const b = layout.housePlacements[j];
-        const sizeA = a.archetype === 'house-medium'
-          ? { width: 8, height: 7 }
-          : { width: 6, height: 6 };
-        const sizeB = b.archetype === 'house-medium'
-          ? { width: 8, height: 7 }
-          : { width: 6, height: 6 };
+        const sizeA =
+          a.archetype === 'house-medium' ? { width: 8, height: 7 } : { width: 6, height: 6 };
+        const sizeB =
+          b.archetype === 'house-medium' ? { width: 8, height: 7 } : { width: 6, height: 6 };
 
         const overlapX =
-          a.position.x < b.position.x + sizeB.width &&
-          a.position.x + sizeA.width > b.position.x;
+          a.position.x < b.position.x + sizeB.width && a.position.x + sizeA.width > b.position.x;
         const overlapY =
-          a.position.y < b.position.y + sizeB.height &&
-          a.position.y + sizeA.height > b.position.y;
+          a.position.y < b.position.y + sizeB.height && a.position.y + sizeA.height > b.position.y;
 
         expect(overlapX && overlapY, `Houses ${i} and ${j} overlap`).toBe(false);
       }

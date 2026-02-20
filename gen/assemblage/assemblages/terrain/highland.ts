@@ -16,7 +16,7 @@
  * - 'outcrop': rocky formation with climbable/explorable areas
  * - 'threshold': transitional terrain — settled lands fading into frontier shimmer
  */
-import type { AssemblageDefinition, Anchor, AssemblageObject, VisualObject } from '../../types.ts';
+import type { Anchor, AssemblageDefinition, AssemblageObject, VisualObject } from '../../types.ts';
 
 type HighlandVariant = 'plateau' | 'rolling' | 'outcrop' | 'threshold';
 

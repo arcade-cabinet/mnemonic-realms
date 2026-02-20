@@ -13,8 +13,8 @@
  * Architecture level: ANCHOR (single map from region DDL)
  */
 
-import { createForestBorder } from '../assemblages/terrain/forest-border';
 import { createHouse } from '../assemblages/buildings/house';
+import { createForestBorder } from '../assemblages/terrain/forest-border';
 import type {
   AssemblageObject,
   EventHook,
@@ -164,9 +164,7 @@ const LAYERS = ['ground', 'ground2', 'road', 'objects', 'objects_upper'];
 export function composeAnchorMap(anchor: AnchorDefinition): MapComposition {
   const layout = (anchor as AnchorDefinition & { mapLayout?: MapLayout }).mapLayout;
   if (!layout) {
-    throw new Error(
-      `Anchor '${anchor.id}' has no mapLayout. Add mapLayout to the region DDL.`,
-    );
+    throw new Error(`Anchor '${anchor.id}' has no mapLayout. Add mapLayout to the region DDL.`);
   }
 
   const [mapW, mapH] = layout.mapSize;

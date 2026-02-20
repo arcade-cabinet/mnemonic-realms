@@ -49,17 +49,11 @@ export function validateStrategy(strategy: PlaythroughStrategy): string[] {
   }
   const validStyles: CombatStyle[] = ['aggressive', 'defensive', 'balanced'];
   if (!validStyles.includes(strategy.combatStyle)) {
-    errors.push(
-      `combatStyle must be one of: ${validStyles.join(', ')}`,
-    );
+    errors.push(`combatStyle must be one of: ${validStyles.join(', ')}`);
   }
-  if (
-    typeof strategy.maxTicksPerArea !== 'number' ||
-    strategy.maxTicksPerArea <= 0
-  ) {
+  if (typeof strategy.maxTicksPerArea !== 'number' || strategy.maxTicksPerArea <= 0) {
     errors.push('maxTicksPerArea must be a positive number');
   }
 
   return errors;
 }
-

@@ -87,8 +87,8 @@ export type {
 // TMX parser
 export { getLayerBounds, parseTmx, resolveGid, tmxSummary } from './tmx-parser';
 export type {
-  ComposedWorldInstance,
   ComposedWorld,
+  ComposedWorldInstance,
   ResolvedConnection,
 } from './world-composer';
 // World composer
@@ -110,10 +110,10 @@ export type { LoadedWorld } from './world-loader';
 export { getAnchorWorldSlotIds, loadWorldDDL } from './world-loader';
 // World template types
 export type {
-  WorldTemplate,
-  WorldInstance,
-  WorldSlot,
   TemplateLayout,
   TemplateSlot,
+  WorldInstance,
+  WorldSlot,
+  WorldTemplate,
 } from './world-template';
 export { getWorldTemplate, validateWorldInstance, WORLD_TEMPLATES } from './world-template';

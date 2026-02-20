@@ -5,8 +5,8 @@
  * matching the existing pipeline's expectations.
  */
 
-import { describe, expect, it } from 'vitest';
 import { resolve } from 'node:path';
+import { describe, expect, it } from 'vitest';
 import { compileWorld, validateCompilation } from '../compiler/world-markdown-compiler';
 
 const ROOT = resolve(import.meta.dirname, '../../..');

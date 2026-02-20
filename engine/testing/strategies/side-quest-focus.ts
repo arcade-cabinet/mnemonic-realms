@@ -16,4 +16,3 @@ export const sideQuestFocusStrategy: PlaythroughStrategy = {
   combatStyle: 'defensive',
   maxTicksPerArea: 400,
 };
-

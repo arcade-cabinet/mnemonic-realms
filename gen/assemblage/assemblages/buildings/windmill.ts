@@ -5,11 +5,7 @@
  * location in Heartfield (30, 8). The windmill is a visual building with
  * collision, a dirt hilltop, and optional objects (resonance stone, chest).
  */
-import type {
-  AssemblageDefinition,
-  AssemblageObject,
-  VisualObject,
-} from '../../types.ts';
+import type { AssemblageDefinition, AssemblageObject, VisualObject } from '../../types.ts';
 
 interface WindmillOptions {
   /** Unique assemblage ID */

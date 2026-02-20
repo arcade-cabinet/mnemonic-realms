@@ -11,7 +11,7 @@
  * Higher-elevation paths use cliff terrain, while lower foothills use a mix of
  * stone and sparse grass.
  */
-import type { AssemblageDefinition, Anchor, AssemblageObject, VisualObject } from '../../types.ts';
+import type { Anchor, AssemblageDefinition, AssemblageObject, VisualObject } from '../../types.ts';
 
 type PathStyle = 'switchback' | 'pass' | 'ridge' | 'ascent';
 
@@ -43,11 +43,7 @@ interface MountainPathOptions {
   };
 }
 
-const BOULDER_REFS = [
-  'prop.rock-large-1',
-  'prop.rock-medium-1',
-  'prop.rock-small-1',
-];
+const BOULDER_REFS = ['prop.rock-large-1', 'prop.rock-medium-1', 'prop.rock-small-1'];
 
 export function createMountainPath(opts: MountainPathOptions): AssemblageDefinition {
   const pw = opts.pathWidth ?? 2;
@@ -393,7 +389,7 @@ function buildAscentPath(
     // Elevation gradient: bottom = low, top = high
     const progress = 1 - y / height;
     const currentElevation: 'low' | 'high' =
-      elevation === 'high' ? (progress > 0.3 ? 'high' : 'low') : (progress > 0.7 ? 'high' : 'low');
+      elevation === 'high' ? (progress > 0.3 ? 'high' : 'low') : progress > 0.7 ? 'high' : 'low';
 
     for (let x = 0; x < width; x++) {
       if (x >= margin && x < margin + pw) {

@@ -19,21 +19,21 @@
 
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import {
-  parseFrontmatterFromMarkdown,
-  parseCoordinate,
-  parseLink,
-  type MarkdownLink,
-} from './table-parser';
 import type {
-  AssemblageDefinition,
-  TileStamp,
-  CollisionStamp,
-  VisualObject,
-  AssemblageObject,
   Anchor,
+  AssemblageDefinition,
+  AssemblageObject,
+  CollisionStamp,
   SemanticTile,
+  TileStamp,
+  VisualObject,
 } from '../types';
+import {
+  type MarkdownLink,
+  parseCoordinate,
+  parseFrontmatterFromMarkdown,
+  parseLink,
+} from './table-parser';
 
 // --- Public types ---
 
@@ -204,10 +204,7 @@ function quoteMarkdownLinks(markdown: string): string {
   const rest = trimmed.slice(endIdx + 3);
 
   // Quote any unquoted markdown link patterns: [text](path)
-  const fixed = frontmatter.replace(
-    /:\s+(\[[^\]]+\]\([^)]+\))/g,
-    ': "$1"',
-  );
+  const fixed = frontmatter.replace(/:\s+(\[[^\]]+\]\([^)]+\))/g, ': "$1"');
 
   return fixed + rest;
 }
@@ -291,7 +288,10 @@ function extractDescription(body: string): string {
  * with the same name. This prevents `### objects` (a layer name) from shadowing `## Objects`.
  */
 function extractLevel2Section(body: string, headingText: string): string | null {
-  const normalized = headingText.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim();
+  const normalized = headingText
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, '')
+    .trim();
   const lines = body.split('\n');
   let capturing = false;
   const captured: string[] = [];
@@ -300,7 +300,11 @@ function extractLevel2Section(body: string, headingText: string): string | null 
     const hMatch = line.match(/^(#{1,6})\s+(.+)$/);
     if (hMatch) {
       const level = hMatch[1].length;
-      const text = hMatch[2].trim().toLowerCase().replace(/[^a-z0-9\s]/g, '').trim();
+      const text = hMatch[2]
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9\s]/g, '')
+        .trim();
 
       if (level === 2 && text === normalized) {
         capturing = true;
@@ -607,9 +611,7 @@ function parseObjectLine(line: string): AssemblageObject | null {
 /**
  * Map a type string to a valid AssemblageObject type.
  */
-function mapObjectType(
-  typeStr: string,
-): 'npc' | 'chest' | 'transition' | 'trigger' | 'spawn' {
+function mapObjectType(typeStr: string): 'npc' | 'chest' | 'transition' | 'trigger' | 'spawn' {
   switch (typeStr) {
     case 'npc':
     case 'npc-anchor':
@@ -686,9 +688,7 @@ export function parseAnchorsSection(body: string): Anchor[] {
     const trimmed = line.trim();
     if (!trimmed.startsWith('-')) continue;
 
-    const match = trimmed.match(
-      /-\s+\*\*([^*]+)\*\*:\s+position\s+\((\d+)\s*,\s*(\d+)\)/i,
-    );
+    const match = trimmed.match(/-\s+\*\*([^*]+)\*\*:\s+position\s+\((\d+)\s*,\s*(\d+)\)/i);
     if (match) {
       anchors.push({
         name: match[1],

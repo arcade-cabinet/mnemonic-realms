@@ -80,23 +80,41 @@ export function regionToCanvas(regionMap: RegionMap): MapCanvas {
     // Town and hamlet building footprints get a dirt ground underneath
     if (placed.townLayout) {
       for (const building of placed.townLayout.buildings) {
-        stampRect(ground2Layer, width,
-          building.position.x, building.position.y,
-          building.footprint.width, building.footprint.height,
-          'terrain:ground.dirt');
+        stampRect(
+          ground2Layer,
+          width,
+          building.position.x,
+          building.position.y,
+          building.footprint.width,
+          building.footprint.height,
+          'terrain:ground.dirt',
+        );
       }
       // Central feature
       if (placed.townLayout.centralFeature) {
         const cf = placed.townLayout.centralFeature;
-        stampRect(ground2Layer, width, cf.position.x - 1, cf.position.y - 1, 3, 3, 'terrain:ground.dirt');
+        stampRect(
+          ground2Layer,
+          width,
+          cf.position.x - 1,
+          cf.position.y - 1,
+          3,
+          3,
+          'terrain:ground.dirt',
+        );
       }
     }
     if (placed.hamletLayout) {
       for (const house of placed.hamletLayout.housePlacements) {
-        stampRect(ground2Layer, width,
-          house.position.x, house.position.y,
-          8, 8, // hamlet building footprint
-          'terrain:ground.dirt');
+        stampRect(
+          ground2Layer,
+          width,
+          house.position.x,
+          house.position.y,
+          8,
+          8, // hamlet building footprint
+          'terrain:ground.dirt',
+        );
       }
     }
   }
@@ -164,8 +182,8 @@ export function regionToCanvas(regionMap: RegionMap): MapCanvas {
     forest: ['tree.emerald-3', 'tree.emerald-4', 'tree.emerald-2'],
     cliff: ['rock.gray-1', 'rock.gray-2', 'rock.brown-2'],
     water: [], // Water edges use terrain tiles, not objects
-    wall: [],  // Wall edges use terrain tiles, not objects
-    void: [],  // Sketch realm void edges — empty
+    wall: [], // Wall edges use terrain tiles, not objects
+    void: [], // Sketch realm void edges — empty
     none: [],
   };
   for (const edge of fill.edgeTiles) {
@@ -250,15 +268,7 @@ export function regionToCanvas(regionMap: RegionMap): MapCanvas {
     });
 
     // Dirt ground under the camp
-    stampRect(
-      ground2Layer,
-      width,
-      zone.position.x,
-      zone.position.y,
-      5,
-      5,
-      'terrain:ground.dirt',
-    );
+    stampRect(ground2Layer, width, zone.position.x, zone.position.y, 5, 5, 'terrain:ground.dirt');
   }
 
   // --- Objects: NPCs, doors, spawn ---

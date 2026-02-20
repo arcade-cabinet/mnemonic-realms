@@ -16,4 +16,3 @@ export const speedrunStrategy: PlaythroughStrategy = {
   combatStyle: 'aggressive',
   maxTicksPerArea: 200,
 };
-

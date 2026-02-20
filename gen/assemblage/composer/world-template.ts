@@ -80,11 +80,7 @@ export interface WorldTemplate {
   defaults: Record<string, unknown>;
 }
 
-export type TemplateLayout =
-  | LinearLayout
-  | HubAndSpokeLayout
-  | BranchingLayout
-  | SingleLayout;
+export type TemplateLayout = LinearLayout | HubAndSpokeLayout | BranchingLayout | SingleLayout;
 
 /** Single region (shops, residences, small spaces) */
 export interface SingleLayout {
@@ -210,8 +206,15 @@ export const WORLD_TEMPLATES: WorldTemplate[] = [
         type: 'inventory',
         required: true,
         options: [
-          'weapons', 'armor', 'general', 'magic', 'fish', 'herbs',
-          'tailor', 'cartographer', 'huntmaster',
+          'weapons',
+          'armor',
+          'general',
+          'magic',
+          'fish',
+          'herbs',
+          'tailor',
+          'cartographer',
+          'huntmaster',
         ],
       },
       { id: 'theme', name: 'Decor Theme', type: 'theme', required: false, default: 'standard' },
@@ -262,8 +265,13 @@ export const WORLD_TEMPLATES: WorldTemplate[] = [
     },
     slots: [
       { id: 'floor-count', name: 'Number of Floors', type: 'count', required: true },
-      { id: 'theme', name: 'Dungeon Theme', type: 'theme', required: true,
-        options: ['crystal', 'water', 'shadow', 'fire', 'void'] },
+      {
+        id: 'theme',
+        name: 'Dungeon Theme',
+        type: 'theme',
+        required: true,
+        options: ['crystal', 'water', 'shadow', 'fire', 'void'],
+      },
       { id: 'boss', name: 'Boss Enemy', type: 'boss', required: false },
       { id: 'encounters', name: 'Encounter Set', type: 'enemy-set', required: false },
     ],
@@ -316,8 +324,14 @@ export const WORLD_TEMPLATES: WorldTemplate[] = [
         type: 'feature',
         required: true,
         options: [
-          'armorer', 'herbalist', 'tailor', 'jeweler', 'bookshop',
-          'enchanter', 'alchemist', 'weaponsmith',
+          'armorer',
+          'herbalist',
+          'tailor',
+          'jeweler',
+          'bookshop',
+          'enchanter',
+          'alchemist',
+          'weaponsmith',
         ],
       },
     ],
@@ -336,10 +350,7 @@ export function getWorldTemplate(id: string): WorldTemplate | undefined {
  * Validate a world instance against its template.
  * Returns an array of validation errors (empty = valid).
  */
-export function validateWorldInstance(
-  instance: WorldInstance,
-  template: WorldTemplate,
-): string[] {
+export function validateWorldInstance(instance: WorldInstance, template: WorldTemplate): string[] {
   const errors: string[] = [];
 
   // Check all required slots are filled
@@ -349,10 +360,7 @@ export function validateWorldInstance(
     }
 
     // Check options constraint
-    if (
-      slot.options &&
-      slot.id in instance.slotValues
-    ) {
+    if (slot.options && slot.id in instance.slotValues) {
       const value = instance.slotValues[slot.id];
       if (typeof value === 'string' && !slot.options.includes(value)) {
         errors.push(
@@ -367,14 +375,10 @@ export function validateWorldInstance(
     const count = instance.slotValues['floor-count'] ?? instance.slotValues['region-count'];
     if (typeof count === 'number') {
       if (count < template.layout.regionCount.min) {
-        errors.push(
-          `Region count ${count} below minimum ${template.layout.regionCount.min}`,
-        );
+        errors.push(`Region count ${count} below minimum ${template.layout.regionCount.min}`);
       }
       if (count > template.layout.regionCount.max) {
-        errors.push(
-          `Region count ${count} above maximum ${template.layout.regionCount.max}`,
-        );
+        errors.push(`Region count ${count} above maximum ${template.layout.regionCount.max}`);
       }
     }
   }

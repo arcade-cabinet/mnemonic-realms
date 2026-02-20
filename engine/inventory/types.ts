@@ -59,4 +59,3 @@ export interface InventoryState {
   /** Player's gold balance. */
   readonly gold: number;
 }
-

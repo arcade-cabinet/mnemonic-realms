@@ -71,11 +71,7 @@ export interface RenderOptions {
  * Minimal implementation — just enough for snapshot output.
  * No compression library needed: uses uncompressed DEFLATE blocks.
  */
-function encodePNG(
-  width: number,
-  height: number,
-  pixels: Uint8Array,
-): Uint8Array {
+function encodePNG(width: number, height: number, pixels: Uint8Array): Uint8Array {
   // PNG structure: signature + IHDR + IDAT(s) + IEND
 
   // --- IHDR ---
@@ -95,10 +91,7 @@ function encodePNG(
   const rawData = new Uint8Array(rowLen * height);
   for (let y = 0; y < height; y++) {
     rawData[y * rowLen] = 0; // filter: None
-    rawData.set(
-      pixels.subarray(y * width * 4, (y + 1) * width * 4),
-      y * rowLen + 1,
-    );
+    rawData.set(pixels.subarray(y * width * 4, (y + 1) * width * 4), y * rowLen + 1);
   }
 
   // DEFLATE: use uncompressed blocks (store)
@@ -121,8 +114,7 @@ function encodePNG(
     makeChunk('IEND', new Uint8Array(0)),
   ];
 
-  const totalLen =
-    signature.length + chunks.reduce((sum, c) => sum + c.length, 0);
+  const totalLen = signature.length + chunks.reduce((sum, c) => sum + c.length, 0);
   const png = new Uint8Array(totalLen);
   let offset = 0;
   png.set(signature, offset);
@@ -335,10 +327,7 @@ export function writeSnapshot(
 /**
  * Render a collision grid to a PNG buffer (for test assertions).
  */
-export function renderToPNG(
-  grid: CollisionGrid,
-  options?: RenderOptions,
-): Uint8Array {
+export function renderToPNG(grid: CollisionGrid, options?: RenderOptions): Uint8Array {
   const { width, height, pixels } = renderGrid(grid, options);
   return encodePNG(width, height, pixels);
 }

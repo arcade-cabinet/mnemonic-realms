@@ -21,11 +21,7 @@ export function createInventory(): InventoryState {
 // ── Item Management ─────────────────────────────────────────────────────────
 
 /** Add `count` of an item (default 1). Returns new state. */
-export function addItem(
-  state: InventoryState,
-  itemId: string,
-  count = 1,
-): InventoryState {
+export function addItem(state: InventoryState, itemId: string, count = 1): InventoryState {
   const items = new Map(state.items);
   const current = items.get(itemId) ?? 0;
   items.set(itemId, current + count);
@@ -33,11 +29,7 @@ export function addItem(
 }
 
 /** Remove `count` of an item (default 1). Removes entry at 0. Returns new state. */
-export function removeItem(
-  state: InventoryState,
-  itemId: string,
-  count = 1,
-): InventoryState {
+export function removeItem(state: InventoryState, itemId: string, count = 1): InventoryState {
   const items = new Map(state.items);
   const current = items.get(itemId) ?? 0;
   const next = current - count;
@@ -50,11 +42,7 @@ export function removeItem(
 }
 
 /** Check if inventory has at least `count` of an item (default 1). */
-export function hasItem(
-  state: InventoryState,
-  itemId: string,
-  count = 1,
-): boolean {
+export function hasItem(state: InventoryState, itemId: string, count = 1): boolean {
   return (state.items.get(itemId) ?? 0) >= count;
 }
 
@@ -95,10 +83,7 @@ export function equipItem(
  * - Adds equipped item back to inventory
  * - Clears the slot
  */
-export function unequipItem(
-  state: InventoryState,
-  slot: keyof EquipmentSlots,
-): InventoryState {
+export function unequipItem(state: InventoryState, slot: keyof EquipmentSlots): InventoryState {
   const equipped = state.equipment[slot];
   if (!equipped) return state;
 
@@ -108,10 +93,6 @@ export function unequipItem(
 }
 
 /** Get the item ID currently in a slot, or null. */
-export function getEquippedItem(
-  state: InventoryState,
-  slot: keyof EquipmentSlots,
-): string | null {
+export function getEquippedItem(state: InventoryState, slot: keyof EquipmentSlots): string | null {
   return state.equipment[slot];
 }
-

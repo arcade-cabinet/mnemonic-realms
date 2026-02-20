@@ -135,32 +135,24 @@ export function layoutTown(
   // Minimum: largest footprint diagonal + 2-tile gap between buildings.
   const maxFootprint = 8; // weapon-shop/tavern at 8 tiles wide (outdoor footprint)
   const angularGap = (2 * Math.PI) / totalBuildings;
-  const minRadiusForSpacing = Math.ceil(
-    (maxFootprint + 4) / (2 * Math.sin(angularGap / 2)),
-  );
+  const minRadiusForSpacing = Math.ceil((maxFootprint + 4) / (2 * Math.sin(angularGap / 2)));
   const ringRadius = Math.max(
     minRadiusForSpacing,
     14,
-    Math.min(
-      Math.floor(Math.min(bounds.width, bounds.height) / 2) - 4,
-      10 + totalBuildings * 3,
-    ),
+    Math.min(Math.floor(Math.min(bounds.width, bounds.height) / 2) - 4, 10 + totalBuildings * 3),
   );
 
   let slotIndex = 0;
 
   /** Check if a new building overlaps any existing building (with 2-tile gap) */
-  function wouldOverlap(
-    bx: number,
-    by: number,
-    fw: number,
-    fh: number,
-  ): boolean {
+  function wouldOverlap(bx: number, by: number, fw: number, fh: number): boolean {
     const gap = 2;
     for (const existing of buildings) {
-      const ox = existing.position.x < bx + fw + gap &&
+      const ox =
+        existing.position.x < bx + fw + gap &&
         existing.position.x + existing.footprint.width + gap > bx;
-      const oy = existing.position.y < by + fh + gap &&
+      const oy =
+        existing.position.y < by + fh + gap &&
         existing.position.y + existing.footprint.height + gap > by;
       if (ox && oy) return true;
     }

@@ -9,7 +9,7 @@
  * Rivers are impassable (collision) except at bridge points, which are defined
  * as gaps in the collision and left open for bridge assemblages to overlay.
  */
-import type { AssemblageDefinition, Anchor, AssemblageObject, VisualObject } from '../../types.ts';
+import type { Anchor, AssemblageDefinition, AssemblageObject, VisualObject } from '../../types.ts';
 
 type RiverVariant = 'straight' | 'bend' | 'fork' | 'waterfall';
 type Orientation = 'north-south' | 'east-west';
@@ -107,10 +107,7 @@ function buildStraightRiver(
           }
         }
         collisionData.push(blocked ? 1 : 0);
-      } else if (
-        crossAxis >= channelStart - 1 &&
-        crossAxis < channelEnd + 1
-      ) {
+      } else if (crossAxis >= channelStart - 1 && crossAxis < channelEnd + 1) {
         // Sandy bank immediately adjacent
         groundTiles.push('terrain:ground.sand');
         waterTiles.push(0);
@@ -168,11 +165,7 @@ function buildStraightRiver(
   };
 }
 
-function buildBendRiver(
-  opts: RiverOptions,
-  cw: number,
-  bw: number,
-): AssemblageDefinition {
+function buildBendRiver(opts: RiverOptions, cw: number, bw: number): AssemblageDefinition {
   const bendDir = opts.bendDirection ?? 'se';
   const size = opts.length + bw * 2;
 
@@ -181,8 +174,12 @@ function buildBendRiver(
   const collisionData: (0 | 1)[] = [];
 
   // The bend center determines where the 90-degree turn happens
-  const bendCx = bendDir.includes('e') ? size - bw - Math.floor(cw / 2) - 1 : bw + Math.floor(cw / 2);
-  const bendCy = bendDir.includes('s') ? size - bw - Math.floor(cw / 2) - 1 : bw + Math.floor(cw / 2);
+  const bendCx = bendDir.includes('e')
+    ? size - bw - Math.floor(cw / 2) - 1
+    : bw + Math.floor(cw / 2);
+  const bendCy = bendDir.includes('s')
+    ? size - bw - Math.floor(cw / 2) - 1
+    : bw + Math.floor(cw / 2);
   const halfCw = Math.floor(cw / 2);
 
   for (let y = 0; y < size; y++) {
@@ -224,10 +221,7 @@ function buildBendRiver(
 
       // Bank detection — within 1 tile of channel
       if (!inChannel) {
-        const dx = Math.min(
-          Math.abs(x - (verticalX - halfCw)),
-          Math.abs(x - (verticalX + halfCw)),
-        );
+        const dx = Math.min(Math.abs(x - (verticalX - halfCw)), Math.abs(x - (verticalX + halfCw)));
         const dy = Math.min(
           Math.abs(y - (horizontalY - halfCw)),
           Math.abs(y - (horizontalY + halfCw)),
@@ -326,9 +320,8 @@ function buildForkRiver(
 
         // Fork tributary branches off after the fork point
         if (y >= forkY) {
-          const tributaryCenter = forkDir === 'right'
-            ? mainChannelCenter + cw + bw
-            : mainChannelCenter - cw - bw;
+          const tributaryCenter =
+            forkDir === 'right' ? mainChannelCenter + cw + bw : mainChannelCenter - cw - bw;
           const tributaryHalf = Math.floor((cw - 1) / 2);
 
           // Diagonal transition from main to tributary
@@ -396,9 +389,8 @@ function buildForkRiver(
   ];
 
   if (isVertical) {
-    const tributaryCenter = forkDir === 'right'
-      ? mainChannelCenter + cw + bw
-      : mainChannelCenter - cw - bw;
+    const tributaryCenter =
+      forkDir === 'right' ? mainChannelCenter + cw + bw : mainChannelCenter - cw - bw;
     anchors.push({
       name: 'downstream-tributary',
       x: tributaryCenter,
@@ -420,11 +412,7 @@ function buildForkRiver(
   };
 }
 
-function buildWaterfallRiver(
-  opts: RiverOptions,
-  cw: number,
-  bw: number,
-): AssemblageDefinition {
+function buildWaterfallRiver(opts: RiverOptions, cw: number, bw: number): AssemblageDefinition {
   const fallHeight = opts.waterfallHeight ?? 4;
   const width = cw + bw * 2 + 4; // Extra space for pool
   const height = opts.length + fallHeight + 4; // Extra for plunge pool
@@ -443,20 +431,13 @@ function buildWaterfallRiver(
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
       const inMainChannel =
-        x >= channelCenter - halfCw &&
-        x <= channelCenter + halfCw &&
-        y < fallStart;
+        x >= channelCenter - halfCw && x <= channelCenter + halfCw && y < fallStart;
 
       const inFallzone =
-        x >= channelCenter - halfCw &&
-        x <= channelCenter + halfCw &&
-        y >= fallStart &&
-        y < fallEnd;
+        x >= channelCenter - halfCw && x <= channelCenter + halfCw && y >= fallStart && y < fallEnd;
 
       // Plunge pool — circular
-      const poolDist = Math.sqrt(
-        (x - channelCenter) ** 2 + (y - poolCy) ** 2,
-      );
+      const poolDist = Math.sqrt((x - channelCenter) ** 2 + (y - poolCy) ** 2);
       const inPool = poolDist <= poolR && y >= fallEnd;
 
       // Outflow below pool
@@ -467,10 +448,7 @@ function buildWaterfallRiver(
         y < height;
 
       if (inMainChannel || inOutflow) {
-        const edgeDist = Math.min(
-          x - (channelCenter - halfCw),
-          channelCenter + halfCw - x,
-        );
+        const edgeDist = Math.min(x - (channelCenter - halfCw), channelCenter + halfCw - x);
         if (edgeDist === 0) {
           groundTiles.push('terrain:ground.sand');
           waterTiles.push('terrain:water.shallow');
@@ -496,8 +474,7 @@ function buildWaterfallRiver(
       } else {
         // Check for rocky bank near waterfall
         const nearFall = y >= fallStart - 1 && y <= fallEnd + 1;
-        const nearChannel =
-          Math.abs(x - channelCenter) <= halfCw + 1 && y < fallStart;
+        const nearChannel = Math.abs(x - channelCenter) <= halfCw + 1 && y < fallStart;
         if (nearFall && Math.abs(x - channelCenter) <= halfCw + 2) {
           groundTiles.push('terrain:cliff.rock');
           collisionData.push(1);
@@ -557,8 +534,5 @@ function checkNearChannel(
   _width: number,
   _height: number,
 ): boolean {
-  return (
-    Math.abs(x - (channelCenter - halfCw)) <= 1 ||
-    Math.abs(x - (channelCenter + halfCw)) <= 1
-  );
+  return Math.abs(x - (channelCenter - halfCw)) <= 1 || Math.abs(x - (channelCenter + halfCw)) <= 1;
 }

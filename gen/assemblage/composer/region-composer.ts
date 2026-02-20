@@ -171,7 +171,11 @@ export async function composeRegion(
 
       // Position service NPCs near their building doors
       if (placed.anchor.town.services) {
-        for (let i = 0; i < placed.anchor.town.services.length && i < hamletLayout.housePlacements.length; i++) {
+        for (
+          let i = 0;
+          i < placed.anchor.town.services.length && i < hamletLayout.housePlacements.length;
+          i++
+        ) {
           const service = placed.anchor.town.services[i];
           if (service.keeperNpc) {
             const door = hamletLayout.housePlacements[i].doorAnchor;
@@ -540,8 +544,7 @@ function placeWildFeatures(
 
       // Check minimum distance from other placed features (at least 10 tiles apart)
       const tooClose = placed.some(
-        (p) =>
-          Math.abs(p.position.x - x) + Math.abs(p.position.y - y) < 10,
+        (p) => Math.abs(p.position.x - x) + Math.abs(p.position.y - y) < 10,
       );
       if (tooClose) continue;
 
@@ -562,11 +565,7 @@ function placeWildFeatures(
  * Returns a flat array indexed by (y * width + x).
  * Uses BFS flood-fill from all path tiles.
  */
-function computePathDistances(
-  grid: CollisionGrid,
-  width: number,
-  height: number,
-): Uint16Array {
+function computePathDistances(grid: CollisionGrid, width: number, height: number): Uint16Array {
   const dist = new Uint16Array(width * height).fill(0xffff);
   const queue: number[] = [];
 
@@ -623,8 +622,7 @@ function isHiddenPosition(
     (x > mapWidth - cornerMargin && y < cornerMargin) ||
     (x > mapWidth - cornerMargin && y > mapHeight - cornerMargin);
 
-  const isNearEdge =
-    x < 6 || y < 6 || x > mapWidth - 7 || y > mapHeight - 7;
+  const isNearEdge = x < 6 || y < 6 || x > mapWidth - 7 || y > mapHeight - 7;
 
   // Hidden = near a corner, or near edge and at least somewhat off-path
   return isNearCorner || (isNearEdge && distToPath >= 8);
@@ -692,13 +690,7 @@ function placeSafeZones(
         const wp = waypoints[i];
 
         // Find a valid 5x5 camp position adjacent to the path
-        const campPos = findCampPosition(
-          grid,
-          wp,
-          mapWidth,
-          mapHeight,
-          rng,
-        );
+        const campPos = findCampPosition(grid, wp, mapWidth, mapHeight, rng);
 
         if (campPos) {
           // Mark 5x5 camp area as blocked
@@ -731,9 +723,9 @@ function findCampPosition(
 ): Point | null {
   // Try offsets: camp placed adjacent to path in randomized cardinal order
   const offsets = [
-    { x: 3, y: -2 },  // East of path
+    { x: 3, y: -2 }, // East of path
     { x: -8, y: -2 }, // West of path
-    { x: -2, y: 3 },  // South of path
+    { x: -2, y: 3 }, // South of path
     { x: -2, y: -8 }, // North of path
   ];
 
@@ -809,11 +801,7 @@ function hashString(s: string): number {
  * Searches outward in concentric rings. Returns the original point
  * if already passable or no passable tile found within 20 tiles.
  */
-function nudgeToPassable(
-  grid: CollisionGrid,
-  point: Point,
-  roadWidth: number,
-): Point {
+function nudgeToPassable(grid: CollisionGrid, point: Point, roadWidth: number): Point {
   const halfW = Math.floor(roadWidth / 2);
 
   const isPassable = (x: number, y: number): boolean => {

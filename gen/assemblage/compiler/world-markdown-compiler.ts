@@ -19,21 +19,9 @@
  *   Markdown → table-parser → intermediate types → DDL assembly → JSON files
  */
 
-import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { basename, join } from 'node:path';
-import {
-  extractSection,
-  parseCoordinate,
-  parseCoordinateRange,
-  parseFrontmatterFromMarkdown,
-  parseList,
-  parseLink,
-  parseSize,
-  parseTableUnderHeading,
-  type Coordinate,
-  type MarkdownLink,
-  type TableRow,
-} from './table-parser';
+import type { MapLayout } from '../composer/anchor-composer';
 import type {
   AnchorDefinition,
   AnchorEvent,
@@ -49,7 +37,19 @@ import type {
   WorldDefinition,
 } from '../composer/world-ddl';
 import type { WorldSlot } from '../composer/world-template';
-import type { MapLayout } from '../composer/anchor-composer';
+import {
+  type Coordinate,
+  extractSection,
+  type MarkdownLink,
+  parseCoordinate,
+  parseCoordinateRange,
+  parseFrontmatterFromMarkdown,
+  parseLink,
+  parseList,
+  parseSize,
+  parseTableUnderHeading,
+  type TableRow,
+} from './table-parser';
 
 // ─────────────────────────────────────────────────────
 // Intermediate parsed types (before DDL assembly)
@@ -229,16 +229,14 @@ export function compileWorld(worldRoot: string): CompilationResult {
       continue;
     }
 
-    const parsedRegion = parseRegionIndex(
-      readFileSync(regionIndexPath, 'utf-8'),
-      regionId,
-    );
+    const parsedRegion = parseRegionIndex(readFileSync(regionIndexPath, 'utf-8'), regionId);
 
     // 3. Parse each location in the region
     // Use the order from the Locations table (not filesystem alphabetical)
     const anchors: AnchorDefinition[] = [];
-    const locationFiles = readdirSync(regionDir)
-      .filter((f) => f.endsWith('.md') && f !== 'index.md');
+    const locationFiles = readdirSync(regionDir).filter(
+      (f) => f.endsWith('.md') && f !== 'index.md',
+    );
 
     // Sort by the order they appear in the region's Locations table
     const locationOrder = parsedRegion.locations.map((l) => l.id);
@@ -259,10 +257,7 @@ export function compileWorld(worldRoot: string): CompilationResult {
       const locationId = basename(file, '.md');
 
       try {
-        const parsedLocation = parseLocation(
-          readFileSync(locationPath, 'utf-8'),
-          locationId,
-        );
+        const parsedLocation = parseLocation(readFileSync(locationPath, 'utf-8'), locationId);
         const anchor = locationToAnchor(parsedLocation, parsedRegion, warnings);
         anchors.push(anchor);
 
@@ -439,7 +434,7 @@ function parseLocation(markdown: string, locationId: string): ParsedLocation {
   // Frontmatter fields
   const size = Array.isArray(data.size)
     ? (data.size as [number, number])
-    : [60, 60] as [number, number];
+    : ([60, 60] as [number, number]);
 
   // Parse world slots from frontmatter
   const slotsData = data.worldSlots as Array<Record<string, unknown>> | undefined;
@@ -454,7 +449,7 @@ function parseLocation(markdown: string, locationId: string): ParsedLocation {
   const assemblagesData = (data.assemblages as Array<Record<string, unknown>>) ?? [];
   const assemblages: ParsedAssemblageRef[] = assemblagesData.map((a) => ({
     ref: (a.ref as string) ?? '',
-    position: Array.isArray(a.position) ? a.position as [number, number] : undefined,
+    position: Array.isArray(a.position) ? (a.position as [number, number]) : undefined,
     edge: a.edge as string | undefined,
     meta: a.meta as Record<string, unknown> | undefined,
   }));
@@ -495,8 +490,7 @@ function parseLocation(markdown: string, locationId: string): ParsedLocation {
 function parseBuildingsTable(body: string): ParsedBuilding[] {
   // Try multiple heading names
   const rows =
-    parseTableUnderHeading(body, 'Buildings') ||
-    parseTableUnderHeading(body, 'Key Areas');
+    parseTableUnderHeading(body, 'Buildings') || parseTableUnderHeading(body, 'Key Areas');
   if (!rows.length) return [];
 
   return rows.map((row) => {
@@ -716,7 +710,10 @@ function locationToAnchor(
 
   // Build NPCs
   const npcs: AnchorNpc[] = loc.npcs.map((n) => ({
-    id: n.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
+    id: n.name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, ''),
     role: n.quests.length > 0 ? 'quest-giver' : 'ambient',
     placement: n.movement.toLowerCase().includes('static') ? 'center' : 'patrol',
   }));
@@ -774,32 +771,28 @@ function buildTownDefinition(loc: ParsedLocation): TownDefinition {
     .map((i) => ({
       type: inferServiceType(i.shopType, i.template),
       keeperNpc: i.keeper,
-      buildingName: loc.buildings.find((b) =>
-        b.name.toLowerCase().includes(i.keeper ?? ''),
-      )?.name,
+      buildingName: loc.buildings.find((b) => b.name.toLowerCase().includes(i.keeper ?? ''))?.name,
     }));
 
   // Count houses (assemblages without world slot transitions)
   const houseCount = loc.assemblages.filter(
-    (a) =>
-      a.ref.startsWith('house-') &&
-      !a.meta?.worldSlot,
+    (a) => a.ref.startsWith('house-') && !a.meta?.worldSlot,
   ).length;
 
   // Determine town size from map size
   const area = loc.size[0] * loc.size[1];
-  const size =
-    area <= 2500 ? 'hamlet' : area <= 5000 ? 'village' : area <= 8000 ? 'town' : 'city';
+  const size = area <= 2500 ? 'hamlet' : area <= 5000 ? 'village' : area <= 8000 ? 'town' : 'city';
 
   return {
     size,
     mapSize: loc.size,
     services,
     houses: Math.max(houseCount, 1),
-    centralFeature: loc.buildings.find((b) =>
-      b.name.toLowerCase().includes('square') ||
-      b.name.toLowerCase().includes('fountain') ||
-      b.name.toLowerCase().includes('well'),
+    centralFeature: loc.buildings.find(
+      (b) =>
+        b.name.toLowerCase().includes('square') ||
+        b.name.toLowerCase().includes('fountain') ||
+        b.name.toLowerCase().includes('well'),
     )?.name,
   };
 }
@@ -876,9 +869,7 @@ function buildMapLayout(loc: ParsedLocation, warnings: string[]): MapLayout {
     targetMap: t.toMap,
     targetX: t.destination.x,
     targetY: t.destination.y,
-    condition: t.condition !== 'Always' && t.condition !== 'Always open'
-      ? t.condition
-      : undefined,
+    condition: t.condition !== 'Always' && t.condition !== 'Always open' ? t.condition : undefined,
   }));
 
   // Build resonance stones
@@ -905,18 +896,22 @@ function buildMapLayout(loc: ParsedLocation, warnings: string[]): MapLayout {
 
   // Build NPC spawns from parsed NPCs
   const npcSpawns = loc.npcs.map((n) => ({
-    id: n.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
+    id: n.name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, ''),
     sprite: n.graphic,
     x: n.position.x,
     y: n.position.y,
-    dialogue: n.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
+    dialogue: n.name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, ''),
   }));
 
   // Detect forest border from assemblages
   const forestBorderRef = loc.assemblages.find((a) => a.ref === 'forest-border');
-  const forestBorder = forestBorderRef
-    ? buildForestBorder(mapW, mapH, transitions)
-    : undefined;
+  const forestBorder = forestBorderRef ? buildForestBorder(mapW, mapH, transitions) : undefined;
 
   // Infer player spawn: center of map or first transition entry
   const playerSpawn = { x: Math.floor(mapW / 2), y: Math.floor(mapH / 2) };

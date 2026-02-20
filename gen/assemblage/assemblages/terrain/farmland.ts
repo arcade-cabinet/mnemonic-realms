@@ -18,7 +18,7 @@
  * - 'orchard': fruit trees in a grid pattern
  * - 'irrigated': crop rows with irrigation ditches running between them
  */
-import type { AssemblageDefinition, Anchor, AssemblageObject, VisualObject } from '../../types.ts';
+import type { Anchor, AssemblageDefinition, AssemblageObject, VisualObject } from '../../types.ts';
 
 type FarmVariant = 'tilled' | 'crops' | 'orchard' | 'irrigated';
 
@@ -67,11 +67,7 @@ const CROP_TERRAINS = [
   'terrain:crop.turnip',
 ];
 
-const FRUIT_TREE_REFS = [
-  'tree.fruit-apple',
-  'tree.fruit-pear',
-  'tree.fruit-cherry',
-];
+const FRUIT_TREE_REFS = ['tree.fruit-apple', 'tree.fruit-pear', 'tree.fruit-cherry'];
 
 export function createFarmland(opts: FarmlandOptions): AssemblageDefinition {
   switch (opts.variant) {
@@ -103,8 +99,7 @@ function buildTilledField(opts: FarmlandOptions): AssemblageDefinition {
 
   for (let y = 0; y < h; y++) {
     for (let x = 0; x < w; x++) {
-      const isFence =
-        hasFence && (x === 0 || x === w - 1 || y === 0 || y === h - 1);
+      const isFence = hasFence && (x === 0 || x === w - 1 || y === 0 || y === h - 1);
 
       if (isFence) {
         groundTiles.push('terrain:ground.dirt');
@@ -174,8 +169,7 @@ function buildCropField(opts: FarmlandOptions): AssemblageDefinition {
 
   for (let y = 0; y < h; y++) {
     for (let x = 0; x < w; x++) {
-      const isFence =
-        hasFence && (x === 0 || x === w - 1 || y === 0 || y === h - 1);
+      const isFence = hasFence && (x === 0 || x === w - 1 || y === 0 || y === h - 1);
       const stripIdx = Math.floor(y / stripHeight);
       const posInStrip = y % stripHeight;
 
@@ -266,8 +260,7 @@ function buildOrchard(opts: FarmlandOptions): AssemblageDefinition {
 
   for (let y = 0; y < h; y++) {
     for (let x = 0; x < w; x++) {
-      const isFence =
-        hasFence && (x === 0 || x === w - 1 || y === 0 || y === h - 1);
+      const isFence = hasFence && (x === 0 || x === w - 1 || y === 0 || y === h - 1);
 
       if (isFence) {
         groundTiles.push('terrain:ground.dirt');
@@ -329,8 +322,7 @@ function buildIrrigatedField(opts: FarmlandOptions): AssemblageDefinition {
 
   for (let y = 0; y < h; y++) {
     for (let x = 0; x < w; x++) {
-      const isFence =
-        hasFence && (x === 0 || x === w - 1 || y === 0 || y === h - 1);
+      const isFence = hasFence && (x === 0 || x === w - 1 || y === 0 || y === h - 1);
       const ditchAxis = isVertical ? x : y;
       const isDitch = ditchAxis % ditchInterval < ditchWidth && !isFence;
 
@@ -390,11 +382,7 @@ function buildIrrigatedField(opts: FarmlandOptions): AssemblageDefinition {
 }
 
 /** Shared helper: build NPC farmer objects and resonance stones. */
-function buildFarmObjects(
-  opts: FarmlandOptions,
-  w: number,
-  h: number,
-): AssemblageObject[] {
+function buildFarmObjects(opts: FarmlandOptions, w: number, h: number): AssemblageObject[] {
   const objects: AssemblageObject[] = [];
 
   if (opts.farmers) {

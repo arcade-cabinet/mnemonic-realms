@@ -5,7 +5,7 @@
  * and the active PlaythroughStrategy's combat style.
  */
 
-import type { CombatAction, CombatState, Combatant } from '../../encounters/types.js';
+import type { CombatAction, Combatant, CombatState } from '../../encounters/types.js';
 import type { CombatStyle } from '../strategies/types.js';
 
 /**
@@ -31,9 +31,7 @@ export function selectCombatAction(
     return { type: 'defend', actorId };
   }
 
-  const enemies = state.combatants.filter(
-    (c) => c.type === 'enemy' && c.hp > 0,
-  );
+  const enemies = state.combatants.filter((c) => c.type === 'enemy' && c.hp > 0);
   const hpRatio = actor.hp / actor.maxHp;
 
   switch (style) {
@@ -57,16 +55,11 @@ function pickWeakestEnemy(enemies: Combatant[]): Combatant | undefined {
 /** Find the highest-multiplier skill the actor has. */
 function getBestSkill(actor: Combatant) {
   if (actor.skills.length === 0) return undefined;
-  return actor.skills.reduce((best, s) =>
-    s.multiplier > best.multiplier ? s : best,
-  );
+  return actor.skills.reduce((best, s) => (s.multiplier > best.multiplier ? s : best));
 }
 
 /** Aggressive: use strongest skill on weakest enemy to finish them fast. */
-function selectAggressive(
-  actor: Combatant,
-  enemies: Combatant[],
-): CombatAction {
+function selectAggressive(actor: Combatant, enemies: Combatant[]): CombatAction {
   const target = pickWeakestEnemy(enemies);
   if (!target) return { type: 'defend', actorId: actor.id };
 
@@ -84,11 +77,7 @@ function selectAggressive(
 }
 
 /** Defensive: defend when critical, otherwise cautious attacks. */
-function selectDefensive(
-  actor: Combatant,
-  enemies: Combatant[],
-  hpRatio: number,
-): CombatAction {
+function selectDefensive(actor: Combatant, enemies: Combatant[], hpRatio: number): CombatAction {
   // Critical HP — defend to buy time
   if (hpRatio < 0.25) {
     return { type: 'defend', actorId: actor.id };
@@ -106,11 +95,7 @@ function selectDefensive(
 }
 
 /** Balanced: use skills when available, attack weakest enemy. */
-function selectBalanced(
-  actor: Combatant,
-  enemies: Combatant[],
-  hpRatio: number,
-): CombatAction {
+function selectBalanced(actor: Combatant, enemies: Combatant[], hpRatio: number): CombatAction {
   // Low HP — defend
   if (hpRatio < 0.3) {
     return { type: 'defend', actorId: actor.id };
@@ -131,4 +116,3 @@ function selectBalanced(
 
   return { type: 'attack', actorId: actor.id, targetId: target.id };
 }
-

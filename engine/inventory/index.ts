@@ -5,16 +5,6 @@
  * No UI code — rendering lives in ui/inventory-screen.tsx and ui/shop-screen.tsx.
  */
 
-export type {
-  ArmorItem,
-  ConsumableItem,
-  EquipmentSlots,
-  GameItem,
-  InventoryState,
-  ItemCategory,
-  WeaponItem,
-} from './types.js';
-
 export {
   addItem,
   createInventory,
@@ -25,6 +15,13 @@ export {
   removeItem,
   unequipItem,
 } from './inventory.js';
-
 export { buyItem, canBuy, getSellPrice, sellItem } from './shop.js';
-
+export type {
+  ArmorItem,
+  ConsumableItem,
+  EquipmentSlots,
+  GameItem,
+  InventoryState,
+  ItemCategory,
+  WeaponItem,
+} from './types.js';

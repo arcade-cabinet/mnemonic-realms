@@ -14,25 +14,21 @@
  */
 
 import type { World } from 'koota';
-import type { LoadedMap } from '../world/loader.js';
-import type { CombatState } from '../encounters/types.js';
-import type { QuestState } from '../save/types.js';
-import type { PlaythroughStrategy } from './strategies/types.js';
-import type { Tile } from './behaviors/navigation.js';
-import type { QuestChain, NextObjective } from './behaviors/quest-following.js';
-import { TILE_SIZE } from '../renderer/types.js';
 import { playerQuery } from '../ecs/queries.js';
-import { Position, Velocity, Facing, QuestFlags, Health } from '../ecs/traits.js';
-import { movementSystem } from '../ecs/systems/movement.js';
 import { findInteractable, triggerInteraction } from '../ecs/systems/interaction.js';
-import { findPath, moveAlongPath } from './behaviors/navigation.js';
+import { movementSystem } from '../ecs/systems/movement.js';
+import { Facing, Health, Position, QuestFlags, Velocity } from '../ecs/traits.js';
+import type { CombatState } from '../encounters/types.js';
+import { TILE_SIZE } from '../renderer/types.js';
+import type { QuestState } from '../save/types.js';
+import type { LoadedMap } from '../world/loader.js';
 import { selectCombatAction } from './behaviors/combat.js';
+import { getUnexploredTiles, markVisited, pickExplorationTarget } from './behaviors/exploration.js';
+import type { Tile } from './behaviors/navigation.js';
+import { findPath, moveAlongPath } from './behaviors/navigation.js';
+import type { NextObjective, QuestChain } from './behaviors/quest-following.js';
 import { getNextQuestObjective } from './behaviors/quest-following.js';
-import {
-  getUnexploredTiles,
-  pickExplorationTarget,
-  markVisited,
-} from './behaviors/exploration.js';
+import type { PlaythroughStrategy } from './strategies/types.js';
 
 // ── Types ───────────────────────────────────────────────────────────────────
 
@@ -55,23 +51,10 @@ export interface AIPlayerTelemetry {
 }
 
 /** Game screen states tracked by the state machine. */
-export type GameScreen =
-  | 'overworld'
-  | 'combat'
-  | 'dialogue'
-  | 'menu'
-  | 'transition'
-  | 'title';
+export type GameScreen = 'overworld' | 'combat' | 'dialogue' | 'menu' | 'transition' | 'title';
 
 /** Goal types the AI can pursue. */
-export type GoalType =
-  | 'idle'
-  | 'navigate'
-  | 'explore'
-  | 'interact'
-  | 'combat'
-  | 'quest'
-  | 'heal';
+export type GoalType = 'idle' | 'navigate' | 'explore' | 'interact' | 'combat' | 'quest' | 'heal';
 
 // ── Goal Evaluator ──────────────────────────────────────────────────────────
 
@@ -200,9 +183,7 @@ export class AIPlayer {
 
   // ── Goal Evaluation (Think arbiter) ─────────────────────────────────────
 
-  private evaluateGoals(
-    playerPos: { x: number; y: number },
-  ): GoalType {
+  private evaluateGoals(playerPos: { x: number; y: number }): GoalType {
     const scores: GoalScore[] = [];
 
     // Combat goal — highest priority when in combat
@@ -267,31 +248,18 @@ export class AIPlayer {
     return next.isMainQuest ? 0.7 : 0.3;
   }
 
-  private evaluateInteractGoal(
-    playerPos: { x: number; y: number },
-  ): number {
+  private evaluateInteractGoal(playerPos: { x: number; y: number }): number {
     const players = this.world.query(playerQuery);
     if (players.length === 0) return 0;
     const player = players[0];
-    const facing = player.has(Facing)
-      ? player.get(Facing).direction
-      : 'down';
-    const interactable = findInteractable(
-      this.world,
-      playerPos.x,
-      playerPos.y,
-      facing,
-    );
+    const facing = player.has(Facing) ? player.get(Facing).direction : 'down';
+    const interactable = findInteractable(this.world, playerPos.x, playerPos.y, facing);
     return interactable ? 0.65 : 0;
   }
 
   // ── Goal Execution ──────────────────────────────────────────────────────
 
-  private executeGoal(
-    playerPos: { x: number; y: number },
-    tileX: number,
-    tileY: number,
-  ): string {
+  private executeGoal(playerPos: { x: number; y: number }, tileX: number, tileY: number): string {
     switch (this.currentGoal) {
       case 'combat':
         return this.executeCombatGoal();
@@ -312,14 +280,8 @@ export class AIPlayer {
 
   private executeCombatGoal(): string {
     if (!this.combatState) return 'no-combat-state';
-    const currentId = this.combatState.turnOrder[
-      this.combatState.currentTurnIndex
-    ];
-    const action = selectCombatAction(
-      this.combatState,
-      currentId,
-      this.strategy.combatStyle,
-    );
+    const currentId = this.combatState.turnOrder[this.combatState.currentTurnIndex];
+    const action = selectCombatAction(this.combatState, currentId, this.strategy.combatStyle);
     return `combat:${action.type}`;
   }
 
@@ -336,12 +298,7 @@ export class AIPlayer {
       x: next.objective.targetX,
       y: next.objective.targetY,
     };
-    this.currentPath = findPath(
-      this.collisionGrid,
-      this.mapWidth,
-      { x: tileX, y: tileY },
-      target,
-    );
+    this.currentPath = findPath(this.collisionGrid, this.mapWidth, { x: tileX, y: tileY }, target);
     this.pathIndex = 0;
     this.navigationTarget = target;
 
@@ -361,11 +318,7 @@ export class AIPlayer {
       return 'navigate:complete';
     }
 
-    const nextIdx = moveAlongPath(
-      this.world,
-      this.currentPath,
-      this.pathIndex,
-    );
+    const nextIdx = moveAlongPath(this.world, this.currentPath, this.pathIndex);
     if (nextIdx === -1) {
       this.currentPath = [];
       return 'navigate:failed';
@@ -387,12 +340,7 @@ export class AIPlayer {
     const target = pickExplorationTarget(unexplored, { x: tileX, y: tileY });
     if (!target) return 'explore:no-target';
 
-    this.currentPath = findPath(
-      this.collisionGrid,
-      this.mapWidth,
-      { x: tileX, y: tileY },
-      target,
-    );
+    this.currentPath = findPath(this.collisionGrid, this.mapWidth, { x: tileX, y: tileY }, target);
     this.pathIndex = 0;
 
     if (this.currentPath.length > 1) {
@@ -404,21 +352,12 @@ export class AIPlayer {
     return 'explore:at-target';
   }
 
-  private executeInteractGoal(
-    playerPos: { x: number; y: number },
-  ): string {
+  private executeInteractGoal(playerPos: { x: number; y: number }): string {
     const players = this.world.query(playerQuery);
     if (players.length === 0) return 'interact:no-player';
     const player = players[0];
-    const facing = player.has(Facing)
-      ? player.get(Facing).direction
-      : 'down';
-    const entity = findInteractable(
-      this.world,
-      playerPos.x,
-      playerPos.y,
-      facing,
-    );
+    const facing = player.has(Facing) ? player.get(Facing).direction : 'down';
+    const entity = findInteractable(this.world, playerPos.x, playerPos.y, facing);
     if (!entity) return 'interact:nothing';
 
     const result = triggerInteraction(entity);
@@ -444,10 +383,7 @@ export class AIPlayer {
     }
   }
 
-  private buildTelemetry(
-    action: string,
-    errors: string[],
-  ): AIPlayerTelemetry {
+  private buildTelemetry(action: string, errors: string[]): AIPlayerTelemetry {
     const pos = this.getPlayerPosition() ?? { x: 0, y: 0 };
     const questState: Record<string, string> = {};
     for (const [id, qs] of Object.entries(this.questTracker)) {
@@ -464,4 +400,3 @@ export class AIPlayer {
     };
   }
 }
-

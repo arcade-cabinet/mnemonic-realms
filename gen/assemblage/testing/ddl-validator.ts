@@ -124,9 +124,7 @@ export function validateDDL(ddlRoot: string): DDLValidationReport {
     });
   }
 
-  const regionIds = Array.isArray(worldData.regions)
-    ? (worldData.regions as string[])
-    : [];
+  const regionIds = Array.isArray(worldData.regions) ? (worldData.regions as string[]) : [];
 
   // --- 2. Region files ---
   const regionsDir = join(ddlRoot, 'regions');
@@ -190,31 +188,24 @@ export function validateDDL(ddlRoot: string): DDLValidationReport {
 
   let worldFiles: string[] = [];
   try {
-    worldFiles = readdirSync(worldsDir).filter((f) =>
-      f.endsWith('.json'),
-    );
+    worldFiles = readdirSync(worldsDir).filter((f) => f.endsWith('.json'));
   } catch {
     // worlds dir may not exist yet
   }
 
   for (const file of worldFiles) {
     try {
-      const data: WorldInstance = JSON.parse(
-        readFileSync(join(worldsDir, file), 'utf-8'),
-      );
+      const data: WorldInstance = JSON.parse(readFileSync(join(worldsDir, file), 'utf-8'));
       worldInstanceData.set(data.id, data);
 
       // Required fields
       for (const field of ['id', 'name', 'templateId', 'parentAnchor']) {
-        const has =
-          data[field as keyof WorldInstance] !== undefined;
+        const has = data[field as keyof WorldInstance] !== undefined;
         checks.push({
           description: `World instance ${data.id} has "${field}" field`,
           category: 'schema',
           passed: has,
-          detail: has
-            ? undefined
-            : `Missing field: ${field} in ${data.id}`,
+          detail: has ? undefined : `Missing field: ${field} in ${data.id}`,
         });
       }
     } catch (e) {
@@ -233,18 +224,14 @@ export function validateDDL(ddlRoot: string): DDLValidationReport {
 
   let templateFiles: string[] = [];
   try {
-    templateFiles = readdirSync(templatesDir).filter((f) =>
-      f.endsWith('.json'),
-    );
+    templateFiles = readdirSync(templatesDir).filter((f) => f.endsWith('.json'));
   } catch {
     // templates dir may not exist yet
   }
 
   for (const file of templateFiles) {
     try {
-      const data: WorldTemplate = JSON.parse(
-        readFileSync(join(templatesDir, file), 'utf-8'),
-      );
+      const data: WorldTemplate = JSON.parse(readFileSync(join(templatesDir, file), 'utf-8'));
       templateData.set(data.id, data);
     } catch (e) {
       checks.push({
@@ -279,9 +266,7 @@ export function validateDDL(ddlRoot: string): DDLValidationReport {
             description: `World slot "${slot.instanceId}" in ${regionId}/${anchor.id ?? '?'} exists`,
             category: 'referential',
             passed: exists,
-            detail: exists
-              ? undefined
-              : `No worlds/${slot.instanceId}.json found`,
+            detail: exists ? undefined : `No worlds/${slot.instanceId}.json found`,
           });
         }
       }
@@ -294,9 +279,7 @@ export function validateDDL(ddlRoot: string): DDLValidationReport {
             description: `Dungeon world slot "${slot.instanceId}" in ${regionId}/${anchor.id ?? '?'} exists`,
             category: 'referential',
             passed: exists,
-            detail: exists
-              ? undefined
-              : `No worlds/${slot.instanceId}.json found`,
+            detail: exists ? undefined : `No worlds/${slot.instanceId}.json found`,
           });
         }
       }
@@ -326,9 +309,7 @@ export function validateDDL(ddlRoot: string): DDLValidationReport {
         description: `World instance "${instId}" templateId "${instance.templateId}" resolves`,
         category: 'referential',
         passed: exists,
-        detail: exists
-          ? undefined
-          : `No templates/${instance.templateId}.json found`,
+        detail: exists ? undefined : `No templates/${instance.templateId}.json found`,
       });
     }
   }
@@ -345,9 +326,7 @@ export function validateDDL(ddlRoot: string): DDLValidationReport {
           description: `Connection from "${conn.from}" references valid region`,
           category: 'referential',
           passed: exists,
-          detail: exists
-            ? undefined
-            : `Region "${conn.from}" not in world.regions`,
+          detail: exists ? undefined : `Region "${conn.from}" not in world.regions`,
         });
       }
       if (conn.to) {
@@ -356,9 +335,7 @@ export function validateDDL(ddlRoot: string): DDLValidationReport {
           description: `Connection to "${conn.to}" references valid region`,
           category: 'referential',
           passed: exists,
-          detail: exists
-            ? undefined
-            : `Region "${conn.to}" not in world.regions`,
+          detail: exists ? undefined : `Region "${conn.to}" not in world.regions`,
         });
       }
     }

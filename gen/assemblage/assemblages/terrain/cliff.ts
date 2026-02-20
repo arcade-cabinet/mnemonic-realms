@@ -14,7 +14,7 @@
  * - 'formation': isolated rocky spire/mesa surrounded by open ground
  * - 'canyon': two parallel cliff walls with a narrow floor between them
  */
-import type { AssemblageDefinition, Anchor, AssemblageObject, VisualObject } from '../../types.ts';
+import type { Anchor, AssemblageDefinition, AssemblageObject, VisualObject } from '../../types.ts';
 
 type CliffVariant = 'wall' | 'ledge' | 'formation' | 'canyon';
 type CliffEdge = 'north' | 'south' | 'east' | 'west';
@@ -104,12 +104,8 @@ function buildCliffWall(opts: CliffOptions): AssemblageDefinition {
 
   const objects: AssemblageObject[] = [];
   if (opts.hiddenPassage) {
-    const passX = isHorizontal
-      ? opts.hiddenPassage.offset
-      : edge === 'west' ? 0 : width - 1;
-    const passY = isHorizontal
-      ? (edge === 'north' ? 0 : height - 1)
-      : opts.hiddenPassage.offset;
+    const passX = isHorizontal ? opts.hiddenPassage.offset : edge === 'west' ? 0 : width - 1;
+    const passY = isHorizontal ? (edge === 'north' ? 0 : height - 1) : opts.hiddenPassage.offset;
 
     objects.push({
       name: opts.hiddenPassage.id,
@@ -319,8 +315,7 @@ function buildCliffFormation(opts: CliffOptions): AssemblageDefinition {
       y: cy,
       properties: {
         ...(opts.ledgeObject.contents ? { contents: opts.ledgeObject.contents } : {}),
-        description:
-          opts.ledgeObject.description ?? 'Tucked into a crevice in the rock formation',
+        description: opts.ledgeObject.description ?? 'Tucked into a crevice in the rock formation',
       },
     });
   }
@@ -404,7 +399,8 @@ function buildCanyon(opts: CliffOptions): AssemblageDefinition {
       y: opts.hiddenPassage.offset,
       properties: {
         description:
-          opts.hiddenPassage.description ?? 'A crack in the canyon wall, just wide enough to squeeze through',
+          opts.hiddenPassage.description ??
+          'A crack in the canyon wall, just wide enough to squeeze through',
         ...(opts.hiddenPassage.targetMap ? { targetMap: opts.hiddenPassage.targetMap } : {}),
       },
     });

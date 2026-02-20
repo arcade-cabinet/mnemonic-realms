@@ -109,13 +109,26 @@ export function runFillEngine(config: FillEngineConfig): FillResult {
   }
 
   // --- 2. Ground variant clusters ---
-  paintGroundVariants(mapWidth, mapHeight, biome.baseGround, biome.groundVariants, groundTerrain, rng);
+  paintGroundVariants(
+    mapWidth,
+    mapHeight,
+    biome.baseGround,
+    biome.groundVariants,
+    groundTerrain,
+    rng,
+  );
 
   // --- 3. Scatter objects ---
   const scatterObjects = generateScatter(mapWidth, mapHeight, biome.scatter, rng, collisionGrid);
 
   // --- 4. Path dressing ---
-  const pathDressObjects = generatePathDressing(mapWidth, mapHeight, biome.pathDress, collisionGrid, rng);
+  const pathDressObjects = generatePathDressing(
+    mapWidth,
+    mapHeight,
+    biome.pathDress,
+    collisionGrid,
+    rng,
+  );
 
   // --- 5. Edge treatment ---
   const edgeTiles = generateEdges(mapWidth, mapHeight, biome, config.connectionTiles || []);

@@ -13,7 +13,7 @@
  * - 'shallows': mostly shallow water with scattered dry hummocks
  * - 'stagnation-bog': Preserver-crystallized marsh (frozen ripples, ice formations)
  */
-import type { AssemblageDefinition, Anchor, AssemblageObject, VisualObject } from '../../types.ts';
+import type { Anchor, AssemblageDefinition, AssemblageObject, VisualObject } from '../../types.ts';
 
 type MarshVariant = 'wetland' | 'bog' | 'shallows' | 'stagnation-bog';
 
@@ -86,7 +86,7 @@ export function createMarsh(opts: MarshOptions): AssemblageDefinition {
 
   // Generate pool centers using noise
   const poolCenters: Array<{ x: number; y: number; r: number }> = [];
-  const poolCount = Math.floor(w * h * poolDensity / 25);
+  const poolCount = Math.floor((w * h * poolDensity) / 25);
   for (let i = 0; i < poolCount; i++) {
     const px = 2 + (nextRng() % Math.max(1, w - 4));
     const py = 2 + (nextRng() % Math.max(1, h - 4));
@@ -178,9 +178,7 @@ export function createMarsh(opts: MarshOptions): AssemblageDefinition {
           detailTiles.push(0);
           collisionData.push(0);
         } else {
-          groundTiles.push(
-            nextFloat() < 0.3 ? 'terrain:ground.mud' : 'terrain:ground.dark-grass',
-          );
+          groundTiles.push(nextFloat() < 0.3 ? 'terrain:ground.mud' : 'terrain:ground.dark-grass');
           waterTiles.push(0);
           detailTiles.push(0);
           collisionData.push(0);

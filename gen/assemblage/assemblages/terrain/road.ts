@@ -17,7 +17,7 @@
  * - 'gravel': loose stone paths for wilderness and highlands
  * - 'fade': trails that dissolve from solid to sketch at one end
  */
-import type { AssemblageDefinition, Anchor, AssemblageObject } from '../../types.ts';
+import type { Anchor, AssemblageDefinition, AssemblageObject } from '../../types.ts';
 
 type RoadVariant = 'cobblestone' | 'dirt' | 'gravel' | 'fade';
 type RoadDirection = 'north-south' | 'east-west';
@@ -114,9 +114,7 @@ export function createRoad(opts: RoadOptions): AssemblageDefinition {
   const collisionData: (0 | 1)[] = [];
 
   // Road center line
-  const mainCenterCross = isVertical
-    ? Math.floor(totalWidth / 2)
-    : Math.floor(totalHeight / 2);
+  const mainCenterCross = isVertical ? Math.floor(totalWidth / 2) : Math.floor(totalHeight / 2);
   const halfRoad = Math.floor(roadW / 2);
 
   for (let y = 0; y < totalHeight; y++) {
@@ -126,8 +124,7 @@ export function createRoad(opts: RoadOptions): AssemblageDefinition {
 
       // Check if this tile is on the main road
       const onMainRoad =
-        crossAxis >= mainCenterCross - halfRoad &&
-        crossAxis <= mainCenterCross + halfRoad;
+        crossAxis >= mainCenterCross - halfRoad && crossAxis <= mainCenterCross + halfRoad;
 
       // Check if this tile is on the shoulder
       const onShoulder =
@@ -260,17 +257,33 @@ export function createRoad(opts: RoadOptions): AssemblageDefinition {
     const side = opts.crossroads.side;
     if (isVertical) {
       if (side === 'left' || side === 'both') {
-        anchors.push({ name: 'branch-west', x: 0, y: opts.crossroads.offset + Math.floor(roadW / 2) });
+        anchors.push({
+          name: 'branch-west',
+          x: 0,
+          y: opts.crossroads.offset + Math.floor(roadW / 2),
+        });
       }
       if (side === 'right' || side === 'both') {
-        anchors.push({ name: 'branch-east', x: totalWidth - 1, y: opts.crossroads.offset + Math.floor(roadW / 2) });
+        anchors.push({
+          name: 'branch-east',
+          x: totalWidth - 1,
+          y: opts.crossroads.offset + Math.floor(roadW / 2),
+        });
       }
     } else {
       if (side === 'left' || side === 'both') {
-        anchors.push({ name: 'branch-north', x: opts.crossroads.offset + Math.floor(roadW / 2), y: 0 });
+        anchors.push({
+          name: 'branch-north',
+          x: opts.crossroads.offset + Math.floor(roadW / 2),
+          y: 0,
+        });
       }
       if (side === 'right' || side === 'both') {
-        anchors.push({ name: 'branch-south', x: opts.crossroads.offset + Math.floor(roadW / 2), y: totalHeight - 1 });
+        anchors.push({
+          name: 'branch-south',
+          x: opts.crossroads.offset + Math.floor(roadW / 2),
+          y: totalHeight - 1,
+        });
       }
     }
   }

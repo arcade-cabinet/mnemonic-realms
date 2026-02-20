@@ -28,7 +28,7 @@ export function getUnexploredTiles(
     for (let x = 0; x < mapWidth; x++) {
       const idx = y * mapWidth + x;
       if (collisionGrid[idx] === 1) continue; // blocked
-      if (visitedSet.has(idx)) continue;       // already visited
+      if (visitedSet.has(idx)) continue; // already visited
       unexplored.push({ x, y });
     }
   }
@@ -46,10 +46,7 @@ export function getUnexploredTiles(
  * @param currentPos - Current player tile position
  * @returns The closest unexplored tile, or null if none available.
  */
-export function pickExplorationTarget(
-  unexplored: Tile[],
-  currentPos: Tile,
-): Tile | null {
+export function pickExplorationTarget(unexplored: Tile[], currentPos: Tile): Tile | null {
   if (unexplored.length === 0) return null;
 
   let closest = unexplored[0];
@@ -74,12 +71,7 @@ export function pickExplorationTarget(
  * @param y - Tile Y coordinate
  * @param mapWidth - Map width in tiles
  */
-export function markVisited(
-  visitedSet: Set<number>,
-  x: number,
-  y: number,
-  mapWidth: number,
-): void {
+export function markVisited(visitedSet: Set<number>, x: number, y: number, mapWidth: number): void {
   visitedSet.add(y * mapWidth + x);
 }
 
@@ -121,4 +113,3 @@ export function getExplorationCoverage(
 function manhattanDistance(a: Tile, b: Tile): number {
   return Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
 }
-

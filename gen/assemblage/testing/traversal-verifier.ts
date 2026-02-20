@@ -63,10 +63,7 @@ export interface DisconnectedZone {
  * Returns a distance map where each cell contains the shortest distance
  * from any start point, or -1 if unreachable.
  */
-export function bfsFloodFill(
-  grid: CollisionGrid,
-  startPoints: Point[],
-): Int32Array {
+export function bfsFloodFill(grid: CollisionGrid, startPoints: Point[]): Int32Array {
   const distances = new Int32Array(grid.width * grid.height).fill(-1);
   const queue: Array<{ x: number; y: number; dist: number }> = [];
 
@@ -159,8 +156,7 @@ export function verifyTraversal(
     if (dist >= 0) {
       let bestDist = Infinity;
       for (const entry of entries) {
-        const eDist =
-          Math.abs(entry.x - t.position.x) + Math.abs(entry.y - t.position.y);
+        const eDist = Math.abs(entry.x - t.position.x) + Math.abs(entry.y - t.position.y);
         if (eDist < bestDist) {
           bestDist = eDist;
           reachedFrom = entry;
@@ -182,9 +178,7 @@ export function verifyTraversal(
 
   const allReachable = targetResults.every((t) => t.reachable);
   const coveragePercent =
-    totalWalkableTiles > 0
-      ? Math.round((reachableTiles / totalWalkableTiles) * 10000) / 100
-      : 100;
+    totalWalkableTiles > 0 ? Math.round((reachableTiles / totalWalkableTiles) * 10000) / 100 : 100;
 
   return {
     level: options.level,
@@ -204,10 +198,7 @@ export function verifyTraversal(
  * Each zone is a cluster of walkable tiles with no path to the main area.
  * These represent design bugs: isolated rooms, gaps in collision, etc.
  */
-function findDisconnectedZones(
-  grid: CollisionGrid,
-  distances: Int32Array,
-): DisconnectedZone[] {
+function findDisconnectedZones(grid: CollisionGrid, distances: Int32Array): DisconnectedZone[] {
   const zones: DisconnectedZone[] = [];
   const visited = new Uint8Array(grid.width * grid.height);
 
@@ -238,8 +229,7 @@ function findDisconnectedZones(
         for (let d = 0; d < 4; d++) {
           const nx = p.x + dx[d];
           const ny = p.y + dy[d];
-          if (nx < 0 || nx >= grid.width || ny < 0 || ny >= grid.height)
-            continue;
+          if (nx < 0 || nx >= grid.width || ny < 0 || ny >= grid.height) continue;
           const nIdx = ny * grid.width + nx;
           if (visited[nIdx] || grid.data[nIdx] === 1) continue;
           visited[nIdx] = 1;
@@ -261,10 +251,7 @@ function findDisconnectedZones(
  * walkable zones. Finds the largest walkable zone and reports everything
  * else as disconnected.
  */
-export function verifyFullConnectivity(
-  grid: CollisionGrid,
-  subject: string,
-): TraversalReport {
+export function verifyFullConnectivity(grid: CollisionGrid, subject: string): TraversalReport {
   // Find the first walkable tile as seed
   let seed: Point | null = null;
   for (let y = 0; y < grid.height && !seed; y++) {
@@ -320,9 +307,7 @@ export function formatReport(report: TraversalReport): string {
   if (report.disconnectedZones.length > 0) {
     lines.push(`  Disconnected zones (${report.disconnectedZones.length}):`);
     for (const z of report.disconnectedZones) {
-      lines.push(
-        `    - ${z.tileCount} tiles near (${z.representative.x}, ${z.representative.y})`,
-      );
+      lines.push(`    - ${z.tileCount} tiles near (${z.representative.x}, ${z.representative.y})`);
     }
   }
 

@@ -16,4 +16,3 @@ export const completionistStrategy: PlaythroughStrategy = {
   combatStyle: 'balanced',
   maxTicksPerArea: 500,
 };
-

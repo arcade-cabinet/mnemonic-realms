@@ -9,11 +9,7 @@
  * observe, but cannot interact with the stone until the stagnation-breaking
  * mechanic is unlocked.
  */
-import type {
-  AssemblageDefinition,
-  AssemblageObject,
-  VisualObject,
-} from '../../types.ts';
+import type { AssemblageDefinition, AssemblageObject, VisualObject } from '../../types.ts';
 
 interface StagnationClearingOptions {
   /** Unique assemblage ID */
@@ -35,9 +31,7 @@ interface StagnationClearingOptions {
   };
 }
 
-export function createStagnationClearing(
-  opts: StagnationClearingOptions,
-): AssemblageDefinition {
+export function createStagnationClearing(opts: StagnationClearingOptions): AssemblageDefinition {
   const w = opts.width;
   const h = opts.height;
 

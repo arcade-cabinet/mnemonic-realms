@@ -17,7 +17,7 @@
  * - 'herb': utilitarian herb garden with rows — near workshops and shops
  * - 'shrine': sacred garden around a central object — Wind Shrine, clearings
  */
-import type { AssemblageDefinition, Anchor, AssemblageObject, VisualObject } from '../../types.ts';
+import type { Anchor, AssemblageDefinition, AssemblageObject, VisualObject } from '../../types.ts';
 
 type GardenVariant = 'memorial' | 'flower-patch' | 'herb' | 'shrine';
 
@@ -92,10 +92,8 @@ function buildMemorialGarden(opts: GardenOptions): AssemblageDefinition {
 
   for (let y = 0; y < h; y++) {
     for (let x = 0; x < w; x++) {
-      const isBorder =
-        hasBorder && (x === 0 || x === w - 1 || y === 0 || y === h - 1);
-      const isPath =
-        x >= cx - Math.floor(pathWidth / 2) && x < cx + Math.ceil(pathWidth / 2);
+      const isBorder = hasBorder && (x === 0 || x === w - 1 || y === 0 || y === h - 1);
+      const isPath = x >= cx - Math.floor(pathWidth / 2) && x < cx + Math.ceil(pathWidth / 2);
 
       if (isBorder) {
         groundTiles.push('terrain:road.cobblestone');
@@ -229,8 +227,7 @@ function buildFlowerPatch(opts: GardenOptions): AssemblageDefinition {
         properties: {
           eventType: 'action',
           fragments: stone.fragments,
-          description:
-            stone.notes ?? 'A Resonance Stone nestled among wildflowers, humming softly',
+          description: stone.notes ?? 'A Resonance Stone nestled among wildflowers, humming softly',
         },
       });
     }
@@ -247,9 +244,7 @@ function buildFlowerPatch(opts: GardenOptions): AssemblageDefinition {
     },
     collision: { width: w, height: h, data: collisionData },
     objects: objects.length > 0 ? objects : undefined,
-    anchors: [
-      { name: 'center', x: cx, y: cy },
-    ],
+    anchors: [{ name: 'center', x: cx, y: cy }],
   };
 }
 
@@ -268,8 +263,7 @@ function buildHerbGarden(opts: GardenOptions): AssemblageDefinition {
 
   for (let y = 0; y < h; y++) {
     for (let x = 0; x < w; x++) {
-      const isBorder =
-        hasBorder && (x === 0 || x === w - 1 || y === 0 || y === h - 1);
+      const isBorder = hasBorder && (x === 0 || x === w - 1 || y === 0 || y === h - 1);
       const rowPos = y % (rowHeight + pathRow);
       const isPathRow = rowPos >= rowHeight;
 
@@ -317,9 +311,7 @@ function buildHerbGarden(opts: GardenOptions): AssemblageDefinition {
     },
     collision: { width: w, height: h, data: collisionData },
     objects: objects.length > 0 ? objects : undefined,
-    anchors: [
-      { name: 'entrance', x: Math.floor(w / 2), y: h - 1 },
-    ],
+    anchors: [{ name: 'entrance', x: Math.floor(w / 2), y: h - 1 }],
   };
 }
 
@@ -345,16 +337,14 @@ function buildShrineGarden(opts: GardenOptions): AssemblageDefinition {
 
   for (let y = 0; y < h; y++) {
     for (let x = 0; x < w; x++) {
-      const isBorder =
-        hasBorder && (x === 0 || x === w - 1 || y === 0 || y === h - 1);
+      const isBorder = hasBorder && (x === 0 || x === w - 1 || y === 0 || y === h - 1);
       const dist = Math.sqrt((x - cx) ** 2 + (y - cy) ** 2);
       const maxR = Math.min(cx, cy);
 
       // Circular path around the shrine center
       const isCirclePath = Math.abs(dist - maxR * 0.6) < 0.8;
       // Radial paths at cardinal directions
-      const isRadialPath =
-        (Math.abs(x - cx) <= 1 || Math.abs(y - cy) <= 1) && dist < maxR * 0.6;
+      const isRadialPath = (Math.abs(x - cx) <= 1 || Math.abs(y - cy) <= 1) && dist < maxR * 0.6;
 
       if (isBorder) {
         groundTiles.push('terrain:road.cobblestone');

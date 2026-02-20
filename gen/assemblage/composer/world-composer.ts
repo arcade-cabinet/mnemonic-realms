@@ -22,8 +22,8 @@
 import type { ArchetypeRegistry } from './archetypes';
 import { composeRegion, type RegionExit, type RegionMap } from './region-composer';
 import type { RegionConnection, RegionDefinition } from './world-ddl';
-import type { WorldInstance, WorldTemplate } from './world-template';
 import { loadWorldDDL } from './world-loader';
+import type { WorldInstance, WorldTemplate } from './world-template';
 
 // --- Output types ---
 

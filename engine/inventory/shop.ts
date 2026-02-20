@@ -12,11 +12,7 @@ import type { GameItem, InventoryState } from './types.js';
 const SELL_RATIO = 0.5;
 
 /** Check if the player can afford to buy `quantity` of an item. */
-export function canBuy(
-  state: InventoryState,
-  item: GameItem,
-  quantity: number,
-): boolean {
+export function canBuy(state: InventoryState, item: GameItem, quantity: number): boolean {
   return state.gold >= item.price * quantity;
 }
 
@@ -24,11 +20,7 @@ export function canBuy(
  * Buy `quantity` of an item from a shop.
  * Deducts gold and adds items to inventory. Returns new state.
  */
-export function buyItem(
-  state: InventoryState,
-  item: GameItem,
-  quantity: number,
-): InventoryState {
+export function buyItem(state: InventoryState, item: GameItem, quantity: number): InventoryState {
   const totalCost = item.price * quantity;
   const next = addItem(state, item.id, quantity);
   return { ...next, gold: state.gold - totalCost };
@@ -52,4 +44,3 @@ export function sellItem(
 export function getSellPrice(item: GameItem): number {
   return Math.floor(item.price * SELL_RATIO);
 }
-

@@ -6,11 +6,8 @@
  * quest chain definitions.
  */
 
+import { checkQuestAvailability, getQuestStatus } from '../../save/quest-tracker.js';
 import type { QuestState } from '../../save/types.js';
-import {
-  getQuestStatus,
-  checkQuestAvailability,
-} from '../../save/quest-tracker.js';
 
 /** A quest chain definition — describes objectives and their locations. */
 export interface QuestChain {
@@ -47,10 +44,7 @@ export interface NextObjective {
 }
 
 /** Sort quest chains with main quests first when preferred. */
-function sortChains(
-  questChains: QuestChain[],
-  preferMainQuest: boolean,
-): QuestChain[] {
+function sortChains(questChains: QuestChain[], preferMainQuest: boolean): QuestChain[] {
   return [...questChains].sort((a, b) => {
     if (!preferMainQuest) return 0;
     if (a.isMainQuest && !b.isMainQuest) return -1;
@@ -68,9 +62,7 @@ function findActiveObjective(
   if (!questState) return null;
 
   for (const obj of chain.objectives) {
-    const objState = questState.objectives.find(
-      (o) => o.index === obj.index,
-    );
+    const objState = questState.objectives.find((o) => o.index === obj.index);
     if (objState && !objState.completed) {
       return {
         questId: chain.questId,
@@ -145,4 +137,3 @@ export function getAvailableQuests(
     return checkQuestAvailability(tracker, chain);
   });
 }
-

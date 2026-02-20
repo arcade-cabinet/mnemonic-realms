@@ -67,10 +67,7 @@ export function ShopScreen({
     }
   }, [selectedId, quantity, onSell]);
 
-  const adjustQty = useCallback(
-    (delta: number) => setQuantity((q) => Math.max(1, q + delta)),
-    [],
-  );
+  const adjustQty = useCallback((delta: number) => setQuantity((q) => Math.max(1, q + delta)), []);
 
   if (!visible) return null;
 
@@ -93,10 +90,17 @@ export function ShopScreen({
       >
         {/* Header */}
         <View style={styles.header}>
-          <Text style={[styles.title, { color: colors.primary[400], fontSize: typography.fontSizes.xl }]}>
+          <Text
+            style={[
+              styles.title,
+              { color: colors.primary[400], fontSize: typography.fontSizes.xl },
+            ]}
+          >
             Shop
           </Text>
-          <Text style={[styles.gold, { color: colors.accent.gold, fontSize: typography.fontSizes.md }]}>
+          <Text
+            style={[styles.gold, { color: colors.accent.gold, fontSize: typography.fontSizes.md }]}
+          >
             {inventory.gold} G
           </Text>
           <Pressable onPress={onClose} style={styles.closeBtn}>
@@ -109,7 +113,11 @@ export function ShopScreen({
           {(['buy', 'sell'] as const).map((t) => (
             <Pressable
               key={t}
-              onPress={() => { setTab(t); setSelectedId(null); setQuantity(1); }}
+              onPress={() => {
+                setTab(t);
+                setSelectedId(null);
+                setQuantity(1);
+              }}
               style={[
                 styles.tab,
                 {
@@ -182,7 +190,9 @@ export function ShopScreen({
               );
             }}
             ListEmptyComponent={
-              <Text style={{ color: colors.text.muted, textAlign: 'center', marginTop: spacing[4] }}>
+              <Text
+                style={{ color: colors.text.muted, textAlign: 'center', marginTop: spacing[4] }}
+              >
                 Nothing to sell
               </Text>
             }
@@ -212,7 +222,14 @@ export function ShopScreen({
                   −
                 </Text>
               </Pressable>
-              <Text style={{ color: colors.text.primary, fontSize: typography.fontSizes.md, minWidth: 24, textAlign: 'center' }}>
+              <Text
+                style={{
+                  color: colors.text.primary,
+                  fontSize: typography.fontSizes.md,
+                  minWidth: 24,
+                  textAlign: 'center',
+                }}
+              >
                 {quantity}
               </Text>
               <Pressable onPress={() => adjustQty(1)} style={styles.qtyBtn}>
@@ -283,4 +300,3 @@ const styles = StyleSheet.create({
   qtyBtn: { paddingHorizontal: 8 },
   confirmBtn: { alignItems: 'center' },
 });
-

@@ -56,10 +56,7 @@ describe('World Composer', { timeout: 30000 }, () => {
 
     // Every region ID is present
     for (const region of loaded.world.regions) {
-      expect(
-        world.regionMaps.has(region.id),
-        `Region ${region.id} should be composed`,
-      ).toBe(true);
+      expect(world.regionMaps.has(region.id), `Region ${region.id} should be composed`).toBe(true);
     }
   });
 
@@ -71,9 +68,7 @@ describe('World Composer', { timeout: 30000 }, () => {
     expect(startMap, `Start region ${world.startRegion} not found`).toBeDefined();
 
     // Start anchor should be one of the placed anchors
-    const startAnchor = startMap!.placedAnchors.find(
-      (a) => a.anchor.id === world.startAnchor,
-    );
+    const startAnchor = startMap!.placedAnchors.find((a) => a.anchor.id === world.startAnchor);
     expect(
       startAnchor,
       `Start anchor ${world.startAnchor} not found in ${world.startRegion}`,
@@ -93,9 +88,7 @@ describe('World Composer', { timeout: 30000 }, () => {
     const world = await composeWorld(DDL_ROOT, registry, { seed: SEED });
 
     const loaded = loadWorldDDL(DDL_ROOT);
-    expect(world.connections.length).toBe(
-      loaded.world.regionConnections.length,
-    );
+    expect(world.connections.length).toBe(loaded.world.regionConnections.length);
 
     for (const conn of world.connections) {
       expect(
@@ -112,13 +105,9 @@ describe('World Composer', { timeout: 30000 }, () => {
       regions: ['settled-lands'],
     });
 
-    for (const [regionId, regionMap] of Array.from(
-      world.regionMaps.entries(),
-    )) {
+    for (const [regionId, regionMap] of Array.from(world.regionMaps.entries())) {
       // All entry anchors should be reachable from each other
-      const allEntries = regionMap.placedAnchors.flatMap(
-        (a) => a.entryAnchors,
-      );
+      const allEntries = regionMap.placedAnchors.flatMap((a) => a.entryAnchors);
       const allTargets = regionMap.placedAnchors.flatMap((a) =>
         a.entryAnchors.map((e, i) => ({
           id: `${a.anchor.id}-entry-${i}`,
@@ -126,12 +115,10 @@ describe('World Composer', { timeout: 30000 }, () => {
         })),
       );
 
-      const report = verifyTraversal(
-        regionMap.collisionGrid,
-        allEntries,
-        allTargets,
-        { level: 'region', subject: regionId },
-      );
+      const report = verifyTraversal(regionMap.collisionGrid, allEntries, allTargets, {
+        level: 'region',
+        subject: regionId,
+      });
 
       // Save snapshot
       saveSnapshot(regionMap.collisionGrid, 'region', regionId, {
@@ -149,10 +136,7 @@ describe('World Composer', { timeout: 30000 }, () => {
         ],
       });
 
-      expect(
-        report.passed,
-        `Region ${regionId} has unreachable anchors`,
-      ).toBe(true);
+      expect(report.passed, `Region ${regionId} has unreachable anchors`).toBe(true);
     }
   });
 
@@ -179,10 +163,7 @@ describe('World Composer', { timeout: 30000 }, () => {
     const world = await composeWorld(DDL_ROOT, registry, { seed: SEED });
 
     for (const [id, instance] of Array.from(world.worldInstances.entries())) {
-      expect(
-        instance.templateId,
-        `World instance ${id} has no templateId`,
-      ).toBeDefined();
+      expect(instance.templateId, `World instance ${id} has no templateId`).toBeDefined();
 
       // If template was resolved, check required slots
       if (instance.template) {

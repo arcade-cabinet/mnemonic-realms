@@ -39,9 +39,7 @@ const MINI_REGION: RegionDefinition = {
         size: 'hamlet',
         centralFeature: 'well',
         houses: 2,
-        services: [
-          { type: 'weapon-shop', keeperNpc: 'shopkeeper-a' },
-        ],
+        services: [{ type: 'weapon-shop', keeperNpc: 'shopkeeper-a' }],
       },
       worldSlots: [{ instanceId: 'shop-a', transitionType: 'door' }],
     },
@@ -60,9 +58,7 @@ const MINI_REGION: RegionDefinition = {
         size: 'hamlet',
         centralFeature: 'fountain',
         houses: 2,
-        services: [
-          { type: 'inn', keeperNpc: 'innkeeper-c' },
-        ],
+        services: [{ type: 'inn', keeperNpc: 'innkeeper-c' }],
       },
       worldSlots: [{ instanceId: 'inn-c', transitionType: 'door' }],
     },
@@ -113,9 +109,7 @@ describe('Region Composer', () => {
     // Same anchor positions
     expect(map1.placedAnchors.length).toBe(map2.placedAnchors.length);
     for (let i = 0; i < map1.placedAnchors.length; i++) {
-      expect(map1.placedAnchors[i].bounds).toEqual(
-        map2.placedAnchors[i].bounds,
-      );
+      expect(map1.placedAnchors[i].bounds).toEqual(map2.placedAnchors[i].bounds);
     }
 
     // Same door transitions
@@ -158,9 +152,7 @@ describe('Region Composer', () => {
     });
 
     // Should have at least N-1 main roads for N anchors
-    expect(regionMap.routedPaths.length).toBeGreaterThanOrEqual(
-      MINI_REGION.anchors.length - 1,
-    );
+    expect(regionMap.routedPaths.length).toBeGreaterThanOrEqual(MINI_REGION.anchors.length - 1);
   });
 
   it('traversal: all anchor entries reachable from each other', async () => {
@@ -184,12 +176,10 @@ describe('Region Composer', () => {
       }
     }
 
-    const report = verifyTraversal(
-      regionMap.collisionGrid,
-      allEntries,
-      allTargets,
-      { level: 'region', subject: 'test-region' },
-    );
+    const report = verifyTraversal(regionMap.collisionGrid, allEntries, allTargets, {
+      level: 'region',
+      subject: 'test-region',
+    });
 
     // Save visual snapshot
     const overlays = [
@@ -215,9 +205,7 @@ describe('Region Composer', () => {
 
     expect(report.passed).toBe(true);
     if (report.disconnectedZones.length > 0) {
-      console.log(
-        `Warning: ${report.disconnectedZones.length} disconnected zones found`,
-      );
+      console.log(`Warning: ${report.disconnectedZones.length} disconnected zones found`);
     }
   });
 

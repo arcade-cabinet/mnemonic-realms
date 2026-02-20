@@ -28,11 +28,11 @@
  *   - Scene 11: The Clearing Grows (Act I climax)
  */
 
-import { createForestBorder } from '../assemblages/terrain/forest-border.ts';
 import { createHouse } from '../assemblages/buildings/house.ts';
-import { createWheatField } from '../assemblages/terrain/wheat-field.ts';
 import { createWindmill } from '../assemblages/buildings/windmill.ts';
+import { createForestBorder } from '../assemblages/terrain/forest-border.ts';
 import { createStagnationClearing } from '../assemblages/terrain/stagnation-clearing.ts';
+import { createWheatField } from '../assemblages/terrain/wheat-field.ts';
 import type { MapComposition } from '../types.ts';
 
 const W = 80;
@@ -220,15 +220,15 @@ export const composition: MapComposition = {
     { assemblage: eastBorder, x: W - 3, y: 4 },
 
     // Wheat fields — sized/positioned to avoid hamlet (24-44,24-44) and windmill (56,12)
-    { assemblage: wheatWest, x: 4, y: 10 },   // 4-22, 10-40 (clears house-1 at x=26)
-    { assemblage: wheatEast, x: 46, y: 6 },    // 46-54, 6-20 (clears windmill at x=56)
+    { assemblage: wheatWest, x: 4, y: 10 }, // 4-22, 10-40 (clears house-1 at x=26)
+    { assemblage: wheatEast, x: 46, y: 6 }, // 46-54, 6-20 (clears windmill at x=56)
     { assemblage: wheatHamlet, x: 14, y: 46 }, // 14-24, 46-54 (SW of hamlet)
 
     // Heartfield Hamlet — cluster of farming houses around well at ~(32,32)
-    { assemblage: hamletHouse1, x: 26, y: 24 },  // Farmer Gale, NW of well
-    { assemblage: hamletHouse2, x: 38, y: 24 },  // Farmer Suri, NE of well
-    { assemblage: hamletHouse3, x: 24, y: 36 },  // Farmer Edric, SW of well
-    { assemblage: hamletHouse4, x: 36, y: 36 },  // Hamlet Elder, SE of well
+    { assemblage: hamletHouse1, x: 26, y: 24 }, // Farmer Gale, NW of well
+    { assemblage: hamletHouse2, x: 38, y: 24 }, // Farmer Suri, NE of well
+    { assemblage: hamletHouse3, x: 24, y: 36 }, // Farmer Edric, SW of well
+    { assemblage: hamletHouse4, x: 36, y: 36 }, // Hamlet Elder, SE of well
     { assemblage: hamletShelter, x: 30, y: 44 }, // Hay shelter, south of ring
 
     // Old Windmill on northeast hilltop

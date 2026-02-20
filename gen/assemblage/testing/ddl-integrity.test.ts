@@ -22,9 +22,7 @@ const DDL_ROOT = join(process.cwd(), 'gen', 'ddl');
 describe('DDL Integrity', () => {
   it('world.json has all required fields', () => {
     const report = validateDDL(DDL_ROOT);
-    const worldChecks = report.checks.filter(
-      (c) => c.description.startsWith('world.json has'),
-    );
+    const worldChecks = report.checks.filter((c) => c.description.startsWith('world.json has'));
 
     for (const check of worldChecks) {
       expect(check.passed, check.detail ?? check.description).toBe(true);
@@ -33,8 +31,8 @@ describe('DDL Integrity', () => {
 
   it('all region refs resolve to files', () => {
     const report = validateDDL(DDL_ROOT);
-    const regionChecks = report.checks.filter(
-      (c) => c.description.startsWith('Region file exists'),
+    const regionChecks = report.checks.filter((c) =>
+      c.description.startsWith('Region file exists'),
     );
 
     expect(regionChecks.length).toBeGreaterThan(0);
@@ -47,8 +45,7 @@ describe('DDL Integrity', () => {
     const report = validateDDL(DDL_ROOT);
     const settledSlotChecks = report.checks.filter(
       (c) =>
-        (c.description.includes('World slot') ||
-          c.description.includes('Dungeon world slot')) &&
+        (c.description.includes('World slot') || c.description.includes('Dungeon world slot')) &&
         c.description.includes('settled-lands/'),
     );
 
@@ -66,8 +63,7 @@ describe('DDL Integrity', () => {
     const futureChecks = report.checks.filter(
       (c) =>
         !c.passed &&
-        (c.description.includes('frontier/') ||
-          c.description.includes('sketch-realm/')),
+        (c.description.includes('frontier/') || c.description.includes('sketch-realm/')),
     );
 
     if (futureChecks.length > 0) {
@@ -79,9 +75,7 @@ describe('DDL Integrity', () => {
 
   it('no orphan world instances', () => {
     const report = validateDDL(DDL_ROOT);
-    const orphanChecks = report.checks.filter(
-      (c) => c.category === 'completeness',
-    );
+    const orphanChecks = report.checks.filter((c) => c.category === 'completeness');
 
     for (const check of orphanChecks) {
       expect(check.passed, check.detail ?? check.description).toBe(true);
@@ -90,9 +84,7 @@ describe('DDL Integrity', () => {
 
   it('all region connections reference valid regions', () => {
     const report = validateDDL(DDL_ROOT);
-    const connChecks = report.checks.filter(
-      (c) => c.description.startsWith('Connection'),
-    );
+    const connChecks = report.checks.filter((c) => c.description.startsWith('Connection'));
 
     for (const check of connChecks) {
       expect(check.passed, check.detail ?? check.description).toBe(true);
@@ -101,9 +93,7 @@ describe('DDL Integrity', () => {
 
   it('all world instance templates resolve', () => {
     const report = validateDDL(DDL_ROOT);
-    const templateChecks = report.checks.filter(
-      (c) => c.description.includes('templateId'),
-    );
+    const templateChecks = report.checks.filter((c) => c.description.includes('templateId'));
 
     for (const check of templateChecks) {
       expect(check.passed, check.detail ?? check.description).toBe(true);

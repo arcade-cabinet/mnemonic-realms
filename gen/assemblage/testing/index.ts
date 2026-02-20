@@ -13,33 +13,31 @@
  * Architecture level: TESTING (cross-cutting)
  */
 
+// DDL integrity
+export {
+  type DDLCheck,
+  type DDLValidationReport,
+  formatDDLReport,
+  validateDDL,
+} from './ddl-validator';
 // Traversal verification
 export {
   bfsFloodFill,
-  formatReport,
-  verifyFullConnectivity,
-  verifyTraversal,
   type DisconnectedZone,
+  formatReport,
   type TargetResult,
   type TraversalReport,
+  verifyFullConnectivity,
+  verifyTraversal,
 } from './traversal-verifier';
-
 // Visual rendering
 export {
+  type RenderOptions,
+  type RenderOverlay,
   renderASCII,
   renderGrid,
   renderToPNG,
   saveSnapshot,
   snapshotDir,
   writeSnapshot,
-  type RenderOptions,
-  type RenderOverlay,
 } from './visual-renderer';
-
-// DDL integrity
-export {
-  formatDDLReport,
-  validateDDL,
-  type DDLCheck,
-  type DDLValidationReport,
-} from './ddl-validator';

@@ -6,9 +6,9 @@
  */
 
 import type { World } from 'koota';
-import { TILE_SIZE } from '../../renderer/types.js';
 import { playerQuery } from '../../ecs/queries.js';
 import { Position, Velocity } from '../../ecs/traits.js';
+import { TILE_SIZE } from '../../renderer/types.js';
 
 /** A tile coordinate. */
 export interface Tile {
@@ -19,9 +19,9 @@ export interface Tile {
 /** Cardinal directions for BFS neighbor expansion. */
 const DIRECTIONS: Tile[] = [
   { x: 0, y: -1 }, // up
-  { x: 0, y: 1 },  // down
+  { x: 0, y: 1 }, // down
   { x: -1, y: 0 }, // left
-  { x: 1, y: 0 },  // right
+  { x: 1, y: 0 }, // right
 ];
 
 /** Check if a tile coordinate is within grid bounds. */
@@ -65,11 +65,7 @@ function bfsSearch(
 }
 
 /** Reconstruct a path from cameFrom map. */
-function reconstructPath(
-  cameFrom: Int32Array,
-  goalIdx: number,
-  mapWidth: number,
-): Tile[] {
+function reconstructPath(cameFrom: Int32Array, goalIdx: number, mapWidth: number): Tile[] {
   const path: Tile[] = [];
   let idx = goalIdx;
   while (idx !== -1) {
@@ -115,10 +111,7 @@ export function findPath(
   visited[startIdx] = 1;
   queue.push(startIdx);
 
-  const found = bfsSearch(
-    collisionGrid, mapWidth, mapHeight,
-    visited, cameFrom, queue, goalIdx,
-  );
+  const found = bfsSearch(collisionGrid, mapWidth, mapHeight, visited, cameFrom, queue, goalIdx);
 
   if (!found) return [];
   return reconstructPath(cameFrom, goalIdx, mapWidth);
@@ -132,11 +125,7 @@ export function findPath(
  * @param currentIndex - Current index in the path (0-based)
  * @returns The next path index, or -1 if path is complete.
  */
-export function moveAlongPath(
-  world: World,
-  path: Tile[],
-  currentIndex: number,
-): number {
+export function moveAlongPath(world: World, path: Tile[], currentIndex: number): number {
   if (currentIndex >= path.length - 1) return -1;
 
   const players = world.query(playerQuery);
@@ -159,4 +148,3 @@ export function moveAlongPath(
 
   return currentIndex + 1;
 }
-
