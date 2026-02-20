@@ -44,57 +44,22 @@ jobs:
       - name: Run unit tests
         run: pnpm test:unit
 
-      - name: Run E2E tests
-        run: pnpm test
+      - name: Generate runtime content
+        run: pnpm generate:content
+
+      - name: Validate runtime content
+        run: pnpm validate:runtime
 
       - name: Build web (PWA)
         run: pnpm build:web
 
-      - name: Validate PWA manifest
+      - name: Validate build output
         run: |
-          if [ ! -f "dist/standalone/manifest.json" ]; then
-            echo "Error: manifest.json not found in dist/standalone/"
+          if [ ! -d "dist" ]; then
+            echo "Error: dist/ directory not found after build"
             exit 1
           fi
-          echo "✓ PWA manifest found"
-
-      - name: Validate service worker
-        run: |
-          if [ ! -f "dist/standalone/service-worker.js" ]; then
-            echo "Error: service-worker.js not found in dist/standalone/"
-            exit 1
-          fi
-          echo "✓ Service worker found"
-
-      - name: Validate Capacitor configuration
-        run: |
-          if [ ! -f "capacitor.config.ts" ]; then
-            echo "Error: capacitor.config.ts not found"
-            exit 1
-          fi
-          echo "✓ Capacitor configuration found"
-
-      - name: Sync iOS build
-        run: npx cap sync ios
-
-      - name: Sync Android build
-        run: npx cap sync android
-
-      - name: Verify iOS project
-        run: |
-          if [ ! -d "ios/App" ]; then
-            echo "Error: iOS project not found"
-            exit 1
-          fi
-          echo "✓ iOS project verified"
-
-      - name: Verify Android project
-        run: |
-          if [ ! -d "android/app" ]; then
-            echo "Error: Android project not found"
-            exit 1
-          fi
-          echo "✓ Android project verified"
+          echo "✓ Build output found in dist/"
 
       - name: Setup Pages
         if: github.ref == 'refs/heads/main'

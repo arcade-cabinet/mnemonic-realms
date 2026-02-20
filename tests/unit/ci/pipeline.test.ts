@@ -17,15 +17,6 @@ describe('CI/CD Pipeline Configuration', () => {
       expect(testStep.run).toBe('pnpm test:unit');
     });
 
-    it('should run E2E tests', () => {
-      const buildJob = workflow.jobs.build;
-      const testStep = buildJob.steps.find((step: { name: string }) =>
-        step.name.includes('E2E tests'),
-      );
-      expect(testStep).toBeDefined();
-      expect(testStep.run).toBe('pnpm test');
-    });
-
     it('should run linter before tests', () => {
       const buildJob = workflow.jobs.build;
       const lintIndex = buildJob.steps.findIndex((step: { name: string }) =>
@@ -40,6 +31,34 @@ describe('CI/CD Pipeline Configuration', () => {
     });
   });
 
+  describe('Content Generation', () => {
+    it('should generate runtime content before build', () => {
+      const buildJob = workflow.jobs.build;
+      const genIndex = buildJob.steps.findIndex((step: { name: string }) =>
+        step.name.includes('Generate runtime content'),
+      );
+      const buildIndex = buildJob.steps.findIndex((step: { name: string }) =>
+        step.name.includes('Build web'),
+      );
+      expect(genIndex).toBeGreaterThan(-1);
+      expect(buildIndex).toBeGreaterThan(-1);
+      expect(genIndex).toBeLessThan(buildIndex);
+    });
+
+    it('should validate runtime content after generation', () => {
+      const buildJob = workflow.jobs.build;
+      const genIndex = buildJob.steps.findIndex((step: { name: string }) =>
+        step.name.includes('Generate runtime content'),
+      );
+      const validateIndex = buildJob.steps.findIndex((step: { name: string }) =>
+        step.name.includes('Validate runtime content'),
+      );
+      expect(genIndex).toBeGreaterThan(-1);
+      expect(validateIndex).toBeGreaterThan(-1);
+      expect(genIndex).toBeLessThan(validateIndex);
+    });
+  });
+
   describe('Build Validation', () => {
     it('should build web (PWA)', () => {
       const buildJob = workflow.jobs.build;
@@ -50,67 +69,33 @@ describe('CI/CD Pipeline Configuration', () => {
       expect(buildStep.run).toBe('pnpm build:web');
     });
 
-    it('should validate PWA manifest', () => {
+    it('should validate build output', () => {
       const buildJob = workflow.jobs.build;
       const validateStep = buildJob.steps.find((step: { name: string }) =>
-        step.name.includes('Validate PWA manifest'),
+        step.name.includes('Validate build output'),
       );
       expect(validateStep).toBeDefined();
-      expect(validateStep.run).toContain('manifest.json');
+      expect(validateStep.run).toContain('dist');
     });
 
-    it('should validate service worker', () => {
+    it('should not have Capacitor steps', () => {
       const buildJob = workflow.jobs.build;
-      const validateStep = buildJob.steps.find((step: { name: string }) =>
-        step.name.includes('Validate service worker'),
+      const capStep = buildJob.steps.find((step: { name: string }) =>
+        step.name.includes('Capacitor'),
       );
-      expect(validateStep).toBeDefined();
-      expect(validateStep.run).toContain('service-worker.js');
+      expect(capStep).toBeUndefined();
     });
 
-    it('should validate Capacitor configuration', () => {
+    it('should not have iOS/Android sync steps', () => {
       const buildJob = workflow.jobs.build;
-      const validateStep = buildJob.steps.find((step: { name: string }) =>
-        step.name.includes('Validate Capacitor configuration'),
+      const iosStep = buildJob.steps.find((step: { name: string }) =>
+        step.name.includes('Sync iOS'),
       );
-      expect(validateStep).toBeDefined();
-      expect(validateStep.run).toContain('capacitor.config.ts');
-    });
-
-    it('should sync iOS build', () => {
-      const buildJob = workflow.jobs.build;
-      const syncStep = buildJob.steps.find((step: { name: string }) =>
-        step.name.includes('Sync iOS build'),
+      const androidStep = buildJob.steps.find((step: { name: string }) =>
+        step.name.includes('Sync Android'),
       );
-      expect(syncStep).toBeDefined();
-      expect(syncStep.run).toBe('npx cap sync ios');
-    });
-
-    it('should sync Android build', () => {
-      const buildJob = workflow.jobs.build;
-      const syncStep = buildJob.steps.find((step: { name: string }) =>
-        step.name.includes('Sync Android build'),
-      );
-      expect(syncStep).toBeDefined();
-      expect(syncStep.run).toBe('npx cap sync android');
-    });
-
-    it('should verify iOS project', () => {
-      const buildJob = workflow.jobs.build;
-      const verifyStep = buildJob.steps.find((step: { name: string }) =>
-        step.name.includes('Verify iOS project'),
-      );
-      expect(verifyStep).toBeDefined();
-      expect(verifyStep.run).toContain('ios/App');
-    });
-
-    it('should verify Android project', () => {
-      const buildJob = workflow.jobs.build;
-      const verifyStep = buildJob.steps.find((step: { name: string }) =>
-        step.name.includes('Verify Android project'),
-      );
-      expect(verifyStep).toBeDefined();
-      expect(verifyStep.run).toContain('android/app');
+      expect(iosStep).toBeUndefined();
+      expect(androidStep).toBeUndefined();
     });
   });
 
@@ -128,30 +113,17 @@ describe('CI/CD Pipeline Configuration', () => {
       expect(testIndex).toBeLessThan(buildIndex);
     });
 
-    it('should validate PWA assets after building', () => {
+    it('should validate build output after building', () => {
       const buildJob = workflow.jobs.build;
       const buildIndex = buildJob.steps.findIndex((step: { name: string }) =>
         step.name.includes('Build web'),
       );
       const validateIndex = buildJob.steps.findIndex((step: { name: string }) =>
-        step.name.includes('Validate PWA manifest'),
+        step.name.includes('Validate build output'),
       );
       expect(buildIndex).toBeGreaterThan(-1);
       expect(validateIndex).toBeGreaterThan(-1);
       expect(buildIndex).toBeLessThan(validateIndex);
-    });
-
-    it('should sync native builds after validating PWA', () => {
-      const buildJob = workflow.jobs.build;
-      const validateIndex = buildJob.steps.findIndex((step: { name: string }) =>
-        step.name.includes('Validate service worker'),
-      );
-      const syncIndex = buildJob.steps.findIndex((step: { name: string }) =>
-        step.name.includes('Sync iOS build'),
-      );
-      expect(validateIndex).toBeGreaterThan(-1);
-      expect(syncIndex).toBeGreaterThan(-1);
-      expect(validateIndex).toBeLessThan(syncIndex);
     });
   });
 

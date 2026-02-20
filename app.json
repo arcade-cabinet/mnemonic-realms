@@ -1,7 +1,13 @@
 {
   "expo": {
     "scheme": "mnemonic-realms",
-    "web": { "output": "static" },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/icon-192.png",
+      "name": "Mnemonic Realms",
+      "shortName": "MnemonicRealms",
+      "description": "A 16-bit JRPG about memory as creative vitality"
+    },
     "plugins": ["expo-router"],
     "name": "Mnemonic Realms",
     "slug": "mnemonic-realms"
