@@ -5,7 +5,7 @@
     "filename": "sunridge.tmx",
     "width": 40,
     "height": 40,
-    "tileSize": 32,
+    "tileSize": 16,
     "biome": "highland",
     "tilesetRefs": ["tiles_mountain_{tier}"],
     "startVibrancy": 40,

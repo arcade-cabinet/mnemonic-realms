@@ -5,7 +5,7 @@
     "filename": "shimmer-marsh.tmx",
     "width": 50,
     "height": 50,
-    "tileSize": 32,
+    "tileSize": 16,
     "biome": "wetland",
     "tilesetRefs": ["tiles_wetland_{tier}"],
     "startVibrancy": 30,

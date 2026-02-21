@@ -1,0 +1,187 @@
+{
+  "generatedAt": "2026-02-20T23:11:50.280Z",
+  "strategyUsed": "completionist",
+  "totalEvents": 9,
+  "criticalCount": 2,
+  "warningCount": 5,
+  "infoCount": 2,
+  "events": [
+    {
+      "tick": 165,
+      "category": "combat-balance",
+      "severity": "info",
+      "message": "Combat ENC-wolf-pack ended: victory",
+      "details": {
+        "encounterId": "ENC-wolf-pack",
+        "outcome": "victory",
+        "duration": 15
+      },
+      "encounterId": "ENC-wolf-pack",
+      "timestamp": 1771629110277
+    },
+    {
+      "tick": 380,
+      "category": "combat-balance",
+      "severity": "warning",
+      "message": "Combat ENC-slime-swarm ended: defeat",
+      "details": {
+        "encounterId": "ENC-slime-swarm",
+        "outcome": "defeat",
+        "duration": 30
+      },
+      "encounterId": "ENC-slime-swarm",
+      "timestamp": 1771629110277
+    },
+    {
+      "tick": 410,
+      "category": "combat-balance",
+      "severity": "warning",
+      "message": "Combat ENC-slime-swarm-2 ended: defeat",
+      "details": {
+        "encounterId": "ENC-slime-swarm-2",
+        "outcome": "defeat",
+        "duration": 20
+      },
+      "encounterId": "ENC-slime-swarm-2",
+      "timestamp": 1771629110277
+    },
+    {
+      "tick": 445,
+      "category": "combat-balance",
+      "severity": "warning",
+      "message": "Combat ENC-slime-swarm-3 ended: defeat",
+      "details": {
+        "encounterId": "ENC-slime-swarm-3",
+        "outcome": "defeat",
+        "duration": 25
+      },
+      "encounterId": "ENC-slime-swarm-3",
+      "timestamp": 1771629110277
+    },
+    {
+      "tick": 920,
+      "category": "combat-balance",
+      "severity": "info",
+      "message": "Combat ENC-bandit ended: victory",
+      "details": {
+        "encounterId": "ENC-bandit",
+        "outcome": "victory",
+        "duration": 20
+      },
+      "encounterId": "ENC-bandit",
+      "timestamp": 1771629110277
+    },
+    {
+      "tick": 499,
+      "category": "navigation",
+      "severity": "warning",
+      "message": "Player stuck at (25, 30) for 100+ ticks",
+      "details": {
+        "streakLength": 100,
+        "position": {
+          "x": 25,
+          "y": 30
+        }
+      },
+      "location": {
+        "mapId": "heartfield",
+        "x": 25,
+        "y": 30
+      },
+      "timestamp": 1771629110277
+    },
+    {
+      "tick": 1199,
+      "category": "combat-balance",
+      "severity": "critical",
+      "message": "Death loop detected: 3 deaths near (59, 59) on sunridge",
+      "details": {
+        "deathCount": 3,
+        "locationKey": "sunridge:59:59"
+      },
+      "location": {
+        "mapId": "sunridge",
+        "x": 59,
+        "y": 59
+      },
+      "timestamp": 1771629110277
+    },
+    {
+      "tick": 1199,
+      "category": "quest-logic",
+      "severity": "critical",
+      "message": "Possible quest softlock: SQ-01 stuck in 'active' for 599 ticks",
+      "details": {
+        "questId": "SQ-01",
+        "ticksSinceLastChange": 599
+      },
+      "questId": "SQ-01",
+      "timestamp": 1771629110278
+    },
+    {
+      "tick": 719,
+      "category": "vibrancy",
+      "severity": "warning",
+      "message": "Player in forgotten area for 20+ ticks without taking damage",
+      "details": {
+        "streakLength": 20,
+        "hp": 80
+      },
+      "location": {
+        "mapId": "ambergrove",
+        "x": 29,
+        "y": 19
+      },
+      "timestamp": 1771629110278
+    }
+  ],
+  "pacing": {
+    "totalTicks": 1199,
+    "ticksPerAct": {
+      "act1": 1200
+    },
+    "ticksPerQuest": {
+      "MQ-01": 200,
+      "MQ-02": 400,
+      "SQ-01": 600
+    },
+    "ticksPerMap": {
+      "everwick": 300,
+      "heartfield": 300,
+      "ambergrove": 300,
+      "sunridge": 300
+    },
+    "combatCount": 5,
+    "deathCount": 3,
+    "averageCombatLength": 22,
+    "longestCombatLength": 30
+  },
+  "questCompletion": {
+    "MQ-01": {
+      "status": "completed",
+      "timeSpent": 1199
+    },
+    "MQ-02": {
+      "status": "completed",
+      "timeSpent": 999
+    },
+    "SQ-01": {
+      "status": "active",
+      "timeSpent": 599
+    }
+  },
+  "worldsVisited": [
+    "ambergrove",
+    "everwick",
+    "heartfield",
+    "sunridge"
+  ],
+  "encountersCompleted": [
+    "ENC-bandit",
+    "ENC-slime-swarm",
+    "ENC-slime-swarm-2",
+    "ENC-slime-swarm-3",
+    "ENC-wolf-pack"
+  ],
+  "summary": "🔴 2 critical issue(s) found — immediate attention required. 🟡 5 warning(s) detected. ℹ️ 2 informational event(s). Playtest covered 1199 ticks across 4 map(s) with 5 combat encounter(s)."
+}

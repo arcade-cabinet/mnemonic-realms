@@ -5,7 +5,7 @@
     "filename": "undrawn-peaks.tmx",
     "width": 40,
     "height": 40,
-    "tileSize": 32,
+    "tileSize": 16,
     "biome": "sketch",
     "tilesetRefs": ["tiles_sketch_{tier}"],
     "startVibrancy": 10,

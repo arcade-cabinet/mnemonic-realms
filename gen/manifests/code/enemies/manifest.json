@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "description": "Enemy actor code generation manifest",
-  "updatedAt": "2026-02-20T05:44:47.168Z",
+  "updatedAt": "2026-02-21T05:22:28.477Z",
   "category": "database-enemies",
   "systemPrompt": "You are an RPG-JS 4.3.0 TypeScript code generator.\nGenerate a single RPG-JS enemy database file using @rpgjs/database decorators.\nOutput ONLY valid TypeScript code. No markdown fences. No explanatory text.\nThe file must export the enemy class as the default export.\nImport from '@rpgjs/database'.\nInclude enemy abilities as comments in the class body.\n\n=== RPG-JS 4.3.0 @Enemy API Reference ===\nimport { Enemy } from '@rpgjs/database';\n\nUse the @Enemy decorator (NOT @Actor) for enemies.\n\nValid @Enemy decorator params (EnemyOptions extends ActorGlobalOptions):\n  id?: string              — Unique ID.\n  name?: string            — Display name.\n  description?: string     — Flavor text.\n  graphic?: string         — Spritesheet reference for the enemy.\n  parameters?: object      — Stats as { start, end } pairs (interpolated from initialLevel to finalLevel).\n                             Format: { [paramName]: { start: number, end: number } }\n                             Valid param names: 'maxhp', 'maxsp', 'str', 'int', 'dex', 'agi'\n                             For fixed-level enemies, set start === end.\n  startingEquipment?: array — Default equipment (imported class references).\n  startingItems?: array    — Starting items: [{ nb: number, item: ImportedItemClass }]\n  class?: any              — Assign a class (imported class reference).\n  gain?: object            — Rewards for defeating:\n                             { exp?: number, gold?: number, items?: [{ nb: number, item: ImportedItemClass, chance?: number }] }\n  statesEfficiency?: array — Vulnerability to states.\n  elementsEfficiency?: array — Vulnerability to elements.\n\nINVALID properties (do NOT use): hp, sp, atk, def, agi, int (flat numbers — must use parameters with {start,end}).\nAlso invalid: exp, gold, xp (use gain: { exp, gold } instead), expCurve, initialLevel, finalLevel.\n\nExample:\nimport { Enemy } from '@rpgjs/database';\n@Enemy({\n  id: 'E-SL-01',\n  name: 'Grass Serpent',\n  description: 'A small snake lurking in tall grass.',\n  parameters: {\n    maxhp: { start: 30, end: 30 },\n    str: { start: 6, end: 6 },\n    int: { start: 2, end: 2 },\n    dex: { start: 4, end: 4 },\n    agi: { start: 8, end: 8 },\n  },\n  gain: {\n    exp: 15,\n    gold: 8,\n  },\n})\nexport default class GrassSerpent {\n  // Abilities:\n  // - Bite: Physical ATK * 1.2\n}\n=== End API Reference ===",
   "assets": [
@@ -52,6 +52,134 @@
         "fileSizeBytes": 1010,
         "model": "gemini-2.5-flash"
       }
+    },
+    {
+      "id": "E-DP-01",
+      "name": "Memory Slime",
+      "category": "database-enemies",
+      "filename": "memory-slime.ts",
+      "targetPath": "main/database/enemies/memory-slime.ts",
+      "prompt": "Generate an RPG-JS enemy file for \"Memory Slime\" (ID: E-DP-01).\n\nStats (use these as { start: N, end: N } in parameters):\n- maxhp: { start: 50, end: 50 }\n- str: { start: 6, end: 6 }  (ATK maps to 'str' in RPG-JS)\n- int: { start: 8, end: 8 }\n- dex: { start: 4, end: 4 }   (DEF maps to 'dex' in RPG-JS)\n- agi: { start: 5, end: 5 }\n\nRewards (use gain object):\n- gain: { exp: 30, gold: 14 }\n\nContext (add as comments):\n- Zone: Depths L1\n- Category: depths\n- Fragment affinity: Calm / Kinesis\n\nAbilities:\n  - Dissolve: INT * 1.3 (water) (Magic attack, water element)\n  - Split: Summon 1 copy at 30% HP when below 50% (Self-replication, once per combat)\n\nDrop table:\n  - C-HP-01: 20% chance\n\nUse the @Enemy decorator from '@rpgjs/database' (NOT @Actor).\nSet id, name, description.\nSet parameters with { start, end } format for each stat.\nSet gain: { exp, gold } for rewards.\nInclude abilities, drops, and context as structured comments.\nDo NOT use: flat number stats, exp/gold/xp as top-level props, @Actor, initialLevel, finalLevel, expCurve.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/enemies-catalog.md",
+          "heading": "E-DP-01: Memory Slime",
+          "purpose": "content"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "E-DP-02",
+      "name": "Echo Bat",
+      "category": "database-enemies",
+      "filename": "echo-bat.ts",
+      "targetPath": "main/database/enemies/echo-bat.ts",
+      "prompt": "Generate an RPG-JS enemy file for \"Echo Bat\" (ID: E-DP-02).\n\nStats (use these as { start: N, end: N } in parameters):\n- maxhp: { start: 40, end: 40 }\n- str: { start: 9, end: 9 }  (ATK maps to 'str' in RPG-JS)\n- int: { start: 3, end: 3 }\n- dex: { start: 5, end: 5 }   (DEF maps to 'dex' in RPG-JS)\n- agi: { start: 16, end: 16 }\n\nRewards (use gain object):\n- gain: { exp: 35, gold: 16 }\n\nContext (add as comments):\n- Zone: Depths L1\n- Category: depths\n- Fragment affinity: Fury / Resonance\n\nAbilities:\n  - Sonic Screech: ATK * 1.2 (AE) (AoE physical, 10% chance Confusion)\n  - Echolocation: AGI +30% for 2 turns (Self-buff, used on first turn)\n\nDrop table:\n  - C-SC-01: 15% chance\n  - C-HP-01: 10% chance\n\nUse the @Enemy decorator from '@rpgjs/database' (NOT @Actor).\nSet id, name, description.\nSet parameters with { start, end } format for each stat.\nSet gain: { exp, gold } for rewards.\nInclude abilities, drops, and context as structured comments.\nDo NOT use: flat number stats, exp/gold/xp as top-level props, @Actor, initialLevel, finalLevel, expCurve.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/enemies-catalog.md",
+          "heading": "E-DP-02: Echo Bat",
+          "purpose": "content"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "E-DP-03",
+      "name": "Burdened Stone",
+      "category": "database-enemies",
+      "filename": "burdened-stone.ts",
+      "targetPath": "main/database/enemies/burdened-stone.ts",
+      "prompt": "Generate an RPG-JS enemy file for \"Burdened Stone\" (ID: E-DP-03).\n\nStats (use these as { start: N, end: N } in parameters):\n- maxhp: { start: 120, end: 120 }\n- str: { start: 14, end: 14 }  (ATK maps to 'str' in RPG-JS)\n- int: { start: 2, end: 2 }\n- dex: { start: 18, end: 18 }   (DEF maps to 'dex' in RPG-JS)\n- agi: { start: 3, end: 3 }\n\nRewards (use gain object):\n- gain: { exp: 60, gold: 28 }\n\nContext (add as comments):\n- Zone: Depths L2\n- Category: depths\n- Fragment affinity: Sorrow / Verdance\n\nAbilities:\n  - Crushing Weight: ATK * 1.6 (Heavy physical, 20% chance Slow)\n  - Petrify Aura: 10% chance Petrify (skip 1 turn) on contact (Passive retaliation)\n\nDrop table:\n  - C-HP-01: 20% chance\n  - C-BF-01: 5% chance\n\nUse the @Enemy decorator from '@rpgjs/database' (NOT @Actor).\nSet id, name, description.\nSet parameters with { start, end } format for each stat.\nSet gain: { exp, gold } for rewards.\nInclude abilities, drops, and context as structured comments.\nDo NOT use: flat number stats, exp/gold/xp as top-level props, @Actor, initialLevel, finalLevel, expCurve.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/enemies-catalog.md",
+          "heading": "E-DP-03: Burdened Stone",
+          "purpose": "content"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "E-DP-04",
+      "name": "Crystal Wraith",
+      "category": "database-enemies",
+      "filename": "crystal-wraith.ts",
+      "targetPath": "main/database/enemies/crystal-wraith.ts",
+      "prompt": "Generate an RPG-JS enemy file for \"Crystal Wraith\" (ID: E-DP-04).\n\nStats (use these as { start: N, end: N } in parameters):\n- maxhp: { start: 90, end: 90 }\n- str: { start: 8, end: 8 }  (ATK maps to 'str' in RPG-JS)\n- int: { start: 18, end: 18 }\n- dex: { start: 10, end: 10 }   (DEF maps to 'dex' in RPG-JS)\n- agi: { start: 14, end: 14 }\n\nRewards (use gain object):\n- gain: { exp: 85, gold: 36 }\n\nContext (add as comments):\n- Zone: Depths L3\n- Category: depths\n- Fragment affinity: Awe / Resonance\n\nAbilities:\n  - Prismatic Shard: INT * 1.7 (light) (Magic attack, light element)\n  - Refract: Reflect next magic attack back at caster (Magic counter, once per combat)\n  - Harmonic Pulse: INT * 1.0 (AE) (AoE magic, hits all party members)\n\nDrop table:\n  - C-SP-01: 20% chance\n  - C-SC-03: 10% chance\n\nUse the @Enemy decorator from '@rpgjs/database' (NOT @Actor).\nSet id, name, description.\nSet parameters with { start, end } format for each stat.\nSet gain: { exp, gold } for rewards.\nInclude abilities, drops, and context as structured comments.\nDo NOT use: flat number stats, exp/gold/xp as top-level props, @Actor, initialLevel, finalLevel, expCurve.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/enemies-catalog.md",
+          "heading": "E-DP-04: Crystal Wraith",
+          "purpose": "content"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "E-DP-05",
+      "name": "Dissolved Sentinel",
+      "category": "database-enemies",
+      "filename": "dissolved-sentinel.ts",
+      "targetPath": "main/database/enemies/dissolved-sentinel.ts",
+      "prompt": "Generate an RPG-JS enemy file for \"Dissolved Sentinel\" (ID: E-DP-05).\n\nStats (use these as { start: N, end: N } in parameters):\n- maxhp: { start: 160, end: 160 }\n- str: { start: 16, end: 16 }  (ATK maps to 'str' in RPG-JS)\n- int: { start: 14, end: 14 }\n- dex: { start: 16, end: 16 }   (DEF maps to 'dex' in RPG-JS)\n- agi: { start: 10, end: 10 }\n\nRewards (use gain object):\n- gain: { exp: 120, gold: 50 }\n\nContext (add as comments):\n- Zone: Depths L4\n- Category: depths\n- Fragment affinity: Sorrow / Kinesis\n\nAbilities:\n  - Memory Drain: INT * 1.5, drain 10% SP (Magic attack that steals SP)\n  - Sentinel Slam: ATK * 1.8 (Heavy physical, 15% chance Weakness)\n  - Dissolution Field: All party DEF -20% for 3 turns (AoE debuff, used every 4th turn)\n\nDrop table:\n  - C-HP-02: 15% chance\n  - C-SP-01: 15% chance\n  - C-BF-01: 8% chance\n\nUse the @Enemy decorator from '@rpgjs/database' (NOT @Actor).\nSet id, name, description.\nSet parameters with { start, end } format for each stat.\nSet gain: { exp, gold } for rewards.\nInclude abilities, drops, and context as structured comments.\nDo NOT use: flat number stats, exp/gold/xp as top-level props, @Actor, initialLevel, finalLevel, expCurve.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/enemies-catalog.md",
+          "heading": "E-DP-05: Dissolved Sentinel",
+          "purpose": "content"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "E-FR-01",
+      "name": "Boglight Drifter",
+      "category": "database-enemies",
+      "filename": "boglight-drifter.ts",
+      "targetPath": "main/database/enemies/boglight-drifter.ts",
+      "prompt": "Generate an RPG-JS enemy file for \"Boglight Drifter\" (ID: E-FR-01).\n\nStats (use these as { start: N, end: N } in parameters):\n- maxhp: { start: 85, end: 85 }\n- str: { start: 9, end: 9 }  (ATK maps to 'str' in RPG-JS)\n- int: { start: 14, end: 14 }\n- dex: { start: 8, end: 8 }   (DEF maps to 'dex' in RPG-JS)\n- agi: { start: 13, end: 13 }\n\nRewards (use gain object):\n- gain: { exp: 75, gold: 32 }\n\nContext (add as comments):\n- Zone: Shimmer Marsh\n- Category: frontier\n- Fragment affinity: Sorrow / Kinesis\n\nAbilities:\n  - Marsh Flare: INT * 1.6 (fire/water) (Magic attack, dual-element fire and water)\n  - Miasma Veil: 20% chance Confusion (random target, 2 turns) (AoE debuff, used every 3rd turn)\n\nDrop table:\n  - C-SP-01: 20% chance\n  - C-SC-03: 10% chance\n\nUse the @Enemy decorator from '@rpgjs/database' (NOT @Actor).\nSet id, name, description.\nSet parameters with { start, end } format for each stat.\nSet gain: { exp, gold } for rewards.\nInclude abilities, drops, and context as structured comments.\nDo NOT use: flat number stats, exp/gold/xp as top-level props, @Actor, initialLevel, finalLevel, expCurve.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/enemies-catalog.md",
+          "heading": "E-FR-01: Boglight Drifter",
+          "purpose": "content"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "E-FR-02",
+      "name": "Haze Stalker",
+      "category": "database-enemies",
+      "filename": "haze-stalker.ts",
+      "targetPath": "main/database/enemies/haze-stalker.ts",
+      "prompt": "Generate an RPG-JS enemy file for \"Haze Stalker\" (ID: E-FR-02).\n\nStats (use these as { start: N, end: N } in parameters):\n- maxhp: { start: 110, end: 110 }\n- str: { start: 15, end: 15 }  (ATK maps to 'str' in RPG-JS)\n- int: { start: 6, end: 6 }\n- dex: { start: 12, end: 12 }   (DEF maps to 'dex' in RPG-JS)\n- agi: { start: 16, end: 16 }\n\nRewards (use gain object):\n- gain: { exp: 90, gold: 38 }\n\nContext (add as comments):\n- Zone: Flickerveil\n- Category: frontier\n- Fragment affinity: Fury / Resonance\n\nAbilities:\n  - Flickerstrike: ATK * 1.6 (first turn: ATK * 2.0) (Ambush physical attack, bonus on first turn)\n  - Phase Shift: 50% dodge next physical attack (Evasion buff, used when below 60% HP)\n  - Rend Memory: ATK * 1.2 (15% chance Silence (no skills, 2 turns))\n\nDrop table:\n  - C-HP-02: 15% chance\n  - C-BF-01: 5% chance\n\nUse the @Enemy decorator from '@rpgjs/database' (NOT @Actor).\nSet id, name, description.\nSet parameters with { start, end } format for each stat.\nSet gain: { exp, gold } for rewards.\nInclude abilities, drops, and context as structured comments.\nDo NOT use: flat number stats, exp/gold/xp as top-level props, @Actor, initialLevel, finalLevel, expCurve.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/enemies-catalog.md",
+          "heading": "E-FR-02: Haze Stalker",
+          "purpose": "content"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "E-FR-03",
+      "name": "Verdance Elemental",
+      "category": "database-enemies",
+      "filename": "verdance-elemental.ts",
+      "targetPath": "main/database/enemies/verdance-elemental.ts",
+      "prompt": "Generate an RPG-JS enemy file for \"Verdance Elemental\" (ID: E-FR-03).\n\nStats (use these as { start: N, end: N } in parameters):\n- maxhp: { start: 140, end: 140 }\n- str: { start: 12, end: 12 }  (ATK maps to 'str' in RPG-JS)\n- int: { start: 16, end: 16 }\n- dex: { start: 14, end: 14 }   (DEF maps to 'dex' in RPG-JS)\n- agi: { start: 9, end: 9 }\n\nRewards (use gain object):\n- gain: { exp: 110, gold: 45 }\n\nContext (add as comments):\n- Zone: Hollow Ridge\n- Category: frontier\n- Fragment affinity: Calm / Verdance\n\nAbilities:\n  - Thorn Cascade: INT * 1.8 (earth) (AoE magic attack, earth element, hits all party)\n  - Root Bind: 30% chance Slow (AGI halved, 3 turns) (Single target debuff)\n  - Regenerate: Heal 10% max HP per turn for 3 turns (Self-heal, used when below 40% HP)\n\nDrop table:\n  - C-HP-02: 20% chance\n  - C-SP-01: 15% chance\n  - C-BF-01: 8% chance\n\nUse the @Enemy decorator from '@rpgjs/database' (NOT @Actor).\nSet id, name, description.\nSet parameters with { start, end } format for each stat.\nSet gain: { exp, gold } for rewards.\nInclude abilities, drops, and context as structured comments.\nDo NOT use: flat number stats, exp/gold/xp as top-level props, @Actor, initialLevel, finalLevel, expCurve.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/enemies-catalog.md",
+          "heading": "E-FR-03: Verdance Elemental",
+          "purpose": "content"
+        }
+      ],
+      "status": "pending"
     },
     {
       "id": "E-SL-01",
@@ -148,6 +276,118 @@
         "fileSizeBytes": 1198,
         "model": "gemini-2.5-flash"
       }
+    },
+    {
+      "id": "E-SK-01",
+      "name": "Sketch Phantom",
+      "category": "database-enemies",
+      "filename": "sketch-phantom.ts",
+      "targetPath": "main/database/enemies/sketch-phantom.ts",
+      "prompt": "Generate an RPG-JS enemy file for \"Sketch Phantom\" (ID: E-SK-01).\n\nStats (use these as { start: N, end: N } in parameters):\n- maxhp: { start: 130, end: 130 }\n- str: { start: 12, end: 12 }  (ATK maps to 'str' in RPG-JS)\n- int: { start: 20, end: 20 }\n- dex: { start: 10, end: 10 }   (DEF maps to 'dex' in RPG-JS)\n- agi: { start: 18, end: 18 }\n\nRewards (use gain object):\n- gain: { exp: 140, gold: 55 }\n\nContext (add as comments):\n- Zone: Luminous Wastes\n- Category: sketch\n- Fragment affinity: Sorrow / Resonance\n\nAbilities:\n  - Phantom Rend: INT * 1.8 (dark) (Magic attack, dark element, ignores 20% DEF)\n  - Fade: Untargetable for 1 turn (Used every 3rd turn, cannot be hit)\n\nDrop table:\n  - C-SP-01: 20% chance\n  - C-SC-04: 10% chance\n\nUse the @Enemy decorator from '@rpgjs/database' (NOT @Actor).\nSet id, name, description.\nSet parameters with { start, end } format for each stat.\nSet gain: { exp, gold } for rewards.\nInclude abilities, drops, and context as structured comments.\nDo NOT use: flat number stats, exp/gold/xp as top-level props, @Actor, initialLevel, finalLevel, expCurve.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/enemies-catalog.md",
+          "heading": "E-SK-01: Sketch Phantom",
+          "purpose": "content"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "E-SK-02",
+      "name": "Void Wisp",
+      "category": "database-enemies",
+      "filename": "void-wisp.ts",
+      "targetPath": "main/database/enemies/void-wisp.ts",
+      "prompt": "Generate an RPG-JS enemy file for \"Void Wisp\" (ID: E-SK-02).\n\nStats (use these as { start: N, end: N } in parameters):\n- maxhp: { start: 80, end: 80 }\n- str: { start: 5, end: 5 }  (ATK maps to 'str' in RPG-JS)\n- int: { start: 22, end: 22 }\n- dex: { start: 6, end: 6 }   (DEF maps to 'dex' in RPG-JS)\n- agi: { start: 20, end: 20 }\n\nRewards (use gain object):\n- gain: { exp: 130, gold: 50 }\n\nContext (add as comments):\n- Zone: Luminous Wastes\n- Category: sketch\n- Fragment affinity: Awe / Kinesis\n\nAbilities:\n  - Void Bolt: INT * 2.0 (dark) (High-damage single-target magic)\n  - Nullify: Dispel 1 buff from target (Removes positive status effects)\n\nDrop table:\n  - C-SP-01: 25% chance\n\nUse the @Enemy decorator from '@rpgjs/database' (NOT @Actor).\nSet id, name, description.\nSet parameters with { start, end } format for each stat.\nSet gain: { exp, gold } for rewards.\nInclude abilities, drops, and context as structured comments.\nDo NOT use: flat number stats, exp/gold/xp as top-level props, @Actor, initialLevel, finalLevel, expCurve.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/enemies-catalog.md",
+          "heading": "E-SK-02: Void Wisp",
+          "purpose": "content"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "E-SK-03",
+      "name": "Wireframe Drake",
+      "category": "database-enemies",
+      "filename": "wireframe-drake.ts",
+      "targetPath": "main/database/enemies/wireframe-drake.ts",
+      "prompt": "Generate an RPG-JS enemy file for \"Wireframe Drake\" (ID: E-SK-03).\n\nStats (use these as { start: N, end: N } in parameters):\n- maxhp: { start: 200, end: 200 }\n- str: { start: 22, end: 22 }  (ATK maps to 'str' in RPG-JS)\n- int: { start: 15, end: 15 }\n- dex: { start: 18, end: 18 }   (DEF maps to 'dex' in RPG-JS)\n- agi: { start: 12, end: 12 }\n\nRewards (use gain object):\n- gain: { exp: 180, gold: 70 }\n\nContext (add as comments):\n- Zone: Half-Drawn Forest\n- Category: sketch\n- Fragment affinity: Fury / Verdance\n\nAbilities:\n  - Sketch Breath: ATK * 1.5 (AE) (AoE physical, hits all party members)\n  - Wireframe Shield: DEF +40% for 2 turns (Self-buff, used when below 50% HP)\n  - Tail Sweep: ATK * 1.3 (Physical attack, 25% chance Slow)\n\nDrop table:\n  - C-HP-02: 20% chance\n  - C-BF-01: 10% chance\n\nUse the @Enemy decorator from '@rpgjs/database' (NOT @Actor).\nSet id, name, description.\nSet parameters with { start, end } format for each stat.\nSet gain: { exp, gold } for rewards.\nInclude abilities, drops, and context as structured comments.\nDo NOT use: flat number stats, exp/gold/xp as top-level props, @Actor, initialLevel, finalLevel, expCurve.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/enemies-catalog.md",
+          "heading": "E-SK-03: Wireframe Drake",
+          "purpose": "content"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "E-SK-04",
+      "name": "Apex Guardian",
+      "category": "database-enemies",
+      "filename": "apex-guardian.ts",
+      "targetPath": "main/database/enemies/apex-guardian.ts",
+      "prompt": "Generate an RPG-JS enemy file for \"Apex Guardian\" (ID: E-SK-04).\n\nStats (use these as { start: N, end: N } in parameters):\n- maxhp: { start: 250, end: 250 }\n- str: { start: 20, end: 20 }  (ATK maps to 'str' in RPG-JS)\n- int: { start: 18, end: 18 }\n- dex: { start: 22, end: 22 }   (DEF maps to 'dex' in RPG-JS)\n- agi: { start: 10, end: 10 }\n\nRewards (use gain object):\n- gain: { exp: 220, gold: 85 }\n\nContext (add as comments):\n- Zone: Undrawn Peaks\n- Category: sketch\n- Fragment affinity: Calm / Resonance\n\nAbilities:\n  - Crystalline Smash: ATK * 2.0 (Heavy physical, 20% chance Petrify)\n  - Memory Barrier: Absorb next 2 magic attacks (Magic shield, once per combat)\n  - Apex Roar: All party ATK -25% for 3 turns (AoE debuff)\n\nDrop table:\n  - C-HP-02: 20% chance\n  - C-SP-01: 15% chance\n  - C-BF-01: 10% chance\n\nUse the @Enemy decorator from '@rpgjs/database' (NOT @Actor).\nSet id, name, description.\nSet parameters with { start, end } format for each stat.\nSet gain: { exp, gold } for rewards.\nInclude abilities, drops, and context as structured comments.\nDo NOT use: flat number stats, exp/gold/xp as top-level props, @Actor, initialLevel, finalLevel, expCurve.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/enemies-catalog.md",
+          "heading": "E-SK-04: Apex Guardian",
+          "purpose": "content"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "E-SK-05",
+      "name": "Sketch Wolf",
+      "category": "database-enemies",
+      "filename": "sketch-wolf.ts",
+      "targetPath": "main/database/enemies/sketch-wolf.ts",
+      "prompt": "Generate an RPG-JS enemy file for \"Sketch Wolf\" (ID: E-SK-05).\n\nStats (use these as { start: N, end: N } in parameters):\n- maxhp: { start: 100, end: 100 }\n- str: { start: 18, end: 18 }  (ATK maps to 'str' in RPG-JS)\n- int: { start: 5, end: 5 }\n- dex: { start: 12, end: 12 }   (DEF maps to 'dex' in RPG-JS)\n- agi: { start: 22, end: 22 }\n\nRewards (use gain object):\n- gain: { exp: 135, gold: 52 }\n\nContext (add as comments):\n- Zone: Half-Drawn Forest\n- Category: sketch\n- Fragment affinity: Fury / Kinesis\n\nAbilities:\n  - Pack Lunge: ATK * 1.4 (+0.2 per ally Sketch Wolf) (Physical attack, stronger with pack)\n  - Howl: All allies AGI +20% for 2 turns (Party buff, used on first turn)\n\nDrop table:\n  - C-HP-01: 20% chance\n  - C-SC-02: 10% chance\n\nUse the @Enemy decorator from '@rpgjs/database' (NOT @Actor).\nSet id, name, description.\nSet parameters with { start, end } format for each stat.\nSet gain: { exp, gold } for rewards.\nInclude abilities, drops, and context as structured comments.\nDo NOT use: flat number stats, exp/gold/xp as top-level props, @Actor, initialLevel, finalLevel, expCurve.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/enemies-catalog.md",
+          "heading": "E-SK-05: Sketch Wolf",
+          "purpose": "content"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "E-SK-06",
+      "name": "Unfinished Treant",
+      "category": "database-enemies",
+      "filename": "unfinished-treant.ts",
+      "targetPath": "main/database/enemies/unfinished-treant.ts",
+      "prompt": "Generate an RPG-JS enemy file for \"Unfinished Treant\" (ID: E-SK-06).\n\nStats (use these as { start: N, end: N } in parameters):\n- maxhp: { start: 220, end: 220 }\n- str: { start: 16, end: 16 }  (ATK maps to 'str' in RPG-JS)\n- int: { start: 12, end: 12 }\n- dex: { start: 20, end: 20 }   (DEF maps to 'dex' in RPG-JS)\n- agi: { start: 5, end: 5 }\n\nRewards (use gain object):\n- gain: { exp: 190, gold: 72 }\n\nContext (add as comments):\n- Zone: Half-Drawn Forest\n- Category: sketch\n- Fragment affinity: Calm / Verdance\n\nAbilities:\n  - Branch Slam: ATK * 1.7 (Heavy physical attack)\n  - Root Network: Heal 15% max HP (Self-heal, used every 4th turn)\n  - Incomplete Form: 50% physical damage reduction for 1 turn (Passive: activates randomly when hit)\n\nDrop table:\n  - C-HP-02: 15% chance\n  - C-BF-01: 8% chance\n\nUse the @Enemy decorator from '@rpgjs/database' (NOT @Actor).\nSet id, name, description.\nSet parameters with { start, end } format for each stat.\nSet gain: { exp, gold } for rewards.\nInclude abilities, drops, and context as structured comments.\nDo NOT use: flat number stats, exp/gold/xp as top-level props, @Actor, initialLevel, finalLevel, expCurve.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/enemies-catalog.md",
+          "heading": "E-SK-06: Unfinished Treant",
+          "purpose": "content"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "E-SK-07",
+      "name": "Memory Echo",
+      "category": "database-enemies",
+      "filename": "memory-echo.ts",
+      "targetPath": "main/database/enemies/memory-echo.ts",
+      "prompt": "Generate an RPG-JS enemy file for \"Memory Echo\" (ID: E-SK-07).\n\nStats (use these as { start: N, end: N } in parameters):\n- maxhp: { start: 110, end: 110 }\n- str: { start: 10, end: 10 }  (ATK maps to 'str' in RPG-JS)\n- int: { start: 24, end: 24 }\n- dex: { start: 8, end: 8 }   (DEF maps to 'dex' in RPG-JS)\n- agi: { start: 16, end: 16 }\n\nRewards (use gain object):\n- gain: { exp: 160, gold: 60 }\n\nContext (add as comments):\n- Zone: Luminous Wastes\n- Category: sketch\n- Fragment affinity: Awe / Resonance\n\nAbilities:\n  - Echo Replay: Copy last player skill used, INT * 1.5 (Mirrors the last skill used against the party)\n  - Resonance Burst: INT * 1.4 (AE, light) (AoE magic, light element)\n\nDrop table:\n  - C-SP-01: 25% chance\n  - C-SC-04: 10% chance\n\nUse the @Enemy decorator from '@rpgjs/database' (NOT @Actor).\nSet id, name, description.\nSet parameters with { start, end } format for each stat.\nSet gain: { exp, gold } for rewards.\nInclude abilities, drops, and context as structured comments.\nDo NOT use: flat number stats, exp/gold/xp as top-level props, @Actor, initialLevel, finalLevel, expCurve.\nExport the class as default.",
+      "docRefs": [
+        {
+          "path": "docs/design/enemies-catalog.md",
+          "heading": "E-SK-07: Memory Echo",
+          "purpose": "content"
+        }
+      ],
+      "status": "pending"
     },
     {
       "id": "E-SL-07",

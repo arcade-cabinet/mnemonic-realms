@@ -5,7 +5,7 @@
     "filename": "resonance-fields.tmx",
     "width": 50,
     "height": 50,
-    "tileSize": 32,
+    "tileSize": 16,
     "biome": "plains",
     "tilesetRefs": ["tiles_plains_{tier}"],
     "startVibrancy": 15,

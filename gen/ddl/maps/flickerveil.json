@@ -5,7 +5,7 @@
     "filename": "flickerveil.tmx",
     "width": 50,
     "height": 50,
-    "tileSize": 32,
+    "tileSize": 16,
     "biome": "forest",
     "tilesetRefs": ["tiles_forest_{tier}", "overlay_flicker"],
     "startVibrancy": 25,
