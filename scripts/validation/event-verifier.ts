@@ -1,502 +1,270 @@
-// Event Verifier - validates event placement and wiring across all maps
-import { readdirSync } from 'node:fs';
+// Event Verifier — validates event objects in runtime map JSON (data/maps/*.json)
+import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { XMLParser } from 'fast-xml-parser';
 import { logger } from './logger.js';
-import { fileExists, readFile, writeJsonReport, writeMarkdownReport, formatTimestamp, calculateDuration } from './utils.js';
+import { formatTimestamp, calculateDuration } from './utils.js';
 import type { ValidationReport, Issue } from './types.js';
 
-interface TMXMap {
-  '@_width': number;
-  '@_height': number;
-  '@_tilewidth': number;
-  '@_tileheight': number;
-  objectgroup?: Array<{ '@_name': string; object?: TMXObject | TMXObject[] }> | { '@_name': string; object?: TMXObject | TMXObject[] };
+// --- Runtime map JSON shapes (matches RuntimeMapData) ---
+
+interface MapObject {
+  name: string;
+  type: 'npc' | 'chest' | 'transition' | 'trigger' | 'spawn';
+  x: number;
+  y: number;
+  width?: number;
+  height?: number;
+  properties?: Record<string, string | number | boolean>;
 }
 
-interface TMXObject {
-  '@_id': number;
-  '@_name': string;
-  '@_type'?: string;
-  '@_x': number;
-  '@_y': number;
-  '@_width'?: number;
-  '@_height'?: number;
-  properties?: { property: Array<{ '@_name': string; '@_value': string }> | { '@_name': string; '@_value': string } };
+interface RuntimeMapJson {
+  id?: string;
+  width: number;
+  height: number;
+  objects: MapObject[];
 }
 
-interface EventDoc {
-  eventId: string;
-  mapName: string;
-  position: { x: number; y: number };
-  trigger: 'touch' | 'action' | 'auto' | 'parallel';
-  repeat: 'once' | 'repeat' | 'quest' | 'conditional';
-  linkedQuest?: string;
-  npc?: string;
-  graphic?: string;
-  description: string;
-}
+// --- Constants ---
 
-interface EventAnalysis {
-  file: string;
-  mapName: string;
-  documentedEvents: number;
-  foundEvents: number;
-  missingEvents: string[];
-  undocumentedEvents: string[];
-  issues: Issue[];
-}
+const MAPS_DIR = 'data/maps';
 
 export class EventVerifier {
-  private parser: XMLParser;
-  private mapsDir = 'main/server/maps/tmx';
-  private docsPath = 'docs/maps/event-placement.md';
-
   constructor() {
-    this.parser = new XMLParser({
-      ignoreAttributes: false,
-      attributeNamePrefix: '@_',
-    });
+    // No configuration needed — reads from data/maps/
   }
 
-  private parseProperty(prop: { '@_name': string; '@_value': string } | Array<{ '@_name': string; '@_value': string }>, name: string): string | null {
-    const props = Array.isArray(prop) ? prop : [prop];
-    const found = props.find(p => p['@_name'] === name);
-    return found ? found['@_value'] : null;
-  }
+  // --- Per-object validation ---
 
-  private parseTMX(path: string): TMXMap | null {
-    try {
-      const content = readFile(path);
-      const parsed = this.parser.parse(content);
-      return parsed.map as TMXMap;
-    } catch (error) {
-      logger.error(`Failed to parse TMX file: ${path}`, { error });
-      return null;
-    }
-  }
+  private validateNpc(obj: MapObject, mapFile: string): Issue[] {
+    const issues: Issue[] = [];
+    const props = obj.properties ?? {};
 
-  private parseEventDocs(): Map<string, EventDoc[]> {
-    const eventsByMap = new Map<string, EventDoc[]>();
-    
-    if (!fileExists(this.docsPath)) {
-      logger.warn(`Event documentation not found: ${this.docsPath}`);
-      return eventsByMap;
-    }
-
-    const content = readFile(this.docsPath);
-    const lines = content.split('\n');
-    
-    let currentMap = '';
-    const mapLabelToName: Record<string, string> = {
-      'Everwick': 'everwick',
-      'Heartfield': 'heartfield',
-      'Ambergrove': 'ambergrove',
-      'Millbrook': 'millbrook',
-      'Sunridge': 'sunridge',
-      'Shimmer Marsh': 'shimmer-marsh',
-      'Hollow Ridge': 'hollow-ridge',
-      'Flickerveil': 'flickerveil',
-      'Resonance Fields': 'resonance-fields',
-      'Luminous Wastes': 'luminous-wastes',
-      'Undrawn Peaks': 'undrawn-peaks',
-      'Half-Drawn Forest': 'half-drawn-forest',
-      'Half Drawn Forest': 'half-drawn-forest',
-      'Depths Level 1': 'depths-l1',
-      'Depths L1': 'depths-l1',
-      'Depths L1 R1': 'depths-l1',
-      'Depths L1 R2': 'depths-l1',
-      'Depths L1 R3': 'depths-l1',
-      'Depths L1 R4': 'depths-l1',
-      'Depths Level 2': 'depths-l2',
-      'Depths L2': 'depths-l2',
-      'Depths L2 R1': 'depths-l2',
-      'Depths L2 R2': 'depths-l2',
-      'Depths L2 R3': 'depths-l2',
-      'Depths L2 R4': 'depths-l2',
-      'Depths L2 R5': 'depths-l2',
-      'Depths L2 R6': 'depths-l2',
-      'Depths L2 R7': 'depths-l2',
-      'Depths Level 3': 'depths-l3',
-      'Depths L3': 'depths-l3',
-      'Depths L3 R1': 'depths-l3',
-      'Depths L3 R2': 'depths-l3',
-      'Depths L3 R3': 'depths-l3',
-      'Depths L3 R5': 'depths-l3',
-      'Depths L3 R6': 'depths-l3',
-      'Depths L3 R8': 'depths-l3',
-      'Depths Level 4': 'depths-l4',
-      'Depths L4': 'depths-l4',
-      'Depths L4 R1': 'depths-l4',
-      'Depths L4 R2': 'depths-l4',
-      'Depths L4 R3': 'depths-l4',
-      'Depths L4 R4': 'depths-l4',
-      'Depths L4 R5': 'depths-l4',
-      'Depths L4 R6': 'depths-l4',
-      'Depths L4 R7': 'depths-l4',
-      'Depths Level 5': 'depths-l5',
-      'Depths L5': 'depths-l5',
-      'Depths L5 R1': 'depths-l5',
-      'Depths L5 R2': 'depths-l5',
-      'Depths L5 R3': 'depths-l5',
-      'Depths L5 R5': 'depths-l5',
-      'Depths L5 R6': 'depths-l5',
-      'Depths L5 R7': 'depths-l5',
-      'Depths L5 R8': 'depths-l5',
-      'Depths L5 R9': 'depths-l5',
-      'Depths L5 R10': 'depths-l5',
-      'Fortress Floor 1': 'fortress-f1',
-      'Fortress F1': 'fortress-f1',
-      'Fortress F1 R2': 'fortress-f1',
-      'Fortress F1 R3': 'fortress-f1',
-      'Fortress F1 R5': 'fortress-f1',
-      'Fortress F1 R6': 'fortress-f1',
-      'Fortress Floor 2': 'fortress-f2',
-      'Fortress F2': 'fortress-f2',
-      'Fortress F2 R4': 'fortress-f2',
-      'Fortress F2 R5': 'fortress-f2',
-      'Fortress F2 R6': 'fortress-f2',
-      'Fortress Floor 3': 'fortress-f3',
-      'Fortress F3': 'fortress-f3',
-      'Fortress F3 R1': 'fortress-f3',
-      'Fortress F3 R2': 'fortress-f3',
-      'SQ-03 sites': 'ambergrove',
-    };
-
-    for (const line of lines) {
-      // Detect map section headers - match any section with a map name
-      if (line.startsWith('### ')) {
-        // Try to extract map name from section header
-        // Format: "### Map Name [optional suffix]"
-        const headerText = line.substring(4).trim();
-        
-        // Try each known map label to see if it's in the header
-        for (const [label, name] of Object.entries(mapLabelToName)) {
-          if (headerText.startsWith(label)) {
-            currentMap = name;
-            break;
-          }
-        }
-      }
-
-      // Parse table rows (event data)
-      if (line.startsWith('| EV-')) {
-        const parts = line.split('|').map(p => p.trim()).filter(p => p);
-        
-        // Detect table format by checking if second column is a map name or position
-        const secondCol = parts[1];
-        const hasMapColumn = !secondCol.match(/\(\d+,\s*\d+\)/);
-        
-        if (hasMapColumn) {
-          // Format 2: Map name in table (e.g., | EV-VH-016 | Everwick | (0, 0) | ...)
-          const eventId = parts[0];
-          const mapLabel = parts[1];
-          const mapName = mapLabelToName[mapLabel] || '';
-          
-          if (mapName) {
-            const posMatch = parts[2].match(/\((\d+),\s*(\d+)\)/);
-            if (posMatch) {
-              const event: EventDoc = {
-                eventId,
-                mapName,
-                position: { x: Number.parseInt(posMatch[1], 10), y: Number.parseInt(posMatch[2], 10) },
-                trigger: parts[4] as EventDoc['trigger'],
-                repeat: parts[parts.length - 1] as EventDoc['repeat'],
-                linkedQuest: parts.length >= 6 && parts[5] !== '—' ? parts[5] : undefined,
-                description: parts.length >= 7 ? parts[6] : '',
-              };
-
-              if (!eventsByMap.has(mapName)) {
-                eventsByMap.set(mapName, []);
-              }
-              eventsByMap.get(mapName)?.push(event);
-            }
-          }
-        } else if (currentMap) {
-          // Format 1: Map name in section header (e.g., ### Everwick NPCs)
-          const eventId = parts[0];
-          const posMatch = parts[1].match(/\((\d+),\s*(\d+)\)/);
-          if (posMatch) {
-            const event: EventDoc = {
-              eventId,
-              mapName: currentMap,
-              position: { x: Number.parseInt(posMatch[1], 10), y: Number.parseInt(posMatch[2], 10) },
-              trigger: parts[2] as EventDoc['trigger'],
-              repeat: parts[3] as EventDoc['repeat'],
-              linkedQuest: parts.length >= 7 && parts[4] !== '—' ? parts[4] : undefined,
-              npc: parts.length >= 7 && parts[5] !== '—' ? parts[5] : undefined,
-              graphic: parts.length >= 7 && parts[6] !== '—' ? parts[6] : undefined,
-              description: parts[parts.length - 1] || '',
-            };
-
-            if (!eventsByMap.has(currentMap)) {
-              eventsByMap.set(currentMap, []);
-            }
-            eventsByMap.get(currentMap)?.push(event);
-          }
-        }
-      }
-    }
-
-    return eventsByMap;
-  }
-
-  private extractMapEvents(map: TMXMap): TMXObject[] {
-    const events: TMXObject[] = [];
-    
-    if (!map.objectgroup) return events;
-
-    const objectGroups = Array.isArray(map.objectgroup) ? map.objectgroup : [map.objectgroup];
-    
-    for (const group of objectGroups) {
-      if (group['@_name'] === 'events' && group.object) {
-        const objects = Array.isArray(group.object) ? group.object : [group.object];
-        events.push(...objects);
-      }
-    }
-
-    return events;
-  }
-
-  private verifyEvents(mapFile: string, mapName: string, documentedEvents: EventDoc[]): EventAnalysis {
-    const analysis: EventAnalysis = {
-      file: mapFile,
-      mapName,
-      documentedEvents: documentedEvents.length,
-      foundEvents: 0,
-      missingEvents: [],
-      undocumentedEvents: [],
-      issues: [],
-    };
-
-    const map = this.parseTMX(mapFile);
-    if (!map) {
-      analysis.issues.push({
-        id: 'parse-error',
+    if (!props.sprite && !props.graphic) {
+      issues.push({
+        id: `npc-no-sprite-${obj.name}`,
         severity: 'error',
-        category: 'parse',
-        description: `Failed to parse TMX file: ${mapFile}`,
-        location: { file: mapFile },
+        category: 'npc-missing-sprite',
+        description: `NPC "${obj.name}" has no sprite or graphic property`,
+        location: { file: mapFile, coordinates: { x: obj.x, y: obj.y } },
+        suggestion: 'Add a "sprite" or "graphic" property to this NPC object',
       });
-      return analysis;
     }
 
-    const mapEvents = this.extractMapEvents(map);
-    const tileWidth = Number(map['@_tilewidth']);
-    const tileHeight = Number(map['@_tileheight']);
-
-    // Track which documented events were found
-    const foundEventIds = new Set<string>();
-
-    // Check each documented event
-    for (const docEvent of documentedEvents) {
-      const expectedX = docEvent.position.x * tileWidth;
-      const expectedY = docEvent.position.y * tileHeight;
-
-      const matchingEvent = mapEvents.find(e => {
-        const eventX = Number(e['@_x']);
-        const eventY = Number(e['@_y']);
-        return Math.abs(eventX - expectedX) < tileWidth && Math.abs(eventY - expectedY) < tileHeight;
+    if (!props.dialogue && !props.dialogueId && !props.text) {
+      issues.push({
+        id: `npc-no-dialogue-${obj.name}`,
+        severity: 'warning',
+        category: 'npc-missing-dialogue',
+        description: `NPC "${obj.name}" has no dialogue, dialogueId, or text property`,
+        location: { file: mapFile, coordinates: { x: obj.x, y: obj.y } },
+        suggestion: 'Add a "dialogue" or "dialogueId" property to this NPC object',
       });
+    }
 
-      if (matchingEvent) {
-        foundEventIds.add(docEvent.eventId);
-        analysis.foundEvents++;
-      } else {
-        analysis.missingEvents.push(docEvent.eventId);
-        analysis.issues.push({
-          id: `missing-${docEvent.eventId}`,
+    return issues;
+  }
+
+  private validateTransition(obj: MapObject, mapFile: string): Issue[] {
+    const issues: Issue[] = [];
+    const props = obj.properties ?? {};
+
+    if (!props.target && !props.targetMap && !props.targetWorld) {
+      issues.push({
+        id: `transition-no-target-${obj.name}`,
+        severity: 'error',
+        category: 'transition-missing-target',
+        description: `Transition "${obj.name}" has no target, targetMap, or targetWorld property`,
+        location: { file: mapFile, coordinates: { x: obj.x, y: obj.y } },
+        suggestion: 'Add a "target" property specifying the destination world/map',
+      });
+    }
+
+    return issues;
+  }
+
+  private validateTrigger(obj: MapObject, mapFile: string): Issue[] {
+    const issues: Issue[] = [];
+    const props = obj.properties ?? {};
+
+    if (!props.eventId && !props.event && !props.action) {
+      issues.push({
+        id: `trigger-no-event-${obj.name}`,
+        severity: 'error',
+        category: 'trigger-missing-event',
+        description: `Trigger "${obj.name}" has no eventId, event, or action property`,
+        location: { file: mapFile, coordinates: { x: obj.x, y: obj.y } },
+        suggestion: 'Add an "eventId" or "action" property to this trigger object',
+      });
+    }
+
+    return issues;
+  }
+
+  private validateChest(obj: MapObject, mapFile: string): Issue[] {
+    const issues: Issue[] = [];
+    const props = obj.properties ?? {};
+
+    if (!props.contents && !props.itemId && !props.items) {
+      issues.push({
+        id: `chest-no-contents-${obj.name}`,
+        severity: 'warning',
+        category: 'chest-missing-contents',
+        description: `Chest "${obj.name}" has no contents, itemId, or items property`,
+        location: { file: mapFile, coordinates: { x: obj.x, y: obj.y } },
+        suggestion: 'Add a "contents" or "itemId" property to this chest object',
+      });
+    }
+
+    return issues;
+  }
+
+  // --- Main validation ---
+
+  private validateMapObjects(mapFile: string, mapData: RuntimeMapJson): Issue[] {
+    const issues: Issue[] = [];
+    const objects = mapData.objects ?? [];
+
+    for (const obj of objects) {
+      // Common checks: every object needs a name and valid type
+      if (!obj.name) {
+        issues.push({
+          id: `obj-no-name-${obj.type}-${obj.x}-${obj.y}`,
           severity: 'error',
-          category: 'missing-event',
-          description: `Event ${docEvent.eventId} not found at documented position`,
-          location: {
-            file: mapFile,
-            coordinates: docEvent.position,
-          },
-          expected: docEvent,
-          suggestion: `Add event at tile coordinates (${docEvent.position.x}, ${docEvent.position.y})`,
+          category: 'object-missing-name',
+          description: `${obj.type} object at (${obj.x}, ${obj.y}) has no name`,
+          location: { file: mapFile, coordinates: { x: obj.x, y: obj.y } },
         });
+      }
+
+      // Type-specific validation
+      switch (obj.type) {
+        case 'npc':
+          issues.push(...this.validateNpc(obj, mapFile));
+          break;
+        case 'transition':
+          issues.push(...this.validateTransition(obj, mapFile));
+          break;
+        case 'trigger':
+          issues.push(...this.validateTrigger(obj, mapFile));
+          break;
+        case 'chest':
+          issues.push(...this.validateChest(obj, mapFile));
+          break;
+        case 'spawn':
+          // Spawn points just need a name (already checked above)
+          break;
+        default:
+          issues.push({
+            id: `obj-unknown-type-${obj.name}`,
+            severity: 'warning',
+            category: 'unknown-object-type',
+            description: `Object "${obj.name}" has unknown type "${obj.type}"`,
+            location: { file: mapFile, coordinates: { x: obj.x, y: obj.y } },
+          });
       }
     }
 
-    // Check for undocumented events
-    for (const mapEvent of mapEvents) {
-      const eventName = mapEvent['@_name'];
-      if (!foundEventIds.has(eventName) && eventName.startsWith('EV-')) {
-        analysis.undocumentedEvents.push(eventName);
-        analysis.issues.push({
-          id: `undocumented-${eventName}`,
-          severity: 'warning',
-          category: 'undocumented-event',
-          description: `Event ${eventName} found in map but not documented`,
-          location: {
-            file: mapFile,
-            coordinates: {
-              x: Math.floor(Number(mapEvent['@_x']) / tileWidth),
-              y: Math.floor(Number(mapEvent['@_y']) / tileHeight),
-            },
-          },
-          suggestion: 'Add event to event-placement.md or remove from map',
-        });
-      }
-    }
-
-    return analysis;
+    return issues;
   }
 
   public async validate(): Promise<ValidationReport> {
     const startTime = Date.now();
     logger.info('Starting event verification...');
 
-    const eventsByMap = this.parseEventDocs();
-    logger.info(`Parsed ${eventsByMap.size} maps from event documentation`);
+    const allIssues: Issue[] = [];
+    let totalChecks = 0;
 
-    const analyses: EventAnalysis[] = [];
-    let totalDocumented = 0;
-    let totalFound = 0;
-    let totalMissing = 0;
-    let totalUndocumented = 0;
-
-    if (!fileExists(this.mapsDir)) {
-      logger.error(`Maps directory not found: ${this.mapsDir}`);
+    if (!existsSync(MAPS_DIR)) {
+      logger.warn(`Maps directory not found: ${MAPS_DIR}`);
       return {
         reportType: 'event',
         timestamp: formatTimestamp(new Date()),
-        summary: {
-          totalChecks: 0,
-          passed: 0,
-          failed: 0,
-          warnings: 0,
-        },
-        issues: [],
+        summary: { totalChecks: 0, passed: 0, failed: 0, warnings: 0 },
+        issues: [{
+          id: 'no-maps-dir',
+          severity: 'warning',
+          category: 'missing-data',
+          description: `Runtime maps directory not found: ${MAPS_DIR}. Run "pnpm generate:content" first.`,
+          location: { file: MAPS_DIR },
+        }],
         metadata: {
           validator: 'EventVerifier',
-          version: '1.0.0',
+          version: '2.0.0',
           duration: calculateDuration(startTime),
         },
       };
     }
 
-    const mapFiles = readdirSync(this.mapsDir).filter(f => f.endsWith('.tmx'));
+    const mapFiles = readdirSync(MAPS_DIR).filter((f) => f.endsWith('.json'));
 
-    for (const mapFile of mapFiles) {
-      const mapPath = join(this.mapsDir, mapFile);
-      const mapName = mapFile.replace('.tmx', '');
-      const documentedEvents = eventsByMap.get(mapName) || [];
-
-      const analysis = this.verifyEvents(mapPath, mapName, documentedEvents);
-      analyses.push(analysis);
-
-      totalDocumented += analysis.documentedEvents;
-      totalFound += analysis.foundEvents;
-      totalMissing += analysis.missingEvents.length;
-      totalUndocumented += analysis.undocumentedEvents.length;
-
-      logger.info(`${mapName}: ${analysis.foundEvents}/${analysis.documentedEvents} events found`);
+    if (mapFiles.length === 0) {
+      logger.warn('No runtime map JSON files found');
+      return {
+        reportType: 'event',
+        timestamp: formatTimestamp(new Date()),
+        summary: { totalChecks: 0, passed: 0, failed: 0, warnings: 0 },
+        issues: [{
+          id: 'no-map-files',
+          severity: 'warning',
+          category: 'missing-data',
+          description: `No .json files in ${MAPS_DIR}. Run "pnpm generate:content" first.`,
+          location: { file: MAPS_DIR },
+        }],
+        metadata: {
+          validator: 'EventVerifier',
+          version: '2.0.0',
+          duration: calculateDuration(startTime),
+        },
+      };
     }
 
-    const allIssues = analyses.flatMap(a => a.issues);
-    const errors = allIssues.filter(i => i.severity === 'error').length;
-    const warnings = allIssues.filter(i => i.severity === 'warning').length;
+    for (const file of mapFiles) {
+      const filePath = join(MAPS_DIR, file);
+      try {
+        const mapData: RuntimeMapJson = JSON.parse(readFileSync(filePath, 'utf-8'));
+        const objectCount = (mapData.objects ?? []).length;
+        totalChecks += objectCount;
 
-    const report: ValidationReport = {
+        const mapIssues = this.validateMapObjects(filePath, mapData);
+        allIssues.push(...mapIssues);
+
+        logger.info(
+          `${file}: ${objectCount} objects, ${mapIssues.length} issues`,
+        );
+      } catch (err) {
+        allIssues.push({
+          id: `parse-error-${file}`,
+          severity: 'error',
+          category: 'parse-error',
+          description: `Failed to parse map JSON: ${filePath} — ${err}`,
+          location: { file: filePath },
+        });
+        totalChecks++;
+      }
+    }
+
+    const errors = allIssues.filter((i) => i.severity === 'error').length;
+    const warnings = allIssues.filter((i) => i.severity === 'warning').length;
+
+    logger.info(
+      `Event verification complete: ${totalChecks} objects checked, ${errors} errors, ${warnings} warnings`,
+    );
+
+    return {
       reportType: 'event',
       timestamp: formatTimestamp(new Date()),
       summary: {
-        totalChecks: totalDocumented,
-        passed: totalFound,
+        totalChecks,
+        passed: totalChecks - errors,
         failed: errors,
         warnings,
       },
       issues: allIssues,
       metadata: {
         validator: 'EventVerifier',
-        version: '1.0.0',
+        version: '2.0.0',
         duration: calculateDuration(startTime),
       },
     };
-
-    logger.info(`Event verification complete: ${totalFound}/${totalDocumented} events found, ${totalMissing} missing, ${totalUndocumented} undocumented`);
-
-    return report;
-  }
-
-  public async generateReports(): Promise<void> {
-    const report = await this.validate();
-
-    // Write JSON report
-    writeJsonReport('scripts/validation/event-report.json', report);
-
-    // Write Markdown report
-    const markdown = this.formatMarkdownReport(report);
-    writeMarkdownReport('scripts/validation/event-report.md', markdown);
-
-    logger.info('Event reports generated successfully');
-  }
-
-  private formatMarkdownReport(report: ValidationReport): string {
-    const lines: string[] = [];
-
-    lines.push('# Event Verification Report');
-    lines.push('');
-    lines.push(`**Generated:** ${report.timestamp}`);
-    lines.push(`**Validator:** ${report.metadata.validator} v${report.metadata.version}`);
-    lines.push(`**Duration:** ${report.metadata.duration}ms`);
-    lines.push('');
-
-    lines.push('## Summary');
-    lines.push('');
-    lines.push(`- **Total Documented Events:** ${report.summary.totalChecks}`);
-    lines.push(`- **Events Found:** ${report.summary.passed}`);
-    lines.push(`- **Missing Events:** ${report.summary.failed}`);
-    lines.push(`- **Undocumented Events:** ${report.summary.warnings}`);
-    lines.push('');
-
-    if (report.issues.length === 0) {
-      lines.push('✅ **All events verified successfully!**');
-      lines.push('');
-      return lines.join('\n');
-    }
-
-    const errors = report.issues.filter(i => i.severity === 'error');
-    const warnings = report.issues.filter(i => i.severity === 'warning');
-
-    if (errors.length > 0) {
-      lines.push('## Missing Events');
-      lines.push('');
-      for (const issue of errors) {
-        lines.push(`### ${issue.id}`);
-        lines.push('');
-        lines.push(`- **File:** ${issue.location.file}`);
-        if (issue.location.coordinates) {
-          lines.push(`- **Expected Position:** (${issue.location.coordinates.x}, ${issue.location.coordinates.y})`);
-        }
-        lines.push(`- **Description:** ${issue.description}`);
-        if (issue.suggestion) {
-          lines.push(`- **Suggestion:** ${issue.suggestion}`);
-        }
-        lines.push('');
-      }
-    }
-
-    if (warnings.length > 0) {
-      lines.push('## Undocumented Events');
-      lines.push('');
-      for (const issue of warnings) {
-        lines.push(`### ${issue.id}`);
-        lines.push('');
-        lines.push(`- **File:** ${issue.location.file}`);
-        if (issue.location.coordinates) {
-          lines.push(`- **Position:** (${issue.location.coordinates.x}, ${issue.location.coordinates.y})`);
-        }
-        lines.push(`- **Description:** ${issue.description}`);
-        if (issue.suggestion) {
-          lines.push(`- **Suggestion:** ${issue.suggestion}`);
-        }
-        lines.push('');
-      }
-    }
-
-    return lines.join('\n');
   }
 }

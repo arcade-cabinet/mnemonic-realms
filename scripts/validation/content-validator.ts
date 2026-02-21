@@ -1,628 +1,399 @@
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import type { ValidationReport, ValidationIssue } from './types.js';
-import { Logger } from './logger.js';
+import type { ValidationReport, Issue } from './types.js';
+import { logger } from './logger.js';
+import { formatTimestamp, calculateDuration } from './utils.js';
 
-interface EnemyCatalogEntry {
+// --- DDL JSON shapes ---
+
+interface EnemyDdl {
   id: string;
   name: string;
+  zone: string;
   hp: number;
-  str: number;
+  atk: number;
   int: number;
-  dex: number;
+  def: number;
   agi: number;
-  exp: number;
+  xp: number;
   gold: number;
-  abilities: string[];
-  drops: string[];
+  abilities: { name: string }[];
+  drops: { itemId: string; chance: number }[];
 }
 
-interface EnemyImplementation {
+interface EncounterDdl {
   id: string;
   name: string;
-  hp: number;
-  str: number;
-  int: number;
-  dex: number;
-  agi: number;
-  exp: number;
-  gold: number;
-  filePath: string;
+  enemies: { enemyId: string; count: number }[];
 }
 
-interface EquipmentCatalogEntry {
-  id: string;
-  name: string;
-  type: 'weapon' | 'armor' | 'consumable';
-  obtainableVia: string[];
+interface EncounterFile {
+  encounters: EncounterDdl[];
 }
 
-interface EquipmentImplementation {
+interface WeaponDdl {
   id: string;
   name: string;
-  type: 'weapon' | 'armor' | 'consumable';
-  filePath: string;
 }
 
-interface QuestCatalogEntry {
+interface ArmorDdl {
   id: string;
   name: string;
-  type: 'main' | 'side' | 'god-recall';
-  prerequisites: string[];
 }
 
-interface QuestImplementation {
+interface ConsumableDdl {
   id: string;
   name: string;
-  filePath: string;
 }
+
+interface QuestDdl {
+  id: string;
+  name: string;
+  category: string;
+  dependencies: string[];
+  rewards?: { type: string; id?: string }[];
+}
+
+// --- Paths ---
+
+const ENEMIES_DIR = 'gen/ddl/enemies';
+const ENCOUNTERS_DIR = 'gen/ddl/encounters';
+const WEAPONS_DIR = 'gen/ddl/weapons';
+const ARMOR_DIR = 'gen/ddl/armor';
+const CONSUMABLES_DIR = 'gen/ddl/consumables';
+const QUESTS_DIR = 'gen/ddl/quests';
 
 export class ContentValidator {
-  private logger: Logger;
-  private docsPath: string;
-  private databasePath: string;
-  private questsPath: string;
-
   constructor() {
-    this.logger = new Logger('ContentValidator');
-    this.docsPath = 'docs';
-    this.databasePath = 'main/database';
-    this.questsPath = 'main/server/quests';
+    // No configuration needed — all paths are constants
   }
 
   async validate(): Promise<ValidationReport> {
-    this.logger.info('Starting content validation...');
+    const startTime = Date.now();
+    logger.info('Starting content validation...');
 
-    const issues: ValidationIssue[] = [];
-    const warnings: ValidationIssue[] = [];
+    const allIssues: Issue[] = [];
+    let totalChecks = 0;
 
-    // Validate enemies
-    const enemyIssues = await this.validateEnemies();
-    issues.push(...enemyIssues.filter((i) => i.severity === 'error'));
-    warnings.push(...enemyIssues.filter((i) => i.severity === 'warning'));
+    // Validate enemies + cross-reference with encounters
+    const enemyResult = this.validateEnemies();
+    allIssues.push(...enemyResult.issues);
+    totalChecks += enemyResult.checks;
 
-    // Validate equipment
-    const equipmentIssues = await this.validateEquipment();
-    issues.push(...equipmentIssues.filter((i) => i.severity === 'error'));
-    warnings.push(...equipmentIssues.filter((i) => i.severity === 'warning'));
+    // Validate equipment (weapons, armor, consumables)
+    const equipResult = this.validateEquipment();
+    allIssues.push(...equipResult.issues);
+    totalChecks += equipResult.checks;
 
-    // Validate quests
-    const questIssues = await this.validateQuests();
-    issues.push(...questIssues.filter((i) => i.severity === 'error'));
-    warnings.push(...questIssues.filter((i) => i.severity === 'warning'));
+    // Validate quests + dependency graph
+    const questResult = this.validateQuests();
+    allIssues.push(...questResult.issues);
+    totalChecks += questResult.checks;
 
-    this.logger.info(
-      `Content validation complete: ${issues.length} errors, ${warnings.length} warnings`,
+    const errors = allIssues.filter((i) => i.severity === 'error').length;
+    const warnings = allIssues.filter((i) => i.severity === 'warning').length;
+
+    logger.info(
+      `Content validation complete: ${errors} errors, ${warnings} warnings out of ${totalChecks} checks`,
     );
 
     return {
-      validator: 'ContentValidator',
-      timestamp: new Date().toISOString(),
+      reportType: 'content',
+      timestamp: formatTimestamp(new Date()),
       summary: {
-        totalChecks: issues.length + warnings.length,
-        passed: 0,
-        failed: issues.length,
-        warnings: warnings.length,
+        totalChecks,
+        passed: totalChecks - errors,
+        failed: errors,
+        warnings,
       },
-      issues,
-      warnings,
+      issues: allIssues,
+      metadata: {
+        validator: 'ContentValidator',
+        version: '2.0.0',
+        duration: calculateDuration(startTime),
+      },
     };
   }
 
-  private async validateEnemies(): Promise<ValidationIssue[]> {
-    const issues: ValidationIssue[] = [];
+  // --- Helpers ---
 
-    try {
-      // Parse enemy catalog
-      const catalogPath = join(this.docsPath, 'design', 'enemies-catalog.md');
-      const catalogContent = readFileSync(catalogPath, 'utf-8');
-      const catalogEnemies = this.parseEnemyCatalog(catalogContent);
+  private loadJsonDir<T>(dir: string): { items: T[]; files: string[] } {
+    const items: T[] = [];
+    const files: string[] = [];
+    if (!existsSync(dir)) return { items, files };
 
-      // Parse enemy implementations
-      const enemiesDir = join(this.databasePath, 'enemies');
-      const implementedEnemies = this.parseEnemyImplementations(enemiesDir);
-
-      // Check for missing implementations
-      for (const catalogEnemy of catalogEnemies) {
-        const impl = implementedEnemies.find((e) => e.id === catalogEnemy.id);
-        if (!impl) {
-          issues.push({
-            severity: 'error',
-            category: 'missing_content',
-            message: `Enemy ${catalogEnemy.id} (${catalogEnemy.name}) is documented but not implemented`,
-            location: catalogPath,
-          });
-          continue;
+    for (const file of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
+      const filePath = join(dir, file);
+      try {
+        const raw = JSON.parse(readFileSync(filePath, 'utf-8'));
+        // Some DDL files are arrays, some are objects with an array property
+        if (Array.isArray(raw)) {
+          items.push(...raw);
+        } else if (raw.encounters && Array.isArray(raw.encounters)) {
+          items.push(...raw.encounters);
         }
-
-        // Validate stats match
-        if (impl.hp !== catalogEnemy.hp) {
-          issues.push({
-            severity: 'error',
-            category: 'stat_mismatch',
-            message: `Enemy ${catalogEnemy.id}: HP mismatch (catalog: ${catalogEnemy.hp}, impl: ${impl.hp})`,
-            location: impl.filePath,
-          });
-        }
-        if (impl.str !== catalogEnemy.str) {
-          issues.push({
-            severity: 'error',
-            category: 'stat_mismatch',
-            message: `Enemy ${catalogEnemy.id}: STR mismatch (catalog: ${catalogEnemy.str}, impl: ${impl.str})`,
-            location: impl.filePath,
-          });
-        }
-        if (impl.int !== catalogEnemy.int) {
-          issues.push({
-            severity: 'error',
-            category: 'stat_mismatch',
-            message: `Enemy ${catalogEnemy.id}: INT mismatch (catalog: ${catalogEnemy.int}, impl: ${impl.int})`,
-            location: impl.filePath,
-          });
-        }
-        if (impl.dex !== catalogEnemy.dex) {
-          issues.push({
-            severity: 'error',
-            category: 'stat_mismatch',
-            message: `Enemy ${catalogEnemy.id}: DEX mismatch (catalog: ${catalogEnemy.dex}, impl: ${impl.dex})`,
-            location: impl.filePath,
-          });
-        }
-        if (impl.agi !== catalogEnemy.agi) {
-          issues.push({
-            severity: 'error',
-            category: 'stat_mismatch',
-            message: `Enemy ${catalogEnemy.id}: AGI mismatch (catalog: ${catalogEnemy.agi}, impl: ${impl.agi})`,
-            location: impl.filePath,
-          });
-        }
-        if (impl.exp !== catalogEnemy.exp) {
-          issues.push({
-            severity: 'warning',
-            category: 'stat_mismatch',
-            message: `Enemy ${catalogEnemy.id}: EXP mismatch (catalog: ${catalogEnemy.exp}, impl: ${impl.exp})`,
-            location: impl.filePath,
-          });
-        }
-        if (impl.gold !== catalogEnemy.gold) {
-          issues.push({
-            severity: 'warning',
-            category: 'stat_mismatch',
-            message: `Enemy ${catalogEnemy.id}: Gold mismatch (catalog: ${catalogEnemy.gold}, impl: ${impl.gold})`,
-            location: impl.filePath,
-          });
-        }
+        files.push(filePath);
+      } catch (err) {
+        logger.warn(`Failed to parse ${filePath}: ${err}`);
       }
+    }
+    return { items, files };
+  }
 
-      // Check for undocumented implementations
-      for (const impl of implementedEnemies) {
-        const catalogEntry = catalogEnemies.find((e) => e.id === impl.id);
-        if (!catalogEntry) {
-          issues.push({
-            severity: 'warning',
-            category: 'undocumented_content',
-            message: `Enemy ${impl.id} (${impl.name}) is implemented but not documented in catalog`,
-            location: impl.filePath,
-          });
-        }
-      }
-    } catch (error) {
+  // --- Enemy validation ---
+
+  private validateEnemies(): { issues: Issue[]; checks: number } {
+    const issues: Issue[] = [];
+    let checks = 0;
+
+    // Load all enemy DDL
+    const { items: enemies, files: enemyFiles } =
+      this.loadJsonDir<EnemyDdl>(ENEMIES_DIR);
+
+    if (enemies.length === 0) {
       issues.push({
-        severity: 'error',
-        category: 'parse_error',
-        message: `Failed to validate enemies: ${error}`,
-        location: 'scripts/validation/content-validator.ts',
+        id: 'no-enemy-ddl',
+        severity: 'warning',
+        category: 'missing-data',
+        description: 'No enemy DDL files found in gen/ddl/enemies/',
+        location: { file: ENEMIES_DIR },
+      });
+      return { issues, checks: 1 };
+    }
+
+    // Load all encounter DDL
+    const { items: encounters } =
+      this.loadJsonDir<EncounterDdl>(ENCOUNTERS_DIR);
+
+    // Collect all enemy IDs referenced by encounters
+    const referencedEnemyIds = new Set<string>();
+    for (const enc of encounters) {
+      for (const entry of enc.enemies) {
+        referencedEnemyIds.add(entry.enemyId);
+      }
+    }
+
+    // Check each enemy has required fields
+    const seenIds = new Set<string>();
+    for (const enemy of enemies) {
+      checks++;
+
+      // Duplicate ID check
+      if (seenIds.has(enemy.id)) {
+        issues.push({
+          id: `dup-enemy-${enemy.id}`,
+          severity: 'error',
+          category: 'duplicate-id',
+          description: `Duplicate enemy ID: ${enemy.id} (${enemy.name})`,
+          location: { file: ENEMIES_DIR },
+        });
+      }
+      seenIds.add(enemy.id);
+
+      // Required fields
+      if (!enemy.name) {
+        issues.push({
+          id: `enemy-no-name-${enemy.id}`,
+          severity: 'error',
+          category: 'missing-field',
+          description: `Enemy ${enemy.id} is missing a name`,
+          location: { file: ENEMIES_DIR },
+        });
+      }
+      if (enemy.hp == null || enemy.hp <= 0) {
+        issues.push({
+          id: `enemy-bad-hp-${enemy.id}`,
+          severity: 'error',
+          category: 'invalid-stat',
+          description: `Enemy ${enemy.id} (${enemy.name}) has invalid HP: ${enemy.hp}`,
+          location: { file: ENEMIES_DIR },
+        });
+      }
+
+      // Cross-reference: is this enemy used in any encounter?
+      checks++;
+      if (!referencedEnemyIds.has(enemy.id)) {
+        issues.push({
+          id: `enemy-unused-${enemy.id}`,
+          severity: 'warning',
+          category: 'unused-content',
+          description: `Enemy ${enemy.id} (${enemy.name}) is not referenced by any encounter`,
+          location: { file: ENEMIES_DIR },
+          suggestion: 'Add this enemy to an encounter in gen/ddl/encounters/',
+        });
+      }
+    }
+
+    // Check encounters don't reference non-existent enemies
+    for (const enc of encounters) {
+      for (const entry of enc.enemies) {
+        checks++;
+        if (!seenIds.has(entry.enemyId)) {
+          issues.push({
+            id: `enc-missing-enemy-${enc.id}-${entry.enemyId}`,
+            severity: 'error',
+            category: 'broken-reference',
+            description: `Encounter ${enc.id} (${enc.name}) references non-existent enemy ${entry.enemyId}`,
+            location: { file: ENCOUNTERS_DIR },
+            suggestion: `Add enemy ${entry.enemyId} to gen/ddl/enemies/`,
+          });
+        }
+      }
+    }
+
+    return { issues, checks };
+  }
+
+  // --- Equipment validation ---
+
+  private validateEquipment(): { issues: Issue[]; checks: number } {
+    const issues: Issue[] = [];
+    let checks = 0;
+
+    // Load all equipment DDL
+    const { items: weapons } = this.loadJsonDir<WeaponDdl>(WEAPONS_DIR);
+    const { items: armor } = this.loadJsonDir<ArmorDdl>(ARMOR_DIR);
+    const { items: consumables } = this.loadJsonDir<ConsumableDdl>(CONSUMABLES_DIR);
+
+    const allItems = [
+      ...weapons.map((w) => ({ ...w, source: WEAPONS_DIR })),
+      ...armor.map((a) => ({ ...a, source: ARMOR_DIR })),
+      ...consumables.map((c) => ({ ...c, source: CONSUMABLES_DIR })),
+    ];
+
+    // Check for duplicate IDs across all item types
+    const seenIds = new Set<string>();
+    for (const item of allItems) {
+      checks++;
+      if (seenIds.has(item.id)) {
+        issues.push({
+          id: `dup-item-${item.id}`,
+          severity: 'error',
+          category: 'duplicate-id',
+          description: `Duplicate item ID: ${item.id} (${item.name})`,
+          location: { file: item.source },
+        });
+      }
+      seenIds.add(item.id);
+
+      // Required fields
+      if (!item.name) {
+        issues.push({
+          id: `item-no-name-${item.id}`,
+          severity: 'error',
+          category: 'missing-field',
+          description: `Item ${item.id} is missing a name`,
+          location: { file: item.source },
+        });
+      }
+    }
+
+    // Cross-reference: check item IDs referenced in encounter rewards exist
+    const { items: encounters } =
+      this.loadJsonDir<EncounterDdl & { rewards?: { items?: { itemId: string }[] } }>(
+        ENCOUNTERS_DIR,
+      );
+    for (const enc of encounters) {
+      const rewardItems = (enc as { rewards?: { items?: { itemId: string }[] } }).rewards?.items;
+      if (rewardItems) {
+        for (const reward of rewardItems) {
+          checks++;
+          if (!seenIds.has(reward.itemId)) {
+            issues.push({
+              id: `enc-missing-item-${enc.id}-${reward.itemId}`,
+              severity: 'warning',
+              category: 'broken-reference',
+              description: `Encounter ${enc.id} rewards reference non-existent item ${reward.itemId}`,
+              location: { file: ENCOUNTERS_DIR },
+              suggestion: `Add item ${reward.itemId} to gen/ddl/weapons/, gen/ddl/armor/, or gen/ddl/consumables/`,
+            });
+          }
+        }
+      }
+    }
+
+    if (allItems.length === 0) {
+      issues.push({
+        id: 'no-equipment-ddl',
+        severity: 'warning',
+        category: 'missing-data',
+        description: 'No equipment DDL files found',
+        location: { file: WEAPONS_DIR },
       });
     }
 
-    return issues;
+    return { issues, checks: Math.max(checks, 1) };
   }
 
-  private parseEnemyCatalog(content: string): EnemyCatalogEntry[] {
-    const enemies: EnemyCatalogEntry[] = [];
-    const lines = content.split('\n');
+  // --- Quest validation ---
 
-    let currentEnemy: Partial<EnemyCatalogEntry> | null = null;
-    let inStatsSection = false;
+  private validateQuests(): { issues: Issue[]; checks: number } {
+    const issues: Issue[] = [];
+    let checks = 0;
 
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i].trim();
+    const { items: quests } = this.loadJsonDir<QuestDdl>(QUESTS_DIR);
 
-      // Detect enemy header (### E-XX-YY: Enemy Name)
-      if (line.startsWith('###') && !line.includes('Overview') && !line.includes('Stat') && !line.includes('Summary')) {
-        if (currentEnemy && currentEnemy.id) {
-          enemies.push(currentEnemy as EnemyCatalogEntry);
-        }
-        // Extract ID from header like "### E-SL-01: Meadow Sprite" or "### B-01: Stagnation Heart"
-        const headerMatch = line.match(/^###\s*([A-Z]-[A-Z0-9]+-\d+|B-\d+[a-z]?):\s*(.+)/);
-        if (headerMatch) {
-          currentEnemy = {
-            id: headerMatch[1],
-            name: headerMatch[2].trim(),
-            abilities: [],
-            drops: [],
-          };
-        } else {
-          currentEnemy = null;
-        }
-        inStatsSection = false;
+    if (quests.length === 0) {
+      issues.push({
+        id: 'no-quest-ddl',
+        severity: 'warning',
+        category: 'missing-data',
+        description: 'No quest DDL files found in gen/ddl/quests/',
+        location: { file: QUESTS_DIR },
+      });
+      return { issues, checks: 1 };
+    }
+
+    const questIds = new Set(quests.map((q) => q.id));
+
+    for (const quest of quests) {
+      checks++;
+
+      // Required fields
+      if (!quest.name) {
+        issues.push({
+          id: `quest-no-name-${quest.id}`,
+          severity: 'error',
+          category: 'missing-field',
+          description: `Quest ${quest.id} is missing a name`,
+          location: { file: QUESTS_DIR },
+        });
       }
 
-      // Skip ID parsing from **ID:** lines (not used in this catalog format)
-      if (line.startsWith('**ID:**') && currentEnemy) {
-        // Catalog uses ID in header, not separate line
-      }
-
-      // Parse stats table (vertical format: | Stat | Value | with rows for HP, ATK, INT, DEF, AGI)
-      if (line.startsWith('| Stat | Value |') && currentEnemy) {
-        inStatsSection = true;
-        // Skip the separator line
-        i++;
-        // Parse the next 6 lines (HP, ATK, INT, DEF, AGI, Base Level)
-        for (let j = 0; j < 6 && i + 1 < lines.length; j++) {
-          i++;
-          const statLine = lines[i].trim();
-          if (statLine.startsWith('|')) {
-            const parts = statLine.split('|').map((p) => p.trim()).filter(Boolean);
-            if (parts.length >= 2) {
-              const statName = parts[0];
-              const statValue = Number.parseInt(parts[1], 10);
-              if (statName === 'HP') currentEnemy.hp = statValue;
-              else if (statName === 'ATK') currentEnemy.str = statValue; // ATK in catalog = str in impl
-              else if (statName === 'INT') currentEnemy.int = statValue;
-              else if (statName === 'DEF') currentEnemy.dex = statValue; // DEF in catalog = dex in impl
-              else if (statName === 'AGI') currentEnemy.agi = statValue;
-              // Skip Base Level - not used in validation
-            }
+      // Validate dependency references
+      if (quest.dependencies) {
+        for (const dep of quest.dependencies) {
+          checks++;
+          if (!questIds.has(dep)) {
+            issues.push({
+              id: `quest-bad-dep-${quest.id}-${dep}`,
+              severity: 'error',
+              category: 'broken-reference',
+              description: `Quest ${quest.id} (${quest.name}) depends on non-existent quest ${dep}`,
+              location: { file: QUESTS_DIR },
+              suggestion: `Add quest ${dep} to gen/ddl/quests/ or fix the dependency`,
+            });
           }
         }
       }
 
-      // Parse rewards (format: **Rewards**: 18 XP | 8 gold)
-      if (line.startsWith('**Rewards**:') && currentEnemy) {
-        const rewardsMatch = line.match(/(\d+)\s*XP\s*\|\s*(\d+)\s*gold/);
-        if (rewardsMatch) {
-          currentEnemy.exp = Number.parseInt(rewardsMatch[1], 10);
-          currentEnemy.gold = Number.parseInt(rewardsMatch[2], 10);
-        }
-      }
-
-      // Parse abilities (numbered list format: 1. **Name** — Description)
-      if (/^\d+\.\s*\*\*/.test(line) && currentEnemy) {
-        const abilityName = line.match(/\*\*([^*]+)\*\*/)?.[1];
-        if (abilityName) {
-          currentEnemy.abilities?.push(abilityName);
-        }
-      }
-
-      // Parse drops
-      if (line.startsWith('- ') && line.includes('%') && currentEnemy) {
-        const dropMatch = line.match(/([A-Z]-[A-Z]+-\d+)/);
-        if (dropMatch) {
-          currentEnemy.drops?.push(dropMatch[1]);
+      // Check for circular dependencies (simple 1-hop check)
+      if (quest.dependencies) {
+        for (const dep of quest.dependencies) {
+          const depQuest = quests.find((q) => q.id === dep);
+          if (depQuest?.dependencies?.includes(quest.id)) {
+            issues.push({
+              id: `quest-circular-${quest.id}-${dep}`,
+              severity: 'error',
+              category: 'circular-dependency',
+              description: `Circular dependency: ${quest.id} <-> ${dep}`,
+              location: { file: QUESTS_DIR },
+            });
+          }
         }
       }
     }
 
-    if (currentEnemy && currentEnemy.id) {
-      enemies.push(currentEnemy as EnemyCatalogEntry);
-    }
-
-    return enemies;
-  }
-
-  private parseEnemyImplementations(enemiesDir: string): EnemyImplementation[] {
-    const implementations: EnemyImplementation[] = [];
-
-    try {
-      const files = readdirSync(enemiesDir).filter((f) => f.endsWith('.ts'));
-
-      for (const file of files) {
-        const filePath = join(enemiesDir, file);
-        const content = readFileSync(filePath, 'utf-8');
-
-        const idMatch = content.match(/id:\s*['"]([^'"]+)['"]/);
-        const nameMatch = content.match(/name:\s*['"]([^'"]+)['"]/);
-        const hpMatch = content.match(/maxhp:\s*{\s*start:\s*(\d+)/);
-        const strMatch = content.match(/str:\s*{\s*start:\s*(\d+)/);
-        const intMatch = content.match(/int:\s*{\s*start:\s*(\d+)/);
-        const dexMatch = content.match(/dex:\s*{\s*start:\s*(\d+)/);
-        const agiMatch = content.match(/agi:\s*{\s*start:\s*(\d+)/);
-        const expMatch = content.match(/exp:\s*(\d+)/);
-        const goldMatch = content.match(/gold:\s*(\d+)/);
-
-        if (idMatch && nameMatch) {
-          implementations.push({
-            id: idMatch[1],
-            name: nameMatch[1],
-            hp: hpMatch ? Number.parseInt(hpMatch[1], 10) : 0,
-            str: strMatch ? Number.parseInt(strMatch[1], 10) : 0,
-            int: intMatch ? Number.parseInt(intMatch[1], 10) : 0,
-            dex: dexMatch ? Number.parseInt(dexMatch[1], 10) : 0,
-            agi: agiMatch ? Number.parseInt(agiMatch[1], 10) : 0,
-            exp: expMatch ? Number.parseInt(expMatch[1], 10) : 0,
-            gold: goldMatch ? Number.parseInt(goldMatch[1], 10) : 0,
-            filePath,
-          });
-        }
-      }
-    } catch (error) {
-      this.logger.error(`Failed to parse enemy implementations: ${error}`);
-    }
-
-    return implementations;
-  }
-
-  private async validateEquipment(): Promise<ValidationIssue[]> {
-    const issues: ValidationIssue[] = [];
-
-    try {
-      // Parse equipment catalog
-      const catalogPath = join(this.docsPath, 'design', 'items-catalog.md');
-      const catalogContent = readFileSync(catalogPath, 'utf-8');
-      const catalogEquipment = this.parseEquipmentCatalog(catalogContent);
-
-      // Parse equipment implementations
-      const weaponsDir = join(this.databasePath, 'weapons');
-      const armorDir = join(this.databasePath, 'armor');
-      const itemsDir = join(this.databasePath, 'items');
-
-      const implementedEquipment = [
-        ...this.parseEquipmentImplementations(weaponsDir, 'weapon'),
-        ...this.parseEquipmentImplementations(armorDir, 'armor'),
-        ...this.parseEquipmentImplementations(itemsDir, 'consumable'),
-      ];
-
-      // Check for missing implementations
-      for (const catalogItem of catalogEquipment) {
-        const impl = implementedEquipment.find((e) => e.id === catalogItem.id);
-        if (!impl) {
-          issues.push({
-            severity: 'error',
-            category: 'missing_content',
-            message: `Equipment ${catalogItem.id} (${catalogItem.name}) is documented but not implemented`,
-            location: catalogPath,
-          });
-        }
-      }
-
-      // Check for undocumented implementations
-      for (const impl of implementedEquipment) {
-        const catalogEntry = catalogEquipment.find((e) => e.id === impl.id);
-        if (!catalogEntry) {
-          issues.push({
-            severity: 'warning',
-            category: 'undocumented_content',
-            message: `Equipment ${impl.id} (${impl.name}) is implemented but not documented in catalog`,
-            location: impl.filePath,
-          });
-        }
-      }
-    } catch (error) {
-      issues.push({
-        severity: 'warning',
-        category: 'parse_error',
-        message: `Failed to validate equipment: ${error}`,
-        location: 'scripts/validation/content-validator.ts',
-      });
-    }
-
-    return issues;
-  }
-
-  private parseEquipmentCatalog(content: string): EquipmentCatalogEntry[] {
-    const equipment: EquipmentCatalogEntry[] = [];
-    const lines = content.split('\n');
-
-    let currentItem: Partial<EquipmentCatalogEntry> | null = null;
-    let currentType: 'weapon' | 'armor' | 'consumable' | null = null;
-
-    for (const line of lines) {
-      const trimmed = line.trim();
-
-      // Detect section headers
-      if (trimmed.startsWith('## Weapons')) {
-        currentType = 'weapon';
-      } else if (trimmed.startsWith('## Armor')) {
-        currentType = 'armor';
-      } else if (trimmed.startsWith('## Consumables')) {
-        currentType = 'consumable';
-      }
-
-      // Detect item header
-      if (trimmed.startsWith('###') && currentType) {
-        if (currentItem && currentItem.id) {
-          equipment.push(currentItem as EquipmentCatalogEntry);
-        }
-        currentItem = {
-          name: trimmed.replace(/^###\s*/, '').trim(),
-          type: currentType,
-          obtainableVia: [],
-        };
-      }
-
-      // Parse ID
-      if (trimmed.startsWith('**ID:**') && currentItem) {
-        currentItem.id = trimmed.replace(/\*\*ID:\*\*\s*/, '').replace(/`/g, '').trim();
-      }
-
-      // Parse obtainability
-      if (trimmed.startsWith('**Obtained:**') && currentItem) {
-        const obtainText = trimmed.replace(/\*\*Obtained:\*\*\s*/, '').toLowerCase();
-        if (obtainText.includes('shop')) currentItem.obtainableVia?.push('shop');
-        if (obtainText.includes('quest')) currentItem.obtainableVia?.push('quest');
-        if (obtainText.includes('treasure') || obtainText.includes('chest'))
-          currentItem.obtainableVia?.push('treasure');
-        if (obtainText.includes('drop')) currentItem.obtainableVia?.push('drop');
-      }
-    }
-
-    if (currentItem && currentItem.id) {
-      equipment.push(currentItem as EquipmentCatalogEntry);
-    }
-
-    return equipment;
-  }
-
-  private parseEquipmentImplementations(
-    dir: string,
-    type: 'weapon' | 'armor' | 'consumable',
-  ): EquipmentImplementation[] {
-    const implementations: EquipmentImplementation[] = [];
-
-    try {
-      const files = readdirSync(dir).filter((f) => f.endsWith('.ts'));
-
-      for (const file of files) {
-        const filePath = join(dir, file);
-        const content = readFileSync(filePath, 'utf-8');
-
-        const idMatch = content.match(/id:\s*['"]([^'"]+)['"]/);
-        const nameMatch = content.match(/name:\s*['"]([^'"]+)['"]/);
-
-        if (idMatch && nameMatch) {
-          implementations.push({
-            id: idMatch[1],
-            name: nameMatch[1],
-            type,
-            filePath,
-          });
-        }
-      }
-    } catch (error) {
-      this.logger.error(`Failed to parse ${type} implementations: ${error}`);
-    }
-
-    return implementations;
-  }
-
-  private async validateQuests(): Promise<ValidationIssue[]> {
-    const issues: ValidationIssue[] = [];
-
-    try {
-      // Parse quest catalog
-      const catalogPath = join(this.docsPath, 'story', 'quest-chains.md');
-      const catalogContent = readFileSync(catalogPath, 'utf-8');
-      const catalogQuests = this.parseQuestCatalog(catalogContent);
-
-      // Parse quest implementations
-      const implementedQuests = this.parseQuestImplementations(this.questsPath);
-
-      // Check for missing implementations
-      for (const catalogQuest of catalogQuests) {
-        const impl = implementedQuests.find((q) => q.id === catalogQuest.id);
-        if (!impl) {
-          issues.push({
-            severity: 'error',
-            category: 'missing_content',
-            message: `Quest ${catalogQuest.id} (${catalogQuest.name}) is documented but not implemented`,
-            location: catalogPath,
-          });
-        }
-      }
-
-      // Check for undocumented implementations
-      for (const impl of implementedQuests) {
-        const catalogEntry = catalogQuests.find((q) => q.id === impl.id);
-        if (!catalogEntry) {
-          issues.push({
-            severity: 'warning',
-            category: 'undocumented_content',
-            message: `Quest ${impl.id} (${impl.name}) is implemented but not documented in catalog`,
-            location: impl.filePath,
-          });
-        }
-      }
-    } catch (error) {
-      issues.push({
-        severity: 'warning',
-        category: 'parse_error',
-        message: `Failed to validate quests: ${error}`,
-        location: 'scripts/validation/content-validator.ts',
-      });
-    }
-
-    return issues;
-  }
-
-  private parseQuestCatalog(content: string): QuestCatalogEntry[] {
-    const quests: QuestCatalogEntry[] = [];
-    const lines = content.split('\n');
-
-    let currentQuest: Partial<QuestCatalogEntry> | null = null;
-    let currentType: 'main' | 'side' | 'god-recall' | null = null;
-
-    for (const line of lines) {
-      const trimmed = line.trim();
-
-      // Detect section headers
-      if (trimmed.startsWith('## Main Quest')) {
-        currentType = 'main';
-      } else if (trimmed.startsWith('## Side Quest')) {
-        currentType = 'side';
-      } else if (trimmed.startsWith('## God Recall')) {
-        currentType = 'god-recall';
-      }
-
-      // Detect quest header
-      if (trimmed.startsWith('###') && currentType) {
-        if (currentQuest && currentQuest.id) {
-          quests.push(currentQuest as QuestCatalogEntry);
-        }
-        currentQuest = {
-          name: trimmed.replace(/^###\s*/, '').trim(),
-          type: currentType,
-          prerequisites: [],
-        };
-      }
-
-      // Parse ID
-      if (trimmed.startsWith('**ID:**') && currentQuest) {
-        currentQuest.id = trimmed.replace(/\*\*ID:\*\*\s*/, '').replace(/`/g, '').trim();
-      }
-
-      // Parse prerequisites
-      if (trimmed.startsWith('**Prerequisites:**') && currentQuest) {
-        const prereqText = trimmed.replace(/\*\*Prerequisites:\*\*\s*/, '');
-        const prereqMatches = prereqText.match(/[A-Z]+-\d+/g);
-        if (prereqMatches) {
-          currentQuest.prerequisites = prereqMatches;
-        }
-      }
-    }
-
-    if (currentQuest && currentQuest.id) {
-      quests.push(currentQuest as QuestCatalogEntry);
-    }
-
-    return quests;
-  }
-
-  private parseQuestImplementations(questsDir: string): QuestImplementation[] {
-    const implementations: QuestImplementation[] = [];
-
-    try {
-      const files = readdirSync(questsDir).filter((f) => f.endsWith('.ts'));
-
-      for (const file of files) {
-        const filePath = join(questsDir, file);
-        const content = readFileSync(filePath, 'utf-8');
-
-        const idMatch = content.match(/id:\s*['"]([^'"]+)['"]/);
-        const nameMatch = content.match(/name:\s*['"]([^'"]+)['"]/);
-
-        if (idMatch && nameMatch) {
-          implementations.push({
-            id: idMatch[1],
-            name: nameMatch[1],
-            filePath,
-          });
-        }
-      }
-    } catch (error) {
-      this.logger.error(`Failed to parse quest implementations: ${error}`);
-    }
-
-    return implementations;
+    return { issues, checks: Math.max(checks, 1) };
   }
 }
