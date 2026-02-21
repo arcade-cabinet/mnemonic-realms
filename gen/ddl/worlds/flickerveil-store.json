@@ -1,0 +1,14 @@
+{
+  "id": "flickerveil-store",
+  "name": "Reza's Curiosities",
+  "templateId": "shop-single",
+  "parentAnchor": "flickerveil",
+  "slotValues": {
+    "keeper": "village-shopkeeper-fv",
+    "shop-type": "general",
+    "theme": "frontier-forest"
+  },
+  "properties": {
+    "description": "The shop flickers in and out of focus like the village itself. Shelves hold goods from both the settled lands and stranger places — some items seem to remember being something else entirely."
+  }
+}

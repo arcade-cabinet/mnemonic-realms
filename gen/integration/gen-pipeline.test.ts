@@ -371,7 +371,7 @@ describe('DDL schema validation', () => {
     it('enemies DDL validates', async () => {
       const { loadEnemiesStats } = await import('../builders/ddl-loader');
       const enemies = loadEnemiesStats();
-      expect(enemies.length).toBe(8);
+      expect(enemies.length).toBe(23);
       for (const e of enemies) {
         expect(e.id).toMatch(/^E-/);
         expect(e.hp).toBeGreaterThan(0);

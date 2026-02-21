@@ -1,0 +1,276 @@
+[
+  {
+    "id": "E-SK-01",
+    "name": "Sketch Phantom",
+    "zone": "Luminous Wastes",
+    "category": "sketch",
+    "hp": 130,
+    "atk": 12,
+    "int": 20,
+    "def": 10,
+    "agi": 18,
+    "baseLevel": 21,
+    "xp": 140,
+    "gold": 55,
+    "abilities": [
+      {
+        "name": "Phantom Rend",
+        "formula": "INT * 1.8 (dark)",
+        "effect": "Magic attack, dark element, ignores 20% DEF"
+      },
+      {
+        "name": "Fade",
+        "formula": "Untargetable for 1 turn",
+        "effect": "Used every 3rd turn, cannot be hit"
+      }
+    ],
+    "drops": [
+      {
+        "itemId": "C-SP-01",
+        "chance": 0.2
+      },
+      {
+        "itemId": "C-SC-04",
+        "chance": 0.1
+      }
+    ],
+    "fragmentAffinity": "Sorrow / Resonance"
+  },
+  {
+    "id": "E-SK-02",
+    "name": "Void Wisp",
+    "zone": "Luminous Wastes",
+    "category": "sketch",
+    "hp": 80,
+    "atk": 5,
+    "int": 22,
+    "def": 6,
+    "agi": 20,
+    "baseLevel": 22,
+    "xp": 130,
+    "gold": 50,
+    "abilities": [
+      {
+        "name": "Void Bolt",
+        "formula": "INT * 2.0 (dark)",
+        "effect": "High-damage single-target magic"
+      },
+      {
+        "name": "Nullify",
+        "formula": "Dispel 1 buff from target",
+        "effect": "Removes positive status effects"
+      }
+    ],
+    "drops": [
+      {
+        "itemId": "C-SP-01",
+        "chance": 0.25
+      }
+    ],
+    "fragmentAffinity": "Awe / Kinesis"
+  },
+  {
+    "id": "E-SK-03",
+    "name": "Wireframe Drake",
+    "zone": "Half-Drawn Forest",
+    "category": "sketch",
+    "hp": 200,
+    "atk": 22,
+    "int": 15,
+    "def": 18,
+    "agi": 12,
+    "baseLevel": 24,
+    "xp": 180,
+    "gold": 70,
+    "abilities": [
+      {
+        "name": "Sketch Breath",
+        "formula": "ATK * 1.5 (AE)",
+        "effect": "AoE physical, hits all party members"
+      },
+      {
+        "name": "Wireframe Shield",
+        "formula": "DEF +40% for 2 turns",
+        "effect": "Self-buff, used when below 50% HP"
+      },
+      {
+        "name": "Tail Sweep",
+        "formula": "ATK * 1.3",
+        "effect": "Physical attack, 25% chance Slow"
+      }
+    ],
+    "drops": [
+      {
+        "itemId": "C-HP-02",
+        "chance": 0.2
+      },
+      {
+        "itemId": "C-BF-01",
+        "chance": 0.1
+      }
+    ],
+    "fragmentAffinity": "Fury / Verdance"
+  },
+  {
+    "id": "E-SK-04",
+    "name": "Apex Guardian",
+    "zone": "Undrawn Peaks",
+    "category": "sketch",
+    "hp": 250,
+    "atk": 20,
+    "int": 18,
+    "def": 22,
+    "agi": 10,
+    "baseLevel": 26,
+    "xp": 220,
+    "gold": 85,
+    "abilities": [
+      {
+        "name": "Crystalline Smash",
+        "formula": "ATK * 2.0",
+        "effect": "Heavy physical, 20% chance Petrify"
+      },
+      {
+        "name": "Memory Barrier",
+        "formula": "Absorb next 2 magic attacks",
+        "effect": "Magic shield, once per combat"
+      },
+      {
+        "name": "Apex Roar",
+        "formula": "All party ATK -25% for 3 turns",
+        "effect": "AoE debuff"
+      }
+    ],
+    "drops": [
+      {
+        "itemId": "C-HP-02",
+        "chance": 0.2
+      },
+      {
+        "itemId": "C-SP-01",
+        "chance": 0.15
+      },
+      {
+        "itemId": "C-BF-01",
+        "chance": 0.1
+      }
+    ],
+    "fragmentAffinity": "Calm / Resonance"
+  },
+  {
+    "id": "E-SK-05",
+    "name": "Sketch Wolf",
+    "zone": "Half-Drawn Forest",
+    "category": "sketch",
+    "hp": 100,
+    "atk": 18,
+    "int": 5,
+    "def": 12,
+    "agi": 22,
+    "baseLevel": 22,
+    "xp": 135,
+    "gold": 52,
+    "abilities": [
+      {
+        "name": "Pack Lunge",
+        "formula": "ATK * 1.4 (+0.2 per ally Sketch Wolf)",
+        "effect": "Physical attack, stronger with pack"
+      },
+      {
+        "name": "Howl",
+        "formula": "All allies AGI +20% for 2 turns",
+        "effect": "Party buff, used on first turn"
+      }
+    ],
+    "drops": [
+      {
+        "itemId": "C-HP-01",
+        "chance": 0.2
+      },
+      {
+        "itemId": "C-SC-02",
+        "chance": 0.1
+      }
+    ],
+    "fragmentAffinity": "Fury / Kinesis"
+  },
+  {
+    "id": "E-SK-06",
+    "name": "Unfinished Treant",
+    "zone": "Half-Drawn Forest",
+    "category": "sketch",
+    "hp": 220,
+    "atk": 16,
+    "int": 12,
+    "def": 20,
+    "agi": 5,
+    "baseLevel": 25,
+    "xp": 190,
+    "gold": 72,
+    "abilities": [
+      {
+        "name": "Branch Slam",
+        "formula": "ATK * 1.7",
+        "effect": "Heavy physical attack"
+      },
+      {
+        "name": "Root Network",
+        "formula": "Heal 15% max HP",
+        "effect": "Self-heal, used every 4th turn"
+      },
+      {
+        "name": "Incomplete Form",
+        "formula": "50% physical damage reduction for 1 turn",
+        "effect": "Passive: activates randomly when hit"
+      }
+    ],
+    "drops": [
+      {
+        "itemId": "C-HP-02",
+        "chance": 0.15
+      },
+      {
+        "itemId": "C-BF-01",
+        "chance": 0.08
+      }
+    ],
+    "fragmentAffinity": "Calm / Verdance"
+  },
+  {
+    "id": "E-SK-07",
+    "name": "Memory Echo",
+    "zone": "Luminous Wastes",
+    "category": "sketch",
+    "hp": 110,
+    "atk": 10,
+    "int": 24,
+    "def": 8,
+    "agi": 16,
+    "baseLevel": 23,
+    "xp": 160,
+    "gold": 60,
+    "abilities": [
+      {
+        "name": "Echo Replay",
+        "formula": "Copy last player skill used, INT * 1.5",
+        "effect": "Mirrors the last skill used against the party"
+      },
+      {
+        "name": "Resonance Burst",
+        "formula": "INT * 1.4 (AE, light)",
+        "effect": "AoE magic, light element"
+      }
+    ],
+    "drops": [
+      {
+        "itemId": "C-SP-01",
+        "chance": 0.25
+      },
+      {
+        "itemId": "C-SC-04",
+        "chance": 0.1
+      }
+    ],
+    "fragmentAffinity": "Awe / Resonance"
+  }
+]

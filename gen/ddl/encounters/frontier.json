@@ -1,0 +1,91 @@
+{
+  "encounters": [
+    {
+      "id": "ENC-FR-01",
+      "name": "Marsh Drifters",
+      "region": "frontier",
+      "type": "random",
+      "enemies": [
+        { "enemyId": "E-FR-01", "count": 3, "position": "front" }
+      ],
+      "background": "bg-shimmer-marsh",
+      "music": "bgm-combat-frontier",
+      "rewards": { "xp": 225, "gold": 96 },
+      "escapeAllowed": true
+    },
+    {
+      "id": "ENC-FR-02",
+      "name": "Haze Ambush",
+      "region": "frontier",
+      "type": "ambush",
+      "enemies": [
+        { "enemyId": "E-FR-02", "count": 2, "position": "front" },
+        { "enemyId": "E-FR-01", "count": 1, "position": "back" }
+      ],
+      "background": "bg-flickerveil-canopy",
+      "music": "bgm-combat-frontier",
+      "rewards": { "xp": 255, "gold": 108 },
+      "escapeAllowed": true
+    },
+    {
+      "id": "ENC-FR-03",
+      "name": "Elemental Convergence",
+      "region": "frontier",
+      "type": "random",
+      "enemies": [
+        { "enemyId": "E-FR-03", "count": 1, "position": "front" },
+        { "enemyId": "E-FR-01", "count": 2, "position": "back" }
+      ],
+      "background": "bg-hollow-ridge",
+      "music": "bgm-combat-frontier",
+      "rewards": { "xp": 260, "gold": 109 },
+      "escapeAllowed": true
+    },
+    {
+      "id": "ENC-FR-04",
+      "name": "Ridge Patrol",
+      "region": "frontier",
+      "type": "random",
+      "enemies": [
+        { "enemyId": "E-FR-02", "count": 2, "position": "front" },
+        { "enemyId": "E-FR-03", "count": 1, "position": "back" }
+      ],
+      "background": "bg-hollow-ridge",
+      "music": "bgm-combat-frontier",
+      "chain": { "next": "ENC-FR-03" },
+      "rewards": {
+        "xp": 290,
+        "gold": 121,
+        "items": [{ "itemId": "C-HP-02", "chance": 0.3 }]
+      },
+      "escapeAllowed": true
+    },
+    {
+      "id": "ENC-FR-05",
+      "name": "Verdance Surge",
+      "region": "frontier",
+      "type": "random",
+      "enemies": [
+        { "enemyId": "E-FR-03", "count": 2, "position": "front" }
+      ],
+      "background": "bg-resonance-fields",
+      "music": "bgm-combat-frontier",
+      "rewards": { "xp": 220, "gold": 90 },
+      "escapeAllowed": true
+    }
+  ],
+  "pools": [
+    {
+      "regionId": "frontier",
+      "encounters": [
+        "ENC-FR-01",
+        "ENC-FR-02",
+        "ENC-FR-03",
+        "ENC-FR-04",
+        "ENC-FR-05"
+      ],
+      "stepsBetween": 200,
+      "levelRange": [11, 17]
+    }
+  ]
+}

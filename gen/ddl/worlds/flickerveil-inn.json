@@ -1,0 +1,14 @@
+{
+  "id": "flickerveil-inn",
+  "name": "The Shifting Hearth",
+  "templateId": "inn",
+  "parentAnchor": "flickerveil",
+  "slotValues": {
+    "innkeeper": "village-innkeeper-fv",
+    "rooms": 4,
+    "style": "frontier-cozy"
+  },
+  "properties": {
+    "description": "The fireplace burns with a pale blue flame that never quite settles. Guests report waking to find the room slightly rearranged — the innkeeper insists it's just the village remembering itself differently each morning."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "shimmer-marsh-inn",
+  "name": "The Lantern Rest",
+  "templateId": "inn",
+  "parentAnchor": "shimmer-marsh",
+  "slotValues": {
+    "innkeeper": "marsh-keeper",
+    "rooms": 3,
+    "style": "swamp-rustic"
+  },
+  "properties": {
+    "description": "Floating lanterns cast amber light across the common room. The marsh-keeper brews a tea from luminous reeds that keeps the fog-dreams at bay — travelers swear they sleep deeper here than anywhere in the frontier."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "shimmer-marsh-store",
+  "name": "The Verdant Shelf",
+  "templateId": "shop-single",
+  "parentAnchor": "shimmer-marsh",
+  "slotValues": {
+    "keeper": "vash-assistant",
+    "shop-type": "general",
+    "theme": "marsh"
+  },
+  "properties": {
+    "description": "Shelves of dried herbs and bottled marsh-glow line the walls. Vash's assistant tends the counter while the hermit wanders — every remedy here was gathered from the bog's edge at dawn."
+  }
+}

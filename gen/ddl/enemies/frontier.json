@@ -1,0 +1,127 @@
+[
+  {
+    "id": "E-FR-01",
+    "name": "Boglight Drifter",
+    "zone": "Shimmer Marsh",
+    "category": "frontier",
+    "hp": 85,
+    "atk": 9,
+    "int": 14,
+    "def": 8,
+    "agi": 13,
+    "baseLevel": 11,
+    "xp": 75,
+    "gold": 32,
+    "abilities": [
+      {
+        "name": "Marsh Flare",
+        "formula": "INT * 1.6 (fire/water)",
+        "effect": "Magic attack, dual-element fire and water"
+      },
+      {
+        "name": "Miasma Veil",
+        "formula": "20% chance Confusion (random target, 2 turns)",
+        "effect": "AoE debuff, used every 3rd turn"
+      }
+    ],
+    "drops": [
+      {
+        "itemId": "C-SP-01",
+        "chance": 0.2
+      },
+      {
+        "itemId": "C-SC-03",
+        "chance": 0.1
+      }
+    ],
+    "fragmentAffinity": "Sorrow / Kinesis"
+  },
+  {
+    "id": "E-FR-02",
+    "name": "Haze Stalker",
+    "zone": "Flickerveil",
+    "category": "frontier",
+    "hp": 110,
+    "atk": 15,
+    "int": 6,
+    "def": 12,
+    "agi": 16,
+    "baseLevel": 13,
+    "xp": 90,
+    "gold": 38,
+    "abilities": [
+      {
+        "name": "Flickerstrike",
+        "formula": "ATK * 1.6 (first turn: ATK * 2.0)",
+        "effect": "Ambush physical attack, bonus on first turn"
+      },
+      {
+        "name": "Phase Shift",
+        "formula": "50% dodge next physical attack",
+        "effect": "Evasion buff, used when below 60% HP"
+      },
+      {
+        "name": "Rend Memory",
+        "formula": "ATK * 1.2",
+        "effect": "15% chance Silence (no skills, 2 turns)"
+      }
+    ],
+    "drops": [
+      {
+        "itemId": "C-HP-02",
+        "chance": 0.15
+      },
+      {
+        "itemId": "C-BF-01",
+        "chance": 0.05
+      }
+    ],
+    "fragmentAffinity": "Fury / Resonance"
+  },
+  {
+    "id": "E-FR-03",
+    "name": "Verdance Elemental",
+    "zone": "Hollow Ridge",
+    "category": "frontier",
+    "hp": 140,
+    "atk": 12,
+    "int": 16,
+    "def": 14,
+    "agi": 9,
+    "baseLevel": 15,
+    "xp": 110,
+    "gold": 45,
+    "abilities": [
+      {
+        "name": "Thorn Cascade",
+        "formula": "INT * 1.8 (earth)",
+        "effect": "AoE magic attack, earth element, hits all party"
+      },
+      {
+        "name": "Root Bind",
+        "formula": "30% chance Slow (AGI halved, 3 turns)",
+        "effect": "Single target debuff"
+      },
+      {
+        "name": "Regenerate",
+        "formula": "Heal 10% max HP per turn for 3 turns",
+        "effect": "Self-heal, used when below 40% HP"
+      }
+    ],
+    "drops": [
+      {
+        "itemId": "C-HP-02",
+        "chance": 0.2
+      },
+      {
+        "itemId": "C-SP-01",
+        "chance": 0.15
+      },
+      {
+        "itemId": "C-BF-01",
+        "chance": 0.08
+      }
+    ],
+    "fragmentAffinity": "Calm / Verdance"
+  }
+]

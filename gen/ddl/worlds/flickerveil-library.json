@@ -1,0 +1,15 @@
+{
+  "id": "flickerveil-library",
+  "name": "The Resonance Archive",
+  "templateId": "shop-single",
+  "parentAnchor": "flickerveil",
+  "slotValues": {
+    "keeper": "archive-keeper",
+    "shop-type": "cartographer",
+    "archetype-override": "library",
+    "theme": "ancient-archive"
+  },
+  "properties": {
+    "description": "Towering shelves of half-written books and crystallized memories. The archive-keeper catalogs fragments of knowledge that drift in from the Sketch Realm — some pages rewrite themselves when no one is looking."
+  }
+}
