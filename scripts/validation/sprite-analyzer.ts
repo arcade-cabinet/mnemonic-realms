@@ -1,8 +1,8 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import sharp from 'sharp';
-import type { ValidationReport } from './types.js';
-import { Logger } from './logger.js';
+import type { Issue, ValidationReport } from './types.js';
+import { Logger, logger as globalLogger } from './logger.js';
 import { writeFile } from './utils.js';
 
 interface SpriteSheet {
@@ -32,52 +32,66 @@ export class SpriteAnalyzer {
   private sprites: SpriteSheet[] = [];
   private usage: SpriteUsage[] = [];
 
-  constructor(logger: Logger) {
-    this.logger = logger;
+  constructor(logger?: Logger) {
+    this.logger = logger ?? globalLogger;
+  }
+
+  /** Alias for analyze() so the CLI can call validate() uniformly. */
+  async validate(): Promise<ValidationReport> {
+    return this.analyze();
   }
 
   async analyze(): Promise<ValidationReport> {
+    const startTime = Date.now();
     this.logger.info('Starting sprite analysis...');
 
-    const errors: string[] = [];
-    const warnings: string[] = [];
+    const issues: Issue[] = [];
 
     // Scan sprite directories
-    await this.scanSprites('assets/sprites', errors);
+    await this.scanSprites('assets/sprites', issues);
 
     // Parse sprite usage from generated.ts
-    this.parseGeneratedSprites(errors);
+    this.parseGeneratedSprites(issues);
 
     // Parse sprite usage from maps
-    this.parseSpriteUsage(errors);
+    this.parseSpriteUsage(issues);
 
     // Validate walk cycles
-    this.validateWalkCycles(errors, warnings);
+    this.validateWalkCycles(issues);
 
     // Validate sprite directions
-    this.validateDirections(errors, warnings);
+    this.validateDirections(issues);
 
     // Generate reports
     await this.generateMarkdownReport();
     await this.generateJsonReport();
 
+    const errorCount = issues.filter((i) => i.severity === 'error').length;
+    const warnCount = issues.filter((i) => i.severity === 'warning').length;
+    const passedCount = this.sprites.length - errorCount;
+    const duration = Date.now() - startTime;
+
     this.logger.info(`Sprite analysis complete: ${this.sprites.length} sprites analyzed`);
 
     return {
-      category: 'sprite-analysis',
+      reportType: 'sprite',
       timestamp: new Date().toISOString(),
       summary: {
-        totalChecked: this.sprites.length,
-        passed: this.sprites.filter((s) => s.hasWalkCycle).length,
-        failed: errors.length,
-        warnings: warnings.length,
+        totalChecks: this.sprites.length,
+        passed: passedCount > 0 ? passedCount : 0,
+        failed: errorCount,
+        warnings: warnCount,
       },
-      errors,
-      warnings,
+      issues,
+      metadata: {
+        validator: 'SpriteAnalyzer',
+        version: '2.0.0',
+        duration,
+      },
     };
   }
 
-  private async scanSprites(dir: string, errors: string[]): Promise<void> {
+  private async scanSprites(dir: string, issues: Issue[]): Promise<void> {
     try {
       const entries = readdirSync(dir);
 
@@ -86,17 +100,17 @@ export class SpriteAnalyzer {
         const stat = statSync(fullPath);
 
         if (stat.isDirectory()) {
-          await this.scanSprites(fullPath, errors);
+          await this.scanSprites(fullPath, issues);
         } else if (entry.endsWith('.png')) {
-          await this.analyzeSpriteFile(fullPath, errors);
+          await this.analyzeSpriteFile(fullPath, issues);
         }
       }
     } catch (err) {
-      errors.push(`Failed to scan directory ${dir}: ${err}`);
+      issues.push(this.mkIssue('error', 'sprite-scan', `Failed to scan directory ${dir}: ${err}`, dir));
     }
   }
 
-  private async analyzeSpriteFile(path: string, errors: string[]): Promise<void> {
+  private async analyzeSpriteFile(path: string, issues: Issue[]): Promise<void> {
     try {
       const metadata = await sharp(path).metadata();
       const width = metadata.width ?? 0;
@@ -128,7 +142,7 @@ export class SpriteAnalyzer {
 
       this.sprites.push(sprite);
     } catch (err) {
-      errors.push(`Failed to analyze sprite ${path}: ${err}`);
+      issues.push(this.mkIssue('error', 'sprite-analyze', `Failed to analyze sprite ${path}: ${err}`, path));
     }
   }
 
@@ -219,7 +233,7 @@ export class SpriteAnalyzer {
     return filename.replace('.png', '').replace(/_/g, '-').toLowerCase();
   }
 
-  private parseGeneratedSprites(errors: string[]): void {
+  private parseGeneratedSprites(issues: Issue[]): void {
     try {
       const generatedPath = 'main/client/characters/generated.ts';
       const content = readFileSync(generatedPath, 'utf-8');
@@ -236,11 +250,11 @@ export class SpriteAnalyzer {
         }
       }
     } catch (err) {
-      errors.push(`Failed to parse generated.ts: ${err}`);
+      issues.push(this.mkIssue('error', 'sprite-generated', `Failed to parse generated.ts: ${err}`, 'generated.ts'));
     }
   }
 
-  private parseSpriteUsage(errors: string[]): void {
+  private parseSpriteUsage(issues: Issue[]): void {
     try {
       // Parse enemy database files for sprite usage
       const enemyDir = 'main/database/enemies';
@@ -265,53 +279,83 @@ export class SpriteAnalyzer {
         }
       }
     } catch (err) {
-      errors.push(`Failed to parse sprite usage: ${err}`);
+      issues.push(this.mkIssue('error', 'sprite-usage', `Failed to parse sprite usage: ${err}`, 'main/database/enemies'));
     }
   }
 
-  private validateWalkCycles(errors: string[], warnings: string[]): void {
+  private validateWalkCycles(issues: Issue[]): void {
     for (const sprite of this.sprites) {
       if (
         (sprite.type === 'character' || sprite.type === 'npc' || sprite.type === 'enemy-small' || sprite.type === 'enemy-medium') &&
         !sprite.hasWalkCycle
       ) {
-        warnings.push(
+        issues.push(this.mkIssue(
+          'warning',
+          'sprite-walk-cycle',
           `Sprite ${sprite.id} (${sprite.type}) may be missing complete walk cycle (height: ${sprite.height})`,
-        );
+          sprite.path,
+        ));
       }
 
       // Verify 4-frame walk cycle per direction
       if (sprite.type === 'character' || sprite.type === 'npc') {
         if (sprite.framesWidth !== 4) {
-          errors.push(
+          issues.push(this.mkIssue(
+            'error',
+            'sprite-walk-cycle',
             `Sprite ${sprite.id} has ${sprite.framesWidth} columns, expected 4 for walk cycle`,
-          );
+            sprite.path,
+          ));
         }
       }
     }
   }
 
-  private validateDirections(errors: string[], warnings: string[]): void {
+  private validateDirections(issues: Issue[]): void {
     for (const sprite of this.sprites) {
       if (sprite.directions === 4) {
         // Verify that frame height is divisible by 4 (one section per direction)
         const rowsPerDirection = sprite.framesHeight / 4;
         if (sprite.framesHeight % 4 !== 0) {
-          warnings.push(
+          issues.push(this.mkIssue(
+            'warning',
+            'sprite-directions',
             `Sprite ${sprite.id} has ${sprite.framesHeight} rows, not evenly divisible by 4 directions`,
-          );
+            sprite.path,
+          ));
         }
 
         // Verify minimum rows per direction
         if (sprite.type === 'character' || sprite.type === 'npc') {
           if (rowsPerDirection < 4) {
-            warnings.push(
+            issues.push(this.mkIssue(
+              'warning',
+              'sprite-directions',
               `Sprite ${sprite.id} has only ${rowsPerDirection} rows per direction, expected at least 4`,
-            );
+              sprite.path,
+            ));
           }
         }
       }
     }
+  }
+
+  private issueCounter = 0;
+
+  private mkIssue(
+    severity: Issue['severity'],
+    category: string,
+    description: string,
+    file: string,
+  ): Issue {
+    this.issueCounter++;
+    return {
+      id: `sprite-${this.issueCounter}`,
+      severity,
+      category,
+      description,
+      location: { file },
+    };
   }
 
   private async generateMarkdownReport(): Promise<void> {
@@ -399,32 +443,35 @@ export class SpriteAnalyzer {
 
 // CLI entry point
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const logger = new Logger('sprite-analyzer');
-  const analyzer = new SpriteAnalyzer(logger);
+  const cliLogger = new Logger('info');
+  const analyzer = new SpriteAnalyzer(cliLogger);
 
   analyzer
     .analyze()
     .then((report) => {
-      logger.info(`Analysis complete: ${report.summary.passed}/${report.summary.totalChecked} passed`);
+      cliLogger.info(`Analysis complete: ${report.summary.passed}/${report.summary.totalChecks} passed`);
 
-      if (report.errors.length > 0) {
-        logger.error(`Found ${report.errors.length} errors`);
-        for (const error of report.errors) {
-          logger.error(`  - ${error}`);
+      const errors = report.issues.filter((i) => i.severity === 'error');
+      const warnings = report.issues.filter((i) => i.severity === 'warning');
+
+      if (errors.length > 0) {
+        cliLogger.error(`Found ${errors.length} errors`);
+        for (const e of errors) {
+          cliLogger.error(`  - ${e.description}`);
         }
       }
 
-      if (report.warnings.length > 0) {
-        logger.warn(`Found ${report.warnings.length} warnings`);
-        for (const warning of report.warnings) {
-          logger.warn(`  - ${warning}`);
+      if (warnings.length > 0) {
+        cliLogger.warn(`Found ${warnings.length} warnings`);
+        for (const w of warnings) {
+          cliLogger.warn(`  - ${w.description}`);
         }
       }
 
-      process.exit(report.errors.length > 0 ? 1 : 0);
+      process.exit(errors.length > 0 ? 1 : 0);
     })
     .catch((err) => {
-      logger.error(`Fatal error: ${err}`);
+      cliLogger.error(`Fatal error: ${err}`);
       process.exit(1);
     });
 }

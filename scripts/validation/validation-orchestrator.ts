@@ -45,7 +45,7 @@ export class ValidationOrchestrator {
       totalValidators: 5,
       totalChecks:
         visualReport.summary.totalChecks +
-        (spriteReport.summary.totalChecks || spriteReport.summary.totalChecked || 0) +
+        spriteReport.summary.totalChecks +
         mapReport.summary.totalChecks +
         eventReport.summary.totalChecks +
         contentReport.summary.totalChecks,
@@ -101,7 +101,7 @@ export class ValidationOrchestrator {
 
   private async runSpriteAnalyzer(): Promise<ValidationReport> {
     logger.info('Running Sprite Analyzer...');
-    const analyzer = new SpriteAnalyzer(logger);
+    const analyzer = new SpriteAnalyzer();
     const report = await analyzer.analyze();
     logger.info(`✓ Sprite Analyzer complete (${report.summary.totalChecks} checks)`);
     return report;
