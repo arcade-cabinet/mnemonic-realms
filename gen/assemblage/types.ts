@@ -3,7 +3,7 @@
  *
  * Assemblages are reusable building blocks (house, shop, forest border, etc.)
  * that get stamped onto a multi-layer map canvas. The canvas resolves semantic
- * tile names to actual tile IDs via a TilesetPalette, then serializes to TMX.
+ * tile names to actual tile IDs via a TilesetPalette, then serializes to runtime JSON.
  */
 
 // --- Semantic tile references ---
@@ -36,7 +36,7 @@ export interface CollisionStamp {
 // --- Visual objects (buildings, trees, props) ---
 
 /**
- * A visual object placed in a TMX object group.
+ * A visual object placed in an object group.
  * These are tileset images (buildings, trees, props) positioned at pixel coords.
  * Unlike tile layers, these can be any size and aren't grid-aligned.
  */
@@ -50,11 +50,11 @@ export interface VisualObject {
 
 // --- Events and hooks ---
 
-/** A TMX object (NPC, chest, transition zone, trigger) */
+/** An event object (NPC, chest, transition zone, trigger) */
 export interface AssemblageObject {
   /** Unique name within the assemblage (e.g., 'keeper-npc', 'door-south') */
   name: string;
-  /** Object type for RPG-JS event system */
+  /** Object type for MnemonicEngine event system */
   type: 'npc' | 'chest' | 'transition' | 'trigger' | 'spawn';
   /** Position relative to assemblage origin (in tiles) */
   x: number;
@@ -70,7 +70,7 @@ export interface AssemblageObject {
 export interface EventHook {
   /** Which object this hook attaches to (by name) */
   objectName: string;
-  /** RPG-JS event class to use or generate */
+  /** Event class to use or generate */
   eventClass: string;
   /** Import path for the event class (if hand-authored) */
   importPath?: string;
@@ -91,7 +91,7 @@ export interface Anchor {
 /**
  * Complete assemblage definition — a reusable building block.
  *
- * Assemblages are composed of named layers matching the TMX layer structure.
+ * Assemblages are composed of named layers matching the map layer structure.
  * Each layer is a TileStamp. Transparent (0) tiles don't overwrite the canvas.
  */
 export interface AssemblageDefinition {
@@ -102,11 +102,11 @@ export interface AssemblageDefinition {
   /** Size in tiles */
   width: number;
   height: number;
-  /** Named layer stamps. Keys match TMX layer names (ground, road, water, etc.) */
+  /** Named layer stamps. Keys match map layer names (ground, detail, overlay, etc.) */
   layers: Record<string, TileStamp>;
   /** Collision data for this assemblage */
   collision?: CollisionStamp;
-  /** Visual objects — buildings, trees, props placed in TMX object groups */
+  /** Visual objects — buildings, trees, props placed in object groups */
   visuals?: VisualObject[];
   /** Event objects (NPCs, chests, transitions) */
   objects?: AssemblageObject[];

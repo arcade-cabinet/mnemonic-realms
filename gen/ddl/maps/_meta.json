@@ -1,6 +1,6 @@
 {
-  "layers": ["ground", "ground2", "objects", "objects_upper", "collision", "events"],
-  "tileSize": 32,
+  "layers": ["ground", "detail", "overlay"],
+  "tileSize": 16,
   "categories": ["overworld", "depths", "fortress"],
   "overworldCount": 12,
   "depthsCount": 5,
