@@ -100,7 +100,7 @@ describe('Entity Spawner — spawnEntities', () => {
     expect(pos.y).toBe(2);
 
     const c = chest.get(Chest);
-    expect(c.contents).toEqual(['potion', 'gold']);
+    expect(c.contents).toEqual(['potion', 'potion']);
     expect(c.opened).toBe(false);
   });
 
@@ -152,7 +152,7 @@ describe('Entity Spawner — spawnEntities', () => {
     expect(stone.has(Collidable)).toBe(true);
 
     const rs = stone.get(ResonanceStone);
-    expect(rs.stoneId).toBe('stone-1');
+    expect(rs.stoneId).toBe('stone-memory-1');
     expect(rs.message).toBe('A faint memory echoes...');
     expect(rs.discovered).toBe(false);
   });

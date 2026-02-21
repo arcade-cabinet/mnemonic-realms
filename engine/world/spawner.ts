@@ -10,6 +10,40 @@
  * - Transition: Position, Transition, Trigger
  * - Trigger: Position, Trigger
  * - Resonance Stone: Position, Sprite, ResonanceStone, Interactable, Collidable
+ *
+ * ── Property contract (per entity type) ──────────────────────────────────────
+ * Properties are set by generate-runtime-content.ts and passed through the
+ * loader as EntityDescriptor.properties.
+ *
+ * NPC:
+ *   sprite    — spritesheet ID (string)
+ *   dialogue  — dialogue bank ID (string)
+ *   facing?   — initial direction ('up'|'down'|'left'|'right')
+ *   aiState?  — AI behavior ('idle'|'patrol'|'follow')
+ *   patrolPath? — JSON-encoded {x,y}[] array
+ *   portrait? — portrait asset ID (string)
+ *
+ * Chest:
+ *   item?     — item ID (string, from anchor format)
+ *   quantity? — item count (number, from anchor format)
+ *   contents? — item description string (from map DDL format)
+ *   sprite?   — override spritesheet (defaults to 'chest')
+ *
+ * Transition:
+ *   targetWorld — target map/world ID (string)
+ *   targetX?    — spawn X in target (number, defaults to 0)
+ *   targetY?    — spawn Y in target (number, defaults to 0)
+ *   transitionType? — 'door'|'region' (string)
+ *   condition?  — activation condition (string)
+ *
+ * Trigger:
+ *   eventId?   — event identifier (falls back to desc.name)
+ *   condition? — activation condition (string)
+ *
+ * Resonance Stone:
+ *   fragment   — memory fragment ID (string)
+ *   sprite?    — override spritesheet (defaults to 'resonance-stone')
+ *   resonanceStone? — boolean marker (true)
  */
 
 import type { Entity, World } from 'koota';
@@ -83,7 +117,7 @@ function spawnNpc(world: World, desc: EntityDescriptor): Entity {
     Collidable,
     Interactable,
     Dialogue({
-      id: (props.dialogueId as string) || desc.name,
+      id: (props.dialogue as string) || desc.name,
       lines: props.lines ? JSON.parse(props.lines as string) : null,
       portrait: (props.portrait as string) || '',
     }),
@@ -106,6 +140,17 @@ function spawnNpc(world: World, desc: EntityDescriptor): Entity {
 /** Spawn a chest entity. */
 function spawnChest(world: World, desc: EntityDescriptor): Entity {
   const props = desc.properties;
+
+  // Resolve chest contents from either anchor format (item + quantity)
+  // or map DDL format (contents as description string).
+  let contents: string[] | null = null;
+  if (props.item) {
+    const qty = (props.quantity as number) || 1;
+    contents = Array.from({ length: qty }, () => props.item as string);
+  } else if (props.contents) {
+    contents = [props.contents as string];
+  }
+
   return world.spawn(
     Position({ x: desc.x, y: desc.y }),
     Sprite({
@@ -114,10 +159,7 @@ function spawnChest(world: World, desc: EntityDescriptor): Entity {
       width: 16,
       height: 16,
     }),
-    Chest({
-      contents: props.contents ? JSON.parse(props.contents as string) : null,
-      opened: false,
-    }),
+    Chest({ contents, opened: false }),
     Interactable,
     Collidable,
   );
@@ -129,7 +171,7 @@ function spawnTransition(world: World, desc: EntityDescriptor): Entity {
   return world.spawn(
     Position({ x: desc.x, y: desc.y }),
     Transition({
-      targetMap: (props.target as string) || '',
+      targetMap: (props.targetWorld as string) || '',
       targetX: (props.targetX as number) || 0,
       targetY: (props.targetY as number) || 0,
     }),
@@ -163,9 +205,9 @@ function spawnResonanceStone(world: World, desc: EntityDescriptor): Entity {
       height: 16,
     }),
     ResonanceStone({
-      stoneId: (props.stoneId as string) || desc.name,
+      stoneId: desc.name,
       discovered: false,
-      message: (props.message as string) || '',
+      message: (props.fragment as string) || '',
     }),
     Interactable,
     Collidable,

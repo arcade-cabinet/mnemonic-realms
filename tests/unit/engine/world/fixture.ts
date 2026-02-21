@@ -42,7 +42,7 @@ export const FIXTURE_MAP: RuntimeMapData = {
       y: 1,
       properties: {
         sprite: 'artun',
-        dialogueId: 'artun-greeting',
+        dialogue: 'artun-greeting',
         portrait: 'artun.png',
         facing: 'down',
       },
@@ -54,7 +54,8 @@ export const FIXTURE_MAP: RuntimeMapData = {
       y: 2,
       properties: {
         sprite: 'chest-wood',
-        contents: '["potion","gold"]',
+        item: 'potion',
+        quantity: 2,
       },
     },
     {
@@ -65,7 +66,7 @@ export const FIXTURE_MAP: RuntimeMapData = {
       width: 1,
       height: 1,
       properties: {
-        target: 'tavern-interior',
+        targetWorld: 'tavern-interior',
         targetX: 5,
         targetY: 10,
       },
@@ -93,8 +94,7 @@ export const FIXTURE_MAP: RuntimeMapData = {
       y: 3,
       properties: {
         subtype: 'resonance-stone',
-        stoneId: 'stone-1',
-        message: 'A faint memory echoes...',
+        fragment: 'A faint memory echoes...',
         sprite: 'resonance-stone',
       },
     },
